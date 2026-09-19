@@ -32,6 +32,40 @@ static const char* get_jwt(void){
     return "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3ODk4NDM4MjAsImlkIjoiMDFhMGJiMDEtMjAxMC03ZjViLTg5NGQtZDI2ODhlOWEyMjkxIiwia2lkIjoiV1FhUGd1dExkUURFak9YMUpsUVNNSVZHbHBzUDNUdGUyb29SRGcweVBsRSIsInJpZCI6ImI0ZjI5YzlmLTdjZmYtNGZmZC1iODU0LTI5ZGM4NzE2NGY3MSJ9.JdIr0aaTLKrhw93KjVOKrs_f11_u87CKZq3TKuNE7TYPZCD8QqdlZOMUK-8GCfllIOWuNl4oBfyCrgUqsVgQAw";
 }
 
+
+static void load_dotenv(void){
+    const char *paths[] = {".env", "/app/.env", "./main/.env", "./account/.env", "./auth/.env", NULL};
+    for(int pi=0; paths[pi]; pi++){
+        FILE *f = fopen(paths[pi], "r");
+        if(!f) continue;
+        char line[1024];
+        while(fgets(line, sizeof(line), f)){
+            char *p=line;
+            while(*p==' '||*p=='\t') p++;
+            if(*p=='#'||*p=='\n'||*p=='\0'||*p=='\r') continue;
+            char *eq=strchr(p,'=');
+            if(!eq) continue;
+            *eq='\0';
+            char *k=p;
+            char *v=eq+1;
+            // trim key trailing
+            char *end=k+strlen(k)-1;
+            while(end>k && (*end==' '||*end=='\t')) *end--='\0';
+            while(*v==' '||*v=='\t') v++;
+            end=v+strlen(v)-1;
+            while(end>v && (*end=='\n'||*end=='\r'||*end==' '||*end=='\t')) *end--='\0';
+            if(*v=='"'||*v=='\''){
+                char q=*v; v++;
+                char *q2=strrchr(v,q);
+                if(q2) *q2='\0';
+            }
+            if(getenv(k)==NULL) setenv(k,v,0);
+        }
+        fclose(f);
+        // only load first found? try all
+    }
+}
+
 static int set_nonblocking(int fd) {
     int flags = fcntl(fd, F_GETFL, 0);
     if (flags == -1) return -1;
@@ -202,6 +236,7 @@ static void handle_client(int cfd) {
 }
 
 int main(void){
+    load_dotenv();
     signal(SIGPIPE,SIG_IGN); signal(SIGINT,handle_sig); signal(SIGTERM,handle_sig);
     int lfd=socket(AF_INET,SOCK_STREAM,0); if(lfd<0){perror("socket");return 1;}
     int opt=1; setsockopt(lfd,SOL_SOCKET,SO_REUSEADDR,&opt,sizeof(opt)); setsockopt(lfd,SOL_SOCKET,SO_REUSEPORT,&opt,sizeof(opt));
