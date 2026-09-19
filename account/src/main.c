@@ -166,6 +166,7 @@ static void handle_client(int cfd){
             snprintf(last_account_json,sizeof(last_account_json),"{\"id\":\"01a0bb01-2010-7f5b-894d-d2688e9a2291\",\"username\":\"%s\",\"email\":\"%s\",\"bio\":\"%s\",\"rid\":\"b4f29c9f-7cff-4ffd-b854-29dc87164f71\",\"updated\":%ld}", username,email,bio,(long)time(NULL));
             const char *turso=get_turso();
             const char *turso_token=getenv("TURSO_AUTH_TOKEN");
+            printf("[account] token len=%zu val=%s\n", turso_token?strlen(turso_token):0, turso_token?turso_token:"(null)"); fflush(stdout);
             printf("[account] save to Turso %s — %s\n", turso, last_account_json); fflush(stdout);
             // Try real Turso HTTP API if token present (fire and forget via curl)
             if(turso_token && *turso_token){
