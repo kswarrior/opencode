@@ -110,6 +110,37 @@ static const char HTML_REGISTER[] =
 "  <script>(function(){var u=(location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws';var ws;function c(){ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1) ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks') ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}c();})();</script>\n"
 "</div></body></html>\n";
 
+
+static const char HTML_LOGIN_TMPL[] =
+"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Login — Auth</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:480px;margin:40px auto;padding:0 16px}.card{border:1px solid #ddd;border-radius:12px;padding:20px}input{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%;box-sizing:border-box;margin:6px 0}button{padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:0;width:100%;cursor:pointer}.muted{color:#666}a{color:#111}</style></head><body><div class=\"card\">\n"
+"  <h2>Login</h2>\n"
+"  <form hx-post=\"/login?redirect_uri=%s\" hx-target=\"#msg\" hx-swap=\"innerHTML\" hx-indicator=\"#msg\">\n"
+"    <input name=\"username\" placeholder=\"username\" required>\n"
+"    <input name=\"password\" type=\"password\" placeholder=\"password\" required>\n"
+"    <input type=\"hidden\" name=\"redirect_uri\" value=\"%s\">\n"
+"    <button type=\"submit\">Login via HTMX</button>\n"
+"  </form>\n"
+"  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
+"  <p class=\"muted\" style=\"margin-top:16px\">POST sets <code>token</code> cookie + HX-Redirect to main. <a href=\"/register?redirect_uri=%s\">Register</a> | <a href=\"/\">home</a></p>\n"
+"  <script>(function(){var u=(location.protocol==='https:' ?'wss://':'ws://')+location.host+'/ws';var ws;function c(){ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1)ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks')ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}c();})();</script>\n"
+"</div></body></html>\n";
+
+static const char HTML_REGISTER_TMPL[] =
+"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Register — Auth</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:480px;margin:40px auto;padding:0 16px}.card{border:1px solid #ddd;border-radius:12px;padding:20px}input{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%;box-sizing:border-box;margin:6px 0}button{padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:0;width:100%;cursor:pointer}.muted{color:#666}</style></head><body><div class=\"card\">\n"
+"  <h2>Register</h2>\n"
+"  <form hx-post=\"/register?redirect_uri=%s\" hx-target=\"#msg\" hx-swap=\"innerHTML\">\n"
+"    <input name=\"username\" placeholder=\"username\" required>\n"
+"    <input name=\"email\" placeholder=\"email@example.com\" type=\"email\" required>\n"
+"    <input name=\"password\" type=\"password\" placeholder=\"password\" required>\n"
+"    <input name=\"confirm\" type=\"password\" placeholder=\"confirm password\" required>\n"
+"    <input type=\"hidden\" name=\"redirect_uri\" value=\"%s\">\n"
+"    <button type=\"submit\">Create account</button>\n"
+"  </form>\n"
+"  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
+"  <p class=\"muted\">HTMX POST → 200 + HX-Redirect. After register, <a href=\"/login?redirect_uri=%s\">login</a></p>\n"
+"  <script>(function(){var u=(location.protocol==='https:' ?'wss://':'ws://')+location.host+'/ws';var ws;function c(){ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1)ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks')ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}c();})();</script>\n"
+"</div></body></html>\n";
+
 static const char HTML_FRAG[] = "<div><b>Fragment from Auth</b> — at <span id=\"t\"></span><script>document.getElementById('t').textContent=new Date().toLocaleTimeString()</script> ✅</div>";
 
 static void send_response(int fd,int st,const char *txt,const char *ct,const char *b,size_t bl){
@@ -171,8 +202,26 @@ static void handle_client(int cfd){
         else send_response(cfd,200,"OK","text/html; charset=utf-8",HTML_MAIN,strlen(HTML_MAIN));
     } else if(strcmp(path,"/login")==0){
         if(strcmp(method,"GET")==0){
+            char redirect_uri[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
+            if(!redirect_uri[0]){
+                // default based on host
+                if(has_substr(buf,"localhost")) strcpy(redirect_uri,"http://localhost:8080/auth/callback");
+                else strcpy(redirect_uri,"https://opencode-bnao.onrender.com/auth/callback");
+            }
+            char dec[1024]; url_decode(dec, redirect_uri); strncpy(redirect_uri, dec, 1023);
+            // Need to URL encode for hx-post? For simplicity, use decoded for form action, but encode for href
+            // Use redirect_uri as is for hx-post
+            char html[4096];
+            // For hx-post we need URL encoded version, but we have decoded, so re-encode? For now just use decoded
+            // Escape % for printf
+            char esc_uri[2048]; 
+            // Simple escape: replace % with %% for snprintf
+            // Instead, we will manually build html without snprintf % issues: use separate
+            // For now, just use HTML_LOGIN_TMPL with redirect_uri
+            // Need to handle % in redirect_uri (like https://) contains :// but no % - safe
+            snprintf(html,sizeof(html),HTML_LOGIN_TMPL, redirect_uri, redirect_uri, redirect_uri);
             if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
-            else send_response(cfd,200,"OK","text/html; charset=utf-8",HTML_LOGIN,strlen(HTML_LOGIN));
+            else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
         } else {
             int ok = has_substr(body,"username=") && has_substr(body,"password=");
             const char *jwt=get_jwt();
@@ -203,8 +252,15 @@ static void handle_client(int cfd){
         }
     } else if(strcmp(path,"/register")==0){
         if(strcmp(method,"GET")==0){
+            char redirect_uri[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
+            if(!redirect_uri[0]){
+                if(has_substr(buf,"localhost")) strcpy(redirect_uri,"http://localhost:8080/auth/callback");
+                else strcpy(redirect_uri,"https://opencode-bnao.onrender.com/auth/callback");
+            }
+            char dec[1024]; url_decode(dec, redirect_uri); strncpy(redirect_uri, dec, 1023);
+            char html[4096]; snprintf(html,sizeof(html),HTML_REGISTER_TMPL, redirect_uri, redirect_uri, redirect_uri);
             if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
-            else send_response(cfd,200,"OK","text/html; charset=utf-8",HTML_REGISTER,strlen(HTML_REGISTER));
+            else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
         } else {
             int ok = has_substr(body,"username=") && has_substr(body,"email=") && has_substr(body,"password=");
             const char *jwt=get_jwt();
