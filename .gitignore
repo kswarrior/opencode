@@ -2,11 +2,12 @@
 */server
 server
 *.o
-# env secrets — keep .env local, commit .env.example
+# env — root .env local only, but per-service .env are committed for individual Render deploys
 .env
-account/.env
-auth/.env
-main/.env
+!main/.env
+!auth/.env
+!account/.env
+!.env.example
 # docker
 .docker/
 # os
