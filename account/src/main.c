@@ -36,9 +36,12 @@ static void load_dotenv(void){
             if(*p=='#'||*p=='\n'||*p=='\0'||*p=='\r') continue;
             char *eq=strchr(p,'='); if(!eq) continue; *eq='\0';
             char *k=p; char *v=eq+1;
-            char *end=k+strlen(k)-1; while(end>k && (*end==' '||*end=='\t')) *end--='\0';
-            while(*v==' '||*v=='\t') v++;
-            end=v+strlen(v)-1; while(end>v && (*end=='\n'||*end=='\r'||*end==' '||*end=='\t')) *end--='\0';
+            // trim key
+            char *end=k+strlen(k)-1; while(end>k && (*end==' '||*end=='\t'||*end=='\r'||*end=='\n')) *end--='\0';
+            while(*v==' '||*v=='\t'||*v=='\r'||*v=='\n') v++;
+            // trim value trailing
+            end=v+strlen(v)-1;
+            while(end>=v && (*end=='\n'||*end=='\r'||*end==' '||*end=='\t')) {*end='\0'; end--;}
             if(*v=='"'||*v=='\''){char q=*v; v++; char *q2=strrchr(v,q); if(q2) *q2='\0';}
             if(getenv(k)==NULL) setenv(k,v,0);
         }
@@ -166,7 +169,6 @@ static void handle_client(int cfd){
             snprintf(last_account_json,sizeof(last_account_json),"{\"id\":\"01a0bb01-2010-7f5b-894d-d2688e9a2291\",\"username\":\"%s\",\"email\":\"%s\",\"bio\":\"%s\",\"rid\":\"b4f29c9f-7cff-4ffd-b854-29dc87164f71\",\"updated\":%ld}", username,email,bio,(long)time(NULL));
             const char *turso=get_turso();
             const char *turso_token=getenv("TURSO_AUTH_TOKEN");
-            printf("[account] token len=%zu val=%s\n", turso_token?strlen(turso_token):0, turso_token?turso_token:"(null)"); fflush(stdout);
             printf("[account] save to Turso %s — %s\n", turso, last_account_json); fflush(stdout);
             // Try real Turso HTTP API if token present (fire and forget via curl)
             if(turso_token && *turso_token){

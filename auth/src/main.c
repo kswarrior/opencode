@@ -34,9 +34,12 @@ static void load_dotenv(void){
             if(*p=='#'||*p=='\n'||*p=='\0'||*p=='\r') continue;
             char *eq=strchr(p,'='); if(!eq) continue; *eq='\0';
             char *k=p; char *v=eq+1;
-            char *end=k+strlen(k)-1; while(end>k && (*end==' '||*end=='\t')) *end--='\0';
-            while(*v==' '||*v=='\t') v++;
-            end=v+strlen(v)-1; while(end>v && (*end=='\n'||*end=='\r'||*end==' '||*end=='\t')) *end--='\0';
+            // trim key
+            char *end=k+strlen(k)-1; while(end>k && (*end==' '||*end=='\t'||*end=='\r'||*end=='\n')) *end--='\0';
+            while(*v==' '||*v=='\t'||*v=='\r'||*v=='\n') v++;
+            // trim value trailing
+            end=v+strlen(v)-1;
+            while(end>=v && (*end=='\n'||*end=='\r'||*end==' '||*end=='\t')) {*end='\0'; end--;}
             if(*v=='"'||*v=='\''){char q=*v; v++; char *q2=strrchr(v,q); if(q2) *q2='\0';}
             if(getenv(k)==NULL) setenv(k,v,0);
         }
