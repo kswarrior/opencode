@@ -100,7 +100,7 @@ static void send_response_cookie(int fd, int status, const char *status_text, co
     send(fd, header, hlen, MSG_NOSIGNAL);
     if (body_len) send(fd, body, body_len, MSG_NOSIGNAL);
 }
-static void send_redirect(int fd, const char *loc) {
+static void __attribute__((unused)) send_redirect(int fd, const char *loc) {
     char h[512];
     int hl = snprintf(h, sizeof(h), "HTTP/1.1 302 Found\r\nLocation: %s\r\nContent-Length: 0\r\nConnection: close\r\nCache-Control: no-store\r\n\r\n", loc);
     send(fd, h, hl, MSG_NOSIGNAL);

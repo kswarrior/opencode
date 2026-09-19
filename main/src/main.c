@@ -61,7 +61,7 @@ static const char HTML_MAIN_AUTHED[] =
 "  <pre id=\"acct\" style=\"margin-top:10px\">— click load —</pre>\n"
 "  <h3>Save account</h3>\n"
 "  <form hx-post=\"%s/api/account\" hx-target=\"#saveRes\" hx-swap=\"innerHTML\">\n"
-"    <input name=\"username\" placeholder=\"username\" style=\"padding:8px;width:100%;box-sizing:border-box;margin:4px 0\" value=\"demo\"><input name=\"email\" placeholder=\"email\" style=\"padding:8px;width:100%;box-sizing:border-box;margin:4px 0\" value=\"demo@example.com\"><button type=\"submit\">Save to account (Turso)</button>\n"
+"    <input name=\"username\" placeholder=\"username\" style=\"padding:8px;width:100%%;box-sizing:border-box;margin:4px 0\" value=\"demo\"><input name=\"email\" placeholder=\"email\" style=\"padding:8px;width:100%%;box-sizing:border-box;margin:4px 0\" value=\"demo@example.com\"><button type=\"submit\">Save to account (Turso)</button>\n"
 "  </form><div id=\"saveRes\" style=\"margin-top:10px;padding:10px;background:#f6f6f6;border-radius:8px;\">— result —</div>\n"
 "  <hr><button hx-get=\"/fragment\" hx-target=\"#frag\" hx-swap=\"innerHTML\">Load fragment</button><div id=\"frag\" style=\"margin-top:8px;padding:10px;background:#f6f6f6;border-radius:8px;\"> — </div>\n"
 "</div></body></html>\n";
