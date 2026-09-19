@@ -46,7 +46,9 @@ static const char* get_jwt(void){
 static void load_dotenv(void){
     const char *paths[] = {".env", "/app/.env", "./main/.env", "./account/.env", "./auth/.env", NULL};
     for(int pi=0; paths[pi]; pi++){
+        fprintf(stderr, "[dotenv] try %s cwd=" ); char cwd[256]; if(getcwd(cwd,sizeof(cwd))) fprintf(stderr, "%s", cwd); fprintf(stderr, " -> "); fflush(stderr);
         FILE *f = fopen(paths[pi], "r");
+        fprintf(stderr, "%p\n", f); fflush(stderr);
         if(!f) continue;
         char line[1024];
         while(fgets(line, sizeof(line), f)){
