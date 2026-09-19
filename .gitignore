@@ -1,0 +1,8 @@
+# binaries
+*/server
+server
+*.o
+# docker
+.docker/
+# os
+.DS_Store

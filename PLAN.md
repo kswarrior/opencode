@@ -23,7 +23,7 @@
 
 **Microservices split:**
 ```
-[Browser] -> [Nginx Gateway :80] -> main:8080 (/)
+[Browser] -> [Nginx Gateway :8085] -> main:8080 (/)
                               -> auth:8081 (/auth/*)
                               -> account:8082 (/account/*)
 ```
@@ -43,7 +43,7 @@
 ├── PLAN.md                # this plan
 ├── docker-compose.yml     # connects all services after deploy
 ├── gateway/
-│   └── nginx.conf         # reverse proxy
+│   └── nginx.conf         # reverse proxy (8085:80 inside)
 ├── main/                  # port 8080 — hello world
 │   ├── src/main.c
 │   ├── Makefile
@@ -58,7 +58,7 @@
     └── Dockerfile
 ```
 
-Each `main.c` is a self-contained lean HTTP server (~250 lines):
+Each `main.c` is a self-contained lean HTTP server (~200 lines):
 - socket() → bind() → listen() → epoll_create1()
 - accept loop (non-blocking) → epoll_ctl(ADD)
 - worker threads (pthread) pull fd from queue → read 8KB → parse `GET /` → send fixed HTML
@@ -70,7 +70,9 @@ No external deps: only `libc`, `pthread`, `epoll`. Compile `gcc -O2 -pthread`.
 - `main` serves `200 OK` with HTMX html: "Hello from Main"
 - `auth` serves "Hello from Auth" (with hx-get demo)
 - `account` serves "Hello from Account"
-- Verified via `curl localhost:8080` etc.
+- Verified via:
+  - `curl http://localhost:8080/` etc. (direct)
+  - `curl http://localhost:8085/` etc. (via gateway)
 
 ## 4. Next Phases (not yet, but planned)
 
@@ -85,20 +87,20 @@ No external deps: only `libc`, `pthread`, `epoll`. Compile `gcc -O2 -pthread`.
 make -C main && ./main/server        # 8080
 make -C auth && ./auth/server        # 8081
 make -C account && ./account/server  # 8082
-docker compose up --build            # all + nginx :80
+docker compose up --build            # all + nginx gateway :8085
 curl http://localhost:8080/
 curl http://localhost:8081/
 curl http://localhost:8082/
 # via gateway
-curl http://localhost/
-curl http://localhost/auth/
-curl http://localhost/account/
+curl http://localhost:8085/
+curl http://localhost:8085/auth/
+curl http://localhost:8085/account/
 ```
 
 ## 6. Resource Targets
 
-- Idle RAM: <5MB/service, <20MB total
+- Idle RAM: <5MB/service, <20MB total (actual: 0.6MB)
 - CPU idle: ~0%
 - 10k concurrent keep-alive: <100MB, p95 <5ms
-- Binary size: <100KB
+- Binary size: <100KB (actual: 17KB)
 
