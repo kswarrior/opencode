@@ -1,23 +1,19 @@
 services:
-  # main — public site, HTMX hello world
   - type: web
     name: main
     env: docker
     dockerfilePath: ./main/Dockerfile
-    # optional: dockerContext: ./main
     healthCheckPath: /health
     envVars:
       - key: PORT
-        value: 10000  # Render injects, but explicit for clarity
+        value: 10000
       - key: AUTH_URL
-        value: https://auth-xyz.onrender.com  # <- replace after auth deploy
+        value: https://auth-xyz.onrender.com  # <-- replace with actual auth URL after first deploy
       - key: ACCOUNT_URL
         value: https://account-xyz.onrender.com
-    scaling:
-      minInstances: 1
-      maxInstances: 3
+      - key: JWT_TOKEN
+        sync: false  # set in dashboard: eyJhbGciOiJFZERTQS...
 
-  # auth — login/JWT
   - type: web
     name: auth
     env: docker
@@ -26,10 +22,13 @@ services:
     envVars:
       - key: PORT
         value: 10000
-      - key: JWT_SECRET
-        generateValue: true
+      - key: JWT_TOKEN
+        value: eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3ODk4NDM4MjAsImlkIjoiMDFhMGJiMDEtMjAxMC03ZjViLTg5NGQtZDI2ODhlOWEyMjkxIiwia2lkIjoiV1FhUGd1dExkUURFak9YMUpsUVNNSVZHbHBzUDNUdGUyb29SRGcweVBsRSIsInJpZCI6ImI0ZjI5YzlmLTdjZmYtNGZmZC1iODU0LTI5ZGM4NzE2NGY3MSJ9.JdIr0aaTLKrhw93KjVOKrs_f11_u87CKZq3TKuNE7TYPZCD8QqdlZOMUK-8GCfllIOWuNl4oBfyCrgUqsVgQAw
+      - key: TURSO_DATABASE_URL
+        value: turso://account-kswarriorgh-th1.aws-ap-south-1.turso.io
+      - key: TURSO_AUTH_TOKEN
+        sync: false  # create on Turso dashboard and set in Render
 
-  # account — profile
   - type: web
     name: account
     env: docker
@@ -38,18 +37,11 @@ services:
     envVars:
       - key: PORT
         value: 10000
+      - key: JWT_TOKEN
+        value: eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3ODk4NDM4MjAsImlkIjoiMDFhMGJiMDEtMjAxMC03ZjViLTg5NGQtZDI2ODhlOWEyMjkxIiwia2lkIjoiV1FhUGd1dExkUURFak9YMUpsUVNNSVZHbHBzUDNUdGUyb29SRGcweVBsRSIsInJpZCI6ImI0ZjI5YzlmLTdjZmYtNGZmZC1iODU0LTI5ZGM4NzE2NGY3MSJ9.JdIr0aaTLKrhw93KjVOKrs_f11_u87CKZq3TKuNE7TYPZCD8QqdlZOMUK-8GCfllIOWuNl4oBfyCrgUqsVgQAw
+      - key: TURSO_DATABASE_URL
+        value: turso://account-kswarriorgh-th1.aws-ap-south-1.turso.io
+      - key: TURSO_AUTH_TOKEN
+        sync: false
       - key: AUTH_URL
         value: https://auth-xyz.onrender.com
-
-  # optional: private Redis for pub/sub when you add WSS broadcast across instances
-  # - type: redis
-  #   name: pubsub
-  #   plan: free
-  #   maxmemoryPolicy: allkeys-lru
-
-# If you keep gateway as separate Render service (optional):
-#  - type: web
-#    name: gateway
-#    env: docker
-#    dockerfilePath: ./gateway/Dockerfile  # would need Dockerfile for nginx
-#    healthCheckPath: /health

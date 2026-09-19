@@ -5,11 +5,18 @@ services:
     expose:
       - "8080"
     ports:
-      - "8080:8080"  # direct, also via gateway
+      - "8080:8080"
+    env_file:
+      - .env
+      - ./main/.env
+    environment:
+      - AUTH_URL=http://localhost:8081
+      - ACCOUNT_URL=http://localhost:8082
+      - JWT_TOKEN=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3ODk4NDM4MjAsImlkIjoiMDFhMGJiMDEtMjAxMC03ZjViLTg5NGQtZDI2ODhlOWEyMjkxIiwia2lkIjoiV1FhUGd1dExkUURFak9YMUpsUVNNSVZHbHBzUDNUdGUyb29SRGcweVBsRSIsInJpZCI6ImI0ZjI5YzlmLTdjZmYtNGZmZC1iODU0LTI5ZGM4NzE2NGY3MSJ9.JdIr0aaTLKrhw93KjVOKrs_f11_u87CKZq3TKuNE7TYPZCD8QqdlZOMUK-8GCfllIOWuNl4oBfyCrgUqsVgQAw
     deploy:
       resources:
         limits:
-          memory: 16M
+          memory: 32M
           cpus: '0.5'
 
   auth:
@@ -19,10 +26,16 @@ services:
       - "8081"
     ports:
       - "8081:8081"
+    env_file:
+      - .env
+      - ./auth/.env
+    environment:
+      - JWT_TOKEN=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3ODk4NDM4MjAsImlkIjoiMDFhMGJiMDEtMjAxMC03ZjViLTg5NGQtZDI2ODhlOWEyMjkxIiwia2lkIjoiV1FhUGd1dExkUURFak9YMUpsUVNNSVZHbHBzUDNUdGUyb29SRGcweVBsRSIsInJpZCI6ImI0ZjI5YzlmLTdjZmYtNGZmZC1iODU0LTI5ZGM4NzE2NGY3MSJ9.JdIr0aaTLKrhw93KjVOKrs_f11_u87CKZq3TKuNE7TYPZCD8QqdlZOMUK-8GCfllIOWuNl4oBfyCrgUqsVgQAw
+      - TURSO_DATABASE_URL=turso://account-kswarriorgh-th1.aws-ap-south-1.turso.io
     deploy:
       resources:
         limits:
-          memory: 16M
+          memory: 32M
           cpus: '0.5'
 
   account:
@@ -32,10 +45,16 @@ services:
       - "8082"
     ports:
       - "8082:8082"
+    env_file:
+      - .env
+      - ./account/.env
+    environment:
+      - JWT_TOKEN=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3ODk4NDM4MjAsImlkIjoiMDFhMGJiMDEtMjAxMC03ZjViLTg5NGQtZDI2ODhlOWEyMjkxIiwia2lkIjoiV1FhUGd1dExkUURFak9YMUpsUVNNSVZHbHBzUDNUdGUyb29SRGcweVBsRSIsInJpZCI6ImI0ZjI5YzlmLTdjZmYtNGZmZC1iODU0LTI5ZGM4NzE2NGY3MSJ9.JdIr0aaTLKrhw93KjVOKrs_f11_u87CKZq3TKuNE7TYPZCD8QqdlZOMUK-8GCfllIOWuNl4oBfyCrgUqsVgQAw
+      - TURSO_DATABASE_URL=turso://account-kswarriorgh-th1.aws-ap-south-1.turso.io
     deploy:
       resources:
         limits:
-          memory: 16M
+          memory: 32M
           cpus: '0.5'
 
   gateway:
