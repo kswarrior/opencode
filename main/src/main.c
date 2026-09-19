@@ -44,7 +44,7 @@ static const char* get_jwt(void){
 
 
 static void load_dotenv(void){
-    const char *paths[] = {".env", "/app/.env", "./main/.env", "./account/.env", "./auth/.env", NULL};
+    const char *paths[] = {".env", "/app/.env", NULL};
     for(int pi=0; paths[pi]; pi++){
         FILE *f = fopen(paths[pi], "r");
         if(!f) continue;
