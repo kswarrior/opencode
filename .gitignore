@@ -2,6 +2,11 @@
 */server
 server
 *.o
+# env secrets — keep .env local, commit .env.example
+.env
+account/.env
+auth/.env
+main/.env
 # docker
 .docker/
 # os
