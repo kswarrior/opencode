@@ -201,6 +201,7 @@ static void handle_client(int cfd) {
 }
 
 int main(void) {
+    load_dotenv();
     signal(SIGPIPE, SIG_IGN);
     signal(SIGINT, handle_sig);
     signal(SIGTERM, handle_sig);
