@@ -12,7 +12,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#define PORT 8081
+#define DEFAULT_PORT 8081
 #define SERVICE_NAME "auth"
 #define MAX_EVENTS 1024
 #define BUF_SIZE 8192
@@ -20,6 +20,15 @@
 
 static volatile int keep_running = 1;
 void handle_sig(int s) { (void)s; keep_running = 0; }
+
+static int get_port(void) {
+    const char *e = getenv("PORT");
+    if (e && *e) {
+        int v = atoi(e);
+        if (v > 0 && v < 65536) return v;
+    }
+    return DEFAULT_PORT;
+}
 
 static int set_nonblocking(int fd) {
     int flags = fcntl(fd, F_GETFL, 0);
@@ -65,6 +74,8 @@ static void send_response(int fd, int status, const char *status_text, const cha
         "Connection: close\r\n"
         "X-Service: " SERVICE_NAME "\r\n"
         "Cache-Control: no-store\r\n"
+        "Access-Control-Allow-Origin: *\r\n"
+        "Access-Control-Allow-Headers: *\r\n"
         "\r\n",
         status, status_text, content_type, body_len);
     // Use TCP_CORK style: send header+body in one syscall where possible via writev would be ideal,
@@ -98,6 +109,24 @@ static void handle_client(int cfd) {
     } else if (strcmp(path, "/fragment") == 0) {
         if (is_head) send_response(cfd, 200, "OK", "text/html; charset=utf-8", "", 0);
         else send_response(cfd, 200, "OK", "text/html; charset=utf-8", HTML_FRAG, strlen(HTML_FRAG));
+        } else if (strcmp(path, "/ws") == 0) {
+        // Minimal WSS upgrade stub — Render terminates TLS, we speak plain ws.
+        // If client sent Upgrade: websocket, do 101 handshake placeholder.
+        if (strstr(buf, "Upgrade: websocket") || strstr(buf, "Upgrade: WebSocket") || strstr(buf, "upgrade: websocket")) {
+            const char *resp = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: x3JJHMbDL1EzLkh9GBhXDw==\r\n\r\n";
+            send(cfd, resp, strlen(resp), MSG_NOSIGNAL);
+        } else {
+            const char *b = "WSS ready. Connect with wscat -c wss://<render-url>/ws (Upgrade: websocket required)";
+            send_response(cfd, 426, "Upgrade Required", "text/plain", b, strlen(b));
+        }
+    } else if (strcmp(path, "/events") == 0) {
+        // SSE demo — one event then close (production: keep open + flush loop)
+        const char *hdr = "HTTP/1.1 200 OK\r\nContent-Type: text/event-stream\r\nCache-Control: no-cache\r\nConnection: keep-alive\r\nAccess-Control-Allow-Origin: *\r\n\r\n";
+        send(cfd, hdr, strlen(hdr), MSG_NOSIGNAL);
+        const char *evt = "data: {\"service\":\"" + SERVICE_NAME + "\", \"event\":\"hello\", \"time\":\"" + "now" + "\"}\n\n";
+        // simpler static
+        const char *evt2 = "data: {\"service\":\"" SERVICE_NAME "\",\"msg\":\"SSE connected — HTMX sse extension ready\"}\n\n";
+        send(cfd, evt2, strlen(evt2), MSG_NOSIGNAL);
     } else if (strcmp(path, "/health") == 0) {
         const char *b = "ok auth\n";
         if (is_head) send_response(cfd, 200, "OK", "text/plain", "", 0);
@@ -130,6 +159,7 @@ int main(void) {
     struct sockaddr_in addr = {0};
     addr.sin_family = AF_INET;
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    int PORT = get_port();
     addr.sin_port = htons(PORT);
 
     if (bind(lfd, (struct sockaddr*)&addr, sizeof(addr)) < 0) { perror("bind"); return 1; }
