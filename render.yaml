@@ -1,0 +1,55 @@
+services:
+  # main — public site, HTMX hello world
+  - type: web
+    name: main
+    env: docker
+    dockerfilePath: ./main/Dockerfile
+    # optional: dockerContext: ./main
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 10000  # Render injects, but explicit for clarity
+      - key: AUTH_URL
+        value: https://auth-xyz.onrender.com  # <- replace after auth deploy
+      - key: ACCOUNT_URL
+        value: https://account-xyz.onrender.com
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+
+  # auth — login/JWT
+  - type: web
+    name: auth
+    env: docker
+    dockerfilePath: ./auth/Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+
+  # account — profile
+  - type: web
+    name: account
+    env: docker
+    dockerfilePath: ./account/Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: AUTH_URL
+        value: https://auth-xyz.onrender.com
+
+  # optional: private Redis for pub/sub when you add WSS broadcast across instances
+  # - type: redis
+  #   name: pubsub
+  #   plan: free
+  #   maxmemoryPolicy: allkeys-lru
+
+# If you keep gateway as separate Render service (optional):
+#  - type: web
+#    name: gateway
+#    env: docker
+#    dockerfilePath: ./gateway/Dockerfile  # would need Dockerfile for nginx
+#    healthCheckPath: /health

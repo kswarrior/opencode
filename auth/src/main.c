@@ -109,7 +109,7 @@ static void handle_client(int cfd) {
     } else if (strcmp(path, "/fragment") == 0) {
         if (is_head) send_response(cfd, 200, "OK", "text/html; charset=utf-8", "", 0);
         else send_response(cfd, 200, "OK", "text/html; charset=utf-8", HTML_FRAG, strlen(HTML_FRAG));
-        } else if (strcmp(path, "/ws") == 0) {
+    } else if (strcmp(path, "/ws") == 0) {
         // Minimal WSS upgrade stub — Render terminates TLS, we speak plain ws.
         // If client sent Upgrade: websocket, do 101 handshake placeholder.
         if (strstr(buf, "Upgrade: websocket") || strstr(buf, "Upgrade: WebSocket") || strstr(buf, "upgrade: websocket")) {
@@ -123,8 +123,6 @@ static void handle_client(int cfd) {
         // SSE demo — one event then close (production: keep open + flush loop)
         const char *hdr = "HTTP/1.1 200 OK\r\nContent-Type: text/event-stream\r\nCache-Control: no-cache\r\nConnection: keep-alive\r\nAccess-Control-Allow-Origin: *\r\n\r\n";
         send(cfd, hdr, strlen(hdr), MSG_NOSIGNAL);
-        const char *evt = "data: {\"service\":\"" + SERVICE_NAME + "\", \"event\":\"hello\", \"time\":\"" + "now" + "\"}\n\n";
-        // simpler static
         const char *evt2 = "data: {\"service\":\"" SERVICE_NAME "\",\"msg\":\"SSE connected — HTMX sse extension ready\"}\n\n";
         send(cfd, evt2, strlen(evt2), MSG_NOSIGNAL);
     } else if (strcmp(path, "/health") == 0) {
