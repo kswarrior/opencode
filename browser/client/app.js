@@ -293,7 +293,7 @@ retryBtn.addEventListener('click', ()=> { errorBanner.classList.add('hidden'); c
 document.getElementById('newTabBtn').addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
 document.getElementById('mTabs').addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
 
-// overlay input forwarding
+// overlay input forwarding — throttled via rAF to avoid flooding WS/CDP
 function posFromEvent(e) {
   const rect = screen.getBoundingClientRect();
   // screen is object-fit: contain, but we stretch to fill 1280x720
@@ -304,9 +304,15 @@ function posFromEvent(e) {
   const y = (e.clientY - rect.top) * scaleY;
   return {x: Math.round(Math.max(0, Math.min(targetW, x))), y: Math.round(Math.max(0, Math.min(targetH, y)))};
 }
+let pendingMouse = null;
+let mouseRaf = null;
+function flushMouse(){
+  mouseRaf = null;
+  if(pendingMouse){ send({type:'mouse', action:'move', x: pendingMouse.x, y: pendingMouse.y}); pendingMouse=null; }
+}
 overlay.addEventListener('mousemove', (e)=>{
-  const {x,y} = posFromEvent(e);
-  send({type:'mouse', action:'move', x, y});
+  pendingMouse = posFromEvent(e);
+  if(!mouseRaf) mouseRaf = requestAnimationFrame(flushMouse);
 });
 overlay.addEventListener('mousedown', (e)=>{
   e.preventDefault();
@@ -318,10 +324,24 @@ overlay.addEventListener('mouseup', (e)=>{
   const {x,y}= posFromEvent(e);
   send({type:'mouse', action:'up', x, y, button: e.button});
 });
+let wheelPending = null;
+let wheelRaf = null;
+function flushWheel(){
+  wheelRaf=null;
+  if(wheelPending){ send({type:'mouse', action:'wheel', x: wheelPending.x, y: wheelPending.y, deltaX: wheelPending.deltaX, deltaY: wheelPending.deltaY}); wheelPending=null; }
+}
 overlay.addEventListener('wheel', (e)=>{
   e.preventDefault();
   const {x,y}=posFromEvent(e);
-  send({type:'mouse', action:'wheel', x, y, deltaX: e.deltaX, deltaY: e.deltaY});
+  // coalesce wheel deltas
+  if(wheelPending){
+    wheelPending.deltaX += e.deltaX;
+    wheelPending.deltaY += e.deltaY;
+    wheelPending.x = x; wheelPending.y = y;
+  } else {
+    wheelPending = {x,y, deltaX: e.deltaX, deltaY: e.deltaY};
+  }
+  if(!wheelRaf) wheelRaf = requestAnimationFrame(flushWheel);
 }, {passive:false});
 overlay.addEventListener('contextmenu', e=> e.preventDefault());
 overlay.tabIndex = 0;
@@ -348,7 +368,7 @@ overlay.addEventListener('keypress', (e)=>{
   if (e.key.length===1) send({type:'key', action:'type', text: e.key});
 });
 
-// touch support
+// touch support — also throttled
 overlay.addEventListener('touchstart', (e)=>{
   e.preventDefault();
   const t = e.touches[0];
@@ -358,8 +378,8 @@ overlay.addEventListener('touchstart', (e)=>{
 overlay.addEventListener('touchmove', (e)=>{
   e.preventDefault();
   const t = e.touches[0];
-  const {x,y}=posFromEvent({clientX:t.clientX, clientY:t.clientY});
-  send({type:'mouse', action:'move', x, y});
+  pendingMouse = posFromEvent({clientX:t.clientX, clientY:t.clientY});
+  if(!mouseRaf) mouseRaf = requestAnimationFrame(flushMouse);
 }, {passive:false});
 overlay.addEventListener('touchend', (e)=>{
   e.preventDefault();
