@@ -220,7 +220,7 @@ static int load_sites(const char *path){
     }
     pthread_mutex_unlock(&status_lock);
     printf("[stats] loaded %d sites from %s\n", site_count, path);
-    for(int i=0;i<site_count;i++) printf("  - %s -> %s\n", sites[i].name, sites[i].url);
+    for(int i=0;i<site_count;i++) printf("  - %s -> %s (interval %ds)\n", sites[i].name, sites[i].url, sites[i].interval);
     fflush(stdout);
     if(site_count==0){
         fprintf(stderr,"[stats] no sites parsed, check json format\n");
@@ -355,17 +355,26 @@ static void check_all(void){
 
 static void* monitor_thread(void* arg){
     (void)arg;
-    int interval=get_interval();
-    printf("[stats] monitor thread start interval=%ds sites=%d path=%s\n", interval, site_count, get_sites_path());
+    printf("[stats] monitor thread start sites=%d path=%s (per-site interval, default %ds)\n", site_count, get_sites_path(), get_interval());
     fflush(stdout);
-    // initial check after 1 sec
+    // initial delay
     sleep(1);
     while(keep_running){
-        check_all();
-        for(int i=0;i<interval && keep_running;i++) sleep(1);
-        // reload interval env? check each loop
-        int ni=get_interval();
-        if(ni!=interval){ interval=ni; printf("[stats] interval updated %d\n", interval);}
+        time_t now=time(NULL);
+        for(int i=0;i<site_count;i++){
+            if(!keep_running) break;
+            pthread_mutex_lock(&status_lock);
+            time_t lc=statuses[i].last_checked;
+            int iv=sites[i].interval;
+            if(iv<=0) iv=get_interval();
+            pthread_mutex_unlock(&status_lock);
+            if(lc==0 || now - lc >= iv){
+                check_site(i);
+                // update now for next site to avoid burst after long check
+                now=time(NULL);
+            }
+        }
+        sleep(1);
     }
     return NULL;
 }
@@ -380,7 +389,7 @@ static int has_substr(const char *a,const char *b){return strstr(a,b)!=NULL;}
 
 static void build_status_json(char *out, size_t outsz){
     pthread_mutex_lock(&status_lock);
-    int off=snprintf(out,outsz,"{\"service\":\"" SERVICE_NAME "\",\"port\":%d,\"interval\":%d,\"site_count\":%d,\"last_check\":%ld,\"sites\":[", get_port(), get_interval(), site_count, (long)last_check_all);
+    int off=snprintf(out,outsz,"{\"service\":\"" SERVICE_NAME "\",\"port\":%d,\"default_interval\":%d,\"site_count\":%d,\"last_check\":%ld,\"sites\":[", get_port(), get_interval(), site_count, (long)last_check_all);
     for(int i=0;i<site_count;i++){
         if(i>0) off+=snprintf(out+off,outsz-off,",");
         const char *state = statuses[i].up==1?"up": statuses[i].up==2?"down":"unknown";
@@ -393,9 +402,12 @@ static void build_status_json(char *out, size_t outsz){
         for(char *c=esc_name;*c;c++) if(*c=='"') *c='\'';
         char esc_err[256]={0}; strncpy(esc_err, statuses[i].error, sizeof(esc_err)-1);
         for(char *c=esc_err;*c;c++) if(*c=='"') *c='\'';
+        char esc_desc[256]={0}; strncpy(esc_desc, sites[i].description, sizeof(esc_desc)-1);
+        for(char *c=esc_desc;*c;c++) if(*c=='"') *c='\'';
+        int iv=sites[i].interval; if(iv<=0) iv=get_interval();
         off+=snprintf(out+off,outsz-off,
-            "{\"name\":\"%s\",\"url\":\"%s\",\"description\":\"%s\",\"status\":\"%s\",\"up\":%s,\"http_code\":%d,\"latency_ms\":%ld,\"last_checked\":%ld,\"error\":\"%s\"}",
-            esc_name, esc_url, sites[i].description,
+            "{\"name\":\"%s\",\"url\":\"%s\",\"description\":\"%s\",\"interval\":%d,\"status\":\"%s\",\"up\":%s,\"http_code\":%d,\"latency_ms\":%ld,\"last_checked\":%ld,\"error\":\"%s\"}",
+            esc_name, esc_url, esc_desc, iv,
             state,
             statuses[i].up==1?"true":"false",
             statuses[i].http_code,
@@ -411,7 +423,7 @@ static void build_status_json(char *out, size_t outsz){
 
 static void build_fragment(char *out, size_t outsz){
     pthread_mutex_lock(&status_lock);
-    int off=snprintf(out,outsz,"<div style=\"overflow:auto\"><table style=\"width:100%%;border-collapse:collapse;font-size:14px\"><tr style=\"background:#f0f0f0;text-align:left\"><th style=\"padding:8px;border:1px solid #ddd\">Name</th><th style=\"padding:8px;border:1px solid #ddd\">URL</th><th style=\"padding:8px;border:1px solid #ddd\">Status</th><th style=\"padding:8px;border:1px solid #ddd\">Code</th><th style=\"padding:8px;border:1px solid #ddd\">Latency</th><th style=\"padding:8px;border:1px solid #ddd\">Last check</th></tr>");
+    int off=snprintf(out,outsz,"<div style=\"overflow:auto\"><table style=\"width:100%%;border-collapse:collapse;font-size:14px\"><tr style=\"background:#f0f0f0;text-align:left\"><th style=\"padding:8px;border:1px solid #ddd\">Name</th><th style=\"padding:8px;border:1px solid #ddd\">URL</th><th style=\"padding:8px;border:1px solid #ddd\">Status</th><th style=\"padding:8px;border:1px solid #ddd\">Code</th><th style=\"padding:8px;border:1px solid #ddd\">Latency</th><th style=\"padding:8px;border:1px solid #ddd\">Interval</th><th style=\"padding:8px;border:1px solid #ddd\">Last check</th></tr>");
     for(int i=0;i<site_count;i++){
         const char *badge;
         const char *color;
@@ -427,23 +439,26 @@ static void build_fragment(char *out, size_t outsz){
         }
         char errpart[160]="";
         if(statuses[i].error[0]) snprintf(errpart,sizeof(errpart),"<div style=\"font-size:11px;color:#666\">%s</div>", statuses[i].error);
+        int iv=sites[i].interval; if(iv<=0) iv=get_interval();
         off+=snprintf(out+off,outsz-off,
             "<tr><td style=\"padding:8px;border:1px solid #ddd\"><b>%s</b><div style=\"font-size:11px;color:#666\">%s</div></td>"
             "<td style=\"padding:8px;border:1px solid #ddd;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap\"><a href=\"%s\" target=\"_blank\" style=\"color:#0366d6\">%s</a></td>"
             "<td style=\"padding:8px;border:1px solid #ddd;color:%s;font-weight:700\">%s%s</td>"
             "<td style=\"padding:8px;border:1px solid #ddd;text-align:center\">%d</td>"
             "<td style=\"padding:8px;border:1px solid #ddd;text-align:center\">%ldms</td>"
+            "<td style=\"padding:8px;border:1px solid #ddd;text-align:center\">%ds</td>"
             "<td style=\"padding:8px;border:1px solid #ddd;font-size:12px\">%s</td></tr>",
             sites[i].name, sites[i].description,
             sites[i].url, sites[i].url,
             color, badge, errpart,
             statuses[i].http_code,
             statuses[i].latency_ms,
+            iv,
             ago
         );
         if(off > (int)outsz - 800) break;
     }
-    off+=snprintf(out+off,outsz-off,"</table></div><div style=\"margin-top:8px;font-size:12px;color:#666\">Last check: %s | Interval: %ds | <a href=\"/api/status\" target=\"_blank\">/api/status JSON</a> | <a href=\"/api/sites\" target=\"_blank\">/api/sites</a></div>",
+    off+=snprintf(out+off,outsz-off,"</table></div><div style=\"margin-top:8px;font-size:12px;color:#666\">Last check: %s | Default interval: %ds (per-site override via json) | <a href=\"/api/status\" target=\"_blank\">/api/status JSON</a> | <a href=\"/api/sites\" target=\"_blank\">/api/sites</a></div>",
         last_check_all? ctime(&last_check_all):"never", get_interval());
     pthread_mutex_unlock(&status_lock);
 }
