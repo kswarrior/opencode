@@ -372,7 +372,11 @@ static void handle_client(int cfd){
                 else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
             }
         } else {
-            int ok = has_substr(body,"username=") && has_substr(body,"password=");
+            char tmp_user[128]="", tmp_pass[128]="";
+            char *tu=strstr(body,"username="); if(tu) sscanf(tu,"username=%127[^& \r\n]",tmp_user);
+            char *tp=strstr(body,"password="); if(tp) sscanf(tp,"password=%127[^& \r\n]",tmp_pass);
+            char dec_tu[128], dec_tp[128]; url_decode(dec_tu, tmp_user); url_decode(dec_tp, tmp_pass);
+            int ok = dec_tu[0] && dec_tp[0];
             const char *jwt=get_jwt();
             // Prefer site_token flow
             char site_token[512]=""; get_query_param(fullpath,"site_token",site_token,sizeof(site_token));
