@@ -111,6 +111,7 @@ typedef struct {
     char name[MAX_NAME];
     char url[MAX_URL];
     char description[256];
+    int interval; // seconds, per-site; 0 = use global default
 } Site;
 
 typedef struct {
@@ -141,12 +142,14 @@ static int load_sites(const char *path){
         // fallback: create defaults in memory
         site_count=0;
         // Try alternative path /app/sites.json etc already tried; if still not found, use built-in defaults
+        int di=get_interval();
         Site defaults[]={
-            {"main","http://main:8080/health","Main service"},
-            {"auth","http://auth:8081/health","Auth service"},
-            {"account","http://account:8082/health","Account service"},
-            {"gateway","http://gateway:80/health","Nginx gateway"},
+            {"main","http://main:8080/health","Main service", 0},
+            {"auth","http://auth:8081/health","Auth service", 0},
+            {"account","http://account:8082/health","Account service", 0},
+            {"gateway","http://gateway:80/health","Nginx gateway", 0},
         };
+        for(int i=0;i<4;i++) if(defaults[i].interval==0) defaults[i].interval=di;
         int n=sizeof(defaults)/sizeof(defaults[0]);
         for(int i=0;i<n && site_count<MAX_SITES;i++){
             sites[site_count]=defaults[i];
@@ -163,6 +166,7 @@ static int load_sites(const char *path){
     pthread_mutex_lock(&status_lock);
     // parse: look for objects containing "name" and "url"
     char *p=buf;
+    int default_interval = get_interval();
     while(site_count < MAX_SITES){
         char *pn=strstr(p,"\"name\"");
         if(!pn) break;
@@ -178,24 +182,38 @@ static int load_sites(const char *path){
         q2=strchr(q1,'"'); if(!q2) break;
         size_t ulen=q2-q1; if(ulen>=MAX_URL) ulen=MAX_URL-1;
         char url[MAX_URL]={0}; strncpy(url,q1,ulen);
+        // find object boundaries for per-site fields
+        char *next_name=strstr(q2+1,"\"name\"");
         // optional description
         char desc[256]="";
         char *pd=strstr(q2,"\"description\"");
-        if(pd && pd < strstr(q2+1,"\"name\"") ? pd : pd){ // crude
-            // ensure pd is before next name search to avoid cross object
-            char *next_name=strstr(q2+1,"\"name\"");
-            if(!next_name || pd < next_name){
-                char *c=strchr(pd,':'); if(c){
-                    char *qq=strchr(c,'"'); if(qq){ qq++; char *qq2=strchr(qq,'"'); if(qq2){
-                        size_t dlen=qq2-qq; if(dlen>=sizeof(desc)) dlen=sizeof(desc)-1;
-                        strncpy(desc,qq,dlen);
-                    }}
-                }
+        if(pd && (!next_name || pd < next_name)){
+            char *c=strchr(pd,':'); if(c){
+                char *qq=strchr(c,'"'); if(qq){ qq++; char *qq2=strchr(qq,'"'); if(qq2 && (!next_name || qq2 < next_name)){
+                    size_t dlen=qq2-qq; if(dlen>=sizeof(desc)) dlen=sizeof(desc)-1;
+                    strncpy(desc,qq,dlen);
+                }}
             }
         }
+        // optional interval (per-site)
+        int interval = 0;
+        char *pi=strstr(pn,"\"interval\"");
+        if(pi && (!next_name || pi < next_name)){
+            // ensure pi is within current object (between pn and next_name)
+            char *ic=strchr(pi,':'); if(ic){
+                ic++;
+                while(*ic==' '||*ic=='\t'||*ic=='"') ic++;
+                char numbuf[16]={0}; int ni=0;
+                while(*ic>='0' && *ic<='9' && ni<15){ numbuf[ni++]=*ic++; }
+                if(ni>0) interval=atoi(numbuf);
+                // allow "30s" style: ignore trailing
+            }
+        }
+        if(interval<=0) interval = default_interval;
         strncpy(sites[site_count].name, name, MAX_NAME-1);
         strncpy(sites[site_count].url, url, MAX_URL-1);
         strncpy(sites[site_count].description, desc, 255);
+        sites[site_count].interval = interval;
         memset(&statuses[site_count],0,sizeof(Status));
         site_count++;
         p=q2+1;
