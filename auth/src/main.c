@@ -514,9 +514,9 @@ static void handle_client(int cfd){
                 char h[8192];
                 int hl=snprintf(h,sizeof(h),
                     "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: %zu\r\nConnection: close\r\n"
-                    "HX-Redirect: %s\r\nSet-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\n"
+                    "Set-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\n"
                     "Cache-Control: no-store\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Headers: *\r\nAccess-Control-Allow-Credentials: true\r\n\r\n",
-                    strlen(body_html), loc, cookie);
+                    strlen(body_html), cookie);
                 send(cfd,h,hl,MSG_NOSIGNAL);
                 send(cfd,body_html,strlen(body_html),MSG_NOSIGNAL);
             } else {
