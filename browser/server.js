@@ -235,7 +235,9 @@ async function handleProxy(req, res){
       'X-Proxied-By':'browser-proxy',
       'Cache-Control':'no-store',
     };
-    const pass = ['content-type','content-length','cache-control','expires'];
+    // NOTE: never forward upstream content-length/content-encoding blindly:
+    // undici fetch already decompresses, so upstream length is wrong. We set our own length below.
+    const pass = ['content-type','expires'];
     for(const k of pass){
       const v = resp.headers.get(k);
       if(v) outHeaders[k]=v;
@@ -243,8 +245,9 @@ async function handleProxy(req, res){
     if(ct.includes('text/html')){
       let html = buf.toString('utf8');
       const baseTag = `<base href="${targetUrl.href}">`;
-      // anti-frame-buster must be first in head
-      const antiFrame = `<script>try{if(window.top!==window.self){Object.defineProperty(window,'top',{get:()=>window.self,configurable:false});Object.defineProperty(window,'parent',{get:()=>window.self,configurable:false});window.top=window.self;window.parent=window.self;} }catch(e){} try{window.__PROXY_BASE="${targetUrl.origin}";window.__PROXY_ORIGIN="${targetUrl.origin}";}catch(e){}</script>`;
+      // anti-frame-buster must be first in head. __PROXY_BASE is the FULL page URL
+      // (not just origin) so relative links like "docs/page" resolve correctly.
+      const antiFrame = `<script>try{if(window.top!==window.self){Object.defineProperty(window,'top',{get:()=>window.self,configurable:false});Object.defineProperty(window,'parent',{get:()=>window.self,configurable:false});window.top=window.self;window.parent=window.self;} }catch(e){} try{window.__PROXY_BASE="${targetUrl.href}";window.__PROXY_ORIGIN="${targetUrl.origin}";}catch(e){}</script>`;
       if(/<head[^>]*>/i.test(html)) html = html.replace(/<head[^>]*>/i, m=> m+baseTag+antiFrame);
       else html = baseTag+antiFrame+html;
       html = html.replace(/<meta[^>]*http-equiv=["']?content-security-policy[^>]*>/gi,'');
@@ -258,9 +261,9 @@ async function handleProxy(req, res){
         const proxyPrefixRewrite = `${proto}://${host}${isBrowserPath ? '/browser/proxy' : '/proxy'}`;
         const targetOrigin = targetUrl.origin;
         // relative /path -> proxy?url=origin/path (absolute to avoid base)
-        html = html.replace(/\s(href|src|action)\s*=\s*["']\//gi, (m, attr)=> ` ${attr}="${proxyPrefixRewrite}?url=${encodeURIComponent(targetOrigin)}/`);
+        html = html.replace(/\s(href|src|action|poster|background|data-src)\s*=\s*["']\//gi, (m, attr)=> ` ${attr}="${proxyPrefixRewrite}?url=${encodeURIComponent(targetOrigin)}/`);
         // protocol-relative //cdn -> proxy
-        html = html.replace(/\s(href|src|action)\s*=\s*["']\/\/[^"']+["']/gi, (m)=>{
+        html = html.replace(/\s(href|src|action|poster|background|data-src)\s*=\s*["']\/\/[^"']+["']/gi, (m)=>{
           const mm = m.match(/["']\/\/([^"']+)["']/);
           if(mm){
             const url = 'https://'+mm[1];
@@ -271,7 +274,7 @@ async function handleProxy(req, res){
           return m;
         });
         // absolute https:// -> proxy (absolute)
-        html = html.replace(/\s(href|src|action)\s*=\s*["']https?:\/\/[^"']+["']/gi, (m)=>{
+        html = html.replace(/\s(href|src|action|poster|background|data-src)\s*=\s*["']https?:\/\/[^"']+["']/gi, (m)=>{
           const mm = m.match(/["'](https?:\/\/[^"']+)["']/);
           if(mm && !mm[1].includes('/proxy?url=')){
             const url = mm[1];
@@ -284,8 +287,17 @@ async function handleProxy(req, res){
           return m.replace(/https?:\/\/[^\s,"]+/g, u=> u.includes('/proxy?url=')?u:`${proxyPrefixRewrite}?url=${encodeURIComponent(u)}`)
                    .replace(/(\s|^)\/(?!\/)([^\s,"]*)/g, (a, sp, path)=> `${sp}${proxyPrefixRewrite}?url=${encodeURIComponent(targetOrigin+'/'+path)}`);
         });
-        // restore base href if it was rewritten (must be target origin, not proxy)
+        // restore base href if it was rewritten (must be target URL, not proxy)
         html = html.replace(/<base href="[^"]*proxy\?url=[^"]*"/i, `<base href="${targetUrl.href}">`);
+        // rewrite CSS url(...) inside <style> blocks and style="..." attributes.
+        // url(/x) -> proxied absolute; url(https://...) -> proxied; url(//...) -> proxied.
+        // Relative url(foo.png) is left alone: it resolves against <base href=target>.
+        html = html.replace(/url\(\s*(['"]?)\/(?!\/)([^'")]+)\1\s*\)/gi,
+          (m, q, p)=> `url(${q}${proxyPrefixRewrite}?url=${encodeURIComponent(targetOrigin+'/'+p)}${q})`);
+        html = html.replace(/url\(\s*(['"]?)\\/\\/([^'")]+)\1\s*\)/gi,
+          (m, q, p)=> `url(${q}${proxyPrefixRewrite}?url=${encodeURIComponent('https://'+p)}${q})`);
+        html = html.replace(/url\(\s*(['"]?)(https?:\/\/[^'")]+)\1\s*\)/gi,
+          (m, q, u)=> u.includes('/proxy?url=') ? m : `url(${q}${proxyPrefixRewrite}?url=${encodeURIComponent(u)}${q})`);
       }catch(e){}
       // helper at end of head - fixed base for relative links (was window.location.href, now __PROXY_BASE)
       const helper = `<script>window.__PROXY_PREFIX=location.pathname.startsWith('/browser')?'/browser/proxy':'/proxy';if(!window.__PROXY_BASE) window.__PROXY_BASE="${targetUrl.origin}";(function(){const origFetch=window.fetch;window.fetch=function(u,o){try{let s=(u&&u.toString)?u.toString():String(u);if(s.startsWith('/')&&!s.includes('/proxy')) s=window.__PROXY_PREFIX+'?url='+encodeURIComponent(window.__PROXY_BASE+s);else if(s.startsWith('http')&&!s.includes('/proxy')) s=window.__PROXY_PREFIX+'?url='+encodeURIComponent(s);u=s;}catch(e){}return origFetch.call(this,u,o);} ;const origOpen=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){try{let s=u.toString();if(s.startsWith('/')&&!s.includes('/proxy')) s=window.__PROXY_PREFIX+'?url='+encodeURIComponent(window.__PROXY_BASE+s);else if(s.startsWith('http')&&!s.includes('/proxy')) s=window.__PROXY_PREFIX+'?url='+encodeURIComponent(s);u=s;}catch(e){}return origOpen.call(this,m,u);};const origWinOpen=window.open;window.open=function(u,n,f){try{let s=u?u.toString():'';if(s&&s.startsWith('/')&&!s.includes('/proxy'))s=window.__PROXY_PREFIX+'?url='+encodeURIComponent(window.__PROXY_BASE+s);else if(s&&s.startsWith('http')&&!s.includes('/proxy'))s=window.__PROXY_PREFIX+'?url='+encodeURIComponent(s);return origWinOpen.call(window,s,n,f);}catch(e){return origWinOpen.apply(window,arguments)}};document.addEventListener('click',function(e){const a=e.target.closest('a[href]');if(!a) return;const h=a.getAttribute('href');if(!h||h.startsWith('#')||h.startsWith('javascript:')||h.startsWith('mailto:')||h.startsWith('tel:')) return;let url;try{url=new URL(h, window.__PROXY_BASE);}catch{try{url=new URL(h, window.__PROXY_BASE+'/');}catch{return}}const proxied=url.href.includes('/proxy?url=');if(proxied) return;if(url.protocol.startsWith('http')){e.preventDefault();window.location.href=window.__PROXY_PREFIX+'?url='+encodeURIComponent(url.href);}},true);document.addEventListener('submit',function(e){const f=e.target;if(f.tagName==='FORM'){const a=f.getAttribute('action')||window.__PROXY_BASE;if(a&&!a.includes('/proxy')){try{const u=new URL(a, window.__PROXY_BASE).href;f.setAttribute('action', window.__PROXY_PREFIX+'?url='+encodeURIComponent(u));}catch(e){}}}});window.addEventListener('error',function(e){if(e.message&&e.message.includes('Refused to connect')){console.log('frame block bypass');}});})()<\\/script>`;
