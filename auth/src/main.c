@@ -352,7 +352,7 @@ static void handle_client(int cfd){
             char cb_site[1024]="";
             if(site_token[0] && verify_site_token(site_token, cb_site, sizeof(cb_site), buf)){
                 // Valid site token -> render site-specific login
-                char html[4096];
+                char html[8192];
                 // Use first 20 chars for display to avoid huge
                 char disp[64]; snprintf(disp,sizeof(disp),"%.*s...",20,site_token);
                 snprintf(html,sizeof(html),HTML_LOGIN_SITE_TMPL, disp, site_token, site_token);
@@ -366,7 +366,7 @@ static void handle_client(int cfd){
                     else strcpy(redirect_uri,"https://opencode-bnao.onrender.com/auth/callback");
                 }
                 char dec[1024]; url_decode(dec, redirect_uri); strncpy(redirect_uri, dec, 1023);
-                char html[4096];
+                char html[8192];
                 snprintf(html,sizeof(html),HTML_LOGIN_TMPL, redirect_uri, redirect_uri, redirect_uri);
                 if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
                 else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
@@ -421,7 +421,7 @@ static void handle_client(int cfd){
                 else strcpy(redirect_uri,"https://opencode-bnao.onrender.com/auth/callback");
             }
             char dec[1024]; url_decode(dec, redirect_uri); strncpy(redirect_uri, dec, 1023);
-            char html[4096]; snprintf(html,sizeof(html),HTML_REGISTER_TMPL, redirect_uri, redirect_uri, redirect_uri);
+            char html[8192]; snprintf(html,sizeof(html),HTML_REGISTER_TMPL, redirect_uri, redirect_uri, redirect_uri);
             if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
             else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
         } else {
