@@ -17,19 +17,38 @@ try {
   if (fs.existsSync(PROXY_COOKIE_FILE)) proxyCookies = JSON.parse(fs.readFileSync(PROXY_COOKIE_FILE,'utf8')||'{}');
 } catch {}
 function saveProxyCookies(){
-  try { fs.writeFileSync(PROXY_COOKIE_FILE, JSON.stringify(proxyCookies)); } catch {}
+  try {
+    clearTimeout(saveProxyCookies._t);
+    saveProxyCookies._t = setTimeout(() => {
+      try { fs.writeFileSync(PROXY_COOKIE_FILE, JSON.stringify(proxyCookies)); } catch {}
+    }, 500);
+  } catch {}
+}
+function cookieHostsFor(hostname){
+  // exact host + parent domains (subdomain match), e.g. www.github.com -> www.github.com, github.com
+  const out = [hostname];
+  try {
+    const parts = String(hostname||'').toLowerCase().split('.');
+    for(let i=1;i<=parts.length-2;i++) out.push(parts.slice(i).join('.'));
+  } catch {}
+  return out;
 }
 function getProxyCookieHeader(targetUrl){
   try {
     const u = new URL(targetUrl);
-    const host = u.hostname;
-    const jar = proxyCookies[host];
-    if(!jar) return '';
+    const host = (u.hostname||'').toLowerCase();
     const now = Date.now();
     const pairs = [];
-    for(const [k,v] of Object.entries(jar)){
-      if(v.expires && v.expires < now) continue;
-      pairs.push(`${k}=${v.value}`);
+    const seen = new Set();
+    for(const h of cookieHostsFor(host)){
+      const jar = proxyCookies[h];
+      if(!jar) continue;
+      for(const [k,v] of Object.entries(jar)){
+        if(seen.has(k)) continue;
+        if(v.expires && v.expires < now) continue;
+        seen.add(k);
+        pairs.push(`${k}=${v.value}`);
+      }
     }
     return pairs.join('; ');
   } catch { return ''; }
