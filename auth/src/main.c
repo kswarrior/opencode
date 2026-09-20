@@ -362,6 +362,49 @@ static void handle_client(int cfd){
             }
         }
     }
+    // also handle Transfer-Encoding: chunked (Render proxy)
+    if(strstr(buf,"Transfer-Encoding: chunked") || strstr(buf,"transfer-encoding: chunked") || strstr(buf,"Transfer-Encoding: Chunked")){
+        // read until 0\r\n\r\n
+        int tries=0;
+        while(!strstr(buf,"\r\n0\r\n\r\n") && tries<20 && n < (int)sizeof(buf)-512){
+            ssize_t r=recv(cfd,buf+n,sizeof(buf)-1-n,0);
+            if(r>0){ n+=r; buf[n]='\0'; tries=0; continue; }
+            if(r==0) break;
+            if(errno==EAGAIN || errno==EWOULDBLOCK){
+                struct timeval tv={0,20000}; fd_set fds; FD_ZERO(&fds); FD_SET(cfd,&fds); select(cfd+1,&fds,NULL,NULL,&tv); tries++; continue;
+            }
+            break;
+        }
+        // decode chunked: find header end, then parse chunks
+        char *hdr_end=strstr(buf,"\r\n\r\n");
+        if(hdr_end){
+            char *chunk_start=hdr_end+4;
+            char *out=chunk_start;
+            char *p=chunk_start;
+            char decoded[8192]={0}; int out_len=0;
+            while(p && *p){
+                char *nl=strstr(p,"\r\n");
+                if(!nl) break;
+                char len_str[16]={0}; int len_len=nl-p; if(len_len>=16) len_len=15; strncpy(len_str,p,len_len);
+                int chunk_len=(int)strtol(len_str,NULL,16);
+                if(chunk_len==0) break;
+                p=nl+2;
+                if(out_len+chunk_len < (int)sizeof(decoded)-1){
+                    memcpy(decoded+out_len,p,chunk_len);
+                    out_len+=chunk_len;
+                }
+                p+=chunk_len;
+                if(p[0]=='\r' && p[1]=='\n') p+=2;
+                else break;
+            }
+            decoded[out_len]='\0';
+            // reconstruct buf with decoded body
+            int header_len=(hdr_end - buf) + 4;
+            memcpy(buf+header_len, decoded, out_len);
+            buf[header_len+out_len]='\0';
+            n=header_len+out_len;
+        }
+    }
     char method[8]={0}, path[256]={0}, fullpath[512]={0};
     sscanf(buf,"%7s %511s",method,fullpath);
     // keep fullpath for query, path without query for routing
