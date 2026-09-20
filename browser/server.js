@@ -171,8 +171,8 @@ const server = http.createServer((req, res) => {
   if (serveStatic(req, res)) return;
 });
 
-const wss = new WebSocketServer({ server, path: '/ws' });
-const wssBrowser = new WebSocketServer({ server, path: '/browser/ws' });
+const wss = new WebSocketServer({ server, path: '/ws', perMessageDeflate: false, maxPayload: 10 * 1024 * 1024 });
+const wssBrowser = new WebSocketServer({ server, path: '/browser/ws', perMessageDeflate: false, maxPayload: 10 * 1024 * 1024 });
 
 function attachWSS(wsServer) {
   wsServer.on('connection', async (ws, req) => {
