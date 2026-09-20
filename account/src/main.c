@@ -48,14 +48,6 @@ static void load_dotenv(void){
         fclose(f);
     }
 }
-static void ws_send_text(int fd,const char *msg){
-    size_t len=strlen(msg);
-    unsigned char hdr[10]; hdr[0]=0x81; int hlen=2;
-    if(len<126){hdr[1]=len;}
-    else if(len<65536){hdr[1]=126; hdr[2]=(len>>8)&0xFF; hdr[3]=len&0xFF; hlen=4;}
-    else {hdr[1]=127; for(int i=0;i<8;i++) hdr[2+i]=(len>>(56-8*i))&0xFF; hlen=10;}
-    send(fd,hdr,hlen,MSG_NOSIGNAL); send(fd,msg,len,MSG_NOSIGNAL);
-}
 static char last_account_json[2048] = "{\"id\":\"01a0bb01-2010-7f5b-894d-d2688e9a2291\",\"username\":\"demo\",\"email\":\"demo@example.com\",\"rid\":\"b4f29c9f-7cff-4ffd-b854-29dc87164f71\"}";
 
 static const char HTML_MAIN[] =

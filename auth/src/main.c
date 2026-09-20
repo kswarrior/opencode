@@ -65,7 +65,6 @@ static const char HTML_LOGIN[] =
 "  </form>\n"
 "  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
 "  <p class=\"muted\" style=\"margin-top:16px\">POST sets <code>token</code> cookie + HX-Redirect to main. <a href=\"/register\">Register</a> | <a href=\"/\">home</a></p>\n"
-"  <script>(function(){var u=(location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws';var ws;function c(){ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1) ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks') ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}c();})();</script>\n"
 "</div></body></html>\n";
 
 static const char HTML_REGISTER[] =
@@ -80,7 +79,6 @@ static const char HTML_REGISTER[] =
 "  </form>\n"
 "  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
 "  <p class=\"muted\">HTMX POST → 200 + HX-Redirect. After register, <a href=\"/login\">login</a></p>\n"
-"  <script>(function(){var u=(location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws';var ws;function c(){ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1) ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks') ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}c();})();</script>\n"
 "</div></body></html>\n";
 
 
@@ -95,7 +93,6 @@ static const char HTML_LOGIN_TMPL[] =
 "  </form>\n"
 "  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
 "  <p class=\"muted\" style=\"margin-top:16px\">POST sets <code>token</code> cookie + HX-Redirect to main. <a href=\"/register?redirect_uri=%s\">Register</a> | <a href=\"/\">home</a></p>\n"
-"  <script>(function(){var u=(location.protocol==='https:' ?'wss://':'ws://')+location.host+'/ws';var ws;function c(){ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1)ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks')ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}c();})();</script>\n"
 "</div></body></html>\n";
 
 static const char HTML_REGISTER_TMPL[] =
@@ -111,7 +108,6 @@ static const char HTML_REGISTER_TMPL[] =
 "  </form>\n"
 "  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
 "  <p class=\"muted\">HTMX POST → 200 + HX-Redirect. After register, <a href=\"/login?redirect_uri=%s\">login</a></p>\n"
-"  <script>(function(){var u=(location.protocol==='https:' ?'wss://':'ws://')+location.host+'/ws';var ws;function c(){ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1)ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks')ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}c();})();</script>\n"
 "</div></body></html>\n";
 
 static const char HTML_FRAG[] = "<div><b>Fragment from Auth</b> — at <span id=\"t\"></span><script>document.getElementById('t').textContent=new Date().toLocaleTimeString()</script> ✅</div>";
@@ -263,41 +259,6 @@ static void handle_client(int cfd){
     } else if(strcmp(path,"/fragment")==0){
         if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
         else send_response(cfd,200,"OK","text/html; charset=utf-8",HTML_FRAG,strlen(HTML_FRAG));
-    } else if(strcmp(path,"/ws")==0){
-        if(has_substr(buf,"Upgrade: websocket")||has_substr(buf,"Upgrade: WebSocket")||has_substr(buf,"upgrade: websocket")){
-            const char *resp="HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: x3JJHMbDL1EzLkh9GBhXDw==\r\n\r\n";
-            send(cfd,resp,strlen(resp),MSG_NOSIGNAL);
-            // Keep WS alive — handle ks loop (simple echo, no close)
-            // For this hello world, we keep connection open and echo ks
-            // Switch to blocking and loop
-            // Set to blocking
-            int flags=fcntl(cfd,F_GETFL,0); fcntl(cfd,F_SETFL,flags&~O_NONBLOCK);
-            // Send initial ks
-            ws_send_text(cfd,"ks");
-            char rbuf[256];
-            while(keep_running){
-                ssize_t r=recv(cfd,rbuf,sizeof(rbuf),0);
-                if(r<=0) break;
-                // WS frame parse minimal: check if payload contains ks
-                // For masked client frames, need to unmask
-                if(r>=2){
-                    unsigned char *u=(unsigned char*)rbuf;
-                    int masked = (u[1]&0x80)!=0;
-                    int len = u[1]&0x7F;
-                    int offset=2;
-                    if(len==126) offset=4;
-                    else if(len==127) offset=10;
-                    if(masked) offset+=4;
-                    // crude: if payload contains 'ks' anywhere, echo ks
-                    int found=0;
-                    for(int i=offset;i<r;i++) if(rbuf[i]=='k' && i+1<r && rbuf[i+1]=='s') found=1;
-                    if(found) ws_send_text(cfd,"ks");
-                    else if(len==0) {} // ping?
-                }
-                // also periodically send ks
-            }
-            return; // do not close here, caller will close after return
-        } else {const char *b="WSS ready. wss://<host>/ws"; send_response(cfd,426,"Upgrade Required","text/plain",b,strlen(b));}
     } else if(strcmp(path,"/events")==0){
         const char *hdr="HTTP/1.1 200 OK\r\nContent-Type: text/event-stream\r\nCache-Control: no-cache\r\nConnection: keep-alive\r\nAccess-Control-Allow-Origin: *\r\n\r\n";
         send(cfd,hdr,strlen(hdr),MSG_NOSIGNAL);
