@@ -83,6 +83,31 @@ static void handle_client(int cfd){
     ssize_t n=recv(cfd,buf,sizeof(buf)-1,0);
     if(n<=0) return;
     buf[n]='\0';
+    char *cl_ptr=strstr(buf,"Content-Length:");
+    if(!cl_ptr) cl_ptr=strstr(buf,"content-length:");
+    if(cl_ptr){
+        int content_len=0; sscanf(cl_ptr,"Content-Length: %d",&content_len);
+        if(content_len==0) sscanf(cl_ptr,"content-length: %d",&content_len);
+        if(content_len>0){
+            char *hdr_end=strstr(buf,"\r\n\r\n");
+            if(hdr_end){
+                int header_len=(hdr_end - buf) + 4;
+                int body_have=n - header_len;
+                int need=content_len - body_have;
+                int tries=0;
+                while(need>0 && tries<5 && n+need < (int)sizeof(buf)-1){
+                    ssize_t r=recv(cfd,buf+n,sizeof(buf)-1-n,0);
+                    if(r<=0) break;
+                    n+=r; buf[n]='\0';
+                    body_have=n - header_len;
+                    need=content_len - body_have;
+                    tries++;
+                    if(need<=0) break;
+                    usleep(10000);
+                }
+            }
+        }
+    }
     char method[8]={0}, path[256]={0}, fullpath[512]={0};
     sscanf(buf,"%7s %511s",method,fullpath);
     strncpy(path,fullpath,255); char *qm=strchr(path,'?'); if(qm) *qm='\0';
