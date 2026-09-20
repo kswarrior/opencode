@@ -2,11 +2,13 @@ all:
 	$(MAKE) -C main
 	$(MAKE) -C auth
 	$(MAKE) -C account
+	$(MAKE) -C stats
 
 clean:
 	$(MAKE) -C main clean
 	$(MAKE) -C auth clean
 	$(MAKE) -C account clean
+	$(MAKE) -C stats clean
 	rm -f /tmp/out_*.txt /tmp/main_out.html
 
 run-main:
@@ -36,6 +38,10 @@ test:
 	kill `cat /tmp/pid_auth`; wait `cat /tmp/pid_auth` 2>/dev/null || true; \
 	./account/server & echo $$! > /tmp/pid_acc; sleep 1; \
 	curl -s http://localhost:8082/health | grep -q "ok account" && echo "account ok" || echo "account fail"; \
-	kill `cat /tmp/pid_acc`; wait `cat /tmp/pid_acc` 2>/dev/null || true
+	kill `cat /tmp/pid_acc`; wait `cat /tmp/pid_acc` 2>/dev/null || true; \
+	./stats/server & echo $$! > /tmp/pid_stats; sleep 2; \
+	curl -s http://localhost:8083/health | grep -q "ok stats" && echo "stats ok" || echo "stats fail"; \
+	curl -s http://localhost:8083/api/status | grep -q "site_count" && echo "stats api ok" || echo "stats api fail"; \
+	kill `cat /tmp/pid_stats`; wait `cat /tmp/pid_stats` 2>/dev/null || true
 
 .PHONY: all clean run-main run-auth run-account docker-build docker-up docker-down test
