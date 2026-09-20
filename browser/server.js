@@ -298,6 +298,52 @@ const server = http.createServer((req, res) => {
   if (serveStatic(req, res)) return;
 });
 
+// WebSocket server for CDP real browser mode
+const wss = new WebSocketServer({ noServer: true });
+
+function handleWebSocket(ws, req) {
+  console.log('[ws] new connection from', req.socket.remoteAddress);
+  ws.isAlive = true;
+  ws.on('pong', () => { ws.isAlive = true; });
+  ws.on('message', (data) => {
+    try {
+      const msg = JSON.parse(data.toString());
+      console.log('[ws] recv', msg);
+      if (msg.type === 'navigate') {
+        ws.send(JSON.stringify({ type: 'hello', msg: 'CDP stub - navigation requested to ' + msg.url }));
+      }
+    } catch (e) {
+      console.log('[ws] parse error', e.message);
+    }
+  });
+  ws.on('close', () => console.log('[ws] closed'));
+  ws.on('error', (e) => console.log('[ws] error', e.message));
+  ws.send(JSON.stringify({ type: 'hello', msg: 'Browser proxy WebSocket ready (CDP stub)' }));
+}
+
+server.on('upgrade', (req, socket, head) => {
+  const pathname = req.url.split('?')[0];
+  if (pathname === '/ws' || pathname === '/browser/ws') {
+    wss.handleUpgrade(req, socket, head, (ws) => {
+      wss.emit('connection', ws, req);
+    });
+  } else {
+    socket.destroy();
+  }
+});
+
+wss.on('connection', handleWebSocket);
+
+const interval = setInterval(() => {
+  wss.clients.forEach((ws) => {
+    if (ws.isAlive === false) return ws.terminate();
+    ws.isAlive = false;
+    ws.ping();
+  });
+}, 30000);
+
+wss.on('close', () => clearInterval(interval));
+
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`browser proxy ready on 0.0.0.0:${PORT} (proxy at /proxy?url=)`);
+  console.log(`browser proxy ready on 0.0.0.0:${PORT} (proxy at /proxy?url=, ws at /ws)`);
 });
