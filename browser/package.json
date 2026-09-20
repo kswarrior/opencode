@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "type": "commonjs",
-  "description": "Real browser via CDP screencast — white & light blue UI",
+  "description": "Proxy — phone executed, no Chromium",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "dependencies": {
-    "ws": "^8.18.0",
-    "puppeteer-core": "^22.15.0"
-  }
+  "dependencies": {}
 }

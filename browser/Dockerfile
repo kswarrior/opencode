@@ -1,5 +1,5 @@
-# Real browser — Node + Chromium via CDP screencast
-FROM mcr.microsoft.com/playwright:v1.48.0-jammy
+# Proxy only — lightweight, no Chromium
+FROM node:20-alpine
 
 WORKDIR /app
 
