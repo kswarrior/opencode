@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#e0f2fe" />
 <title>Browser — White & Light Blue</title>
-<link rel="stylesheet" href="./style.css" />
+<link rel="stylesheet" href="./style.css?v=3" />
+<style>.welcome.hidden{display:none !important}</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -127,8 +128,8 @@
         </div>
       </div>
 
-      <!-- Fallback welcome (shown before connection) -->
-      <div class="welcome hidden" id="welcome">
+      <!-- Fallback welcome (hidden, only for SEO) -->
+      <div class="welcome hidden" id="welcome" style="display:none">
         <div class="welcome-icon">
           <svg viewBox="0 0 64 64" fill="none" stroke="#0ea5e9" stroke-width="1.6">
             <rect x="6" y="10" width="52" height="36" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/>
@@ -214,6 +215,6 @@
   </nav>
 </div>
 
-<script src="./app.js"></script>
+<script src="./app.js?v=3"></script>
 </body>
 </html>

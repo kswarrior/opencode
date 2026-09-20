@@ -147,8 +147,9 @@ function serveStatic(req, res) {
     }
     const data = fs.readFileSync(filePath);
     const ct = mimeFor(filePath);
-    const cache = filePath.endsWith('.html') ? 'no-store' : 'public, max-age=3600';
-    res.writeHead(200, { 'Content-Type': ct, 'Cache-Control': cache, 'Access-Control-Allow-Origin': '*', 'X-Service': 'browser', 'Content-Length': data.length });
+    // no cache for html/css/js to avoid stale welcome bug
+    const cache = filePath.endsWith('.html') ? 'no-store, no-cache, must-revalidate' : 'no-store, no-cache, must-revalidate';
+    res.writeHead(200, { 'Content-Type': ct, 'Cache-Control': cache, 'Pragma': 'no-cache', 'Expires': '0', 'Access-Control-Allow-Origin': '*', 'X-Service': 'browser', 'Content-Length': data.length });
     if (req.method !== 'HEAD') res.end(data); else res.end();
     return true;
   } catch (e) {
