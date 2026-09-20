@@ -158,11 +158,25 @@ async function handleProxy(req, res){
       html = html.replace(/<meta[^>]*http-equiv=["']?content-security-policy[^>]*>/gi,'');
       html = html.replace(/<meta[^>]*http-equiv=["']?X-Frame-Options[^>]*>/gi,'');
       // server-side rewrite: make href/src/action go through proxy (fixes Google CSS, ksx assets, github)
+      // Use absolute proxy URL to avoid <base> breaking relative /proxy?url
       try{
-        const proxyPrefixRewrite = req.url.startsWith('/browser/') ? '/browser/proxy' : '/proxy';
-        // relative /path -> proxy?url=origin/path
+        const host = req.headers.host || 'localhost';
+        const proto = req.headers['x-forwarded-proto'] || (host.includes('localhost')||host.includes('127.0.0.1') ? 'http' : 'https');
+        const proxyPrefixRewrite = `${proto}://${host}${req.url.startsWith('/browser/') ? '/browser/proxy' : '/proxy'}`;
+        // relative /path -> proxy?url=origin/path (absolute to avoid base)
         html = html.replace(/\s(href|src|action)\s*=\s*["']\//gi, (m, attr)=> ` ${attr}="${proxyPrefixRewrite}?url=${encodeURIComponent(targetUrl.origin)}/`);
-        // absolute https:// -> proxy
+        // protocol-relative //cdn -> proxy
+        html = html.replace(/\s(href|src|action)\s*=\s*["']\/\/[^"']+["']/gi, (m)=>{
+          const mm = m.match(/["']\/\/([^"']+)["']/);
+          if(mm){
+            const url = 'https://'+mm[1];
+            if(!url.includes('/proxy?url=')){
+              return m.replace(mm[0], `\"${proxyPrefixRewrite}?url=${encodeURIComponent(url)}\"`);
+            }
+          }
+          return m;
+        });
+        // absolute https:// -> proxy (absolute)
         html = html.replace(/\s(href|src|action)\s*=\s*["']https?:\/\/[^"']+["']/gi, (m)=>{
           const mm = m.match(/["'](https?:\/\/[^"']+)["']/);
           if(mm && !mm[1].includes('/proxy?url=')){
