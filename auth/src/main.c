@@ -582,7 +582,7 @@ static void handle_client(int cfd){
                     char cmd[8192];
                     snprintf(cmd,sizeof(cmd),
                         "curl -s -X POST '%s/v2/pipeline' -H 'Authorization: Bearer %s' -H 'Content-Type: application/json' "
-                        "-d '{"requests":[{"type":"execute","stmt":{"sql":"CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, username TEXT, email TEXT, password TEXT, created INTEGER)"}},"
+                        "-d '{\"requests\":[{\"type\":\"execute\",\"stmt\":{\"sql\":\"CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, username TEXT, email TEXT, password TEXT, created INTEGER)\"}},"
                         "{"type":"execute","stmt":{"sql":"INSERT OR REPLACE INTO users (id, username, email, password, created) VALUES (?,?,?,?,?)",\"args\":[{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"integer\",\"value\":\"%ld\"}]}}]}' > /tmp/turso_register.log 2>&1",
                         https_url, turso_token, dec_u, dec_u, dec_e, dec_p, (long)time(NULL));
                     int rc=system(cmd); (void)rc;
