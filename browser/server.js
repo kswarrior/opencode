@@ -361,6 +361,17 @@ const server = http.createServer((req, res) => {
     res.end();
     return;
   }
+  // proxy mode: code runs on phone browser, server just fetches (preserves GitHub/Google cookies server-side)
+  // Exclude static proxy UI files: /proxy.html, /proxy.js
+  const pp = req.url.split('?')[0];
+  const isProxyApi = (pp === '/proxy' || pp.startsWith('/proxy?') || req.url.startsWith('/proxy?') || req.url.startsWith('/proxy/?') || pp.startsWith('/proxy/http') || pp === '/proxy/' );
+  const isProxyStatic = (pp === '/proxy.html' || pp === '/proxy.js');
+  if (isProxyApi && !isProxyStatic) {
+    handleProxy(req, res).catch(e=>{
+      try { res.writeHead(500, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'}); res.end('proxy error '+e.message); } catch {}
+    });
+    return;
+  }
   if (serveStatic(req, res)) return;
 });
 
