@@ -39,6 +39,43 @@ static const char* get_sites_path(void){
     if(access("./sites.json",F_OK)==0) return "./sites.json";
     return "./stats/sites.json";
 }
+static int is_docker(void){
+    if(access("/.dockerenv",F_OK)==0) return 1;
+    if(getenv("KUBERNETES_SERVICE_HOST")) return 1;
+    if(getenv("DOCKER_CONTAINER")) return 1;
+    return 0;
+}
+static void effective_url(const char *orig, const char *name, char *out, size_t sz){
+    // if inside docker and url uses localhost, rewrite to service name for internal DNS
+    if(is_docker() && strstr(orig,"localhost")){
+        if(strcmp(name,"main")==0){
+            // preserve path after host:port
+            const char *path=strchr(orig+7,'/'); if(!path) path="/";
+            // path may be /health or / or /something
+            snprintf(out,sz,"http://main:8080%s", path);
+            return;
+        } else if(strcmp(name,"auth")==0){
+            const char *path=strchr(orig+7,'/'); if(!path) path="/";
+            snprintf(out,sz,"http://auth:8081%s", path);
+            return;
+        } else if(strcmp(name,"account")==0){
+            const char *path=strchr(orig+7,'/'); if(!path) path="/";
+            snprintf(out,sz,"http://account:8082%s", path);
+            return;
+        } else if(strcmp(name,"gateway")==0){
+            const char *path=strchr(orig+7,'/'); if(!path) path="/";
+            snprintf(out,sz,"http://gateway:80%s", path);
+            return;
+        } else {
+            // generic: replace localhost with name
+            const char *p=strstr(orig,"localhost");
+            size_t pre=p-orig;
+            snprintf(out,sz,"%.*s%s%s", (int)pre, orig, name, p+9);
+            return;
+        }
+    }
+    strncpy(out,orig,sz-1); out[sz-1]='\0';
+}
 static int set_nonblocking(int fd){int f=fcntl(fd,F_GETFL,0); if(f==-1) return -1; return fcntl(fd,F_SETFL,f|O_NONBLOCK);}
 static void load_dotenv(void){
     const char *paths[] = {".env", "/app/.env", NULL};
@@ -190,11 +227,17 @@ static void check_site(int idx){
     char err[128]="";
     long latency=0;
 
+    // handle docker localhost -> service DNS rewrite
+    char eff_url[MAX_URL];
+    effective_url(s.url, s.name, eff_url, sizeof(eff_url));
+    if(strcmp(eff_url, s.url)!=0){
+        printf("[stats] docker rewrite %s -> %s\n", s.url, eff_url);
+    }
     // try curl with popen
     char cmd[2048];
     // use curl: -s -o /dev/null -w %{http_code} --max-time 5
     // escape single quote in url? urls are simple, just wrap in '
-    snprintf(cmd,sizeof(cmd),"curl -s -o /dev/null -w \"%%{http_code}\" --max-time 5 --connect-timeout 3 '%s' 2>/dev/null", s.url);
+    snprintf(cmd,sizeof(cmd),"curl -s -o /dev/null -w \"%%{http_code}\" --max-time 5 --connect-timeout 3 '%s' 2>/dev/null", eff_url);
     FILE *pp=popen(cmd,"r");
     if(pp){
         char out[32]={0};
@@ -214,9 +257,9 @@ static void check_site(int idx){
     }
 
     // fallback: if curl not installed (code 0 and no curl binary), try raw http via socket for http://
-    if(code==0 && strncmp(s.url,"http://",7)==0){
+    if(code==0 && strncmp(eff_url,"http://",7)==0){
         // parse host:port/path
-        const char *u=s.url+7;
+        const char *u=eff_url+7;
         char host[256]=""; char path[512]="/";
         int port=80;
         char *slash=strchr(u,'/');
