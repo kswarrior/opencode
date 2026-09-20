@@ -37,7 +37,7 @@
       <button class="omnibox-action" id="clearBtn" aria-label="Clear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div class="toolbar-extras">
-      <button class="icon-btn small" id="newTabBtn" aria-label="New tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button class="icon-btn small" id="newTabBtn2" aria-label="New tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
     </div>
   </div>
   <div class="viewport">
@@ -55,6 +55,10 @@
             <span class="error-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
             <span id="errorText">Error</span>
             <button class="retry-btn" id="retryBtn">Retry</button>
+          </div>
+          <div class="error-banner hidden" id="proxyOnlyBanner" style="bottom:auto;top:12px;border-color:#bae6fd;color:#0369a1;max-width:92%">
+            <span class="error-icon" style="color:#0ea5e9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
+            <span>This build has no live Chromium — use the <a id="proxyOnlyLink" href="./proxy.html" style="color:#0284c7;font-weight:800">Proxy UI</a> instead (pages run on your phone).</span>
           </div>
         </div>
         <div class="screen-bar">

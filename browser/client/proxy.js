@@ -76,7 +76,8 @@ function switchTab(id){
     if(home) home.style.display='none';
     if(frame){ frame.style.display='block'; frame.classList.add('active'); }
     const proxied=proxyPrefix()+'?url='+encodeURIComponent(t.url);
-    if(frame.src!==proxied) frame.src=proxied;
+    // frame.src resolves to an absolute URL; compare the attribute instead
+    if(frame.getAttribute('src')!==proxied) frame.setAttribute('src',proxied);
     history.replaceState(null,'', proxyPrefix()+'.html?url='+encodeURIComponent(t.url));
   } else {
     showHome();
@@ -117,20 +118,21 @@ input.addEventListener('keydown', e=>{ if(e.key==='Enter') load(input.value); })
 clearBtn.addEventListener('click', ()=>{ input.value=''; input.focus(); });
 backBtn.addEventListener('click', ()=>{
   try{
-    if(frame.style.display!=='none' && frame.contentWindow.history.length>1) frame.contentWindow.history.back();
+    const showing = frame.classList.contains('active');
+    if(showing && frame.contentWindow.history.length>1) frame.contentWindow.history.back();
     else showHome();
   }catch{ showHome(); }
 });
 reloadBtn.addEventListener('click', ()=>{
-  if(frame.style.display==='none') return;
-  try{ frame.contentWindow.location.reload(); }catch{ frame.src = frame.src; }
+  if(!frame.classList.contains('active')) return;
+  try{ frame.contentWindow.location.reload(); }catch{ frame.setAttribute('src', frame.getAttribute('src')); }
 });
 frame.addEventListener('load', ()=>{
   try{
     const u = new URL(frame.src);
     const target = u.searchParams.get('url');
     if(target){
-      const dec=decodeURIComponent(target);
+      const dec=target;
       input.value = dec;
       const at=tabs.find(x=>x.id===activeTab);
       if(at){ at.url=dec; try{ at.title=new URL(dec).hostname; }catch{ at.title=dec.slice(0,20);} renderTabs(); }
@@ -142,17 +144,18 @@ document.querySelectorAll('.quick-link').forEach(btn=>{
 });
 if(newTabBtn) newTabBtn.addEventListener('click', addTab);
 // init: only load if ?url= present, else blank home (no website)
+// NOTE: URLSearchParams.get() already percent-decodes — never decode again.
 const q = new URLSearchParams(location.search).get('url');
 renderTabs();
 if(q){
-  input.value = decodeURIComponent(q);
+  input.value = q;
   const at=tabs.find(x=>x.id===activeTab);
-  if(at){ at.url=decodeURIComponent(q); try{ at.title=new URL(at.url).hostname; }catch{} }
+  if(at){ at.url=q; try{ at.title=new URL(at.url).hostname; }catch{ at.title=q.slice(0,20); } }
   renderTabs();
-  load(decodeURIComponent(q));
+  load(q);
 } else {
   showHome();
 }
 window.addEventListener('message', e=>{
-  if(e.data && e.data.proxyUrl) input.value = e.data.proxyUrl;
+  if(e.data && e.data.proxyUrl){ load(e.data.proxyUrl); }
 });

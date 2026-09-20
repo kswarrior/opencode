@@ -177,7 +177,21 @@ function connect() {
     // text message
     let msg;
     try { msg = JSON.parse(typeof data === 'string' ? data : new TextDecoder().decode(data)); } catch { return; }
-    if (msg.type === 'hello') { console.log('[ws] hello', msg.msg); return; }
+    if (msg.type === 'hello') {
+      console.log('[ws] hello', msg.msg);
+      if (msg.proxyOnly) {
+        // proxy-only build: no frames will ever arrive. Stop the spinner and
+        // point the user at the working Proxy UI instead of hanging.
+        try {
+          const b=document.getElementById('proxyOnlyBanner');
+          if(b) b.classList.remove('hidden');
+          loading.style.display = 'none';
+          loadingText.textContent = 'Proxy-only build';
+          loadingSub.textContent = 'No live Chromium here — use the Proxy UI';
+        } catch {}
+      }
+      return;
+    }
     if (msg.type === 'frame') {
       // fallback JSON base64 (old server)
       try {
@@ -290,8 +304,21 @@ document.getElementById('mForward').addEventListener('click', ()=> send({type:'f
 document.getElementById('mRefresh').addEventListener('click', ()=> send({type:'reload'}));
 document.getElementById('mHome').addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
 retryBtn.addEventListener('click', ()=> { errorBanner.classList.add('hidden'); connect(); });
-document.getElementById('newTabBtn').addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
-document.getElementById('mTabs').addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
+// all "new tab" buttons (header had a duplicate id before; bind every variant)
+['newTabBtn','newTabBtn2'].forEach(id=>{
+  const b=document.getElementById(id);
+  if(b) b.addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
+});
+// all "tabs" buttons (header ghost + mobile bar)
+['mTabs','mTabsTop'].forEach(id=>{
+  const b=document.getElementById(id);
+  if(b) b.addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
+});
+// proxy-only banner link keeps the /browser prefix when served behind the gateway
+try {
+  const pl=document.getElementById('proxyOnlyLink');
+  if(pl) pl.href = (location.pathname.startsWith('/browser') ? '/browser/proxy.html' : '/proxy.html');
+} catch {}
 
 // overlay input forwarding — throttled via rAF to avoid flooding WS/CDP
 function posFromEvent(e) {
