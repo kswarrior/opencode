@@ -11,6 +11,7 @@
 #include <sys/epoll.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <time.h>
 
 #define DEFAULT_PORT 8080
 #define SERVICE_NAME "main"
@@ -47,6 +48,51 @@ static void load_dotenv(void){
         fclose(f);
     }
 }
+
+static int get_token_len(void){const char *e=getenv("TOKEN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;} e=getenv("MAIN_TOKEN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;} return 120;}
+static int get_token_sum(void){const char *e=getenv("TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 280;}
+static int get_skip_front(void){const char *e=getenv("TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 25;}
+static int get_skip_back(void){const char *e=getenv("TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 25;}
+static void generate_site_token(char *out, size_t out_sz){
+    int len=get_token_len();
+    int sum=get_token_sum();
+    int sf=get_skip_front();
+    int sb=get_skip_back();
+    if(len+1 > (int)out_sz) len = (int)out_sz-1;
+    if(sf+sb >= len){ sf=len/3; sb=len/3; }
+    int mid_len=len - sf - sb;
+    if(mid_len<=0) mid_len= len - sf - sb;
+    const char *alnum="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    const int alnum_len=62;
+    for(int attempt=0; attempt<1000; attempt++){
+        for(int i=0;i<sf;i++) out[i]= alnum[random()%alnum_len];
+        for(int i=len-sb;i<len;i++) out[i]= alnum[random()%alnum_len];
+        int s=0;
+        for(int i=0;i<mid_len-1;i++){
+            int d= random()%10;
+            out[sf+i]= '0'+d;
+            s+=d;
+        }
+        int need = sum - s;
+        if(need>=0 && need<=9){
+            out[sf+mid_len-1]= '0'+need;
+            out[len]='\0';
+            int check=0; for(int i=sf;i<sf+mid_len;i++) check += out[i]-'0';
+            if(check==sum) return;
+        }
+    }
+    for(int i=0;i<sf;i++) out[i]= alnum[random()%alnum_len];
+    for(int i=len-sb;i<len;i++) out[i]= alnum[random()%alnum_len];
+    for(int i=0;i<mid_len;i++) out[sf+i]='0';
+    int remaining=sum;
+    for(int i=0;i<mid_len && remaining>0;i++){
+        int v= remaining>9?9:remaining;
+        out[sf+i]= '0'+v;
+        remaining-=v;
+    }
+    out[len]='\0';
+}
+
 static const char HTML_REDIRECT[] = "<!doctype html><html><head><meta charset=\"utf-8\"><meta http-equiv=\"refresh\" content=\"0; url=%s/login?redirect_uri=%s/auth/callback\"><title>Redirect</title></head><body>Redirecting to auth...</body></html>";
 static const char HTML_FRAG[] = "<div><b>Fragment from Main</b> — at <span id=\"t\"></span><script>document.getElementById('t').textContent=new Date().toLocaleTimeString()</script> ✅</div>";
 static void send_response(int fd,int st,const char *txt,const char *ct,const char *b,size_t bl){
@@ -103,12 +149,12 @@ static void handle_client(int cfd){
         int authed=has_token(buf);
         const char *auth_url=get_auth_url();
         const char *acct_url=get_account_url();
-        // Build main callback for login redirect
-        char main_cb[1024];
-        if(strstr(auth_url,"localhost")) snprintf(main_cb,sizeof(main_cb),"http://localhost:8080/auth/callback");
-        else snprintf(main_cb,sizeof(main_cb),"https://opencode-bnao.onrender.com/auth/callback");
+        // Generate site token: 120 random alphanumeric, middle digits sum = TOKEN_SUM
+        // Auth will verify by skipping front/back and summing middle
+        char site_token[512];
+        generate_site_token(site_token, sizeof(site_token));
         char login_url[2048];
-        snprintf(login_url,sizeof(login_url),"%s/login?redirect_uri=%s",auth_url, main_cb);
+        snprintf(login_url,sizeof(login_url),"%s/login?site_token=%s",auth_url, site_token);
         // Build header right: Login button or Profile dropdown
         char header_right[4096];
         if(!authed){
@@ -158,6 +204,7 @@ static void handle_client(int cfd){
 }
 int main(void){
     load_dotenv();
+    srandom((unsigned)time(NULL) ^ (unsigned)getpid());
     signal(SIGPIPE,SIG_IGN); signal(SIGINT,handle_sig); signal(SIGTERM,handle_sig);
     int lfd=socket(AF_INET,SOCK_STREAM,0); if(lfd<0){perror("socket");return 1;}
     int opt=1; setsockopt(lfd,SOL_SOCKET,SO_REUSEADDR,&opt,sizeof(opt)); setsockopt(lfd,SOL_SOCKET,SO_REUSEPORT,&opt,sizeof(opt));
