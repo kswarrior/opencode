@@ -128,7 +128,13 @@ static int verify_site_token_ex(const char *token, char *cb_out, size_t cb_sz, c
         int mid_len=len - sf - sb;
         if(mid_len<=0) continue;
         int calc=0, ok=1;
-        for(int i=sf; i<len-sb; i++){ if(token[i]<'0'||token[i]>'9'){ok=0;break;} calc+=token[i]-'0';}
+        // middle now fully alphanumeric like both ends: sum only digits, letters are decoys not counted
+        for(int i=sf; i<len-sb; i++){
+            char c=token[i];
+            if(c>='0' && c<='9') calc+=c-'0';
+            else if((c>='A' && c<='Z') || (c>='a' && c<='z')) continue;
+            else { ok=0; break; }
+        }
         if(!ok) continue;
         if(calc != sum) continue;
         int is_local = has_substr(req_buf, "localhost");
@@ -153,7 +159,7 @@ static int verify_site_token_ex(const char *token, char *cb_out, size_t cb_sz, c
         if(site_out && site_sz>0){ strncpy(site_out, pfx, site_sz-1); site_out[site_sz-1]='\0'; }
         return 1;
     }
-    // fallback generic (no prefix)
+    // fallback generic (no prefix) - middle fully alphanumeric like both ends
     {
         int len=get_site_token_len(NULL);
         int sum=get_site_token_sum(NULL);
@@ -163,7 +169,12 @@ static int verify_site_token_ex(const char *token, char *cb_out, size_t cb_sz, c
             int mid_len=len - sf - sb;
             if(mid_len>0){
                 int calc=0, ok=1;
-                for(int i=sf; i<len-sb; i++){ if(token[i]<'0'||token[i]>'9'){ok=0;break;} calc+=token[i]-'0';}
+                for(int i=sf; i<len-sb; i++){
+                    char c=token[i];
+                    if(c>='0' && c<='9') calc+=c-'0';
+                    else if((c>='A' && c<='Z') || (c>='a' && c<='z')) continue;
+                    else { ok=0; break; }
+                }
                 if(ok && calc==sum){
                     int is_local=has_substr(req_buf,"localhost");
                     const char *cb=is_local? "http://localhost:8080/auth/callback" : "https://opencode-bnao.onrender.com/auth/callback";

@@ -64,41 +64,86 @@ static void generate_site_token(char *out, size_t out_sz){
     if(mid_len<=0) mid_len= len - sf - sb;
     const char *alnum="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     const int alnum_len=62;
+    const char *letters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    const int letters_len=52;
     for(int attempt=0; attempt<1000; attempt++){
         for(int i=0;i<sf;i++) out[i]= alnum[random()%alnum_len];
         for(int i=len-sb;i<len;i++) out[i]= alnum[random()%alnum_len];
-        int s=0;
-        for(int i=0;i<mid_len-1;i++){
-            int d= random()%10;
-            out[sf+i]= '0'+d;
-            s+=d;
+        // middle: fully alphanumeric like both ends, letters are decoys not counted
+        // sum of digits inside middle (ignoring letters) must equal sum
+        int min_digits = (sum+8)/9; // ceil(sum/9)
+        if(min_digits < 32) min_digits = 32;
+        if(min_digits > mid_len-8) min_digits = mid_len-8;
+        int max_digits = mid_len - 8; // ensure at least 8 letters for visual mix
+        if(max_digits < min_digits) max_digits = min_digits;
+        int digit_count = min_digits + (random() % (max_digits - min_digits + 1));
+        while(digit_count*9 < sum && digit_count < mid_len) digit_count++;
+        // pick random positions for digits
+        int is_digit[512]={0};
+        int placed=0;
+        while(placed < digit_count){
+            int idx= random()%mid_len;
+            if(!is_digit[idx]){ is_digit[idx]=1; placed++; }
         }
-        int need = sum - s;
-        if(need>=0 && need<=9){
-            out[sf+mid_len-1]= '0'+need;
-            out[len]='\0';
-            int check=0; for(int i=sf;i<sf+mid_len;i++) check += out[i]-'0';
-            if(check==sum) return;
+        // fill letters where not digit, placeholder digits
+        for(int i=0;i<mid_len;i++){
+            if(!is_digit[i]){
+                out[sf+i]= letters[random()%letters_len];
+            } else {
+                out[sf+i]='0';
+            }
+        }
+        // distribute sum among digit positions randomly
+        int remaining=sum;
+        int iter=0;
+        while(remaining>0 && iter<20000){
+            int mid_idx= random()%mid_len;
+            if(!is_digit[mid_idx]){ iter++; continue; }
+            int cur= out[sf+mid_idx]-'0';
+            if(cur<9){ out[sf+mid_idx]++; remaining--; }
+            iter++;
+        }
+        for(int i=0;i<mid_len && remaining>0;i++){
+            if(!is_digit[i]) continue;
+            int cur= out[sf+i]-'0';
+            int add = remaining > (9-cur) ? (9-cur) : remaining;
+            out[sf+i]+=add;
+            remaining-=add;
+        }
+        if(remaining==0){
+            int check=0;
+            for(int i=0;i<mid_len;i++) if(is_digit[i]) check += out[sf+i]-'0';
+            if(check==sum){
+                out[len]='\0';
+                return;
+            }
         }
     }
+    // fallback: ensure at least mixed fallback
     for(int i=0;i<sf;i++) out[i]= alnum[random()%alnum_len];
     for(int i=len-sb;i<len;i++) out[i]= alnum[random()%alnum_len];
     for(int i=0;i<mid_len;i++) out[sf+i]='0';
     int remaining=sum;
-    // distribute remaining randomly across middle
-    // first set all to 0, then randomly increment
-    for(int i=0;i<mid_len;i++) out[sf+i]='0';
-    remaining=sum;
+    // make fallback also mixed: start with random letters then convert some to digits
+    for(int i=0;i<mid_len;i++) out[sf+i]= letters[random()%letters_len];
+    int digits_needed = (sum+9-1)/9;
+    if(digits_needed > mid_len) digits_needed = mid_len;
+    int is_digit_f[512]={0};
+    int pl=0;
+    while(pl < digits_needed){
+        int idx= random()%mid_len;
+        if(!is_digit_f[idx]){ is_digit_f[idx]=1; out[sf+idx]='0'; pl++; }
+    }
     int pos=0;
-    while(remaining>0 && pos<10000){
+    while(remaining>0 && pos<20000){
         int idx = random()%mid_len;
+        if(!is_digit_f[idx]){ pos++; continue; }
         int cur = out[sf+idx]-'0';
         if(cur<9){ out[sf+idx]++; remaining--; }
         pos++;
-        if(pos>10000) break;
     }
-    // if still remaining (should not happen if sum <= mid_len*9), fill sequentially
     for(int i=0;i<mid_len && remaining>0;i++){
+        if(!is_digit_f[i]) continue;
         int cur=out[sf+i]-'0';
         int add = remaining> (9-cur) ? (9-cur) : remaining;
         out[sf+i]+=add;
