@@ -142,7 +142,7 @@ static void handle_client(int cfd){
 "</div>"
 "<script>if(!document.cookie.includes('token=')){var t=localStorage.getItem('token'); if(t) document.cookie='token='+t+'; Path=/';}</script>"
 "<script>function toggleProfile(){var d=document.getElementById('profileDropdown'); if(d) d.classList.toggle('hidden');} document.addEventListener('click',function(e){var w=document.querySelector('.profile-wrap'); if(w && !w.contains(e.target)){var d=document.getElementById('profileDropdown'); if(d) d.classList.add('hidden');}});"
-"(function(){var acct=\"%s\"; var el=document.getElementById('usernameDisplay'); if(!el) return; fetch(acct+\"/api/me\",{credentials:\"include\"}).then(function(r){return r.json();}).then(function(j){var u=(j.account&&j.account.username)||j.username||\"demo\"; el.textContent=u; var av=document.getElementById('avatarInitial'); if(av&&u) av.textContent=u.charAt(0).toUpperCase();}).catch(function(){el.textContent=\"demo\";});})();</script>"
+"(function(){var acct=\"%s\"; var el=document.getElementById('usernameDisplay'); if(!el) return; fetch(acct+\"/api/me\").then(function(r){return r.json();}).then(function(j){var u=(j.account&&j.account.username)||j.username||\"demo\"; el.textContent=u; var av=document.getElementById('avatarInitial'); if(av&&u) av.textContent=u.charAt(0).toUpperCase();}).catch(function(){el.textContent=\"demo\";});})();</script>"
 "</body></html>\n", header_right, auth_url, acct_url, auth_url, auth_url, acct_url, acct_url, acct_url, acct_url);
         if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
         else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
