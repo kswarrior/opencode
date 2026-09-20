@@ -47,6 +47,7 @@ static void load_dotenv(void){
     }
 }
 
+static int has_substr(const char *a,const char *b);
 static int get_site_token_len(const char *prefix){
     char key[128];
     if(prefix && *prefix){
@@ -286,46 +287,65 @@ static void handle_client(int cfd){
         else send_response(cfd,200,"OK","text/html; charset=utf-8",HTML_MAIN,strlen(HTML_MAIN));
     } else if(strcmp(path,"/login")==0){
         if(strcmp(method,"GET")==0){
-            char redirect_uri[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
-            if(!redirect_uri[0]){
-                // default based on host
-                if(has_substr(buf,"localhost")) strcpy(redirect_uri,"http://localhost:8080/auth/callback");
-                else strcpy(redirect_uri,"https://opencode-bnao.onrender.com/auth/callback");
+            // Check site_token first (new random 120 token flow)
+            char site_token[512]=""; get_query_param(fullpath,"site_token",site_token,sizeof(site_token));
+            char cb_site[1024]="";
+            if(site_token[0] && verify_site_token(site_token, cb_site, sizeof(cb_site), buf)){
+                // Valid site token -> render site-specific login
+                char html[4096];
+                // Use first 20 chars for display to avoid huge
+                char disp[64]; snprintf(disp,sizeof(disp),"%.*s...",20,site_token);
+                snprintf(html,sizeof(html),HTML_LOGIN_SITE_TMPL, disp, site_token, site_token);
+                if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
+                else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
+            } else {
+                // Fallback to redirect_uri (legacy)
+                char redirect_uri[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
+                if(!redirect_uri[0]){
+                    if(has_substr(buf,"localhost")) strcpy(redirect_uri,"http://localhost:8080/auth/callback");
+                    else strcpy(redirect_uri,"https://opencode-bnao.onrender.com/auth/callback");
+                }
+                char dec[1024]; url_decode(dec, redirect_uri); strncpy(redirect_uri, dec, 1023);
+                char html[4096];
+                snprintf(html,sizeof(html),HTML_LOGIN_TMPL, redirect_uri, redirect_uri, redirect_uri);
+                if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
+                else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
             }
-            char dec[1024]; url_decode(dec, redirect_uri); strncpy(redirect_uri, dec, 1023);
-            // Need to URL encode for hx-post? For simplicity, use decoded for form action, but encode for href
-            // Use redirect_uri as is for hx-post
-            char html[4096];
-            // For hx-post we need URL encoded version, but we have decoded, so re-encode? For now just use decoded
-            // Escape % for printf
-            char esc_uri[2048]; 
-            // Simple escape: replace % with %% for snprintf
-            // Instead, we will manually build html without snprintf % issues: use separate
-            // For now, just use HTML_LOGIN_TMPL with redirect_uri
-            // Need to handle % in redirect_uri (like https://) contains :// but no % - safe
-            snprintf(html,sizeof(html),HTML_LOGIN_TMPL, redirect_uri, redirect_uri, redirect_uri);
-            if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
-            else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
         } else {
             int ok = has_substr(body,"username=") && has_substr(body,"password=");
             const char *jwt=get_jwt();
-            char redirect_uri[512]=""; get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
-            if(redirect_uri[0]) { char dec[512]; url_decode(dec, redirect_uri); strncpy(redirect_uri, dec, 511); }
-            else strcpy(redirect_uri,"https://opencode-bnao.onrender.com/auth/callback");
-            // also accept redirect_uri from body? check
-            // For HTMX, use HX-Redirect
+            // Prefer site_token flow
+            char site_token[512]=""; get_query_param(fullpath,"site_token",site_token,sizeof(site_token));
+            if(!site_token[0]){
+                // also try body (hidden input)
+                char *sp=strstr(body,"site_token=");
+                if(sp){ sscanf(sp,"site_token=%511[^&]",site_token); char dec2[512]; url_decode(dec2, site_token); strncpy(site_token, dec2, 511); }
+            }
+            char callback[1024]="";
+            int is_site = 0;
+            if(site_token[0]) is_site = verify_site_token(site_token, callback, sizeof(callback), buf);
+            char redirect_uri[1024]="";
+            if(!is_site){
+                get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
+                if(redirect_uri[0]) { char dec[1024]; url_decode(dec, redirect_uri); strncpy(redirect_uri, dec, 1023); }
+                else {
+                    // try body redirect_uri
+                    char *rp=strstr(body,"redirect_uri=");
+                    if(rp){ sscanf(rp,"redirect_uri=%1023[^&]",redirect_uri); char dec2[1024]; url_decode(dec2, redirect_uri); strncpy(redirect_uri, dec2, 1023); }
+                    else strcpy(redirect_uri,"https://opencode-bnao.onrender.com/auth/callback");
+                }
+                // For site_token flow, if no site_token but we want to support legacy, use redirect_uri
+                strncpy(callback, redirect_uri, sizeof(callback)-1);
+            }
             if(ok){
-                printf("[auth] login ok user, redirect %s\n",redirect_uri); fflush(stdout);
-                // also try to save login to account? fire and forget via curl to account
+                printf("[auth] login ok user, %s %s\n", is_site?"site_token":"redirect", is_site?site_token:callback); fflush(stdout);
                 const char *turso=getenv("TURSO_DATABASE_URL");
                 if(turso) printf("[auth] turso %s would save user\n",turso);
                 char cookie[2048]; snprintf(cookie,sizeof(cookie),"token=%s",jwt);
-                char loc[1024]; snprintf(loc,sizeof(loc),"%s?token=%s",redirect_uri,jwt);
+                char loc[2048]; snprintf(loc,sizeof(loc),"%s?token=%s",callback,jwt);
                 if(is_hx){
-                    // For HTMX, use HX-Redirect and also set cookie
                     send_hx_redirect(cfd, loc, cookie);
                 } else {
-                    // Normal POST → 302
                     char h[2048]; int hl=snprintf(h,sizeof(h),"HTTP/1.1 302 Found\r\nLocation: %s\r\nSet-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\nContent-Length: 0\r\nConnection: close\r\n\r\n", loc, cookie);
                     send(cfd,h,hl,MSG_NOSIGNAL);
                 }
@@ -333,8 +353,7 @@ static void handle_client(int cfd){
                 const char *b="<div style=\"color:red\">❌ missing username/password — try again</div>";
                 send_response(cfd,400,"Bad Request","text/html",b,strlen(b));
             }
-        }
-    } else if(strcmp(path,"/register")==0){
+        }    } else if(strcmp(path,"/register")==0){
         if(strcmp(method,"GET")==0){
             char redirect_uri[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
             if(!redirect_uri[0]){
