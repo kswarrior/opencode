@@ -635,7 +635,7 @@ static void handle_client(int cfd){
         send(cfd,hdr,strlen(hdr),MSG_NOSIGNAL);
         const char *e="data: {\"service\":\"" SERVICE_NAME "\",\"msg\":\"SSE\"}\n\n"; send(cfd,e,strlen(e),MSG_NOSIGNAL);
     } else if(strcmp(path,"/health")==0){
-        const char *b="ok auth v4\n"; if(is_head) send_response(cfd,200,"OK","text/plain","",0); else send_response(cfd,200,"OK","text/plain",b,strlen(b));
+        const char *b="ok auth v5\n"; if(is_head) send_response(cfd,200,"OK","text/plain","",0); else send_response(cfd,200,"OK","text/plain",b,strlen(b));
     } else if(strcmp(path,"/verify")==0 || strcmp(path,"/me")==0){
         const char *jwt=get_jwt();
         int authed = has_substr(buf,jwt);
