@@ -88,42 +88,51 @@ static int get_site_skip_back(const char *prefix){
     e=getenv("MAIN_TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     return 25;
 }
-static int verify_site_token(const char *token, char *cb_out, size_t cb_sz, const char *req_buf){
+static int verify_site_token_ex(const char *token, char *cb_out, size_t cb_sz, const char *req_buf, char *site_out, size_t site_sz){
     if(!token || !*token) return 0;
-    // Try MAIN site first
-    const char *sites[]={"MAIN", NULL};
-    // also try generic (empty prefix) as fallback
+    const char *sites[]={"MAIN","ACCOUNT","STATS",NULL};
     for(int si=0; sites[si]; si++){
         const char *pfx=sites[si];
         int len=get_site_token_len(pfx);
         int sum=get_site_token_sum(pfx);
         int sf=get_site_skip_front(pfx);
         int sb=get_site_skip_back(pfx);
+        // if env not set for this site, skip unless it's MAIN generic
+        // Check if any env for this site is set; if not set and pfx != MAIN, skip
+        char key[128];
+        snprintf(key,sizeof(key),"%s_TOKEN_LEN",pfx);
+        int has_env = getenv(key) || getenv("TOKEN_LEN") || getenv("MAIN_TOKEN_LEN");
+        if(!has_env && si!=0) continue;
         if((int)strlen(token) != len) continue;
         int mid_len=len - sf - sb;
         if(mid_len<=0) continue;
-        int calc=0;
-        int ok=1;
-        for(int i=sf; i<len-sb; i++){
-            if(token[i]<'0' || token[i]>'9'){ ok=0; break; }
-            calc += token[i]-'0';
-        }
+        int calc=0, ok=1;
+        for(int i=sf; i<len-sb; i++){ if(token[i]<'0'||token[i]>'9'){ok=0;break;} calc+=token[i]-'0';}
         if(!ok) continue;
         if(calc != sum) continue;
-        // matched this site -> determine callback
         int is_local = has_substr(req_buf, "localhost");
         const char *cb=NULL;
-        if(pfx && strcmp(pfx,"MAIN")==0){
+        char cb_key[128], cb_local_key[128];
+        snprintf(cb_key,sizeof(cb_key),"%s_CALLBACK",pfx);
+        snprintf(cb_local_key,sizeof(cb_local_key),"%s_CALLBACK_LOCAL",pfx);
+        cb = is_local ? getenv(cb_local_key) : getenv(cb_key);
+        if(!cb || !*cb){
+            // fallback to MAIN_CALLBACK
             cb = is_local ? getenv("MAIN_CALLBACK_LOCAL") : getenv("MAIN_CALLBACK");
             if(!cb || !*cb) cb = is_local ? "http://localhost:8080/auth/callback" : "https://opencode-bnao.onrender.com/auth/callback";
-        } else {
-            // generic fallback
-            cb = is_local ? "http://localhost:8080/auth/callback" : "https://opencode-bnao.onrender.com/auth/callback";
+            // also try ACCOUNT etc specific?
+            if(pfx && strcmp(pfx,"ACCOUNT")==0){
+                const char *acb = is_local ? getenv("ACCOUNT_CALLBACK") : getenv("ACCOUNT_CALLBACK");
+                // default account callback
+                if(!acb || !*acb) cb = is_local ? "http://localhost:8082/auth/callback" : "https://opencode-7waf.onrender.com/auth/callback";
+                else cb=acb;
+            }
         }
         if(cb_out && cb_sz>0){ strncpy(cb_out, cb, cb_sz-1); cb_out[cb_sz-1]='\0'; }
+        if(site_out && site_sz>0){ strncpy(site_out, pfx, site_sz-1); site_out[site_sz-1]='\0'; }
         return 1;
     }
-    // also try generic token config (no prefix) as single site
+    // fallback generic (no prefix)
     {
         int len=get_site_token_len(NULL);
         int sum=get_site_token_sum(NULL);
@@ -140,12 +149,17 @@ static int verify_site_token(const char *token, char *cb_out, size_t cb_sz, cons
                     const char *env_cb=is_local? getenv("MAIN_CALLBACK_LOCAL"): getenv("MAIN_CALLBACK");
                     if(env_cb && *env_cb) cb=env_cb;
                     if(cb_out) {strncpy(cb_out,cb,cb_sz-1); cb_out[cb_sz-1]='\0';}
+                    if(site_out) {strncpy(site_out,"MAIN",site_sz-1); site_out[site_sz-1]='\0';}
                     return 1;
                 }
             }
         }
     }
     return 0;
+}
+static int verify_site_token(const char *token, char *cb_out, size_t cb_sz, const char *req_buf){
+    char dummy[32];
+    return verify_site_token_ex(token, cb_out, cb_sz, req_buf, dummy, sizeof(dummy));
 }
 
 
