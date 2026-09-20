@@ -4,6 +4,7 @@ const frame = document.getElementById('proxyFrame');
 const home = document.getElementById('proxyHome');
 const goBtn = document.getElementById('goBtn');
 const clearBtn = document.getElementById('proxyClear');
+const searchBtn = document.getElementById('proxySearch');
 const backBtn = document.getElementById('pBack');
 const reloadBtn = document.getElementById('pReload');
 const tabsEl = document.getElementById('tabs');
@@ -113,6 +114,7 @@ function load(url){
   history.replaceState(null,'', proxyPrefix()+'.html?url='+encodeURIComponent(u));
 }
 if(goBtn) goBtn.addEventListener('click', ()=> load(input.value));
+if(searchBtn) searchBtn.addEventListener('click', ()=> load(input.value));
 input.addEventListener('keydown', e=>{ if(e.key==='Enter') load(input.value); });
 clearBtn.addEventListener('click', ()=>{ input.value=''; input.focus(); });
 backBtn.addEventListener('click', ()=>{
