@@ -13,6 +13,189 @@ const CLIENT_DIR = path.join(__dirname, 'client');
 const PERSIST_DIR = process.env.BROWSER_DATA_DIR || process.env.USER_DATA_DIR || path.join(__dirname, 'data', 'browser-profile');
 try { fs.mkdirSync(PERSIST_DIR, { recursive: true }); console.log('[browser] persist dir', PERSIST_DIR); } catch (e) { console.log('[browser] persist dir fail', e.message); }
 
+// ---------- proxy cookie jar (phone-executed mode) ----------
+const PROXY_COOKIE_FILE = path.join(PERSIST_DIR, 'proxy-cookies.json');
+let proxyCookies = {};
+try {
+  if (fs.existsSync(PROXY_COOKIE_FILE)) proxyCookies = JSON.parse(fs.readFileSync(PROXY_COOKIE_FILE,'utf8')||'{}');
+} catch {}
+function saveProxyCookies(){
+  try { fs.writeFileSync(PROXY_COOKIE_FILE, JSON.stringify(proxyCookies)); } catch {}
+}
+function getProxyCookieHeader(targetUrl){
+  try {
+    const u = new URL(targetUrl);
+    const host = u.hostname;
+    const jar = proxyCookies[host];
+    if(!jar) return '';
+    const now = Date.now();
+    const pairs = [];
+    for(const [k,v] of Object.entries(jar)){
+      if(v.expires && v.expires < now) continue;
+      pairs.push(`${k}=${v.value}`);
+    }
+    return pairs.join('; ');
+  } catch { return ''; }
+}
+function storeProxyCookies(targetUrl, setCookieHeaders){
+  try {
+    const u = new URL(targetUrl);
+    const host = u.hostname;
+    if(!proxyCookies[host]) proxyCookies[host] = {};
+    const headers = Array.isArray(setCookieHeaders) ? setCookieHeaders : [setCookieHeaders];
+    for(const h of headers){
+      if(!h) continue;
+      // h = "name=value; Path=/; Domain=...; Expires=..."
+      const parts = h.split(';');
+      const first = parts[0].trim();
+      const eq = first.indexOf('=');
+      if(eq<0) continue;
+      const name = first.slice(0,eq).trim();
+      const value = first.slice(eq+1).trim();
+      let expires = null;
+      for(let i=1;i<parts.length;i++){
+        const p = parts[i].trim().toLowerCase();
+        if(p.startsWith('expires=')){
+          const d = new Date(parts[i].trim().slice(8));
+          if(!isNaN(d)) expires = d.getTime();
+        } else if(p.startsWith('max-age=')){
+          const sec = parseInt(p.slice(8),10);
+          if(!isNaN(sec)) expires = Date.now() + sec*1000;
+        } else if(p===''){ }
+      }
+      proxyCookies[host][name]= { value, expires };
+    }
+    saveProxyCookies();
+  } catch {}
+}
+
+// proxy handler - code runs on phone browser, server only fetches + returns HTML
+async function handleProxy(req, res){
+  const rawUrl = req.url;
+  const full = new URL(rawUrl, `http://${req.headers.host||'localhost'}`);
+  // support /proxy?url=... , /browser/proxy?url=..., /proxy/fetch?url=...
+  let target = full.searchParams.get('url');
+  if(!target){
+    // also support /proxy/https://... or /proxy/https%3A...
+    const p = full.pathname;
+    const m = p.match(/\/proxy\/(https?:\/\/.+)/);
+    if(m) target = decodeURIComponent(m[1]);
+    else if(p.startsWith('/proxy/') && p.length>7) target = decodeURIComponent(p.slice(7));
+  }
+  if(!target){
+    res.writeHead(400, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'});
+    res.end('proxy missing url param. Use /proxy?url=https://github.com');
+    return true;
+  }
+  // normalize
+  try { target = decodeURIComponent(target); } catch {}
+  target = target.trim();
+  if(target.includes(' ') && !target.startsWith('http')) target='https://'+target;
+  if(!target.startsWith('http://') && !target.startsWith('https://')) target='https://'+target;
+  let targetUrl;
+  try { targetUrl = new URL(target); } catch {
+    res.writeHead(400, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'});
+    res.end('invalid url');
+    return true;
+  }
+  // CORS preflight already handled, but allow
+  if(req.method==='OPTIONS'){
+    res.writeHead(204, {'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET,POST,PUT,DELETE,OPTIONS','Access-Control-Allow-Headers':'*'});
+    res.end();
+    return true;
+  }
+  try {
+    const headers = {};
+    if(req.headers['user-agent']) headers['user-agent']=req.headers['user-agent'];
+    if(req.headers['accept']) headers['accept']=req.headers['accept'];
+    if(req.headers['accept-language']) headers['accept-language']=req.headers['accept-language'];
+    if(req.headers['accept-encoding']) headers['accept-encoding']=req.headers['accept-encoding'];
+    if(req.headers['content-type']) headers['content-type']=req.headers['content-type'];
+    const cookie = getProxyCookieHeader(targetUrl.href);
+    if(cookie) headers['cookie']=cookie;
+    // forward body for POST/PUT
+    let body;
+    if(req.method==='POST' || req.method==='PUT' || req.method==='PATCH'){
+      body = await new Promise((resolve,reject)=>{
+        const chunks=[];
+        req.on('data',c=>chunks.push(c));
+        req.on('end',()=>resolve(Buffer.concat(chunks)));
+        req.on('error',reject);
+      });
+      if(!body.length) body=undefined;
+    }
+    const resp = await fetch(targetUrl.href, { method: req.method, headers, body, redirect:'manual' });
+    // handle redirects manually to keep proxy
+    const loc = resp.headers.get('location');
+    if(loc && resp.status>=300 && resp.status<400){
+      // store cookies first
+      let setCookies=[];
+      if(resp.headers.getSetCookie) setCookies = resp.headers.getSetCookie();
+      else {
+        const sc = resp.headers.get('set-cookie');
+        if(sc) setCookies=[sc];
+      }
+      if(setCookies.length) storeProxyCookies(targetUrl.href, setCookies);
+      let next = loc;
+      try { next = new URL(loc, targetUrl.href).href; } catch {}
+      const proxied = `/proxy?url=${encodeURIComponent(next)}`;
+      res.writeHead(302, {'Location': proxied, 'Access-Control-Allow-Origin':'*', 'Access-Control-Expose-Headers':'*'});
+      res.end(`Redirect to ${next}`);
+      return true;
+    }
+    // store cookies
+    let setCookies=[];
+    if(resp.headers.getSetCookie) setCookies = resp.headers.getSetCookie();
+    else {
+      const sc = resp.headers.get('set-cookie');
+      if(sc) setCookies=[sc];
+    }
+    if(setCookies.length) storeProxyCookies(targetUrl.href, setCookies);
+
+    const ct = resp.headers.get('content-type')||'';
+    const buf = Buffer.from(await resp.arrayBuffer());
+    const outHeaders = {
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Headers':'*',
+      'Access-Control-Expose-Headers':'*',
+      'X-Proxied-By':'browser-proxy',
+      'Cache-Control':'no-store',
+    };
+    // copy safe headers
+    const pass = ['content-type','content-length','cache-control','expires'];
+    for(const k of pass){
+      const v = resp.headers.get(k);
+      if(v) outHeaders[k]=v;
+    }
+    // strip security headers that block phone execution
+    // do not forward csp / x-frame-options / coep
+    if(ct.includes('text/html')){
+      let html = buf.toString('utf8');
+      // inject base for relative URLs
+      const baseTag = `<base href="${targetUrl.href}">`;
+      if(/<head[^>]*>/i.test(html)) html = html.replace(/<head[^>]*>/i, m=> m+baseTag);
+      else html = baseTag+html;
+      // strip CSP meta
+      html = html.replace(/<meta[^>]*http-equiv=["']?content-security-policy[^>]*>/gi,'');
+      // inject proxy helper to keep future navigations inside proxy (optional)
+      const helper = `<script>window.__PROXY_BASE="${targetUrl.origin}";(function(){const orig=window.fetch;window.fetch=function(u,o){try{let s=u.toString();if(s.startsWith('/') && !s.startsWith('/proxy')) s='/proxy?url='+encodeURIComponent(window.__PROXY_BASE+s);else if(s.startsWith('http') && !s.includes('/proxy')) s='/proxy?url='+encodeURIComponent(s); u=s;}catch{} return orig.call(this,u,o);}})()<\\/script>`;
+      html = html.replace(/<\/head>/i, helper+'</head>');
+      outHeaders['content-type']='text/html; charset=utf-8';
+      outHeaders['content-length']= Buffer.byteLength(html);
+      res.writeHead(resp.status, outHeaders);
+      res.end(html);
+    } else {
+      res.writeHead(resp.status, {...outHeaders, 'content-type': ct || 'application/octet-stream'});
+      res.end(buf);
+    }
+    return true;
+  } catch(e){
+    res.writeHead(500, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'});
+    res.end('proxy error: '+(e.message||e));
+    return true;
+  }
+}
+
 // ---------- mime ----------
 const MIME = {
   '.html': 'text/html; charset=utf-8',
