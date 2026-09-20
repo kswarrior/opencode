@@ -83,6 +83,23 @@ services:
           memory: 32M
           cpus: '0.5'
 
+  browser:
+    build:
+      context: .
+      dockerfile: ./browser/Dockerfile
+    restart: unless-stopped
+    expose:
+      - "8084"
+    ports:
+      - "8084:8084"
+    environment:
+      - PORT=8084
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+          cpus: '0.5'
+
   gateway:
     image: nginx:alpine
     restart: unless-stopped
@@ -95,6 +112,7 @@ services:
       - auth
       - account
       - stats
+      - browser
     deploy:
       resources:
         limits:
