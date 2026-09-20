@@ -1,6 +1,7 @@
-// Proxy mode — code runs on phone browser, server only fetches (cookie jar persisted)
+// Proxy only — code runs on phone, home blank (no website) by default
 const input = document.getElementById('proxyInput');
 const frame = document.getElementById('proxyFrame');
+const home = document.getElementById('proxyHome');
 const goBtn = document.getElementById('goBtn');
 const clearBtn = document.getElementById('proxyClear');
 const backBtn = document.getElementById('pBack');
@@ -16,22 +17,35 @@ function normalize(v){
   if(v.includes('.') && !v.includes(' ')) return 'https://'+v;
   return 'https://duckduckgo.com/?q='+encodeURIComponent(v);
 }
+function showHome(){
+  if(home) home.style.display='flex';
+  if(frame){ frame.classList.remove('active'); frame.style.display='none'; }
+  input.value='';
+  history.replaceState(null,'', location.pathname);
+}
 function load(url){
   const u = normalize(url);
   if(!u) return;
   input.value = u;
+  if(home) home.style.display='none';
+  if(frame){ frame.style.display='block'; frame.classList.add('active'); }
   const proxied = proxyPrefix()+'?url='+encodeURIComponent(u);
   frame.src = proxied;
   history.replaceState(null,'', proxyPrefix()+'.html?url='+encodeURIComponent(u));
 }
-function currentUrl(){
-  try{ return decodeURIComponent(new URL(frame.src).searchParams.get('url')||''); } catch{ return input.value; }
-}
 goBtn.addEventListener('click', ()=> load(input.value));
 input.addEventListener('keydown', e=>{ if(e.key==='Enter') load(input.value); });
 clearBtn.addEventListener('click', ()=>{ input.value=''; input.focus(); });
-backBtn.addEventListener('click', ()=>{ try{ frame.contentWindow.history.back(); }catch{ const u=currentUrl(); } });
-reloadBtn.addEventListener('click', ()=>{ try{ frame.contentWindow.location.reload(); }catch{ frame.src = frame.src; } });
+backBtn.addEventListener('click', ()=>{
+  try{
+    if(frame.style.display!=='none' && frame.contentWindow.history.length>1) frame.contentWindow.history.back();
+    else showHome();
+  }catch{ showHome(); }
+});
+reloadBtn.addEventListener('click', ()=>{
+  if(frame.style.display==='none') return;
+  try{ frame.contentWindow.location.reload(); }catch{ frame.src = frame.src; }
+});
 frame.addEventListener('load', ()=>{
   try{
     const u = new URL(frame.src);
@@ -39,11 +53,17 @@ frame.addEventListener('load', ()=>{
     if(target) input.value = decodeURIComponent(target);
   }catch{}
 });
-// quick load from query
+document.querySelectorAll('.quick-link').forEach(btn=>{
+  btn.addEventListener('click', ()=> load(btn.getAttribute('data-url')));
+});
+// init: only load if ?url= present, else blank home (no website)
 const q = new URLSearchParams(location.search).get('url');
-if(q) { input.value = decodeURIComponent(q); load(decodeURIComponent(q)); } else { load('https://github.com'); }
-// link: allow phone to share url
+if(q){
+  input.value = decodeURIComponent(q);
+  load(decodeURIComponent(q));
+} else {
+  showHome();
+}
 window.addEventListener('message', e=>{
-  // proxy helper inside iframe can post target url
   if(e.data && e.data.proxyUrl) input.value = e.data.proxyUrl;
 });

@@ -4,192 +4,49 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#e0f2fe" />
-<title>Browser — White & Light Blue</title>
-<link rel="stylesheet" href="./style.css?v=4" />
-<style>.welcome.hidden{display:none !important}</style>
+<title>Proxy — Phone</title>
+<link rel="stylesheet" href="./style.css?v=5" />
+<style>
+.proxy-app{min-height:100dvh;display:flex;flex-direction:column;background:#f0f9ff}
+.proxy-toolbar{display:flex;gap:8px;padding:10px;background:white;border-bottom:1px solid #e0f2fe;align-items:center;position:sticky;top:0;z-index:10}
+.proxy-omni{flex:1;display:flex;gap:8px;background:#e0f2fe;border:1px solid #bae6fd;border-radius:999px;padding:6px 12px;align-items:center}
+.proxy-omni input{flex:1;border:none;background:transparent;outline:none;font-size:14px}
+.proxy-frame-wrap{flex:1;background:white;display:flex;position:relative}
+.proxy-frame{flex:1;width:100%;height:calc(100dvh - 60px);border:none;background:white;display:none}
+.proxy-frame.active{display:block}
+.proxy-home{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;background:linear-gradient(180deg, white 0%, #f0f9ff 100%);min-height:calc(100dvh - 60px)}
+.proxy-home h1{margin:0 0 8px;color:#0369a1;font-size:28px;font-weight:800}
+.proxy-home p{margin:0;color:#475569;font-size:14px}
+.proxy-badge{padding:6px 10px;background:#0ea5e9;color:white;border:1px solid #0ea5e9;border-radius:999px;font-size:11px;font-weight:700}
+</style>
 </head>
 <body>
-<div class="app" id="app">
-  <!-- Topbar: Brand + Tabs -->
-  <header class="topbar">
-    <div class="brand" aria-label="Browser brand">
-      <span class="brand-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M2 12h20"></path>
-          <path d="M12 2a15 15 0 0 1 0 20"></path>
-          <path d="M12 2a15 15 0 0 0 0 20"></path>
-        </svg>
-      </span>
-      <span class="conn-dot" id="connDot" title="Connecting"></span>
+<div class="proxy-app">
+  <div class="proxy-toolbar">
+    <button class="icon-btn" id="pBack" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="icon-btn" id="pReload" aria-label="Reload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v6h-6"/></svg></button>
+    <div class="proxy-omni">
+      <span style="color:#16a34a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+      <input id="proxyInput" type="text" placeholder="Search or enter address" value="" autocomplete="off" spellcheck="false" />
+      <button id="proxyClear" style="border:none;background:transparent;cursor:pointer;color:#64748b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
-
-    <div class="tabs-wrap" id="tabsWrap">
-      <div class="tabs" role="tablist" aria-label="Tabs" id="tabs">
-        <button class="tab active" role="tab" aria-selected="true" data-tab="1">
-          <span class="tab-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-          </span>
-          <span class="tab-title" id="tabTitle">ksx.pages.dev</span>
-        </button>
-      </div>
-      <button class="new-tab-btn" id="newTabBtn" aria-label="New tab">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-      </button>
-    </div>
-
-
-  </header>
-
-  <!-- Toolbar: Navigation + Omnibox -->
-  <nav class="toolbar" aria-label="Navigation toolbar">
-    <div class="nav-group">
-      <button class="icon-btn" id="backBtn" aria-label="Back">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button class="icon-btn" id="forwardBtn" aria-label="Forward">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-      <button class="icon-btn" id="reloadBtn" aria-label="Reload">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v6h-6"/></svg>
-      </button>
-      <button class="icon-btn hide-mobile" id="homeBtn" aria-label="Home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10L12 3l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9z"/></svg>
-      </button>
-    </div>
-
-    <div class="omnibox" id="omnibox">
-      <span class="omnibox-icon lock" aria-hidden="true" id="lockIcon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1.2" fill="currentColor" stroke="none"/></svg>
-      </span>
-      <input id="addressInput" class="omnibox-input" type="text" placeholder="Search or enter address" value="https://ksx.pages.dev" autocomplete="off" spellcheck="false" />
-      <button class="omnibox-action" id="clearBtn" aria-label="Clear">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-      <span class="omnibox-divider" style="display:none"></span>
-    </div>
-
-    <div class="toolbar-extras">
-      <span class="fps-badge" id="fpsBadge" title="Frames per second">-- fps</span>
-      <a href="./proxy.html" class="fps-badge" style="text-decoration:none;background:#0ea5e9;color:white;border-color:#0ea5e9">Proxy • Phone</a>
-    </div>
-  </nav>
-
-  <!-- Viewport -->
-  <main class="viewport" id="viewport">
-    <div class="viewport-inner" id="viewportInner">
-      <!-- Real browser view (CDP screencast) -->
-      <div class="browser-view" id="browserView">
-        <div class="screen-wrap" id="screenWrap">
-          <img id="screen" alt="Browser screen" draggable="false" />
-          <canvas id="overlay" width="1280" height="720"></canvas>
-          <div class="loading" id="loading">
-            <div class="spinner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3a9 9 0 1 0 9 9" stroke-linecap="round"/></svg>
-            </div>
-            <span id="loadingText">Connecting to browser engine...</span>
-            <span class="loading-sub" id="loadingSub">Launching Chromium via CDP</span>
-          </div>
-          <div class="error-banner hidden" id="errorBanner">
-            <span class="error-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg></span>
-            <span id="errorText">Connection failed</span>
-            <button class="retry-btn" id="retryBtn">Retry</button>
-          </div>
-        </div>
-        <div class="screen-bar">
-          <span class="screen-dot" id="screenDot"></span>
-          <span id="screenUrl">https://ksx.pages.dev</span>
-          <span class="screen-size" id="screenSize">1280×720</span>
-        </div>
-      </div>
-
-      <!-- Fallback welcome (hidden, only for SEO) -->
-      <div class="welcome hidden" id="welcome" style="display:none">
-        <div class="welcome-icon">
-          <svg viewBox="0 0 64 64" fill="none" stroke="#0ea5e9" stroke-width="1.6">
-            <rect x="6" y="10" width="52" height="36" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/>
-            <rect x="6" y="10" width="52" height="10" rx="8" fill="#bae6fd" stroke="#7dd3fc"/>
-            <circle cx="14" cy="15" r="2.2" fill="#0ea5e9" stroke="none"/>
-            <circle cx="21" cy="15" r="2.2" fill="#38bdf8" stroke="none"/>
-            <circle cx="28" cy="15" r="2.2" fill="#7dd3fc" stroke="none"/>
-            <path d="M18 32h28M18 38h20" stroke="#0284c7" stroke-linecap="round"/>
-            <circle cx="48" cy="36" r="6" fill="white" stroke="#0ea5e9"/>
-            <path d="M45 36l2 2 4-4" stroke="#0ea5e9" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h1>White & Light Blue Browser</h1>
-        <p>Real Chromium via CDP screencast — not a placeholder. Animations at 15-25fps, JPEG diff.</p>
-        <div class="search-card">
-          <div class="search-input-wrap">
-            <span class="search-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
-            </span>
-            <input type="text" placeholder="Search the web" id="searchInput" />
-            <button class="search-go" id="searchGo" aria-label="Search">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </button>
-          </div>
-          <div class="quick-links">
-            <button class="quick-link" data-url="https://ksx.pages.dev">
-              <span class="ql-icon" style="background:#e0f2fe; color:#0284c7">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-              </span>
-              <span>ksx.pages.dev</span>
-            </button>
-            <button class="quick-link" data-url="https://example.com">
-              <span class="ql-icon" style="background:#fef9c3; color:#ca8a04">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
-              </span>
-              <span>Example</span>
-            </button>
-            <button class="quick-link" data-url="https://google.com">
-              <span class="ql-icon" style="background:#dcfce7; color:#15803d">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
-              </span>
-              <span>Google</span>
-            </button>
-            <button class="quick-link" data-url="https://github.com">
-              <span class="ql-icon" style="background:#ffe4e6; color:#e11d48">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 19c-4 1.2-4-2-5-2M16 22V18a2 2 0 0 0-.58-1.56s1.9-.2 3.9-1a4 4 0 0 0 1-2.6 4 4 0 0 0-1.1-2.8 4 4 0 0 0-.1-2.8s-.9-.3-3 1.1a10 10 0 0 0-5.4 0C9.6 8.3 8.7 8.6 8.7 8.6a4 4 0 0 0-.1 2.8A4 4 0 0 0 7.5 14.2a4 4 0 0 0 1 2.6c2 0.8 3.9 1 3.9 1A2 2 0 0 0 12 19v3"/></svg>
-              </span>
-              <span>GitHub</span>
-            </button>
-          </div>
-        </div>
-        <div class="status-row">
-          <span class="status-dot"></span>
-          <span id="statusText">Engine ready • SVG only</span>
-        </div>
+    <button class="mode-switch" id="goBtn" style="padding:6px 12px;border-radius:999px;background:#0ea5e9;color:white;border:none;font-weight:700;font-size:12px;cursor:pointer">Go</button>
+    <span class="proxy-badge">Proxy</span>
+  </div>
+  <div class="proxy-frame-wrap" id="frameWrap">
+    <div class="proxy-home" id="proxyHome">
+      <div style="width:84px;height:84px;margin-bottom:16px;color:#0ea5e9"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="10" width="52" height="36" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/><rect x="6" y="10" width="52" height="10" rx="8" fill="#bae6fd" stroke="#7dd3fc"/><circle cx="14" cy="15" r="2.2" fill="#0ea5e9" stroke="none"/><circle cx="21" cy="15" r="2.2" fill="#38bdf8" stroke="none"/><circle cx="28" cy="15" r="2.2" fill="#7dd3fc" stroke="none"/><path d="M18 32h28M18 38h20" stroke="#0284c7" stroke-linecap="round"/><circle cx="48" cy="36" r="6" fill="white" stroke="#0ea5e9"/><path d="M45 36l2 2 4-4" stroke="#0ea5e9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h1>Proxy Phone</h1>
+      <p>Code runs on your phone • Search or enter address above</p>
+      <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <button class="quick-link" data-url="https://duckduckgo.com" style="padding:10px 14px;border-radius:999px;border:1px solid #bae6fd;background:white;cursor:pointer;font-size:13px;font-weight:600;color:#0369a1">DuckDuckGo</button>
+        <button class="quick-link" data-url="https://github.com" style="padding:10px 14px;border-radius:999px;border:1px solid #bae6fd;background:white;cursor:pointer;font-size:13px;font-weight:600;color:#0369a1">GitHub</button>
+        <button class="quick-link" data-url="https://google.com" style="padding:10px 14px;border-radius:999px;border:1px solid #bae6fd;background:white;cursor:pointer;font-size:13px;font-weight:600;color:#0369a1">Google</button>
       </div>
     </div>
-  </main>
-
-  <!-- Mobile bottom bar -->
-  <nav class="mobile-bar" aria-label="Mobile navigation">
-    <button class="mobile-btn" id="mBack" aria-label="Back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M15 18l-6-6 6-6"/></svg>
-      <span>Back</span>
-    </button>
-    <button class="mobile-btn" id="mForward" aria-label="Forward">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M9 18l6-6-6-6"/></svg>
-      <span>Forward</span>
-    </button>
-    <button class="mobile-btn primary" id="mHome" aria-label="Home">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10L12 3l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9z"/></svg>
-      <span>Home</span>
-    </button>
-    <button class="mobile-btn" id="mRefresh" aria-label="Refresh">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v6h-6"/></svg>
-      <span>Refresh</span>
-    </button>
-    <button class="mobile-btn" id="mTabs" aria-label="Tabs">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg>
-      <span>Tabs</span>
-      <span class="badge">1</span>
-    </button>
-  </nav>
+    <iframe id="proxyFrame" class="proxy-frame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"></iframe>
+  </div>
 </div>
-
-<script src="./app.js?v=4"></script>
+<script src="./proxy.js?v=5"></script>
 </body>
 </html>

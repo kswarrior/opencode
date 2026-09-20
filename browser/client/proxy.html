@@ -4,17 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#e0f2fe" />
-<title>Proxy — Phone Executed</title>
-<link rel="stylesheet" href="./style.css?v=4" />
+<title>Proxy — Phone</title>
+<link rel="stylesheet" href="./style.css?v=5" />
 <style>
 .proxy-app{min-height:100dvh;display:flex;flex-direction:column;background:#f0f9ff}
 .proxy-toolbar{display:flex;gap:8px;padding:10px;background:white;border-bottom:1px solid #e0f2fe;align-items:center;position:sticky;top:0;z-index:10}
 .proxy-omni{flex:1;display:flex;gap:8px;background:#e0f2fe;border:1px solid #bae6fd;border-radius:999px;padding:6px 12px;align-items:center}
 .proxy-omni input{flex:1;border:none;background:transparent;outline:none;font-size:14px}
-.proxy-frame-wrap{flex:1;background:white;display:flex}
-.proxy-frame{flex:1;width:100%;height:calc(100dvh - 60px);border:none;background:white}
-.proxy-badge{padding:6px 10px;background:#e0f2fe;border:1px solid #bae6fd;border-radius:999px;font-size:11px;color:#0369a1}
-.mode-switch{padding:6px 12px;border-radius:999px;background:#0ea5e9;color:white;border:none;font-weight:700;font-size:12px;cursor:pointer}
+.proxy-frame-wrap{flex:1;background:white;display:flex;position:relative}
+.proxy-frame{flex:1;width:100%;height:calc(100dvh - 60px);border:none;background:white;display:none}
+.proxy-frame.active{display:block}
+.proxy-home{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;background:linear-gradient(180deg, white 0%, #f0f9ff 100%);min-height:calc(100dvh - 60px)}
+.proxy-home h1{margin:0 0 8px;color:#0369a1;font-size:28px;font-weight:800}
+.proxy-home p{margin:0;color:#475569;font-size:14px}
+.proxy-badge{padding:6px 10px;background:#0ea5e9;color:white;border:1px solid #0ea5e9;border-radius:999px;font-size:11px;font-weight:700}
 </style>
 </head>
 <body>
@@ -24,17 +27,26 @@
     <button class="icon-btn" id="pReload" aria-label="Reload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v6h-6"/></svg></button>
     <div class="proxy-omni">
       <span style="color:#16a34a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
-      <input id="proxyInput" type="text" placeholder="Search or enter address" value="https://github.com" autocomplete="off" spellcheck="false" />
+      <input id="proxyInput" type="text" placeholder="Search or enter address" value="" autocomplete="off" spellcheck="false" />
       <button id="proxyClear" style="border:none;background:transparent;cursor:pointer;color:#64748b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
-    <button class="mode-switch" id="goBtn">Go</button>
-    <span class="proxy-badge" id="modeBadge">Phone • Proxy</span>
-    <a href="/browser/" class="mode-switch" style="background:white;color:#0284c7;border:1px solid #bae6fd;text-decoration:none;display:grid;place-items:center">Screencast</a>
+    <button class="mode-switch" id="goBtn" style="padding:6px 12px;border-radius:999px;background:#0ea5e9;color:white;border:none;font-weight:700;font-size:12px;cursor:pointer">Go</button>
+    <span class="proxy-badge">Proxy</span>
   </div>
-  <div class="proxy-frame-wrap">
+  <div class="proxy-frame-wrap" id="frameWrap">
+    <div class="proxy-home" id="proxyHome">
+      <div style="width:84px;height:84px;margin-bottom:16px;color:#0ea5e9"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="10" width="52" height="36" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/><rect x="6" y="10" width="52" height="10" rx="8" fill="#bae6fd" stroke="#7dd3fc"/><circle cx="14" cy="15" r="2.2" fill="#0ea5e9" stroke="none"/><circle cx="21" cy="15" r="2.2" fill="#38bdf8" stroke="none"/><circle cx="28" cy="15" r="2.2" fill="#7dd3fc" stroke="none"/><path d="M18 32h28M18 38h20" stroke="#0284c7" stroke-linecap="round"/><circle cx="48" cy="36" r="6" fill="white" stroke="#0ea5e9"/><path d="M45 36l2 2 4-4" stroke="#0ea5e9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h1>Proxy Phone</h1>
+      <p>Code runs on your phone • Search or enter address above</p>
+      <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <button class="quick-link" data-url="https://duckduckgo.com" style="padding:10px 14px;border-radius:999px;border:1px solid #bae6fd;background:white;cursor:pointer;font-size:13px;font-weight:600;color:#0369a1">DuckDuckGo</button>
+        <button class="quick-link" data-url="https://github.com" style="padding:10px 14px;border-radius:999px;border:1px solid #bae6fd;background:white;cursor:pointer;font-size:13px;font-weight:600;color:#0369a1">GitHub</button>
+        <button class="quick-link" data-url="https://google.com" style="padding:10px 14px;border-radius:999px;border:1px solid #bae6fd;background:white;cursor:pointer;font-size:13px;font-weight:600;color:#0369a1">Google</button>
+      </div>
+    </div>
     <iframe id="proxyFrame" class="proxy-frame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"></iframe>
   </div>
 </div>
-<script src="./proxy.js?v=4"></script>
+<script src="./proxy.js?v=5"></script>
 </body>
 </html>
