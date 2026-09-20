@@ -2,7 +2,6 @@
 const input = document.getElementById('proxyInput');
 const frame = document.getElementById('proxyFrame');
 const home = document.getElementById('proxyHome');
-const goBtn = document.getElementById('goBtn');
 const clearBtn = document.getElementById('proxyClear');
 const searchBtn = document.getElementById('proxySearch');
 const backBtn = document.getElementById('pBack');
