@@ -211,7 +211,7 @@ static const char HTML_LOGIN[] =
 "  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='8.5' r='3.5' stroke='#1a73e8' stroke-width='1.6'/><path d='M5.5 18.5a6.5 6.5 0 0 1 13 0' stroke='#1a73e8' stroke-width='1.6' stroke-linecap='round'/><circle cx='12' cy='8.5' r='1.2' fill='#1a73e8' opacity='.12'/></svg></div>"
 "  <h2>Sign in</h2><p class='sub'>Welcome back</p>"
 "  <div id=\"authUser2\" style=\"display:none;font-size:12px;color:#5f6368;text-align:center;margin-bottom:12px;background:#f8f9fa;border:1px solid #e8eaed;border-radius:8px;padding:8px 10px\"><div style=\"font-weight:500;color:#202124\" id=\"authUsername2\"></div><div style=\"font-size:11px;color:#80868b\" id=\"authEmail2\"></div><div style=\"font-size:11px;color:#5f6368;margin-top:2px\">already logged in</div></div>"
-"  <form hx-post='/login' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"  <form hx-get='/login' hx-target='#msg' hx-swap='innerHTML' hx-include="[name='username'],[name='password']" style='margin-top:4px'>"
 "    <label>Username</label><input name='username' autocomplete='username' required>"
 "    <label>Password</label><input name='password' type='password' autocomplete='current-password' required>"
 "    <button type='submit' style='margin-top:18px'>Continue</button>"
@@ -225,7 +225,7 @@ static const char HTML_REGISTER[] =
 "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Create account</title><script src='https://unpkg.com/htmx.org@1.9.12'></script><style>:root{--blue:#1a73e8;--blue-dark:#0b57d0;--bg:#f8fbff;--card:#ffffff;--border:#e8f0fe;--text:#202124;--muted:#5f6368}*{box-sizing:border-box}body{font-family:'Google Sans',Roboto,Inter,system-ui,sans-serif;margin:0;background:linear-gradient(180deg,#f8fbff 0%%,#ffffff 100%%);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased} .wrap{width:100%%;max-width:440px;margin:0 auto} .center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px} .card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;box-shadow:0 1px 3px rgba(60,64,67,.12),0 8px 24px rgba(60,64,67,.08);animation:rise .5s cubic-bezier(.2,.8,.2,1)} .logo{width:48px;height:48px;margin:0 auto 14px;background:linear-gradient(135deg,#e8f0fe 0%%,#f0f7ff 100%%);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;animation:float 6s ease-in-out infinite} h1,h2{font-size:22px;font-weight:700;margin:0;text-align:center;letter-spacing:-0.3px} .sub{color:var(--muted);font-size:13px;text-align:center;margin:6px 0 22px} input{width:100%%;padding:13px 14px;border:1px solid #dadce0;border-radius:12px;font-size:14px;outline:none;transition:border .2s,box-shadow .2s;background:#fff} input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,232,.14)} label{font-size:13px;font-weight:500;color:var(--text);margin:12px 0 6px;display:block} button{width:100%%;padding:12px;border-radius:999px;background:var(--blue);color:#fff;border:0;font-weight:500;font-size:14px;cursor:pointer;transition:all .2s;box-shadow:0 1px 2px rgba(60,64,67,.30),0 1px 3px rgba(60,64,67,.15);letter-spacing:.1px} button:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 2px 8px rgba(26,115,232,.30)} button:active{transform:translateY(0)} .muted{color:var(--muted)} a{color:var(--blue);text-decoration:none;font-weight:500} a:hover{text-decoration:underline} @keyframes float{0%%,100%%{transform:translateY(0)}50%%{transform:translateY(-3px)}} @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style></head><body><div class='center'><div class='wrap'><div class='card'>"
 "  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='8.5' r='3.5' stroke='#1a73e8' stroke-width='1.6'/><path d='M5.5 18.5a6.5 6.5 0 0 1 13 0' stroke='#1a73e8' stroke-width='1.6' stroke-linecap='round'/><path d='M12 12.5v3' stroke='#1a73e8' stroke-width='1.4' stroke-linecap='round'/><circle cx='12' cy='12' r='9' stroke='#1a73e8' opacity='.10'/></svg></div>"
 "  <h2>Create account</h2><p class='sub'>Get started in seconds</p>"
-"  <form hx-post='/register' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"  <form hx-get='/register' hx-target='#msg' hx-swap='innerHTML' hx-include="[name='username'],[name='email'],[name='password'],[name='confirm']" style='margin-top:4px'>"
 "    <label>Username</label><input name='username' autocomplete='username' required>"
 "    <label>Email</label><input name='email' type='email' autocomplete='email' required>"
 "    <label>Password</label><input name='password' type='password' autocomplete='new-password' required>"
@@ -242,7 +242,7 @@ static const char HTML_LOGIN_TMPL[] =
 "  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='8.5' r='3.5' stroke='#1a73e8' stroke-width='1.6'/><path d='M5.5 18.5a6.5 6.5 0 0 1 13 0' stroke='#1a73e8' stroke-width='1.6' stroke-linecap='round'/></svg></div>"
 "  <h2>Sign in</h2><p class='sub'>Welcome back</p>"
 "  <div id=\"authUserTmpl\" style=\"display:none;font-size:12px;color:#5f6368;text-align:center;margin-bottom:12px;background:#f8f9fa;border:1px solid #e8eaed;border-radius:8px;padding:8px 10px\"><div style=\"font-weight:500;color:#202124\" id=\"authUsernameTmpl\"></div><div style=\"font-size:11px;color:#80868b\" id=\"authEmailTmpl\"></div><div style=\"font-size:11px;color:#5f6368;margin-top:2px\">already logged in</div></div>"
-"  <form hx-post='/login?redirect_uri=%s' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"  <form hx-get='/login' hx-target='#msg' hx-swap='innerHTML' hx-include="[name='username'],[name='password'],[name='redirect_uri']" style='margin-top:4px'>"
 "    <label>Username</label><input name='username' autocomplete='username' required>"
 "    <label>Password</label><input name='password' type='password' autocomplete='current-password' required>"
 "    <input type='hidden' name='redirect_uri' value='%s'>"
@@ -257,7 +257,7 @@ static const char HTML_REGISTER_TMPL[] =
 "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Create account</title><script src='https://unpkg.com/htmx.org@1.9.12'></script><style>:root{--blue:#1a73e8;--blue-dark:#0b57d0;--bg:#f8fbff;--card:#ffffff;--border:#e8f0fe;--text:#202124;--muted:#5f6368}*{box-sizing:border-box}body{font-family:'Google Sans',Roboto,Inter,system-ui,sans-serif;margin:0;background:linear-gradient(180deg,#f8fbff 0%%,#ffffff 100%%);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased} .wrap{width:100%%;max-width:440px;margin:0 auto} .center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px} .card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;box-shadow:0 1px 3px rgba(60,64,67,.12),0 8px 24px rgba(60,64,67,.08);animation:rise .5s cubic-bezier(.2,.8,.2,1)} .logo{width:48px;height:48px;margin:0 auto 14px;background:linear-gradient(135deg,#e8f0fe 0%%,#f0f7ff 100%%);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;animation:float 6s ease-in-out infinite} h1,h2{font-size:22px;font-weight:700;margin:0;text-align:center;letter-spacing:-0.3px} .sub{color:var(--muted);font-size:13px;text-align:center;margin:6px 0 22px} input{width:100%%;padding:13px 14px;border:1px solid #dadce0;border-radius:12px;font-size:14px;outline:none;transition:border .2s,box-shadow .2s;background:#fff} input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,232,.14)} label{font-size:13px;font-weight:500;color:var(--text);margin:12px 0 6px;display:block} button{width:100%%;padding:12px;border-radius:999px;background:var(--blue);color:#fff;border:0;font-weight:500;font-size:14px;cursor:pointer;transition:all .2s;box-shadow:0 1px 2px rgba(60,64,67,.30),0 1px 3px rgba(60,64,67,.15);letter-spacing:.1px} button:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 2px 8px rgba(26,115,232,.30)} button:active{transform:translateY(0)} .muted{color:var(--muted)} a{color:var(--blue);text-decoration:none;font-weight:500} a:hover{text-decoration:underline} @keyframes float{0%%,100%%{transform:translateY(0)}50%%{transform:translateY(-3px)}} @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style></head><body><div class='center'><div class='wrap'><div class='card'>"
 "  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='8.5' r='3.5' stroke='#1a73e8' stroke-width='1.6'/><path d='M5.5 18.5a6.5 6.5 0 0 1 13 0' stroke='#1a73e8' stroke-width='1.6' stroke-linecap='round'/></svg></div>"
 "  <h2>Create account</h2><p class='sub'>Get started in seconds</p>"
-"  <form hx-post='/register?redirect_uri=%s' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"  <form hx-get='/register' hx-target='#msg' hx-swap='innerHTML' hx-include="[name='username'],[name='email'],[name='password'],[name='confirm'],[name='redirect_uri']" style='margin-top:4px'>"
 "    <label>Username</label><input name='username' autocomplete='username' required>"
 "    <label>Email</label><input name='email' type='email' autocomplete='email' required>"
 "    <label>Password</label><input name='password' type='password' autocomplete='new-password' required>"
@@ -275,7 +275,7 @@ static const char HTML_LOGIN_SITE_TMPL[] =
 "  <h2>Sign in</h2><p class='sub'>Secure connection <span style='display:inline-flex;align-items:center;gap:4px;background:#e6f4ea;color:#137333;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:500;vertical-align:middle'><svg width='12' height='12' viewBox='0 0 24 24' fill='none'><path d='M9 12l2 2 4-4' stroke='#137333' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/><circle cx='12' cy='12' r='9' stroke='#137333' stroke-width='1.2' opacity='.9'/></svg> Verified</span></p>"
 "  <div style='background:#f8fbff;border:1px solid var(--border);border-radius:12px;padding:10px 12px;margin-bottom:16px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);overflow:hidden'><svg width='14' height='14' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='9' stroke='#5f6368' stroke-width='1.2' opacity='.5'/><path d='M12 8v5' stroke='#5f6368' stroke-width='1.4' stroke-linecap='round'/></svg><span style='overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>Site %s</span></div>"
 "  <div id=\"authUser\" style=\"display:none;font-size:12px;color:#5f6368;text-align:center;margin-bottom:12px;background:#f8f9fa;border:1px solid #e8eaed;border-radius:8px;padding:8px 10px\"><div style=\"font-weight:500;color:#202124\" id=\"authUsername\"></div><div style=\"font-size:11px;color:#80868b\" id=\"authEmail\"></div><div style=\"font-size:11px;color:#5f6368;margin-top:2px\">already logged in</div></div>"
-"  <form hx-post='/login?site_token=%s' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"  <form hx-get='/login' hx-target='#msg' hx-swap='innerHTML' hx-include="[name='username'],[name='password'],[name='site_token']" style='margin-top:4px'>"
 "    <label>Username</label><input name='username' autocomplete='username' required>"
 "    <label>Password</label><input name='password' type='password' autocomplete='current-password' required>"
 "    <input type='hidden' name='site_token' value='%s'>"
@@ -432,6 +432,46 @@ static void handle_client(int cfd){
         else send_response(cfd,200,"OK","text/html; charset=utf-8",HTML_LOGIN,strlen(HTML_LOGIN));
     } else if(strcmp(path,"/login")==0){
         if(strcmp(method,"GET")==0){
+            // Also handle login via GET query (for hx-get workaround for Render POST body issue)
+            char q_user[128]="", q_pass[128]="", q_site[512]="";
+            get_query_param(fullpath,"username",q_user,sizeof(q_user));
+            get_query_param(fullpath,"password",q_pass,sizeof(q_pass));
+            get_query_param(fullpath,"site_token",q_site,sizeof(q_site));
+            if(q_user[0] && q_pass[0]){
+                // treat as login attempt via GET (HTMX hx-get)
+                char login_user[128]=""; strncpy(login_user,q_user,127);
+                char dec_lu[128]; url_decode(dec_lu, login_user); strncpy(login_user,dec_lu,127);
+                char site_token_q[512]=""; strncpy(site_token_q,q_site,511);
+                char callback_q[1024]="";
+                int is_site_q=0;
+                if(site_token_q[0]) is_site_q=verify_site_token(site_token_q, callback_q, sizeof(callback_q), buf);
+                char redirect_uri_q[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri_q,sizeof(redirect_uri_q));
+                if(!is_site_q){
+                    if(redirect_uri_q[0]){ char dec[1024]; url_decode(dec, redirect_uri_q); strncpy(callback_q,dec,1023); }
+                    else {
+                        if(has_substr(buf,"localhost")) snprintf(callback_q,sizeof(callback_q),"http://localhost:8080/auth/callback");
+                        else snprintf(callback_q,sizeof(callback_q),"https://opencode-bnao.onrender.com/auth/callback");
+                    }
+                }
+                const char *jwt=get_jwt();
+                char cookie[2048]; snprintf(cookie,sizeof(cookie),"token=%s",jwt);
+                char loc[2048]; snprintf(loc,sizeof(loc),"%s?token=%s",callback_q,jwt);
+                char body_ok[4096];
+                snprintf(body_ok,sizeof(body_ok),
+                    "<div style=\"color:#137333;background:#e6f4ea;border:1px solid #b7dfb9;padding:12px;border-radius:8px;text-align:center\">"
+                    "✅ Login successful for <b>%s</b><br><span style=\"font-size:12px;color:#5f6368\">Redirecting…</span></div>"
+                    "<script>setTimeout(function(){window.location='%s'},700)</script>",
+                    login_user[0]?login_user:"user", loc);
+                char h[8192];
+                int hl=snprintf(h,sizeof(h),
+                    "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: %zu\r\nConnection: close\r\n"
+                    "Set-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\n"
+                    "Cache-Control: no-store\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Headers: *\r\nAccess-Control-Allow-Credentials: true\r\n\r\n",
+                    strlen(body_ok), cookie);
+                send(cfd,h,hl,MSG_NOSIGNAL);
+                send(cfd,body_ok,strlen(body_ok),MSG_NOSIGNAL);
+                return;
+            }
             // Check site_token first (new random 120 token flow)
             char site_token[512]=""; get_query_param(fullpath,"site_token",site_token,sizeof(site_token));
             char cb_site[1024]="";
@@ -518,6 +558,71 @@ static void handle_client(int cfd){
             }
         }    } else if(strcmp(path,"/register")==0){
         if(strcmp(method,"GET")==0){
+            // Also handle register via GET query (for hx-get workaround)
+            char q_user[128]="", q_email[128]="", q_pass[128]="", q_confirm[128]="";
+            get_query_param(fullpath,"username",q_user,sizeof(q_user));
+            get_query_param(fullpath,"email",q_email,sizeof(q_email));
+            get_query_param(fullpath,"password",q_pass,sizeof(q_pass));
+            get_query_param(fullpath,"confirm",q_confirm,sizeof(q_confirm));
+            if(q_user[0] && q_email[0] && q_pass[0]){
+                char dec_u[128], dec_e[128], dec_p[128], dec_c[128];
+                url_decode(dec_u, q_user); url_decode(dec_e, q_email); url_decode(dec_p, q_pass); url_decode(dec_c, q_confirm);
+                if(dec_c[0] && strcmp(dec_p,dec_c)!=0){
+                    const char *b="<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px\">❌ Passwords do not match</div>";
+                    send_response(cfd,400,"Bad Request","text/html",b,strlen(b));
+                    return;
+                }
+                const char *jwt=get_jwt();
+                const char *turso=getenv("TURSO_DATABASE_URL");
+                const char *turso_token=getenv("TURSO_AUTH_TOKEN");
+                char turso_msg[256]="";
+                if(turso_token && *turso_token && turso && *turso){
+                    char https_url[512]; snprintf(https_url,sizeof(https_url),"%s",turso);
+                    if(strncmp(https_url,"turso://",8)==0){ char tmp[512]; snprintf(tmp,sizeof(tmp),"https://%s",https_url+8); strncpy(https_url,tmp,511); }
+                    char cmd[8192];
+                    snprintf(cmd,sizeof(cmd),
+                        "curl -s -X POST '%s/v2/pipeline' -H 'Authorization: Bearer %s' -H 'Content-Type: application/json' "
+                        "-d '{"requests":[{"type":"execute","stmt":{"sql":"CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, username TEXT, email TEXT, password TEXT, created INTEGER)"}},"
+                        "{"type":"execute","stmt":{"sql":"INSERT OR REPLACE INTO users (id, username, email, password, created) VALUES (?,?,?,?,?)",\"args\":[{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"integer\",\"value\":\"%ld\"}]}}]}' > /tmp/turso_register.log 2>&1",
+                        https_url, turso_token, dec_u, dec_u, dec_e, dec_p, (long)time(NULL));
+                    int rc=system(cmd); (void)rc;
+                    snprintf(turso_msg,sizeof(turso_msg),"Turso: %s -> users/%s (%s)", https_url, dec_u, rc==0?"pipeline sent":"curl failed");
+                } else {
+                    snprintf(turso_msg,sizeof(turso_msg),"⚠️ TURSO_AUTH_TOKEN not set — saved in-memory only");
+                    FILE *f=fopen("/tmp/auth_users.json","a"); if(f){ fprintf(f,"{\"username\":\"%s\",\"email\":\"%s\",\"time\":%ld}\n",dec_u,dec_e,(long)time(NULL)); fclose(f); }
+                }
+                char *acc_url=getenv("ACCOUNT_URL");
+                if(acc_url && *acc_url){
+                    char fwd[4096];
+                    snprintf(fwd,sizeof(fwd),"curl -s -X POST '%s/api/account' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=%s&email=%s&bio=created+via+auth' -H 'Cookie: token=%s' > /tmp/auth_forward.log 2>&1 &", acc_url, dec_u, dec_e, jwt);
+                    system(fwd);
+                }
+                char redirect_uri2[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri2,sizeof(redirect_uri2));
+                char callback2[1024]="";
+                if(redirect_uri2[0]){ char dec[1024]; url_decode(dec, redirect_uri2); strncpy(callback2,dec,1023); }
+                else{
+                    if(has_substr(buf,"localhost")) snprintf(callback2,sizeof(callback2),"http://localhost:8080/auth/callback");
+                    else snprintf(callback2,sizeof(callback2),"https://opencode-bnao.onrender.com/auth/callback");
+                }
+                char cookie[2048]; snprintf(cookie,sizeof(cookie),"token=%s",jwt);
+                char loc[2048]; snprintf(loc,sizeof(loc),"%s?token=%s",callback2,jwt);
+                char body_html[4096];
+                snprintf(body_html,sizeof(body_html),
+                    "<div style=\"color:#137333;background:#e6f4ea;border:1px solid #b7dfb9;padding:12px;border-radius:8px;text-align:center\">"
+                    "✅ Account created for <b>%s</b> (%s)<br><span style=\"font-size:12px;color:#5f6368\">%s</span><br>"
+                    "<span style=\"font-size:12px;color:#137333\">Redirecting…</span></div>"
+                    "<script>setTimeout(function(){window.location='%s'},900)</script>",
+                    dec_u, dec_e, turso_msg, loc);
+                char h[8192];
+                int hl=snprintf(h,sizeof(h),
+                    "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: %zu\r\nConnection: close\r\n"
+                    "Set-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\n"
+                    "Cache-Control: no-store\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Headers: *\r\nAccess-Control-Allow-Credentials: true\r\n\r\n",
+                    strlen(body_html), cookie);
+                send(cfd,h,hl,MSG_NOSIGNAL);
+                send(cfd,body_html,strlen(body_html),MSG_NOSIGNAL);
+                return;
+            }
             char redirect_uri[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
             if(!redirect_uri[0]){
                 if(has_substr(buf,"localhost")) strcpy(redirect_uri,"http://localhost:8080/auth/callback");
