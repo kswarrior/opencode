@@ -605,15 +605,11 @@ button:focus-visible, input:focus-visible{outline:2px solid var(--blue-300);outl
   transition:.15s
 }
 #proxySearch{
-  opacity:0;
-  pointer-events:none;
+  opacity:1;
+  pointer-events:auto;
   transition:.15s
 }
 .proxy-omni:focus-within #proxyClear{
-  opacity:1;
-  pointer-events:auto
-}
-.proxy-omni:focus-within #proxySearch{
   opacity:1;
   pointer-events:auto
 }
