@@ -7,6 +7,7 @@ server
 !main/.env
 !auth/.env
 !account/.env
+!stats/.env
 !.env.example
 # docker
 .docker/
