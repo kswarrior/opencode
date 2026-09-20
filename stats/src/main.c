@@ -139,9 +139,10 @@ static int load_sites(const char *path){
             {"main","https://opencode-bnao.onrender.com/health","Main (production on Render)", 30},
             {"auth","https://opencode-gn2y.onrender.com/health","Auth (production on Render)", 45},
             {"account","https://opencode-7waf.onrender.com/health","Account (production on Render)", 60},
+            {"Stats","https://ks-stats-l1z3.onrender.com/","Stats (production on Render)", 30},
         };
-        for(int i=0;i<3;i++) if(defaults[i].interval==0) defaults[i].interval=di;
         int n=sizeof(defaults)/sizeof(defaults[0]);
+        for(int i=0;i<n;i++) if(defaults[i].interval==0) defaults[i].interval=di;
         for(int i=0;i<n && site_count<MAX_SITES;i++){
             sites[site_count]=defaults[i];
             memset(&statuses[site_count],0,sizeof(Status));

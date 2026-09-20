@@ -414,29 +414,103 @@ static void handle_client(int cfd){
             if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
             else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
         } else {
-            int ok = has_substr(body,"username=") && has_substr(body,"email=") && has_substr(body,"password=");
+            char username[128]="", email[128]="", password[128]="", confirm[128]="";
+            char *pu=strstr(body,"username="); if(pu) sscanf(pu,"username=%127[^& \r\n]",username);
+            char *pe=strstr(body,"email="); if(pe) sscanf(pe,"email=%127[^& \r\n]",email);
+            char *pp=strstr(body,"password="); if(pp) sscanf(pp,"password=%127[^& \r\n]",password);
+            char *pc=strstr(body,"confirm="); if(pc) sscanf(pc,"confirm=%127[^& \r\n]",confirm);
+            char dec_u[128], dec_e[128], dec_p[128], dec_c[128];
+            url_decode(dec_u, username); url_decode(dec_e, email); url_decode(dec_p, password); url_decode(dec_c, confirm);
+            strncpy(username,dec_u,127); strncpy(email,dec_e,127); strncpy(password,dec_p,127); strncpy(confirm,dec_c,127);
+            // trim spaces
+            for(char *c=username;*c;c++) if(*c=='+') *c=' ';
+            for(char *c=email;*c;c++) if(*c=='+') *c=' ';
+            int ok = username[0] && email[0] && password[0];
+            if(ok && confirm[0] && strcmp(password,confirm)!=0){
+                const char *b="<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px\">❌ Passwords do not match</div>";
+                send_response(cfd,400,"Bad Request","text/html",b,strlen(b));
+                return;
+            }
+            if(!ok){
+                const char *b="<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px\">❌ missing username/email/password — please fill all fields</div>";
+                send_response(cfd,400,"Bad Request","text/html",b,strlen(b));
+                return;
+            }
             const char *jwt=get_jwt();
-            if(ok){
-                printf("[auth] register ok turso=%s\n", getenv("TURSO_DATABASE_URL")?getenv("TURSO_DATABASE_URL"):"(none)"); fflush(stdout);
-                // Also save to account via internal HTTP? For demo, just log. Real would POST to https://opencode-7waf.onrender.com/api/account
-                char *acc_url=getenv("ACCOUNT_URL");
-                if(acc_url){
-                    char cmd[2048];
-                    snprintf(cmd,sizeof(cmd),"curl -s -X POST '%s/api/account' -d 'username=demo&email=demo@example.com' -H 'Cookie: token=%s' > /tmp/auth_register.log 2>&1 &", acc_url, jwt);
-                    // fire and forget
-                    // system(cmd); // disabled for low RAM demo, just log
+            const char *turso=getenv("TURSO_DATABASE_URL");
+            const char *turso_token=getenv("TURSO_AUTH_TOKEN");
+            char turso_msg[256]="";
+            printf("[auth] register user='%s' email='%s' turso='%s' token='%s'\n", username, email, turso?turso:"(none)", turso_token && *turso_token ? "set" : "empty"); fflush(stdout);
+            if(turso_token && *turso_token && turso && *turso){
+                char https_url[512]; snprintf(https_url,sizeof(https_url),"%s",turso);
+                if(strncmp(https_url,"turso://",8)==0){
+                    char tmp[512]; snprintf(tmp,sizeof(tmp),"https://%s",https_url+8);
+                    strncpy(https_url,tmp,511);
                 }
-                char cookie[2048]; snprintf(cookie,sizeof(cookie),"token=%s",jwt);
-                char loc[1024]="https://opencode-bnao.onrender.com/auth/callback?token=";
-                strncat(loc,jwt,500);
-                if(is_hx){
-                    send_hx_redirect(cfd, loc, cookie);
-                } else {
-                    char h[2048]; int hl=snprintf(h,sizeof(h),"HTTP/1.1 302 Found\r\nLocation: %s\r\nSet-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\nContent-Length: 0\r\nConnection: close\r\n\r\n", loc, cookie);
-                    send(cfd,h,hl,MSG_NOSIGNAL);
-                }
+                // create table + insert (id = username to allow multiple users)
+                char cmd[8192];
+                // Note: username/email assumed simple (alnum + @ . _ -); for production escape JSON
+                snprintf(cmd,sizeof(cmd),
+                    "curl -s -X POST '%s/v2/pipeline' -H 'Authorization: Bearer %s' -H 'Content-Type: application/json' "
+                    "-d '{\"requests\":[{\"type\":\"execute\",\"stmt\":{\"sql\":\"CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, username TEXT, email TEXT, password TEXT, created INTEGER)\"}},"
+                    "{\"type\":\"execute\",\"stmt\":{\"sql\":\"INSERT OR REPLACE INTO users (id, username, email, password, created) VALUES (?,?,?,?,?)\",\"args\":[{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"text\",\"value\":\"%s\"},{\"type\":\"integer\",\"value\":\"%ld\"}]}}]}' "
+                    "> /tmp/turso_register.log 2>&1",
+                    https_url, turso_token, username, username, email, password, (long)time(NULL));
+                int rc=system(cmd);
+                (void)rc;
+                snprintf(turso_msg,sizeof(turso_msg),"Turso: %s -> users/%s (%s)", https_url, username, rc==0?"pipeline sent":"curl failed");
+                // also log result
+                FILE *lf=fopen("/tmp/turso_register.log","r");
+                if(lf){ char l[512]; if(fgets(l,sizeof(l),lf)) printf("[auth] turso log: %s\n",l); fclose(lf); }
             } else {
-                const char *b="<div style=\"color:red\">❌ missing fields (username,email,password)</div>"; send_response(cfd,400,"Bad Request","text/html",b,strlen(b));
+                snprintf(turso_msg,sizeof(turso_msg),"⚠️ TURSO_AUTH_TOKEN not set — saved in-memory + /tmp/auth_users.json only (Rows Written will stay 0 in dashboard)");
+                FILE *f=fopen("/tmp/auth_users.json","a");
+                if(f){ fprintf(f,"{\"username\":\"%s\",\"email\":\"%s\",\"time\":%ld}\n",username,email,(long)time(NULL)); fclose(f); }
+            }
+            // forward to account service with real data (async)
+            char *acc_url=getenv("ACCOUNT_URL");
+            if(acc_url && *acc_url){
+                char fwd[4096];
+                snprintf(fwd,sizeof(fwd),
+                    "curl -s -X POST '%s/api/account' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=%s&email=%s&bio=created+via+auth' -H 'Cookie: token=%s' > /tmp/auth_forward.log 2>&1 &",
+                    acc_url, username, email, jwt);
+                int rc2=system(fwd);
+                (void)rc2;
+            }
+            // determine redirect target (support redirect_uri like login)
+            char redirect_uri[1024]=""; get_query_param(fullpath,"redirect_uri",redirect_uri,sizeof(redirect_uri));
+            if(!redirect_uri[0]){
+                char *rp=strstr(body,"redirect_uri=");
+                if(rp){ sscanf(rp,"redirect_uri=%1023[^& \r\n]",redirect_uri); char dec2[1024]; url_decode(dec2, redirect_uri); strncpy(redirect_uri,dec2,1023); }
+            }
+            char callback[1024]="";
+            if(redirect_uri[0]){
+                char dec[1024]; url_decode(dec, redirect_uri); strncpy(callback,dec,1023);
+            } else {
+                if(has_substr(buf,"localhost")) snprintf(callback,sizeof(callback),"http://localhost:8080/auth/callback");
+                else snprintf(callback,sizeof(callback),"https://opencode-bnao.onrender.com/auth/callback");
+            }
+            char cookie[2048]; snprintf(cookie,sizeof(cookie),"token=%s",jwt);
+            char loc[2048]; snprintf(loc,sizeof(loc),"%s?token=%s",callback,jwt);
+            if(is_hx){
+                char body_html[4096];
+                snprintf(body_html,sizeof(body_html),
+                    "<div style=\"color:#137333;background:#e6f4ea;border:1px solid #b7dfb9;padding:12px;border-radius:8px;text-align:center\">"
+                    "✅ Account created for <b>%s</b> (%s)<br><span style=\"font-size:12px;color:#5f6368\">%s</span><br>"
+                    "<span style=\"font-size:12px;color:#137333\">Redirecting…</span></div>"
+                    "<script>setTimeout(function(){window.location='%s'},900)</script>",
+                    username, email, turso_msg, loc);
+                char h[8192];
+                int hl=snprintf(h,sizeof(h),
+                    "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: %zu\r\nConnection: close\r\n"
+                    "HX-Redirect: %s\r\nSet-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\n"
+                    "Cache-Control: no-store\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Headers: *\r\nAccess-Control-Allow-Credentials: true\r\n\r\n",
+                    strlen(body_html), loc, cookie);
+                send(cfd,h,hl,MSG_NOSIGNAL);
+                send(cfd,body_html,strlen(body_html),MSG_NOSIGNAL);
+            } else {
+                char h[4096]; int hl=snprintf(h,sizeof(h),"HTTP/1.1 302 Found\r\nLocation: %s\r\nSet-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\nContent-Length: 0\r\nConnection: close\r\n\r\n", loc, cookie);
+                send(cfd,h,hl,MSG_NOSIGNAL);
             }
         }
     } else if(strcmp(path,"/fragment")==0){

@@ -16,5 +16,11 @@
     "url": "https://opencode-7waf.onrender.com/health",
     "description": "Account (production on Render)",
     "interval": 60
+  },
+  {
+    "name": "Stats",
+    "url": "https://ks-stats-l1z3.onrender.com/",
+    "description": "Stats (production on Render)",
+    "interval": 30
   }
 ]
