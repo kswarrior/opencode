@@ -112,7 +112,6 @@ function load(url){
   renderTabs();
   history.replaceState(null,'', proxyPrefix()+'.html?url='+encodeURIComponent(u));
 }
-if(goBtn) goBtn.addEventListener('click', ()=> load(input.value));
 if(searchBtn) searchBtn.addEventListener('click', ()=> load(input.value));
 input.addEventListener('keydown', e=>{ if(e.key==='Enter') load(input.value); });
 clearBtn.addEventListener('click', ()=>{ input.value=''; input.focus(); });
