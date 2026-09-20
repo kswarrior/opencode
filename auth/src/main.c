@@ -65,9 +65,14 @@ static int get_site_token_sum(const char *prefix){
     if(prefix && *prefix){
         snprintf(key,sizeof(key),"%s_TOKEN_SUM",prefix);
         const char *e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+        snprintf(key,sizeof(key),"%s_SUM",prefix);
+        e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     }
     const char *e=getenv("TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     e=getenv("MAIN_TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("MAIN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("TOTAL_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("SITE_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     return 280;
 }
 static int get_site_skip_front(const char *prefix){
@@ -75,9 +80,16 @@ static int get_site_skip_front(const char *prefix){
     if(prefix && *prefix){
         snprintf(key,sizeof(key),"%s_TOKEN_SKIP_FRONT",prefix);
         const char *e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+        snprintf(key,sizeof(key),"%s_SKIP_FRONT",prefix);
+        e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+        snprintf(key,sizeof(key),"%s_SKIP",prefix);
+        e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     }
     const char *e=getenv("TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     e=getenv("MAIN_TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("TOKEN_SKIP"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("MAIN_SKIP"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     return 25;
 }
 static int get_site_skip_back(const char *prefix){
@@ -85,9 +97,16 @@ static int get_site_skip_back(const char *prefix){
     if(prefix && *prefix){
         snprintf(key,sizeof(key),"%s_TOKEN_SKIP_BACK",prefix);
         const char *e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+        snprintf(key,sizeof(key),"%s_SKIP_BACK",prefix);
+        e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+        snprintf(key,sizeof(key),"%s_SKIP",prefix);
+        e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     }
     const char *e=getenv("TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     e=getenv("MAIN_TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("TOKEN_SKIP"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("MAIN_SKIP"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
     return 25;
 }
 static int verify_site_token_ex(const char *token, char *cb_out, size_t cb_sz, const char *req_buf, char *site_out, size_t site_sz){
