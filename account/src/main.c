@@ -51,19 +51,7 @@ static void load_dotenv(void){
 static char last_account_json[2048] = "{\"id\":\"01a0bb01-2010-7f5b-894d-d2688e9a2291\",\"username\":\"demo\",\"email\":\"demo@example.com\",\"rid\":\"b4f29c9f-7cff-4ffd-b854-29dc87164f71\"}";
 
 static const char HTML_MAIN[] =
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Account — Hello</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px}button,input{padding:10px;border-radius:8px;border:1px solid #ccc;box-sizing:border-box}button{background:#111;color:#fff;border:0;cursor:pointer}input{width:100%;margin:6px 0}.muted{color:#666}pre{background:#f6f6f6;padding:10px;border-radius:8px;overflow:auto}</style></head><body><div class=\"card\">\n"
-"  <h1>Account Service ✅</h1><p class=\"muted\">C + HTMX — Turso save — SSO like Google</p>\n"
-"  <p>Auth: <a href=\"https://opencode-gn2y.onrender.com/login\">login</a> | Main: <a href=\"https://opencode-bnao.onrender.com/\">main</a> | <a href=\"/logout\">logout</a></p>\n"
-"  <hr><h3>Save account (HTMX → Turso)</h3><div style=\"font-size:12px;color:#666\">Turso: <code>turso://account-kswarriorgh-th1.aws-ap-south-1.turso.io</code> | JWT id=01a0bb01-...</div>\n"
-"  <form hx-post=\"/api/account\" hx-target=\"#res\" hx-swap=\"innerHTML\" style=\"margin-top:10px\">\n"
-"    <input name=\"username\" placeholder=\"username\" value=\"demo\">\n"
-"    <input name=\"email\" placeholder=\"email\" value=\"demo@example.com\">\n"
-"    <input name=\"bio\" placeholder=\"bio (optional)\">\n"
-"    <button type=\"submit\">Save to Turso via HTMX</button>\n"
-"  </form><div id=\"res\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;\"> — result — </div>\n"
-"  <h4 style=\"margin-top:16px\">Last saved (GET /api/me)</h4><button hx-get=\"/api/me\" hx-target=\"#me\" hx-swap=\"innerHTML\">Load /api/me</button><pre id=\"me\">— click load —</pre>\n"
-"  <script>if(!document.cookie.includes('token=')){var t=localStorage.getItem('token'); if(t) document.cookie='token='+t+'; Path=/';}</script>\n"
-"</div></body></html>\n";
+"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>hello world</title></head><body>hello world</body></html>\n";
 
 static const char HTML_FRAG[] = "<div><b>Fragment from Account</b> — at <span id=\"t\"></span><script>document.getElementById('t').textContent=new Date().toLocaleTimeString()</script> ✅</div>";
 
