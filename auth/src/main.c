@@ -320,6 +320,8 @@ static void url_decode(char *d, const char *s){
 }
 
 static void handle_client(int cfd){
+    // make blocking for full read
+    int _flags=fcntl(cfd,F_GETFL,0); if(_flags!=-1) fcntl(cfd,F_SETFL,_flags & ~O_NONBLOCK);
     char buf[BUF_SIZE];
     ssize_t n=recv(cfd,buf,sizeof(buf)-1,0);
     if(n<=0) return;
@@ -466,8 +468,8 @@ static void handle_client(int cfd){
                     send(cfd,h,hl,MSG_NOSIGNAL);
                 }
             } else {
-                const char *b="<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px;text-align:center\">❌ Login failed — missing username/password</div>";
-                send_response(cfd,400,"Bad Request","text/html",b,strlen(b));
+                char dbg[2048]; snprintf(dbg,sizeof(dbg),"<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px;text-align:center\">❌ Login failed — missing username/password<br><small>body='%s' len=%d</small></div>", body, (int)strlen(body));
+                send_response(cfd,400,"Bad Request","text/html",dbg,strlen(dbg));
             }
         }    } else if(strcmp(path,"/register")==0){
         if(strcmp(method,"GET")==0){
@@ -499,8 +501,8 @@ static void handle_client(int cfd){
                 return;
             }
             if(!ok){
-                const char *b="<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px\">❌ missing username/email/password — please fill all fields</div>";
-                send_response(cfd,400,"Bad Request","text/html",b,strlen(b));
+                char dbg2[2048]; snprintf(dbg2,sizeof(dbg2),"<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px\">❌ missing username/email/password — please fill all fields<br><small>body='%s' len=%d</small></div>", body, (int)strlen(body));
+                send_response(cfd,400,"Bad Request","text/html",dbg2,strlen(dbg2));
                 return;
             }
             const char *jwt=get_jwt();
