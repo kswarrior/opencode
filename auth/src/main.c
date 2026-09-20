@@ -398,19 +398,33 @@ static void handle_client(int cfd){
                 strncpy(callback, redirect_uri, sizeof(callback)-1);
             }
             if(ok){
-                printf("[auth] login ok user, %s %s\n", is_site?"site_token":"redirect", is_site?site_token:callback); fflush(stdout);
+                char login_user[128]=""; char *lu=strstr(body,"username="); if(lu) sscanf(lu,"username=%127[^& \r\n]",login_user); char dec_lu[128]; url_decode(dec_lu, login_user); strncpy(login_user,dec_lu,127);
+                printf("[auth] login ok user='%s' %s %s\n", login_user, is_site?"site_token":"redirect", is_site?site_token:callback); fflush(stdout);
                 const char *turso=getenv("TURSO_DATABASE_URL");
                 if(turso) printf("[auth] turso %s would save user\n",turso);
                 char cookie[2048]; snprintf(cookie,sizeof(cookie),"token=%s",jwt);
                 char loc[2048]; snprintf(loc,sizeof(loc),"%s?token=%s",callback,jwt);
                 if(is_hx){
-                    send_hx_redirect(cfd, loc, cookie);
+                    char body_ok[4096];
+                    snprintf(body_ok,sizeof(body_ok),
+                        "<div style=\"color:#137333;background:#e6f4ea;border:1px solid #b7dfb9;padding:12px;border-radius:8px;text-align:center\">"
+                        "✅ Login successful for <b>%s</b><br><span style=\"font-size:12px;color:#5f6368\">Redirecting…</span></div>"
+                        "<script>setTimeout(function(){window.location='%s'},700)</script>",
+                        login_user[0]?login_user:"user", loc);
+                    char h[8192];
+                    int hl=snprintf(h,sizeof(h),
+                        "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: %zu\r\nConnection: close\r\n"
+                        "Set-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\n"
+                        "Cache-Control: no-store\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Headers: *\r\nAccess-Control-Allow-Credentials: true\r\n\r\n",
+                        strlen(body_ok), cookie);
+                    send(cfd,h,hl,MSG_NOSIGNAL);
+                    send(cfd,body_ok,strlen(body_ok),MSG_NOSIGNAL);
                 } else {
                     char h[2048]; int hl=snprintf(h,sizeof(h),"HTTP/1.1 302 Found\r\nLocation: %s\r\nSet-Cookie: %s; Path=/; HttpOnly; SameSite=Lax\r\nContent-Length: 0\r\nConnection: close\r\n\r\n", loc, cookie);
                     send(cfd,h,hl,MSG_NOSIGNAL);
                 }
             } else {
-                const char *b="<div style=\"color:red\">❌ missing username/password — try again</div>";
+                const char *b="<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px;text-align:center\">❌ Login failed — missing username/password</div>";
                 send_response(cfd,400,"Bad Request","text/html",b,strlen(b));
             }
         }    } else if(strcmp(path,"/register")==0){
