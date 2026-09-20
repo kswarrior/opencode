@@ -1,6 +1,8 @@
 services:
   main:
-    build: ./main
+    build:
+      context: .
+      dockerfile: ./main/Dockerfile
     restart: unless-stopped
     expose:
       - "8080"
@@ -20,7 +22,9 @@ services:
           cpus: '0.5'
 
   auth:
-    build: ./auth
+    build:
+      context: .
+      dockerfile: ./auth/Dockerfile
     restart: unless-stopped
     expose:
       - "8081"
@@ -39,7 +43,9 @@ services:
           cpus: '0.5'
 
   account:
-    build: ./account
+    build:
+      context: .
+      dockerfile: ./account/Dockerfile
     restart: unless-stopped
     expose:
       - "8082"
@@ -58,7 +64,9 @@ services:
           cpus: '0.5'
 
   stats:
-    build: ./stats
+    build:
+      context: .
+      dockerfile: ./stats/Dockerfile
     restart: unless-stopped
     expose:
       - "8083"

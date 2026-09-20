@@ -3,6 +3,7 @@ services:
     name: main
     env: docker
     dockerfilePath: ./main/Dockerfile
+    dockerContext: .
     healthCheckPath: /health
     autoDeploy: true
     branch: main
@@ -20,6 +21,7 @@ services:
     name: auth
     env: docker
     dockerfilePath: ./auth/Dockerfile
+    dockerContext: .
     healthCheckPath: /health
     autoDeploy: true
     branch: main
@@ -37,6 +39,7 @@ services:
     name: account
     env: docker
     dockerfilePath: ./account/Dockerfile
+    dockerContext: .
     healthCheckPath: /health
     autoDeploy: true
     branch: main
