@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { WebSocketServer } = require('ws');
 
 const PORT = parseInt(process.env.PORT || '8084', 10);
 const CLIENT_DIR = path.join(__dirname, 'client');
