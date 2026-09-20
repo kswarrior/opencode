@@ -307,8 +307,30 @@ async function handleProxy(req, res){
       outHeaders['content-length']= Buffer.byteLength(html);
       res.writeHead(resp.status, outHeaders);
       res.end(html);
+    } else if(ct.includes('text/css')){
+      // Rewrite url(...) inside proxied stylesheets so fonts/backgrounds keep working.
+      // Relative url(foo.png) resolves against the CSS file's own proxy URL? No:
+      // it resolves against the proxy URL, so rewrite absolute + root-relative forms.
+      let css = buf.toString('utf8');
+      try{
+        const host = req.headers.host || 'localhost';
+        const proto = req.headers['x-forwarded-proto'] || (host.includes('localhost')||host.includes('127.0.0.1') ? 'http' : 'https');
+        const isBrowserPath = req.url.startsWith('/browser/') || (req.url.split('?')[0]).startsWith('/browser/');
+        const px = `${proto}://${host}${isBrowserPath ? '/browser/proxy' : '/proxy'}`;
+        const origin = targetUrl.origin;
+        css = css.replace(/url\(\s*(['"]?)\/(?!\/)([^'")]+)\1\s*\)/gi,
+          (m, q, p)=> `url(${q}${px}?url=${encodeURIComponent(origin+'/'+p)}${q})`);
+        css = css.replace(/url\(\s*(['"]?)https?:\/\/[^'")]+['"]?\s*\)/gi, (m)=>{
+          const mm = m.match(/(https?:\/\/[^'")\s]+)/);
+          if(mm && !mm[1].includes('/proxy?url=')) return m.replace(mm[1], `${px}?url=${encodeURIComponent(mm[1])}`);
+          return m;
+        });
+      }catch(e){}
+      const out = Buffer.from(css, 'utf8');
+      res.writeHead(resp.status, {...outHeaders, 'content-type': 'text/css; charset=utf-8', 'content-length': out.length});
+      res.end(out);
     } else {
-      res.writeHead(resp.status, {...outHeaders, 'content-type': ct || 'application/octet-stream'});
+      res.writeHead(resp.status, {...outHeaders, 'content-type': ct || 'application/octet-stream', 'content-length': buf.length});
       res.end(buf);
     }
     return true;
@@ -324,12 +346,23 @@ const MIME = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.js': 'application/javascript; charset=utf-8',
+  '.mjs': 'application/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.map': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
+  '.avif': 'image/avif',
   '.ico': 'image/x-icon',
   '.webp': 'image/webp',
+  '.woff': 'font/woff',
   '.woff2': 'font/woff2',
+  '.ttf': 'font/ttf',
+  '.eot': 'application/vnd.ms-fontobject',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
 };
 function mimeFor(p) {
   const e = path.extname(p).toLowerCase();
@@ -337,10 +370,13 @@ function mimeFor(p) {
 }
 
 // ---------- http static ----------
+// NOTE: this build is proxy-only (no Chromium). The working phone UI is
+// proxy.html, so `/` and `/browser/` serve it. The CDP stub UI stays
+// available at /index.html for debugging.
 function serveStatic(req, res) {
-  let urlPath = req.url.split('?')[0];
-  if (urlPath === '/' || urlPath === '/browser/' || urlPath === '/browser') urlPath = '/index.html';
-  if (urlPath.startsWith('/browser/')) urlPath = urlPath.slice(8) || '/index.html';
+  let urlPath = decodeURIComponent(req.url.split('?')[0]);
+  if (urlPath === '/' || urlPath === '/browser/' || urlPath === '/browser') urlPath = '/proxy.html';
+  if (urlPath.startsWith('/browser/')) urlPath = urlPath.slice(8) || '/proxy.html';
   if (urlPath === '/health') {
     res.writeHead(200, { 'Content-Type': 'text/plain', 'Cache-Control': 'no-store', 'Access-Control-Allow-Origin': '*' });
     res.end('ok browser proxy\n');
@@ -354,7 +390,7 @@ function serveStatic(req, res) {
   try {
     let stat = null;
     try { stat = fs.statSync(filePath); } catch {}
-    if (stat && stat.isDirectory()) filePath = path.join(filePath, 'index.html');
+    if (stat && stat.isDirectory()) filePath = path.join(filePath, 'proxy.html');
     if (!stat || !stat.isFile()) {
       res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', 'Access-Control-Allow-Origin': '*' });
       res.end(`<!doctype html><html><head><meta charset=utf-8><title>404</title><style>body{font-family:system-ui;background:#f0f9ff;color:#0369a1;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0}.c{background:white;border:1px solid #bae6fd;border-radius:18px;padding:28px;box-shadow:0 8px 24px rgba(2,132,199,.08);text-align:center}</style></head><body><div class=c><h1>404</h1><p>Not found</p><p><a href=/>Home</a></p></div></body></html>`);
@@ -391,7 +427,7 @@ const server = http.createServer((req, res) => {
     req.url.startsWith('/proxy?') || strippedFull.startsWith('/proxy?') ||
     req.url.startsWith('/browser/proxy') || pp.startsWith('/browser/proxy')
   );
-  const isProxyStatic = (pp === '/proxy.html' || pp === '/proxy.js' || pp === '/browser/proxy.html' || stripped === '/proxy.html' || stripped === '/proxy.js');
+  const isProxyStatic = (pp === '/proxy.html' || pp === '/proxy.js' || pp === '/browser/proxy.html' || pp === '/browser/proxy.js' || stripped === '/proxy.html' || stripped === '/proxy.js');
   if (isProxyApi && !isProxyStatic) {
     handleProxy(req, res).catch(e=>{
       try { res.writeHead(500, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'}); res.end('proxy error '+e.message); } catch {}
@@ -411,9 +447,12 @@ function handleWebSocket(ws, req) {
   ws.on('message', (data) => {
     try {
       const msg = JSON.parse(data.toString());
-      console.log('[ws] recv', msg);
+      console.log('[ws] recv', msg.type, (msg.url||'').slice(0,120));
       if (msg.type === 'navigate') {
-        ws.send(JSON.stringify({ type: 'hello', msg: 'CDP stub - navigation requested to ' + msg.url }));
+        ws.send(JSON.stringify({ type: 'error', message: 'No Chromium in this build — use the Proxy UI at /proxy.html (e.g. /proxy?url=' + encodeURIComponent(msg.url||'https://example.com') + ')' }));
+      } else if (['back','forward','reload','viewport','mouse','key'].includes(msg.type)) {
+        // CDP stub: acknowledge so clients don't hang; no frames are produced in proxy-only mode.
+        if(msg.type === 'viewport') ws.send(JSON.stringify({ type: 'ready', url: '', width: msg.width||1280, height: msg.height||720 }));
       }
     } catch (e) {
       console.log('[ws] parse error', e.message);
@@ -421,7 +460,7 @@ function handleWebSocket(ws, req) {
   });
   ws.on('close', () => console.log('[ws] closed'));
   ws.on('error', (e) => console.log('[ws] error', e.message));
-  ws.send(JSON.stringify({ type: 'hello', msg: 'Browser proxy WebSocket ready (CDP stub)' }));
+  ws.send(JSON.stringify({ type: 'hello', msg: 'Browser proxy-only build (no Chromium). Use /proxy.html for phone-executed browsing.', proxyOnly: true }));
 }
 
 server.on('upgrade', (req, socket, head) => {
