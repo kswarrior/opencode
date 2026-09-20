@@ -15,6 +15,7 @@
 #include <time.h>
 #include <pthread.h>
 #include <sys/time.h>
+#include "index_html.h"
 
 #define DEFAULT_PORT 8083
 #define SERVICE_NAME "stats"
@@ -413,13 +414,23 @@ static void build_status_json(char *out, size_t outsz){
 
 static void build_fragment(char *out, size_t outsz){
     pthread_mutex_lock(&status_lock);
-    int off=snprintf(out,outsz,"<div style=\"overflow:auto\"><table style=\"width:100%%;border-collapse:collapse;font-size:14px\"><tr style=\"background:#f0f0f0;text-align:left\"><th style=\"padding:8px;border:1px solid #ddd\">Name</th><th style=\"padding:8px;border:1px solid #ddd\">URL</th><th style=\"padding:8px;border:1px solid #ddd\">Status</th><th style=\"padding:8px;border:1px solid #ddd\">Code</th><th style=\"padding:8px;border:1px solid #ddd\">Latency</th><th style=\"padding:8px;border:1px solid #ddd\">Interval</th><th style=\"padding:8px;border:1px solid #ddd\">Last check</th></tr>");
+    int off=snprintf(out,outsz,
+        "<div style=\"background:#fff;border:1px solid #e0f2fe;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,.06)\">"
+        "<div style=\"overflow:auto\"><table style=\"width:100%%;border-collapse:collapse;font-size:13px\">"
+        "<thead><tr style=\"background:#f8fcff;text-align:left\">"
+        "<th style=\"padding:12px 14px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;border-bottom:1px solid #e0f2fe\">Name</th>"
+        "<th style=\"padding:12px 14px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;border-bottom:1px solid #e0f2fe\">Status</th>"
+        "<th style=\"padding:12px 14px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;border-bottom:1px solid #e0f2fe;text-align:center\">Code</th>"
+        "<th style=\"padding:12px 14px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;border-bottom:1px solid #e0f2fe;text-align:center\">Latency</th>"
+        "<th style=\"padding:12px 14px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;border-bottom:1px solid #e0f2fe;text-align:center\">Interval</th>"
+        "<th style=\"padding:12px 14px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;border-bottom:1px solid #e0f2fe\">Last check</th>"
+        "</tr></thead><tbody>");
     for(int i=0;i<site_count;i++){
         const char *badge;
-        const char *color;
-        if(statuses[i].up==1){ badge="● UP"; color="#0a0"; }
-        else if(statuses[i].up==2){ badge="● DOWN"; color="#d00"; }
-        else { badge="○ UNKNOWN"; color="#888"; }
+        const char *bg; const char *bd; const char *fg;
+        if(statuses[i].up==1){ badge="● UP"; bg="#f0fdf4"; bd="#bbf7d0"; fg="#15803d"; }
+        else if(statuses[i].up==2){ badge="● DOWN"; bg="#fef2f2"; bd="#fecaca"; fg="#b91c1c"; }
+        else { badge="○ UNKNOWN"; bg="#f8fafc"; bd="#e2e8f0"; fg="#64748b"; }
         char ago[64]="never";
         if(statuses[i].last_checked){
             long diff=time(NULL)-statuses[i].last_checked;
@@ -427,29 +438,31 @@ static void build_fragment(char *out, size_t outsz){
             else if(diff<3600) snprintf(ago,sizeof(ago),"%ldm ago",diff/60);
             else snprintf(ago,sizeof(ago),"%ldh ago",diff/3600);
         }
-        char errpart[160]="";
-        if(statuses[i].error[0]) snprintf(errpart,sizeof(errpart),"<div style=\"font-size:11px;color:#666\">%s</div>", statuses[i].error);
+        char errpart[180]="";
+        if(statuses[i].error[0]) snprintf(errpart,sizeof(errpart),"<div style=\"font-size:11px;color:#b91c1c;margin-top:4px\">%s</div>", statuses[i].error);
         int iv=sites[i].interval; if(iv<=0) iv=get_interval();
         off+=snprintf(out+off,outsz-off,
-            "<tr><td style=\"padding:8px;border:1px solid #ddd\"><b>%s</b><div style=\"font-size:11px;color:#666\">%s</div></td>"
-            "<td style=\"padding:8px;border:1px solid #ddd;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap\"><a href=\"%s\" target=\"_blank\" style=\"color:#0366d6\">%s</a></td>"
-            "<td style=\"padding:8px;border:1px solid #ddd;color:%s;font-weight:700\">%s%s</td>"
-            "<td style=\"padding:8px;border:1px solid #ddd;text-align:center\">%d</td>"
-            "<td style=\"padding:8px;border:1px solid #ddd;text-align:center\">%ldms</td>"
-            "<td style=\"padding:8px;border:1px solid #ddd;text-align:center\">%ds</td>"
-            "<td style=\"padding:8px;border:1px solid #ddd;font-size:12px\">%s</td></tr>",
-            sites[i].name, sites[i].description,
-            sites[i].url, sites[i].url,
-            color, badge, errpart,
+            "<tr style=\"border-top:1px solid #f1f5f9\">"
+            "<td style=\"padding:14px\"><div style=\"font-weight:700;color:#0f172a\">%s</div><div style=\"font-size:11px;color:#64748b;margin-top:2px\">%s</div><div style=\"font-size:11px;color:#64748b;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:4px\">%s</div></td>"
+            "<td style=\"padding:14px\"><span style=\"display:inline-block;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.04em;background:%s;border:1px solid %s;color:%s\">%s</span>%s</td>"
+            "<td style=\"padding:14px;text-align:center;font-family:ui-monospace,monospace;font-size:12px\">%d</td>"
+            "<td style=\"padding:14px;text-align:center;font-family:ui-monospace,monospace;font-size:12px\">%ldms</td>"
+            "<td style=\"padding:14px;text-align:center;font-size:12px\">%ds</td>"
+            "<td style=\"padding:14px;font-size:12px;color:#64748b;white-space:nowrap\">%s</td></tr>",
+            sites[i].name, sites[i].description, sites[i].url,
+            bg,bd,fg,badge,errpart,
             statuses[i].http_code,
             statuses[i].latency_ms,
             iv,
             ago
         );
-        if(off > (int)outsz - 800) break;
+        if(off > (int)outsz - 900) break;
     }
-    off+=snprintf(out+off,outsz-off,"</table></div><div style=\"margin-top:8px;font-size:12px;color:#666\">Last check: %s | Default interval: %ds (per-site override via json) | <a href=\"/api/status\" target=\"_blank\">/api/status JSON</a> | <a href=\"/api/sites\" target=\"_blank\">/api/sites</a></div>",
-        last_check_all? ctime(&last_check_all):"never", get_interval());
+    if(site_count==0){
+        off+=snprintf(out+off,outsz-off,"<tr><td colspan=\"6\" style=\"padding:28px;text-align:center;color:#94a3b8\">No sites configured.</td></tr>");
+    }
+    off+=snprintf(out+off,outsz-off,"</tbody></table></div><div style=\"padding:12px 14px;background:#f8fcff;border-top:1px solid #e0f2fe;font-size:12px;color:#64748b;display:flex;gap:12px;flex-wrap:wrap;align-items:center\"><span>Last check: %s</span><span style=\"width:1px;height:14px;background:#e0f2fe;display:inline-block\"></span><span>%d sites</span><span style=\"margin-left:auto\"><a href=\"/api/status\" target=\"_blank\" style=\"color:#0284c7;text-decoration:none\">/api/status</a> &middot; <a href=\"/api/sites\" target=\"_blank\" style=\"color:#0284c7;text-decoration:none\">/api/sites</a></span></div></div>",
+        last_check_all? ctime(&last_check_all):"never", site_count);
     pthread_mutex_unlock(&status_lock);
 }
 
@@ -471,31 +484,8 @@ static void handle_client(int cfd){
     int is_head=strcmp(method,"HEAD")==0;
     // routes
     if(strcmp(path,"/")==0 || strcmp(path,"/index.html")==0){
-        char status_json[8192]; build_status_json(status_json,sizeof(status_json));
-        // count up/down for summary
-        pthread_mutex_lock(&status_lock);
-        int up=0, down=0, unk=0;
-        for(int i=0;i<site_count;i++){ if(statuses[i].up==1) up++; else if(statuses[i].up==2) down++; else unk++; }
-        pthread_mutex_unlock(&status_lock);
-        char frag[8192]; build_fragment(frag,sizeof(frag));
-        char html[16384];
-        snprintf(html,sizeof(html),
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Stats — Monitor</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:960px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}.muted{color:#666}.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}.up{background:#e6f4ea;color:#137333}.down{background:#fce8e6;color:#c5221f}.unk{background:#f1f3f4;color:#5f6368}button{padding:8px 14px;border-radius:8px;background:#111;color:#fff;border:0;cursor:pointer}pre{background:#f6f6f6;padding:10px;border-radius:8px;overflow:auto;font-size:12px}a{color:#0366d6}code{background:#f1f3f4;padding:1px 4px;border-radius:4px}</style></head><body><div class=\"card\">\n"
-"  <h1>📊 Stats Monitor ✅</h1><p class=\"muted\">C + epoll — monitors all websites via <code>sites.json</code> — per-site <code>interval</code> in JSON (default %d s) — <code>GET /api/status</code> JSON</p>\n"
-"  <p><span class=\"badge up\">%d UP</span> <span class=\"badge down\">%d DOWN</span> <span class=\"badge unk\">%d UNKNOWN</span> <span style=\"margin-left:12px;color:#666\">%d sites</span></p>\n"
-"  <p><a href=\"/api/status\" target=\"_blank\">/api/status</a> · <a href=\"/api/sites\" target=\"_blank\">/api/sites</a> · <a href=\"/health\">/health</a> · <a href=\"/fragment\" target=\"_blank\">/fragment</a> · Auth: <a href=\"https://opencode-gn2y.onrender.com/\">auth</a> · Main: <a href=\"https://opencode-bnao.onrender.com/\">main</a></p>\n"
-"  <div style=\"margin:10px 0;padding:10px;background:#fffbe6;border:1px solid #ffeaa7;border-radius:8px;font-size:13px\">Config: <code>%s</code> — edit <code>./stats/sites.json</code> add <code>{\"name\":\"...\",\"url\":\"https://...\",\"interval\":30}</code> per-site seconds. Global env <code>MONITOR_INTERVAL</code> (current default %ds) used if no <code>interval</code> in JSON.</div>\n"
-"  <div style=\"display:flex;gap:8px;margin:12px 0\"><button hx-post=\"/api/check\" hx-target=\"#res\" hx-swap=\"innerHTML\">🔄 Check now (POST /api/check)</button><button hx-get=\"/fragment\" hx-target=\"#stats\" hx-swap=\"innerHTML\">↻ Refresh</button></div><div id=\"res\" style=\"font-size:13px;color:#666\"></div>\n"
-"  <div id=\"stats\" hx-get=\"/fragment\" hx-trigger=\"load, every 5s\" hx-swap=\"innerHTML\">%s</div>\n"
-"  <hr style=\"margin-top:20px\"><details><summary>Raw JSON (/api/status)</summary><pre id=\"raw\">%s</pre></details>\n"
-"  <p class=\"muted\" style=\"font-size:12px;margin-top:16px\">C epoll single-thread + monitor pthread — low RAM &lt;1MB — `curl` per-site interval — updates via HTMX `hx-get` every 5s</p>\n"
-"</div></body></html>\n",
-            get_interval(), up, down, unk, site_count,
-            get_sites_path(), get_interval(),
-            frag, status_json
-        );
-        if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
-        else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
+        if(is_head) { send_response(cfd,200,"OK","text/html; charset=utf-8","",0); }
+        else { send_response(cfd,200,"OK","text/html; charset=utf-8",INDEX_HTML,strlen(INDEX_HTML)); }
     } else if(strcmp(path,"/fragment")==0){
         char frag[8192]; build_fragment(frag,sizeof(frag));
         if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
