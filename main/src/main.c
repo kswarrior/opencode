@@ -47,14 +47,6 @@ static void load_dotenv(void){
         fclose(f);
     }
 }
-static void ws_send_text(int fd,const char *msg){
-    size_t len=strlen(msg);
-    unsigned char hdr[10]; hdr[0]=0x81; int hlen=2;
-    if(len<126){hdr[1]=len;}
-    else if(len<65536){hdr[1]=126; hdr[2]=(len>>8)&0xFF; hdr[3]=len&0xFF; hlen=4;}
-    else {hdr[1]=127; for(int i=0;i<8;i++) hdr[2+i]=(len>>(56-8*i))&0xFF; hlen=10;}
-    send(fd,hdr,hlen,MSG_NOSIGNAL); send(fd,msg,len,MSG_NOSIGNAL);
-}
 static const char HTML_REDIRECT[] = "<!doctype html><html><head><meta charset=\"utf-8\"><meta http-equiv=\"refresh\" content=\"0; url=%s/login?redirect_uri=%s/auth/callback\"><title>Redirect</title></head><body>Redirecting to auth...</body></html>";
 static const char HTML_FRAG[] = "<div><b>Fragment from Main</b> — at <span id=\"t\"></span><script>document.getElementById('t').textContent=new Date().toLocaleTimeString()</script> ✅</div>";
 static void send_response(int fd,int st,const char *txt,const char *ct,const char *b,size_t bl){
@@ -125,12 +117,11 @@ static void handle_client(int cfd){
         // Use %% for % in CSS
         snprintf(html,sizeof(html),
 "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Main — Hello</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px}.muted{color:#666}button{padding:8px 14px;border-radius:8px;background:#111;color:#fff;border:0;cursor:pointer}pre{background:#f6f6f6;padding:10px;border-radius:8px;overflow:auto}</style></head><body><div class=\"card\">\n"
-"  <h1>Main ✅ (SSO authed)</h1><p class=\"muted\">Google-like SSO — token from auth, WS keepalive ks</p>\n"
+"  <h1>Main ✅ (SSO authed)</h1><p class=\"muted\">Google-like SSO — token from auth</p>\n"
 "  <p>Auth: <a href=\"%s/login\">auth</a> | Account: <a href=\"%s/\">account</a> | <a href=\"%s/logout\">logout all</a></p>\n"
 "  <hr><h3>Account data (via account)</h3><button hx-get=\"%s/api/me\" hx-target=\"#acct\" hx-swap=\"innerHTML\">Load account (HTMX)</button><pre id=\"acct\">— click —</pre>\n"
 "  <h3>Save account (Turso)</h3><form hx-post=\"%s/api/account\" hx-target=\"#saveRes\" hx-swap=\"innerHTML\"><input name=\"username\" placeholder=\"username\" style=\"padding:8px;width:100%%;box-sizing:border-box;margin:4px 0\" value=\"demo\"><input name=\"email\" placeholder=\"email\" style=\"padding:8px;width:100%%;box-sizing:border-box;margin:4px 0\" value=\"demo@example.com\"><button type=\"submit\">Save to Turso</button></form><div id=\"saveRes\" style=\"margin-top:10px;padding:10px;background:#f6f6f6;border-radius:8px;\">— result —</div>\n"
 "  <hr><button hx-get=\"/fragment\" hx-target=\"#frag\" hx-swap=\"innerHTML\">Load fragment</button><div id=\"frag\" style=\"margin-top:8px;padding:10px;background:#f6f6f6;border-radius:8px;\"> — </div>\n"
-"  <script>(function(){var u=(location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws';var ws;function c(){ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1)ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks')ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};ws.onerror=function(){ws.close();};}c();})();</script>\n"
 "  <script>if(!document.cookie.includes('token=')){var t=localStorage.getItem('token'); if(t) document.cookie='token='+t+'; Path=/';}</script>\n"
 "</div></body></html>\n", auth_url, acct_url, auth_url, acct_url, acct_url);
         if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
@@ -138,22 +129,6 @@ static void handle_client(int cfd){
     } else if(strcmp(path,"/fragment")==0){
         if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
         else send_response(cfd,200,"OK","text/html; charset=utf-8",HTML_FRAG,strlen(HTML_FRAG));
-    } else if(strcmp(path,"/ws")==0){
-        if(strstr(buf,"Upgrade: websocket")||strstr(buf,"Upgrade: WebSocket")||strstr(buf,"upgrade: websocket")){
-            const char *resp="HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: x3JJHMbDL1EzLkh9GBhXDw==\r\n\r\n";
-            send(cfd,resp,strlen(resp),MSG_NOSIGNAL);
-            int flags=fcntl(cfd,F_GETFL,0); fcntl(cfd,F_SETFL,flags&~O_NONBLOCK);
-            ws_send_text(cfd,"ks");
-            char rbuf[512];
-            while(keep_running){
-                ssize_t r=recv(cfd,rbuf,sizeof(rbuf),0);
-                if(r<=0) break;
-                // simple: if payload contains ks, echo ks
-                int found=0; for(int i=0;i<r-1;i++) if(rbuf[i]=='k'&&rbuf[i+1]=='s') found=1;
-                if(found) ws_send_text(cfd,"ks");
-            }
-            return;
-        } else {const char *b="WSS ready"; send_response(cfd,426,"Upgrade Required","text/plain",b,strlen(b));}
     } else if(strcmp(path,"/events")==0){
         const char *hdr="HTTP/1.1 200 OK\r\nContent-Type: text/event-stream\r\nCache-Control: no-cache\r\nConnection: keep-alive\r\nAccess-Control-Allow-Origin: *\r\n\r\n";
         send(cfd,hdr,strlen(hdr),MSG_NOSIGNAL);

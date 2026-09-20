@@ -47,39 +47,12 @@ static void load_dotenv(void){
     }
 }
 
-// WS helpers
-static void ws_send_text(int fd, const char *msg){
-    size_t len=strlen(msg);
-    unsigned char hdr[10];
-    hdr[0]=0x81; // FIN + text
-    int hlen=2;
-    if(len<126){ hdr[1]=len; }
-    else if(len<65536){ hdr[1]=126; hdr[2]=(len>>8)&0xFF; hdr[3]=len&0xFF; hlen=4; }
-    else { hdr[1]=127; for(int i=0;i<8;i++) hdr[2+i]=(len>>(56-8*i))&0xFF; hlen=10; }
-    send(fd,hdr,hlen,MSG_NOSIGNAL);
-    send(fd,msg,len,MSG_NOSIGNAL);
-}
-static int ws_handle(int cfd){
-    // already did handshake, now keep alive loop for "ks"
-    // Send initial ks
-    ws_send_text(cfd,"ks");
-    // Set to blocking for simple loop? Keep non-blocking but use poll
-    // For low RAM, just loop with recv and echo, with timeout
-    // We will handle one message and then keep connection open via epoll - for now just echo and keep
-    // To keep Render awake, we need to keep fd open; return 1 means keep open
-    return 1;
-}
-
 static const char HTML_MAIN[] =
 "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Auth — Hello</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px}a.btn,button{padding:8px 14px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;cursor:pointer;text-decoration:none;display:inline-block}.muted{color:#666}input{padding:8px;border:1px solid #ccc;border-radius:6px;width:100%;box-sizing:border-box;margin:6px 0}</style></head><body><div class=\"card\">\n"
 "  <h1>Auth Service ✅</h1><p class=\"muted\">C + HTMX — login / register — low RAM | SSO like Google</p>\n"
 "  <p><a class=\"btn\" href=\"/login\">Login</a> <a class=\"btn\" href=\"/register\">Register</a> <a class=\"btn\" href=\"/me\" style=\"background:#fff;color:#111\">Me</a></p>\n"
 "  <p>Main: <a href=\"https://opencode-bnao.onrender.com/\">main</a> | Account: <a href=\"https://opencode-7waf.onrender.com/\">account</a></p>\n"
 "  <hr><h3>HTMX demo</h3><button hx-get=\"/fragment\" hx-target=\"#frag\" hx-swap=\"innerHTML\">Load fragment</button><div id=\"frag\" style=\"margin-top:12px;padding:12px;background:#f6f6f6;border-radius:8px;\"> — click — </div>\n"
-"  <script>\n"
-"    // WS keepalive like Google — sends ks every 25s to keep Render 24/7\n"
-"    (function(){var u=(location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws';var ws;function conn(){ws=new WebSocket(u);ws.onopen=function(){console.log('ws auth open'); setInterval(function(){if(ws.readyState===1) ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks') ws.send('ks');};ws.onclose=function(){setTimeout(conn,3000);};}conn();})();\n"
-"  </script>\n"
 "</div></body></html>\n";
 
 static const char HTML_LOGIN[] =
