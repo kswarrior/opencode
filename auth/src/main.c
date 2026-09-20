@@ -376,6 +376,7 @@ static void handle_client(int cfd){
             char *tu=strstr(body,"username="); if(tu) sscanf(tu,"username=%127[^& \r\n]",tmp_user);
             char *tp=strstr(body,"password="); if(tp) sscanf(tp,"password=%127[^& \r\n]",tmp_pass);
             char dec_tu[128], dec_tp[128]; url_decode(dec_tu, tmp_user); url_decode(dec_tp, tmp_pass);
+            printf("[auth] login debug body='%s' tmp_user='%s' tmp_pass='%s' dec_tu='%s' dec_tp='%s' ok=%d\n", body, tmp_user, tmp_pass, dec_tu, dec_tp, dec_tu[0]&&dec_tp[0]); fflush(stdout);
             int ok = dec_tu[0] && dec_tp[0];
             const char *jwt=get_jwt();
             // Prefer site_token flow
