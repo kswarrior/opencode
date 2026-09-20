@@ -57,6 +57,24 @@ services:
           memory: 32M
           cpus: '0.5'
 
+  stats:
+    build: ./stats
+    restart: unless-stopped
+    expose:
+      - "8083"
+    ports:
+      - "8083:8083"
+    env_file:
+      - .env
+      - ./stats/.env
+    environment:
+      - MONITOR_INTERVAL=30
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+          cpus: '0.5'
+
   gateway:
     image: nginx:alpine
     restart: unless-stopped
@@ -68,6 +86,7 @@ services:
       - main
       - auth
       - account
+      - stats
     deploy:
       resources:
         limits:
