@@ -490,15 +490,15 @@ static void handle_client(int cfd){
         char frag[8192]; build_fragment(frag,sizeof(frag));
         char html[16384];
         snprintf(html,sizeof(html),
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Stats — Monitor</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:960px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}.muted{color:#666}.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}.up{background:#e6f4ea;color:#137333}.down{background:#fce8e6;color:#c5221f}.unk{background:#f1f3f4;color:#5f6368}button{padding:8px 14px;border-radius:8px;background:#111;color:#fff;border:0;cursor:pointer}pre{background:#f6f6f6;padding:10px;border-radius:8px;overflow:auto;font-size:12px}a{color:#0366d6}</style></head><body><div class=\"card\">\n"
-"  <h1>📊 Stats Monitor ✅</h1><p class=\"muted\">C + epoll — monitors all websites via <code>sites.json</code> — every %d s — <code>GET /api/status</code> JSON</p>\n"
+"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Stats — Monitor</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:960px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}.muted{color:#666}.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}.up{background:#e6f4ea;color:#137333}.down{background:#fce8e6;color:#c5221f}.unk{background:#f1f3f4;color:#5f6368}button{padding:8px 14px;border-radius:8px;background:#111;color:#fff;border:0;cursor:pointer}pre{background:#f6f6f6;padding:10px;border-radius:8px;overflow:auto;font-size:12px}a{color:#0366d6}code{background:#f1f3f4;padding:1px 4px;border-radius:4px}</style></head><body><div class=\"card\">\n"
+"  <h1>📊 Stats Monitor ✅</h1><p class=\"muted\">C + epoll — monitors all websites via <code>sites.json</code> — per-site <code>interval</code> in JSON (default %d s) — <code>GET /api/status</code> JSON</p>\n"
 "  <p><span class=\"badge up\">%d UP</span> <span class=\"badge down\">%d DOWN</span> <span class=\"badge unk\">%d UNKNOWN</span> <span style=\"margin-left:12px;color:#666\">%d sites</span></p>\n"
 "  <p><a href=\"/api/status\" target=\"_blank\">/api/status</a> · <a href=\"/api/sites\" target=\"_blank\">/api/sites</a> · <a href=\"/health\">/health</a> · <a href=\"/fragment\" target=\"_blank\">/fragment</a> · Auth: <a href=\"https://opencode-gn2y.onrender.com/\">auth</a> · Main: <a href=\"https://opencode-bnao.onrender.com/\">main</a></p>\n"
-"  <div style=\"margin:10px 0;padding:10px;background:#fffbe6;border:1px solid #ffeaa7;border-radius:8px;font-size:13px\">Config file: <code>%s</code> — edit <code>./stats/sites.json</code> to add/remove sites (name + url). Interval env <code>MONITOR_INTERVAL</code> (current %ds).</div>\n"
+"  <div style=\"margin:10px 0;padding:10px;background:#fffbe6;border:1px solid #ffeaa7;border-radius:8px;font-size:13px\">Config: <code>%s</code> — edit <code>./stats/sites.json</code> add <code>{\"name\":\"...\",\"url\":\"https://...\",\"interval\":30}</code> per-site seconds. Global env <code>MONITOR_INTERVAL</code> (current default %ds) used if no <code>interval</code> in JSON.</div>\n"
 "  <div style=\"display:flex;gap:8px;margin:12px 0\"><button hx-post=\"/api/check\" hx-target=\"#res\" hx-swap=\"innerHTML\">🔄 Check now (POST /api/check)</button><button hx-get=\"/fragment\" hx-target=\"#stats\" hx-swap=\"innerHTML\">↻ Refresh</button></div><div id=\"res\" style=\"font-size:13px;color:#666\"></div>\n"
 "  <div id=\"stats\" hx-get=\"/fragment\" hx-trigger=\"load, every 5s\" hx-swap=\"innerHTML\">%s</div>\n"
 "  <hr style=\"margin-top:20px\"><details><summary>Raw JSON (/api/status)</summary><pre id=\"raw\">%s</pre></details>\n"
-"  <p class=\"muted\" style=\"font-size:12px;margin-top:16px\">C epoll single-thread + monitor pthread — low RAM &lt;1MB — `curl` based check (handles http+https, 5s timeout) — updates via HTMX `hx-get` every 5s</p>\n"
+"  <p class=\"muted\" style=\"font-size:12px;margin-top:16px\">C epoll single-thread + monitor pthread — low RAM &lt;1MB — `curl` per-site interval — updates via HTMX `hx-get` every 5s</p>\n"
 "  <script>(function(){var u=(location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws';var ws;function c(){try{ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1)ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks')ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}catch(e){}}c();})();</script>\n"
 "</div></body></html>\n",
             get_interval(), up, down, unk, site_count,
@@ -518,13 +518,14 @@ static void handle_client(int cfd){
         if(is_head) send_response(cfd,200,"OK","application/json","",0);
         else send_response(cfd,200,"OK","application/json",j,strlen(j));
     } else if(strcmp(path,"/api/sites")==0 || strcmp(path,"/sites.json")==0 || strcmp(path,"/sites")==0){
-        // serve raw sites.json file + current sites array as json
+        // serve current sites array as json (including per-site interval)
         char out[8192];
         pthread_mutex_lock(&status_lock);
         int off=snprintf(out,sizeof(out),"[");
         for(int i=0;i<site_count;i++){
             if(i>0) off+=snprintf(out+off,sizeof(out)-off,",");
-            off+=snprintf(out+off,sizeof(out)-off,"{\"name\":\"%s\",\"url\":\"%s\",\"description\":\"%s\"}", sites[i].name, sites[i].url, sites[i].description);
+            int iv=sites[i].interval; if(iv<=0) iv=get_interval();
+            off+=snprintf(out+off,sizeof(out)-off,"{\"name\":\"%s\",\"url\":\"%s\",\"description\":\"%s\",\"interval\":%d}", sites[i].name, sites[i].url, sites[i].description, iv);
             if(off>(int)sizeof(out)-300) break;
         }
         off+=snprintf(out+off,sizeof(out)-off,"]");
@@ -603,7 +604,7 @@ int main(void){
     int epfd=epoll_create1(EPOLL_CLOEXEC); if(epfd<0){perror("epoll");return 1;}
     struct epoll_event ev={0}; ev.events=EPOLLIN; ev.data.fd=lfd;
     if(epoll_ctl(epfd,EPOLL_CTL_ADD,lfd,&ev)<0){perror("epoll_ctl");return 1;}
-    printf(SERVICE_NAME " listening on 0.0.0.0:%d (epoll, pid=%d) sites=%d interval=%ds path=%s\n",PORT,getpid(),site_count,get_interval(),get_sites_path()); fflush(stdout);
+    printf(SERVICE_NAME " listening on 0.0.0.0:%d (epoll, pid=%d) sites=%d default_interval=%ds path=%s (per-site interval in json)\n",PORT,getpid(),site_count,get_interval(),get_sites_path()); fflush(stdout);
     struct epoll_event events[MAX_EVENTS];
     while(keep_running){
         int nf=epoll_wait(epfd,events,MAX_EVENTS,1000);
