@@ -94,11 +94,12 @@ services:
       - "8084:8084"
     environment:
       - PORT=8084
+    shm_size: 2g
     deploy:
       resources:
         limits:
-          memory: 32M
-          cpus: '0.5'
+          memory: 1024M
+          cpus: '1.0'
 
   gateway:
     image: nginx:alpine
