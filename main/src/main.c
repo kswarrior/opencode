@@ -49,10 +49,10 @@ static void load_dotenv(void){
     }
 }
 
-static int get_token_len(void){const char *e=getenv("TOKEN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;} e=getenv("MAIN_TOKEN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;} return 120;}
-static int get_token_sum(void){const char *e=getenv("TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 280;}
-static int get_skip_front(void){const char *e=getenv("TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 25;}
-static int get_skip_back(void){const char *e=getenv("TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 25;}
+static int get_token_len(void){const char *e=getenv("TOKEN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;} e=getenv("MAIN_TOKEN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;} e=getenv("TOTAL_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;} e=getenv("MAIN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;} return 120;}
+static int get_token_sum(void){const char *e=getenv("TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("TOTAL_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("SITE_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 280;}
+static int get_skip_front(void){const char *e=getenv("TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("TOKEN_SKIP"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_SKIP"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 25;}
+static int get_skip_back(void){const char *e=getenv("TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("TOKEN_SKIP"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("MAIN_SKIP"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} e=getenv("SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;} return 25;}
 static void generate_site_token(char *out, size_t out_sz){
     int len=get_token_len();
     int sum=get_token_sum();
@@ -85,10 +85,24 @@ static void generate_site_token(char *out, size_t out_sz){
     for(int i=len-sb;i<len;i++) out[i]= alnum[random()%alnum_len];
     for(int i=0;i<mid_len;i++) out[sf+i]='0';
     int remaining=sum;
+    // distribute remaining randomly across middle
+    // first set all to 0, then randomly increment
+    for(int i=0;i<mid_len;i++) out[sf+i]='0';
+    remaining=sum;
+    int pos=0;
+    while(remaining>0 && pos<10000){
+        int idx = random()%mid_len;
+        int cur = out[sf+idx]-'0';
+        if(cur<9){ out[sf+idx]++; remaining--; }
+        pos++;
+        if(pos>10000) break;
+    }
+    // if still remaining (should not happen if sum <= mid_len*9), fill sequentially
     for(int i=0;i<mid_len && remaining>0;i++){
-        int v= remaining>9?9:remaining;
-        out[sf+i]= '0'+v;
-        remaining-=v;
+        int cur=out[sf+i]-'0';
+        int add = remaining> (9-cur) ? (9-cur) : remaining;
+        out[sf+i]+=add;
+        remaining-=add;
     }
     out[len]='\0';
 }
