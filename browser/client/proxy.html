@@ -17,7 +17,7 @@
 .proxy-home{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;background:linear-gradient(180deg, white 0%, #f0f9ff 100%);min-height:calc(100dvh - 60px)}
 .proxy-home h1{margin:0 0 8px;color:#0369a1;font-size:28px;font-weight:800}
 .proxy-home p{margin:0;color:#475569;font-size:14px}
-.proxy-badge{padding:6px 10px;background:#0ea5e9;color:white;border:1px solid #0ea5e9;border-radius:999px;font-size:11px;font-weight:700}
+.tab-close{width:20px;height:20px;display:grid;place-items:center;border-radius:999px;color:#64748b;background:transparent;border:none;cursor:pointer;margin-left:4px}.tab-close:hover{background:#e0f2fe;color:#0369a1}.tab-close svg{width:12px;height:12px}#proxyClear{opacity:0;pointer-events:none;transition:.15s} .proxy-omni:focus-within #proxyClear{opacity:1;pointer-events:auto} .proxy-badge{padding:6px 10px;background:#0ea5e9;color:white;border:1px solid #0ea5e9;border-radius:999px;font-size:11px;font-weight:700}
 </style>
 </head>
 <body>
@@ -38,8 +38,7 @@
       <input id="proxyInput" type="text" placeholder="Search or enter address" value="" autocomplete="off" spellcheck="false" />
       <button id="proxyClear" style="border:none;background:transparent;cursor:pointer;color:#64748b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
-    <button class="mode-switch" id="goBtn" style="padding:6px 12px;border-radius:999px;background:#0ea5e9;color:white;border:none;font-weight:700;font-size:12px;cursor:pointer">Go</button>
-    <span class="proxy-badge">Proxy</span>
+    <!-- Go and Proxy badge removed - enter to navigate, always proxy -->
   </div>
   <div class="proxy-frame-wrap" id="frameWrap">
     <div class="proxy-home" id="proxyHome">

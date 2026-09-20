@@ -35,9 +35,36 @@ function renderTabs(){
     title.className='tab-title';
     title.textContent=t.title.slice(0,24);
     b.appendChild(title);
+    const close=document.createElement('button');
+    close.className='tab-close';
+    close.setAttribute('aria-label','Close tab');
+    close.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    close.addEventListener('click', (e)=>{ e.stopPropagation(); closeTab(t.id); });
+    b.appendChild(close);
     b.addEventListener('click', ()=> switchTab(t.id));
     tabsEl.appendChild(b);
   });
+}
+function closeTab(id){
+  if(tabs.length<=1){
+    // keep at least one tab, just clear it
+    const t=tabs[0];
+    t.url=''; t.title='New Tab';
+    activeTab=t.id;
+    renderTabs();
+    showHome();
+    return;
+  }
+  const idx=tabs.findIndex(x=>x.id===id);
+  if(idx<0) return;
+  tabs.splice(idx,1);
+  if(activeTab===id){
+    const newActive=tabs[Math.max(0, idx-1)];
+    activeTab=newActive.id;
+    switchTab(activeTab);
+  } else {
+    renderTabs();
+  }
 }
 function switchTab(id){
   const t=tabs.find(x=>x.id===id);
@@ -85,7 +112,7 @@ function load(url){
   renderTabs();
   history.replaceState(null,'', proxyPrefix()+'.html?url='+encodeURIComponent(u));
 }
-goBtn.addEventListener('click', ()=> load(input.value));
+if(goBtn) goBtn.addEventListener('click', ()=> load(input.value));
 input.addEventListener('keydown', e=>{ if(e.key==='Enter') load(input.value); });
 clearBtn.addEventListener('click', ()=>{ input.value=''; input.focus(); });
 backBtn.addEventListener('click', ()=>{
