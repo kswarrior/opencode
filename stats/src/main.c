@@ -51,7 +51,7 @@ static int is_docker(void){
 static void effective_url(const char *orig, const char *name, char *out, size_t sz){
     // if inside docker and url uses localhost, rewrite to service name for internal DNS
     if(is_docker() && strstr(orig,"localhost")){
-        if(strcmp(name,"main")==0){
+        if(strcmp(name,"main")==0 || strcmp(name,"website")==0){
             // preserve path after host:port
             const char *path=strchr(orig+7,'/'); if(!path) path="/";
             // path may be /health or / or /something
@@ -138,9 +138,9 @@ static int load_sites(const char *path){
         // Try alternative path /app/sites.json etc already tried; if still not found, use built-in defaults
         int di=get_interval();
         Site defaults[]={
-            {"main","https://opencode-bnao.onrender.com/health","Main (production on Render)", 30},
-            {"auth","https://opencode-gn2y.onrender.com/health","Auth (production on Render)", 45},
-            {"account","https://opencode-7waf.onrender.com/health","Account (production on Render)", 60},
+            {"website","https://ks-website-s1.onrender.com/","Website (production on Render)", 30},
+            {"auth","https://ks-auth-s1.onrender.com/","Auth (production on Render)", 45},
+            {"account","https://ks-account-s1.onrender.com/","Account (production on Render)", 60},
             {"Stats","https://ks-stats-l1z3.onrender.com/","Stats (production on Render)", 30},
         };
         int n=sizeof(defaults)/sizeof(defaults[0]);
