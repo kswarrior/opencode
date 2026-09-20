@@ -56,8 +56,7 @@ function getProxyCookieHeader(targetUrl){
 function storeProxyCookies(targetUrl, setCookieHeaders){
   try {
     const u = new URL(targetUrl);
-    const host = u.hostname;
-    if(!proxyCookies[host]) proxyCookies[host] = {};
+    const reqHost = (u.hostname||'').toLowerCase();
     const headers = Array.isArray(setCookieHeaders) ? setCookieHeaders : [setCookieHeaders];
     for(const h of headers){
       if(!h) continue;
@@ -68,20 +67,60 @@ function storeProxyCookies(targetUrl, setCookieHeaders){
       const name = first.slice(0,eq).trim();
       const value = first.slice(eq+1).trim();
       let expires = null;
+      let domain = reqHost;
+      let deleteMe = false;
       for(let i=1;i<parts.length;i++){
-        const p = parts[i].trim().toLowerCase();
+        const raw = parts[i].trim();
+        const p = raw.toLowerCase();
         if(p.startsWith('expires=')){
-          const d = new Date(parts[i].trim().slice(8));
-          if(!isNaN(d)) expires = d.getTime();
+          const d = new Date(raw.slice(8));
+          if(!isNaN(d)) {
+            expires = d.getTime();
+            if(expires < Date.now()) deleteMe = true;
+          }
         } else if(p.startsWith('max-age=')){
           const sec = parseInt(p.slice(8),10);
-          if(!isNaN(sec)) expires = Date.now() + sec*1000;
+          if(!isNaN(sec)) {
+            if(sec <= 0) deleteMe = true;
+            else expires = Date.now() + sec*1000;
+          }
+        } else if(p.startsWith('domain=')){
+          let d = raw.slice(7).trim().toLowerCase();
+          if(d.startsWith('.')) d = d.slice(1);
+          // only accept domain that matches request host or its parent (prevents supercookies)
+          if(d && (reqHost === d || reqHost.endsWith('.'+d))) domain = d;
         }
       }
-      proxyCookies[host][name]= { value, expires };
+      if(!proxyCookies[domain]) proxyCookies[domain] = {};
+      if(deleteMe) delete proxyCookies[domain][name];
+      else proxyCookies[domain][name]= { value, expires };
     }
     saveProxyCookies();
   } catch {}
+}
+
+// ---------- SSRF guard: never let the proxy fetch internal addresses ----------
+function isBlockedHostname(hostname){
+  const h = String(hostname||'').toLowerCase().replace(/\.$/,'');
+  if(!h) return true;
+  if(h==='localhost' || h==='metadata.google.internal') return true;
+  if(h.endsWith('.localhost') || h.endsWith('.local') || h.endsWith('.internal')) return true;
+  if(h==='[::1]' || h==='::1') return true;
+  // literal IPv4?
+  const m = h.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
+  if(m){
+    const o = m.slice(1).map(Number);
+    if(o.some(n=>isNaN(n)||n<0||n>255)) return true;
+    if(o[0]===127 || o[0]===0) return true;                       // loopback
+    if(o[0]===10) return true;                                    // RFC1918
+    if(o[0]===172 && o[1]>=16 && o[1]<=31) return true;           // RFC1918
+    if(o[0]===192 && o[1]===168) return true;                     // RFC1918
+    if(o[0]===169 && o[1]===254) return true;                     // link-local / cloud metadata
+    if(o[0]>=224) return true;                                    // multicast/reserved
+    return false;
+  }
+  if(h.includes(':')) return true; // raw IPv6 literals (bracketless/odd) - refuse
+  return false;
 }
 
 // proxy handler - code runs on phone browser, server only fetches + returns HTML
@@ -111,31 +150,50 @@ async function handleProxy(req, res){
     res.end('invalid url');
     return true;
   }
+  if(isBlockedHostname(targetUrl.hostname)){
+    res.writeHead(403, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'});
+    res.end('blocked host (SSRF guard)');
+    return true;
+  }
   if(req.method==='OPTIONS'){
     res.writeHead(204, {'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET,POST,PUT,DELETE,OPTIONS','Access-Control-Allow-Headers':'*'});
     res.end();
     return true;
   }
+  if(!['GET','POST','PUT','PATCH','DELETE','HEAD'].includes(req.method)){
+    res.writeHead(405, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'});
+    res.end('method not allowed');
+    return true;
+  }
   try {
     const headers = {};
     if(req.headers['user-agent']) headers['user-agent']=req.headers['user-agent'];
+    else headers['user-agent']='Mozilla/5.0 (Linux; Android 14; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Mobile Safari/537.36';
     if(req.headers['accept']) headers['accept']=req.headers['accept'];
     if(req.headers['accept-language']) headers['accept-language']=req.headers['accept-language'];
-    if(req.headers['accept-encoding']) headers['accept-encoding']=req.headers['accept-encoding'];
+    // let undici handle accept-encoding (it decompresses); do NOT forward raw value
     if(req.headers['content-type']) headers['content-type']=req.headers['content-type'];
+    if(req.headers['authorization']) headers['authorization']=req.headers['authorization'];
+    if(req.headers['x-requested-with']) headers['x-requested-with']=req.headers['x-requested-with'];
     const cookie = getProxyCookieHeader(targetUrl.href);
     if(cookie) headers['cookie']=cookie;
     let body;
     if(req.method==='POST' || req.method==='PUT' || req.method==='PATCH'){
       body = await new Promise((resolve,reject)=>{
         const chunks=[];
-        req.on('data',c=>chunks.push(c));
+        let total=0;
+        req.on('data',c=>{ total+=c.length; if(total>10*1024*1024){ reject(new Error('request body too large')); try{req.destroy();}catch{} return; } chunks.push(c); });
         req.on('end',()=>resolve(Buffer.concat(chunks)));
         req.on('error',reject);
       });
       if(!body.length) body=undefined;
     }
-    const resp = await fetch(targetUrl.href, { method: req.method, headers, body, redirect:'manual' });
+    const ctrl = new AbortController();
+    const timer = setTimeout(()=>ctrl.abort(), 20000);
+    let resp;
+    try {
+      resp = await fetch(targetUrl.href, { method: req.method, headers, body, redirect:'manual', signal: ctrl.signal });
+    } finally { clearTimeout(timer); }
     const loc = resp.headers.get('location');
     if(loc && resp.status>=300 && resp.status<400){
       let setCookies=[];
@@ -144,7 +202,8 @@ async function handleProxy(req, res){
       if(setCookies.length) storeProxyCookies(targetUrl.href, setCookies);
       let next = loc;
       try { next = new URL(loc, targetUrl.href).href; } catch {}
-      const proxied = `/proxy?url=${encodeURIComponent(next)}`;
+      const keepPrefix = req.url.startsWith('/browser/') || (req.headers['x-forwarded-prefix']==='/browser');
+      const proxied = `${keepPrefix ? '/browser/proxy' : '/proxy'}?url=${encodeURIComponent(next)}`;
       res.writeHead(302, {'Location': proxied, 'Access-Control-Allow-Origin':'*', 'Access-Control-Expose-Headers':'*'});
       res.end(`Redirect to ${next}`);
       return true;
@@ -155,7 +214,20 @@ async function handleProxy(req, res){
     if(setCookies.length) storeProxyCookies(targetUrl.href, setCookies);
 
     const ct = resp.headers.get('content-type')||'';
-    const buf = Buffer.from(await resp.arrayBuffer());
+    const MAX_BYTES = 25*1024*1024;
+    const declared = parseInt(resp.headers.get('content-length')||'0',10);
+    if(declared > MAX_BYTES){
+      res.writeHead(502, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'});
+      res.end('upstream response too large');
+      return true;
+    }
+    const ab = await resp.arrayBuffer();
+    if(ab.byteLength > MAX_BYTES){
+      res.writeHead(502, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'});
+      res.end('upstream response too large');
+      return true;
+    }
+    const buf = Buffer.from(ab);
     const outHeaders = {
       'Access-Control-Allow-Origin':'*',
       'Access-Control-Allow-Headers':'*',
