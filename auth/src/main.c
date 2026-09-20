@@ -378,6 +378,8 @@ static void handle_client(int cfd){
     int is_head=strcmp(method,"HEAD")==0;
     char *body=strstr(buf,"\r\n\r\n"); if(body) body+=4; else body="";
     int is_hx = has_substr(buf,"HX-Request") || has_substr(buf,"hx-request");
+    // debug is_hx
+    // printf("[auth] is_hx=%d buf_snippet=%.200s\n", is_hx, buf); fflush(stdout);
 
     if(strcmp(path,"/")==0){
         // when open show login page as default if not logged in, else show USERNAME/email in gray small text via HTML_MAIN JS
@@ -468,7 +470,7 @@ static void handle_client(int cfd){
                     send(cfd,h,hl,MSG_NOSIGNAL);
                 }
             } else {
-                char dbg[2048]; snprintf(dbg,sizeof(dbg),"<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px;text-align:center\">❌ Login failed — missing username/password<br><small>body='%s' len=%d</small></div>", body, (int)strlen(body));
+                char dbg[4096]; snprintf(dbg,sizeof(dbg),"<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px;text-align:center\">❌ Login failed — missing username/password<br><small>is_hx=%d body='%s' len=%d buf_has_HX=%d</small></div>", is_hx, body, (int)strlen(body), has_substr(buf,"HX-Request")||has_substr(buf,"hx-request"));
                 send_response(cfd,400,"Bad Request","text/html",dbg,strlen(dbg));
             }
         }    } else if(strcmp(path,"/register")==0){
@@ -501,7 +503,7 @@ static void handle_client(int cfd){
                 return;
             }
             if(!ok){
-                char dbg2[2048]; snprintf(dbg2,sizeof(dbg2),"<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px\">❌ missing username/email/password — please fill all fields<br><small>body='%s' len=%d</small></div>", body, (int)strlen(body));
+                char dbg2[4096]; snprintf(dbg2,sizeof(dbg2),"<div style=\"color:#c5221f;background:#fce8e6;border:1px solid #f5c6cb;padding:10px;border-radius:8px\">❌ missing username/email/password — please fill all fields<br><small>is_hx=%d body='%s' len=%d</small></div>", is_hx, body, (int)strlen(body));
                 send_response(cfd,400,"Bad Request","text/html",dbg2,strlen(dbg2));
                 return;
             }
