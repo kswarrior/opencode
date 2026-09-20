@@ -185,67 +185,75 @@ static int verify_site_token(const char *token, char *cb_out, size_t cb_sz, cons
 
 
 static const char HTML_MAIN[] =
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Auth — Hello</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px}a.btn,button{padding:8px 14px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;cursor:pointer;text-decoration:none;display:inline-block}.muted{color:#666}input{padding:8px;border:1px solid #ccc;border-radius:6px;width:100%;box-sizing:border-box;margin:6px 0}</style></head><body><div class=\"card\">\n"
-"  <h1>Auth Service ✅</h1><p class=\"muted\">C + HTMX — login / register — low RAM | SSO like Google</p>\n"
-"  <p><a class=\"btn\" href=\"/login\">Login</a> <a class=\"btn\" href=\"/register\">Register</a> <a class=\"btn\" href=\"/me\" style=\"background:#fff;color:#111\">Me</a></p>\n"
-"  <p>Main: <a href=\"https://opencode-bnao.onrender.com/\">main</a> | Account: <a href=\"https://opencode-7waf.onrender.com/\">account</a></p>\n"
-"  <hr><h3>HTMX demo</h3><button hx-get=\"/fragment\" hx-target=\"#frag\" hx-swap=\"innerHTML\">Load fragment</button><div id=\"frag\" style=\"margin-top:12px;padding:12px;background:#f6f6f6;border-radius:8px;\"> — click — </div>\n"
-"</div></body></html>\n";
+"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Auth</title><script src='https://unpkg.com/htmx.org@1.9.12'></script><style>:root{--blue:#1a73e8;--blue-dark:#0b57d0;--bg:#f8fbff;--card:#ffffff;--border:#e8f0fe;--text:#202124;--muted:#5f6368}*{box-sizing:border-box}body{font-family:'Google Sans',Roboto,system-ui,sans-serif;margin:0;background:linear-gradient(180deg,#f8fbff 0%%,#ffffff 100%%);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased} .wrap{width:100%%;max-width:440px;margin:0 auto} .center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px} .card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:36px 32px;box-shadow:0 1px 3px rgba(60,64,67,.12),0 8px 24px rgba(60,64,67,.08);animation:rise .5s cubic-bezier(.2,.8,.2,1);text-align:center} .logo{width:48px;height:48px;margin:0 auto 14px;background:linear-gradient(135deg,#e8f0fe 0%%,#f0f7ff 100%%);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;animation:float 6s ease-in-out infinite} h1{font-size:22px;font-weight:700;margin:0;letter-spacing:-0.3px} .sub{color:var(--muted);font-size:13px;margin:6px 0 22px} .btns{display:flex;gap:12px;justify-content:center;margin-top:20px} a.btn{padding:11px 22px;border-radius:999px;font-weight:500;font-size:14px;text-decoration:none;transition:all .2s;display:inline-block;text-align:center} a.btn-primary{background:var(--blue);color:#fff;box-shadow:0 1px 3px rgba(60,64,67,.30)} a.btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px)} a.btn-secondary{background:#fff;color:var(--blue);border:1px solid var(--border)} a.btn-secondary:hover{background:#f8fbff} @keyframes float{0%%,100%%{transform:translateY(0)}50%%{transform:translateY(-3px)}} @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style></head><body><div class='center'><div class='wrap'><div class='card'>"
+"  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 2.8L4 6.2v5.6c0 4.2 2.9 8.1 8 9.4 5.1-1.3 8-5.2 8-9.4V6.2l-8-3.4z' fill='#1a73e8' opacity='.12' stroke='#1a73e8' stroke-width='1.6'/><path d='M9 12l2.2 2.2L15 10.4' stroke='#1a73e8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg></div>"
+"  <h1>Authentication</h1><p class='sub'>Secure access to your workspace</p>"
+"  <div class='btns'><a class='btn btn-primary' href='/login'>Sign in</a> <a class='btn btn-secondary' href='/register'>Create account</a></div>"
+"</div></div></div></body></html>
+";
 
 static const char HTML_LOGIN[] =
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Login — Auth</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:480px;margin:40px auto;padding:0 16px}.card{border:1px solid #ddd;border-radius:12px;padding:20px}input{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%;box-sizing:border-box;margin:6px 0}button{padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:0;width:100%;cursor:pointer}.muted{color:#666}a{color:#111}</style></head><body><div class=\"card\">\n"
-"  <h2>Login</h2>\n"
-"  <form hx-post=\"/login\" hx-target=\"#msg\" hx-swap=\"innerHTML\" hx-indicator=\"#msg\">\n"
-"    <input name=\"username\" placeholder=\"username\" required>\n"
-"    <input name=\"password\" type=\"password\" placeholder=\"password\" required>\n"
-"    <button type=\"submit\">Login via HTMX</button>\n"
-"  </form>\n"
-"  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
-"  <p class=\"muted\" style=\"margin-top:16px\">POST sets <code>token</code> cookie + HX-Redirect to main. <a href=\"/register\">Register</a> | <a href=\"/\">home</a></p>\n"
-"</div></body></html>\n";
+"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Sign in</title><script src='https://unpkg.com/htmx.org@1.9.12'></script><style>:root{--blue:#1a73e8;--blue-dark:#0b57d0;--bg:#f8fbff;--card:#ffffff;--border:#e8f0fe;--text:#202124;--muted:#5f6368}*{box-sizing:border-box}body{font-family:'Google Sans',Roboto,Inter,system-ui,sans-serif;margin:0;background:linear-gradient(180deg,#f8fbff 0%%,#ffffff 100%%);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased} .wrap{width:100%%;max-width:440px;margin:0 auto} .center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px} .card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;box-shadow:0 1px 3px rgba(60,64,67,.12),0 8px 24px rgba(60,64,67,.08);animation:rise .5s cubic-bezier(.2,.8,.2,1)} .logo{width:48px;height:48px;margin:0 auto 14px;background:linear-gradient(135deg,#e8f0fe 0%%,#f0f7ff 100%%);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;animation:float 6s ease-in-out infinite} h1,h2{font-size:22px;font-weight:700;margin:0;text-align:center;letter-spacing:-0.3px} .sub{color:var(--muted);font-size:13px;text-align:center;margin:6px 0 22px} input{width:100%%;padding:13px 14px;border:1px solid #dadce0;border-radius:12px;font-size:14px;outline:none;transition:border .2s,box-shadow .2s;background:#fff} input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,232,.14)} label{font-size:13px;font-weight:500;color:var(--text);margin:12px 0 6px;display:block} button{width:100%%;padding:12px;border-radius:999px;background:var(--blue);color:#fff;border:0;font-weight:500;font-size:14px;cursor:pointer;transition:all .2s;box-shadow:0 1px 2px rgba(60,64,67,.30),0 1px 3px rgba(60,64,67,.15);letter-spacing:.1px} button:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 2px 8px rgba(26,115,232,.30)} button:active{transform:translateY(0)} .muted{color:var(--muted)} a{color:var(--blue);text-decoration:none;font-weight:500} a:hover{text-decoration:underline} @keyframes float{0%%,100%%{transform:translateY(0)}50%%{transform:translateY(-3px)}} @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style></head><body><div class='center'><div class='wrap'><div class='card'>"
+"  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='8.5' r='3.5' stroke='#1a73e8' stroke-width='1.6'/><path d='M5.5 18.5a6.5 6.5 0 0 1 13 0' stroke='#1a73e8' stroke-width='1.6' stroke-linecap='round'/><circle cx='12' cy='8.5' r='1.2' fill='#1a73e8' opacity='.12'/></svg></div>"
+"  <h2>Sign in</h2><p class='sub'>Welcome back</p>"
+"  <form hx-post='/login' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"    <label>Username</label><input name='username' autocomplete='username' required>"
+"    <label>Password</label><input name='password' type='password' autocomplete='current-password' required>"
+"    <button type='submit' style='margin-top:18px'>Continue</button>"
+"  </form>"
+"  <div id='msg' style='margin-top:14px;min-height:20px;font-size:13px;color:#5f6368;text-align:center'></div>"
+"  <p style='text-align:center;margin-top:18px;font-size:13px;color:var(--muted)'>No account? <a href='/register'>Create account</a></p>"
+"</div></div></div></body></html>
+";
 
 static const char HTML_REGISTER[] =
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Register — Auth</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:480px;margin:40px auto;padding:0 16px}.card{border:1px solid #ddd;border-radius:12px;padding:20px}input{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%;box-sizing:border-box;margin:6px 0}button{padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:0;width:100%;cursor:pointer}.muted{color:#666}</style></head><body><div class=\"card\">\n"
-"  <h2>Register</h2>\n"
-"  <form hx-post=\"/register\" hx-target=\"#msg\" hx-swap=\"innerHTML\">\n"
-"    <input name=\"username\" placeholder=\"username\" required>\n"
-"    <input name=\"email\" placeholder=\"email@example.com\" type=\"email\" required>\n"
-"    <input name=\"password\" type=\"password\" placeholder=\"password\" required>\n"
-"    <input name=\"confirm\" type=\"password\" placeholder=\"confirm password\" required>\n"
-"    <button type=\"submit\">Create account</button>\n"
-"  </form>\n"
-"  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
-"  <p class=\"muted\">HTMX POST → 200 + HX-Redirect. After register, <a href=\"/login\">login</a></p>\n"
-"</div></body></html>\n";
+"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Create account</title><script src='https://unpkg.com/htmx.org@1.9.12'></script><style>:root{--blue:#1a73e8;--blue-dark:#0b57d0;--bg:#f8fbff;--card:#ffffff;--border:#e8f0fe;--text:#202124;--muted:#5f6368}*{box-sizing:border-box}body{font-family:'Google Sans',Roboto,Inter,system-ui,sans-serif;margin:0;background:linear-gradient(180deg,#f8fbff 0%%,#ffffff 100%%);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased} .wrap{width:100%%;max-width:440px;margin:0 auto} .center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px} .card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;box-shadow:0 1px 3px rgba(60,64,67,.12),0 8px 24px rgba(60,64,67,.08);animation:rise .5s cubic-bezier(.2,.8,.2,1)} .logo{width:48px;height:48px;margin:0 auto 14px;background:linear-gradient(135deg,#e8f0fe 0%%,#f0f7ff 100%%);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;animation:float 6s ease-in-out infinite} h1,h2{font-size:22px;font-weight:700;margin:0;text-align:center;letter-spacing:-0.3px} .sub{color:var(--muted);font-size:13px;text-align:center;margin:6px 0 22px} input{width:100%%;padding:13px 14px;border:1px solid #dadce0;border-radius:12px;font-size:14px;outline:none;transition:border .2s,box-shadow .2s;background:#fff} input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,232,.14)} label{font-size:13px;font-weight:500;color:var(--text);margin:12px 0 6px;display:block} button{width:100%%;padding:12px;border-radius:999px;background:var(--blue);color:#fff;border:0;font-weight:500;font-size:14px;cursor:pointer;transition:all .2s;box-shadow:0 1px 2px rgba(60,64,67,.30),0 1px 3px rgba(60,64,67,.15);letter-spacing:.1px} button:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 2px 8px rgba(26,115,232,.30)} button:active{transform:translateY(0)} .muted{color:var(--muted)} a{color:var(--blue);text-decoration:none;font-weight:500} a:hover{text-decoration:underline} @keyframes float{0%%,100%%{transform:translateY(0)}50%%{transform:translateY(-3px)}} @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style></head><body><div class='center'><div class='wrap'><div class='card'>"
+"  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='8.5' r='3.5' stroke='#1a73e8' stroke-width='1.6'/><path d='M5.5 18.5a6.5 6.5 0 0 1 13 0' stroke='#1a73e8' stroke-width='1.6' stroke-linecap='round'/><path d='M12 12.5v3' stroke='#1a73e8' stroke-width='1.4' stroke-linecap='round'/><circle cx='12' cy='12' r='9' stroke='#1a73e8' opacity='.10'/></svg></div>"
+"  <h2>Create account</h2><p class='sub'>Get started in seconds</p>"
+"  <form hx-post='/register' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"    <label>Username</label><input name='username' autocomplete='username' required>"
+"    <label>Email</label><input name='email' type='email' autocomplete='email' required>"
+"    <label>Password</label><input name='password' type='password' autocomplete='new-password' required>"
+"    <label>Confirm password</label><input name='confirm' type='password' autocomplete='new-password' required>"
+"    <button type='submit' style='margin-top:18px'>Create account</button>"
+"  </form>"
+"  <div id='msg' style='margin-top:14px;min-height:20px;font-size:13px;color:#5f6368;text-align:center'></div>"
+"  <p style='text-align:center;margin-top:18px;font-size:13px;color:var(--muted)'>Already have an account? <a href='/login'>Sign in</a></p>"
+"</div></div></div></body></html>
+";
 
 
 static const char HTML_LOGIN_TMPL[] =
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Login — Auth</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:480px;margin:40px auto;padding:0 16px}.card{border:1px solid #ddd;border-radius:12px;padding:20px}input{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%%;box-sizing:border-box;margin:6px 0}button{padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:0;width:100%%;cursor:pointer}.muted{color:#666}a{color:#111}</style></head><body><div class=\"card\">\n"
-"  <h2>Login</h2>\n"
-"  <form hx-post=\"/login?redirect_uri=%s\" hx-target=\"#msg\" hx-swap=\"innerHTML\" hx-indicator=\"#msg\">\n"
-"    <input name=\"username\" placeholder=\"username\" required>\n"
-"    <input name=\"password\" type=\"password\" placeholder=\"password\" required>\n"
-"    <input type=\"hidden\" name=\"redirect_uri\" value=\"%s\">\n"
-"    <button type=\"submit\">Login via HTMX</button>\n"
-"  </form>\n"
-"  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
-"  <p class=\"muted\" style=\"margin-top:16px\">POST sets <code>token</code> cookie + HX-Redirect to main. <a href=\"/register?redirect_uri=%s\">Register</a> | <a href=\"/\">home</a></p>\n"
-"</div></body></html>\n";
+"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Sign in</title><script src='https://unpkg.com/htmx.org@1.9.12'></script><style>:root{--blue:#1a73e8;--blue-dark:#0b57d0;--bg:#f8fbff;--card:#ffffff;--border:#e8f0fe;--text:#202124;--muted:#5f6368}*{box-sizing:border-box}body{font-family:'Google Sans',Roboto,Inter,system-ui,sans-serif;margin:0;background:linear-gradient(180deg,#f8fbff 0%%,#ffffff 100%%);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased} .wrap{width:100%%;max-width:440px;margin:0 auto} .center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px} .card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;box-shadow:0 1px 3px rgba(60,64,67,.12),0 8px 24px rgba(60,64,67,.08);animation:rise .5s cubic-bezier(.2,.8,.2,1)} .logo{width:48px;height:48px;margin:0 auto 14px;background:linear-gradient(135deg,#e8f0fe 0%%,#f0f7ff 100%%);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;animation:float 6s ease-in-out infinite} h1,h2{font-size:22px;font-weight:700;margin:0;text-align:center;letter-spacing:-0.3px} .sub{color:var(--muted);font-size:13px;text-align:center;margin:6px 0 22px} input{width:100%%;padding:13px 14px;border:1px solid #dadce0;border-radius:12px;font-size:14px;outline:none;transition:border .2s,box-shadow .2s;background:#fff} input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,232,.14)} label{font-size:13px;font-weight:500;color:var(--text);margin:12px 0 6px;display:block} button{width:100%%;padding:12px;border-radius:999px;background:var(--blue);color:#fff;border:0;font-weight:500;font-size:14px;cursor:pointer;transition:all .2s;box-shadow:0 1px 2px rgba(60,64,67,.30),0 1px 3px rgba(60,64,67,.15);letter-spacing:.1px} button:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 2px 8px rgba(26,115,232,.30)} button:active{transform:translateY(0)} .muted{color:var(--muted)} a{color:var(--blue);text-decoration:none;font-weight:500} a:hover{text-decoration:underline} @keyframes float{0%%,100%%{transform:translateY(0)}50%%{transform:translateY(-3px)}} @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style></head><body><div class='center'><div class='wrap'><div class='card'>"
+"  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='8.5' r='3.5' stroke='#1a73e8' stroke-width='1.6'/><path d='M5.5 18.5a6.5 6.5 0 0 1 13 0' stroke='#1a73e8' stroke-width='1.6' stroke-linecap='round'/></svg></div>"
+"  <h2>Sign in</h2><p class='sub'>Welcome back</p>"
+"  <form hx-post='/login?redirect_uri=%s' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"    <label>Username</label><input name='username' autocomplete='username' required>"
+"    <label>Password</label><input name='password' type='password' autocomplete='current-password' required>"
+"    <input type='hidden' name='redirect_uri' value='%s'>"
+"    <button type='submit' style='margin-top:18px'>Continue</button>"
+"  </form>"
+"  <div id='msg' style='margin-top:14px;min-height:20px;font-size:13px;color:#5f6368;text-align:center'></div>"
+"  <p style='text-align:center;margin-top:18px;font-size:13px;color:var(--muted)'>No account? <a href='/register?redirect_uri=%s'>Create account</a></p>"
+"</div></div></div></body></html>
+";
 
 static const char HTML_REGISTER_TMPL[] =
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Register — Auth</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:480px;margin:40px auto;padding:0 16px}.card{border:1px solid #ddd;border-radius:12px;padding:20px}input{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%%;box-sizing:border-box;margin:6px 0}button{padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:0;width:100%%;cursor:pointer}.muted{color:#666}</style></head><body><div class=\"card\">\n"
-"  <h2>Register</h2>\n"
-"  <form hx-post=\"/register?redirect_uri=%s\" hx-target=\"#msg\" hx-swap=\"innerHTML\">\n"
-"    <input name=\"username\" placeholder=\"username\" required>\n"
-"    <input name=\"email\" placeholder=\"email@example.com\" type=\"email\" required>\n"
-"    <input name=\"password\" type=\"password\" placeholder=\"password\" required>\n"
-"    <input name=\"confirm\" type=\"password\" placeholder=\"confirm password\" required>\n"
-"    <input type=\"hidden\" name=\"redirect_uri\" value=\"%s\">\n"
-"    <button type=\"submit\">Create account</button>\n"
-"  </form>\n"
-"  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
-"  <p class=\"muted\">HTMX POST → 200 + HX-Redirect. After register, <a href=\"/login?redirect_uri=%s\">login</a></p>\n"
-"</div></body></html>\n";
+"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Create account</title><script src='https://unpkg.com/htmx.org@1.9.12'></script><style>:root{--blue:#1a73e8;--blue-dark:#0b57d0;--bg:#f8fbff;--card:#ffffff;--border:#e8f0fe;--text:#202124;--muted:#5f6368}*{box-sizing:border-box}body{font-family:'Google Sans',Roboto,Inter,system-ui,sans-serif;margin:0;background:linear-gradient(180deg,#f8fbff 0%%,#ffffff 100%%);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased} .wrap{width:100%%;max-width:440px;margin:0 auto} .center{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px} .card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;box-shadow:0 1px 3px rgba(60,64,67,.12),0 8px 24px rgba(60,64,67,.08);animation:rise .5s cubic-bezier(.2,.8,.2,1)} .logo{width:48px;height:48px;margin:0 auto 14px;background:linear-gradient(135deg,#e8f0fe 0%%,#f0f7ff 100%%);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;animation:float 6s ease-in-out infinite} h1,h2{font-size:22px;font-weight:700;margin:0;text-align:center;letter-spacing:-0.3px} .sub{color:var(--muted);font-size:13px;text-align:center;margin:6px 0 22px} input{width:100%%;padding:13px 14px;border:1px solid #dadce0;border-radius:12px;font-size:14px;outline:none;transition:border .2s,box-shadow .2s;background:#fff} input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,232,.14)} label{font-size:13px;font-weight:500;color:var(--text);margin:12px 0 6px;display:block} button{width:100%%;padding:12px;border-radius:999px;background:var(--blue);color:#fff;border:0;font-weight:500;font-size:14px;cursor:pointer;transition:all .2s;box-shadow:0 1px 2px rgba(60,64,67,.30),0 1px 3px rgba(60,64,67,.15);letter-spacing:.1px} button:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 2px 8px rgba(26,115,232,.30)} button:active{transform:translateY(0)} .muted{color:var(--muted)} a{color:var(--blue);text-decoration:none;font-weight:500} a:hover{text-decoration:underline} @keyframes float{0%%,100%%{transform:translateY(0)}50%%{transform:translateY(-3px)}} @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}</style></head><body><div class='center'><div class='wrap'><div class='card'>"
+"  <div class='logo'><svg width='26' height='26' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='8.5' r='3.5' stroke='#1a73e8' stroke-width='1.6'/><path d='M5.5 18.5a6.5 6.5 0 0 1 13 0' stroke='#1a73e8' stroke-width='1.6' stroke-linecap='round'/></svg></div>"
+"  <h2>Create account</h2><p class='sub'>Get started in seconds</p>"
+"  <form hx-post='/register?redirect_uri=%s' hx-target='#msg' hx-swap='innerHTML' style='margin-top:4px'>"
+"    <label>Username</label><input name='username' autocomplete='username' required>"
+"    <label>Email</label><input name='email' type='email' autocomplete='email' required>"
+"    <label>Password</label><input name='password' type='password' autocomplete='new-password' required>"
+"    <label>Confirm password</label><input name='confirm' type='password' autocomplete='new-password' required>"
+"    <input type='hidden' name='redirect_uri' value='%s'>"
+"    <button type='submit' style='margin-top:18px'>Create account</button>"
+"  </form>"
+"  <div id='msg' style='margin-top:14px;min-height:20px;font-size:13px;color:#5f6368;text-align:center'></div>"
+"  <p style='text-align:center;margin-top:18px;font-size:13px;color:var(--muted)'>Already have an account? <a href='/login?redirect_uri=%s'>Sign in</a></p>"
+"</div></div></div></body></html>
+";
 
 static const char HTML_LOGIN_SITE_TMPL[] =
 "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Login — Auth (Site)</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:480px;margin:40px auto;padding:0 16px}.card{border:1px solid #ddd;border-radius:12px;padding:20px}input{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%%;box-sizing:border-box;margin:6px 0}button{padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:0;width:100%%;cursor:pointer}.muted{color:#666}a{color:#111}</style></head><body><div class=\"card\">\n"
