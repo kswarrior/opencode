@@ -25,7 +25,7 @@ EXPOSE 8084
 ENV NODE_ENV=production
 ENV PORT=8084
 
-HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
   CMD wget -qO- http://localhost:8084/health || exit 1
 
 CMD ["node", "server.js"]
