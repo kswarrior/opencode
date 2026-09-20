@@ -13,7 +13,6 @@
   <header class="topbar">
     <div class="brand" aria-label="Browser brand">
       <span class="brand-icon" aria-hidden="true">
-        <!-- globe SVG -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <path d="M2 12h20"></path>
@@ -22,25 +21,16 @@
         </svg>
       </span>
       <span class="brand-text">Browse</span>
+      <span class="conn-dot" id="connDot" title="Connecting"></span>
     </div>
 
     <div class="tabs-wrap" id="tabsWrap">
       <div class="tabs" role="tablist" aria-label="Tabs" id="tabs">
-        <!-- tabs injected by JS, fallback static -->
         <button class="tab active" role="tab" aria-selected="true" data-tab="1">
           <span class="tab-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
           </span>
-          <span class="tab-title">New Tab</span>
-          <span class="tab-close" aria-label="Close tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </span>
-        </button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="2">
-          <span class="tab-icon muted">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/></svg>
-          </span>
-          <span class="tab-title">Welcome</span>
+          <span class="tab-title" id="tabTitle">ksx.pages.dev</span>
           <span class="tab-close" aria-label="Close tab">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
           </span>
@@ -76,16 +66,16 @@
       <button class="icon-btn" id="reloadBtn" aria-label="Reload">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v6h-6"/></svg>
       </button>
-      <button class="icon-btn hide-mobile" aria-label="Home">
+      <button class="icon-btn hide-mobile" id="homeBtn" aria-label="Home">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10L12 3l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9z"/></svg>
       </button>
     </div>
 
     <div class="omnibox" id="omnibox">
-      <span class="omnibox-icon lock" aria-hidden="true">
+      <span class="omnibox-icon lock" aria-hidden="true" id="lockIcon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1.2" fill="currentColor" stroke="none"/></svg>
       </span>
-      <input id="addressInput" class="omnibox-input" type="text" placeholder="Search or enter address" value="https://example.com" autocomplete="off" spellcheck="false" />
+      <input id="addressInput" class="omnibox-input" type="text" placeholder="Search or enter address" value="https://ksx.pages.dev" autocomplete="off" spellcheck="false" />
       <button class="omnibox-action" id="clearBtn" aria-label="Clear">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
@@ -96,6 +86,7 @@
     </div>
 
     <div class="toolbar-extras">
+      <span class="fps-badge" id="fpsBadge" title="Frames per second">-- fps</span>
       <button class="icon-btn" aria-label="Extensions">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 11a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4v-2z"/><path d="M7 7V5a2 2 0 0 1 2-2h2"/><path d="M17 7V5a2 2 0 0 0-2-2h-2"/><path d="M7 17v2a2 2 0 0 0 2 2h2"/><path d="M17 17v2a2 2 0 0 1-2 2h-2"/></svg>
       </button>
@@ -111,8 +102,33 @@
   <!-- Viewport -->
   <main class="viewport" id="viewport">
     <div class="viewport-inner" id="viewportInner">
-      <!-- Placeholder rendered page / welcome -->
-      <div class="welcome">
+      <!-- Real browser view (CDP screencast) -->
+      <div class="browser-view" id="browserView">
+        <div class="screen-wrap" id="screenWrap">
+          <img id="screen" alt="Browser screen" draggable="false" />
+          <canvas id="overlay" width="1280" height="720"></canvas>
+          <div class="loading" id="loading">
+            <div class="spinner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3a9 9 0 1 0 9 9" stroke-linecap="round"/></svg>
+            </div>
+            <span id="loadingText">Connecting to browser engine...</span>
+            <span class="loading-sub" id="loadingSub">Launching Chromium via CDP</span>
+          </div>
+          <div class="error-banner hidden" id="errorBanner">
+            <span class="error-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg></span>
+            <span id="errorText">Connection failed</span>
+            <button class="retry-btn" id="retryBtn">Retry</button>
+          </div>
+        </div>
+        <div class="screen-bar">
+          <span class="screen-dot" id="screenDot"></span>
+          <span id="screenUrl">https://ksx.pages.dev</span>
+          <span class="screen-size" id="screenSize">1280×720</span>
+        </div>
+      </div>
+
+      <!-- Fallback welcome (shown before connection) -->
+      <div class="welcome hidden" id="welcome">
         <div class="welcome-icon">
           <svg viewBox="0 0 64 64" fill="none" stroke="#0ea5e9" stroke-width="1.6">
             <rect x="6" y="10" width="52" height="36" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/>
@@ -126,8 +142,7 @@
           </svg>
         </div>
         <h1>White & Light Blue Browser</h1>
-        <p>Fast, clean, and responsive. Works smoothly on phone and desktop.</p>
-
+        <p>Real Chromium via CDP screencast — not a placeholder. Animations at 15-25fps, JPEG diff.</p>
         <div class="search-card">
           <div class="search-input-wrap">
             <span class="search-icon">
@@ -139,47 +154,35 @@
             </button>
           </div>
           <div class="quick-links">
-            <button class="quick-link">
+            <button class="quick-link" data-url="https://ksx.pages.dev">
               <span class="ql-icon" style="background:#e0f2fe; color:#0284c7">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="12" width="7" height="7" rx="1.5"/><rect x="14" y="12" width="7" height="7" rx="1.5"/><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
               </span>
-              <span>Apps</span>
+              <span>ksx.pages.dev</span>
             </button>
-            <button class="quick-link">
+            <button class="quick-link" data-url="https://example.com">
               <span class="ql-icon" style="background:#fef9c3; color:#ca8a04">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.9 6.9 18.6l1-5.6-4.1-4 5.7-.8L12 3z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
               </span>
-              <span>Favorites</span>
+              <span>Example</span>
             </button>
-            <button class="quick-link">
+            <button class="quick-link" data-url="https://google.com">
               <span class="ql-icon" style="background:#dcfce7; color:#15803d">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 5v14M5 12h14"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
               </span>
-              <span>History</span>
+              <span>Google</span>
             </button>
-            <button class="quick-link">
+            <button class="quick-link" data-url="https://github.com">
               <span class="ql-icon" style="background:#ffe4e6; color:#e11d48">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M12 7V3"/><path d="M12 15v4"/><path d="M7 12H3"/><path d="M21 12h-4"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 19c-4 1.2-4-2-5-2M16 22V18a2 2 0 0 0-.58-1.56s1.9-.2 3.9-1a4 4 0 0 0 1-2.6 4 4 0 0 0-1.1-2.8 4 4 0 0 0-.1-2.8s-.9-.3-3 1.1a10 10 0 0 0-5.4 0C9.6 8.3 8.7 8.6 8.7 8.6a4 4 0 0 0-.1 2.8A4 4 0 0 0 7.5 14.2a4 4 0 0 0 1 2.6c2 0.8 3.9 1 3.9 1A2 2 0 0 0 12 19v3"/></svg>
               </span>
-              <span>Settings</span>
+              <span>GitHub</span>
             </button>
           </div>
         </div>
-
         <div class="status-row">
           <span class="status-dot"></span>
-          <span>Engine ready • SVG only • No images</span>
-        </div>
-      </div>
-
-      <!-- Simulated page content hidden until navigation -->
-      <div class="page-frame hidden" id="pageFrame">
-        <div class="page-bar">
-          <span class="page-bar-dot"></span>
-          <span id="pageUrl">https://example.com</span>
-        </div>
-        <div class="page-content" id="pageContent">
-          <!-- injected -->
+          <span id="statusText">Engine ready • SVG only</span>
         </div>
       </div>
     </div>
@@ -187,26 +190,26 @@
 
   <!-- Mobile bottom bar -->
   <nav class="mobile-bar" aria-label="Mobile navigation">
-    <button class="mobile-btn active" aria-label="Back">
+    <button class="mobile-btn" id="mBack" aria-label="Back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M15 18l-6-6 6-6"/></svg>
       <span>Back</span>
     </button>
-    <button class="mobile-btn" aria-label="Forward">
+    <button class="mobile-btn" id="mForward" aria-label="Forward">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M9 18l6-6-6-6"/></svg>
       <span>Forward</span>
     </button>
-    <button class="mobile-btn primary" aria-label="Home">
+    <button class="mobile-btn primary" id="mHome" aria-label="Home">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10L12 3l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9z"/></svg>
       <span>Home</span>
     </button>
-    <button class="mobile-btn" aria-label="Tabs">
+    <button class="mobile-btn" id="mRefresh" aria-label="Refresh">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v6h-6"/></svg>
+      <span>Refresh</span>
+    </button>
+    <button class="mobile-btn" id="mTabs" aria-label="Tabs">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg>
       <span>Tabs</span>
-      <span class="badge">2</span>
-    </button>
-    <button class="mobile-btn" aria-label="Menu">
-      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
-      <span>Menu</span>
+      <span class="badge">1</span>
     </button>
   </nav>
 </div>
