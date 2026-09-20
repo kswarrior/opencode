@@ -316,8 +316,6 @@ int main(void){
                 int cfd=events[i].data.fd; uint32_t r=events[i].events;
                 if(r&(EPOLLHUP|EPOLLERR|EPOLLRDHUP)){ epoll_ctl(epfd,EPOLL_CTL_DEL,cfd,NULL); close(cfd); continue; }
                 if(r&EPOLLIN){
-                    // Peek if WS? For WS we keep open, so don't close after handle_client if it was WS
-                    // handle_client will handle WS loop and return, then we close
                     handle_client(cfd);
                     epoll_ctl(epfd,EPOLL_CTL_DEL,cfd,NULL); close(cfd);
                 }
