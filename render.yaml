@@ -4,6 +4,8 @@ services:
     env: docker
     dockerfilePath: ./main/Dockerfile
     healthCheckPath: /health
+    autoDeploy: true
+    branch: main
     envVars:
       - key: PORT
         value: 10000
@@ -19,6 +21,8 @@ services:
     env: docker
     dockerfilePath: ./auth/Dockerfile
     healthCheckPath: /health
+    autoDeploy: true
+    branch: main
     envVars:
       - key: PORT
         value: 10000
@@ -34,6 +38,8 @@ services:
     env: docker
     dockerfilePath: ./account/Dockerfile
     healthCheckPath: /health
+    autoDeploy: true
+    branch: main
     envVars:
       - key: PORT
         value: 10000
