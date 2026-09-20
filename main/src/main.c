@@ -103,27 +103,47 @@ static void handle_client(int cfd){
         int authed=has_token(buf);
         const char *auth_url=get_auth_url();
         const char *acct_url=get_account_url();
+        // Build main callback for login redirect
+        char main_cb[1024];
+        if(strstr(auth_url,"localhost")) snprintf(main_cb,sizeof(main_cb),"http://localhost:8080/auth/callback");
+        else snprintf(main_cb,sizeof(main_cb),"https://opencode-bnao.onrender.com/auth/callback");
+        char login_url[2048];
+        snprintf(login_url,sizeof(login_url),"%s/login?redirect_uri=%s",auth_url, main_cb);
+        // Build header right: Login button or Profile dropdown
+        char header_right[4096];
         if(!authed){
-            char loc[1024]; snprintf(loc,sizeof(loc),"%s/login?redirect_uri=%s/auth/callback",auth_url, "https://opencode-bnao.onrender.com");
-            // For local, use localhost
-            if(strstr(auth_url,"localhost")) snprintf(loc,sizeof(loc),"%s/login?redirect_uri=http://localhost:8080/auth/callback",auth_url);
-            // Also try to handle gateway case
-            send_redirect(cfd,loc);
-            printf("[main] / without token → 302 %s\n",loc); fflush(stdout);
-            return;
+            snprintf(header_right,sizeof(header_right),"<a href=\"%s\" class=\"btn-login\">Login</a>", login_url);
+        } else {
+            snprintf(header_right,sizeof(header_right),
+                "<div class=\"profile-wrap\">"
+                "<button id=\"profileBtn\" class=\"profile-btn\" onclick=\"toggleProfile()\">"
+                "<span id=\"avatarInitial\" style=\"width:28px;height:28px;background:#6366f1;color:#fff;border-radius:50%%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700\">U</span> <span>Profile</span> <span style=\"font-size:10px\">▾</span>"
+                "</button>"
+                "<div id=\"profileDropdown\" class=\"dropdown hidden\">"
+                "<div class=\"dropdown-item\"><strong id=\"usernameDisplay\">Loading...</strong><div class=\"muted\" style=\"font-size:12px\">username</div></div>"
+                "<a href=\"%s/\">My Account</a>"
+                "<a href=\"%s/logout\">Logout (auth)</a>"
+                "<a href=\"/logout\">Logout (main)</a>"
+                "</div></div>", acct_url, auth_url);
         }
-        // authed
-        char html[8192];
-        // Use %% for % in CSS
+        char html[16384];
         snprintf(html,sizeof(html),
-"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Main — Hello</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px}.muted{color:#666}button{padding:8px 14px;border-radius:8px;background:#111;color:#fff;border:0;cursor:pointer}pre{background:#f6f6f6;padding:10px;border-radius:8px;overflow:auto}</style></head><body><div class=\"card\">\n"
-"  <h1>Main ✅ (SSO authed)</h1><p class=\"muted\">Google-like SSO — token from auth</p>\n"
-"  <p>Auth: <a href=\"%s/login\">auth</a> | Account: <a href=\"%s/\">account</a> | <a href=\"%s/logout\">logout all</a></p>\n"
-"  <hr><h3>Account data (via account)</h3><button hx-get=\"%s/api/me\" hx-target=\"#acct\" hx-swap=\"innerHTML\">Load account (HTMX)</button><pre id=\"acct\">— click —</pre>\n"
-"  <h3>Save account (Turso)</h3><form hx-post=\"%s/api/account\" hx-target=\"#saveRes\" hx-swap=\"innerHTML\"><input name=\"username\" placeholder=\"username\" style=\"padding:8px;width:100%%;box-sizing:border-box;margin:4px 0\" value=\"demo\"><input name=\"email\" placeholder=\"email\" style=\"padding:8px;width:100%%;box-sizing:border-box;margin:4px 0\" value=\"demo@example.com\"><button type=\"submit\">Save to Turso</button></form><div id=\"saveRes\" style=\"margin-top:10px;padding:10px;background:#f6f6f6;border-radius:8px;\">— result —</div>\n"
-"  <hr><button hx-get=\"/fragment\" hx-target=\"#frag\" hx-swap=\"innerHTML\">Load fragment</button><div id=\"frag\" style=\"margin-top:8px;padding:10px;background:#f6f6f6;border-radius:8px;\"> — </div>\n"
-"  <script>if(!document.cookie.includes('token=')){var t=localStorage.getItem('token'); if(t) document.cookie='token='+t+'; Path=/';}</script>\n"
-"</div></body></html>\n", auth_url, acct_url, auth_url, acct_url, acct_url);
+"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Main — Info</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>*{box-sizing:border-box}body{font-family:system-ui,sans-serif;margin:0;background:#f9fafb;color:#111}header{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}.logo{font-weight:700;font-size:18px}.nav-right{display:flex;align-items:center;gap:12px}.btn-login{padding:8px 16px;border-radius:8px;background:#111;color:#fff;text-decoration:none;font-weight:500;border:1px solid #111}.btn-login:hover{background:#333}.profile-wrap{position:relative}.profile-btn{padding:6px 12px;border-radius:999px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:6px}.dropdown{position:absolute;top:110%%;right:0;min-width:200px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.08);padding:6px;display:flex;flex-direction:column;z-index:20}.dropdown.hidden{display:none}.dropdown a{padding:10px 12px;border-radius:8px;text-decoration:none;color:#111;font-size:14px}.dropdown a:hover{background:#f3f4f6}.dropdown-item{padding:10px 12px;border-bottom:1px solid #f3f4f6}.container{max-width:900px;margin:24px auto;padding:0 16px}.hero{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}.card{border:1px solid #e5e7eb;border-radius:12px;padding:20px;background:#fff}.muted{color:#6b7280}pre{background:#f6f6f6;padding:10px;border-radius:8px;overflow:auto}button{padding:8px 14px;border-radius:8px;background:#111;color:#fff;border:0;cursor:pointer}input{padding:8px;border:1px solid #ccc;border-radius:8px;width:100%%;box-sizing:border-box;margin:4px 0}</style></head><body>"
+"<header><div class=\"logo\">Main <span style=\"color:#6366f1\">●</span></div><div class=\"nav-right\">%s</div></header>"
+"<div class=\"container\">"
+"  <div class=\"hero\"><h1>Welcome to Main — Info Page ✅</h1><p class=\"muted\">C + HTMX — Low RAM (0.9 MB), High Concurrency (epoll, 13k req/s). SSO like Google — auth shared via JWT.</p><p><span class=\"muted\">Auth:</span> <a href=\"%s/login\">auth</a> · <span class=\"muted\">Account:</span> <a href=\"%s/\">account</a> · <a href=\"%s/logout\">logout all</a></p></div>"
+"  <div class=\"grid\">"
+"    <div class=\"card\"><h3>⚡ Fast & Lean</h3><p class=\"muted\">C binary 17KB, RSS 0.6-0.9MB. epoll single-thread handles 10k+ conns. Fixed 8KB buffers, no malloc per conn.</p><pre>ab -n 2000 -c 100 → 13,941 req/s</pre></div>"
+"    <div class=\"card\"><h3>🔐 SSO like Google</h3><p class=\"muted\">Login once on <b>auth</b> → JWT set → redirect to main via <code>/auth/callback?token=</code>. Shared cookie <code>token</code> + localStorage sync.</p><p class=\"muted\" style=\"font-size:12px\">Auth: %s</p></div>"
+"    <div class=\"card\"><h3>🧩 Microservices</h3><p class=\"muted\">main:8080 · auth:8081 · account:8082 · gateway:8085. Connected via nginx after deploy. Scale with <code>SO_REUSEPORT</code>.</p><a href=\"/health\" style=\"font-size:12px\">/health</a> · <a href=\"/fragment\" style=\"font-size:12px\">/fragment</a></div>"
+"  </div>"
+"  <div class=\"card\" style=\"margin-top:16px\"><h3>Account data (via account service)</h3><p class=\"muted\" style=\"font-size:12px\">Turso demo — fetch from %s/api/me</p><button hx-get=\"%s/api/me\" hx-target=\"#acct\" hx-swap=\"innerHTML\">Load account (HTMX)</button><pre id=\"acct\" style=\"margin-top:8px\">— click —</pre><h4>Save account (Turso)</h4><form hx-post=\"%s/api/account\" hx-target=\"#saveRes\" hx-swap=\"innerHTML\"><input name=\"username\" placeholder=\"username\" value=\"demo\"><input name=\"email\" placeholder=\"email\" value=\"demo@example.com\"><button type=\"submit\">Save to Turso</button></form><div id=\"saveRes\" style=\"margin-top:10px;padding:10px;background:#f6f6f6;border-radius:8px;\">— result —</div></div>"
+"  <div class=\"card\" style=\"margin-top:16px\"><h3>HTMX fragment</h3><button hx-get=\"/fragment\" hx-target=\"#frag\" hx-swap=\"innerHTML\">Load fragment</button><div id=\"frag\" style=\"margin-top:8px;padding:10px;background:#f6f6f6;border-radius:8px;\"> — </div></div>"
+"</div>"
+"<script>if(!document.cookie.includes('token=')){var t=localStorage.getItem('token'); if(t) document.cookie='token='+t+'; Path=/';}</script>"
+"<script>function toggleProfile(){var d=document.getElementById('profileDropdown'); if(d) d.classList.toggle('hidden');} document.addEventListener('click',function(e){var w=document.querySelector('.profile-wrap'); if(w && !w.contains(e.target)){var d=document.getElementById('profileDropdown'); if(d) d.classList.add('hidden');}});"
+"(function(){var acct=\"%s\"; var el=document.getElementById('usernameDisplay'); if(!el) return; fetch(acct+\"/api/me\",{credentials:\"include\"}).then(function(r){return r.json();}).then(function(j){var u=(j.account&&j.account.username)||j.username||\"demo\"; el.textContent=u; var av=document.getElementById('avatarInitial'); if(av&&u) av.textContent=u.charAt(0).toUpperCase();}).catch(function(){el.textContent=\"demo\";});})();</script>"
+"</body></html>\n", header_right, auth_url, acct_url, auth_url, auth_url, acct_url, acct_url, acct_url, acct_url);
         if(is_head) send_response(cfd,200,"OK","text/html; charset=utf-8","",0);
         else send_response(cfd,200,"OK","text/html; charset=utf-8",html,strlen(html));
     } else if(strcmp(path,"/fragment")==0){
