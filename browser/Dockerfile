@@ -21,10 +21,11 @@ RUN if [ -f /tmp/ctx2/browser/.env ]; then cp /tmp/ctx2/browser/.env ./.env; \
     elif [ -f /tmp/ctx2/.env ]; then cp /tmp/ctx2/.env ./.env; \
     else touch ./.env; fi && rm -rf /tmp/ctx2
 
-EXPOSE 10000
+EXPOSE 8084
 ENV NODE_ENV=production
+ENV PORT=8084
 
-HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
-  CMD wget -qO- http://localhost:${PORT:-10000}/health || exit 1
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3
+  CMD wget -qO- http://localhost:8084/health || exit 1
 
 CMD ["node", "server.js"]
