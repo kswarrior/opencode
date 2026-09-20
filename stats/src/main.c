@@ -97,15 +97,6 @@ static void load_dotenv(void){
         fclose(f);
     }
 }
-static void ws_send_text(int fd,const char *msg){
-    size_t len=strlen(msg);
-    unsigned char hdr[10]; hdr[0]=0x81; int hlen=2;
-    if(len<126){hdr[1]=len;}
-    else if(len<65536){hdr[1]=126; hdr[2]=(len>>8)&0xFF; hdr[3]=len&0xFF; hlen=4;}
-    else {hdr[1]=127; for(int i=0;i<8;i++) hdr[2+i]=(len>>(56-8*i))&0xFF; hlen=10;}
-    send(fd,hdr,hlen,MSG_NOSIGNAL); send(fd,msg,len,MSG_NOSIGNAL);
-}
-
 // ---------- monitoring ----------
 typedef struct {
     char name[MAX_NAME];
@@ -144,12 +135,11 @@ static int load_sites(const char *path){
         // Try alternative path /app/sites.json etc already tried; if still not found, use built-in defaults
         int di=get_interval();
         Site defaults[]={
-            {"main","http://main:8080/health","Main service", 0},
-            {"auth","http://auth:8081/health","Auth service", 0},
-            {"account","http://account:8082/health","Account service", 0},
-            {"gateway","http://gateway:80/health","Nginx gateway", 0},
+            {"main","https://opencode-bnao.onrender.com/health","Main (production on Render)", 30},
+            {"auth","https://opencode-gn2y.onrender.com/health","Auth (production on Render)", 45},
+            {"account","https://opencode-7waf.onrender.com/health","Account (production on Render)", 60},
         };
-        for(int i=0;i<4;i++) if(defaults[i].interval==0) defaults[i].interval=di;
+        for(int i=0;i<3;i++) if(defaults[i].interval==0) defaults[i].interval=di;
         int n=sizeof(defaults)/sizeof(defaults[0]);
         for(int i=0;i<n && site_count<MAX_SITES;i++){
             sites[site_count]=defaults[i];
@@ -499,7 +489,6 @@ static void handle_client(int cfd){
 "  <div id=\"stats\" hx-get=\"/fragment\" hx-trigger=\"load, every 5s\" hx-swap=\"innerHTML\">%s</div>\n"
 "  <hr style=\"margin-top:20px\"><details><summary>Raw JSON (/api/status)</summary><pre id=\"raw\">%s</pre></details>\n"
 "  <p class=\"muted\" style=\"font-size:12px;margin-top:16px\">C epoll single-thread + monitor pthread — low RAM &lt;1MB — `curl` per-site interval — updates via HTMX `hx-get` every 5s</p>\n"
-"  <script>(function(){var u=(location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws';var ws;function c(){try{ws=new WebSocket(u);ws.onopen=function(){setInterval(function(){if(ws.readyState===1)ws.send('ks');},25000);};ws.onmessage=function(e){if(e.data==='ks')ws.send('ks');};ws.onclose=function(){setTimeout(c,3000);};}catch(e){}}c();})();</script>\n"
 "</div></body></html>\n",
             get_interval(), up, down, unk, site_count,
             get_sites_path(), get_interval(),
@@ -553,21 +542,6 @@ static void handle_client(int cfd){
     } else if(strcmp(path,"/reload")==0){
         load_sites(get_sites_path());
         const char *b="reloaded"; send_response(cfd,200,"OK","text/plain",b,strlen(b));
-    } else if(strcmp(path,"/ws")==0){
-        if(has_substr(buf,"Upgrade: websocket")||has_substr(buf,"Upgrade: WebSocket")||has_substr(buf,"upgrade: websocket")){
-            const char *resp="HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: x3JJHMbDL1EzLkh9GBhXDw==\r\n\r\n";
-            send(cfd,resp,strlen(resp),MSG_NOSIGNAL);
-            int flags=fcntl(cfd,F_GETFL,0); fcntl(cfd,F_SETFL,flags&~O_NONBLOCK);
-            ws_send_text(cfd,"ks");
-            char rbuf[512];
-            while(keep_running){
-                ssize_t r=recv(cfd,rbuf,sizeof(rbuf),0);
-                if(r<=0) break;
-                int found=0; for(int i=0;i<r-1;i++) if(rbuf[i]=='k'&&rbuf[i+1]=='s') found=1;
-                if(found) ws_send_text(cfd,"ks");
-            }
-            return;
-        } else {const char *b="WSS ready"; send_response(cfd,426,"Upgrade Required","text/plain",b,strlen(b));}
     } else if(strcmp(path,"/events")==0){
         const char *hdr="HTTP/1.1 200 OK\r\nContent-Type: text/event-stream\r\nCache-Control: no-cache\r\nConnection: keep-alive\r\nAccess-Control-Allow-Origin: *\r\n\r\n";
         send(cfd,hdr,strlen(hdr),MSG_NOSIGNAL);

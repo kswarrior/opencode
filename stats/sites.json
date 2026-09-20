@@ -1,42 +1,18 @@
 [
   {
     "name": "main",
-    "url": "http://localhost:8080/health",
-    "description": "Main service — Hello + SSO",
-    "interval": 10
-  },
-  {
-    "name": "auth",
-    "url": "http://localhost:8081/health",
-    "description": "Auth service — login/register + JWT",
-    "interval": 15
-  },
-  {
-    "name": "account",
-    "url": "http://localhost:8082/health",
-    "description": "Account service — Turso + profile",
-    "interval": 20
-  },
-  {
-    "name": "gateway",
-    "url": "http://localhost:8085/health",
-    "description": "Nginx gateway",
+    "url": "https://opencode-bnao.onrender.com/health",
+    "description": "Main (production on Render)",
     "interval": 30
   },
   {
-    "name": "main-prod",
-    "url": "https://opencode-bnao.onrender.com/health",
-    "description": "Main (production on Render)",
-    "interval": 60
-  },
-  {
-    "name": "auth-prod",
+    "name": "auth",
     "url": "https://opencode-gn2y.onrender.com/health",
     "description": "Auth (production on Render)",
-    "interval": 60
+    "interval": 45
   },
   {
-    "name": "account-prod",
+    "name": "account",
     "url": "https://opencode-7waf.onrender.com/health",
     "description": "Account (production on Render)",
     "interval": 60
