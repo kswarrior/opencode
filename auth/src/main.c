@@ -47,6 +47,107 @@ static void load_dotenv(void){
     }
 }
 
+static int get_site_token_len(const char *prefix){
+    char key[128];
+    if(prefix && *prefix){
+        snprintf(key,sizeof(key),"%s_TOKEN_LEN",prefix);
+        const char *e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;}
+    }
+    const char *e=getenv("TOKEN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;}
+    e=getenv("MAIN_TOKEN_LEN"); if(e&&*e){int v=atoi(e); if(v>=20&&v<=512) return v;}
+    return 120;
+}
+static int get_site_token_sum(const char *prefix){
+    char key[128];
+    if(prefix && *prefix){
+        snprintf(key,sizeof(key),"%s_TOKEN_SUM",prefix);
+        const char *e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    }
+    const char *e=getenv("TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("MAIN_TOKEN_SUM"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    return 280;
+}
+static int get_site_skip_front(const char *prefix){
+    char key[128];
+    if(prefix && *prefix){
+        snprintf(key,sizeof(key),"%s_TOKEN_SKIP_FRONT",prefix);
+        const char *e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    }
+    const char *e=getenv("TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("MAIN_TOKEN_SKIP_FRONT"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    return 25;
+}
+static int get_site_skip_back(const char *prefix){
+    char key[128];
+    if(prefix && *prefix){
+        snprintf(key,sizeof(key),"%s_TOKEN_SKIP_BACK",prefix);
+        const char *e=getenv(key); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    }
+    const char *e=getenv("TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    e=getenv("MAIN_TOKEN_SKIP_BACK"); if(e&&*e){int v=atoi(e); if(v>=0) return v;}
+    return 25;
+}
+static int verify_site_token(const char *token, char *cb_out, size_t cb_sz, const char *req_buf){
+    if(!token || !*token) return 0;
+    // Try MAIN site first
+    const char *sites[]={"MAIN", NULL};
+    // also try generic (empty prefix) as fallback
+    for(int si=0; sites[si]; si++){
+        const char *pfx=sites[si];
+        int len=get_site_token_len(pfx);
+        int sum=get_site_token_sum(pfx);
+        int sf=get_site_skip_front(pfx);
+        int sb=get_site_skip_back(pfx);
+        if((int)strlen(token) != len) continue;
+        int mid_len=len - sf - sb;
+        if(mid_len<=0) continue;
+        int calc=0;
+        int ok=1;
+        for(int i=sf; i<len-sb; i++){
+            if(token[i]<'0' || token[i]>'9'){ ok=0; break; }
+            calc += token[i]-'0';
+        }
+        if(!ok) continue;
+        if(calc != sum) continue;
+        // matched this site -> determine callback
+        int is_local = has_substr(req_buf, "localhost");
+        const char *cb=NULL;
+        if(pfx && strcmp(pfx,"MAIN")==0){
+            cb = is_local ? getenv("MAIN_CALLBACK_LOCAL") : getenv("MAIN_CALLBACK");
+            if(!cb || !*cb) cb = is_local ? "http://localhost:8080/auth/callback" : "https://opencode-bnao.onrender.com/auth/callback";
+        } else {
+            // generic fallback
+            cb = is_local ? "http://localhost:8080/auth/callback" : "https://opencode-bnao.onrender.com/auth/callback";
+        }
+        if(cb_out && cb_sz>0){ strncpy(cb_out, cb, cb_sz-1); cb_out[cb_sz-1]='\0'; }
+        return 1;
+    }
+    // also try generic token config (no prefix) as single site
+    {
+        int len=get_site_token_len(NULL);
+        int sum=get_site_token_sum(NULL);
+        int sf=get_site_skip_front(NULL);
+        int sb=get_site_skip_back(NULL);
+        if((int)strlen(token)==len){
+            int mid_len=len - sf - sb;
+            if(mid_len>0){
+                int calc=0, ok=1;
+                for(int i=sf; i<len-sb; i++){ if(token[i]<'0'||token[i]>'9'){ok=0;break;} calc+=token[i]-'0';}
+                if(ok && calc==sum){
+                    int is_local=has_substr(req_buf,"localhost");
+                    const char *cb=is_local? "http://localhost:8080/auth/callback" : "https://opencode-bnao.onrender.com/auth/callback";
+                    const char *env_cb=is_local? getenv("MAIN_CALLBACK_LOCAL"): getenv("MAIN_CALLBACK");
+                    if(env_cb && *env_cb) cb=env_cb;
+                    if(cb_out) {strncpy(cb_out,cb,cb_sz-1); cb_out[cb_sz-1]='\0';}
+                    return 1;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+
 static const char HTML_MAIN[] =
 "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Auth — Hello</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6}.card{border:1px solid #ddd;border-radius:12px;padding:20px}a.btn,button{padding:8px 14px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;cursor:pointer;text-decoration:none;display:inline-block}.muted{color:#666}input{padding:8px;border:1px solid #ccc;border-radius:6px;width:100%;box-sizing:border-box;margin:6px 0}</style></head><body><div class=\"card\">\n"
 "  <h1>Auth Service ✅</h1><p class=\"muted\">C + HTMX — login / register — low RAM | SSO like Google</p>\n"
@@ -108,6 +209,20 @@ static const char HTML_REGISTER_TMPL[] =
 "  </form>\n"
 "  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
 "  <p class=\"muted\">HTMX POST → 200 + HX-Redirect. After register, <a href=\"/login?redirect_uri=%s\">login</a></p>\n"
+"</div></body></html>\n";
+
+static const char HTML_LOGIN_SITE_TMPL[] =
+"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Login — Auth (Site)</title><script src=\"https://unpkg.com/htmx.org@1.9.12\"></script><style>body{font-family:system-ui,sans-serif;max-width:480px;margin:40px auto;padding:0 16px}.card{border:1px solid #ddd;border-radius:12px;padding:20px}input{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%%;box-sizing:border-box;margin:6px 0}button{padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:0;width:100%%;cursor:pointer}.muted{color:#666}a{color:#111}</style></head><body><div class=\"card\">\n"
+"  <h2>Login (Site Token)</h2>\n"
+"  <p class=\"muted\" style=\"font-size:12px\">Site token verified — <code>%s</code></p>\n"
+"  <form hx-post=\"/login?site_token=%s\" hx-target=\"#msg\" hx-swap=\"innerHTML\" hx-indicator=\"#msg\">\n"
+"    <input name=\"username\" placeholder=\"username\" required>\n"
+"    <input name=\"password\" type=\"password\" placeholder=\"password\" required>\n"
+"    <input type=\"hidden\" name=\"site_token\" value=\"%s\">\n"
+"    <button type=\"submit\">Login via HTMX</button>\n"
+"  </form>\n"
+"  <div id=\"msg\" style=\"margin-top:12px;padding:10px;background:#f6f6f6;border-radius:8px;min-height:20px;\"></div>\n"
+"  <p class=\"muted\" style=\"margin-top:16px\">POST sets <code>token</code> cookie + HX-Redirect. <a href=\"/\">home</a></p>\n"
 "</div></body></html>\n";
 
 static const char HTML_FRAG[] = "<div><b>Fragment from Auth</b> — at <span id=\"t\"></span><script>document.getElementById('t').textContent=new Date().toLocaleTimeString()</script> ✅</div>";
