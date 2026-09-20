@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#e0f2fe" />
 <title>Browser — White & Light Blue</title>
-<link rel="stylesheet" href="./style.css?v=3" />
+<link rel="stylesheet" href="./style.css?v=4" />
 <style>.welcome.hidden{display:none !important}</style>
 </head>
 <body>
@@ -31,9 +31,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
           </span>
           <span class="tab-title" id="tabTitle">ksx.pages.dev</span>
-          <span class="tab-close" aria-label="Close tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
-          </span>
         </button>
       </div>
       <button class="new-tab-btn" id="newTabBtn" aria-label="New tab">
@@ -41,17 +38,7 @@
       </button>
     </div>
 
-    <div class="topbar-actions">
-      <button class="icon-btn ghost" aria-label="Minimize">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14"/></svg>
-      </button>
-      <button class="icon-btn ghost" aria-label="Maximize">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="5" width="14" height="14" rx="1.5"/></svg>
-      </button>
-      <button class="icon-btn ghost close" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
+
   </header>
 
   <!-- Toolbar: Navigation + Omnibox -->
@@ -79,23 +66,11 @@
       <button class="omnibox-action" id="clearBtn" aria-label="Clear">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
-      <span class="omnibox-divider"></span>
-      <button class="icon-btn small star" aria-label="Bookmark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.9 6.9 18.6l1-5.6-4.1-4 5.7-.8L12 3z"/></svg>
-      </button>
+      <span class="omnibox-divider" style="display:none"></span>
     </div>
 
     <div class="toolbar-extras">
       <span class="fps-badge" id="fpsBadge" title="Frames per second">-- fps</span>
-      <button class="icon-btn" aria-label="Extensions">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 11a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4v-2z"/><path d="M7 7V5a2 2 0 0 1 2-2h2"/><path d="M17 7V5a2 2 0 0 0-2-2h-2"/><path d="M7 17v2a2 2 0 0 0 2 2h2"/><path d="M17 17v2a2 2 0 0 1-2 2h-2"/></svg>
-      </button>
-      <button class="icon-btn" aria-label="Profile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
-      </button>
-      <button class="icon-btn" aria-label="Menu">
-        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
-      </button>
     </div>
   </nav>
 
@@ -214,6 +189,6 @@
   </nav>
 </div>
 
-<script src="./app.js?v=3"></script>
+<script src="./app.js?v=4"></script>
 </body>
 </html>
