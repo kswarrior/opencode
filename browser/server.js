@@ -7,6 +7,12 @@ const puppeteer = require('puppeteer-core');
 const PORT = parseInt(process.env.PORT || '8084', 10);
 const CLIENT_DIR = path.join(__dirname, 'client');
 
+// ---------- persistent session (security later) ----------
+// Single-user persistent profile: cookies/localStorage survive ws disconnect & redeploy if volume exists.
+// Security (master password + TOTP) will be added later in gateway/auth, so for now no gate.
+const PERSIST_DIR = process.env.BROWSER_DATA_DIR || process.env.USER_DATA_DIR || path.join(__dirname, 'data', 'browser-profile');
+try { fs.mkdirSync(PERSIST_DIR, { recursive: true }); console.log('[browser] persist dir', PERSIST_DIR); } catch (e) { console.log('[browser] persist dir fail', e.message); }
+
 // ---------- mime ----------
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -67,6 +73,7 @@ async function getBrowser() {
   console.log('[browser] launching chromium', exe || '(default)');
   const launchOpts = {
     headless: 'new',
+    userDataDir: PERSIST_DIR,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -191,17 +198,22 @@ function attachWSS(wsServer) {
 
     ws.on('close', async () => {
       alive = false;
-      console.log('[ws] closed');
+      console.log('[ws] closed (page persists if persistent profile)');
       try { if (cdp) await cdp.detach().catch(()=>{}); } catch {}
       try { if (page) await page.close().catch(()=>{}); } catch {}
+      // do NOT close ctx when using persistent default context - cookies must survive
+      // ctx is null for persistent mode; only close if we created incognito
       try { if (ctx) await ctx.close().catch(()=>{}); } catch {}
     });
     ws.on('error', (e) => console.log('[ws] error', e.message));
 
     try {
       const browser = await getBrowser();
-      ctx = await browser.createBrowserContext();
-      page = await ctx.newPage();
+      // PERSISTENT MODE: use default context so GitHub/Google cookies survive phone disconnects.
+      // Security gate (master password + TOTP) will wrap this later; for now single-user shared.
+      // If you need incognito per-tab later, switch back to createBrowserContext.
+      page = await browser.newPage();
+      ctx = null;
 
       // viewport
       await page.setViewport({ width: targetWidth, height: targetHeight, deviceScaleFactor: dpr });
@@ -266,10 +278,15 @@ function attachWSS(wsServer) {
       });
 
       ws.send(JSON.stringify({ type: 'ready', width: targetWidth, height: targetHeight }));
-      // initial navigate
+      // initial navigate only if fresh (about:blank) - otherwise restore last URL so GitHub/Google stays logged in
+      const curUrl = page.url();
       const initial = 'https://ksx.pages.dev';
-      console.log('[ws] goto', initial);
-      await page.goto(initial, { waitUntil: 'domcontentloaded', timeout: 15000 }).catch(e => console.log('goto', e.message));
+      if (!curUrl || curUrl === 'about:blank') {
+        console.log('[ws] goto', initial);
+        await page.goto(initial, { waitUntil: 'domcontentloaded', timeout: 15000 }).catch(e => console.log('goto', e.message));
+      } else {
+        console.log('[ws] resume', curUrl);
+      }
       // also send current url
       if (alive && ws.readyState === 1) {
         ws.send(JSON.stringify({ type: 'nav', url: page.url(), title: await page.title().catch(()=> '') }));
