@@ -32,12 +32,14 @@ static int get_port(void){const char *e=getenv("PORT"); if(e&&*e){int v=atoi(e);
 static int get_interval(void){const char *e=getenv("MONITOR_INTERVAL"); if(e&&*e){int v=atoi(e); if(v>0) return v;} return 30;}
 static const char* get_sites_path(void){
     const char *e=getenv("SITES_JSON");
-    if(e&&*e) return e;
-    // try common locations
+    if(e&&*e && access(e,F_OK)==0) return e;
+    // try common locations (supports running from repo root, stats dir, or /app in docker)
     if(access("./stats/sites.json",F_OK)==0) return "./stats/sites.json";
+    if(access("stats/sites.json",F_OK)==0) return "stats/sites.json";
     if(access("sites.json",F_OK)==0) return "sites.json";
     if(access("/app/sites.json",F_OK)==0) return "/app/sites.json";
     if(access("./sites.json",F_OK)==0) return "./sites.json";
+    if(e&&*e) return e; // env set but file not found, return it for error message / fallback defaults
     return "./stats/sites.json";
 }
 static int is_docker(void){
