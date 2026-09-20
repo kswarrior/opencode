@@ -4,21 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#e0f2fe" />
-<title>Proxy — Phone</title>
+<title>Browser — Real CDP</title>
 <link rel="stylesheet" href="./style.css?v=5" />
-<style>
-.proxy-app{min-height:100dvh;display:flex;flex-direction:column;background:#f0f9ff}
-.proxy-toolbar{display:flex;gap:8px;padding:10px;background:white;border-bottom:1px solid #e0f2fe;align-items:center;position:sticky;top:0;z-index:10}
-.proxy-omni{flex:1;display:flex;gap:8px;background:#e0f2fe;border:1px solid #bae6fd;border-radius:999px;padding:6px 12px;align-items:center}
-.proxy-omni input{flex:1;border:none;background:transparent;outline:none;font-size:14px}
-.proxy-frame-wrap{flex:1;background:white;display:flex;position:relative}
-.proxy-frame{flex:1;width:100%;height:calc(100dvh - 60px);border:none;background:white;display:none}
-.proxy-frame.active{display:block}
-.proxy-home{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;background:linear-gradient(180deg, white 0%, #f0f9ff 100%);min-height:calc(100dvh - 60px)}
-.proxy-home h1{margin:0 0 8px;color:#0369a1;font-size:28px;font-weight:800}
-.proxy-home p{margin:0;color:#475569;font-size:14px}
-.tab-close{width:20px;height:20px;display:grid;place-items:center;border-radius:999px;color:#64748b;background:transparent;border:none;cursor:pointer;margin-left:4px}.tab-close:hover{background:#e0f2fe;color:#0369a1}.tab-close svg{width:12px;height:12px}#proxyClear{opacity:0;pointer-events:none;transition:.15s} #proxySearch{opacity:0;pointer-events:none;transition:.15s} .proxy-omni:focus-within #proxyClear{opacity:1;pointer-events:auto} .proxy-omni:focus-within #proxySearch{opacity:1;pointer-events:auto} .proxy-badge{padding:6px 10px;background:#0ea5e9;color:white;border:1px solid #0ea5e9;border-radius:999px;font-size:11px;font-weight:700}
-</style>
 </head>
 <body>
 <div class="proxy-app">
