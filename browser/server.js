@@ -176,7 +176,9 @@ const wssBrowser = new WebSocketServer({ server, path: '/browser/ws', perMessage
 
 function attachWSS(wsServer) {
   wsServer.on('connection', async (ws, req) => {
-    console.log('[ws] connected', req.url, req.socket.remoteAddress);
+    console.log('[ws] connected', req.url, req.socket.remoteAddress, 'ext', req.headers['sec-websocket-extensions']);
+    // immediate hello to test ws
+    try { ws.send(JSON.stringify({ type: 'hello', msg: 'ws ok' })); } catch(e){ console.log('hello send fail', e.message); }
     let ctx = null;
     let page = null;
     let cdp = null;
