@@ -71,12 +71,25 @@ static void generate_site_token(char *out, size_t out_sz){
         for(int i=len-sb;i<len;i++) out[i]= alnum[random()%alnum_len];
         // middle: fully alphanumeric like both ends, letters are decoys not counted
         // sum of digits inside middle (ignoring letters) must equal sum
-        int min_digits = (sum+8)/9; // ceil(sum/9)
-        if(min_digits < 32) min_digits = 32;
-        if(min_digits > mid_len-8) min_digits = mid_len-8;
+        // aim for digit_count 50-62 to avoid many 9s and keep visual mix but still look random
+        int min_needed = (sum+8)/9; // ceil(sum/9)
         int max_digits = mid_len - 8; // ensure at least 8 letters for visual mix
-        if(max_digits < min_digits) max_digits = min_digits;
-        int digit_count = min_digits + (random() % (max_digits - min_digits + 1));
+        if(max_digits > mid_len) max_digits = mid_len;
+        int digit_count;
+        if(min_needed > max_digits){
+            // sum requires more digits than visual mix allows -> use minimal needed
+            digit_count = min_needed;
+            if(digit_count > mid_len) digit_count = mid_len;
+        } else {
+            // pick high range to keep digits random-looking (avoid many 9s)
+            int low = 50;
+            if(low < min_needed) low = min_needed;
+            if(low > max_digits) low = min_needed;
+            // bias toward 50-62 but occasionally allow lower for variety
+            digit_count = max_digits - (random() % 15); // 48-62 for mid_len 70
+            if(digit_count < low) digit_count = low + (random() % (max_digits - low + 1));
+            if(digit_count < min_needed) digit_count = min_needed;
+        }
         while(digit_count*9 < sum && digit_count < mid_len) digit_count++;
         // pick random positions for digits
         int is_digit[512]={0};
