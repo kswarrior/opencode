@@ -171,9 +171,7 @@ const server = http.createServer((req, res) => {
   if (serveStatic(req, res)) return;
 });
 
-const wss = new WebSocketServer({ server, path: '/ws', perMessageDeflate: false, maxPayload: 10 * 1024 * 1024 });
-// single path for now to avoid double upgrade handling
-// const wssBrowser = new WebSocketServer({ server, path: '/browser/ws', perMessageDeflate: false, maxPayload: 10 * 1024 * 1024 });
+const wss = new WebSocketServer({ noServer: true, perMessageDeflate: false, maxPayload: 10 * 1024 * 1024 });
 
 function attachWSS(wsServer) {
   wsServer.on('connection', async (ws, req) => {
@@ -353,12 +351,17 @@ function attachWSS(wsServer) {
   });
 }
 attachWSS(wss);
-// attachWSS(wssBrowser);
 
-// also handle upgrade for gateway proxy path robustness
-// server.on('upgrade', (req, socket, head) => {
-//   // ws servers already handle, ignore
-// });
+server.on('upgrade', (req, socket, head) => {
+  const pathname = req.url.split('?')[0];
+  if (pathname === '/ws' || pathname === '/browser/ws') {
+    wss.handleUpgrade(req, socket, head, (ws) => wss.emit('connection', ws, req));
+  } else {
+    // not a ws path, destroy
+    // but let http server handle other upgrades? just destroy
+    try { socket.destroy(); } catch {}
+  }
+});
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`browser ready on 0.0.0.0:${PORT} (ws at /ws, /browser/ws) chromium=${findChromium() || 'bundled'}`);
