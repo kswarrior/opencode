@@ -1,193 +1,298 @@
-// White & Light Blue Browser — SVG only, phone + desktop
-const tabsEl = document.getElementById('tabs');
-const newTabBtn = document.getElementById('newTabBtn');
+// Real browser — CDP screencast via WebSocket, white & light blue, SVG only
 const addressInput = document.getElementById('addressInput');
-const searchInput = document.getElementById('searchInput');
-const searchGo = document.getElementById('searchGo');
-const viewportInner = document.getElementById('viewportInner');
-const pageFrame = document.getElementById('pageFrame');
-const pageUrl = document.getElementById('pageUrl');
-const pageContent = document.getElementById('pageContent');
-const clearBtn = document.getElementById('clearBtn');
+const screen = document.getElementById('screen');
+const overlay = document.getElementById('overlay');
+const screenWrap = document.getElementById('screenWrap');
+const loading = document.getElementById('loading');
+const loadingText = document.getElementById('loadingText');
+const loadingSub = document.getElementById('loadingSub');
+const errorBanner = document.getElementById('errorBanner');
+const errorText = document.getElementById('errorText');
+const retryBtn = document.getElementById('retryBtn');
+const connDot = document.getElementById('connDot');
+const screenDot = document.getElementById('screenDot');
+const screenUrl = document.getElementById('screenUrl');
+const screenSize = document.getElementById('screenSize');
+const fpsBadge = document.getElementById('fpsBadge');
+const tabTitle = document.getElementById('tabTitle');
 const backBtn = document.getElementById('backBtn');
 const forwardBtn = document.getElementById('forwardBtn');
 const reloadBtn = document.getElementById('reloadBtn');
+const homeBtn = document.getElementById('homeBtn');
+const clearBtn = document.getElementById('clearBtn');
+const searchInput = document.getElementById('searchInput');
+const searchGo = document.getElementById('searchGo');
 
-let tabId = 2;
-let historyStack = ['https://example.com'];
-let historyIndex = 0;
+let ws = null;
+let connected = false;
+let frameCount = 0;
+let lastFpsTime = Date.now();
+let targetW = 1280, targetH = 720;
+let hasFirstFrame = false;
 
-function createTab(title = 'New Tab') {
-  tabId += 1;
-  const btn = document.createElement('button');
-  btn.className = 'tab';
-  btn.setAttribute('role', 'tab');
-  btn.dataset.tab = String(tabId);
-  btn.innerHTML = `
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/><path d="M12 8v8"/></svg></span>
-    <span class="tab-title">${title}</span>
-    <span class="tab-close" aria-label="Close tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
-  `;
-  btn.addEventListener('click', (e) => {
-    if (e.target.closest('.tab-close')) {
-      e.stopPropagation();
-      closeTab(btn);
-      return;
+// WS URL handling for direct :8084 and gateway /browser/
+function wsUrl() {
+  const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  // if path starts with /browser, use /browser/ws
+  if (location.pathname.startsWith('/browser')) return `${proto}//${location.host}/browser/ws`;
+  // fallback: try /ws, server also listens on both
+  return `${proto}//${location.host}/ws`;
+}
+
+function setConn(state) {
+  connected = state === 'open';
+  connDot.className = 'conn-dot ' + state;
+  connDot.title = state;
+  screenDot.className = 'screen-dot ' + state;
+  if (state === 'open') {
+    loading.style.display = 'none';
+    errorBanner.classList.add('hidden');
+    loadingText.textContent = 'Connected';
+    loadingSub.textContent = 'Streaming JPEG diff';
+    if (!hasFirstFrame) {
+      loading.style.display = 'flex';
+      loadingText.textContent = 'Waiting for first frame...';
+      loadingSub.textContent = 'Chromium rendering https://ksx.pages.dev';
     }
-    activateTab(btn);
-  });
-  tabsEl.appendChild(btn);
-  activateTab(btn);
-  tabsEl.scrollLeft = tabsEl.scrollWidth;
-}
-
-function activateTab(btn) {
-  tabsEl.querySelectorAll('.tab').forEach(t => {
-    t.classList.remove('active');
-    t.setAttribute('aria-selected', 'false');
-  });
-  btn.classList.add('active');
-  btn.setAttribute('aria-selected', 'true');
-}
-
-function closeTab(btn) {
-  const isActive = btn.classList.contains('active');
-  btn.remove();
-  const remaining = tabsEl.querySelectorAll('.tab');
-  if (remaining.length === 0) createTab();
-  else if (isActive) activateTab(remaining[remaining.length - 1]);
-}
-
-tabsEl.querySelectorAll('.tab').forEach(t => {
-  t.addEventListener('click', (e) => {
-    if (e.target.closest('.tab-close')) {
-      e.stopPropagation();
-      closeTab(t);
-      return;
+  } else if (state === 'connecting') {
+    loading.style.display = 'flex';
+    loadingText.textContent = 'Connecting to browser engine...';
+    loadingSub.textContent = 'Launching Chromium via CDP';
+    errorBanner.classList.add('hidden');
+  } else if (state === 'error') {
+    loading.style.display = 'none';
+    errorBanner.classList.remove('hidden');
+  } else if (state === 'closed') {
+    if (!hasFirstFrame) {
+      loading.style.display = 'flex';
+      loadingText.textContent = 'Disconnected';
+      loadingSub.textContent = 'Retrying in 2s...';
     }
-    activateTab(t);
-  });
-});
+  }
+}
 
-newTabBtn.addEventListener('click', () => createTab());
+function connect() {
+  setConn('connecting');
+  const url = wsUrl();
+  console.log('[ws] connect', url);
+  ws = new WebSocket(url);
+
+  ws.onopen = () => {
+    console.log('[ws] open');
+    setConn('open');
+    // send initial viewport
+    sendViewport();
+  };
+  ws.onclose = (e) => {
+    console.log('[ws] close', e.code, e.reason);
+    setConn('closed');
+    ws = null;
+    // auto reconnect
+    setTimeout(connect, 2000);
+  };
+  ws.onerror = (e) => {
+    console.log('[ws] error', e);
+    setConn('error');
+    errorText.textContent = 'WebSocket error — retrying...';
+  };
+  ws.onmessage = (ev) => {
+    let msg;
+    try { msg = JSON.parse(ev.data); } catch { return; }
+    if (msg.type === 'frame') {
+      hasFirstFrame = true;
+      loading.style.display = 'none';
+      // data is base64 jpeg without prefix
+      screen.src = 'data:image/jpeg;base64,' + msg.data;
+      screen.style.display = 'block';
+      frameCount++;
+      // ack not needed (server auto-acks), but if server expects ack, send it
+      // ws.send(JSON.stringify({type:'ack', sessionId: msg.sessionId}));
+      // fps
+      const now = Date.now();
+      if (now - lastFpsTime > 1000) {
+        const fps = Math.round(frameCount * 1000 / (now - lastFpsTime));
+        fpsBadge.textContent = fps + ' fps';
+        frameCount = 0;
+        lastFpsTime = now;
+      }
+    } else if (msg.type === 'nav' || msg.type === 'load' || msg.type === 'ready') {
+      const u = msg.url || '';
+      if (u) {
+        addressInput.value = u;
+        screenUrl.textContent = u;
+        try {
+          const host = new URL(u).hostname;
+          tabTitle.textContent = host;
+        } catch { tabTitle.textContent = u.slice(0,30); }
+      }
+      if (msg.title) tabTitle.textContent = msg.title.slice(0,24);
+      if (msg.width && msg.height) {
+        targetW = msg.width; targetH = msg.height;
+        screenSize.textContent = `${targetW}×${targetH}`;
+        // adjust canvas
+        overlay.width = targetW;
+        overlay.height = targetH;
+      }
+    } else if (msg.type === 'error') {
+      errorText.textContent = msg.message || 'Error';
+      errorBanner.classList.remove('hidden');
+      loading.style.display = 'none';
+    }
+  };
+}
+function send(obj) {
+  if (ws && ws.readyState === 1) ws.send(JSON.stringify(obj));
+}
 
 function normalizeUrl(v) {
-  v = v.trim();
+  v = (v||'').trim();
   if (!v) return '';
   if (v.startsWith('http://') || v.startsWith('https://')) return v;
   if (v.includes('.') && !v.includes(' ')) return 'https://' + v;
-  return 'https://search.example.com?q=' + encodeURIComponent(v);
+  return 'https://duckduckgo.com/?q=' + encodeURIComponent(v);
 }
-
 function navigate(url) {
-  const normalized = normalizeUrl(url);
-  if (!normalized) return;
-  addressInput.value = normalized;
-  pageUrl.textContent = normalized;
-  historyStack = historyStack.slice(0, historyIndex + 1);
-  historyStack.push(normalized);
-  historyIndex = historyStack.length - 1;
-  renderPage(normalized);
+  const u = normalizeUrl(url);
+  if (!u) return;
+  addressInput.value = u;
+  screenUrl.textContent = u;
+  hasFirstFrame = false;
+  loading.style.display = 'flex';
+  loadingText.textContent = 'Navigating...';
+  loadingSub.textContent = u;
+  send({ type: 'navigate', url: u });
 }
 
-function renderPage(url) {
-  pageFrame.classList.remove('hidden');
-  document.querySelector('.welcome').style.display = 'none';
-  const isSearch = url.includes('search.example.com');
-  pageContent.innerHTML = isSearch ? `
-    <h2>
-      <span style="display:inline-flex;align-items:center;gap:8px">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
-        Search results
-      </span>
-    </h2>
-    <p>Showing results for <strong style="color:#0369a1">${escapeHtml(url.split('q=')[1] ? decodeURIComponent(url.split('q=')[1]) : url)}</strong></p>
-    <div style="margin-top:16px;display:grid;gap:10px">
-      ${[1,2,3].map(i => `
-        <div style="padding:14px;border:1px solid #e0f2fe;border-radius:12px;background:#f0f9ff">
-          <div style="font-weight:700;color:#0ea5e9">Result ${i} — Light Blue Card</div>
-          <div style="color:#475569;font-size:13px;margin-top:4px">This is a placeholder page rendered inside the browser viewport. Real engine will load <code>${escapeHtml(url)}</code> here via Chrome headless + WebRTC.</div>
-        </div>
-      `).join('')}
-    </div>
-  ` : `
-    <h2>
-      <span style="display:inline-flex;align-items:center;gap:8px">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg>
-        ${escapeHtml(url)}
-      </span>
-    </h2>
-    <p>This viewport is where the real browser will stream the page (via <code>CDP screencast → WebRTC H.264</code>). For now it's a styled placeholder — white & light blue, SVG only.</p>
-    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
-      <span style="padding:6px 10px;border-radius:999px;background:#e0f2fe;color:#0369a1;font-size:12px;font-weight:700;border:1px solid #bae6fd">✓ SVG only</span>
-      <span style="padding:6px 10px;border-radius:999px;background:#e0f2fe;color:#0369a1;font-size:12px;font-weight:700;border:1px solid #bae6fd">✓ Phone + Desktop</span>
-      <span style="padding:6px 10px;border-radius:999px;background:#e0f2fe;color:#0369a1;font-size:12px;font-weight:700;border:1px solid #bae6fd">✓ White / Light Blue</span>
-    </div>
-    <div style="margin-top:18px;padding:14px;border:1px dashed #7dd3fc;border-radius:12px;background:#f0f9ff;color:#475569;font-size:13px">
-      Tip: Type any address in the omnibox and press Enter. Try <code>example.com</code> or <code>hello world</code>.
-    </div>
-  `;
-  viewportInner.scrollTop = 0;
+// viewport sync
+function sendViewport() {
+  // use container size to decide target, but keep 1280x720 for quality
+  const rect = screenWrap.getBoundingClientRect();
+  // choose width based on container, clamp 320-1920
+  const w = 1280;
+  const h = 720;
+  // we keep fixed 1280x720 to avoid restart spam, but send dpr
+  send({ type: 'viewport', width: w, height: h, dpr: window.devicePixelRatio || 1 });
+  screenSize.textContent = `${w}×${h}`;
 }
+window.addEventListener('resize', () => {
+  if (connected) sendViewport();
+});
 
-function escapeHtml(s){
-  return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-}
-
+// address bar
 addressInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') navigate(addressInput.value);
 });
-clearBtn.addEventListener('click', () => {
-  addressInput.value = '';
-  addressInput.focus();
+clearBtn.addEventListener('click', () => { addressInput.value=''; addressInput.focus(); });
+if (searchInput) {
+  searchInput.addEventListener('keydown', (e)=> { if(e.key==='Enter') navigate(searchInput.value); });
+  searchGo.addEventListener('click', ()=> navigate(searchInput.value));
+}
+document.querySelectorAll('.quick-link').forEach(btn=>{
+  btn.addEventListener('click', ()=> {
+    const u = btn.getAttribute('data-url');
+    if(u) navigate(u);
+  });
 });
-searchInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') navigate(searchInput.value);
-});
-searchGo.addEventListener('click', () => navigate(searchInput.value));
 
-// toolbar history
-backBtn.addEventListener('click', () => {
-  if (historyIndex > 0) {
-    historyIndex -= 1;
-    const url = historyStack[historyIndex];
-    addressInput.value = url;
-    pageUrl.textContent = url;
-    renderPage(url);
-  }
-});
-forwardBtn.addEventListener('click', () => {
-  if (historyIndex < historyStack.length - 1) {
-    historyIndex += 1;
-    const url = historyStack[historyIndex];
-    addressInput.value = url;
-    pageUrl.textContent = url;
-    renderPage(url);
-  }
-});
-reloadBtn.addEventListener('click', () => {
+// toolbar
+backBtn.addEventListener('click', ()=> send({type:'back'}));
+forwardBtn.addEventListener('click', ()=> send({type:'forward'}));
+reloadBtn.addEventListener('click', ()=> {
   reloadBtn.animate([{rotate:'0deg'},{rotate:'360deg'}],{duration:500,easing:'ease-out'});
-  if (pageUrl.textContent) renderPage(pageUrl.textContent);
+  send({type:'reload'});
 });
+homeBtn.addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
+document.getElementById('mBack').addEventListener('click', ()=> send({type:'back'}));
+document.getElementById('mForward').addEventListener('click', ()=> send({type:'forward'}));
+document.getElementById('mRefresh').addEventListener('click', ()=> send({type:'reload'}));
+document.getElementById('mHome').addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
+retryBtn.addEventListener('click', ()=> { errorBanner.classList.add('hidden'); connect(); });
+document.getElementById('newTabBtn').addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
+document.getElementById('mTabs').addEventListener('click', ()=> navigate('https://ksx.pages.dev'));
 
-// quick links demo
-document.querySelectorAll('.quick-link').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const label = btn.querySelector('span:last-child').textContent.trim();
-    navigate(label.toLowerCase() + '.example.com');
-  });
+// overlay input forwarding
+function posFromEvent(e) {
+  const rect = screen.getBoundingClientRect();
+  // screen is object-fit: contain, but we stretch to fill 1280x720
+  // compute scale: displayed rect vs target 1280x720
+  const scaleX = targetW / rect.width;
+  const scaleY = targetH / rect.height;
+  const x = (e.clientX - rect.left) * scaleX;
+  const y = (e.clientY - rect.top) * scaleY;
+  return {x: Math.round(Math.max(0, Math.min(targetW, x))), y: Math.round(Math.max(0, Math.min(targetH, y)))};
+}
+overlay.addEventListener('mousemove', (e)=>{
+  const {x,y} = posFromEvent(e);
+  send({type:'mouse', action:'move', x, y});
 });
-
-// mobile bar sync
-document.querySelectorAll('.mobile-btn').forEach(b => {
-  b.addEventListener('click', () => {
-    document.querySelectorAll('.mobile-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    if (b.textContent.includes('Home')) {
-      document.querySelector('.welcome').style.display = '';
-      pageFrame.classList.add('hidden');
-      addressInput.value = 'https://example.com';
+overlay.addEventListener('mousedown', (e)=>{
+  e.preventDefault();
+  const {x,y} = posFromEvent(e);
+  overlay.focus();
+  send({type:'mouse', action:'down', x, y, button: e.button});
+});
+overlay.addEventListener('mouseup', (e)=>{
+  const {x,y}= posFromEvent(e);
+  send({type:'mouse', action:'up', x, y, button: e.button});
+});
+overlay.addEventListener('wheel', (e)=>{
+  e.preventDefault();
+  const {x,y}=posFromEvent(e);
+  send({type:'mouse', action:'wheel', x, y, deltaX: e.deltaX, deltaY: e.deltaY});
+}, {passive:false});
+overlay.addEventListener('contextmenu', e=> e.preventDefault());
+overlay.tabIndex = 0;
+overlay.addEventListener('keydown', (e)=>{
+  // map key
+  const key = e.key;
+  const code = e.code;
+  // send down and up
+  if (e.type === 'keydown') {
+    // prevent browser nav like backspace
+    if (['Backspace','Tab','Enter','Escape','ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(key)) e.preventDefault();
+    send({type:'key', action:'down', key, code, text: e.key.length===1 ? e.key : undefined, keyCode: e.keyCode});
+    // for printable, also send char
+    if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+      // char will be handled via keyDown with text
     }
-    if (b.textContent.includes('Tabs')) createTab();
-  });
+  }
 });
+overlay.addEventListener('keyup', (e)=>{
+  send({type:'key', action:'up', key: e.key, code: e.code});
+});
+// also handle typing via keypress
+overlay.addEventListener('keypress', (e)=>{
+  if (e.key.length===1) send({type:'key', action:'type', text: e.key});
+});
+
+// touch support
+overlay.addEventListener('touchstart', (e)=>{
+  e.preventDefault();
+  const t = e.touches[0];
+  const {x,y}=posFromEvent({clientX:t.clientX, clientY:t.clientY});
+  send({type:'mouse', action:'down', x, y, button:0});
+}, {passive:false});
+overlay.addEventListener('touchmove', (e)=>{
+  e.preventDefault();
+  const t = e.touches[0];
+  const {x,y}=posFromEvent({clientX:t.clientX, clientY:t.clientY});
+  send({type:'mouse', action:'move', x, y});
+}, {passive:false});
+overlay.addEventListener('touchend', (e)=>{
+  e.preventDefault();
+  const t = e.changedTouches[0];
+  const {x,y}=posFromEvent({clientX:t.clientX, clientY:t.clientY});
+  send({type:'mouse', action:'up', x, y, button:0});
+}, {passive:false});
+
+// make overlay focusable on click
+screenWrap.addEventListener('click', ()=> overlay.focus());
+
+// init
+connect();
+sendViewport();
+// fps reset
+setInterval(()=>{
+  // if no frames, show 0
+  if (Date.now() - lastFpsTime > 1500 && frameCount===0) fpsBadge.textContent = '0 fps';
+},1500);
