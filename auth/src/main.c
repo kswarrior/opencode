@@ -11,6 +11,8 @@
 #include <sys/epoll.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <sys/select.h>
+#include <sys/time.h>
 #include <time.h>
 
 #define DEFAULT_PORT 8081
@@ -335,9 +337,9 @@ static void handle_client(int cfd){
                 int body_have=n - header_len;
                 int need=content_len - body_have;
                 int tries=0;
-                while(need>0 && tries<5 && n+need < (int)sizeof(buf)-1){
+                while(need>0 && tries<20 && n+need < (int)sizeof(buf)-1){
                     ssize_t r=recv(cfd,buf+n,sizeof(buf)-1-n,0);
-                    if(r<=0) break;
+                    if(r>0){ n+=r; buf[n]='\0'; body_have=n - header_len; need=content_len - body_have; tries=0; if(need<=0) break; continue; } if(r==0) break; if(errno==EAGAIN || errno==EWOULDBLOCK){ struct timeval tv={0,20000}; fd_set fds; FD_ZERO(&fds); FD_SET(cfd,&fds); select(cfd+1,&fds,NULL,NULL,&tv); tries++; continue; } break; // old
                     n+=r; buf[n]='\0';
                     body_have=n - header_len;
                     need=content_len - body_have;
