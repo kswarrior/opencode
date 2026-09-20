@@ -31,6 +31,54 @@ let frameCount = 0;
 let lastFpsTime = Date.now();
 let targetW = 1280, targetH = 720;
 let hasFirstFrame = false;
+let currentObjectUrl = null;
+let pendingFrame = null;
+let rafPending = false;
+
+function b64ToBytes(b64){
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) out[i]=bin.charCodeAt(i);
+  return out;
+}
+function renderFrame(buf){
+  // buf: ArrayBuffer or Uint8Array
+  hasFirstFrame = true;
+  loading.style.display = 'none';
+  const arr = buf instanceof Uint8Array ? buf : new Uint8Array(buf);
+  const blob = new Blob([arr], { type: 'image/jpeg' });
+  const url = URL.createObjectURL(blob);
+  const prev = currentObjectUrl;
+  // revoke prev after new loads (avoid flicker)
+  screen.onload = () => { if(prev) try{ URL.revokeObjectURL(prev);}catch{} };
+  // fallback revoke if onload never fires
+  if(prev) setTimeout(()=>{ try{ URL.revokeObjectURL(prev);}catch{} }, 4000);
+  screen.src = url;
+  screen.style.display = 'block';
+  currentObjectUrl = url;
+  frameCount++;
+  const now = Date.now();
+  if (now - lastFpsTime > 1000) {
+    const fps = Math.round(frameCount * 1000 / (now - lastFpsTime));
+    fpsBadge.textContent = fps + ' fps';
+    frameCount = 0;
+    lastFpsTime = now;
+  }
+}
+function scheduleFrame(buf){
+  // coalesce: if already pending, just replace (drop intermediate)
+  pendingFrame = buf;
+  if (!rafPending) {
+    rafPending = true;
+    requestAnimationFrame(()=>{
+      rafPending = false;
+      if(pendingFrame){
+        const b = pendingFrame; pendingFrame=null;
+        renderFrame(b);
+      }
+    });
+  }
+}
 
 // WS URL handling for direct :8084 and gateway /browser/
 function wsUrl() {
@@ -78,7 +126,7 @@ function connect() {
   const url = wsUrl();
   console.log('[ws] connect', url);
   ws = new WebSocket(url);
-
+  try { ws.binaryType = 'arraybuffer'; } catch {}
   ws.onopen = () => {
     console.log('[ws] open');
     setConn('open');
@@ -114,25 +162,41 @@ function connect() {
     errorText.textContent = 'WebSocket error — retrying... ' + (location.host + wsUrl().replace(/^wss?:\/\/[^/]+/,''));
   };
   ws.onmessage = (ev) => {
+    const data = ev.data;
+    // binary JPEG frame (fast path)
+    if (data instanceof ArrayBuffer) {
+      // empty ping? ignore 0 length
+      if (data.byteLength === 0) return;
+      scheduleFrame(data);
+      return;
+    }
+    if (data instanceof Blob) {
+      data.arrayBuffer().then(b=> scheduleFrame(b));
+      return;
+    }
+    // text message
     let msg;
-    try { msg = JSON.parse(ev.data); } catch { return; }
+    try { msg = JSON.parse(typeof data === 'string' ? data : new TextDecoder().decode(data)); } catch { return; }
     if (msg.type === 'hello') { console.log('[ws] hello', msg.msg); return; }
     if (msg.type === 'frame') {
-      hasFirstFrame = true;
-      loading.style.display = 'none';
-      // data is base64 jpeg without prefix
-      screen.src = 'data:image/jpeg;base64,' + msg.data;
-      screen.style.display = 'block';
-      frameCount++;
-      // ack not needed (server auto-acks), but if server expects ack, send it
-      // ws.send(JSON.stringify({type:'ack', sessionId: msg.sessionId}));
-      // fps
-      const now = Date.now();
-      if (now - lastFpsTime > 1000) {
-        const fps = Math.round(frameCount * 1000 / (now - lastFpsTime));
-        fpsBadge.textContent = fps + ' fps';
-        frameCount = 0;
-        lastFpsTime = now;
+      // fallback JSON base64 (old server)
+      try {
+        const bytes = b64ToBytes(msg.data);
+        scheduleFrame(bytes.buffer);
+      } catch {
+        // last resort data URI
+        hasFirstFrame = true;
+        loading.style.display = 'none';
+        screen.src = 'data:image/jpeg;base64,' + msg.data;
+        screen.style.display = 'block';
+        frameCount++;
+        const now = Date.now();
+        if (now - lastFpsTime > 1000) {
+          const fps = Math.round(frameCount * 1000 / (now - lastFpsTime));
+          fpsBadge.textContent = fps + ' fps';
+          frameCount = 0;
+          lastFpsTime = now;
+        }
       }
     } else if (msg.type === 'nav' || msg.type === 'load' || msg.type === 'ready') {
       const u = msg.url || '';

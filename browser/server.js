@@ -71,7 +71,9 @@ async function getBrowser() {
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
-      '--disable-gpu',
+      '--use-gl=angle',
+      '--use-angle=swiftshader',
+      '--enable-unsafe-swiftshader',
       '--no-first-run',
       '--no-zygote',
       '--disable-extensions',
@@ -230,16 +232,26 @@ function attachWSS(wsServer) {
       await cdp.send('Runtime.enable');
 
       // input handling via CDP
-      // screencast
+      // screencast — binary JPEG frames (fallback to JSON base64)
       cdp.on('Page.screencastFrame', async ({ data, sessionId }) => {
         if (!alive || ws.readyState !== 1) {
           try { await cdp.send('Page.screencastFrameAck', { sessionId }); } catch {}
           return;
         }
+        // backpressure: if client can't keep up, skip frame to keep latency low
+        // 1MB buffered = ~6 frames at quality 60; drop instead of queueing
+        if (ws.bufferedAmount > 1024 * 1024) {
+          try { await cdp.send('Page.screencastFrameAck', { sessionId }); } catch {}
+          return;
+        }
         try {
-          // send to client as base64 jpeg
-          ws.send(JSON.stringify({ type: 'frame', data, sessionId }));
-        } catch {}
+          // send binary JPEG — avoids 33% base64 inflation + JSON stringify overhead
+          const buf = Buffer.from(data, 'base64');
+          // ws lib will send as binary frame (opcode 2)
+          ws.send(buf, { binary: true, compress: false });
+        } catch {
+          try { ws.send(JSON.stringify({ type: 'frame', data, sessionId })); } catch {}
+        }
         try {
           await cdp.send('Page.screencastFrameAck', { sessionId });
         } catch {}
@@ -247,7 +259,7 @@ function attachWSS(wsServer) {
 
       await cdp.send('Page.startScreencast', {
         format: 'jpeg',
-        quality: 80,
+        quality: 60,
         maxWidth: 1280,
         maxHeight: 720,
         everyNthFrame: 1,
@@ -290,7 +302,7 @@ function attachWSS(wsServer) {
               await page.setViewport({ width: w, height: h, deviceScaleFactor: dpr }).catch(()=>{});
               // restart screencast with new size
               try { await cdp.send('Page.stopScreencast').catch(()=>{}); } catch {}
-              await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 80, maxWidth: w, maxHeight: h, everyNthFrame: 1 }).catch(()=>{});
+              await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 60, maxWidth: w, maxHeight: h, everyNthFrame: 1 }).catch(()=>{});
             }
           } else if (msg.type === 'mouse') {
             // {action: 'move'|'down'|'up'|'wheel', x,y, button:0, deltaX, deltaY}
