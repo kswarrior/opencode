@@ -76,8 +76,9 @@ async function handleProxy(req, res){
   // support /proxy?url=... , /browser/proxy?url=..., /proxy/fetch?url=...
   let target = full.searchParams.get('url');
   if(!target){
-    // also support /proxy/https://... or /proxy/https%3A...
-    const p = full.pathname;
+    // also support /proxy/https://... or /browser/proxy/https://...
+    let p = full.pathname;
+    if(p.startsWith('/browser/')) p = p.slice(8);
     const m = p.match(/\/proxy\/(https?:\/\/.+)/);
     if(m) target = decodeURIComponent(m[1]);
     else if(p.startsWith('/proxy/') && p.length>7) target = decodeURIComponent(p.slice(7));
@@ -362,12 +363,22 @@ const server = http.createServer((req, res) => {
     return;
   }
   // proxy mode: code runs on phone browser, server just fetches (preserves GitHub/Google cookies server-side)
-  // Exclude static proxy UI files: /proxy.html, /proxy.js
+  // Exclude static proxy UI files: /proxy.html, /proxy.js, /browser/proxy.html
   const pp = req.url.split('?')[0];
-  const isProxyApi = (pp === '/proxy' || pp.startsWith('/proxy?') || req.url.startsWith('/proxy?') || req.url.startsWith('/proxy/?') || pp.startsWith('/proxy/http') || pp === '/proxy/' );
-  const isProxyStatic = (pp === '/proxy.html' || pp === '/proxy.js');
+  // handle both /proxy and /browser/proxy (direct & via gateway)
+  const stripped = pp.startsWith('/browser/') ? pp.slice(8) : pp;
+  const strippedFull = req.url.startsWith('/browser/') ? req.url.slice(8) : req.url;
+  const isProxyApi = (
+    pp === '/proxy' || stripped === '/proxy' ||
+    pp.startsWith('/proxy/') || stripped.startsWith('/proxy/') ||
+    req.url.startsWith('/proxy?') || strippedFull.startsWith('/proxy?') ||
+    req.url.startsWith('/browser/proxy') || pp.startsWith('/browser/proxy')
+  );
+  const isProxyStatic = (pp === '/proxy.html' || pp === '/proxy.js' || pp === '/browser/proxy.html' || stripped === '/proxy.html' || stripped === '/proxy.js');
   if (isProxyApi && !isProxyStatic) {
+    console.log('[proxy] hit', req.url, '->', strippedFull);
     handleProxy(req, res).catch(e=>{
+      console.log('[proxy] error', e.message);
       try { res.writeHead(500, {'Content-Type':'text/plain','Access-Control-Allow-Origin':'*'}); res.end('proxy error '+e.message); } catch {}
     });
     return;
