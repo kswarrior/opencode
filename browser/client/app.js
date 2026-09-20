@@ -1,4 +1,6 @@
 // Real browser — CDP screencast via WebSocket, white & light blue, SVG only
+// force hide fallback welcome even if CSS cached
+try { const w=document.getElementById('welcome'); if(w){ w.style.display='none'; w.classList.add('hidden'); } } catch {}
 const addressInput = document.getElementById('addressInput');
 const screen = document.getElementById('screen');
 const overlay = document.getElementById('overlay');
@@ -33,11 +35,11 @@ let hasFirstFrame = false;
 // WS URL handling for direct :8084 and gateway /browser/
 function wsUrl() {
   const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
-  // if path starts with /browser, use /browser/ws
+  // try /browser/ws when under /browser, else /ws — server handles both
   if (location.pathname.startsWith('/browser')) return `${proto}//${location.host}/browser/ws`;
-  // fallback: try /ws, server also listens on both
   return `${proto}//${location.host}/ws`;
 }
+let fallbackTried=false;
 
 function setConn(state) {
   connected = state === 'open';
@@ -85,19 +87,36 @@ function connect() {
   };
   ws.onclose = (e) => {
     console.log('[ws] close', e.code, e.reason);
-    setConn('closed');
+    // if we closed without ever getting a frame, treat as error to show retry
+    if (!hasFirstFrame) {
+      // try fallback ws path once
+      if (!fallbackTried) {
+        fallbackTried=true;
+        const alt = wsUrl().includes('/browser/ws') ? wsUrl().replace('/browser/ws','/ws') : wsUrl().replace('/ws','/browser/ws');
+        console.log('[ws] trying fallback', alt);
+        setTimeout(()=>{ try{ const tmp=new WebSocket(alt); tmp.onopen=()=>{ console.log('fallback open'); tmp.close(); connect(); }; tmp.onerror=()=>connect(); }catch{ connect(); } },800);
+        setConn('error');
+        errorText.textContent = `Closed ${e.code||''} — retrying ${alt}`;
+        return;
+      }
+      setConn('error');
+      errorText.textContent = `Closed ${e.code||''} ${e.reason||''} — retrying...`;
+    } else {
+      setConn('closed');
+    }
     ws = null;
-    // auto reconnect
     setTimeout(connect, 2000);
   };
   ws.onerror = (e) => {
     console.log('[ws] error', e);
     setConn('error');
-    errorText.textContent = 'WebSocket error — retrying...';
+    // show more detail if available
+    errorText.textContent = 'WebSocket error — retrying... ' + (location.host + wsUrl().replace(/^wss?:\/\/[^/]+/,''));
   };
   ws.onmessage = (ev) => {
     let msg;
     try { msg = JSON.parse(ev.data); } catch { return; }
+    if (msg.type === 'hello') { console.log('[ws] hello', msg.msg); return; }
     if (msg.type === 'frame') {
       hasFirstFrame = true;
       loading.style.display = 'none';
