@@ -1,4 +1,4 @@
-# KS SSH — single-TOML recipe.
+# KS SSH — single-TOML package recipe.
 # Canonical registry: registry/packages/ssh.toml
 # CDN mirror: https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/ssh.toml
 # This copy is the EMBEDDED BASELINE baked into the ksx binary via rust-embed
@@ -7,72 +7,117 @@
 [service]
 name = "ssh"
 version = "1.0.0"
-description = "KS SSH — hardened OpenSSH bastion. Single-TOML recipe with embedded configs."
+description = "KS SSH — hardened OpenSSH bastion (${SSH_PORT})."
+summary = "SSH bastion for ${SSH_USER}@${SSH_PORT}"
 
 [requirements]
-os = ["linux"]
-min_ram_mb = 256
-docker = "none"
+os = ["linux", "darwin"]
+arch = ["amd64", "arm64"]
 
-[files.hardening]
-path = "~/.ksx/ssh/ksx-sshd.conf"
+min_ram_mb = 256
+ram_mode = "force"
+ram_echo_success = "ram OK for sshd"
+ram_echo_fail = "ram FAIL: need 256MB for sshd"
+
+min_disk_mb = 128
+disk_mode = "optional"
+disk_echo_success = "disk OK for sshd"
+disk_echo_fail = "disk LOW for sshd logs"
+
+root_required = false
+root_mode = "check"
+root_echo_success = "root check: unprivileged ok (snippet staged under ~/.ksx)"
+
+[[requirements.directories]]
+path = "~/.ksx/ssh"
+create = true
+mode = "700"
+required_for = ["install", "info"]
+description = "ssh staging dir"
+echo_success = "dir OK: ${DATA_DIR} ready"
+echo_fail = "dir FAIL: ${DATA_DIR}"
+
+[[requirements.dependencies]]
+name = "sshd-or-ssh"
+check_cmd = "command -v sshd >/dev/null 2>&1 || command -v ssh >/dev/null 2>&1"
+mode = "optional"
+required_for = ["install", "info"]
+echo_success = "ssh tooling present"
+echo_fail = "no sshd/ssh binary (will install)"
+
+[[env]]
+mode = "both"
+target_path = "~/.ksx/ssh/ssh.env"
+required_for = ["install", "reinstall"]
+values = { SSH_PORT = "2222", SSH_USER = "ksx", DATA_DIR = "~/.ksx/ssh" }
+
+[[env]]
+mode = "interpolate"
+required_for = ["install", "update", "reinstall", "uninstall", "info"]
+values = { HARDENING = "prohibit-password" }
+
+[[files]]
+target_path = "~/.ksx/ssh/ksx-sshd.conf"
+required_for = ["install", "reinstall"]
+echo_success = "hardening snippet staged for port ${SSH_PORT}"
+echo_fail = "hardening snippet FAILED"
 content = """
-# ksx-managed sshd hardening snippet (review before applying system-wide)
+# ksx-managed sshd snippet — port ${SSH_PORT}, user ${SSH_USER}
+Port ${SSH_PORT}
 PasswordAuthentication no
-PermitRootLogin prohibit-password
+PermitRootLogin ${HARDENING}
 X11Forwarding no
 """
 
-[[install.steps]]
+[[steps]]
 name = "install openssh"
-run = """
+required_for = ["install"]
+script = """
 set -euo pipefail
 if command -v apt-get >/dev/null; then
   sudo apt-get update && sudo apt-get install -y openssh-server
 elif command -v apk >/dev/null; then
   sudo apk add openssh
 else
-  echo "install openssh manually for your distro"
+  echo "install openssh manually for ${SSH_USER}"
 fi
 """
+echo_success = "openssh install attempted"
+echo_fail = "openssh install FAILED"
 
-[[install.steps]]
-name = "stage hardening snippet"
-run = """
-set -euo pipefail
-mkdir -p ~/.ksx/ssh
-echo "hardening snippet staged at ~/.ksx/ssh/ksx-sshd.conf (review, then copy to /etc/ssh/sshd_config.d/)"
-"""
-
-[[update.steps]]
+[[steps]]
 name = "refresh openssh"
-run = """
+required_for = ["update"]
+script = """
 set -euo pipefail
 if command -v apt-get >/dev/null; then
   sudo apt-get update && sudo apt-get install -y --only-upgrade openssh-server
 elif command -v apk >/dev/null; then
   sudo apk upgrade openssh
 else
-  echo "update openssh manually for your distro"
+  echo "update openssh manually"
 fi
 """
+echo_success = "openssh refreshed"
+echo_fail = "openssh refresh FAILED"
 
-[[reinstall.steps]]
-name = "reinstall openssh"
-run = """
+[[steps]]
+name = "remove snippet"
+required_for = ["uninstall"]
+script = """
 set -euo pipefail
-if command -v apt-get >/dev/null; then
-  sudo apt-get update && sudo apt-get install -y --reinstall openssh-server
-elif command -v apk >/dev/null; then
-  sudo apk fix openssh
-else
-  echo "reinstall openssh manually for your distro"
-fi
+rm -f "${DATA_DIR}/ksx-sshd.conf"
+echo "snippet removed for ${SSH_USER}"
 """
+echo_success = "ssh uninstalled"
+echo_fail = "ssh uninstall FAILED"
 
-[[info.steps]]
+[[steps]]
 name = "sshd status"
-run = """
+required_for = ["info"]
+script = """
 set -euo pipefail
-(command -v sshd >/dev/null && sshd -T 2>/dev/null | grep -iE 'passwordauthentication|permitrootlogin') || echo "sshd not installed or not queryable"
+(command -v sshd >/dev/null && sshd -T 2>/dev/null | grep -iE 'passwordauthentication|permitrootlogin') || echo "sshd not installed (port ${SSH_PORT} unconfigured)"
 """
+echo_success = "status reported"
+echo_fail = "status FAILED"
