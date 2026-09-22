@@ -122,7 +122,9 @@ async fn cmd_info(
 ) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let recipe = fetch_or_err(service, refresh).await?;
     let host = HostMeta::detect();
-    let vars = requirements::collect_vars(&recipe, "info");
+    // Display scope: union of all interpolate-capable blocks (read-only —
+    // no .env writes happen on this path).
+    let vars = requirements::collect_display_vars(&recipe);
     requirements::print_recipe(&recipe, &vars);
     // `info` steps are read-only diagnostics — safe to execute.
     let steps = recipe.steps_for("info", &host);

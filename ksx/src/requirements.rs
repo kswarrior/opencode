@@ -104,14 +104,29 @@ pub fn collect_vars(recipe: &Recipe, action: &str) -> HashMap<String, String> {
         if !action_allows(&block.required_for, action) {
             continue;
         }
-        let mode = block.mode.to_lowercase();
-        if mode == "interpolate" || mode == "both" {
-            for (k, v) in &block.values {
-                vars.insert(k.clone(), v.clone());
-            }
-        }
+        merge_env_block(&mut vars, block);
     }
     vars
+}
+
+/// Merge `interpolate`/`both` values from ALL blocks regardless of action.
+/// Used for read-only display (`info`): shows fully-rendered metadata and
+/// diagnostics without triggering any disk writes.
+pub fn collect_display_vars(recipe: &Recipe) -> HashMap<String, String> {
+    let mut vars = HashMap::new();
+    for block in &recipe.env {
+        merge_env_block(&mut vars, block);
+    }
+    vars
+}
+
+fn merge_env_block(vars: &mut HashMap<String, String>, block: &crate::pipeline::EnvBlock) {
+    let mode = block.mode.to_lowercase();
+    if mode == "interpolate" || mode == "both" {
+        for (k, v) in &block.values {
+            vars.insert(k.clone(), v.clone());
+        }
+    }
 }
 
 /// Write `file`/`both` blocks to their `target_path` on disk
