@@ -19,13 +19,21 @@ use axum::{
 use crate::{Assets, EmbeddedRecipes};
 
 /// Start server; never returns until Ctrl-C.
+///
+/// Binds `127.0.0.1` by default; set `KSX_HOST=0.0.0.0` to expose the
+/// service (required inside Docker: `docker run -p 8080:8080` only forwards
+/// to the container's external interface).
 pub async fn serve(port: u16) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let app = Router::new()
         .route("/", get(index))
         .route("/ws", get(ws_handler))
         .route("/assets/*file", get(asset));
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], port));
+    let host: std::net::IpAddr = std::env::var("KSX_HOST")
+        .ok()
+        .and_then(|s| s.parse().ok())
+        .unwrap_or_else(|| std::net::IpAddr::from([127, 0, 0, 1]));
+    let addr = SocketAddr::new(host, port);
     println!("ksx: web listening on http://{addr}  (WSS endpoint: ws://{addr}/ws)");
     let listener = tokio::net::TcpListener::bind(addr).await?;
     axum::serve(listener, app)
