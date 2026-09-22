@@ -73,26 +73,25 @@ action steps run. Each lifecycle action (`install`, `update`, `reinstall`,
 ## Layout
 
 ```text
-repo/
-├── registry/packages/      # canonical single-TOML recipes (CDN source of truth)
-│   ├── panel.toml
-│   ├── ssh.toml
-│   └── sql.toml
 └── ksx/
-    ├── Cargo.toml
-    ├── src/
-    │   ├── main.rs      # entry point + rust-embed declarations
-    │   ├── cli.rs       # clap parser + dispatch + [files] materialization
-    │   ├── storage.rs   # ~/.ksx/cache + state.json
-    │   ├── pipeline.rs  # 4-tier fetcher + HostMeta + action-aware Recipe
-    │   └── web.rs       # axum + WSS → HTMX fragment
-    ├── assets/
-    │   ├── index.html   # embedded HTMX/WSS page
-    │   ├── style.css
-    │   ├── htmx.min.js  # vendored stub (replace with official build)
-    │   ├── panel.toml   # embedded baseline mirror of registry/packages/
-    │   ├── ssh.toml     # (tier-4 fallback baked into the binary)
-    │   └── sql.toml
+    ├── Cargo.toml            # crate root ([[bin]] path = backend/src/main.rs)
+    ├── build.rs              # rerun-if-changed for backend/recipes/* + frontend/*
+    ├── backend/              # Rust backend (CLI + pipeline + WebUI server)
+    │   ├── src/
+    │   │   ├── main.rs      # entry point + rust-embed declarations (frontend/ + backend/recipes/)
+    │   │   ├── cli.rs       # clap parser + dispatch + [files] materialization
+    │   │   ├── storage.rs   # ~/.ksx/cache + state.json
+    │   │   ├── pipeline.rs  # 4-tier fetcher + HostMeta + action-aware Recipe
+    │   │   ├── requirements.rs
+    │   │   └── web.rs       # axum + WSS → HTMX fragment (serves frontend/)
+    │   └── recipes/
+    │       ├── panel.toml   # embedded baseline mirror of registry/packages/
+    │       ├── ssh.toml     # (tier-4 fallback baked into the binary)
+    │       └── sql.toml
+    └── frontend/             # WebUI (HTMX/WSS, embedded via rust-embed)
+        ├── index.html       # embedded HTMX/WSS page (GET /)
+        ├── style.css        # (GET /assets/style.css)
+        └── htmx.min.js      # vendored stub (GET /assets/htmx.min.js)
 ```
 
 ## Size discipline
