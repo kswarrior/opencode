@@ -80,7 +80,7 @@ pub enum Commands {
     },
     /// Print JSON host metadata (os, arch, ram_mb, free_disk_mb, is_root, docker).
     Host,
-    /// Launch embedded HTMX/WSS "Hello World" web service.
+    /// Launch embedded dashboard web service (plain HTTP, no WebSocket).
     Web {
         /// TCP port to listen on.
         #[arg(long, default_value_t = 8080)]

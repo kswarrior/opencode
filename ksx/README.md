@@ -24,7 +24,7 @@ ksx web [--port 8080]
 - `<service>`: `panel`, `ssh`, `sql`
 - `--refresh`: bypass local TOML cache (`~/.ksx/cache/`), force Render → GitHub fetch.
 - `host`: prints JSON host metadata (OS, arch, RAM_MB, Docker status).
-- `web`: launches embedded HTMX/WSS "Hello World" service.
+- `web`: launches embedded dashboard (Home / Packages / Settings).
 
 ## 4-tier resilient recipe pipeline
 
@@ -83,15 +83,14 @@ action steps run. Each lifecycle action (`install`, `update`, `reinstall`,
     │   │   ├── storage.rs   # ~/.ksx/cache + state.json
     │   │   ├── pipeline.rs  # 4-tier fetcher + HostMeta + action-aware Recipe
     │   │   ├── requirements.rs
-    │   │   └── web.rs       # axum + WSS → HTMX fragment (serves frontend/)
+    │   │   └── web.rs       # axum dashboard (serves frontend/ + /api/*)
     │   └── recipes/
     │       ├── panel.toml   # embedded baseline mirror of registry/packages/
     │       ├── ssh.toml     # (tier-4 fallback baked into the binary)
     │       └── sql.toml
-    └── frontend/             # WebUI (HTMX/WSS, embedded via rust-embed)
-        ├── index.html       # embedded HTMX/WSS page (GET /)
-        ├── style.css        # (GET /assets/style.css)
-        └── htmx.min.js      # vendored stub (GET /assets/htmx.min.js)
+    └── frontend/             # WebUI dashboard (plain HTTP, no WebSocket)
+        ├── index.html       # SPA: header + sidebar (Home/Packages/Settings)
+        └── style.css        # light gray/white theme, black accents
 ```
 
 ## Size discipline
