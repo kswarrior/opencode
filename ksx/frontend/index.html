@@ -3,60 +3,241 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ksx · Hello World over WSS</title>
+  <title>ksx · manager</title>
   <link rel="stylesheet" href="/assets/style.css" />
-  <script src="/assets/htmx.min.js" defer></script>
 </head>
 <body>
-  <main class="card">
-    <h1>ksx <span class="badge">HTMX + WSS</span></h1>
-    <p class="muted">Minimalist live-fragment demo. If the socket is alive you will see
-      <code>Hello World from ksx WSS!</code> streamed below — no page reload.</p>
+  <header class="topbar">
+    <button id="menuBtn" class="menu-btn" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="brand"><span class="brand-mark">ksx</span><span class="brand-sub">manager</span></div>
+    <div id="hostBadge" class="host-badge">…</div>
+  </header>
 
-    <div class="row">
-      <span id="conn" class="pill pill-wait">connecting…</span>
-      <button id="ping" type="button">send ping</button>
-    </div>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="Primary">
+      <nav class="nav">
+        <button type="button" class="nav-item is-active" data-page="home">Home</button>
+        <button type="button" class="nav-item" data-page="packages">Packages</button>
+        <button type="button" class="nav-item" data-page="settings">Settings</button>
+      </nav>
+      <div class="side-foot">ksx web · plain HTTP</div>
+    </aside>
+    <div id="scrim" class="scrim" hidden></div>
 
-    <!-- WSS HTML fragments land here (htmx-style swap: append). -->
-    <div id="wss-feed" class="feed" aria-live="polite">
-      <div class="wss-wait">waiting for first fragment…</div>
-    </div>
+    <main class="content">
+      <!-- HOME / OVERVIEW -->
+      <section id="page-home" class="page">
+        <h1>Overview</h1>
+        <p class="muted">Host status and managed packages at a glance.</p>
+        <div class="stat-grid">
+          <div class="card stat"><div class="stat-label">Host</div><div id="statHost" class="stat-value">—</div><div id="statHostSub" class="muted small">—</div></div>
+          <div class="card stat"><div class="stat-label">Memory</div><div id="statRam" class="stat-value">—</div><div id="statDisk" class="muted small">—</div></div>
+          <div class="card stat"><div class="stat-label">Packages</div><div id="statPkgs" class="stat-value">—</div><div class="muted small">embedded recipes</div></div>
+          <div class="card stat"><div class="stat-label">Installed</div><div id="statInstalled" class="stat-value">—</div><div class="muted small">from state.json</div></div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h2>Host detail</h2>
+            <dl id="hostDetail" class="kv"><dt>loading…</dt><dd></dd></dl>
+          </div>
+          <div class="card">
+            <h2>Quick start</h2>
+            <p class="muted small">The dashboard is read-only. Mutations run in the CLI:</p>
+            <pre class="code">ksx host
+ksx info panel
+ksx install panel
+ksx web --port 8080</pre>
+          </div>
+        </div>
+      </section>
 
-    <footer class="muted small">
-      ksx ultra-light manager · <code>ksx web --port 8080</code> · <code>ws://&lt;host&gt;/ws</code>
-    </footer>
-  </main>
+      <!-- PACKAGES -->
+      <section id="page-packages" class="page" hidden>
+        <h1>Packages</h1>
+        <p class="muted">All embedded recipes. Pick one to inspect its sources.</p>
+        <div class="pkg-layout">
+          <div id="pkgList" class="card pkg-list"><p class="muted">loading…</p></div>
+          <div id="pkgDetail" class="card pkg-detail"><p class="muted">Select a package.</p></div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="page-settings" class="page" hidden>
+        <h1>Settings</h1>
+        <div class="card"><h2>Coming soon</h2>
+        <p class="muted">Dashboard settings are not available yet. Configure ksx via CLI flags and environment (<code>KSX_RENDER_URL</code>, <code>KSX_GITHUB_BASE</code>, <code>KSX_HOST</code>).</p></div>
+      </section>
+    </main>
+  </div>
 
   <script>
     (function () {
-      var proto = location.protocol === "https:" ? "wss:" : "ws:";
-      var ws = new WebSocket(proto + "//" + location.host + "/ws");
-      var conn = document.getElementById("conn");
-      var feed = document.getElementById("wss-feed");
+      "use strict";
+      var state = { pkgs: [], selected: null, host: null };
 
-      // htmx-style swap: append streamed HTML fragments as-is (server-escaped).
-      ws.onopen = function () {
-        conn.textContent = "wss live ●";
-        conn.className = "pill pill-ok";
-      };
-      ws.onclose = function () {
-        conn.textContent = "wss closed ○";
-        conn.className = "pill pill-err";
-      };
-      ws.onerror = function () {
-        conn.textContent = "wss error ○";
-        conn.className = "pill pill-err";
-      };
-      ws.onmessage = function (ev) {
-        var clear = feed.querySelector(".wss-wait");
-        if (clear) clear.remove();
-        // Server sends trusted HTML fragments (same-origin WSS).
-        feed.insertAdjacentHTML("beforeend", ev.data);
-      };
-      document.getElementById("ping").onclick = function () {
-        if (ws.readyState === WebSocket.OPEN) ws.send("ping from browser");
-      };
+      function esc(s) {
+        return String(s == null ? "" : s)
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+
+      // ---- navigation + sidebar (hamburger) ----
+      var menuBtn = document.getElementById("menuBtn");
+      var scrim = document.getElementById("scrim");
+      function setNav(open) {
+        document.body.classList.toggle("nav-open", open);
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        scrim.hidden = !open;
+      }
+      menuBtn.addEventListener("click", function () {
+        setNav(!document.body.classList.contains("nav-open"));
+      });
+      scrim.addEventListener("click", function () { setNav(false); });
+
+      var navItems = Array.prototype.slice.call(document.querySelectorAll(".nav-item"));
+      navItems.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          navItems.forEach(function (b) { b.classList.remove("is-active"); });
+          btn.classList.add("is-active");
+          ["home", "packages", "settings"].forEach(function (p) {
+            document.getElementById("page-" + p).hidden = (p !== btn.dataset.page);
+          });
+          setNav(false);
+          if (btn.dataset.page === "packages" && !state.selected && state.pkgs.length) {
+            selectPkg(state.pkgs[0].name);
+          }
+        });
+      });
+
+      // ---- data ----
+      function getJSON(url) {
+        return fetch(url, { headers: { "Accept": "application/json" } }).then(function (r) {
+          if (!r.ok) throw new Error(url + " → " + r.status);
+          return r.json();
+        });
+      }
+
+      function load() {
+        Promise.all([getJSON("/api/host"), getJSON("/api/packages"), getJSON("/api/state")])
+          .then(function (res) {
+            state.host = res[0];
+            state.pkgs = res[1] || [];
+            renderHome(res[0], state.pkgs, res[2] || { installed: {} });
+            renderPkgList();
+          })
+          .catch(function (err) {
+            document.getElementById("hostBadge").textContent = "offline";
+            var d = document.getElementById("hostDetail");
+            if (d) d.innerHTML = "<dt>error</dt><dd>" + esc(err.message) + "</dd>";
+          });
+      }
+
+      function renderHome(host, pkgs, st) {
+        var installed = st.installed || {};
+        document.getElementById("hostBadge").textContent =
+          host.os + "/" + host.arch + " · " + host.docker;
+        document.getElementById("statHost").textContent = host.os + " / " + host.arch;
+        document.getElementById("statHostSub").textContent =
+          (host.is_root ? "root" : "unprivileged") + " · " + host.docker;
+        document.getElementById("statRam").textContent = host.ram_mb + " MB";
+        document.getElementById("statDisk").textContent = host.free_disk_mb + " MB free";
+        document.getElementById("statPkgs").textContent = String(pkgs.length);
+        document.getElementById("statInstalled").textContent = String(Object.keys(installed).length);
+        var rows = [
+          ["OS", host.os], ["Arch", host.arch],
+          ["RAM", host.ram_mb + " MB"], ["Free disk", host.free_disk_mb + " MB"],
+          ["Root", host.is_root ? "yes" : "no"], ["Docker", host.docker]
+        ];
+        document.getElementById("hostDetail").innerHTML = rows.map(function (r) {
+          return "<dt>" + esc(r[0]) + "</dt><dd>" + esc(r[1]) + "</dd>";
+        }).join("");
+      }
+
+      function renderPkgList() {
+        var box = document.getElementById("pkgList");
+        if (!state.pkgs.length) { box.innerHTML = "<p class=muted>No packages.</p>"; return; }
+        box.innerHTML = state.pkgs.map(function (p) {
+          var cls = "pkg-item" + (state.selected === p.name ? " is-active" : "");
+          var inst = p.installed ? '<span class="badge-ok">v' + esc(p.installed) + "</span>" : "";
+          return '<button type="button" class="' + cls + '" data-pkg="' + esc(p.name) + '">' +
+            "<strong>" + esc(p.name) + "</strong>" +
+            '<span class="badge">v' + esc(p.version) + "</span>" + inst + "</button>";
+        }).join("");
+        Array.prototype.forEach.call(box.querySelectorAll("[data-pkg]"), function (b) {
+          b.addEventListener("click", function () { selectPkg(b.dataset.pkg); });
+        });
+      }
+
+      function selectPkg(name) {
+        state.selected = name;
+        renderPkgList();
+        var box = document.getElementById("pkgDetail");
+        box.innerHTML = "<p class=muted>loading…</p>";
+        getJSON("/api/packages/" + encodeURIComponent(name)).then(function (d) {
+          box.innerHTML = pkgDetailHTML(d);
+          wireTabs(box, d);
+        }).catch(function (e) {
+          box.innerHTML = "<p class=muted>error: " + esc(e.message) + "</p>";
+        });
+      }
+
+      function pkgDetailHTML(d) {
+        var s = d.sources || {};
+        var req = d.requirements || {};
+        var chips = "<span class=chip>" + esc((req.os || []).join(", ") || "any os") + "</span>" +
+          "<span class=chip>" + esc((req.arch || []).join(", ") || "any arch") + "</span>" +
+          "<span class=chip>ram ≥ " + esc(req.min_ram_mb || 0) + " MB</span>" +
+          "<span class=chip>disk ≥ " + esc(req.min_disk_mb || 0) + " MB</span>";
+        var actions = (d.actions || []).map(function (a) {
+          return "<dt>" + esc(a.action) + "</dt><dd>" + (a.steps || []).map(esc).join(", ") + "</dd>";
+        }).join("");
+        return "" +
+          "<div class=pkg-head><h2>" + esc(d.name) + "</h2>" +
+          '<span class="badge">v' + esc(d.version) + "</span>" +
+          (d.installed ? '<span class="badge-ok">installed v' + esc(d.installed) + "</span>" : "") +
+          "</div>" +
+          (d.description ? "<p>" + esc(d.description) + "</p>" : "") +
+          (d.summary ? '<p class="muted small">' + esc(d.summary) + "</p>" : "") +
+          '<div class="tabs" role="tablist">' +
+          '<button type="button" class="tab is-active" data-tab="selected">Selected</button>' +
+          '<button type="button" class="tab" data-tab="github">GitHub repo</button>' +
+          '<button type="button" class="tab" data-tab="render">Render</button>' +
+          '<button type="button" class="tab" data-tab="local">Local</button>' +
+          "</div>" +
+          '<div class="tab-panel" data-panel="selected">' +
+          "<h3>Requirements</h3><div class=chips>" + chips + "</div>" +
+          "<h3>Actions</h3><dl class=kv>" + (actions || "<dt>—</dt><dd></dd>") + "</dl></div>" +
+          '<div class="tab-panel" data-panel="github" hidden>' +
+          "<h3>GitHub repo (CDN backup tier)</h3>" +
+          '<p><a href="' + esc(s.github || "#") + '">' + esc(s.github || "") + "</a></p>" +
+          '<p class="muted small">Raw single-TOML recipe fetched when the Render API is unreachable. Override with <code>KSX_GITHUB_BASE</code>.</p></div>' +
+          '<div class="tab-panel" data-panel="render" hidden>' +
+          "<h3>Render (primary tier)</h3>" +
+          "<p><code>" + esc(s.render || "") + "</code></p>" +
+          '<p class="muted small">POST host JSON, expect <code>text/x-toml</code>. Override with <code>KSX_RENDER_URL</code>.</p></div>' +
+          '<div class="tab-panel" data-panel="local" hidden>' +
+          "<h3>Local</h3><dl class=kv>" +
+          "<dt>embedded</dt><dd><code>" + esc(s.embedded || "") + "</code></dd>" +
+          "<dt>cache</dt><dd><code>" + esc(s.cache || "") + "</code></dd>" +
+          "<dt>installed</dt><dd>" + esc(d.installed || "—") + "</dd></dl>" +
+          '<p class="muted small">Cache TTL 24h · bypass with <code>--refresh</code>. Raw baseline: <a href="/assets/' + esc(d.name) + '.toml">' + esc(d.name) + ".toml</a></p></div>";
+      }
+
+      function wireTabs(box, d) {
+        var tabs = Array.prototype.slice.call(box.querySelectorAll(".tab"));
+        var panels = Array.prototype.slice.call(box.querySelectorAll(".tab-panel"));
+        tabs.forEach(function (t) {
+          t.addEventListener("click", function () {
+            tabs.forEach(function (x) { x.classList.remove("is-active"); });
+            t.classList.add("is-active");
+            panels.forEach(function (p) { p.hidden = (p.dataset.panel !== t.dataset.tab); });
+          });
+        });
+      }
+
+      load();
     })();
   </script>
 </body>
