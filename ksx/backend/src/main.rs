@@ -1,12 +1,11 @@
 use rust_embed::RustEmbed;
 
-/// Static assets (HTMX, CSS, HTML) baked into binary memory.
-/// Source dir: `frontend/` (WebUI).
+/// Static WebUI files (HTML + CSS) baked into binary memory.
+/// Source dir: `frontend/`.
 #[derive(RustEmbed)]
 #[folder = "frontend/"]
 #[include = "*.html"]
 #[include = "*.css"]
-#[include = "*.js"]
 pub struct Assets;
 
 /// Default fallback recipes baked into binary memory.

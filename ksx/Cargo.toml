@@ -5,7 +5,7 @@ edition = "2021"
 description = "Ultra-lightweight CLI + WebUI to manage KS Panel (Docker/KVM), KS SSH, and KS SQL"
 license = "MIT"
 repository = "https://github.com/anomalyco/opencode"
-keywords = ["cli", "devops", "docker", "kvm", "htmx"]
+keywords = ["cli", "devops", "docker", "kvm", "webui"]
 categories = ["command-line-utilities"]
 
 [[bin]]
@@ -14,7 +14,7 @@ path = "backend/src/main.rs"
 
 [dependencies]
 tokio = { version = "1", features = ["macros", "rt-multi-thread", "time", "fs", "process", "io-util", "signal"] }
-axum = { version = "0.7", features = ["ws"] }
+axum = { version = "0.7" }
 clap = { version = "4", features = ["derive", "env", "help", "usage"] }
 rust-embed = { version = "8", features = ["include-exclude"] }
 reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
