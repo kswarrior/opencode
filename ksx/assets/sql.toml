@@ -1,0 +1,64 @@
+# KS SQL — single-TOML recipe.
+# Canonical registry: registry/packages/sql.toml
+# CDN mirror: https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/sql.toml
+# This copy is the EMBEDDED BASELINE baked into the ksx binary via rust-embed
+# (tier-4 fallback). Local cache: ~/.ksx/cache/sql.toml (24h TTL).
+
+[service]
+name = "sql"
+version = "1.0.0"
+description = "KS SQL — lightweight Postgres for KS apps. Single-TOML recipe with embedded configs."
+
+[requirements]
+os = ["linux"]
+min_ram_mb = 512
+docker = "optional"
+
+[files.init]
+path = "~/.ksx/sql/init.sql"
+content = """
+-- ksx-managed seed (idempotent)
+CREATE TABLE IF NOT EXISTS ksx_meta (k TEXT PRIMARY KEY, v TEXT);
+INSERT INTO ksx_meta (k, v) VALUES ('managed_by', 'ksx')
+ON CONFLICT (k) DO NOTHING;
+"""
+
+[[install.steps]]
+name = "start postgres"
+run = """
+set -euo pipefail
+docker run -d --name ksx-sql --restart unless-stopped \
+  -e POSTGRES_PASSWORD=ksx -p 5432:5432 postgres:16-alpine
+sleep 3
+docker exec ksx-sql pg_isready -U postgres
+"""
+
+[[update.steps]]
+name = "pull latest postgres image"
+run = """
+set -euo pipefail
+docker pull postgres:16-alpine
+docker stop ksx-sql || true
+docker rm ksx-sql || true
+docker run -d --name ksx-sql --restart unless-stopped \
+  -e POSTGRES_PASSWORD=ksx -p 5432:5432 postgres:16-alpine
+docker exec ksx-sql pg_isready -U postgres
+"""
+
+[[reinstall.steps]]
+name = "recreate postgres (DATA LOSS)"
+run = """
+set -euo pipefail
+docker stop ksx-sql || true
+docker rm -v ksx-sql || true
+docker run -d --name ksx-sql --restart unless-stopped \
+  -e POSTGRES_PASSWORD=ksx -p 5432:5432 postgres:16-alpine
+docker exec ksx-sql pg_isready -U postgres
+"""
+
+[[info.steps]]
+name = "postgres status"
+run = """
+set -euo pipefail
+docker exec ksx-sql pg_isready -U postgres || echo "ksx-sql container not running"
+"""
