@@ -62,7 +62,7 @@ impl HostMeta {
     /// `"unknown"` / `0` / `false`.
     pub fn detect() -> Self {
         Self {
-            os = normalize_os(std::env::consts::OS),
+            os: normalize_os(std::env::consts::OS),
             arch: normalize_arch(std::env::consts::ARCH),
             ram_mb: detect_ram_mb().unwrap_or(0),
             free_disk_mb: detect_free_disk_mb().unwrap_or(0),
