@@ -1,0 +1,52 @@
+[service]
+name = "panel"
+version = "1.0.0"
+description = "KS Panel — Docker/KVM control plane. Embedded baseline recipe (offline fallback)."
+
+[requirements]
+os = ["linux"]
+min_ram_mb = 1024
+docker = "required"
+
+[[steps]]
+name = "check docker"
+run = """
+set -euo pipefail
+docker info >/dev/null
+echo "docker OK: $(docker --version)"
+"""
+
+[[steps]]
+name = "pull panel images"
+run = """
+set -euo pipefail
+docker pull ghcr.io/ks-panel/panel:latest
+"""
+
+[[steps]]
+name = "start panel stack"
+run = """
+set -euo pipefail
+mkdir -p ~/.ksx/panel
+cd ~/.ksx/panel
+cat > docker-compose.yml <<'YML'
+services:
+  panel:
+    image: ghcr.io/ks-panel/panel:latest
+    restart: unless-stopped
+    ports: ["8443:8443"]
+    volumes: ["/var/run/docker.sock:/var/run/docker.sock", "panel-data:/data"]
+volumes:
+  panel-data: {}
+YML
+docker compose up -d
+docker compose ps
+"""
+
+[[steps]]
+name = "verify panel health"
+run = """
+set -euo pipefail
+sleep 3
+curl -sk -o /dev/null -w "panel HTTP %{http_code}\\n" https://localhost:8443/ || true
+"""
