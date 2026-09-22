@@ -46,7 +46,11 @@ echo_success = "docker OK for ${POSTGRES_IMAGE}"
 echo_fail = "docker FAIL: postgres runs containerized"
 
 [[env]]
-mode = "both"
+mode = "interpolate"
+values = { SQL_PORT = "5432", POSTGRES_DB = "ksx", POSTGRES_IMAGE = "postgres:16-alpine", DATA_DIR = "~/.ksx/sql" }
+
+[[env]]
+mode = "file"
 target_path = "~/.ksx/sql/sql.env"
 required_for = ["install", "reinstall"]
 values = { SQL_PORT = "5432", POSTGRES_DB = "ksx", POSTGRES_IMAGE = "postgres:16-alpine", DATA_DIR = "~/.ksx/sql" }

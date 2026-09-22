@@ -95,6 +95,10 @@ values = { PANEL_PORT = "8443", PANEL_IMAGE = "ghcr.io/ks-panel/panel:latest" }
 - `mode = "both"`: does both at once — the common case for service config.
 - `required_for = [...]` scopes the block to lifecycles (empty = all).
   Later matching blocks override earlier keys.
+- Recommended pattern: one `mode = "interpolate"` block with *no*
+  `required_for` (all actions) carrying every shared variable, plus scoped
+  `mode = "file"` blocks for disk writes. This keeps `uninstall`/`info`
+  steps fully interpolated without writing `.env` files on read-only paths.
 - Display note: `ksx info` renders metadata/logs/steps with the union of
   *all* `interpolate`/`both` blocks (display-only — it never writes `.env`
   files), while mutating actions use strict per-action scoping.
