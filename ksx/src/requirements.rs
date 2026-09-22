@@ -14,9 +14,6 @@ use std::collections::HashMap;
 
 use crate::pipeline::{is_check_mode, is_force_mode, HostMeta, Recipe};
 
-/// Lifecycle actions understood by `required_for` filters.
-pub const ACTIONS: &[&str] = &["install", "update", "reinstall", "uninstall", "info"];
-
 // ---------------------------------------------------------------------------
 // Filters
 // ---------------------------------------------------------------------------
