@@ -44,15 +44,14 @@ echo_success = "ssh tooling present"
 echo_fail = "no sshd/ssh binary (will install)"
 
 [[env]]
-mode = "both"
+mode = "interpolate"
+values = { SSH_PORT = "2222", SSH_USER = "ksx", DATA_DIR = "~/.ksx/ssh", HARDENING = "prohibit-password" }
+
+[[env]]
+mode = "file"
 target_path = "~/.ksx/ssh/ssh.env"
 required_for = ["install", "reinstall"]
 values = { SSH_PORT = "2222", SSH_USER = "ksx", DATA_DIR = "~/.ksx/ssh" }
-
-[[env]]
-mode = "interpolate"
-required_for = ["install", "update", "reinstall", "uninstall", "info"]
-values = { HARDENING = "prohibit-password" }
 
 [[files]]
 target_path = "~/.ksx/ssh/ksx-sshd.conf"
