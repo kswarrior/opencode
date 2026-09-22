@@ -4,6 +4,10 @@
 //! ksx [install|update|reinstall|info|host] <service> [--refresh]
 //! ksx web [--port 8080]
 //! ```
+//!
+//! Each service is a single TOML (`registry/packages/<service>.toml`) with
+//! `[files]` templates (materialized before steps) and per-action steps
+//! (`install` / `update` / `reinstall` / `info`).
 
 use clap::{Parser, Subcommand};
 
@@ -29,7 +33,7 @@ pub enum Commands {
         #[arg(long, default_value_t = false)]
         refresh: bool,
     },
-    /// Update an installed service (re-fetch recipe, run steps).
+    /// Update an installed service (runs [update] steps).
     Update {
         /// Service name: panel, ssh, sql
         service: String,
@@ -37,7 +41,7 @@ pub enum Commands {
         #[arg(long, default_value_t = false)]
         refresh: bool,
     },
-    /// Reinstall a service (same as install, but explicit).
+    /// Reinstall a service (runs [reinstall] steps, falls back to [install]).
     Reinstall {
         /// Service name: panel, ssh, sql
         service: String,
@@ -45,7 +49,7 @@ pub enum Commands {
         #[arg(long, default_value_t = false)]
         refresh: bool,
     },
-    /// Show recipe metadata + steps without executing.
+    /// Show recipe metadata + embedded files + per-action steps.
     Info {
         /// Service name: panel, ssh, sql
         service: String,
@@ -82,9 +86,22 @@ fn cmd_host() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     Ok(())
 }
 
-async fn cmd_info(service: &str, refresh: bool) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+async fn cmd_info(
+    service: &str,
+    refresh: bool,
+) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let recipe = fetch_or_err(service, refresh).await?;
     print_recipe(&recipe);
+    // `info` steps are read-only diagnostics — safe to execute.
+    let steps = recipe.steps_for("info");
+    if steps.is_empty() {
+        return Ok(());
+    }
+    println!("info diagnostics ({} step(s)):", steps.len());
+    for (i, step) in steps.iter().enumerate() {
+        println!("ksx: [info {}/{}] {}", i + 1, steps.len(), step.name);
+        run_bash(&step.run)?;
+    }
     Ok(())
 }
 
@@ -102,16 +119,27 @@ async fn cmd_run(
         std::process::exit(2);
     }
 
-    println!("ksx: {action} `{service}` via {} step(s)...", recipe.steps.len());
-    for (i, step) in recipe.steps.iter().enumerate() {
-        println!("ksx: [step {}/{}] {}", i + 1, recipe.steps.len(), step.name);
+    let steps = recipe.steps_for(action);
+    if steps.is_empty() {
+        eprintln!("ksx: recipe for `{service}` defines no `{action}` steps; nothing to do.");
+        std::process::exit(3);
+    }
+
+    materialize_files(&recipe)?;
+
+    println!("ksx: {action} `{service}` via {} step(s)...", steps.len());
+    for (i, step) in steps.iter().enumerate() {
+        println!("ksx: [step {}/{}] {}", i + 1, steps.len(), step.name);
         run_bash(&step.run)?;
     }
 
     let mut state = storage::load_state();
     state.mark_installed(service, recipe.service.version.clone());
     storage::save_state(&state)?;
-    println!("ksx: {action} of `{service}` complete (v{}).", recipe.service.version);
+    println!(
+        "ksx: {action} of `{service}` complete (v{}).",
+        recipe.service.version
+    );
     Ok(())
 }
 
@@ -125,7 +153,9 @@ async fn fetch_or_err(
             eprintln!("ksx: unable to obtain install recipe for `{service}`.");
             eprintln!("ksx: tried Render API -> GitHub CDN -> local cache -> embedded baseline.");
             eprintln!("ksx: detail: {err}");
-            eprintln!("ksx: hint: check network, or run `ksx host` and verify service name (panel|ssh|sql).");
+            eprintln!(
+                "ksx: hint: check network, or run `ksx host` and verify service name (panel|ssh|sql)."
+            );
             Err(err)
         }
     }
@@ -141,15 +171,72 @@ fn print_recipe(recipe: &Recipe) {
         "requires:    os={:?} min_ram_mb={} docker={}",
         recipe.requirements.os, recipe.requirements.min_ram_mb, recipe.requirements.docker
     );
-    println!("steps:");
-    for (i, step) in recipe.steps.iter().enumerate() {
-        println!("  {}. {}", i + 1, step.name);
+    if !recipe.files.is_empty() {
+        let mut keys: Vec<&String> = recipe.files.keys().collect();
+        keys.sort();
+        println!("files:");
+        for key in keys {
+            let f = &recipe.files[key];
+            let dest = if f.path.is_empty() { "(no path)" } else { &f.path };
+            println!("  [{key}] -> {dest}");
+        }
     }
+    println!("actions:");
+    for (action, count) in recipe.action_summary() {
+        println!("  {action}: {count} step(s)");
+        for step in recipe.steps_for(action) {
+            println!("    - {}", step.name);
+        }
+    }
+}
+
+/// Write `[files.*]` templates to disk (expand `~`, create parents).
+fn materialize_files(recipe: &Recipe) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    if recipe.files.is_empty() {
+        return Ok(());
+    }
+    let mut keys: Vec<&String> = recipe.files.keys().collect();
+    keys.sort();
+    for key in keys {
+        let f = &recipe.files[key];
+        if f.path.is_empty() {
+            eprintln!("ksx: [files.{key}] has no path; skipping.");
+            continue;
+        }
+        let dest = expand_tilde(&f.path);
+        if let Some(parent) = std::path::Path::new(&dest).parent() {
+            if !parent.as_os_str().is_empty() {
+                std::fs::create_dir_all(parent)?;
+            }
+        }
+        // Strip one leading newline from `"""` blocks for clean files.
+        let body = f.content.strip_prefix('\n').unwrap_or(&f.content);
+        std::fs::write(&dest, body)?;
+        println!("ksx: wrote [files.{key}] -> {dest}");
+    }
+    Ok(())
+}
+
+fn expand_tilde(path: &str) -> String {
+    if let Some(rest) = path.strip_prefix("~/") {
+        let home = dirs::home_dir().unwrap_or_else(|| std::path::PathBuf::from("."));
+        return home.join(rest).to_string_lossy().into_owned();
+    }
+    if path == "~" {
+        return dirs::home_dir()
+            .unwrap_or_else(|| std::path::PathBuf::from("."))
+            .to_string_lossy()
+            .into_owned();
+    }
+    path.to_string()
 }
 
 /// Execute one multi-line bash step via `bash -c`.
 fn run_bash(script: &str) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-    let status = std::process::Command::new("bash").arg("-c").arg(script).status()?;
+    let status = std::process::Command::new("bash")
+        .arg("-c")
+        .arg(script)
+        .status()?;
     if !status.success() {
         return Err(format!("bash step failed with status {status}").into());
     }

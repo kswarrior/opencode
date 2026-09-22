@@ -1,0 +1,134 @@
+# KS Panel — single-TOML recipe.
+# Canonical registry: registry/packages/panel.toml
+# CDN mirror: https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/panel.toml
+# This copy is the EMBEDDED BASELINE baked into the ksx binary via rust-embed
+# (tier-4 fallback). Local cache: ~/.ksx/cache/panel.toml (24h TTL).
+#
+# Schema:
+#   [service]      name / version / description
+#   [requirements] os / min_ram_mb / docker (required|optional|none)
+#   [files.<key>]  path + content  (materialized to disk before action steps run)
+#   [[install.steps]] / [[update.steps]] / [[reinstall.steps]] / [[info.steps]]
+#                  each step: name + multi-line bash (run = """...""")
+
+[service]
+name = "panel"
+version = "1.0.0"
+description = "KS Panel — Docker/KVM control plane. Single-TOML recipe with embedded configs."
+
+[requirements]
+os = ["linux"]
+min_ram_mb = 1024
+docker = "required"
+
+# --- Embedded configuration templates (written to disk before steps) ---
+
+[files.compose]
+path = "~/.ksx/panel/docker-compose.yml"
+content = """
+services:
+  panel:
+    image: ghcr.io/ks-panel/panel:latest
+    restart: unless-stopped
+    ports: ["8443:8443"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - panel-data:/data
+volumes:
+  panel-data: {}
+"""
+
+[files.env]
+path = "~/.ksx/panel/.env"
+content = """
+PANEL_PORT=8443
+PANEL_IMAGE=ghcr.io/ks-panel/panel:latest
+"""
+
+# --- install ---
+
+[[install.steps]]
+name = "check docker"
+run = """
+set -euo pipefail
+docker info >/dev/null
+echo "docker OK: $(docker --version)"
+"""
+
+[[install.steps]]
+name = "pull panel image"
+run = """
+set -euo pipefail
+docker pull ghcr.io/ks-panel/panel:latest
+"""
+
+[[install.steps]]
+name = "start panel stack"
+run = """
+set -euo pipefail
+cd ~/.ksx/panel
+docker compose up -d
+docker compose ps
+"""
+
+[[install.steps]]
+name = "verify panel health"
+run = """
+set -euo pipefail
+sleep 3
+curl -sk -o /dev/null -w "panel HTTP %{http_code}\\n" https://localhost:8443/ || true
+"""
+
+# --- update (in-place, preserves volume) ---
+
+[[update.steps]]
+name = "pull latest image"
+run = """
+set -euo pipefail
+cd ~/.ksx/panel
+docker compose pull
+"""
+
+[[update.steps]]
+name = "recreate stack"
+run = """
+set -euo pipefail
+cd ~/.ksx/panel
+docker compose up -d
+docker compose ps
+"""
+
+# --- reinstall (destructive recreate, keeps compose + env files) ---
+
+[[reinstall.steps]]
+name = "tear down stack"
+run = """
+set -euo pipefail
+cd ~/.ksx/panel
+docker compose down || true
+"""
+
+[[reinstall.steps]]
+name = "start fresh stack"
+run = """
+set -euo pipefail
+cd ~/.ksx/panel
+docker compose up -d
+docker compose ps
+"""
+
+# --- info (read-only diagnostics) ---
+
+[[info.steps]]
+name = "stack status"
+run = """
+set -euo pipefail
+cd ~/.ksx/panel 2>/dev/null && docker compose ps || echo "panel not installed (no ~/.ksx/panel)"
+"""
+
+[[info.steps]]
+name = "health probe"
+run = """
+set -euo pipefail
+curl -sk -o /dev/null -w "panel HTTP %{http_code}\\n" https://localhost:8443/ || echo "panel not reachable"
+"""

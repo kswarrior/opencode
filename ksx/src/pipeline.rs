@@ -1,10 +1,16 @@
-//! 4-tier resilient recipe fetcher:
+//! 4-tier resilient recipe fetcher (single-TOML per service):
 //!
 //! 1. Primary: Render C-backend API — `POST` JSON host metadata, get TOML (`text/x-toml`), 5s timeout.
-//! 2. Backup: GitHub Raw CDN — `GET <base>/<service>.toml`.
+//! 2. Backup: GitHub Raw CDN — `GET https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/<service>.toml`.
 //! 3. Local disk cache: `~/.ksx/cache/<service>.toml` (24h TTL via mtime; skipped with `--refresh`).
-//! 4. Embedded baseline: `recipes/*.toml` baked via `rust-embed`.
+//! 4. Embedded baseline: `registry/packages/*.toml` baked via `rust-embed`.
 //! 5. Graceful failure: friendly error if all tiers fail.
+//!
+//! Recipe schema (one TOML per service): `[service]`, `[requirements]`,
+//! `[files.<key>]` (embedded config templates), and per-action step tables
+//! `[[install.steps]]`, `[[update.steps]]`, `[[reinstall.steps]]`, `[[info.steps]]`.
+
+use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
@@ -23,12 +29,13 @@ pub fn render_url(service: &str) -> String {
     format!("{}/{}", base.trim_end_matches('/'), service)
 }
 
-/// GitHub Raw base, e.g. `https://raw.githubusercontent.com/<org>/<repo>/main/recipes`
+/// GitHub Raw base for single-TOML packages.
+/// Default: `https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages`
 pub fn github_url(service: &str) -> String {
-    let base = std::env::var("KSX_GITHUB_BASE")
-        .unwrap_or_else(|_| {
-            "https://raw.githubusercontent.com/anomalyco/opencode/main/ksx/recipes".to_string()
-        });
+    let base = std::env::var("KSX_GITHUB_BASE").unwrap_or_else(|_| {
+        "https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages"
+            .to_string()
+    });
     format!("{}/{}.toml", base.trim_end_matches('/'), service)
 }
 
@@ -63,11 +70,7 @@ fn detect_ram_mb() -> Option<u64> {
     if let Ok(text) = std::fs::read_to_string("/proc/meminfo") {
         for line in text.lines() {
             if let Some(rest) = line.strip_prefix("MemTotal:") {
-                let kb: u64 = rest
-                    .split_whitespace()
-                    .next()?
-                    .parse()
-                    .ok()?;
+                let kb: u64 = rest.split_whitespace().next()?.parse().ok()?;
                 return Some(kb / 1024);
             }
         }
@@ -101,7 +104,7 @@ fn detect_docker() -> String {
 }
 
 // ---------------------------------------------------------------------------
-// Recipe schema (server response + file storage: TOML)
+// Recipe schema (server response + file storage: single TOML per service)
 // ---------------------------------------------------------------------------
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -109,6 +112,19 @@ pub struct Recipe {
     pub service: ServiceMeta,
     #[serde(default)]
     pub requirements: Requirements,
+    /// Embedded config templates: `[files.<key>]` with `path` + `content`.
+    #[serde(default)]
+    pub files: HashMap<String, EmbeddedFile>,
+    /// Per-action step tables. Legacy top-level `[[steps]]` is accepted as
+    /// an alias for `install` (backwards compat with v0.1 recipes).
+    #[serde(default)]
+    pub install: Action,
+    #[serde(default)]
+    pub update: Action,
+    #[serde(default)]
+    pub reinstall: Action,
+    #[serde(default)]
+    pub info: Action,
     #[serde(default)]
     pub steps: Vec<Step>,
 }
@@ -142,6 +158,27 @@ impl Default for Requirements {
     }
 }
 
+/// One embedded config file template (`[files.<key>]`).
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct EmbeddedFile {
+    /// Destination path. `~` expands to the user home dir.
+    #[serde(default)]
+    pub path: String,
+    /// File body (multi-line `content = """..."""`).
+    #[serde(default)]
+    pub content: String,
+    /// Optional unix mode, e.g. `"644"`. Currently informational.
+    #[serde(default)]
+    pub mode: Option<String>,
+}
+
+/// One lifecycle action (`[[<action>.steps]]`).
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct Action {
+    #[serde(default)]
+    pub steps: Vec<Step>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Step {
     pub name: String,
@@ -160,6 +197,43 @@ fn default_docker_req() -> String {
 impl Recipe {
     pub fn from_toml(text: &str) -> Result<Self, toml::de::Error> {
         toml::from_str(text)
+    }
+
+    /// Steps for a lifecycle action (`install|update|reinstall|info`).
+    /// Fallbacks: `reinstall` → `install` → legacy `steps`;
+    /// `install` → legacy `steps`. `update`/`info` have no fallback.
+    pub fn steps_for(&self, action: &str) -> &[Step] {
+        match action {
+            "install" => {
+                if !self.install.steps.is_empty() {
+                    &self.install.steps
+                } else {
+                    &self.steps
+                }
+            }
+            "update" => &self.update.steps,
+            "reinstall" => {
+                if !self.reinstall.steps.is_empty() {
+                    &self.reinstall.steps
+                } else if !self.install.steps.is_empty() {
+                    &self.install.steps
+                } else {
+                    &self.steps
+                }
+            }
+            "info" => &self.info.steps,
+            _ => &self.steps,
+        }
+    }
+
+    /// All known actions and their step counts (for `info` display).
+    pub fn action_summary(&self) -> Vec<(&'static str, usize)> {
+        vec![
+            ("install", self.steps_for("install").len()),
+            ("update", self.steps_for("update").len()),
+            ("reinstall", self.steps_for("reinstall").len()),
+            ("info", self.steps_for("info").len()),
+        ]
     }
 
     /// Validate host against recipe requirements.
@@ -225,7 +299,7 @@ pub async fn fetch_recipe(
         Err(e) => failures.push(format!("render: {e}")),
     }
 
-    // Tier 2 — GitHub Raw CDN.
+    // Tier 2 — GitHub Raw CDN (registry/packages/<service>.toml).
     match fetch_github(&service).await {
         Ok(text) => return diet_parse(&service, &text, true),
         Err(e) => failures.push(format!("github: {e}")),
@@ -291,7 +365,7 @@ async fn fetch_render(service: &str) -> Result<String, Box<dyn std::error::Error
     Ok(res.text().await?)
 }
 
-/// Tier 2: GET raw `.toml` from CDN.
+/// Tier 2: GET raw `.toml` from CDN (`registry/packages/<service>.toml`).
 async fn fetch_github(service: &str) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
     let res = http_client()
         .await
@@ -308,7 +382,7 @@ async fn fetch_github(service: &str) -> Result<String, Box<dyn std::error::Error
 /// Tier 4: baseline recipe from binary memory.
 fn load_embedded(service: &str) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
     let file = format!("{service}.toml");
-    let data = EmbeddedRecipes::get(&file)
-        .ok_or_else(|| format!("no embedded recipe `{file}`"))?;
+    let data =
+        EmbeddedRecipes::get(&file).ok_or_else(|| format!("no embedded recipe `{file}`"))?;
     Ok(String::from_utf8(data.data.to_vec())?)
 }

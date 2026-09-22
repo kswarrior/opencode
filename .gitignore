@@ -13,3 +13,13 @@ server
 .docker/
 # os
 .DS_Store
+
+# rust
+ksx/target/
+target/
+**/target/
+debug/
+
+# node
+node_modules/
+**/node_modules/
