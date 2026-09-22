@@ -95,6 +95,9 @@ values = { PANEL_PORT = "8443", PANEL_IMAGE = "ghcr.io/ks-panel/panel:latest" }
 - `mode = "both"`: does both at once — the common case for service config.
 - `required_for = [...]` scopes the block to lifecycles (empty = all).
   Later matching blocks override earlier keys.
+- Display note: `ksx info` renders metadata/logs/steps with the union of
+  *all* `interpolate`/`both` blocks (display-only — it never writes `.env`
+  files), while mutating actions use strict per-action scoping.
 
 ## 4. `[[files]]` — embedded templates
 
