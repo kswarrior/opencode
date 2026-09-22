@@ -16,7 +16,7 @@ use axum::{
     Router,
 };
 
-use crate::Assets;
+use crate::{Assets, EmbeddedRecipes};
 
 /// Start server; never returns until Ctrl-C.
 pub async fn serve(port: u16) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
@@ -48,12 +48,19 @@ async fn index() -> impl IntoResponse {
 
 async fn asset(axum::extract::Path(file): axum::extract::Path<String>) -> impl IntoResponse {
     let path = format!("{file}");
-    match Assets::get(&path) {
+    // Web assets (html/css/js) + embedded baseline recipes (*.toml) share
+    // the `assets/` folder via two rust-embed structs; try both.
+    let data = Assets::get(&path).or_else(|| EmbeddedRecipes::get(&path));
+    match data {
         Some(f) => {
             let mime = if path.ends_with(".css") {
                 "text/css"
             } else if path.ends_with(".js") {
                 "text/javascript"
+            } else if path.ends_with(".toml") {
+                "text/x-toml"
+            } else if path.ends_with(".html") {
+                "text/html"
             } else {
                 "application/octet-stream"
             };
