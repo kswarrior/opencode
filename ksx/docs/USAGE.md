@@ -18,7 +18,7 @@ ksx web [--port 8080]
 | `uninstall` | `required_for = ["uninstall", …]` steps; forgets state        |
 | `info`      | recipe overview + read-only `info` diagnostics                |
 | `host`      | JSON host metadata (no recipe needed)                         |
-| `web`       | embedded HTMX/WSS Hello-World UI                              |
+| `web`       | embedded dashboard (Home / Packages / Settings)             |
 
 `<service>` is `panel`, `ssh`, or `sql`.
 
@@ -73,18 +73,20 @@ ksx web [--port 8080]
 
 This exact JSON is `POST`ed to the Render API (`Accept: text/x-toml`).
 
-## WebUI interactions over WebSocket
+## WebUI dashboard (plain HTTP, no WebSocket)
 
 ```bash
 ksx web --port 8080
 # open http://127.0.0.1:8080
 ```
 
-- `GET /` serves the embedded HTMX page; `GET /assets/*file` serves
-  embedded CSS/JS (and `*.toml` baselines as `text/x-toml`).
-- `GET /ws` upgrades to WebSocket. The server immediately pushes one HTML
-  fragment — `Hello World from ksx WSS!` — which the page appends to
-  `#wss-feed` (no reload), then sends a heartbeat fragment every 15s.
-- Anything the browser sends (`ping` button) is echoed back as an
-  HTML-escaped fragment. Closing the tab ends the socket; `Ctrl-C` stops
+- `GET /` serves the embedded dashboard SPA; `GET /assets/*file` serves
+  embedded CSS (and `*.toml` baselines as `text/x-toml`).
+- JSON APIs (used by the SPA via `fetch`):
+  `GET /api/host`, `GET /api/packages`, `GET /api/packages/:service`,
+  `GET /api/state`.
+- Sidebar pages: **Home** (overview: host, memory, package/installed counts),
+  **Packages** (list + selected detail with source tabs: Selected, GitHub repo,
+  Render, Local), **Settings** (coming soon).
+- The dashboard is read-only; installs run via the CLI. `Ctrl-C` stops
   the server.

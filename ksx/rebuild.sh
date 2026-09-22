@@ -15,7 +15,7 @@
 # Note: ksx is a BINARY crate ([[bin]] name = "ksx" in Cargo.toml), so the
 # artifact is a standalone executable, not an rlib. There is no
 # releases/ksx "library" — ./releases/ksx is the static release binary
-# (<5MB, <10MB RAM) embedding HTMX assets + baseline recipes.
+# (<5MB, <10MB RAM) embedding WebUI files + baseline recipes.
 set -euo pipefail
 
 CLEAN=0

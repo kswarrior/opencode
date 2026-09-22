@@ -4,8 +4,8 @@
 #   ./rebuild.sh              # produces ./releases/ksx (+ .sha256)
 #   docker build -t ksx .
 #   docker run --rm -p 8080:8080 ksx
-# Then open http://localhost:8080 — the page streams a live
-# "Hello World from ksx WSS!" HTML fragment over WebSocket.
+# Then open http://localhost:8080 — the embedded dashboard
+# (Home / Packages / Settings) served over plain HTTP.
 #
 # Notes:
 # - Build context must be the ksx/ directory so that releases/ksx is
