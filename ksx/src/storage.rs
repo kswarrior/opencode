@@ -90,6 +90,11 @@ impl InstallState {
     pub fn version(&self, service: &str) -> Option<&str> {
         self.installed.get(service).map(String::as_str)
     }
+
+    /// Forget a service (used by `ksx uninstall`).
+    pub fn remove_installed(&mut self, service: &str) {
+        self.installed.remove(service);
+    }
 }
 
 /// Load state; returns empty default if missing/corrupt (never hard-fails CLI).

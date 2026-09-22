@@ -19,6 +19,7 @@ pub struct EmbeddedRecipes;
 
 mod cli;
 mod pipeline;
+mod requirements;
 mod storage;
 mod web;
 
