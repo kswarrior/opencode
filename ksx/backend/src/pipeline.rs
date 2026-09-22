@@ -3,7 +3,7 @@
 //! 1. Primary: Render C-backend API — `POST` JSON host metadata, get TOML (`text/x-toml`), 5s timeout.
 //! 2. Backup: GitHub Raw CDN — `GET https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/<service>.toml`.
 //! 3. Local disk cache: `~/.ksx/cache/<service>.toml` (24h TTL via mtime; skipped with `--refresh`).
-//! 4. Embedded baseline: `assets/*.toml` baked via `rust-embed`.
+//! 4. Embedded baseline: `backend/recipes/*.toml` baked via `rust-embed`.
 //! 5. Graceful failure: friendly error if all tiers fail.
 //!
 //! Recipe schema (one TOML per package): `[service]`, `[requirements]`

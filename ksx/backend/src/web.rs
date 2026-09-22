@@ -56,8 +56,9 @@ async fn index() -> impl IntoResponse {
 
 async fn asset(axum::extract::Path(file): axum::extract::Path<String>) -> impl IntoResponse {
     let path = format!("{file}");
-    // Web assets (html/css/js) + embedded baseline recipes (*.toml) share
-    // the `assets/` folder via two rust-embed structs; try both.
+    // WebUI assets (frontend/: html/css/js) + embedded baseline recipes
+    // (backend/recipes/: *.toml) live in separate folders via two
+    // rust-embed structs; try both.
     let data = Assets::get(&path).or_else(|| EmbeddedRecipes::get(&path));
     match data {
         Some(f) => {

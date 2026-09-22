@@ -10,7 +10,7 @@ categories = ["command-line-utilities"]
 
 [[bin]]
 name = "ksx"
-path = "src/main.rs"
+path = "backend/src/main.rs"
 
 [dependencies]
 tokio = { version = "1", features = ["macros", "rt-multi-thread", "time", "fs", "process", "io-util", "signal"] }

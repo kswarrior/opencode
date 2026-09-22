@@ -14,7 +14,7 @@
 #   Alpine cannot run it. Unprivileged `ksx` user.
 # - The binary defaults to binding 127.0.0.1, which is unreachable from
 #   outside a container, so KSX_HOST=0.0.0.0 is set below.
-#   (See src/web.rs: `serve` honors the KSX_HOST env var.)
+#   (See backend/src/web.rs: `serve` honors the KSX_HOST env var.)
 
 FROM debian:stable-slim
 

@@ -1,19 +1,20 @@
 use rust_embed::RustEmbed;
 
 /// Static assets (HTMX, CSS, HTML) baked into binary memory.
+/// Source dir: `frontend/` (WebUI).
 #[derive(RustEmbed)]
-#[folder = "assets/"]
+#[folder = "frontend/"]
 #[include = "*.html"]
 #[include = "*.css"]
 #[include = "*.js"]
 pub struct Assets;
 
 /// Default fallback recipes baked into binary memory.
-/// Source: `assets/*.toml` (single TOML per service) — the embedded mirror
+/// Source: `backend/recipes/*.toml` (single TOML per service) — the embedded mirror
 /// of the canonical repo-root `registry/packages/` served by the GitHub Raw
 /// CDN (`https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/`).
 #[derive(RustEmbed)]
-#[folder = "assets/"]
+#[folder = "backend/recipes/"]
 #[include = "*.toml"]
 pub struct EmbeddedRecipes;
 
