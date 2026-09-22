@@ -9,12 +9,11 @@ use rust_embed::RustEmbed;
 pub struct Assets;
 
 /// Default fallback recipes baked into binary memory.
-/// Source: `registry/packages/*.toml` (single TOML per service).
-/// This is a mirror of the repo-root `registry/packages/` — the canonical
-/// source served by the GitHub Raw CDN. Sync with:
-/// `cp ../registry/packages/*.toml registry/packages/`.
+/// Source: `assets/*.toml` (single TOML per service) — the embedded mirror
+/// of the canonical repo-root `registry/packages/` served by the GitHub Raw
+/// CDN (`https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/`).
 #[derive(RustEmbed)]
-#[folder = "registry/packages/"]
+#[folder = "assets/"]
 #[include = "*.toml"]
 pub struct EmbeddedRecipes;
 

@@ -89,8 +89,10 @@ repo/
     ├── assets/
     │   ├── index.html   # embedded HTMX/WSS page
     │   ├── style.css
-    │   └── htmx.min.js  # vendored stub (replace with official build)
-    └── registry/packages/  # embedded mirror of repo-root registry (sync via cp)
+    │   ├── htmx.min.js  # vendored stub (replace with official build)
+    │   ├── panel.toml   # embedded baseline mirror of registry/packages/
+    │   ├── ssh.toml     # (tier-4 fallback baked into the binary)
+    │   └── sql.toml
 ```
 
 ## Size discipline
