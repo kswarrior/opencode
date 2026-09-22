@@ -18,10 +18,6 @@ use axum::{
 
 use crate::Assets;
 
-/// HTML fragment streamed over WSS (HTMX swaps it into `#wss-feed`).
-pub const HELLO_FRAGMENT: &str =
-    r#"<div class="wss-ok">Hello World from ksx WSS! ✅ live fragment @ "#;
-
 /// Start server; never returns until Ctrl-C.
 pub async fn serve(port: u16) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let app = Router::new()

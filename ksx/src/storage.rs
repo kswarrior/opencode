@@ -59,6 +59,7 @@ pub fn save_cached_recipe(service: &str, toml_text: &str) -> std::io::Result<()>
 }
 
 /// True if a fresh (non-stale) cache entry exists.
+#[allow(dead_code)]
 pub fn is_cache_fresh(service: &str) -> bool {
     load_cached_recipe(service).is_some()
 }
@@ -80,10 +81,12 @@ impl InstallState {
         self.installed.insert(service.to_string(), version);
     }
 
+    #[allow(dead_code)]
     pub fn is_installed(&self, service: &str) -> bool {
         self.installed.contains_key(service)
     }
 
+    #[allow(dead_code)]
     pub fn version(&self, service: &str) -> Option<&str> {
         self.installed.get(service).map(String::as_str)
     }
