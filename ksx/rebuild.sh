@@ -33,6 +33,31 @@ if [[ ! -d "$RELEASES" ]]; then
   mkdir -p "$RELEASES"
 fi
 
+# 1b) auto-bump patch version in Cargo.toml (V{version} displayed in sidebar).
+VERSION_FILE="$ROOT/Cargo.toml"
+if [[ -f "$VERSION_FILE" ]]; then
+  CURRENT=$(grep -E '^version = "' "$VERSION_FILE" | head -1 | sed -E 's/.*\"([^"]+)\".*/\1/')
+  if [[ -n "$CURRENT" ]]; then
+    echo "rebuild: current version $CURRENT"
+    IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+    MAJOR=${MAJOR:-0}; MINOR=${MINOR:-0}; PATCH=${PATCH:-0}
+    # ensure numeric
+    if ! [[ "$PATCH" =~ ^[0-9]+$ ]]; then PATCH=0; fi
+    NEW_PATCH=$((PATCH + 1))
+    NEW_VERSION="${MAJOR}.${MINOR}.${NEW_PATCH}"
+    echo "rebuild: bumping version $CURRENT -> $NEW_VERSION"
+    # portable in-place sed (GNU vs BSD/macOS)
+    if sed --version >/dev/null 2>&1; then
+      sed -i -E "s/^version = \".*\"/version = \"$NEW_VERSION\"/" "$VERSION_FILE"
+    else
+      sed -i '' -E "s/^version = \".*\"/version = \"$NEW_VERSION\"/" "$VERSION_FILE"
+    fi
+    echo "rebuild: updated $VERSION_FILE to $NEW_VERSION"
+  else
+    echo "rebuild: warning: could not parse current version from $VERSION_FILE"
+  fi
+fi
+
 # 2) show current content; rm the old binary when already present.
 echo "rebuild: current content of $RELEASES:"
 ls -la "$RELEASES"
