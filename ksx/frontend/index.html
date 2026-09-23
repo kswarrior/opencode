@@ -38,7 +38,7 @@
         <div class="stat-grid">
           <div class="card stat"><div class="stat-label">Host</div><div id="statHost" class="stat-value">—</div><div id="statHostSub" class="muted small">—</div></div>
           <div class="card stat"><div class="stat-label">Memory</div><div id="statRam" class="stat-value">—</div><div id="statDisk" class="muted small">—</div></div>
-          <div class="card stat"><div class="stat-label">Packages</div><div id="statPkgs" class="stat-value">—</div><div class="muted small">from GitHub · cached 24h</div></div>
+          <div class="card stat"><div class="stat-label">Packages</div><div id="statPkgs" class="stat-value">—</div><div class="muted small">from store (permanent)</div></div>
           <div class="card stat"><div class="stat-label">Installed</div><div id="statInstalled" class="stat-value">—</div><div class="muted small">from state.json</div></div>
         </div>
         <div class="grid-2">
@@ -53,11 +53,12 @@
 ksx info panel
 ksx install panel
 ksx web --port 8080</pre>
+            <p class="muted small" style="margin-top:10px">Packages are now only from <code>ksx/store/&lt;app&gt;.toml</code> (<code>/ksx</code> or <code>~/.ksx</code>). Use <b>Add</b> → Upload or URL to add.</p>
           </div>
         </div>
       </section>
 
-      <!-- PACKAGES — new header spec -->
+      <!-- PACKAGES — store only -->
       <section id="page-packages" class="page" hidden>
         <div class="pkg-header">
           <div class="pkg-header-row">
@@ -80,6 +81,25 @@ ksx web --port 8080</pre>
                 </div>
               </div>
 
+              <!-- Add (store) -->
+              <div class="pkg-add-wrap" id="pkgAddWrap">
+                <button type="button" class="pkg-add-btn" id="pkgAddBtn" aria-label="Add package" aria-expanded="false" aria-haspopup="menu">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                  <span>Add</span>
+                </button>
+                <div class="pkg-add-menu" id="pkgAddMenu" role="menu" hidden>
+                  <button type="button" class="pkg-add-option" id="pkgAddUpload" role="menuitem">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <span><b>Upload</b> <span class="muted small">(local .toml)</span></span>
+                  </button>
+                  <button type="button" class="pkg-add-option" id="pkgAddUrl" role="menuitem">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l2-2a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-2 2a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    <span><b>URL</b> <span class="muted small">(download)</span></span>
+                  </button>
+                </div>
+              </div>
+              <input type="file" id="pkgFileInput" accept=".toml,text/x-toml,text/plain" hidden />
+
               <!-- Refresh -->
               <button type="button" class="pkg-refresh" id="pkgRefresh" aria-label="Refresh packages">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v6h-6"/></svg>
@@ -88,6 +108,7 @@ ksx web --port 8080</pre>
             </div>
           </div>
           <p class="muted pkg-subtitle" id="pkgSubtitle">Loading packages…</p>
+          <p class="muted small" style="margin-top:4px">Source: <code>ksx/store/&lt;app&gt;.toml</code> — permanent, not cache. Add via Upload or URL (top right).</p>
         </div>
 
         <div id="pkgGridWrap">
@@ -113,11 +134,26 @@ ksx web --port 8080</pre>
         <div id="pkgToast" class="pkg-toast" hidden></div>
       </section>
 
+      <!-- URL modal -->
+      <div id="pkgUrlModal" class="pkg-modal" hidden>
+        <div class="pkg-modal-backdrop" id="pkgUrlBackdrop"></div>
+        <div class="pkg-modal-card" role="dialog" aria-modal="true" aria-labelledby="pkgUrlTitle">
+          <h3 id="pkgUrlTitle">Download from URL</h3>
+          <p class="muted small">Enter a direct URL to a <code>.toml</code> recipe. It will be saved to <code>ksx/store/&lt;app&gt;.toml</code>.</p>
+          <input id="pkgUrlInput" type="url" placeholder="https://example.com/panel.toml" autocomplete="off" />
+          <div class="pkg-modal-actions">
+            <button type="button" class="pkg-add-btn" id="pkgUrlCancel">Cancel</button>
+            <button type="button" class="pkg-refresh" id="pkgUrlConfirm" style="background:#0f1113;color:#fff;border-color:#0f1113">Download & Save</button>
+          </div>
+          <p id="pkgUrlError" class="muted small" style="color:#b91c1c;margin-top:8px" hidden></p>
+        </div>
+      </div>
+
       <!-- SETTINGS -->
       <section id="page-settings" class="page" hidden>
         <h1>Settings</h1>
         <div class="card"><h2>Coming soon</h2>
-        <p class="muted">Dashboard settings are not available yet. Configure ksx via CLI flags and environment (<code>KSX_RENDER_URL</code>, <code>KSX_GITHUB_BASE</code>, <code>KSX_HOST</code>).</p></div>
+        <p class="muted">Dashboard settings are not available yet. Configure ksx via CLI flags and environment (<code>KSX_DR=root|home</code>, <code>KSX_HOST</code>).</p></div>
       </section>
     </main>
   </div>
@@ -155,7 +191,6 @@ ksx web --port 8080</pre>
             document.getElementById("page-" + p).hidden = (p !== btn.dataset.page);
           });
           setNav(false);
-          // packages grid is the default view — do not auto-open detail
           if (btn.dataset.page === "packages") {
             hideDetailPage();
           }
@@ -165,7 +200,13 @@ ksx web --port 8080</pre>
       // ---- data helpers ----
       function getJSON(url) {
         return fetch(url, { headers: { "Accept": "application/json" } }).then(function (r) {
-          if (!r.ok) throw new Error(url + " → " + r.status);
+          if (!r.ok) return r.json().then(function(j){ throw new Error(j.error || (url + " → " + r.status)); }).catch(function(){ throw new Error(url + " → " + r.status); });
+          return r.json();
+        });
+      }
+      function postJSON(url, data) {
+        return fetch(url, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) }).then(function(r){
+          if (!r.ok) return r.json().then(function(j){ throw new Error(j.error || (url + " → " + r.status)); });
           return r.json();
         });
       }
@@ -176,9 +217,7 @@ ksx web --port 8080</pre>
         return [];
       }
 
-      function load(refresh) {
-        var pkgUrl = "/api/packages" + (refresh ? "?refresh=true" : "");
-        // show stylish skeletons while fetching
+      function load() {
         var skList = document.getElementById("pkgList");
         var skGrid = document.getElementById("pkgGridWrap");
         var skDetail = document.getElementById("pkgDetailPage");
@@ -188,35 +227,28 @@ ksx web --port 8080</pre>
         }
         state.loading = true;
         setRefreshLoading(true);
-        Promise.all([getJSON("/api/host"), getJSON(pkgUrl), getJSON("/api/state")])
+        Promise.all([getJSON("/api/host"), getJSON("/api/packages"), getJSON("/api/state")])
           .then(function (res) {
             state.host = res[0];
             var pkgsData = res[1];
-            // backend may return {packages: [...], errors, ...}
             var pkgs = normalizePackages(pkgsData);
-            // also handle legacy direct array inside pkgsData if errors wrapped
             state.pkgs = pkgs;
             applyFilter();
-            // subtitle handling
             updateSubtitle(pkgsData);
             renderHome(res[0], pkgs, res[2] || { installed: {} });
             renderPkgList();
-            // stay on grid — detail opens only on card click
-            // if no pkgs but errors, show error in list
-            if (!pkgs.length && pkgsData && pkgsData.errors && pkgsData.errors.length) {
-              var box = document.getElementById("pkgList");
-              box.innerHTML = '<p class="muted">Failed to fetch packages.</p>'
-                + '<p class="muted small">' + esc(pkgsData.errors.join("; ")) + '</p>'
-                + '<p class="muted small">Check network or try <a href="#" id="retryLink">Refresh</a>.</p>';
-              var retry = document.getElementById("retryLink");
-              if (retry) retry.addEventListener("click", function(e){ e.preventDefault(); refreshPackages(); });
+            if (!pkgs.length) {
+              // empty store message handled in renderPkgList
+            }
+            if (pkgsData && pkgsData.errors && pkgsData.errors.length) {
+              showToast(pkgsData.errors.length + " error(s) in store");
             }
           })
           .catch(function (err) {
             var d = document.getElementById("hostDetail");
             if (d) d.innerHTML = "<dt>error</dt><dd>" + esc(err.message) + "</dd>";
             var box = document.getElementById("pkgList");
-            if (box) box.innerHTML = '<p class="muted">Failed to load packages.</p><p class="muted small">' + esc(err.message) + '</p>';
+            if (box) box.innerHTML = '<p class="muted">Failed to load packages.</p><p class="muted small">' + esc(err.message) + '</p><p class="muted small">Store path: <code>ksx/store/&lt;app&gt;.toml</code>. Use Add → Upload or URL.</p>';
           })
           .then(function(){
             state.loading = false;
@@ -229,7 +261,7 @@ ksx web --port 8080</pre>
       function updateSubtitle(data) {
         var sub = document.getElementById("pkgSubtitle");
         if (!sub) return;
-        sub.textContent = state.filtered.length + " package" + (state.filtered.length !== 1 ? "s" : "");
+        sub.textContent = state.filtered.length + " package" + (state.filtered.length !== 1 ? "s" : "") + " in store";
         if (state.query) sub.textContent += ' · filtered by "' + state.query + '"';
         if (data && data.errors && data.errors.length) sub.textContent += " · " + data.errors.length + " error(s)";
       }
@@ -329,10 +361,7 @@ ksx web --port 8080</pre>
         var gridWrap = document.getElementById("pkgGridWrap");
         var detailPage = document.getElementById("pkgDetailPage");
         if (!box) return;
-        // ensure grid is visible and detail hidden when rendering list
         if (gridWrap && detailPage && !detailPage.hidden) {
-          // keep detail open — don't overwrite list while detail is shown
-          // but still update subtitle
           updateSubtitle({});
           return;
         }
@@ -340,7 +369,7 @@ ksx web --port 8080</pre>
           if (state.query) {
             box.innerHTML = '<p class="muted">No packages match "' + esc(state.query) + '".</p>';
           } else if (!state.pkgs.length) {
-            box.innerHTML = "<p class=muted>No packages.</p><p class='muted small'>Try Refresh or check GitHub CDN.</p>";
+            box.innerHTML = '<div class="pkg-coming-card"><div class="pkg-coming-icon">📦</div><h3>No packages in store</h3><p class="muted small">Add a <code>.toml</code> via <b>Add</b> → <b>Upload</b> (local file) or <b>URL</b> (download). Files are saved to <code>ksx/store/&lt;app&gt;.toml</code> (<code>/ksx</code> or <code>~/.ksx</code>).</p><p style="margin-top:10px"><button type="button" class="pkg-add-btn" onclick="document.getElementById(\'pkgAddBtn\').click()">+ Add package</button></p></div>';
           } else {
             box.innerHTML = "<p class=muted>No packages.</p>";
           }
@@ -351,20 +380,20 @@ ksx web --port 8080</pre>
           var ver = p.version ? 'v' + esc(p.version) : '';
           var verTag = ver ? '<span class="pkg-card-ver">' + ver + '</span>' : '';
           var inst = p.installed ? '<span class="pkg-card-installed">installed v' + esc(p.installed) + '</span>' : '';
-          var stale = p.stale ? '<span class="badge-warn" title="cached stale">cached</span>' : '';
           var desc = p.description ? esc(p.description) : (p.summary ? esc(p.summary) : 'No description');
           var meta = "";
           if (p.os && p.os.length) meta += esc(p.os.join(", "));
           if (p.arch && p.arch.length) meta += (meta ? " · " : "") + esc(p.arch.join(", "));
           return '<button type="button" class="pkg-card" data-pkg="' + esc(p.name) + '" aria-label="Open ' + esc(p.name) + ' details" style="animation-delay:' + (i * 0.04) + 's">' +
             '<div class="pkg-card-top">' +
-              '<div class="pkg-card-name-wrap"><h3 class="pkg-card-name">' + esc(p.name) + '</h3>' + stale + '</div>' +
+              '<div class="pkg-card-name-wrap"><h3 class="pkg-card-name">' + esc(p.name) + '</h3></div>' +
               verTag +
             '</div>' +
             '<p class="pkg-card-desc">' + desc + '</p>' +
             '<div class="pkg-card-tags">' +
               inst +
               (meta ? '<span class="pkg-tag pkg-tag-meta">' + meta + '</span>' : '') +
+              '<span class="pkg-tag">store</span>' +
             '</div>' +
             '</button>';
         }).join("");
@@ -380,16 +409,11 @@ ksx web --port 8080</pre>
         var box = document.getElementById("pkgDetail");
         box.innerHTML = pkgDetailSkeletonHTML();
         getJSON("/api/packages/" + encodeURIComponent(name)).then(function (d) {
-          if (d.coming_soon) {
-            box.innerHTML = '<div class="pkg-coming-card small"><h3>Coming soon</h3><p class="muted">' + esc(d.error || "This source is not available yet.") + '</p></div>';
-            return;
-          }
-          if (d.error && !d.name) {
+          if (d.error) {
             box.innerHTML = "<p class=muted>error: " + esc(d.error) + "</p>";
             return;
           }
           box.innerHTML = pkgDetailHTML(d);
-          wireTabs(box, d);
           wireActionButtons(box, d);
         }).catch(function (e) {
           box.innerHTML = "<p class=muted>error: " + esc(e.message) + "</p>";
@@ -399,12 +423,10 @@ ksx web --port 8080</pre>
       function pkgDetailHTML(d) {
         var s = d.sources || {};
         var req = d.requirements || {};
-        // left side: name + version, description, requirements chips + details
         var chips = "<span class=chip>" + esc((req.os || []).join(", ") || "any os") + "</span>" +
           "<span class=chip>" + esc((req.arch || []).join(", ") || "any arch") + "</span>" +
           "<span class=chip>ram ≥ " + esc(req.min_ram_mb || 0) + " MB</span>" +
           "<span class=chip>disk ≥ " + esc(req.min_disk_mb || 0) + " MB</span>";
-        // requirements kv for directories/dependencies if present
         var reqKv = "";
         if (req.directories && req.directories.length) {
           reqKv += req.directories.map(function(di){
@@ -417,13 +439,10 @@ ksx web --port 8080</pre>
           }).join("");
         }
         var actions = (d.actions || []);
-        var staleNote = d.stale ? '<p class="muted small pkg-stale">⚠︎ cached (stale) — fetched from local cache due to network error: ' + esc(d._error || "") + '</p>' : "";
-        // top right action buttons — many that present in toml
         var actionButtons = actions.map(function(a){
           var steps = a.steps || [];
           var count = steps.length;
-          var label = a.action; // install, update, etc
-          // prettify label: Install, Update...
+          var label = a.action;
           var pretty = label.charAt(0).toUpperCase() + label.slice(1);
           var hasSteps = count > 0;
           var cls = "pkg-action-btn" + (hasSteps ? "" : " is-disabled") + (label === "install" ? " is-primary" : "");
@@ -435,7 +454,6 @@ ksx web --port 8080</pre>
             '</button>';
         }).join("");
 
-        // main header: left info, right actions
         return "" +
           '<div class="pkg-detail-header">' +
             '<div class="pkg-detail-left">' +
@@ -443,11 +461,10 @@ ksx web --port 8080</pre>
                 '<h2 class="pkg-detail-name">' + esc(d.name) + '</h2>' +
                 '<span class="pkg-tag pkg-tag-ver pkg-detail-ver">v' + esc(d.version) + '</span>' +
                 (d.installed ? '<span class="pkg-tag pkg-tag-installed">installed v' + esc(d.installed) + '</span>' : '') +
-                (d.source ? '<span class="pkg-tag">' + esc(d.source) + '</span>' : '') +
+                '<span class="pkg-tag">store</span>' +
               '</div>' +
               (d.description ? '<p class="pkg-detail-desc">' + esc(d.description) + '</p>' : '') +
               (d.summary ? '<p class="muted small pkg-detail-summary">' + esc(d.summary) + '</p>' : '') +
-              staleNote +
               '<div class="pkg-detail-req">' +
                 '<h3>Requirements</h3>' +
                 '<div class="chips">' + chips + '</div>' +
@@ -459,27 +476,12 @@ ksx web --port 8080</pre>
               '<div class="pkg-actions">' + (actionButtons || '<p class="muted small">No actions in TOML</p>') + '</div>' +
               '<p class="muted small pkg-actions-hint">Actions run via CLI: <code>ksx ' + esc(d.name) + ' install</code></p>' +
               '<div class="pkg-detail-sources">' +
-                '<p class="muted small"><a href="' + esc(s.github || "#") + '" target="_blank" rel="noreferrer">GitHub: ' + esc(s.github || "") + '</a></p>' +
-                '<p class="muted small"><code>' + esc(s.render || "") + '</code></p>' +
+                '<p class="muted small" style="word-break:break-all"><b>store:</b> <code>' + esc(s.store || s.cache || "") + '</code></p>' +
+                '<p class="muted small"><button type="button" class="link-btn" id="pkgDeleteBtn" data-service="' + esc(d.name) + '">Delete from store</button></p>' +
               '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="tabs" role="tablist">' +
-          '<button type="button" class="tab is-active" data-tab="overview">Overview</button>' +
-          '<button type="button" class="tab" data-tab="github">GitHub</button>' +
-          '<button type="button" class="tab" data-tab="render">Server</button>' +
-          "</div>" +
-          '<div class="tab-panel" data-panel="overview">' +
-          "<h3>Actions detail</h3><dl class=kv>" + actions.map(function(a){ return "<dt>" + esc(a.action) + "</dt><dd>" + (a.steps || []).map(esc).join(", ") + "</dd>"; }).join("") + "</dl>" +
-          "</div>" +
-          '<div class="tab-panel" data-panel="github" hidden>' +
-          "<h3>GitHub repo (CDN)</h3>" +
-          '<p><a href="' + esc(s.github || "#") + '" target="_blank" rel="noreferrer">' + esc(s.github || "") + "</a></p>" +
-          '<p class="muted small">Raw TOML fetched from <code>registry/packages/' + esc(d.name) + '.toml</code> via GitHub Raw CDN. Override with <code>KSX_GITHUB_BASE</code>.</p></div>' +
-          '<div class="tab-panel" data-panel="render" hidden>' +
-          "<h3>Server (Render primary tier) — Coming soon</h3>" +
-          "<p><code>" + esc(s.render || "") + "</code></p>" +
-          '<p class="muted small">POST host JSON to Render, expect <code>text/x-toml</code>. Override with <code>KSX_RENDER_URL</code>.</p></div>';
+          '<h3 style="margin-top:18px">Actions detail</h3><dl class=kv>' + actions.map(function(a){ return "<dt>" + esc(a.action) + "</dt><dd>" + (a.steps || []).map(esc).join(", ") + "</dd>"; }).join("") + "</dl>";
       }
 
       function wireActionButtons(box, d) {
@@ -487,34 +489,20 @@ ksx web --port 8080</pre>
         btns.forEach(function(b){
           b.addEventListener("click", function(){
             var act = b.dataset.action;
-            // highlight tab overview and scroll to actions
-            var tabs = Array.prototype.slice.call(box.querySelectorAll(".tab"));
-            var panels = Array.prototype.slice.call(box.querySelectorAll(".tab-panel"));
-            tabs.forEach(function(x){ x.classList.remove("is-active"); });
-            var ov = box.querySelector('[data-tab="overview"]');
-            if (ov) ov.classList.add("is-active");
-            panels.forEach(function(p){ p.hidden = (p.dataset.panel !== "overview"); });
-            // flash the action row
-            var row = Array.prototype.slice.call(box.querySelectorAll("dt")).find(function(dt){ return dt.textContent.trim() === act; });
-            if (row) {
-              row.style.background = "#fef3c7";
-              setTimeout(function(){ row.style.background = ""; }, 900);
-              row.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
             showToast("ksx " + act + " " + d.name + " — run in CLI");
           });
         });
-      }
-
-      function wireTabs(box, d) {
-        var tabs = Array.prototype.slice.call(box.querySelectorAll(".tab"));
-        var panels = Array.prototype.slice.call(box.querySelectorAll(".tab-panel"));
-        tabs.forEach(function (t) {
-          t.addEventListener("click", function () {
-            tabs.forEach(function (x) { x.classList.remove("is-active"); });
-            t.classList.add("is-active");
-            panels.forEach(function (p) { p.hidden = (p.dataset.panel !== t.dataset.tab); });
-          });
+        var del = box.querySelector("#pkgDeleteBtn");
+        if (del) del.addEventListener("click", function(){
+          if (!confirm("Delete " + d.name + " from store?")) return;
+          fetch("/api/packages/" + encodeURIComponent(d.name), { method: "DELETE" }).then(function(r){
+            if (!r.ok) return r.json().then(function(j){ throw new Error(j.error || "delete failed"); });
+            return r.json();
+          }).then(function(){
+            showToast("deleted " + d.name);
+            hideDetailPage();
+            load();
+          }).catch(function(e){ showToast("delete failed: " + e.message); });
         });
       }
 
@@ -526,7 +514,7 @@ ksx web --port 8080</pre>
         if (e.key === "Escape" && detailPage && !detailPage.hidden) { hideDetailPage(); }
       });
 
-      // ---- search, refresh ----
+      // ---- search, refresh, add ----
       var searchWrap = document.getElementById("pkgSearchWrap");
       var searchBar = document.getElementById("pkgSearchBar");
       var searchInput = document.getElementById("pkgSearchInput");
@@ -539,8 +527,6 @@ ksx web --port 8080</pre>
       }
       function closeSearch() {
         searchWrap.classList.remove("is-open");
-        // keep query? spec slide bar, but we keep input value; on phone closing hides bar
-        // if empty, just close Visual; if has query, keep? we hide anyway
       }
       if (searchToggle) searchToggle.addEventListener("click", function(){
         if (searchWrap.classList.contains("is-open")) closeSearch();
@@ -557,7 +543,6 @@ ksx web --port 8080</pre>
         searchInput.addEventListener("input", function(){
           state.query = searchInput.value;
           applyFilter();
-          // if detail is open, close it to show filtered grid
           var dp = document.getElementById("pkgDetailPage");
           if (dp && !dp.hidden) hideDetailPage();
           renderPkgList();
@@ -569,12 +554,10 @@ ksx web --port 8080</pre>
           }
         });
       }
-      // on desktop, search bar is always visible, so ensure open on large screens
       function syncSearchResponsive(){
         if (window.matchMedia("(min-width: 768px)").matches) {
           searchWrap.classList.add("is-open");
         } else {
-          // on phone, start closed unless has query
           if (!state.query) searchWrap.classList.remove("is-open");
         }
       }
@@ -591,9 +574,78 @@ ksx web --port 8080</pre>
         if (state.loading) return;
         state.loading = true;
         setRefreshLoading(true);
-        load(true);
+        load();
       }
       if (refreshBtn) refreshBtn.addEventListener("click", refreshPackages);
+
+      // Add menu
+      var addWrap = document.getElementById("pkgAddWrap");
+      var addBtn = document.getElementById("pkgAddBtn");
+      var addMenu = document.getElementById("pkgAddMenu");
+      var fileInput = document.getElementById("pkgFileInput");
+      function setAddMenu(open){
+        addMenu.hidden = !open;
+        addBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+      addBtn.addEventListener("click", function(e){
+        e.stopPropagation();
+        setAddMenu(addMenu.hidden);
+      });
+      document.addEventListener("click", function(){ setAddMenu(false); });
+      addMenu.addEventListener("click", function(e){ e.stopPropagation(); });
+
+      // Upload
+      document.getElementById("pkgAddUpload").addEventListener("click", function(){
+        setAddMenu(false);
+        fileInput.click();
+      });
+      fileInput.addEventListener("change", function(){
+        var file = fileInput.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(ev){
+          var content = ev.target.result;
+          var service = file.name.replace(/\.toml$/i, "").toLowerCase();
+          postJSON("/api/packages", { service: service, content: content, filename: file.name }).then(function(res){
+            showToast("saved " + res.service + " v" + (res.version || ""));
+            load();
+          }).catch(function(e){ showToast("upload failed: " + e.message); });
+        };
+        reader.onerror = function(){ showToast("failed to read file"); };
+        reader.readAsText(file);
+        fileInput.value = "";
+      });
+
+      // URL modal
+      var urlModal = document.getElementById("pkgUrlModal");
+      var urlInput = document.getElementById("pkgUrlInput");
+      var urlError = document.getElementById("pkgUrlError");
+      var urlBackdrop = document.getElementById("pkgUrlBackdrop");
+      function openUrlModal(){ urlModal.hidden = false; urlInput.value = ""; urlError.hidden = true; urlInput.focus(); }
+      function closeUrlModal(){ urlModal.hidden = true; }
+      document.getElementById("pkgAddUrl").addEventListener("click", function(){ setAddMenu(false); openUrlModal(); });
+      document.getElementById("pkgUrlCancel").addEventListener("click", closeUrlModal);
+      urlBackdrop.addEventListener("click", closeUrlModal);
+      document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !urlModal.hidden) closeUrlModal(); });
+      document.getElementById("pkgUrlConfirm").addEventListener("click", function(){
+        var url = urlInput.value.trim();
+        if (!url) { urlError.textContent = "Please enter a URL"; urlError.hidden = false; return; }
+        urlError.hidden = true;
+        var btn = document.getElementById("pkgUrlConfirm");
+        btn.disabled = true;
+        btn.textContent = "Downloading...";
+        postJSON("/api/packages/fetch-url", { url: url }).then(function(res){
+          showToast("saved " + res.service + " v" + (res.version || "") + " from URL");
+          closeUrlModal();
+          load();
+        }).catch(function(e){
+          urlError.textContent = e.message;
+          urlError.hidden = false;
+        }).finally(function(){
+          btn.disabled = false;
+          btn.textContent = "Download & Save";
+        });
+      });
 
       var toastEl = document.getElementById("pkgToast");
       var toastTimer = null;
@@ -610,8 +662,7 @@ ksx web --port 8080</pre>
       }
 
       // initial load
-      load(false);
-      // sidebar version (V${version}) — fetched from backend, auto-bumped by rebuild.sh
+      load();
       (function loadVersion(){
         getJSON("/api/version").then(function(d){
           var el = document.getElementById("sideVersion");
