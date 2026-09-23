@@ -286,6 +286,7 @@ fn ensure_dirs() -> std::io::Result<()> {
 }
 
 /// Ensure per-package hierarchy exists: var/lib, tmp, var/log, config
+#[allow(dead_code)]
 pub fn ensure_package_dirs(app: &str) -> std::io::Result<()> {
     fs::create_dir_all(package_var_lib(app))?;
     fs::create_dir_all(package_tmp(app))?;
