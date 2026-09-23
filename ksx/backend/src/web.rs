@@ -5,20 +5,24 @@
 //! - `GET /health` → `ok ksx` (Render health-check)
 //! - `GET /assets/*file` → embedded CSS/JS (frontend)
 //! - `GET /api/host` → JSON host metadata (same shape as `ksx host`)
-//! - `GET /api/packages?source=github|server&refresh=bool` → JSON list of package summaries fetched from remote
-//! - `GET /api/packages/:service?source=...` → JSON detail for one package (fetched from remote)
+//! - `GET /api/packages` → list from `ksx/store/<app>.toml` (permanent, not cache)
+//! - `GET /api/packages/:service` → detail from store
+//! - `POST /api/packages` → save uploaded TOML to store (JSON {service?, content})
+//! - `POST /api/packages/fetch-url` → download URL and save to store (JSON {url, service?})
 //! - `GET /api/state` → JSON installed-service state (`~/.ksx/state.json`)
+//! - `DELETE /api/packages/:service` → remove store file
 
-use std::collections::HashMap;
 use std::net::SocketAddr;
 
 use axum::{
-    extract::{Path, Query},
+    extract::{Path, Json},
     http::{header, StatusCode},
-    response::{Html, IntoResponse, Json},
-    routing::get,
+    response::{Html, IntoResponse, Json as JsonResp},
+    routing::{get, post, delete},
     Router,
 };
+
+use serde::{Deserialize, Serialize};
 
 use crate::{pipeline, requirements, storage, Assets};
 
@@ -33,8 +37,9 @@ pub async fn serve(port: u16) -> Result<(), Box<dyn std::error::Error + Send + S
         .route("/health", get(health))
         .route("/assets/*file", get(asset))
         .route("/api/host", get(api_host))
-        .route("/api/packages", get(api_packages))
-        .route("/api/packages/:service", get(api_package_detail))
+        .route("/api/packages", get(api_packages).post(api_packages_save))
+        .route("/api/packages/fetch-url", post(api_packages_fetch_url))
+        .route("/api/packages/:service", get(api_package_detail).delete(api_package_delete))
         .route("/api/state", get(api_state))
         .route("/api/version", get(api_version));
 
@@ -88,70 +93,34 @@ async fn asset(Path(file): Path<String>) -> impl IntoResponse {
 
 /// `GET /api/version` — app version from Cargo.toml (auto-bumped by rebuild.sh).
 async fn api_version() -> impl IntoResponse {
-    Json(serde_json::json!({ "version": env!("CARGO_PKG_VERSION") }))
+    JsonResp(serde_json::json!({ "version": env!("CARGO_PKG_VERSION") }))
 }
 
 /// `GET /api/host` — same JSON as `ksx host`.
 async fn api_host() -> impl IntoResponse {
-    Json(pipeline::HostMeta::detect())
+    JsonResp(pipeline::HostMeta::detect())
 }
 
 /// `GET /api/state` — installed versions ledger.
 async fn api_state() -> impl IntoResponse {
-    Json(storage::load_state())
+    JsonResp(storage::load_state())
 }
 
-/// `GET /api/packages` — list summaries fetched from remote (GitHub / Server).
-/// Query params: `source` = github|server|auto (default github), `refresh` = true|false
-async fn api_packages(Query(params): Query<HashMap<String, String>>) -> impl IntoResponse {
-    let source = params
-        .get("source")
-        .map(|s| s.as_str())
-        .unwrap_or("github")
-        .to_lowercase();
-    let refresh = params
-        .get("refresh")
-        .map(|v| v == "true" || v == "1")
-        .unwrap_or(false);
+// ---------------------------------------------------------------------------
+// Store-only packages (ksx/store/<app>.toml)
+// ---------------------------------------------------------------------------
 
-    // Server / local modes are coming soon — return empty with 200 + meta
-    // so the frontend can show the placeholder without error.
-    if source == "server" || source == "local" {
-        let msg = format!("{source} mode coming soon");
-        return (
-            StatusCode::OK,
-            Json(serde_json::json!({
-                "packages": [],
-                "source": source,
-                "coming_soon": true,
-                "message": msg
-            })),
-        )
-            .into_response();
-    }
-
+/// `GET /api/packages` — list all packages from store
+async fn api_packages() -> impl IntoResponse {
     let state = storage::load_state();
+    let names = storage::list_store_names();
     let mut out = Vec::new();
     let mut errors: Vec<String> = Vec::new();
 
-    for name in pipeline::KNOWN_PACKAGES {
-        let res = fetch_recipe_for_api(name, &source, refresh).await;
-        match res {
-            Ok(recipe) => out.push(package_summary(&recipe, &state, &source)),
-            Err(e) => {
-                // Try stale cache fallback (load directly without TTL) so that
-                // offline still shows something if previously cached.
-                if let Some(text) = load_stale_cache(name) {
-                    if let Ok(recipe) = pipeline::Recipe::from_toml(&text) {
-                        let mut v = package_summary(&recipe, &state, &source);
-                        v["stale"] = serde_json::Value::Bool(true);
-                        v["_error"] = serde_json::Value::String(e.to_string());
-                        out.push(v);
-                        continue;
-                    }
-                }
-                errors.push(format!("{name}: {e}"));
-            }
+    for name in names {
+        match load_store_recipe(&name) {
+            Ok(recipe) => out.push(package_summary(&recipe, &state)),
+            Err(e) => errors.push(format!("{name}: {e}")),
         }
     }
 
@@ -159,86 +128,253 @@ async fn api_packages(Query(params): Query<HashMap<String, String>>) -> impl Int
         a["name"].as_str().cmp(&b["name"].as_str())
     });
 
-    // If all failed, return 200 with error meta so frontend can show retry UI
-    if out.is_empty() && !errors.is_empty() {
-        return (
-            StatusCode::OK,
-            Json(serde_json::json!({
-                "packages": out,
-                "source": source,
-                "errors": errors,
-                "message": "all packages failed to fetch — check network or try refresh"
-            })),
-        )
-            .into_response();
-    }
-
-    Json(serde_json::json!({
+    JsonResp(serde_json::json!({
         "packages": out,
-        "source": source,
+        "source": "store",
         "errors": errors
     }))
-    .into_response()
 }
 
-/// `GET /api/packages/:service` — full detail (requirements, actions, sources).
-async fn api_package_detail(
-    Path(service): Path<String>,
-    Query(params): Query<HashMap<String, String>>,
-) -> impl IntoResponse {
+/// `GET /api/packages/:service` — detail from store
+async fn api_package_detail(Path(service): Path<String>) -> impl IntoResponse {
     let service = service.to_lowercase();
     if !is_safe_service(&service) {
-        return (StatusCode::NOT_FOUND, Json(serde_json::json!({"error": "unknown package"})))
-            .into_response();
+        return (StatusCode::NOT_FOUND, JsonResp(serde_json::json!({"error": "invalid package name"}))).into_response();
     }
-    let source = params
-        .get("source")
-        .map(|s| s.as_str())
-        .unwrap_or("github")
-        .to_lowercase();
-    let refresh = params
-        .get("refresh")
-        .map(|v| v == "true" || v == "1")
-        .unwrap_or(false);
-
-    if source == "server" || source == "local" {
-        return (
-            StatusCode::OK,
-            Json(serde_json::json!({
-                "error": format!("{source} mode coming soon"),
-                "coming_soon": true,
-                "source": source
-            })),
-        )
-            .into_response();
-    }
-
-    let recipe_res = fetch_recipe_for_api(&service, &source, refresh).await;
-    let recipe = match recipe_res {
+    let recipe = match load_store_recipe(&service) {
         Ok(r) => r,
         Err(e) => {
-            // try stale cache fallback
-            if let Some(text) = load_stale_cache(&service) {
-                if let Ok(r) = pipeline::Recipe::from_toml(&text) {
-                    let state = storage::load_state();
-                    let mut detail = package_summary(&r, &state, &source);
-                    detail["stale"] = serde_json::Value::Bool(true);
-                    detail["_error"] = serde_json::Value::String(e.to_string());
-                    fill_detail(&mut detail, &r);
-                    return (StatusCode::OK, Json(detail)).into_response();
-                }
-            }
             return (
                 StatusCode::NOT_FOUND,
-                Json(serde_json::json!({"error": format!("cannot fetch recipe: {e}")})),
+                JsonResp(serde_json::json!({"error": format!("not found in store: {e}")})),
             )
                 .into_response();
         }
     };
     let state = storage::load_state();
-    let mut detail = package_summary(&recipe, &state, &source);
+    let mut detail = package_summary(&recipe, &state);
     fill_detail(&mut detail, &recipe);
-    (StatusCode::OK, Json(detail)).into_response()
+    (StatusCode::OK, JsonResp(detail)).into_response()
+}
+
+fn load_store_recipe(service: &str) -> Result<pipeline::Recipe, String> {
+    let text = storage::load_store(service).ok_or_else(|| "store file not found".to_string())?;
+    pipeline::Recipe::from_toml(&text).map_err(|e| format!("invalid TOML: {e}"))
+}
+
+// --- POST /api/packages — upload/save TOML to store ---
+
+#[derive(Debug, Deserialize)]
+struct SaveRequest {
+    /// Optional explicit service name (if omitted, parsed from TOML [service].name)
+    service: Option<String>,
+    /// TOML content
+    content: String,
+    /// Optional filename hint (e.g., "panel.toml" from upload) — fallback if service missing
+    #[serde(default)]
+    filename: Option<String>,
+}
+
+#[derive(Debug, Serialize)]
+struct SaveResponse {
+    ok: bool,
+    service: String,
+    path: String,
+    version: String,
+}
+
+async fn api_packages_save(Json(req): Json<SaveRequest>) -> impl IntoResponse {
+    let content = req.content.trim().to_string();
+    if content.is_empty() {
+        return (
+            StatusCode::BAD_REQUEST,
+            JsonResp(serde_json::json!({"error": "empty content"})),
+        )
+            .into_response();
+    }
+    // Validate TOML and extract service name
+    let recipe = match pipeline::Recipe::from_toml(&content) {
+        Ok(r) => r,
+        Err(e) => {
+            return (
+                StatusCode::BAD_REQUEST,
+                JsonResp(serde_json::json!({"error": format!("invalid TOML: {e}")})),
+            )
+                .into_response();
+        }
+    };
+    let service_name = if let Some(s) = req.service.clone() {
+        s.to_lowercase()
+    } else if !recipe.service.name.trim().is_empty() {
+        recipe.service.name.to_lowercase()
+    } else if let Some(fname) = req.filename.clone() {
+        fname.trim().trim_end_matches(".toml").to_lowercase()
+    } else {
+        "".to_string()
+    };
+    if !is_safe_service(&service_name) {
+        return (
+            StatusCode::BAD_REQUEST,
+            JsonResp(serde_json::json!({"error": "invalid or missing service name: must be a-z 0-9 - _, 1-64 chars"})),
+        )
+            .into_response();
+    }
+    // Optionally enforce that TOML's service.name matches the chosen filename (warn but allow)
+    // Save to store
+    if let Err(e) = storage::save_store(&service_name, &content) {
+        return (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            JsonResp(serde_json::json!({"error": format!("failed to save: {e}")})),
+        )
+            .into_response();
+    }
+    let resp = SaveResponse {
+        ok: true,
+        service: service_name.clone(),
+        path: storage::store_path(&service_name).to_string_lossy().to_string(),
+        version: recipe.service.version,
+    };
+    (StatusCode::OK, JsonResp(serde_json::json!(resp))).into_response()
+}
+
+// --- POST /api/packages/fetch-url — download URL and save to store ---
+
+#[derive(Debug, Deserialize)]
+struct FetchUrlRequest {
+    url: String,
+    service: Option<String>,
+}
+
+async fn api_packages_fetch_url(Json(req): Json<FetchUrlRequest>) -> impl IntoResponse {
+    let url = req.url.trim().to_string();
+    if url.is_empty() {
+        return (
+            StatusCode::BAD_REQUEST,
+            JsonResp(serde_json::json!({"error": "missing url"})),
+        )
+            .into_response();
+    }
+    if !(url.starts_with("http://") || url.starts_with("https://")) {
+        return (
+            StatusCode::BAD_REQUEST,
+            JsonResp(serde_json::json!({"error": "url must start with http:// or https://"})),
+        )
+            .into_response();
+    }
+    let client = match reqwest::Client::builder()
+        .timeout(std::time::Duration::from_secs(10))
+        .user_agent(concat!("ksx/", env!("CARGO_PKG_VERSION")))
+        .build()
+    {
+        Ok(c) => c,
+        Err(e) => {
+            return (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                JsonResp(serde_json::json!({"error": format!("client build failed: {e}")})),
+            )
+                .into_response();
+        }
+    };
+    let res = match client
+        .get(&url)
+        .header("Accept", "text/x-toml, text/plain, */*")
+        .send()
+        .await
+    {
+        Ok(r) => r,
+        Err(e) => {
+            return (
+                StatusCode::BAD_GATEWAY,
+                JsonResp(serde_json::json!({"error": format!("fetch failed: {e}")})),
+            )
+                .into_response();
+        }
+    };
+    if !res.status().is_success() {
+        return (
+            StatusCode::BAD_GATEWAY,
+            JsonResp(serde_json::json!({"error": format!("fetch http {}", res.status())})),
+        )
+            .into_response();
+    }
+    let text = match res.text().await {
+        Ok(t) => t,
+        Err(e) => {
+            return (
+                StatusCode::BAD_GATEWAY,
+                JsonResp(serde_json::json!({"error": format!("read body failed: {e}")})),
+            )
+                .into_response();
+        }
+    };
+    if text.trim().is_empty() {
+        return (
+            StatusCode::BAD_GATEWAY,
+            JsonResp(serde_json::json!({"error": "empty response from URL"})),
+        )
+            .into_response();
+    }
+    let recipe = match pipeline::Recipe::from_toml(&text) {
+        Ok(r) => r,
+        Err(e) => {
+            return (
+                StatusCode::BAD_REQUEST,
+                JsonResp(serde_json::json!({"error": format!("URL did not return valid TOML: {e}")})),
+            )
+                .into_response();
+        }
+    };
+    let service_name = if let Some(s) = req.service.clone() {
+        s.to_lowercase()
+    } else if !recipe.service.name.trim().is_empty() {
+        recipe.service.name.to_lowercase()
+    } else {
+        // fallback: derive from URL last segment
+        url.rsplit('/')
+            .next()
+            .unwrap_or("package")
+            .trim_end_matches(".toml")
+            .to_lowercase()
+    };
+    if !is_safe_service(&service_name) {
+        return (
+            StatusCode::BAD_REQUEST,
+            JsonResp(serde_json::json!({"error": "invalid service name derived from URL/TOML"})),
+        )
+            .into_response();
+    }
+    if let Err(e) = storage::save_store(&service_name, &text) {
+        return (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            JsonResp(serde_json::json!({"error": format!("failed to save: {e}")})),
+        )
+            .into_response();
+    }
+    let resp = serde_json::json!({
+        "ok": true,
+        "service": service_name,
+        "path": storage::store_path(&service_name).to_string_lossy().to_string(),
+        "version": recipe.service.version,
+        "url": url,
+    });
+    (StatusCode::OK, JsonResp(resp)).into_response()
+}
+
+// --- DELETE /api/packages/:service ---
+
+async fn api_package_delete(Path(service): Path<String>) -> impl IntoResponse {
+    let service = service.to_lowercase();
+    if !is_safe_service(&service) {
+        return (StatusCode::BAD_REQUEST, JsonResp(serde_json::json!({"error": "invalid service name"}))).into_response();
+    }
+    let path = storage::store_path(&service);
+    if !path.exists() {
+        return (StatusCode::NOT_FOUND, JsonResp(serde_json::json!({"error": "not found"}))).into_response();
+    }
+    match storage::delete_store(&service) {
+        Ok(()) => (StatusCode::OK, JsonResp(serde_json::json!({"ok": true, "deleted": service}))).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, JsonResp(serde_json::json!({"error": format!("{e}")}))).into_response(),
+    }
 }
 
 fn fill_detail(detail: &mut serde_json::Value, recipe: &pipeline::Recipe) {
@@ -279,52 +415,10 @@ fn fill_detail(detail: &mut serde_json::Value, recipe: &pipeline::Recipe) {
     detail["actions"] = serde_json::Value::Array(actions);
 }
 
-async fn fetch_recipe_for_api(
-    service: &str,
-    source: &str,
-    refresh: bool,
-) -> Result<pipeline::Recipe, Box<dyn std::error::Error + Send + Sync>> {
-    match source {
-        "github" => {
-            // Try GitHub CDN directly; on failure fall back to auto pipeline
-            // (which also checks cache) for better offline resilience.
-            match pipeline::fetch_github(service).await {
-                Ok(text) => {
-                    let r = pipeline::Recipe::from_toml(&text)?;
-                    let _ = storage::save_cached_recipe(service, &text);
-                    Ok(r)
-                }
-                Err(e_github) => {
-                    // Try pipeline auto (which tries render->github->cache)
-                    // but if refresh false, cache may still serve stale.
-                    match pipeline::fetch_recipe(service, refresh).await {
-                        Ok(r) => Ok(r),
-                        Err(_) => Err(e_github),
-                    }
-                }
-            }
-        }
-        "server" => {
-            let text = pipeline::fetch_render(service).await?;
-            let r = pipeline::Recipe::from_toml(&text)?;
-            let _ = storage::save_cached_recipe(service, &text);
-            Ok(r)
-        }
-        _ => pipeline::fetch_recipe(service, refresh).await,
-    }
-}
-
-fn load_stale_cache(service: &str) -> Option<String> {
-    // Load cache even if stale (bypass TTL)
-    let path = storage::cache_path(service);
-    std::fs::read_to_string(&path).ok()
-}
-
 /// Shared summary shape for list + detail endpoints.
 fn package_summary(
     recipe: &pipeline::Recipe,
     state: &storage::InstallState,
-    source: &str,
 ) -> serde_json::Value {
     let name = recipe.service.name.clone();
     let steps_total = recipe.steps.len();
@@ -351,10 +445,9 @@ fn package_summary(
         "steps_total": steps_total,
         "actions": actions,
         "installed": state.version(&name),
-        "source": source,
+        "source": "store",
         "sources": {
-            "github": pipeline::github_url(&name),
-            "render": pipeline::render_url(&name),
+            "store": storage::store_path(&name).to_string_lossy(),
             "cache": storage::cache_path(&name).to_string_lossy(),
         },
     })

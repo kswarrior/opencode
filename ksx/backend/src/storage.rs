@@ -358,6 +358,32 @@ pub fn delete_store(service: &str) -> std::io::Result<()> {
     Ok(())
 }
 
+/// List all service names present in store (filenames without .toml, sorted).
+pub fn list_store_names() -> Vec<String> {
+    let dir = store_dir();
+    let mut out = Vec::new();
+    if let Ok(entries) = fs::read_dir(&dir) {
+        for e in entries.flatten() {
+            let p = e.path();
+            if p.extension().and_then(|x| x.to_str()) == Some("toml") {
+                if let Some(stem) = p.file_stem().and_then(|s| s.to_str()) {
+                    if is_safe_service(stem) {
+                        out.push(stem.to_string());
+                    }
+                }
+            }
+        }
+    }
+    out.sort();
+    out
+}
+
+fn is_safe_service(s: &str) -> bool {
+    !s.is_empty()
+        && s.len() <= 64
+        && s.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'-' || b == b'_')
+}
+
 // ---------------------------------------------------------------------------
 // Installed-service state
 // ---------------------------------------------------------------------------
