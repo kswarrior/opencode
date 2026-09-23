@@ -359,24 +359,25 @@ int main(int argc, char *argv[]) {
             fprintf(stderr,"ksvc: no command after --\n");
             return 1;
         }
-    // Join remaining args into cfg.cmd for display, and set argv array
-    // cfg.cmd is single string for display; cfg.argv holds vector
-    {
-        char cmdbuf[KSVC_CMD_MAX]="";
-        int pos=0;
-        for (int i=cmd_start; i<argc && i < cmd_start+KSVC_ARGV_MAX-1; i++) {
-            cfg.argv[i - cmd_start] = argv[i];
-            // build cmd string
-            if (pos>0 && pos < (int)sizeof(cmdbuf)-1) cmdbuf[pos++]=' ';
-            int len = strlen(argv[i]);
-            if (pos+len >= (int)sizeof(cmdbuf)) len = sizeof(cmdbuf)-pos-1;
-            if (len>0) { memcpy(cmdbuf+pos, argv[i], len); pos+=len; }
-        }
-        cfg.argv[argc - cmd_start] = NULL;
-        strncpy(cfg.cmd, cmdbuf, sizeof(cfg.cmd)-1);
-        // Also set first argv[0] as cmd if needed for legacy
-        if (cfg.argv[0]==NULL) {
-            // shouldn't happen
+        // Join remaining args into cfg.cmd for display, and set argv array
+        // cfg.cmd is single string for display; cfg.argv holds vector
+        {
+            char cmdbuf[KSVC_CMD_MAX]="";
+            int pos=0;
+            for (int i=cmd_start; i<argc && i < cmd_start+KSVC_ARGV_MAX-1; i++) {
+                cfg.argv[i - cmd_start] = argv[i];
+                // build cmd string
+                if (pos>0 && pos < (int)sizeof(cmdbuf)-1) cmdbuf[pos++]=' ';
+                int len = strlen(argv[i]);
+                if (pos+len >= (int)sizeof(cmdbuf)) len = sizeof(cmdbuf)-pos-1;
+                if (len>0) { memcpy(cmdbuf+pos, argv[i], len); pos+=len; }
+            }
+            cfg.argv[argc - cmd_start] = NULL;
+            strncpy(cfg.cmd, cmdbuf, sizeof(cfg.cmd)-1);
+            // Also set first argv[0] as cmd if needed for legacy
+            if (cfg.argv[0]==NULL) {
+                // shouldn't happen
+            }
         }
     }
 
