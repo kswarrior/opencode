@@ -1,5 +1,7 @@
-//! Flat-file manager: recipe cache (`~/.ksx/cache/*.toml` or `/ksx/cache/*.toml`, 24h TTL)
-//! + installed-service tracking (`~/.ksx/state.json` or `/ksx/state.json`).
+//! Flat-file manager: recipe cache (`cache/*.toml`, 24h TTL), permanent store (`store/*.toml`),
+//! installed-service tracking (`state.json`), tmp (`tmp/`) and per-package
+//! hierarchy (`packages/<app>/{var/lib,tmp,var/log,config}`).
+//! Works identically under both roots: `~/.ksx/*` or `/ksx/*`.
 //!
 //! Resolution: `--dr root|home` (or `KSX_DR`) overrides; otherwise auto-detect
 //! `/ksx` vs `~/.ksx` on every run — one exists → use it, both → prompt,
@@ -224,18 +226,71 @@ pub fn _reset_for_test() {
     // tests should set DR via env `KSX_DR` or run in isolated processes.
 }
 
-/// `~/.ksx/cache/<service>.toml`
+/// `~/.ksx/cache/<service>.toml`  (or `/ksx/cache/...`) — 24h TTL ephemeral
 pub fn cache_path(service: &str) -> PathBuf {
     base_dir().join("cache").join(format!("{service}.toml"))
 }
 
-/// `~/.ksx/state.json`
+/// `~/.ksx/state.json` (or `/ksx/state.json`)
 pub fn state_path() -> PathBuf {
     base_dir().join("state.json")
 }
 
+/// `~/.ksx/tmp` (or `/ksx/tmp`) — ephemeral working dir for ksx CLI itself
+pub fn tmp_dir() -> PathBuf {
+    base_dir().join("tmp")
+}
+
+/// `~/.ksx/store/<service>.toml` (or `/ksx/store/...`) — **permanent** (non-cache) TOML storage
+/// Suitable name: `store` — distinct from `cache` (TTL) and `state.json` (ledger).
+/// Use for recipes/configs you want to keep forever, not evicted after 24h.
+pub fn store_dir() -> PathBuf {
+    base_dir().join("store")
+}
+/// `store/<service>.toml` — permanent toml file
+pub fn store_path(service: &str) -> PathBuf {
+    store_dir().join(format!("{service}.toml"))
+}
+
+// --- packages layout (same under both /ksx and ~/.ksx) ---
+/// `~/.ksx/packages` (or `/ksx/packages`)
+pub fn packages_dir() -> PathBuf {
+    base_dir().join("packages")
+}
+/// `packages/<app>` 
+pub fn package_dir(app: &str) -> PathBuf {
+    packages_dir().join(app)
+}
+/// `packages/<app>/var/lib`
+pub fn package_var_lib(app: &str) -> PathBuf {
+    package_dir(app).join("var/lib")
+}
+/// `packages/<app>/tmp`
+pub fn package_tmp(app: &str) -> PathBuf {
+    package_dir(app).join("tmp")
+}
+/// `packages/<app>/var/log`
+pub fn package_var_log(app: &str) -> PathBuf {
+    package_dir(app).join("var/log")
+}
+/// `packages/<app>/config`
+pub fn package_config(app: &str) -> PathBuf {
+    package_dir(app).join("config")
+}
+
 fn ensure_dirs() -> std::io::Result<()> {
     fs::create_dir_all(base_dir().join("cache"))?;
+    fs::create_dir_all(tmp_dir())?;
+    fs::create_dir_all(store_dir())?;
+    Ok(())
+}
+
+/// Ensure per-package hierarchy exists: var/lib, tmp, var/log, config
+pub fn ensure_package_dirs(app: &str) -> std::io::Result<()> {
+    fs::create_dir_all(package_var_lib(app))?;
+    fs::create_dir_all(package_tmp(app))?;
+    fs::create_dir_all(package_var_log(app))?;
+    fs::create_dir_all(package_config(app))?;
     Ok(())
 }
 
@@ -268,6 +323,36 @@ pub fn save_cached_recipe(service: &str, toml_text: &str) -> std::io::Result<()>
 #[allow(dead_code)]
 pub fn is_cache_fresh(service: &str) -> bool {
     load_cached_recipe(service).is_some()
+}
+
+// ---------------------------------------------------------------------------
+// Permanent store (non-cache) — `store/<service>.toml` (never TTL-evicted)
+// ---------------------------------------------------------------------------
+
+/// Load permanent store TOML if present (no TTL). Returns `None` if missing.
+pub fn load_store(service: &str) -> Option<String> {
+    fs::read_to_string(store_path(service)).ok()
+}
+
+/// Persist TOML to permanent store (`~/.ksx/store/<service>.toml` or `/ksx/store/...`).
+pub fn save_store(service: &str, toml_text: &str) -> std::io::Result<()> {
+    fs::create_dir_all(store_dir())?;
+    fs::write(store_path(service), toml_text)?;
+    Ok(())
+}
+
+#[allow(dead_code)]
+pub fn store_exists(service: &str) -> bool {
+    store_path(service).exists()
+}
+
+#[allow(dead_code)]
+pub fn delete_store(service: &str) -> std::io::Result<()> {
+    let p = store_path(service);
+    if p.exists() {
+        fs::remove_file(p)?;
+    }
+    Ok(())
 }
 
 // ---------------------------------------------------------------------------
