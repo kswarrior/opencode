@@ -11,10 +11,7 @@
     <button id="menuBtn" class="menu-btn" type="button" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    <div class="brand">
-      <div class="brand-mark">KSX</div>
-      <div class="brand-sub">KS Warrior</div>
-    </div>
+    <div class="brand"><span class="brand-mark">KSX</span><span class="brand-sub">KS Warrior</span></div>
     <div id="hostBadge" class="host-badge">…</div>
   </header>
 
@@ -37,7 +34,7 @@
         <div class="stat-grid">
           <div class="card stat"><div class="stat-label">Host</div><div id="statHost" class="stat-value">—</div><div id="statHostSub" class="muted small">—</div></div>
           <div class="card stat"><div class="stat-label">Memory</div><div id="statRam" class="stat-value">—</div><div id="statDisk" class="muted small">—</div></div>
-          <div class="card stat"><div class="stat-label">Packages</div><div id="statPkgs" class="stat-value">—</div><div class="muted small">embedded recipes</div></div>
+          <div class="card stat"><div class="stat-label">Packages</div><div id="statPkgs" class="stat-value">—</div><div class="muted small">from GitHub · cached 24h</div></div>
           <div class="card stat"><div class="stat-label">Installed</div><div id="statInstalled" class="stat-value">—</div><div class="muted small">from state.json</div></div>
         </div>
         <div class="grid-2">
@@ -56,14 +53,51 @@ ksx web --port 8080</pre>
         </div>
       </section>
 
-      <!-- PACKAGES -->
+      <!-- PACKAGES — new header spec -->
       <section id="page-packages" class="page" hidden>
-        <h1>Packages</h1>
-        <p class="muted">All embedded recipes. Pick one to inspect its sources.</p>
+        <div class="pkg-header">
+          <div class="pkg-header-row">
+            <h1 class="pkg-title">Packages</h1>
+
+            <div class="pkg-toolbar">
+              <!-- Search -->
+              <div class="pkg-search" id="pkgSearchWrap">
+                <button type="button" class="pkg-search-icon-btn" id="pkgSearchToggle" aria-label="Search packages">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                </button>
+                <div class="pkg-search-bar" id="pkgSearchBar">
+                  <span class="pkg-search-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                  </span>
+                  <input id="pkgSearchInput" type="search" placeholder="Search packages..." autocomplete="off" aria-label="Search packages" />
+                  <button type="button" class="pkg-search-close" id="pkgSearchClose" aria-label="Close search">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="M6 6 18 18"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Refresh -->
+              <button type="button" class="pkg-refresh" id="pkgRefresh" aria-label="Refresh packages">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 0-2.64-6.36"/><path d="M21 3v6h-6"/><path d="M3 12a9 9 0 0 0 2.64 6.36"/><path d="M3 21v-6h6"/></svg>
+                <span class="pkg-refresh-text">Refresh</span>
+              </button>
+
+              <!-- Mode -->
+              <div class="pkg-mode" role="group" aria-label="Package source mode">
+                <button type="button" class="pkg-mode-btn is-active" data-mode="github" aria-pressed="true">GitHub</button>
+                <button type="button" class="pkg-mode-btn is-soon" data-mode="server" aria-pressed="false">Server <span class="pkg-coming">Coming soon</span></button>
+                <button type="button" class="pkg-mode-btn is-soon" data-mode="local" aria-pressed="false">Local <span class="pkg-coming">Coming soon</span></button>
+              </div>
+            </div>
+          </div>
+          <p class="muted pkg-subtitle" id="pkgSubtitle">Source: GitHub · fetching from CDN</p>
+        </div>
+
         <div class="pkg-layout">
           <div id="pkgList" class="card pkg-list"><p class="muted">loading…</p></div>
           <div id="pkgDetail" class="card pkg-detail"><p class="muted">Select a package.</p></div>
         </div>
+        <div id="pkgToast" class="pkg-toast" hidden></div>
       </section>
 
       <!-- SETTINGS -->
@@ -78,7 +112,7 @@ ksx web --port 8080</pre>
   <script>
     (function () {
       "use strict";
-      var state = { pkgs: [], selected: null, host: null };
+      var state = { pkgs: [], filtered: [], selected: null, host: null, mode: "github", query: "", loading: false };
 
       function esc(s) {
         return String(s == null ? "" : s)
@@ -108,13 +142,13 @@ ksx web --port 8080</pre>
             document.getElementById("page-" + p).hidden = (p !== btn.dataset.page);
           });
           setNav(false);
-          if (btn.dataset.page === "packages" && !state.selected && state.pkgs.length) {
-            selectPkg(state.pkgs[0].name);
+          if (btn.dataset.page === "packages" && !state.selected && state.filtered.length) {
+            selectPkg(state.filtered[0].name);
           }
         });
       });
 
-      // ---- data ----
+      // ---- data helpers ----
       function getJSON(url) {
         return fetch(url, { headers: { "Accept": "application/json" } }).then(function (r) {
           if (!r.ok) throw new Error(url + " → " + r.status);
@@ -122,19 +156,91 @@ ksx web --port 8080</pre>
         });
       }
 
-      function load() {
-        Promise.all([getJSON("/api/host"), getJSON("/api/packages"), getJSON("/api/state")])
+      function normalizePackages(data) {
+        if (Array.isArray(data)) return data;
+        if (data && Array.isArray(data.packages)) return data.packages;
+        return [];
+      }
+
+      function load(refresh) {
+        var refreshQ = refresh ? "?refresh=true" : "";
+        // for github mode we pass source=github
+        var pkgUrl = "/api/packages?source=" + encodeURIComponent(state.mode) + (refresh ? "&refresh=true" : "");
+        // if mode is coming-soon, pkgUrl still handled but backend returns placeholder
+        Promise.all([getJSON("/api/host"), getJSON(pkgUrl), getJSON("/api/state")])
           .then(function (res) {
             state.host = res[0];
-            state.pkgs = res[1] || [];
-            renderHome(res[0], state.pkgs, res[2] || { installed: {} });
+            var pkgsData = res[1];
+            // backend may return {packages: [...], errors, ...}
+            var pkgs = normalizePackages(pkgsData);
+            // also handle legacy direct array inside pkgsData if errors wrapped
+            state.pkgs = pkgs;
+            applyFilter();
+            // subtitle handling
+            updateSubtitle(pkgsData);
+            renderHome(res[0], pkgs, res[2] || { installed: {} });
             renderPkgList();
+            if (state.filtered.length && !state.selected) {
+              selectPkg(state.filtered[0].name);
+            }
+            // if no pkgs but errors, show error in list
+            if (!pkgs.length && pkgsData && pkgsData.errors && pkgsData.errors.length) {
+              var box = document.getElementById("pkgList");
+              box.innerHTML = '<p class="muted">Failed to fetch from ' + esc(state.mode) + '.</p>'
+                + '<p class="muted small">' + esc(pkgsData.errors.join("; ")) + '</p>'
+                + '<p class="muted small">Check network or try <a href="#" id="retryLink">Refresh</a>.</p>';
+              var retry = document.getElementById("retryLink");
+              if (retry) retry.addEventListener("click", function(e){ e.preventDefault(); refreshPackages(); });
+            }
+            if (pkgsData && pkgsData.coming_soon) {
+              renderComingSoon(state.mode);
+            }
           })
           .catch(function (err) {
             document.getElementById("hostBadge").textContent = "offline";
             var d = document.getElementById("hostDetail");
             if (d) d.innerHTML = "<dt>error</dt><dd>" + esc(err.message) + "</dd>";
-          });
+            var box = document.getElementById("pkgList");
+            if (box) box.innerHTML = '<p class="muted">Failed to load packages.</p><p class="muted small">' + esc(err.message) + '</p>';
+          })
+          .then(function(){ state.loading = false; setRefreshLoading(false); });
+      }
+
+      function updateSubtitle(data) {
+        var sub = document.getElementById("pkgSubtitle");
+        if (!sub) return;
+        if (state.mode === "github") {
+          sub.textContent = "Source: GitHub · " + state.filtered.length + " package" + (state.filtered.length !== 1 ? "s" : "") + " · raw CDN";
+        } else if (state.mode === "server") {
+          sub.textContent = "Source: Server · Coming soon";
+        } else if (state.mode === "local") {
+          sub.textContent = "Source: Local · Coming soon";
+        } else {
+          sub.textContent = "Source: " + state.mode;
+        }
+        if (state.query) sub.textContent += ' · filtered by "' + state.query + '"';
+        if (data && data.errors && data.errors.length) sub.textContent += " · " + data.errors.length + " error(s)";
+      }
+
+      function renderComingSoon(mode) {
+        var box = document.getElementById("pkgList");
+        var detail = document.getElementById("pkgDetail");
+        if (box) {
+          box.innerHTML = '<div class="pkg-coming-card">'
+            + '<div class="pkg-coming-icon">⏳</div>'
+            + '<h3>' + esc(mode.charAt(0).toUpperCase() + mode.slice(1)) + ' mode — Coming soon</h3>'
+            + '<p class="muted">'
+            + (mode === "server" ? 'Server packages will be fetched from the Render API (<code>KSX_RENDER_URL</code>) with host-aware filtering. This tier is under construction.' : 'Local packages will be loaded from <code>~/.ksx/cache</code> and local registry without network. Stay tuned.')
+            + '</p>'
+            + '<p class="muted small">Currently browsing GitHub CDN. Switch back to <button type="button" class="link-btn" id="backToGithub">GitHub</button> to view packages.</p>'
+            + '</div>';
+          var back = document.getElementById("backToGithub");
+          if (back) back.addEventListener("click", function(){ setMode("github"); });
+        }
+        if (detail) {
+          detail.innerHTML = '<p class="muted">' + esc(mode) + ' details will appear here once the source is available.</p>'
+            + '<p class="muted small">GitHub is the active source. Recipes are fetched from <code>registry/packages/*.toml</code> via Raw CDN.</p>';
+        }
       }
 
       function renderHome(host, pkgs, st) {
@@ -158,27 +264,70 @@ ksx web --port 8080</pre>
         }).join("");
       }
 
+      function applyFilter() {
+        var q = state.query.trim().toLowerCase();
+        if (!q) {
+          state.filtered = state.pkgs.slice();
+        } else {
+          state.filtered = state.pkgs.filter(function(p){
+            return (p.name && p.name.toLowerCase().indexOf(q) !== -1)
+              || (p.description && p.description.toLowerCase().indexOf(q) !== -1)
+              || (p.summary && p.summary.toLowerCase().indexOf(q) !== -1)
+              || (p.version && String(p.version).toLowerCase().indexOf(q) !== -1);
+          });
+        }
+      }
+
       function renderPkgList() {
         var box = document.getElementById("pkgList");
-        if (!state.pkgs.length) { box.innerHTML = "<p class=muted>No packages.</p>"; return; }
-        box.innerHTML = state.pkgs.map(function (p) {
+        if (!box) return;
+        if (state.mode === "server" || state.mode === "local") {
+          // coming soon handled elsewhere, but keep guard
+          return;
+        }
+        if (!state.filtered.length) {
+          if (state.query) {
+            box.innerHTML = '<p class="muted">No packages match "' + esc(state.query) + '".</p>';
+          } else if (!state.pkgs.length) {
+            box.innerHTML = "<p class=muted>No packages.</p><p class='muted small'>Try Refresh or check GitHub CDN.</p>";
+          } else {
+            box.innerHTML = "<p class=muted>No packages.</p>";
+          }
+          updateSubtitle({});
+          return;
+        }
+        box.innerHTML = state.filtered.map(function (p) {
           var cls = "pkg-item" + (state.selected === p.name ? " is-active" : "");
           var inst = p.installed ? '<span class="badge-ok">v' + esc(p.installed) + "</span>" : "";
+          var stale = p.stale ? '<span class="badge-warn" title="cached stale">cached</span>' : "";
           return '<button type="button" class="' + cls + '" data-pkg="' + esc(p.name) + '">' +
             "<strong>" + esc(p.name) + "</strong>" +
-            '<span class="badge">v' + esc(p.version) + "</span>" + inst + "</button>";
+            '<span class="badge">v' + esc(p.version) + "</span>" + inst + stale + "</button>";
         }).join("");
         Array.prototype.forEach.call(box.querySelectorAll("[data-pkg]"), function (b) {
           b.addEventListener("click", function () { selectPkg(b.dataset.pkg); });
         });
+        updateSubtitle({});
       }
 
       function selectPkg(name) {
+        if (state.mode === "server" || state.mode === "local") {
+          showToast(state.mode + " mode — Coming soon");
+          return;
+        }
         state.selected = name;
         renderPkgList();
         var box = document.getElementById("pkgDetail");
         box.innerHTML = "<p class=muted>loading…</p>";
-        getJSON("/api/packages/" + encodeURIComponent(name)).then(function (d) {
+        getJSON("/api/packages/" + encodeURIComponent(name) + "?source=" + encodeURIComponent(state.mode)).then(function (d) {
+          if (d.coming_soon) {
+            box.innerHTML = '<div class="pkg-coming-card small"><h3>Coming soon</h3><p class="muted">' + esc(d.error || "This source is not available yet.") + '</p></div>';
+            return;
+          }
+          if (d.error && !d.name) {
+            box.innerHTML = "<p class=muted>error: " + esc(d.error) + "</p>";
+            return;
+          }
           box.innerHTML = pkgDetailHTML(d);
           wireTabs(box, d);
         }).catch(function (e) {
@@ -196,36 +345,32 @@ ksx web --port 8080</pre>
         var actions = (d.actions || []).map(function (a) {
           return "<dt>" + esc(a.action) + "</dt><dd>" + (a.steps || []).map(esc).join(", ") + "</dd>";
         }).join("");
+        var staleNote = d.stale ? '<p class="muted small">⚠︎ cached (stale) — fetched from local cache due to network error: ' + esc(d._error || "") + '</p>' : "";
         return "" +
           "<div class=pkg-head><h2>" + esc(d.name) + "</h2>" +
           '<span class="badge">v' + esc(d.version) + "</span>" +
           (d.installed ? '<span class="badge-ok">installed v' + esc(d.installed) + "</span>" : "") +
+          (d.source ? '<span class="badge">' + esc(d.source) + "</span>" : "") +
           "</div>" +
           (d.description ? "<p>" + esc(d.description) + "</p>" : "") +
           (d.summary ? '<p class="muted small">' + esc(d.summary) + "</p>" : "") +
+          staleNote +
           '<div class="tabs" role="tablist">' +
-          '<button type="button" class="tab is-active" data-tab="selected">Selected</button>' +
-          '<button type="button" class="tab" data-tab="github">GitHub repo</button>' +
-          '<button type="button" class="tab" data-tab="render">Render</button>' +
-          '<button type="button" class="tab" data-tab="local">Local</button>' +
+          '<button type="button" class="tab is-active" data-tab="selected">Overview</button>' +
+          '<button type="button" class="tab" data-tab="github">GitHub</button>' +
+          '<button type="button" class="tab" data-tab="render">Server</button>' +
           "</div>" +
           '<div class="tab-panel" data-panel="selected">' +
           "<h3>Requirements</h3><div class=chips>" + chips + "</div>" +
           "<h3>Actions</h3><dl class=kv>" + (actions || "<dt>—</dt><dd></dd>") + "</dl></div>" +
           '<div class="tab-panel" data-panel="github" hidden>' +
-          "<h3>GitHub repo (CDN backup tier)</h3>" +
-          '<p><a href="' + esc(s.github || "#") + '">' + esc(s.github || "") + "</a></p>" +
-          '<p class="muted small">Raw single-TOML recipe fetched when the Render API is unreachable. Override with <code>KSX_GITHUB_BASE</code>.</p></div>' +
+          "<h3>GitHub repo (CDN)</h3>" +
+          '<p><a href="' + esc(s.github || "#") + '" target="_blank" rel="noreferrer">' + esc(s.github || "") + "</a></p>" +
+          '<p class="muted small">Raw TOML fetched from <code>registry/packages/' + esc(d.name) + '.toml</code> via GitHub Raw CDN. Override with <code>KSX_GITHUB_BASE</code>.</p></div>' +
           '<div class="tab-panel" data-panel="render" hidden>' +
-          "<h3>Render (primary tier)</h3>" +
+          "<h3>Server (Render primary tier) — Coming soon</h3>" +
           "<p><code>" + esc(s.render || "") + "</code></p>" +
-          '<p class="muted small">POST host JSON, expect <code>text/x-toml</code>. Override with <code>KSX_RENDER_URL</code>.</p></div>' +
-          '<div class="tab-panel" data-panel="local" hidden>' +
-          "<h3>Local</h3><dl class=kv>" +
-          "<dt>embedded</dt><dd><code>" + esc(s.embedded || "") + "</code></dd>" +
-          "<dt>cache</dt><dd><code>" + esc(s.cache || "") + "</code></dd>" +
-          "<dt>installed</dt><dd>" + esc(d.installed || "—") + "</dd></dl>" +
-          '<p class="muted small">Cache TTL 24h · bypass with <code>--refresh</code>. Raw baseline: <a href="/assets/' + esc(d.name) + '.toml">' + esc(d.name) + ".toml</a></p></div>";
+          '<p class="muted small">POST host JSON to Render, expect <code>text/x-toml</code>. Override with <code>KSX_RENDER_URL</code>. This mode is not yet active in the dashboard.</p></div>';
       }
 
       function wireTabs(box, d) {
@@ -240,7 +385,113 @@ ksx web --port 8080</pre>
         });
       }
 
-      load();
+      // ---- search, refresh, mode ----
+      var searchWrap = document.getElementById("pkgSearchWrap");
+      var searchBar = document.getElementById("pkgSearchBar");
+      var searchInput = document.getElementById("pkgSearchInput");
+      var searchToggle = document.getElementById("pkgSearchToggle");
+      var searchClose = document.getElementById("pkgSearchClose");
+
+      function openSearch() {
+        searchWrap.classList.add("is-open");
+        searchInput.focus();
+      }
+      function closeSearch() {
+        searchWrap.classList.remove("is-open");
+        // keep query? spec slide bar, but we keep input value; on phone closing hides bar
+        // if empty, just close Visual; if has query, keep? we hide anyway
+      }
+      if (searchToggle) searchToggle.addEventListener("click", function(){
+        if (searchWrap.classList.contains("is-open")) closeSearch();
+        else openSearch();
+      });
+      if (searchClose) searchClose.addEventListener("click", function(){
+        searchInput.value = "";
+        state.query = "";
+        applyFilter();
+        renderPkgList();
+        closeSearch();
+      });
+      if (searchInput) {
+        searchInput.addEventListener("input", function(){
+          state.query = searchInput.value;
+          applyFilter();
+          renderPkgList();
+        });
+        searchInput.addEventListener("keydown", function(e){
+          if (e.key === "Escape") {
+            closeSearch();
+            searchInput.blur();
+          }
+        });
+      }
+      // on desktop, search bar is always visible, so ensure open on large screens
+      function syncSearchResponsive(){
+        if (window.matchMedia("(min-width: 768px)").matches) {
+          searchWrap.classList.add("is-open");
+        } else {
+          // on phone, start closed unless has query
+          if (!state.query) searchWrap.classList.remove("is-open");
+        }
+      }
+      window.addEventListener("resize", syncSearchResponsive);
+      syncSearchResponsive();
+
+      var refreshBtn = document.getElementById("pkgRefresh");
+      function setRefreshLoading(loading){
+        if (!refreshBtn) return;
+        refreshBtn.disabled = loading;
+        refreshBtn.classList.toggle("is-loading", loading);
+      }
+      function refreshPackages(){
+        if (state.loading) return;
+        state.loading = true;
+        setRefreshLoading(true);
+        load(true);
+      }
+      if (refreshBtn) refreshBtn.addEventListener("click", refreshPackages);
+
+      var modeBtns = Array.prototype.slice.call(document.querySelectorAll(".pkg-mode-btn"));
+      function setMode(mode){
+        if (mode === "server" || mode === "local") {
+          showToast(mode.charAt(0).toUpperCase() + mode.slice(1) + " — Coming soon");
+          // visually select but show placeholder; keep github data? spec says coming soon pill
+          // we switch state.mode to show placeholder UX
+        }
+        state.mode = mode;
+        modeBtns.forEach(function(b){
+          var isActive = b.dataset.mode === mode;
+          b.classList.toggle("is-active", isActive);
+          b.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+        // reset selection and re-fetch
+        state.selected = null;
+        document.getElementById("pkgDetail").innerHTML = '<p class="muted">Select a package.</p>';
+        document.getElementById("pkgList").innerHTML = '<p class="muted">loading…</p>';
+        load(false);
+      }
+      modeBtns.forEach(function(btn){
+        btn.addEventListener("click", function(){
+          setMode(btn.dataset.mode);
+        });
+      });
+
+      var toastEl = document.getElementById("pkgToast");
+      var toastTimer = null;
+      function showToast(msg){
+        if (!toastEl) return;
+        toastEl.textContent = msg;
+        toastEl.hidden = false;
+        toastEl.classList.add("is-visible");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function(){
+          toastEl.classList.remove("is-visible");
+          setTimeout(function(){ toastEl.hidden = true; }, 220);
+        }, 2200);
+      }
+
+      // initial load
+      load(false);
     })();
   </script>
 </body>
