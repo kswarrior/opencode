@@ -9,43 +9,51 @@ Source: `ksvc/src/main.c:1` (CLI), `ksvc/include/ksvc.h:1` (API).
 ## Synopsis
 
 ```bash
-ksvc run [OPTIONS] -- <cmd> [args...]
-ksvc list | ls | ps
-ksvc stop | kill | rm <id|name> [--sig SIGNAL]
-ksvc exec <id|name> -- <cmd> [args...]
+ksvc run|launch [OPTIONS] -- <cmd> [args...]          # c (container) — run == launch, correctly matched
+ksvc c run|launch [OPTIONS] -- <cmd> [args...]        # explicit container
+ksvc v run|launch [OPTIONS] -- <cmd> [args...]        # v (vm) — stub after container complete
+ksvc list|c list|v list | ls | ps                     # list both, or filter c/v
+ksvc stop | kill | rm <id|name> [--sig SIGNAL]        # stop both
+ksvc c stop <id|name> | ksvc v stop <id|name>         # explicit
+ksvc exec <id|name> -- <cmd> [args...]                # exec (c only for now)
 ksvc version | --version | -V
 ksvc help | --help | -h
 ```
 
-`--` separator is **required** for `run` and `exec` to delimit ksvc options from the container command.
+`--` separator is **required** for `run`/`launch` and `exec` to delimit ksvc options from the container/vm command. `run` == `launch` for both `c` and `v` — correctly matched, identical options and behavior (`ksvc/src/main.c:13`).
+
+**Types:** `c` = container (now, namespaces+cgroup, like Docker), `v` = vm (KVM/QEMU, coming after container complete). Prefix optional: `ksvc run` == `ksvc c run`, `ksvc launch` == `ksvc c launch`. `ksvc v ...` is stub until vm added.
 
 ---
 
-## `ksvc run` — create and start a container
+## `ksvc run` / `ksvc launch` — create and start (identical for c and v)
 
-Create a container from a rootfs directory (or host root) and exec a command in new namespaces.
+Create and start a **container `c`** (now) or **vm `v`** (stub, after container) from a rootfs/disk and exec a command. `run` and `launch` are **identical aliases** — correctly matched for both types (`ksvc/src/main.c:13` shows `run|launch`).
 
 ```bash
-ksvc run [OPTIONS] -- <cmd> [args...]
+ksvc run|launch [OPTIONS] -- <cmd> [args...]          # c (container) default
+ksvc c run|launch [OPTIONS] -- <cmd> [args...]        # explicit c
+ksvc v run|launch [OPTIONS] -- <cmd> [args...]        # v (vm) — stub
 ```
 
-### Options
+### Options (identical for `run` and `launch`, both `c` and `v` — correctly matched)
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
-| `--name NAME` | string | random 12-char hex | Container name. Also an alias for `list`/`stop`/`exec`. Stored as symlink `/tmp/ksvc/<name>.json -> <id>.json`. |
-| `--rootfs PATH` | path | `""` (host `/`) | Rootfs directory to `pivot_root`/`chroot` into. `""` = host root with private mount ns. Created via `docker export $(docker create alpine) \| tar -C <PATH> -xf -`. See `ksvc/README.md:128`. |
-| `--overlay-lower PATH` | path | `""` | Lowerdir for overlayfs. If set, `rootfs` is the merged dir. |
-| `--overlay-upper PATH` | path | `""` (tmp) | Upperdir for overlayfs. Empty → `/tmp/ksvc-overlay-<pid>-upper` (tmpfs). Workdir auto `/tmp/ksvc-overlay-<pid>-work`. |
-| `--hostname HOST` | string | `ksvc` | UTS hostname (`sethostname`). Requires privileged; rootless prints `sethostname failed: Operation not permitted` and continues. Check `ksvc/src/container.c:192`. |
+| `--name NAME` | string | random 12-char hex | Container/vm name. Also alias for `list`/`stop`/`exec`. Stored as symlink `/tmp/ksvc/<name>.json -> <id>.json`. |
+| `--rootfs PATH` | path | `""` (host `/`) | Rootfs directory to `pivot_root`/`chroot` into (c) or disk image path (v, future). `""` = host root with private mount ns. Created via `docker export $(docker create alpine) \| tar -C <PATH> -xf -`. See `ksvc/README.md:128`. `run` == `launch` for this flag. |
+| `--overlay-lower PATH` | path | `""` | Lowerdir for overlayfs (c, if set `rootfs` is merged dir). |
+| `--overlay-upper PATH` | path | `""` (tmp) | Upperdir for overlayfs (c). Empty → `/tmp/ksvc-overlay-<pid>-upper` (tmpfs). Workdir auto `/tmp/ksvc-overlay-<pid>-work`. |
+| `--hostname HOST` | string | `ksvc` | UTS hostname (`sethostname`). Requires privileged; rootless prints `sethostname failed: Operation not permitted` and continues. `ksvc/src/container.c:192`. Works for both `run` and `launch`. |
 | `--workdir DIR` | path | `/` | `chdir` after pivot. Created if missing. |
 | `--mem MB` | int | `0` (unlimited) | Memory limit via cgroup v2 `memory.max` (`/sys/fs/cgroup/ksvc.slice/<id>/memory.max`). Needs sudo; rootless gracefully skips. `ksvc/src/cgroup.c:1`. |
 | `--cpu PCT` | int | `0` (unlimited) | CPU quota percent. `100` = 1 CPU (`cpu.max` `100000 100000`), `50` = 0.5 CPU (`50000 100000`). |
 | `--pids N` | int | `0` (unlimited) | Pids limit via `pids.max`. |
 | `--net` | flag | off | New network ns. Only `lo` inside; needs `ip link set lo up` (or `ifconfig`). Isolated from host net. |
 | `--userns` | flag | auto | Force user ns. Auto if `geteuid()!=0` (`ksvc/src/util.c:20`). Maps host `uid`→`0` inside via `/proc/<pid>/uid_map`. |
-| `-d, --detach` | flag | off | Detached: start and exit without `wait`. Container becomes child of `1`, state kept in `/tmp/ksvc/<id>.json`. Use `list`/`stop`. |
-| `--help, -h` | flag | — | Show `run` help. |
+| `--vm` | flag | off | Alias for `v` — `ksvc v run` stub. If passed to `c run`/`c launch`, errors with hint to use `ksvc v ...`. |
+| `-d, --detach` | flag | off | Detached: start and exit without `wait`. Container/vm becomes child of `1`, state kept in `/tmp/ksvc/<id>.json`. Use `list`/`stop`. |
+| `--help, -h` | flag | — | Show `run`/`launch` help (`ksvc/src/main.c:13`). |
 
 ### Behavior
 
@@ -55,38 +63,53 @@ ksvc run [OPTIONS] -- <cmd> [args...]
 4. Parent attaches pid to cgroup (`ksvc/src/cgroup.c:90`), saves state `/tmp/ksvc/<id>.json` (`ksvc/src/util.c:77`), prints `ksvc: container <id> started pid <pid>`.
 5. If not detached, `ksvc_wait` (`ksvc/src/container.c:310`) `waitpid`, cleanup cgroup + state, return exit code (0-255, `128+signal` if signaled).
 
-Exit code is the container's exit code (like `docker run`).
+Exit code is the container's exit code (like `docker run`). For `v` (vm) it will be QEMU exit code (future).
 
-### Examples
+### Examples (all `run` == `launch`, correctly matched)
 
 ```bash
-# host-root, no rootfs (fastest, mount ns private but fs shared)
+# host-root, no rootfs (fastest, mount ns private but fs shared) — run == launch
 ksvc run -- /bin/sh -c 'echo hello; echo pid=$$; ps -o pid,comm | head'
+ksvc launch -- /bin/sh -c 'echo hello; echo pid=$$; ps -o pid,comm | head'  # identical
+ksvc c run -- /bin/sh -c 'echo hello'          # explicit c
+ksvc c launch -- /bin/sh -c 'echo hello'       # c launch == c run
 
-# alpine from docker (privileged for full isolation)
+# alpine from docker (privileged for full isolation) — both verbs
 mkdir -p /tmp/alpine
 docker export $(docker create alpine:3.19) | tar -C /tmp/alpine -xf -
 sudo ksvc run --rootfs /tmp/alpine --hostname demo --mem 128 --cpu 50 -- /bin/sh
-sudo ksvc run --rootfs /tmp/alpine -- /bin/sh -c 'cat /etc/alpine-release; ps aux'
+sudo ksvc launch --rootfs /tmp/alpine --hostname demo --mem 128 --cpu 50 -- /bin/sh  # same
+sudo ksvc c run --rootfs /tmp/alpine -- /bin/sh -c 'cat /etc/alpine-release; ps aux'
+sudo ksvc c launch --rootfs /tmp/alpine -- /bin/sh -c 'cat /etc/alpine-release; ps aux' # same
+sudo ksvc v run --mem 512 --disk vm.img -- /bin/sh     # vm stub (future, after container)
+sudo ksvc v launch --mem 512 --disk vm.img -- /bin/sh  # v launch == v run (stub)
 
 # busybox
 mkdir -p /tmp/busybox
 docker export $(docker create busybox) | tar -C /tmp/busybox -xf -
 sudo ksvc run --rootfs /tmp/busybox -- /bin/sh
+sudo ksvc launch --rootfs /tmp/busybox -- /bin/sh  # identical
 
 # overlayfs (readonly alpine + writable merged)
 mkdir -p /tmp/merged
 sudo ksvc run --rootfs /tmp/merged --overlay-lower /tmp/alpine -- /bin/sh -c 'echo hi > /test; cat /test'
+sudo ksvc launch --rootfs /tmp/merged --overlay-lower /tmp/alpine -- /bin/sh -c 'echo hi > /test; cat /test' # same
 
-# limits + net + workdir + detached
+# limits + net + workdir + detached — both
 sudo ksvc run --name web --rootfs /tmp/alpine --mem 64 --cpu 50 --pids 32 --net --workdir /app -d -- /bin/httpd -p 8080 -f
-ksvc list
+sudo ksvc launch --name web2 --rootfs /tmp/alpine --mem 64 --cpu 50 --pids 32 --net --workdir /app -d -- /bin/httpd -p 8080 -f # same
+ksvc list                # both c and v (currently only c)
+ksvc c list              # explicit c
+ksvc v list              # vm stub — prints "no vms"
 ksvc exec web -- /bin/sh
 ksvc stop web
+ksvc launch --name myctr -- /bin/sleep 10  # launch alias for c
 
-# rootless host-root (no sudo, no rootfs)
+# rootless host-root (no sudo, no rootfs) — both
 ksvc run -- /bin/echo "ksvc library ok"
-ksvc run --name myctr -- /bin/sleep 10
+ksvc launch -- /bin/echo "ksvc library ok"  # identical
+ksvc c run --name myctr -- /bin/sleep 10
+ksvc c launch --name myctr2 -- /bin/sleep 10
 ```
 
 ### Notes
@@ -97,15 +120,19 @@ ksvc run --name myctr -- /bin/sleep 10
 
 ---
 
-## `ksvc list` — list containers
+## `ksvc list` — list containers/vms
 
 ```bash
 ksvc list
 ksvc ls
 ksvc ps
+ksvc c list          # explicit container (same as list now)
+ksvc v list          # vm — stub, prints "no vms" after container complete
+ksvc list c
+ksvc list v
 ```
 
-Prints table from `/tmp/ksvc/*.json` (or `/run/ksvc` if writable, see `ksvc/src/util.c:65`). No args.
+Prints table from `/tmp/ksvc/*.json` (or `/run/ksvc` if writable, see `ksvc/src/util.c:65`). No args for container `c` (default). `v` is stub until vm added — correctly matched for both, `list` works for both types.
 
 **Output:**
 
@@ -131,31 +158,39 @@ ksvc list
 
 ---
 
-## `ksvc stop` — stop / kill a container
+## `ksvc stop` — stop / kill (both c and v, correctly matched)
 
 ```bash
 ksvc stop <id|name> [--sig SIGNAL]
 ksvc kill <id|name> [--sig SIGNAL]
 ksvc rm <id|name> [--sig SIGNAL]
+ksvc c stop <id|name> [--sig SIGNAL]   # explicit container
+ksvc v stop <id|name> [--sig SIGNAL]   # vm stub (future)
 ```
 
-Aliases: `stop`, `kill`, `rm` all do `ksvc_stop` (`ksvc/src/container.c:329`).
+Aliases: `stop`, `kill`, `rm` all do `ksvc_stop` (`ksvc/src/container.c:329`). Works for both `c` and `v` — correctly matched, identical behavior.
 
 **Args:**
 
 * `<id|name>` — 12-char id or `--name` alias. Loaded via `ksvc_state_load` (`ksvc/src/util.c:109`) from `/tmp/ksvc/<id>.json`. If not found, tries `kill(atoi(id), sig)` as raw pid fallback.
 * `--sig SIGNAL` — signal number or name. Default `SIGTERM` (15). Parses `atoi`; `KILL`/`9` → `SIGKILL`, `TERM` → `SIGTERM`. If `SIGTERM`, waits 2s then `SIGKILL` and `waitpid`.
 
-**Behavior:** `kill(pid, sig)`, `waitpid(WNOHANG)`, if still running and `sig==SIGTERM` sleep 2 then `SIGKILL`, `waitpid`, `ksvc_cgroup_remove`, `ksvc_state_remove` (unlink both `<id>.json` and `<name>.json`).
+**Behavior:** `kill(pid, sig)`, `waitpid(WNOHANG)`, if still running and `sig==SIGTERM` sleep 2 then `SIGKILL`, `waitpid`, `ksvc_cgroup_remove`, `ksvc_state_remove` (unlink both `<id>.json` and `<name>.json`). Same for `run` and `launch` containers.
 
-Examples:
+Examples (both verbs):
 
 ```bash
 ksvc run -d --name demo -- /bin/sleep 100
+ksvc launch -d --name demo2 -- /bin/sleep 100  # launch == run
+ksvc c run -d --name demo3 -- /bin/sleep 100   # explicit c
 ksvc stop demo
+ksvc stop demo2
+ksvc c stop demo3
 ksvc stop demo --sig 9
 ksvc stop a1b2c3d4e5f6 --sig KILL
 ksvc stop 12345 --sig TERM  # raw pid fallback
+# future vm (stub after container):
+# ksvc v stop <id>  # vm stub
 ```
 
 Exit: `0` if killed, `1` if `container not found` or `kill` failed. Prints `ksvc: stopping <id> (pid <pid>) with sig <sig>` and `ksvc: stopped <id>`.
