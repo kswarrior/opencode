@@ -66,4 +66,16 @@ services:
     envVars:
       - key: PORT
         value: 10000
+
+  - type: web
+    name: ksx
+    env: docker
+    dockerfilePath: ./ksx/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: true
+    branch: main
+    envVars:
+      - key: PORT
+        value: 10000
 # deploy trigger Sun Sep 20 08:06:16 UTC 2026

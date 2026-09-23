@@ -41,4 +41,5 @@ USER ksx
 ENV KSX_HOST=0.0.0.0
 
 EXPOSE 8080
-ENTRYPOINT ["./ksx", "web", "--port", "8080"]
+# Use PORT env at runtime (Render sets PORT=10000); default to 8080 locally.
+ENTRYPOINT ["sh", "-c", "./ksx web --port ${PORT:-8080}"]
