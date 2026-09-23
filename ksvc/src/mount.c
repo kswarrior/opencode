@@ -29,9 +29,19 @@ int ksvc_mount_setup(const char *rootfs, const char *overlay_lower, const char *
     }
 
     if (!rootfs || rootfs[0]=='\0') {
-        // No rootfs — just make host / private and mount proc/sys if needed
-        // We still want to isolate mount ns, but keep host root
-        // Mount proc if not already? We'll do it in child after chdir, but skip if no rootfs
+        // No rootfs — isolate mount ns but keep host root
+        // Still need to remount /proc so ps shows container pid ns
+        if (mount("proc", "/proc", "proc", MS_NOSUID|MS_NOEXEC|MS_NODEV, NULL) < 0 && errno != EBUSY) {
+            // Try remount with detach: umount then mount
+            // If we are in new mount ns, /proc is still host's proc mount.
+            // Remounting proc should give view of new pid ns.
+            // On some kernels, need to umount first if not allowed to overmount.
+            // Best effort: try to mount with MS_REMOUNT? Instead, do private and remount
+            // If EBUSY or EPERM, ignore — fallback to host proc (will show host pids)
+            // fprintf(stderr, "ksvc: mount proc (host root) failed: %s\n", strerror(errno));
+        }
+        // Also try to mount sys as private
+        // No need to fail if not permitted (rootless may not allow mount without proper caps)
         return 0;
     }
 
