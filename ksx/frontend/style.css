@@ -651,7 +651,10 @@ body.nav-open .scrim { opacity: 1; }
 .pkg-actions-title { font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin: 0 0 12px; }
 .pkg-actions { display: flex; flex-direction: column; gap: 8px; }
 .pkg-action-row { display: flex; align-items: center; gap: 8px; }
-.pkg-action-status { flex: none; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; }
+.pkg-action-status { flex: none; width: 18px; height: 18px; display: none; align-items: center; justify-content: center; }
+.pkg-action-status[data-status="running"],
+.pkg-action-status[data-status="done"],
+.pkg-action-status[data-status="error"] { display: inline-flex; }
 .pkg-action-status .circle {
   width: 14px; height: 14px; border-radius: 999px; border: 2px solid #d1d5db; background: #fff; display: inline-block; box-sizing: border-box;
 }
@@ -669,7 +672,6 @@ body.nav-open .scrim { opacity: 1; }
   border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg);
 }
 .pkg-action-status[data-status="error"] .circle { border-color: #ef4444; background: #fee2e2; box-shadow: 0 0 0 3px rgba(239,68,68,0.15); }
-.pkg-action-status[data-status="idle"] .circle { opacity: 0.9; }
 @keyframes pkgCircleSpin { to { transform: rotate(360deg); } }
 .pkg-action-btn {
   display: inline-flex; flex-direction: row; align-items: center; gap: 8px;

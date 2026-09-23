@@ -617,8 +617,21 @@ fn package_summary(
 ) -> serde_json::Value {
     let name = recipe.service.name.clone();
     let steps_total = recipe.steps.len();
+    // Interpolate description/summary via env interpolate/both blocks (backend field)
+    let display_vars = requirements::collect_display_vars(recipe);
+    let description = requirements::interpolate(&recipe.service.description, &display_vars);
+    let summary = requirements::interpolate(&recipe.service.summary, &display_vars);
+    // Show actions based on installed state: not installed → Install only, installed → reinstall/update/uninstall/info
+    let is_installed = state.version(&name).is_some();
     let actions: Vec<serde_json::Value> = pipeline::Recipe::known_actions()
         .iter()
+        .filter(|a| {
+            if is_installed {
+                matches!(*a, &"reinstall" | &"update" | &"uninstall" | &"info")
+            } else {
+                matches!(*a, &"install")
+            }
+        })
         .map(|action| {
             let n = recipe
                 .steps
@@ -631,8 +644,8 @@ fn package_summary(
     serde_json::json!({
         "name": name.clone(),
         "version": recipe.service.version,
-        "description": recipe.service.description,
-        "summary": recipe.service.summary,
+        "description": description,
+        "summary": summary,
         "os": recipe.requirements.os,
         "arch": recipe.requirements.arch,
         "min_ram_mb": recipe.requirements.min_ram_mb,
