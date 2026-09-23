@@ -26,7 +26,7 @@ ksx web [--port 8080]
 - `host`: prints JSON host metadata (OS, arch, RAM_MB, Docker status).
 - `web`: launches embedded dashboard (Home / Packages / Settings).
 
-## 4-tier resilient recipe pipeline
+## 3-tier resilient recipe pipeline
 
 1. **Primary — Render C-backend API**: `POST` JSON host metadata
    (`{ os, arch, ram_mb, docker }`), expects `text/x-toml` recipe. 5s timeout.
@@ -35,8 +35,7 @@ ksx web [--port 8080]
    Override: `KSX_GITHUB_BASE` env. Local test dir: `~/work/opencode/opencode/registry/packages/`.
 3. **Local disk cache**: `~/.ksx/cache/<service>.toml`, 24h TTL via mtime.
    Bypassed with `--refresh`.
-4. **Embedded baseline**: `registry/packages/*.toml` baked via `rust-embed`.
-5. **Graceful failure**: clear user-friendly error if all tiers fail.
+4. **Graceful failure**: clear user-friendly error if all tiers fail.
 
 ## Recipe format (single TOML per service)
 
@@ -75,19 +74,15 @@ action steps run. Each lifecycle action (`install`, `update`, `reinstall`,
 ```text
 └── ksx/
     ├── Cargo.toml            # crate root ([[bin]] path = backend/src/main.rs)
-    ├── build.rs              # rerun-if-changed for backend/recipes/* + frontend/*
+    ├── build.rs              # rerun-if-changed for frontend/*
     ├── backend/              # Rust backend (CLI + pipeline + WebUI server)
-    │   ├── src/
-    │   │   ├── main.rs      # entry point + rust-embed declarations (frontend/ + backend/recipes/)
-    │   │   ├── cli.rs       # clap parser + dispatch + [files] materialization
-    │   │   ├── storage.rs   # ~/.ksx/cache + state.json
-    │   │   ├── pipeline.rs  # 4-tier fetcher + HostMeta + action-aware Recipe
-    │   │   ├── requirements.rs
-    │   │   └── web.rs       # axum dashboard (serves frontend/ + /api/*)
-    │   └── recipes/
-    │       ├── panel.toml   # embedded baseline mirror of registry/packages/
-    │       ├── ssh.toml     # (tier-4 fallback baked into the binary)
-    │       └── sql.toml
+    │   └── src/
+    │       ├── main.rs      # entry point + rust-embed for frontend/
+    │       ├── cli.rs       # clap parser + dispatch + [files] materialization
+    │       ├── storage.rs   # ~/.ksx/cache + state.json
+    │       ├── pipeline.rs  # 3-tier fetcher (Render → GitHub → cache) + HostMeta
+    │       ├── requirements.rs
+    │       └── web.rs       # axum dashboard (serves frontend/ + /api/*)
     └── frontend/             # WebUI dashboard (plain HTTP, no WebSocket)
         ├── index.html       # SPA: header + sidebar (Home/Packages/Settings)
         └── style.css        # light gray/white theme, black accents
