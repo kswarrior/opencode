@@ -15,7 +15,6 @@
       <div class="brand-mark">KSX</div>
       <div class="brand-sub">KS Warrior</div>
     </div>
-    <div id="hostBadge" class="host-badge">…</div>
   </header>
 
   <div class="layout">
@@ -199,7 +198,6 @@ ksx web --port 8080</pre>
             }
           })
           .catch(function (err) {
-            document.getElementById("hostBadge").textContent = "offline";
             var d = document.getElementById("hostDetail");
             if (d) d.innerHTML = "<dt>error</dt><dd>" + esc(err.message) + "</dd>";
             var box = document.getElementById("pkgList");
@@ -247,8 +245,6 @@ ksx web --port 8080</pre>
 
       function renderHome(host, pkgs, st) {
         var installed = st.installed || {};
-        document.getElementById("hostBadge").textContent =
-          host.os + "/" + host.arch + " · " + host.docker;
         document.getElementById("statHost").textContent = host.os + " / " + host.arch;
         document.getElementById("statHostSub").textContent =
           (host.is_root ? "root" : "unprivileged") + " · " + host.docker;
