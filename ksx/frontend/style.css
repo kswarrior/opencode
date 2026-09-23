@@ -282,10 +282,35 @@ body.nav-open .scrim { opacity: 1; }
 .tab-panel a { color: var(--ink); }
 .pkg-detail p { font-size: 14px; }
 
-/* phone: hamburger + off-canvas sidebar */
+/* pkg header responsive */
 @media (max-width: 900px) {
   .stat-grid { grid-template-columns: 1fr 1fr; }
   .grid-2, .pkg-layout { grid-template-columns: 1fr; }
+}
+@media (min-width: 768px) {
+  /* laptop: search bar always shown with icon in front */
+  .pkg-search-icon-btn { display: none !important; }
+  .pkg-search-bar { display: flex !important; }
+  .pkg-search-close { display: none; }
+  .pkg-refresh-text { display: inline; }
+}
+@media (max-width: 767px) {
+  /* phone: search collapsed to icon; when open slide bar overlays */
+  .pkg-header-row { align-items: center; }
+  .pkg-title { font-size: 20px; }
+  .pkg-toolbar { gap: 8px; }
+  .pkg-search-icon-btn { display: inline-flex; }
+  .pkg-search-bar { display: none; position: absolute; top: 100%; left: 0; right: 0; margin-top: 10px; z-index: 5; min-width: 0; width: 100%; transform: translateY(-6px); opacity: 0; pointer-events: none; }
+  .pkg-search.is-open .pkg-search-bar { display: flex; transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .pkg-search { position: static; }
+  .pkg-header { position: relative; }
+  .pkg-refresh { width: 38px; height: 38px; padding: 0; justify-content: center; border-radius: 10px; }
+  .pkg-refresh-text { display: none; }
+  .pkg-mode { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .pkg-mode::-webkit-scrollbar { display: none; }
+  .pkg-mode-btn { padding: 7px 10px; font-size: 11px; }
+  .pkg-coming { display: none; }
+  .pkg-mode-btn.is-active .pkg-coming { display: inline; }
 }
 @media (max-width: 860px) {
   .menu-btn { display: inline-flex; }
