@@ -521,27 +521,101 @@ ksx web --port 8080</pre>
           '</div>';
       }
 
+      // keep logs per package/action
+      state.actionLogs = state.actionLogs || {};
+      function setActionStatus(action, status) {
+        var els = document.querySelectorAll('.pkg-action-status[data-action="' + action + '"]');
+        Array.prototype.forEach.call(els, function(el){
+          el.setAttribute("data-status", status);
+        });
+      }
       function wireActionButtons(box, d) {
         var btns = Array.prototype.slice.call(box.querySelectorAll(".pkg-action-btn"));
         btns.forEach(function(b){
           b.addEventListener("click", function(){
             var act = b.dataset.action;
-            showToast("ksx " + act + " " + d.name + " — run in CLI");
+            if (b.disabled) return;
+            // running -> yellow spinning
+            setActionStatus(act, "running");
+            b.disabled = true;
+            showToast("running ksx " + act + " " + d.name + "...");
+            postJSON("/api/packages/" + encodeURIComponent(d.name) + "/run", { action: act }).then(function(res){
+              var key = d.name + ":" + act;
+              state.actionLogs[key] = res.logs || "";
+              setActionStatus(act, res.ok ? "done" : "error");
+              showToast((res.ok ? "✓ " : "✗ ") + act + " " + d.name + (res.ok ? " done" : " failed"));
+              // refresh state and installed tag after a bit
+              setTimeout(function(){ load(); }, 800);
+            }).catch(function(e){
+              var key = d.name + ":" + act;
+              state.actionLogs[key] = "error: " + e.message;
+              setActionStatus(act, "error");
+              showToast("failed " + act + ": " + e.message);
+            }).finally(function(){
+              b.disabled = false;
+            });
           });
         });
+        // log buttons -> show log modal
+        var logBtns = Array.prototype.slice.call(box.querySelectorAll(".pkg-action-log"));
+        logBtns.forEach(function(lb){
+          lb.addEventListener("click", function(){
+            var act = lb.getAttribute("data-log");
+            var key = d.name + ":" + act;
+            var logs = state.actionLogs[key] || "No log yet. Click the action button to run.";
+            var pre = document.getElementById("pkgLogPre");
+            var title = document.getElementById("pkgLogTitle");
+            if (title) title.textContent = d.name + " — " + act + " log";
+            if (pre) pre.textContent = logs;
+            var modal = document.getElementById("pkgLogModal");
+            if (modal) modal.hidden = false;
+          });
+        });
+        // delete -> confirm page/modal
         var del = box.querySelector("#pkgDeleteBtn");
         if (del) del.addEventListener("click", function(){
-          if (!confirm("Delete " + d.name + " from store?")) return;
-          fetch("/api/packages/" + encodeURIComponent(d.name), { method: "DELETE" }).then(function(r){
+          var delModal = document.getElementById("pkgDeleteModal");
+          var delMsg = document.getElementById("pkgDeleteMsg");
+          if (delMsg) delMsg.innerHTML = 'Delete <b>' + esc(d.name) + '</b> from <code>ksx/store/' + esc(d.name) + '.toml</code> permanently?';
+          window._pendingDelete = d.name;
+          if (delModal) delModal.hidden = false;
+        });
+      }
+      // log modal + delete confirm wiring (once)
+      (function(){
+        var lm = document.getElementById("pkgLogModal");
+        var lb = document.getElementById("pkgLogBackdrop");
+        var lc = document.getElementById("pkgLogClose");
+        if (lb) lb.addEventListener("click", function(){ lm.hidden = true; });
+        if (lc) lc.addEventListener("click", function(){ lm.hidden = true; });
+        var dm = document.getElementById("pkgDeleteModal");
+        var db = document.getElementById("pkgDeleteBackdrop");
+        var dc = document.getElementById("pkgDeleteCancel");
+        var confirmBtn = document.getElementById("pkgDeleteConfirm");
+        function doDelete(){
+          var svc = window._pendingDelete;
+          if (!svc) return;
+          confirmBtn.disabled = true;
+          fetch("/api/packages/" + encodeURIComponent(svc), { method: "DELETE" }).then(function(r){
             if (!r.ok) return r.json().then(function(j){ throw new Error(j.error || "delete failed"); });
             return r.json();
           }).then(function(){
-            showToast("deleted " + d.name);
+            dm.hidden = true;
+            showToast("deleted " + svc);
             hideDetailPage();
             load();
-          }).catch(function(e){ showToast("delete failed: " + e.message); });
+          }).catch(function(e){ showToast("delete failed: " + e.message); }).finally(function(){ confirmBtn.disabled = false; });
+        }
+        if (confirmBtn) confirmBtn.addEventListener("click", doDelete);
+        if (db) db.addEventListener("click", function(){ dm.hidden = true; });
+        if (dc) dc.addEventListener("click", function(){ dm.hidden = true; });
+        document.addEventListener("keydown", function(e){
+          if (e.key === "Escape") {
+            if (lm && !lm.hidden) lm.hidden = true;
+            if (dm && !dm.hidden) dm.hidden = true;
+          }
         });
-      }
+      })();
 
       // ---- detail back ----
       var pkgBack = document.getElementById("pkgBack");
