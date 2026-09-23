@@ -10,6 +10,8 @@
 #include <fcntl.h>
 #include <time.h>
 #include <ctype.h>
+#include <sched.h>
+#include <signal.h>
 
 const char *ksvc_version(void) { return KSVC_VERSION; }
 

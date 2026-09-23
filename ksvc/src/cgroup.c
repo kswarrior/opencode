@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <signal.h>
 
 static const char *CGROUP_BASE = "/sys/fs/cgroup";
 

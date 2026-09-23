@@ -83,6 +83,7 @@ int ksvc_kill(pid_t pid, int sig);
 /* ── cgroup helpers ── */
 int ksvc_cgroup_create(ksvc_container_t *ctr);
 int ksvc_cgroup_apply(pid_t pid, int mem_mb, int cpu_pct, int pids_limit);
+int ksvc_cgroup_attach_pid(const char *cgroup_path, pid_t pid);
 void ksvc_cgroup_remove(ksvc_container_t *ctr);
 int ksvc_cgroup_is_v2(void);
 
