@@ -10,6 +10,16 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
+#include <sys/syscall.h>
+#include <sys/wait.h>
+
+#ifndef SYS_pivot_root
+#ifdef __NR_pivot_root
+#define SYS_pivot_root __NR_pivot_root
+#else
+#define SYS_pivot_root 155
+#endif
+#endif
 
 int ksvc_mount_setup(const char *rootfs, const char *overlay_lower, const char *overlay_upper) {
     // This runs INSIDE the new mount namespace, after unshare(CLONE_NEWNS)
@@ -77,7 +87,7 @@ int ksvc_mount_setup(const char *rootfs, const char *overlay_lower, const char *
 
     // pivot_root to new root
     // Note: pivot_root requires new_root to be a mount point, and put_old to be under new_root
-    if (syscall(316, rootfs, old_root) == 0) { // __NR_pivot_root = 316 on x86_64, but use syscall wrapper
+    if (syscall(SYS_pivot_root, rootfs, old_root) == 0) {
         // success: we are now in new root, old root at /.ksvc-old
         if (chdir("/") < 0) { perror("chdir / after pivot"); return -1; }
 
@@ -141,13 +151,4 @@ int ksvc_mount_setup(const char *rootfs, const char *overlay_lower, const char *
     return 0;
 }
 
-// fallback syscall wrapper for pivot_root if not in libc
-#ifndef __NR_pivot_root
-#ifdef __x86_64__
-#define __NR_pivot_root 155
-#elif __aarch64__
-#define __NR_pivot_root 75
-#else
-#define __NR_pivot_root 316
-#endif
-#endif
+
