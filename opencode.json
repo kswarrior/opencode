@@ -11,12 +11,6 @@
       "url": "https://mcp.context7.com/mcp",
       "enabled": true
     },
-    "serena": {
-      "type": "local",
-      "command": ["/home/runner/.local/bin/uvx", "--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "ide", "--project", "/home/runner/work/opencode/opencode/ksvc"],
-      "enabled": true,
-      "timeout": 30000
-    },
     "repomix": {
       "type": "local",
       "command": ["npx", "-y", "repomix", "--mcp"],
@@ -39,17 +33,7 @@
     },
     "git": {
       "type": "local",
-      "command": ["python3", "-m", "mcp_server_git", "--repository", "/home/runner/work/opencode/opencode"],
-      "enabled": true
-    },
-    "cgroup": {
-      "type": "local",
-      "command": ["/home/runner/.local/bin/cgroup-mcp"],
-      "enabled": true
-    },
-    "docker": {
-      "type": "local",
-      "command": ["npx", "-y", "mcp-docker-server"],
+      "command": ["python3", "-m", "mcp_server_git", "--repository", "."],
       "enabled": true
     }
   }
