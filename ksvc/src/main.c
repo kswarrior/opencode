@@ -16,11 +16,11 @@ static void print_usage(const char *prog) {
     printf("  c = container (now), v = vm (coming after container complete).\n\n");
     printf("Usage:\n");
     printf("  %s run|launch [OPTIONS] -- <cmd> [args...]          # c (container) — aliases: run == launch\n", prog);
-    printf("  %s c run|launch [OPTIONS] -- <cmd> [args...]        # explicit container\n");
-    printf("  %s v run|launch [OPTIONS] -- <cmd> [args...]        # vm (stub, after container)\n");
-    printf("  %s list [c|v] | ls | ps                             # list (both types, or filter)\n");
-    printf("  %s stop|kill|rm <id|name> [--sig SIGNAL]            # stop (both)\n");
-    printf("  %s exec <id|name> -- <cmd> [args...]                # exec\n");
+    printf("  %s c run|launch [OPTIONS] -- <cmd> [args...]        # explicit container\n", prog);
+    printf("  %s v run|launch [OPTIONS] -- <cmd> [args...]        # vm (stub, after container)\n", prog);
+    printf("  %s list [c|v] | ls | ps                             # list (both types, or filter)\n", prog);
+    printf("  %s stop|kill|rm <id|name> [--sig SIGNAL]            # stop (both)\n", prog);
+    printf("  %s exec <id|name> -- <cmd> [args...]                # exec\n", prog);
     printf("  %s version\n", prog);
     printf("  %s help\n", prog);
     printf("\n");
@@ -231,11 +231,17 @@ int main(int argc, char *argv[]) {
     ksvc_config_init(&cfg);
     int detach = 0;
 
-    // parse run/launch options
-    // We need to handle -- separator for cmd
+    // parse run/launch options (run == launch, both correctly matched)
+    // We need to handle -- separator for cmd; also support --help without --
     int cmd_start = -1;
     for (int i=cmd_idx+1;i<argc;i++) {
         if (strcmp(argv[i],"--")==0) { cmd_start = i+1; break; }
+    }
+    if (cmd_start < 0) {
+        // help without -- separator: ksvc run --help
+        for (int i=cmd_idx+1;i<argc;i++) {
+            if (strcmp(argv[i],"--help")==0 || strcmp(argv[i],"-h")==0) { print_usage(argv[0]); return 0; }
+        }
     }
     // if no --, maybe last args are cmd without dash? For compatibility, treat remaining non-option as cmd if starts with / or -
     // Simpler: require --. If not found, try to find first arg that looks like command (starts with / or contains /)
@@ -348,10 +354,10 @@ int main(int argc, char *argv[]) {
     printf("ksvc: %s container %s started pid %d %s\n", type, ctr.id, ctr.pid, detach ? "(detached)" : "(attached)");
     if (cfg.name[0]) printf("ksvc: name %s -> %s\n", cfg.name, ctr.id);
     // correctly matched help for both run and launch, both c and v
-    printf("ksvc: to list:  ksvc %slist  | ksvc %s list\n", type, type);
+    printf("ksvc: to list:  ksvc %s list  | ksvc list\n", type);
     printf("ksvc: to exec:  ksvc %s exec %s -- /bin/sh  | ksvc exec %s -- /bin/sh\n", type, ctr.id, ctr.id);
     printf("ksvc: to stop:  ksvc %s stop %s  | ksvc stop %s\n", type, ctr.id, ctr.id);
-    printf("ksvc: alias: ksvc %s == ksvc %s (both c)\n", is_launch?"run":"launch", is_launch?"launch":"run");
+    printf("ksvc: alias: ksvc %s == ksvc %s (both c, both correctly matched)\n", is_launch?"run":"launch", is_launch?"launch":"run");
 
     if (detach) {
         // detached: exit parent, container keeps running
