@@ -98,10 +98,18 @@ ksx web --port 8080</pre>
           <p class="muted pkg-subtitle" id="pkgSubtitle">Source: GitHub · fetching from CDN</p>
         </div>
 
-        <div class="pkg-layout">
-          <div id="pkgList" class="card pkg-list"><p class="muted">loading…</p></div>
-          <div id="pkgDetail" class="card pkg-detail"><p class="muted">Select a package.</p></div>
+        <div id="pkgGridWrap">
+          <div id="pkgList" class="pkg-grid"><p class="muted">loading…</p></div>
         </div>
+
+        <div id="pkgDetailPage" class="pkg-detail-page" hidden>
+          <button type="button" class="pkg-back" id="pkgBack" aria-label="Back to packages">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            Back to packages
+          </button>
+          <div id="pkgDetail" class="card pkg-detail-card"><p class="muted">Select a package.</p></div>
+        </div>
+
         <div id="pkgToast" class="pkg-toast" hidden></div>
       </section>
 
