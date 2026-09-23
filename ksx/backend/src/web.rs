@@ -589,8 +589,20 @@ fn fill_detail(detail: &mut serde_json::Value, recipe: &pipeline::Recipe) {
             "mode": d.mode,
         })).collect::<Vec<_>>(),
     });
+    // Respect installed filtering: keep consistent with package_summary
+    let is_installed = detail
+        .get("installed")
+        .and_then(|v| v.as_str())
+        .is_some();
     let actions: Vec<serde_json::Value> = pipeline::Recipe::known_actions()
         .iter()
+        .filter(|a| {
+            if is_installed {
+                matches!(*a, &"reinstall" | &"update" | &"uninstall" | &"info")
+            } else {
+                matches!(*a, &"install")
+            }
+        })
         .map(|action| {
             let steps: Vec<&str> = recipe
                 .steps
