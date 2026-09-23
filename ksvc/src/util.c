@@ -85,8 +85,8 @@ int ksvc_state_save(const ksvc_container_t *ctr) {
     fprintf(f, "{\"id\":\"%s\",\"pid\":%d,\"name\":\"%s\",\"rootfs\":\"%s\",\"hostname\":\"%s\",\"cmd\":\"%s\",\"cgroup\":\"%s\",\"started\":%d}\n",
         ctr->id, ctr->pid, ctr->cfg.name, ctr->cfg.rootfs, ctr->cfg.hostname, ctr->cfg.cmd, ctr->cgroup_path, ctr->started);
     fclose(f);
-    // also symlink by name if provided
-    if (ctr->cfg.name[0]) {
+    // also symlink by name if provided and not same as id (avoid self-symlink)
+    if (ctr->cfg.name[0] && strcmp(ctr->cfg.name, ctr->id) != 0) {
         char link[512];
         snprintf(link, sizeof(link), "%s/%s.json", dir, ctr->cfg.name);
         unlink(link);
@@ -100,7 +100,7 @@ int ksvc_state_remove(const ksvc_container_t *ctr) {
     char path[512];
     snprintf(path, sizeof(path), "%s/%s.json", dir, ctr->id);
     unlink(path);
-    if (ctr->cfg.name[0]) {
+    if (ctr->cfg.name[0] && strcmp(ctr->cfg.name, ctr->id) != 0) {
         char link[512];
         snprintf(link, sizeof(link), "%s/%s.json", dir, ctr->cfg.name);
         unlink(link);
