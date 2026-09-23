@@ -130,6 +130,7 @@ int ksvc_state_load(const char *id_or_name, ksvc_container_t *out) {
 
 int ksvc_list(void) {
     const char *dir = state_dir();
+    fprintf(stderr, "ksvc: state_dir=%s\n", dir);
     printf("%-12s %-8s %-12s %-10s %s\n", "ID", "PID", "NAME", "HOSTNAME", "ROOTFS / CMD");
     printf("%-12s %-8s %-12s %-10s %s\n", "------------","--------","------------","----------","----------------");
     // list files via opendir? simple: use glob
