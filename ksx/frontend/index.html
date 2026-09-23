@@ -92,13 +92,13 @@ ksx web --port 8080</pre>
 
         <div id="pkgGridWrap">
           <div id="pkgList" class="pkg-grid" aria-live="polite" aria-busy="true">
-            <!-- skeleton while JS loads -->
-            <div class="pkg-card skeleton-card" aria-hidden="true"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
-            <div class="pkg-card skeleton-card" aria-hidden="true"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
-            <div class="pkg-card skeleton-card" aria-hidden="true"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
-            <div class="pkg-card skeleton-card" aria-hidden="true"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
-            <div class="pkg-card skeleton-card" aria-hidden="true"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
-            <div class="pkg-card skeleton-card" aria-hidden="true"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
+            <!-- stylish skeleton while JS loads -->
+            <div class="pkg-card skeleton" aria-hidden="true"><div class="skeleton skeleton-title" style="width:42%"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
+            <div class="pkg-card skeleton" aria-hidden="true"><div class="skeleton skeleton-title" style="width:36%"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
+            <div class="pkg-card skeleton" aria-hidden="true"><div class="skeleton skeleton-title" style="width:40%"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
+            <div class="pkg-card skeleton" aria-hidden="true"><div class="skeleton skeleton-title" style="width:32%"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
+            <div class="pkg-card skeleton" aria-hidden="true"><div class="skeleton skeleton-title" style="width:45%"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
+            <div class="pkg-card skeleton" aria-hidden="true"><div class="skeleton skeleton-title" style="width:38%"></div><div class="skeleton skeleton-desc"></div><div class="skeleton skeleton-desc short"></div><div style="display:flex;gap:6px;margin-top:10px"><div class="skeleton skeleton-tag"></div><div class="skeleton skeleton-tag wide"></div></div></div>
           </div>
         </div>
 
@@ -218,7 +218,12 @@ ksx web --port 8080</pre>
             var box = document.getElementById("pkgList");
             if (box) box.innerHTML = '<p class="muted">Failed to load packages.</p><p class="muted small">' + esc(err.message) + '</p>';
           })
-          .then(function(){ state.loading = false; setRefreshLoading(false); });
+          .then(function(){
+            state.loading = false;
+            setRefreshLoading(false);
+            var lb = document.getElementById("pkgList");
+            if (lb) lb.setAttribute("aria-busy", "false");
+          });
       }
 
       function updateSubtitle(data) {
