@@ -506,6 +506,14 @@ ksx web --port 8080</pre>
         });
       }
 
+      // ---- detail back ----
+      var pkgBack = document.getElementById("pkgBack");
+      if (pkgBack) pkgBack.addEventListener("click", function(){ hideDetailPage(); renderPkgList(); });
+      document.addEventListener("keydown", function(e){
+        var detailPage = document.getElementById("pkgDetailPage");
+        if (e.key === "Escape" && detailPage && !detailPage.hidden) { hideDetailPage(); }
+      });
+
       // ---- search, refresh, mode ----
       var searchWrap = document.getElementById("pkgSearchWrap");
       var searchBar = document.getElementById("pkgSearchBar");
@@ -537,6 +545,9 @@ ksx web --port 8080</pre>
         searchInput.addEventListener("input", function(){
           state.query = searchInput.value;
           applyFilter();
+          // if detail is open, close it to show filtered grid
+          var dp = document.getElementById("pkgDetailPage");
+          if (dp && !dp.hidden) hideDetailPage();
           renderPkgList();
         });
         searchInput.addEventListener("keydown", function(e){
@@ -576,8 +587,6 @@ ksx web --port 8080</pre>
       function setMode(mode){
         if (mode === "server" || mode === "local") {
           showToast(mode.charAt(0).toUpperCase() + mode.slice(1) + " — Coming soon");
-          // visually select but show placeholder; keep github data? spec says coming soon pill
-          // we switch state.mode to show placeholder UX
         }
         state.mode = mode;
         modeBtns.forEach(function(b){
@@ -585,10 +594,14 @@ ksx web --port 8080</pre>
           b.classList.toggle("is-active", isActive);
           b.setAttribute("aria-pressed", isActive ? "true" : "false");
         });
-        // reset selection and re-fetch
-        state.selected = null;
-        document.getElementById("pkgDetail").innerHTML = '<p class="muted">Select a package.</p>';
-        document.getElementById("pkgList").innerHTML = '<p class="muted">loading…</p>';
+        // reset selection, hide detail, show grid, re-fetch
+        hideDetailPage();
+        var dBox = document.getElementById("pkgDetail");
+        if (dBox) dBox.innerHTML = '<p class="muted">Select a package.</p>';
+        var lBox = document.getElementById("pkgList");
+        if (lBox) lBox.innerHTML = '<p class="muted">loading…</p>';
+        var gridWrap = document.getElementById("pkgGridWrap");
+        if (gridWrap) gridWrap.hidden = false;
         load(false);
       }
       modeBtns.forEach(function(btn){
