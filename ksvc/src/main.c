@@ -88,7 +88,10 @@ int main(int argc, char *argv[]) {
     }
 
     // --- type prefix handling: c/container vs v/vm ---
-    // Support: ksvc run, ksvc launch, ksvc c run, ksvc c launch, ksvc v run, ksvc v launch, ksvc container run, etc.
+    // Support all correctly matched:
+    //   ksvc c launch mycontainer         (type verb name) — canonical, best
+    //   ksvc launch c mycontainer         (verb type name) — alias
+    //   ksvc launch --type c mycontainer (verb --type name) — flag
     // run == launch for both c and v (correctly matched).
     const char *type = "c"; // default container
     int cmd_idx = 1;
@@ -104,6 +107,21 @@ int main(int argc, char *argv[]) {
     int is_run = (strcmp(cmd,"run")==0 || strcmp(cmd,"launch")==0);
     int is_launch = (strcmp(cmd,"launch")==0); // for messages
     (void)is_launch;
+    // Also support verb-first type: ksvc launch c mycontainer / ksvc run v mycontainer
+    // e.g., launch c mycontainer -> type c, mycontainer is name
+    if (is_run && cmd_idx+1 < argc) {
+        const char *nxt = argv[cmd_idx+1];
+        if (strcmp(nxt,"c")==0 || strcmp(nxt,"container")==0 || strcmp(nxt,"cont")==0) {
+            type="c"; is_vm=0;
+            // shift nxt out: move args left by 1 so mycontainer becomes next
+            for (int i=cmd_idx+1; i<argc-1; i++) argv[i]=argv[i+1];
+            argc--; argv[argc]=NULL;
+        } else if (strcmp(nxt,"v")==0 || strcmp(nxt,"vm")==0 || strcmp(nxt,"virt")==0 || strcmp(nxt,"virtual")==0) {
+            type="v"; is_vm=1;
+            for (int i=cmd_idx+1; i<argc-1; i++) argv[i]=argv[i+1];
+            argc--; argv[argc]=NULL;
+        }
+    }
 
     if (strcmp(cmd, "version")==0 || strcmp(cmd, "--version")==0 || strcmp(cmd, "-V")==0) {
         print_version();
