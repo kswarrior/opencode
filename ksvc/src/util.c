@@ -130,7 +130,6 @@ int ksvc_state_load(const char *id_or_name, ksvc_container_t *out) {
 
 int ksvc_list(void) {
     const char *dir = state_dir();
-    fprintf(stderr, "ksvc: state_dir=%s\n", dir);
     printf("%-12s %-8s %-12s %-10s %s\n", "ID", "PID", "NAME", "HOSTNAME", "ROOTFS / CMD");
     printf("%-12s %-8s %-12s %-10s %s\n", "------------","--------","------------","----------","----------------");
     // list files via opendir? simple: use glob
@@ -156,13 +155,11 @@ int ksvc_list(void) {
             p=strstr(buf,"\"rootfs\":\""); if(p){p+=10; char *e=strchr(p,'"'); if(e){snprintf(rootfs,sizeof(rootfs),"%.*s",(int)(e-p),p);}}
             p=strstr(buf,"\"cmd\":\""); if(p){p+=7; char *e=strchr(p,'"'); if(e){snprintf(cm,sizeof(cm),"%.*s",(int)(e-p),p);}}
             // deduplicate: skip symlink duplicates (name == id)
-            // We'll only print if id file, not name symlink that points to same inode — but simple: skip if line contains name and id differs? For now print all but check duplicate ids
-            // To avoid double, only count files where basename equals id inside
-            char base[128];
+            // Only count files where basename equals id inside
             char *b = strrchr(line,'/'); b = b?b+1:line;
             char *dot = strrchr(b,'.'); if(dot) *dot='\0';
-            // if base != id, it's a name symlink — skip
-            if (strcmp(base, id)!=0) { fclose(f); continue; }
+            // if basename != id, it's a name symlink — skip
+            if (strcmp(b, id)!=0) { fclose(f); continue; }
             // check if pid still alive
             int pid = atoi(pidstr);
             char alive[8]="";
