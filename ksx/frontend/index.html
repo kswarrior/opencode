@@ -155,8 +155,9 @@ ksx web --port 8080</pre>
             document.getElementById("page-" + p).hidden = (p !== btn.dataset.page);
           });
           setNav(false);
-          if (btn.dataset.page === "packages" && !state.selected && state.filtered.length) {
-            selectPkg(state.filtered[0].name);
+          // packages grid is the default view — do not auto-open detail
+          if (btn.dataset.page === "packages") {
+            hideDetailPage();
           }
         });
       });
@@ -193,9 +194,7 @@ ksx web --port 8080</pre>
             updateSubtitle(pkgsData);
             renderHome(res[0], pkgs, res[2] || { installed: {} });
             renderPkgList();
-            if (state.filtered.length && !state.selected) {
-              selectPkg(state.filtered[0].name);
-            }
+            // stay on grid — detail opens only on card click
             // if no pkgs but errors, show error in list
             if (!pkgs.length && pkgsData && pkgsData.errors && pkgsData.errors.length) {
               var box = document.getElementById("pkgList");
