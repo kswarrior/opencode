@@ -84,10 +84,30 @@ int ksvc_mount_setup(const char *rootfs, const char *overlay_lower, const char *
         // now rootfs is merged
     }
 
-    // Ensure rootfs is a mount point (bind mount to itself)
+    // Ensure rootfs is a mount point (bind mount to itself) — needed for pivot_root
+    int need_pivot = 1;
     if (mount(rootfs, rootfs, NULL, MS_BIND|MS_REC, NULL) < 0) {
-        fprintf(stderr, "ksvc: bind mount %s failed: %s\n", rootfs, strerror(errno));
-        return -1;
+        if (errno == EPERM || errno == EACCES) {
+            fprintf(stderr, "ksvc: bind mount %s failed (rootless, %s), trying chroot fallback\n", rootfs, strerror(errno));
+            need_pivot = 0;
+        } else {
+            fprintf(stderr, "ksvc: bind mount %s failed: %s\n", rootfs, strerror(errno));
+            return -1;
+        }
+    }
+
+    if (!need_pivot) {
+        // rootless fallback: chroot without pivot
+        if (chdir(rootfs) < 0) { perror("chdir rootfs"); return -1; }
+        if (chroot(".") < 0) { perror("chroot"); return -1; }
+        if (chdir("/") < 0) { perror("chdir /"); return -1; }
+        mkdir("/proc", 0555);
+        mkdir("/sys", 0555);
+        mkdir("/dev", 0755);
+        // try proc/sys, ignore EPERM for rootless
+        if (mount("proc", "/proc", "proc", MS_NOSUID|MS_NOEXEC|MS_NODEV, NULL) < 0 && errno != EBUSY && errno != EPERM && errno != EACCES) { perror("mount proc"); }
+        if (mount("sysfs", "/sys", "sysfs", MS_NOSUID|MS_NOEXEC|MS_NODEV|MS_RDONLY, NULL) < 0 && errno != EBUSY && errno != EPERM && errno != EACCES) { perror("mount sysfs"); }
+        return 0;
     }
 
     // Create old_root dir for pivot_root
