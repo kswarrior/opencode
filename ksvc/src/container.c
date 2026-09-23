@@ -192,9 +192,14 @@ static int setup_userns_maps(pid_t child_pid, uid_t host_uid, gid_t host_gid) {
 static int setup_hostname(const char *hostname) {
     if (!hostname || hostname[0]=='\0') return 0;
     if (sethostname(hostname, strlen(hostname)) < 0) {
-        // may fail without CAP_SYS_ADMIN, ignore
-        //perror("sethostname");
-        return 0;
+        fprintf(stderr, "ksvc: sethostname(%s) failed: %s (uid=%d euid=%d)\n", hostname, strerror(errno), getuid(), geteuid());
+        return -1;
+    }
+    // verify
+    char buf[64]={0};
+    gethostname(buf, sizeof(buf)-1);
+    if (strcmp(buf, hostname)!=0) {
+        fprintf(stderr, "ksvc: sethostname verify failed: got %s want %s\n", buf, hostname);
     }
     return 0;
 }
