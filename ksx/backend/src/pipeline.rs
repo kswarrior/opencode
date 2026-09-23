@@ -16,11 +16,6 @@ use serde::{Deserialize, Serialize};
 
 use crate::storage;
 
-/// Known package names — canonical registry lives at
-/// `registry/packages/<service>.toml` and is mirrored via GitHub Raw CDN.
-/// This list replaces the former `backend/recipes/*.toml` embedded baseline.
-pub const KNOWN_PACKAGES: &[&str] = &["panel", "ssh", "sql"];
-
 // ---------------------------------------------------------------------------
 // Config (env-overridable for tests / self-hosting)
 // ---------------------------------------------------------------------------
