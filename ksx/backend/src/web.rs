@@ -2,6 +2,7 @@
 //!
 //! Routes:
 //! - `GET /` → embedded `frontend/index.html` (dashboard SPA)
+//! - `GET /health` → `ok ksx` (Render health-check)
 //! - `GET /assets/*file` → embedded CSS (+ `*.toml` baselines as `text/x-toml`)
 //! - `GET /api/host` → JSON host metadata (same shape as `ksx host`)
 //! - `GET /api/packages` → JSON list of embedded package summaries
@@ -28,6 +29,7 @@ use crate::{pipeline, requirements, storage, Assets, EmbeddedRecipes};
 pub async fn serve(port: u16) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let app = Router::new()
         .route("/", get(index))
+        .route("/health", get(health))
         .route("/assets/*file", get(asset))
         .route("/api/host", get(api_host))
         .route("/api/packages", get(api_packages))
@@ -50,6 +52,10 @@ pub async fn serve(port: u16) -> Result<(), Box<dyn std::error::Error + Send + S
 async fn shutdown_signal() {
     let _ = tokio::signal::ctrl_c().await;
     println!("\nksx: shutting down web service.");
+}
+
+async fn health() -> impl IntoResponse {
+    (StatusCode::OK, "ok ksx\n")
 }
 
 async fn index() -> impl IntoResponse {
