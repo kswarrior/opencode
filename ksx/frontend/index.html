@@ -178,6 +178,16 @@ ksx web --port 8080</pre>
 
       function load(refresh) {
         var pkgUrl = "/api/packages" + (refresh ? "?refresh=true" : "");
+        // show stylish skeletons while fetching
+        var skList = document.getElementById("pkgList");
+        var skGrid = document.getElementById("pkgGridWrap");
+        var skDetail = document.getElementById("pkgDetailPage");
+        if (skList && skGrid && skDetail && skDetail.hidden) {
+          skList.innerHTML = pkgGridSkeletonHTML();
+          skList.setAttribute("aria-busy", "true");
+        }
+        state.loading = true;
+        setRefreshLoading(true);
         Promise.all([getJSON("/api/host"), getJSON(pkgUrl), getJSON("/api/state")])
           .then(function (res) {
             state.host = res[0];
@@ -252,6 +262,48 @@ ksx web --port 8080</pre>
         }
       }
 
+      function pkgGridSkeletonHTML() {
+        var html = "";
+        for (var i = 0; i < 6; i++) {
+          html += '<div class="pkg-card skeleton" aria-hidden="true" style="animation-delay:' + (i * 0.05) + 's">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">' +
+              '<div class="skeleton skeleton-title"></div>' +
+              '<div class="skeleton skeleton-ver"></div>' +
+            '</div>' +
+            '<div class="skeleton skeleton-desc"></div>' +
+            '<div class="skeleton skeleton-desc short"></div>' +
+            '<div style="display:flex;gap:6px;margin-top:6px">' +
+              '<div class="skeleton skeleton-tag"></div>' +
+              '<div class="skeleton skeleton-tag wide"></div>' +
+            '</div>' +
+          '</div>';
+        }
+        return html;
+      }
+      function pkgDetailSkeletonHTML() {
+        return '<div class="pkg-detail-skeleton" aria-busy="true" aria-live="polite">' +
+          '<div class="pkg-detail-skeleton-header">' +
+            '<div class="pkg-detail-skeleton-left">' +
+              '<div style="display:flex;gap:10px;align-items:center"><div class="skeleton skeleton-heading"></div><div class="skeleton skeleton-ver"></div></div>' +
+              '<div class="skeleton skeleton-line"></div>' +
+              '<div class="skeleton skeleton-line short"></div>' +
+              '<div style="display:flex;gap:6px;margin-top:6px"><div class="skeleton skeleton-chip"></div><div class="skeleton skeleton-chip"></div><div class="skeleton skeleton-chip short"></div><div class="skeleton skeleton-chip"></div></div>' +
+              '<div class="skeleton skeleton-line tiny" style="margin-top:12px"></div>' +
+            '</div>' +
+            '<div class="pkg-detail-skeleton-right">' +
+              '<div class="skeleton skeleton-line" style="width:42%"></div>' +
+              '<div class="skeleton skeleton-btn"></div>' +
+              '<div class="skeleton skeleton-btn"></div>' +
+              '<div class="skeleton skeleton-btn"></div>' +
+              '<div class="skeleton skeleton-line" style="width:68%;margin-top:8px"></div>' +
+            '</div>' +
+          '</div>' +
+          '<div style="display:flex;gap:8px;margin-top:20px"><div class="skeleton skeleton-chip" style="width:80px"></div><div class="skeleton skeleton-chip" style="width:70px"></div><div class="skeleton skeleton-chip" style="width:70px"></div></div>' +
+          '<div class="skeleton skeleton-line" style="margin-top:18px"></div>' +
+          '<div class="skeleton skeleton-line short"></div>' +
+        '</div>';
+      }
+
       function showDetailPage() {
         var grid = document.getElementById("pkgGridWrap");
         var detail = document.getElementById("pkgDetailPage");
@@ -321,7 +373,7 @@ ksx web --port 8080</pre>
         state.selected = name;
         showDetailPage();
         var box = document.getElementById("pkgDetail");
-        box.innerHTML = '<div class="pkg-detail-loading"><p class="muted">loading ' + esc(name) + '…</p></div>';
+        box.innerHTML = pkgDetailSkeletonHTML();
         getJSON("/api/packages/" + encodeURIComponent(name)).then(function (d) {
           if (d.coming_soon) {
             box.innerHTML = '<div class="pkg-coming-card small"><h3>Coming soon</h3><p class="muted">' + esc(d.error || "This source is not available yet.") + '</p></div>';
