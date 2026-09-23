@@ -404,3 +404,34 @@ pub fn save_state(state: &InstallState) -> std::io::Result<()> {
     fs::write(state_path(), text)?;
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_paths_use_base_dir() {
+        // These just verify the join logic doesn't panic and is consistent
+        let app = "panel";
+        // tmp/store/packages should be under base_dir
+        assert!(tmp_dir().ends_with("tmp"));
+        assert!(store_dir().ends_with("store"));
+        assert!(store_path(app).ends_with("store/panel.toml"));
+        assert!(packages_dir().ends_with("packages"));
+        assert!(package_dir(app).ends_with("packages/panel"));
+        assert!(package_var_lib(app).ends_with("packages/panel/var/lib"));
+        assert!(package_tmp(app).ends_with("packages/panel/tmp"));
+        assert!(package_var_log(app).ends_with("packages/panel/var/log"));
+        assert!(package_config(app).ends_with("packages/panel/config"));
+    }
+    #[test]
+    fn test_ensure_package_dirs_creates() {
+        let app = "test-app-ksx-unit";
+        let _ = std::fs::remove_dir_all(package_dir(app));
+        ensure_package_dirs(app).expect("ensure");
+        assert!(package_var_lib(app).exists());
+        assert!(package_tmp(app).exists());
+        assert!(package_var_log(app).exists());
+        assert!(package_config(app).exists());
+        let _ = std::fs::remove_dir_all(package_dir(app));
+    }
+}
