@@ -545,12 +545,22 @@ body.nav-open .scrim { opacity: 1; }
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.12); opacity: 0.9; }
 }
-.pkg-card-desc { margin: 0; font-size: 13px; line-height: 1.5; color: #5f6673; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 39px; }
+@keyframes verIn {
+  from { opacity: 0; transform: translateX(8px) scale(0.92); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+.pkg-card-ver { animation: verIn 0.42s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.18s; }
+.pkg-card-desc { margin: 0; font-size: 13px; line-height: 1.5; color: #5f6673; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 39px; transition: color 0.2s ease; }
+.pkg-card:hover .pkg-card-desc { color: #4a515d; }
 .pkg-card-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.7); }
-.pkg-tag { font-size: 11px; border: 1px solid rgba(255,255,255,0.8); background: rgba(255,255,255,0.72); backdrop-filter: blur(6px); border-radius: 999px; padding: 3px 8px; font-weight: 650; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); }
+.pkg-card-tags:empty { display: none; }
+.pkg-card-tags:empty + * { margin-top: 0; }
+.pkg-tag { font-size: 11px; border: 1px solid rgba(255,255,255,0.8); background: rgba(255,255,255,0.72); backdrop-filter: blur(6px); border-radius: 999px; padding: 3px 8px; font-weight: 650; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease; }
 .pkg-tag-ver { background: rgba(15,17,19,0.92); color: #fff; border-color: rgba(15,17,19,0.92); backdrop-filter: none; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 .pkg-tag-meta { background: rgba(255,255,255,0.56); color: var(--muted); }
-.pkg-card-installed { font-size: 11px; background: var(--ok-bg); backdrop-filter: blur(6px); color: var(--ok); border: 1px solid rgba(195,230,203,0.9); border-radius: 999px; padding: 3px 8px; font-weight: 750; box-shadow: 0 1px 4px rgba(20,99,43,0.06); }
+.pkg-card-installed { font-size: 11px; background: var(--ok-bg); backdrop-filter: blur(6px); color: var(--ok); border: 1px solid rgba(195,230,203,0.9); border-radius: 999px; padding: 3px 8px; font-weight: 750; box-shadow: 0 1px 4px rgba(20,99,43,0.06); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.pkg-card:hover .pkg-tag { transform: translateY(-1px); }
+.pkg-card:hover .pkg-card-installed { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(20,99,43,0.1); }
 
 /* detail — complete page — glass */
 .pkg-detail-page { margin-top: 16px; }
