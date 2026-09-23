@@ -633,10 +633,14 @@ body.nav-open .scrim { opacity: 1; }
 .pkg-detail-card { padding: 20px; }
 .pkg-detail-header { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: start; }
 .pkg-detail-left { min-width: 0; }
-.pkg-detail-title-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.pkg-detail-title-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.pkg-detail-title-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pkg-detail-title-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .pkg-detail-name { font-size: 22px; font-weight: 900; text-transform: capitalize; margin: 0; letter-spacing: -0.03em; line-height: 1; }
 .pkg-detail-ver { background: rgba(15,17,19,0.92); color: #fff; border-color: rgba(15,17,19,0.92); font-size: 12px; padding: 4px 10px; backdrop-filter: none; }
 .pkg-tag-installed { background: var(--ok-bg); color: var(--ok); border-color: rgba(195,230,203,0.9); }
+.pkg-tag-notinstalled { background: rgba(254,242,242,0.92); color: #7f1d1d; border-color: rgba(252,165,165,0.9); }
+.pkg-back--inline { padding: 6px 10px; font-size: 12px; height: 32px; }
 .pkg-detail-desc { font-size: 14px; line-height: 1.5; margin: 8px 0; color: var(--ink); }
 .pkg-detail-summary { margin: 0 0 14px; }
 .pkg-detail-req h3 { font-size: 13px; margin: 16px 0 8px; }
