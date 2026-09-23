@@ -330,11 +330,13 @@ pub fn is_cache_fresh(service: &str) -> bool {
 // ---------------------------------------------------------------------------
 
 /// Load permanent store TOML if present (no TTL). Returns `None` if missing.
+#[allow(dead_code)]
 pub fn load_store(service: &str) -> Option<String> {
     fs::read_to_string(store_path(service)).ok()
 }
 
 /// Persist TOML to permanent store (`~/.ksx/store/<service>.toml` or `/ksx/store/...`).
+#[allow(dead_code)]
 pub fn save_store(service: &str, toml_text: &str) -> std::io::Result<()> {
     fs::create_dir_all(store_dir())?;
     fs::write(store_path(service), toml_text)?;
