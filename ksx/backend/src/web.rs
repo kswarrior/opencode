@@ -35,7 +35,8 @@ pub async fn serve(port: u16) -> Result<(), Box<dyn std::error::Error + Send + S
         .route("/api/host", get(api_host))
         .route("/api/packages", get(api_packages))
         .route("/api/packages/:service", get(api_package_detail))
-        .route("/api/state", get(api_state));
+        .route("/api/state", get(api_state))
+        .route("/api/version", get(api_version));
 
     let host: std::net::IpAddr = std::env::var("KSX_HOST")
         .ok()
@@ -83,6 +84,11 @@ async fn asset(Path(file): Path<String>) -> impl IntoResponse {
         "application/octet-stream"
     };
     ([(header::CONTENT_TYPE, mime)], f.data.to_vec()).into_response()
+}
+
+/// `GET /api/version` — app version from Cargo.toml (auto-bumped by rebuild.sh).
+async fn api_version() -> impl IntoResponse {
+    Json(serde_json::json!({ "version": env!("CARGO_PKG_VERSION") }))
 }
 
 /// `GET /api/host` — same JSON as `ksx host`.
