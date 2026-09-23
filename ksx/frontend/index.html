@@ -528,6 +528,11 @@ ksx web --port 8080</pre>
         Array.prototype.forEach.call(els, function(el){
           el.setAttribute("data-status", status);
         });
+        var logBtns = document.querySelectorAll('.pkg-action-log[data-log="' + action + '"]');
+        Array.prototype.forEach.call(logBtns, function(btn){
+          if (status === "idle") btn.removeAttribute("data-visible");
+          else btn.setAttribute("data-visible", "true");
+        });
       }
       function wireActionButtons(box, d) {
         var btns = Array.prototype.slice.call(box.querySelectorAll(".pkg-action-btn"));

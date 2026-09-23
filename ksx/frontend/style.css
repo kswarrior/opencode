@@ -695,11 +695,12 @@ body.nav-open .scrim { opacity: 1; }
 .pkg-action-icon svg { display: block; }
 .pkg-action-label { font-size: 13px; font-weight: 850; text-transform: capitalize; line-height: 1; }
 .pkg-action-log {
-  flex: none; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
+  flex: none; width: 36px; height: 36px; display: none; align-items: center; justify-content: center;
   border: 1px solid rgba(255,255,255,0.72); background: rgba(255,255,255,0.62);
   backdrop-filter: blur(12px) saturate(160%); border-radius: 8px; cursor: pointer; color: var(--muted);
   transition: background 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
 }
+.pkg-action-log[data-visible="true"] { display: inline-flex; }
 .pkg-action-log:hover { background: rgba(255,255,255,0.84); border-color: rgba(255,255,255,0.9); color: var(--ink); transform: translateY(-1px); }
 .pkg-detail-card-inner { display: flex; flex-direction: column; }
 .pkg-detail-footer { display: flex; justify-content: flex-end; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(15,17,19,0.08); }
