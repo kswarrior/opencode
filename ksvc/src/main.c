@@ -134,14 +134,19 @@ int main(int argc, char *argv[]) {
         return ksvc_list();
     }
     if (strcmp(cmd, "stop")==0 || strcmp(cmd, "kill")==0 || strcmp(cmd, "rm")==0) {
-        if (argc < 3) {
+        int id_idx = cmd_idx+1;
+        if (id_idx >= argc) {
             fprintf(stderr, "ksvc: stop requires <id|name>\n");
-            fprintf(stderr, "usage: %s stop <id|name> [--sig SIGNAL]\n", argv[0]);
+            fprintf(stderr, "usage: %s %s%s stop <id|name> [--sig SIGNAL]\n", argv[0], is_vm?"v ":"", cmd);
             return 1;
         }
-        const char *id = argv[2];
+        const char *id = argv[id_idx];
+        if (is_vm) {
+            fprintf(stderr, "ksvc v stop: vm support not yet (container completed first)\n");
+            return 1;
+        }
         int sig = SIGTERM;
-        for (int i=3;i<argc;i++) {
+        for (int i=id_idx+1;i<argc;i++) {
             if (strcmp(argv[i],"--sig")==0 && i+1<argc) {
                 sig = atoi(argv[++i]);
                 if (sig <=0) sig = SIGTERM;
@@ -167,15 +172,20 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     if (strcmp(cmd, "exec")==0) {
-        if (argc < 4) {
+        int id_idx = cmd_idx+1;
+        if (id_idx+1 >= argc) {
             fprintf(stderr, "ksvc: exec requires <id|name> -- <cmd>\n");
+            return 1;
+        }
+        if (is_vm) {
+            fprintf(stderr, "ksvc v exec: vm support not yet (container completed first)\n");
             return 1;
         }
         // For now, exec is via nsenter to container pid
         // ksvc exec <id> -- /bin/sh
-        const char *id = argv[2];
+        const char *id = argv[id_idx];
         int dash = -1;
-        for (int i=3;i<argc;i++) if (strcmp(argv[i],"--")==0) { dash=i; break; }
+        for (int i=id_idx+1;i<argc;i++) if (strcmp(argv[i],"--")==0) { dash=i; break; }
         if (dash < 0) { fprintf(stderr,"ksvc: exec needs -- separator\n"); return 1; }
         char **exec_argv = &argv[dash+1];
         if (!exec_argv[0]) { fprintf(stderr,"ksvc: exec needs command\n"); return 1; }
@@ -204,21 +214,27 @@ int main(int argc, char *argv[]) {
         fprintf(stderr,"ksvc: hint: install util-linux nsenter or run: sudo nsenter -t %s -m -u -i -p -- %s\n", pidstr, exec_argv[0]);
         return 1;
     }
-    if (strcmp(cmd, "run")!=0) {
-        fprintf(stderr,"ksvc: unknown command '%s'\n", cmd);
+    if (!is_run) {
+        fprintf(stderr,"ksvc: unknown command '%s%s%s'\n", is_vm?"v ":"", type, cmd);
         print_usage(argv[0]);
         return 1;
     }
+    if (is_vm) {
+        // vm stub — container completed first, vm will be added after
+        fprintf(stderr, "ksvc v %s: vm support not yet (container c completed first). Will add KVM/QEMU after container.\n", cmd);
+        fprintf(stderr, "hint: use ksvc c %s or ksvc %s for container (now). Example: ksvc run -- /bin/echo hi\n", cmd, cmd);
+        return 1;
+    }
 
-    // ---- run ----
+    // ---- run / launch (identical for c) ----
     ksvc_config_t cfg;
     ksvc_config_init(&cfg);
     int detach = 0;
 
-    // parse run options
+    // parse run/launch options
     // We need to handle -- separator for cmd
     int cmd_start = -1;
-    for (int i=2;i<argc;i++) {
+    for (int i=cmd_idx+1;i<argc;i++) {
         if (strcmp(argv[i],"--")==0) { cmd_start = i+1; break; }
     }
     // if no --, maybe last args are cmd without dash? For compatibility, treat remaining non-option as cmd if starts with / or -
@@ -234,7 +250,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Parse options before --
-    for (int i=2;i<cmd_start-1;i++) {
+    for (int i=cmd_idx+1;i<cmd_start-1;i++) {
         const char *a = argv[i];
         if (strcmp(a,"--name")==0 && i+1 < cmd_start-1) {
             strncpy(cfg.name, argv[++i], sizeof(cfg.name)-1);
@@ -258,6 +274,9 @@ int main(int argc, char *argv[]) {
             cfg.use_net_ns = 1;
         } else if (strcmp(a,"--userns")==0) {
             cfg.use_user_ns = 1;
+        } else if (strcmp(a,"--vm")==0) {
+            fprintf(stderr, "ksvc: --vm: use 'ksvc v %s' for vm (stub, container c completed first)\n", cmd);
+            return 1;
         } else if (strcmp(a,"--detach")==0 || strcmp(a,"-d")==0) {
             detach = 1;
         } else if (strcmp(a,"--help")==0 || strcmp(a,"-h")==0) {
@@ -298,21 +317,22 @@ int main(int argc, char *argv[]) {
 
     // Validate rootfs if provided
     if (cfg.rootfs[0] && access(cfg.rootfs, F_OK)!=0) {
-        fprintf(stderr,"ksvc: rootfs %s not found. Create it first:\n", cfg.rootfs);
+        fprintf(stderr,"ksvc: %s rootfs %s not found. Create it first:\n", type, cfg.rootfs);
         fprintf(stderr,"  mkdir -p %s && docker export $(docker create alpine) | tar -C %s -xf -\n", cfg.rootfs, cfg.rootfs);
         fprintf(stderr,"  or use host root: omit --rootfs\n");
         return 1;
     }
 
-    // Create container
+    // Create container (c) — v stub already returned above
     ksvc_container_t ctr;
     if (ksvc_create(&ctr, &cfg) < 0) {
         perror("ksvc_create");
         return 1;
     }
 
-    printf("ksvc: creating container %s (hostname=%s, rootfs=%s, cmd=%s)\n",
-           ctr.id, cfg.hostname, cfg.rootfs[0]?cfg.rootfs:"(host)", cfg.cmd);
+    const char *verb = is_launch ? "launch" : "run";
+    printf("ksvc: %s %s container %s (hostname=%s, rootfs=%s, cmd=%s)\n",
+           type, verb, ctr.id, cfg.hostname, cfg.rootfs[0]?cfg.rootfs:"(host)", cfg.cmd);
     if (cfg.mem_limit_mb) printf("ksvc: memory limit %d MB\n", cfg.mem_limit_mb);
     if (cfg.cpu_quota_pct) printf("ksvc: cpu quota %d%%\n", cfg.cpu_quota_pct);
     printf("ksvc: namespaces: pid/mount/uts/ipc%s%s\n",
@@ -325,11 +345,13 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    printf("ksvc: container %s started pid %d %s\n", ctr.id, ctr.pid, detach ? "(detached)" : "(attached)");
+    printf("ksvc: %s container %s started pid %d %s\n", type, ctr.id, ctr.pid, detach ? "(detached)" : "(attached)");
     if (cfg.name[0]) printf("ksvc: name %s -> %s\n", cfg.name, ctr.id);
-    printf("ksvc: to list:  ksvc list\n");
-    printf("ksvc: to exec:  ksvc exec %s -- /bin/sh\n", ctr.id);
-    printf("ksvc: to stop:  ksvc stop %s\n", ctr.id);
+    // correctly matched help for both run and launch, both c and v
+    printf("ksvc: to list:  ksvc %slist  | ksvc %s list\n", type, type);
+    printf("ksvc: to exec:  ksvc %s exec %s -- /bin/sh  | ksvc exec %s -- /bin/sh\n", type, ctr.id, ctr.id);
+    printf("ksvc: to stop:  ksvc %s stop %s  | ksvc stop %s\n", type, ctr.id, ctr.id);
+    printf("ksvc: alias: ksvc %s == ksvc %s (both c)\n", is_launch?"run":"launch", is_launch?"launch":"run");
 
     if (detach) {
         // detached: exit parent, container keeps running
@@ -338,11 +360,11 @@ int main(int argc, char *argv[]) {
 
     // Attached: wait
     int exit_code = 0;
-    printf("ksvc: waiting for %s (pid %d)...\n", ctr.id, ctr.pid);
+    printf("ksvc: waiting for %s %s (%s pid %d)...\n", type, ctr.id, is_launch?"launch":"run", ctr.pid);
     if (ksvc_wait(&ctr, &exit_code) < 0) {
         perror("ksvc_wait");
         return 1;
     }
-    printf("ksvc: container %s exited with code %d\n", ctr.id, exit_code);
+    printf("ksvc: %s %s exited with code %d\n", type, ctr.id, exit_code);
     return exit_code;
 }
