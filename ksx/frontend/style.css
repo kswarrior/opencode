@@ -21,9 +21,9 @@
   --glass-shadow: 0 8px 32px rgba(15,17,19,0.06), 0 1px 2px rgba(15,17,19,0.04), inset 0 1px 0 rgba(255,255,255,0.92);
   --glass-shadow-hover: 0 12px 40px rgba(15,17,19,0.08), 0 4px 16px rgba(15,17,19,0.06), inset 0 1px 0 rgba(255,255,255,1);
   --glass-dark-border: 1px solid rgba(255,255,255,0.08);
-  --radius-lg: 16px;
-  --radius-md: 12px;
-  --radius-sm: 10px;
+  --radius-lg: 10px;
+  --radius-md: 8px;
+  --radius-sm: 6px;
   --colorful: linear-gradient(90deg, #6d28d9 0%, #8b5cf6 18%, #ec4899 38%, #06b6d4 68%, #7c3aed 85%, #6d28d9 100%);
 }
 * { box-sizing: border-box; }
@@ -48,14 +48,14 @@ h2 { font-size: 16px; margin: 0 0 8px; }
 h3 { font-size: 14px; margin: 16px 0 8px; }
 .muted { color: var(--muted); }
 .small { font-size: 12px; }
-code { background: rgba(255,255,255,0.72); border: var(--glass-border); border-radius: 8px; padding: 1px 6px; font-size: 12px; backdrop-filter: blur(8px); }
+code { background: rgba(255,255,255,0.72); border: var(--glass-border); border-radius: 6px; padding: 1px 6px; font-size: 12px; backdrop-filter: blur(8px); }
 pre.code {
   background: rgba(14,16,18,0.78);
   backdrop-filter: var(--glass-blur-strong);
   -webkit-backdrop-filter: var(--glass-blur-strong);
   color: #f4f5f6;
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 13px 14px;
   font-size: 12px;
   overflow-x: auto;
@@ -201,7 +201,7 @@ pre.code {
 }
 .menu-btn {
   display: none; width: 40px; height: 40px;
-  border: 1px solid rgba(255,255,255,0.75); border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.75); border-radius: 8px;
   background: rgba(255,255,255,0.64);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
@@ -237,7 +237,7 @@ pre.code {
 }
 .nav { display: flex; flex-direction: column; gap: 6px; }
 .nav-item {
-  text-align: left; border: 1px solid transparent; border-radius: 12px; padding: 10px 12px; font-size: 14px; font-weight: 650;
+  text-align: left; border: 1px solid transparent; border-radius: 8px; padding: 10px 12px; font-size: 14px; font-weight: 650;
   background: transparent; color: var(--side-ink); cursor: pointer;
   position: relative; overflow: hidden;
   transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, backdrop-filter 0.22s ease;
@@ -282,7 +282,7 @@ pre.code {
   gap: 4px;
   animation: footIn 0.6s ease 0.45s both;
   background: linear-gradient(180deg, transparent, rgba(255,255,255,0.03));
-  border-radius: 10px;
+  border-radius: 6px;
 }
 .side-version {
   font-size: 11px;
@@ -366,7 +366,7 @@ body.nav-open .scrim { opacity: 1; }
   display: none; width: 40px; height: 40px;
   border: 1px solid rgba(255,255,255,0.75); background: rgba(255,255,255,0.64);
   backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border-radius: 12px; cursor: pointer; align-items: center; justify-content: center; color: var(--ink);
+  border-radius: 8px; cursor: pointer; align-items: center; justify-content: center; color: var(--ink);
   box-shadow: 0 2px 10px rgba(15,17,19,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
   transition: background 0.18s ease, transform 0.18s ease;
 }
@@ -376,7 +376,7 @@ body.nav-open .scrim { opacity: 1; }
   background: rgba(255,255,255,0.64);
   backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(255,255,255,0.76);
-  border-radius: 12px; padding: 6px 8px 6px 10px; min-width: 268px;
+  border-radius: 8px; padding: 6px 8px 6px 10px; min-width: 268px;
   box-shadow: 0 4px 18px rgba(15,17,19,0.05), inset 0 1px 0 rgba(255,255,255,0.92);
   transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.22s ease, background 0.18s ease;
 }
@@ -400,7 +400,7 @@ body.nav-open .scrim { opacity: 1; }
   border: 1px solid rgba(255,255,255,0.74);
   background: rgba(255,255,255,0.64);
   backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border-radius: 12px; font-size: 13px; font-weight: 650; cursor: pointer; color: var(--ink); white-space: nowrap;
+  border-radius: 8px; font-size: 13px; font-weight: 650; cursor: pointer; color: var(--ink); white-space: nowrap;
   box-shadow: 0 2px 10px rgba(15,17,19,0.05), inset 0 1px 0 rgba(255,255,255,0.92);
   transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
@@ -416,11 +416,11 @@ body.nav-open .scrim { opacity: 1; }
   background: rgba(255,255,255,0.46);
   backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1px solid rgba(255,255,255,0.68);
-  border-radius: 12px; padding: 4px; gap: 4px;
+  border-radius: 8px; padding: 4px; gap: 4px;
   box-shadow: 0 2px 10px rgba(15,17,19,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 .pkg-mode-btn {
-  position: relative; border: 1px solid transparent; background: transparent; border-radius: 9px; padding: 7px 12px; font-size: 12px; font-weight: 750; cursor: pointer; color: #6b7280; white-space: nowrap; transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, transform 0.16s ease;
+  position: relative; border: 1px solid transparent; background: transparent; border-radius: 6px; padding: 7px 12px; font-size: 12px; font-weight: 750; cursor: pointer; color: #6b7280; white-space: nowrap; transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, transform 0.16s ease;
 }
 .pkg-mode-btn:hover { color: var(--ink); background: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.7); }
 .pkg-mode-btn.is-active {
@@ -439,7 +439,7 @@ body.nav-open .scrim { opacity: 1; }
   appearance: none; -webkit-appearance: none; -moz-appearance: none;
   background: rgba(255,255,255,0.68);
   backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border: 1px solid rgba(255,255,255,0.7); border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.7); border-radius: 8px;
   padding: 9px 32px 9px 12px; font-size: 12px; font-weight: 750; color: var(--ink);
   cursor: pointer; min-width: 150px; line-height: 1; box-shadow: 0 2px 10px rgba(15,17,19,0.05), inset 0 1px 0 rgba(255,255,255,0.9);
 }
@@ -462,7 +462,7 @@ body.nav-open .scrim { opacity: 1; }
 .pkg-coming-card {
   text-align: center; padding: 18px 14px;
   border: 1px dashed rgba(15,17,19,0.12);
-  border-radius: 14px;
+  border-radius: 8px;
   background: rgba(255,255,255,0.52);
   backdrop-filter: blur(14px) saturate(150%); -webkit-backdrop-filter: blur(14px) saturate(150%);
   box-shadow: 0 4px 18px rgba(15,17,19,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
@@ -483,7 +483,7 @@ body.nav-open .scrim { opacity: 1; }
   background: rgba(255,255,255,0.58);
   backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(255,255,255,0.74);
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 16px; cursor: pointer; text-align: left; width: 100%;
   box-shadow: var(--glass-shadow);
   transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
@@ -523,7 +523,7 @@ body.nav-open .scrim { opacity: 1; }
   display: inline-flex; align-items: center; gap: 8px;
   border: 1px solid rgba(255,255,255,0.76); background: rgba(255,255,255,0.64);
   backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 8px 14px; font-size: 13px; font-weight: 650; cursor: pointer; color: var(--ink);
   margin-bottom: 14px; box-shadow: 0 2px 10px rgba(15,17,19,0.05), inset 0 1px 0 rgba(255,255,255,0.9);
   transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
@@ -544,7 +544,7 @@ body.nav-open .scrim { opacity: 1; }
   background: rgba(255,255,255,0.58);
   backdrop-filter: blur(16px) saturate(180%); -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(255,255,255,0.72);
-  border-radius: 14px; padding: 16px; position: sticky; top: 76px;
+  border-radius: 8px; padding: 16px; position: sticky; top: 76px;
   box-shadow: var(--glass-shadow);
 }
 .pkg-actions-title { font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin: 0 0 12px; }
@@ -555,7 +555,7 @@ body.nav-open .scrim { opacity: 1; }
   border: 1px solid rgba(255,255,255,0.72);
   background: rgba(255,255,255,0.62);
   backdrop-filter: blur(12px) saturate(160%); -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border-radius: 12px; padding: 12px 14px; cursor: pointer;
+  border-radius: 8px; padding: 12px 14px; cursor: pointer;
   transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease, background 0.16s ease;
   box-shadow: 0 1px 2px rgba(15,17,19,0.04), inset 0 1px 0 rgba(255,255,255,0.9);
 }
@@ -579,7 +579,7 @@ body.nav-open .scrim { opacity: 1; }
   background: rgba(255,251,235,0.78);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(252,211,77,0.9);
-  border-radius: 10px; padding: 8px 10px;
+  border-radius: 6px; padding: 8px 10px;
   box-shadow: 0 1px 6px rgba(146,64,14,0.05), inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
@@ -591,7 +591,7 @@ body.nav-open .scrim { opacity: 1; }
   border: 1px solid rgba(255,255,255,0.7);
   background: rgba(255,255,255,0.6);
   backdrop-filter: blur(12px) saturate(160%); -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border-radius: 12px; padding: 10px 12px; cursor: pointer; font-size: 14px; text-align: left; width: 100%;
+  border-radius: 8px; padding: 10px 12px; cursor: pointer; font-size: 14px; text-align: left; width: 100%;
   box-shadow: 0 2px 10px rgba(15,17,19,0.04), inset 0 1px 0 rgba(255,255,255,0.9);
   transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
@@ -638,7 +638,7 @@ body.nav-open .scrim { opacity: 1; }
   .pkg-search.is-open .pkg-search-bar { display: flex; transform: translateY(0); opacity: 1; pointer-events: auto; }
   .pkg-search { position: static; }
   .pkg-header { position: relative; }
-  .pkg-refresh { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 12px; }
+  .pkg-refresh { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 8px; }
   .pkg-refresh-text { display: none; }
   .pkg-mode { display: none !important; }
   .pkg-mode-dropdown { display: inline-flex !important; }
