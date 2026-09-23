@@ -333,15 +333,12 @@ ksx web --port 8080</pre>
           var inst = p.installed ? '<span class="pkg-card-installed">installed v' + esc(p.installed) + '</span>' : '';
           var stale = p.stale ? '<span class="badge-warn" title="cached stale">cached</span>' : '';
           var desc = p.description ? esc(p.description) : (p.summary ? esc(p.summary) : 'No description');
-          // version tag below description per spec: name + version tag, then description
-          // show also os/arch as tiny meta
           var meta = "";
           if (p.os && p.os.length) meta += esc(p.os.join(", "));
           if (p.arch && p.arch.length) meta += (meta ? " · " : "") + esc(p.arch.join(", "));
           return '<button type="button" class="pkg-card" data-pkg="' + esc(p.name) + '" aria-label="Open ' + esc(p.name) + ' details">' +
             '<div class="pkg-card-top">' +
               '<h3 class="pkg-card-name">' + esc(p.name) + '</h3>' +
-              '<span class="pkg-card-ver">' + ver + '</span>' +
               stale +
             '</div>' +
             '<p class="pkg-card-desc">' + desc + '</p>' +
