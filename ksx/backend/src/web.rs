@@ -413,7 +413,9 @@ async fn api_package_run(
     };
     // Run in blocking task to avoid blocking async runtime
     let force = req.force;
-    let result = tokio::task::spawn_blocking(move || run_action_blocking(&service, &recipe, &action, force))
+    let service_clone = service.clone();
+    let action_clone = action.clone();
+    let result = tokio::task::spawn_blocking(move || run_action_blocking(&service_clone, &recipe, &action_clone, force))
         .await
         .unwrap_or_else(|e| Err(format!("spawn failed: {e}")));
 
