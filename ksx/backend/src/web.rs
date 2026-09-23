@@ -378,6 +378,199 @@ async fn api_package_delete(Path(service): Path<String>) -> impl IntoResponse {
     }
 }
 
+// --- POST /api/packages/:service/run ---
+
+#[derive(Debug, Deserialize)]
+struct RunRequest {
+    action: String,
+    #[serde(default)]
+    force: bool,
+}
+
+async fn api_package_run(
+    Path(service): Path<String>,
+    Json(req): Json<RunRequest>,
+) -> impl IntoResponse {
+    let service = service.to_lowercase();
+    if !is_safe_service(&service) {
+        return (StatusCode::BAD_REQUEST, JsonResp(serde_json::json!({"error": "invalid service name"}))).into_response();
+    }
+    let action = req.action.to_lowercase();
+    if !pipeline::Recipe::known_actions().contains(&action.as_str()) {
+        return (StatusCode::BAD_REQUEST, JsonResp(serde_json::json!({"error": format!("invalid action: {}", req.action)}))).into_response();
+    }
+    let text = match storage::load_store(&service) {
+        Some(t) => t,
+        None => {
+            return (StatusCode::NOT_FOUND, JsonResp(serde_json::json!({"error": "store file not found"}))).into_response();
+        }
+    };
+    let recipe = match pipeline::Recipe::from_toml(&text) {
+        Ok(r) => r,
+        Err(e) => {
+            return (StatusCode::BAD_REQUEST, JsonResp(serde_json::json!({"error": format!("invalid TOML: {e}")}))).into_response();
+        }
+    };
+    // Run in blocking task to avoid blocking async runtime
+    let force = req.force;
+    let result = tokio::task::spawn_blocking(move || run_action_blocking(&service, &recipe, &action, force))
+        .await
+        .unwrap_or_else(|e| Err(format!("spawn failed: {e}")));
+
+    match result {
+        Ok((logs, ok)) => {
+            let status = if ok { StatusCode::OK } else { StatusCode::INTERNAL_SERVER_ERROR };
+            (status, JsonResp(serde_json::json!({"ok": ok, "service": service, "action": action, "logs": logs}))).into_response()
+        }
+        Err(err) => (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            JsonResp(serde_json::json!({"ok": false, "error": err})),
+        )
+            .into_response(),
+    }
+}
+
+fn run_action_blocking(
+    service: &str,
+    recipe: &pipeline::Recipe,
+    action: &str,
+    force: bool,
+) -> Result<(String, bool), String> {
+    use std::process::Command;
+    let host = pipeline::HostMeta::detect();
+    let vars = requirements::collect_vars(recipe, action);
+    let mut logs = String::new();
+    logs.push_str(&format!("ksx: {} {} (v{})\n", action, service, recipe.service.version));
+    logs.push_str(&format!("ksx: host {} / {} ram {} disk {}\n", host.os, host.arch, host.ram_mb, host.free_disk_mb));
+
+    // 1) env files
+    match requirements::write_env_files(recipe, action) {
+        Ok(paths) => {
+            for p in paths {
+                logs.push_str(&format!("ksx: env → {}\n", p));
+            }
+        }
+        Err(e) => {
+            logs.push_str(&format!("ksx: env failed: {}\n", e));
+            if !force {
+                return Ok((logs, false));
+            }
+            logs.push_str("ksx: [force] ignoring env failure\n");
+        }
+    }
+
+    // 2) requirements
+    if let Err(e) = requirements::check_requirements(recipe, &host, action, &vars, force) {
+        logs.push_str(&format!("ksx: requirements failed: {}\n", e));
+        if !force {
+            return Ok((logs, false));
+        }
+        logs.push_str("ksx: [force] ignoring requirements failure\n");
+    } else {
+        logs.push_str("ksx: requirements OK\n");
+    }
+
+    // 3) files
+    if let Err(e) = requirements::materialize_files(recipe, &host, action, &vars, force) {
+        logs.push_str(&format!("ksx: files failed: {}\n", e));
+        if !force {
+            return Ok((logs, false));
+        }
+        logs.push_str("ksx: [force] ignoring files failure\n");
+    }
+
+    // 4) steps
+    let steps = recipe.steps_for(action, &host);
+    if steps.is_empty() {
+        logs.push_str(&format!("ksx: no steps for {}\n", action));
+        // still consider success if no steps
+    } else {
+        logs.push_str(&format!("ksx: {} via {} step(s)...\n", action, steps.len()));
+        for (i, step) in steps.iter().enumerate() {
+            let label = if step.name.is_empty() {
+                format!("step {}", i + 1)
+            } else {
+                step.name.clone()
+            };
+            logs.push_str(&format!("ksx: [step {}/{}] {}\n", i + 1, steps.len(), label));
+            let script = requirements::interpolate(&step.script, &vars);
+            let out = run_bash_capture(&script);
+            match out {
+                Ok((stdout, stderr)) => {
+                    if !stdout.trim().is_empty() {
+                        logs.push_str(&stdout);
+                        if !stdout.ends_with('\n') {
+                            logs.push('\n');
+                        }
+                    }
+                    if !stderr.trim().is_empty() {
+                        logs.push_str(&stderr);
+                        if !stderr.ends_with('\n') {
+                            logs.push('\n');
+                        }
+                    }
+                    if !step.echo_success.is_empty() {
+                        let msg = requirements::interpolate(&step.echo_success, &vars);
+                        logs.push_str(&format!("ksx: {}\n", msg));
+                    }
+                }
+                Err((stdout, stderr, err)) => {
+                    if !stdout.trim().is_empty() {
+                        logs.push_str(&stdout);
+                    }
+                    if !stderr.trim().is_empty() {
+                        logs.push_str(&stderr);
+                    }
+                    logs.push_str(&format!("ksx: step `{}` failed: {}\n", label, err));
+                    if !step.echo_fail.is_empty() {
+                        let msg = requirements::interpolate(&step.echo_fail, &vars);
+                        logs.push_str(&format!("ksx: {}\n", msg));
+                    }
+                    if !force {
+                        return Ok((logs, false));
+                    }
+                    logs.push_str("ksx: [force] ignoring step failure\n");
+                }
+            }
+        }
+    }
+
+    // 5) update state on success for install/update/reinstall/uninstall
+    let success = true; // if we reached here without early return false, consider success
+    if success {
+        if ["install", "update", "reinstall"].contains(&action) {
+            let mut state = storage::load_state();
+            state.mark_installed(service, recipe.service.version.clone());
+            let _ = storage::save_state(&state);
+            logs.push_str(&format!("ksx: {} of `{}` complete (v{})\n", action, service, recipe.service.version));
+        } else if action == "uninstall" {
+            let mut state = storage::load_state();
+            state.remove_installed(service);
+            let _ = storage::save_state(&state);
+            logs.push_str(&format!("ksx: uninstall of `{}` complete\n", service));
+        } else {
+            logs.push_str(&format!("ksx: {} complete\n", action));
+        }
+    }
+
+    Ok((logs, success))
+}
+
+fn run_bash_capture(script: &str) -> Result<(String, String), (String, String, String)> {
+    let out = std::process::Command::new("bash")
+        .arg("-c")
+        .arg(script)
+        .output()
+        .map_err(|e| (String::new(), String::new(), format!("spawn failed: {e}")))?;
+    let stdout = String::from_utf8_lossy(&out.stdout).to_string();
+    let stderr = String::from_utf8_lossy(&out.stderr).to_string();
+    if out.status.success() {
+        Ok((stdout, stderr))
+    } else {
+        Err((stdout, stderr, format!("bash exited with {}", out.status)))
+    }
+}
+
 fn fill_detail(detail: &mut serde_json::Value, recipe: &pipeline::Recipe) {
     let req = &recipe.requirements;
     detail["requirements"] = serde_json::json!({
