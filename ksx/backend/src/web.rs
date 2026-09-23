@@ -438,7 +438,6 @@ fn run_action_blocking(
     action: &str,
     force: bool,
 ) -> Result<(String, bool), String> {
-    use std::process::Command;
     let host = pipeline::HostMeta::detect();
     let vars = requirements::collect_vars(recipe, action);
     let mut logs = String::new();
