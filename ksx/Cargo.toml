@@ -1,6 +1,6 @@
 [package]
 name = "ksx"
-version = "0.1.12"
+version = "0.1.13"
 edition = "2021"
 description = "Ultra-lightweight CLI + WebUI to manage KS Panel (Docker/KVM), KS SSH, and KS SQL"
 license = "MIT"
