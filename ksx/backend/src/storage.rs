@@ -51,9 +51,66 @@ fn root_ksx() -> PathBuf {
 fn prompt_choice(both_exist: bool) -> PathBuf {
     let root = root_ksx();
     let home = home_ksx();
+    let is_tty = std::io::stdin().is_terminal();
 
-    // Non-interactive (CI, `ksx web`, piped stdin): don't block, default to home.
-    if !std::io::stdin().is_terminal() {
+    // Non-interactive: try to honor piped choice if present, otherwise default to home.
+    if !is_tty {
+        // Check if stdin has piped data (e.g., `echo 1 | ksx`). Do a single non-blocking read.
+        let mut piped = String::new();
+        // Use a short timeout read? For now, try read_line; if stdin is closed it returns 0 immediately.
+        // We do a try_read with 100ms timeout via polling in a thread to avoid blocking CI forever.
+        // Simpler: attempt read_line in a way that doesn't block forever when stdin is a terminal-less pipe with no data.
+        // We'll attempt to read with a 200ms timeout using a helper.
+        let has_data = {
+            // Spawn a thread to read, timeout 200ms.
+            let handle = std::thread::spawn(|| {
+                let mut s = String::new();
+                let res = std::io::stdin().read_line(&mut s);
+                (res, s)
+            });
+            let mut result: Option<(std::io::Result<usize>, String)> = None;
+            for _ in 0..20 {
+                std::thread::sleep(std::time::Duration::from_millis(10));
+                if handle.is_finished() {
+                    break;
+                }
+            }
+            if handle.is_finished() {
+                if let Ok((res, s)) = handle.join() {
+                    if res.is_ok() {
+                        piped = s;
+                        result = Some((res, piped.clone()));
+                    }
+                }
+            }
+            result.is_some() && !piped.trim().is_empty()
+        };
+        if has_data {
+            match piped.trim().to_lowercase().as_str() {
+                "1" | "root" | "/ksx" => {
+                    if !both_exist {
+                        match fs::create_dir_all(root.join("cache")) {
+                            Ok(()) => {}
+                            Err(e) => {
+                                eprintln!("ksx: failed to create /ksx: {e}, falling back to ~/.ksx");
+                                let _ = fs::create_dir_all(home.join("cache"));
+                                return home;
+                            }
+                        }
+                    }
+                    return root;
+                }
+                "2" | "home" | "~/.ksx" | "~" => {
+                    if !both_exist {
+                        let _ = fs::create_dir_all(home.join("cache"));
+                    }
+                    return home;
+                }
+                _ => {
+                    // invalid piped, fall through to default
+                }
+            }
+        }
         if both_exist {
             eprintln!(
                 "ksx: both /ksx and ~/.ksx found — non-interactive, defaulting to ~/.ksx (use --dr root|home)"
