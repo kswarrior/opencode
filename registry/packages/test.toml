@@ -1,0 +1,202 @@
+# KS Panel — single-TOML package recipe (canonical source).
+# Served from : registry/packages/panel.toml
+# CDN mirror  : https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/panel.toml
+# Local cache : ~/.ksx/cache/panel.toml (24h TTL) | Embedded fallback via rust-embed.
+#
+# This file demonstrates the full schema: system requirements with echo logs,
+# directory + dependency guards, decoupled [[env]] disk-file creation vs
+# recipe-wide ${VAR} interpolation, platform-filtered [[files]] templates,
+# and reusable [[steps]] scoped by required_for lifecycles.
+
+[service]
+name = "test"
+version = "1.0.0"
+description = "KS Panel — Docker/KVM control plane on port ${PANEL_PORT}."
+summary = "Panel v${PANEL_VERSION} for ${DATA_DIR}"
+
+[requirements]
+os = ["linux", "darwin"]
+arch = ["amd64", "arm64"]
+
+min_ram_mb = 1024
+ram_mode = "force"
+ram_echo_success = "ram OK: ${PANEL_PORT} stack fits in memory"
+ram_echo_fail = "ram FAIL: need 1024MB for the panel stack"
+
+min_disk_mb = 512
+disk_mode = "optional"
+disk_echo_success = "disk OK for panel images"
+disk_echo_fail = "disk LOW: panel images want 512MB free"
+
+root_required = false
+root_mode = "check"
+root_echo_success = "root check: running unprivileged (fine for ~/.ksx)"
+
+[[requirements.directories]]
+path = "~/.ksx/panel"
+create = true
+mode = "755"
+required_for = ["install", "update", "reinstall", "info"]
+description = "panel working dir (compose file, .env, state)"
+echo_success = "dir OK: panel home ready at ${DATA_DIR}"
+echo_fail = "dir FAIL: cannot prepare ${DATA_DIR}"
+
+[[requirements.dependencies]]
+name = "docker"
+check_cmd = "docker info >/dev/null 2>&1"
+mode = "force"
+required_for = ["install", "reinstall", "uninstall"]
+echo_success = "docker OK for ${PANEL_IMAGE}"
+echo_fail = "docker FAIL: engine required for the panel stack"
+
+[[requirements.dependencies]]
+name = "curl"
+check_cmd = "command -v curl >/dev/null 2>&1"
+mode = "optional"
+required_for = ["install", "info"]
+echo_success = "curl present (health probes enabled)"
+echo_fail = "curl missing (health probes degraded)"
+
+[[requirements.dependencies]]
+name = "kvm"
+check_cmd = "test -e /dev/kvm"
+mode = "check"
+required_for = ["info"]
+echo_success = "kvm device present (hardware virt available)"
+echo_fail = "kvm device absent (software virt only)"
+
+# --- Environment: disk .env creation DECOUPLED from interpolation scope ---
+
+[[env]]
+mode = "interpolate"
+values = { PANEL_PORT = "8443", PANEL_IMAGE = "ghcr.io/ks-panel/panel:latest", DATA_DIR = "~/.ksx/panel", PANEL_VERSION = "1.0.0", COMPOSE_PROJECT_NAME = "ksx-panel" }
+
+[[env]]
+mode = "file"
+target_path = "~/.ksx/panel/panel.env"
+required_for = ["install", "update", "reinstall"]
+values = { PANEL_PORT = "8443", PANEL_IMAGE = "ghcr.io/ks-panel/panel:latest", DATA_DIR = "~/.ksx/panel", PANEL_VERSION = "1.0.0" }
+
+# --- Embedded files (interpolated, platform-filtered) ---
+
+[[files]]
+target_path = "~/.ksx/panel/docker-compose.yml"
+required_for = ["install", "reinstall"]
+only_os = ["linux"]
+echo_success = "compose template rendered for port ${PANEL_PORT}"
+echo_fail = "compose template FAILED for ${DATA_DIR}"
+content = """
+services:
+  panel:
+    image: ${PANEL_IMAGE}
+    restart: unless-stopped
+    ports: ["${PANEL_PORT}:8443"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - panel-data:${DATA_DIR}/data
+volumes:
+  panel-data: {}
+"""
+
+[[files]]
+target_path = "~/.ksx/panel/README.txt"
+required_for = ["install"]
+exclude_os = ["windows"]
+echo_success = "panel readme staged"
+echo_fail = "panel readme FAILED"
+content = """
+KS Panel ${PANEL_VERSION} — managed by ksx.
+Compose project: ${COMPOSE_PROJECT_NAME} | Port: ${PANEL_PORT}
+Data: ${DATA_DIR}
+"""
+
+# --- Reusable steps (required_for + platform filters, ${VAR} scripts) ---
+
+[[steps]]
+name = "check docker"
+required_for = ["install"]
+script = """
+set -euo pipefail
+docker info >/dev/null
+echo "docker OK: $(docker --version) for ${PANEL_IMAGE}"
+"""
+echo_success = "docker gate passed"
+echo_fail = "docker gate FAILED"
+
+[[steps]]
+name = "pull panel image"
+required_for = ["install", "update"]
+script = """
+set -euo pipefail
+docker pull "${PANEL_IMAGE}"
+"""
+echo_success = "pulled ${PANEL_IMAGE}"
+echo_fail = "pull FAILED for ${PANEL_IMAGE}"
+
+[[steps]]
+name = "start panel stack"
+required_for = ["install", "reinstall"]
+only_os = ["linux", "darwin"]
+script = """
+set -euo pipefail
+cd "${DATA_DIR}"
+docker compose up -d
+docker compose ps
+"""
+echo_success = "panel stack up on ${PANEL_PORT}"
+echo_fail = "panel stack FAILED in ${DATA_DIR}"
+
+[[steps]]
+name = "verify panel health"
+required_for = ["install"]
+script = """
+set -euo pipefail
+sleep 3
+curl -sk -o /dev/null -w "panel HTTP %{http_code}\\n" "https://localhost:${PANEL_PORT}/" || true
+"""
+echo_success = "health probe done for :${PANEL_PORT}"
+echo_fail = "health probe FAILED"
+
+[[steps]]
+name = "recreate stack"
+required_for = ["update"]
+script = """
+set -euo pipefail
+cd "${DATA_DIR}"
+docker compose pull
+docker compose up -d
+docker compose ps
+"""
+echo_success = "panel updated to ${PANEL_IMAGE}"
+echo_fail = "panel update FAILED"
+
+[[steps]]
+name = "tear down stack"
+required_for = ["reinstall", "uninstall"]
+script = """
+set -euo pipefail
+cd "${DATA_DIR}" 2>/dev/null && docker compose down || true
+echo "torn down ${COMPOSE_PROJECT_NAME}"
+"""
+echo_success = "panel torn down"
+echo_fail = "teardown FAILED"
+
+[[steps]]
+name = "stack status"
+required_for = ["info"]
+script = """
+set -euo pipefail
+cd "${DATA_DIR}" 2>/dev/null && docker compose ps || echo "panel not installed (no ${DATA_DIR})"
+"""
+echo_success = "status reported"
+echo_fail = "status FAILED"
+
+[[steps]]
+name = "health probe"
+required_for = ["info"]
+script = """
+set -euo pipefail
+curl -sk -o /dev/null -w "panel HTTP %{http_code}\\n" "https://localhost:${PANEL_PORT}/" || echo "panel not reachable"
+"""
+echo_success = "probe done"
+echo_fail = "probe FAILED"
