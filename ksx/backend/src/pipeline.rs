@@ -1,10 +1,9 @@
-//! 4-tier resilient recipe fetcher (single-TOML per package):
+//! 3-tier resilient recipe fetcher (single-TOML per package):
 //!
 //! 1. Primary: Render C-backend API — `POST` JSON host metadata, get TOML (`text/x-toml`), 5s timeout.
 //! 2. Backup: GitHub Raw CDN — `GET https://raw.githubusercontent.com/kswarrior/opencode/refs/heads/main/registry/packages/<service>.toml`.
 //! 3. Local disk cache: `~/.ksx/cache/<service>.toml` (24h TTL via mtime; skipped with `--refresh`).
-//! 4. Embedded baseline: `backend/recipes/*.toml` baked via `rust-embed`.
-//! 5. Graceful failure: friendly error if all tiers fail.
+//! 4. Graceful failure: friendly error if all tiers fail.
 //!
 //! Recipe schema (one TOML per package): `[service]`, `[requirements]`
 //! (RAM / disk / root / OS / arch / directories / dependencies),
@@ -15,8 +14,12 @@
 
 use serde::{Deserialize, Serialize};
 
-use crate::EmbeddedRecipes;
 use crate::storage;
+
+/// Known package names — canonical registry lives at
+/// `registry/packages/<service>.toml` and is mirrored via GitHub Raw CDN.
+/// This list replaces the former `backend/recipes/*.toml` embedded baseline.
+pub const KNOWN_PACKAGES: &[&str] = &["panel", "ssh", "sql"];
 
 // ---------------------------------------------------------------------------
 // Config (env-overridable for tests / self-hosting)

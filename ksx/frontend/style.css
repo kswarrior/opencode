@@ -185,7 +185,7 @@ pre.code { background: #101214; color: #f4f5f6; border-radius: 10px; padding: 12
 }
 @media (max-width: 860px) {
   .menu-btn { display: inline-flex; }
-  .sidebar { position: fixed; top: 56px; bottom: 0; left: 0; z-index: 21; height: auto;
+  .sidebar { position: fixed; top: 62px; bottom: 0; left: 0; z-index: 21; height: auto;
     transform: translateX(-105%); transition: transform .2s ease; }
   body.nav-open .sidebar { transform: none; }
   .content { padding: 16px; }
