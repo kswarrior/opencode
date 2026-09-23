@@ -592,6 +592,7 @@ ksx web --port 8080</pre>
       if (refreshBtn) refreshBtn.addEventListener("click", refreshPackages);
 
       var modeBtns = Array.prototype.slice.call(document.querySelectorAll(".pkg-mode-btn"));
+      var modeSelect = document.getElementById("pkgModeSelect");
       function setMode(mode){
         if (mode === "server" || mode === "local") {
           showToast(mode.charAt(0).toUpperCase() + mode.slice(1) + " — Coming soon");
@@ -602,6 +603,7 @@ ksx web --port 8080</pre>
           b.classList.toggle("is-active", isActive);
           b.setAttribute("aria-pressed", isActive ? "true" : "false");
         });
+        if (modeSelect) modeSelect.value = mode;
         // reset selection, hide detail, show grid, re-fetch
         hideDetailPage();
         var dBox = document.getElementById("pkgDetail");
@@ -617,6 +619,9 @@ ksx web --port 8080</pre>
           setMode(btn.dataset.mode);
         });
       });
+      if (modeSelect) {
+        modeSelect.addEventListener("change", function(){ setMode(modeSelect.value); });
+      }
 
       var toastEl = document.getElementById("pkgToast");
       var toastTimer = null;
