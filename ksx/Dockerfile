@@ -28,7 +28,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
     && rm -rf /var/lib/apt/lists/* \
     && useradd --create-home --shell /usr/sbin/nologin ksx \
     && mkdir -p /ksx/cache /ksx/store /ksx/tmp /ksx/packages \
-    && chown -R ksx:ksx /ksx
+    && chown -R ksx:ksx /ksx \
+    && ln -sfn /ksx /home/ksx/.ksx \
+    && chown -h ksx:ksx /home/ksx/.ksx
 WORKDIR /home/ksx
 
 # Support both contexts: copy full context to /tmp and pick the binary.
