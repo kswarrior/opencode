@@ -489,6 +489,7 @@ pub async fn fetch_recipe(
 
 /// Fetch from a specific source only (used by web API for mode switching).
 /// `source` = "github" | "server" | "auto" (auto = 3-tier).
+#[allow(dead_code)]
 pub async fn fetch_recipe_from(
     service: &str,
     source: &str,

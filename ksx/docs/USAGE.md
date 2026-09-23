@@ -33,8 +33,8 @@ ksx web [--port 8080]
 
 ## What a mutating action does (in order)
 
-1. Fetch the recipe via the 4-tier pipeline (Render → GitHub Raw →
-   `~/.ksx/cache/<service>.toml` → embedded baseline).
+1. Fetch the recipe via the 3-tier pipeline (Render → GitHub Raw →
+   `~/.ksx/cache/<service>.toml`).
 2. Build the `${VAR}` scope from `[[env]]` blocks with `mode =
    "interpolate"` or `"both"` for this action.
 3. Write `[[env]]` blocks with `mode = "file"` or `"both"` to their
@@ -81,12 +81,11 @@ ksx web --port 8080
 ```
 
 - `GET /` serves the embedded dashboard SPA; `GET /assets/*file` serves
-  embedded CSS (and `*.toml` baselines as `text/x-toml`).
+  embedded CSS/JS.
 - JSON APIs (used by the SPA via `fetch`):
   `GET /api/host`, `GET /api/packages`, `GET /api/packages/:service`,
   `GET /api/state`.
 - Sidebar pages: **Home** (overview: host, memory, package/installed counts),
-  **Packages** (list + selected detail with source tabs: Selected, GitHub repo,
-  Render, Local), **Settings** (coming soon).
+  **Packages** (toolbar: Packages title + search + Refresh + mode (GitHub active, Server/Local Coming soon) → list + detail), **Settings** (coming soon).
 - The dashboard is read-only; installs run via the CLI. `Ctrl-C` stops
   the server.
