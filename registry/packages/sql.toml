@@ -27,7 +27,7 @@ root_mode = "check"
 root_echo_success = "root check: userland docker run is fine"
 
 [[requirements.directories]]
-path = "~/.ksx/sql"
+path = "~/.ksx/packages/sql"
 create = true
 mode = "755"
 required_for = ["install", "info"]
@@ -45,16 +45,16 @@ echo_fail = "docker FAIL: postgres runs containerized"
 
 [[env]]
 mode = "interpolate"
-values = { SQL_PORT = "5432", POSTGRES_DB = "ksx", POSTGRES_IMAGE = "postgres:16-alpine", DATA_DIR = "~/.ksx/sql" }
+values = { SQL_PORT = "5432", POSTGRES_DB = "ksx", POSTGRES_IMAGE = "postgres:16-alpine", DATA_DIR = "~/.ksx/packages/sql" }
 
 [[env]]
 mode = "file"
-target_path = "~/.ksx/sql/sql.env"
+target_path = "~/.ksx/packages/sql/sql.env"
 required_for = ["install", "reinstall"]
-values = { SQL_PORT = "5432", POSTGRES_DB = "ksx", POSTGRES_IMAGE = "postgres:16-alpine", DATA_DIR = "~/.ksx/sql" }
+values = { SQL_PORT = "5432", POSTGRES_DB = "ksx", POSTGRES_IMAGE = "postgres:16-alpine", DATA_DIR = "~/.ksx/packages/sql" }
 
 [[files]]
-target_path = "~/.ksx/sql/init.sql"
+target_path = "~/.ksx/packages/sql/init.sql"
 required_for = ["install"]
 echo_success = "seed staged for db ${POSTGRES_DB}"
 echo_fail = "seed FAILED"

@@ -27,7 +27,7 @@ root_mode = "check"
 root_echo_success = "root check: unprivileged ok (snippet staged under ~/.ksx)"
 
 [[requirements.directories]]
-path = "~/.ksx/ssh"
+path = "~/.ksx/packages/ssh"
 create = true
 mode = "700"
 required_for = ["install", "info"]
@@ -45,16 +45,16 @@ echo_fail = "no sshd/ssh binary (will install)"
 
 [[env]]
 mode = "interpolate"
-values = { SSH_PORT = "2222", SSH_USER = "ksx", DATA_DIR = "~/.ksx/ssh", HARDENING = "prohibit-password" }
+values = { SSH_PORT = "2222", SSH_USER = "ksx", DATA_DIR = "~/.ksx/packages/ssh", HARDENING = "prohibit-password" }
 
 [[env]]
 mode = "file"
-target_path = "~/.ksx/ssh/ssh.env"
+target_path = "~/.ksx/packages/ssh/ssh.env"
 required_for = ["install", "reinstall"]
-values = { SSH_PORT = "2222", SSH_USER = "ksx", DATA_DIR = "~/.ksx/ssh" }
+values = { SSH_PORT = "2222", SSH_USER = "ksx", DATA_DIR = "~/.ksx/packages/ssh" }
 
 [[files]]
-target_path = "~/.ksx/ssh/ksx-sshd.conf"
+target_path = "~/.ksx/packages/ssh/ksx-sshd.conf"
 required_for = ["install", "reinstall"]
 echo_success = "hardening snippet staged for port ${SSH_PORT}"
 echo_fail = "hardening snippet FAILED"

@@ -525,8 +525,20 @@ fn scope_label(required_for: &[String]) -> String {
 // Helpers
 // ---------------------------------------------------------------------------
 
-/// Expand a leading `~` to the user home directory.
+/// Expand a leading `~` to the user home directory, with `~/.ksx` mapped to the
+/// resolved data root (`/ksx` or `~/.ksx`) so recipes using `~/.ksx/packages/<app>`
+/// automatically follow `--dr root|home` and the `ksx/packages/<app>` layout.
 pub fn expand_tilde(path: &str) -> String {
+    // `~/.ksx` → base_dir() (`/ksx` or `~/.ksx`) — keeps recipes portable between roots
+    if path == "~/.ksx" || path.starts_with("~/.ksx/") {
+        let base = crate::storage::base_dir();
+        let rest = path.strip_prefix("~/.ksx").unwrap();
+        let rest = rest.trim_start_matches('/');
+        if rest.is_empty() {
+            return base.to_string_lossy().into_owned();
+        }
+        return base.join(rest).to_string_lossy().into_owned();
+    }
     if let Some(rest) = path.strip_prefix("~/") {
         let home = dirs::home_dir().unwrap_or_else(|| std::path::PathBuf::from("."));
         return home.join(rest).to_string_lossy().into_owned();

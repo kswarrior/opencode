@@ -33,7 +33,7 @@ root_mode = "check"
 root_echo_success = "root check: running unprivileged (fine for ~/.ksx)"
 
 [[requirements.directories]]
-path = "~/.ksx/panel"
+path = "~/.ksx/packages/panel"
 create = true
 mode = "755"
 required_for = ["install", "update", "reinstall", "info"]
@@ -69,18 +69,18 @@ echo_fail = "kvm device absent (software virt only)"
 
 [[env]]
 mode = "interpolate"
-values = { PANEL_PORT = "8443", PANEL_IMAGE = "ghcr.io/ks-panel/panel:latest", DATA_DIR = "~/.ksx/panel", PANEL_VERSION = "1.0.0", COMPOSE_PROJECT_NAME = "ksx-panel" }
+values = { PANEL_PORT = "8443", PANEL_IMAGE = "ghcr.io/ks-panel/panel:latest", DATA_DIR = "~/.ksx/packages/panel", PANEL_VERSION = "1.0.0", COMPOSE_PROJECT_NAME = "ksx-panel" }
 
 [[env]]
 mode = "file"
-target_path = "~/.ksx/panel/panel.env"
+target_path = "~/.ksx/packages/panel/panel.env"
 required_for = ["install", "update", "reinstall"]
-values = { PANEL_PORT = "8443", PANEL_IMAGE = "ghcr.io/ks-panel/panel:latest", DATA_DIR = "~/.ksx/panel", PANEL_VERSION = "1.0.0" }
+values = { PANEL_PORT = "8443", PANEL_IMAGE = "ghcr.io/ks-panel/panel:latest", DATA_DIR = "~/.ksx/packages/panel", PANEL_VERSION = "1.0.0" }
 
 # --- Embedded files (interpolated, platform-filtered) ---
 
 [[files]]
-target_path = "~/.ksx/panel/docker-compose.yml"
+target_path = "~/.ksx/packages/panel/docker-compose.yml"
 required_for = ["install", "reinstall"]
 only_os = ["linux"]
 echo_success = "compose template rendered for port ${PANEL_PORT}"
@@ -99,7 +99,7 @@ volumes:
 """
 
 [[files]]
-target_path = "~/.ksx/panel/README.txt"
+target_path = "~/.ksx/packages/panel/README.txt"
 required_for = ["install"]
 exclude_os = ["windows"]
 echo_success = "panel readme staged"
