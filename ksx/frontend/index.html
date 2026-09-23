@@ -393,7 +393,7 @@ ksx web --port 8080</pre>
           if (state.query) {
             box.innerHTML = '<p class="muted">No packages match "' + esc(state.query) + '".</p>';
           } else if (!state.pkgs.length) {
-            box.innerHTML = '<div class="pkg-coming-card"><div class="pkg-coming-icon">📦</div><h3>No packages in store</h3><p class="muted small">Add a <code>.toml</code> via <b>Add</b> → <b>Upload</b> (local file) or <b>URL</b> (download). Files are saved to <code>ksx/store/&lt;app&gt;.toml</code> (<code>/ksx</code> or <code>~/.ksx</code>).</p><p style="margin-top:10px"><button type="button" class="pkg-add-btn" onclick="document.getElementById(\'pkgAddBtn\').click()">+ Add package</button></p></div>';
+            box.innerHTML = '<div class="pkg-empty"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity:0.18"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg><p class="muted">No packages</p></div>';
           } else {
             box.innerHTML = "<p class=muted>No packages.</p>";
           }
