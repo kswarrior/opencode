@@ -40,6 +40,7 @@ pub async fn serve(port: u16) -> Result<(), Box<dyn std::error::Error + Send + S
         .route("/api/packages", get(api_packages).post(api_packages_save))
         .route("/api/packages/fetch-url", post(api_packages_fetch_url))
         .route("/api/packages/:service", get(api_package_detail).delete(api_package_delete))
+        .route("/api/packages/:service/run", post(api_package_run))
         .route("/api/state", get(api_state))
         .route("/api/version", get(api_version));
 
