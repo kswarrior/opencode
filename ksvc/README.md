@@ -19,13 +19,23 @@ Container (c): shares host kernel, namespaces/cgroups, 5MB RAM, <10ms start, lib
 make -C ksvc && ./ksvc/ksvc --help
 
 # host-root container (no rootfs) — mount+pid+uts+ipc isolated, host filesystem
+# run == launch for both c (container now) and v (vm stub, after container)
 ./ksvc/ksvc run -- /bin/sh -c 'echo hello; ps -o pid,comm | head'
+./ksvc/ksvc launch -- /bin/sh -c 'echo hello; ps -o pid,comm | head'  # identical, correctly matched
+./ksvc/ksvc c run -- /bin/sh -c 'echo hello'      # explicit c
+./ksvc/ksvc c launch -- /bin/sh -c 'echo hello'   # c launch == c run
+# vm v (stub, after container complete):
+# ./ksvc/ksvc v run -- /bin/sh
+# ./ksvc/ksvc v launch -- /bin/sh                 # v launch == v run (stub)
 
 # with hostname & limits (cgroup v2)
 ./ksvc/ksvc run --hostname demo --mem 128 --cpu 50 -- /bin/sh
+./ksvc/ksvc launch --hostname demo --mem 128 --cpu 50 -- /bin/sh # same
 
-# detached
+# detached (both verbs)
 ./ksvc/ksvc run -d --name myctr -- /bin/sleep 10
+./ksvc/ksvc launch -d --name myctr2 -- /bin/sleep 10 # identical
+./ksvc/ksvc c list; ./ksvc/ksvc v list  # both correctly matched
 ./ksvc/ksvc list
 ./ksvc/ksvc stop myctr
 ```
@@ -98,18 +108,20 @@ API (`ksvc/include/ksvc.h:1`):
 
 ---
 
-## CLI reference
+## CLI reference — run == launch (both c and v, correctly matched)
 
 ```
-ksvc run [OPTIONS] -- <cmd> [args...]
-ksvc list
-ksvc stop <id|name> [--sig SIGNAL]
-ksvc exec <id|name> -- <cmd> [args...]
+ksvc run|launch [OPTIONS] -- <cmd> [args...]          # c (container) default
+ksvc c run|launch [OPTIONS] -- <cmd> [args...]        # explicit c
+ksvc v run|launch [OPTIONS] -- <cmd> [args...]        # v (vm) stub after container
+ksvc list|c list|v list | ls | ps
+ksvc stop|kill|rm <id|name> [--sig SIGNAL]            # both c and v
+ksvc exec <id|name> -- <cmd> [args...]                # c now, v later
 ksvc version
 ksvc help
 ```
 
-**run options:**
+**run/launch options (identical):**
 
 - `--name NAME` — container name (also id alias for list/stop)
 - `--rootfs PATH` — rootfs directory to pivot_root/chroot (empty = host / with mount ns unshared)

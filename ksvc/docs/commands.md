@@ -197,30 +197,36 @@ Exit: `0` if killed, `1` if `container not found` or `kill` failed. Prints `ksvc
 
 ---
 
-## `ksvc exec` — exec in running container
+## `ksvc exec` — exec in running container/vm
 
 ```bash
 ksvc exec <id|name> -- <cmd> [args...]
+ksvc c exec <id|name> -- <cmd> [args...]   # explicit c
+ksvc v exec <id|name> -- <cmd> [args...]   # vm stub (future, after container)
 ```
 
-Enter container's namespaces via `nsenter` (`ksvc/src/main.c:130`).
+Enter container's (`c`) namespaces via `nsenter` (`ksvc/src/main.c:130`). Correctly matched for both types; `c` now, `v` stub for vm (will use `virsh`/`qemu` later).
 
 **Args:**
 
 * `<id|name>` — as `stop`.
 * `--` — required separator.
-* `<cmd> [args...]` — command to exec inside. Built as `nsenter -t <pid> -m -u -i -p [-n] -- <cmd>`.
+* `<cmd> [args...]` — command to exec inside. For `c`, built as `nsenter -t <pid> -m -u -i -p [-n] -- <cmd>`.
 
-**Behavior:** Loads `ctr.pid` and `ctr.cfg.use_net_ns`, builds `nsenter` argv, `execvp("nsenter", ...)`. Requires `util-linux` `nsenter` on host. If `nsenter` missing, prints `perror` and hint `sudo nsenter -t <pid> -m -u -i -p -- <cmd>`.
+**Behavior (c):** Loads `ctr.pid` and `ctr.cfg.use_net_ns`, builds `nsenter` argv, `execvp("nsenter", ...)`. Requires `util-linux` `nsenter` on host. If `nsenter` missing, prints `perror` and hint `sudo nsenter -t <pid> -m -u -i -p -- <cmd>`.
 
-Examples:
+Examples (both `run` and `launch` containers):
 
 ```bash
 ksvc run -d --name web --rootfs /tmp/alpine -- /bin/httpd -p 8080 -f
+ksvc launch -d --name web2 --rootfs /tmp/alpine -- /bin/httpd -p 8080 -f  # launch == run
 ksvc exec web -- /bin/sh
+ksvc c exec web -- /bin/sh
 ksvc exec web -- ps aux
 ksvc exec web -- cat /etc/alpine-release
 ksvc exec a1b2c3d4e5f6 -- /bin/sh -c 'echo hi; hostname'
+# future vm:
+# ksvc v exec <id> -- /bin/sh  # vm stub
 ```
 
 Note: `exec` does **not** create a new container; it enters the existing pid/mount/uts/ipc (and net if `use_net_ns`). The exec'd process shares the container's namespaces.
