@@ -169,10 +169,7 @@ ksx web --port 8080</pre>
       }
 
       function load(refresh) {
-        var refreshQ = refresh ? "?refresh=true" : "";
-        // for github mode we pass source=github
-        var pkgUrl = "/api/packages?source=" + encodeURIComponent(state.mode) + (refresh ? "&refresh=true" : "");
-        // if mode is coming-soon, pkgUrl still handled but backend returns placeholder
+        var pkgUrl = "/api/packages" + (refresh ? "?refresh=true" : "");
         Promise.all([getJSON("/api/host"), getJSON(pkgUrl), getJSON("/api/state")])
           .then(function (res) {
             state.host = res[0];
@@ -190,14 +187,11 @@ ksx web --port 8080</pre>
             // if no pkgs but errors, show error in list
             if (!pkgs.length && pkgsData && pkgsData.errors && pkgsData.errors.length) {
               var box = document.getElementById("pkgList");
-              box.innerHTML = '<p class="muted">Failed to fetch from ' + esc(state.mode) + '.</p>'
+              box.innerHTML = '<p class="muted">Failed to fetch packages.</p>'
                 + '<p class="muted small">' + esc(pkgsData.errors.join("; ")) + '</p>'
                 + '<p class="muted small">Check network or try <a href="#" id="retryLink">Refresh</a>.</p>';
               var retry = document.getElementById("retryLink");
               if (retry) retry.addEventListener("click", function(e){ e.preventDefault(); refreshPackages(); });
-            }
-            if (pkgsData && pkgsData.coming_soon) {
-              renderComingSoon(state.mode);
             }
           })
           .catch(function (err) {
@@ -212,38 +206,9 @@ ksx web --port 8080</pre>
       function updateSubtitle(data) {
         var sub = document.getElementById("pkgSubtitle");
         if (!sub) return;
-        if (state.mode === "github") {
-          sub.textContent = "Source: GitHub · " + state.filtered.length + " package" + (state.filtered.length !== 1 ? "s" : "") + " · raw CDN";
-        } else if (state.mode === "server") {
-          sub.textContent = "Source: Server · Coming soon";
-        } else if (state.mode === "local") {
-          sub.textContent = "Source: Local · Coming soon";
-        } else {
-          sub.textContent = "Source: " + state.mode;
-        }
+        sub.textContent = state.filtered.length + " package" + (state.filtered.length !== 1 ? "s" : "");
         if (state.query) sub.textContent += ' · filtered by "' + state.query + '"';
         if (data && data.errors && data.errors.length) sub.textContent += " · " + data.errors.length + " error(s)";
-      }
-
-      function renderComingSoon(mode) {
-        var box = document.getElementById("pkgList");
-        var detail = document.getElementById("pkgDetail");
-        if (box) {
-          box.innerHTML = '<div class="pkg-coming-card">'
-            + '<div class="pkg-coming-icon">⏳</div>'
-            + '<h3>' + esc(mode.charAt(0).toUpperCase() + mode.slice(1)) + ' mode — Coming soon</h3>'
-            + '<p class="muted">'
-            + (mode === "server" ? 'Server packages will be fetched from the Render API (<code>KSX_RENDER_URL</code>) with host-aware filtering. This tier is under construction.' : 'Local packages will be loaded from <code>~/.ksx/cache</code> and local registry without network. Stay tuned.')
-            + '</p>'
-            + '<p class="muted small">Currently browsing GitHub CDN. Switch back to <button type="button" class="link-btn" id="backToGithub">GitHub</button> to view packages.</p>'
-            + '</div>';
-          var back = document.getElementById("backToGithub");
-          if (back) back.addEventListener("click", function(){ setMode("github"); });
-        }
-        if (detail) {
-          detail.innerHTML = '<p class="muted">' + esc(mode) + ' details will appear here once the source is available.</p>'
-            + '<p class="muted small">GitHub is the active source. Recipes are fetched from <code>registry/packages/*.toml</code> via Raw CDN.</p>';
-        }
       }
 
       function renderHome(host, pkgs, st) {
@@ -306,9 +271,6 @@ ksx web --port 8080</pre>
           updateSubtitle({});
           return;
         }
-        if (state.mode === "server" || state.mode === "local") {
-          return;
-        }
         if (!state.filtered.length) {
           if (state.query) {
             box.innerHTML = '<p class="muted">No packages match "' + esc(state.query) + '".</p>';
@@ -348,15 +310,11 @@ ksx web --port 8080</pre>
       }
 
       function selectPkg(name) {
-        if (state.mode === "server" || state.mode === "local") {
-          showToast(state.mode + " mode — Coming soon");
-          return;
-        }
         state.selected = name;
         showDetailPage();
         var box = document.getElementById("pkgDetail");
         box.innerHTML = '<div class="pkg-detail-loading"><p class="muted">loading ' + esc(name) + '…</p></div>';
-        getJSON("/api/packages/" + encodeURIComponent(name) + "?source=" + encodeURIComponent(state.mode)).then(function (d) {
+        getJSON("/api/packages/" + encodeURIComponent(name)).then(function (d) {
           if (d.coming_soon) {
             box.innerHTML = '<div class="pkg-coming-card small"><h3>Coming soon</h3><p class="muted">' + esc(d.error || "This source is not available yet.") + '</p></div>';
             return;
