@@ -20,6 +20,13 @@ use crate::web;
 #[derive(Debug, Parser)]
 #[command(name = "ksx", version, about = "Ultra-lightweight KS manager (<10MB RAM, <5MB binary)")]
 pub struct Cli {
+    /// Data dir root: `root` → `/ksx`, `home` → `~/.ksx`.
+    /// If omitted: auto-detect — one of `/ksx` / `~/.ksx` exists → use it,
+    /// both → prompt, neither → prompt + mkdir.
+    /// Also respects `KSX_DR=root|home` env.
+    #[arg(long = "dr", global = true, value_parser = ["root", "home"])]
+    pub dr: Option<String>,
+
     #[command(subcommand)]
     pub command: Commands,
 }
@@ -91,6 +98,7 @@ pub enum Commands {
 /// Entry point called from `main.rs`.
 pub async fn run() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let cli = Cli::parse();
+    storage::set_dr_override(cli.dr.clone());
     match cli.command {
         Commands::Install { service, refresh, force } => {
             cmd_run(&service, refresh, force, "install").await

@@ -1,11 +1,15 @@
-//! Flat-file manager: recipe cache (`~/.ksx/cache/*.toml`, 24h TTL)
-//! + installed-service tracking (`~/.ksx/state.json`).
+//! Flat-file manager: recipe cache (`~/.ksx/cache/*.toml` or `/ksx/cache/*.toml`, 24h TTL)
+//! + installed-service tracking (`~/.ksx/state.json` or `/ksx/state.json`).
 //!
-//! Zero external runtime: std::fs only. No SQLite, no daemon.
+//! Resolution: `--dr root|home` (or `KSX_DR`) overrides; otherwise auto-detect
+//! `/ksx` vs `~/.ksx` on every run — one exists → use it, both → prompt,
+//! neither → prompt + mkdir.
 
 use std::collections::HashMap;
 use std::fs;
+use std::io::{IsTerminal, Write};
 use std::path::PathBuf;
+use std::sync::OnceLock;
 use std::time::{Duration, SystemTime};
 
 use serde::{Deserialize, Serialize};
@@ -13,9 +17,154 @@ use serde::{Deserialize, Serialize};
 /// Cache time-to-live: 24 hours.
 pub const CACHE_TTL: Duration = Duration::from_secs(24 * 60 * 60);
 
-/// `~/.ksx` root.
-pub fn base_dir() -> PathBuf {
+// ---------------------------------------------------------------------------
+// Data-root resolution (`/ksx` vs `~/.ksx`)
+// ---------------------------------------------------------------------------
+
+static DR_OVERRIDE: OnceLock<std::sync::Mutex<Option<String>>> = OnceLock::new();
+static RESOLVED_BASE: OnceLock<PathBuf> = OnceLock::new();
+
+fn dr_lock() -> &'static std::sync::Mutex<Option<String>> {
+    DR_OVERRIDE.get_or_init(|| std::sync::Mutex::new(None))
+}
+
+/// Called from `cli::run()` immediately after `Cli::parse()` so every
+/// subsequent `base_dir()` sees the override without changing its signature.
+pub fn set_dr_override(dr: Option<String>) {
+    if let Ok(mut g) = dr_lock().lock() {
+        *g = dr;
+    }
+}
+
+fn dr_override() -> Option<String> {
+    dr_lock().lock().ok().and_then(|g| g.clone())
+}
+
+fn home_ksx() -> PathBuf {
     dirs::home_dir().unwrap_or_else(|| PathBuf::from(".")).join(".ksx")
+}
+
+fn root_ksx() -> PathBuf {
+    PathBuf::from("/ksx")
+}
+
+fn prompt_choice(both_exist: bool) -> PathBuf {
+    let root = root_ksx();
+    let home = home_ksx();
+
+    // Non-interactive (CI, `ksx web`, piped stdin): don't block, default to home.
+    if !std::io::stdin().is_terminal() {
+        if both_exist {
+            eprintln!(
+                "ksx: both /ksx and ~/.ksx found — non-interactive, defaulting to ~/.ksx (use --dr root|home)"
+            );
+        } else {
+            eprintln!(
+                "ksx: neither /ksx nor ~/.ksx found — non-interactive, creating ~/.ksx (use --dr root|home to override)"
+            );
+            let _ = fs::create_dir_all(home.join("cache"));
+        }
+        return home;
+    }
+
+    loop {
+        if both_exist {
+            eprint!("ksx: both /ksx and ~/.ksx found. Choose data dir [1]/ksx [2]~/.ksx: ");
+        } else {
+            eprint!("ksx: neither /ksx nor ~/.ksx found. Choose where to create [1]/ksx (needs root) [2]~/.ksx: ");
+        }
+        let _ = std::io::stderr().flush();
+        let mut input = String::new();
+        if std::io::stdin().read_line(&mut input).is_err() {
+            eprintln!("ksx: read failed, defaulting to ~/.ksx");
+            if !both_exist {
+                let _ = fs::create_dir_all(home.join("cache"));
+            }
+            return home;
+        }
+        match input.trim().to_lowercase().as_str() {
+            "1" | "root" | "/ksx" => {
+                if !both_exist {
+                    match fs::create_dir_all(root.join("cache")) {
+                        Ok(()) => {}
+                        Err(e) => {
+                            eprintln!("ksx: failed to create /ksx: {e} (try sudo or choose ~/.ksx)");
+                            continue;
+                        }
+                    }
+                }
+                return root;
+            }
+            "2" | "home" | "~/.ksx" | "~" => {
+                if !both_exist {
+                    let _ = fs::create_dir_all(home.join("cache"));
+                }
+                return home;
+            }
+            "" => {
+                eprintln!("ksx: empty input, enter 1 or 2");
+                continue;
+            }
+            other => {
+                eprintln!("ksx: invalid choice '{other}', enter 1 ( /ksx ) or 2 ( ~/.ksx )");
+                continue;
+            }
+        }
+    }
+}
+
+fn resolve_base_dir() -> PathBuf {
+    // 1) explicit `--dr` / programmatic override takes precedence
+    if let Some(dr) = dr_override() {
+        return match dr.as_str() {
+            "root" => root_ksx(),
+            "home" => home_ksx(),
+            _ => home_ksx(),
+        };
+    }
+    // 2) env `KSX_DR` as non-CLI override (useful for Docker / tests)
+    if let Ok(env_dr) = std::env::var("KSX_DR") {
+        match env_dr.as_str() {
+            "root" | "/ksx" => return root_ksx(),
+            "home" | "~/.ksx" => return home_ksx(),
+            _ => {}
+        }
+    }
+    // 3) auto-detect by existence
+    let root = root_ksx();
+    let home = home_ksx();
+    let root_exists = root.exists();
+    let home_exists = home.exists();
+    match (root_exists, home_exists) {
+        (true, false) => root,
+        (false, true) => home,
+        (true, true) => prompt_choice(true),
+        (false, false) => prompt_choice(false),
+    }
+}
+
+/// Resolved data root: `/ksx` or `~/.ksx`.
+///
+/// Rules (in order):
+/// - `--dr root` → `/ksx`, `--dr home` → `~/.ksx`
+/// - `KSX_DR=root|home` env fallback
+/// - one of `/ksx` / `~/.ksx` exists → use it
+/// - both exist → prompt which one
+/// - neither exists → prompt where to create + `mkdir -p <chosen>/cache`
+pub fn base_dir() -> PathBuf {
+    if let Some(cached) = RESOLVED_BASE.get() {
+        return cached.clone();
+    }
+    let resolved = resolve_base_dir();
+    let _ = RESOLVED_BASE.set(resolved.clone());
+    resolved
+}
+
+#[cfg(test)]
+pub fn _reset_for_test() {
+    // Best-effort reset for unit tests that need to re-resolve.
+    // OnceLock has no reset, so we leak the old value pattern:
+    // tests should set DR via env `KSX_DR` or run in isolated processes.
 }
 
 /// `~/.ksx/cache/<service>.toml`
