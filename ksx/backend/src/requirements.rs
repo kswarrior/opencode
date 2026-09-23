@@ -124,9 +124,32 @@ fn merge_env_block(vars: &mut HashMap<String, String>, block: &crate::pipeline::
     let mode = block.mode.to_lowercase();
     if mode == "interpolate" || mode == "both" {
         for (k, v) in &block.values {
-            vars.insert(k.clone(), v.clone());
+            vars.insert(k.clone(), expand_var_value(v));
         }
     }
+}
+
+fn expand_var_value(v: &str) -> String {
+    // `~/.ksx` → base_dir (`/ksx` or `~/.ksx`) so DATA_DIR follows --dr
+    if v == "~/.ksx" || v.starts_with("~/.ksx/") {
+        let base = crate::storage::base_dir();
+        let rest = v.strip_prefix("~/.ksx").unwrap().trim_start_matches('/');
+        if rest.is_empty() {
+            return base.to_string_lossy().into_owned();
+        }
+        return base.join(rest).to_string_lossy().into_owned();
+    }
+    if let Some(rest) = v.strip_prefix("~/") {
+        let home = dirs::home_dir().unwrap_or_else(|| std::path::PathBuf::from("."));
+        return home.join(rest).to_string_lossy().into_owned();
+    }
+    if v == "~" {
+        return dirs::home_dir()
+            .unwrap_or_else(|| std::path::PathBuf::from("."))
+            .to_string_lossy()
+            .into_owned();
+    }
+    v.to_string()
 }
 
 /// Write `file`/`both` blocks to their `target_path` on disk
