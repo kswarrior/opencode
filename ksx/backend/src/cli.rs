@@ -98,10 +98,7 @@ pub enum Commands {
 /// Entry point called from `main.rs`.
 pub async fn run() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let cli = Cli::parse();
-    eprintln!("ksx: debug dr={:?} base_dir will be {:?}", cli.dr, {
-        storage::set_dr_override(cli.dr.clone());
-        storage::base_dir()
-    });
+    storage::set_dr_override(cli.dr.clone());
     match cli.command {
         Commands::Install { service, refresh, force } => {
             cmd_run(&service, refresh, force, "install").await
