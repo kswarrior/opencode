@@ -3,12 +3,14 @@ all:
 	$(MAKE) -C auth
 	$(MAKE) -C account
 	$(MAKE) -C stats
+	$(MAKE) -C ksvc
 
 clean:
 	$(MAKE) -C main clean
 	$(MAKE) -C auth clean
 	$(MAKE) -C account clean
 	$(MAKE) -C stats clean
+	$(MAKE) -C ksvc clean
 	rm -f /tmp/out_*.txt /tmp/main_out.html
 
 run-main:
