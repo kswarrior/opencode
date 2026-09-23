@@ -338,22 +338,22 @@ ksx web --port 8080</pre>
           updateSubtitle({});
           return;
         }
-        box.innerHTML = state.filtered.map(function (p) {
+        box.innerHTML = state.filtered.map(function (p, i) {
           var ver = p.version ? 'v' + esc(p.version) : '';
+          var verTag = ver ? '<span class="pkg-card-ver">' + ver + '</span>' : '';
           var inst = p.installed ? '<span class="pkg-card-installed">installed v' + esc(p.installed) + '</span>' : '';
           var stale = p.stale ? '<span class="badge-warn" title="cached stale">cached</span>' : '';
           var desc = p.description ? esc(p.description) : (p.summary ? esc(p.summary) : 'No description');
           var meta = "";
           if (p.os && p.os.length) meta += esc(p.os.join(", "));
           if (p.arch && p.arch.length) meta += (meta ? " · " : "") + esc(p.arch.join(", "));
-          return '<button type="button" class="pkg-card" data-pkg="' + esc(p.name) + '" aria-label="Open ' + esc(p.name) + ' details">' +
+          return '<button type="button" class="pkg-card" data-pkg="' + esc(p.name) + '" aria-label="Open ' + esc(p.name) + ' details" style="animation-delay:' + (i * 0.04) + 's">' +
             '<div class="pkg-card-top">' +
-              '<h3 class="pkg-card-name">' + esc(p.name) + '</h3>' +
-              stale +
+              '<div class="pkg-card-name-wrap"><h3 class="pkg-card-name">' + esc(p.name) + '</h3>' + stale + '</div>' +
+              verTag +
             '</div>' +
             '<p class="pkg-card-desc">' + desc + '</p>' +
             '<div class="pkg-card-tags">' +
-              '<span class="pkg-tag pkg-tag-ver">' + ver + '</span>' +
               inst +
               (meta ? '<span class="pkg-tag pkg-tag-meta">' + meta + '</span>' : '') +
             '</div>' +
