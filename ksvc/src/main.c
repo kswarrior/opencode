@@ -249,8 +249,13 @@ int main(int argc, char *argv[]) {
     ksvc_config_init(&cfg);
     int detach = 0;
 
-    // parse run/launch options (run == launch, both correctly matched)
-    // We need to handle -- separator for cmd; also support --help without --
+    // parse run/launch options (run == launch, both correctly matched, all three syntaxes)
+    // Supported correctly matched:
+    //   ksvc c launch mycontainer              -> type c, name mycontainer, default /bin/sh
+    //   ksvc launch c mycontainer              -> same (verb type name)
+    //   ksvc launch --type c mycontainer      -> same (flag)
+    //   ksvc run --name mycontainer -- /bin/sh -> explicit
+    // We need to handle -- separator for cmd; also support --help without -- and positional name without --
     int cmd_start = -1;
     for (int i=cmd_idx+1;i<argc;i++) {
         if (strcmp(argv[i],"--")==0) { cmd_start = i+1; break; }
@@ -261,38 +266,50 @@ int main(int argc, char *argv[]) {
             if (strcmp(argv[i],"--help")==0 || strcmp(argv[i],"-h")==0) { print_usage(argv[0]); return 0; }
         }
     }
-    // if no --, maybe last args are cmd without dash? For compatibility, treat remaining non-option as cmd if starts with / or -
-    // Simpler: require --. If not found, try to find first arg that looks like command (starts with / or contains /)
-    if (cmd_start < 0) {
-        // look for first non-option after run options
-        // We'll parse options up to argc, and whatever remains is cmd if we don't have --
-        // For now error if no --
-        fprintf(stderr,"ksvc: run requires -- separator before command\n");
-        fprintf(stderr,"  example: ksvc run -- /bin/sh\n");
-        fprintf(stderr,"  example: ksvc run --rootfs ./rootfs -- /bin/echo hello\n");
+    // Parse options before -- (or before end if no --, for positional name)
+    int parse_end = (cmd_start >= 0) ? cmd_start-1 : argc;
+    // Handle --type flag anywhere before -- (or before end)
+    for (int i=cmd_idx+1; i<parse_end; ) {
+        if (strcmp(argv[i],"--type")==0 && i+1 < parse_end) {
+            const char *t = argv[i+1];
+            if (strcmp(t,"c")==0 || strcmp(t,"container")==0 || strcmp(t,"cont")==0) { type="c"; is_vm=0; }
+            else if (strcmp(t,"v")==0 || strcmp(t,"vm")==0 || strcmp(t,"virt")==0 || strcmp(t,"virtual")==0) { type="v"; is_vm=1; }
+            else { fprintf(stderr,"ksvc: --type must be c|container or v|vm, got %s\n", t); return 1; }
+            // remove these two args by shifting
+            for (int j=i; j+2 < argc; j++) argv[j]=argv[j+2];
+            argc -= 2; argv[argc]=NULL;
+            if (cmd_start >= 0) cmd_start -= 2;
+            parse_end -= 2;
+            continue;
+        }
+        i++;
+    }
+    if (is_vm) {
+        // re-check vm stub after --type handling (in case --type v was passed to c)
+        fprintf(stderr, "ksvc v %s: vm support not yet (container c completed first). Will add KVM/QEMU after container.\n", cmd);
+        fprintf(stderr, "hint: use ksvc c %s or ksvc %s for container (now). Example: ksvc run -- /bin/echo hi\n", cmd, cmd);
         return 1;
     }
-
-    // Parse options before --
-    for (int i=cmd_idx+1;i<cmd_start-1;i++) {
+    // Now parse other options before -- (correctly matched for both run and launch)
+    for (int i=cmd_idx+1;i<parse_end;i++) {
         const char *a = argv[i];
-        if (strcmp(a,"--name")==0 && i+1 < cmd_start-1) {
+        if (strcmp(a,"--name")==0 && i+1 < parse_end) {
             strncpy(cfg.name, argv[++i], sizeof(cfg.name)-1);
-        } else if (strcmp(a,"--rootfs")==0 && i+1 < cmd_start-1) {
+        } else if (strcmp(a,"--rootfs")==0 && i+1 < parse_end) {
             strncpy(cfg.rootfs, argv[++i], sizeof(cfg.rootfs)-1);
-        } else if (strcmp(a,"--overlay-lower")==0 && i+1 < cmd_start-1) {
+        } else if (strcmp(a,"--overlay-lower")==0 && i+1 < parse_end) {
             strncpy(cfg.overlay_lower, argv[++i], sizeof(cfg.overlay_lower)-1);
-        } else if (strcmp(a,"--overlay-upper")==0 && i+1 < cmd_start-1) {
+        } else if (strcmp(a,"--overlay-upper")==0 && i+1 < parse_end) {
             strncpy(cfg.overlay_upper, argv[++i], sizeof(cfg.overlay_upper)-1);
-        } else if (strcmp(a,"--hostname")==0 && i+1 < cmd_start-1) {
+        } else if (strcmp(a,"--hostname")==0 && i+1 < parse_end) {
             strncpy(cfg.hostname, argv[++i], sizeof(cfg.hostname)-1);
-        } else if (strcmp(a,"--workdir")==0 && i+1 < cmd_start-1) {
+        } else if (strcmp(a,"--workdir")==0 && i+1 < parse_end) {
             strncpy(cfg.workdir, argv[++i], sizeof(cfg.workdir)-1);
-        } else if (strcmp(a,"--mem")==0 && i+1 < cmd_start-1) {
+        } else if (strcmp(a,"--mem")==0 && i+1 < parse_end) {
             parse_int(argv[++i], &cfg.mem_limit_mb);
-        } else if (strcmp(a,"--cpu")==0 && i+1 < cmd_start-1) {
+        } else if (strcmp(a,"--cpu")==0 && i+1 < parse_end) {
             parse_int(argv[++i], &cfg.cpu_quota_pct);
-        } else if (strcmp(a,"--pids")==0 && i+1 < cmd_start-1) {
+        } else if (strcmp(a,"--pids")==0 && i+1 < parse_end) {
             parse_int(argv[++i], &cfg.pids_limit);
         } else if (strcmp(a,"--net")==0) {
             cfg.use_net_ns = 1;
@@ -306,6 +323,15 @@ int main(int argc, char *argv[]) {
         } else if (strcmp(a,"--help")==0 || strcmp(a,"-h")==0) {
             print_usage(argv[0]);
             return 0;
+        } else if (a[0] != '-') {
+            // positional: treat as --name if not already set (e.g., launch c mycontainer, launch --type c mycontainer)
+            if (cfg.name[0]=='\0') {
+                strncpy(cfg.name, a, sizeof(cfg.name)-1);
+            } else {
+                fprintf(stderr,"ksvc: unknown positional %s (already have name %s)\n", a, cfg.name);
+                print_usage(argv[0]);
+                return 1;
+            }
         } else {
             fprintf(stderr,"ksvc: unknown option %s\n", a);
             print_usage(argv[0]);
@@ -313,11 +339,26 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    // Build cmd/argv from remaining
-    if (cmd_start >= argc || argv[cmd_start]==NULL) {
-        fprintf(stderr,"ksvc: no command after --\n");
-        return 1;
-    }
+    // Build cmd/argv from remaining (after --) or default if no -- (e.g., launch c mycontainer)
+    if (cmd_start < 0) {
+        // No -- separator: use default command /bin/sh, name already set from positional
+        if (cfg.name[0]=='\0') {
+            // No name and no -- : require -- for explicit command
+            fprintf(stderr,"ksvc: %s requires -- separator before command (or positional name)\n", cmd);
+            fprintf(stderr,"  example: ksvc %s %s -- /bin/sh\n", type, cmd);
+            fprintf(stderr,"  example: ksvc %s %s mycontainer -- /bin/sh\n", type, cmd);
+            fprintf(stderr,"  example: ksvc %s launch mycontainer\n", type);
+            return 1;
+        }
+        // default command for launch/run without explicit cmd
+        cfg.argv[0] = "/bin/sh";
+        cfg.argv[1] = NULL;
+        strncpy(cfg.cmd, "/bin/sh", sizeof(cfg.cmd)-1);
+    } else {
+        if (cmd_start >= argc || argv[cmd_start]==NULL) {
+            fprintf(stderr,"ksvc: no command after --\n");
+            return 1;
+        }
     // Join remaining args into cfg.cmd for display, and set argv array
     // cfg.cmd is single string for display; cfg.argv holds vector
     {
