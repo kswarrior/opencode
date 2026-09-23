@@ -190,7 +190,7 @@ pre.code {
 }
 @media (prefers-reduced-motion: reduce) {
   .brand-mark, .brand-mark::after, .brand-sub, .brand::after,
-  .sidebar, .nav-item, .side-foot, .topbar::before { animation: none !important; }
+  .sidebar, .nav-item, .side-foot, .topbar::before, .skeleton { animation: none !important; }
   .brand:hover .brand-mark, .nav-item:hover, .nav-item:active, .nav-item.is-active { transform: none !important; }
   .sidebar { transition: none !important; }
 }
