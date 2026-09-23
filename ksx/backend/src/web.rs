@@ -18,7 +18,7 @@ use axum::{
     extract::{Path, Json},
     http::{header, StatusCode},
     response::{Html, IntoResponse, Json as JsonResp},
-    routing::{get, post, delete},
+    routing::{get, post},
     Router,
 };
 
