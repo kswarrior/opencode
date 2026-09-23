@@ -53,6 +53,16 @@ if [[ -f "$VERSION_FILE" ]]; then
       sed -i '' -E "s/^version = \".*\"/version = \"$NEW_VERSION\"/" "$VERSION_FILE"
     fi
     echo "rebuild: updated $VERSION_FILE to $NEW_VERSION"
+    # keep frontend placeholder in sync (so embedded HTML shows correct fallback before JS fetch)
+    FRONTEND_HTML="$ROOT/frontend/index.html"
+    if [[ -f "$FRONTEND_HTML" ]]; then
+      echo "rebuild: syncing sidebar placeholder to V$NEW_VERSION"
+      if sed --version >/dev/null 2>&1; then
+        sed -i -E "s/>V[0-9]+\.[0-9]+\.[0-9]+</>V${NEW_VERSION}</" "$FRONTEND_HTML"
+      else
+        sed -i '' -E "s/>V[0-9]+\.[0-9]+\.[0-9]+</>V${NEW_VERSION}</" "$FRONTEND_HTML"
+      fi
+    fi
   else
     echo "rebuild: warning: could not parse current version from $VERSION_FILE"
   fi

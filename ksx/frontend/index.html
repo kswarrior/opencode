@@ -494,6 +494,13 @@ ksx web --port 8080</pre>
 
       // initial load
       load(false);
+      // sidebar version (V${version}) — fetched from backend, auto-bumped by rebuild.sh
+      (function loadVersion(){
+        getJSON("/api/version").then(function(d){
+          var el = document.getElementById("sideVersion");
+          if (el && d && d.version) el.textContent = "V" + d.version;
+        }).catch(function(){});
+      })();
     })();
   </script>
 </body>
