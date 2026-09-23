@@ -86,6 +86,6 @@ ksx web --port 8080
   `GET /api/host`, `GET /api/packages`, `GET /api/packages/:service`,
   `GET /api/state`.
 - Sidebar pages: **Home** (overview: host, memory, package/installed counts),
-  **Packages** (toolbar: Packages title + search + Refresh + mode (GitHub active, Server/Local Coming soon) → list + detail), **Settings** (coming soon).
+  **Packages** (toolbar: Packages title + search + Refresh → stylish card grid → full-page detail with requirements & actions), **Settings** (coming soon).
 - The dashboard is read-only; installs run via the CLI. `Ctrl-C` stops
   the server.
