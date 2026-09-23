@@ -128,28 +128,14 @@ async fn api_packages(Query(params): Query<HashMap<String, String>>) -> impl Int
     let mut out = Vec::new();
     let mut errors: Vec<String> = Vec::new();
 
-    // Fetch concurrently
-    let fetches: Vec<_> = pipeline::KNOWN_PACKAGES
-        .iter()
-        .map(|name| {
-            let s = source.clone();
-            let n = name.to_string();
-            async move {
-                let res = fetch_recipe_for_api(&n, &s, refresh).await;
-                (n, res)
-            }
-        })
-        .collect();
-
-    let results = futures_join(fetches).await;
-
-    for (name, res) in results {
+    for name in pipeline::KNOWN_PACKAGES {
+        let res = fetch_recipe_for_api(name, &source, refresh).await;
         match res {
             Ok(recipe) => out.push(package_summary(&recipe, &state, &source)),
             Err(e) => {
                 // Try stale cache fallback (load directly without TTL) so that
                 // offline still shows something if previously cached.
-                if let Some(text) = load_stale_cache(&name) {
+                if let Some(text) = load_stale_cache(name) {
                     if let Ok(recipe) = pipeline::Recipe::from_toml(&text) {
                         let mut v = package_summary(&recipe, &state, &source);
                         v["stale"] = serde_json::Value::Bool(true);
@@ -326,17 +312,6 @@ fn load_stale_cache(service: &str) -> Option<String> {
     // Load cache even if stale (bypass TTL)
     let path = storage::cache_path(service);
     std::fs::read_to_string(&path).ok()
-}
-
-async fn futures_join<F, T>(futs: Vec<F>) -> Vec<T>
-where
-    F: std::future::Future<Output = T>,
-{
-    let mut out = Vec::with_capacity(futs.len());
-    for f in futs {
-        out.push(f.await);
-    }
-    out
 }
 
 /// Shared summary shape for list + detail endpoints.
