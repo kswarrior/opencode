@@ -648,12 +648,6 @@ body.nav-open .scrim { opacity: 1; }
   .pkg-header { position: relative; }
   .pkg-refresh { width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 8px; }
   .pkg-refresh-text { display: none; }
-  .pkg-mode { display: none !important; }
-  .pkg-mode-dropdown { display: inline-flex !important; }
-  .pkg-mode::-webkit-scrollbar { display: none; }
-  .pkg-mode-btn { padding: 7px 10px; font-size: 11px; }
-  .pkg-coming { display: none; }
-  .pkg-mode-btn.is-active .pkg-coming { display: inline; }
   .pkg-grid { grid-template-columns: 1fr; }
   .pkg-detail-card { padding: 16px; }
   .pkg-detail-name { font-size: 18px; }
@@ -676,7 +670,7 @@ body.nav-open .scrim { opacity: 1; }
   .content { padding: 16px; }
 }
 /* extra glass polish — subtle inner highlight for all glass surfaces */
-.card, .pkg-card, .pkg-detail-right, .pkg-search-bar, .pkg-refresh, .pkg-mode, .pkg-back, .menu-btn, .pkg-search-icon-btn {
+.card, .pkg-card, .pkg-detail-right, .pkg-search-bar, .pkg-refresh, .pkg-back, .menu-btn, .pkg-search-icon-btn {
   -webkit-backdrop-filter: blur(16px) saturate(180%);
 }
 @media (prefers-color-scheme: dark) {
