@@ -248,7 +248,7 @@ body.nav-open .scrim { opacity: 1; }
 .pkg-mode-btn.is-active .pkg-coming { background: #fff; color: #92400e; border-color: #fcd34d; }
 
 /* toast */
-.pkg-toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%) translateY(10px); background: #111214; color: #fff; border-radius: 999px; padding: 10px 16px; font-size: 13px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.18); z-index: 40; opacity: 0; transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; }
+.pkg-toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%) translateY(10px); background: #111214; color: #fff; border-radius: 999px; padding: 10px 16px; font-size: 13px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.12); z-index: 40; opacity: 0; transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; }
 .pkg-toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* coming soon card */
