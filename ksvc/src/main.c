@@ -12,49 +12,58 @@
 
 static void print_usage(const char *prog) {
     printf("ksvc v%s — lightweight container runtime (c for container, v for vm)\n", ksvc_version());
-    printf("  Real containers like Docker, NOT VMs (no KVM/QEMU, shares host kernel).\n\n");
+    printf("  Real containers like Docker, NOT VMs (no KVM/QEMU, shares host kernel).\n");
+    printf("  c = container (now), v = vm (coming after container complete).\n\n");
     printf("Usage:\n");
-    printf("  %s run [OPTIONS] -- <cmd> [args...]\n", prog);
-    printf("  %s list\n", prog);
-    printf("  %s stop <id|name> [--sig SIGNAL]\n", prog);
-    printf("  %s exec <id|name> -- <cmd> [args...]\n", prog);
+    printf("  %s run|launch [OPTIONS] -- <cmd> [args...]          # c (container) — aliases: run == launch\n", prog);
+    printf("  %s c run|launch [OPTIONS] -- <cmd> [args...]        # explicit container\n");
+    printf("  %s v run|launch [OPTIONS] -- <cmd> [args...]        # vm (stub, after container)\n");
+    printf("  %s list [c|v] | ls | ps                             # list (both types, or filter)\n");
+    printf("  %s stop|kill|rm <id|name> [--sig SIGNAL]            # stop (both)\n");
+    printf("  %s exec <id|name> -- <cmd> [args...]                # exec\n");
     printf("  %s version\n", prog);
     printf("  %s help\n", prog);
     printf("\n");
-    printf("Run options:\n");
-    printf("  --name NAME            container name (default: random id)\n");
-    printf("  --rootfs PATH          rootfs directory to pivot_root/chroot (default: host /)\n");
-    printf("  --overlay-lower PATH   lowerdir for overlayfs (optional)\n");
-    printf("  --overlay-upper PATH   upperdir for overlayfs (optional, tmp if empty)\n");
+    printf("Run/Launch options (identical, run == launch):\n");
+    printf("  --name NAME            container/vm name (default: random id)\n");
+    printf("  --rootfs PATH          rootfs dir to pivot_root/chroot (container) / disk img (vm)\n");
+    printf("  --overlay-lower PATH   lowerdir for overlayfs (container, optional)\n");
+    printf("  --overlay-upper PATH   upperdir for overlayfs (container, optional, tmp if empty)\n");
     printf("  --hostname HOST        UTS hostname (default: ksvc)\n");
     printf("  --workdir DIR          chdir after pivot (default: /)\n");
-    printf("  --mem MB               memory limit in MB (cgroup v2, 0=unlimited)\n");
-    printf("  --cpu PCT              cpu quota percent (100=1 cpu, 50=0.5 cpu)\n");
+    printf("  --mem MB               memory limit MB (cgroup v2, 0=unlimited)\n");
+    printf("  --cpu PCT              cpu quota 100=1cpu, 50=0.5cpu (cgroup v2)\n");
     printf("  --pids N               pids limit (0=unlimited)\n");
-    printf("  --net                  create new network ns (isolated lo only)\n");
-    printf("  --userns               force user namespace (rootless)\n");
-    printf("  --detach, -d           run detached (don't wait)\n");
-    printf("  --help                 show this help\n");
+    printf("  --net                  new network ns (lo only)\n");
+    printf("  --userns               force user ns (rootless)\n");
+    printf("  --vm                   alias for v (vm mode, stub)\n");
+    printf("  --detach, -d           detached (don't wait)\n");
+    printf("  --help                 show help\n");
     printf("\n");
     printf("Examples:\n");
-    printf("  # host-root container (mount ns + pid ns, no rootfs):\n");
-    printf("  %s run -- /bin/sh -c 'echo hello from container; ps aux'\n", prog);
+    printf("  # container c (host-root, no rootfs):\n");
+    printf("  %s run -- /bin/sh -c 'echo hello; ps aux'\n", prog);
+    printf("  %s launch -- /bin/sh -c 'echo hello; ps aux'         # launch == run (both)\n", prog);
+    printf("  %s c run -- /bin/sh -c 'echo hello'                 # explicit c\n", prog);
+    printf("  %s c launch -- /bin/sh -c 'echo hello'              # c launch == c run\n", prog);
     printf("\n");
-    printf("  # with busybox rootfs:\n");
+    printf("  # with rootfs:\n");
     printf("  mkdir -p /tmp/rootfs && tar -C /tmp/rootfs -xf busybox.tar\n");
     printf("  %s run --rootfs /tmp/rootfs --hostname demo --mem 128 -- /bin/sh\n", prog);
+    printf("  %s launch --rootfs /tmp/rootfs --hostname demo --mem 128 -- /bin/sh # same\n", prog);
     printf("\n");
     printf("  # alpine via docker export:\n");
     printf("  docker export $(docker create alpine) | tar -C /tmp/alpine -xf -\n");
     printf("  %s run --rootfs /tmp/alpine -- /bin/echo hello\n", prog);
     printf("\n");
-    printf("  # overlayfs (readonly base + writable upper):\n");
-    printf("  %s run --rootfs /tmp/merged --overlay-lower /tmp/alpine -- /bin/sh\n", prog);
+    printf("  # vm v (coming, stub):\n");
+    printf("  %s v run --mem 512 --disk vm.img -- /bin/sh         # future\n", prog);
+    printf("  %s v launch --mem 512 --disk vm.img -- /bin/sh      # launch alias for v\n", prog);
     printf("\n");
+    printf("Match: run == launch (both c and v), c == container, v == vm.\n");
     printf("Difference vs VM (v):\n");
-    printf("  VM (kvm/qemu): boots full kernel + disk, 500MB RAM, 5s start.\n");
-    printf("  Container (ksvc/docker): shares host kernel, namespaces+cgroups, 5MB RAM, <10ms start.\n");
-    printf("  Use VM for full OS isolation; use container for fast, light services.\n");
+    printf("  VM (v, qemu/kvm): boots full kernel + disk, 500MB RAM, 5s start.\n");
+    printf("  Container (c, ksvc/docker): shares host kernel, namespaces+cgroups, 5MB RAM, <10ms start.\n");
 }
 
 static void print_version(void) {
@@ -78,7 +87,23 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    const char *cmd = argv[1];
+    // --- type prefix handling: c/container vs v/vm ---
+    // Support: ksvc run, ksvc launch, ksvc c run, ksvc c launch, ksvc v run, ksvc v launch, ksvc container run, etc.
+    // run == launch for both c and v (correctly matched).
+    const char *type = "c"; // default container
+    int cmd_idx = 1;
+    if (argc >= 3) {
+        const char *p = argv[1];
+        if (strcmp(p,"c")==0 || strcmp(p,"container")==0 || strcmp(p,"cont")==0) { type="c"; cmd_idx=2; }
+        else if (strcmp(p,"v")==0 || strcmp(p,"vm")==0 || strcmp(p,"virt")==0 || strcmp(p,"virtual")==0) { type="v"; cmd_idx=2; }
+    }
+    if (cmd_idx >= argc) { print_usage(argv[0]); return 1; }
+    const char *cmd = argv[cmd_idx];
+    int is_vm = (strcmp(type,"v")==0);
+    // launch is alias for run, for both c and v (correctly matched)
+    int is_run = (strcmp(cmd,"run")==0 || strcmp(cmd,"launch")==0);
+    int is_launch = (strcmp(cmd,"launch")==0); // for messages
+    (void)is_launch;
 
     if (strcmp(cmd, "version")==0 || strcmp(cmd, "--version")==0 || strcmp(cmd, "-V")==0) {
         print_version();
@@ -89,6 +114,23 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     if (strcmp(cmd, "list")==0 || strcmp(cmd, "ls")==0 || strcmp(cmd, "ps")==0) {
+        // optional filter: ksvc c list / ksvc v list / ksvc list c / ksvc list v
+        // For now list both; filter stub for vm (future). Correctly matched: list works for both.
+        if (cmd_idx+1 < argc) {
+            const char *f = argv[cmd_idx+1];
+            if (strcmp(f,"c")==0 || strcmp(f,"container")==0) { /* filter c */ }
+            else if (strcmp(f,"v")==0 || strcmp(f,"vm")==0) {
+                if (is_vm || strcmp(f,"v")==0 || strcmp(f,"vm")==0) {
+                    printf("ksvc v list: vm support not yet (container completed first) — no vms\n");
+                    return 0;
+                }
+            }
+        }
+        // also support ksvc list c / ksvc c list
+        if (is_vm) {
+            printf("ksvc v list: vm support not yet (container completed first) — no vms\n");
+            return 0;
+        }
         return ksvc_list();
     }
     if (strcmp(cmd, "stop")==0 || strcmp(cmd, "kill")==0 || strcmp(cmd, "rm")==0) {
