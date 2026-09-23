@@ -203,7 +203,7 @@ async fn fetch_or_err(
         Ok(recipe) => Ok(recipe),
         Err(err) => {
             eprintln!("ksx: unable to obtain recipe for `{service}`.");
-            eprintln!("ksx: tried Render API -> GitHub CDN -> local cache -> embedded baseline.");
+            eprintln!("ksx: tried Render API -> GitHub CDN -> local cache.");
             eprintln!("ksx: detail: {err}");
             eprintln!(
                 "ksx: hint: check network, or run `ksx host` and verify service name (panel|ssh|sql)."

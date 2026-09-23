@@ -446,7 +446,7 @@ impl std::fmt::Display for PipelineError {
 impl std::error::Error for PipelineError {}
 
 // ---------------------------------------------------------------------------
-// 4-tier fetch
+// 3-tier fetch (server -> github -> cache)
 // ---------------------------------------------------------------------------
 
 /// Fetch + parse a recipe, trying tiers in order.
@@ -480,17 +480,32 @@ pub async fn fetch_recipe(
         failures.push("cache: skipped (--refresh)".to_string());
     }
 
-    // Tier 4 — Embedded baseline.
-    match load_embedded(&service) {
-        Ok(text) => return diet_parse(&service, &text, false),
-        Err(e) => failures.push(format!("embedded: {e}")),
-    }
-
-    // Tier 5 — Graceful failure.
+    // Graceful failure — no embedded baseline any more.
     Err(Box::new(PipelineError(format!(
         "all recipe tiers failed for `{service}` [{}]",
         failures.join("; ")
     ))))
+}
+
+/// Fetch from a specific source only (used by web API for mode switching).
+/// `source` = "github" | "server" | "auto" (auto = 3-tier).
+pub async fn fetch_recipe_from(
+    service: &str,
+    source: &str,
+    refresh: bool,
+) -> Result<Recipe, Box<dyn std::error::Error + Send + Sync>> {
+    let service = service.to_lowercase();
+    match source {
+        "github" => {
+            let text = fetch_github(&service).await?;
+            diet_parse(&service, &text, true)
+        }
+        "server" => {
+            let text = fetch_render(&service).await?;
+            diet_parse(&service, &text, true)
+        }
+        _ => fetch_recipe(&service, refresh).await,
+    }
 }
 
 /// Parse TOML; on success, write through to local cache (tiers 1–2).
@@ -515,7 +530,7 @@ async fn http_client() -> reqwest::Client {
 }
 
 /// Tier 1: POST JSON host metadata, expect TOML body.
-async fn fetch_render(service: &str) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
+pub async fn fetch_render(service: &str) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
     let meta = HostMeta::detect();
     let res = http_client()
         .await
@@ -531,7 +546,7 @@ async fn fetch_render(service: &str) -> Result<String, Box<dyn std::error::Error
 }
 
 /// Tier 2: GET raw `.toml` from CDN (`registry/packages/<service>.toml`).
-async fn fetch_github(service: &str) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
+pub async fn fetch_github(service: &str) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
     let res = http_client()
         .await
         .get(github_url(service))
@@ -544,10 +559,4 @@ async fn fetch_github(service: &str) -> Result<String, Box<dyn std::error::Error
     Ok(res.text().await?)
 }
 
-/// Tier 4: baseline recipe from binary memory.
-fn load_embedded(service: &str) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
-    let file = format!("{service}.toml");
-    let data =
-        EmbeddedRecipes::get(&file).ok_or_else(|| format!("no embedded recipe `{file}`"))?;
-    Ok(String::from_utf8(data.data.to_vec())?)
-}
+
