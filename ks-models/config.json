@@ -1,22 +1,22 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "_private": "only you + assistant, not committed",
-  "model": "qwen2.5-coder-7b-q4",
+  "model": "ks-coder-2.5:7b",
   "models": [
     {
-      "id": "ks-qwen2.5-coder-7b-q4",
-      "name": "KS Qwen2.5-Coder-7B Q4_K_M (coding, private)",
+      "id": "ks-coder-2.5:7b",
+      "name": "KS Coder 2.5 7B (coding, private)",
       "provider": "ks-own",
       "baseUrl": "http://localhost:8089/v1",
       "api": "openai",
       "apiKey": "local-only",
-      "model": "ks-qwen2.5-coder-7b-q4",
+      "model": "ks-coder-2.5:7b",
       "contextWindow": 32768,
       "quant": "Q4_K_M",
       "size": "4.7GB",
       "ram_normal": "5-8GB (verified 4.9GB RSS + 7.7 tok/s warm)",
       "ram_max": "10-12GB headroom ok",
-      "backend": "ollama@11434 -> ks-models@8089",
+      "backend": "ollama@11434 -> ks-models@8089 (qwen2.5-coder:7b)",
       "private": true,
       "verified": "2026-09-24 tok/s 7.7 warm, 6.1 cold on 4-core EPYC"
     },
@@ -40,7 +40,7 @@
   },
   "ks_server": {
     "host": "http://localhost:8089",
-    "model": "ks-qwen2.5-coder-7b-q4",
+    "model": "ks-coder-2.5:7b",
     "log": "/tmp/ks-models.log",
     "start": "python3 ks-models/server.py &",
     "stop": "pkill -f ks-models/server.py"

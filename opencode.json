@@ -57,12 +57,12 @@
         "baseURL": "http://localhost:8089/v1"
       },
       "models": {
-        "ks-qwen2.5-coder-7b-q4": {
-          "name": "KS Qwen2.5-Coder-7B Q4 (coding, private)"
+        "ks-coder-2.5:7b": {
+          "name": "KS Coder 2.5 7B (coding, private)"
         }
       }
     }
   },
-  "model": "ks-own/ks-qwen2.5-coder-7b-q4",
-  "small_model": "ks-own/ks-qwen2.5-coder-7b-q4"
+  "model": "ks-own/ks-coder-2.5:7b",
+  "small_model": "ks-own/ks-coder-2.5:7b"
 }
