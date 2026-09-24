@@ -379,11 +379,14 @@ int ksvc_start(ksvc_container_t *ctr) {
         errno=EINVAL; return -1;
     }
 
-    // Prepare sync pipe for userns
+    // Prepare sync pipes for userns and net
     int sync_pipe[2] = {-1,-1};
     if (ctr->cfg.use_user_ns) {
         if (pipe(sync_pipe) < 0) { perror("pipe"); return -1; }
-        // set close-on-exec? child will read, parent writes
+    }
+    int net_sync_pipe[2] = {-1,-1};
+    if (ctr->cfg.use_net_ns) {
+        if (pipe(net_sync_pipe) < 0) { perror("pipe net"); if (sync_pipe[0]>=0){close(sync_pipe[0]);close(sync_pipe[1]);} return -1; }
     }
 
     // Allocate stack for clone
@@ -394,7 +397,8 @@ int ksvc_start(ksvc_container_t *ctr) {
     struct clone_arg carg;
     carg.ctr = ctr;
     carg.sync_fd = sync_pipe[0]; // child reads
-    // parent will keep sync_pipe[1] to signal
+    carg.net_sync_fd = net_sync_pipe[0];
+    // parent will keep sync_pipe[1] and net_sync_pipe[1] to signal
 
     int flags = ksvc_clone_flags(&ctr->cfg);
 
@@ -428,14 +432,28 @@ int ksvc_start(ksvc_container_t *ctr) {
             // kill child
             kill(child_pid, SIGKILL);
             close(sync_pipe[1]);
+            if (net_sync_pipe[0]>=0) { close(net_sync_pipe[0]); close(net_sync_pipe[1]); }
             free(stack);
             return -1;
         }
-        // Signal child to continue
+        // Signal child to continue (first sync)
         write(sync_pipe[1], "ok", 2);
         close(sync_pipe[1]);
     } else {
         if (sync_pipe[0]>=0) { close(sync_pipe[0]); close(sync_pipe[1]); }
+    }
+
+    // Setup network from parent after userns, signal child for net
+    if (ctr->cfg.use_net_ns) {
+        close(net_sync_pipe[0]);
+        usleep(30000);
+        if (ksvc_setup_net(&ctr->cfg, child_pid) < 0) {
+            fprintf(stderr, "ksvc: net setup failed for %d (need privileged, ip/iptables)\n", child_pid);
+        }
+        write(net_sync_pipe[1], "ok", 2);
+        close(net_sync_pipe[1]);
+    } else {
+        if (net_sync_pipe[0]>=0) { close(net_sync_pipe[0]); close(net_sync_pipe[1]); }
     }
 
     // Attach to cgroup (if created)

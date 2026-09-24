@@ -316,6 +316,18 @@ int main(int argc, char *argv[]) {
             if (ksvc_volume_add(&cfg, a+9) < 0) return 1;
         } else if (strncmp(a,"-v",2)==0 && strlen(a) > 2) {
             if (ksvc_volume_add(&cfg, a+2) < 0) return 1;
+        } else if ((strcmp(a,"-p")==0 || strcmp(a,"--publish")==0 || strcmp(a,"--port")==0) && i+1 < parse_end) {
+            if (ksvc_publish_add(&cfg, argv[++i]) < 0) return 1;
+        } else if (strncmp(a,"--publish=",10)==0) {
+            if (ksvc_publish_add(&cfg, a+10) < 0) return 1;
+        } else if (strncmp(a,"-p",2)==0 && strlen(a) > 2) {
+            if (ksvc_publish_add(&cfg, a+2) < 0) return 1;
+        } else if (strcmp(a,"--bridge")==0 && i+1 < parse_end) {
+            strncpy(cfg.bridge_name, argv[++i], sizeof(cfg.bridge_name)-1);
+            cfg.use_net_ns = 1;
+        } else if (strncmp(a,"--bridge=",9)==0) {
+            strncpy(cfg.bridge_name, a+9, sizeof(cfg.bridge_name)-1);
+            cfg.use_net_ns = 1;
         } else if (strcmp(a,"--hostname")==0 && i+1 < parse_end) {
             strncpy(cfg.hostname, argv[++i], sizeof(cfg.hostname)-1);
         } else if (strcmp(a,"--workdir")==0 && i+1 < parse_end) {
