@@ -121,6 +121,12 @@ int ksvc_mount_volumes(const ksvc_config_t *cfg) {
             return -1;
         }
         if (do_bind_volume(src, dst_host, ro) < 0) {
+            int saved = errno;
+            if (cfg->use_user_ns && (saved==EPERM || saved==EACCES)) {
+                fprintf(stderr, "ksvc: warning: volume %s -> %s needs privileged (sudo) — skipping (rootless mount denied: %s)\n", src, dst, strerror(saved));
+                fprintf(stderr, "ksvc: hint: run sudo ksvc run -v %s:%s%s -- ... for volumes\n", src, dst, ro?"":":ro");
+                continue;
+            }
             return -1;
         }
         fprintf(stderr, "ksvc: volume %s -> %s%s\n", src, dst, ro?" (ro)":"");
