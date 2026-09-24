@@ -79,3 +79,22 @@ services:
       - key: PORT
         value: 10000
 # deploy trigger Sun Sep 20 08:06:16 UTC 2026
+  - type: web
+    name: web
+    env: docker
+    dockerfilePath: ./web/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: true
+    branch: main
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: MODEL_ID
+        value: ks-coder-2.5:7b
+      - key: OLLAMA_MODEL
+        value: qwen2.5-coder:7b
+      - key: KS_BASE_URL
+        value: https://ks-models.onrender.com
+      - key: MODEL_BASE_URL
+        value: https://ks-models.onrender.com
