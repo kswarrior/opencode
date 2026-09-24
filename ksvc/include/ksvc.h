@@ -96,6 +96,8 @@ int ksvc_cgroup_is_v2(void);
 
 /* ── mount / ns helpers ── */
 int ksvc_mount_setup(const char *rootfs, const char *overlay_lower, const char *overlay_upper);
+int ksvc_mount_volumes(const ksvc_config_t *cfg);
+int ksvc_volume_add(ksvc_config_t *cfg, const char *spec);
 int ksvc_setup_userns(uid_t host_uid, gid_t host_gid);
 int ksvc_setup_net_lo(void);
 

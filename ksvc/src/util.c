@@ -52,6 +52,63 @@ void ksvc_config_init(ksvc_config_t *cfg) {
     cfg->use_user_ns = ksvc_is_rootless() ? 1 : 0;
     cfg->drop_caps = 0;
     cfg->tty = 0;
+    cfg->volume_count = 0;
+}
+
+int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
+    if (!cfg || !spec || !spec[0]) { errno=EINVAL; return -1; }
+    if (cfg->volume_count >= KSVC_MAX_VOLUMES) {
+        fprintf(stderr, "ksvc: too many volumes (max %d)\n", KSVC_MAX_VOLUMES);
+        errno=ENOSPC; return -1;
+    }
+    char copy[1024];
+    strncpy(copy, spec, sizeof(copy)-1);
+    copy[sizeof(copy)-1]='\0';
+    char *p1 = strchr(copy, ':');
+    if (!p1) {
+        fprintf(stderr, "ksvc: volume spec must be SRC:DST[:ro|rw] got '%s'\n", spec);
+        fprintf(stderr, "       example: --volume /host/data:/data:ro  or  -v /tmp:/mnt\n");
+        errno=EINVAL; return -1;
+    }
+    *p1='\0';
+    char *src = copy;
+    char *rest = p1+1;
+    char *p2 = strchr(rest, ':');
+    char *dst;
+    int ro = 0;
+    if (p2) {
+        *p2='\0';
+        dst = rest;
+        char *opt = p2+1;
+        if (strcmp(opt,"ro")==0 || strcmp(opt,"readonly")==0) ro=1;
+        else if (strcmp(opt,"rw")==0) ro=0;
+        else {
+            fprintf(stderr, "ksvc: unknown volume option '%s' (want ro|rw)\n", opt);
+            errno=EINVAL; return -1;
+        }
+    } else {
+        dst = rest;
+    }
+    if (src[0]=='\0' || dst[0]=='\0') {
+        fprintf(stderr, "ksvc: volume src/dst empty in '%s'\n", spec);
+        errno=EINVAL; return -1;
+    }
+    if (dst[0] != '/') {
+        fprintf(stderr, "ksvc: volume dst must be absolute path, got '%s'\n", dst);
+        errno=EINVAL; return -1;
+    }
+    struct stat st;
+    if (stat(src, &st) != 0) {
+        fprintf(stderr, "ksvc: volume src '%s' not found: %s\n", src, strerror(errno));
+        return -1;
+    }
+    strncpy(cfg->volume_src[cfg->volume_count], src, KSVC_VOLPATH_MAX-1);
+    strncpy(cfg->volume_dst[cfg->volume_count], dst, KSVC_VOLPATH_MAX-1);
+    cfg->volume_src[cfg->volume_count][KSVC_VOLPATH_MAX-1]='\0';
+    cfg->volume_dst[cfg->volume_count][KSVC_VOLPATH_MAX-1]='\0';
+    cfg->volume_ro[cfg->volume_count] = ro;
+    cfg->volume_count++;
+    return 0;
 }
 
 int ksvc_clone_flags(const ksvc_config_t *cfg) {
