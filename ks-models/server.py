@@ -14,7 +14,7 @@ import urllib.request
 import urllib.error
 
 PORT = 8089
-MODEL_ID = "ks-qwen2.5-coder-7b-q4"
+MODEL_ID = "ks-coder-2.5:7b"
 OLLAMA_URL = "http://localhost:11434"
 OLLAMA_MODEL = "qwen2.5-coder:7b"
 
