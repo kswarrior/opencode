@@ -40,6 +40,8 @@ extern "C" {
 #define KSVC_CMD_MAX 1024
 #define KSVC_ID_MAX 32
 #define KSVC_ARGV_MAX 32
+#define KSVC_MAX_VOLUMES 16
+#define KSVC_VOLPATH_MAX 512
 
 /* ── config ── */
 typedef struct {
@@ -60,6 +62,11 @@ typedef struct {
     uid_t uid;                         // uid inside container (0 = root)
     gid_t gid;
     int tty;                           // allocate pseudo-tty (not yet)
+    // volumes: bind-mounts like Docker -v src:dst[:ro]
+    char volume_src[KSVC_MAX_VOLUMES][KSVC_VOLPATH_MAX];
+    char volume_dst[KSVC_MAX_VOLUMES][KSVC_VOLPATH_MAX];
+    int volume_ro[KSVC_MAX_VOLUMES];   // 0=rw, 1=ro
+    int volume_count;
 } ksvc_config_t;
 
 typedef struct {
