@@ -36,5 +36,33 @@
       "command": ["python3", "-m", "mcp_server_git", "--repository", "."],
       "enabled": true
     }
-  }
+  },
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen2.5-coder:7b": {
+          "name": "Qwen2.5-Coder-7B Q4_K_M (4.7GB, 7.7tok/s)"
+        }
+      }
+    },
+    "ks-own": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "KS Own (local)",
+      "options": {
+        "baseURL": "http://localhost:8089/v1"
+      },
+      "models": {
+        "ks-qwen2.5-coder-7b-q4": {
+          "name": "KS Qwen2.5-Coder-7B Q4 (coding, private)"
+        }
+      }
+    }
+  },
+  "model": "ks-own/ks-qwen2.5-coder-7b-q4",
+  "small_model": "ks-own/ks-qwen2.5-coder-7b-q4"
 }
