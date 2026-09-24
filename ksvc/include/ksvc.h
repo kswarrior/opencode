@@ -67,6 +67,7 @@ typedef struct {
     char volume_dst[KSVC_MAX_VOLUMES][KSVC_VOLPATH_MAX];
     int volume_ro[KSVC_MAX_VOLUMES];   // 0=rw, 1=ro
     int volume_count;
+    int use_cgroup_ns;                 // 0=auto (when limits set), 1=force new cgroup ns
 } ksvc_config_t;
 
 typedef struct {

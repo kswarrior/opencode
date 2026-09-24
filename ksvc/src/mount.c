@@ -150,6 +150,14 @@ int ksvc_mount_setup_cfg(const ksvc_config_t *cfg) {
         }
         if (mount("proc", "/proc", "proc", MS_NOSUID|MS_NOEXEC|MS_NODEV, NULL) < 0 && errno != EBUSY) {
         }
+        // cgroup ns: remount cgroup2 for isolated view
+        if (cfg && (cfg->use_cgroup_ns || cfg->mem_limit_mb >0 || cfg->cpu_quota_pct>0 || cfg->pids_limit>0)) {
+            mkdir("/sys/fs/cgroup", 0755);
+            // try to mount fresh cgroup2 view for new ns (privileged only, rootless will fail gracefully)
+            if (mount("cgroup2", "/sys/fs/cgroup", "cgroup2", 0, NULL) < 0 && errno != EBUSY && errno != EPERM && errno != EACCES) {
+                // best effort
+            }
+        }
         return 0;
     }
 
@@ -211,6 +219,10 @@ int ksvc_mount_setup_cfg(const ksvc_config_t *cfg) {
         mkdir("/dev", 0755);
         if (mount("proc", "/proc", "proc", MS_NOSUID|MS_NOEXEC|MS_NODEV, NULL) < 0 && errno != EBUSY && errno != EPERM && errno != EACCES) { perror("mount proc"); }
         if (mount("sysfs", "/sys", "sysfs", MS_NOSUID|MS_NOEXEC|MS_NODEV|MS_RDONLY, NULL) < 0 && errno != EBUSY && errno != EPERM && errno != EACCES) { perror("mount sysfs"); }
+        if (cfg && (cfg->use_cgroup_ns || cfg->mem_limit_mb >0 || cfg->cpu_quota_pct>0 || cfg->pids_limit>0)) {
+            mkdir("/sys/fs/cgroup", 0755);
+            if (mount("cgroup2", "/sys/fs/cgroup", "cgroup2", 0, NULL) < 0 && errno != EBUSY && errno != EPERM && errno != EACCES) {}
+        }
         return 0;
     }
 

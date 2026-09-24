@@ -53,6 +53,7 @@ void ksvc_config_init(ksvc_config_t *cfg) {
     cfg->drop_caps = 0;
     cfg->tty = 0;
     cfg->volume_count = 0;
+    cfg->use_cgroup_ns = 0;
 }
 
 int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
@@ -112,10 +113,18 @@ int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
 }
 
 int ksvc_clone_flags(const ksvc_config_t *cfg) {
+#ifndef CLONE_NEWCGROUP
+#define CLONE_NEWCGROUP 0x02000000
+#endif
     int flags = SIGCHLD;
     flags |= CLONE_NEWPID | CLONE_NEWNS | CLONE_NEWUTS | CLONE_NEWIPC;
     if (cfg->use_net_ns) flags |= CLONE_NEWNET;
     if (cfg->use_user_ns) flags |= CLONE_NEWUSER;
+    // cgroup ns: when limits set or explicitly requested, isolate cgroup view
+    // Like Docker, cgroup ns makes /proc/self/cgroup show "/" and /sys/fs/cgroup isolated
+    if (cfg->use_cgroup_ns || cfg->mem_limit_mb > 0 || cfg->cpu_quota_pct > 0 || cfg->pids_limit > 0) {
+        flags |= CLONE_NEWCGROUP;
+    }
     return flags;
 }
 
