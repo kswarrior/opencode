@@ -38,6 +38,7 @@ static void print_usage(const char *prog) {
     printf("  --pids N               pids limit (0=unlimited)\n");
     printf("  --net                  new network ns (lo only)\n");
     printf("  --userns               force user ns (rootless)\n");
+    printf("  --cgroupns             new cgroup ns (isolated /sys/fs/cgroup, auto with --mem/--cpu/--pids)\n");
     printf("  --vm                   alias for v (vm mode, stub)\n");
     printf("  --detach, -d           detached (don't wait)\n");
     printf("  --help                 show help\n");
@@ -321,6 +322,8 @@ int main(int argc, char *argv[]) {
             parse_int(argv[++i], &cfg.cpu_quota_pct);
         } else if (strcmp(a,"--pids")==0 && i+1 < parse_end) {
             parse_int(argv[++i], &cfg.pids_limit);
+        } else if (strcmp(a,"--cgroupns")==0 || strcmp(a,"--cgroup-ns")==0 || strcmp(a,"--cgroup")==0) {
+            cfg.use_cgroup_ns = 1;
         } else if (strcmp(a,"--net")==0) {
             cfg.use_net_ns = 1;
         } else if (strcmp(a,"--userns")==0) {
@@ -411,10 +414,14 @@ int main(int argc, char *argv[]) {
            type, verb, ctr.id, cfg.hostname, cfg.rootfs[0]?cfg.rootfs:"(host)", cfg.cmd);
     if (cfg.mem_limit_mb) printf("ksvc: memory limit %d MB\n", cfg.mem_limit_mb);
     if (cfg.cpu_quota_pct) printf("ksvc: cpu quota %d%%\n", cfg.cpu_quota_pct);
-    printf("ksvc: namespaces: pid/mount/uts/ipc%s%s\n",
+    int has_cgroup = cfg.use_cgroup_ns || cfg.mem_limit_mb >0 || cfg.cpu_quota_pct>0 || cfg.pids_limit>0;
+    printf("ksvc: namespaces: pid/mount/uts/ipc%s%s%s\n",
            cfg.use_net_ns ? " net" : "",
-           cfg.use_user_ns ? " user" : "");
+           cfg.use_user_ns ? " user" : "",
+           has_cgroup ? " cgroup" : "");
     if (cfg.use_user_ns) printf("ksvc: rootless (user ns) uid=%d gid=%d\n", cfg.uid, cfg.gid);
+    if (has_cgroup) printf("ksvc: cgroup ns %s (limits mem=%d cpu=%d pids=%d)\n",
+           has_cgroup?"enabled":"", cfg.mem_limit_mb, cfg.cpu_quota_pct, cfg.pids_limit);
     for (int i=0;i<cfg.volume_count;i++) {
         printf("ksvc: volume %s -> %s%s\n", cfg.volume_src[i], cfg.volume_dst[i], cfg.volume_ro[i]?" (ro)":"");
     }

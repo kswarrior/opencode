@@ -248,6 +248,11 @@ int ksvc_mount_setup_cfg(const ksvc_config_t *cfg) {
         }
         if (mount("devpts", "/dev/pts", "devpts", MS_NOSUID|MS_NOEXEC, "gid=5,mode=620,ptmxmode=666") < 0 && errno != EBUSY) {
         }
+        // cgroup ns: fresh cgroup2 mount for isolated view
+        if (cfg && (cfg->use_cgroup_ns || cfg->mem_limit_mb >0 || cfg->cpu_quota_pct>0 || cfg->pids_limit>0)) {
+            mkdir("/sys/fs/cgroup", 0755);
+            if (mount("cgroup2", "/sys/fs/cgroup", "cgroup2", 0, NULL) < 0 && errno != EBUSY && errno != EPERM && errno != EACCES) {}
+        }
         struct { const char *src; const char *dst; } devs[] = {
             {"/.ksvc-old/dev/null", "/dev/null"},
             {"/.ksvc-old/dev/zero", "/dev/zero"},
@@ -274,6 +279,10 @@ int ksvc_mount_setup_cfg(const ksvc_config_t *cfg) {
         if (mount("proc", "/proc", "proc", MS_NOSUID|MS_NOEXEC|MS_NODEV, NULL) < 0 && errno != EBUSY) {}
         if (mount("sysfs", "/sys", "sysfs", MS_NOSUID|MS_NOEXEC|MS_NODEV|MS_RDONLY, NULL) < 0 && errno != EBUSY) {}
         if (mount("tmpfs", "/dev", "tmpfs", MS_NOSUID, "mode=755") < 0 && errno != EBUSY) {}
+        if (cfg && (cfg->use_cgroup_ns || cfg->mem_limit_mb >0 || cfg->cpu_quota_pct>0 || cfg->pids_limit>0)) {
+            mkdir("/sys/fs/cgroup", 0755);
+            if (mount("cgroup2", "/sys/fs/cgroup", "cgroup2", 0, NULL) < 0 && errno != EBUSY && errno != EPERM && errno != EACCES) {}
+        }
     }
     return 0;
 }
