@@ -68,6 +68,11 @@ typedef struct {
     int volume_ro[KSVC_MAX_VOLUMES];   // 0=rw, 1=ro
     int volume_count;
     int use_cgroup_ns;                 // 0=auto (when limits set), 1=force new cgroup ns
+    // network: bridge + port publishing like Docker -p 8080:80
+    char publish[KSVC_MAX_VOLUMES][64]; // reuse max, publish specs "host:container" or "8080:80"
+    int publish_count;
+    char bridge_name[64];              // bridge name, default ksvc-br0 when --net with bridge
+    char container_ip[64];             // allocated IP like 10.88.0.2 (set at create)
 } ksvc_config_t;
 
 typedef struct {
