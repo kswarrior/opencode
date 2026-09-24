@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "_private": "only you + assistant, not committed",
+  "models": [
+    {
+      "id": "ks-own-v1",
+      "name": "KS Own Model V1",
+      "provider": "ks-own",
+      "baseUrl": "http://localhost:8089/v1",
+      "api": "openai",
+      "apiKey": "local-only",
+      "contextWindow": 8192,
+      "private": true
+    },
+    {
+      "id": "ollama-llama3.2",
+      "name": "Ollama Llama 3.2 3B (local)",
+      "provider": "ollama",
+      "baseUrl": "http://localhost:11434/v1",
+      "api": "openai",
+      "apiKey": "ollama",
+      "model": "llama3.2:3b",
+      "private": true
+    }
+  ],
+  "instructions": "vi ks-models/config.json to edit, tell assistant to execute"
+}
