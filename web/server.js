@@ -47,7 +47,7 @@ app.get('/api/config', (req, res) => {
 
 app.post('/api/chat', async (req, res) => {
   const { messages, prompt, stream = false, model } = req.body || {};
-  const useModel = model || OLLAMA_MODEL;
+  const useModel = (model === MODEL_ID ? OLLAMA_MODEL : model) || OLLAMA_MODEL;
   let urls = [];
   // avoid self-loop when KS_BASE_URL == MODEL_BASE_URL or equals host
   const seen = new Set();
@@ -140,7 +140,7 @@ wss.on('connection', (ws, req) => {
     }
     if (msg.type === 'chat' || msg.type === 'generate') {
       const model = msg.model || MODEL_ID;
-      const ollamaModel = OLLAMA_MODEL;
+      const ollamaModel = (model === MODEL_ID ? OLLAMA_MODEL : model) || OLLAMA_MODEL;
       const messages = msg.messages || (msg.prompt ? [{ role: 'user', content: msg.prompt }] : []);
       const stream = msg.stream !== false;
       const ollamaUrl = `${MODEL_BASE_URL}/api/chat`;
