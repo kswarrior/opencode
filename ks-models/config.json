@@ -1,27 +1,49 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "_private": "only you + assistant, not committed",
+  "model": "qwen2.5-coder-7b-q4",
   "models": [
     {
-      "id": "ks-own-v1",
-      "name": "KS Own Model V1",
+      "id": "ks-qwen2.5-coder-7b-q4",
+      "name": "KS Qwen2.5-Coder-7B Q4_K_M (coding, private)",
       "provider": "ks-own",
       "baseUrl": "http://localhost:8089/v1",
       "api": "openai",
       "apiKey": "local-only",
-      "contextWindow": 8192,
-      "private": true
+      "model": "ks-qwen2.5-coder-7b-q4",
+      "contextWindow": 32768,
+      "quant": "Q4_K_M",
+      "size": "4.7GB",
+      "ram_normal": "5-8GB (verified 4.9GB RSS + 7.7 tok/s warm)",
+      "ram_max": "10-12GB headroom ok",
+      "backend": "ollama@11434 -> ks-models@8089",
+      "private": true,
+      "verified": "2026-09-24 tok/s 7.7 warm, 6.1 cold on 4-core EPYC"
     },
     {
-      "id": "ollama-llama3.2",
-      "name": "Ollama Llama 3.2 3B (local)",
+      "id": "ollama-qwen2.5-coder-7b",
+      "name": "Ollama Direct Qwen2.5-Coder 7B",
       "provider": "ollama",
       "baseUrl": "http://localhost:11434/v1",
       "api": "openai",
       "apiKey": "ollama",
-      "model": "llama3.2:3b",
+      "model": "qwen2.5-coder:7b",
+      "contextWindow": 32768,
       "private": true
     }
   ],
+  "ollama": {
+    "host": "http://localhost:11434",
+    "model": "qwen2.5-coder:7b",
+    "keep_alive": "5m",
+    "num_thread": 4
+  },
+  "ks_server": {
+    "host": "http://localhost:8089",
+    "model": "ks-qwen2.5-coder-7b-q4",
+    "log": "/tmp/ks-models.log",
+    "start": "python3 ks-models/server.py &",
+    "stop": "pkill -f ks-models/server.py"
+  },
   "instructions": "vi ks-models/config.json to edit, tell assistant to execute"
 }

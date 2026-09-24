@@ -1,92 +1,127 @@
-# ks-models — Your Own Private AI Models
+# ks-models — Your Own Private Coding Model
 
-Private to you + assistant only. No shared access.
+Private to you + assistant only. `vi` friendly. **Verified 2026-09-24.**
 
-This directory is your isolated model workspace. `vi` friendly, executed via assistant only.
+## Model: Qwen2.5-Coder-7B Q4_K_M ✅ Running
 
-## Quick Setup (3 options)
+- **Model:** `qwen2.5-coder:7b` Q4_K_M, 7.6B params, 4.7GB (`ks-models/config.json:5`)
+- **RAM:** 4.9GB RSS verified (`ps aux`), fits **5-8GB normal**, headroom within **10-12GB max** (total used 7.2GB/15GB)
+- **Speed:** **7.7 tok/s warm** (19.5s/150 tokens), **6.1 tok/s cold** (48s/300 tokens) on 4-core AMD EPYC 7763 (`bench` below)
+- **Context:** 32768 tokens
+- **Backend:** `ollama 0.34.4 @ 11434` → `ks-models/server.py:15 @ 8089` (OpenAI-compatible)
 
-### Option 1: Ollama (local LLM, recommended for own models)
+## Quick Use
+
 ```bash
-# install ollama
-curl -fsSL https://ollama.com/install.sh | sh
-ollama serve &
-ollama pull llama3.2:3b
-ollama pull mistral:7b
-# test
-curl http://localhost:11434/api/generate -d '{"model":"llama3.2:3b","prompt":"hello"}'
-```
+# via ks-models proxy (private, vi-tunable)
+curl http://localhost:8089/v1/chat/completions -H "Content-Type: application/json" \
+  -d '{"model":"ks-qwen2.5-coder-7b-q4","messages":[{"role":"user","content":"write C epoll server"}]}'
 
-Then point opencode to it via OpenAI-compatible endpoint:
-```json
-// opencode.json - add provider
-{
-  "model": "ollama/llama3.2:3b",
-  "provider": {
-    "ollama": {
-      "api": "openai",
-      "baseUrl": "http://localhost:11434/v1",
-      "apiKey": "ollama"
-    }
-  }
-}
-```
+# via ollama direct (OpenAI API)
+curl http://localhost:11434/v1/chat/completions -H "Content-Type: application/json" \
+  -d '{"model":"qwen2.5-coder:7b","messages":[{"role":"user","content":"reverse linked list in C"}]}'
 
-### Option 2: Custom Python Model Server (scaffold included)
-```bash
-vi ks-models/server.py  # edit MODEL_PATH, prompt template
-python3 ks-models/server.py  # runs on :8089
-# test
-curl http://localhost:8089/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"ks-own","prompt":"hello"}'
-```
+# via ollama native
+ollama run qwen2.5-coder:7b "write python quicksort"
+curl http://localhost:11434/api/generate -d '{"model":"qwen2.5-coder:7b","prompt":"vi parser in C","stream":false}'
 
-### Option 3: C Model Server (fits this repo: low RAM, epoll)
-```bash
-vi ks-models/src/main.c  # same pattern as main/src/main.c:15
-make -C ks-models && ./ks-models/server  # port 8089
-```
-
-## Directory Layout
-```
-ks-models/
-├── README.md          # this file
-├── config.json        # model registry (private)
-├── server.py          # custom OpenAI-compatible server
-├── src/main.c         # C server scaffold (optional)
-├── Makefile
-└── models/            # put gguf / safetensors here (gitignored)
-```
-
-## Usage with opencode
-
-Edit parent `opencode.json:3` to add your model:
-```json
-{
-  "mcp": { ... },
-  "provider": {
-    "ks-own": {
-      "api": "openai",
-      "baseUrl": "http://localhost:8089/v1"
-    }
-  },
-  "model": "ks-own/ks-model-v1"
-}
-```
-
-Run:
-```bash
-opencode --model ks-own/ks-model-v1
+# health
+curl http://localhost:8089/health  # ok ks-models qwen2.5-coder-7b q4
+curl http://localhost:11434/api/tags | jq
+ollama list
+ollama ps
 ```
 
 ## Vi Workflow (you: vi, me: execute)
 
-You edit: `vi ks-models/config.json`
-I execute: tell me `run: make -C ks-models test` and I run via bash tool.
+```bash
+vi ks-models/server.py        # edit prompt template / model logic ks-models/server.py:23
+vi ks-models/config.json      # edit model params ks-models/config.json:5
+vi ks-models/README.md
+# tell me:
+# "run: python3 ks-models/server.py &"
+# "run: ollama pull qwen2.5-coder:7b"
+# "test: curl localhost:8089/v1/chat/completions ..."
+```
 
-All models here are NOT committed (see .gitignore entry) — private only.
+## Integrate with opencode
 
-## Privacy
+Add to parent `opencode.json:3` (example, not auto-applied — you control):
 
-- `ks-models/models/*` is gitignored
-- `ks-models/config.json` contains local keys only — not pushed if you add to .gitignore
-- Only you + assistant have access in this session
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": { ... },
+  "provider": {
+    "ks-own": {
+      "type": "openai",
+      "baseUrl": "http://localhost:8089/v1",
+      "apiKey": "local-only",
+      "models": ["ks-qwen2.5-coder-7b-q4"]
+    },
+    "ollama": {
+      "type": "openai",
+      "baseUrl": "http://localhost:11434/v1",
+      "apiKey": "ollama",
+      "models": ["qwen2.5-coder:7b"]
+    }
+  },
+  "model": "ks-own/ks-qwen2.5-coder-7b-q4"
+}
+```
+
+Then:
+```bash
+opencode --model ks-own/ks-qwen2.5-coder-7b-q4
+# or
+opencode --model ollama/qwen2.5-coder:7b
+```
+
+## Benchmark (verified)
+
+```
+Run 1 cold: 6.17 tok/s (300 tokens /48.6s + 6.3s load) — first load
+Run 1 warm: 7.69 tok/s (150/19.5s load 5.75s)
+Run 2 warm: 7.68 tok/s (150/19.54s load 0s)
+Run 3 warm: 7.83 tok/s (150/19.16s load 0s)
+RAM: llama-server 4.9GB RSS, ollama 41MB, total used 7.2GB/15GB
+```
+
+Meets your **7 tok/s** target warm, fits **5-8GB normal**.
+
+## Files
+
+```
+ks-models/
+├── README.md          # this file
+├── config.json        # registry (private, 32768 ctx)
+├── server.py          # OpenAI proxy 8089 -> 11434 (vi edit prompt at server.py:23)
+├── src/main.c         # C server scaffold (optional, not used — Ollama handles)
+├── models/            # put extra gguf here (gitignored)
+└── .gitignore
+```
+
+## Control
+
+```bash
+# start
+ollama serve &          # systemctl already running
+python3 ks-models/server.py &  # or nohup python3 ks-models/server.py > /tmp/ks-models.log 2>&1 &
+# stop
+pkill -f "ks-models/server.py"
+ollama stop qwen2.5-coder:7b
+# logs
+cat /tmp/ks-models.log
+journalctl -u ollama -f
+```
+
+## Next: Fine-tune to your vi style (optional)
+
+```bash
+# collect your vi code samples
+mkdir -p ks-models/dataset
+# LoRA fine-tune (needs python + transformers)
+pip install transformers peft datasets
+python3 ks-models/finetune.py --base Qwen/Qwen2.5-Coder-7B --data ks-models/dataset/vi-code.jsonl
+# then: ollama create ks-own-coder -f ks-models/Modelfile
+```
