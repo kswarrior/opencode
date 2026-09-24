@@ -115,6 +115,88 @@ int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
     return 0;
 }
 
+int ksvc_publish_add(ksvc_config_t *cfg, const char *spec) {
+    if (!cfg || !spec || !spec[0]) { errno=EINVAL; return -1; }
+    if (cfg->publish_count >= KSVC_MAX_VOLUMES) {
+        fprintf(stderr, "ksvc: too many publishes (max %d)\n", KSVC_MAX_VOLUMES);
+        errno=ENOSPC; return -1;
+    }
+    // spec like 8080:80, 127.0.0.1:8080:80, or 8080:80/tcp
+    // For now, handle hostPort:containerPort and optional /tcp /udp suffix
+    // If no colon, treat as same port for host and container
+    char tmp[64];
+    strncpy(tmp, spec, sizeof(tmp)-1);
+    tmp[sizeof(tmp)-1]='\0';
+    // validate: must contain digit and colon or digit only
+    // simple store as is, but ensure it contains colon
+    if (!strchr(tmp, ':')) {
+        // single port: host and container same
+        char host[32], cont[32];
+        strncpy(host, tmp, sizeof(host)-1); host[sizeof(host)-1]='\0';
+        strncpy(cont, tmp, sizeof(cont)-1); cont[sizeof(cont)-1]='\0';
+        // strip /tcp suffix if present
+        char *slash = strchr(host, '/'); if (slash) *slash='\0';
+        slash = strchr(cont, '/'); if (slash) *slash='\0';
+        snprintf(cfg->publish[cfg->publish_count], sizeof(cfg->publish[0]), "%s:%s", host, cont);
+    } else {
+        strncpy(cfg->publish[cfg->publish_count], spec, sizeof(cfg->publish[0])-1);
+        cfg->publish[cfg->publish_count][sizeof(cfg->publish[0])-1]='\0';
+    }
+    cfg->publish_count++;
+    cfg->use_net_ns = 1; // publishing implies net ns
+    // also need bridge
+    return 0;
+}
+
+int ksvc_allocate_ip(char *out, size_t sz) {
+    const char *counter_file = "/tmp/ksvc/ip.counter";
+    mkdir("/tmp/ksvc", 0755);
+    int fd = open(counter_file, O_RDWR|O_CREAT, 0644);
+    if (fd < 0) return -1;
+    char buf[32]={0};
+    ssize_t n = read(fd, buf, sizeof(buf)-1);
+    int counter = 2;
+    if (n > 0) {
+        counter = atoi(buf);
+        if (counter < 2) counter = 2;
+        if (counter > 254) counter = 2;
+    }
+    snprintf(out, sz, "10.88.0.%d", counter);
+    counter++;
+    if (counter > 254) counter = 2;
+    lseek(fd, 0, SEEK_SET);
+    ftruncate(fd, 0);
+    snprintf(buf, sizeof(buf), "%d", counter);
+    write(fd, buf, strlen(buf));
+    close(fd);
+    return 0;
+}
+
+int ksvc_network_create_bridge(const char *br) {
+    if (!br || !br[0]) br = "ksvc-br0";
+    char cmd[512];
+    snprintf(cmd, sizeof(cmd), "ip link show %s >/dev/null 2>&1", br);
+    if (system(cmd) == 0) return 0;
+    snprintf(cmd, sizeof(cmd), "ip link add %s type bridge 2>&1", br);
+    if (system(cmd) != 0) {
+        fprintf(stderr, "ksvc: create bridge %s failed (need privileged, ip installed)\n", br);
+        return -1;
+    }
+    snprintf(cmd, sizeof(cmd), "ip addr add 10.88.0.1/16 dev %s 2>&1", br);
+    system(cmd);
+    snprintf(cmd, sizeof(cmd), "ip link set %s up 2>&1", br);
+    system(cmd);
+    system("sysctl -w net.ipv4.ip_forward=1 >/dev/null 2>&1 || echo 1 > /proc/sys/net/ipv4/ip_forward 2>&1 || true");
+    snprintf(cmd, sizeof(cmd), "iptables -t nat -C POSTROUTING -s 10.88.0.0/16 ! -o %s -j MASQUERADE 2>&1 || iptables -t nat -A POSTROUTING -s 10.88.0.0/16 ! -o %s -j MASQUERADE 2>&1 || true", br, br);
+    system(cmd);
+    snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -i %s -j ACCEPT 2>&1 || iptables -A FORWARD -i %s -j ACCEPT 2>&1 || true", br, br);
+    system(cmd);
+    snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -o %s -j ACCEPT 2>&1 || iptables -A FORWARD -o %s -j ACCEPT 2>&1 || true", br, br);
+    system(cmd);
+    fprintf(stderr, "ksvc: created bridge %s 10.88.0.1/16\n", br);
+    return 0;
+}
+
 int ksvc_clone_flags(const ksvc_config_t *cfg) {
 #ifndef CLONE_NEWCGROUP
 #define CLONE_NEWCGROUP 0x02000000

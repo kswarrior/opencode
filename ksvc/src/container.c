@@ -32,7 +32,8 @@ extern int ksvc_mount_setup_helper(const char *rootfs, const char *ol, const cha
 struct clone_arg {
     ksvc_container_t *ctr;
     int sync_fd; // read end for child to wait on parent (userns)
-    int ready_fd; // write end for parent to signal ready? Actually sync_fd is for child, parent writes maps then signals.
+    int net_sync_fd; // for net ns setup sync
+    int ready_fd;
 };
 
 // forward
@@ -73,6 +74,23 @@ int ksvc_create(ksvc_container_t *ctr, const ksvc_config_t *cfg) {
     // create cgroup now (parent side)
     ksvc_cgroup_create(ctr);
 
+    // allocate IP for net ns (bridge mode) - like Docker 10.88.0.x
+    if (ctr->cfg.use_net_ns || ctr->cfg.publish_count > 0) {
+        ctr->cfg.use_net_ns = 1;
+        if (ctr->cfg.container_ip[0]=='\0') {
+            if (ksvc_allocate_ip(ctr->cfg.container_ip, sizeof(ctr->cfg.container_ip)) == 0) {
+                strncpy(ctr->ip, ctr->cfg.container_ip, sizeof(ctr->ip)-1);
+            }
+        } else {
+            strncpy(ctr->ip, ctr->cfg.container_ip, sizeof(ctr->ip)-1);
+        }
+        if (ctr->cfg.bridge_name[0]=='\0') {
+            strncpy(ctr->cfg.bridge_name, "ksvc-br0", sizeof(ctr->cfg.bridge_name)-1);
+        }
+        // create bridge if needed (privileged only, best effort)
+        ksvc_network_create_bridge(ctr->cfg.bridge_name);
+    }
+
     return 0;
 }
 
@@ -99,6 +117,19 @@ static int child_main(void *arg) {
         if (setuid(ctr->cfg.uid) < 0) { /* ignore */ }
     } else {
         if (sync_fd >= 0) close(sync_fd);
+    }
+
+    // If net ns, wait for parent to setup veth/bridge
+    if (ctr->cfg.use_net_ns) {
+        int net_fd = carg->net_sync_fd;
+        if (net_fd >= 0) {
+            char nbuf[16]={0};
+            // block until parent signals network ready
+            read(net_fd, nbuf, sizeof(nbuf)-1);
+            close(net_fd);
+        }
+    } else {
+        if (carg->net_sync_fd >= 0) close(carg->net_sync_fd);
     }
 
     // Set hostname in new UTS ns
@@ -250,6 +281,91 @@ int ksvc_setup_net_lo(void) {
     // Use ioctl or system("ip link set lo up") if ip exists
     int rc = system("ip link set lo up 2>/dev/null || ifconfig lo up 2>/dev/null || true");
     (void)rc;
+    return 0;
+}
+
+int ksvc_setup_net(const ksvc_config_t *cfg, pid_t pid) {
+    if (!cfg || !cfg->use_net_ns) return 0;
+    const char *br = cfg->bridge_name[0] ? cfg->bridge_name : "ksvc-br0";
+    const char *ip = cfg->container_ip[0] ? cfg->container_ip : NULL;
+    if (!ip || !ip[0]) {
+        char tmp[64];
+        if (ksvc_allocate_ip(tmp, sizeof(tmp)) == 0) ip = tmp;
+        else return 0;
+    }
+    // create bridge if needed (already done in ksvc_create, but ensure)
+    ksvc_network_create_bridge(br);
+    // allocate veth names
+    char veth_host[32];
+    snprintf(veth_host, sizeof(veth_host), "veth%d", pid % 100000);
+    // ensure unique: if exists, try alternative
+    char cmd[512];
+    snprintf(cmd, sizeof(cmd), "ip link show %s >/dev/null 2>&1", veth_host);
+    if (system(cmd) == 0) {
+        snprintf(veth_host, sizeof(veth_host), "veth%dh", pid % 100000);
+    }
+    // create veth pair: host <-> eth0
+    snprintf(cmd, sizeof(cmd), "ip link add %s type veth peer name eth0 2>&1", veth_host);
+    if (system(cmd) != 0) {
+        fprintf(stderr, "ksvc: veth create %s failed\n", veth_host);
+        return -1;
+    }
+    // attach host end to bridge
+    snprintf(cmd, sizeof(cmd), "ip link set %s master %s 2>&1", veth_host, br);
+    system(cmd);
+    snprintf(cmd, sizeof(cmd), "ip link set %s up 2>&1", veth_host);
+    system(cmd);
+    // move container end to netns
+    snprintf(cmd, sizeof(cmd), "ip link set eth0 netns %d 2>&1", pid);
+    if (system(cmd) != 0) {
+        fprintf(stderr, "ksvc: move eth0 to netns %d failed\n", pid);
+        // cleanup host veth
+        snprintf(cmd, sizeof(cmd), "ip link del %s 2>&1", veth_host);
+        system(cmd);
+        return -1;
+    }
+    // configure inside netns
+    snprintf(cmd, sizeof(cmd), "nsenter -t %d -n ip addr add %s/16 dev eth0 2>&1", pid, ip);
+    system(cmd);
+    snprintf(cmd, sizeof(cmd), "nsenter -t %d -n ip link set eth0 up 2>&1", pid);
+    system(cmd);
+    snprintf(cmd, sizeof(cmd), "nsenter -t %d -n ip link set lo up 2>&1", pid);
+    system(cmd);
+    snprintf(cmd, sizeof(cmd), "nsenter -t %d -n ip route add default via 10.88.0.1 2>&1", pid);
+    system(cmd);
+    // port publishing
+    for (int i=0;i<cfg->publish_count;i++) {
+        char copy[64];
+        strncpy(copy, cfg->publish[i], sizeof(copy)-1);
+        copy[sizeof(copy)-1]='\0';
+        char *slash = strchr(copy, '/');
+        if (slash) *slash='\0';
+        int colons=0;
+        for (char *p=copy;*p;p++) if (*p==':') colons++;
+        char *host=NULL, *ctr=NULL;
+        if (colons==1) {
+            host = strtok(copy, ":");
+            ctr = strtok(NULL, ":");
+        } else if (colons==2) {
+            strtok(copy, ":");
+            host = strtok(NULL, ":");
+            ctr = strtok(NULL, ":");
+        } else {
+            host = copy;
+            ctr = copy;
+        }
+        if (!host || !ctr) continue;
+        // DNAT host -> container
+        snprintf(cmd, sizeof(cmd), "iptables -t nat -C PREROUTING -p tcp --dport %s -j DNAT --to-destination %s:%s 2>&1 || iptables -t nat -A PREROUTING -p tcp --dport %s -j DNAT --to-destination %s:%s 2>&1 || true", host, ip, ctr, host, ip, ctr);
+        system(cmd);
+        snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -d %s -p tcp --dport %s -j ACCEPT 2>&1 || iptables -A FORWARD -d %s -p tcp --dport %s -j ACCEPT 2>&1 || true", ip, ctr, ip, ctr);
+        system(cmd);
+        // also for host's bridge
+        snprintf(cmd, sizeof(cmd), "iptables -t nat -C PREROUTING -p tcp --dport %s -j DNAT --to-destination %s:%s 2>&1 || iptables -t nat -A OUTPUT -p tcp --dport %s -j DNAT --to-destination %s:%s 2>&1 || true", host, ip, ctr, host, ip, ctr);
+        system(cmd);
+        fprintf(stderr, "ksvc: publish %s -> %s:%s\n", host, ip, ctr);
+    }
+    fprintf(stderr, "ksvc: net %s ip %s -> bridge %s\n", veth_host, ip, br);
     return 0;
 }
 
