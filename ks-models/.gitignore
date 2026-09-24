@@ -1,0 +1,8 @@
+# private models — only you + assistant
+models/*.gguf
+models/*.bin
+models/*.safetensors
+models/*.onnx
+config.local.json
+*.log
+server
