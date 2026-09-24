@@ -33,7 +33,7 @@ extern "C" {
 #include <sys/types.h>
 #include <stdint.h>
 
-#define KSVC_VERSION "0.1.1"
+#define KSVC_VERSION "0.1.2"
 #define KSVC_NAME_MAX 64
 #define KSVC_ROOTFS_MAX 512
 #define KSVC_HOSTNAME_MAX 64
