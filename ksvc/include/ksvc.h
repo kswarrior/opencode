@@ -82,6 +82,7 @@ typedef struct {
     int started;
     int exit_code;
     char cgroup_path[512];
+    char ip[64];                       // container IP when --net with bridge (e.g., 10.88.0.2)
 } ksvc_container_t;
 
 /* ── lifecycle ── */
@@ -107,6 +108,10 @@ int ksvc_mount_volumes(const ksvc_config_t *cfg);
 int ksvc_volume_add(ksvc_config_t *cfg, const char *spec);
 int ksvc_setup_userns(uid_t host_uid, gid_t host_gid);
 int ksvc_setup_net_lo(void);
+int ksvc_setup_net(const ksvc_config_t *cfg, pid_t pid);
+int ksvc_network_create_bridge(const char *br);
+int ksvc_publish_add(ksvc_config_t *cfg, const char *spec);
+int ksvc_allocate_ip(char *out, size_t sz);
 
 /* ── state / list ── */
 int ksvc_list(void); // prints table to stdout

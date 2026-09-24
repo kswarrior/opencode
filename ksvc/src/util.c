@@ -54,6 +54,9 @@ void ksvc_config_init(ksvc_config_t *cfg) {
     cfg->tty = 0;
     cfg->volume_count = 0;
     cfg->use_cgroup_ns = 0;
+    cfg->publish_count = 0;
+    strncpy(cfg->bridge_name, "ksvc-br0", sizeof(cfg->bridge_name)-1);
+    cfg->container_ip[0]='\0';
 }
 
 int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
