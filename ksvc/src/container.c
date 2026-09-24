@@ -40,6 +40,7 @@ static int child_main(void *arg);
 static int setup_userns_maps(pid_t child_pid, uid_t host_uid, gid_t host_gid);
 static int setup_hostname(const char *hostname);
 static int setup_workdir(const char *wd);
+static int drop_caps_all(void);
 
 int ksvc_create(ksvc_container_t *ctr, const ksvc_config_t *cfg) {
     if (!ctr || !cfg) { errno=EINVAL; return -1; }
