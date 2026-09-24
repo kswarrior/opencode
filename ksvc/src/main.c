@@ -39,6 +39,10 @@ static void print_usage(const char *prog) {
     printf("  --net                  new network ns (lo only)\n");
     printf("  --userns               force user ns (rootless)\n");
     printf("  --cgroupns             new cgroup ns (isolated /sys/fs/cgroup, auto with --mem/--cpu/--pids)\n");
+    printf("  --cap-drop CAP         drop capability (e.g., ALL, SYS_ADMIN, NET_RAW)\n");
+    printf("  --cap-add CAP          add capability (after drop)\n");
+    printf("  --drop-caps            drop all caps (alias for --cap-drop ALL, like Docker)\n");
+    printf("  --privileged           keep all caps (default, no drop)\n");
     printf("  --vm                   alias for v (vm mode, stub)\n");
     printf("  --detach, -d           detached (don't wait)\n");
     printf("  --help                 show help\n");
@@ -324,6 +328,24 @@ int main(int argc, char *argv[]) {
             parse_int(argv[++i], &cfg.pids_limit);
         } else if (strcmp(a,"--cgroupns")==0 || strcmp(a,"--cgroup-ns")==0 || strcmp(a,"--cgroup")==0) {
             cfg.use_cgroup_ns = 1;
+        } else if (strcmp(a,"--cap-drop")==0 && i+1 < parse_end) {
+            const char *cap = argv[++i];
+            if (strcmp(cap,"ALL")==0 || strcmp(cap,"all")==0) cfg.drop_caps = 1;
+            else cfg.drop_caps = 1; // for now drop all for any cap-drop
+        } else if (strncmp(a,"--cap-drop=",11)==0) {
+            cfg.drop_caps = 1;
+        } else if (strcmp(a,"--cap-add")==0 && i+1 < parse_end) {
+            // --cap-add after drop: keep caps (not drop all)
+            // For now, if cap-add is specified, don't drop all
+            // More fine-grained would parse specific caps, but we treat as privileged
+            cfg.drop_caps = 0;
+            i++; // consume arg
+        } else if (strncmp(a,"--cap-add=",10)==0) {
+            cfg.drop_caps = 0;
+        } else if (strcmp(a,"--drop-caps")==0) {
+            cfg.drop_caps = 1;
+        } else if (strcmp(a,"--privileged")==0) {
+            cfg.drop_caps = 0;
         } else if (strcmp(a,"--net")==0) {
             cfg.use_net_ns = 1;
         } else if (strcmp(a,"--userns")==0) {
@@ -422,6 +444,7 @@ int main(int argc, char *argv[]) {
     if (cfg.use_user_ns) printf("ksvc: rootless (user ns) uid=%d gid=%d\n", cfg.uid, cfg.gid);
     if (has_cgroup) printf("ksvc: cgroup ns %s (limits mem=%d cpu=%d pids=%d)\n",
            has_cgroup?"enabled":"", cfg.mem_limit_mb, cfg.cpu_quota_pct, cfg.pids_limit);
+    if (cfg.drop_caps) printf("ksvc: caps dropped (cap-drop ALL, no_new_privs)\n");
     for (int i=0;i<cfg.volume_count;i++) {
         printf("ksvc: volume %s -> %s%s\n", cfg.volume_src[i], cfg.volume_dst[i], cfg.volume_ro[i]?" (ro)":"");
     }

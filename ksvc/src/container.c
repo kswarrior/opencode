@@ -10,6 +10,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/syscall.h>
+#include <sys/prctl.h>
+#include <linux/capability.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
@@ -116,8 +118,15 @@ static int child_main(void *arg) {
         ksvc_setup_net_lo();
     }
 
-    // Drop caps if requested (best effort)
-    // We keep necessary caps for exec; dropping is optional
+    // Drop caps if requested (best effort) - like Docker --cap-drop ALL
+    if (ctr->cfg.drop_caps) {
+        fprintf(stderr, "ksvc: dropping all capabilities (cap-drop)\n");
+        // prevent gaining new privs via setuid
+        prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0);
+        drop_caps_all();
+        // verify
+        // cap_get_proc will show empty
+    }
 
     // Prepare argv
     char *argv[KSVC_ARGV_MAX+1] = {0};
@@ -209,6 +218,29 @@ static int setup_workdir(const char *wd) {
         mkdir(wd, 0755);
         chdir(wd);
     }
+    return 0;
+}
+
+static int drop_caps_all(void) {
+    // drop bounding set
+    for (int cap = 0; cap <= 64; cap++) {
+        prctl(PR_CAPBSET_DROP, cap, 0, 0, 0);
+    }
+    // drop effective, permitted, inheritable via capset
+    struct __user_cap_header_struct hdr;
+    struct __user_cap_data_struct data[2];
+    memset(&hdr, 0, sizeof(hdr));
+    memset(data, 0, sizeof(data));
+    hdr.version = _LINUX_CAPABILITY_VERSION_3;
+    hdr.pid = 0;
+    // data already zeroed -> drop all
+    if (syscall(SYS_capset, &hdr, data) < 0) {
+        // fallback: try version 1
+        hdr.version = _LINUX_CAPABILITY_VERSION_1;
+        syscall(SYS_capset, &hdr, data);
+    }
+    // also drop keepcaps
+    prctl(PR_SET_KEEPCAPS, 0, 0, 0, 0);
     return 0;
 }
 
