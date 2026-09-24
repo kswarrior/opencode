@@ -15,8 +15,17 @@ app.use(cors());
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, 'client')));
 
-app.get('/health', (req, res) => {
-  res.type('text/plain').send('ok web ks-coder-2.5:7b\n');
+app.get('/health', async (req, res) => {
+  // check model quickly
+  let modelOk = false;
+  try {
+    const r = await fetch(`${MODEL_BASE_URL}/api/tags`, { signal: AbortSignal.timeout(2000) });
+    if (r.ok) {
+      const j = await r.json();
+      modelOk = j.models && j.models.length > 0;
+    }
+  } catch {}
+  res.type('text/plain').send(`ok web ks-coder-2.5:7b model:${modelOk ? 'ok' : 'loading'}\n`);
 });
 
 app.get('/api/config', (req, res) => {
@@ -40,9 +49,13 @@ app.post('/api/chat', async (req, res) => {
   const { messages, prompt, stream = false, model } = req.body || {};
   const useModel = model || OLLAMA_MODEL;
   let urls = [];
-  if (KS_BASE_URL) urls.push(`${KS_BASE_URL}/v1/chat/completions`);
-  if (MODEL_BASE_URL) urls.push(`${MODEL_BASE_URL}/v1/chat/completions`);
-  urls.push(`${MODEL_BASE_URL}/api/chat`);
+  // avoid self-loop when KS_BASE_URL == MODEL_BASE_URL or equals host
+  const seen = new Set();
+  const addUrl = (u) => { if (u && !seen.has(u)) { seen.add(u); urls.push(u); } };
+  // prefer direct ollama first for speed
+  addUrl(`${MODEL_BASE_URL}/api/chat`);
+  addUrl(`${MODEL_BASE_URL}/v1/chat/completions`);
+  if (KS_BASE_URL && KS_BASE_URL !== MODEL_BASE_URL) addUrl(`${KS_BASE_URL}/v1/chat/completions`);
   const payload = messages ? { model: useModel, messages, stream: false } : { model: useModel, prompt, stream: false };
   let openaiPayload = null;
   if (messages) openaiPayload = { model: useModel, messages, stream: false, temperature: 0.2 };
@@ -61,12 +74,17 @@ app.post('/api/chat', async (req, res) => {
       return res.json({ content, raw: data, model: useModel, via: url });
     } catch (e) { continue; }
   }
-  res.status(502).json({ error: 'model unreachable', tried: urls, hint: 'Set MODEL_BASE_URL or run ollama serve + ks-models' });
+  const isLoading = false;
+  res.status(502).json({ error: 'model loading or unreachable — if just deployed, wait 60s for ollama pull (4.7GB)', tried: urls, hint: 'Render: ensure model baked in image or set MODEL_BASE_URL to external Ollama. Local: run ollama serve & ollama pull qwen2.5-coder:7b' });
 });
 
 app.post('/v1/chat/completions', async (req, res) => {
   const body = JSON.stringify(req.body);
-  const urls = [`${KS_BASE_URL}/v1/chat/completions`, `${MODEL_BASE_URL}/v1/chat/completions`].filter(Boolean);
+  const urls = [];
+  const s = new Set();
+  const add = (u) => { if (u && !s.has(u)) { s.add(u); urls.push(u); } };
+  add(`${MODEL_BASE_URL}/v1/chat/completions`);
+  if (KS_BASE_URL && KS_BASE_URL !== MODEL_BASE_URL) add(`${KS_BASE_URL}/v1/chat/completions`);
   for (const url of urls) {
     try {
       const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
@@ -81,7 +99,11 @@ app.post('/v1/chat/completions', async (req, res) => {
 });
 
 app.get('/v1/models', async (req, res) => {
-  const urls = [`${KS_BASE_URL}/v1/models`, `${MODEL_BASE_URL}/v1/models`].filter(Boolean);
+  const urls = [];
+  const st = new Set();
+  const ad = (u) => { if (u && !st.has(u)) { st.add(u); urls.push(u); } };
+  ad(`${MODEL_BASE_URL}/v1/models`);
+  if (KS_BASE_URL && KS_BASE_URL !== MODEL_BASE_URL) ad(`${KS_BASE_URL}/v1/models`);
   for (const url of urls) {
     try {
       const r = await fetch(url);
@@ -185,7 +207,8 @@ wss.on('connection', (ws, req) => {
           }
           ws.send(JSON.stringify({ type: 'done', content, model }));
         } catch (e2) {
-          ws.send(JSON.stringify({ type: 'error', message: `model unreachable: ${e.message} / ${e2.message}`, hint: 'Ensure ollama serve and ks-models running, or set MODEL_BASE_URL env' }));
+          const loadingMsg = (e.message.includes('404') || e2.message.includes('404')) ? 'model not found — pulling 4.7GB, wait 60s and retry' : 'model loading — if just deployed, wait 60s';
+          ws.send(JSON.stringify({ type: 'error', message: `model unreachable: ${e.message} / ${e2.message} — ${loadingMsg}`, hint: 'Render web root deploy: model runs in same container via ollama/ollama, wait for pull. Local: ollama serve & ollama pull qwen2.5-coder:7b' }));
         }
       }
     } else if (msg.type === 'config') {
