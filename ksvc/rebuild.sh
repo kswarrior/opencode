@@ -78,8 +78,8 @@ if [[ "$CLEAN" -eq 1 ]]; then
   echo "rebuild: make clean (from scratch)"
   make -C "$ROOT" clean
 fi
-echo "rebuild: make -C $ROOT"
-make -C "$ROOT" -j"$(nproc 2>/dev/null || echo 4)"
+echo "rebuild: make -C $ROOT (forced rebuild for version bump)"
+make -C "$ROOT" -B -j"$(nproc 2>/dev/null || echo 4)"
 
 # 4) publish into releases/.
 if [[ ! -f "$ROOT/ksvc" ]]; then
