@@ -80,7 +80,7 @@ services:
         value: 10000
 # deploy trigger Sun Sep 20 08:06:16 UTC 2026
   - type: web
-    name: web
+    name: ks-models
     env: docker
     dockerfilePath: ./web/Dockerfile
     dockerContext: .
