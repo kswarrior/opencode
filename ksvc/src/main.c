@@ -29,6 +29,8 @@ static void print_usage(const char *prog) {
     printf("  --rootfs PATH          rootfs dir to pivot_root/chroot (container) / disk img (vm)\n");
     printf("  --overlay-lower PATH   lowerdir for overlayfs (container, optional)\n");
     printf("  --overlay-upper PATH   upperdir for overlayfs (container, optional, tmp if empty)\n");
+    printf("  --volume SRC:DST[:ro]  bind-mount host SRC to container DST (like docker -v, repeatable)\n");
+    printf("  -v SRC:DST[:ro]        alias for --volume\n");
     printf("  --hostname HOST        UTS hostname (default: ksvc)\n");
     printf("  --workdir DIR          chdir after pivot (default: /)\n");
     printf("  --mem MB               memory limit MB (cgroup v2, 0=unlimited)\n");
@@ -301,6 +303,14 @@ int main(int argc, char *argv[]) {
             strncpy(cfg.overlay_lower, argv[++i], sizeof(cfg.overlay_lower)-1);
         } else if (strcmp(a,"--overlay-upper")==0 && i+1 < parse_end) {
             strncpy(cfg.overlay_upper, argv[++i], sizeof(cfg.overlay_upper)-1);
+        } else if (strcmp(a,"--volume")==0 && i+1 < parse_end) {
+            if (ksvc_volume_add(&cfg, argv[++i]) < 0) return 1;
+        } else if (strcmp(a,"-v")==0 && i+1 < parse_end) {
+            if (ksvc_volume_add(&cfg, argv[++i]) < 0) return 1;
+        } else if (strncmp(a,"--volume=",9)==0) {
+            if (ksvc_volume_add(&cfg, a+9) < 0) return 1;
+        } else if (strncmp(a,"-v",2)==0 && strlen(a) > 2) {
+            if (ksvc_volume_add(&cfg, a+2) < 0) return 1;
         } else if (strcmp(a,"--hostname")==0 && i+1 < parse_end) {
             strncpy(cfg.hostname, argv[++i], sizeof(cfg.hostname)-1);
         } else if (strcmp(a,"--workdir")==0 && i+1 < parse_end) {
@@ -405,6 +415,9 @@ int main(int argc, char *argv[]) {
            cfg.use_net_ns ? " net" : "",
            cfg.use_user_ns ? " user" : "");
     if (cfg.use_user_ns) printf("ksvc: rootless (user ns) uid=%d gid=%d\n", cfg.uid, cfg.gid);
+    for (int i=0;i<cfg.volume_count;i++) {
+        printf("ksvc: volume %s -> %s%s\n", cfg.volume_src[i], cfg.volume_dst[i], cfg.volume_ro[i]?" (ro)":"");
+    }
 
     if (ksvc_start(&ctr) < 0) {
         fprintf(stderr,"ksvc: start failed\n");

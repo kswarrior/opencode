@@ -101,11 +101,9 @@ static int child_main(void *arg) {
     // Set hostname in new UTS ns
     setup_hostname(ctr->cfg.hostname);
 
-    // Make mounts private and setup pivot_root/chroot
+    // Make mounts private and setup pivot_root/chroot (volumes handled inside)
     // Need to do mount setup after user ns (so we have CAP_SYS_ADMIN)
-    if (ksvc_mount_setup(ctr->cfg.rootfs,
-                         ctr->cfg.overlay_lower[0] ? ctr->cfg.overlay_lower : NULL,
-                         ctr->cfg.overlay_upper[0] ? ctr->cfg.overlay_upper : NULL) < 0) {
+    if (ksvc_mount_setup_cfg(&ctr->cfg) < 0) {
         fprintf(stderr, "ksvc: mount setup failed\n");
         _exit(1);
     }
