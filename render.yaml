@@ -95,6 +95,19 @@ services:
       - key: OLLAMA_MODEL
         value: qwen2.5-coder:7b
       - key: KS_BASE_URL
-        value: https://ks-models.onrender.com
+        value: ""
       - key: MODEL_BASE_URL
-        value: https://ks-models.onrender.com
+        value: https://ks-model-api.onrender.com
+  - type: web
+    name: ks-model-api
+    env: docker
+    dockerfilePath: ./model/Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/tags
+    autoDeploy: true
+    branch: main
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: OLLAMA_HOST
+        value: 0.0.0.0:10000
