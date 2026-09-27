@@ -527,6 +527,24 @@ ksx web --port 8080</pre>
 
       // keep logs per package/action
       state.actionLogs = state.actionLogs || {};
+      // Re-fetch detail to update the installed/not-installed tag after a
+      // mutating action (e2e: Install click → tag flips without Back).
+      // Preserves per-action status circles + logs across the re-render.
+      function refreshInstalledTag(service) {
+        getJSON("/api/packages/" + encodeURIComponent(service)).then(function (fresh) {
+          var card = document.querySelector(".pkg-detail-title-right");
+          if (!card) return;
+          var tag = card.querySelector(".pkg-tag-installed, .pkg-tag-notinstalled");
+          if (!tag) return;
+          if (fresh.installed) {
+            tag.className = "pkg-tag pkg-tag-installed";
+            tag.textContent = "installed";
+          } else {
+            tag.className = "pkg-tag pkg-tag-notinstalled";
+            tag.textContent = "not installed";
+          }
+        }).catch(function(){});
+      }
       function setActionStatus(action, status) {
         var els = document.querySelectorAll('.pkg-action-status[data-action="' + action + '"]');
         Array.prototype.forEach.call(els, function(el){
@@ -556,8 +574,8 @@ ksx web --port 8080</pre>
               state.actionLogs[key] = res.logs || "";
               setActionStatus(act, res.ok ? "done" : "error");
               showToast((res.ok ? "✓ " : "✗ ") + act + " " + d.name + (res.ok ? " done" : " failed"));
-              // refresh state and installed tag after a bit
-              setTimeout(function(){ load(); }, 800);
+              // refresh Home counts + installed tag (e2e: tag updates without Back)
+              setTimeout(function(){ load(); refreshInstalledTag(d.name); }, 800);
             }).catch(function(e){
               var key = d.name + ":" + act;
               state.actionLogs[key] = "error: " + e.message;
