@@ -439,25 +439,38 @@ fn run_action_blocking(
     force: bool,
 ) -> Result<(String, bool), String> {
     let host = pipeline::HostMeta::detect();
-    let vars = requirements::collect_vars(recipe, action);
+    // Mirror CLI semantics: `info` renders with the union of all interpolate
+    // blocks (display vars) and never writes `.env`/templates (read-only).
+    // `uninstall` also skips env/file writes (CLI `cmd_uninstall`).
+    let vars = if action == "info" {
+        requirements::collect_display_vars(recipe)
+    } else {
+        requirements::collect_vars(recipe, action)
+    };
     let mut logs = String::new();
     logs.push_str(&format!("ksx: {} {} (v{})\n", action, service, recipe.service.version));
     logs.push_str(&format!("ksx: host {} / {} ram {} disk {}\n", host.os, host.arch, host.ram_mb, host.free_disk_mb));
 
-    // 1) env files
-    match requirements::write_env_files(recipe, action) {
-        Ok(paths) => {
-            for p in paths {
-                logs.push_str(&format!("ksx: env → {}\n", p));
+    let is_mutating = matches!(action, "install" | "update" | "reinstall");
+
+    // 1) env files (mutating actions only — `info`/`uninstall` are read-only here)
+    if is_mutating {
+        match requirements::write_env_files(recipe, action) {
+            Ok(paths) => {
+                for p in paths {
+                    logs.push_str(&format!("ksx: env → {}\n", p));
+                }
+            }
+            Err(e) => {
+                logs.push_str(&format!("ksx: env failed: {}\n", e));
+                if !force {
+                    return Ok((logs, false));
+                }
+                logs.push_str("ksx: [force] ignoring env failure\n");
             }
         }
-        Err(e) => {
-            logs.push_str(&format!("ksx: env failed: {}\n", e));
-            if !force {
-                return Ok((logs, false));
-            }
-            logs.push_str("ksx: [force] ignoring env failure\n");
-        }
+    } else {
+        logs.push_str("ksx: read-only action — skipping .env writes\n");
     }
 
     // 2) requirements
@@ -471,13 +484,15 @@ fn run_action_blocking(
         logs.push_str("ksx: requirements OK\n");
     }
 
-    // 3) files
-    if let Err(e) = requirements::materialize_files(recipe, &host, action, &vars, force) {
-        logs.push_str(&format!("ksx: files failed: {}\n", e));
-        if !force {
-            return Ok((logs, false));
+    // 3) files (mutating actions only)
+    if is_mutating {
+        if let Err(e) = requirements::materialize_files(recipe, &host, action, &vars, force) {
+            logs.push_str(&format!("ksx: files failed: {}\n", e));
+            if !force {
+                return Ok((logs, false));
+            }
+            logs.push_str("ksx: [force] ignoring files failure\n");
         }
-        logs.push_str("ksx: [force] ignoring files failure\n");
     }
 
     // 4) steps
