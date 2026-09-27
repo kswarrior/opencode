@@ -84,8 +84,12 @@ ksx web --port 8080
   embedded CSS/JS.
 - JSON APIs (used by the SPA via `fetch`):
   `GET /api/host`, `GET /api/packages`, `GET /api/packages/:service`,
+  `POST /api/packages/:service/run` (`{action}` → `{ok, logs}`),
   `GET /api/state`.
 - Sidebar pages: **Home** (overview: host, memory, package/installed counts),
   **Packages** (toolbar: Packages title + search + Refresh → stylish card grid → full-page detail with requirements & actions), **Settings** (coming soon).
-- The dashboard is read-only; installs run via the CLI. `Ctrl-C` stops
-  the server.
+- Packages seed from embedded `registry/packages/*.toml` into
+  `ksx/store/<app>.toml` on first run, so Install + other actions work e2e
+  with zero upload. Click an action button to run it (yellow spinning →
+  green done, log via the log icon); `test` is the safe no-docker fixture.
+  `Ctrl-C` stops the server.
