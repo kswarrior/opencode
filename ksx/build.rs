@@ -8,4 +8,13 @@ fn main() {
     for asset in ["frontend/index.html", "frontend/style.css"] {
         println!("cargo:rerun-if-changed={asset}");
     }
+    // Embedded registry defaults (storage.rs include_str!) — rebuild when recipes change.
+    for recipe in [
+        "../registry/packages/panel.toml",
+        "../registry/packages/ssh.toml",
+        "../registry/packages/sql.toml",
+        "../registry/packages/test.toml",
+    ] {
+        println!("cargo:rerun-if-changed={recipe}");
+    }
 }

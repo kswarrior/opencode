@@ -589,20 +589,12 @@ fn fill_detail(detail: &mut serde_json::Value, recipe: &pipeline::Recipe) {
             "mode": d.mode,
         })).collect::<Vec<_>>(),
     });
-    // Respect installed filtering: keep consistent with package_summary
-    let is_installed = detail
-        .get("installed")
-        .and_then(|v| v.as_str())
-        .is_some();
+    // E2E: always expose all 5 lifecycles (install/update/reinstall/uninstall/info).
+    // The frontend disables buttons with zero steps, so recipes without e.g.
+    // `uninstall` steps still render correctly. Installed state is shown via
+    // the `installed` tag, not by hiding actions.
     let actions: Vec<serde_json::Value> = pipeline::Recipe::known_actions()
         .iter()
-        .filter(|a| {
-            if is_installed {
-                matches!(*a, &"reinstall" | &"update" | &"uninstall" | &"info")
-            } else {
-                matches!(*a, &"install")
-            }
-        })
         .map(|action| {
             let steps: Vec<&str> = recipe
                 .steps
@@ -633,17 +625,10 @@ fn package_summary(
     let display_vars = requirements::collect_display_vars(recipe);
     let description = requirements::interpolate(&recipe.service.description, &display_vars);
     let summary = requirements::interpolate(&recipe.service.summary, &display_vars);
-    // Show actions based on installed state: not installed → Install only, installed → reinstall/update/uninstall/info
-    let is_installed = state.version(&name).is_some();
+    // E2E: always expose all 5 lifecycles so frontend Install + other-action
+    // buttons work without going Back. `installed` tag shows state instead.
     let actions: Vec<serde_json::Value> = pipeline::Recipe::known_actions()
         .iter()
-        .filter(|a| {
-            if is_installed {
-                matches!(*a, &"reinstall" | &"update" | &"uninstall" | &"info")
-            } else {
-                matches!(*a, &"install")
-            }
-        })
         .map(|action| {
             let n = recipe
                 .steps

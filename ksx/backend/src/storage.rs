@@ -330,9 +330,48 @@ pub fn is_cache_fresh(service: &str) -> bool {
 // Permanent store (non-cache) — `store/<service>.toml` (never TTL-evicted)
 // ---------------------------------------------------------------------------
 
+/// Embedded default recipes (panel.toml-style single-TOML packages).
+/// Source: `registry/packages/*.toml` at repo root — baked into the binary
+/// so the frontend Packages page works e2e with zero manual upload:
+/// `ksx web` → Packages → click Install/Update/Reinstall/Uninstall/Info.
+const DEFAULT_PANEL_TOML: &str = include_str!("../../../registry/packages/panel.toml");
+const DEFAULT_SSH_TOML: &str = include_str!("../../../registry/packages/ssh.toml");
+const DEFAULT_SQL_TOML: &str = include_str!("../../../registry/packages/sql.toml");
+const DEFAULT_TEST_TOML: &str = include_str!("../../../registry/packages/test.toml");
+
+/// (service name, embedded TOML) pairs seeded into `store/` on first use.
+pub fn default_recipes() -> &'static [(&'static str, &'static str)] {
+    &[
+        ("panel", DEFAULT_PANEL_TOML),
+        ("ssh", DEFAULT_SSH_TOML),
+        ("sql", DEFAULT_SQL_TOML),
+        ("test", DEFAULT_TEST_TOML),
+    ]
+}
+
+/// Seed `store/` with embedded defaults for any missing service.
+/// Never overwrites user-edited files — only creates absent ones.
+/// Called from web list/detail/run paths so frontend e2e always has
+/// clickable packages (Install + other actions) without manual upload.
+pub fn ensure_default_store() {
+    let dir = store_dir();
+    let _ = fs::create_dir_all(&dir);
+    for (name, content) in default_recipes() {
+        let path = dir.join(format!("{name}.toml"));
+        if !path.exists() {
+            // Best-effort seed; ignore errors (disk full etc. surfaces later).
+            let _ = fs::write(&path, content);
+        }
+    }
+}
+
 /// Load permanent store TOML if present (no TTL). Returns `None` if missing.
+/// Auto-seeds embedded defaults first, so a fresh `~/.ksx` still resolves
+/// `panel`/`ssh`/`sql`/`test` like the registry panel.toml.
 #[allow(dead_code)]
 pub fn load_store(service: &str) -> Option<String> {
+    // Seed missing defaults (no-op when files already exist).
+    ensure_default_store();
     fs::read_to_string(store_path(service)).ok()
 }
 
@@ -359,7 +398,10 @@ pub fn delete_store(service: &str) -> std::io::Result<()> {
 }
 
 /// List all service names present in store (filenames without .toml, sorted).
+/// Auto-seeds embedded panel.toml-style defaults when store is empty so the
+/// frontend Packages grid is never blank on first `ksx web` run (e2e).
 pub fn list_store_names() -> Vec<String> {
+    ensure_default_store();
     let dir = store_dir();
     let mut out = Vec::new();
     if let Ok(entries) = fs::read_dir(&dir) {
