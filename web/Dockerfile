@@ -6,8 +6,10 @@ WORKDIR /app
 COPY . /tmp/ctx
 RUN if [ -f /tmp/ctx/web/package.json ]; then \
       cp /tmp/ctx/web/package.json ./package.json && cp /tmp/ctx/web/server.js ./server.js && cp -r /tmp/ctx/web/client ./client; \
+      [ -f /tmp/ctx/web/package-lock.json ] && cp /tmp/ctx/web/package-lock.json ./package-lock.json || true; \
     elif [ -f /tmp/ctx/package.json ]; then \
       cp /tmp/ctx/package.json ./package.json && cp /tmp/ctx/server.js ./server.js && cp -r /tmp/ctx/client ./client; \
+      [ -f /tmp/ctx/package-lock.json ] && cp /tmp/ctx/package-lock.json ./package-lock.json || true; \
     else echo "ERROR: package.json not found"; ls -R /tmp/ctx | head -n 100; exit 1; fi \
     && rm -rf /tmp/ctx
 
@@ -28,6 +30,6 @@ ENV MODEL_BASE_URL=http://localhost:11434
 ENV KS_BASE_URL=http://localhost:11434
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
-  CMD wget -qO- http://localhost:10000/health || exit 1
+  CMD-SHELL wget -qO- http://localhost:${PORT:-10000}/health || exit 1
 
 CMD ["node", "server.js"]
