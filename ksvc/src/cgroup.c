@@ -1,4 +1,6 @@
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+#endif
 #include "ksvc.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,11 +37,12 @@ static int mkdir_p(const char *path, mode_t mode) {
     for (char *p = tmp + 1; *p; p++) {
         if (*p == '/') {
             *p = '\0';
-            mkdir(tmp, mode);
+            (void)mkdir(tmp, mode);
             *p = '/';
         }
     }
-    return mkdir(tmp, mode);
+    if (mkdir(tmp, mode) < 0 && errno != EEXIST) return -1;
+    return 0;
 }
 
 int ksvc_cgroup_create(ksvc_container_t *ctr) {
@@ -49,10 +52,9 @@ int ksvc_cgroup_create(ksvc_container_t *ctr) {
         return 0;
     }
     // Try to create under /sys/fs/cgroup/ksvc.slice/<id>
-    // If we can't write to /sys/fs/cgroup (unprivileged), try $XDG_RUNTIME_DIR or /tmp
     char path[512];
     snprintf(path, sizeof(path), "%s/ksvc.slice", CGROUP_BASE);
-    mkdir(path, 0755);
+    (void)mkdir(path, 0755);
     snprintf(path, sizeof(path), "%s/ksvc.slice/%s", CGROUP_BASE, ctr->id);
     if (mkdir(path, 0755) < 0 && errno != EEXIST) {
         // fallback: try to create under current cgroup via /sys/fs/cgroup (may need delegation)
@@ -68,16 +70,13 @@ int ksvc_cgroup_create(ksvc_container_t *ctr) {
         ctr->cgroup_path[0] = '\0';
         return 0;
     }
-    // enable controllers in parent so child cgroups can use them
-    // echo "+cpu +memory +pids" > /sys/fs/cgroup/ksvc.slice/cgroup.subtree_control
-    // echo "+cpu +memory +pids" > /sys/fs/cgroup/cgroup.subtree_control (if needed)
-    // Best effort — ignore errors
-    write_file("/sys/fs/cgroup/cgroup.subtree_control", "+cpu +memory +pids +io");
+    // enable controllers in parent so child cgroups can use them (best effort)
+    (void)write_file("/sys/fs/cgroup/cgroup.subtree_control", "+cpu +memory +pids +io");
     char ctl[512];
     snprintf(ctl, sizeof(ctl), "%s/ksvc.slice/cgroup.subtree_control", CGROUP_BASE);
-    write_file(ctl, "+cpu +memory +pids +io");
+    (void)write_file(ctl, "+cpu +memory +pids +io");
 
-    strncpy(ctr->cgroup_path, path, sizeof(ctr->cgroup_path)-1);
+    snprintf(ctr->cgroup_path, sizeof(ctr->cgroup_path), "%s", path);
     // set limits immediately if configured
     if (ctr->cfg.mem_limit_mb > 0) {
         char mem_path[600];

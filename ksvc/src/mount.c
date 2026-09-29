@@ -118,8 +118,7 @@ static int do_bind_volume(const char *src, const char *dst_host, int readonly) {
 int ksvc_mount_volumes(const ksvc_config_t *cfg) {
     if (!cfg || cfg->volume_count == 0) return 0;
     char rootfs[KSVC_ROOTFS_MAX];
-    strncpy(rootfs, cfg->rootfs, sizeof(rootfs)-1);
-    rootfs[sizeof(rootfs)-1]='\0';
+    snprintf(rootfs, sizeof(rootfs), "%s", cfg->rootfs);
 
     for (int i=0;i<cfg->volume_count;i++) {
         const char *src = cfg->volume_src[i];
@@ -145,9 +144,15 @@ int ksvc_mount_volumes(const ksvc_config_t *cfg) {
         }
         if (do_bind_volume(src, dst_host, ro) < 0) {
             int saved = errno;
-            if (cfg->use_user_ns && (saved==EPERM || saved==EACCES)) {
-                fprintf(stderr, "ksvc: warning: volume %s -> %s needs privileged (sudo) — skipping (rootless mount denied: %s)\n", src, dst, strerror(saved));
-                fprintf(stderr, "ksvc: hint: run sudo ksvc run -v %s:%s%s -- ... for volumes\n", src, dst, ro?"":":ro");
+            // Rootless or sandboxed (AppArmor) mounts often fail with
+            // EPERM/EACCES/ENOENT/EINVAL. Warn + skip that volume so the
+            // container still runs (like `ps` without isolation) instead of
+            // aborting the whole container with exit 1.
+            if (saved==EPERM || saved==EACCES || saved==ENOENT || saved==EINVAL || saved==EROFS) {
+                fprintf(stderr, "ksvc: warning: volume %s -> %s skipped (%s)\n", src, dst, strerror(saved));
+                if (cfg->use_user_ns)
+                    fprintf(stderr, "ksvc: hint: bind-mounts need privileged — run: sudo ksvc run -v %s:%s%s -- ...\n",
+                            src, dst, ro?"":":ro");
                 continue;
             }
             return -1;
@@ -172,6 +177,7 @@ int ksvc_mount_setup_cfg(const ksvc_config_t *cfg) {
             if (ksvc_mount_volumes(cfg) < 0) return -1;
         }
         if (mount("proc", "/proc", "proc", MS_NOSUID|MS_NOEXEC|MS_NODEV, NULL) < 0 && errno != EBUSY) {
+            // rootless/AppArmor: remount fails — non-fatal, ps shows host
         }
         // cgroup ns: remount cgroup2 for isolated view
         if (cfg && (cfg->use_cgroup_ns || cfg->mem_limit_mb >0 || cfg->cpu_quota_pct>0 || cfg->pids_limit>0)) {
@@ -193,22 +199,22 @@ int ksvc_mount_setup_cfg(const ksvc_config_t *cfg) {
     // overlay handling (same as before)
     if (overlay_lower && overlay_lower[0]!='\0') {
         char upper[512] = {0}, work[512] = {0}, merged[512] = {0};
-        strncpy(merged, rootfs, sizeof(merged)-1);
+        snprintf(merged, sizeof(merged), "%s", rootfs);
         if (overlay_upper && overlay_upper[0]!='\0') {
-            strncpy(upper, overlay_upper, sizeof(upper)-1);
+            snprintf(upper, sizeof(upper), "%s", overlay_upper);
         } else {
             snprintf(upper, sizeof(upper), "/tmp/ksvc-overlay-%d-upper", getpid());
-            mkdir(upper, 0755);
+            (void)mkdir(upper, 0755);
         }
         snprintf(work, sizeof(work), "/tmp/ksvc-overlay-%d-work", getpid());
-        mkdir(work, 0755);
-        mkdir(merged, 0755);
+        (void)mkdir(work, 0755);
+        (void)mkdir(merged, 0755);
         if (stat(overlay_lower, &st) < 0) {
             fprintf(stderr, "ksvc: overlay lower %s not found\n", overlay_lower);
             return -1;
         }
-        mkdir(upper, 0755);
-        mkdir(work, 0755);
+        (void)mkdir(upper, 0755);
+        (void)mkdir(work, 0755);
         char opts[1024];
         snprintf(opts, sizeof(opts), "lowerdir=%s,upperdir=%s,workdir=%s", overlay_lower, upper, work);
         if (mount("overlay", merged, "overlay", 0, opts) < 0) {
@@ -314,8 +320,8 @@ int ksvc_mount_setup_cfg(const ksvc_config_t *cfg) {
 int ksvc_mount_setup(const char *rootfs, const char *overlay_lower, const char *overlay_upper) {
     ksvc_config_t tmp;
     ksvc_config_init(&tmp);
-    if (rootfs) strncpy(tmp.rootfs, rootfs, sizeof(tmp.rootfs)-1);
-    if (overlay_lower) strncpy(tmp.overlay_lower, overlay_lower, sizeof(tmp.overlay_lower)-1);
-    if (overlay_upper) strncpy(tmp.overlay_upper, overlay_upper, sizeof(tmp.overlay_upper)-1);
+    if (rootfs) snprintf(tmp.rootfs, sizeof(tmp.rootfs), "%s", rootfs);
+    if (overlay_lower) snprintf(tmp.overlay_lower, sizeof(tmp.overlay_lower), "%s", overlay_lower);
+    if (overlay_upper) snprintf(tmp.overlay_upper, sizeof(tmp.overlay_upper), "%s", overlay_upper);
     return ksvc_mount_setup_cfg(&tmp);
 }
