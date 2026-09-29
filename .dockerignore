@@ -13,7 +13,9 @@ __pycache__
 ks-models/data
 ks-models/models
 ksx/target
-ksx/releases
+# ksx/releases NOT ignored — Dockerfile needs prebuilt ./releases/ksx binary
+!ksx/releases/ksx
+!ksx/releases/ksx.sha256
 ksvc/releases
 ksvc/*.o
 ksvc/src/*.o
