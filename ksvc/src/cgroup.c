@@ -80,14 +80,11 @@ int ksvc_cgroup_create(ksvc_container_t *ctr) {
     // set limits immediately if configured
     if (ctr->cfg.mem_limit_mb > 0) {
         char mem_path[600];
-        char val[64];
         snprintf(mem_path, sizeof(mem_path), "%s/memory.max", path);
-        snprintf(val, sizeof(val), "%dM", ctr->cfg.mem_limit_mb);
         // cgroup v2 expects bytes or "max"
-        // memory.max wants bytes; support M suffix via conversion to bytes
         char bytes[64];
         snprintf(bytes, sizeof(bytes), "%ld", (long)ctr->cfg.mem_limit_mb * 1024 * 1024);
-        write_file(mem_path, bytes);
+        (void)write_file(mem_path, bytes);
     }
     if (ctr->cfg.cpu_quota_pct > 0) {
         char cpu_path[600];
@@ -97,19 +94,19 @@ int ksvc_cgroup_create(ksvc_container_t *ctr) {
         // pct 100 => 100000 100000, pct 50 => 50000 100000
         int quota = ctr->cfg.cpu_quota_pct * 1000; // pct 100 -> 100000
         snprintf(val, sizeof(val), "%d 100000", quota);
-        write_file(cpu_path, val);
+        (void)write_file(cpu_path, val);
     }
     if (ctr->cfg.pids_limit > 0) {
         char pids_path[600];
         char val[64];
         snprintf(pids_path, sizeof(pids_path), "%s/pids.max", path);
         snprintf(val, sizeof(val), "%d", ctr->cfg.pids_limit);
-        write_file(pids_path, val);
+        (void)write_file(pids_path, val);
     }
     // enable subtree for this cgroup as well
     char sub[600];
     snprintf(sub, sizeof(sub), "%s/cgroup.subtree_control", path);
-    write_file(sub, "+cpu +memory +pids +io");
+    (void)write_file(sub, "+cpu +memory +pids +io");
     return 0;
 }
 
@@ -133,7 +130,7 @@ int ksvc_cgroup_attach_pid(const char *cgroup_path, pid_t pid) {
     if (write_file(procs, val) < 0) {
         // try cgroup.threads as fallback
         snprintf(procs, sizeof(procs), "%s/cgroup.threads", cgroup_path);
-        write_file(procs, val);
+        (void)write_file(procs, val);
         // ignore error for rootless
         return 0;
     }
@@ -141,19 +138,20 @@ int ksvc_cgroup_attach_pid(const char *cgroup_path, pid_t pid) {
 }
 
 void ksvc_cgroup_remove(ksvc_container_t *ctr) {
-    if (ctr->cgroup_path[0]=='\0') return;
-    // Kill all pids in cgroup first
+    if (!ctr || ctr->cgroup_path[0]=='\0') return;
+    // Kill all pids in cgroup first (best effort)
     char procs[600];
     snprintf(procs, sizeof(procs), "%s/cgroup.procs", ctr->cgroup_path);
     FILE *f = fopen(procs, "r");
     if (f) {
         char line[32];
         while (fgets(line, sizeof(line), f)) {
-            pid_t p = atoi(line);
-            if (p > 1) kill(p, 9);
+            pid_t p = (pid_t)atoi(line);
+            if (p > 1) (void)kill(p, SIGKILL);
         }
         fclose(f);
     }
-    // Try to remove cgroup directory (will fail if not empty, but best effort)
-    rmdir(ctr->cgroup_path);
+    // Try to remove cgroup directory (fails if not empty — best effort)
+    (void)rmdir(ctr->cgroup_path);
+    ctr->cgroup_path[0] = '\0';
 }

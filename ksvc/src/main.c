@@ -1,4 +1,6 @@
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+#endif
 #include "ksvc.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,7 +33,9 @@ static void print_usage(const char *prog) {
     printf("  --overlay-upper PATH   upperdir for overlayfs (container, optional, tmp if empty)\n");
     printf("  --volume SRC:DST[:ro]  bind-mount host SRC to container DST (like docker -v, repeatable)\n");
     printf("  -v SRC:DST[:ro]        alias for --volume\n");
-    printf("  --hostname HOST        UTS hostname (default: ksvc)\n");
+    printf("  -p HOST:CTR, --publish HOST:CTR  publish port host->container (needs --net, privileged)\n");
+    printf("  --bridge NAME          bridge for --net (default ksvc-br0, privileged)\n");
+    printf("  --hostname HOST        UTS hostname (default: ksvc, needs sudo for isolation)\n");
     printf("  --workdir DIR          chdir after pivot (default: /)\n");
     printf("  --mem MB               memory limit MB (cgroup v2, 0=unlimited)\n");
     printf("  --cpu PCT              cpu quota 100=1cpu, 50=0.5cpu (cgroup v2)\n");
@@ -83,9 +87,29 @@ static void print_version(void) {
 static int parse_int(const char *s, int *out) {
     char *end;
     long v = strtol(s, &end, 10);
-    if (*end != '\0') return -1;
+    if (end == s || *end != '\0') return -1;
     *out = (int)v;
     return 0;
+}
+
+// parse signal: number, NAME, or SIGNAME (KILL, TERM, SIGKILL, SIGTERM, ...)
+static int parse_signal(const char *s) {
+    if (!s || !s[0]) return SIGTERM;
+    // numeric?
+    char *end = NULL;
+    long v = strtol(s, &end, 10);
+    if (end && *end == '\0' && v > 0 && v < 64) return (int)v;
+    // strip SIG prefix
+    const char *n = s;
+    if (strncmp(n, "SIG", 3) == 0) n += 3;
+    if (strcmp(n, "KILL") == 0 || strcmp(n, "KILL9") == 0) return SIGKILL;
+    if (strcmp(n, "TERM") == 0) return SIGTERM;
+    if (strcmp(n, "INT") == 0) return SIGINT;
+    if (strcmp(n, "HUP") == 0) return SIGHUP;
+    if (strcmp(n, "QUIT") == 0) return SIGQUIT;
+    if (strcmp(n, "USR1") == 0) return SIGUSR1;
+    if (strcmp(n, "USR2") == 0) return SIGUSR2;
+    return -1;
 }
 
 int main(int argc, char *argv[]) {
@@ -171,27 +195,50 @@ int main(int argc, char *argv[]) {
             return 1;
         }
         int sig = SIGTERM;
+        int sig_given = 0;
         for (int i=id_idx+1;i<argc;i++) {
-            if (strcmp(argv[i],"--sig")==0 && i+1<argc) {
-                sig = atoi(argv[++i]);
-                if (sig <=0) sig = SIGTERM;
-                if (strcmp(argv[i],"KILL")==0 || strcmp(argv[i],"9")==0) sig = SIGKILL;
-                if (strcmp(argv[i],"TERM")==0) sig = SIGTERM;
-            }
+            if ((strcmp(argv[i],"--sig")==0 || strcmp(argv[i],"--signal")==0 || strcmp(argv[i],"-s")==0) && i+1<argc) {
+                const char *sv = argv[++i];
+                int ps = parse_signal(sv);
+                if (ps < 0) {
+                    fprintf(stderr, "ksvc: unknown signal '%s' (use number or KILL/TERM/INT/HUP)\n", sv);
+                    return 1;
+                }
+                sig = ps;
+                sig_given = 1;
+            } else if (strcmp(argv[i],"--sig=KILL")==0) { sig = SIGKILL; sig_given = 1; }
         }
+        (void)sig_given;
         ksvc_container_t ctr;
         if (ksvc_state_load(id, &ctr) < 0) {
             // try as pid directly
-            pid_t pid = atoi(id);
-            if (pid > 1) {
-                if (kill(pid, sig) < 0) { perror("kill"); return 1; }
+            char *end = NULL;
+            long pidl = strtol(id, &end, 10);
+            if (end && *end == '\0' && pidl > 1) {
+                pid_t pid = (pid_t)pidl;
+                if (kill(pid, sig) < 0) {
+                    if (errno == ESRCH) {
+                        printf("ksvc: pid %d already exited\n", pid);
+                        return 0;
+                    }
+                    perror("kill");
+                    return 1;
+                }
                 printf("ksvc: killed pid %d with sig %d\n", pid, sig);
                 return 0;
             }
             fprintf(stderr, "ksvc: container %s not found (check `ksvc list`)\n", id);
             return 1;
         }
+        // If pid already dead, ksvc_stop() still cleans stale state and
+        // returns 0 — report cleaned instead of erroring.
         printf("ksvc: stopping %s (pid %d) with sig %d\n", ctr.id, ctr.pid, sig);
+        if (ctr.pid > 1 && kill(ctr.pid, 0) != 0 && errno == ESRCH) {
+            printf("ksvc: container %s already exited — cleaning up\n", id);
+            ksvc_stop(&ctr, sig);
+            printf("ksvc: cleaned %s\n", id);
+            return 0;
+        }
         if (ksvc_stop(&ctr, sig) < 0) { perror("ksvc_stop"); return 1; }
         printf("ksvc: stopped %s\n", id);
         return 0;
@@ -255,8 +302,6 @@ int main(int argc, char *argv[]) {
     ksvc_config_t cfg;
     ksvc_config_init(&cfg);
     int detach = 0;
-
-    // parse run/launch options (run == launch, both correctly matched, all three syntaxes)
     // Supported correctly matched:
     //   ksvc c launch mycontainer              -> type c, name mycontainer, default /bin/sh
     //   ksvc launch c mycontainer              -> same (verb type name)
