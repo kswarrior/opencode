@@ -155,8 +155,11 @@ func handleChatCompletions(w http.ResponseWriter, r *http.Request) {
 		prompt = string(b)
 	}
 	maxNew := req.MaxTokens
-	if maxNew <= 0 || maxNew > 1024 {
-		maxNew = 256
+	if maxNew <= 0 {
+		maxNew = 80
+	}
+	if maxNew > 150 {
+		maxNew = 150
 	}
 	temp := req.Temperature
 	if temp == 0 {

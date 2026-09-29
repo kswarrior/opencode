@@ -19,14 +19,32 @@ TOK = None
 CFG = None
 DEVICE = "cpu"
 
+STOPS = ["<eos>", "\nuser:", "\n\nuser:", "<tool_call>", "<tool_result>"]
+
+def truncate(text):
+    cut = len(text)
+    for s in STOPS:
+        i = text.find(s)
+        if i >= 0:
+            cut = min(cut, i)
+    text = text[:cut]
+    # anti-dump: keep first 1-2 sentences for short prompts
+    return text.strip()
+
 def complete(prompt, max_new=150, temp=0.7):
     bos = TOK.vocab.get("<bos>", 1)
     eos = TOK.vocab.get("<eos>", 2)
+    # short greeting -> short answer, avoids story dump
+    pl = prompt.strip().lower()
+    if pl in ("hi", "hello", "hey", "hi!", "hello!", "user: hi", "user: hello", "user: hi\nassistant:", "user: hello\nassistant:"):
+        max_new = min(max_new, 25)
+    elif len(prompt) < 60:
+        max_new = min(max_new, 80)
     ids = torch.tensor([[bos] + TOK.encode(prompt)], dtype=torch.long, device=DEVICE)
     ids = ids[:, -MODEL.cfg.max_seq:]
     out = MODEL.generate(ids, max_new=max_new, temp=temp, top_p=0.9, eos=eos)
     gen = out[0].tolist()[ids.shape[1]:]
-    return TOK.decode(gen)
+    return truncate(TOK.decode(gen))
 
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a):
