@@ -80,7 +80,7 @@
     },
     "ks-own": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "KS Own (local)",
+      "name": "KS AI - BA (local)",
       "options": {
         "baseURL": "http://localhost:8089/v1"
       },
@@ -94,7 +94,7 @@
           "tool_call": false
         },
         "ks-chat": {
-          "name": "KS Chat 10M (tinystories english, local)",
+          "name": "KS AI - BA (chat, owner KS Warrior)",
           "tool_call": false
         }
       }

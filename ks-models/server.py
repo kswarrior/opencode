@@ -60,6 +60,8 @@ def last_user_msg(prompt):
 GREETINGS = ("hi", "hello", "hey", "hi!", "hello!", "hey!", "yo")
 
 def identity_reply(last):
+    if "your name" in last and "owner" in last:
+        return f"My name is {BOT_NAME}. My owner is {BOT_OWNER}."
     if "your name" in last or last in ("who are you?", "who are you"):
         return f"My name is {BOT_NAME}."
     if "owner" in last:
