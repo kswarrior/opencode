@@ -147,6 +147,21 @@ func handleChatCompletions(w http.ResponseWriter, r *http.Request) {
 	var req chatReq
 	b, _ := io.ReadAll(r.Body)
 	json.Unmarshal(b, &req)
+	{
+		lu := ""
+		for i := len(req.Messages) - 1; i >= 0; i-- {
+			if role, _ := req.Messages[i]["role"].(string); role == "user" {
+				if c, _ := req.Messages[i]["content"].(string); c != "" {
+					lu = c
+				}
+				break
+			}
+		}
+		if len(lu) > 80 {
+			lu = lu[:80]
+		}
+		log.Printf("chat model=%s nmsg=%d stream=%v lastuser=%q", req.Model, len(req.Messages), req.Stream, lu)
+	}
 	prompt := req.Prompt
 	if len(req.Messages) > 0 {
 		prompt = messagesToPrompt(req.Messages)
