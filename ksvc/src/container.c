@@ -1,4 +1,6 @@
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+#endif
 #include "ksvc.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -60,12 +62,13 @@ int ksvc_create(ksvc_container_t *ctr, const ksvc_config_t *cfg) {
     } else {
         ksvc_gen_id(ctr->id, sizeof(ctr->id));
         // auto name = id
-        strncpy(ctr->cfg.name, ctr->id, sizeof(ctr->cfg.name)-1);
+        snprintf(ctr->cfg.name, sizeof(ctr->cfg.name), "%s", ctr->id);
     }
     // if name provided but id empty, generate id
     if (ctr->id[0]=='\0') ksvc_gen_id(ctr->id, sizeof(ctr->id));
     ctr->pid = 0;
     ctr->started = 0;
+    ctr->stack = NULL;
     ctr->cgroup_path[0]='\0';
 
     // determine if we need user ns (auto)
@@ -79,13 +82,13 @@ int ksvc_create(ksvc_container_t *ctr, const ksvc_config_t *cfg) {
         ctr->cfg.use_net_ns = 1;
         if (ctr->cfg.container_ip[0]=='\0') {
             if (ksvc_allocate_ip(ctr->cfg.container_ip, sizeof(ctr->cfg.container_ip)) == 0) {
-                strncpy(ctr->ip, ctr->cfg.container_ip, sizeof(ctr->ip)-1);
+                snprintf(ctr->ip, sizeof(ctr->ip), "%s", ctr->cfg.container_ip);
             }
         } else {
-            strncpy(ctr->ip, ctr->cfg.container_ip, sizeof(ctr->ip)-1);
+            snprintf(ctr->ip, sizeof(ctr->ip), "%s", ctr->cfg.container_ip);
         }
         if (ctr->cfg.bridge_name[0]=='\0') {
-            strncpy(ctr->cfg.bridge_name, "ksvc-br0", sizeof(ctr->cfg.bridge_name)-1);
+            snprintf(ctr->cfg.bridge_name, sizeof(ctr->cfg.bridge_name), "%s", "ksvc-br0");
         }
         // create bridge if needed (privileged only, best effort)
         ksvc_network_create_bridge(ctr->cfg.bridge_name);
@@ -106,11 +109,8 @@ static int child_main(void *arg) {
         // block until parent writes "ok" and closes pipe
         // sync_fd is read end; parent will write 1 byte after maps
         ssize_t n = read(sync_fd, buf, sizeof(buf)-1);
+        (void)n;
         close(sync_fd);
-        if (n <= 0) {
-            // parent may have closed without writing if setup failed
-            // try to continue anyway
-        }
         // Now we should have uid 0 inside ns mapping to host uid
         // Become root inside ns
         if (setgid(ctr->cfg.gid) < 0) { /* ignore */ }
@@ -125,11 +125,31 @@ static int child_main(void *arg) {
         if (net_fd >= 0) {
             char nbuf[16]={0};
             // block until parent signals network ready
-            read(net_fd, nbuf, sizeof(nbuf)-1);
+            ssize_t rn = read(net_fd, nbuf, sizeof(nbuf)-1);
+            (void)rn;
             close(net_fd);
         }
     } else {
         if (carg->net_sync_fd >= 0) close(carg->net_sync_fd);
+    }
+
+    // Detached: daemonize so parent's pipes/terminal are not held open.
+    // Docker-like `run -d` must return immediately; child must not keep
+    // the caller's stdout/stderr pipe open (otherwise `timeout`, CI, or
+    // shell tools wait until the container exits).
+    if (ctr->cfg.detach) {
+        if (setsid() < 0) { /* ignore */ }
+        int dn = open("/dev/null", O_RDWR);
+        if (dn >= 0) {
+            dup2(dn, STDIN_FILENO);
+            // Keep stdout/stderr only if they are a tty (interactive `run -d`
+            // from a terminal still shows the "started" line from the parent;
+            // the child itself must not hold pipes). Redirect to /dev/null
+            // when not a tty to avoid hanging pipe readers.
+            if (!isatty(STDOUT_FILENO)) dup2(dn, STDOUT_FILENO);
+            if (!isatty(STDERR_FILENO)) dup2(dn, STDERR_FILENO);
+            if (dn > 2) close(dn);
+        }
     }
 
     // Set hostname in new UTS ns
@@ -206,7 +226,8 @@ static int setup_userns_maps(pid_t child_pid, uid_t host_uid, gid_t host_gid) {
     snprintf(path, sizeof(path), "/proc/%d/setgroups", child_pid);
     fd = open(path, O_WRONLY);
     if (fd >= 0) {
-        write(fd, "deny", 4);
+        ssize_t w = write(fd, "deny", 4);
+        (void)w;
         close(fd);
     }
 

@@ -33,7 +33,7 @@ extern "C" {
 #include <sys/types.h>
 #include <stdint.h>
 
-#define KSVC_VERSION "0.1.3"
+#define KSVC_VERSION "0.2.0"
 #define KSVC_NAME_MAX 64
 #define KSVC_ROOTFS_MAX 512
 #define KSVC_HOSTNAME_MAX 64
@@ -73,6 +73,7 @@ typedef struct {
     int publish_count;
     char bridge_name[64];              // bridge name, default ksvc-br0 when --net with bridge
     char container_ip[64];             // allocated IP like 10.88.0.2 (set at create)
+    int detach;                        // 1 = detached (daemonize: setsid + stdio to /dev/null)
 } ksvc_config_t;
 
 typedef struct {
@@ -83,6 +84,7 @@ typedef struct {
     int exit_code;
     char cgroup_path[512];
     char ip[64];                       // container IP when --net with bridge (e.g., 10.88.0.2)
+    void *stack;                       // clone stack (malloc'd in ksvc_start, freed in ksvc_wait)
 } ksvc_container_t;
 
 /* ── lifecycle ── */
@@ -122,6 +124,7 @@ int ksvc_state_load(const char *id_or_name, ksvc_container_t *out);
 /* ── utils ── */
 int ksvc_is_rootless(void);
 int ksvc_rootfs_exists(const char *path);
+int ksvc_name_valid(const char *name);
 void ksvc_gen_id(char *out, size_t sz);
 const char *ksvc_version(void);
 void ksvc_perror(const char *msg);
