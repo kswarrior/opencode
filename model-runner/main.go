@@ -208,6 +208,19 @@ func handleChatCompletions(w http.ResponseWriter, r *http.Request) {
 				time.Sleep(10 * time.Millisecond)
 			}
 		}
+		done := map[string]interface{}{
+			"id": id, "object": "chat.completion.chunk", "created": time.Now().Unix(),
+			"model": modelName,
+			"choices": []interface{}{map[string]interface{}{
+				"index": 0, "delta": map[string]interface{}{},
+				"finish_reason": "stop",
+			}},
+		}
+		jb2, _ := json.Marshal(done)
+		fmt.Fprintf(w, "data: %s\n\n", jb2)
+		if fl != nil {
+			fl.Flush()
+		}
 		fmt.Fprintf(w, "data: [DONE]\n\n")
 		return
 	}

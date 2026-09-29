@@ -86,13 +86,16 @@
       },
       "models": {
         "ks-coder-2.5:7b": {
-          "name": "KS Coder 2.5 7B (coding, private)"
+          "name": "KS Coder 2.5 7B (coding, private)",
+          "tool_call": false
         },
         "ks-tiny": {
-          "name": "KS Tiny 10M (code demo, local)"
+          "name": "KS Tiny 10M (code demo, local)",
+          "tool_call": false
         },
         "ks-chat": {
-          "name": "KS Chat 10M (tinystories english, local)"
+          "name": "KS Chat 10M (tinystories english, local)",
+          "tool_call": false
         }
       }
     }
