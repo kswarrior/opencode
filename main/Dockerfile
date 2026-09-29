@@ -1,5 +1,5 @@
 FROM alpine:3.19 AS build
-RUN apk add --no-cache gcc musl-dev make
+RUN apk add --no-cache gcc musl-dev make linux-headers
 WORKDIR /app
 COPY . /tmp/ctx
 RUN if [ -d /tmp/ctx/main/src ]; then \

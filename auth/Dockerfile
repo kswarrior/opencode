@@ -1,5 +1,5 @@
 FROM alpine:3.19 AS build
-RUN apk add --no-cache gcc musl-dev make
+RUN apk add --no-cache gcc musl-dev make linux-headers
 WORKDIR /app
 # Support both repo-root context (auth/src) and service context (src)
 COPY . /tmp/ctx

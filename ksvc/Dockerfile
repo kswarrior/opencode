@@ -1,7 +1,7 @@
 # ksvc — lightweight container runtime (c, not v)
 # Real containers like Docker, NOT VMs (no KVM/QEMU, shares host kernel)
 FROM alpine:3.19 AS build
-RUN apk add --no-cache gcc musl-dev make
+RUN apk add --no-cache gcc musl-dev make linux-headers
 WORKDIR /app
 COPY . /tmp/ctx
 # Support both repo-root context (ksvc/src, like Render) and service context (src)
