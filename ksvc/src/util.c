@@ -138,6 +138,11 @@ int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
         fprintf(stderr, "ksvc: volume src '%s' not found: %s\n", src, strerror(errno));
         return -1;
     }
+    if (strlen(src) >= KSVC_VOLPATH_MAX || strlen(dst) >= KSVC_VOLPATH_MAX) {
+        fprintf(stderr, "ksvc: volume path too long (max %d): '%s'\n", KSVC_VOLPATH_MAX-1, spec);
+        errno = ENAMETOOLONG;
+        return -1;
+    }
     snprintf(cfg->volume_src[cfg->volume_count], KSVC_VOLPATH_MAX, "%s", src);
     snprintf(cfg->volume_dst[cfg->volume_count], KSVC_VOLPATH_MAX, "%s", dst);
     cfg->volume_ro[cfg->volume_count] = ro;
@@ -166,8 +171,21 @@ int ksvc_publish_add(ksvc_config_t *cfg, const char *spec) {
         // strip /tcp suffix if present
         char *slash = strchr(host, '/'); if (slash) *slash='\0';
         slash = strchr(cont, '/'); if (slash) *slash='\0';
+        if (strlen(host) + strlen(cont) + 1 >= sizeof(cfg->publish[0])) {
+            fprintf(stderr, "ksvc: publish spec too long: '%s'\n", spec);
+            errno = ENAMETOOLONG;
+            return -1;
+        }
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-truncation"
         snprintf(cfg->publish[cfg->publish_count], sizeof(cfg->publish[0]), "%s:%s", host, cont);
+#pragma GCC diagnostic pop
     } else {
+        if (strlen(spec) >= sizeof(cfg->publish[0])) {
+            fprintf(stderr, "ksvc: publish spec too long: '%s'\n", spec);
+            errno = ENAMETOOLONG;
+            return -1;
+        }
         snprintf(cfg->publish[cfg->publish_count], sizeof(cfg->publish[0]), "%s", spec);
     }
     cfg->publish_count++;
@@ -289,8 +307,6 @@ int ksvc_state_remove(const ksvc_container_t *ctr) {
         snprintf(link, sizeof(link), "%s/%s.json", dir, ctr->cfg.name);
         unlink(link);
     }
-    return 0;
-}
     return 0;
 }
 
