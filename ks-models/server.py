@@ -19,6 +19,9 @@ TOK = None
 CFG = None
 DEVICE = "cpu"
 
+BOT_NAME = "KS AI - BA"
+BOT_OWNER = "KS Warrior"
+
 STOPS = ["<eos>", "\nuser:", "\n\nuser:", "<tool_call>", "<tool_result>"]
 
 def dedup_sentences(text, max_sent=3):
@@ -56,10 +59,24 @@ def last_user_msg(prompt):
 
 GREETINGS = ("hi", "hello", "hey", "hi!", "hello!", "hey!", "yo")
 
+def identity_reply(last):
+    if "your name" in last or last in ("who are you?", "who are you"):
+        return f"My name is {BOT_NAME}."
+    if "owner" in last:
+        return f"My owner is {BOT_OWNER}."
+    if "who made you" in last or "who created you" in last or "your creator" in last:
+        return f"{BOT_OWNER} made me."
+    if "about yourself" in last or "introduce yourself" in last:
+        return f"My name is {BOT_NAME}. My owner is {BOT_OWNER}."
+    return None
+
 def complete(prompt, max_new=150, temp=0.8):
     last = last_user_msg(prompt)
     if last in GREETINGS:
         return "hello! how can I help you today?"
+    ident = identity_reply(last)
+    if ident:
+        return ident
     short = len(last) < 40
     if short:
         max_new = min(max_new, 80)
@@ -87,7 +104,8 @@ class H(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path in ("/health", "/"):
             self._json({"ok": True, "model": CFG.name if CFG else "?",
-                        "params_m": round(MODEL.params()/1e6, 2) if MODEL else 0})
+                        "params_m": round(MODEL.params()/1e6, 2) if MODEL else 0,
+                        "name": BOT_NAME, "owner": BOT_OWNER})
         else:
             self._json({"error": "not found"}, 404)
     def do_POST(self):
@@ -120,7 +138,7 @@ def main():
     MODEL = KsModel(CFG).to(DEVICE)
     MODEL.load_state_dict(obj["state"])
     MODEL.eval()
-    print(f"sidecar up: {CFG.name} {MODEL.params()/1e6:.2f}M on {DEVICE} :{args.port}", flush=True)
+    print(f"sidecar up: {CFG.name} {MODEL.params()/1e6:.2f}M name={BOT_NAME} owner={BOT_OWNER} :{args.port}", flush=True)
     HTTPServer(("127.0.0.1", args.port), H).serve_forever()
 
 if __name__ == "__main__":
