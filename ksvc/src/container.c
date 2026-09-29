@@ -252,7 +252,15 @@ static int setup_userns_maps(pid_t child_pid, uid_t host_uid, gid_t host_gid) {
 static int setup_hostname(const char *hostname) {
     if (!hostname || hostname[0]=='\0') return 0;
     if (sethostname(hostname, strlen(hostname)) < 0) {
-        fprintf(stderr, "ksvc: sethostname(%s) failed: %s (uid=%d euid=%d)\n", hostname, strerror(errno), getuid(), geteuid());
+        // Rootless containers usually cannot set hostname (needs CAP_SYS_ADMIN
+        // in the host userns / AppArmor allows). Warn once with a hint instead
+        // of an error-looking message; the container still runs.
+        if (ksvc_is_rootless() && (errno == EPERM || errno == EACCES)) {
+            fprintf(stderr, "ksvc: warning: cannot set hostname to '%s' rootless (%s) — run with sudo for UTS isolation\n",
+                    hostname, strerror(errno));
+            return 0;
+        }
+        fprintf(stderr, "ksvc: sethostname(%s) failed: %s\n", hostname, strerror(errno));
         return -1;
     }
     // verify
@@ -268,8 +276,11 @@ static int setup_workdir(const char *wd) {
     if (!wd || wd[0]=='\0' || strcmp(wd,"/")==0) return 0;
     if (chdir(wd) < 0) {
         // try mkdir then chdir
-        mkdir(wd, 0755);
-        chdir(wd);
+        (void)mkdir(wd, 0755);
+        if (chdir(wd) < 0) {
+            fprintf(stderr, "ksvc: warning: cannot chdir to workdir %s: %s\n", wd, strerror(errno));
+            return -1;
+        }
     }
     return 0;
 }
@@ -277,7 +288,7 @@ static int setup_workdir(const char *wd) {
 static int drop_caps_all(void) {
     // drop bounding set
     for (int cap = 0; cap <= 64; cap++) {
-        prctl(PR_CAPBSET_DROP, cap, 0, 0, 0);
+        (void)prctl(PR_CAPBSET_DROP, cap, 0, 0, 0);
     }
     // drop effective, permitted, inheritable via capset
     struct __user_cap_header_struct hdr;
@@ -290,16 +301,15 @@ static int drop_caps_all(void) {
     if (syscall(SYS_capset, &hdr, data) < 0) {
         // fallback: try version 1
         hdr.version = _LINUX_CAPABILITY_VERSION_1;
-        syscall(SYS_capset, &hdr, data);
+        (void)syscall(SYS_capset, &hdr, data);
     }
     // also drop keepcaps
-    prctl(PR_SET_KEEPCAPS, 0, 0, 0, 0);
+    (void)prctl(PR_SET_KEEPCAPS, 0, 0, 0, 0);
     return 0;
 }
 
 int ksvc_setup_net_lo(void) {
     // Bring up loopback inside new net ns
-    // Use ioctl or system("ip link set lo up") if ip exists
     int rc = system("ip link set lo up 2>/dev/null || ifconfig lo up 2>/dev/null || true");
     (void)rc;
     return 0;
@@ -308,10 +318,10 @@ int ksvc_setup_net_lo(void) {
 int ksvc_setup_net(const ksvc_config_t *cfg, pid_t pid) {
     if (!cfg || !cfg->use_net_ns) return 0;
     const char *br = cfg->bridge_name[0] ? cfg->bridge_name : "ksvc-br0";
+    char ipbuf[64] = {0};
     const char *ip = cfg->container_ip[0] ? cfg->container_ip : NULL;
     if (!ip || !ip[0]) {
-        char tmp[64];
-        if (ksvc_allocate_ip(tmp, sizeof(tmp)) == 0) ip = tmp;
+        if (ksvc_allocate_ip(ipbuf, sizeof(ipbuf)) == 0) ip = ipbuf;
         else return 0;
     }
     // create bridge if needed (already done in ksvc_create, but ensure)
@@ -320,7 +330,7 @@ int ksvc_setup_net(const ksvc_config_t *cfg, pid_t pid) {
     char veth_host[32];
     snprintf(veth_host, sizeof(veth_host), "veth%d", pid % 100000);
     // ensure unique: if exists, try alternative
-    char cmd[512];
+    char cmd[1024];
     snprintf(cmd, sizeof(cmd), "ip link show %s >/dev/null 2>&1", veth_host);
     if (system(cmd) == 0) {
         snprintf(veth_host, sizeof(veth_host), "veth%dh", pid % 100000);
@@ -328,32 +338,32 @@ int ksvc_setup_net(const ksvc_config_t *cfg, pid_t pid) {
     // create veth pair: host <-> eth0
     snprintf(cmd, sizeof(cmd), "ip link add %s type veth peer name eth0 2>&1", veth_host);
     if (system(cmd) != 0) {
-        fprintf(stderr, "ksvc: veth create %s failed\n", veth_host);
+        fprintf(stderr, "ksvc: veth create %s failed (need privileged + iproute2)\n", veth_host);
         return -1;
     }
     // attach host end to bridge
     snprintf(cmd, sizeof(cmd), "ip link set %s master %s 2>&1", veth_host, br);
-    system(cmd);
+    (void)system(cmd);
     snprintf(cmd, sizeof(cmd), "ip link set %s up 2>&1", veth_host);
-    system(cmd);
+    (void)system(cmd);
     // move container end to netns
     snprintf(cmd, sizeof(cmd), "ip link set eth0 netns %d 2>&1", pid);
     if (system(cmd) != 0) {
         fprintf(stderr, "ksvc: move eth0 to netns %d failed\n", pid);
         // cleanup host veth
         snprintf(cmd, sizeof(cmd), "ip link del %s 2>&1", veth_host);
-        system(cmd);
+        (void)system(cmd);
         return -1;
     }
     // configure inside netns
     snprintf(cmd, sizeof(cmd), "nsenter -t %d -n ip addr add %s/16 dev eth0 2>&1", pid, ip);
-    system(cmd);
+    (void)system(cmd);
     snprintf(cmd, sizeof(cmd), "nsenter -t %d -n ip link set eth0 up 2>&1", pid);
-    system(cmd);
+    (void)system(cmd);
     snprintf(cmd, sizeof(cmd), "nsenter -t %d -n ip link set lo up 2>&1", pid);
-    system(cmd);
+    (void)system(cmd);
     snprintf(cmd, sizeof(cmd), "nsenter -t %d -n ip route add default via 10.88.0.1 2>&1", pid);
-    system(cmd);
+    (void)system(cmd);
     // port publishing
     for (int i=0;i<cfg->publish_count;i++) {
         char copy[64];
@@ -376,14 +386,14 @@ int ksvc_setup_net(const ksvc_config_t *cfg, pid_t pid) {
             ctr = copy;
         }
         if (!host || !ctr) continue;
-        // DNAT host -> container
-        snprintf(cmd, sizeof(cmd), "iptables -t nat -C PREROUTING -p tcp --dport %s -j DNAT --to-destination %s:%s 2>&1 || iptables -t nat -A PREROUTING -p tcp --dport %s -j DNAT --to-destination %s:%s 2>&1 || true", host, ip, ctr, host, ip, ctr);
-        system(cmd);
-        snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -d %s -p tcp --dport %s -j ACCEPT 2>&1 || iptables -A FORWARD -d %s -p tcp --dport %s -j ACCEPT 2>&1 || true", ip, ctr, ip, ctr);
-        system(cmd);
+        // DNAT host -> container (best effort, may need privileged + iptables)
+        snprintf(cmd, sizeof(cmd), "iptables -t nat -C PREROUTING -p tcp --dport %.16s -j DNAT --to-destination %.39s:%.16s 2>&1 || iptables -t nat -A PREROUTING -p tcp --dport %.16s -j DNAT --to-destination %.39s:%.16s 2>&1 || true", host, ip, ctr, host, ip, ctr);
+        (void)system(cmd);
+        snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -d %.39s -p tcp --dport %.16s -j ACCEPT 2>&1 || iptables -A FORWARD -d %.39s -p tcp --dport %.16s -j ACCEPT 2>&1 || true", ip, ctr, ip, ctr);
+        (void)system(cmd);
         // also for host's bridge
-        snprintf(cmd, sizeof(cmd), "iptables -t nat -C PREROUTING -p tcp --dport %s -j DNAT --to-destination %s:%s 2>&1 || iptables -t nat -A OUTPUT -p tcp --dport %s -j DNAT --to-destination %s:%s 2>&1 || true", host, ip, ctr, host, ip, ctr);
-        system(cmd);
+        snprintf(cmd, sizeof(cmd), "iptables -t nat -A OUTPUT -p tcp --dport %.16s -j DNAT --to-destination %.39s:%.16s 2>&1 || true", host, ip, ctr);
+        (void)system(cmd);
         fprintf(stderr, "ksvc: publish %s -> %s:%s\n", host, ip, ctr);
     }
     fprintf(stderr, "ksvc: net %s ip %s -> bridge %s\n", veth_host, ip, br);
@@ -410,7 +420,12 @@ int ksvc_start(ksvc_container_t *ctr) {
         if (pipe(net_sync_pipe) < 0) { perror("pipe net"); if (sync_pipe[0]>=0){close(sync_pipe[0]);close(sync_pipe[1]);} return -1; }
     }
 
-    // Allocate stack for clone
+    // Flush stdio before clone: child uses _exit() so buffered parent output
+    // must not be duplicated or lost.
+    fflush(NULL);
+
+    // Allocate stack for clone. Stored in ctr->stack and freed in ksvc_wait();
+    // must NOT be freed here because the child uses it as its stack until exit.
     void *stack = malloc(STACK_SIZE);
     if (!stack) { perror("malloc stack"); return -1; }
     void *stack_top = (char*)stack + STACK_SIZE;
@@ -458,7 +473,8 @@ int ksvc_start(ksvc_container_t *ctr) {
             return -1;
         }
         // Signal child to continue (first sync)
-        write(sync_pipe[1], "ok", 2);
+        ssize_t w1 = write(sync_pipe[1], "ok", 2);
+        (void)w1;
         close(sync_pipe[1]);
     } else {
         if (sync_pipe[0]>=0) { close(sync_pipe[0]); close(sync_pipe[1]); }
@@ -471,7 +487,8 @@ int ksvc_start(ksvc_container_t *ctr) {
         if (ksvc_setup_net(&ctr->cfg, child_pid) < 0) {
             fprintf(stderr, "ksvc: net setup failed for %d (need privileged, ip/iptables)\n", child_pid);
         }
-        write(net_sync_pipe[1], "ok", 2);
+        ssize_t w2 = write(net_sync_pipe[1], "ok", 2);
+        (void)w2;
         close(net_sync_pipe[1]);
     } else {
         if (net_sync_pipe[0]>=0) { close(net_sync_pipe[0]); close(net_sync_pipe[1]); }
