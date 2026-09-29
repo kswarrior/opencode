@@ -22,8 +22,8 @@ RUN if [ -f /tmp/ctx/stats/sites.json ]; then cp /tmp/ctx/stats/sites.json ./sit
     if [ -f /tmp/ctx/stats/.env ]; then cp /tmp/ctx/stats/.env ./.env; \
     elif [ -f /tmp/ctx/.env ]; then cp /tmp/ctx/.env ./.env; \
     else touch ./.env; fi && rm -rf /tmp/ctx
-EXPOSE 10000
+EXPOSE 8083 10000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -qO- http://localhost:${PORT:-8083}/health || exit 1
+  CMD-SHELL wget -qO- http://localhost:${PORT:-8083}/health || exit 1
 USER app
 CMD ["/server"]
