@@ -346,13 +346,18 @@ int main(int argc, char *argv[]) {
     for (int i=cmd_idx+1;i<parse_end;i++) {
         const char *a = argv[i];
         if (strcmp(a,"--name")==0 && i+1 < parse_end) {
-            strncpy(cfg.name, argv[++i], sizeof(cfg.name)-1);
+            const char *nv = argv[++i];
+            if (!ksvc_name_valid(nv)) {
+                fprintf(stderr, "ksvc: invalid name '%s' (use [a-zA-Z0-9_.-], no '/'; max %d)\n", nv, KSVC_NAME_MAX-1);
+                return 1;
+            }
+            snprintf(cfg.name, sizeof(cfg.name), "%s", nv);
         } else if (strcmp(a,"--rootfs")==0 && i+1 < parse_end) {
-            strncpy(cfg.rootfs, argv[++i], sizeof(cfg.rootfs)-1);
+            snprintf(cfg.rootfs, sizeof(cfg.rootfs), "%s", argv[++i]);
         } else if (strcmp(a,"--overlay-lower")==0 && i+1 < parse_end) {
-            strncpy(cfg.overlay_lower, argv[++i], sizeof(cfg.overlay_lower)-1);
+            snprintf(cfg.overlay_lower, sizeof(cfg.overlay_lower), "%s", argv[++i]);
         } else if (strcmp(a,"--overlay-upper")==0 && i+1 < parse_end) {
-            strncpy(cfg.overlay_upper, argv[++i], sizeof(cfg.overlay_upper)-1);
+            snprintf(cfg.overlay_upper, sizeof(cfg.overlay_upper), "%s", argv[++i]);
         } else if (strcmp(a,"--volume")==0 && i+1 < parse_end) {
             if (ksvc_volume_add(&cfg, argv[++i]) < 0) return 1;
         } else if (strcmp(a,"-v")==0 && i+1 < parse_end) {
@@ -368,21 +373,30 @@ int main(int argc, char *argv[]) {
         } else if (strncmp(a,"-p",2)==0 && strlen(a) > 2) {
             if (ksvc_publish_add(&cfg, a+2) < 0) return 1;
         } else if (strcmp(a,"--bridge")==0 && i+1 < parse_end) {
-            strncpy(cfg.bridge_name, argv[++i], sizeof(cfg.bridge_name)-1);
+            snprintf(cfg.bridge_name, sizeof(cfg.bridge_name), "%s", argv[++i]);
             cfg.use_net_ns = 1;
         } else if (strncmp(a,"--bridge=",9)==0) {
-            strncpy(cfg.bridge_name, a+9, sizeof(cfg.bridge_name)-1);
+            snprintf(cfg.bridge_name, sizeof(cfg.bridge_name), "%s", a+9);
             cfg.use_net_ns = 1;
         } else if (strcmp(a,"--hostname")==0 && i+1 < parse_end) {
-            strncpy(cfg.hostname, argv[++i], sizeof(cfg.hostname)-1);
+            snprintf(cfg.hostname, sizeof(cfg.hostname), "%s", argv[++i]);
         } else if (strcmp(a,"--workdir")==0 && i+1 < parse_end) {
-            strncpy(cfg.workdir, argv[++i], sizeof(cfg.workdir)-1);
+            snprintf(cfg.workdir, sizeof(cfg.workdir), "%s", argv[++i]);
         } else if (strcmp(a,"--mem")==0 && i+1 < parse_end) {
-            parse_int(argv[++i], &cfg.mem_limit_mb);
+            if (parse_int(argv[++i], &cfg.mem_limit_mb) < 0 || cfg.mem_limit_mb < 0) {
+                fprintf(stderr, "ksvc: invalid --mem '%s' (want MB >= 0)\n", argv[i]);
+                return 1;
+            }
         } else if (strcmp(a,"--cpu")==0 && i+1 < parse_end) {
-            parse_int(argv[++i], &cfg.cpu_quota_pct);
+            if (parse_int(argv[++i], &cfg.cpu_quota_pct) < 0 || cfg.cpu_quota_pct < 0) {
+                fprintf(stderr, "ksvc: invalid --cpu '%s' (want PCT >= 0, 100=1cpu)\n", argv[i]);
+                return 1;
+            }
         } else if (strcmp(a,"--pids")==0 && i+1 < parse_end) {
-            parse_int(argv[++i], &cfg.pids_limit);
+            if (parse_int(argv[++i], &cfg.pids_limit) < 0 || cfg.pids_limit < 0) {
+                fprintf(stderr, "ksvc: invalid --pids '%s' (want N >= 0)\n", argv[i]);
+                return 1;
+            }
         } else if (strcmp(a,"--cgroupns")==0 || strcmp(a,"--cgroup-ns")==0 || strcmp(a,"--cgroup")==0) {
             cfg.use_cgroup_ns = 1;
         } else if (strcmp(a,"--cap-drop")==0 && i+1 < parse_end) {
@@ -416,9 +430,16 @@ int main(int argc, char *argv[]) {
             print_usage(argv[0]);
             return 0;
         } else if (a[0] != '-') {
-            // positional: treat as --name if not already set (e.g., launch c mycontainer, launch --type c mycontainer)
+            // positional: treat as --name if not already set (e.g., launch c mycontainer)
+            // Must be a valid name — a path like /bin/sh means the user forgot `--`.
             if (cfg.name[0]=='\0') {
-                strncpy(cfg.name, a, sizeof(cfg.name)-1);
+                if (!ksvc_name_valid(a)) {
+                    fprintf(stderr, "ksvc: invalid name '%s' — did you forget '--' before the command?\n", a);
+                    fprintf(stderr, "  example: ksvc %s %s -- %s\n", type, cmd, a);
+                    fprintf(stderr, "  names must match [a-zA-Z0-9_.-]+ (no '/')\n");
+                    return 1;
+                }
+                snprintf(cfg.name, sizeof(cfg.name), "%s", a);
             } else {
                 fprintf(stderr,"ksvc: unknown positional %s (already have name %s)\n", a, cfg.name);
                 print_usage(argv[0]);
@@ -445,7 +466,7 @@ int main(int argc, char *argv[]) {
         // default command for launch/run without explicit cmd
         cfg.argv[0] = "/bin/sh";
         cfg.argv[1] = NULL;
-        strncpy(cfg.cmd, "/bin/sh", sizeof(cfg.cmd)-1);
+        snprintf(cfg.cmd, sizeof(cfg.cmd), "%s", "/bin/sh");
     } else {
         if (cmd_start >= argc || argv[cmd_start]==NULL) {
             fprintf(stderr,"ksvc: no command after --\n");
@@ -460,12 +481,12 @@ int main(int argc, char *argv[]) {
                 cfg.argv[i - cmd_start] = argv[i];
                 // build cmd string
                 if (pos>0 && pos < (int)sizeof(cmdbuf)-1) cmdbuf[pos++]=' ';
-                int len = strlen(argv[i]);
-                if (pos+len >= (int)sizeof(cmdbuf)) len = sizeof(cmdbuf)-pos-1;
-                if (len>0) { memcpy(cmdbuf+pos, argv[i], len); pos+=len; }
+                int len = (int)strlen(argv[i]);
+                if (pos+len >= (int)sizeof(cmdbuf)) len = (int)sizeof(cmdbuf)-pos-1;
+                if (len>0) { memcpy(cmdbuf+pos, argv[i], (size_t)len); pos+=len; }
             }
             cfg.argv[argc - cmd_start] = NULL;
-            strncpy(cfg.cmd, cmdbuf, sizeof(cfg.cmd)-1);
+            snprintf(cfg.cmd, sizeof(cfg.cmd), "%s", cmdbuf);
             // Also set first argv[0] as cmd if needed for legacy
             if (cfg.argv[0]==NULL) {
                 // shouldn't happen
@@ -480,6 +501,14 @@ int main(int argc, char *argv[]) {
         fprintf(stderr,"  or use host root: omit --rootfs\n");
         return 1;
     }
+    // Validate overlay lower if provided
+    if (cfg.overlay_lower[0] && access(cfg.overlay_lower, F_OK)!=0) {
+        fprintf(stderr, "ksvc: overlay lower %s not found\n", cfg.overlay_lower);
+        return 1;
+    }
+
+    // Propagate detach to child (daemonize: setsid + stdio detach)
+    cfg.detach = detach;
 
     // Create container (c) — v stub already returned above
     ksvc_container_t ctr;
