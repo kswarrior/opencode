@@ -89,11 +89,14 @@
           "name": "KS Coder 2.5 7B (coding, private)"
         },
         "ks-tiny": {
-          "name": "KS Tiny 10M (py/ts/js/html/css/node, local demo)"
+          "name": "KS Tiny 10M (code demo, local)"
+        },
+        "ks-chat": {
+          "name": "KS Chat 10M (english talk, local)"
         }
       }
     }
   },
-  "model": "ks-own/ks-tiny",
-  "small_model": "ks-own/ks-tiny"
+  "model": "ks-own/ks-chat",
+  "small_model": "ks-own/ks-chat"
 }
