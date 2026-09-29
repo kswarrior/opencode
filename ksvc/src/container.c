@@ -502,14 +502,12 @@ int ksvc_start(ksvc_container_t *ctr) {
     // Save state
     ctr->pid = child_pid;
     ctr->started = 1;
+    ctr->stack = stack;
     ksvc_state_save(ctr);
 
-    // Detach stack? Child still running, stack must remain allocated until child exits?
-    // For clone, stack is used only at creation; after child starts it has its own stack.
-    // But we allocated via malloc, child is using that memory as its stack — freeing in parent would corrupt child stack.
-    // So we must NOT free stack here; leak it or store for later free after container exits.
-    // For simplicity, leak (acceptable for short-lived CLI). For library, we should keep pointer.
-    // We'll detach with no free; note: child stack lives until container dies.
+    // NOTE: stack must remain allocated until the child exits (it is the
+    // child's stack). It is freed in ksvc_wait(). For detached containers
+    // that are never waited, it is freed on stop/remove or process exit.
 
     // We don't wait here; caller can wait via ksvc_wait
     return 0;
@@ -528,9 +526,9 @@ int ksvc_wait(ksvc_container_t *ctr, int *exit_code) {
     if (exit_code) *exit_code = code;
     // cleanup cgroup
     ksvc_cgroup_remove(ctr);
-    // remove state after wait? keep for list until explicit remove? We remove now but list will show exited if we keep file with status.
-    // For now remove state file on wait (container gone)
+    // remove state after wait (container gone)
     ksvc_state_remove(ctr);
+    if (ctr->stack) { free(ctr->stack); ctr->stack = NULL; }
     return 0;
 }
 
@@ -538,7 +536,21 @@ int ksvc_stop(ksvc_container_t *ctr, int sig) {
     if (!ctr || ctr->pid <= 1) { errno=EINVAL; return -1; }
     if (sig==0) sig=SIGTERM;
     int r = kill(ctr->pid, sig);
-    if (r==0) {
+    if (r < 0) {
+        if (errno == ESRCH) {
+            // Already dead: still cleanup cgroup + state so `list`
+            // does not show stale [exit] entries forever.
+            fprintf(stderr, "ksvc: container %s (pid %d) already exited — cleaning up\n",
+                    ctr->id[0] ? ctr->id : "?", ctr->pid);
+            ksvc_cgroup_remove(ctr);
+            ksvc_state_remove(ctr);
+            ctr->started = 0;
+            if (ctr->stack) { free(ctr->stack); ctr->stack = NULL; }
+            return 0;
+        }
+        return r;
+    }
+    {
         // wait briefly
         int status;
         pid_t w = waitpid(ctr->pid, &status, WNOHANG);
@@ -546,15 +558,26 @@ int ksvc_stop(ksvc_container_t *ctr, int sig) {
             // still running, try SIGKILL after 2s if SIGTERM
             if (sig==SIGTERM) {
                 sleep(2);
-                kill(ctr->pid, SIGKILL);
-                waitpid(ctr->pid, &status, 0);
+                (void)kill(ctr->pid, SIGKILL);
+                (void)waitpid(ctr->pid, &status, 0);
             }
         } else if (w>0) {
             // reaped
+        } else {
+            // ESRCH / ECHILD: already reaped elsewhere (e.g. detached
+            // parent exited and init reaped). Still cleanup.
+            if (errno == ESRCH || errno == ECHILD) {
+                ksvc_cgroup_remove(ctr);
+                ksvc_state_remove(ctr);
+                ctr->started = 0;
+                if (ctr->stack) { free(ctr->stack); ctr->stack = NULL; }
+                return 0;
+            }
         }
         ksvc_cgroup_remove(ctr);
         ksvc_state_remove(ctr);
         ctr->started = 0;
+        if (ctr->stack) { free(ctr->stack); ctr->stack = NULL; }
     }
     return r;
 }

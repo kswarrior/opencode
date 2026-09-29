@@ -1,4 +1,6 @@
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+#endif
 #include "ksvc.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,13 +32,43 @@ int ksvc_rootfs_exists(const char *path) {
 }
 
 void ksvc_gen_id(char *out, size_t sz) {
+    // Docker-like 12-char hex. Seed once per process; use /dev/urandom when
+    // available so rapid successive calls (library use) don't collide.
+    static int seeded = 0;
+    if (!seeded) {
+        unsigned int seed = (unsigned int)time(NULL) ^ (unsigned int)getpid();
+        FILE *f = fopen("/dev/urandom", "r");
+        if (f) {
+            unsigned int r = 0;
+            if (fread(&r, 1, sizeof(r), f) == sizeof(r)) seed ^= r;
+            fclose(f);
+        }
+        srandom(seed);
+        seeded = 1;
+    }
     const char *hex = "0123456789abcdef";
-    unsigned int r = (unsigned int)time(NULL) ^ (unsigned int)getpid() ^ (unsigned int)random();
-    srandom(r);
     size_t n = sz > KSVC_ID_MAX ? KSVC_ID_MAX-1 : sz-1;
     if (n > 12) n = 12; // docker-like 12 char
-    for (size_t i=0;i<n;i++) out[i] = hex[random()%16];
+    for (size_t i=0;i<n;i++) out[i] = hex[(size_t)(random()%16)];
     out[n]='\0';
+}
+
+int ksvc_name_valid(const char *name) {
+    // Docker-like names: [a-zA-Z0-9][a-zA-Z0-9_.-]*, no '/' (would break
+    // state file path /tmp/ksvc/<name>.json).
+    if (!name || !name[0]) return 0;
+    size_t len = strlen(name);
+    if (len >= KSVC_NAME_MAX) return 0;
+    if (name[0] == '.' || name[0] == '-') return 0;
+    for (size_t i = 0; i < len; i++) {
+        char c = name[i];
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
+            (c >= '0' && c <= '9') || c == '_' || c == '.' || c == '-') {
+            continue;
+        }
+        return 0;
+    }
+    return 1;
 }
 
 void ksvc_config_init(ksvc_config_t *cfg) {
@@ -107,8 +139,8 @@ int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
         return -1;
     }
     strncpy(cfg->volume_src[cfg->volume_count], src, KSVC_VOLPATH_MAX-1);
-    strncpy(cfg->volume_dst[cfg->volume_count], dst, KSVC_VOLPATH_MAX-1);
     cfg->volume_src[cfg->volume_count][KSVC_VOLPATH_MAX-1]='\0';
+    strncpy(cfg->volume_dst[cfg->volume_count], dst, KSVC_VOLPATH_MAX-1);
     cfg->volume_dst[cfg->volume_count][KSVC_VOLPATH_MAX-1]='\0';
     cfg->volume_ro[cfg->volume_count] = ro;
     cfg->volume_count++;
@@ -125,22 +157,20 @@ int ksvc_publish_add(ksvc_config_t *cfg, const char *spec) {
     // For now, handle hostPort:containerPort and optional /tcp /udp suffix
     // If no colon, treat as same port for host and container
     char tmp[64];
-    strncpy(tmp, spec, sizeof(tmp)-1);
-    tmp[sizeof(tmp)-1]='\0';
+    snprintf(tmp, sizeof(tmp), "%s", spec);
     // validate: must contain digit and colon or digit only
     // simple store as is, but ensure it contains colon
     if (!strchr(tmp, ':')) {
         // single port: host and container same
         char host[32], cont[32];
-        strncpy(host, tmp, sizeof(host)-1); host[sizeof(host)-1]='\0';
-        strncpy(cont, tmp, sizeof(cont)-1); cont[sizeof(cont)-1]='\0';
+        snprintf(host, sizeof(host), "%s", tmp);
+        snprintf(cont, sizeof(cont), "%s", tmp);
         // strip /tcp suffix if present
         char *slash = strchr(host, '/'); if (slash) *slash='\0';
         slash = strchr(cont, '/'); if (slash) *slash='\0';
         snprintf(cfg->publish[cfg->publish_count], sizeof(cfg->publish[0]), "%s:%s", host, cont);
     } else {
-        strncpy(cfg->publish[cfg->publish_count], spec, sizeof(cfg->publish[0])-1);
-        cfg->publish[cfg->publish_count][sizeof(cfg->publish[0])-1]='\0';
+        snprintf(cfg->publish[cfg->publish_count], sizeof(cfg->publish[0]), "%s", spec);
     }
     cfg->publish_count++;
     cfg->use_net_ns = 1; // publishing implies net ns
@@ -150,7 +180,7 @@ int ksvc_publish_add(ksvc_config_t *cfg, const char *spec) {
 
 int ksvc_allocate_ip(char *out, size_t sz) {
     const char *counter_file = "/tmp/ksvc/ip.counter";
-    mkdir("/tmp/ksvc", 0755);
+    (void)mkdir("/tmp/ksvc", 0755);
     int fd = open(counter_file, O_RDWR|O_CREAT, 0644);
     if (fd < 0) return -1;
     char buf[32]={0};
@@ -164,10 +194,11 @@ int ksvc_allocate_ip(char *out, size_t sz) {
     snprintf(out, sz, "10.88.0.%d", counter);
     counter++;
     if (counter > 254) counter = 2;
-    lseek(fd, 0, SEEK_SET);
-    ftruncate(fd, 0);
+    (void)lseek(fd, 0, SEEK_SET);
+    (void)ftruncate(fd, 0);
     snprintf(buf, sizeof(buf), "%d", counter);
-    write(fd, buf, strlen(buf));
+    ssize_t w = write(fd, buf, strlen(buf));
+    (void)w;
     close(fd);
     return 0;
 }
