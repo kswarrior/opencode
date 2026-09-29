@@ -178,7 +178,7 @@ int ksvc_publish_add(ksvc_config_t *cfg, const char *spec) {
 
 int ksvc_allocate_ip(char *out, size_t sz) {
     const char *counter_file = "/tmp/ksvc/ip.counter";
-    (void)mkdir("/tmp/ksvc", 0755);
+    if (mkdir("/tmp/ksvc", 0755) < 0 && errno != EEXIST) { /* ignore */ }
     int fd = open(counter_file, O_RDWR|O_CREAT, 0644);
     if (fd < 0) return -1;
     char buf[32]={0};
@@ -192,36 +192,42 @@ int ksvc_allocate_ip(char *out, size_t sz) {
     snprintf(out, sz, "10.88.0.%d", counter);
     counter++;
     if (counter > 254) counter = 2;
-    (void)lseek(fd, 0, SEEK_SET);
-    (void)ftruncate(fd, 0);
+    if (lseek(fd, 0, SEEK_SET) == (off_t)-1) { /* ignore */ }
+    if (ftruncate(fd, 0) != 0) { /* ignore */ }
     snprintf(buf, sizeof(buf), "%d", counter);
-    ssize_t w = write(fd, buf, strlen(buf));
-    (void)w;
+    if (write(fd, buf, strlen(buf)) < 0) { /* ignore */ }
     close(fd);
     return 0;
+}
+
+// run a shell command, return exit status (wraps system() so callers that
+// ignore the result don't trigger -Wunused-result)
+static int run_sh(const char *cmd) {
+    int rc = system(cmd);
+    return rc;
 }
 
 int ksvc_network_create_bridge(const char *br) {
     if (!br || !br[0]) br = "ksvc-br0";
     char cmd[512];
     snprintf(cmd, sizeof(cmd), "ip link show %s >/dev/null 2>&1", br);
-    if (system(cmd) == 0) return 0;
+    if (run_sh(cmd) == 0) return 0;
     snprintf(cmd, sizeof(cmd), "ip link add %s type bridge 2>&1", br);
-    if (system(cmd) != 0) {
+    if (run_sh(cmd) != 0) {
         fprintf(stderr, "ksvc: create bridge %s failed (need privileged, ip installed)\n", br);
         return -1;
     }
     snprintf(cmd, sizeof(cmd), "ip addr add 10.88.0.1/16 dev %s 2>&1", br);
-    (void)system(cmd);
+    run_sh(cmd);
     snprintf(cmd, sizeof(cmd), "ip link set %s up 2>&1", br);
-    (void)system(cmd);
-    (void)system("sysctl -w net.ipv4.ip_forward=1 >/dev/null 2>&1 || echo 1 > /proc/sys/net/ipv4/ip_forward 2>&1 || true");
+    run_sh(cmd);
+    run_sh("sysctl -w net.ipv4.ip_forward=1 >/dev/null 2>&1 || echo 1 > /proc/sys/net/ipv4/ip_forward 2>&1 || true");
     snprintf(cmd, sizeof(cmd), "iptables -t nat -C POSTROUTING -s 10.88.0.0/16 ! -o %s -j MASQUERADE 2>&1 || iptables -t nat -A POSTROUTING -s 10.88.0.0/16 ! -o %s -j MASQUERADE 2>&1 || true", br, br);
-    (void)system(cmd);
+    run_sh(cmd);
     snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -i %s -j ACCEPT 2>&1 || iptables -A FORWARD -i %s -j ACCEPT 2>&1 || true", br, br);
-    (void)system(cmd);
+    run_sh(cmd);
     snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -o %s -j ACCEPT 2>&1 || iptables -A FORWARD -o %s -j ACCEPT 2>&1 || true", br, br);
-    (void)system(cmd);
+    run_sh(cmd);
     fprintf(stderr, "ksvc: created bridge %s 10.88.0.1/16\n", br);
     return 0;
 }
@@ -248,7 +254,7 @@ static const char *state_dir(void) {
     // Single state dir /tmp/ksvc for both rootless and privileged so
     // `ksvc list` and `sudo ksvc list` see the same containers.
     // (Earlier /run/ksvc preference split the view.)
-    (void)mkdir("/tmp/ksvc", 0755);
+    if (mkdir("/tmp/ksvc", 0755) < 0 && errno != EEXIST) { /* ignore */ }
     return "/tmp/ksvc";
 }
 
@@ -266,8 +272,8 @@ int ksvc_state_save(const ksvc_container_t *ctr) {
         ksvc_name_valid(ctr->cfg.name)) {
         char link[512];
         snprintf(link, sizeof(link), "%s/%s.json", dir, ctr->cfg.name);
-        (void)unlink(link);
-        (void)symlink(path, link);
+        unlink(link);
+        if (symlink(path, link) != 0) { /* ignore */ }
     }
     return 0;
 }
@@ -276,13 +282,15 @@ int ksvc_state_remove(const ksvc_container_t *ctr) {
     const char *dir = state_dir();
     char path[512];
     snprintf(path, sizeof(path), "%s/%s.json", dir, ctr->id);
-    (void)unlink(path);
+    unlink(path);
     if (ctr->cfg.name[0] && strcmp(ctr->cfg.name, ctr->id) != 0 &&
         ksvc_name_valid(ctr->cfg.name)) {
         char link[512];
         snprintf(link, sizeof(link), "%s/%s.json", dir, ctr->cfg.name);
-        (void)unlink(link);
+        unlink(link);
     }
+    return 0;
+}
     return 0;
 }
 
