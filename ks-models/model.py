@@ -160,7 +160,7 @@ class KsModel(nn.Module):
         return logits, loss
 
     @torch.no_grad()
-    def generate(self, ids, max_new=128, temp=0.7, top_p=0.9, top_k=50, eos=None, rope_scale=None):
+    def generate(self, ids, max_new=128, temp=0.8, top_p=0.9, top_k=50, eos=None, rope_scale=None, repetition_penalty=1.25):
         self.eval()
         B = ids.shape[0]
         caches = [None] * len(self.blocks)
@@ -178,6 +178,14 @@ class KsModel(nn.Module):
             for i, b in enumerate(self.blocks):
                 x, caches[i] = b(x, cos, sin, caches[i], start)
             logits = self.head(self.norm(x))[:, -1, :]
+            if repetition_penalty and repetition_penalty != 1.0:
+                seen = torch.unique(out[0])
+                for tok in seen.tolist():
+                    if 0 <= tok < logits.shape[-1]:
+                        if logits[0, tok] > 0:
+                            logits[0, tok] /= repetition_penalty
+                        else:
+                            logits[0, tok] *= repetition_penalty
             if temp and temp > 0:
                 logits = logits / temp
                 if top_k:

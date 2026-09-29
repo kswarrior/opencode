@@ -60,7 +60,7 @@ VOLUME ["/ksx"]
 EXPOSE 8080 10000
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD-SHELL wget -qO- http://localhost:${PORT:-8080}/health || curl -fsS http://localhost:${PORT:-8080}/health || exit 1
+  CMD wget -qO- http://localhost:${PORT:-8080}/health || curl -fsS http://localhost:${PORT:-8080}/health || exit 1
 
 # Use PORT env at runtime (Render sets PORT=10000); default to 8080 locally.
 # `--dr root` must precede the subcommand (`ksx --dr root web`).

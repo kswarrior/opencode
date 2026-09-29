@@ -23,6 +23,6 @@ RUN if [ -f /tmp/ctx/auth/.env ]; then cp /tmp/ctx/auth/.env ./.env; \
     else touch ./.env; fi && rm -rf /tmp/ctx
 EXPOSE 8081 10000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD-SHELL wget -qO- http://localhost:${PORT:-8081}/health || exit 1
+  CMD wget -qO- http://localhost:${PORT:-8081}/health || exit 1
 USER app
 CMD ["/server"]

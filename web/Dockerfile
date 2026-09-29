@@ -30,6 +30,6 @@ ENV MODEL_BASE_URL=http://localhost:11434
 ENV KS_BASE_URL=http://localhost:11434
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
-  CMD-SHELL wget -qO- http://localhost:${PORT:-10000}/health || exit 1
+  CMD wget -qO- http://localhost:${PORT:-10000}/health || exit 1
 
 CMD ["node", "server.js"]
