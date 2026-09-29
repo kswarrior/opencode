@@ -57,7 +57,7 @@ def agent_loop(model, tok, user_task, max_rounds=4, device="cpu"):
                         res = (out.stdout or "") + (out.stderr or "")
                     else:
                         res = str(out)
-                transcript += f"\n<tool_result>{{\"ok\": true, \"out\": {json.dumps(res[:2000])}}}</tool_result>\n"
+                transcript += "\n<tool_result>" + json.dumps({"ok": True, "out": res[:2000]}) + "</tool_result>\n"
             except Exception as e:
                 transcript += f"\n<tool_result>{{\"ok\": false, \"out\": \"{e}\"}}}</tool_result>\n"
         else:
