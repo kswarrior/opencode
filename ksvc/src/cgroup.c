@@ -31,20 +31,6 @@ static int write_file(const char *path, const char *content) {
     return 0;
 }
 
-static int mkdir_p(const char *path, mode_t mode) {
-    char tmp[512];
-    snprintf(tmp, sizeof(tmp), "%s", path);
-    for (char *p = tmp + 1; *p; p++) {
-        if (*p == '/') {
-            *p = '\0';
-            (void)mkdir(tmp, mode);
-            *p = '/';
-        }
-    }
-    if (mkdir(tmp, mode) < 0 && errno != EEXIST) return -1;
-    return 0;
-}
-
 int ksvc_cgroup_create(ksvc_container_t *ctr) {
     if (!ksvc_cgroup_is_v2()) {
         // cgroup v1 or no cgroup — silently skip
@@ -111,7 +97,7 @@ int ksvc_cgroup_create(ksvc_container_t *ctr) {
 }
 
 int ksvc_cgroup_apply(pid_t pid, int mem_mb, int cpu_pct, int pids_limit) {
-    (void)mem_mb; (void)cpu_pct; (void)pids_limit;
+    (void)pid; (void)mem_mb; (void)cpu_pct; (void)pids_limit;
     // This is called after cgroup was created; move pid into cgroup
     // But ksvc_cgroup_create already set limits; now we just attach pid
     // Caller should know cgroup_path — we find it via scanning or via ctr

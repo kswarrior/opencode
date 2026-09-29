@@ -31,18 +31,12 @@ static int mkdir_p(const char *path, mode_t mode) {
     for (char *p = tmp + 1; *p; p++) {
         if (*p == '/') {
             *p = '\0';
-            mkdir(tmp, mode);
+            if (mkdir(tmp, mode) < 0 && errno != EEXIST) { /* continue */ }
             *p = '/';
         }
     }
     if (mkdir(tmp, mode) < 0 && errno != EEXIST) return -1;
     return 0;
-}
-
-static int is_dir(const char *p) {
-    struct stat st;
-    if (stat(p, &st) < 0) return 0;
-    return S_ISDIR(st.st_mode);
 }
 
 static int ensure_dst_for_volume(const char *dst_host, const char *src) {

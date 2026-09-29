@@ -138,10 +138,8 @@ int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
         fprintf(stderr, "ksvc: volume src '%s' not found: %s\n", src, strerror(errno));
         return -1;
     }
-    strncpy(cfg->volume_src[cfg->volume_count], src, KSVC_VOLPATH_MAX-1);
-    cfg->volume_src[cfg->volume_count][KSVC_VOLPATH_MAX-1]='\0';
-    strncpy(cfg->volume_dst[cfg->volume_count], dst, KSVC_VOLPATH_MAX-1);
-    cfg->volume_dst[cfg->volume_count][KSVC_VOLPATH_MAX-1]='\0';
+    snprintf(cfg->volume_src[cfg->volume_count], KSVC_VOLPATH_MAX, "%s", src);
+    snprintf(cfg->volume_dst[cfg->volume_count], KSVC_VOLPATH_MAX, "%s", dst);
     cfg->volume_ro[cfg->volume_count] = ro;
     cfg->volume_count++;
     return 0;
@@ -162,7 +160,7 @@ int ksvc_publish_add(ksvc_config_t *cfg, const char *spec) {
     // simple store as is, but ensure it contains colon
     if (!strchr(tmp, ':')) {
         // single port: host and container same
-        char host[32], cont[32];
+        char host[64], cont[64];
         snprintf(host, sizeof(host), "%s", tmp);
         snprintf(cont, sizeof(cont), "%s", tmp);
         // strip /tcp suffix if present
