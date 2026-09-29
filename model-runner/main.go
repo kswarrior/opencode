@@ -66,7 +66,8 @@ func messagesToPrompt(msgs []map[string]interface{}) string {
 	// for code completion: if last user msg is alone, use it raw (better for tiny base model)
 	if len(msgs) == 1 {
 		if c, ok := msgs[0]["content"].(string); ok && c != "" {
-			return c
+			// chat-tuned ks-chat expects user:/assistant: format
+			return "user: " + c + "\nassistant:"
 		}
 	}
 	var b strings.Builder
