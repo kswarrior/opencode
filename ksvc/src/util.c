@@ -73,8 +73,8 @@ int ksvc_name_valid(const char *name) {
 
 void ksvc_config_init(ksvc_config_t *cfg) {
     memset(cfg, 0, sizeof(*cfg));
-    strncpy(cfg->hostname, "ksvc", sizeof(cfg->hostname)-1);
-    strncpy(cfg->workdir, "/", sizeof(cfg->workdir)-1);
+    snprintf(cfg->hostname, sizeof(cfg->hostname), "%s", "ksvc");
+    snprintf(cfg->workdir, sizeof(cfg->workdir), "%s", "/");
     cfg->cpu_quota_pct = 0;
     cfg->mem_limit_mb = 0;
     cfg->pids_limit = 0;
@@ -87,7 +87,8 @@ void ksvc_config_init(ksvc_config_t *cfg) {
     cfg->volume_count = 0;
     cfg->use_cgroup_ns = 0;
     cfg->publish_count = 0;
-    strncpy(cfg->bridge_name, "ksvc-br0", sizeof(cfg->bridge_name)-1);
+    cfg->detach = 0;
+    snprintf(cfg->bridge_name, sizeof(cfg->bridge_name), "%s", "ksvc-br0");
     cfg->container_ip[0]='\0';
 }
 
@@ -98,8 +99,7 @@ int ksvc_volume_add(ksvc_config_t *cfg, const char *spec) {
         errno=ENOSPC; return -1;
     }
     char copy[1024];
-    strncpy(copy, spec, sizeof(copy)-1);
-    copy[sizeof(copy)-1]='\0';
+    snprintf(copy, sizeof(copy), "%s", spec);
     char *p1 = strchr(copy, ':');
     if (!p1) {
         fprintf(stderr, "ksvc: volume spec must be SRC:DST[:ro|rw] got '%s'\n", spec);
@@ -214,16 +214,16 @@ int ksvc_network_create_bridge(const char *br) {
         return -1;
     }
     snprintf(cmd, sizeof(cmd), "ip addr add 10.88.0.1/16 dev %s 2>&1", br);
-    system(cmd);
+    (void)system(cmd);
     snprintf(cmd, sizeof(cmd), "ip link set %s up 2>&1", br);
-    system(cmd);
-    system("sysctl -w net.ipv4.ip_forward=1 >/dev/null 2>&1 || echo 1 > /proc/sys/net/ipv4/ip_forward 2>&1 || true");
+    (void)system(cmd);
+    (void)system("sysctl -w net.ipv4.ip_forward=1 >/dev/null 2>&1 || echo 1 > /proc/sys/net/ipv4/ip_forward 2>&1 || true");
     snprintf(cmd, sizeof(cmd), "iptables -t nat -C POSTROUTING -s 10.88.0.0/16 ! -o %s -j MASQUERADE 2>&1 || iptables -t nat -A POSTROUTING -s 10.88.0.0/16 ! -o %s -j MASQUERADE 2>&1 || true", br, br);
-    system(cmd);
+    (void)system(cmd);
     snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -i %s -j ACCEPT 2>&1 || iptables -A FORWARD -i %s -j ACCEPT 2>&1 || true", br, br);
-    system(cmd);
+    (void)system(cmd);
     snprintf(cmd, sizeof(cmd), "iptables -C FORWARD -o %s -j ACCEPT 2>&1 || iptables -A FORWARD -o %s -j ACCEPT 2>&1 || true", br, br);
-    system(cmd);
+    (void)system(cmd);
     fprintf(stderr, "ksvc: created bridge %s 10.88.0.1/16\n", br);
     return 0;
 }
@@ -247,14 +247,10 @@ int ksvc_clone_flags(const ksvc_config_t *cfg) {
 // State management: simple files in /tmp/ksvc or /run/ksvc
 
 static const char *state_dir(void) {
-    // prefer /run/ksvc if writable, else /tmp/ksvc
-    if (access("/run/ksvc", W_OK) == 0) return "/run/ksvc";
-    if (access("/tmp/ksvc", F_OK) == 0) return "/tmp/ksvc";
-    // try to create
-    if (mkdir("/run/ksvc", 0755)==0 || errno==EEXIST) {
-        if (access("/run/ksvc", W_OK)==0) return "/run/ksvc";
-    }
-    mkdir("/tmp/ksvc", 0755);
+    // Single state dir /tmp/ksvc for both rootless and privileged so
+    // `ksvc list` and `sudo ksvc list` see the same containers.
+    // (Earlier /run/ksvc preference split the view.)
+    (void)mkdir("/tmp/ksvc", 0755);
     return "/tmp/ksvc";
 }
 
@@ -267,12 +263,13 @@ int ksvc_state_save(const ksvc_container_t *ctr) {
     fprintf(f, "{\"id\":\"%s\",\"pid\":%d,\"name\":\"%s\",\"rootfs\":\"%s\",\"hostname\":\"%s\",\"cmd\":\"%s\",\"cgroup\":\"%s\",\"started\":%d}\n",
         ctr->id, ctr->pid, ctr->cfg.name, ctr->cfg.rootfs, ctr->cfg.hostname, ctr->cfg.cmd, ctr->cgroup_path, ctr->started);
     fclose(f);
-    // also symlink by name if provided and not same as id (avoid self-symlink)
-    if (ctr->cfg.name[0] && strcmp(ctr->cfg.name, ctr->id) != 0) {
+    // also symlink by name if provided, valid, and not same as id
+    if (ctr->cfg.name[0] && strcmp(ctr->cfg.name, ctr->id) != 0 &&
+        ksvc_name_valid(ctr->cfg.name)) {
         char link[512];
         snprintf(link, sizeof(link), "%s/%s.json", dir, ctr->cfg.name);
-        unlink(link);
-        symlink(path, link);
+        (void)unlink(link);
+        (void)symlink(path, link);
     }
     return 0;
 }
@@ -281,11 +278,12 @@ int ksvc_state_remove(const ksvc_container_t *ctr) {
     const char *dir = state_dir();
     char path[512];
     snprintf(path, sizeof(path), "%s/%s.json", dir, ctr->id);
-    unlink(path);
-    if (ctr->cfg.name[0] && strcmp(ctr->cfg.name, ctr->id) != 0) {
+    (void)unlink(path);
+    if (ctr->cfg.name[0] && strcmp(ctr->cfg.name, ctr->id) != 0 &&
+        ksvc_name_valid(ctr->cfg.name)) {
         char link[512];
         snprintf(link, sizeof(link), "%s/%s.json", dir, ctr->cfg.name);
-        unlink(link);
+        (void)unlink(link);
     }
     return 0;
 }

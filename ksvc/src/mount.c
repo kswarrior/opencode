@@ -1,4 +1,6 @@
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+#endif
 #include "ksvc.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,21 +50,31 @@ static int ensure_dst_for_volume(const char *dst_host, const char *src) {
     if (stat(src, &st) < 0) return -1;
     if (S_ISDIR(st.st_mode)) {
         if (mkdir_p(dst_host, 0755) < 0 && errno != EEXIST) {
-            // try single mkdir
-            mkdir(dst_host, 0755);
+            // rootless mkdir on host / may fail (EPERM/EACCES/EROFS):
+            // leave to caller to warn + skip instead of hard-failing.
+            if (errno == EPERM || errno == EACCES || errno == EROFS) return -2;
+            // try single mkdir as fallback
+            if (mkdir(dst_host, 0755) < 0 && errno != EEXIST) {
+                if (errno == EPERM || errno == EACCES || errno == EROFS) return -2;
+                return -1;
+            }
         }
     } else {
         // file: ensure parent dir + touch file
         char parent[1024];
-        strncpy(parent, dst_host, sizeof(parent)-1);
-        parent[sizeof(parent)-1]='\0';
+        snprintf(parent, sizeof(parent), "%s", dst_host);
         char *slash = strrchr(parent, '/');
         if (slash && slash != parent) {
             *slash = '\0';
-            mkdir_p(parent, 0755);
+            if (mkdir_p(parent, 0755) < 0 && errno != EEXIST &&
+                errno != EPERM && errno != EACCES && errno != EROFS) {
+                return -1;
+            }
         }
         int fd = open(dst_host, O_CREAT|O_WRONLY, 0644);
         if (fd >= 0) close(fd);
+        else if (errno == EPERM || errno == EACCES || errno == EROFS) return -2;
+        else return -1;
     }
     return 0;
 }
@@ -70,12 +82,23 @@ static int ensure_dst_for_volume(const char *dst_host, const char *src) {
 // core volume mount: src -> dst_host (dst_host is already inside rootfs staging or host root)
 // after this, if pivot happens, dst_host will become dst inside container
 static int do_bind_volume(const char *src, const char *dst_host, int readonly) {
-    if (ensure_dst_for_volume(dst_host, src) < 0) {
+    int er = ensure_dst_for_volume(dst_host, src);
+    if (er == -2) {
+        errno = EPERM;
+        fprintf(stderr, "ksvc: volume ensure dst %s failed: %s\n", dst_host, strerror(errno));
+        return -2;
+    }
+    if (er < 0) {
         fprintf(stderr, "ksvc: volume ensure dst %s failed: %s\n", dst_host, strerror(errno));
         return -1;
     }
     if (mount(src, dst_host, NULL, MS_BIND, NULL) < 0) {
-        fprintf(stderr, "ksvc: volume mount %s -> %s failed: %s\n", src, dst_host, strerror(errno));
+        int saved = errno;
+        fprintf(stderr, "ksvc: volume mount %s -> %s failed: %s\n", src, dst_host, strerror(saved));
+        errno = saved;
+        // EPERM/EACCES/EPERM-in-userns or ENOENT (dst could not be created
+        // rootless) -> caller may warn + skip instead of aborting.
+        if (saved == EPERM || saved == EACCES || saved == ENOENT || saved == EINVAL) return -2;
         return -1;
     }
     if (readonly) {
