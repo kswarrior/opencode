@@ -1,0 +1,840 @@
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>
+<bos><py>
+# python basics
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+class Cache:
+    def __init__(self):
+        self.d = {}
+    def get(self, k, default=None):
+        return self.d.get(k, default)
+    def set(self, k, v):
+        self.d[k] = v
+
+def read_json(path):
+    import json
+    with open(path) as f:
+        return json.load(f)
+<eos>
+<bos><py>
+# nodejs interop from python
+import subprocess, json
+def node_eval(js_expr):
+    r = subprocess.run(["node", "-p", js_expr], capture_output=True, text=True)
+    return r.stdout.strip()
+<eos>

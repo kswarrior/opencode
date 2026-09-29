@@ -1,0 +1,210 @@
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>
+<bos>
+English instruction following for coding.
+Task: explain recursion simply.
+Answer: recursion is when a function calls itself with a smaller input until a base case stops it.
+Task: plan a function that sorts users by name.
+Answer: 1) parse input 2) use localeCompare 3) return new array, don't mutate.
+<eos>

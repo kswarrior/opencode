@@ -1,0 +1,570 @@
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>
+<bos><js>
+// js basics + node
+const fs = require("fs");
+function sum(a, b) { return a + b; }
+async function main() {
+  const files = await fs.promises.readdir(".");
+  console.log(files);
+}
+module.exports = { sum };
+<eos>
+<bos><node>
+// nodejs server
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {"content-type": "application/json"});
+  res.end(JSON.stringify({ok: true}));
+});
+server.listen(3000);
+<eos>

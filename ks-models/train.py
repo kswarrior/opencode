@@ -72,11 +72,12 @@ def main():
         lr = cosine(step, args.steps, args.lr)
         for g in opt.param_groups:
             g["lr"] = lr
-        x, y = get_batch(ids, args.seq, args.bs, device)
-        logits, loss = model(x, y)
-        # model.forward expects (ids, loss_ids) where loss over shift; we passed y already shifted?
-        # our forward does internal shift, so pass full chunk:
-        # fix: use chunk = concat
+        # chunk of seq+1, model does shift internally: loss = CE(logits[:,:-1], chunk[:,1:])
+        import random as _r
+        import torch as _t
+        ix = _t.randint(0, len(ids) - args.seq - 1, (args.bs,))
+        chunk = _t.stack([_t.tensor(ids[i:i+args.seq+1]) for i in ix.tolist()]).to(device)
+        logits, loss = model(chunk, chunk)
         opt.zero_grad()
         loss.backward()
         nn.utils.clip_grad_norm_(model.parameters(), 1.0)

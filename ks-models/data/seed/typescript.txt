@@ -1,0 +1,480 @@
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>
+<bos><ts>
+// typescript basics
+type User = { id: string; name: string; tags?: string[] };
+function greet(u: User): string {
+  return `hi ${u.name}`;
+}
+async function fetchJson(url: string): Promise<unknown> {
+  const r = await fetch(url);
+  return r.json();
+}
+export class Store<T> {
+  private m = new Map<string, T>();
+  get(k: string): T | undefined { return this.m.get(k); }
+  set(k: string, v: T): void { this.m.set(k, v); }
+}
+<eos>

@@ -1,0 +1,330 @@
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
+<bos><html>
+<!doctype html>
+<html><head><meta charset="utf-8"><title>demo</title>
+<style>
+body { font-family: system-ui; margin: 2rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+</style></head>
+<body><div class="card"><h1>hi</h1><button onclick="alert(1)">click</button></div>
+<script>console.log("hi");</script>
+</body></html>
+<eos>
