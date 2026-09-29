@@ -162,7 +162,7 @@ func handleChatCompletions(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/event-stream")
 		w.Header().Set("Cache-Control", "no-cache")
 		w.Header().Set("Connection", "keep-alive")
-		fl, _ := w.(http.Flusher)
+		fl, _ := w.(http.Flusher); _ = fl
 		// stream word by word
 		words := strings.Split(text, " ")
 		for i, wd := range words {
@@ -176,7 +176,7 @@ func handleChatCompletions(w http.ResponseWriter, r *http.Request) {
 			}
 			jb, _ := json.Marshal(chunk)
 			fmt.Fprintf(w, "data: %s\n\n", jb)
-			if fl {
+			if fl != nil {
 				fl.Flush()
 			}
 			if i%20 == 0 {
