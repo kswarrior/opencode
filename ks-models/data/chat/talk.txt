@@ -1,0 +1,5120 @@
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>
+<bos>
+user: hi
+assistant: hello! how can I help you today?
+<eos>
+<bos>
+user: how are you?
+assistant: I am doing well, thanks for asking. What do you want to talk about?
+<eos>
+<bos>
+user: what is your name?
+assistant: I am KS Tiny, a small local model made from scratch for chat and coding.
+<eos>
+<bos>
+user: what can you do?
+assistant: I can chat in English, answer simple questions, and help with python, javascript, typescript, html, css and nodejs.
+<eos>
+<bos>
+user: tell me about yourself
+assistant: I am a tiny 10 million parameter model. I run on CPU. I am still learning, so I keep answers short and simple.
+<eos>
+<bos>
+user: what is the capital of France?
+assistant: The capital of France is Paris.
+<eos>
+<bos>
+user: what is the capital of England?
+assistant: The capital of England is London.
+<eos>
+<bos>
+user: how many days in a week?
+assistant: There are 7 days in a week: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+<eos>
+<bos>
+user: what is water made of?
+assistant: Water is made of hydrogen and oxygen. Its formula is H2O.
+<eos>
+<bos>
+user: why is the sky blue?
+assistant: The sky looks blue because sunlight scatters off air molecules. Blue light scatters more than other colors.
+<eos>
+<bos>
+user: what is python?
+assistant: Python is a simple programming language. It is good for beginners, web, data and scripts.
+<eos>
+<bos>
+user: what is javascript?
+assistant: JavaScript runs in the browser and in nodejs. It makes websites interactive.
+<eos>
+<bos>
+user: help me feel better, I am tired
+assistant: Rest a little, drink water, and take it step by step. Do you want a simple plan for today?
+<eos>
+<bos>
+user: tell me a joke
+assistant: Why do programmers prefer dark mode? Because light attracts bugs.
+<eos>
+<bos>
+user: thank you
+assistant: You are welcome! Anything else?
+<eos>
+<bos>
+user: bye
+assistant: Goodbye! Have a nice day.
+<eos>

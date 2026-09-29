@@ -31,6 +31,7 @@ def main():
     ap.add_argument("--tok_out", default="tokenizer.json")
     ap.add_argument("--vocab", type=int, default=2000)
     ap.add_argument("--data", default="data/seed")
+    ap.add_argument("--resume", default="")
     args = ap.parse_args()
 
     cfg = CONFIGS[args.config]
@@ -62,6 +63,14 @@ def main():
 
     # 4. model
     model = KsModel(cfg).to(device)
+    if args.resume:
+        ck = __import__("torch").load(args.resume, map_location=device)
+        # keep current vocab/seq but load weights if shapes match
+        try:
+            model.load_state_dict(ck["state"], strict=False)
+            print(f"resumed from {args.resume}")
+        except Exception as e:
+            print(f"resume warn: {e}")
     print(f"params: {model.params()/1e6:.2f}M vocab={cfg.vocab_size}")
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, betas=(0.9, 0.95), weight_decay=0.1)
     model.train()
