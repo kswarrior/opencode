@@ -18,6 +18,6 @@ ENV OLLAMA_MODEL=qwen2.5-coder:7b
 EXPOSE 10000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-  CMD curl -f http://localhost:${PORT:-10000}/api/tags || exit 1
+  CMD curl -f http://127.0.0.1:${PORT:-10000}/api/tags || exit 1
 
 CMD ["ollama", "serve"]

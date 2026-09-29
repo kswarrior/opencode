@@ -5,7 +5,7 @@
 #   docker build -t ksx .                  # from ksx/ (service context)
 #   docker build -f ksx/Dockerfile -t ksx . # from repo root (Render: dockerContext: .)
 #   docker run --rm -p 8080:8080 ksx
-# Then open http://localhost:8080 — the embedded dashboard
+# Then open http://127.0.0.1:8080 — the embedded dashboard
 # (Home / Packages / Settings) served over plain HTTP.
 #
 # Notes:
@@ -60,7 +60,7 @@ VOLUME ["/ksx"]
 EXPOSE 8080 10000
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -qO- http://localhost:${PORT:-8080}/health || curl -fsS http://localhost:${PORT:-8080}/health || exit 1
+  CMD wget -qO- http://127.0.0.1:${PORT:-8080}/health || curl -fsS http://127.0.0.1:${PORT:-8080}/health || exit 1
 
 # Use PORT env at runtime (Render sets PORT=10000); default to 8080 locally.
 # `--dr root` must precede the subcommand (`ksx --dr root web`).

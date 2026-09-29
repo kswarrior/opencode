@@ -19,7 +19,7 @@ services:
       - ACCOUNT_URL=${ACCOUNT_URL:-http://account:8082}
       - JWT_TOKEN=${JWT_TOKEN:-eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3ODk4NDM4MjAsImlkIjoiMDFhMGJiMDEtMjAxMC03ZjViLTg5NGQtZDI2ODhlOWEyMjkxIiwia2lkIjoiV1FhUGd1dExkUURFak9YMUpsUVNNSVZHbHBzUDNUdGUyb29SRGcweVBsRSIsInJpZCI6ImI0ZjI5YzlmLTdjZmYtNGZmZC1iODU0LTI5ZGM4NzE2NGY3MSJ9.JdIr0aaTLKrhw93KjVOKrs_f11_u87CKZq3TKuNE7TYPZCD8QqdlZOMUK-8GCfllIOWuNl4oBfyCrgUqsVgQAw}
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/health || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health || exit 1"]
       interval: 30s
       timeout: 3s
       retries: 3
@@ -50,7 +50,7 @@ services:
       - TURSO_DATABASE_URL=${TURSO_DATABASE_URL:-turso://account-kswarriorgh-th1.aws-ap-south-1.turso.io}
       - TURSO_AUTH_TOKEN=${TURSO_AUTH_TOKEN:-}
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8081/health || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8081/health || exit 1"]
       interval: 30s
       timeout: 3s
       retries: 3
@@ -82,7 +82,7 @@ services:
       - TURSO_DATABASE_URL=${TURSO_DATABASE_URL:-turso://account-kswarriorgh-th1.aws-ap-south-1.turso.io}
       - TURSO_AUTH_TOKEN=${TURSO_AUTH_TOKEN:-}
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8082/health || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8082/health || exit 1"]
       interval: 30s
       timeout: 3s
       retries: 3
@@ -111,7 +111,7 @@ services:
       - PORT=8083
       - MONITOR_INTERVAL=${MONITOR_INTERVAL:-30}
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8083/health || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8083/health || exit 1"]
       interval: 30s
       timeout: 3s
       retries: 3
@@ -141,7 +141,7 @@ services:
       - NODE_ENV=production
     shm_size: 2g
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8084/health || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8084/health || exit 1"]
       interval: 30s
       timeout: 3s
       retries: 3
@@ -171,7 +171,7 @@ services:
       browser:
         condition: service_started
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:80/health || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:80/health || exit 1"]
       interval: 30s
       timeout: 3s
       retries: 3

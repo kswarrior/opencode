@@ -26,10 +26,10 @@ ENV PORT=10000
 ENV MODEL_ID=ks-coder-2.5:7b
 ENV OLLAMA_MODEL=qwen2.5-coder:7b
 # For Render web root deploy, model is at same host's Ollama if you bake it, else set to external https://ks-model-api.onrender.com
-ENV MODEL_BASE_URL=http://localhost:11434
-ENV KS_BASE_URL=http://localhost:11434
+ENV MODEL_BASE_URL=http://127.0.0.1:11434
+ENV KS_BASE_URL=http://127.0.0.1:11434
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
-  CMD wget -qO- http://localhost:${PORT:-10000}/health || exit 1
+  CMD wget -qO- http://127.0.0.1:${PORT:-10000}/health || exit 1
 
 CMD ["node", "server.js"]
