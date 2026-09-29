@@ -63,6 +63,12 @@ func infer(prompt string, maxNew int, temp float64) string {
 }
 
 func messagesToPrompt(msgs []map[string]interface{}) string {
+	// for code completion: if last user msg is alone, use it raw (better for tiny base model)
+	if len(msgs) == 1 {
+		if c, ok := msgs[0]["content"].(string); ok && c != "" {
+			return c
+		}
+	}
 	var b strings.Builder
 	for _, m := range msgs {
 		role, _ := m["role"].(string)
