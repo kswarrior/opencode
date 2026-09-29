@@ -2,8 +2,8 @@
 Loads model once, serves HTTP on 127.0.0.1:8091 for Go model-runner to proxy.
 No extra deps (stdlib + torch).
 
-  python3 server.py --ckpt models/ks-tiny.pt --tok tokenizer.json --port 8091
-POST /complete {"prompt": "...", "max_new": 150, "temp": 0.7} -> {"text": "..."}
+  python3 server.py --ckpt models/ks-chat.pt --tok tokenizer.json --port 8091
+POST /complete {"prompt": "...", "max_new": 150, "temp": 0.8} -> {"text": "..."}
 GET /health -> {"ok": true, ...}
 """
 import argparse, json
@@ -21,30 +21,58 @@ DEVICE = "cpu"
 
 STOPS = ["<eos>", "\nuser:", "\n\nuser:", "<tool_call>", "<tool_result>"]
 
-def truncate(text):
+def dedup_sentences(text, max_sent=3):
+    import re
+    parts = re.split(r"(?<=[.!?])\s+", text.strip())
+    seen, out = set(), []
+    for s in parts:
+        k = s.strip().lower()
+        if not k or k in seen:
+            continue
+        if k.startswith("i am a tiny") and any(o.startswith("i am a tiny") for o in out):
+            continue
+        seen.add(k)
+        out.append(s.strip())
+        if len(out) >= max_sent:
+            break
+    return " ".join(out).strip()
+
+def truncate(text, short=False):
     cut = len(text)
     for s in STOPS:
         i = text.find(s)
         if i >= 0:
             cut = min(cut, i)
-    text = text[:cut]
-    # anti-dump: keep first 1-2 sentences for short prompts
-    return text.strip()
+    return dedup_sentences(text[:cut].strip(), 2 if short else 4)
 
-def complete(prompt, max_new=150, temp=0.7):
+def last_user_msg(prompt):
+    low = prompt.lower()
+    i = low.rfind("user:")
+    if i < 0:
+        return prompt.strip().lower()
+    j = low.find("assistant:", i)
+    seg = prompt[i + 5:j] if j > 0 else prompt[i + 5:]
+    return seg.strip().lower()
+
+GREETINGS = ("hi", "hello", "hey", "hi!", "hello!", "hey!", "yo")
+
+def complete(prompt, max_new=150, temp=0.8):
+    last = last_user_msg(prompt)
+    if last in GREETINGS:
+        return "hello! how can I help you today?"
+    short = len(last) < 40
+    if short:
+        max_new = min(max_new, 80)
     bos = TOK.vocab.get("<bos>", 1)
     eos = TOK.vocab.get("<eos>", 2)
-    # short greeting -> short answer, avoids story dump
-    pl = prompt.strip().lower()
-    if pl in ("hi", "hello", "hey", "hi!", "hello!", "user: hi", "user: hello", "user: hi\nassistant:", "user: hello\nassistant:"):
-        max_new = min(max_new, 25)
-    elif len(prompt) < 60:
-        max_new = min(max_new, 80)
     ids = torch.tensor([[bos] + TOK.encode(prompt)], dtype=torch.long, device=DEVICE)
     ids = ids[:, -MODEL.cfg.max_seq:]
-    out = MODEL.generate(ids, max_new=max_new, temp=temp, top_p=0.9, eos=eos)
+    if temp is None or temp <= 0:
+        temp = 0.8
+    out = MODEL.generate(ids, max_new=max_new, temp=temp, top_p=0.9, top_k=40,
+                         eos=eos, repetition_penalty=1.3)
     gen = out[0].tolist()[ids.shape[1]:]
-    return truncate(TOK.decode(gen))
+    return truncate(TOK.decode(gen), short=short)
 
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a):
@@ -72,7 +100,7 @@ class H(BaseHTTPRequestHandler):
             prompt = body.get("prompt", "")
             if isinstance(prompt, list):  # allow messages-style
                 prompt = "\n".join(m.get("content", "") for m in prompt)
-            text = complete(prompt, int(body.get("max_new", 150)), float(body.get("temp", 0.7)))
+            text = complete(prompt, int(body.get("max_new", 150)), float(body.get("temp", 0.8)))
             self._json({"text": text})
         else:
             self._json({"error": "not found"}, 404)
@@ -80,7 +108,7 @@ class H(BaseHTTPRequestHandler):
 def main():
     global MODEL, TOK, CFG, DEVICE
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ckpt", default="models/ks-tiny.pt")
+    ap.add_argument("--ckpt", default="models/ks-chat.pt")
     ap.add_argument("--tok", default="tokenizer.json")
     ap.add_argument("--port", type=int, default=8091)
     ap.add_argument("--device", default="cpu")
