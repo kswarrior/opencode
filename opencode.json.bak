@@ -3,12 +3,7 @@
   "mcp": {
     "filesystem": {
       "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "."
-      ],
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "."],
       "enabled": true
     },
     "context7": {
@@ -18,50 +13,27 @@
     },
     "repomix": {
       "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "repomix",
-        "--mcp"
-      ],
+      "command": ["npx", "-y", "repomix", "--mcp"],
       "enabled": true
     },
     "sequential-thinking": {
       "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ],
+      "command": ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking"],
       "enabled": true
     },
     "memory": {
       "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
       "enabled": true
     },
     "fetch": {
       "type": "local",
-      "command": [
-        "python3",
-        "-m",
-        "mcp_server_fetch"
-      ],
+      "command": ["python3", "-m", "mcp_server_fetch"],
       "enabled": true
     },
     "git": {
       "type": "local",
-      "command": [
-        "python3",
-        "-m",
-        "mcp_server_git",
-        "--repository",
-        "."
-      ],
+      "command": ["python3", "-m", "mcp_server_git", "--repository", "."],
       "enabled": true
     }
   },
@@ -87,13 +59,10 @@
       "models": {
         "ks-coder-2.5:7b": {
           "name": "KS Coder 2.5 7B (coding, private)"
-        },
-        "ks-tiny": {
-          "name": "KS Tiny 10M (py/ts/js/html/css/node, local demo)"
         }
       }
     }
   },
-  "model": "ks-own/ks-tiny",
-  "small_model": "ks-own/ks-tiny"
+  "model": "ks-own/ks-coder-2.5:7b",
+  "small_model": "ks-own/ks-coder-2.5:7b"
 }
