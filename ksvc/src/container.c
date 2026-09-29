@@ -41,7 +41,7 @@ struct clone_arg {
 // forward
 static int child_main(void *arg);
 static int setup_userns_maps(pid_t child_pid, uid_t host_uid, gid_t host_gid);
-static int setup_hostname(const char *hostname);
+static int setup_hostname(const char *hostname, int use_user_ns);
 static int setup_workdir(const char *wd);
 static int drop_caps_all(void);
 
@@ -153,7 +153,7 @@ static int child_main(void *arg) {
     }
 
     // Set hostname in new UTS ns
-    setup_hostname(ctr->cfg.hostname);
+    setup_hostname(ctr->cfg.hostname, ctr->cfg.use_user_ns);
 
     // Make mounts private and setup pivot_root/chroot (volumes handled inside)
     // Need to do mount setup after user ns (so we have CAP_SYS_ADMIN)
@@ -249,13 +249,15 @@ static int setup_userns_maps(pid_t child_pid, uid_t host_uid, gid_t host_gid) {
     return 0;
 }
 
-static int setup_hostname(const char *hostname) {
+static int setup_hostname(const char *hostname, int use_user_ns) {
     if (!hostname || hostname[0]=='\0') return 0;
     if (sethostname(hostname, strlen(hostname)) < 0) {
-        // Rootless containers usually cannot set hostname (needs CAP_SYS_ADMIN
-        // in the host userns / AppArmor allows). Warn once with a hint instead
-        // of an error-looking message; the container still runs.
-        if (ksvc_is_rootless() && (errno == EPERM || errno == EACCES)) {
+        // Rootless/userns containers usually cannot set hostname (needs
+        // CAP_SYS_ADMIN in the host userns / AppArmor allows). Warn with a
+        // hint instead of an error-looking message; the container still runs.
+        // NOTE: must use use_user_ns flag, not geteuid(), because inside the
+        // user ns we are already uid 0.
+        if (use_user_ns && (errno == EPERM || errno == EACCES)) {
             fprintf(stderr, "ksvc: warning: cannot set hostname to '%s' rootless (%s) — run with sudo for UTS isolation\n",
                     hostname, strerror(errno));
             return 0;
