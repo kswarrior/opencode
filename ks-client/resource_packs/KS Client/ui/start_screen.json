@@ -541,8 +541,7 @@
       { "edu_external_link_popup_factory@start.edu_external_link_popup_factory": {} },
       { "ks_top_bar@ks_client.ks_top_bar": {} },
       { "ks_bottom_left_row@ks_client.ks_bottom_left_row": {} },
-      { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} },
-      { "ks_page_overlay@ks_client.ks_page_overlay": {} }
+      { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} }
     ]
   }
 }

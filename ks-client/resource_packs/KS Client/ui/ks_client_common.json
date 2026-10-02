@@ -366,10 +366,5 @@
         }
       }
     ]
-  },
-
-  // ================= KS CLIENT PAGE (overlay, radio-group tabs) =================
-  // Tabs share group "ks_client_tabs" (Overview=0 default). Each tab content
-  // panel binds #visible to its own tab toggle's #toggle_state.
-
+  }
 }
