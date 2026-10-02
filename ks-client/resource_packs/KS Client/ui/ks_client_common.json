@@ -1,16 +1,33 @@
 {
   "namespace": "ks_client",
 
-  // ---------- Premium button (keeps vanilla behaviour, opens Settings) ----------
-  "ks_client_button@common_buttons.light_text_button": {
+  // ---------- Page open/close: radio group "ks_client_page" (open=0, close=1) ----------
+  // Tapping the KS icon selects OPEN (page shows); tapping X selects CLOSE.
+  // Default selected = 1 (closed), so the page starts hidden.
+  "ks_page_open_toggle@common_toggles.light_text_toggle": {
     "size": [ "100% - 2px", "100% - 2px" ],
-    "$pressed_button_name": "button.menu_settings",
-    "$button_text": "ks_client.start_button"
+    "$button_text": "",
+    "$toggle_name": "ks_client_page",
+    "$toggle_view_binding_name": "ks_page_open_state",
+    "$radio_toggle_group": true,
+    "$toggle_group_forced_index": 0,
+    "$toggle_group_default_selected": 1
   },
 
-  // ---------- Center row: SAME 150x32 footprint, icon cover over vanilla button ----------
-  // The vanilla button underneath keeps full behaviour (opens Settings);
-  // the opaque icon cover hides its text. Clicks pass through images.
+  "ks_page_close_toggle@common_toggles.light_text_toggle": {
+    "size": [ 30, 30 ],
+    "$button_text": "",
+    "$toggle_name": "ks_client_page",
+    "$toggle_view_binding_name": "ks_page_close_state",
+    "$radio_toggle_group": true,
+    "$toggle_group_forced_index": 1,
+    "$toggle_group_default_selected": 1
+  },
+
+  // ---------- Center row: SAME 150x32 footprint, KS icon opens the KS page ----------
+  // The toggle underneath flips the page overlay (radio group); the opaque
+  // icon cover hides the toggle frame. Clicks pass through images.
+  // (Minecraft Settings stays on the top-left gear icon.)
   "ks_client_start_row": {
     "type": "panel",
     "size": [ 150, 32 ],
@@ -30,7 +47,7 @@
         }
       },
       {
-        "ks_client_button@ks_client.ks_client_button": {
+        "ks_page_open_toggle@ks_client.ks_page_open_toggle": {
           "layer": 1
         }
       },
