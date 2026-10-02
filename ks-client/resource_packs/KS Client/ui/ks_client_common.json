@@ -138,6 +138,69 @@
     ]
   },
 
+  // ---------- Profile button: [avatar + username], borderless like settings ----------
+  // Replaces vanilla (avatar + static "Profile" text). Same engine press path.
+  "ks_profile_button@common_buttons.no_background_content_button": {
+    "size": [ 120, 30 ],
+    "$button_text": "",
+    "$button_content": "ks_client.profile_button_content",
+    "$pressed_button_name": "button.menu_profile",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ]
+  },
+
+  "profile_button_content": {
+    "type": "panel",
+    "size": [ 120, 30 ],
+    "controls": [
+      {
+        "pb_avatar": {
+          "type": "panel",
+          "size": [ 20, 20 ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [ 6, 0 ],
+          "controls": [
+            {
+              "gamerpic@start.gamerpic": {
+                "$gamerpic_visible": "#show_gamerpic"
+              }
+            },
+            {
+              "alex_icon@start.alex_icon": {
+                "bindings": [
+                  {
+                    "binding_name": "(not #show_gamerpic)",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "pb_name": {
+          "type": "label",
+          "size": [ "100% - 34px", 20 ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [ 32, 0 ],
+          "color": [ 255, 255, 255 ],
+          "shadow": true,
+          "text": "",
+          "bindings": [
+            {
+              "binding_name": "#playername",
+              "binding_name_override": "#text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
   // ---------- Fullscreen fixed background (solid black for now) ----------
   // The engine panorama is covered completely. To use art later, swap the
   // textures/ui/ks_bg file - no JSON change needed.
