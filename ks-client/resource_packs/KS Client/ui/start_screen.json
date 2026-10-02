@@ -1,8 +1,31 @@
 {
   "namespace": "start",
 
-  // Minimal override: only this control is replaced, all other
-  // start.* controls (play, settings, store, stacked_row, etc.)
+  // Statue (paper doll) moved from bottom-right to right-center.
+  "skin_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ 160, 170 ],
+    "offset": [ -8, 0 ],
+    "anchor_to": "right_middle",
+    "anchor_from": "right_middle",
+    "layer": 1,
+    "controls": [
+      { "viewer_panel@start.skin_viewer_panel": { "size": [ "100%", "fill" ] } },
+      {
+        "centering_panel": {
+          "type": "panel",
+          "size": [ "100%", 24 ],
+          "controls": [
+            { "change_profile_or_skin@start.skin_or_profile_panel": {} }
+          ]
+        }
+      }
+    ]
+  },
+
+  // Center buttons raised upward (bottom but some upward).
+  // Only this control is replaced, all other start.* controls
   // resolve from vanilla. Inserts KS Client row directly under
   // the vanilla main buttons, before the new-player-flow panel.
   "main_buttons_stack_panel": {
@@ -36,6 +59,7 @@
         "main_buttons_panel": {
           "type": "panel",
           "size": [ "100%", "100%c" ],
+          "offset": [ 0, -16 ],
           "variables": [
             {
               "requires": "($showing_new_player_flow_buttons)",
@@ -100,6 +124,105 @@
           "size": [ "100%", 10 ]
         }
       }
+    ]
+  },
+
+  // Full content with KS corner overlays on top of vanilla.
+  "start_screen_content": {
+    "type": "panel",
+    "$achievements_ignored|default": false,
+    "$feedback_ignored|default": false,
+    "$store_ignored|default": false,
+    "variables": [
+      {
+        "requires": "$education_edition",
+        "$achievements_ignored": true,
+        "$store_ignored|default": true
+      },
+      {
+        "requires": "$nx_os",
+        "$feedback_ignored": true
+      },
+      {
+        "requires": "(not $supports_xbl_achievements)",
+        "$achievements_ignored": true,
+        "$feedback_ignored": true
+      },
+      {
+        "requires": "$trial",
+        "$achievements_ignored": true
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "(not #screen_needs_rebuild)",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "main_buttons_and_title_panel@start.main_buttons_stack_panel": {}
+      },
+      {
+        "online_button_stack": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "anchor_to": "bottom_left",
+          "anchor_from": "bottom_left",
+          "size": [ "50% - 75px", "100%c" ],
+          "offset": [ 0, "-10%" ],
+          "variables": [
+            {
+              "requires": "($showing_new_player_flow_buttons)",
+              "$anim_type": "@start.anim_main_buttons_panel_alpha"
+            },
+            {
+              "requires": "(not $showing_new_player_flow_buttons)",
+              "$anim_type": 1.0
+            }
+          ],
+          "alpha": "$anim_type",
+          "controls": [
+            {
+              "gathering_panel@start.gathering_panel": {}
+            },
+            {
+              "upper_online_buttons_panel@start.upper_online_buttons_panel": {}
+            },
+            {
+              "lower_online_buttons_panel@start.lower_online_buttons_panel": {}
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#online_stack_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "skin_panel@start.skin_panel": { "layer": 1 }
+      },
+      {
+        "text_panel@start.text_panel": {}
+      },
+      {
+        "friendsdrawer_button_panel@start.friendsdrawer_button_panel": {
+          "$focus_id": "friendsdrawer_button",
+          "bindings": [
+            {
+              "binding_name": "#friends_drawer_button_enabled",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { "edu_external_link_popup_factory@start.edu_external_link_popup_factory": {} },
+      { "ks_top_bar@ks_client.ks_top_bar": {} },
+      { "ks_profile_card@ks_client.ks_profile_card": {} },
+      { "ks_bottom_left_store@ks_client.ks_bottom_left_store": {} },
+      { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} }
     ]
   }
 }
