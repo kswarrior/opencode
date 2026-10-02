@@ -874,49 +874,43 @@
                 "layer": 1,
                 "controls": [
                   {
-                    "ks_page_title": {
-                      "type": "label",
-                      "size": [ 220, 28 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 14, 0 ],
-                      "text": "KS CLIENT",
-                      "color": [ 255, 255, 255 ],
-                      "font_size": "large",
-                      "shadow": true,
-                      "layer": 1
+                    "ks_bar_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_pill_dark",
+                      "size": [ "100%", 48 ],
+                      "layer": 0,
+                      "alpha": 0.95
                     }
                   },
                   {
-                    "ks_page_subtitle": {
-                      "type": "label",
-                      "size": [ 220, 16 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 14, 28 ],
-                      "text": "CONTROL CENTER",
-                      "color": [ 150, 180, 210 ],
-                      "shadow": true,
-                      "layer": 1
+                    "ks_bar_line": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_accent_cyan",
+                      "size": [ "100%", 2 ],
+                      "anchor_from": "bottom_middle",
+                      "anchor_to": "bottom_middle",
+                      "offset": [ 0, 0 ],
+                      "layer": 1,
+                      "alpha": 0.8
                     }
                   },
                   {
-                    "ks_close_slot": {
+                    "ks_back_slot": {
                       "type": "panel",
-                      "size": [ 30, 30 ],
-                      "anchor_from": "top_right",
-                      "anchor_to": "top_right",
-                      "offset": [ -10, 8 ],
+                      "size": [ 44, 36 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 8, 6 ],
                       "layer": 1,
                       "controls": [
                         {
                           "ks_page_close_toggle@ks_client.ks_page_close_toggle": {}
                         },
                         {
-                          "ks_cover_close": {
+                          "ks_cover_back": {
                             "type": "image",
-                            "texture": "textures/ui/ks_cover_close",
-                            "size": [ 30, 30 ],
+                            "texture": "textures/ui/ks_cover_back",
+                            "size": [ 44, 36 ],
                             "anchor_from": "center",
                             "anchor_to": "center",
                             "offset": [ 0, 0 ],
@@ -924,6 +918,21 @@
                           }
                         }
                       ]
+                    }
+                  },
+                  {
+                    "ks_page_title": {
+                      "type": "label",
+                      "size": [ "100% - 130px", 28 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 10 ],
+                      "text": "KS CLIENT",
+                      "color": [ 255, 255, 255 ],
+                      "font_size": "large",
+                      "shadow": true,
+                      "text_alignment": "center",
+                      "layer": 1
                     }
                   }
                 ]
