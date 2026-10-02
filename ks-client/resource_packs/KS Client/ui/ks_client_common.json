@@ -166,9 +166,41 @@
     ]
   },
 
-  // ---------- Top-left quick bar: SAME 224x30 at (8,8), settings is now an icon ----------
-  // Vanilla settings button stays underneath (full behaviour); the opaque
-  // gear cover hides its text. Clicks pass through images.
+  // Borderless icon button: no vanilla frame/text/hold visuals at all.
+  // Art IS the button (exact slot size). Press shift forced to zero.
+  "ks_settings_button@common_buttons.no_background_content_button": {
+    "size": [ 100, 30 ],
+    "$button_text": "",
+    "$button_content": "ks_client.settings_icon_content",
+    "$pressed_button_name": "button.menu_settings",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ]
+  },
+
+  "settings_icon_content": {
+    "type": "panel",
+    "size": [ 100, 30 ],
+    "controls": [
+      {
+        "settings_icon_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_cover_settings",
+          "size": [ 100, 30 ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Fullscreen fixed background (solid black for now) ----------
+  // The engine panorama is covered completely. To use art later, swap the
+  // textures/ui/ks_bg file - no JSON change needed.
+  "ks_bg": {
+    "type": "image",
+    "texture": "textures/ui/ks_bg",
+    "size": [ "100%", "100%" ],
+    "layer": 0
+  },
   "ks_top_bar": {
     "type": "panel",
     "size": [ 224, 30 ],
@@ -211,18 +243,7 @@
                 "size": [ 100, 30 ],
                 "controls": [
                   {
-                    "ks_settings_button@start.settings_button": {}
-                  },
-                  {
-                    "ks_cover_settings": {
-                      "type": "image",
-                      "texture": "textures/ui/ks_cover_settings",
-                      "size": [ 100, 30 ],
-                      "anchor_from": "center",
-                      "anchor_to": "center",
-                      "offset": [ 0, 0 ],
-                      "layer": 5
-                    }
+                    "ks_settings_button@ks_client.ks_settings_button": {}
                   }
                 ]
               }
@@ -239,7 +260,9 @@
                 "size": [ 120, 30 ],
                 "controls": [
                   {
-                    "ks_profile_button@start.profile_button": {}
+                    "ks_profile_button@start.profile_button": {
+                      "size": [ "100%", "100%" ]
+                    }
                   }
                 ]
               }
