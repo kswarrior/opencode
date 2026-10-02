@@ -8,7 +8,9 @@
     "$button_text": "ks_client.start_button"
   },
 
-  // ---------- Center row: SAME 150x32 footprint, premium frame around vanilla button ----------
+  // ---------- Center row: SAME 150x32 footprint, icon cover over vanilla button ----------
+  // The vanilla button underneath keeps full behaviour (opens Settings);
+  // the opaque icon cover hides its text. Clicks pass through images.
   "ks_client_start_row": {
     "type": "panel",
     "size": [ 150, 32 ],
@@ -28,33 +30,19 @@
         }
       },
       {
-        "ks_center_top_accent": {
-          "type": "image",
-          "texture": "textures/ui/ks_accent_gold",
-          "size": [ 150, 3 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, -1 ],
-          "layer": 2
-        }
-      },
-      {
         "ks_client_button@ks_client.ks_client_button": {
           "layer": 1
         }
       },
       {
-        "ks_center_status": {
-          "type": "label",
-          "size": [ 150, 12 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 34 ],
-          "text": "PREMIUM UI  •  ACTIVE",
-          "color": [ 140, 170, 200 ],
-          "shadow": true,
-          "text_alignment": "center",
-          "layer": 2
+        "ks_cover_ks": {
+          "type": "image",
+          "texture": "textures/ui/ks_cover_ks",
+          "size": [ 150, 32 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "layer": 5
         }
       }
     ]
@@ -116,119 +104,9 @@
     ]
   },
 
-  // ---------- Top-center brand block (original, non-interactive) ----------
-  "ks_brand_header": {
-    "type": "panel",
-    "size": [ 280, 62 ],
-    "anchor_from": "top_middle",
-    "anchor_to": "top_middle",
-    "offset": [ 0, 8 ],
-    "layer": 1,
-    "controls": [
-      {
-        "ks_brand_badge_bg": {
-          "type": "image",
-          "texture": "textures/ui/ks_badge_gold",
-          "size": [ 86, 15 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 0 ],
-          "layer": 1
-        }
-      },
-      {
-        "ks_brand_badge_text": {
-          "type": "label",
-          "size": [ 86, 15 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 0 ],
-          "text": "SEASON 01",
-          "color": [ 70, 38, 0 ],
-          "text_alignment": "center",
-          "layer": 2
-        }
-      },
-      {
-        "ks_brand_title": {
-          "type": "label",
-          "size": [ 280, 26 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 16 ],
-          "text": "KS CLIENT",
-          "color": [ 255, 255, 255 ],
-          "font_size": "large",
-          "shadow": true,
-          "text_alignment": "center",
-          "layer": 2
-        }
-      },
-      {
-        "ks_brand_sub": {
-          "type": "label",
-          "size": [ 280, 12 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 40 ],
-          "text": "PREMIUM MOBILE EXPERIENCE",
-          "color": [ 150, 180, 210 ],
-          "shadow": true,
-          "text_alignment": "center",
-          "layer": 2
-        }
-      },
-      {
-        "ks_brand_underline": {
-          "type": "image",
-          "texture": "textures/ui/ks_accent_gold",
-          "size": [ 180, 4 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 53 ],
-          "layer": 2
-        }
-      }
-    ]
-  },
+  // ---------- (brand header removed: text-free screen) ----------
 
-  // ---------- Bottom-center status footer (sits above bottom bars, no overlap) ----------
-  "ks_footer_center": {
-    "type": "panel",
-    "size": [ 220, 24 ],
-    "anchor_from": "bottom_middle",
-    "anchor_to": "bottom_middle",
-    "offset": [ 0, -56 ],
-    "layer": 1,
-    "controls": [
-      {
-        "ks_footer_line": {
-          "type": "image",
-          "texture": "textures/ui/ks_accent_cyan",
-          "size": [ 120, 3 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 0 ],
-          "alpha": 0.8,
-          "layer": 1
-        }
-      },
-      {
-        "ks_footer_text": {
-          "type": "label",
-          "size": [ 220, 14 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 6 ],
-          "text": "KS CLIENT v1.0.0  •  ONLINE",
-          "color": [ 140, 165, 195 ],
-          "shadow": true,
-          "text_alignment": "center",
-          "layer": 1
-        }
-      }
-    ]
-  },
+  // ---------- (footer removed: text-free screen) ----------
 
   // ---------- Futuristic side rails (subtle, non-interactive) ----------
   "ks_edge_left": {
@@ -271,7 +149,9 @@
     ]
   },
 
-  // ---------- Top-left quick bar: SAME 224x30 at (8,8), glass pill + cyan edge ----------
+  // ---------- Top-left quick bar: SAME 224x30 at (8,8), settings is now an icon ----------
+  // Vanilla settings button stays underneath (full behaviour); the opaque
+  // gear cover hides its text. Clicks pass through images.
   "ks_top_bar": {
     "type": "panel",
     "size": [ 224, 30 ],
@@ -315,6 +195,17 @@
                 "controls": [
                   {
                     "ks_settings_button@start.settings_button": {}
+                  },
+                  {
+                    "ks_cover_settings": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_cover_settings",
+                      "size": [ 100, 30 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 0 ],
+                      "layer": 5
+                    }
                   }
                 ]
               }
@@ -342,7 +233,7 @@
     ]
   },
 
-  // ---------- Profile card: SAME 224x64 at (8,42), glass + gold rail + status ----------
+  // ---------- Profile card: SAME 224x64 at (8,42), avatar + username only ----------
   "ks_profile_card": {
     "type": "panel",
     "size": [ 224, 64 ],
@@ -369,30 +260,6 @@
           "anchor_to": "top_left",
           "offset": [ 0, 0 ],
           "layer": 1
-        }
-      },
-      {
-        "ks_card_badge_bg": {
-          "type": "image",
-          "texture": "textures/ui/ks_badge_gold",
-          "size": [ 64, 14 ],
-          "anchor_from": "top_right",
-          "anchor_to": "top_right",
-          "offset": [ -6, 6 ],
-          "layer": 1
-        }
-      },
-      {
-        "ks_card_badge_text": {
-          "type": "label",
-          "size": [ 64, 14 ],
-          "anchor_from": "top_right",
-          "anchor_to": "top_right",
-          "offset": [ -6, 6 ],
-          "text": "PREMIUM",
-          "color": [ 70, 38, 0 ],
-          "text_alignment": "center",
-          "layer": 2
         }
       },
       {
