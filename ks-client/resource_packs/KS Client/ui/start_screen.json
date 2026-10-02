@@ -307,6 +307,56 @@
     ]
   },
 
+  // ---------- Play button rebuilt borderless (same engine press path) ----------
+  // Vanilla frame/text/hold art replaced by our art; $pressed_button_name is
+  // passed through exactly like vanilla. Press shift forced to zero.
+  // play_button_art (hover gif layer) is disabled: exclusive to this stack.
+  "play_button@common_buttons.no_background_content_button": {
+    "size": [ 190, 40 ],
+    "$button_text": "",
+    "$button_content": "start.play_button_art_custom",
+    "$pressed_button_name": "$play_button_target",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ],
+    "$focus_override_right": "profile_button",
+    "default_focus_precedence": 1,
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$pressed_button_name",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$pressed_button_name",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "play_button.is_hovered",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+
+  "play_button_art_custom": {
+    "type": "panel",
+    "size": [ 190, 40 ],
+    "controls": [
+      {
+        "play_art_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_art_play",
+          "size": [ 190, 40 ]
+        }
+      }
+    ]
+  },
+
+  "play_button_art": {
+    "ignored": true
+  },
+
   // Center buttons raised upward (bottom but some upward).
   // Only this control is replaced, all other start.* controls
   // resolve from vanilla. Inserts KS Client row directly under
@@ -372,9 +422,7 @@
           ]
         }
       },
-      {
-        "ks_client_panel@ks_client.ks_client_panel": {}
-      },
+      // (KS icon lives in the top-left bar; no center row)
       {
         "main_buttons_panel_new_player_flow": {
           "type": "panel",

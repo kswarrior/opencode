@@ -26,51 +26,7 @@
     "$toggle_group_default_selected": 1
   },
 
-  // ---------- Center row: SAME 150x32 footprint, KS icon opens the KS page ----------
-  // The toggle underneath flips the page overlay (radio group); the opaque
-  // icon cover hides the toggle frame. Clicks pass through images.
-  // (Minecraft Settings stays on the top-left gear icon.)
-  "ks_client_start_row": {
-    "type": "panel",
-    "size": [ 150, 32 ],
-    "anchor_from": "top_middle",
-    "anchor_to": "top_middle",
-    "controls": [
-      {
-        "ks_page_open_toggle@ks_client.ks_page_open_toggle": {
-          "layer": 1
-        }
-      },
-      {
-        "ks_cover_ks": {
-          "type": "image",
-          "texture": "textures/ui/ks_cover_ks",
-          "size": [ 150, 32 ],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "offset": [ 0, 0 ],
-          "layer": 8
-        }
-      }
-    ]
-  },
-
-  "ks_client_panel": {
-    "type": "panel",
-    "size": [ "100%", "100%c" ],
-    "offset": [ 0, -16 ],
-    "bindings": [
-      {
-        "binding_name": "(not #showing_new_player_flow_buttons)",
-        "binding_name_override": "#visible"
-      }
-    ],
-    "controls": [
-      {
-        "ks_client_row@ks_client.ks_client_start_row": {}
-      }
-    ]
-  },
+  // (Center KS row retired: the KS icon now lives in the top-left bar.)
 
   // ---------- Cinematic scrims (readability + immersion, behind everything) ----------
   "ks_scrim_top": {
@@ -503,20 +459,9 @@
     "layer": 2,
     "controls": [
       {
-        "ks_play_stack@start.play_button_stack": {
+        "ks_play_button@start.play_button": {
           "size": [ 190, 40 ],
           "layer": 2
-        }
-      },
-      {
-        "ks_cover_play": {
-          "type": "image",
-          "texture": "textures/ui/ks_cover_play",
-          "size": [ 190, 40 ],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "offset": [ 0, 0 ],
-          "layer": 8
         }
       }
     ]
