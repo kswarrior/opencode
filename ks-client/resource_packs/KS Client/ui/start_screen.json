@@ -301,7 +301,7 @@
   // passed through exactly like vanilla. Press shift forced to zero.
   // play_button_art (hover gif layer) is disabled: exclusive to this stack.
   "play_button@common_buttons.no_background_content_button": {
-    "size": [ 190, 40 ],
+    "size": [ 95, 32 ],
     "$button_text": "",
     "$button_content": "start.play_button_art_custom",
     "$pressed_button_name": "$play_button_target",
@@ -539,7 +539,6 @@
       },
       { "edu_external_link_popup_factory@start.edu_external_link_popup_factory": {} },
       { "ks_top_bar@ks_client.ks_top_bar": {} },
-      { "ks_profile_card@ks_client.ks_profile_card": {} },
       { "ks_bottom_left_row@ks_client.ks_bottom_left_row": {} },
       { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} },
       { "ks_page_overlay@ks_client.ks_page_overlay": {} }
