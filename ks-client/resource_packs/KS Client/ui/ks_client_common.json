@@ -495,7 +495,7 @@
   // panel binds #visible to its own tab toggle's #toggle_state.
 
   "ks_tab_overview_toggle@common_toggles.light_text_toggle": {
-    "size": [ "100%", 36 ],
+    "size": [ "100%", 28 ],
     "$button_text": "",
     "$toggle_name": "ks_client_tabs",
     "$toggle_view_binding_name": "ks_tab_overview_state",
@@ -505,7 +505,7 @@
   },
 
   "ks_tab_info_toggle@common_toggles.light_text_toggle": {
-    "size": [ "100%", 36 ],
+    "size": [ "100%", 28 ],
     "$button_text": "",
     "$toggle_name": "ks_client_tabs",
     "$toggle_view_binding_name": "ks_tab_info_state",
@@ -515,7 +515,7 @@
   },
 
   "ks_tab_graphic_toggle@common_toggles.light_text_toggle": {
-    "size": [ "100%", 36 ],
+    "size": [ "100%", 28 ],
     "$button_text": "",
     "$toggle_name": "ks_client_tabs",
     "$toggle_view_binding_name": "ks_tab_graphic_state",
@@ -525,7 +525,7 @@
   },
 
   "ks_tab_settings_toggle@common_toggles.light_text_toggle": {
-    "size": [ "100%", 36 ],
+    "size": [ "100%", 28 ],
     "$button_text": "",
     "$toggle_name": "ks_client_tabs",
     "$toggle_view_binding_name": "ks_tab_settings_state",
@@ -537,7 +537,7 @@
   // One tab unit: hidden toggle + pill bg + text label + gold underline when active.
   "ks_tab_unit": {
     "type": "panel",
-    "size": [ "25%", 36 ],
+    "size": [ "25%", 28 ],
     "$tab_toggle": "ks_client.ks_tab_overview_toggle",
     "$tab_state": "ks_tab_overview_state",
     "$tab_text": "Overview",
@@ -551,18 +551,18 @@
         "tab_bg": {
           "type": "image",
           "texture": "textures/ui/ks_pill_dark",
-          "size": [ "100%", 36 ],
+          "size": [ "100%", 28 ],
           "alpha": 0.9,
           "layer": 2
         }
       },
       {
-        "tab_label": {
-          "type": "label",
-          "size": [ "100%", 20 ],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "offset": [ 0, -2 ],
+          "tab_label": {
+            "type": "label",
+            "size": [ "100%", 18 ],
+            "anchor_from": "center",
+            "anchor_to": "center",
+            "offset": [ 0, -1 ],
           "text": "$tab_text",
           "color": [ 255, 255, 255 ],
           "shadow": true,
@@ -571,13 +571,13 @@
         }
       },
       {
-        "tab_underline": {
-          "type": "image",
-          "texture": "textures/ui/ks_accent_gold",
-          "size": [ "80%", 3 ],
-          "anchor_from": "bottom_middle",
-          "anchor_to": "bottom_middle",
-          "offset": [ 0, -4 ],
+          "tab_underline": {
+            "type": "image",
+            "texture": "textures/ui/ks_accent_gold",
+            "size": [ "80%", 3 ],
+            "anchor_from": "bottom_middle",
+            "anchor_to": "bottom_middle",
+            "offset": [ 0, -3 ],
           "layer": 3,
           "visible": false,
           "bindings": [
@@ -848,7 +848,7 @@
             {
               "ks_page_bg": {
                 "type": "image",
-                "texture": "textures/ui/ks_glass_panel",
+                "texture": "textures/ui/ks_page_bg",
                 "size": [ "100%", "100%" ],
                 "layer": 0
               }
@@ -941,7 +941,7 @@
             {
               "ks_tab_row": {
                 "type": "panel",
-                "size": [ "100% - 24px", 36 ],
+                "size": [ "100% - 24px", 28 ],
                 "anchor_from": "top_middle",
                 "anchor_to": "top_middle",
                 "offset": [ 0, 56 ],
@@ -951,7 +951,7 @@
                     "ks_tabs": {
                       "type": "stack_panel",
                       "orientation": "horizontal",
-                      "size": [ "100%", 36 ],
+                      "size": [ "100%", 28 ],
                       "controls": [
                         {
                           "ks_tab_overview@ks_client.ks_tab_unit": {
@@ -990,10 +990,10 @@
             {
               "ks_tab_body": {
                 "type": "panel",
-                "size": [ "100% - 24px", "100% - 160px" ],
+                "size": [ "100% - 24px", "100% - 152px" ],
                 "anchor_from": "top_middle",
                 "anchor_to": "top_middle",
-                "offset": [ 0, 100 ],
+                "offset": [ 0, 92 ],
                 "layer": 1,
                 "controls": [
                   { "ks_body_overview@ks_client.ks_tab_overview_content": {} },
