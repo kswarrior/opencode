@@ -1,0 +1,41 @@
+{
+  "namespace": "ks_client",
+
+  // Start-screen button. v1 opens vanilla Settings (button.menu_settings).
+  // Later this can target a dedicated ks_client settings tab.
+  "ks_client_button@common_buttons.light_text_button": {
+    "size": [ "100% - 2px", "100% - 2px" ],
+    "$pressed_button_name": "button.menu_settings",
+    "$button_text": "ks_client.start_button"
+  },
+
+  // Fixed-width row matching vanilla main buttons (150 wide, 32 tall).
+  "ks_client_start_row": {
+    "type": "panel",
+    "size": [ 150, 32 ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "controls": [
+      {
+        "ks_client_button@ks_client.ks_client_button": {}
+      }
+    ]
+  },
+
+  // Centered wrapper so the 150-wide row aligns with Play/Settings/Store.
+  "ks_client_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "bindings": [
+      {
+        "binding_name": "(not #showing_new_player_flow_buttons)",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_client_row@ks_client.ks_client_start_row": {}
+      }
+    ]
+  }
+}

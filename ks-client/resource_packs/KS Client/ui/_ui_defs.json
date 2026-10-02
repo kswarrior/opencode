@@ -1,0 +1,3 @@
+{
+  "ui_defs": [ "ui/ks_client_common.json", "ui/start_screen.json" ]
+}

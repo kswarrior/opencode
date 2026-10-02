@@ -1,0 +1,105 @@
+{
+  "namespace": "start",
+
+  // Minimal override: only this control is replaced, all other
+  // start.* controls (play, settings, store, stacked_row, etc.)
+  // resolve from vanilla. Inserts KS Client row directly under
+  // the vanilla main buttons, before the new-player-flow panel.
+  "main_buttons_stack_panel": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%" ],
+    "orientation": "vertical",
+    "$title_offset_padding|default": [ "100%", "12%" ],
+    "variables": [
+      {
+        "requires": "($pocket_screen)",
+        "$title_offset_padding": [ "100%", "12%" ]
+      }
+    ],
+    "controls": [
+      {
+        "title_offset_padding": {
+          "type": "panel",
+          "size": "$title_offset_padding"
+        }
+      },
+      {
+        "title_panel_content@common_art.start_title_panel_content": {}
+      },
+      {
+        "padding_fill_1": {
+          "type": "panel",
+          "size": [ "100%", "fill" ]
+        }
+      },
+      {
+        "main_buttons_panel": {
+          "type": "panel",
+          "size": [ "100%", "100%c" ],
+          "variables": [
+            {
+              "requires": "($showing_new_player_flow_buttons)",
+              "$anim_type": "@start.anim_main_buttons_panel_alpha"
+            },
+            {
+              "requires": "(not $showing_new_player_flow_buttons)",
+              "$anim_type": 1.0
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "(not #showing_new_player_flow_buttons)",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "alpha": "$anim_type",
+          "propagate_alpha": true,
+          "controls": [
+            {
+              "main_buttons_panel@start.main_buttons_panel": {}
+            }
+          ]
+        }
+      },
+      {
+        "ks_client_panel@ks_client.ks_client_panel": {}
+      },
+      {
+        "main_buttons_panel_new_player_flow": {
+          "type": "panel",
+          "size": [ "100%", "100%c" ],
+          "bindings": [
+            {
+              "binding_name": "#showing_new_player_flow_buttons",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "alpha": "@start.anim_new_player_buttons_panel_alpha",
+          "propagate_alpha": true,
+          "controls": [
+            {
+              "main_buttons_panel_new_player_flow@start.main_buttons_panel_new_player_flow": {}
+            }
+          ]
+        }
+      },
+      {
+        "padding_fill_2": {
+          "type": "panel",
+          "size": [ "100%", "fill" ],
+          "controls": [
+            {
+              "gamepad_helpers@start.gamepad_helpers": {}
+            }
+          ]
+        }
+      },
+      {
+        "padding_3": {
+          "type": "panel",
+          "size": [ "100%", 10 ]
+        }
+      }
+    ]
+  }
+}

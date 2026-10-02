@@ -1,2 +1,5 @@
 pack.name=KS Client
 pack.description=KS Client v1.0.0 by KS Warrior
+
+ks_client.start_button=KS Client Settings
+ks_client.title=KS Client
