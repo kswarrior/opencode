@@ -504,7 +504,8 @@
       { "ks_top_bar@ks_client.ks_top_bar": {} },
       { "ks_profile_card@ks_client.ks_profile_card": {} },
       { "ks_bottom_left_row@ks_client.ks_bottom_left_row": {} },
-      { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} }
+      { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} },
+      { "ks_page_overlay@ks_client.ks_page_overlay": {} }
     ]
   }
 }
