@@ -415,7 +415,7 @@
     "layer": 2,
     "controls": [
       {
-        "ks_play_button@start.play_button": {
+        "ks_play_button@start.ks_play_button": {
           "size": [ 95, 32 ],
           "layer": 2
         }

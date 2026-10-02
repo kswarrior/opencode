@@ -67,7 +67,7 @@
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -8, 8 ],
-    "size": [ "100%c", "100%c" ],
+    "size": [ "default", "default" ],
     "controls": [
       {
         "ks_inbox_slot": {
@@ -297,13 +297,13 @@
   },
 
   // ---------- Play button rebuilt borderless (same engine press path) ----------
-  // Vanilla frame/text/hold art replaced by our art; $pressed_button_name is
-  // passed through exactly like vanilla. Press shift forced to zero.
+  // Unique name (vanilla play_button left untouched). Art IS the button;
+  // $pressed_button_name passed through exactly like vanilla. No shift.
   // play_button_art (hover gif layer) is disabled: exclusive to this stack.
-  "play_button@common_buttons.no_background_content_button": {
+  "ks_play_button@common_buttons.no_background_content_button": {
     "size": [ 95, 32 ],
     "$button_text": "",
-    "$button_content": "start.play_button_art_custom",
+    "$button_content": "start.ks_play_art_custom",
     "$pressed_button_name": "$play_button_target",
     "$button_offset": [ 0, 0 ],
     "$button_pressed_offset": [ 0, 0 ],
@@ -328,7 +328,7 @@
     ]
   },
 
-  "play_button_art_custom": {
+  "ks_play_art_custom": {
     "type": "panel",
     "size": [ 95, 32 ],
     "controls": [
