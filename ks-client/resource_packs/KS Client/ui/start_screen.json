@@ -204,24 +204,7 @@
                 ]
               }
             },
-            {
-              "signingin": {
-                "size": [ "default", "100%" ],
-                "max_size": [ 120, "100%" ],
-                "type": "label",
-                "color": "$main_header_text_color",
-                "text": "#signingin_text",
-                "bindings": [
-                  {
-                    "binding_name": "#signingin_visible",
-                    "binding_name_override": "#visible"
-                  },
-                  {
-                    "binding_name": "#signingin_text"
-                  }
-                ]
-              }
-            },
+            // (sign-in status text removed: text-free screen, username stays in profile card)
             {
               "achievements_padding": {
                 "ignored": "$achievements_ignored",
@@ -372,12 +355,7 @@
       {
         "padding_fill_2": {
           "type": "panel",
-          "size": [ "100%", "fill" ],
-          "controls": [
-            {
-              "gamepad_helpers@start.gamepad_helpers": {}
-            }
-          ]
+          "size": [ "100%", "fill" ]
         }
       },
       {
