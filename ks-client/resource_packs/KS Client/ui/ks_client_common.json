@@ -18,6 +18,7 @@
   "ks_page_close_toggle@common_toggles.light_text_toggle": {
     "size": [ 30, 30 ],
     "$button_text": "",
+    "$button_offset": [ 0, 0 ],
     "$toggle_name": "ks_client_page",
     "$toggle_view_binding_name": "ks_page_close_state",
     "$radio_toggle_group": true,
@@ -528,6 +529,7 @@
   "ks_tab_overview_toggle@common_toggles.light_text_toggle": {
     "size": [ "100%", 28 ],
     "$button_text": "",
+    "$button_offset": [ 0, 0 ],
     "$toggle_name": "ks_client_tabs",
     "$toggle_view_binding_name": "ks_tab_overview_state",
     "$radio_toggle_group": true,
@@ -538,6 +540,7 @@
   "ks_tab_info_toggle@common_toggles.light_text_toggle": {
     "size": [ "100%", 28 ],
     "$button_text": "",
+    "$button_offset": [ 0, 0 ],
     "$toggle_name": "ks_client_tabs",
     "$toggle_view_binding_name": "ks_tab_info_state",
     "$radio_toggle_group": true,
@@ -548,6 +551,7 @@
   "ks_tab_graphic_toggle@common_toggles.light_text_toggle": {
     "size": [ "100%", 28 ],
     "$button_text": "",
+    "$button_offset": [ 0, 0 ],
     "$toggle_name": "ks_client_tabs",
     "$toggle_view_binding_name": "ks_tab_graphic_state",
     "$radio_toggle_group": true,
@@ -558,6 +562,7 @@
   "ks_tab_settings_toggle@common_toggles.light_text_toggle": {
     "size": [ "100%", 28 ],
     "$button_text": "",
+    "$button_offset": [ 0, 0 ],
     "$toggle_name": "ks_client_tabs",
     "$toggle_view_binding_name": "ks_tab_settings_state",
     "$radio_toggle_group": true,
