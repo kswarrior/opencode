@@ -1,13 +1,14 @@
 {
   "namespace": "start",
 
-  // Paper doll: vanilla size/height, centered horizontally along the bottom.
+  // Paper doll: vanilla size/height, centered horizontally along the bottom,
+  // raised by exactly the play button height (32px) so it sits above it.
   // Profile row stays removed (username lives in the profile button now).
   "skin_panel": {
     "type": "stack_panel",
     "orientation": "vertical",
     "size": [ "50% - 75px", 124 ],
-    "offset": [ 0, "-10% - 4px" ],
+    "offset": [ 0, "-10% - 36px" ],
     "anchor_to": "bottom_middle",
     "anchor_from": "bottom_middle",
     "layer": 1,
