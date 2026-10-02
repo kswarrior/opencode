@@ -1,15 +1,14 @@
 {
   "namespace": "ks_client",
 
-  // Start-screen button. v1 opens vanilla Settings (button.menu_settings).
-  // Later this can target a dedicated ks_client settings tab.
+  // ---------- Premium button (keeps vanilla behaviour, opens Settings) ----------
   "ks_client_button@common_buttons.light_text_button": {
     "size": [ "100% - 2px", "100% - 2px" ],
     "$pressed_button_name": "button.menu_settings",
     "$button_text": "ks_client.start_button"
   },
 
-  // Fixed-width row matching vanilla main buttons (150 wide, 32 tall).
+  // ---------- Center row: SAME 150x32 footprint, premium frame around vanilla button ----------
   "ks_client_start_row": {
     "type": "panel",
     "size": [ 150, 32 ],
@@ -17,12 +16,50 @@
     "anchor_to": "top_middle",
     "controls": [
       {
-        "ks_client_button@ks_client.ks_client_button": {}
+        "ks_center_glow": {
+          "type": "image",
+          "texture": "textures/ui/ks_glow_play",
+          "size": [ 190, 48 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 2 ],
+          "alpha": 0.35,
+          "layer": 0
+        }
+      },
+      {
+        "ks_center_top_accent": {
+          "type": "image",
+          "texture": "textures/ui/ks_accent_gold",
+          "size": [ 150, 3 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, -1 ],
+          "layer": 2
+        }
+      },
+      {
+        "ks_client_button@ks_client.ks_client_button": {
+          "layer": 1
+        }
+      },
+      {
+        "ks_center_status": {
+          "type": "label",
+          "size": [ 150, 12 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 34 ],
+          "text": "PREMIUM UI  •  ACTIVE",
+          "color": [ 140, 170, 200 ],
+          "shadow": true,
+          "text_alignment": "center",
+          "layer": 2
+        }
       }
     ]
   },
 
-  // Centered wrapper so the 150-wide row aligns with Play/Settings/Store.
   "ks_client_panel": {
     "type": "panel",
     "size": [ "100%", "100%c" ],
@@ -40,39 +77,264 @@
     ]
   },
 
-  // Top-left quick bar: [Settings][Profile] side by side.
+  // ---------- Cinematic scrims (readability + immersion, behind everything) ----------
+  "ks_scrim_top": {
+    "type": "panel",
+    "size": [ "100%", 96 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "layer": 0,
+    "controls": [
+      {
+        "ks_scrim_top_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_scrim_top",
+          "size": [ "100%", 96 ],
+          "layer": 0
+        }
+      }
+    ]
+  },
+
+  "ks_scrim_bottom": {
+    "type": "panel",
+    "size": [ "100%", 160 ],
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "offset": [ 0, 0 ],
+    "layer": 0,
+    "controls": [
+      {
+        "ks_scrim_bottom_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_scrim_bottom",
+          "size": [ "100%", 160 ],
+          "layer": 0
+        }
+      }
+    ]
+  },
+
+  // ---------- Top-center brand block (original, non-interactive) ----------
+  "ks_brand_header": {
+    "type": "panel",
+    "size": [ 280, 62 ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ 0, 8 ],
+    "layer": 1,
+    "controls": [
+      {
+        "ks_brand_badge_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_badge_gold",
+          "size": [ 86, 15 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 0 ],
+          "layer": 1
+        }
+      },
+      {
+        "ks_brand_badge_text": {
+          "type": "label",
+          "size": [ 86, 15 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 0 ],
+          "text": "SEASON 01",
+          "color": [ 70, 38, 0 ],
+          "text_alignment": "center",
+          "layer": 2
+        }
+      },
+      {
+        "ks_brand_title": {
+          "type": "label",
+          "size": [ 280, 26 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 16 ],
+          "text": "KS CLIENT",
+          "color": [ 255, 255, 255 ],
+          "font_size": "large",
+          "shadow": true,
+          "text_alignment": "center",
+          "layer": 2
+        }
+      },
+      {
+        "ks_brand_sub": {
+          "type": "label",
+          "size": [ 280, 12 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 40 ],
+          "text": "PREMIUM MOBILE EXPERIENCE",
+          "color": [ 150, 180, 210 ],
+          "shadow": true,
+          "text_alignment": "center",
+          "layer": 2
+        }
+      },
+      {
+        "ks_brand_underline": {
+          "type": "image",
+          "texture": "textures/ui/ks_accent_gold",
+          "size": [ 180, 4 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 53 ],
+          "layer": 2
+        }
+      }
+    ]
+  },
+
+  // ---------- Bottom-center status footer (sits above bottom bars, no overlap) ----------
+  "ks_footer_center": {
+    "type": "panel",
+    "size": [ 220, 24 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ 0, -56 ],
+    "layer": 1,
+    "controls": [
+      {
+        "ks_footer_line": {
+          "type": "image",
+          "texture": "textures/ui/ks_accent_cyan",
+          "size": [ 120, 3 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 0 ],
+          "alpha": 0.8,
+          "layer": 1
+        }
+      },
+      {
+        "ks_footer_text": {
+          "type": "label",
+          "size": [ 220, 14 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 6 ],
+          "text": "KS CLIENT v1.0.0  •  ONLINE",
+          "color": [ 140, 165, 195 ],
+          "shadow": true,
+          "text_alignment": "center",
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  // ---------- Futuristic side rails (subtle, non-interactive) ----------
+  "ks_edge_left": {
+    "type": "panel",
+    "size": [ 2, "28%" ],
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "offset": [ 3, 0 ],
+    "layer": 1,
+    "alpha": 0.6,
+    "controls": [
+      {
+        "ks_edge_left_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_divider_v",
+          "size": [ 2, "100%" ],
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  "ks_edge_right": {
+    "type": "panel",
+    "size": [ 2, "28%" ],
+    "anchor_from": "right_middle",
+    "anchor_to": "right_middle",
+    "offset": [ -3, 0 ],
+    "layer": 1,
+    "alpha": 0.6,
+    "controls": [
+      {
+        "ks_edge_right_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_divider_v",
+          "size": [ 2, "100%" ],
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  // ---------- Top-left quick bar: SAME 224x30 at (8,8), glass pill + cyan edge ----------
   "ks_top_bar": {
-    "type": "stack_panel",
-    "orientation": "horizontal",
+    "type": "panel",
     "size": [ 224, 30 ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "offset": [ 8, 8 ],
+    "layer": 2,
     "controls": [
       {
-        "ks_settings_slot": {
-          "type": "panel",
-          "size": [ 100, 30 ],
-          "controls": [
-            {
-              "ks_settings_button@start.settings_button": {}
-            }
-          ]
+        "ks_top_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_pill_dark",
+          "size": [ 224, 30 ],
+          "layer": 0,
+          "alpha": 0.92
         }
       },
       {
-        "ks_top_gap": {
-          "type": "panel",
-          "size": [ 4, 30 ]
+        "ks_top_accent": {
+          "type": "image",
+          "texture": "textures/ui/ks_accent_cyan",
+          "size": [ 224, 2 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 1,
+          "alpha": 0.9
         }
       },
       {
-        "ks_profile_slot": {
-          "type": "panel",
-          "size": [ 120, 30 ],
+        "ks_top_stack": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ 224, 30 ],
+          "layer": 2,
           "controls": [
             {
-              "ks_profile_button@start.profile_button": {}
+              "ks_settings_slot": {
+                "type": "panel",
+                "size": [ 100, 30 ],
+                "controls": [
+                  {
+                    "ks_settings_button@start.settings_button": {}
+                  }
+                ]
+              }
+            },
+            {
+              "ks_top_gap": {
+                "type": "panel",
+                "size": [ 4, 30 ]
+              }
+            },
+            {
+              "ks_profile_slot": {
+                "type": "panel",
+                "size": [ 120, 30 ],
+                "controls": [
+                  {
+                    "ks_profile_button@start.profile_button": {}
+                  }
+                ]
+              }
             }
           ]
         }
@@ -80,34 +342,73 @@
     ]
   },
 
-  // Profile card directly under the top bar (top-left).
-  // Display-only (gamerpic + player name); the Profile button lives
-  // in the ks_top_bar above it, so nothing is duplicated.
+  // ---------- Profile card: SAME 224x64 at (8,42), glass + gold rail + status ----------
   "ks_profile_card": {
     "type": "panel",
     "size": [ 224, 64 ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "offset": [ 8, 42 ],
+    "layer": 2,
     "controls": [
       {
-        "ks_card_bg@common.screen_background": {
-          "alpha": 0.55
+        "ks_card_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_glass_panel",
+          "size": [ 224, 64 ],
+          "layer": 0,
+          "alpha": 0.94
+        }
+      },
+      {
+        "ks_card_rail": {
+          "type": "image",
+          "texture": "textures/ui/ks_accent_gold",
+          "size": [ 4, 64 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 1
+        }
+      },
+      {
+        "ks_card_badge_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_badge_gold",
+          "size": [ 64, 14 ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [ -6, 6 ],
+          "layer": 1
+        }
+      },
+      {
+        "ks_card_badge_text": {
+          "type": "label",
+          "size": [ 64, 14 ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [ -6, 6 ],
+          "text": "PREMIUM",
+          "color": [ 70, 38, 0 ],
+          "text_alignment": "center",
+          "layer": 2
         }
       },
       {
         "ks_card_content": {
           "type": "stack_panel",
           "orientation": "horizontal",
-          "size": [ "100% - 20px", 24 ],
-          "offset": [ 10, 0 ],
+          "size": [ "100% - 20px", 44 ],
+          "offset": [ 12, 0 ],
           "anchor_from": "left_middle",
           "anchor_to": "left_middle",
+          "layer": 2,
           "controls": [
             {
               "ks_gamerpic_with_border": {
                 "type": "panel",
-                "size": [ 18, 18 ],
+                "size": [ 26, 44 ],
                 "controls": [
                   {
                     "gamerpic@start.gamerpic": {
@@ -127,7 +428,10 @@
                   {
                     "border_black@common.focus_border_black": {
                       "layer": 3,
-                      "size": [ 18, 18 ]
+                      "size": [ 24, 24 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 0 ]
                     }
                   }
                 ]
@@ -136,19 +440,61 @@
             {
               "ks_name_gap": {
                 "type": "panel",
-                "size": [ 8, 24 ]
+                "size": [ 8, 44 ]
               }
             },
             {
-              "ks_player_name": {
-                "type": "label",
-                "size": [ "fill", 20 ],
-                "color": "$main_header_text_color",
-                "text": "",
-                "bindings": [
+              "ks_name_column": {
+                "type": "stack_panel",
+                "orientation": "vertical",
+                "size": [ "fill", 44 ],
+                "controls": [
                   {
-                    "binding_name": "#playername",
-                    "binding_name_override": "#text"
+                    "ks_player_name": {
+                      "type": "label",
+                      "size": [ "100%", 20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "text": "",
+                      "bindings": [
+                        {
+                          "binding_name": "#playername",
+                          "binding_name_override": "#text"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_status_row": {
+                      "type": "stack_panel",
+                      "orientation": "horizontal",
+                      "size": [ "100%", 16 ],
+                      "controls": [
+                        {
+                          "ks_status_dot": {
+                            "type": "image",
+                            "texture": "textures/ui/ks_dot_green",
+                            "size": [ 10, 10 ],
+                            "layer": 1
+                          }
+                        },
+                        {
+                          "ks_status_gap": {
+                            "type": "panel",
+                            "size": [ 5, 16 ]
+                          }
+                        },
+                        {
+                          "ks_status_text": {
+                            "type": "label",
+                            "size": [ "fill", 14 ],
+                            "text": "ONLINE • MEMBER",
+                            "color": [ 150, 180, 210 ],
+                            "shadow": true
+                          }
+                        }
+                      ]
+                    }
                   }
                 ]
               }
@@ -159,43 +505,86 @@
     ]
   },
 
-  // Bottom-left corner row: [Marketplace][Realms], both moved here
-  // from the vanilla center stack.
+  // ---------- Bottom-left row: SAME 264x32 at (8,-8), glass pill + divider ----------
   "ks_bottom_left_row": {
-    "type": "stack_panel",
-    "orientation": "horizontal",
+    "type": "panel",
     "size": [ 264, 32 ],
     "anchor_from": "bottom_left",
     "anchor_to": "bottom_left",
     "offset": [ 8, -8 ],
+    "layer": 2,
     "controls": [
       {
-        "ks_store_slot": {
-          "type": "panel",
-          "size": [ 160, 32 ],
-          "ignored": "$store_ignored",
-          "controls": [
-            {
-              "ks_store_stack@start.store_button_stack": {}
-            }
-          ]
+        "ks_bl_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_pill_dark",
+          "size": [ 264, 32 ],
+          "layer": 0,
+          "alpha": 0.92
         }
       },
       {
-        "ks_bl_gap": {
-          "type": "panel",
-          "size": [ 4, 32 ]
+        "ks_bl_accent": {
+          "type": "image",
+          "texture": "textures/ui/ks_accent_cyan",
+          "size": [ 264, 2 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 1,
+          "alpha": 0.85
         }
       },
       {
-        "ks_realms_slot": {
-          "type": "panel",
-          "size": [ 100, 32 ],
-          "ignored": "($trial or $is_preview_app)",
+        "ks_bl_stack": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ 264, 32 ],
+          "layer": 2,
           "controls": [
             {
-              "ks_realms_button@start.realms_button": {
-                "$button_text": "menu.realms"
+              "ks_store_slot": {
+                "type": "panel",
+                "size": [ 160, 32 ],
+                "ignored": "$store_ignored",
+                "controls": [
+                  {
+                    "ks_store_stack@start.store_button_stack": {}
+                  }
+                ]
+              }
+            },
+            {
+              "ks_bl_divider": {
+                "type": "panel",
+                "size": [ 4, 32 ],
+                "controls": [
+                  {
+                    "ks_bl_div_img": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_divider_v",
+                      "size": [ 2, 20 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "layer": 1,
+                      "alpha": 0.8
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_realms_slot": {
+                "type": "panel",
+                "size": [ 100, 32 ],
+                "ignored": "($trial or $is_preview_app)",
+                "controls": [
+                  {
+                    "ks_realms_button@start.realms_button": {
+                      "$button_text": "menu.realms"
+                    }
+                  }
+                ]
               }
             }
           ]
@@ -204,16 +593,56 @@
     ]
   },
 
-  // Bottom-right: big Play shortcut.
+  // ---------- Bottom-right PLAY: SAME 190x40 at (-8,-8), glow + gold edge + hint ----------
   "ks_bottom_right_play": {
     "type": "panel",
     "size": [ 190, 40 ],
     "anchor_from": "bottom_right",
     "anchor_to": "bottom_right",
     "offset": [ -8, -8 ],
+    "layer": 2,
     "controls": [
       {
-        "ks_play_stack@start.play_button_stack": {}
+        "ks_play_glow": {
+          "type": "image",
+          "texture": "textures/ui/ks_glow_play",
+          "size": [ 230, 64 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "alpha": 0.85,
+          "layer": 0
+        }
+      },
+      {
+        "ks_play_hint": {
+          "type": "label",
+          "size": [ 190, 12 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, -14 ],
+          "text": "TAP TO START",
+          "color": [ 255, 201, 60 ],
+          "shadow": true,
+          "text_alignment": "center",
+          "layer": 3
+        }
+      },
+      {
+        "ks_play_stack@start.play_button_stack": {
+          "layer": 2
+        }
+      },
+      {
+        "ks_play_top_edge": {
+          "type": "image",
+          "texture": "textures/ui/ks_accent_gold",
+          "size": [ 190, 3 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 0 ],
+          "layer": 3
+        }
       }
     ]
   }

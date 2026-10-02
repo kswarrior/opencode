@@ -385,7 +385,8 @@
     ]
   },
 
-  // Full content with KS corner overlays on top of vanilla.
+  // Full content with KS premium overlays. Button POSITIONS unchanged -
+  // only cinematic scrims + brand + glass frames are layered around them.
   "start_screen_content": {
     "type": "panel",
     "$achievements_ignored|default": false,
@@ -418,6 +419,10 @@
       }
     ],
     "controls": [
+      { "ks_scrim_top@ks_client.ks_scrim_top": {} },
+      { "ks_scrim_bottom@ks_client.ks_scrim_bottom": {} },
+      { "ks_edge_left@ks_client.ks_edge_left": {} },
+      { "ks_edge_right@ks_client.ks_edge_right": {} },
       {
         "main_buttons_and_title_panel@start.main_buttons_stack_panel": {}
       },
@@ -471,6 +476,8 @@
         }
       },
       { "edu_external_link_popup_factory@start.edu_external_link_popup_factory": {} },
+      { "ks_brand_header@ks_client.ks_brand_header": {} },
+      { "ks_footer_center@ks_client.ks_footer_center": {} },
       { "ks_top_bar@ks_client.ks_top_bar": {} },
       { "ks_profile_card@ks_client.ks_profile_card": {} },
       { "ks_bottom_left_row@ks_client.ks_bottom_left_row": {} },
