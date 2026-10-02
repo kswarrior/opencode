@@ -1,16 +1,15 @@
 {
   "namespace": "start",
 
-  // Statue (paper doll) moved from bottom-right to right-center.
-  // The change-profile row under the statue is removed: Profile lives
-  // in the top-left bar only (no duplicates).
+  // Paper doll at vanilla default geometry (bottom-right). Profile row stays
+  // removed (Profile lives in the top-left bar). Positions of KS buttons untouched.
   "skin_panel": {
     "type": "stack_panel",
     "orientation": "vertical",
-    "size": [ 160, 170 ],
-    "offset": [ -8, 0 ],
-    "anchor_to": "right_middle",
-    "anchor_from": "right_middle",
+    "size": [ "50% - 75px", 124 ],
+    "offset": [ 0, "-10% - 4px" ],
+    "anchor_to": "bottom_right",
+    "anchor_from": "bottom_right",
     "layer": 1,
     "controls": [
       { "viewer_panel@start.skin_viewer_panel": { "size": [ "100%", "fill" ] } }
@@ -444,6 +443,7 @@
       }
     ],
     "controls": [
+      { "ks_bg@ks_client.ks_bg": {} },
       { "ks_scrim_top@ks_client.ks_scrim_top": {} },
       { "ks_scrim_bottom@ks_client.ks_scrim_bottom": {} },
       { "ks_edge_left@ks_client.ks_edge_left": {} },

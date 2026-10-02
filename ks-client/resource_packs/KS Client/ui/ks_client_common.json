@@ -5,7 +5,7 @@
   // Tapping the KS icon selects OPEN (page shows); tapping X selects CLOSE.
   // Default selected = 1 (closed), so the page starts hidden.
   "ks_page_open_toggle@common_toggles.light_text_toggle": {
-    "size": [ "100% - 2px", "100% - 2px" ],
+    "size": [ 150, 32 ],
     "$button_text": "",
     "$toggle_name": "ks_client_page",
     "$toggle_view_binding_name": "ks_page_open_state",
@@ -35,18 +35,6 @@
     "anchor_to": "top_middle",
     "controls": [
       {
-        "ks_center_glow": {
-          "type": "image",
-          "texture": "textures/ui/ks_glow_play",
-          "size": [ 190, 48 ],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "offset": [ 0, 2 ],
-          "alpha": 0.35,
-          "layer": 0
-        }
-      },
-      {
         "ks_page_open_toggle@ks_client.ks_page_open_toggle": {
           "layer": 1
         }
@@ -59,7 +47,7 @@
           "anchor_from": "center",
           "anchor_to": "center",
           "offset": [ 0, 0 ],
-          "layer": 5
+          "layer": 8
         }
       }
     ]
@@ -424,7 +412,9 @@
                 "ignored": "$store_ignored",
                 "controls": [
                   {
-                    "ks_store_stack@start.store_button_stack": {}
+                    "ks_store_stack@start.store_button_stack": {
+                      "size": [ "100%", "100%" ]
+                    }
                   }
                 ]
               }
@@ -456,6 +446,7 @@
                 "controls": [
                   {
                     "ks_realms_button@start.realms_button": {
+                      "size": [ "100%", "100%" ],
                       "$button_text": "menu.realms"
                     }
                   }
@@ -468,9 +459,9 @@
     ]
   },
 
-  // ---------- Bottom-right PLAY: SAME 190x40 at (-8,-8), image cover over vanilla stack ----------
-  // Vanilla play stack stays underneath (full behaviour); the opaque banner
-  // cover hides its text. Clicks pass through images. Social + Realms keep text.
+  // ---------- Bottom-right PLAY: SAME 190x40 at (-8,-8), vanilla stack locked ----------
+  // Vanilla stack keeps exact Play behaviour; opaque art cover (layer 8, above
+  // all vanilla hover art) hides frame/text/hold visuals. Social + Realms keep text.
   "ks_bottom_right_play": {
     "type": "panel",
     "size": [ 190, 40 ],
@@ -480,19 +471,8 @@
     "layer": 2,
     "controls": [
       {
-        "ks_play_glow": {
-          "type": "image",
-          "texture": "textures/ui/ks_glow_play",
-          "size": [ 230, 64 ],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "offset": [ 0, 0 ],
-          "alpha": 0.85,
-          "layer": 0
-        }
-      },
-      {
         "ks_play_stack@start.play_button_stack": {
+          "size": [ 190, 40 ],
           "layer": 2
         }
       },
@@ -504,7 +484,7 @@
           "anchor_from": "center",
           "anchor_to": "center",
           "offset": [ 0, 0 ],
-          "layer": 5
+          "layer": 8
         }
       }
     ]
@@ -940,7 +920,7 @@
                             "anchor_from": "center",
                             "anchor_to": "center",
                             "offset": [ 0, 0 ],
-                            "layer": 5
+                            "layer": 8
                           }
                         }
                       ]
