@@ -659,7 +659,7 @@
       {
         "ov_icon": {
           "type": "image",
-          "texture": "textures/ui/ks_pack_icon",
+          "texture": "textures/ui/ks_emblem",
           "size": [ 40, 40 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
@@ -827,7 +827,7 @@
       {
         "ks_page_dim": {
           "type": "image",
-          "texture": "textures/ui/Black",
+          "texture": "textures/ui/ks_black",
           "size": [ "100%", "100%" ],
           "alpha": 0.72,
           "layer": 0
