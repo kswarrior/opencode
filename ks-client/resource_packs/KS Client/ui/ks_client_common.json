@@ -269,9 +269,7 @@
                 "size": [ 120, 30 ],
                 "controls": [
                   {
-                    "profile_button@start.profile_button": {
-                      "size": [ "100%", "100%" ]
-                    }
+                    "profile_button@ks_client.ks_profile_button": {}
                   }
                 ]
               }
