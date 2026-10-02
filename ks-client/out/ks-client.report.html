@@ -1,0 +1,238 @@
+<html><head>
+<script>
+const _reportObjects = [];
+
+function _addReportJson(data) {
+  _reportObjects.push(data);
+}
+
+_addReportJson({"info":{"capabilities":["resourcePack"],"behaviorPackManifestCount":0,"unknownJsonCount":2,"entityTypeManifestCount":0,"itemTypeManifestCount":0,"blockTypeManifestCount":0,"resourcePackManifestCount":3,"worldCount":0,"entityTypeResourceCount":0,"behaviorPackAnimationCount":0,"behaviorPackAnimationControllerCount":0,"overallSize":185795,"fileCounts":26,"folderCounts":13,"contentSize":35970,"contentFileCounts":18,"contentFolderCounts":6,"fileCount":26,"minBehaviorPackMinEngineVersion":0,"defaultResourcePackUuid":"3cb32de7-ef64-4969-a447-dadba4bf9a8f","defaultResourcePackMinEngineVersion":"1.20.0","minResourcePackMinEngineVersionString":"1.20.0","minResourcePackMinEngineVersion":11020000,"defaultResourcePackName":"KS Client","defaultResourcePackDescription":"KS Client v1.0.0 by KS Warrior","subpackCount":0,"entityTypeComponents":[],"blockTypeComponents":[],"itemTypeComponents":[],"biomeBehaviorTypeComponents":[],"biomeClientTypeComponents":[],"particleEmitterTypeComponents":[],"particleTypeComponents":[],"apisUsed":[],"mctoolsVersion":10019000,"itemTypes":["General json file","Language catalog","Language translations","Minecraft pack","NPM package definition","Resource pack folder","Resource pack manifest","User interface"],"completeVanillaCopy":0,"partialVanillaCopy":0,"animationCount":0,"textureCount":0,"textureTexelSize":0,"vanillaGameTextureCoverage":0,"vanillaGameTextureCount":0,"minimumSupportablePerformanceTier":0,"invalidCommandSyntaxCount":0,"linesWithSlashCount":0,"multipleSoundsManifests":0,"soundsDefinitionManifestFormatIsValid":0,"soundsDefinitionManifestIsNotValidJson":0,"experimentalFlagIsOrWasTrue":0,"levelDatNotFound":0,"worldNotFound":0,"deprecatedBlockOverride":0,"deprecatedTerrainTexture":0,"deprecatedTexture":0,"restrictedPolyMeshFound":0,"jsonParseError":0,"invalidManifestJson":0,"missingResourcePackDependencies":0,"internalProcessingErrors":0,"invalidWorldPackReferencesJson":0,"missingWorldPackReferencesFile":0,"invalidPackIds":0,"missingManifestVersion":0,"invalidManifestVersion":0,"packReferencesNotFound":0,"minBaseGameVersion":0,"chunkCount":0,"subchunkLessChunkCount":0,"completedWorldDataProcessing":true,"worldLoadErrors":0,"commands":[],"featureSets":{"generalJsonFile.size":{"instanceCount":2,"total":515,"max":363,"min":152,"average":258},"generalJsonFile.lines":{"instanceCount":2,"total":30,"max":24,"min":6,"average":15},"resourcePackManifest.size":{"instanceCount":3,"total":1125,"max":375,"min":375,"average":375},"resourcePackManifest.lines":{"instanceCount":3,"total":54,"max":18,"min":18,"average":18},"userInterface.size":{"instanceCount":9,"total":34449,"max":8199,"min":63,"average":3828},"userInterface.lines":{"instanceCount":9,"total":1392,"max":319,"min":2,"average":155},"languageCatalog.size":{"instanceCount":3,"total":27,"max":9,"min":9,"average":9},"languageCatalog.lines":{"instanceCount":3,"total":6,"max":2,"min":2,"average":2},"minecraftPack.size":{"instanceCount":2,"total":9956,"max":4978,"min":4978,"average":4978},"NPMPackageDefinition.size":{"instanceCount":1,"total":226,"max":226,"min":226,"average":226},"NPMPackageDefinition.lines":{"instanceCount":1,"total":13,"max":13,"min":13,"average":13},"languageTranslations.size":{"instanceCount":3,"total":369,"max":123,"min":123,"average":123},"languageTranslations.lines":{"instanceCount":3,"total":15,"max":5,"min":5,"average":5},"textureImages.vanillaGameTextureCoverage":{"overrideCount":0,"vanillaTextureCount":2552,"percent":0},"textureImagesTier0.nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier0.totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier0.blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier0.itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier1.nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier1.totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier1.blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier1.itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier2.nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier2.totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier2.blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier2.itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier3.nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier3.totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier3.blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier3.itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier4.nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier4.totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier4.blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier4.itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier5.nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier5.totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier5.blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"textureImagesTier5.itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0}},"errorCount":5,"internalProcessingErrorCount":0,"warningCount":0,"testSuccessCount":38,"testFailCount":2,"testNotApplicableCount":14,"errorSummary":"ERROR: [CPACKICON101] pack_icon image file not found for KS Client. It must use the .png extension.\nERROR: [CPACKICON101] pack_icon image file not found for KS Client_rp. It must use the .png extension.\nERROR: [CPACKICON101] pack_icon image file not found for KS Client_rp. It must use the .png extension.\nERROR: [UNKJSON101] (/.vscode/mcp.json) Unknown JSON file found\nERROR: [UNKJSON101] (/opencode.json) Unknown JSON file found","internalProcessingErrorSummary":"","warningSummary":"","testFailSummary":"TESTFAIL: [CPACKICON000] Found 3 errors in Pack Icon check\nTESTFAIL: [UNKJSON000] Found 2 errors in Unknown JSON check","infoGenerationTime":352,"endToEndGenerationTime":391,"reds":68898,"summary":{"BASEGAMEVER":{"2":{"defaultMessage":"No applicable items found for test Base Game Version (BASEGAMEVER)"}},"BLOCKSCAT":{"2":{"defaultMessage":"No applicable items found for test Blocks Catalog (BLOCKSCAT)"}},"CBFG":{"1":{"title":"Beta Features","defaultMessage":"Beta Features completed successfully","testCompleteSuccesses":1}},"CDWORLDDATA":{"2":{"defaultMessage":"No applicable items found for test Custom Dimension World Data Validation (CDWORLDDATA)"}},"CHECKFEATUREDEPRECATION":{"2":{"defaultMessage":"No applicable items found for test Feature Deprecation (CHECKFEATUREDEPRECATION)"}},"CHKMANIF":{"1":{"title":"Manifest Validation","defaultMessage":"Manifest Validation completed successfully","testCompleteSuccesses":1}},"COMJSON":{"1":{"title":"JSON Parse Error (Community Schema)","defaultMessage":"Community JSON Schema Validation completed successfully","testCompleteSuccesses":1}},"CPACKICON":{"0":{"title":"Pack Icon","defaultMessage":"Found 3 errors in Pack Icon check","testCompleteFails":1},"101":{"title":"Missing Icon","defaultMessage":"pack_icon image file not found for KS Client. It must use the .png extension.","errors":3}},"CPARTI":{"1":{"title":"Particle Identifiers","defaultMessage":"Particle Identifiers completed successfully","testCompleteSuccesses":1}},"CROSSREFINDEX":{"2":{"defaultMessage":"No applicable items found for test Cross-Reference Index (CROSSREFINDEX)"}},"CSPJ":{"1":{"title":"Skin Pack","defaultMessage":"Skin Pack Validation completed successfully","testCompleteSuccesses":1}},"CWI":{"1":{"title":"World Icon","defaultMessage":"World Icons completed successfully","testCompleteSuccesses":1}},"ENTITYTYPE":{"1":{"title":"Entity Type","defaultMessage":"Entity Type completed successfully","testCompleteSuccesses":1},"52":{"title":"Runtime Identifier","defaultMessage":"Entity Type Runtime Identifier"},"53":{"title":"Entity Identifier","defaultMessage":"Entity Type Identifier"},"54":{"title":"Entity Metadata","defaultMessage":"Entity Type Metadata"}},"EXPFLAG":{"2":{"defaultMessage":"No applicable items found for test Experimental Flags (EXPFLAG)"}},"FORBFILE":{"1":{"title":"Forbidden Files","defaultMessage":"Forbidden Files completed successfully","testCompleteSuccesses":1}},"FORMATVER":{"2":{"defaultMessage":"No applicable items found for test Format Version (FORMATVER)"}},"GEOFMT":{"1":{"title":"Geometry Format","defaultMessage":"Geometry Format completed successfully","testCompleteSuccesses":1}},"GEOMETRY":{"1":{"title":"Model Geometry","defaultMessage":"Model Geometry Validation completed successfully","testCompleteSuccesses":1},"101":{"title":"Block Geometry"},"102":{"title":"Entity Geometry"},"103":{"title":"Item Geometry","defaultMessage":"Items Geometry"}},"ITEMS":{"1":{"title":"Content Counts","defaultMessage":"Minimum Definition of a Pack completed successfully","testCompleteSuccesses":1},"103":{"title":"Resource Pack","defaultMessage":"Resource pack manifest found"},"206":{"title":"General json file count","defaultMessage":"General json file item count"},"214":{"title":"Resource pack manifest count","defaultMessage":"Resource pack manifest item count"},"236":{"title":"User interface count","defaultMessage":"User interface item count"},"237":{"title":"Language catalog count","defaultMessage":"Language catalog item count"},"255":{"title":"Minecraft pack count","defaultMessage":"Minecraft pack item count"},"259":{"title":"NPM package definition count","defaultMessage":"NPM package definition item count"},"279":{"title":"Language translations count","defaultMessage":"Language translations item count"},"310":{"title":"Resource pack folder count","defaultMessage":"Resource pack folder item count"}},"ITEMTYPE":{"1":{"title":"Item Types","defaultMessage":"Item Type completed successfully","testCompleteSuccesses":1},"53":{"title":"Identifier","defaultMessage":"Item Type Identifier"},"55":{"title":"Category","defaultMessage":"Item Type Category"}},"JSON":{"1":{"title":"JSON Parse Error (Schema Validation)","defaultMessage":"JSON Schema Validation completed successfully","testCompleteSuccesses":1}},"JSONF":{"1":{"title":"JSON Form Structure Validation","defaultMessage":"JSON Structure completed successfully","testCompleteSuccesses":1}},"JSONTAGS":{"1":{"title":"Content Tags","defaultMessage":"JSON Tags completed successfully","testCompleteSuccesses":1}},"LINESIZE":{"1":{"title":"File Size/Lines","defaultMessage":"File Line/Size Information completed successfully","testCompleteSuccesses":1},"106":{"title":"General json file","defaultMessage":"General json file file lines"},"114":{"title":"Resource pack manifest","defaultMessage":"Resource pack manifest file lines"},"136":{"title":"User interface","defaultMessage":"User interface file lines"},"137":{"title":"Language catalog","defaultMessage":"Language catalog file lines"},"155":{"title":"Minecraft pack","defaultMessage":"Minecraft pack file size"},"159":{"title":"NPM package definition","defaultMessage":"NPM package definition file lines"},"179":{"title":"Language translations","defaultMessage":"Language translations file lines"},"210":{"title":"Resource pack folder","defaultMessage":"Resource pack folder file lines"}},"MCFUNCTION":{"2":{"defaultMessage":"No applicable items found for test MC Function Validation (MCFUNCTION)"}},"MINENGINEVER":{"1":{"title":"Min Engine Version","defaultMessage":"Min Engine Version completed successfully","testCompleteSuccesses":1},"220":{"title":"RP Minor Low","defaultMessage":"Resource pack manifest (1.20.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version","recommendations":3},"614":{"title":"614","defaultMessage":"Resource pack manifest format_version"}},"NOBOM":{"1":{"title":"BOM Validation","defaultMessage":"No Byte Order Mark allowed in json file. completed successfully","testCompleteSuccesses":1}},"PACK":{"1":{"title":"Pack Manifest Info","defaultMessage":"General info completed successfully","testCompleteSuccesses":1},"111":{"title":"RP Min Version","defaultMessage":"Resource Pack Min Engine Version"},"112":{"title":"RP UUID","defaultMessage":"Resource Pack Uuid"},"113":{"title":"RP Manifest","defaultMessage":"Resource Pack Manifest"},"114":{"title":"RP Name","defaultMessage":"Resource Pack Name"},"115":{"title":"RP Description","defaultMessage":"Resource Pack Description"},"116":{"title":"RP Custom ID","defaultMessage":"Resource Pack Id"},"117":{"title":"RP Format Version","defaultMessage":"Resource Pack Format Version"},"245":{"title":"Subpack Tiers","defaultMessage":"Entity Geometry"}},"PACKFILECOUNT":{"1":{"defaultMessage":"Pack File Count completed successfully","testCompleteSuccesses":1},"101":{"defaultMessage":"File Count"}},"PACKMETADATA":{"1":{"title":"Pack Metadata Info","defaultMessage":"General info completed successfully","testCompleteSuccesses":1}},"PACKSIZE":{"1":{"title":"Pack Size","defaultMessage":"Pack Size Information completed successfully","testCompleteSuccesses":1},"101":{"title":"Total Size","defaultMessage":"Overall Size"},"102":{"title":"File Count"},"103":{"title":"Folder Count"},"104":{"title":"Content Size"},"105":{"title":"Content Files","defaultMessage":"Content File Count"},"106":{"title":"Content Folders","defaultMessage":"Content Folder Count"}},"PATHLENGTH":{"1":{"title":"Path Length","defaultMessage":"Path Length completed successfully","testCompleteSuccesses":1},"104":{"title":"Mixed Case Path","defaultMessage":"File path contains non-lowercase letters","recommendations":1}},"PRJINT":{"1":{"title":"Project Integrity","defaultMessage":"Project Integrity completed successfully","testCompleteSuccesses":1}},"RESOURCEANIMATION":{"1":{"title":"Animation Analysis","defaultMessage":"Resource Animation completed successfully","testCompleteSuccesses":1},"101":{"title":"Animation Count","defaultMessage":"Animations"},"102":{"title":"Bone Count","defaultMessage":"Bones"}},"RPDEPENDS":{"1":{"title":"Resource Pack Deps","defaultMessage":"Resource Pack Dependencies completed successfully","testCompleteSuccesses":1}},"SCRIPT":{"1":{"title":"Script Analysis","defaultMessage":"Script completed successfully","testCompleteSuccesses":1},"101":{"title":"APIs Used"}},"SCRIPTMODULE":{"1":{"title":"Script Modules","defaultMessage":"Script Modules completed successfully","testCompleteSuccesses":1},"101":{"title":"Package Dependency","defaultMessage":"Package.json registers usage of @minecraft/creator-tools at 0.19.0"}},"SNDSDEF":{"2":{"defaultMessage":"No applicable items found for test Sound Definitions (SNDSDEF)"}},"STRICT":{"1":{"title":"Platform Validation","defaultMessage":"Strict Platform completed successfully","testCompleteSuccesses":1}},"SUMMARY":{"1":{"title":"Project Summary","defaultMessage":"Summary Information completed successfully","testCompleteSuccesses":1},"101":{"title":"Resource Manifest","defaultMessage":"Resource Manifests"},"102":{"title":"Behavior Manifest","defaultMessage":"Behavior Manifests"}},"TEXTURE":{"1":{"title":"Texture Validation","defaultMessage":"Texture Validation completed successfully","testCompleteSuccesses":1},"101":{"title":"Textures"}},"TEXTUREIMAGE":{"1":{"title":"Texture Images","defaultMessage":"Texture Image Validation completed successfully","testCompleteSuccesses":1},"101":{"title":"Texture Images"},"200":{"title":"Texture Images Tier0","defaultMessage":"Texture Images Tier 0"},"201":{"title":"Texture Images Tier1","defaultMessage":"Texture Images Tier 1"},"202":{"title":"Texture Images Tier2","defaultMessage":"Texture Images Tier 2"},"203":{"title":"Texture Images Tier3","defaultMessage":"Texture Images Tier 3"},"204":{"title":"Texture Images Tier4","defaultMessage":"Texture Images Tier 4"},"205":{"title":"Texture Images Tier5","defaultMessage":"Texture Images Tier 5"}},"TEXTURELIST":{"2":{"defaultMessage":"No applicable items found for test Texture List Validation (TEXTURELIST)"}},"TEXTUREREF":{"1":{"title":"Texture References","defaultMessage":"Texture References completed successfully","testCompleteSuccesses":1},"101":{"title":"Reference List","defaultMessage":"Texture References"}},"TYPES":{"1":{"title":"Content Types","defaultMessage":"Types Info Aggregation completed successfully","testCompleteSuccesses":1},"101":{"title":"Type Summary","defaultMessage":"Types"}},"UNKFILE":{"1":{"title":"Unknown Files","defaultMessage":"Unknown files completed successfully","testCompleteSuccesses":1}},"UNKJSON":{"0":{"title":"Unknown JSON","defaultMessage":"Found 2 errors in Unknown JSON check","testCompleteFails":1},"101":{"title":"Unknown JSON Type","defaultMessage":"Unknown JSON file found","errors":2}},"UNLINK":{"1":{"title":"Unlinked Items","defaultMessage":"Unlinked Items completed successfully","testCompleteSuccesses":1}},"VALFILE":{"2":{"defaultMessage":"No applicable items found for test Valid files (VALFILE)"}},"VANPRO":{"1":{"defaultMessage":"Vanilla Protected Assets completed successfully","testCompleteSuccesses":1}},"VSCODEFILE":{"2":{"defaultMessage":"No applicable items found for test VSCode Files (VSCODEFILE)"}},"WORLD":{"2":{"defaultMessage":"No applicable items found for test World Validation (WORLD)"}},"WORLDDATA":{"2":{"defaultMessage":"No applicable items found for test World Data Validation (WORLDDATA)"}},"WPACKREFS":{"1":{"title":"World Pack Refs","defaultMessage":"World Pack References completed successfully","testCompleteSuccesses":1}}}},"items":[{"iTp":8,"gId":"BASEGAMEVER","gIx":2},{"iTp":8,"gId":"BLOCKSCAT","gIx":2},{"iTp":1,"gId":"CBFG","gIx":1},{"iTp":8,"gId":"CDWORLDDATA","gIx":2},{"iTp":8,"gId":"CHECKFEATUREDEPRECATION","gIx":2},{"iTp":1,"gId":"CHKMANIF","gIx":1},{"iTp":1,"gId":"COMJSON","gIx":1},{"iTp":0,"gId":"CPACKICON","gIx":0},{"iTp":3,"gId":"CPACKICON","gIx":101},{"iTp":3,"gId":"CPACKICON","gIx":101,"m":"pack_icon image file not found for KS Client_rp. It must use the .png extension."},{"iTp":3,"gId":"CPACKICON","gIx":101,"m":"pack_icon image file not found for KS Client_rp. It must use the .png extension."},{"iTp":1,"gId":"CPARTI","gIx":1},{"iTp":8,"gId":"CROSSREFINDEX","gIx":2},{"iTp":1,"gId":"CSPJ","gIx":1},{"iTp":1,"gId":"CWI","gIx":1},{"iTp":1,"gId":"ENTITYTYPE","gIx":1},{"iTp":7,"gId":"ENTITYTYPE","gIx":52},{"iTp":7,"gId":"ENTITYTYPE","gIx":53},{"iTp":7,"gId":"ENTITYTYPE","gIx":54},{"iTp":8,"gId":"EXPFLAG","gIx":2},{"iTp":1,"gId":"FORBFILE","gIx":1},{"iTp":8,"gId":"FORMATVER","gIx":2},{"iTp":1,"gId":"GEOFMT","gIx":1},{"iTp":1,"gId":"GEOMETRY","gIx":1},{"iTp":7,"gId":"GEOMETRY","gIx":101},{"iTp":7,"gId":"GEOMETRY","gIx":102},{"iTp":7,"gId":"GEOMETRY","gIx":103},{"iTp":1,"gId":"ITEMS","gIx":1},{"iTp":2,"gId":"ITEMS","gIx":103,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json"},{"iTp":2,"gId":"ITEMS","gIx":103,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json"},{"iTp":2,"gId":"ITEMS","gIx":103,"p":"/resource_packs/KS Client/manifest.json"},{"iTp":2,"gId":"ITEMS","gIx":206,"d":2},{"iTp":2,"gId":"ITEMS","gIx":214,"d":3},{"iTp":2,"gId":"ITEMS","gIx":236,"d":9},{"iTp":2,"gId":"ITEMS","gIx":237,"d":3},{"iTp":2,"gId":"ITEMS","gIx":255,"d":2},{"iTp":2,"gId":"ITEMS","gIx":259,"d":1},{"iTp":2,"gId":"ITEMS","gIx":279,"d":3},{"iTp":2,"gId":"ITEMS","gIx":310,"d":3},{"iTp":1,"gId":"ITEMTYPE","gIx":1},{"iTp":7,"gId":"ITEMTYPE","gIx":53},{"iTp":7,"gId":"ITEMTYPE","gIx":55},{"iTp":1,"gId":"JSON","gIx":1},{"iTp":1,"gId":"JSONF","gIx":1},{"iTp":1,"gId":"JSONTAGS","gIx":1},{"iTp":1,"gId":"LINESIZE","gIx":1},{"iTp":7,"gId":"LINESIZE","gIx":106,"fs":{"size":{"instanceCount":2,"total":515,"max":363,"min":152,"average":258},"lines":{"instanceCount":2,"total":30,"max":24,"min":6,"average":15}}},{"iTp":7,"gId":"LINESIZE","gIx":114,"fs":{"size":{"instanceCount":3,"total":1125,"max":375,"min":375,"average":375},"lines":{"instanceCount":3,"total":54,"max":18,"min":18,"average":18}}},{"iTp":7,"gId":"LINESIZE","gIx":136,"fs":{"size":{"instanceCount":9,"total":34449,"max":8199,"min":63,"average":3828},"lines":{"instanceCount":9,"total":1392,"max":319,"min":2,"average":155}}},{"iTp":7,"gId":"LINESIZE","gIx":137,"fs":{"size":{"instanceCount":3,"total":27,"max":9,"min":9,"average":9},"lines":{"instanceCount":3,"total":6,"max":2,"min":2,"average":2}}},{"iTp":7,"gId":"LINESIZE","gIx":155,"fs":{"size":{"instanceCount":2,"total":9956,"max":4978,"min":4978,"average":4978}}},{"iTp":7,"gId":"LINESIZE","gIx":159,"fs":{"size":{"instanceCount":1,"total":226,"max":226,"min":226,"average":226},"lines":{"instanceCount":1,"total":13,"max":13,"min":13,"average":13}}},{"iTp":7,"gId":"LINESIZE","gIx":179,"fs":{"size":{"instanceCount":3,"total":369,"max":123,"min":123,"average":123},"lines":{"instanceCount":3,"total":15,"max":5,"min":5,"average":5}}},{"iTp":7,"gId":"LINESIZE","gIx":210},{"iTp":8,"gId":"MCFUNCTION","gIx":2},{"iTp":1,"gId":"MINENGINEVER","gIx":1},{"iTp":6,"gId":"MINENGINEVER","gIx":220,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json"},{"iTp":6,"gId":"MINENGINEVER","gIx":220,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json"},{"iTp":6,"gId":"MINENGINEVER","gIx":220,"p":"/resource_packs/KS Client/manifest.json"},{"iTp":2,"gId":"MINENGINEVER","gIx":614,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json","d":[1,20,0]},{"iTp":2,"gId":"MINENGINEVER","gIx":614,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json","d":[1,20,0]},{"iTp":2,"gId":"MINENGINEVER","gIx":614,"p":"/resource_packs/KS Client/manifest.json","d":[1,20,0]},{"iTp":1,"gId":"NOBOM","gIx":1},{"iTp":1,"gId":"PACK","gIx":1},{"iTp":2,"gId":"PACK","gIx":111,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json","d":[1,20,0]},{"iTp":2,"gId":"PACK","gIx":111,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json","d":[1,20,0]},{"iTp":2,"gId":"PACK","gIx":111,"p":"/resource_packs/KS Client/manifest.json","d":[1,20,0]},{"iTp":2,"gId":"PACK","gIx":112,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json","d":"3cb32de7-ef64-4969-a447-dadba4bf9a8f"},{"iTp":2,"gId":"PACK","gIx":112,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json","d":"3cb32de7-ef64-4969-a447-dadba4bf9a8f"},{"iTp":2,"gId":"PACK","gIx":112,"p":"/resource_packs/KS Client/manifest.json","d":"3cb32de7-ef64-4969-a447-dadba4bf9a8f"},{"iTp":2,"gId":"PACK","gIx":113,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json"},{"iTp":2,"gId":"PACK","gIx":113,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json"},{"iTp":2,"gId":"PACK","gIx":113,"p":"/resource_packs/KS Client/manifest.json"},{"iTp":2,"gId":"PACK","gIx":114,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json","d":"KS Client"},{"iTp":2,"gId":"PACK","gIx":114,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json","d":"KS Client"},{"iTp":2,"gId":"PACK","gIx":114,"p":"/resource_packs/KS Client/manifest.json","d":"KS Client"},{"iTp":2,"gId":"PACK","gIx":115,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json","d":"KS Client v1.0.0 by KS Warrior"},{"iTp":2,"gId":"PACK","gIx":115,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json","d":"KS Client v1.0.0 by KS Warrior"},{"iTp":2,"gId":"PACK","gIx":115,"p":"/resource_packs/KS Client/manifest.json","d":"KS Client v1.0.0 by KS Warrior"},{"iTp":2,"gId":"PACK","gIx":116,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json","d":"3cb32de7-ef64-4969-a447-dadba4bf9a8f|1.0.0"},{"iTp":2,"gId":"PACK","gIx":116,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json","d":"3cb32de7-ef64-4969-a447-dadba4bf9a8f|1.0.0"},{"iTp":2,"gId":"PACK","gIx":116,"p":"/resource_packs/KS Client/manifest.json","d":"3cb32de7-ef64-4969-a447-dadba4bf9a8f|1.0.0"},{"iTp":2,"gId":"PACK","gIx":117,"p":"/release/KS-Client-v1.0.0.mcpack#/KS Client_rp/manifest.json","d":2},{"iTp":2,"gId":"PACK","gIx":117,"p":"/release/ks-client.mcpack#/KS Client_rp/manifest.json","d":2},{"iTp":2,"gId":"PACK","gIx":117,"p":"/resource_packs/KS Client/manifest.json","d":2},{"iTp":7,"gId":"PACK","gIx":245},{"iTp":1,"gId":"PACKFILECOUNT","gIx":1},{"iTp":7,"gId":"PACKFILECOUNT","gIx":101,"d":26},{"iTp":1,"gId":"PACKMETADATA","gIx":1},{"iTp":1,"gId":"PACKSIZE","gIx":1},{"iTp":7,"gId":"PACKSIZE","gIx":101,"d":185795},{"iTp":7,"gId":"PACKSIZE","gIx":102,"d":26},{"iTp":7,"gId":"PACKSIZE","gIx":103,"d":13},{"iTp":7,"gId":"PACKSIZE","gIx":104,"d":35970},{"iTp":7,"gId":"PACKSIZE","gIx":105,"d":18},{"iTp":7,"gId":"PACKSIZE","gIx":106,"d":6},{"iTp":1,"gId":"PATHLENGTH","gIx":1},{"iTp":6,"gId":"PATHLENGTH","gIx":104,"d":"KS-Client-v1.0.0.mcpack"},{"iTp":1,"gId":"PRJINT","gIx":1},{"iTp":1,"gId":"RESOURCEANIMATION","gIx":1},{"iTp":7,"gId":"RESOURCEANIMATION","gIx":101},{"iTp":7,"gId":"RESOURCEANIMATION","gIx":102},{"iTp":1,"gId":"RPDEPENDS","gIx":1},{"iTp":1,"gId":"SCRIPT","gIx":1},{"iTp":7,"gId":"SCRIPT","gIx":101},{"iTp":1,"gId":"SCRIPTMODULE","gIx":1},{"iTp":2,"gId":"SCRIPTMODULE","gIx":101,"p":"/package.json","d":"0.19.0","iId":"@minecraft/creator-tools"},{"iTp":8,"gId":"SNDSDEF","gIx":2},{"iTp":1,"gId":"STRICT","gIx":1},{"iTp":1,"gId":"SUMMARY","gIx":1},{"iTp":7,"gId":"SUMMARY","gIx":101},{"iTp":7,"gId":"SUMMARY","gIx":102},{"iTp":1,"gId":"TEXTURE","gIx":1},{"iTp":7,"gId":"TEXTURE","gIx":101},{"iTp":1,"gId":"TEXTUREIMAGE","gIx":1},{"iTp":7,"gId":"TEXTUREIMAGE","gIx":101,"fs":{"vanillaGameTextureCoverage":{"overrideCount":0,"vanillaTextureCount":2552,"percent":0}}},{"iTp":7,"gId":"TEXTUREIMAGE","gIx":200,"fs":{"nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0}}},{"iTp":7,"gId":"TEXTUREIMAGE","gIx":201,"fs":{"nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0}}},{"iTp":7,"gId":"TEXTUREIMAGE","gIx":202,"fs":{"nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0}}},{"iTp":7,"gId":"TEXTUREIMAGE","gIx":203,"fs":{"nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0}}},{"iTp":7,"gId":"TEXTUREIMAGE","gIx":204,"fs":{"nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0}}},{"iTp":7,"gId":"TEXTUREIMAGE","gIx":205,"fs":{"nonVanillaTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"totalTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"blockAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0},"itemAtlasTextureMemoryTier":{"instanceCount":1,"total":0,"max":0,"min":0,"average":0}}},{"iTp":8,"gId":"TEXTURELIST","gIx":2},{"iTp":1,"gId":"TEXTUREREF","gIx":1},{"iTp":7,"gId":"TEXTUREREF","gIx":101},{"iTp":1,"gId":"TYPES","gIx":1},{"iTp":7,"gId":"TYPES","gIx":101},{"iTp":1,"gId":"UNKFILE","gIx":1},{"iTp":0,"gId":"UNKJSON","gIx":0},{"iTp":3,"gId":"UNKJSON","gIx":101,"p":"/.vscode/mcp.json"},{"iTp":3,"gId":"UNKJSON","gIx":101,"p":"/opencode.json"},{"iTp":1,"gId":"UNLINK","gIx":1},{"iTp":8,"gId":"VALFILE","gIx":2},{"iTp":1,"gId":"VANPRO","gIx":1},{"iTp":8,"gId":"VSCODEFILE","gIx":2},{"iTp":8,"gId":"WORLD","gIx":2},{"iTp":8,"gId":"WORLDDATA","gIx":2},{"iTp":1,"gId":"WPACKREFS","gIx":1}],"generatorName":"Minecraft Creator Tools","suite":0,"generatorVersion":"0.19.0","sourceName":"ks-client","sourcePath":"/"});
+</script><script>
+
+    function getDataName(name) {
+      if (typeof name === "boolean" || typeof name === "number") {
+        return name.toString();
+      }
+    
+      let retVal = "";
+    
+      for (let i = 0; i < name.length; i++) {
+        if (i === 0) {
+          retVal += name[i].toUpperCase();
+        } else {
+          if (name[i] >= "A" && name[i] <= "Z") {
+            retVal += " ";
+          }
+          retVal += name[i];
+        }
+      }
+      return retVal;
+    }
+    
+    function getDataSummary(data) {
+      if (data) {
+        return data;
+      }
+      
+      if (typeof data === "number" || typeof data === "boolean") {
+        return data.toString();
+      }
+      
+      if (typeof data === "object") {
+        return JSON.stringify(data);
+      }
+    
+      return "(not defined)";
+    }  
+    
+    function getEmptySummary(data) {
+    
+      if (typeof data === "object") {
+        return JSON.stringify(data);
+      }
+      
+      if (typeof data === "number" || typeof data === "boolean") {
+        return data.toString();
+      }
+    
+      if (data) {
+        return data;
+      }
+      
+      return "";
+    }  
+
+    function getEffectiveMessage(reportObj, item) {
+      if (item.m !== undefined) {
+        return item.m;
+      }
+
+      if (reportObj.info === undefined || reportObj.info.summary === undefined) {
+        return undefined;
+      }
+
+      let gen = reportObj.info.summary[item.gId];
+
+      if (gen === undefined) {
+        return undefined;
+      }
+
+      let genI = gen[item.gIx];
+ 
+      if (genI === undefined) {
+        return undefined;
+      }
+
+      return genI.defaultMessage;
+    }	    
+    
+    // The report is built with DOM APIs rather than document.write:
+    // document.write evaluates its argument as HTML, so report-supplied
+    // strings (messages, paths, data) would be interpreted as markup.
+    // textContent renders them verbatim.
+    function appendElement(parent, tag, text, className) {
+      const el = document.createElement(tag);
+
+      if (className) {
+        el.className = className;
+      }
+
+      el.textContent = text;
+      parent.appendChild(el);
+      return el;
+    }
+
+    function appendSummaryRow(table, keyText, valueText) {
+      const row = document.createElement("tr");
+      appendElement(row, "td", keyText, "summary-key items-cell");
+      appendElement(row, "td", valueText, "summary-value items-cell");
+      table.appendChild(row);
+    }
+
+    function generateReports() {
+      for (let i=0; i<_reportObjects.length; i++) {
+        appendElement(document.body, "h1", _reportObjects[i].sourceName);
+        appendElement(document.body, "h3", "Summary");
+
+        const table = document.createElement("table");
+        table.className = "summary-table";
+
+        const headerRow = document.createElement("tr");
+        appendElement(headerRow, "th", "Measure");
+        appendElement(headerRow, "th", "Value");
+        table.appendChild(headerRow);
+
+        const info = _reportObjects[i].info;
+
+        if (info) {
+          for (const key in info) {
+            const val = info[key];
+
+            if (key !== 'featureSets' && key !== 'defaultIcon' && key !== 'summary') {
+              appendSummaryRow(table, getDataName(key), getDataSummary(val));
+            }
+          }
+
+          if (info["featureSets"]) {
+            for (const featureName in info.featureSets) {
+              const feature = info.featureSets[featureName];
+
+              for (const measureName in feature) {
+                appendSummaryRow(table, featureName + " " + measureName, getDataSummary(feature[measureName]));
+              }
+            }
+          }
+        }
+        document.body.appendChild(table);
+      }
+
+      for (let i=0; i<_reportObjects.length; i++) {
+        appendElement(document.body, "h3", "Items");
+
+        const table = document.createElement("table");
+        table.className = "items-table";
+
+        const headerRow = document.createElement("tr");
+        for (const title of ["Type", "Test Category", "Category Id", "Message", "Data", "Path"]) {
+          appendElement(headerRow, "th", title);
+        }
+        table.appendChild(headerRow);
+
+        const items = _reportObjects[i].items;
+
+        if (items && items.length) {
+          for (const item of items) {
+            if (item.itemType !== 2) {
+              const row = document.createElement("tr");
+              appendElement(row, "td", getDescriptionForItemType(item.iTp), "items-type items-cell");
+              appendElement(row, "td", item.gId, "items-generator items-cell");
+              appendElement(row, "td", item.gIx, "items-generatorIndex items-cell");
+              appendElement(row, "td", getEmptySummary(getEffectiveMessage(_reportObjects[i], item)), "items-message items-cell");
+              appendElement(row, "td", getEmptySummary(item.d), "items-data items-cell");
+              appendElement(row, "td", getEmptySummary(item.p), "items-path items-cell");
+              table.appendChild(row);
+            }
+          }
+        }
+        document.body.appendChild(table);
+      }
+    }
+
+    function getDescriptionForItemType(itemType) {
+      switch (itemType) {
+        case 0: 
+          return "SUCCESS";
+          break;
+        case 1: 
+          return "FAIL";
+          break;
+        case 3: 
+          return "ERROR";
+          break;
+        case 4: 
+          return "WARN";
+          break;
+        case 5: 
+          return "INTERNALERR";
+          break;
+        case 6: 
+          return "RECOMMEND";
+          break;          
+      }
+      return "INFO";
+    }
+
+    </script>
+    <style>
+      body {
+        font-family: Noto Sans, Arial, Helvetica, sans-serif;
+        padding: 8px;
+      }
+    
+      .items-table {
+        border: solid 1px #606060;
+        padding: 0px;
+        max-width: 100vw;
+      }
+    
+      .items-cell {
+        border: solid 1px #606060;
+        padding: 4px;
+        vertical-align: top;
+        font-size: x-small;
+        overflow-wrap: anywhere;
+        max-width: 25vw;
+      }
+    
+      .summary-table {
+        border: solid 1px #606060;
+        padding: 0px;
+        max-width: 100vw;
+      }
+    </style>
+    </head><body> 
+
+<script>
+generateReports();
+</script>
+</body></html>
