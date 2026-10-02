@@ -5,8 +5,9 @@
   // Tapping the KS icon selects OPEN (page shows); tapping X selects CLOSE.
   // Default selected = 1 (closed), so the page starts hidden.
   "ks_page_open_toggle@common_toggles.light_text_toggle": {
-    "size": [ 150, 32 ],
+    "size": [ 30, 30 ],
     "$button_text": "",
+    "$button_offset": [ 0, 0 ],
     "$toggle_name": "ks_client_page",
     "$toggle_view_binding_name": "ks_page_open_state",
     "$radio_toggle_group": true,
@@ -157,7 +158,7 @@
   // Borderless icon button: no vanilla frame/text/hold visuals at all.
   // Art IS the button (exact slot size). Press shift forced to zero.
   "ks_settings_button@common_buttons.no_background_content_button": {
-    "size": [ 100, 30 ],
+    "size": [ 30, 30 ],
     "$button_text": "",
     "$button_content": "ks_client.settings_icon_content",
     "$pressed_button_name": "button.menu_settings",
@@ -168,13 +169,13 @@
 
   "settings_icon_content": {
     "type": "panel",
-    "size": [ 100, 30 ],
+    "size": [ 30, 30 ],
     "controls": [
       {
         "settings_icon_img": {
           "type": "image",
-          "texture": "textures/ui/ks_cover_settings",
-          "size": [ 100, 30 ]
+          "texture": "textures/ui/ks_icon_settings",
+          "size": [ 30, 30 ]
         }
       }
     ]
@@ -191,7 +192,7 @@
   },
   "ks_top_bar": {
     "type": "panel",
-    "size": [ 224, 30 ],
+    "size": [ 188, 30 ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "offset": [ 8, 8 ],
@@ -201,7 +202,7 @@
         "ks_top_bg": {
           "type": "image",
           "texture": "textures/ui/ks_pill_dark",
-          "size": [ 224, 30 ],
+          "size": [ 188, 30 ],
           "layer": 0,
           "alpha": 0.92
         }
@@ -210,7 +211,7 @@
         "ks_top_accent": {
           "type": "image",
           "texture": "textures/ui/ks_accent_cyan",
-          "size": [ 224, 2 ],
+          "size": [ 188, 2 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [ 0, 0 ],
@@ -222,13 +223,13 @@
         "ks_top_stack": {
           "type": "stack_panel",
           "orientation": "horizontal",
-          "size": [ 224, 30 ],
+          "size": [ 188, 30 ],
           "layer": 2,
           "controls": [
             {
               "ks_settings_slot": {
                 "type": "panel",
-                "size": [ 100, 30 ],
+                "size": [ 30, 30 ],
                 "controls": [
                   {
                     "ks_settings_button@ks_client.ks_settings_button": {}
@@ -248,8 +249,38 @@
                 "size": [ 120, 30 ],
                 "controls": [
                   {
-                    "ks_profile_button@start.profile_button": {
+                    "profile_button@start.profile_button": {
                       "size": [ "100%", "100%" ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_top_gap_2": {
+                "type": "panel",
+                "size": [ 4, 30 ]
+              }
+            },
+            {
+              "ks_page_slot": {
+                "type": "panel",
+                "size": [ 30, 30 ],
+                "controls": [
+                  {
+                    "ks_page_open_toggle@ks_client.ks_page_open_toggle": {
+                      "layer": 1
+                    }
+                  },
+                  {
+                    "ks_icon_ks": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_icon_ks",
+                      "size": [ 30, 30 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 0 ],
+                      "layer": 8
                     }
                   }
                 ]
