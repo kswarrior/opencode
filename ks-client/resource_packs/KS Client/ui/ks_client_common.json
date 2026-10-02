@@ -26,6 +26,7 @@
   "ks_client_panel": {
     "type": "panel",
     "size": [ "100%", "100%c" ],
+    "offset": [ 0, -16 ],
     "bindings": [
       {
         "binding_name": "(not #showing_new_player_flow_buttons)",
@@ -35,6 +36,96 @@
     "controls": [
       {
         "ks_client_row@ks_client.ks_client_start_row": {}
+      }
+    ]
+  },
+
+  // Top-left quick bar: [Settings][Profile] side by side.
+  "ks_top_bar": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ 224, 30 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 8 ],
+    "controls": [
+      {
+        "ks_settings_slot": {
+          "type": "panel",
+          "size": [ 100, 30 ],
+          "controls": [
+            {
+              "ks_settings_button@start.settings_button": {}
+            }
+          ]
+        }
+      },
+      {
+        "ks_top_gap": {
+          "type": "panel",
+          "size": [ 4, 30 ]
+        }
+      },
+      {
+        "ks_profile_slot": {
+          "type": "panel",
+          "size": [ 120, 30 ],
+          "controls": [
+            {
+              "ks_profile_button@start.profile_button": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // Profile card directly under the top bar (top-left).
+  "ks_profile_card": {
+    "type": "panel",
+    "size": [ 224, 64 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 42 ],
+    "controls": [
+      {
+        "ks_card_bg@common.screen_background": {
+          "alpha": 0.55
+        }
+      },
+      {
+        "ks_card_profile@start.profile_button": {
+          "size": [ "100% - 8px", 56 ],
+          "offset": [ 4, 4 ]
+        }
+      }
+    ]
+  },
+
+  // Bottom-left: Marketplace shortcut.
+  "ks_bottom_left_store": {
+    "type": "panel",
+    "size": [ 160, 32 ],
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "offset": [ 8, -8 ],
+    "controls": [
+      {
+        "ks_store_stack@start.store_button_stack": {}
+      }
+    ]
+  },
+
+  // Bottom-right: big Play shortcut.
+  "ks_bottom_right_play": {
+    "type": "panel",
+    "size": [ 190, 40 ],
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "offset": [ -8, -8 ],
+    "controls": [
+      {
+        "ks_play_stack@start.play_button_stack": {}
       }
     ]
   }
