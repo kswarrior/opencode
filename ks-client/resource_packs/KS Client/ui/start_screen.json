@@ -60,37 +60,110 @@
     ]
   },
 
-  // Top-right cluster: [inbox bell][social]. Inbox keeps its vanilla
-  // enabled-binding; both keep full behaviour.
+  // Top-right cluster: [inbox bell | social] in glass pill, fixed size.
+  // FIX (deep root cause): size was ["default","default"] which equals
+  // ["100%","100%"] = fullscreen. A fullscreen stack_panel anchored
+  // top_right/top_right still lays children from its OWN top-left, which
+  // sits at screen left -> bell+social rendered TOP-LEFT. Explicit 72x32
+  // pins the pill to TOP-RIGHT. Layer 3 keeps it above scrims/top_bar.
   "friendsdrawer_button_panel": {
-    "type": "stack_panel",
-    "orientation": "horizontal",
+    "type": "panel",
+    "size": [ 72, 32 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -8, 8 ],
-    "size": [ "default", "default" ],
+    "layer": 3,
     "controls": [
       {
-        "ks_inbox_slot": {
-          "type": "panel",
-          "size": [ 28, 32 ],
-          "controls": [
-            { "inbox_icon_button@start.inbox_icon_button": {} }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#inbox_enabled",
-              "binding_name_override": "#visible"
-            }
-          ]
+        "ks_tr_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_pill_dark",
+          "size": [ 72, 32 ],
+          "layer": 0,
+          "alpha": 0.92
         }
       },
       {
-        "friendsdrawer_button@friendsbutton.button_panel": {
-          "$context": "start"
+        "ks_tr_accent": {
+          "type": "image",
+          "texture": "textures/ui/ks_accent_cyan",
+          "size": [ 72, 2 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 1,
+          "alpha": 0.85
+        }
+      },
+      {
+        "ks_tr_stack": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ 72, 32 ],
+          "layer": 2,
+          "controls": [
+            {
+              "ks_inbox_slot": {
+                "type": "panel",
+                "size": [ 28, 32 ],
+                "controls": [
+                  { "inbox_icon_button@start.inbox_icon_button": {} }
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#inbox_enabled",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "ks_tr_divider": {
+                "type": "panel",
+                "size": [ 4, 32 ],
+                "controls": [
+                  {
+                    "ks_tr_div_img": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_divider_v",
+                      "size": [ 2, 20 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "layer": 1,
+                      "alpha": 0.8
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_social_slot": {
+                "type": "panel",
+                "size": [ 40, 32 ],
+                "controls": [
+                  {
+                    "friendsdrawer_button@friendsbutton.button_panel": {
+                      "size": [ 40, 32 ],
+                      "$context": "start"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
         }
       }
     ]
+  },
+
+  // Hide vanilla upper online row (store/realms duplicates + any second
+  // social/bell). Store+realms are rendered in ks_bottom_left_row;
+  // bell+social live ONLY in friendsdrawer_button_panel (top-right).
+  // This kills the "still shows top-left / bottom-left" ghost.
+  "upper_online_buttons_panel": {
+    "type": "panel",
+    "size": [ 0, 0 ],
+    "ignored": true
   },
 
   // Vanilla center buttons, minus the rows that were MOVED to corners:
