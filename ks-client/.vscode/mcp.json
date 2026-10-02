@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "minecraft-creator-tools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@minecraft/creator-tools@0.19.0", "mcp", "-i", "${workspaceFolder}"]
+    }
+  }
+}
