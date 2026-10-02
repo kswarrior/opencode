@@ -330,38 +330,6 @@
                         }
                       ]
                     }
-                  },
-                  {
-                    "ks_status_row": {
-                      "type": "stack_panel",
-                      "orientation": "horizontal",
-                      "size": [ "100%", 16 ],
-                      "controls": [
-                        {
-                          "ks_status_dot": {
-                            "type": "image",
-                            "texture": "textures/ui/ks_dot_green",
-                            "size": [ 10, 10 ],
-                            "layer": 1
-                          }
-                        },
-                        {
-                          "ks_status_gap": {
-                            "type": "panel",
-                            "size": [ 5, 16 ]
-                          }
-                        },
-                        {
-                          "ks_status_text": {
-                            "type": "label",
-                            "size": [ "fill", 14 ],
-                            "text": "ONLINE • MEMBER",
-                            "color": [ 150, 180, 210 ],
-                            "shadow": true
-                          }
-                        }
-                      ]
-                    }
                   }
                 ]
               }
@@ -460,7 +428,9 @@
     ]
   },
 
-  // ---------- Bottom-right PLAY: SAME 190x40 at (-8,-8), glow + gold edge + hint ----------
+  // ---------- Bottom-right PLAY: SAME 190x40 at (-8,-8), image cover over vanilla stack ----------
+  // Vanilla play stack stays underneath (full behaviour); the opaque banner
+  // cover hides its text. Clicks pass through images. Social + Realms keep text.
   "ks_bottom_right_play": {
     "type": "panel",
     "size": [ 190, 40 ],
@@ -482,33 +452,19 @@
         }
       },
       {
-        "ks_play_hint": {
-          "type": "label",
-          "size": [ 190, 12 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, -14 ],
-          "text": "TAP TO START",
-          "color": [ 255, 201, 60 ],
-          "shadow": true,
-          "text_alignment": "center",
-          "layer": 3
-        }
-      },
-      {
         "ks_play_stack@start.play_button_stack": {
           "layer": 2
         }
       },
       {
-        "ks_play_top_edge": {
+        "ks_cover_play": {
           "type": "image",
-          "texture": "textures/ui/ks_accent_gold",
-          "size": [ 190, 3 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
+          "texture": "textures/ui/ks_cover_play",
+          "size": [ 190, 40 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
           "offset": [ 0, 0 ],
-          "layer": 3
+          "layer": 5
         }
       }
     ]

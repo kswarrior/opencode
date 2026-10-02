@@ -304,8 +304,12 @@
           "size": "$title_offset_padding"
         }
       },
+      // (vanilla Minecraft title image removed: text-free screen)
       {
-        "title_panel_content@common_art.start_title_panel_content": {}
+        "title_spacer": {
+          "type": "panel",
+          "size": [ "100%", "100%c" ]
+        }
       },
       {
         "padding_fill_1": {
@@ -467,17 +471,13 @@
       {
         "skin_panel@start.skin_panel": { "layer": 1 }
       },
-      {
-        "text_panel@start.text_panel": {}
-      },
+      // (vanilla bottom text panel removed: text-free screen)
       {
         "friendsdrawer_button_panel@start.friendsdrawer_button_panel": {
           "$focus_id": "friendsdrawer_button"
         }
       },
       { "edu_external_link_popup_factory@start.edu_external_link_popup_factory": {} },
-      { "ks_brand_header@ks_client.ks_brand_header": {} },
-      { "ks_footer_center@ks_client.ks_footer_center": {} },
       { "ks_top_bar@ks_client.ks_top_bar": {} },
       { "ks_profile_card@ks_client.ks_profile_card": {} },
       { "ks_bottom_left_row@ks_client.ks_bottom_left_row": {} },
