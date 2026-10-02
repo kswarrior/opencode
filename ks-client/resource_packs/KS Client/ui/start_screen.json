@@ -1,15 +1,15 @@
 {
   "namespace": "start",
 
-  // Paper doll at vanilla default geometry (bottom-right). Profile row stays
-  // removed (Profile lives in the top-left bar). Positions of KS buttons untouched.
+  // Paper doll: vanilla size/height, centered horizontally along the bottom.
+  // Profile row stays removed (username lives in the profile button now).
   "skin_panel": {
     "type": "stack_panel",
     "orientation": "vertical",
     "size": [ "50% - 75px", 124 ],
     "offset": [ 0, "-10% - 4px" ],
-    "anchor_to": "bottom_right",
-    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_middle",
+    "anchor_from": "bottom_middle",
     "layer": 1,
     "controls": [
       { "viewer_panel@start.skin_viewer_panel": { "size": [ "100%", "fill" ] } }
@@ -330,13 +330,13 @@
 
   "play_button_art_custom": {
     "type": "panel",
-    "size": [ 190, 40 ],
+    "size": [ 95, 32 ],
     "controls": [
       {
         "play_art_img": {
           "type": "image",
           "texture": "textures/ui/ks_art_play",
-          "size": [ 190, 40 ]
+          "size": [ 95, 32 ]
         }
       }
     ]
