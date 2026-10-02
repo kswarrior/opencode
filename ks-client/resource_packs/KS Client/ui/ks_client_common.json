@@ -447,9 +447,9 @@
     ]
   },
 
-  // ---------- Bottom-right PLAY: SAME 190x40 at (-8,-8), vanilla stack locked ----------
-  // Vanilla stack keeps exact Play behaviour; opaque art cover (layer 8, above
-  // all vanilla hover art) hides frame/text/hold visuals. Social + Realms keep text.
+  // ---------- Bottom-right PLAY: SAME 190x40 at (-8,-8), borderless like settings ----------
+  // start.play_button is overridden (no frame/text/hold visuals, art IS the
+  // button, same engine press path). Social + Realms keep text.
   "ks_bottom_right_play": {
     "type": "panel",
     "size": [ 190, 40 ],

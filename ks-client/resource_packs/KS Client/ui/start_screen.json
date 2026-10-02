@@ -59,19 +59,33 @@
     ]
   },
 
-  // Social/friends button pinned to the top-right corner (aligned with
-  // the 8px margin used by the other KS panels). Always visible.
+  // Top-right cluster: [inbox bell][social]. Inbox keeps its vanilla
+  // enabled-binding; both keep full behaviour.
   "friendsdrawer_button_panel": {
-    "type": "panel",
+    "type": "stack_panel",
+    "orientation": "horizontal",
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -8, 8 ],
-    "size": [ "default", "default" ],
+    "size": [ "100%c", "100%c" ],
     "controls": [
       {
+        "ks_inbox_slot": {
+          "type": "panel",
+          "size": [ 28, 32 ],
+          "controls": [
+            { "inbox_icon_button@start.inbox_icon_button": {} }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#inbox_enabled",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      {
         "friendsdrawer_button@friendsbutton.button_panel": {
-          "anchor_from": "top_right",
-          "anchor_to": "top_right",
           "$context": "start"
         }
       }
@@ -275,32 +289,7 @@
                 ]
               }
             },
-            {
-              "inbox_padding": {
-                "type": "panel",
-                "size": [ 3, "100%" ],
-                "bindings": [
-                  {
-                    "binding_name": "#inbox_enabled",
-                    "binding_name_override": "#visible"
-                  }
-                ]
-              }
-            },
-            {
-              "inbox_btn@start.column_frame": {
-                "size": [ 28, 32 ],
-                "controls": [
-                  { "inbox_icon_button@start.inbox_icon_button": {} }
-                ],
-                "bindings": [
-                  {
-                    "binding_name": "#inbox_enabled",
-                    "binding_name_override": "#visible"
-                  }
-                ]
-              }
-            }
+            // (inbox bell moved to the top-right cluster next to social)
           ]
         }
       }
