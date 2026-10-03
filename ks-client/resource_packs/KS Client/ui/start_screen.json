@@ -88,18 +88,6 @@
         }
       },
       {
-        "ks_tr_accent": {
-          "type": "image",
-          "texture": "textures/ui/ks_accent_cyan",
-          "size": [ 100, 2 ],
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [ 0, -2 ],
-          "layer": 1,
-          "alpha": 0.85
-        }
-      },
-      {
         "ks_tr_stack": {
           "type": "stack_panel",
           "orientation": "horizontal",
