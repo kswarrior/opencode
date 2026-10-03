@@ -80,6 +80,9 @@
           "type": "image",
           "texture": "textures/ui/ks_pill_dark",
           "size": [ 100, 32 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ],
           "layer": 0,
           "alpha": 0.92
         }
@@ -91,7 +94,7 @@
           "size": [ 100, 2 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
-          "offset": [ 0, 0 ],
+          "offset": [ 0, -2 ],
           "layer": 1,
           "alpha": 0.85
         }
@@ -418,7 +421,10 @@
         "play_art_img": {
           "type": "image",
           "texture": "textures/ui/ks_art_play",
-          "size": [ 95, 32 ]
+          "size": [ 95, 32 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ]
         }
       }
     ]
