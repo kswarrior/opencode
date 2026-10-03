@@ -194,14 +194,18 @@
     ]
   },
 
-  // ---------- Fullscreen fixed background (solid black for now) ----------
-  // The engine panorama is covered completely. To use art later, swap the
-  // textures/ui/ks_bg file - no JSON change needed.
+  // ---------- Fullscreen solid-black background, zero gaps ----------
+  // 16x16 opaque black ks_bg.png stretched to 100%x100% from top_left.
+  // Explicit anchors + Bilinear off = crisp fill, no 1px seams on any ratio.
   "ks_bg": {
     "type": "image",
     "texture": "textures/ui/ks_bg",
     "size": [ "100%", "100%" ],
-    "layer": 0
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "layer": -1,
+    "bilinear": false
   },
   "ks_top_bar": {
     "type": "panel",
