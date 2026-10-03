@@ -77,18 +77,6 @@
     "layer": 3,
     "controls": [
       {
-        "ks_tr_bg": {
-          "type": "image",
-          "texture": "textures/ui/ks_bar_social",
-          "size": [ 128, 32 ],
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [ 0, -2 ],
-          "layer": 0,
-          "alpha": 0.92
-        }
-      },
-      {
         "ks_tr_stack": {
           "type": "stack_panel",
           "orientation": "horizontal",
