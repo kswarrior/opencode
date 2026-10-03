@@ -170,24 +170,9 @@
     ]
   },
 
-  // ---------- Panorama dim (lets engine cubemap show through) ----------
-  // Bedrock panorama is hardcoded: textures/gui/background/panorama_0..5.png
-  // rendered by common.background_screen behind all UI. Any opaque fullscreen
-  // image (like the old ks_bg) covers it, so we use only a 35% black dim for
-  // text readability. Set alpha to 0.0 for full-bright panorama.
-  "ks_pano_dim": {
-    "type": "image",
-    "texture": "textures/ui/ks_bg",
-    "size": [ "100%", "100%" ],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "offset": [ 0, 0 ],
-    "layer": -1,
-    "bilinear": false,
-    "alpha": 0.35
-  },
-  // Legacy solid-black bg (kept for compat, NOT used on start screen —
-  // using it fullscreen would hide the panorama again).
+  // ---------- Fullscreen solid-black background, zero gaps ----------
+  // 16x16 opaque black ks_bg.png stretched to 100%x100% from top_left.
+  // Explicit anchors + Bilinear off = crisp fill, no 1px seams on any ratio.
   "ks_bg": {
     "type": "image",
     "texture": "textures/ui/ks_bg",
