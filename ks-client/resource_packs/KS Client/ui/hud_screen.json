@@ -8,7 +8,24 @@
   "ks_f1_button@common_buttons.light_text_button": {
     "size": [ 18, 14 ],
     "$button_text": "F",
-    "$pressed_button_name": "button.hide_gui"
+    "$pressed_button_name": "button.hide_gui",
+    "prevent_touch_input": true,
+    "button_mappings": [
+      {
+        "to_button_id": "button.hide_gui",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.hide_gui",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.hide_gui",
+        "mapping_type": "pressed"
+      }
+    ]
   },
 
   "ks_f1_top": {
@@ -16,8 +33,8 @@
     "size": [ 18, 14 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
-    "offset": [ -8, 8 ],
-    "layer": 5,
+    "offset": [ -52, 8 ],
+    "layer": 10,
     "controls": [
       {
         "ks_f1_button@hud.ks_f1_button": {}
