@@ -100,6 +100,17 @@
     "layer": 1,
     "controls": [
       {
+        "pb_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_profile_bg",
+          "size": [ 120, 30 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 0
+        }
+      },
+      {
         "pb_avatar": {
           "type": "panel",
           "size": [ 24, 24 ],
