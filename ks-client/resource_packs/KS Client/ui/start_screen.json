@@ -65,11 +65,12 @@
   // FIX (deep root cause): size was ["default","default"] which equals
   // ["100%","100%"] = fullscreen. A fullscreen stack_panel anchored
   // top_right/top_right still lays children from its OWN top-left, which
-  // sits at screen left -> bell+social rendered TOP-LEFT. Explicit 72x32
-  // pins the pill to TOP-RIGHT. Layer 3 keeps it above scrims/top_bar.
+  // sits at screen left -> bell+social rendered TOP-LEFT. Explicit size
+  // pins the pill to TOP-RIGHT. Layer 3 keeps it above everything.
+  // Layout: [bell 28][gap 56 = 2x bell][divider 4][social 40] = 128.
   "friendsdrawer_button_panel": {
     "type": "panel",
-    "size": [ 72, 32 ],
+    "size": [ 128, 32 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -8, 8 ],
@@ -78,8 +79,8 @@
       {
         "ks_tr_bg": {
           "type": "image",
-          "texture": "textures/ui/ks_pill_dark",
-          "size": [ 72, 32 ],
+          "texture": "textures/ui/ks_bar_social",
+          "size": [ 128, 32 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [ 0, -2 ],
@@ -91,7 +92,7 @@
         "ks_tr_stack": {
           "type": "stack_panel",
           "orientation": "horizontal",
-          "size": [ 72, 32 ],
+          "size": [ 128, 32 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [ 0, -2 ],
@@ -101,6 +102,7 @@
               "ks_inbox_slot": {
                 "type": "panel",
                 "size": [ 28, 32 ],
+                "offset": [ 0, -4 ],
                 "controls": [
                   { "inbox_icon_button@start.inbox_icon_button": {} }
                 ],
@@ -110,6 +112,12 @@
                     "binding_name_override": "#visible"
                   }
                 ]
+              }
+            },
+            {
+              "ks_bell_gap": {
+                "type": "panel",
+                "size": [ 56, 32 ]
               }
             },
             {
@@ -553,8 +561,6 @@
     ],
     "controls": [
       { "ks_bg@ks_client.ks_bg": {} },
-      { "ks_scrim_top@ks_client.ks_scrim_top": {} },
-      { "ks_scrim_bottom@ks_client.ks_scrim_bottom": {} },
       { "ks_edge_left@ks_client.ks_edge_left": {} },
       { "ks_edge_right@ks_client.ks_edge_right": {} },
       {
