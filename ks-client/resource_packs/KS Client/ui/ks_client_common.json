@@ -159,17 +159,10 @@
           "alpha": 1.0,
           "visible": true,
           "layer": 2,
-          "text": "",
+          "text": "#gamertag_label",
           "bindings": [
             {
-              "binding_type": "global",
-              "binding_name": "#gamertag",
-              "binding_name_override": "#text"
-            },
-            {
-              "binding_type": "global",
-              "binding_name": "#playername",
-              "binding_name_override": "#text"
+              "binding_name": "#gamertag_label"
             }
           ]
         }
