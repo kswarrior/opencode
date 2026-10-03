@@ -6,17 +6,17 @@
   // Note: true offhand-swap (keyboard F) has no vanilla button ID,
   // so this keeps hide-GUI action with F label.
   "ks_f1_button@common_buttons.light_text_button": {
-    "size": [ 36, 28 ],
+    "size": [ 18, 14 ],
     "$button_text": "F",
     "$pressed_button_name": "button.hide_gui"
   },
 
   "ks_f1_top": {
     "type": "panel",
-    "size": [ 36, 28 ],
-    "anchor_from": "top_middle",
-    "anchor_to": "top_middle",
-    "offset": [ 0, 4 ],
+    "size": [ 18, 14 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -8, 8 ],
     "layer": 5,
     "controls": [
       {
