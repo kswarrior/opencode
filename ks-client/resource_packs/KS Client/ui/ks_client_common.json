@@ -135,15 +135,26 @@
           "size": [ 20, 20 ],
           "anchor_from": "left_middle",
           "anchor_to": "left_middle",
-          "offset": [ 6, 0 ],
+          "offset": [ 8, 0 ],
+          "layer": 1,
           "controls": [
             {
               "gamerpic@start.gamerpic": {
+                "size": [ 20, 20 ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "offset": [ 0, 0 ],
+                "layer": 1,
                 "$gamerpic_visible": "#show_gamerpic"
               }
             },
             {
               "alex_icon@start.alex_icon": {
+                "size": [ 20, 20 ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "offset": [ 0, 0 ],
+                "layer": 1,
                 "bindings": [
                   {
                     "binding_name": "(not #show_gamerpic)",
@@ -158,15 +169,19 @@
       {
         "pb_name": {
           "type": "label",
-          "size": [ "100% - 34px", 20 ],
+          "size": [ "100% - 40px", 20 ],
+          "max_size": [ "100% - 40px", 20 ],
           "anchor_from": "left_middle",
           "anchor_to": "left_middle",
           "offset": [ 32, 0 ],
           "color": [ 255, 255, 255 ],
           "shadow": true,
+          "localize": false,
+          "text_alignment": "left",
           "text": "",
           "bindings": [
             {
+              "binding_type": "global",
               "binding_name": "#playername",
               "binding_name_override": "#text"
             }
@@ -235,7 +250,20 @@
             {
               "ks_top_gap": {
                 "type": "panel",
-                "size": [ 4, 30 ]
+                "size": [ 4, 30 ],
+                "controls": [
+                  {
+                    "ks_top_div_img": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_divider_v",
+                      "size": [ 2, 18 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "layer": 1,
+                      "alpha": 0.8
+                    }
+                  }
+                ]
               }
             },
             {

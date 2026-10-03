@@ -12,8 +12,9 @@
     "anchor_to": "bottom_middle",
     "anchor_from": "bottom_middle",
     "layer": 1,
+    "clips_children": true,
     "controls": [
-      { "viewer_panel@start.skin_viewer_panel": { "size": [ "100%", "fill" ] } }
+      { "viewer_panel@start.skin_viewer_panel": { "size": [ "100%", "fill" ], "offset": [ 0, 12 ] } }
     ]
   },
 
@@ -68,7 +69,7 @@
   // pins the pill to TOP-RIGHT. Layer 3 keeps it above scrims/top_bar.
   "friendsdrawer_button_panel": {
     "type": "panel",
-    "size": [ 72, 32 ],
+    "size": [ 100, 32 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -8, 8 ],
@@ -78,7 +79,7 @@
         "ks_tr_bg": {
           "type": "image",
           "texture": "textures/ui/ks_pill_dark",
-          "size": [ 72, 32 ],
+          "size": [ 100, 32 ],
           "layer": 0,
           "alpha": 0.92
         }
@@ -87,7 +88,7 @@
         "ks_tr_accent": {
           "type": "image",
           "texture": "textures/ui/ks_accent_cyan",
-          "size": [ 72, 2 ],
+          "size": [ 100, 2 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [ 0, 0 ],
@@ -99,13 +100,14 @@
         "ks_tr_stack": {
           "type": "stack_panel",
           "orientation": "horizontal",
-          "size": [ 72, 32 ],
+          "size": [ 100, 32 ],
           "layer": 2,
           "controls": [
             {
               "ks_inbox_slot": {
                 "type": "panel",
                 "size": [ 28, 32 ],
+                "offset": [ 0, -2 ],
                 "controls": [
                   { "inbox_icon_button@start.inbox_icon_button": {} }
                 ],
@@ -115,6 +117,12 @@
                     "binding_name_override": "#visible"
                   }
                 ]
+              }
+            },
+            {
+              "ks_bell_shift": {
+                "type": "panel",
+                "size": [ 28, 32 ]
               }
             },
             {
