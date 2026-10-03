@@ -293,6 +293,33 @@
 
   // (Profile card removed: username now lives in the profile button.)
 
+  // ---------- Dressing room square left of social (top-left, under settings) ----------
+  // 30x30 like the settings button, left of the social entry.
+  "ks_dressing_below_settings": {
+    "type": "panel",
+    "size": [ 30, 30 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 44 ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_dressing_slot": {
+          "type": "panel",
+          "size": [ 30, 30 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "controls": [
+            {
+              "ks_dressing_button@ks_client.ks_dressing_button": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+
   // ---------- Social button below the settings button (top-left) ----------
   // Friends/social entry moved out of the top-right cluster (bell only).
   // Same vanilla press path as before, just re-parented under settings.
