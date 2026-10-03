@@ -3,44 +3,7 @@
 
   // (Center KS row retired: the KS icon now lives in the top-left bar.)
 
-  // ---------- Cinematic scrims (readability + immersion, behind everything) ----------
-  "ks_scrim_top": {
-    "type": "panel",
-    "size": [ "100%", 96 ],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "offset": [ 0, 0 ],
-    "layer": 0,
-    "controls": [
-      {
-        "ks_scrim_top_img": {
-          "type": "image",
-          "texture": "textures/ui/ks_scrim_top",
-          "size": [ "100%", 96 ],
-          "layer": 0
-        }
-      }
-    ]
-  },
-
-  "ks_scrim_bottom": {
-    "type": "panel",
-    "size": [ "100%", 160 ],
-    "anchor_from": "bottom_left",
-    "anchor_to": "bottom_left",
-    "offset": [ 0, 0 ],
-    "layer": 0,
-    "controls": [
-      {
-        "ks_scrim_bottom_img": {
-          "type": "image",
-          "texture": "textures/ui/ks_scrim_bottom",
-          "size": [ "100%", 160 ],
-          "layer": 0
-        }
-      }
-    ]
-  },
+  // (Scrims removed: solid black bg needs no readability gradient.)
 
   // ---------- (brand header removed: text-free screen) ----------
 
@@ -238,7 +201,7 @@
       {
         "ks_top_bg": {
           "type": "image",
-          "texture": "textures/ui/ks_pill_dark",
+          "texture": "textures/ui/ks_bar_top",
           "size": [ 154, 30 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
@@ -318,7 +281,7 @@
       {
         "ks_bl_bg": {
           "type": "image",
-          "texture": "textures/ui/ks_pill_dark",
+          "texture": "textures/ui/ks_bar_bottom",
           "size": [ 264, 32 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
