@@ -2,22 +2,38 @@
   "format_version": 2,
   "header": {
     "name": "KS Client",
-    "description": "KS Client v1.0.2 by KS Warrior - shaders+textures",
+    "description": "KS Client v1.0.3 by KS Warrior - realistic mace",
     "uuid": "3cb32de7-ef64-4969-a447-dadba4bf9a8f",
-    "version": [1, 0, 2],
-    "min_engine_version": [1, 20, 0]
+    "version": [
+      1,
+      0,
+      3
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      0
+    ]
   },
   "modules": [
     {
       "type": "resources",
       "uuid": "01ec78ed-44f8-4077-bc80-0904b4a83d51",
-      "version": [1, 0, 2]
+      "version": [
+        1,
+        0,
+        3
+      ]
     }
   ],
   "metadata": {
-    "authors": ["KS Warrior"],
+    "authors": [
+      "KS Warrior"
+    ],
     "generated_with": {
-      "minecraft_creator_tools": ["0.19.0"]
+      "minecraft_creator_tools": [
+        "0.19.0"
+      ]
     }
   }
 }

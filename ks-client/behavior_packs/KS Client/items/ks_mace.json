@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "ks:mace",
+      "menu_category": {
+        "category": "equipment",
+        "group": "itemGroup.name.sword"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": {
+        "texture": "ks_mace"
+      },
+      "minecraft:display_name": {
+        "value": "Realistic Mace"
+      },
+      "minecraft:hand_equipped": true,
+      "minecraft:durability": {
+        "max_durability": 500
+      },
+      "minecraft:damage": 7,
+      "minecraft:tags": {
+        "tags": [
+          "minecraft:is_sword"
+        ]
+      },
+      "minecraft:allow_off_hand": true,
+      "minecraft:can_destroy_in_creative": true
+    }
+  }
+}
