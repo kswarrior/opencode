@@ -2,10 +2,7 @@
   "format_version": "1.20.30",
   "minecraft:attachable": {
     "description": {
-      "identifier": "ks:mace",
-      "item": {
-        "ks:mace": "query.is_owner_identifier_any('minecraft:player')"
-      },
+      "identifier": "minecraft:mace",
       "materials": {
         "default": "entity",
         "enchanted": "entity_alphatest_glint"
