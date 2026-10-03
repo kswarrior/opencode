@@ -131,19 +131,23 @@
   "profile_button_content": {
     "type": "panel",
     "size": [ 120, 30 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "layer": 1,
     "controls": [
       {
         "pb_avatar": {
           "type": "panel",
-          "size": [ 20, 20 ],
+          "size": [ 24, 24 ],
           "anchor_from": "left_middle",
           "anchor_to": "left_middle",
-          "offset": [ 8, 0 ],
-          "layer": 1,
+          "offset": [ 5, 0 ],
+          "layer": 2,
           "controls": [
             {
               "gamerpic@start.gamerpic": {
-                "size": [ 20, 20 ],
+                "size": [ 18, 18 ],
                 "anchor_from": "center",
                 "anchor_to": "center",
                 "offset": [ 0, 0 ],
@@ -153,7 +157,7 @@
             },
             {
               "alex_icon@start.alex_icon": {
-                "size": [ 20, 20 ],
+                "size": [ 18, 18 ],
                 "anchor_from": "center",
                 "anchor_to": "center",
                 "offset": [ 0, 0 ],
@@ -172,17 +176,27 @@
       {
         "pb_name": {
           "type": "label",
-          "size": [ "100% - 40px", 20 ],
-          "max_size": [ "100% - 40px", 20 ],
+          "size": [ 81, 20 ],
+          "max_size": [ 81, 20 ],
           "anchor_from": "left_middle",
           "anchor_to": "left_middle",
-          "offset": [ 32, 0 ],
+          "offset": [ 33, 0 ],
           "color": [ 255, 255, 255 ],
           "shadow": true,
           "localize": false,
           "text_alignment": "left",
+          "font_size": "normal",
+          "font_scale_factor": 0.85,
+          "alpha": 1.0,
+          "visible": true,
+          "layer": 2,
           "text": "",
           "bindings": [
+            {
+              "binding_type": "global",
+              "binding_name": "#gamertag",
+              "binding_name_override": "#text"
+            },
             {
               "binding_type": "global",
               "binding_name": "#playername",
