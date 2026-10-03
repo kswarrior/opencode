@@ -1,132 +1,56 @@
 {
   "namespace": "hud",
 
-  // Test row: Q/W/A/F. F = hide GUI (F1). Q/W/A use other vanilla IDs
-  // to check whether HUD presses work at all, or only hide_gui is dead.
-  // Q = chat, W = emote, A = hide paperdoll.
-  "ks_f1_button@common_buttons.light_text_button": {
-    "size": [ 18, 14 ],
-    "$button_text": "F",
-    "$pressed_button_name": "button.hide_gui",
-    "prevent_touch_input": true,
-    "button_mappings": [
-      {
-        "to_button_id": "button.hide_gui",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_select",
-        "to_button_id": "button.hide_gui",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_ok",
-        "to_button_id": "button.hide_gui",
-        "mapping_type": "pressed"
-      }
-    ]
+  // RP-only Hide-HUD + Paperdoll toggles.
+  // Unlike $pressed_button_name actions (ignored on HUD), toggles write
+  // straight to engine settings via hardcoded toggle names, so no
+  // action routing is needed. Docs: bedrock.dev JSON UI Toggles table.
+  "ks_hud_toggle@common_toggles.light_text_toggle": {
+    "size": [ 44, 20 ],
+    "$button_text": "HUD",
+    "$toggle_name": "hide_hud",
+    "$toggle_view_binding_name": "#hide_hud",
+    "prevent_touch_input": true
   },
 
-  "ks_q_button@common_buttons.light_text_button": {
-    "size": [ 18, 14 ],
-    "$button_text": "Q",
-    "$pressed_button_name": "button.chat",
-    "prevent_touch_input": true,
-    "button_mappings": [
-      {
-        "to_button_id": "button.chat",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_select",
-        "to_button_id": "button.chat",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_ok",
-        "to_button_id": "button.chat",
-        "mapping_type": "pressed"
-      }
-    ]
-  },
-
-  "ks_w_button@common_buttons.light_text_button": {
-    "size": [ 18, 14 ],
-    "$button_text": "W",
-    "$pressed_button_name": "key.emote",
-    "prevent_touch_input": true,
-    "button_mappings": [
-      {
-        "to_button_id": "key.emote",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_select",
-        "to_button_id": "key.emote",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_ok",
-        "to_button_id": "key.emote",
-        "mapping_type": "pressed"
-      }
-    ]
-  },
-
-  "ks_a_button@common_buttons.light_text_button": {
-    "size": [ 18, 14 ],
-    "$button_text": "A",
-    "$pressed_button_name": "button.hide_paperdoll",
-    "prevent_touch_input": true,
-    "button_mappings": [
-      {
-        "to_button_id": "button.hide_paperdoll",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_select",
-        "to_button_id": "button.hide_paperdoll",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_ok",
-        "to_button_id": "button.hide_paperdoll",
-        "mapping_type": "pressed"
-      }
-    ]
+  "ks_doll_toggle@common_toggles.light_text_toggle": {
+    "size": [ 44, 20 ],
+    "$button_text": "DOLL",
+    "$toggle_name": "hide_paperdoll",
+    "$toggle_view_binding_name": "#hide_paperdoll",
+    "prevent_touch_input": true
   },
 
   "ks_gap": {
     "type": "panel",
-    "size": [ 2, 14 ]
+    "size": [ 4, 20 ]
   },
 
-  // Row: Q W A F left-to-right, F keeps its old screen position
-  // (row right edge at -52 from top-right).
-  "ks_test_row": {
+  // Row: HUD DOLL left-to-right, top-right corner area.
+  "ks_toggle_row": {
     "type": "panel",
-    "size": [ 78, 14 ],
+    "size": [ 92, 20 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -52, 8 ],
     "layer": 10,
     "controls": [
       {
-        "ks_test_stack": {
+        "ks_toggle_stack": {
           "type": "stack_panel",
           "orientation": "horizontal",
-          "size": [ 78, 14 ],
+          "size": [ 92, 20 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [ 0, 0 ],
           "controls": [
             {
-              "ks_q_slot": {
+              "ks_hud_slot": {
                 "type": "panel",
-                "size": [ 18, 14 ],
+                "size": [ 44, 20 ],
                 "controls": [
                   {
-                    "ks_q_button@hud.ks_q_button": {}
+                    "ks_hud_toggle@hud.ks_hud_toggle": {}
                   }
                 ]
               }
@@ -135,40 +59,12 @@
               "ks_gap1@hud.ks_gap": {}
             },
             {
-              "ks_w_slot": {
+              "ks_doll_slot": {
                 "type": "panel",
-                "size": [ 18, 14 ],
+                "size": [ 44, 20 ],
                 "controls": [
                   {
-                    "ks_w_button@hud.ks_w_button": {}
-                  }
-                ]
-              }
-            },
-            {
-              "ks_gap2@hud.ks_gap": {}
-            },
-            {
-              "ks_a_slot": {
-                "type": "panel",
-                "size": [ 18, 14 ],
-                "controls": [
-                  {
-                    "ks_a_button@hud.ks_a_button": {}
-                  }
-                ]
-              }
-            },
-            {
-              "ks_gap3@hud.ks_gap": {}
-            },
-            {
-              "ks_f_slot": {
-                "type": "panel",
-                "size": [ 18, 14 ],
-                "controls": [
-                  {
-                    "ks_f1_button@hud.ks_f1_button": {}
+                    "ks_doll_toggle@hud.ks_doll_toggle": {}
                   }
                 ]
               }
@@ -186,7 +82,7 @@
         "operation": "insert_front",
         "value": [
           {
-            "ks_test_row@hud.ks_test_row": {}
+            "ks_toggle_row@hud.ks_toggle_row": {}
           }
         ]
       }
