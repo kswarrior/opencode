@@ -246,6 +246,7 @@
               "ks_profile_slot": {
                 "type": "panel",
                 "size": [ 120, 30 ],
+                "offset": [ 0, -2 ],
                 "controls": [
                   {
                     "profile_button@ks_client.ks_profile_button": {}
@@ -264,12 +265,13 @@
   // ---------- Social button below the settings button (top-left) ----------
   // Friends/social entry moved out of the top-right cluster (bell only).
   // Same vanilla press path as before, just re-parented under settings.
+  // Shifted right by exactly the settings button height (30px): x 8 -> 38.
   "ks_social_below_settings": {
     "type": "panel",
     "size": [ 40, 32 ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
-    "offset": [ 8, 44 ],
+    "offset": [ 38, 44 ],
     "layer": 2,
     "controls": [
       {
