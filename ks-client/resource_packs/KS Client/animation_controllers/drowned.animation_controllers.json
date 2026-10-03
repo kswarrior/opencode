@@ -1,0 +1,60 @@
+{
+	"format_version": "1.19.0",
+	"animation_controllers": {
+		"controller.animation.drowned.brandish_spear": {
+		    "initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"brandish": "v.is_brandishing_spear"}
+					],
+					"blend_transition": 0.1
+				},
+				"brandish": {
+					"animations": ["brandish_spear"],
+					"transitions": [
+						{"attack": "q.all_animations_finished && v.attack_time>0.0"},
+						{"default": "!v.is_brandishing_spear"}
+					],
+					"blend_transition": 0.1
+				},
+				"attack": {
+					"animations": ["spear_attack"],
+					"transitions": [
+						{"default": "q.all_animations_finished && !v.is_brandishing_spear"},
+						{"brandish": "q.all_animations_finished && v.is_brandishing_spear"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		},
+		"controller.animation.drowned.move": {
+		    "initial_state": "default",
+			"states": {
+				"default": {
+					"animations": ["walk"],
+					"transitions": [
+						{"run": "q.modified_move_speed>0.8"},
+						{"swim": "q.is_in_water && !q.is_on_ground"}
+					],
+					"blend_transition": 0.1
+				},
+				"run": {
+					"animations": ["run"],
+					"transitions": [
+						{"default": "q.modified_move_speed<=0.7"},
+						{"swim": "q.is_in_water && !q.is_on_ground"}
+					],
+					"blend_transition": 0.1
+				},
+				"swim": {
+					"animations": ["swim"],
+					"transitions": [
+						{"default": "!q.is_in_water || q.is_on_ground"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		}
+	}
+}

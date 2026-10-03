@@ -1,0 +1,99 @@
+{
+	"format_version": "1.19.0",
+	"animation_controllers": {
+		"controller.animation.pillager.attack": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"animations": ["hold_crossbow"],
+					"transitions": [
+						{"charge": "v.attack_state == 2"},
+						{"aiming": "v.attack_state != 2 && q.facing_target_to_range_attack"}
+					],
+					"blend_transition": 0.1
+				},
+				"charge": {
+					"animations": ["charge_crossbow"],
+					"transitions": [
+						{"default": "v.attack_state != 2 && !q.facing_target_to_range_attack"},
+						{"aiming": "v.attack_state != 2 && q.facing_target_to_range_attack"}
+					],
+					"blend_transition": 0.1
+				},
+				"aiming": {
+					"animations": ["aiming"],
+					"transitions": [
+						{"default": "v.attack_state == 0 || !q.facing_target_to_range_attack"},
+						{"charge": "v.attack_state == 2"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		},
+		"controller.animation.pillager.move": {
+			"states": {
+				"default": {
+					"animations": ["idle", "walk"],
+					"transitions": [
+						{"run": "q.modified_move_speed>0.5"},
+						{"swim": "q.is_in_water && !q.is_on_ground"}
+					],
+					"blend_transition": 0.1,
+					"blend_via_shortest_path": true
+				},
+				"run": {
+					"animations": ["run"],
+					"transitions": [
+						{"default": "q.modified_move_speed<0.5"},
+						{"swim": "q.is_in_water && !q.is_on_ground"}
+					],
+					"blend_transition": 0.1,
+					"blend_via_shortest_path": true
+				},
+				"swim": {
+					"animations": ["swim"],
+					"transitions": [
+						{"default": "!q.is_in_water || q.is_on_ground"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		},
+		"controller.animation.pillager.angry": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"angry": "q.has_target"}
+					],
+					"blend_transition": 0.1
+				},
+				"angry": {
+					"animations": ["angry"],
+					"transitions": [
+						{"default": "!q.has_target"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		},
+		"controller.animation.pillager.celebrating": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"celebrating": "q.is_celebrating"}
+					],
+					"blend_transition": 0.2
+				},
+				"celebrating": {
+					"animations": ["celebrating"],
+					"transitions": [
+						{"default": "!q.is_celebrating"}
+					],
+					"blend_transition": 0.2
+				}
+			}
+		}
+	}
+}

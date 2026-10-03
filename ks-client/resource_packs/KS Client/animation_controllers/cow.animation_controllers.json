@@ -1,0 +1,56 @@
+{
+	"format_version": "1.19.0",
+	"animation_controllers": {
+		"controller.animation.cow.move": {
+			"states": {
+				"default": {
+					"animations": ["walk", "idle"],
+					"transitions": [
+						{"run": "q.ground_speed>3.5"},
+						{"float": "q.is_in_water && !q.is_on_ground"}
+					],
+					"blend_transition": 0.1
+				},
+				"run": {
+					"animations": ["run"],
+					"transitions": [
+						{"default": "q.ground_speed<3.0"},
+						{"float": "q.is_in_water && !q.is_on_ground"}
+					],
+					"blend_transition": 0.1
+				},
+				"float": {
+					"animations": ["float"],
+					"transitions": [
+						{"default": "!q.is_in_water || q.is_on_ground"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		},
+		"controller.animation.cow.landing": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"fall": "!q.is_in_water && !q.is_on_ground"}
+					]
+				},
+				"fall": {
+					"transitions": [
+						{"default": "q.is_in_water && !q.is_on_ground"},
+						{"landing": "q.is_on_ground"}
+					],
+					"blend_transition": 0.1
+				},
+				"landing": {
+					"animations": ["landing"],
+					"transitions": [
+						{"default": "q.all_animations_finished"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"format_version": "1.19.0",
+	"animation_controllers": {
+		"controller.animation.creeper.explodes": {
+		    "initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"explodes": "q.is_ignited"}
+					],
+					"blend_transition": 0.1
+				},
+				"explodes": {
+					"animations": ["explodes"],
+					"transitions": [
+						{"default": "!q.is_ignited"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		}
+	}
+}

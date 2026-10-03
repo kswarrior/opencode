@@ -1,0 +1,151 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.drowned.swim": {
+			"loop": true,
+			"bones": {
+				"all": {
+					"rotation": [20, 0, 0],
+					"position": [0, "2.5+math.cos(q.anim_time*270+40)", 0]
+				},
+				"rightArm": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": ["-15-math.cos(q.anim_time*270)*5", 0, 0]
+				},
+				"leftArm": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": ["-15-math.cos(q.anim_time*270+40)*5", 0, 0]
+				},
+				"leftLeg": {
+					"rotation": [0, 0, "-5-math.sin(q.anim_time*180)*5"]
+				},
+				"leftLeg_root": {
+					"rotation": ["(-math.cos(q.anim_time*270)*25)+math.max(-math.sin(q.anim_time*270)*15, 0)", 0, 3],
+					"position": [0, "1-math.sin(q.anim_time*270)*2", "-math.cos(q.anim_time*270)*5"]
+				},
+				"rightLeg": {
+					"rotation": [0, 0, "5-math.sin(q.anim_time*180)*5"]
+				},
+				"rightLeg_root": {
+					"rotation": ["(math.cos(q.anim_time*270)*25)+math.max(math.sin(q.anim_time*270)*15, 0)", 0, -3],
+					"position": [0, "1+math.sin(q.anim_time*270)*2", "math.cos(q.anim_time*270)*5"]
+				},
+				"body": {
+					"rotation": [5, 0, 0]
+				},
+				"head": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": ["-math.sin(q.anim_time*270)*4", 0, "math.cos(q.anim_time*270)*4"]
+				}
+			}
+		},
+		"animation.drowned.brandish_spear": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1,
+			"bones": {
+				"waist": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.4583": [7.92, 5.73, 0],
+						"1.0": [-10, 12.5, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.375": [0, -1, 0],
+						"0.625": [0, -1, 0],
+						"1.0": [0, 0, 0]
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.3333": [5, 0, 0],
+						"0.6667": [-10, 0, 0],
+						"1.0": [0, 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.375": [0, 0, 6],
+						"0.625": [0, 0, -10],
+						"0.7083": [0, 7.5, -7.78],
+						"0.7917": [0, -7.5, -5.56],
+						"0.875": [0, 4.5, -3.34],
+						"1.0": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.2083": [0, 1, 0],
+						"0.5833": [0, -1, 0],
+						"1.0": [0, 0, 0]
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"0.0": ["0-this", "0-this", "0-this"],
+						"0.5": ["-40-this", "-20-this", "-15-this"],
+						"1.0": ["-190-this", "0-this", "-30-this"]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.25": [0, -2, 0],
+						"0.75": [0, 1.75, 0],
+						"1.0": [0, 1, 0]
+					}
+				}
+			}
+		},
+		"animation.drowned.spear_attack": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.5,
+			"bones": {
+				"waist": {
+					"rotation": {
+						"0.0": [-10, 12.5, 0],
+						"0.25": [10, -12.5, 0],
+						"0.5": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.1667": [0, -2, 0],
+						"0.4167": [0, 0, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.1667": [-12, 0, 0],
+						"0.3333": [10, 0, 0],
+						"0.5": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.125": [0, 1.5, 0],
+						"0.25": [0, -1, 0],
+						"0.5": [0, 0, 0]
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"0.0": ["-190-this", "0-this", "-30-this"],
+						"0.0833": ["-85-this", "0-this", "-15-this"],
+						"0.1667": ["0-this", "0-this", "-15-this"],
+						"0.25": ["0-this", "0-this", "0-this"]
+					},
+					"position": {
+						"0.0": [0, 1, 0],
+						"0.1667": [0, -1, -2],
+						"0.25": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

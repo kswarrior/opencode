@@ -1,0 +1,23 @@
+{
+	"format_version": "1.19.0",
+	"animation_controllers": {
+		"controller.animation.horse.rear": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"rear": "v.stand_anim>0.5"}
+					],
+					"blend_transition": 0.1
+				},
+				"rear": {
+					"animations": ["rear"],
+					"transitions": [
+						{"default": "v.stand_anim<=0.5"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		}
+	}
+}

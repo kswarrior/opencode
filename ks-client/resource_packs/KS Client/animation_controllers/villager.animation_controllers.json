@@ -1,0 +1,80 @@
+{
+	"format_version": "1.19.0",
+	"animation_controllers": {
+		"controller.animation.villager.move": {
+			"states": {
+				"default": {
+					"animations": ["idle", "walk"],
+					"transitions": [
+						{"run": "(q.modified_move_speed>0.8 && q.is_avoiding_mobs) || (q.modified_move_speed>0.3 && q.is_baby)"},
+						{"swim": "q.is_in_water && !q.is_on_ground"},
+						{"sleep": "q.is_sleeping"}
+					],
+					"blend_transition": 0.1,
+					"blend_via_shortest_path": true
+				},
+				"run": {
+					"animations": ["run"],
+					"transitions": [
+						{"default": "q.is_baby ? q.modified_move_speed<0.3 : (q.modified_move_speed<0.5 || !q.is_avoiding_mobs)"},
+						{"swim": "q.is_in_water && !q.is_on_ground"},
+						{"sleep": "q.is_sleeping"}
+					],
+					"blend_transition": 0.1,
+					"blend_via_shortest_path": true
+				},
+				"swim": {
+					"animations": ["swim"],
+					"transitions": [
+						{"default": "!q.is_in_water || q.is_on_ground"},
+						{"sleep": "q.is_sleeping"}
+					],
+					"blend_transition": 0.1
+				},
+				"sleep": {
+					"animations": ["sleep"],
+					"transitions": [
+						{"default": "!q.is_sleeping"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		},
+		"controller.animation.villager.panic": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"panic": "q.is_avoiding_mobs || q.is_in_water || q.is_on_fire || math.abs(q.vertical_speed) > 4"}
+					],
+					"blend_transition": 0.1
+				},
+				"panic": {
+					"animations": ["panic"],
+					"transitions": [
+						{"default": "!q.is_avoiding_mobs && !q.is_in_water && !q.is_on_fire && math.abs(q.vertical_speed) < 4"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		},
+		"controller.animation.villager.nose_yaw": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"yaw": "math.abs(q.target_y_rotation)>10"}
+					],
+					"blend_transition": 0.1
+				},
+				"yaw": {
+					"animations": ["nose_yaw"],
+					"transitions": [
+						{"default": "math.abs(q.target_y_rotation)<10"}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		}
+	}
+}

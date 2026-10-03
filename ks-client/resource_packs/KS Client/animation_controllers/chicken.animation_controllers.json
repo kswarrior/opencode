@@ -1,0 +1,52 @@
+{
+	"format_version": "1.19.0",
+	"animation_controllers": {
+		"controller.animation.chicken.move": {
+		    "initial_state": "default",
+			"states": {
+				"default": {
+					"animations": ["walk", "idle"],
+					"transitions": [
+						{"fly": "(!q.is_on_ground && !q.is_in_water) || q.ground_speed>3.5"},
+						{"swim": "!q.is_on_ground && q.is_in_water"}
+					],
+					"blend_transition": 0.2
+				},
+				"fly": {
+					"animations": ["fly"],
+					"transitions": [
+						{"default": "q.is_on_ground && q.ground_speed<2.3"},
+						{"swim": "!q.is_on_ground && q.is_in_water"}
+					],
+					"blend_transition": 0.2
+				},
+				"swim": {
+					"animations": ["swim"],
+					"transitions": [
+						{"default": "q.is_on_ground"},
+						{"fly": "!q.is_on_ground && !q.is_in_water"}
+					],
+					"blend_transition": 0.2
+				}
+			}
+		},
+		"controller.animation.chicken.peck": {
+		    "initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{"peck": "q.modified_move_speed<0.5"}
+					],
+					"blend_transition": 0.1
+				},
+				"peck": {
+					"animations": ["peck"],
+					"transitions": [
+						{"default": "q.modified_move_speed>0.8"}
+					],
+					"blend_transition": 0.2
+				}
+			}
+		}
+	}
+}
