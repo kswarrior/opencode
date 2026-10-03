@@ -261,6 +261,37 @@
 
   // (Profile card removed: username now lives in the profile button.)
 
+  // ---------- Social button below the settings button (top-left) ----------
+  // Friends/social entry moved out of the top-right cluster (bell only).
+  // Same vanilla press path as before, just re-parented under settings.
+  "ks_social_below_settings": {
+    "type": "panel",
+    "size": [ 40, 32 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 44 ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_social_slot": {
+          "type": "panel",
+          "size": [ 40, 32 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "controls": [
+            {
+              "friendsdrawer_button@friendsbutton.button_panel": {
+                "size": [ 40, 32 ],
+                "$context": "start"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
   // ---------- Bottom-left row: SAME 264x32 at (8,-8), glass pill + divider ----------
   "ks_bottom_left_row": {
     "type": "panel",
