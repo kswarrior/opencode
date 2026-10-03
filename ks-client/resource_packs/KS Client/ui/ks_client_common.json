@@ -211,19 +211,6 @@
     ]
   },
 
-  // ---------- Fullscreen solid-black background, zero gaps ----------
-  // 16x16 opaque black ks_bg.png stretched to 100%x100% from top_left.
-  // Explicit anchors + Bilinear off = crisp fill, no 1px seams on any ratio.
-  "ks_bg": {
-    "type": "image",
-    "texture": "textures/ui/ks_bg",
-    "size": [ "100%", "100%" ],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "offset": [ 0, 0 ],
-    "layer": -1,
-    "bilinear": false
-  },
   "ks_top_bar": {
     "type": "panel",
     "size": [ 154, 30 ],

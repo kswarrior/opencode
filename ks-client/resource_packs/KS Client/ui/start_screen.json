@@ -497,7 +497,6 @@
       }
     ],
     "controls": [
-      { "ks_bg@ks_client.ks_bg": {} },
       { "ks_edge_left@ks_client.ks_edge_left": {} },
       { "ks_edge_right@ks_client.ks_edge_right": {} },
       {
