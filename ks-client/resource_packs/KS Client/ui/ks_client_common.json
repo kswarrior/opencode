@@ -79,6 +79,36 @@
     ]
   },
 
+  // ---------- Dressing room button: square like settings, same borderless pattern ----------
+  // $pressed_button_name button.menu_skins = vanilla start-screen change-skin
+  // action (opens the character / dressing-room editor). Same engine press path.
+  "ks_dressing_button@common_buttons.no_background_content_button": {
+    "size": [ 30, 30 ],
+    "$button_text": "",
+    "$button_content": "ks_client.dressing_icon_content",
+    "$pressed_button_name": "button.menu_skins",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ]
+  },
+
+  "dressing_icon_content": {
+    "type": "panel",
+    "size": [ 30, 30 ],
+    "controls": [
+      {
+        "dressing_icon_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_icon_dressing",
+          "size": [ 30, 30 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ]
+        }
+      }
+    ]
+  },
+
   // ---------- Profile button: [avatar + username], borderless like settings ----------
   // Replaces vanilla (avatar + static "Profile" text). Same engine press path.
   "ks_profile_button@common_buttons.no_background_content_button": {
