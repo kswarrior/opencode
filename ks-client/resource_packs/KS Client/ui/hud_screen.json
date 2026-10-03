@@ -1,0 +1,39 @@
+{
+  "namespace": "hud",
+
+  // Top F1 button (hide GUI, same as F1 key).
+  // UI-only action, safe to expose on HUD.
+  "ks_f1_button@common_buttons.light_text_button": {
+    "size": [ 36, 28 ],
+    "$button_text": "F1",
+    "$pressed_button_name": "button.hide_gui"
+  },
+
+  "ks_f1_top": {
+    "type": "panel",
+    "size": [ 36, 28 ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ 0, 4 ],
+    "layer": 5,
+    "controls": [
+      {
+        "ks_f1_button@hud.ks_f1_button": {}
+      }
+    ]
+  },
+
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "ks_f1_top@hud.ks_f1_top": {}
+          }
+        ]
+      }
+    ]
+  }
+}
