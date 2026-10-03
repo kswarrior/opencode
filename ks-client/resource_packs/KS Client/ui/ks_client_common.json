@@ -152,7 +152,13 @@
                 "anchor_to": "center",
                 "offset": [ 0, 0 ],
                 "layer": 1,
-                "$gamerpic_visible": "#show_gamerpic"
+                "$gamerpic_visible": "#show_gamerpic",
+                "bindings": [
+                  {
+                    "binding_name": "#show_gamerpic",
+                    "binding_name_override": "#visible"
+                  }
+                ]
               }
             },
             {
@@ -246,6 +252,9 @@
           "type": "stack_panel",
           "orientation": "horizontal",
           "size": [ 154, 30 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ],
           "layer": 2,
           "controls": [
             {
@@ -323,6 +332,9 @@
           "type": "stack_panel",
           "orientation": "horizontal",
           "size": [ 264, 32 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ],
           "layer": 2,
           "controls": [
             {

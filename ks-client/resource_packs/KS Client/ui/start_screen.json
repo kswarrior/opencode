@@ -14,7 +14,7 @@
     "layer": 1,
     "clips_children": true,
     "controls": [
-      { "viewer_panel@start.skin_viewer_panel": { "size": [ "100%", "fill" ], "offset": [ 0, 12 ] } }
+      { "viewer_panel@start.skin_viewer_panel": { "size": [ "100%", 112 ], "offset": [ 0, 12 ] } }
     ]
   },
 
@@ -23,7 +23,7 @@
   // (Vanilla text_panel/copyright/development_version are fully replaced.)
   "text_panel": {
     "type": "panel",
-    "size": [ "100%-2px", 10 ],
+    "size": [ "100% - 2px", 10 ],
     "offset": [ 0, -52 ],
     "anchor_from": "bottom_middle",
     "anchor_to": "bottom_middle",
