@@ -90,7 +90,8 @@
     ]
   },
 
-  // Full-screen MENU: custom bg PNG, tabs General / Info, close via Config.
+  // Full-screen MENU: 600 wide (2x old 300), 300 tall (-40). Custom bg PNG.
+  // Tabs General (Coming soon) / Info (HUD switches, Asteroid icons).
   "ks_menu_full": {
     "type": "panel",
     "size": [ "100%", "100%" ],
@@ -120,7 +121,7 @@
       {
         "ks_menu_card": {
           "type": "panel",
-          "size": [ 300, 340 ],
+          "size": [ 600, 300 ],
           "anchor_from": "center",
           "anchor_to": "center",
           "offset": [ 0, 0 ],
@@ -163,7 +164,7 @@
                 "controls": [
                   {
                     "ks_tab_general@common_toggles.light_text_toggle": {
-                      "size": [ 138, 26 ],
+                      "size": [ 283, 26 ],
                       "$button_text": "General",
                       "$toggle_name": "ks_tab_general",
                       "$toggle_view_binding_name": "ks_tab_general_state"
@@ -177,7 +178,7 @@
                   },
                   {
                     "ks_tab_info@common_toggles.light_text_toggle": {
-                      "size": [ 138, 26 ],
+                      "size": [ 283, 26 ],
                       "$button_text": "Info",
                       "$toggle_name": "ks_tab_info",
                       "$toggle_view_binding_name": "ks_tab_info_state"
@@ -190,7 +191,7 @@
               "ks_general_page": {
                 "type": "panel",
                 "visible": false,
-                "size": [ "100% - 20px", 220 ],
+                "size": [ "100% - 20px", 190 ],
                 "anchor_from": "top_middle",
                 "anchor_to": "top_middle",
                 "offset": [ 0, 70 ],
@@ -208,7 +209,7 @@
                   {
                     "ks_general_label": {
                       "type": "label",
-                      "size": [ "100%", 100 ],
+                      "size": [ "100%", 80 ],
                       "anchor_from": "center",
                       "anchor_to": "center",
                       "offset": [ 0, -20 ],
@@ -228,7 +229,7 @@
                       "size": [ "100%", 40 ],
                       "anchor_from": "center",
                       "anchor_to": "center",
-                      "offset": [ 0, 40 ],
+                      "offset": [ 0, 35 ],
                       "color": [ 160, 220, 235 ],
                       "localize": false,
                       "text_alignment": "center",
@@ -245,7 +246,7 @@
               "ks_info_page": {
                 "type": "panel",
                 "visible": false,
-                "size": [ "100% - 20px", 220 ],
+                "size": [ "100% - 20px", 190 ],
                 "anchor_from": "top_middle",
                 "anchor_to": "top_middle",
                 "offset": [ 0, 70 ],
@@ -281,7 +282,7 @@
                     "ks_info_stack": {
                       "type": "stack_panel",
                       "orientation": "vertical",
-                      "size": [ "100%", 180 ],
+                      "size": [ "100%", 168 ],
                       "anchor_from": "top_middle",
                       "anchor_to": "top_middle",
                       "offset": [ 0, 22 ],
@@ -304,12 +305,28 @@
                                 }
                               },
                               {
-                                "ks_i_fps_t@common_toggles.light_text_toggle": {
-                                  "size": [ "100% - 32px", 22 ],
+                                "ks_i_fps_name": {
+                                  "type": "label",
+                                  "size": [ 200, 22 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 30, 0 ],
+                                  "color": [ 255, 255, 255 ],
+                                  "shadow": true,
+                                  "localize": false,
+                                  "text_alignment": "left",
+                                  "font_size": "small",
+                                  "font_scale_factor": 0.9,
+                                  "layer": 1,
+                                  "text": "FPS"
+                                }
+                              },
+                              {
+                                "ks_i_fps_sw@common_toggles.switch_toggle": {
+                                  "size": [ 46, 22 ],
                                   "anchor_from": "right_middle",
                                   "anchor_to": "right_middle",
-                                  "offset": [ 0, 0 ],
-                                  "$button_text": "FPS",
+                                  "offset": [ -4, 0 ],
                                   "$toggle_name": "ks_hud_fps",
                                   "$toggle_view_binding_name": "ks_hud_fps_state"
                                 }
@@ -334,12 +351,28 @@
                                 }
                               },
                               {
-                                "ks_i_coords_t@common_toggles.light_text_toggle": {
-                                  "size": [ "100% - 32px", 22 ],
+                                "ks_i_coords_name": {
+                                  "type": "label",
+                                  "size": [ 200, 22 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 30, 0 ],
+                                  "color": [ 255, 255, 255 ],
+                                  "shadow": true,
+                                  "localize": false,
+                                  "text_alignment": "left",
+                                  "font_size": "small",
+                                  "font_scale_factor": 0.9,
+                                  "layer": 1,
+                                  "text": "Coordinates"
+                                }
+                              },
+                              {
+                                "ks_i_coords_sw@common_toggles.switch_toggle": {
+                                  "size": [ 46, 22 ],
                                   "anchor_from": "right_middle",
                                   "anchor_to": "right_middle",
-                                  "offset": [ 0, 0 ],
-                                  "$button_text": "Coordinates",
+                                  "offset": [ -4, 0 ],
                                   "$toggle_name": "ks_hud_coords",
                                   "$toggle_view_binding_name": "ks_hud_coords_state"
                                 }
@@ -364,12 +397,28 @@
                                 }
                               },
                               {
-                                "ks_i_dir_t@common_toggles.light_text_toggle": {
-                                  "size": [ "100% - 32px", 22 ],
+                                "ks_i_dir_name": {
+                                  "type": "label",
+                                  "size": [ 200, 22 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 30, 0 ],
+                                  "color": [ 255, 255, 255 ],
+                                  "shadow": true,
+                                  "localize": false,
+                                  "text_alignment": "left",
+                                  "font_size": "small",
+                                  "font_scale_factor": 0.9,
+                                  "layer": 1,
+                                  "text": "Direction"
+                                }
+                              },
+                              {
+                                "ks_i_dir_sw@common_toggles.switch_toggle": {
+                                  "size": [ 46, 22 ],
                                   "anchor_from": "right_middle",
                                   "anchor_to": "right_middle",
-                                  "offset": [ 0, 0 ],
-                                  "$button_text": "Direction",
+                                  "offset": [ -4, 0 ],
                                   "$toggle_name": "ks_hud_dir",
                                   "$toggle_view_binding_name": "ks_hud_dir_state"
                                 }
@@ -394,12 +443,28 @@
                                 }
                               },
                               {
-                                "ks_i_armor_t@common_toggles.light_text_toggle": {
-                                  "size": [ "100% - 32px", 22 ],
+                                "ks_i_armor_name": {
+                                  "type": "label",
+                                  "size": [ 200, 22 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 30, 0 ],
+                                  "color": [ 255, 255, 255 ],
+                                  "shadow": true,
+                                  "localize": false,
+                                  "text_alignment": "left",
+                                  "font_size": "small",
+                                  "font_scale_factor": 0.9,
+                                  "layer": 1,
+                                  "text": "Armor Hud"
+                                }
+                              },
+                              {
+                                "ks_i_armor_sw@common_toggles.switch_toggle": {
+                                  "size": [ 46, 22 ],
                                   "anchor_from": "right_middle",
                                   "anchor_to": "right_middle",
-                                  "offset": [ 0, 0 ],
-                                  "$button_text": "Armor Hud",
+                                  "offset": [ -4, 0 ],
                                   "$toggle_name": "ks_hud_armor",
                                   "$toggle_view_binding_name": "ks_hud_armor_state"
                                 }
@@ -424,12 +489,28 @@
                                 }
                               },
                               {
-                                "ks_i_boss_t@common_toggles.light_text_toggle": {
-                                  "size": [ "100% - 32px", 22 ],
+                                "ks_i_boss_name": {
+                                  "type": "label",
+                                  "size": [ 200, 22 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 30, 0 ],
+                                  "color": [ 255, 255, 255 ],
+                                  "shadow": true,
+                                  "localize": false,
+                                  "text_alignment": "left",
+                                  "font_size": "small",
+                                  "font_scale_factor": 0.9,
+                                  "layer": 1,
+                                  "text": "Bossbar"
+                                }
+                              },
+                              {
+                                "ks_i_boss_sw@common_toggles.switch_toggle": {
+                                  "size": [ 46, 22 ],
                                   "anchor_from": "right_middle",
                                   "anchor_to": "right_middle",
-                                  "offset": [ 0, 0 ],
-                                  "$button_text": "Bossbar",
+                                  "offset": [ -4, 0 ],
                                   "$toggle_name": "ks_hud_boss",
                                   "$toggle_view_binding_name": "ks_hud_boss_state"
                                 }
@@ -454,12 +535,28 @@
                                 }
                               },
                               {
-                                "ks_i_chat_t@common_toggles.light_text_toggle": {
-                                  "size": [ "100% - 32px", 22 ],
+                                "ks_i_chat_name": {
+                                  "type": "label",
+                                  "size": [ 200, 22 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 30, 0 ],
+                                  "color": [ 255, 255, 255 ],
+                                  "shadow": true,
+                                  "localize": false,
+                                  "text_alignment": "left",
+                                  "font_size": "small",
+                                  "font_scale_factor": 0.9,
+                                  "layer": 1,
+                                  "text": "Chat"
+                                }
+                              },
+                              {
+                                "ks_i_chat_sw@common_toggles.switch_toggle": {
+                                  "size": [ 46, 22 ],
                                   "anchor_from": "right_middle",
                                   "anchor_to": "right_middle",
-                                  "offset": [ 0, 0 ],
-                                  "$button_text": "Chat",
+                                  "offset": [ -4, 0 ],
                                   "$toggle_name": "ks_hud_chat",
                                   "$toggle_view_binding_name": "ks_hud_chat_state"
                                 }
@@ -484,12 +581,28 @@
                                 }
                               },
                               {
-                                "ks_i_score_t@common_toggles.light_text_toggle": {
-                                  "size": [ "100% - 32px", 22 ],
+                                "ks_i_score_name": {
+                                  "type": "label",
+                                  "size": [ 200, 22 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 30, 0 ],
+                                  "color": [ 255, 255, 255 ],
+                                  "shadow": true,
+                                  "localize": false,
+                                  "text_alignment": "left",
+                                  "font_size": "small",
+                                  "font_scale_factor": 0.9,
+                                  "layer": 1,
+                                  "text": "Scoreboard"
+                                }
+                              },
+                              {
+                                "ks_i_score_sw@common_toggles.switch_toggle": {
+                                  "size": [ 46, 22 ],
                                   "anchor_from": "right_middle",
                                   "anchor_to": "right_middle",
-                                  "offset": [ 0, 0 ],
-                                  "$button_text": "Scoreboard",
+                                  "offset": [ -4, 0 ],
                                   "$toggle_name": "ks_hud_score",
                                   "$toggle_view_binding_name": "ks_hud_score_state"
                                 }
