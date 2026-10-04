@@ -3,7 +3,9 @@
   "texture_name": "atlas.items",
   "texture_data": {
     "ks_mace": {
-      "textures": "textures/items/ks_mace_icon"
+      "textures": [
+        "textures/items/ks_mace_icon"
+      ]
     }
   }
 }
