@@ -112,7 +112,7 @@
   // Visible <=> MENU toggle ON. Same binding on right sidebar = both always in sync.
   "ks_left_sidebar": {
     "type": "panel",
-    "size": [ 190, 300 ],
+    "size": [ 190, 320 ],
     "visible": false,
     "anchor_from": "left_middle",
     "anchor_to": "left_middle",
@@ -142,7 +142,7 @@
         "ks_left_stack": {
           "type": "stack_panel",
           "orientation": "vertical",
-          "size": [ 174, 250 ],
+          "size": [ 174, 270 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [ 8, 32 ],
@@ -320,7 +320,7 @@
   // ---------- RIGHT sidebar (settings) ----------
   "ks_right_sidebar": {
     "type": "panel",
-    "size": [ 190, 300 ],
+    "size": [ 190, 320 ],
     "visible": false,
     "anchor_from": "right_middle",
     "anchor_to": "right_middle",
@@ -350,7 +350,7 @@
         "ks_right_stack": {
           "type": "stack_panel",
           "orientation": "vertical",
-          "size": [ 174, 250 ],
+          "size": [ 174, 270 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [ 8, 32 ],
