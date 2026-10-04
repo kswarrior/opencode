@@ -4,13 +4,14 @@
   // ---------- MENU master button (Android-touch bulletproof) ----------
   // Raw common.toggle with local binding ($toggle_binding_type:none) + touch-first
   // ($toggle_focus_enabled:false like vanilla hotbar touch buttons).
-  // 84x36 = fat-finger target, 8px margins. Checked = cyan flash so you SEE the tap.
+  // 84x36 = fat-finger target. Y=48 sits BELOW vanilla pause/chat cluster
+  // (pause occupies y8-40), so taps never hit vanilla + MENU together.
   "ks_menu_holder": {
     "type": "panel",
     "size": [ 84, 36 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
-    "offset": [ -92, 8 ],
+    "offset": [ -92, 48 ],
     "layer": 100,
     "controls": [
       {
