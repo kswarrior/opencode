@@ -280,14 +280,16 @@
 
   // (Profile card removed: username now lives in the profile button.)
 
-  // ---------- Dressing room square left of social (top-left, under settings) ----------
-  // 30x30 like the settings button, left of the social entry.
+  // ---------- Dressing room square left of doll, bottom-aligned with doll ----------
+  // 30x30 like the settings button. Anchored bottom_middle so its bottom edge
+  // sits exactly on the doll (skin_panel) bottom: same Y offset "-10% - 36px".
+  // X "-25% + 12px" = left of doll with ~10px gap (doll half-width is 25% - 37.5px).
   "ks_dressing_below_settings": {
     "type": "panel",
     "size": [ 30, 30 ],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "offset": [ 8, 44 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ "-25% + 12px", "-10% - 36px" ],
     "layer": 2,
     "controls": [
       {
@@ -310,13 +312,13 @@
   // ---------- Social button below the settings button (top-left) ----------
   // Friends/social entry moved out of the top-right cluster (bell only).
   // Same vanilla press path as before, just re-parented under settings.
-  // Shifted right to sit under the top-bar divider line: x 8 -> 40.
+  // Dressing moved to the doll, so social slides left to x=8 to fill the gap.
   "ks_social_below_settings": {
     "type": "panel",
     "size": [ 40, 32 ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
-    "offset": [ 40, 44 ],
+    "offset": [ 8, 44 ],
     "layer": 2,
     "controls": [
       {
