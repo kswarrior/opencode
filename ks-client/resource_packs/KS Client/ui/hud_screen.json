@@ -36,7 +36,7 @@
   // ---------- Shared sidebar visuals ----------
   "ks_sidebar_bg": {
     "type": "image",
-    "texture": "textures/ui/White",
+    "texture": "textures/ui/white",
     "size": [ "100%", "100%" ],
     "color": [ 12, 16, 24 ],
     "alpha": 0.92,
