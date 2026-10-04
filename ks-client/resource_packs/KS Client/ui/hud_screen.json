@@ -1,16 +1,16 @@
 {
   "namespace": "hud",
 
-  // ---------- MENU master button (BedrockPlus-proven pattern) ----------
-  // Raw common.toggle (NOT the light_text_toggle template) with a custom $toggle_name.
-  // ks_menu_state flips on tap; both sidebars bind to it (ON = visible, OFF = hidden).
-  // No draggable, no prevent_touch_input: taps must reach the toggle. Click = random.click sound.
+  // ---------- MENU master button (Android-touch bulletproof) ----------
+  // Raw common.toggle with local binding ($toggle_binding_type:none) + touch-first
+  // ($toggle_focus_enabled:false like vanilla hotbar touch buttons).
+  // 84x36 = fat-finger target, 8px margins. Checked = cyan flash so you SEE the tap.
   "ks_menu_holder": {
     "type": "panel",
-    "size": [ 64, 28 ],
+    "size": [ 84, 36 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
-    "offset": [ -72, 8 ],
+    "offset": [ -92, 8 ],
     "layer": 100,
     "controls": [
       {
@@ -43,13 +43,16 @@
           "anchor_to": "top_left",
           "offset": [ 0, 0 ],
           "layer": 3,
+          "enabled": true,
+          "visible": true,
           "$toggle_name": "ks_menu_open",
           "$toggle_default_state": false,
           "$toggle_binding_type": "none",
+          "$toggle_focus_enabled": false,
           "$unchecked_control": "common.empty_panel",
-          "$checked_control": "common.empty_panel",
+          "$checked_control": "hud.ks_menu_checked",
           "$unchecked_hover_control": "common.empty_panel",
-          "$checked_hover_control": "common.empty_panel",
+          "$checked_hover_control": "hud.ks_menu_checked",
           "$unchecked_locked_control": "common.empty_panel",
           "$unchecked_locked_hover_control": "common.empty_panel",
           "$checked_locked_control": "common.empty_panel",
@@ -72,12 +75,27 @@
   },
 
   // ---------- Shared sidebar visuals ----------
-  "ks_sidebar_bg": {
+  // Cyan flash overlay: visible ONLY when MENU toggle is ON (tap feedback).
+  // Translucent so MENU label still shows through. If you see this flash but no
+  // sidebars, touch works and view-binding is broken. If no flash, touch is blocked.
+  "ks_menu_checked": {
     "type": "image",
     "texture": "textures/ui/white",
     "size": [ "100%", "100%" ],
-    "color": [ 12, 16, 24 ],
-    "alpha": 0.92,
+    "color": [ 0, 200, 255 ],
+    "alpha": 0.35,
+    "layer": 0
+  },
+
+  // Sidebar background = YOUR custom PNG. Replace this file with any art
+  // (same name + same folder) and both sidebars update. 64x64 stretches to
+  // 190x320, or use 190x320 for pixel-perfect. No tint (white) = true colors.
+  "ks_sidebar_bg": {
+    "type": "image",
+    "texture": "textures/ui/ks_sidebar_bg",
+    "size": [ "100%", "100%" ],
+    "color": [ 255, 255, 255 ],
+    "alpha": 1.0,
     "layer": 0
   },
 
