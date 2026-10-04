@@ -88,49 +88,48 @@
         "texture": "spawn_egg_ravager"
       },
       "animations": {
-        "walk": "animation.ravager.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "idle_mouth": "animation.ravager.idle_mouth",
-        "stunned": "animation.ravager.stunned",
-        "roaring": "animation.ravager.roaring",
-        "move": "controller.animation.ravager.move",
-        "head": "controller.animation.ravager.head_movement",
-        "biting": "animation.ravager.biting",
-        "health_bar": "animation.health_bar",
-        "look_at": "animation.ravager.look_at",
-        "run": "animation.ravager.run",
+        "base": "animation.ravager.base",
+        "looking": "animation.ravager.looking",
+        "base_face": "animation.ravager.base_face",
+        "stun_face": "animation.ravager.stun_face",
+        "death_face": "animation.ravager.death_face",
+        "walking": "animation.ravager.walking",
+        "running": "animation.ravager.running",
+        "walking_has_target": "animation.ravager.walking_has_target",
+        "swimming": "animation.ravager.swimming",
+        "stunning": "animation.ravager.stunning",
         "roar": "animation.ravager.roar",
-        "bite": "animation.ravager.bite",
-        "nose_yaw": "animation.villager.nose_yaw",
-        "blink": "animation.ravager.blink",
-        "idle": "animation.ravager.idle",
-        "head_controller": "controller.animation.ravager.head",
-        "move_controller": "controller.animation.ravager.move",
-        "nose_yaw_controller": "controller.animation.villager.nose_yaw"
+        "attack": "animation.ravager.attack",
+        "attack_walk": "animation.ravager.attack_walk",
+        "hurt": "animation.ravager.hurt",
+        "general": "controller.animation.ravager.general",
+        "facial": "controller.animation.ravager.facial",
+        "look_target": "controller.animation.ravager.look_target",
+        "damage": "controller.animation.ravager.damage",
+        "health_bar": "animation.health_bar"
       },
       "scripts": {
         "pre_animation": [
           "variable.roar_length = 1.0;",
           "variable.bite_anim_duration = 0.75f;",
           "variable.bite_neck_length = 10;",
+          "variable.eye_target_x = query.target_y_rotation - this;",
+          "variable.eye_target_y = query.target_x_rotation - this;",
           "v.health_bar_position = 41;",
           "v.health_bar_scale = q.model_scale;",
           "v.eye_random1 = math.round(math.sin(q.life_time*42))/7.5;",
           "v.eye_random2 = math.round(math.cos(q.life_time*35))/7.5;"
         ],
         "animate": [
-          "move",
-          "head",
-          "health_bar",
-          "head_controller",
-          "move_controller",
-          "nose_yaw_controller",
-          "blink",
-          "look_at"
+          "general",
+          "facial",
+          "look_target",
+          "damage",
+          "health_bar"
         ]
       },
       "particle_effects": {
-        "stun_particles": "minecraft:stunned_emitter"
+        "stunned": "minecraft:stunned_emitter"
       }
     }
   }

@@ -84,76 +84,40 @@
           "v.health_bar_scale = q.model_scale;"
         ],
         "animate": [
-          {
-            "humanoid_big_head": "query.is_baby"
-          },
-          "look_at_target",
-          "move",
-          {
-            "riding.arms": "query.is_riding"
-          },
-          {
-            "riding.legs": "query.is_riding"
-          },
-          "holding",
-          {
-            "charging": "query.is_charging"
-          },
-          "attack_controller",
-          {
-            "brandish_spear": "variable.is_brandishing_spear"
-          },
-          "bob",
-          {
-            "damage_nearby_mobs": "variable.damage_nearby_mobs"
-          },
-          {
-            "use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 )"
-          },
-          {
-            "swimming": "variable.swim_amount > 0.0"
-          },
-          "health_bar",
-          "landing_controller",
-          "move_controller",
-          "look_at",
-          {
-            "idle": "!q.is_riding"
-          },
-          "spear_attack_controller"
+          "general",
+          "look_target",
+          "baby_zombie",
+          "damage",
+          "health_bar"
         ]
       },
       "animations": {
-        "humanoid_big_head": "animation.humanoid.big_head",
-        "look_at_target": "controller.animation.humanoid.look_at_target",
-        "look_at_target_default": "animation.humanoid.look_at_target.default",
-        "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
-        "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
-        "move": "animation.humanoid.move",
-        "riding.arms": "animation.humanoid.riding.arms",
-        "riding.legs": "animation.humanoid.riding.legs",
-        "holding": "animation.humanoid.holding",
-        "brandish_spear": "animation.drowned.brandish_spear",
-        "charging": "animation.humanoid.charging",
-        "bob": "animation.humanoid.bob",
-        "damage_nearby_mobs": "animation.humanoid.damage_nearby_mobs",
-        "use_item_progress": "animation.humanoid.use_item_progress",
-        "attack_controller": "controller.animation.zombie.attack",
-        "zombie_attack_bare_hand": "animation.zombie.attack_bare_hand",
-        "attack_rotations": "animation.drowned.attack.rotations",
-        "swimming": "animation.zombie.swimming",
-        "health_bar": "animation.health_bar",
-        "look_at": "animation.zombie.look_at",
-        "walk": "animation.zombie.walk",
-        "run": "animation.zombie.run",
-        "idle": "animation.zombie.idle",
-        "attack": "animation.zombie.attack",
-        "landing": "animation.zombie.landing",
-        "swim": "animation.drowned.swim",
-        "spear_attack": "animation.drowned.spear_attack",
-        "move_controller": "controller.animation.drowned.move",
-        "spear_attack_controller": "controller.animation.drowned.brandish_spear",
-        "landing_controller": "controller.animation.cow.landing"
+        "base": "animation.zombie.drowned.v1.16.base",
+        "base2": "animation.zombie.drowned.v1.16.base2",
+        "walking": "animation.zombie.drowned.v1.16.walking",
+        "walking2": "animation.zombie.drowned.v1.16.walking2",
+        "swimming": "animation.zombie.drowned.v1.16.swimming",
+        "attack": "animation.zombie.drowned.v1.16.attack",
+        "attack_walk": "animation.zombie.drowned.v1.16.attack_walk",
+        "attack_swim": "animation.zombie.drowned.v1.16.attack_swim",
+        "charge_attack": "animation.zombie.drowned.v1.16.charge_attack",
+        "charge_move": "animation.zombie.drowned.v1.16.charge_move",
+        "attack2": "animation.zombie.drowned.v1.16.attack2",
+        "attack2_move": "animation.zombie.drowned.v1.16.attack2_move",
+        "arm_move": "animation.zombie.drowned.v1.16.arm_move",
+        "looking": "animation.zombie.drowned.v1.16.looking",
+        "riding_arms": "animation.zombie.drowned.v1.16.riding_arms",
+        "riding_arms2": "animation.zombie.drowned.v1.16.riding_arms2",
+        "riding_legs": "animation.zombie.drowned.v1.16.riding_legs",
+        "riding_attack": "animation.zombie.drowned.v1.16.riding_attack",
+        "hurt": "animation.zombie.drowned.v1.16.hurt",
+        "hurt2": "animation.zombie.drowned.v1.16.hurt2",
+        "baby": "animation.zombie.drowned.v1.16.baby",
+        "general": "controller.animation.zombie.drowned.v1.16.general",
+        "look_target": "controller.animation.zombie.drowned.v1.16.look_target",
+        "baby_zombie": "controller.animation.zombie.drowned.v1.16.baby_zombie",
+        "damage": "controller.animation.zombie.drowned.v1.16.damage",
+        "health_bar": "animation.health_bar"
       },
       "render_controllers": [
         "controller.render.drowned",

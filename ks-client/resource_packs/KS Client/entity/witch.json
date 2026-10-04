@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.8.0",
   "minecraft:client_entity": {
     "description": {
       "identifier": "minecraft:witch",
@@ -74,55 +74,53 @@
         "font0": "textures/health_bar/font/0"
       },
       "geometry": {
-        "default": "geometry.villager.witch.v1.8",
+        "default": "geometry.witch",
         "health_bar": "geometry.health_bar"
       },
       "scripts": {
         "scale": "0.9375",
         "pre_animation": [
+          "variable.eye_target_x = query.target_y_rotation - this;",
+          "variable.eye_target_y = query.target_x_rotation - this;",
           "v.health_bar_position = 44;",
           "v.health_bar_scale = q.model_scale;",
           "v.eye_random1 = math.round(math.sin(q.life_time*42))/10;",
           "v.eye_random2 = math.round(math.cos(q.life_time*35))/10;"
         ],
         "animate": [
-          "general_controller",
-          "move_controller",
-          "health_bar",
-          "nose_yaw_controller",
-          "panic_controller",
-          "landing_controller",
-          "witch_controller",
-          "look_at",
-          {
-            "blink": "!q.is_sleeping"
-          }
+          "health_bar"
         ]
       },
       "animations": {
-        "villager_general": "animation.villager.general",
-        "look_at_target": "animation.common.look_at_target",
-        "move": "animation.villager.move",
-        "general": "animation.witch.general",
-        "general_controller": "controller.animation.witch.general",
-        "move_controller": "controller.animation.villager.move",
-        "health_bar": "animation.health_bar",
-        "idle": "animation.evoker.idle",
-        "look_at": "animation.villager.look_at",
-        "walk": "animation.evoker.walk",
-        "run": "animation.evoker.run",
-        "landing": "animation.villager.landing",
-        "blink": "animation.villager.blink",
-        "panic": "animation.villager.panic",
-        "nose_yaw": "animation.villager.nose_yaw",
-        "swim": "animation.villager.swim",
-        "drink": "animation.witch.drink",
-        "throw": "animation.witch.throw",
-        "panic_controller": "controller.animation.villager.panic",
-        "witch_controller": "controller.animation.witch",
-        "landing_controller": "controller.animation.cow.landing",
-        "nose_yaw_controller": "controller.animation.villager.nose_yaw"
+        "base": "animation.witch.base",
+        "walking": "animation.witch.walking",
+        "base_face": "animation.witch.base_face",
+        "base_face2": "animation.witch.base_face2",
+        "base_face3": "animation.witch.base_face3",
+        "sleep_face": "animation.witch.sleep_face",
+        "sleep_bed": "animation.witch.sleep_bed",
+        "riding": "animation.witch.riding",
+        "death_face": "animation.witch.death_face",
+        "swimming": "animation.witch.swimming",
+        "hurt": "animation.witch.hurt",
+        "hurt2": "animation.witch.hurt2",
+        "looking": "animation.witch.looking",
+        "health_bar": "animation.health_bar"
       },
+      "animation_controllers": [
+        {
+          "common": "controller.animation.witch.common"
+        },
+        {
+          "facial": "controller.animation.witch.facial"
+        },
+        {
+          "look_target": "controller.animation.witch.look_target"
+        },
+        {
+          "damage": "controller.animation.witch.damage"
+        }
+      ],
       "render_controllers": [
         "controller.render.witch",
         "controller.render.health_bar.bar",

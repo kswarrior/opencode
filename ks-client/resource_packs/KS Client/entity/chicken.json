@@ -5,9 +5,9 @@
       "identifier": "minecraft:chicken",
       "min_engine_version": "1.12.0",
       "materials": {
-        "default": "chicken",
-        "legs": "chicken_legs",
-        "cold": "chicken_cold",
+        "default": "Material.default",
+        "legs": "Material.legs",
+        "cold": "Material.cold",
         "health_bar": "entity_emissive_alpha"
       },
       "textures": {
@@ -78,42 +78,29 @@
         "font0": "textures/health_bar/font/0"
       },
       "geometry": {
-        "default": "geometry.chicken.v1.12",
-        "warm": "geometry.chicken.v1.12",
+        "default": "geometry.chicken",
+        "warm": "geometry.chicken",
         "cold": "geometry.chicken.cold",
         "health_bar": "geometry.health_bar"
       },
       "animations": {
-        "move": "animation.chicken.move",
-        "general": "animation.chicken.general",
-        "look_at_target": "animation.common.look_at_target",
-        "baby_transform": "animation.chicken.baby_transform",
-        "health_bar": "animation.health_bar",
-        "walk": "animation.chicken.walk",
-        "idle": "animation.chicken.idle",
-        "look_at": "animation.chicken.look_at",
-        "fly": "animation.chicken.fly",
-        "swim": "animation.chicken.swim",
-        "peck": "animation.chicken.peck",
-        "blink": "animation.chicken.blink",
-        "peck_controller": "controller.animation.chicken.peck",
-        "move_controller": "controller.animation.chicken.move"
+        "base": "animation.chicken.base",
+        "walking": "animation.chicken.walking",
+        "running": "animation.chicken.running",
+        "flapping_wing": "animation.chicken.flapping_wing",
+        "swimming": "animation.chicken.swimming",
+        "hurt": "animation.chicken.hurt",
+        "looking": "animation.chicken.looking",
+        "baby": "animation.chicken.baby",
+        "common": "controller.animation.chicken.common",
+        "damage": "controller.animation.chicken.damage",
+        "health_bar": "animation.health_bar"
       },
       "scripts": {
         "animate": [
-          "general",
-          {
-            "move": "query.modified_move_speed"
-          },
-          "look_at_target",
-          {
-            "baby_transform": "query.is_baby"
-          },
-          "health_bar",
-          "peck_controller",
-          "move_controller",
-          "blink",
-          "look_at"
+          "common",
+          "damage",
+          "health_bar"
         ],
         "pre_animation": [
           "t.variant = query.property('minecraft:climate_variant');",

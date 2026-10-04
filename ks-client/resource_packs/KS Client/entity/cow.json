@@ -78,40 +78,29 @@
       },
       "geometry": {
         "default": "geometry.cow.v2",
-        "warm": "geometry.cow.warm",
-        "cold": "geometry.cow.cold",
+        "warm": "geometry.cow.v2",
+        "cold": "geometry.cow.v2",
         "health_bar": "geometry.health_bar"
       },
       "animations": {
-        "setup": "animation.cow.setup",
-        "walk": "animation.cow.walk",
-        "look_at_target": "animation.common.look_at_target",
         "baby_transform": "animation.cow.baby_transform",
-        "health_bar": "animation.health_bar",
-        "run": "animation.cow.run",
-        "idle": "animation.cow.idle",
         "blink": "animation.cow.blink",
-        "float": "animation.cow.float",
-        "look_at": "animation.cow.look_at",
-        "landing": "animation.cow.landing",
-        "move_controller": "controller.animation.cow.move",
-        "landing_controller": "controller.animation.cow.landing"
+        "look_at_target": "animation.common.look_at_target",
+        "walk": "animation.cow.walk",
+        "run": "animation.cow.run",
+        "death": "animation.cow.death",
+        "death_rot": "animation.cow.death_rot",
+        "general": "controller.animation.cow.general",
+        "death_cont": "controller.animation.cow.death",
+        "health_bar": "animation.health_bar"
       },
       "scripts": {
         "animate": [
-          "setup",
-          {
-            "walk": "query.modified_move_speed"
-          },
-          "look_at_target",
+          "death_cont",
           {
             "baby_transform": "query.is_baby"
           },
-          "health_bar",
-          "landing_controller",
-          "move_controller",
-          "look_at",
-          "blink"
+          "health_bar"
         ],
         "pre_animation": [
           "t.variant = query.property('minecraft:climate_variant');",

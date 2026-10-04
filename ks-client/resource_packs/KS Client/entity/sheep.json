@@ -3,7 +3,7 @@
   "minecraft:client_entity": {
     "description": {
       "identifier": "minecraft:sheep",
-      "min_engine_version": "1.8.0",
+      "min_engine_version": "1.18.0",
       "materials": {
         "default": "sheep",
         "health_bar": "entity_emissive_alpha"
@@ -74,46 +74,33 @@
         "font0": "textures/health_bar/font/0"
       },
       "geometry": {
-        "default": "geometry.sheep.v1.8",
-        "sheared": "geometry.sheep.sheared.v1.8",
+        "default": "geometry.sheep.bma2",
+        "sheared": "geometry.sheep.sheared.bma2",
         "health_bar": "geometry.health_bar"
       },
       "animations": {
-        "setup": "animation.sheep.setup",
-        "grazing": "animation.sheep.grazing",
-        "walk": "animation.cow.walk",
-        "look_at_target": "animation.common.look_at_target",
         "baby_transform": "animation.sheep.baby_transform",
-        "move": "controller.animation.sheep.move",
-        "health_bar": "animation.health_bar",
-        "run": "animation.cow.run",
-        "dry_wool": "animation.sheep.dry_wool",
-        "wet_wool": "animation.sheep.wet_wool",
-        "idle": "animation.cow.idle",
-        "blink": "animation.cow.blink",
-        "float": "animation.cow.float",
-        "look_at": "animation.cow.look_at",
-        "landing": "animation.cow.landing",
-        "move_controller": "controller.animation.cow.move",
-        "grazing_controller": "controller.animation.sheep.grazing",
-        "wool_controller": "controller.animation.sheep.wool",
-        "landing_controller": "controller.animation.cow.landing"
+        "look_at_target": "animation.common.look_at_target",
+        "blink": "animation.sheep.blink",
+        "idle": "animation.sheep.idle",
+        "walk": "animation.sheep.walk",
+        "walk_sheared": "animation.sheep.walk_sheared",
+        "run": "animation.sheep.run",
+        "run_sheared": "animation.sheep.run_sheared",
+        "graze": "animation.sheep.graze",
+        "death": "animation.sheep.death",
+        "death_rot": "animation.sheep.death_rot",
+        "general": "controller.animation.sheep.general",
+        "death_cont": "controller.animation.sheep.death",
+        "health_bar": "animation.health_bar"
       },
       "scripts": {
         "animate": [
-          "setup",
-          "look_at_target",
-          "move",
+          "death_cont",
           {
             "baby_transform": "query.is_baby"
           },
-          "health_bar",
-          "landing_controller",
-          "move_controller",
-          "grazing_controller",
-          "look_at",
-          "wool_controller",
-          "blink"
+          "health_bar"
         ],
         "pre_animation": [
           "v.health_bar_position = q.is_baby ? 38 : 26;",
