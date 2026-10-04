@@ -74,6 +74,7 @@
   "ks_left_sidebar": {
     "type": "panel",
     "size": [ 190, 300 ],
+    "visible": false,
     "anchor_from": "left_middle",
     "anchor_to": "left_middle",
     "offset": [ 8, 0 ],
@@ -135,6 +136,7 @@
             {
               "ks_fx_detail": {
                 "type": "label",
+                "visible": false,
                 "size": [ 174, 18 ],
                 "color": [ 140, 220, 255 ],
                 "shadow": true,
@@ -218,6 +220,7 @@
             {
               "ks_dropdown_options": {
                 "type": "stack_panel",
+                "visible": false,
                 "orientation": "vertical",
                 "size": [ 174, 66 ],
                 "bindings": [
@@ -279,6 +282,7 @@
   "ks_right_sidebar": {
     "type": "panel",
     "size": [ 190, 300 ],
+    "visible": false,
     "anchor_from": "right_middle",
     "anchor_to": "right_middle",
     "offset": [ -198, 0 ],
@@ -394,6 +398,7 @@
             {
               "ks_quality_options": {
                 "type": "stack_panel",
+                "visible": false,
                 "orientation": "vertical",
                 "size": [ 174, 66 ],
                 "bindings": [
