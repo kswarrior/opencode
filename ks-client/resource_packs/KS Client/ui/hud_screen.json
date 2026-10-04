@@ -1,76 +1,435 @@
 {
   "namespace": "hud",
 
-  "vignette_renderer": {
-    "ignored": true
-  },
-
-  // RP-only Hide-HUD + Paperdoll toggles.
-  // Unlike $pressed_button_name actions (ignored on HUD), toggles write
-  // straight to engine settings via hardcoded toggle names, so no
-  // action routing is needed. Docs: bedrock.dev JSON UI Toggles table.
-  "ks_hud_toggle@common_toggles.light_text_toggle": {
-    "size": [ 44, 20 ],
-    "$button_text": "HUD",
-    "$toggle_name": "hide_hud",
-    "$toggle_view_binding_name": "#hide_hud",
-    "prevent_touch_input": true
-  },
-
-  "ks_doll_toggle@common_toggles.light_text_toggle": {
-    "size": [ 44, 20 ],
-    "$button_text": "DOLL",
-    "$toggle_name": "hide_paperdoll",
-    "$toggle_view_binding_name": "#hide_paperdoll",
-    "prevent_touch_input": true
-  },
-
-  "ks_gap": {
-    "type": "panel",
-    "size": [ 4, 20 ]
-  },
-
-  // Row: HUD DOLL left-to-right, top-right corner area.
-  "ks_toggle_row": {
-    "type": "panel",
-    "size": [ 92, 20 ],
+  // ---------- MENU master toggle ----------
+  // Single source of truth ("strong loop"): ON = both sidebars visible, OFF = both hidden.
+  // Toggle (not button) because $pressed_button_name actions are ignored on HUD,
+  // but toggles write state and can drive visibility via view bindings.
+  // draggable:both = click = toggle, click+drag = move. Default = top-right.
+  "ks_menu_toggle@common_toggles.light_text_toggle": {
+    "size": [ 64, 24 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
-    "offset": [ -52, 8 ],
-    "layer": 10,
+    "offset": [ -72, 8 ],
+    "layer": 100,
+    "draggable": "both",
+    "$button_text": "MENU",
+    "$toggle_name": "ks_menu_open",
+    "$toggle_view_binding_name": "ks_menu_state",
+    "prevent_touch_input": false
+  },
+
+  "ks_menu_holder": {
+    "type": "panel",
+    "size": [ 64, 24 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -72, 8 ],
+    "layer": 100,
     "controls": [
       {
-        "ks_toggle_stack": {
+        "ks_menu_toggle_slot@hud.ks_menu_toggle": {}
+      }
+    ]
+  },
+
+  // ---------- Shared sidebar visuals ----------
+  "ks_sidebar_bg": {
+    "type": "image",
+    "texture": "textures/ui/White",
+    "size": [ "100%", "100%" ],
+    "color": [ 12, 16, 24 ],
+    "alpha": 0.92,
+    "layer": 0
+  },
+
+  "ks_sidebar_accent": {
+    "type": "image",
+    "texture": "textures/ui/ks_accent_cyan",
+    "size": [ "100%", 2 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "layer": 1,
+    "alpha": 0.95
+  },
+
+  "ks_sidebar_title": {
+    "type": "label",
+    "size": [ "100%", 20 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 6 ],
+    "color": [ 255, 255, 255 ],
+    "shadow": true,
+    "localize": false,
+    "text_alignment": "center",
+    "font_size": "normal",
+    "font_scale_factor": 1.0,
+    "layer": 2,
+    "text": "MENU"
+  },
+
+  // ---------- LEFT sidebar (controls) ----------
+  // Visible <=> MENU toggle ON. Same binding on right sidebar = both always in sync.
+  "ks_left_sidebar": {
+    "type": "panel",
+    "size": [ 190, 300 ],
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "offset": [ 8, 0 ],
+    "layer": 101,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ks_menu_state",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_left_bg@hud.ks_sidebar_bg": {}
+      },
+      {
+        "ks_left_accent@hud.ks_sidebar_accent": {}
+      },
+      {
+        "ks_left_title@hud.ks_sidebar_title": {
+          "text": "CONTROLS"
+        }
+      },
+      {
+        "ks_left_stack": {
           "type": "stack_panel",
-          "orientation": "horizontal",
-          "size": [ 92, 20 ],
+          "orientation": "vertical",
+          "size": [ 174, 250 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
-          "offset": [ 0, 0 ],
+          "offset": [ 8, 32 ],
+          "layer": 2,
           "controls": [
             {
-              "ks_hud_slot": {
-                "type": "panel",
-                "size": [ 44, 20 ],
-                "controls": [
+              "ks_opt_hud@common_toggles.light_text_toggle": {
+                "size": [ 174, 22 ],
+                "$button_text": "Hide HUD",
+                "$toggle_name": "hide_hud",
+                "$toggle_view_binding_name": "#hide_hud"
+              }
+            },
+            {
+              "ks_opt_doll@common_toggles.light_text_toggle": {
+                "size": [ 174, 22 ],
+                "$button_text": "Hide Doll",
+                "$toggle_name": "hide_paperdoll",
+                "$toggle_view_binding_name": "#hide_paperdoll"
+              }
+            },
+            {
+              "ks_opt_fx@common_toggles.light_text_toggle": {
+                "size": [ 174, 22 ],
+                "$button_text": "FX Mode",
+                "$toggle_name": "ks_fx_mode",
+                "$toggle_view_binding_name": "ks_fx_state"
+              }
+            },
+            {
+              "ks_fx_detail": {
+                "type": "label",
+                "size": [ 174, 18 ],
+                "color": [ 140, 220, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "left",
+                "font_size": "small",
+                "font_scale_factor": 0.9,
+                "text": "FX extra panel:",
+                "bindings": [
                   {
-                    "ks_hud_toggle@hud.ks_hud_toggle": {}
+                    "binding_type": "view",
+                    "source_control_name": "ks_fx_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
                   }
                 ]
               }
             },
             {
-              "ks_gap1@hud.ks_gap": {}
+              "ks_slider_label": {
+                "type": "label",
+                "size": [ 174, 18 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "left",
+                "font_size": "small",
+                "font_scale_factor": 0.9,
+                "text": "UI Scale (visual)"
+              }
             },
             {
-              "ks_doll_slot": {
+              "ks_slider_row": {
                 "type": "panel",
-                "size": [ 44, 20 ],
+                "size": [ 174, 22 ],
                 "controls": [
                   {
-                    "ks_doll_toggle@hud.ks_doll_toggle": {}
+                    "ks_slider_minus@common_buttons.light_text_button": {
+                      "size": [ 30, 22 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "$button_text": "-",
+                      "$pressed_button_name": "button.menu_cancel"
+                    }
+                  },
+                  {
+                    "ks_slider_value": {
+                      "type": "label",
+                      "size": [ 114, 22 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 30, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "text": "100%"
+                    }
+                  },
+                  {
+                    "ks_slider_plus@common_buttons.light_text_button": {
+                      "size": [ 30, 22 ],
+                      "anchor_from": "top_right",
+                      "anchor_to": "top_right",
+                      "offset": [ 0, 0 ],
+                      "$button_text": "+",
+                      "$pressed_button_name": "button.menu_ok"
+                    }
                   }
                 ]
+              }
+            },
+            {
+              "ks_dropdown_toggle@common_toggles.light_text_toggle": {
+                "size": [ 174, 22 ],
+                "$button_text": "Mode ▾",
+                "$toggle_name": "ks_mode_drop",
+                "$toggle_view_binding_name": "ks_mode_drop_state"
+              }
+            },
+            {
+              "ks_dropdown_options": {
+                "type": "stack_panel",
+                "orientation": "vertical",
+                "size": [ 174, 66 ],
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "ks_mode_drop_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_mode_1@common_toggles.light_text_toggle": {
+                      "size": [ 174, 20 ],
+                      "$button_text": "Survival",
+                      "$toggle_name": "ks_mode_1",
+                      "$toggle_view_binding_name": "ks_mode_1_state"
+                    }
+                  },
+                  {
+                    "ks_mode_2@common_toggles.light_text_toggle": {
+                      "size": [ 174, 20 ],
+                      "$button_text": "Creative",
+                      "$toggle_name": "ks_mode_2",
+                      "$toggle_view_binding_name": "ks_mode_2_state"
+                    }
+                  },
+                  {
+                    "ks_mode_3@common_toggles.light_text_toggle": {
+                      "size": [ 174, 20 ],
+                      "$button_text": "Adventure",
+                      "$toggle_name": "ks_mode_3",
+                      "$toggle_view_binding_name": "ks_mode_3_state"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- RIGHT sidebar (settings) ----------
+  "ks_right_sidebar": {
+    "type": "panel",
+    "size": [ 190, 300 ],
+    "anchor_from": "right_middle",
+    "anchor_to": "right_middle",
+    "offset": [ -198, 0 ],
+    "layer": 101,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ks_menu_state",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_right_bg@hud.ks_sidebar_bg": {}
+      },
+      {
+        "ks_right_accent@hud.ks_sidebar_accent": {}
+      },
+      {
+        "ks_right_title@hud.ks_sidebar_title": {
+          "text": "SETTINGS"
+        }
+      },
+      {
+        "ks_right_stack": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": [ 174, 250 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 8, 32 ],
+          "layer": 2,
+          "controls": [
+            {
+              "ks_opt_chat@common_toggles.light_text_toggle": {
+                "size": [ 174, 22 ],
+                "$button_text": "Chat ON",
+                "$toggle_name": "ks_chat_on",
+                "$toggle_view_binding_name": "ks_chat_state"
+              }
+            },
+            {
+              "ks_opt_sound@common_toggles.light_text_toggle": {
+                "size": [ 174, 22 ],
+                "$button_text": "Sound ON",
+                "$toggle_name": "ks_sound_on",
+                "$toggle_view_binding_name": "ks_sound_state"
+              }
+            },
+            {
+              "ks_brightness_label": {
+                "type": "label",
+                "size": [ 174, 18 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "left",
+                "font_size": "small",
+                "font_scale_factor": 0.9,
+                "text": "Brightness (visual)"
+              }
+            },
+            {
+              "ks_brightness_row": {
+                "type": "panel",
+                "size": [ 174, 22 ],
+                "controls": [
+                  {
+                    "ks_bri_minus@common_buttons.light_text_button": {
+                      "size": [ 30, 22 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "$button_text": "-",
+                      "$pressed_button_name": "button.menu_cancel"
+                    }
+                  },
+                  {
+                    "ks_bri_value": {
+                      "type": "label",
+                      "size": [ 114, 22 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 30, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "text": "50%"
+                    }
+                  },
+                  {
+                    "ks_bri_plus@common_buttons.light_text_button": {
+                      "size": [ 30, 22 ],
+                      "anchor_from": "top_right",
+                      "anchor_to": "top_right",
+                      "offset": [ 0, 0 ],
+                      "$button_text": "+",
+                      "$pressed_button_name": "button.menu_ok"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_quality_toggle@common_toggles.light_text_toggle": {
+                "size": [ 174, 22 ],
+                "$button_text": "Quality ▾",
+                "$toggle_name": "ks_quality_drop",
+                "$toggle_view_binding_name": "ks_quality_drop_state"
+              }
+            },
+            {
+              "ks_quality_options": {
+                "type": "stack_panel",
+                "orientation": "vertical",
+                "size": [ 174, 66 ],
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "ks_quality_drop_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_q_low@common_toggles.light_text_toggle": {
+                      "size": [ 174, 20 ],
+                      "$button_text": "Low",
+                      "$toggle_name": "ks_q_low",
+                      "$toggle_view_binding_name": "ks_q_low_state"
+                    }
+                  },
+                  {
+                    "ks_q_med@common_toggles.light_text_toggle": {
+                      "size": [ 174, 20 ],
+                      "$button_text": "Medium",
+                      "$toggle_name": "ks_q_med",
+                      "$toggle_view_binding_name": "ks_q_med_state"
+                    }
+                  },
+                  {
+                    "ks_q_high@common_toggles.light_text_toggle": {
+                      "size": [ 174, 20 ],
+                      "$button_text": "High",
+                      "$toggle_name": "ks_q_high",
+                      "$toggle_view_binding_name": "ks_q_high_state"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_hint": {
+                "type": "label",
+                "size": [ 174, 36 ],
+                "color": [ 160, 170, 185 ],
+                "localize": false,
+                "text_alignment": "left",
+                "font_size": "small",
+                "font_scale_factor": 0.85,
+                "text": "Tap MENU again to close. Drag MENU to move."
               }
             }
           ]
@@ -86,7 +445,13 @@
         "operation": "insert_front",
         "value": [
           {
-            "ks_toggle_row@hud.ks_toggle_row": {}
+            "ks_menu_holder@hud.ks_menu_holder": {}
+          },
+          {
+            "ks_left_sidebar@hud.ks_left_sidebar": {}
+          },
+          {
+            "ks_right_sidebar@hud.ks_right_sidebar": {}
           }
         ]
       }

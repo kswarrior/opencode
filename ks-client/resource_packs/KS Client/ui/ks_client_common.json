@@ -264,7 +264,7 @@
               "ks_profile_slot": {
                 "type": "panel",
                 "size": [ 120, 30 ],
-                "offset": [ 0, -2 ],
+                "offset": [ 0, -6 ],
                 "controls": [
                   {
                     "profile_button@ks_client.ks_profile_button": {}
