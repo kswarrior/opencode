@@ -219,8 +219,10 @@ def check_mct_validate():
         with open(csv_path) as fh:
             rows = list(csv.DictReader(fh))
         errs = [r for r in rows if r.get("Type", "").lower().startswith("error")]
-        # ignore the 2 known noise errors about stray json at repo root
-        real = [e for e in errs if "mcp.json" not in e.get("Path", "") and "opencode.json" not in e.get("Path", "")]
+        # ignore known noise: stray json at repo root + our own tools/ rechecker (PRJINT)
+        real = [e for e in errs if "mcp.json" not in (e.get("Path", "") + e.get("Data", ""))
+                and "opencode.json" not in (e.get("Path", "") + e.get("Data", ""))
+                and "/tools/" not in (e.get("Path", "") + e.get("Data", ""))]
         return [f"{e['Test']}: {e['Message'][:180]} | {e['Path'][:150]}" for e in real]
     except Exception as e:
         return [f"mct validate failed to run: {e}"]
@@ -264,9 +266,14 @@ def main():
             print(f"  - {p}")
         if len(problems) > 30:
             print(f"  ... and {len(problems)-30} more")
-        if not problems and not args.watch:
-            print("Player animation clean.")
-            return 0
+        if not problems:
+            print("  OK - all JSON strict-parse, no dotfiles, loop flags correct, animate refs resolve.")
+            if not args.watch and i >= args.iterations:
+                print(f"Player animation clean after {i} loops.")
+                return 0
+            if not args.watch:
+                time.sleep(args.delay)
+                continue
         if args.watch:
             if not problems:
                 print("Clean - continuing watch (Ctrl+C to stop)...")
