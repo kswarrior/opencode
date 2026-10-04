@@ -26,6 +26,9 @@
       ]
     }
   ],
+  "capabilities": [
+    "pbr"
+  ],
   "metadata": {
     "authors": [
       "KS Warrior"
