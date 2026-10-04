@@ -7,7 +7,7 @@
           "blend_transition": 0.5,
           "transitions": [
             {
-              "b1": "query.is_on_ground && !variable.attack && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left && !query.is_in_ui"
+              "b1": "query.is_on_ground && !variable.attack && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left"
             }
           ]
         },
@@ -18,7 +18,7 @@
           "blend_transition": 0.5,
           "transitions": [
             {
-              "b2": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left && !query.is_in_ui"
+              "b2": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left"
             }
           ]
         },
@@ -29,7 +29,7 @@
           "blend_transition": 0.5,
           "transitions": [
             {
-              "b3": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left && !query.is_in_ui"
+              "b3": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left"
             }
           ]
         },
@@ -40,7 +40,7 @@
           "blend_transition": 0.5,
           "transitions": [
             {
-              "b4": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left && !query.is_in_ui"
+              "b4": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left"
             }
           ]
         },
@@ -51,7 +51,7 @@
           "blend_transition": 0.5,
           "transitions": [
             {
-              "b5": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left && !query.is_in_ui"
+              "b5": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left"
             }
           ]
         },
@@ -62,7 +62,7 @@
           "blend_transition": 0.5,
           "transitions": [
             {
-              "b6": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left && !query.is_in_ui"
+              "b6": "!variable.attack && query.all_animations_finished && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left"
             }
           ]
         },
@@ -73,10 +73,10 @@
           "blend_transition": 0.5,
           "transitions": [
             {
-              "default": "variable.attack || query.modified_move_speed > 0.1 || variable.is_first_person || query.is_in_water || variable.is_holding_right || variable.is_holding_left || query.is_in_ui"
+              "default": "variable.attack || query.modified_move_speed > 0.1 || variable.is_first_person || query.is_in_water || variable.is_holding_right || variable.is_holding_left"
             },
             {
-              "b1": "query.all_animations_finished && !variable.attack && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left && !query.is_in_ui"
+              "b1": "query.all_animations_finished && !variable.attack && query.modified_move_speed < 0.1 && !variable.is_first_person && !query.is_in_water && !variable.is_holding_right && !variable.is_holding_left"
             }
           ]
         }

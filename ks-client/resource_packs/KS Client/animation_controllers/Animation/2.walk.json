@@ -7,7 +7,7 @@
           "blend_transition": 0.3,
           "transitions": [
             {
-              "1": "variable.walk_npa || query.is_in_ui"
+              "1": "variable.walk_npa"
             }
           ]
         },
@@ -21,7 +21,7 @@
           "blend_transition": 0.3,
           "transitions": [
             {
-              "default": "!variable.walk_npa && !query.is_in_ui"
+              "default": "!variable.walk_npa"
             }
           ]
         }
