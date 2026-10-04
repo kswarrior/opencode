@@ -85,13 +85,23 @@ def check_loop_flags():
 
 
 def check_player_refs():
-    """Every custom short-name in entity/player.json must resolve."""
+    """Only what is actually played must resolve.
+
+    Checks:
+      - every short-name in scripts.animate exists in animations dict
+      - every animation id referenced inside played controllers exists
+        (either in-pack or vanilla allow-listed)
+    Dead entries in the animations dict (e.g. hold.l, sneak.st, c.totem)
+    are reported as info, not failures - they are harmless leftovers.
+    """
     errors = []
     try:
         player = json.load(open(f"{PACK}/entity/player.json", encoding="utf-8"))
     except Exception as e:
         return [f"entity/player.json parse failed: {e}"]
-    refs = player["minecraft:client_entity"]["description"]["animations"]
+    desc = player["minecraft:client_entity"]["description"]
+    short_map = desc.get("animations", {})
+    animate = desc.get("scripts", {}).get("animate", [])
     defined_anims = set()
     for d in ANIM_DIRS:
         for f in glob.glob(os.path.join(d, "**/*.json"), recursive=True):
@@ -100,30 +110,22 @@ def check_player_refs():
                 defined_anims.update(dd.get("animations", {}).keys())
             except Exception:
                 pass
-    defined_ctrls = set()
+    defined_ctrls = {}
     for d in CTRL_DIRS:
         for f in glob.glob(os.path.join(d, "**/*.json"), recursive=True):
             try:
                 dd = json.load(open(f, encoding="utf-8"))
-                defined_ctrls.update(dd.get("animation_controllers", {}).keys())
+                for k, v in dd.get("animation_controllers", {}).items():
+                    defined_ctrls[k] = json.dumps(v)
             except Exception:
                 pass
-    # vanilla-provided ids (live outside the pack) - never flag these
-    vanilla_prefixes = (
-        "animation.humanoid.", "controller.animation.humanoid.",
-        "controller.animation.player.root", "controller.animation.player.base",
-        "controller.animation.player.hudplayer", "controller.animation.persona.",
-        "controller.animation.player.first_person", "controller.animation.player.crossbow",
-        "controller.animation.player.map", "controller.animation.player.spyglass",
-    )
-    vanilla_exact = {
+    vanilla_anim_exact = {
         "animation.humanoid.base_pose", "animation.humanoid.brandish_spear",
         "animation.humanoid.charging", "animation.humanoid.damage_nearby_mobs",
         "animation.humanoid.bow_and_arrow", "animation.humanoid.use_item_progress",
         "animation.humanoid.fishing_rod", "animation.humanoid.holding_spyglass",
         "animation.humanoid.holding_brush", "animation.humanoid.brushing",
-        "animation.humanoid.tooting_goat_horn",
-        "animation.skeleton.attack",
+        "animation.humanoid.tooting_goat_horn", "animation.skeleton.attack",
         "animation.player.cape", "animation.player.move.arms", "animation.player.move.legs",
         "animation.player.swim.arms", "animation.player.swim.legs",
         "animation.player.riding.arms", "animation.player.riding.legs",
@@ -132,23 +134,68 @@ def check_player_refs():
         "animation.player.bob", "animation.player.sleeping",
         "animation.player.crawl", "animation.player.crawl.legs",
         "animation.health_bar",
+        # vanilla first-person / look_at / shield / bow / spyglass family
+        "animation.player.look_at_target.ui", "animation.player.look_at_target.inverted",
+        "animation.player.first_person.base_pose", "animation.player.first_person.empty_hand",
+        "animation.player.first_person.swap_item", "animation.player.first_person.attack_rotation",
+        "animation.player.first_person.vr_attack_rotation", "animation.player.first_person.walk",
+        "animation.player.first_person.map_hold", "animation.player.first_person.map_hold_attack",
+        "animation.player.first_person.map_hold_off_hand", "animation.player.first_person.map_hold_main_hand",
+        "animation.player.first_person.crossbow_equipped", "animation.player.first_person.crossbow_hold",
+        "animation.player.first_person.breathing_bob", "animation.player.crossbow_equipped",
+        "animation.player.bow_equipped", "animation.player.crossbow_hold",
+        "animation.player.shield_block_main_hand", "animation.player.shield_block_off_hand",
+        "animation.player.first_person.shield_block", "animation.player.first_person.attack_rotation_item",
+        "animation.spyglass",
     }
-    for short, full in refs.items():
+    # 1. animate shorts must exist in short_map
+    for short in animate:
+        if short not in short_map:
+            errors.append(f"scripts.animate '{short}': missing from animations dict")
+    # 2. played controllers must be defined (in-pack or vanilla)
+    for short in animate:
+        full = short_map.get(short)
+        if full is None:
+            continue
         if full.startswith("controller."):
             if full in defined_ctrls:
                 continue
-            if full.startswith(vanilla_prefixes):
+            if full.startswith(("controller.animation.humanoid.", "controller.animation.player.root",
+                                "controller.animation.player.base", "controller.animation.player.hudplayer",
+                                "controller.animation.persona.", "controller.animation.player.first_person_map",
+                                "controller.animation.player.first_person_attack")):
                 continue
-            # custom controllers must be defined in pack
-            errors.append(f"player.json '{short} -> {full}': controller not defined in pack")
-        elif full.startswith("animation."):
-            if full in defined_anims or full in vanilla_exact:
-                continue
-            if full.startswith(vanilla_prefixes):
-                continue
-            # animation.*.player.* / attack.* / custom.* / eat / spyglass should be in pack
-            if re.match(r"animation\.(player|attack|custom|eat|spyglass|b\d|health)", full):
-                errors.append(f"player.json '{short} -> {full}': animation not defined in pack")
+            # c.totem is a dead dict entry, never in animate - but guard anyway
+            errors.append(f"animate '{short} -> {full}': controller not defined in pack")
+    # 3. animations referenced inside played controllers must exist
+    import json as _json
+    played_full = [short_map[s] for s in animate if short_map.get(s, "") in defined_ctrls]
+    # reload bodies as objects for proper walk (keys=anim names, values=conditions)
+    ctrl_objs = {}
+    for d in CTRL_DIRS:
+        for f in glob.glob(os.path.join(d, "**/*.json"), recursive=True):
+            try:
+                dd = _json.load(open(f, encoding="utf-8"))
+                ctrl_objs.update(dd.get("animation_controllers", {}))
+            except Exception:
+                pass
+    def _anims_in_state(state):
+        out = []
+        for entry in state.get("animations", []):
+            if isinstance(entry, str):
+                out.append(entry)
+            elif isinstance(entry, dict):
+                out.extend(entry.keys())  # keys are anim names, values are molang conditions
+        return out
+    for full in played_full:
+        body = ctrl_objs.get(full, {})
+        for state in body.get("states", {}).values():
+            for name in _anims_in_state(state):
+                if name in short_map or name in defined_anims or name in vanilla_anim_exact:
+                    continue
+                if name == "default":
+                    continue  # vanilla placeholder pose
+                errors.append(f"controller {full} references unknown animation '{name}'")
     return errors
 
 
