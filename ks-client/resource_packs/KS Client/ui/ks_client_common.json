@@ -309,6 +309,52 @@
     ]
   },
 
+  // ---------- Anim icon (visual only): same 40x40 borderless look, different image ----------
+  // Non-interactive panel+image stacked directly above the dressing button
+  // (same X, bottom sits 8px above dressing top: -36-40-8 = -84). Clicking does
+  // nothing; doll logic untouched. Same size/style as dressing, chevron art.
+  "ks_anim_icon_content": {
+    "type": "panel",
+    "size": [ 40, 40 ],
+    "controls": [
+      {
+        "ks_anim_icon_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_icon_anim",
+          "size": [ 40, 40 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ]
+        }
+      }
+    ]
+  },
+
+  "ks_anim_above_dressing": {
+    "type": "panel",
+    "size": [ 40, 40 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ "-25% + 7px", "-10% - 84px" ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_anim_slot": {
+          "type": "panel",
+          "size": [ 40, 40 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "controls": [
+            {
+              "ks_anim_icon@ks_client.ks_anim_icon_content": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+
   // ---------- Social button below the settings button (top-left) ----------
   // Friends/social entry moved out of the top-right cluster (bell only).
   // Same vanilla press path as before, just re-parented under settings.
