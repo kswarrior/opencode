@@ -351,10 +351,12 @@
     ]
   },
 
-  // ---------- Anim icon (visual only): same 40x40 borderless look, different image ----------
-  // Non-interactive panel+image stacked directly above the dressing button
-  // (same X, bottom sits 8px above dressing top: -36-40-8 = -84). Clicking does
-  // nothing; doll logic untouched. Same size/style as dressing, chevron art.
+  // ---------- Anim button (interactive): spins the doll on press ----------
+  // Engine truth: paper_doll_renderer has NO walking/running/standing pose API
+  // from JSON UI (only rotation via gesture_x / turn_doll, idle anim only).
+  // So this chevron button sends button.turn_doll (same engine path as
+  // dragging the doll) — pressing it visibly turns/spins the doll instead of
+  // being dead. Same 40x40 borderless look as dressing.
   "ks_anim_icon_content": {
     "type": "panel",
     "size": [ 40, 40 ],
@@ -368,6 +370,32 @@
           "anchor_to": "top_left",
           "offset": [ 0, -2 ]
         }
+      }
+    ]
+  },
+
+  "ks_anim_button@common_buttons.no_background_content_button": {
+    "size": [ 40, 40 ],
+    "$button_text": "",
+    "$button_content": "ks_client.ks_anim_icon_content",
+    "$pressed_button_name": "button.turn_doll",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.turn_doll",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.turn_doll",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "ks_anim_button.is_hovered",
+        "mapping_type": "pressed"
       }
     ]
   },
@@ -389,7 +417,7 @@
           "offset": [ 0, 0 ],
           "controls": [
             {
-              "ks_anim_icon@ks_client.ks_anim_icon_content": {}
+              "ks_anim_btn@ks_client.ks_anim_button": {}
             }
           ]
         }
