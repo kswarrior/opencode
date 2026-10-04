@@ -312,13 +312,14 @@
   // ---------- Social button below the settings button (top-left) ----------
   // Friends/social entry moved out of the top-right cluster (bell only).
   // Same vanilla press path as before, just re-parented under settings.
-  // Dressing moved to the doll; social shifted right by half its width (40/2=20): x 8 -> 28.
+  // Dressing moved to the doll; social shifted right by half its width (20) +
+  // one settings-button width (30): x 8 -> 28 -> 58.
   "ks_social_below_settings": {
     "type": "panel",
     "size": [ 40, 32 ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
-    "offset": [ 28, 44 ],
+    "offset": [ 58, 44 ],
     "layer": 2,
     "controls": [
       {
