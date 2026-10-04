@@ -310,18 +310,19 @@
     ]
   },
 
-  // ---------- Play button rebuilt realms-style, green (same engine press path) ----------
-  // Same base + same borderless realms textures as realms_button, only tinted
-  // green via $button_image_color and labeled menu.play. Vanilla play_button
-  // left untouched. play_button_art (hover gif layer) stays disabled.
+  // ---------- Play button rebuilt realms-style, true green (same engine press path) ----------
+  // Same dark borderless SHAPE as realms_button, but standard gray dark textures
+  // tinted green (realms textures are purple, tinting them goes brown-muddy).
+  // Labeled menu.play. Vanilla play_button left untouched.
+  // play_button_art (hover gif layer) stays disabled.
   "ks_play_button@start.main_button_dark": {
     "size": [ 100, 32 ],
     "$button_text": "menu.play",
     "$pressed_button_name": "$play_button_target",
-    "$default_button_texture": "textures/ui/realms_button_borderless_default",
-    "$hover_button_texture": "textures/ui/realms_button_borderless_hover",
-    "$pressed_button_texture": "textures/ui/realms_button_borderless_hover_pressed",
-    "$button_image_color": [ 0.5, 1.0, 0.5 ],
+    "$default_button_texture": "textures/ui/button_borderless_dark",
+    "$hover_button_texture": "textures/ui/button_borderless_darkhover",
+    "$pressed_button_texture": "textures/ui/button_borderless_darkpressed",
+    "$button_image_color": [ 0.35, 0.85, 0.35 ],
     "$focus_override_right": "profile_button",
     "default_focus_precedence": 1,
     "button_mappings": [
