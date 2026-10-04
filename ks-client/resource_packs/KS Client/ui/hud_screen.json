@@ -1,33 +1,71 @@
 {
   "namespace": "hud",
 
-  // ---------- MENU master toggle ----------
-  // Single source of truth ("strong loop"): ON = both sidebars visible, OFF = both hidden.
-  // Toggle (not button) because $pressed_button_name actions are ignored on HUD,
-  // but toggles write state and can drive visibility via view bindings.
-  // Plain click toggle (NOT draggable: drag eats taps on HUD). Default = top-right via holder.
-  "ks_menu_toggle@common_toggles.light_text_toggle": {
-    "size": [ 64, 24 ],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "offset": [ 0, 0 ],
-    "layer": 100,
-    "$button_text": "MENU",
-    "$toggle_name": "ks_menu_open",
-    "$toggle_view_binding_name": "ks_menu_state",
-    "prevent_touch_input": true
-  },
-
+  // ---------- MENU master button (BedrockPlus-proven pattern) ----------
+  // Raw common.toggle (NOT the light_text_toggle template) with a custom $toggle_name.
+  // ks_menu_state flips on tap; both sidebars bind to it (ON = visible, OFF = hidden).
+  // No draggable, no prevent_touch_input: taps must reach the toggle. Click = random.click sound.
   "ks_menu_holder": {
     "type": "panel",
-    "size": [ 64, 24 ],
+    "size": [ 64, 28 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -72, 8 ],
     "layer": 100,
     "controls": [
       {
-        "ks_menu_toggle_slot@hud.ks_menu_toggle": {}
+        "ks_menu_bg@hud.ks_sidebar_bg": {}
+      },
+      {
+        "ks_menu_accent@hud.ks_sidebar_accent": {}
+      },
+      {
+        "ks_menu_label": {
+          "type": "label",
+          "size": [ "100%", 20 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 1 ],
+          "color": [ 255, 255, 255 ],
+          "shadow": true,
+          "localize": false,
+          "text_alignment": "center",
+          "font_size": "normal",
+          "font_scale_factor": 1.0,
+          "layer": 2,
+          "text": "MENU"
+        }
+      },
+      {
+        "ks_menu_state@common.toggle": {
+          "size": [ "100%", "100%" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 3,
+          "$toggle_name": "ks_menu_open",
+          "$toggle_default_state": false,
+          "$unchecked_control": "common.empty_panel",
+          "$checked_control": "common.empty_panel",
+          "$unchecked_hover_control": "common.empty_panel",
+          "$checked_hover_control": "common.empty_panel",
+          "$unchecked_locked_control": "common.empty_panel",
+          "$unchecked_locked_hover_control": "common.empty_panel",
+          "$checked_locked_control": "common.empty_panel",
+          "$checked_locked_hover_control": "common.empty_panel",
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.menu_ok",
+              "mapping_type": "focused"
+            }
+          ]
+        }
       }
     ]
   },
