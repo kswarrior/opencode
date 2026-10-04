@@ -324,7 +324,7 @@
     "$default_button_texture": "textures/ui/button_borderless_dark",
     "$hover_button_texture": "textures/ui/button_borderless_darkhover",
     "$pressed_button_texture": "textures/ui/button_borderless_darkpressed",
-    "$button_image_color": [ 0.35, 0.85, 0.35 ],
+    "$button_image_color": [ 0.55, 0.95, 0.55 ],
     "$focus_override_right": "profile_button",
     "default_focus_precedence": 1,
     "button_mappings": [
@@ -341,23 +341,6 @@
       {
         "to_button_id": "play_button.is_hovered",
         "mapping_type": "pressed"
-      }
-    ]
-  },
-
-  "ks_play_art_custom": {
-    "type": "panel",
-    "size": [ 95, 32 ],
-    "controls": [
-      {
-        "play_art_img": {
-          "type": "image",
-          "texture": "textures/ui/ks_art_play",
-          "size": [ 95, 32 ],
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [ 0, -2 ]
-        }
       }
     ]
   },
