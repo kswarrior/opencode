@@ -7,7 +7,7 @@
           "blend_transition": 0.3,
           "transitions": [
             {
-              "1": "variable.walk_npa"
+              "1": "variable.walk_npa || !query.is_alive || query.health == 0"
             }
           ]
         },
