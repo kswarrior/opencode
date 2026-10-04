@@ -549,5 +549,762 @@
         }
       }
     ]
+  },
+
+  // ---------- Bottom-right MENU: 100x32 at (-116,-8), left of PLAY with 8px gap ----------
+  // Same horizontal line as marketplace/realms/play. Custom dark art + gear + "Menu".
+  // Tap toggles ks_start_menu_state -> opens/closes the full-screen settings-like menu.
+  "ks_bottom_right_menu": {
+    "type": "panel",
+    "size": [ 100, 32 ],
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "offset": [ -116, -8 ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_menu_btn_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_config_btn",
+          "size": [ "100%", "100%" ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_menu_btn_row": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100% - 12px", 24 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "layer": 1,
+          "controls": [
+            {
+              "ks_menu_btn_icon": {
+                "type": "image",
+                "texture": "textures/ui/ks_icon_settings",
+                "size": [ 20, 20 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "layer": 1
+              }
+            },
+            {
+              "ks_menu_btn_gap": {
+                "type": "panel",
+                "size": [ 6, 24 ]
+              }
+            },
+            {
+              "ks_menu_btn_label": {
+                "type": "label",
+                "size": [ 56, 24 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "left",
+                "font_size": "normal",
+                "font_scale_factor": 0.9,
+                "layer": 1,
+                "text": "Menu"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_start_menu_state@common.toggle": {
+          "size": [ "100%", "100%" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 3,
+          "enabled": true,
+          "visible": true,
+          "$toggle_name": "ks_start_menu_open",
+          "$toggle_default_state": false,
+          "$toggle_binding_type": "none",
+          "$toggle_focus_enabled": false,
+          "$unchecked_control": "common.empty_panel",
+          "$checked_control": "common.empty_panel",
+          "$unchecked_hover_control": "common.empty_panel",
+          "$checked_hover_control": "common.empty_panel",
+          "$unchecked_locked_control": "common.empty_panel",
+          "$unchecked_locked_hover_control": "common.empty_panel",
+          "$checked_locked_control": "common.empty_panel",
+          "$checked_locked_hover_control": "common.empty_panel"
+        }
+      }
+    ]
+  },
+
+  // ---------- Full-screen MENU (600x300 card): tabs General/Texture/UI/Advanced/HUD ----------
+  // Texture tab is live UI logic: Texture master -> Bright option; Environment master ->
+  // Cloud dropdown -> Realistic option. Masters OFF hide their children (disabled).
+  // Texture master gates block/item textures, Environment master gates environmental
+  // textures, independently (use Environment without Texture supported).
+  "ks_start_menu_full": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "visible": false,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "layer": 40,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "binding_condition": "always",
+        "source_control_name": "ks_start_menu_state",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_smenu_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_menu_bg",
+          "size": [ "100%", "100%" ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_smenu_card": {
+          "type": "panel",
+          "size": [ 600, 300 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "layer": 1,
+          "controls": [
+            {
+              "ks_smenu_card_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_bg",
+                "size": [ "100%", "100%" ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_smenu_title": {
+                "type": "label",
+                "size": [ "100% - 20px", 26 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 8 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "normal",
+                "font_scale_factor": 1.1,
+                "layer": 1,
+                "text": "MENU"
+              }
+            },
+            {
+              "ks_smenu_tabs": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "size": [ "100% - 20px", 26 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 38 ],
+                "layer": 1,
+                "controls": [
+                  {
+                    "ks_st_general@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "General",
+                      "$toggle_name": "ks_st_general",
+                      "$toggle_view_binding_name": "ks_st_general_state"
+                    }
+                  },
+                  {
+                    "ks_st_gap1": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_st_texture@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "Texture",
+                      "$toggle_name": "ks_st_texture",
+                      "$toggle_view_binding_name": "ks_st_texture_state"
+                    }
+                  },
+                  {
+                    "ks_st_gap2": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_st_ui@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "UI",
+                      "$toggle_name": "ks_st_ui",
+                      "$toggle_view_binding_name": "ks_st_ui_state"
+                    }
+                  },
+                  {
+                    "ks_st_gap3": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_st_adv@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "Advanced",
+                      "$toggle_name": "ks_st_adv",
+                      "$toggle_view_binding_name": "ks_st_adv_state"
+                    }
+                  },
+                  {
+                    "ks_st_gap4": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_st_hud@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "HUD",
+                      "$toggle_name": "ks_st_hud",
+                      "$toggle_view_binding_name": "ks_st_hud_state"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_general": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_general_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_sp_general_lbl": {
+                      "type": "label",
+                      "size": [ "100%", 80 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_sp_general_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 35 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "General settings are not ready yet."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_texture": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_texture_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_tex_master_row": {
+                      "type": "panel",
+                      "size": [ "100%", 26 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 0 ],
+                      "layer": 1,
+                      "controls": [
+                        {
+                          "ks_tex_master_name": {
+                            "type": "label",
+                            "size": [ 300, 24 ],
+                            "anchor_from": "left_middle",
+                            "anchor_to": "left_middle",
+                            "offset": [ 8, 0 ],
+                            "color": [ 255, 255, 255 ],
+                            "shadow": true,
+                            "localize": false,
+                            "text_alignment": "left",
+                            "font_size": "small",
+                            "font_scale_factor": 0.9,
+                            "layer": 1,
+                            "text": "Texture (block / item)"
+                          }
+                        },
+                        {
+                          "ks_tex_master_sw@common_toggles.switch_toggle": {
+                            "size": [ 46, 22 ],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "offset": [ -8, 0 ],
+                            "$toggle_name": "ks_tex_master",
+                            "$toggle_view_binding_name": "ks_tex_master_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_bright_opts": {
+                      "type": "panel",
+                      "visible": false,
+                      "size": [ "100%", 30 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 28 ],
+                      "layer": 1,
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always",
+                          "source_control_name": "ks_tex_master_state",
+                          "source_property_name": "#toggle_state",
+                          "target_property_name": "#visible"
+                        }
+                      ],
+                      "controls": [
+                        {
+                          "ks_bright_name": {
+                            "type": "label",
+                            "size": [ 300, 24 ],
+                            "anchor_from": "left_middle",
+                            "anchor_to": "left_middle",
+                            "offset": [ 24, 0 ],
+                            "color": [ 140, 220, 255 ],
+                            "shadow": true,
+                            "localize": false,
+                            "text_alignment": "left",
+                            "font_size": "small",
+                            "font_scale_factor": 0.9,
+                            "layer": 1,
+                            "text": "Bright Texture"
+                          }
+                        },
+                        {
+                          "ks_bright_sw@common_toggles.switch_toggle": {
+                            "size": [ 46, 22 ],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "offset": [ -8, 0 ],
+                            "$toggle_name": "ks_tex_bright",
+                            "$toggle_view_binding_name": "ks_tex_bright_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_env_master_row": {
+                      "type": "panel",
+                      "size": [ "100%", 26 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 62 ],
+                      "layer": 1,
+                      "controls": [
+                        {
+                          "ks_env_master_name": {
+                            "type": "label",
+                            "size": [ 300, 24 ],
+                            "anchor_from": "left_middle",
+                            "anchor_to": "left_middle",
+                            "offset": [ 8, 0 ],
+                            "color": [ 255, 255, 255 ],
+                            "shadow": true,
+                            "localize": false,
+                            "text_alignment": "left",
+                            "font_size": "small",
+                            "font_scale_factor": 0.9,
+                            "layer": 1,
+                            "text": "Environment"
+                          }
+                        },
+                        {
+                          "ks_env_master_sw@common_toggles.switch_toggle": {
+                            "size": [ 46, 22 ],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "offset": [ -8, 0 ],
+                            "$toggle_name": "ks_env_master",
+                            "$toggle_view_binding_name": "ks_env_master_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cloud_drop": {
+                      "type": "panel",
+                      "visible": false,
+                      "size": [ "100%", 26 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 90 ],
+                      "layer": 1,
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always",
+                          "source_control_name": "ks_env_master_state",
+                          "source_property_name": "#toggle_state",
+                          "target_property_name": "#visible"
+                        }
+                      ],
+                      "controls": [
+                        {
+                          "ks_cloud_tgl@common_toggles.light_text_toggle": {
+                            "size": [ "100% - 16px", 24 ],
+                            "anchor_from": "center",
+                            "anchor_to": "center",
+                            "offset": [ 0, 0 ],
+                            "$button_text": "Cloud ▾",
+                            "$toggle_name": "ks_cloud_drop",
+                            "$toggle_view_binding_name": "ks_cloud_drop_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cloud_opts": {
+                      "type": "panel",
+                      "visible": false,
+                      "size": [ "100%", 30 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 118 ],
+                      "layer": 1,
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always",
+                          "source_control_name": "ks_cloud_drop_state",
+                          "source_property_name": "#toggle_state",
+                          "target_property_name": "#visible"
+                        }
+                      ],
+                      "controls": [
+                        {
+                          "ks_real_name": {
+                            "type": "label",
+                            "size": [ 300, 24 ],
+                            "anchor_from": "left_middle",
+                            "anchor_to": "left_middle",
+                            "offset": [ 40, 0 ],
+                            "color": [ 140, 220, 255 ],
+                            "shadow": true,
+                            "localize": false,
+                            "text_alignment": "left",
+                            "font_size": "small",
+                            "font_scale_factor": 0.9,
+                            "layer": 1,
+                            "text": "Realistic"
+                          }
+                        },
+                        {
+                          "ks_real_sw@common_toggles.switch_toggle": {
+                            "size": [ 46, 22 ],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "offset": [ -8, 0 ],
+                            "$toggle_name": "ks_cloud_real",
+                            "$toggle_view_binding_name": "ks_cloud_real_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_tex_note": {
+                      "type": "label",
+                      "size": [ "100%", 26 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 152 ],
+                      "color": [ 160, 170, 185 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.8,
+                      "layer": 1,
+                      "text": "OFF hides its group. Texture = blocks/items. Environment = clouds etc."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_ui": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_ui_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_sp_ui_lbl": {
+                      "type": "label",
+                      "size": [ "100%", 80 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_sp_ui_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 35 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "UI settings are not ready yet."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_adv": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_adv_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_sp_adv_lbl": {
+                      "type": "label",
+                      "size": [ "100%", 80 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_sp_adv_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 35 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "Advanced settings are not ready yet."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_hud": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_hud_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_sp_hud_lbl": {
+                      "type": "label",
+                      "size": [ "100%", 80 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_sp_hud_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 35 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "HUD settings are not ready yet. Use pause Config > Info for HUD."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_smenu_close_row": {
+                "type": "panel",
+                "size": [ 200, 26 ],
+                "anchor_from": "bottom_middle",
+                "anchor_to": "bottom_middle",
+                "offset": [ 0, -10 ],
+                "layer": 1,
+                "controls": [
+                  {
+                    "ks_smenu_close_label": {
+                      "type": "label",
+                      "size": [ 140, 26 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "Tap Menu to close"
+                    }
+                  },
+                  {
+                    "ks_start_menu_close@common.toggle": {
+                      "size": [ "100%", "100%" ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "layer": 2,
+                      "enabled": true,
+                      "visible": true,
+                      "$toggle_name": "ks_start_menu_open",
+                      "$toggle_default_state": false,
+                      "$toggle_binding_type": "none",
+                      "$toggle_focus_enabled": false,
+                      "$unchecked_control": "common.empty_panel",
+                      "$checked_control": "common.empty_panel",
+                      "$unchecked_hover_control": "common.empty_panel",
+                      "$checked_hover_control": "common.empty_panel",
+                      "$unchecked_locked_control": "common.empty_panel",
+                      "$unchecked_locked_hover_control": "common.empty_panel",
+                      "$checked_locked_control": "common.empty_panel",
+                      "$checked_locked_hover_control": "common.empty_panel"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }
