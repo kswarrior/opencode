@@ -3,12 +3,17 @@
   "minecraft:client_entity": {
     "description": {
       "identifier": "minecraft:player",
+      "min_engine_version": "1.8.0",
       "materials": {
         "default": "entity_alphatest",
+        "cape": "entity_alphatest",
+        "animated": "player_animated",
+        "spectator": "player_spectator",
         "health_bar": "entity_emissive_alpha"
       },
       "textures": {
         "default": "textures/entity/steve",
+        "cape": "textures/entity/cape_invisible",
         "heart": "textures/health_bar/heart",
         "bar50": "textures/health_bar/bar/50",
         "bar49": "textures/health_bar/bar/49",
@@ -74,9 +79,187 @@
       },
       "geometry": {
         "default": "geometry.humanoid.custom",
+        "cape": "geometry.cape",
         "health_bar": "geometry.health_bar"
       },
+      "scripts": {
+        "scale": "0.9375",
+        "initialize": [
+          "variable.is_holding_right = 0.0;",
+          "variable.is_blinking = 0.0;",
+          "variable.last_blink_time = 0.0;",
+          "variable.hand_bob = 0.0;"
+        ],
+        "pre_animation": [
+          "variable.helmet_layer_visible = !query.has_head_gear;",
+          "variable.leg_layer_visible = 1.0;",
+          "variable.boot_layer_visible = 1.0;",
+          "variable.chest_layer_visible = 1.0;",
+          "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;",
+          "variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;",
+          "variable.first_person_rotation_factor = math.sin((1 - variable.attack_time) * 180.0);",
+          "variable.hand_bob = query.life_time < 0.01 ? 0.0 : variable.hand_bob + ((query.is_on_ground && query.is_alive ? math.clamp(math.sqrt(math.pow(query.position_delta(0), 2.0) + math.pow(query.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;",
+          "variable.map_angle = math.clamp(1 - variable.player_x_rotation / 45.1, 0.0, 1.0);",
+          "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
+          "variable.is_holding_fishing_rod = query.get_equipped_item_name == 'fishing_rod' ? 0.1 : 1;",
+          "variable.is_holding_carrot_on_a_stick = query.get_equipped_item_name == 'carrot_on_a_stick' ? 0.1 : 1;",
+          "variable.is_holding_warped_fungus_on_a_stick = query.get_equipped_item_name == 'warped_fungus_on_a_stick' ? 0.1 : 1;",
+          "variable.sitting = (query.get_equipped_item_name == 'cooked_beef' || query.get_equipped_item_name == 'cooked_chicken' || query.get_equipped_item_name == 'cooked_porkchop' || query.get_equipped_item_name == 'cooked_cod' || query.get_equipped_item_name == 'cooked_salmon' || query.get_equipped_item_name == 'cooked_mutton' || query.get_equipped_item_name == 'cooked_rabbit');",
+          "variable.drink = (query.get_equipped_item_name == 'potion' || query.get_equipped_item_name == 'milk_bucket' || query.get_equipped_item_name == 'honey_bottle' || query.equipped_item_any_tag('slot.weapon.mainhand', 'minecraft:is_potion'));",
+          "variable.offering = (query.get_equipped_item_name == 'diamond');",
+          "variable.fly_bob = query.is_on_screen && !query.is_sleeping && !variable.is_first_person && !query.is_sprinting && !query.is_in_water && !query.is_riding && !query.is_gliding && !query.is_on_ground && query.modified_move_speed < 0.99;",
+          "variable.fly_move = query.is_on_screen && !query.is_sleeping && !variable.is_first_person && !query.is_in_water && !query.is_riding && !query.is_gliding && !query.is_on_ground && query.modified_move_speed>0.99;",
+          "variable.swim_idle = !v.is_first_person && q.is_in_water;",
+          "v.health_bar_position = q.is_sneaking ? 33 : 37;",
+          "v.health_bar_scale = q.model_scale;"
+        ],
+        "animate": [
+          {
+            "sprinting_with_bow": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'bow'"
+          },
+          {
+            "sprinting_with_netherite_sword": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'netherite_sword'"
+          },
+          {
+            "sprinting_with_diamond_sword": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'diamond_sword'"
+          },
+          {
+            "sprinting_with_gold_sword": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'golden_sword'"
+          },
+          {
+            "sprinting_with_iron_sword": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'iron_sword'"
+          },
+          {
+            "sprinting_with_copper_sword": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'copper_sword'"
+          },
+          {
+            "sprinting_with_stone_sword": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'stone_sword'"
+          },
+          {
+            "sprinting_with_wooden_sword": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'wooden_sword'"
+          },
+          {
+            "sprinting_with_trident": "query.modified_move_speed && query.is_sprinting && query.get_equipped_item_name == 'trident'"
+          },
+          {
+            "holding_up": "query.get_equipped_item_name == 'lantern'"
+          },
+          {
+            "holding_up": "query.get_equipped_item_name == 'soul_lantern'"
+          },
+          {
+            "holding_up": "query.get_equipped_item_name == 'copper_lantern'"
+          },
+          {
+            "holding_up": "query.get_equipped_item_name == 'torch'"
+          },
+          {
+            "holding_up": "query.get_equipped_item_name == 'soul_torch'"
+          },
+          {
+            "holding_up": "query.get_equipped_item_name == 'redstone_torch'"
+          },
+          {
+            "holding_up": "query.get_equipped_item_name == 'copper_torch'"
+          },
+          {
+            "fishing.controller": "!query.is_swimming"
+          },
+          {
+            "fishing_action.controller": "!query.is_swimming"
+          },
+          {
+            "carrot_on_a_stick.controller": "!query.is_swimming"
+          },
+          {
+            "warped_fungus_on_a_stick.controller": "!query.is_swimming"
+          },
+          {
+            "sprinting": "query.modified_move_speed && query.is_sprinting"
+          },
+          {
+            "menu_ui": "!q.is_on_screen"
+          },
+          "fly_bob.controller",
+          "fly_move.controller",
+          "fly_sprint.controller",
+          "swim_idle.controller",
+          "swim_ground.controller",
+          "eat_drink.controller",
+          "dead.controller",
+          "sitting.controller",
+          "jump.controller",
+          "sneaking_offering.controller",
+          "use.helmet",
+          "use.armor",
+          "use.legs",
+          "use.boots",
+          "root",
+          "base_controller",
+          "hudplayer",
+          "look_at_target",
+          "humanoid_base_pose",
+          "cape",
+          "move.arms",
+          "move.legs",
+          "health_bar"
+        ]
+      },
       "animations": {
+        "fishing.controller": "controller.animation.player.fishing",
+        "fishing": "animation.player.fishing",
+        "fishing_action.controller": "controller.animation.player.fishing_action",
+        "fishing_action": "animation.player.fishing_action",
+        "carrot_on_a_stick.controller": "controller.animation.player.fishing_carrots",
+        "carrot_on_a_stick": "animation.player.fishing_carrots",
+        "warped_fungus_on_a_stick.controller": "controller.animation.player.fishing_warped_fungus",
+        "warped_fungus_on_a_stick": "animation.player.fishing_warped_fungus",
+        "swim_idle.controller": "controller.animation.player.swim.idle",
+        "swim_ground.controller": "controller.animation.player.swim.ground",
+        "swim.idle": "animation.player.swim.idle",
+        "sneak.arms": "animation.player.sneak.arms",
+        "sneak.legs": "animation.player.sneak.legs",
+        "dead.controller": "controller.animation.player.dead",
+        "dead": "animation.player.dead",
+        "revive": "animation.player.revive",
+        "jump.controller": "controller.animation.player.jump",
+        "jump_left": "animation.player.jump_left",
+        "jump_right": "animation.player.jump_right",
+        "sprinting": "animation.player.sprinting",
+        "holding_up": "animation.player.holding_up",
+        "sitting.controller": "controller.animation.player.sitting",
+        "sitting": "animation.player.sitting",
+        "sneaking_offering.controller": "controller.animation.player.sneaking_offering",
+        "offering": "animation.player.offering",
+        "fly": "animation.player.fly",
+        "fly_bob.controller": "controller.animation.player.fly.bob",
+        "fly_bob": "animation.player.fly.bob",
+        "fly_move.controller": "controller.animation.player.fly.move",
+        "fly_move": "animation.player.fly.move",
+        "fly_sprint.controller": "controller.animation.player.fly.sprint",
+        "fly_sprint": "animation.player.fly.sprint",
+        "menu_ui": "animation.player.stationary",
+        "eat_drink.controller": "controller.animation.player.eat_drink",
+        "eat": "animation.player.eat",
+        "drink": "animation.player.drink",
+        "sprinting_with_bow": "animation.player.sprint.sword",
+        "sprinting_with_netherite_sword": "animation.player.sprint.sword",
+        "sprinting_with_diamond_sword": "animation.player.sprint.sword",
+        "sprinting_with_gold_sword": "animation.player.sprint.sword",
+        "sprinting_with_iron_sword": "animation.player.sprint.sword",
+        "sprinting_with_copper_sword": "animation.player.sprint.sword",
+        "sprinting_with_stone_sword": "animation.player.sprint.sword",
+        "sprinting_with_wooden_sword": "animation.player.sprint.sword",
+        "sprinting_with_trident": "animation.player.sprint.trident",
+        "use.helmet": "controller.animation.use_helmet",
+        "use_helmet": "animation.use_helmet",
+        "use_helmet2": "animation.use_helmet2",
+        "use.armor": "controller.animation.use_armor",
+        "use_armor": "animation.use_armor",
+        "use.legs": "controller.animation.use_legs",
+        "use_legs": "animation.use_legs",
+        "use.boots": "controller.animation.use_boots",
+        "use_boots": "animation.use_boots",
         "root": "controller.animation.player.root",
         "base_controller": "controller.animation.player.base",
         "hudplayer": "controller.animation.player.hudplayer",
@@ -90,7 +273,7 @@
         "cape": "animation.player.cape",
         "move.arms": "animation.player.move.arms",
         "move.legs": "animation.player.move.legs",
-        "swimming": "animation.player.swim.arms",
+        "swimming": "animation.player.swim",
         "swimming.legs": "animation.player.swim.legs",
         "riding.arms": "animation.player.riding.arms",
         "riding.legs": "animation.player.riding.legs",
@@ -137,33 +320,23 @@
         "brushing": "animation.humanoid.brushing",
         "crawling": "animation.player.crawl",
         "crawling.legs": "animation.player.crawl.legs",
+        "holding_heavy_core": "animation.player.holding_heavy_core",
         "health_bar": "animation.health_bar",
         "spyglass": "animation.spyglass",
         "first_person_attack_rotation_item2": "animation.player.first_person.attack_rotation"
       },
-      "scripts": {
-        "pre_animation": [
-          "v.health_bar_position = q.is_sneaking ? 33 : 37;",
-          "v.health_bar_scale = q.model_scale;"
-        ],
-        "animate": [
-          "root",
-          "base_controller",
-          "hudplayer",
-          "look_at_target",
-          "humanoid_base_pose",
-          "cape",
-          "move.arms",
-          "move.legs",
-          "health_bar"
-        ]
-      },
       "render_controllers": [
         {
-          "controller.render.player.first_person": "variable.is_first_person"
+          "controller.render.player.first_person_spectator": "variable.is_first_person && query.is_spectator"
         },
         {
-          "controller.render.player.third_person": "!variable.is_first_person && !variable.map_face_icon"
+          "controller.render.player.third_person_spectator": "!variable.is_first_person && !variable.map_face_icon && query.is_spectator"
+        },
+        {
+          "controller.render.player.first_person": "variable.is_first_person && !query.is_spectator"
+        },
+        {
+          "controller.render.player.third_person": "!variable.is_first_person && !variable.map_face_icon && !query.is_spectator"
         },
         {
           "controller.render.player.map": "variable.map_face_icon"
@@ -173,7 +346,8 @@
         "controller.render.health_bar.digit1",
         "controller.render.health_bar.digit2",
         "controller.render.health_bar.digit3"
-      ]
+      ],
+      "enable_attachables": true
     }
   }
 }
