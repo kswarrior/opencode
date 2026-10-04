@@ -2,16 +2,16 @@
   "format_version": 2,
   "header": {
     "name": "KS Client",
-    "description": "KS Client v1.0.3 by KS Warrior - realistic mace",
+    "description": "KS Client v1.0.4 by KS Warrior - realistic mace + Fresh Animations v1.10.6",
     "uuid": "3cb32de7-ef64-4969-a447-dadba4bf9a8f",
     "version": [
       1,
       0,
-      3
+      4
     ],
     "min_engine_version": [
       1,
-      20,
+      21,
       0
     ]
   },
@@ -22,13 +22,15 @@
       "version": [
         1,
         0,
-        3
+        4
       ]
     }
   ],
   "metadata": {
     "authors": [
-      "KS Warrior"
+      "KS Warrior",
+      "FreshLX (Fresh Animations)",
+      "PrestonSupF (Port)"
     ],
     "generated_with": {
       "minecraft_creator_tools": [
