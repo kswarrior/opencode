@@ -121,6 +121,7 @@
     "bindings": [
       {
         "binding_type": "view",
+        "binding_condition": "always",
         "source_control_name": "ks_menu_state",
         "source_property_name": "#toggle_state",
         "target_property_name": "#visible"
@@ -187,6 +188,7 @@
                 "bindings": [
                   {
                     "binding_type": "view",
+                    "binding_condition": "always",
                     "source_control_name": "ks_fx_state",
                     "source_property_name": "#toggle_state",
                     "target_property_name": "#visible"
@@ -265,6 +267,7 @@
                 "bindings": [
                   {
                     "binding_type": "view",
+                    "binding_condition": "always",
                     "source_control_name": "ks_mode_drop_state",
                     "source_property_name": "#toggle_state",
                     "target_property_name": "#visible"
@@ -329,6 +332,7 @@
     "bindings": [
       {
         "binding_type": "view",
+        "binding_condition": "always",
         "source_control_name": "ks_menu_state",
         "source_property_name": "#toggle_state",
         "target_property_name": "#visible"
@@ -443,6 +447,7 @@
                 "bindings": [
                   {
                     "binding_type": "view",
+                    "binding_condition": "always",
                     "source_control_name": "ks_quality_drop_state",
                     "source_property_name": "#toggle_state",
                     "target_property_name": "#visible"
