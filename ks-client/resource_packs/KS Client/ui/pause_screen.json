@@ -1,12 +1,11 @@
 {
   "namespace": "pause",
 
-  // Bottom-left Config button: icon (gear) + text "Config" on Asteroid cyan.
-  // Tap toggles ks_config_state -> shows/hides the Coming-soon popup.
-  // Touch-first ($toggle_focus_enabled:false), local ($toggle_binding_type:none).
+  // Slim bottom-left Config button: custom dark art + gear icon + "Config".
+  // Tap toggles ks_config_state -> opens/closes the full-screen MENU.
   "ks_config_holder": {
     "type": "panel",
-    "size": [ 140, 36 ],
+    "size": [ 110, 32 ],
     "anchor_from": "bottom_left",
     "anchor_to": "bottom_left",
     "offset": [ 8, -8 ],
@@ -15,7 +14,7 @@
       {
         "ks_config_bg": {
           "type": "image",
-          "texture": "textures/ui/ks_btn_cyan",
+          "texture": "textures/ui/ks_config_btn",
           "size": [ "100%", "100%" ],
           "layer": 0
         }
@@ -24,7 +23,7 @@
         "ks_config_row": {
           "type": "stack_panel",
           "orientation": "horizontal",
-          "size": [ "100% - 16px", 28 ],
+          "size": [ "100% - 12px", 24 ],
           "anchor_from": "center",
           "anchor_to": "center",
           "offset": [ 0, 0 ],
@@ -34,7 +33,7 @@
               "ks_config_icon": {
                 "type": "image",
                 "texture": "textures/ui/ks_icon_settings",
-                "size": [ 24, 24 ],
+                "size": [ 22, 22 ],
                 "anchor_from": "left_middle",
                 "anchor_to": "left_middle",
                 "layer": 1
@@ -43,13 +42,13 @@
             {
               "ks_config_gap": {
                 "type": "panel",
-                "size": [ 8, 28 ]
+                "size": [ 6, 24 ]
               }
             },
             {
               "ks_config_label": {
                 "type": "label",
-                "size": [ 80, 28 ],
+                "size": [ 64, 24 ],
                 "anchor_from": "left_middle",
                 "anchor_to": "left_middle",
                 "color": [ 255, 255, 255 ],
@@ -57,7 +56,7 @@
                 "localize": false,
                 "text_alignment": "left",
                 "font_size": "normal",
-                "font_scale_factor": 1.0,
+                "font_scale_factor": 0.9,
                 "layer": 1,
                 "text": "Config"
               }
@@ -91,15 +90,15 @@
     ]
   },
 
-  // Coming-soon popup: Asteroid dark panel bg, centered. Visible <=> Config ON.
-  "ks_config_popup": {
+  // Full-screen MENU: custom bg PNG, tabs General / Info, close via Config.
+  "ks_menu_full": {
     "type": "panel",
-    "size": [ 230, 130 ],
+    "size": [ "100%", "100%" ],
     "visible": false,
-    "anchor_from": "center",
-    "anchor_to": "center",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
     "offset": [ 0, 0 ],
-    "layer": 50,
+    "layer": 40,
     "bindings": [
       {
         "binding_type": "view",
@@ -111,94 +110,449 @@
     ],
     "controls": [
       {
-        "ks_popup_bg": {
+        "ks_menu_bg": {
           "type": "image",
-          "texture": "textures/ui/ks_config_bg",
+          "texture": "textures/ui/ks_menu_bg",
           "size": [ "100%", "100%" ],
           "layer": 0
         }
       },
       {
-        "ks_popup_title": {
-          "type": "label",
-          "size": [ "100% - 20px", 30 ],
-          "anchor_from": "top_middle",
-          "anchor_to": "top_middle",
-          "offset": [ 0, 12 ],
-          "color": [ 255, 255, 255 ],
-          "shadow": true,
-          "localize": false,
-          "text_alignment": "center",
-          "font_size": "normal",
-          "font_scale_factor": 1.1,
-          "layer": 1,
-          "text": "Coming soon"
-        }
-      },
-      {
-        "ks_popup_hint": {
-          "type": "label",
-          "size": [ "100% - 20px", 40 ],
+        "ks_menu_card": {
+          "type": "panel",
+          "size": [ 300, 340 ],
           "anchor_from": "center",
           "anchor_to": "center",
-          "offset": [ 0, 5 ],
-          "color": [ 160, 220, 235 ],
-          "shadow": true,
-          "localize": false,
-          "text_alignment": "center",
-          "font_size": "small",
-          "font_scale_factor": 0.9,
-          "layer": 1,
-          "text": "Config screen is not ready yet."
-        }
-      },
-      {
-        "ks_popup_close_row": {
-          "type": "panel",
-          "size": [ 120, 26 ],
-          "anchor_from": "bottom_middle",
-          "anchor_to": "bottom_middle",
-          "offset": [ 0, -10 ],
+          "offset": [ 0, 0 ],
           "layer": 1,
           "controls": [
             {
-              "ks_popup_close_label": {
+              "ks_menu_card_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_bg",
+                "size": [ "100%", "100%" ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_menu_title": {
                 "type": "label",
-                "size": [ 84, 26 ],
-                "anchor_from": "center",
-                "anchor_to": "center",
-                "offset": [ 0, 0 ],
+                "size": [ "100% - 20px", 26 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 8 ],
                 "color": [ 255, 255, 255 ],
                 "shadow": true,
                 "localize": false,
                 "text_alignment": "center",
                 "font_size": "normal",
-                "font_scale_factor": 0.9,
+                "font_scale_factor": 1.1,
                 "layer": 1,
-                "text": "Tap Config to close"
+                "text": "MENU"
               }
             },
             {
-              "ks_config_close_state@common.toggle": {
-                "size": [ "100%", "100%" ],
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [ 0, 0 ],
-                "layer": 2,
-                "enabled": true,
-                "visible": true,
-                "$toggle_name": "ks_config_open",
-                "$toggle_default_state": false,
-                "$toggle_binding_type": "none",
-                "$toggle_focus_enabled": false,
-                "$unchecked_control": "common.empty_panel",
-                "$checked_control": "common.empty_panel",
-                "$unchecked_hover_control": "common.empty_panel",
-                "$checked_hover_control": "common.empty_panel",
-                "$unchecked_locked_control": "common.empty_panel",
-                "$unchecked_locked_hover_control": "common.empty_panel",
-                "$checked_locked_control": "common.empty_panel",
-                "$checked_locked_hover_control": "common.empty_panel"
+              "ks_tab_row": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "size": [ "100% - 20px", 26 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 38 ],
+                "layer": 1,
+                "controls": [
+                  {
+                    "ks_tab_general@common_toggles.light_text_toggle": {
+                      "size": [ 138, 26 ],
+                      "$button_text": "General",
+                      "$toggle_name": "ks_tab_general",
+                      "$toggle_view_binding_name": "ks_tab_general_state"
+                    }
+                  },
+                  {
+                    "ks_tab_gap": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_tab_info@common_toggles.light_text_toggle": {
+                      "size": [ 138, 26 ],
+                      "$button_text": "Info",
+                      "$toggle_name": "ks_tab_info",
+                      "$toggle_view_binding_name": "ks_tab_info_state"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_general_page": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 220 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_tab_general_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_general_label": {
+                      "type": "label",
+                      "size": [ "100%", 100 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_general_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 40 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "General settings are not ready yet."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_info_page": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 220 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_tab_info_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_info_head": {
+                      "type": "label",
+                      "size": [ "100%", 18 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 0 ],
+                      "color": [ 140, 220, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "HUD INFO (Asteroid icons)"
+                    }
+                  },
+                  {
+                    "ks_info_stack": {
+                      "type": "stack_panel",
+                      "orientation": "vertical",
+                      "size": [ "100%", 180 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 22 ],
+                      "layer": 1,
+                      "controls": [
+                        {
+                          "ks_i_fps": {
+                            "type": "panel",
+                            "size": [ "100%", 24 ],
+                            "controls": [
+                              {
+                                "ks_i_fps_icon": {
+                                  "type": "image",
+                                  "texture": "textures/ui/ks_info_fps",
+                                  "size": [ 20, 20 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 4, 0 ],
+                                  "layer": 1
+                                }
+                              },
+                              {
+                                "ks_i_fps_t@common_toggles.light_text_toggle": {
+                                  "size": [ "100% - 32px", 22 ],
+                                  "anchor_from": "right_middle",
+                                  "anchor_to": "right_middle",
+                                  "offset": [ 0, 0 ],
+                                  "$button_text": "FPS",
+                                  "$toggle_name": "ks_hud_fps",
+                                  "$toggle_view_binding_name": "ks_hud_fps_state"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ks_i_coords": {
+                            "type": "panel",
+                            "size": [ "100%", 24 ],
+                            "controls": [
+                              {
+                                "ks_i_coords_icon": {
+                                  "type": "image",
+                                  "texture": "textures/ui/ks_info_coords",
+                                  "size": [ 20, 20 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 4, 0 ],
+                                  "layer": 1
+                                }
+                              },
+                              {
+                                "ks_i_coords_t@common_toggles.light_text_toggle": {
+                                  "size": [ "100% - 32px", 22 ],
+                                  "anchor_from": "right_middle",
+                                  "anchor_to": "right_middle",
+                                  "offset": [ 0, 0 ],
+                                  "$button_text": "Coordinates",
+                                  "$toggle_name": "ks_hud_coords",
+                                  "$toggle_view_binding_name": "ks_hud_coords_state"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ks_i_dir": {
+                            "type": "panel",
+                            "size": [ "100%", 24 ],
+                            "controls": [
+                              {
+                                "ks_i_dir_icon": {
+                                  "type": "image",
+                                  "texture": "textures/ui/ks_info_direction",
+                                  "size": [ 20, 20 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 4, 0 ],
+                                  "layer": 1
+                                }
+                              },
+                              {
+                                "ks_i_dir_t@common_toggles.light_text_toggle": {
+                                  "size": [ "100% - 32px", 22 ],
+                                  "anchor_from": "right_middle",
+                                  "anchor_to": "right_middle",
+                                  "offset": [ 0, 0 ],
+                                  "$button_text": "Direction",
+                                  "$toggle_name": "ks_hud_dir",
+                                  "$toggle_view_binding_name": "ks_hud_dir_state"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ks_i_armor": {
+                            "type": "panel",
+                            "size": [ "100%", 24 ],
+                            "controls": [
+                              {
+                                "ks_i_armor_icon": {
+                                  "type": "image",
+                                  "texture": "textures/ui/ks_info_armor",
+                                  "size": [ 20, 20 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 4, 0 ],
+                                  "layer": 1
+                                }
+                              },
+                              {
+                                "ks_i_armor_t@common_toggles.light_text_toggle": {
+                                  "size": [ "100% - 32px", 22 ],
+                                  "anchor_from": "right_middle",
+                                  "anchor_to": "right_middle",
+                                  "offset": [ 0, 0 ],
+                                  "$button_text": "Armor Hud",
+                                  "$toggle_name": "ks_hud_armor",
+                                  "$toggle_view_binding_name": "ks_hud_armor_state"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ks_i_boss": {
+                            "type": "panel",
+                            "size": [ "100%", 24 ],
+                            "controls": [
+                              {
+                                "ks_i_boss_icon": {
+                                  "type": "image",
+                                  "texture": "textures/ui/ks_info_bossbar",
+                                  "size": [ 20, 20 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 4, 0 ],
+                                  "layer": 1
+                                }
+                              },
+                              {
+                                "ks_i_boss_t@common_toggles.light_text_toggle": {
+                                  "size": [ "100% - 32px", 22 ],
+                                  "anchor_from": "right_middle",
+                                  "anchor_to": "right_middle",
+                                  "offset": [ 0, 0 ],
+                                  "$button_text": "Bossbar",
+                                  "$toggle_name": "ks_hud_boss",
+                                  "$toggle_view_binding_name": "ks_hud_boss_state"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ks_i_chat": {
+                            "type": "panel",
+                            "size": [ "100%", 24 ],
+                            "controls": [
+                              {
+                                "ks_i_chat_icon": {
+                                  "type": "image",
+                                  "texture": "textures/ui/ks_info_chat",
+                                  "size": [ 20, 20 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 4, 0 ],
+                                  "layer": 1
+                                }
+                              },
+                              {
+                                "ks_i_chat_t@common_toggles.light_text_toggle": {
+                                  "size": [ "100% - 32px", 22 ],
+                                  "anchor_from": "right_middle",
+                                  "anchor_to": "right_middle",
+                                  "offset": [ 0, 0 ],
+                                  "$button_text": "Chat",
+                                  "$toggle_name": "ks_hud_chat",
+                                  "$toggle_view_binding_name": "ks_hud_chat_state"
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "ks_i_score": {
+                            "type": "panel",
+                            "size": [ "100%", 24 ],
+                            "controls": [
+                              {
+                                "ks_i_score_icon": {
+                                  "type": "image",
+                                  "texture": "textures/ui/ks_info_score",
+                                  "size": [ 20, 20 ],
+                                  "anchor_from": "left_middle",
+                                  "anchor_to": "left_middle",
+                                  "offset": [ 4, 0 ],
+                                  "layer": 1
+                                }
+                              },
+                              {
+                                "ks_i_score_t@common_toggles.light_text_toggle": {
+                                  "size": [ "100% - 32px", 22 ],
+                                  "anchor_from": "right_middle",
+                                  "anchor_to": "right_middle",
+                                  "offset": [ 0, 0 ],
+                                  "$button_text": "Scoreboard",
+                                  "$toggle_name": "ks_hud_score",
+                                  "$toggle_view_binding_name": "ks_hud_score_state"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_menu_close_row": {
+                "type": "panel",
+                "size": [ 200, 26 ],
+                "anchor_from": "bottom_middle",
+                "anchor_to": "bottom_middle",
+                "offset": [ 0, -10 ],
+                "layer": 1,
+                "controls": [
+                  {
+                    "ks_menu_close_label": {
+                      "type": "label",
+                      "size": [ 140, 26 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "Tap Config to close"
+                    }
+                  },
+                  {
+                    "ks_config_close_state@common.toggle": {
+                      "size": [ "100%", "100%" ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "layer": 2,
+                      "enabled": true,
+                      "visible": true,
+                      "$toggle_name": "ks_config_open",
+                      "$toggle_default_state": false,
+                      "$toggle_binding_type": "none",
+                      "$toggle_focus_enabled": false,
+                      "$unchecked_control": "common.empty_panel",
+                      "$checked_control": "common.empty_panel",
+                      "$unchecked_hover_control": "common.empty_panel",
+                      "$checked_hover_control": "common.empty_panel",
+                      "$unchecked_locked_control": "common.empty_panel",
+                      "$unchecked_locked_hover_control": "common.empty_panel",
+                      "$checked_locked_control": "common.empty_panel",
+                      "$checked_locked_hover_control": "common.empty_panel"
+                    }
+                  }
+                ]
               }
             }
           ]
@@ -217,7 +571,7 @@
             "ks_config_holder@pause.ks_config_holder": {}
           },
           {
-            "ks_config_popup@pause.ks_config_popup": {}
+            "ks_menu_full@pause.ks_menu_full": {}
           }
         ]
       }
