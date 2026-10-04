@@ -67,6 +67,8 @@
   // top_right/top_right still lays children from its OWN top-left, which
   // sits at screen left -> bell rendered TOP-LEFT. Explicit size
   // pins it to TOP-RIGHT. Layer 3 keeps it above everything.
+  // Icon-only like dressing room: borderless ks_inbox_icon_button
+  // (no vanilla button background, just bell + red dot).
   "friendsdrawer_button_panel": {
     "type": "panel",
     "size": [ 28, 32 ],
@@ -83,7 +85,7 @@
           "anchor_to": "top_left",
           "offset": [ 0, 0 ],
           "controls": [
-            { "inbox_icon_button@start.inbox_icon_button": {} }
+            { "ks_inbox_icon_button@ks_client.ks_inbox_icon_button": {} }
           ],
           "bindings": [
             {
