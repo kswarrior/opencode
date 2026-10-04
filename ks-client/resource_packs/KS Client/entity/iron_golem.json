@@ -8,7 +8,7 @@
         "health_bar": "entity_emissive_alpha"
       },
       "textures": {
-        "default": "textures/entity/iron_golem/iron_golem",
+        "default": "textures/entity/iron_golem",
         "cracked_high": "textures/entity/iron_golem/cracked_high",
         "cracked_med": "textures/entity/iron_golem/cracked_medium",
         "cracked_low": "textures/entity/iron_golem/cracked_low",
@@ -77,48 +77,25 @@
         "font0": "textures/health_bar/font/0"
       },
       "geometry": {
-        "default": "geometry.iron_golem",
+        "default": "geometry.irongolem",
         "health_bar": "geometry.health_bar"
       },
-      "scripts": {
-        "pre_animation": [
-          "variable.modified_tcos0 = Math.clamp(((Math.cos(query.modified_distance_moved * 13.5) * Math.min(query.modified_move_speed, 0.6) / variable.gliding_speed_value) * 25.0), -12.5, 12.5);",
-          "variable.attack_time = math.sin(variable.attack_time * 25);",
-          "variable.eye_target_x = query.target_y_rotation - this;",
-          "variable.eye_target_y = query.target_x_rotation - this;",
-          "v.health_bar_position = 47;",
-          "v.health_bar_scale = q.model_scale;",
-          "v.eye_random1 = math.round(math.sin(q.life_time*42))/10;",
-          "v.eye_random2 = math.round(math.cos(q.life_time*35))/10;"
-        ],
-        "animate": [
-          "general",
-          "facial",
-          "look_target",
-          "damage",
-          "health_bar"
-        ]
-      },
       "animations": {
-        "base": "animation.iron_golem.base",
-        "base_cracked": "animation.iron_golem.base_cracked",
-        "base_flower": "animation.iron_golem.base_flower",
-        "base_face": "animation.iron_golem.base_face",
-        "has_target_face": "animation.iron_golem.has_target_face",
-        "death_face": "animation.iron_golem.death_face",
-        "walking": "animation.iron_golem.walking",
-        "walking_cracked": "animation.iron_golem.walking_cracked",
-        "walking_has_target": "animation.iron_golem.walking_has_target",
-        "attack_time": "animation.iron_golem.attack_time",
-        "attack_walk": "animation.iron_golem.attack_walk",
-        "hurt": "animation.iron_golem.hurt",
-        "hurt2": "animation.iron_golem.hurt2",
-        "looking": "animation.iron_golem.looking",
-        "general": "controller.animation.iron_golem.general",
-        "facial": "controller.animation.iron_golem.facial",
-        "look_target": "controller.animation.iron_golem.look_target",
-        "damage": "controller.animation.iron_golem.damage",
-        "health_bar": "animation.health_bar"
+        "walk": "animation.irongolem.walk",
+        "move": "animation.iron_golem.move",
+        "attack": "animation.irongolem.attack",
+        "flower": "animation.irongolem.flower",
+        "look_at_target": "animation.common.look_at_target",
+        "walk_to_target": "animation.iron_golem.walk_to_target",
+        "move_to_target": "animation.iron_golem.move_to_target",
+        "move_controller": "controller.animation.iron_golem.move",
+        "arm_controller": "controller.animation.iron_golem.arm_movement",
+        "health_bar": "animation.health_bar",
+        "idle": "animation.irongolem.idle",
+        "nose_yaw": "animation.villager.nose_yaw",
+        "look_at": "animation.irongolem.look_at",
+        "arms_controller": "controller.animation.irongolem.arms",
+        "nose_yaw_controller": "controller.animation.villager.nose_yaw"
       },
       "render_controllers": [
         "controller.render.iron_golem",
@@ -129,6 +106,26 @@
         "controller.render.health_bar.digit2",
         "controller.render.health_bar.digit3"
       ],
+      "scripts": {
+        "pre_animation": [
+          "variable.modified_tcos0 = Math.clamp(((Math.cos(query.modified_distance_moved * 13.5) * Math.min(query.modified_move_speed, 0.6) / variable.gliding_speed_value) * 25.0), -12.5, 12.5);",
+          "v.health_bar_position = 47;",
+          "v.health_bar_scale = q.model_scale;",
+          "v.eye_random1 = math.round(math.sin(q.life_time*42))/10;",
+          "v.eye_random2 = math.round(math.cos(q.life_time*35))/10;"
+        ],
+        "animate": [
+          "look_at_target",
+          "move_controller",
+          "arm_controller",
+          "health_bar",
+          "look_at",
+          "walk",
+          "idle",
+          "arms_controller",
+          "nose_yaw_controller"
+        ]
+      },
       "spawn_egg": {
         "texture": "spawn_egg_iron_golem"
       }

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.10.0",
   "minecraft:client_entity": {
     "description": {
       "identifier": "minecraft:llama",
@@ -98,48 +98,24 @@
         "default": "geometry.llama.v1.8",
         "health_bar": "geometry.health_bar"
       },
-      "scripts": {
-        "pre_animation": [
-          "variable.eye_target_x = query.target_y_rotation - this;",
-          "variable.eye_target_y = query.target_x_rotation - this;",
-          "v.health_bar_position = q.is_baby ? 35 : 32;",
-          "v.health_bar_scale = q.model_scale;",
-          "v.smove = 0.0;"
-        ],
-        "animate": [
-          "health_bar"
-        ]
-      },
       "animations": {
-        "base": "animation.llama.v1.8.base",
-        "ear_wagging": "animation.llama.v1.8.ear_wagging",
-        "base_face": "animation.llama.v1.8.base_face",
-        "death_face": "animation.llama.v1.8.death_face",
-        "walking": "animation.llama.v1.8.walking",
-        "running": "animation.llama.v1.8.running",
-        "swimming": "animation.llama.v1.8.swimming",
-        "baby": "animation.llama.v1.8.baby",
-        "hurt": "animation.llama.v1.8.hurt",
-        "looking": "animation.llama.v1.8.looking",
-        "health_bar": "animation.health_bar"
+        "setup": "animation.llama.setup",
+        "walk": "animation.cow.walk",
+        "look_at_target": "animation.common.look_at_target",
+        "baby_transform": "animation.llama.baby_transform",
+        "move_controller": "controller.animation.cow.move",
+        "baby_controller": "controller.animation.llama.baby",
+        "health_bar": "animation.health_bar",
+        "run": "animation.llama.run",
+        "idle": "animation.cow.idle",
+        "blink": "animation.chicken.blink",
+        "float": "animation.cow.float",
+        "look_at": "animation.llama.look_at",
+        "landing": "animation.cow.landing",
+        "ear_right": "animation.llama.ear_right",
+        "ear_left": "animation.llama.ear_left",
+        "landing_controller": "controller.animation.cow.landing"
       },
-      "animation_controllers": [
-        {
-          "general": "controller.animation.llama.v1.8.general"
-        },
-        {
-          "baby_llama": "controller.animation.llama.v1.8.baby_llama"
-        },
-        {
-          "facial": "controller.animation.llama.v1.8.facial"
-        },
-        {
-          "look_target": "controller.animation.llama.v1.8.look_target"
-        },
-        {
-          "damage": "controller.animation.llama.v1.8.damage"
-        }
-      ],
       "render_controllers": [
         "controller.render.llama",
         "controller.render.health_bar.bar",
@@ -150,6 +126,23 @@
       ],
       "spawn_egg": {
         "texture": "spawn_egg_llama"
+      },
+      "scripts": {
+        "pre_animation": [
+          "v.health_bar_position = q.is_baby ? 35 : 32;",
+          "v.health_bar_scale = q.model_scale;",
+          "v.smove = 0.0;"
+        ],
+        "animate": [
+          "move_controller",
+          "baby_controller",
+          "health_bar",
+          "landing_controller",
+          "look_at",
+          "ear_right",
+          "ear_left",
+          "blink"
+        ]
       }
     }
   }
