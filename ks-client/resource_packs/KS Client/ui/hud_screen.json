@@ -8,9 +8,9 @@
   // draggable:both = click = toggle, click+drag = move. Default = top-right.
   "ks_menu_toggle@common_toggles.light_text_toggle": {
     "size": [ 64, 24 ],
-    "anchor_from": "top_right",
-    "anchor_to": "top_right",
-    "offset": [ -72, 8 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
     "layer": 100,
     "draggable": "both",
     "$button_text": "MENU",
