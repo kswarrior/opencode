@@ -255,6 +255,19 @@
                   }
                 ]
               }
+            },
+            {
+              "ks_left_footer": {
+                "type": "label",
+                "size": [ 174, 20 ],
+                "color": [ 100, 220, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "small",
+                "font_scale_factor": 0.9,
+                "text": "KS Warrior"
+              }
             }
           ]
         }
@@ -429,6 +442,19 @@
                 "font_size": "small",
                 "font_scale_factor": 0.85,
                 "text": "Tap MENU again to close."
+              }
+            },
+            {
+              "ks_right_footer": {
+                "type": "label",
+                "size": [ 174, 20 ],
+                "color": [ 100, 220, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "small",
+                "font_scale_factor": 0.9,
+                "text": "KS Warrior"
               }
             }
           ]
