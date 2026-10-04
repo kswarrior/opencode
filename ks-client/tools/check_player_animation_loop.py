@@ -84,6 +84,64 @@ def check_loop_flags():
     return errors
 
 
+def check_shield_armor_sword():
+    """Bug-specific rechecks (loop): shield follow, armor sync, sword hold."""
+    errors = []
+    import json as _j, glob as _g, os as _o
+    def _load(path):
+        return _j.load(open(path, encoding="utf-8"))
+    # 1. shield sneak must drive BOTH arm-Caps and item-lower
+    try:
+        sneak = _load(f"{PACK}/animations/Animation/4.sneak.json")["animations"]
+        r = sneak.get("animation.player.sneak.shield.r", {}).get("bones", {})
+        if "rightitem" not in r or "rightItem" not in r:
+            errors.append("sneak.shield.r missing rightitem+rightItem mirrors (shield detaches)")
+        if "RightArmUp" not in r or "RightArmDown" not in r:
+            errors.append("sneak.shield.r missing RightArmUp/Down (arm won't carry shield)")
+        l = sneak.get("animation.player.sneak.shield.l", {}).get("bones", {})
+        if "leftitem" not in l or "LeftItem" not in l:
+            errors.append("sneak.shield.l missing leftitem+LeftItem mirrors (shield detaches)")
+        if "LeftArmUp" not in l or "LeftArmDown" not in l:
+            errors.append("sneak.shield.l missing LeftArmUp/Down (arm won't carry shield)")
+    except Exception as e:
+        errors.append(f"shield sneak check failed: {e}")
+    # 2. armor sync: walk must drive Kbody+kbody and Kroot+kroot together
+    try:
+        walk = _load(f"{PACK}/animations/Animation/2.walk.json")["animations"]["animation.player.walk"]["bones"]
+        for a, b in [("Kbody", "kbody"), ("Kroot", "kroot")]:
+            if a not in walk or b not in walk:
+                errors.append(f"walk missing armor sync pair {a}+{b} (armor freezes, body moves)")
+        pa = _load(f"{PACK}/models/entity/Player/player_armor.json")
+        blob = _j.dumps(pa)
+        for bad in ['"rightArmup"', '"leftArmup"', '"rightLegup"', '"leftLegup"', '"rightLegdown"', '"leftLegdown"']:
+            if bad in blob:
+                errors.append(f"player_armor.json still has case bug {bad} (armor inflate/reset ignored)")
+        if '"name": "Kbody"' in blob:
+            errors.append("player_armor.json Kbody should be kbody to match armor base")
+    except Exception as e:
+        errors.append(f"armor sync check failed: {e}")
+    # 3. sword hold: attack anims must drive item+Item together, no sword-below-leg
+    try:
+        sw = _load(f"{PACK}/animations/Attack/4.sword.walk.json")["animations"]["animation.attack.sword.q1"]["bones"]
+        if "item" not in sw or "Item" not in sw:
+            errors.append("sword.q1 missing item+Item mirrors (sword floats / sinks below leg)")
+        sb = _load(f"{PACK}/animations/Animation/10.items.json")["animations"]["animation.player.sword.b"]["bones"]
+        for need in ["RightArmUp", "LeftArmUp", "RightLegUp", "LeftLegUp"]:
+            if need not in sb:
+                errors.append(f"sword.b missing {need} (idle sword pose broken)")
+    except Exception as e:
+        errors.append(f"sword check failed: {e}")
+    # 4. shield.both geometry must have leftitem+rightitem
+    try:
+        both = _load(f"{PACK}/models/entity/Items/shield.both.json")
+        names = {b["name"] for b in both["minecraft:geometry"][0]["bones"]}
+        if "leftitem" not in names or "rightitem" not in names:
+            errors.append("shield.both.json missing leftitem+rightitem (double-shield won't follow)")
+    except Exception as e:
+        errors.append(f"shield.both check failed: {e}")
+    return errors
+
+
 def check_player_refs():
     """Only what is actually played must resolve.
 
@@ -233,6 +291,7 @@ def one_pass(run_validate=False):
     problems += check_strict_json()
     problems += check_dotfiles()
     problems += check_loop_flags()
+    problems += check_shield_armor_sword()
     problems += check_player_refs()
     if run_validate:
         problems += check_mct_validate()
