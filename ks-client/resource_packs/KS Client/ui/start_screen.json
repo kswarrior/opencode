@@ -310,18 +310,18 @@
     ]
   },
 
-  // ---------- Play button rebuilt borderless (same engine press path) ----------
-  // Unique name (vanilla play_button left untouched). Art IS the button;
-  // $pressed_button_name passed through exactly like vanilla. No shift.
-  // play_button_art (hover gif layer) is disabled: exclusive to this stack.
-  "ks_play_button@common_buttons.no_background_content_button": {
-    "size": [ 95, 32 ],
-    "$button_text": "",
-    "$button_content": "start.ks_play_art_custom",
+  // ---------- Play button rebuilt realms-style, green (same engine press path) ----------
+  // Same base + same borderless realms textures as realms_button, only tinted
+  // green via $button_image_color and labeled menu.play. Vanilla play_button
+  // left untouched. play_button_art (hover gif layer) stays disabled.
+  "ks_play_button@start.main_button_dark": {
+    "size": [ 100, 32 ],
+    "$button_text": "menu.play",
     "$pressed_button_name": "$play_button_target",
-    "$button_offset": [ 0, 0 ],
-    "$button_pressed_offset": [ 0, 0 ],
-    "$pressed_button_offset": [ 0, 0 ],
+    "$default_button_texture": "textures/ui/realms_button_borderless_default",
+    "$hover_button_texture": "textures/ui/realms_button_borderless_hover",
+    "$pressed_button_texture": "textures/ui/realms_button_borderless_hover_pressed",
+    "$button_image_color": [ 0.5, 1.0, 0.5 ],
     "$focus_override_right": "profile_button",
     "default_focus_precedence": 1,
     "button_mappings": [

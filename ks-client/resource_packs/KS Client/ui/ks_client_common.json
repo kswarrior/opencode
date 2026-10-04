@@ -414,12 +414,12 @@
     ]
   },
 
-  // ---------- Bottom-right PLAY: 95x32 at (-8,-8), same height/baseline as store row ----------
-  // start.play_button is overridden (no frame/text/hold visuals, art IS the
-  // button, same engine press path). Social + Realms keep text.
+  // ---------- Bottom-right PLAY: 100x32 at (-8,-8), same style/size as Realms, green ----------
+  // Same dark base + realms borderless textures as ks_realms_button, tinted green,
+  // labeled menu.play. Same engine press path ($play_button_target).
   "ks_bottom_right_play": {
     "type": "panel",
-    "size": [ 95, 32 ],
+    "size": [ 100, 32 ],
     "anchor_from": "bottom_right",
     "anchor_to": "bottom_right",
     "offset": [ -8, -8 ],
@@ -427,7 +427,7 @@
     "controls": [
       {
         "ks_play_button@start.ks_play_button": {
-          "size": [ 95, 32 ],
+          "size": [ 100, 32 ],
           "layer": 2
         }
       }
