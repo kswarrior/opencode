@@ -1,6 +1,10 @@
 {
   "namespace": "hud",
 
+  "vignette_renderer": {
+    "ignored": true
+  },
+
   // RP-only Hide-HUD + Paperdoll toggles.
   // Unlike $pressed_button_name actions (ignored on HUD), toggles write
   // straight to engine settings via hardcoded toggle names, so no
