@@ -12,7 +12,7 @@
         "neverRender": false
       },
       {
-        "name": "Kbody",
+        "name": "kbody",
         "inflate": 1.0
       },
       {
@@ -44,7 +44,7 @@
   "geometry.player.armor.helmet:geometry.player.armor1": {
     "bones": [
       {
-        "name": "Kbody",
+        "name": "kbody",
         "reset": true
       },
       {
@@ -96,7 +96,7 @@
         "reset": true
       },
       {
-        "name": "Kbody",
+        "name": "kbody",
         "reset": true
       },
       {
@@ -116,7 +116,7 @@
         "inflate": 0.5
       },
       {
-        "name": "Kbody",
+        "name": "kbody",
         "inflate": 0.5
       },
       {
