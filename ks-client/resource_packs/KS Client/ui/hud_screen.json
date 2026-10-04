@@ -5,18 +5,17 @@
   // Single source of truth ("strong loop"): ON = both sidebars visible, OFF = both hidden.
   // Toggle (not button) because $pressed_button_name actions are ignored on HUD,
   // but toggles write state and can drive visibility via view bindings.
-  // draggable:both = click = toggle, click+drag = move. Default = top-right.
+  // Plain click toggle (NOT draggable: drag eats taps on HUD). Default = top-right via holder.
   "ks_menu_toggle@common_toggles.light_text_toggle": {
     "size": [ 64, 24 ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "offset": [ 0, 0 ],
     "layer": 100,
-    "draggable": "both",
     "$button_text": "MENU",
     "$toggle_name": "ks_menu_open",
     "$toggle_view_binding_name": "ks_menu_state",
-    "prevent_touch_input": false
+    "prevent_touch_input": true
   },
 
   "ks_menu_holder": {
@@ -96,7 +95,7 @@
       },
       {
         "ks_left_title@hud.ks_sidebar_title": {
-          "text": "CONTROLS"
+          "text": "KS Client"
         }
       },
       {
@@ -288,7 +287,7 @@
       },
       {
         "ks_right_title@hud.ks_sidebar_title": {
-          "text": "SETTINGS"
+          "text": "KS Client"
         }
       },
       {
@@ -429,7 +428,7 @@
                 "text_alignment": "left",
                 "font_size": "small",
                 "font_scale_factor": 0.85,
-                "text": "Tap MENU again to close. Drag MENU to move."
+                "text": "Tap MENU again to close."
               }
             }
           ]
