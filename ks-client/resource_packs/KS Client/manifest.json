@@ -38,17 +38,5 @@
         "0.19.0"
       ]
     }
-  },
-  "subpacks": [
-    {
-      "folder_name": "hide_until_hurt",
-      "name": "Hide Until Hurt",
-      "memory_tier": 0
-    },
-    {
-      "folder_name": "always_display",
-      "name": "Always Display",
-      "memory_tier": 0
-    }
-  ]
+  }
 }
