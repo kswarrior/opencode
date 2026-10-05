@@ -1490,17 +1490,41 @@
     ]
   },
 
-  // ---------- F3 debug readout (FPS + real coords, top-right) ----------
+  // ---------- Inventory slot probe (one per hotbar/inventory slot) ----------
+  // Clean-room rebuild of the standard collection technique: inside a
+  // collection_panel bound to hotbar_items, each probe reads #item_id_aux
+  // (-1 = empty) and publishes '#ks_slot_<id>' true when filled. The debug
+  // rows below sum the 36 probes into a used/total counter.
+  "ks_inv_slot": {
+    "type": "panel",
+    "collection_index": "$ks_id",
+    "bindings": [
+      {
+        "binding_name": "#item_id_aux",
+        "binding_type": "collection",
+        "binding_collection_name": "hotbar_items"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#item_id_aux = -1))",
+        "target_property_name": "('#ks_slot_' + $ks_id)"
+      }
+    ]
+  },
+
+  // ---------- F3 debug readout (full screen, top-left) ----------
+  // Clean-room KS rebuild of the reference pack's F1/F3 debug system:
+  // same data (FPS, position, days, game mode, XP, world, nether/overworld
+  // coords, chunk, inventory, version, edition, device, graphics, input,
+  // UI profile, pack), own layout/art/text. No third-party code or pixels.
   // Visible only while the F3 toggle above is ON and the HUD is visible.
-  // Independent of pause Config > Info; same KS row styling, own 2-row panel
-  // so it never overlaps the top-left HUD area.
+  // Rows with no matching device/input simply collapse (ignored).
   "ks_f3_panel": {
-    "type": "stack_panel",
-    "orientation": "vertical",
-    "size": [ 180, 46 ],
-    "anchor_from": "top_right",
-    "anchor_to": "top_right",
-    "offset": [ -188, 60 ],
+    "type": "panel",
+    "size": [ 544, 206 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 60 ],
     "layer": 10,
     "visible": false,
     "bindings": [
@@ -1523,102 +1547,1695 @@
     ],
     "controls": [
       {
-        "ks_f3_fps": {
-          "type": "panel",
-          "size": [ "100%", 22 ],
+        "ks_dbg_left": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": [ 264, 206 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
           "controls": [
             {
-              "ks_f3_fps_bg": {
-                "type": "image",
-                "texture": "textures/ui/ks_config_btn",
-                "size": [ "100%", "100%" ],
-                "layer": 0
+              "ks_dbg_fps": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "controls": [
+                  {
+                    "ks_dbg_fps_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_fps_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "FPS: 60"
+                    }
+                  }
+                ]
               }
             },
             {
-              "ks_f3_fps_icon": {
-                "type": "image",
-                "texture": "textures/ui/ks_info_fps",
-                "size": [ 18, 18 ],
-                "anchor_from": "left_middle",
-                "anchor_to": "left_middle",
-                "offset": [ 4, 0 ],
-                "layer": 1
+              "ks_dbg_pos": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "bindings": [
+                  {
+                    "binding_name": "#player_position_visible",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_dbg_pos_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_pos_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_pos_text",
+                      "bindings": [
+                        {
+                          "binding_name": "#player_position_text",
+                          "binding_type": "global"
+                        },
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always_when_visible",
+                          "source_property_name": "('Position: ' + #player_position_text)",
+                          "target_property_name": "#ks_pos_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
               }
             },
             {
-              "ks_f3_fps_lbl": {
-                "type": "label",
-                "size": [ "100% - 30px", 22 ],
-                "anchor_from": "left_middle",
-                "anchor_to": "left_middle",
-                "offset": [ 28, 0 ],
-                "color": [ 255, 255, 255 ],
-                "shadow": true,
-                "localize": false,
-                "text_alignment": "left",
-                "font_size": "small",
-                "font_scale_factor": 0.9,
-                "layer": 1,
-                "text": "FPS: 60"
+              "ks_dbg_days": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "bindings": [
+                  {
+                    "binding_name": "#number_of_days_played_visible",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_dbg_days_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_days_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_days_text",
+                      "bindings": [
+                        {
+                          "binding_name": "#number_of_days_played_text",
+                          "binding_type": "global"
+                        },
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always_when_visible",
+                          "source_property_name": "('Days Played: ' + #number_of_days_played_text)",
+                          "target_property_name": "#ks_days_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_mode": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "controls": [
+                  {
+                    "ks_dbg_mode_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_mode_c": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Game Mode: Creative",
+                      "bindings": [
+                        {
+                          "binding_name": "#is_creative_mode",
+                          "binding_name_override": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_dbg_mode_s": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Game Mode: Survival",
+                      "bindings": [
+                        {
+                          "binding_name": "(not #is_creative_mode)",
+                          "binding_name_override": "#visible"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_xp": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "bindings": [
+                  {
+                    "binding_name": "#level_number_visible",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_dbg_xp_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_xp_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_xp_text",
+                      "bindings": [
+                        {
+                          "binding_name": "#level_number",
+                          "binding_type": "global"
+                        },
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always_when_visible",
+                          "source_property_name": "('XP Level: ' + #level_number)",
+                          "target_property_name": "#ks_xp_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_world": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "bindings": [
+                  {
+                    "binding_name": "#player_list_title_visible",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_dbg_world_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_world_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_world_text",
+                      "bindings": [
+                        {
+                          "binding_name": "#player_list_title",
+                          "binding_type": "global"
+                        },
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always_when_visible",
+                          "source_property_name": "('World: ' + #player_list_title)",
+                          "target_property_name": "#ks_world_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_ver": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "($minecraft_game_version = '')",
+                "controls": [
+                  {
+                    "ks_dbg_ver_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_ver_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_ver_text",
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "('Minecraft ' + $minecraft_game_version)",
+                          "target_property_name": "#ks_ver_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_ver_fb": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not ($minecraft_game_version = ''))",
+                "controls": [
+                  {
+                    "ks_dbg_ver_fb_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_ver_fb_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Minecraft: Bedrock Edition"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_ed_edu": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $education_edition)",
+                "controls": [
+                  {
+                    "ks_dbg_ed_edu_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_ed_edu_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Edition: Education"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_ed_pock": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $pocket_edition)",
+                "controls": [
+                  {
+                    "ks_dbg_ed_pock_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_ed_pock_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Edition: Pocket"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_ed_bed": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "($education_edition or $pocket_edition)",
+                "controls": [
+                  {
+                    "ks_dbg_ed_bed_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_ed_bed_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Edition: Bedrock"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_pack": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "controls": [
+                  {
+                    "ks_dbg_pack_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_pack_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "KS Client v1.0.9"
+                    }
+                  }
+                ]
               }
             }
           ]
         }
       },
       {
-        "ks_f3_gap": {
+        "ks_dbg_mid": {
           "type": "panel",
-          "size": [ "100%", 2 ]
+          "size": [ 8, 206 ]
         }
       },
       {
-        "ks_f3_coords": {
-          "type": "panel",
-          "size": [ "100%", 22 ],
+        "ks_dbg_right": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": [ 264, 206 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
           "controls": [
             {
-              "ks_f3_coords_bg": {
-                "type": "image",
-                "texture": "textures/ui/ks_config_btn",
-                "size": [ "100%", "100%" ],
-                "layer": 0
-              }
-            },
-            {
-              "ks_f3_coords_icon": {
-                "type": "image",
-                "texture": "textures/ui/ks_info_coords",
-                "size": [ 18, 18 ],
-                "anchor_from": "left_middle",
-                "anchor_to": "left_middle",
-                "offset": [ 4, 0 ],
-                "layer": 1
-              }
-            },
-            {
-              "ks_f3_coords_lbl": {
-                "type": "label",
-                "size": [ "100% - 30px", 22 ],
-                "anchor_from": "left_middle",
-                "anchor_to": "left_middle",
-                "offset": [ 28, 0 ],
-                "color": [ 255, 255, 255 ],
-                "shadow": true,
-                "localize": false,
-                "text_alignment": "left",
-                "font_size": "small",
-                "font_scale_factor": 0.85,
-                "layer": 1,
-                "text": "#player_position_text",
+              "ks_dbg_neth": {
+                "type": "panel",
+                "size": [ 264, 22 ],
                 "bindings": [
                   {
-                    "binding_name": "#player_position_text",
-                    "binding_name_override": "#text",
-                    "binding_condition": "always_when_visible",
+                    "binding_name": "#player_position_visible",
+                    "binding_name_override": "#visible",
                     "binding_type": "global"
                   }
+                ],
+                "controls": [
+                  {
+                    "ks_dbg_neth_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_neth_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_nether_text"
+                    }
+                  }
                 ]
+              }
+            },
+            {
+              "ks_dbg_over": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "bindings": [
+                  {
+                    "binding_name": "#player_position_visible",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_dbg_over_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_over_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_over_text"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_chunk": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "bindings": [
+                  {
+                    "binding_name": "#player_position_visible",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_dbg_chunk_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_chunk_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_chunk_text"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_inv": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "controls": [
+                  {
+                    "ks_dbg_inv_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_inv_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "#ks_inv_text",
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_0",
+                          "source_property_name": "#ks_slot_0",
+                          "target_property_name": "#ks_slot_0"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_1",
+                          "source_property_name": "#ks_slot_1",
+                          "target_property_name": "#ks_slot_1"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_2",
+                          "source_property_name": "#ks_slot_2",
+                          "target_property_name": "#ks_slot_2"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_3",
+                          "source_property_name": "#ks_slot_3",
+                          "target_property_name": "#ks_slot_3"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_4",
+                          "source_property_name": "#ks_slot_4",
+                          "target_property_name": "#ks_slot_4"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_5",
+                          "source_property_name": "#ks_slot_5",
+                          "target_property_name": "#ks_slot_5"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_6",
+                          "source_property_name": "#ks_slot_6",
+                          "target_property_name": "#ks_slot_6"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_7",
+                          "source_property_name": "#ks_slot_7",
+                          "target_property_name": "#ks_slot_7"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_8",
+                          "source_property_name": "#ks_slot_8",
+                          "target_property_name": "#ks_slot_8"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_9",
+                          "source_property_name": "#ks_slot_9",
+                          "target_property_name": "#ks_slot_9"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_10",
+                          "source_property_name": "#ks_slot_10",
+                          "target_property_name": "#ks_slot_10"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_11",
+                          "source_property_name": "#ks_slot_11",
+                          "target_property_name": "#ks_slot_11"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_12",
+                          "source_property_name": "#ks_slot_12",
+                          "target_property_name": "#ks_slot_12"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_13",
+                          "source_property_name": "#ks_slot_13",
+                          "target_property_name": "#ks_slot_13"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_14",
+                          "source_property_name": "#ks_slot_14",
+                          "target_property_name": "#ks_slot_14"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_15",
+                          "source_property_name": "#ks_slot_15",
+                          "target_property_name": "#ks_slot_15"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_16",
+                          "source_property_name": "#ks_slot_16",
+                          "target_property_name": "#ks_slot_16"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_17",
+                          "source_property_name": "#ks_slot_17",
+                          "target_property_name": "#ks_slot_17"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_18",
+                          "source_property_name": "#ks_slot_18",
+                          "target_property_name": "#ks_slot_18"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_19",
+                          "source_property_name": "#ks_slot_19",
+                          "target_property_name": "#ks_slot_19"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_20",
+                          "source_property_name": "#ks_slot_20",
+                          "target_property_name": "#ks_slot_20"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_21",
+                          "source_property_name": "#ks_slot_21",
+                          "target_property_name": "#ks_slot_21"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_22",
+                          "source_property_name": "#ks_slot_22",
+                          "target_property_name": "#ks_slot_22"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_23",
+                          "source_property_name": "#ks_slot_23",
+                          "target_property_name": "#ks_slot_23"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_24",
+                          "source_property_name": "#ks_slot_24",
+                          "target_property_name": "#ks_slot_24"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_25",
+                          "source_property_name": "#ks_slot_25",
+                          "target_property_name": "#ks_slot_25"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_26",
+                          "source_property_name": "#ks_slot_26",
+                          "target_property_name": "#ks_slot_26"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_27",
+                          "source_property_name": "#ks_slot_27",
+                          "target_property_name": "#ks_slot_27"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_28",
+                          "source_property_name": "#ks_slot_28",
+                          "target_property_name": "#ks_slot_28"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_29",
+                          "source_property_name": "#ks_slot_29",
+                          "target_property_name": "#ks_slot_29"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_30",
+                          "source_property_name": "#ks_slot_30",
+                          "target_property_name": "#ks_slot_30"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_31",
+                          "source_property_name": "#ks_slot_31",
+                          "target_property_name": "#ks_slot_31"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_32",
+                          "source_property_name": "#ks_slot_32",
+                          "target_property_name": "#ks_slot_32"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_33",
+                          "source_property_name": "#ks_slot_33",
+                          "target_property_name": "#ks_slot_33"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_34",
+                          "source_property_name": "#ks_slot_34",
+                          "target_property_name": "#ks_slot_34"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "ks_inv_slot_35",
+                          "source_property_name": "#ks_slot_35",
+                          "target_property_name": "#ks_slot_35"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(#ks_slot_0 + #ks_slot_1 + #ks_slot_2 + #ks_slot_3 + #ks_slot_4 + #ks_slot_5 + #ks_slot_6 + #ks_slot_7 + #ks_slot_8 + #ks_slot_9 + #ks_slot_10 + #ks_slot_11 + #ks_slot_12 + #ks_slot_13 + #ks_slot_14 + #ks_slot_15 + #ks_slot_16 + #ks_slot_17 + #ks_slot_18 + #ks_slot_19 + #ks_slot_20 + #ks_slot_21 + #ks_slot_22 + #ks_slot_23 + #ks_slot_24 + #ks_slot_25 + #ks_slot_26 + #ks_slot_27 + #ks_slot_28 + #ks_slot_29 + #ks_slot_30 + #ks_slot_31 + #ks_slot_32 + #ks_slot_33 + #ks_slot_34 + #ks_slot_35)",
+                          "target_property_name": "#ks_inv_used"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "('Inventory: ' + #ks_inv_used + '/36')",
+                          "target_property_name": "#ks_inv_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_invst": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "controls": [
+                  {
+                    "ks_dbg_invst_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_invst_full": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 80, 80 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Status: Full",
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(#ks_inv_used = 36)",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_dbg_invst_av": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 120, 255, 120 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Status: Available",
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(not (#ks_inv_used = 36))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_dev_a": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $is_android)",
+                "controls": [
+                  {
+                    "ks_dbg_dev_a_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_dev_a_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Device: Android"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_dev_w": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $win10_edition)",
+                "controls": [
+                  {
+                    "ks_dbg_dev_w_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_dev_w_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Device: Windows"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_dev_x": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $xbox_one)",
+                "controls": [
+                  {
+                    "ks_dbg_dev_x_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_dev_x_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Device: Xbox"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_dev_i": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $is_ios)",
+                "controls": [
+                  {
+                    "ks_dbg_dev_i_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_dev_i_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Device: iOS"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_gfx_r": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not ($win10_edition or $xbox_one or $is_ps4))",
+                "controls": [
+                  {
+                    "ks_dbg_gfx_r_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_gfx_r_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Graphics: RenderDragon"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_gfx_g": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "($win10_edition or $xbox_one or $is_ps4)",
+                "controls": [
+                  {
+                    "ks_dbg_gfx_g_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_gfx_g_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Graphics: OpenGL"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_in_t": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $touch)",
+                "controls": [
+                  {
+                    "ks_dbg_in_t_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_in_t_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Input: Touch"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_in_c": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $game_pad)",
+                "controls": [
+                  {
+                    "ks_dbg_in_c_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_in_c_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Input: Controller"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_in_k": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not ($win10_edition or $mouse))",
+                "controls": [
+                  {
+                    "ks_dbg_in_k_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_in_k_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Input: Keyboard & Mouse"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_in_v": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $is_mobile_vr)",
+                "controls": [
+                  {
+                    "ks_dbg_in_v_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_in_v_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "Input: VR"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_ui_c": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $desktop_screen)",
+                "controls": [
+                  {
+                    "ks_dbg_ui_c_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_ui_c_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "UI: Classic"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_dbg_ui_p": {
+                "type": "panel",
+                "size": [ 264, 22 ],
+                "ignored": "(not $pocket_screen)",
+                "controls": [
+                  {
+                    "ks_dbg_ui_p_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_dbg_ui_p_lbl": {
+                      "type": "label",
+                      "size": [ 248, 22 ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 8, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "left",
+                      "font_size": "small",
+                      "font_scale_factor": 0.85,
+                      "layer": 1,
+                      "text": "UI: Pocket"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_dbg_math": {
+          "type": "panel",
+          "size": [ 0, 8 ],
+          "visible": false,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "player_position_text",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_raw_pos"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_pos - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_s1"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_s1 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_s2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_pos - (#ks_s2 - ' , , ' - ':'))",
+              "target_property_name": "#ks_coords"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords - ':')",
+              "target_property_name": "#ks_x"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords - (': ' + #ks_x + ','))",
+              "target_property_name": "#ks_y"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords - (': ' + #ks_x + ', ' + #ks_y + ','))",
+              "target_property_name": "#ks_z"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x / 8)",
+              "target_property_name": "#ks_nx"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z / 8)",
+              "target_property_name": "#ks_nz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x * 8)",
+              "target_property_name": "#ks_ox"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z * 8)",
+              "target_property_name": "#ks_oz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_x - (#ks_x < 0) * 15) / 16)",
+              "target_property_name": "#ks_cx"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_y - (#ks_y < 0) * 15) / 16)",
+              "target_property_name": "#ks_cy"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_z - (#ks_z < 0) * 15) / 16)",
+              "target_property_name": "#ks_cz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x - (#ks_cx * 16))",
+              "target_property_name": "#ks_px"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_y - (#ks_cy * 16))",
+              "target_property_name": "#ks_py"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z - (#ks_cz * 16))",
+              "target_property_name": "#ks_pz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Nether: ' + #ks_nx + ', ' + #ks_y + ', ' + #ks_nz)",
+              "target_property_name": "#ks_nether_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Overworld: ' + #ks_ox + ', ' + #ks_y + ', ' + #ks_oz)",
+              "target_property_name": "#ks_over_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Chunk: ' + #ks_cx + ', ' + #ks_cy + ', ' + #ks_cz + ' [' + #ks_px + ', ' + #ks_py + ', ' + #ks_pz + ']')",
+              "target_property_name": "#ks_chunk_text"
+            }
+          ]
+        }
+      },
+      {
+        "ks_dbg_count": {
+          "type": "collection_panel",
+          "collection_name": "hotbar_items",
+          "size": [ 0, 8 ],
+          "controls": [
+            {
+              "ks_inv_slot_0@ks_client.ks_inv_slot": {
+                "$ks_id": 0
+              }
+            },
+            {
+              "ks_inv_slot_1@ks_client.ks_inv_slot": {
+                "$ks_id": 1
+              }
+            },
+            {
+              "ks_inv_slot_2@ks_client.ks_inv_slot": {
+                "$ks_id": 2
+              }
+            },
+            {
+              "ks_inv_slot_3@ks_client.ks_inv_slot": {
+                "$ks_id": 3
+              }
+            },
+            {
+              "ks_inv_slot_4@ks_client.ks_inv_slot": {
+                "$ks_id": 4
+              }
+            },
+            {
+              "ks_inv_slot_5@ks_client.ks_inv_slot": {
+                "$ks_id": 5
+              }
+            },
+            {
+              "ks_inv_slot_6@ks_client.ks_inv_slot": {
+                "$ks_id": 6
+              }
+            },
+            {
+              "ks_inv_slot_7@ks_client.ks_inv_slot": {
+                "$ks_id": 7
+              }
+            },
+            {
+              "ks_inv_slot_8@ks_client.ks_inv_slot": {
+                "$ks_id": 8
+              }
+            },
+            {
+              "ks_inv_slot_9@ks_client.ks_inv_slot": {
+                "$ks_id": 9
+              }
+            },
+            {
+              "ks_inv_slot_10@ks_client.ks_inv_slot": {
+                "$ks_id": 10
+              }
+            },
+            {
+              "ks_inv_slot_11@ks_client.ks_inv_slot": {
+                "$ks_id": 11
+              }
+            },
+            {
+              "ks_inv_slot_12@ks_client.ks_inv_slot": {
+                "$ks_id": 12
+              }
+            },
+            {
+              "ks_inv_slot_13@ks_client.ks_inv_slot": {
+                "$ks_id": 13
+              }
+            },
+            {
+              "ks_inv_slot_14@ks_client.ks_inv_slot": {
+                "$ks_id": 14
+              }
+            },
+            {
+              "ks_inv_slot_15@ks_client.ks_inv_slot": {
+                "$ks_id": 15
+              }
+            },
+            {
+              "ks_inv_slot_16@ks_client.ks_inv_slot": {
+                "$ks_id": 16
+              }
+            },
+            {
+              "ks_inv_slot_17@ks_client.ks_inv_slot": {
+                "$ks_id": 17
+              }
+            },
+            {
+              "ks_inv_slot_18@ks_client.ks_inv_slot": {
+                "$ks_id": 18
+              }
+            },
+            {
+              "ks_inv_slot_19@ks_client.ks_inv_slot": {
+                "$ks_id": 19
+              }
+            },
+            {
+              "ks_inv_slot_20@ks_client.ks_inv_slot": {
+                "$ks_id": 20
+              }
+            },
+            {
+              "ks_inv_slot_21@ks_client.ks_inv_slot": {
+                "$ks_id": 21
+              }
+            },
+            {
+              "ks_inv_slot_22@ks_client.ks_inv_slot": {
+                "$ks_id": 22
+              }
+            },
+            {
+              "ks_inv_slot_23@ks_client.ks_inv_slot": {
+                "$ks_id": 23
+              }
+            },
+            {
+              "ks_inv_slot_24@ks_client.ks_inv_slot": {
+                "$ks_id": 24
+              }
+            },
+            {
+              "ks_inv_slot_25@ks_client.ks_inv_slot": {
+                "$ks_id": 25
+              }
+            },
+            {
+              "ks_inv_slot_26@ks_client.ks_inv_slot": {
+                "$ks_id": 26
+              }
+            },
+            {
+              "ks_inv_slot_27@ks_client.ks_inv_slot": {
+                "$ks_id": 27
+              }
+            },
+            {
+              "ks_inv_slot_28@ks_client.ks_inv_slot": {
+                "$ks_id": 28
+              }
+            },
+            {
+              "ks_inv_slot_29@ks_client.ks_inv_slot": {
+                "$ks_id": 29
+              }
+            },
+            {
+              "ks_inv_slot_30@ks_client.ks_inv_slot": {
+                "$ks_id": 30
+              }
+            },
+            {
+              "ks_inv_slot_31@ks_client.ks_inv_slot": {
+                "$ks_id": 31
+              }
+            },
+            {
+              "ks_inv_slot_32@ks_client.ks_inv_slot": {
+                "$ks_id": 32
+              }
+            },
+            {
+              "ks_inv_slot_33@ks_client.ks_inv_slot": {
+                "$ks_id": 33
+              }
+            },
+            {
+              "ks_inv_slot_34@ks_client.ks_inv_slot": {
+                "$ks_id": 34
+              }
+            },
+            {
+              "ks_inv_slot_35@ks_client.ks_inv_slot": {
+                "$ks_id": 35
               }
             }
           ]
@@ -1679,6 +3296,115 @@
           "offset": [ 0, 0 ],
           "layer": 2,
           "$pressed_button_name": "button.hide_gui_all"
+        }
+      }
+    ]
+  },
+
+  // ---------- Hotbar scroll arrows (touch helper, same key style) ----------
+  // Clean-room KS rebuild of the reference pack's hotbar helpers.
+  // Real engine actions: button.hotbar_inventory_left / right.
+  "ks_hotbar_left": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ -113, -2 ],
+    "layer": 11,
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "ks_hl_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_key_btn",
+          "size": [ 20, 20 ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_hl_lbl": {
+          "type": "label",
+          "size": [ 20, 20 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "color": [ 255, 255, 255 ],
+          "shadow": true,
+          "localize": false,
+          "text_alignment": "center",
+          "font_size": "small",
+          "font_scale_factor": 0.85,
+          "layer": 1,
+          "text": "<"
+        }
+      },
+      {
+        "ks_hl_hit@common.button": {
+          "size": [ 20, 20 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 2,
+          "$pressed_button_name": "button.hotbar_inventory_left"
+        }
+      }
+    ]
+  },
+
+  "ks_hotbar_right": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ 113, -2 ],
+    "layer": 11,
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "ks_hr_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_key_btn",
+          "size": [ 20, 20 ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_hr_lbl": {
+          "type": "label",
+          "size": [ 20, 20 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "color": [ 255, 255, 255 ],
+          "shadow": true,
+          "localize": false,
+          "text_alignment": "center",
+          "font_size": "small",
+          "font_scale_factor": 0.85,
+          "layer": 1,
+          "text": ">"
+        }
+      },
+      {
+        "ks_hr_hit@common.button": {
+          "size": [ 20, 20 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 2,
+          "$pressed_button_name": "button.hotbar_inventory_right"
         }
       }
     ]
