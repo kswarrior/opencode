@@ -1377,7 +1377,7 @@
         }
       },
       {
-        "ks_key_gap3": {
+        "ks_key_gap": {
           "type": "panel",
           "size": [ 2, 20 ]
         }
