@@ -3,26 +3,80 @@
     "render_controllers": {
         "controller.render.health_bar.heart": {
             "geometry": "Geometry.health_bar",
-            "textures": [ "Texture.heart" ],
-            "materials": [ { "*": "Material.health_bar" } ],
-            "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
-            "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+            "textures": [
+                "Texture.heart"
+            ],
+            "materials": [
+                {
+                    "*": "Material.health_bar"
+                }
+            ],
+            "is_hurt_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
+            "on_fire_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
             "part_visibility": [
-                { "*": false },
-                { "h1": "q.health < 10" },
-                { "h2": "q.health >= 10 && q.health < 100" },
-                { "h3": "q.health >= 100" }
-            ]
+                {
+                    "*": false
+                },
+                {
+                    "h1": "q.health < 10"
+                },
+                {
+                    "h2": "q.health >= 10 && q.health < 100"
+                },
+                {
+                    "h3": "q.health >= 100"
+                }
+            ],
+            "uv_anim": {
+                "offset": [
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1
+                ]
+            }
         },
         "controller.render.health_bar.bar": {
             "geometry": "Geometry.health_bar",
-            "textures": [ "Array.textures[q.health / q.max_health * 50]" ],
-            "materials": [ { "*": "Material.health_bar" } ],
-            "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
-            "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+            "textures": [
+                "Array.textures[q.health / q.max_health * 50]"
+            ],
+            "materials": [
+                {
+                    "*": "Material.health_bar"
+                }
+            ],
+            "is_hurt_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
+            "on_fire_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
             "part_visibility": [
-                { "*": false },
-                { "bar": true }
+                {
+                    "*": false
+                },
+                {
+                    "bar": true
+                }
             ],
             "arrays": {
                 "textures": {
@@ -80,17 +134,47 @@
                         "Texture.bar50"
                     ]
                 }
+            },
+            "uv_anim": {
+                "offset": [
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1
+                ]
             }
         },
         "controller.render.health_bar.digit1": {
             "geometry": "Geometry.health_bar",
-            "textures": [ "Array.textures[q.health / 100]" ],
-            "materials": [ { "*": "Material.health_bar" } ],
-            "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
-            "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+            "textures": [
+                "Array.textures[q.health / 100]"
+            ],
+            "materials": [
+                {
+                    "*": "Material.health_bar"
+                }
+            ],
+            "is_hurt_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
+            "on_fire_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
             "part_visibility": [
-                { "*": false },
-                { "fa": "q.health >= 100" }
+                {
+                    "*": false
+                },
+                {
+                    "fa": "q.health >= 100"
+                }
             ],
             "arrays": {
                 "textures": {
@@ -107,18 +191,50 @@
                         "Texture.font9"
                     ]
                 }
+            },
+            "uv_anim": {
+                "offset": [
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1
+                ]
             }
         },
         "controller.render.health_bar.digit2": {
             "geometry": "Geometry.health_bar",
-            "textures": [ "Array.textures[math.mod(q.health, 100) / 10]" ],
-            "materials": [ { "*": "Material.health_bar" } ],
-            "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
-            "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+            "textures": [
+                "Array.textures[math.mod(q.health, 100) / 10]"
+            ],
+            "materials": [
+                {
+                    "*": "Material.health_bar"
+                }
+            ],
+            "is_hurt_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
+            "on_fire_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
             "part_visibility": [
-                { "*": false },
-                { "fc": "q.health >= 100" },
-                { "fb": "q.health >= 10 && q.health < 100" }
+                {
+                    "*": false
+                },
+                {
+                    "fc": "q.health >= 100"
+                },
+                {
+                    "fb": "q.health >= 10 && q.health < 100"
+                }
             ],
             "arrays": {
                 "textures": {
@@ -135,19 +251,53 @@
                         "Texture.font9"
                     ]
                 }
+            },
+            "uv_anim": {
+                "offset": [
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1
+                ]
             }
         },
         "controller.render.health_bar.digit3": {
             "geometry": "Geometry.health_bar",
-            "textures": [ "Array.textures[math.mod(q.health, 10)]" ],
-            "materials": [ { "*": "Material.health_bar" } ],
-            "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
-            "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+            "textures": [
+                "Array.textures[math.mod(q.health, 10)]"
+            ],
+            "materials": [
+                {
+                    "*": "Material.health_bar"
+                }
+            ],
+            "is_hurt_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
+            "on_fire_color": {
+                "r": "0",
+                "g": "0",
+                "b": "0",
+                "a": "0"
+            },
             "part_visibility": [
-                { "*": false },
-                { "fc": "q.health < 10" },
-                { "fd": "q.health >= 10 && q.health < 100" },
-                { "fe": "q.health >= 100" }
+                {
+                    "*": false
+                },
+                {
+                    "fc": "q.health < 10"
+                },
+                {
+                    "fd": "q.health >= 10 && q.health < 100"
+                },
+                {
+                    "fe": "q.health >= 100"
+                }
             ],
             "arrays": {
                 "textures": {
@@ -164,6 +314,16 @@
                         "Texture.font9"
                     ]
                 }
+            },
+            "uv_anim": {
+                "offset": [
+                    0,
+                    0
+                ],
+                "scale": [
+                    1,
+                    1
+                ]
             }
         }
     }
