@@ -1444,7 +1444,7 @@
   // ---------- F3 debug readout (FPS + real coords, top-right) ----------
   // Visible only while the F3 toggle above is ON and the HUD is visible.
   // Independent of pause Config > Info; same KS row styling, own 2-row panel
-  // so it never overlaps the top-left ks_hud_info readout.
+  // so it never overlaps the top-left HUD area.
   "ks_f3_panel": {
     "type": "stack_panel",
     "orientation": "vertical",
