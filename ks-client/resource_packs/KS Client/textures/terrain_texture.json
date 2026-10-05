@@ -74,19 +74,9 @@
         "textures/blocks/ancient_debris_side"
       ]
     },
-    "ancient_debris_side_mer": {
-      "textures": [
-        "textures/blocks/ancient_debris_side_mer"
-      ]
-    },
     "ancient_debris_top": {
       "textures": [
         "textures/blocks/ancient_debris_top"
-      ]
-    },
-    "ancient_debris_top_mer": {
-      "textures": [
-        "textures/blocks/ancient_debris_top_mer"
       ]
     },
     "andesite": {
@@ -1059,11 +1049,6 @@
         "textures/blocks/coal_ore"
       ]
     },
-    "coal_ore_mer": {
-      "textures": [
-        "textures/blocks/coal_ore_mer"
-      ]
-    },
     "coarse_dirt": {
       "textures": [
         "textures/blocks/coarse_dirt"
@@ -1412,11 +1397,6 @@
     "copper_ore": {
       "textures": [
         "textures/blocks/copper_ore"
-      ]
-    },
-    "copper_ore_mer": {
-      "textures": [
-        "textures/blocks/copper_ore_mer"
       ]
     },
     "coral_blue": {
@@ -1939,19 +1919,9 @@
         "textures/blocks/deepslate/deepslate_coal_ore"
       ]
     },
-    "deepslate_coal_ore_mer": {
-      "textures": [
-        "textures/blocks/deepslate/deepslate_coal_ore_mer"
-      ]
-    },
     "deepslate_copper_ore": {
       "textures": [
         "textures/blocks/deepslate/deepslate_copper_ore"
-      ]
-    },
-    "deepslate_copper_ore_mer": {
-      "textures": [
-        "textures/blocks/deepslate/deepslate_copper_ore_mer"
       ]
     },
     "deepslate_diamond_ore": {
@@ -1959,19 +1929,9 @@
         "textures/blocks/deepslate/deepslate_diamond_ore"
       ]
     },
-    "deepslate_diamond_ore_mer": {
-      "textures": [
-        "textures/blocks/deepslate/deepslate_diamond_ore_mer"
-      ]
-    },
     "deepslate_emerald_ore": {
       "textures": [
         "textures/blocks/deepslate/deepslate_emerald_ore"
-      ]
-    },
-    "deepslate_emerald_ore_mer": {
-      "textures": [
-        "textures/blocks/deepslate/deepslate_emerald_ore_mer"
       ]
     },
     "deepslate_gold_ore": {
@@ -1979,19 +1939,9 @@
         "textures/blocks/deepslate/deepslate_gold_ore"
       ]
     },
-    "deepslate_gold_ore_mer": {
-      "textures": [
-        "textures/blocks/deepslate/deepslate_gold_ore_mer"
-      ]
-    },
     "deepslate_iron_ore": {
       "textures": [
         "textures/blocks/deepslate/deepslate_iron_ore"
-      ]
-    },
-    "deepslate_iron_ore_mer": {
-      "textures": [
-        "textures/blocks/deepslate/deepslate_iron_ore_mer"
       ]
     },
     "deepslate_lapis_ore": {
@@ -1999,19 +1949,9 @@
         "textures/blocks/deepslate/deepslate_lapis_ore"
       ]
     },
-    "deepslate_lapis_ore_mer": {
-      "textures": [
-        "textures/blocks/deepslate/deepslate_lapis_ore_mer"
-      ]
-    },
     "deepslate_redstone_ore": {
       "textures": [
         "textures/blocks/deepslate/deepslate_redstone_ore"
-      ]
-    },
-    "deepslate_redstone_ore_mer": {
-      "textures": [
-        "textures/blocks/deepslate/deepslate_redstone_ore_mer"
       ]
     },
     "deepslate_tiles": {
@@ -2039,19 +1979,9 @@
         "textures/blocks/deepslate_coal_ore"
       ]
     },
-    "deepslate_coal_ore_mer_2": {
-      "textures": [
-        "textures/blocks/deepslate_coal_ore_mer"
-      ]
-    },
     "deepslate_copper_ore_2": {
       "textures": [
         "textures/blocks/deepslate_copper_ore"
-      ]
-    },
-    "deepslate_copper_ore_mer_2": {
-      "textures": [
-        "textures/blocks/deepslate_copper_ore_mer"
       ]
     },
     "deepslate_diamond_ore_2": {
@@ -2059,19 +1989,9 @@
         "textures/blocks/deepslate_diamond_ore"
       ]
     },
-    "deepslate_diamond_ore_mer_2": {
-      "textures": [
-        "textures/blocks/deepslate_diamond_ore_mer"
-      ]
-    },
     "deepslate_emerald_ore_2": {
       "textures": [
         "textures/blocks/deepslate_emerald_ore"
-      ]
-    },
-    "deepslate_emerald_ore_mer_2": {
-      "textures": [
-        "textures/blocks/deepslate_emerald_ore_mer"
       ]
     },
     "deepslate_gold_ore_2": {
@@ -2079,19 +1999,9 @@
         "textures/blocks/deepslate_gold_ore"
       ]
     },
-    "deepslate_gold_ore_mer_2": {
-      "textures": [
-        "textures/blocks/deepslate_gold_ore_mer"
-      ]
-    },
     "deepslate_iron_ore_2": {
       "textures": [
         "textures/blocks/deepslate_iron_ore"
-      ]
-    },
-    "deepslate_iron_ore_mer_2": {
-      "textures": [
-        "textures/blocks/deepslate_iron_ore_mer"
       ]
     },
     "deepslate_lapis_ore_2": {
@@ -2099,19 +2009,9 @@
         "textures/blocks/deepslate_lapis_ore"
       ]
     },
-    "deepslate_lapis_ore_mer_2": {
-      "textures": [
-        "textures/blocks/deepslate_lapis_ore_mer"
-      ]
-    },
     "deepslate_redstone_ore_2": {
       "textures": [
         "textures/blocks/deepslate_redstone_ore"
-      ]
-    },
-    "deepslate_redstone_ore_mer_2": {
-      "textures": [
-        "textures/blocks/deepslate_redstone_ore_mer"
       ]
     },
     "deepslate_tiles_2": {
@@ -2192,11 +2092,6 @@
     "diamond_ore": {
       "textures": [
         "textures/blocks/diamond_ore"
-      ]
-    },
-    "diamond_ore_mer": {
-      "textures": [
-        "textures/blocks/diamond_ore_mer"
       ]
     },
     "diorite": {
@@ -2457,11 +2352,6 @@
     "emerald_ore": {
       "textures": [
         "textures/blocks/emerald_ore"
-      ]
-    },
-    "emerald_ore_mer": {
-      "textures": [
-        "textures/blocks/emerald_ore_mer"
       ]
     },
     "enchanting_table_bottom": {
@@ -3064,11 +2954,6 @@
         "textures/blocks/gold_ore"
       ]
     },
-    "gold_ore_mer": {
-      "textures": [
-        "textures/blocks/gold_ore_mer"
-      ]
-    },
     "granite": {
       "textures": [
         "textures/blocks/granite"
@@ -3519,11 +3404,6 @@
         "textures/blocks/iron_ore"
       ]
     },
-    "iron_ore_mer": {
-      "textures": [
-        "textures/blocks/iron_ore_mer"
-      ]
-    },
     "iron_trapdoor": {
       "textures": [
         "textures/blocks/iron_trapdoor"
@@ -3677,11 +3557,6 @@
     "lapis_ore": {
       "textures": [
         "textures/blocks/lapis_ore"
-      ]
-    },
-    "lapis_ore_mer": {
-      "textures": [
-        "textures/blocks/lapis_ore_mer"
       ]
     },
     "large_amethyst_bud": {
@@ -4312,11 +4187,6 @@
     "nether_gold_ore": {
       "textures": [
         "textures/blocks/nether_gold_ore"
-      ]
-    },
-    "nether_gold_ore_mer": {
-      "textures": [
-        "textures/blocks/nether_gold_ore_mer"
       ]
     },
     "nether_portal": {
@@ -5004,11 +4874,6 @@
         "textures/blocks/quartz_ore"
       ]
     },
-    "quartz_ore_mer": {
-      "textures": [
-        "textures/blocks/quartz_ore_mer"
-      ]
-    },
     "quartz_pillar": {
       "textures": [
         "textures/blocks/quartz_pillar"
@@ -5257,11 +5122,6 @@
     "redstone_ore": {
       "textures": [
         "textures/blocks/redstone_ore"
-      ]
-    },
-    "redstone_ore_mer": {
-      "textures": [
-        "textures/blocks/redstone_ore_mer"
       ]
     },
     "redstone_torch": {
@@ -6689,124 +6549,9 @@
         "textures/blocks/yellow_wool"
       ]
     },
-    "clouds": {
-      "textures": [
-        "textures/environment/clouds"
-      ]
-    },
-    "destroy_stage_0_2": {
-      "textures": [
-        "textures/environment/destroy_stage_0"
-      ]
-    },
-    "destroy_stage_1_2": {
-      "textures": [
-        "textures/environment/destroy_stage_1"
-      ]
-    },
-    "destroy_stage_2_2": {
-      "textures": [
-        "textures/environment/destroy_stage_2"
-      ]
-    },
-    "destroy_stage_3_2": {
-      "textures": [
-        "textures/environment/destroy_stage_3"
-      ]
-    },
-    "destroy_stage_4_2": {
-      "textures": [
-        "textures/environment/destroy_stage_4"
-      ]
-    },
-    "destroy_stage_5_2": {
-      "textures": [
-        "textures/environment/destroy_stage_5"
-      ]
-    },
-    "destroy_stage_6_2": {
-      "textures": [
-        "textures/environment/destroy_stage_6"
-      ]
-    },
-    "destroy_stage_7_2": {
-      "textures": [
-        "textures/environment/destroy_stage_7"
-      ]
-    },
-    "destroy_stage_8_2": {
-      "textures": [
-        "textures/environment/destroy_stage_8"
-      ]
-    },
-    "destroy_stage_9_2": {
-      "textures": [
-        "textures/environment/destroy_stage_9"
-      ]
-    },
-    "end_portal_colors": {
-      "textures": [
-        "textures/environment/end_portal_colors"
-      ]
-    },
-    "end_sky": {
-      "textures": [
-        "textures/environment/end_sky"
-      ]
-    },
-    "moon_phases": {
-      "textures": [
-        "textures/environment/moon_phases"
-      ]
-    },
-    "cubemap_0": {
-      "textures": [
-        "textures/environment/overworld_cubemap/cubemap_0"
-      ]
-    },
-    "cubemap_1": {
-      "textures": [
-        "textures/environment/overworld_cubemap/cubemap_1"
-      ]
-    },
-    "cubemap_2": {
-      "textures": [
-        "textures/environment/overworld_cubemap/cubemap_2"
-      ]
-    },
-    "cubemap_3": {
-      "textures": [
-        "textures/environment/overworld_cubemap/cubemap_3"
-      ]
-    },
-    "cubemap_4": {
-      "textures": [
-        "textures/environment/overworld_cubemap/cubemap_4"
-      ]
-    },
-    "cubemap_5": {
-      "textures": [
-        "textures/environment/overworld_cubemap/cubemap_5"
-      ]
-    },
-    "rain": {
-      "textures": [
-        "textures/environment/rain"
-      ]
-    },
     "snow_2": {
       "textures": [
         "textures/environment/snow"
-      ]
-    },
-    "sun": {
-      "textures": [
-        "textures/environment/sun"
-      ]
-    },
-    "weather": {
-      "textures": [
-        "textures/environment/weather"
       ]
     },
     "00": {
