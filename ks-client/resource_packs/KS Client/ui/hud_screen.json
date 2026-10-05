@@ -411,6 +411,29 @@
         "value": [
           {
             "ks_hud_info@hud.ks_hud_info": {}
+          },
+          {
+            "ks_hud_keys@ks_client.ks_hud_keys": {}
+          },
+          {
+            "ks_f3_panel@ks_client.ks_f3_panel": {}
+          }
+        ]
+      }
+    ]
+  },
+
+  // Unhide MUST be a sibling of root_panel, not inside it: root_panel is
+  // bound to #hud_visible, so anything inside it disappears with the HUD and
+  // touch users tapping F1 could get stuck with no way back.
+  "hud_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": [
+          {
+            "ks_show_hud@ks_client.ks_show_hud": {}
           }
         ]
       }

@@ -1306,5 +1306,433 @@
         }
       }
     ]
+  },
+
+  // ---------- HUD quick keys: Q / Q+ / F1 / F3 (same 20x20 KS pill style) ----------
+  // Clean-room KS implementation (own art + own text, no third-party assets).
+  // Row order left -> right: Q, Q+, F1, F3. Q/Q+ sit left of F1 as requested.
+  //   Q  = drop ONE held item (same as physical Q, :_input_key.drop:).
+  //   Q+ = drop WHOLE stack (same as physical Ctrl+Q; Z in Full Keyboard mode).
+  //   F1 = hide HUD (button.hide_gui_all, same as physical F1).
+  //   F3 = toggle KS debug readout below (FPS + real coords, top-right).
+  // NOTE: Bedrock exposes no HUD-level drop mapping, so on touch the Q/Q+
+  // buttons send button.drop_one / button.drop_all on a best-effort basis;
+  // physical Q / Ctrl+Q and touch long-press on the hotbar always work.
+  // F1 hides this row too, so ks_show_hud (a sibling of root_panel, see
+  // hud_screen.json) is the guaranteed way back for touch users.
+  // Nothing here touches the pause Config > Info toggles; all additive.
+  "ks_hud_keys": {
+    "type": "panel",
+    "size": [ 86, 20 ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ -43, 2 ],
+    "layer": 11,
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "ks_q_slot": {
+          "type": "panel",
+          "size": [ 20, 20 ],
+          "controls": [
+            {
+              "ks_q_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_btn",
+                "size": [ 20, 20 ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_q_lbl": {
+                "type": "label",
+                "size": [ 20, 20 ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "offset": [ 0, 0 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "small",
+                "font_scale_factor": 0.85,
+                "layer": 1,
+                "text": "Q"
+              }
+            },
+            {
+              "ks_q_hit@common.button": {
+                "size": [ 20, 20 ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "offset": [ 0, 0 ],
+                "layer": 2,
+                "$pressed_button_name": "button.drop_one"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_key_gap1": {
+          "type": "panel",
+          "size": [ 2, 20 ]
+        }
+      },
+      {
+        "ks_qp_slot": {
+          "type": "panel",
+          "size": [ 20, 20 ],
+          "controls": [
+            {
+              "ks_qp_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_btn",
+                "size": [ 20, 20 ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_qp_lbl": {
+                "type": "label",
+                "size": [ 20, 20 ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "offset": [ 0, 0 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "small",
+                "font_scale_factor": 0.85,
+                "layer": 1,
+                "text": "Q+"
+              }
+            },
+            {
+              "ks_qp_hit@common.button": {
+                "size": [ 20, 20 ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "offset": [ 0, 0 ],
+                "layer": 2,
+                "$pressed_button_name": "button.drop_all"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_key_gap2": {
+          "type": "panel",
+          "size": [ 2, 20 ]
+        }
+      },
+      {
+        "ks_f1_slot": {
+          "type": "panel",
+          "size": [ 20, 20 ],
+          "controls": [
+            {
+              "ks_f1_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_btn",
+                "size": [ 20, 20 ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_f1_lbl": {
+                "type": "label",
+                "size": [ 20, 20 ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "offset": [ 0, 0 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "small",
+                "font_scale_factor": 0.85,
+                "layer": 1,
+                "text": "F1"
+              }
+            },
+            {
+              "ks_f1_hit@common.button": {
+                "size": [ 20, 20 ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "offset": [ 0, 0 ],
+                "layer": 2,
+                "$pressed_button_name": "button.hide_gui_all"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_key_gap3": {
+          "type": "panel",
+          "size": [ 2, 20 ]
+        }
+      },
+      {
+        "ks_f3_slot": {
+          "type": "panel",
+          "size": [ 20, 20 ],
+          "controls": [
+            {
+              "ks_f3_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_btn",
+                "size": [ 20, 20 ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_f3_lbl": {
+                "type": "label",
+                "size": [ 20, 20 ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "offset": [ 0, 0 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "small",
+                "font_scale_factor": 0.85,
+                "layer": 1,
+                "text": "F3"
+              }
+            },
+            {
+              "ks_f3_debug_state@common.toggle": {
+                "size": [ 20, 20 ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "offset": [ 0, 0 ],
+                "layer": 2,
+                "enabled": true,
+                "visible": true,
+                "$toggle_name": "ks_f3_debug",
+                "$toggle_default_state": false,
+                "$toggle_binding_type": "none",
+                "$toggle_focus_enabled": false,
+                "$unchecked_control": "common.empty_panel",
+                "$checked_control": "common.empty_panel",
+                "$unchecked_hover_control": "common.empty_panel",
+                "$checked_hover_control": "common.empty_panel",
+                "$unchecked_locked_control": "common.empty_panel",
+                "$unchecked_locked_hover_control": "common.empty_panel",
+                "$checked_locked_control": "common.empty_panel",
+                "$checked_locked_hover_control": "common.empty_panel"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- F3 debug readout (FPS + real coords, top-right) ----------
+  // Visible only while the F3 toggle above is ON and the HUD is visible.
+  // Independent of pause Config > Info; same KS row styling, own 2-row panel
+  // so it never overlaps the top-left ks_hud_info readout.
+  "ks_f3_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ 180, 46 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -188, 60 ],
+    "layer": 10,
+    "visible": false,
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "binding_condition": "always",
+        "source_control_name": "ks_f3_debug_state",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_f3_on"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_f3_on)",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_f3_fps": {
+          "type": "panel",
+          "size": [ "100%", 22 ],
+          "controls": [
+            {
+              "ks_f3_fps_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_btn",
+                "size": [ "100%", "100%" ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_f3_fps_icon": {
+                "type": "image",
+                "texture": "textures/ui/ks_info_fps",
+                "size": [ 18, 18 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [ 4, 0 ],
+                "layer": 1
+              }
+            },
+            {
+              "ks_f3_fps_lbl": {
+                "type": "label",
+                "size": [ "100% - 30px", 22 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [ 28, 0 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "left",
+                "font_size": "small",
+                "font_scale_factor": 0.9,
+                "layer": 1,
+                "text": "FPS: 60"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_gap": {
+          "type": "panel",
+          "size": [ "100%", 2 ]
+        }
+      },
+      {
+        "ks_f3_coords": {
+          "type": "panel",
+          "size": [ "100%", 22 ],
+          "controls": [
+            {
+              "ks_f3_coords_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_btn",
+                "size": [ "100%", "100%" ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_f3_coords_icon": {
+                "type": "image",
+                "texture": "textures/ui/ks_info_coords",
+                "size": [ 18, 18 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [ 4, 0 ],
+                "layer": 1
+              }
+            },
+            {
+              "ks_f3_coords_lbl": {
+                "type": "label",
+                "size": [ "100% - 30px", 22 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [ 28, 0 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "left",
+                "font_size": "small",
+                "font_scale_factor": 0.85,
+                "layer": 1,
+                "text": "#player_position_text",
+                "bindings": [
+                  {
+                    "binding_name": "#player_position_text",
+                    "binding_name_override": "#text",
+                    "binding_condition": "always_when_visible",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Safe way back after F1 hides the HUD ----------
+  // Lives as a SIBLING of root_panel (see hud_screen.json): root_panel is
+  // bound to #hud_visible, so anything inside it would vanish with the HUD
+  // and touch users could get stuck. This bar only appears while hidden.
+  "ks_show_hud": {
+    "type": "panel",
+    "size": [ 120, 24 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ -60, -32 ],
+    "layer": 12,
+    "bindings": [
+      {
+        "binding_name": "(not #hud_visible)",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "ks_show_hud_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_config_btn",
+          "size": [ "100%", "100%" ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_show_hud_lbl": {
+          "type": "label",
+          "size": [ "100%", "100%" ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "color": [ 255, 255, 255 ],
+          "shadow": true,
+          "localize": false,
+          "text_alignment": "center",
+          "font_size": "small",
+          "font_scale_factor": 0.9,
+          "layer": 1,
+          "text": "Show HUD"
+        }
+      },
+      {
+        "ks_show_hud_hit@common.button": {
+          "size": [ "100%", "100%" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 2,
+          "$pressed_button_name": "button.hide_gui_all"
+        }
+      }
+    ]
   }
 }
