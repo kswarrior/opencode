@@ -6883,6 +6883,41 @@
       "textures": [
         "textures/misc/vignette"
       ]
+    },
+    "cubemap_0": {
+      "textures": [
+        "textures/environment/overworld_cubemap/cubemap_0"
+      ]
+    },
+    "cubemap_1": {
+      "textures": [
+        "textures/environment/overworld_cubemap/cubemap_1"
+      ]
+    },
+    "cubemap_2": {
+      "textures": [
+        "textures/environment/overworld_cubemap/cubemap_2"
+      ]
+    },
+    "cubemap_3": {
+      "textures": [
+        "textures/environment/overworld_cubemap/cubemap_3"
+      ]
+    },
+    "cubemap_4": {
+      "textures": [
+        "textures/environment/overworld_cubemap/cubemap_4"
+      ]
+    },
+    "cubemap_5": {
+      "textures": [
+        "textures/environment/overworld_cubemap/cubemap_5"
+      ]
+    },
+    "rain": {
+      "textures": [
+        "textures/environment/rain"
+      ]
     }
   }
 }
