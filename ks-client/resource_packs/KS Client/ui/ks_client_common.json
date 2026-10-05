@@ -1308,25 +1308,22 @@
     ]
   },
 
-  // ---------- HUD quick keys: Q / Q+ / F1 / F3 (same 20x20 KS pill style) ----------
+  // ---------- HUD quick keys: F1 / F3 (20x20 KS key buttons) ----------
   // Clean-room KS implementation (own art + own text, no third-party assets).
-  // Row order left -> right: Q, Q+, F1, F3. Q/Q+ sit left of F1 as requested.
-  //   Q  = drop ONE held item (same as physical Q, :_input_key.drop:).
-  //   Q+ = drop WHOLE stack (same as physical Ctrl+Q; Z in Full Keyboard mode).
+  // Button look follows the same idea as the reference pack (small dark
+  // rounded key button with border), redrawn from scratch as
+  // textures/ui/ks_key_btn.png. No reference-pack pixels are used.
   //   F1 = hide HUD (button.hide_gui_all, same as physical F1).
   //   F3 = toggle KS debug readout below (FPS + real coords, top-right).
-  // NOTE: Bedrock exposes no HUD-level drop mapping, so on touch the Q/Q+
-  // buttons send button.drop_one / button.drop_all on a best-effort basis;
-  // physical Q / Ctrl+Q and touch long-press on the hotbar always work.
   // F1 hides this row too, so ks_show_hud (a sibling of root_panel, see
   // hud_screen.json) is the guaranteed way back for touch users.
   // Nothing here touches the pause Config > Info toggles; all additive.
   "ks_hud_keys": {
     "type": "panel",
-    "size": [ 86, 20 ],
+    "size": [ 42, 20 ],
     "anchor_from": "top_middle",
     "anchor_to": "top_middle",
-    "offset": [ -43, 2 ],
+    "offset": [ -21, 2 ],
     "layer": 11,
     "bindings": [
       {
@@ -1337,104 +1334,6 @@
     ],
     "controls": [
       {
-        "ks_q_slot": {
-          "type": "panel",
-          "size": [ 20, 20 ],
-          "controls": [
-            {
-              "ks_q_bg": {
-                "type": "image",
-                "texture": "textures/ui/ks_config_btn",
-                "size": [ 20, 20 ],
-                "layer": 0
-              }
-            },
-            {
-              "ks_q_lbl": {
-                "type": "label",
-                "size": [ 20, 20 ],
-                "anchor_from": "center",
-                "anchor_to": "center",
-                "offset": [ 0, 0 ],
-                "color": [ 255, 255, 255 ],
-                "shadow": true,
-                "localize": false,
-                "text_alignment": "center",
-                "font_size": "small",
-                "font_scale_factor": 0.85,
-                "layer": 1,
-                "text": "Q"
-              }
-            },
-            {
-              "ks_q_hit@common.button": {
-                "size": [ 20, 20 ],
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [ 0, 0 ],
-                "layer": 2,
-                "$pressed_button_name": "button.drop_one"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "ks_key_gap1": {
-          "type": "panel",
-          "size": [ 2, 20 ]
-        }
-      },
-      {
-        "ks_qp_slot": {
-          "type": "panel",
-          "size": [ 20, 20 ],
-          "controls": [
-            {
-              "ks_qp_bg": {
-                "type": "image",
-                "texture": "textures/ui/ks_config_btn",
-                "size": [ 20, 20 ],
-                "layer": 0
-              }
-            },
-            {
-              "ks_qp_lbl": {
-                "type": "label",
-                "size": [ 20, 20 ],
-                "anchor_from": "center",
-                "anchor_to": "center",
-                "offset": [ 0, 0 ],
-                "color": [ 255, 255, 255 ],
-                "shadow": true,
-                "localize": false,
-                "text_alignment": "center",
-                "font_size": "small",
-                "font_scale_factor": 0.85,
-                "layer": 1,
-                "text": "Q+"
-              }
-            },
-            {
-              "ks_qp_hit@common.button": {
-                "size": [ 20, 20 ],
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [ 0, 0 ],
-                "layer": 2,
-                "$pressed_button_name": "button.drop_all"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "ks_key_gap2": {
-          "type": "panel",
-          "size": [ 2, 20 ]
-        }
-      },
-      {
         "ks_f1_slot": {
           "type": "panel",
           "size": [ 20, 20 ],
@@ -1442,7 +1341,7 @@
             {
               "ks_f1_bg": {
                 "type": "image",
-                "texture": "textures/ui/ks_config_btn",
+                "texture": "textures/ui/ks_key_btn",
                 "size": [ 20, 20 ],
                 "layer": 0
               }
@@ -1491,7 +1390,7 @@
             {
               "ks_f3_bg": {
                 "type": "image",
-                "texture": "textures/ui/ks_config_btn",
+                "texture": "textures/ui/ks_key_btn",
                 "size": [ 20, 20 ],
                 "layer": 0
               }
