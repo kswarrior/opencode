@@ -8,125 +8,38 @@
   
   
   "f1_button@settings_common.action_button": {
-    "prevent_touch_input": true,
-    "anchor_from": "top_middle",
-    "anchor_to": "top_middle",
-    "offset": [-39, 0.5],
-    "size": [20, 20],
-    "$border_visible": false,
-    "$pressed_button_name": "button.hide_gui_all",
-    "$default_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
-    "$hover_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
-    "$pressed_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
-    "$locked_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
-    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
-        "binding_type": "global"
-      }
-    ],
-    "$button_text": "F1"
+    "type": "panel",
+    "size": [0, 0],
+    "ignored": true,
+    "controls": []
   },
   
   "hidehudm@settings_common.action_button": {
-    "prevent_touch_input": true,
-    "always_listen_to_input": true,
-    "anchor_from": "top_middle",
-    "anchor_to": "top_middle",
-    "offset": [ -58.2, 0.5 ],
-    "size": [20, 20],
-    "$border_visible": false,
-  //  "$pressed_button_name": "button.hide_gui_all",
-    "$default_button_texture|default": "NeBux/NeBuxUI/0",
-    "$hover_button_texture|default": "NeBux/NeBuxUI/0",
-    "$pressed_button_texture|default": "NeBux/NeBuxUI/0",
-    "$locked_button_texture|default": "NeBux/NeBuxUI/0",
-    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
-        "binding_type": "global"
-      }
-    ],
-    "$button_text": "H"
+    "type": "panel",
+    "size": [0, 0],
+    "ignored": true,
+    "controls": []
   },
   
   "mod_menu_toggle@NeBuxToggles.NeBuxTopToggle": {
-    "prevent_touch_input": true,
-    "$border_visible": false,
-    
-    "$default_state_border_visible": false,
-    "$hover_state_border_visible": false,
-    "$pressed_state_border_visible": false,
-    "$locked_state_border_visible": false,
-    "type": "input_panel",
-    "anchor_from": "top_middle",
-    "anchor_to": "top_middle",
-    "offset": [ -58.2, 0.5 ],
-    "size": [20, 20],
-    "$toggle_name": "modmenuopentoggle",
-    "$radio_toggle_group": true,
-    "$toggle_group_forced_index": 70,
-    "$toggle_view_binding_name": "nebux_mod_menu",
-    "$button_text": "M",
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
-        "binding_type": "global"
-      }
-    ]
+    "type": "panel",
+    "size": [0, 0],
+    "ignored": true,
+    "controls": []
   },
 
   "f8_button@settings_common.action_button": {
-    "prevent_touch_input": true,
-    
-    
-    "anchor_from": "top_middle",
-    "anchor_to": "top_middle",
-    "offset": [38.5, 0.5],
-    "size": [20, 20],
-    "$border_visible": false,
-    "$pressed_button_name": "button.hide_paperdoll_hud",
-    "$default_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
-    "$hover_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
-    "$pressed_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
-    "$locked_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
-    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
-    "$button_text": "F8",
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
-        "binding_type": "global"
-      }
-    ]
+    "type": "panel",
+    "size": [0, 0],
+    "ignored": true,
+    "controls": []
   },
   
   "f3_button@NeBuxToggles.NeBuxTopToggle": {
-    "prevent_touch_input": true,
-    "$border_visible": false,
-    "$default_state_border_visible": false,
-    "$hover_state_border_visible": false,
-    "$pressed_state_border_visible": false,
-    "$locked_state_border_visible": false,
-    "type": "input_panel",
-    "anchor_from": "top_middle",
-    "anchor_to": "top_middle",
-    "offset": [38.5, 0.5],
-    "size": [20, 20],
-    "$toggle_view_binding_name": "f3_screen_toggle",
-    "$button_text": "F3",
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
-        "binding_type": "global"
-      }
-    ]
+    "type": "panel",
+    "size": [0, 0],
+    "ignored": true,
+    "controls": []
   },
 
   "hotbar_inventory_left@common_buttons.light_text_button": {
