@@ -27,8 +27,25 @@
   // Unhide MUST be a sibling of root_panel, not inside it: root_panel is
   // bound to #hud_visible, so anything inside it disappears with the HUD and
   // touch users tapping F1 could get stuck with no way back.
+  // Slot Hotbar Button v1.3.0 by @Itzriyo157 (insert_front) + KS show-HUD
+  // (insert_back) coexist as separate modifications on hud_content.
   "hud_content": {
     "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "shb_buttons@shb_main.slot_hotbar_button_panel": {}
+          },
+          {
+            "shb_button_editor@shb_main.editor_button": {}
+          },
+          {
+            "shb_editor_panel@shb_main.editor_panel": {}
+          }
+        ]
+      },
       {
         "array_name": "controls",
         "operation": "insert_back",
