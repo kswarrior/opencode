@@ -525,7 +525,7 @@
             "déesse_hotbar_data@déesse_hud.hotbar_data": {}
           }
         ]
-      },
+      }
       // (Removed per request: Utility HUD + KS F3/F8 keys fully removed.)
     ]
   },
@@ -549,76 +549,13 @@
           }
         ]
       },
-      // (Removed per request: NeBux F1/F3 HUD fully removed.)
+      // (NeBux F1/F3 buttons removed per request — doll kept, buttons gone.)
       {
         "array_name": "controls",
         "operation": "insert_front",
-        "value": [
-          {
-            "f3_button@NeBuxHud.f3_button": {
-               
-               "$button_mappings": [
-                {
-                  "from_button_id": "button.menu_select",
-                  "to_button_id": "button.menu_select",
-                  "mapping_type": "pressed"
-                },
-                {
-                  "from_button_id": "button.scoreboard",
-                  "to_button_id": "button.menu_select",
-                  "mapping_type": "global"
-                }
-              ]
-            }
-          },
-          {
-            "f1_button@NeBuxHud.f1_button": {
-              
-            }
-          },
-          {
-            "f3@f3.f3_content": {
-              "bindings": [
-                {
-                  "binding_type": "view",
-                  "source_control_name": "f3_screen_toggle",
-                  "source_property_name": "#toggle_state",
-                  "target_property_name": "#f3_screen_visible"
-                },
-                {
-                  "binding_name": "#hud_visible",
-                  "binding_type": "global"
-                },
-                {
-                  "binding_type": "view",
-                  "source_property_name": "(#hud_visible and #f3_screen_visible)",
-                  "target_property_name": "#visible"
-                }
-              ]
-            }
-          },
-          {
-            "f3_right@f3right.NeBux": {
-              "bindings": [
-                {
-                  "binding_type": "view",
-                  "source_control_name": "f3_screen_toggle",
-                  "source_property_name": "#toggle_state",
-                  "target_property_name": "#f3_screen_visible"
-                },
-                {
-                  "binding_name": "#hud_visible",
-                  "binding_type": "global"
-                },
-                {
-                  "binding_type": "view",
-                  "source_property_name": "(#hud_visible and #f3_screen_visible)",
-                  "target_property_name": "#visible"
-                }
-              ]
-            }
-          }
-        ]
+        "value": {
+          "hud_player_renderer@NeBuxHud.NeBux_hud_player_renderer": {}
+        }
       },
       {
         "array_name": "controls",
