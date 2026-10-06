@@ -134,5 +134,419 @@
       { "1@crafting.scanner_slot_template": { "collection_index": 1 } },
       { "0@crafting.scanner_slot_template": { "collection_index": 0 } }
     ]
+  },
+
+  // ---------- Utility HUD V-1.5 (help button removed) ----------
+  "inventory_screen": {
+    "force_render_below": true,
+    "is_showing_menu": false,
+    "absorbs_input": false,
+    "always_accepts_input": true,
+    "low_frequency_rendering": true,
+    "$screen_animations": [],
+    "$background_animations": [],
+    "$screen_content": "crafting._inventory_screen_content",
+    "$screen_bg_content": "common.empty_panel",
+    "$is_crafting_screen": false,
+    "$is_inventory_screen": true
+  },
+
+  "crafting_screen": {
+    "$is_crafting_screen": true,
+    "$is_inventory_screen": false
+  },
+
+  "_inventory_screen_content": {
+    "type": "panel",
+    "controls": [
+      { "_extra_content@inv_content.inventory_content": {} },
+      {
+        "_content@crafting.recipe_inventory_screen_content": {
+          "type": "input_panel",
+          "prevent_touch_input": true,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "__content_toggle__",
+              "resolve_sibling_scope": true,
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "esc_redirect": {
+          "type": "panel",
+          "size": [0, 0],
+          "layer": 20,
+          "controls": [
+            {
+              "default": {
+                "type": "input_panel",
+                "button_mappings": [
+                  {
+                    "mapping_type": "global",
+                    "from_button_id": "button.menu_cancel",
+                    "to_button_id": "button.consume"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "redirected",
+                    "resolve_sibling_scope": true,
+                    "source_property_name": "(not #visible)",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "redirected": {
+                "type": "input_panel",
+                "button_mappings": [
+                  {
+                    "mapping_type": "global",
+                    "from_button_id": "button.menu_cancel",
+                    "to_button_id": "button.menu_exit"
+                  }
+                ],
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "__content_toggle__",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "__content_toggle__@crafting._content_toggle_visuals": {
+          "$size|default": [0, 0],
+          "variables": [
+            {
+              "requires": "$touch",
+              "$size": [22, 22],
+              "$radio_toggle_group": true,
+              "$toggle_group_forced_index": 1
+            }
+          ],
+          "size": "$size",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [90, -1.5],
+          "toggle_default_state": false,
+          "$toggle_name": "__",
+          "$activator": "button.scoreboard",
+          "button_mappings": [
+            {
+              "from_button_id": "$activator",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "global"
+            },
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "focused"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "_content_toggle_visuals@inv_content.component_toggle": {
+    "controls": [
+      {"unchecked": {
+        "type": "image",
+        "texture": "textures/c_ui/toggle_unchecked"
+      }},
+      {"checked": {
+        "type": "image",
+        "texture": "textures/c_ui/toggle_checked"
+      }},
+      {"unchecked_hover": {
+        "type": "image",
+        "texture": "textures/c_ui/toggle_unchecked_hover"
+      }},
+      {"checked_hover": {
+        "type": "image",
+        "texture": "textures/c_ui/toggle_checked_hover"
+      }}
+    ]
+  },
+
+  "_content_close_visuals@inv_content.component_toggle": {
+    "controls": [
+      {"unchecked": {
+        "type": "image",
+        "texture": "textures/c_ui/sm_close_default"
+      }},
+      {"checked": {
+        "type": "image",
+        "texture": "textures/c_ui/sm_close_default"
+      }},
+      {"unchecked_hover": {
+        "type": "image",
+        "texture": "textures/c_ui/sm_close_hover"
+      }},
+      {"checked_hover": {
+        "type": "image",
+        "texture": "textures/c_ui/sm_close_hover"
+      }}
+    ]
+  },
+
+  "_crafting_limiter_visuals@inv_content.component_toggle": {
+    "controls": [
+      {"unchecked": {
+        "type": "image",
+        "texture": "textures/c_ui/craft_1"
+      }},
+      {"checked": {
+        "type": "image",
+        "texture": "textures/c_ui/craft_all"
+      }},
+      {"unchecked_hover": {
+        "type": "image",
+        "texture": "textures/c_ui/craft_1_hover",
+        "controls": [
+          {
+            "hover_text@common.hover_text": {
+              "layer": 50,
+              "property_bag": {
+                "#hover_text": "Craft One"
+              }
+            }
+          }
+        ]
+      }},
+      {"checked_hover": {
+        "type": "image",
+        "texture": "textures/c_ui/craft_all_hover",
+        "controls": [
+          {
+            "hover_text@common.hover_text": {
+              "layer": 50,
+              "property_bag": {
+                "#hover_text": "Craft All at Once"
+              }
+            }
+          }
+        ]
+      }}
+    ]
+  },
+
+  "toolbar_panel/toolbar_background/toolbar_stack_panel/close_button_panel": {
+    "ignored": "(not $touch)", // to avoid closing through close button (ofc)
+    "controls": [
+      {
+        "close_toggle@crafting._content_close_visuals": {
+          "ignored": "$is_crafting_screen",
+          "toggle_default_state": true,
+          "size": [15, 15],
+          "$radio_toggle_group": true,
+          "$toggle_name": "__",
+          "$toggle_group_forced_index": 0,
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "focused"
+            }
+          ]
+        }
+      },
+      {
+        "crafting_close@common.light_close_button": {
+          "$close_button_offset": [0, 0],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "ignored": "$is_inventory_screen",
+          "size": [15, 15],
+          "controls": [
+            {
+              "default@common.close_button_panel": {
+                "$close_button_texture": "textures/c_ui/sm_close_default"
+              }
+            },
+            {
+              "hover@common.close_button_panel": {
+                "$close_button_texture": "textures/c_ui/sm_close_hover"
+              }
+            },
+            {
+              "pressed@common.close_button_panel": {
+                "$close_button_texture": "textures/c_ui/sm_close_hover"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // (Utility help (?) button removed per request: panel emptied.)
+  "toolbar_panel/toolbar_background/toolbar_stack_panel/help_button_panel": {
+    "controls": []
+  },
+
+  "crafting_panel_2x2": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": [
+          { "craft_all_button@crafting.output_grid_2x2_all": {} }
+        ]
+      }
+    ]
+  },
+
+  "output_craft_one_button@crafting.output_no_coalesce_container_slot_button": {
+    "$button_take_all_place_all": "button.container_auto_place_one",
+    "$button_take_half_place_one": "button.container_auto_place_one",
+    "$button_auto_place": "button.container_auto_place_one"
+  },
+
+  "output_craft_all_button@crafting.output_no_coalesce_container_slot_button": {
+    "$button_take_all_place_all": "button.crafting_output_tertiary",
+    "$button_take_half_place_one": "button.crafting_output_tertiary",
+    "$button_auto_place": "button.crafting_output_tertiary"
+  },
+
+  "output_grid_2x2": {
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "_crafting_toggle_",
+        "source_property_name": "(not #toggle_state)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "output_grid_2x2/work_bench_output": {
+    "$button_ref": "crafting.output_craft_one_button"
+  },
+
+  "output_grid_2x2_all@crafting.output_grid_2x2": {
+    "offset": [ 64, 26 ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "_crafting_toggle_",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "work_bench_output@crafting.inventory_container_item": {
+          "$item_collection_name": "crafting_output_items",
+          "$button_ref": "crafting.output_craft_all_button",
+          "$background_images": "crafting.crafting_container_cell_images",
+          "$item_renderer_binding_condition": "always",
+          "$stack_count_binding_condition": "always",
+
+          "$focus_id_binding_type": "none",
+          "$focus_id": "crafting_output_item",
+          "$focus_override_left_binding_type": "none",
+          "$focus_override_left": "crafting_input_top_right",
+          "$focus_override_up_binding_type": "none",
+          "$focus_override_up": "help_button"
+        }
+      }
+    ]
+  },
+
+  "player_armor_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": [
+          {
+            "_crafting_toggle_@crafting._crafting_limiter_visuals": {
+              "toggle_default_state": false,
+              "visible": "$touch",
+              "size": [19, 19],
+              "layer": 1,
+              "anchor_from": "top_left",
+              "anchor_to": "top_left",
+              "offset": [ 100, 60.5 ],
+              "button_mappings": [
+                {
+                  "from_button_id": "button.menu_select",
+                  "to_button_id": "button.menu_select",
+                  "mapping_type": "pressed"
+                },
+                {
+                  "from_button_id": "button.menu_ok",
+                  "to_button_id": "button.menu_select",
+                  "mapping_type": "focused"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  "tab_navigation_panel_layout/navigation_tabs/content/construction_tab_panel": {
+    "controls": [
+      { "construction_tab@crafting.construction_tab": {} }
+    ]
+  },
+
+  "tab_navigation_panel_layout/navigation_tabs/content/equipment_tab_panel": {
+    "controls": [
+      { "equipment_tab@crafting.equipment_tab": {} }
+    ]
+  },
+
+  "tab_navigation_panel_layout/navigation_tabs/content/items_tab_panel": {
+    "controls": [
+      { "items_tab@crafting.items_tab": {} }
+    ]
+  },
+
+  "tab_navigation_panel_layout/navigation_tabs/content/nature_tab_panel": {
+    "controls": [
+      { "nature_tab@crafting.nature_tab": {} }
+    ]
+  },
+
+  "construction_tab": {
+    "variables": []
+  },
+
+  "equipment_tab": {
+    "variables": []
+  },
+
+  "nature_tab": {
+    "variables": []
+  },
+
+  "items_tab": {
+    "variables": []
   }
 }
