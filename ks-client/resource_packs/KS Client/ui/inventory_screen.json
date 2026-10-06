@@ -1,0 +1,138 @@
+{
+  "namespace": "crafting",
+  "recipe_inventory_screen_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          { "1@crafting.master_totem_panel": {} }
+        ]
+      }
+    ]
+  },
+
+  "master_totem_panel": {
+    "type": "panel",
+    "size": [ 30, 30 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ -125, -35 ],
+    "layer": 100,
+    "controls": [
+      { "exit_button@crafting.exit_btn": {} },
+      { "equip_system@crafting.equip_panel": {} }
+    ]
+  },
+
+  "exit_btn": {
+    "type": "button",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      { "bg": { "type": "image", "texture": "textures/totem/close_button", "size": [ "100%", "100%" ] } }
+    ],
+    "button_mappings": [
+      { "from_button_id": "button.menu_select", "to_button_id": "button.menu_exit", "mapping_type": "pressed" }
+    ],
+    "bindings": [
+      { "binding_name": "#item_id_aux", "binding_type": "collection", "binding_collection_name": "offhand_items" },
+      { "binding_type": "view", "source_property_name": "(not (#item_id_aux = -1))", "target_property_name": "#visible" }
+    ]
+  },
+
+  "equip_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      { "bg": { "type": "image", "texture": "textures/totem/totem_button", "size": [ "100%", "100%" ], "layer": 1 } },
+      { "inv_scanner@crafting.inventory_scanner": { "layer": 2 } },
+      { "hotbar_scanner@crafting.hotbar_scanner": { "layer": 2 } }
+    ],
+    "bindings": [
+      { "binding_name": "#item_id_aux", "binding_type": "collection", "binding_collection_name": "offhand_items" },
+      { "binding_type": "view", "source_property_name": "(#item_id_aux = -1)", "target_property_name": "#visible" }
+    ]
+  },
+
+  "scanner_slot_template": {
+    "type": "panel",
+    "size": [ "100%", 0 ],
+    "controls": [
+      {
+        "action_button": {
+          "type": "button",
+          "size": [ "100%", "100%x" ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "consume_hover_events": false,
+          "bindings": [
+            { "binding_type": "collection_details", "binding_collection_name": "$target_collection" },
+            { "binding_name": "#hover_text", "binding_type": "collection", "binding_collection_name": "$target_collection" },
+            { "binding_type": "view", "source_property_name": "(not ((#hover_text - 'Totem') = #hover_text))", "target_property_name": "#visible" }
+          ],
+          "button_mappings": [
+            { "from_button_id": "button.menu_select", "to_button_id": "button.container_auto_place", "mapping_type": "pressed", "consume_event": false },
+            { "from_button_id": "button.slot1", "to_button_id": "button.container_auto_place", "mapping_type": "global", "consume_event": false },
+            { "from_button_id": "button.menu_ok", "to_button_id": "button.container_auto_place", "mapping_type": "focused", "consume_event": false }
+          ]
+        }
+      }
+    ]
+  },
+
+  "inventory_scanner": {
+    "type": "stack_panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "$target_collection": "inventory_items",
+    "collection_name": "inventory_items",
+    "controls": [
+      { "26@crafting.scanner_slot_template": { "collection_index": 26 } },
+      { "25@crafting.scanner_slot_template": { "collection_index": 25 } },
+      { "24@crafting.scanner_slot_template": { "collection_index": 24 } },
+      { "23@crafting.scanner_slot_template": { "collection_index": 23 } },
+      { "22@crafting.scanner_slot_template": { "collection_index": 22 } },
+      { "21@crafting.scanner_slot_template": { "collection_index": 21 } },
+      { "20@crafting.scanner_slot_template": { "collection_index": 20 } },
+      { "19@crafting.scanner_slot_template": { "collection_index": 19 } },
+      { "18@crafting.scanner_slot_template": { "collection_index": 18 } },
+      { "17@crafting.scanner_slot_template": { "collection_index": 17 } },
+      { "16@crafting.scanner_slot_template": { "collection_index": 16 } },
+      { "15@crafting.scanner_slot_template": { "collection_index": 15 } },
+      { "14@crafting.scanner_slot_template": { "collection_index": 14 } },
+      { "13@crafting.scanner_slot_template": { "collection_index": 13 } },
+      { "12@crafting.scanner_slot_template": { "collection_index": 12 } },
+      { "11@crafting.scanner_slot_template": { "collection_index": 11 } },
+      { "10@crafting.scanner_slot_template": { "collection_index": 10 } },
+      { "9@crafting.scanner_slot_template": { "collection_index": 9 } },
+      { "8@crafting.scanner_slot_template": { "collection_index": 8 } },
+      { "7@crafting.scanner_slot_template": { "collection_index": 7 } },
+      { "6@crafting.scanner_slot_template": { "collection_index": 6 } },
+      { "5@crafting.scanner_slot_template": { "collection_index": 5 } },
+      { "4@crafting.scanner_slot_template": { "collection_index": 4 } },
+      { "3@crafting.scanner_slot_template": { "collection_index": 3 } },
+      { "2@crafting.scanner_slot_template": { "collection_index": 2 } },
+      { "1@crafting.scanner_slot_template": { "collection_index": 1 } },
+      { "0@crafting.scanner_slot_template": { "collection_index": 0 } }
+    ]
+  },
+
+  "hotbar_scanner": {
+    "type": "stack_panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "$target_collection": "hotbar_items",
+    "collection_name": "hotbar_items",
+    "controls": [
+      { "8@crafting.scanner_slot_template": { "collection_index": 8 } },
+      { "7@crafting.scanner_slot_template": { "collection_index": 7 } },
+      { "6@crafting.scanner_slot_template": { "collection_index": 6 } },
+      { "5@crafting.scanner_slot_template": { "collection_index": 5 } },
+      { "4@crafting.scanner_slot_template": { "collection_index": 4 } },
+      { "3@crafting.scanner_slot_template": { "collection_index": 3 } },
+      { "2@crafting.scanner_slot_template": { "collection_index": 2 } },
+      { "1@crafting.scanner_slot_template": { "collection_index": 1 } },
+      { "0@crafting.scanner_slot_template": { "collection_index": 0 } }
+    ]
+  }
+}

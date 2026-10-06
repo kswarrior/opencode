@@ -132,6 +132,8 @@
   // Slot Hotbar Button v1.3.0 by @Itzriyo157 (insert_front) + KS show-HUD
   // (insert_back) coexist as separate modifications on hud_content.
   // PandaMine F1 button (insert_front) added alongside them.
+  // Quick Totem Offhand button by oSkullo (insert_front): 30x30 (40 -25%),
+  // raised 30px (new size) above the Offhand default.
   "hud_content": {
     "modifications": [
       {
@@ -140,6 +142,15 @@
         "value": [
           {
             "f1_button@hide_gui.f1_panel": {}
+          }
+        ]
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "totem_btn@hud.totem_btn": {}
           }
         ]
       },
@@ -176,5 +187,23 @@
     "low_frequency_rendering": true,
     "load_screen_immediately": true,
     "cache_screen": true
+  },
+
+  // ---------- Quick Totem Offhand button (oSkullo), resized per KS request ----------
+  // Offhand default was 40x40 @ [-125, -5]; KS uses 30x30 (-25%) raised by the
+  // new size (30px) to [-125, -35], clearing the bottom hotbar row.
+  "totem_btn@settings_common.action_button": {
+    "prevent_touch_input": true,
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ -125, -35 ],
+    "size": [ 30, 30 ],
+    "$border_visible": false,
+    "$button_text": "",
+    "$pressed_button_name": "button.hotbar_inventory_button",
+    "$default_button_texture|default": "textures/totem/totem_button",
+    "$hover_button_texture|default": "textures/totem/totem_button",
+    "$pressed_button_texture|default": "textures/totem/totem_button",
+    "$locked_button_texture|default": "textures/totem/totem_button"
   }
 }
