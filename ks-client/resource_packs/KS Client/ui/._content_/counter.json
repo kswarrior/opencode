@@ -1,7 +1,5 @@
 {
   "namespace": "counter",
-
-  // (Removed per request: Utility HUD counters fully removed.)
   "_slot_count_panel": {
     "type": "panel",
     "size": [0, 0],
