@@ -1,3 +1,3 @@
 {
-  "ui_defs": [ "ui/ks_client_common.json", "ui/start_screen.json", "ui/hud_screen.json", "ui/pause_screen.json", "ui/déesse_modules/slot_hotbar_button/settings.json", "ui/déesse_modules/slot_hotbar_button/main.json", "ui/déesse_modules/slot_hotbar_button/defs.json" ]
+  "ui_defs": [ "ui/ks_client_common.json", "ui/start_screen.json", "ui/hud_screen.json", "ui/pause_screen.json", "ui/déesse_modules/slot_hotbar_button/settings.json", "ui/déesse_modules/slot_hotbar_button/main.json", "ui/déesse_modules/slot_hotbar_button/defs.json", "ui/pandamine5/hide_gui.json" ]
 }

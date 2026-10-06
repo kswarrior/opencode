@@ -42,5 +42,11 @@
 	"$shb_ssci": true,
 	"$shb_hba": 4,
 	"$shb_sbi": true,
-	"$shb_sdbi": true
+	"$shb_sdbi": true,
+	"$hud_elipses_enabled": false,
+	"$hud_elipses_sound_volume": 0.0,
+	"$f1_enabled": true,
+	"$f1_texture": "textures/ui/pandamine5/hide_gui",
+	"$f1_size": [ 18, 18 ],
+	"$f1_offset": [ 47.5, 1.0 ]
 }
