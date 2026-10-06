@@ -1,0 +1,274 @@
+// © 2025 NeBux. All rights reserved.  
+// Do not steal, or use this code without permission!
+// If you want to use anything from my pack contact me on my discord
+// Discord NeBux18
+{
+  "namespace": "NeBuxHud",
+  
+  
+  
+  "f1_button@settings_common.action_button": {
+    "prevent_touch_input": true,
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [-39, 0.5],
+    "size": [20, 20],
+    "$border_visible": false,
+    "$pressed_button_name": "button.hide_gui_all",
+    "$default_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
+    "$hover_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
+    "$pressed_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
+    "$locked_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
+    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ],
+    "$button_text": "F1"
+  },
+  
+  "hidehudm@settings_common.action_button": {
+    "prevent_touch_input": true,
+    "always_listen_to_input": true,
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ -58.2, 0.5 ],
+    "size": [20, 20],
+    "$border_visible": false,
+  //  "$pressed_button_name": "button.hide_gui_all",
+    "$default_button_texture|default": "NeBux/NeBuxUI/0",
+    "$hover_button_texture|default": "NeBux/NeBuxUI/0",
+    "$pressed_button_texture|default": "NeBux/NeBuxUI/0",
+    "$locked_button_texture|default": "NeBux/NeBuxUI/0",
+    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ],
+    "$button_text": "H"
+  },
+  
+  "mod_menu_toggle@NeBuxToggles.NeBuxTopToggle": {
+    "prevent_touch_input": true,
+    "$border_visible": false,
+    
+    "$default_state_border_visible": false,
+    "$hover_state_border_visible": false,
+    "$pressed_state_border_visible": false,
+    "$locked_state_border_visible": false,
+    "type": "input_panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ -58.2, 0.5 ],
+    "size": [20, 20],
+    "$toggle_name": "modmenuopentoggle",
+    "$radio_toggle_group": true,
+    "$toggle_group_forced_index": 70,
+    "$toggle_view_binding_name": "nebux_mod_menu",
+    "$button_text": "M",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+  "f8_button@settings_common.action_button": {
+    "prevent_touch_input": true,
+    
+    
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [38.5, 0.5],
+    "size": [20, 20],
+    "$border_visible": false,
+    "$pressed_button_name": "button.hide_paperdoll_hud",
+    "$default_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
+    "$hover_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
+    "$pressed_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
+    "$locked_button_texture|default": "NeBux/NeBuxUI/Buttons/hud_btn",
+    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+    "$button_text": "F8",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+  
+  "f3_button@NeBuxToggles.NeBuxTopToggle": {
+    "prevent_touch_input": true,
+    "$border_visible": false,
+    "$default_state_border_visible": false,
+    "$hover_state_border_visible": false,
+    "$pressed_state_border_visible": false,
+    "$locked_state_border_visible": false,
+    "type": "input_panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [38.5, 0.5],
+    "size": [20, 20],
+    "$toggle_view_binding_name": "f3_screen_toggle",
+    "$button_text": "F3",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+
+  
+  "level@NeBuxHud.nebux_xplevel":{},
+  "NeBuxInventoryCounter@NeBuxInventoryCounter.NeBuxInventoryCounter":{},
+  
+  "NeBux_hud_player_renderer": {
+        "type": "panel",
+        "size": "$paperdollsize",
+        "offset": "$paperdolloffset",
+        "anchor_from": "bottom_middle",
+        "anchor_to": "botton_middle",
+        "controls": [
+            {
+                "hud_player": {
+                    "type": "custom",
+                    "renderer": "$paperdolltype",
+                    "layer": 1,
+                    "animation_reset_name": "screen_animation_reset",
+                    "anims": [
+                        "@common.screen_exit_size_animation_push",
+                        "@common.screen_exit_size_animation_pop",
+                        "@common.screen_entrance_size_animation_push",
+                        "@common.screen_entrance_size_animation_pop"
+                    ],
+                    "bindings": [
+                        {
+                            "binding_name": "#paper_doll_visible",
+                            "binding_name_override": "#pd"
+                        },
+                        {
+                            "binding_name": "#hud_visible",
+                            "binding_type": "global"
+                        },
+                        {
+                            "binding_type": "view",
+                            "source_property_name": "(#hud_visible and #pd)",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    
+    "cc_data": {
+    "type": "custom",
+    "renderer": "inventory_item_renderer",
+    "size": [19.5, 19.5],
+    "layer": 5
+  },
+  
+  "cc_image_base": {
+    "type": "image",
+    "texture": "textures/ui/hud_tip_text_background",
+    "size": [23.5, 23.5],
+    "alpha": 0.5,
+    "layer": 4
+  },
+  
+  "clock_and_compass": {
+  "type": "stack_panel",
+  "anchor_from": "bottom_left",
+  "anchor_to": "bottom_left",
+  "orientation": "horizontal",
+  "size": [ 40, 20],
+  "offset": [3, -5],
+  "controls": [
+    {
+      "clock@NeBuxHud.cc_image_base": {
+        "controls": [
+          {
+            "clock@NeBuxHud.cc_data": {
+              "property_bag": { "#item_id_aux": 22740992 }
+            }
+          }
+        ]
+      }
+    },
+    { "padding": { "type": "panel", "size": [2, 0] } },
+    {
+      "compass@NeBuxHud.cc_image_base": {
+        "controls": [
+          {
+            "compass@NeBuxHud.cc_data": {
+            "property_bag": { "#item_id_aux": 22609920 },
+            "size": [22, 22]
+            }
+          }
+        ]
+      }
+    }
+  ]
+},
+
+
+
+"nebux_xplevel": {
+  "type": "stack_panel",
+  "anchor_from": "bottom_right",
+  "anchor_to": "bottom_right",
+  "orientation": "horizontal",
+  "size": ["100%c + 10px", "100%c + 10px"],
+  "offset": [6.5, 9], //"offset": [7, 9], -11
+  "controls": [
+    {
+      "level_bg": {
+        "type": "image",
+        "texture": "textures/ui/hud_tip_text_background",
+        "size": ["100%c + 10px", "100%c + 10px"],
+        "alpha": 0.5,
+        "layer": 1,
+        "controls": [
+          {
+            "level_label_inner": {
+              "type": "label",
+              "shadow": true,
+              "text": "#text",
+              "layer": 2,
+            //  "color": "$experience_text_color",
+              "bindings": [
+                {
+                  "binding_name": "#level_number",
+                  "binding_type": "global"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "('§fXP Level:§a ' + #level_number)",
+                  "target_property_name": "#text"
+                },
+                {
+                  "binding_name": "#level_number_visible",
+                  "binding_type": "global",
+                  "binding_name_override": "#visible"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+}

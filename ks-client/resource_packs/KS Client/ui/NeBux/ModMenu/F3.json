@@ -1,0 +1,69 @@
+// © 2025 NeBux. All rights reserved.  
+// Do not steal, or use this code without permission!
+// If you want to use anything from my pack contact me on my discord
+// Discord NeBux18
+{
+  "namespace": "f3",
+  
+  "f3_content": {
+      "type": "stack_panel",
+      "anchor_from": "top_left",
+      "anchor_to": "top_left",
+      "orientation": "vertical",
+      "controls": [
+         {
+            "version@f3nc.version": {}
+         },
+         {
+            "Edition@f3nc.edition": {}
+         },
+         {
+            "gamemode@f3nc.game_mode_status": {}
+         },
+         {
+            "number_of_days_played@f3nc.number_of_days_played": {}
+         },
+         {
+            "player_position@f3nc.player_position": {}
+         },
+         {
+            "recovery_clock_and_compass@f3nc.recovery_clock_and_compass_with_background": {}
+         },
+         
+         { "padding1@common.empty_panel": { "size": [ 0, 5 ] }},
+         
+         {
+            "UI_Profile@f3nc.ui_profile": {}
+         },
+         {
+            "Device@f3nc.device": {}
+         },
+         {
+            "Graphics@f3nc.graphics": {}
+         },
+         {
+            "Input_Status@f3nc.input_status": {}
+         }
+      ]
+   },
+   
+   "f3_text_base": {
+      "type": "image",
+      "texture": "textures/ui/Black",
+      "size": ["100%c + 2px", "100%c"],
+      "alpha": "$f3alpha",
+      "controls": [
+         {
+           "text": {
+           "type": "label",
+           "text": "$text",
+           "anchor_from": "top_left",
+           "anchor_to": "top_left",
+           "offset": [1, 0],
+           "shadow": true,
+           "layer": 50
+            }
+         }
+      ]
+   }
+}
