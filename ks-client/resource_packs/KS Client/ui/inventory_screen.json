@@ -209,60 +209,7 @@
     ]
   },
 
-  "toolbar_panel/toolbar_background/toolbar_stack_panel/close_button_panel": {
-    "ignored": "(not $touch)", // to avoid closing through close button (ofc)
-    "controls": [
-      {
-        "close_toggle@crafting._content_close_visuals": {
-          "ignored": "$is_crafting_screen",
-          "toggle_default_state": true,
-          "size": [15, 15],
-          "$radio_toggle_group": true,
-          "$toggle_name": "__",
-          "$toggle_group_forced_index": 0,
-          "button_mappings": [
-            {
-              "from_button_id": "button.menu_select",
-              "to_button_id": "button.menu_select",
-              "mapping_type": "pressed"
-            },
-            {
-              "from_button_id": "button.menu_ok",
-              "to_button_id": "button.menu_select",
-              "mapping_type": "focused"
-            }
-          ]
-        }
-      },
-      {
-        "crafting_close@common.light_close_button": {
-          "$close_button_offset": [0, 0],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "ignored": "$is_inventory_screen",
-          "size": [15, 15],
-          "controls": [
-            {
-              "default@common.close_button_panel": {
-                "$close_button_texture": "textures/c_ui/sm_close_default"
-              }
-            },
-            {
-              "hover@common.close_button_panel": {
-                "$close_button_texture": "textures/c_ui/sm_close_hover"
-              }
-            },
-            {
-              "pressed@common.close_button_panel": {
-                "$close_button_texture": "textures/c_ui/sm_close_hover"
-              }
-            }
-          ]
-        }
-      }
-    ]
-  },
-
+  // (Fixed per request: custom close override removed — vanilla X restored, always visible.)
   // (Utility help (?) button removed per request: panel emptied.)
   "toolbar_panel/toolbar_background/toolbar_stack_panel/help_button_panel": {
     "controls": []
