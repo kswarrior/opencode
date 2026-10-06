@@ -526,32 +526,7 @@
           }
         ]
       },
-      // Utility HUD nocounter: hotkey redirects, durability, crosshair.
-      {
-        "array_name": "controls",
-        "operation": "insert_front",
-        "value": [
-          { "force_close_screen@hud.force_close_screen": {} },
-          { "f1_redirect@hud.f1_redirect": {} },
-          { "f8_redirect@hud.f8_redirect": {} },
-          { "f8_function@hud.f8_function": {} },
-          { "mainhand_durability@hud.mainhand_durability": { "ignored": "(not $show_mainhand_durability)" } },
-          { "_toggles@hud._toggles": {} },
-          { "attack_crosshair@hud.attack_crosshair": { "ignored": "(not $show_attack_crosshair)" } }
-        ]
-      },
-      {
-        "array_name": "controls",
-        "operation": "insert_back",
-        "value": [
-          {
-            "ks_hud_keys@ks_client.ks_hud_keys": {}
-          },
-          {
-            "ks_f3_panel@ks_client.ks_f3_panel": {}
-          }
-        ]
-      }
+      // (Removed per request: Utility HUD + KS F3/F8 keys fully removed.)
     ]
   },
 
@@ -574,14 +549,7 @@
           }
         ]
       },
-      // NeBux F1/F3 HUD inserts (paper doll, F3+F1 buttons, debug screens).
-      {
-        "array_name": "controls",
-        "operation": "insert_front",
-        "value": {
-          "hud_player_renderer@NeBuxHud.NeBux_hud_player_renderer": {}
-        }
-      },
+      // (Removed per request: NeBux F1/F3 HUD fully removed.)
       {
         "array_name": "controls",
         "operation": "insert_front",
