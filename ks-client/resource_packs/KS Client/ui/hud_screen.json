@@ -114,12 +114,6 @@
           },
           {
             "ks_f3_panel@ks_client.ks_f3_panel": {}
-          },
-          {
-            "ks_hotbar_left@ks_client.ks_hotbar_left": {}
-          },
-          {
-            "ks_hotbar_right@ks_client.ks_hotbar_right": {}
           }
         ]
       }
@@ -131,20 +125,11 @@
   // touch users tapping F1 could get stuck with no way back.
   // Slot Hotbar Button v1.3.0 by @Itzriyo157 (insert_front) + KS show-HUD
   // (insert_back) coexist as separate modifications on hud_content.
-  // PandaMine F1 button (insert_front) added alongside them.
+  // (PandaMine F1 button removed per request.)
   // Quick Totem Offhand button by oSkullo (insert_front): 30x30 (40 -25%),
   // raised 30px (new size) above the Offhand default.
   "hud_content": {
     "modifications": [
-      {
-        "array_name": "controls",
-        "operation": "insert_front",
-        "value": [
-          {
-            "f1_button@hide_gui.f1_panel": {}
-          }
-        ]
-      },
       {
         "array_name": "controls",
         "operation": "insert_front",

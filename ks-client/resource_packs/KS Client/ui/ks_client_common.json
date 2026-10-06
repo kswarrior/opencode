@@ -1308,7 +1308,7 @@
     ]
   },
 
-  // ---------- HUD quick keys: F1 / F3 / F8 (20x20 KS key buttons) ----------
+  // ---------- HUD quick keys: F3 / F8 (20x20 KS key buttons, F1 removed) ----------
   // Clean-room KS implementation (own art + own text, no third-party assets).
   // Button look follows the same idea as the reference pack (small dark
   // rounded key button with border), redrawn from scratch as
@@ -1319,11 +1319,12 @@
   // F1 hides this row too, so ks_show_hud (a sibling of root_panel, see
   // hud_screen.json) is the guaranteed way back for touch users.
   "ks_hud_keys": {
-    "type": "panel",
-    "size": [ 64, 20 ],
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ 42, 20 ],
     "anchor_from": "top_middle",
     "anchor_to": "top_middle",
-    "offset": [ -32, 2 ],
+    "offset": [ -21, 2 ],
     "layer": 11,
     "bindings": [
       {
@@ -1333,55 +1334,6 @@
       }
     ],
     "controls": [
-      {
-        "ks_f1_slot": {
-          "type": "panel",
-          "size": [ 20, 20 ],
-          "controls": [
-            {
-              "ks_f1_bg": {
-                "type": "image",
-                "texture": "textures/ui/ks_key_btn",
-                "size": [ 20, 20 ],
-                "layer": 0
-              }
-            },
-            {
-              "ks_f1_lbl": {
-                "type": "label",
-                "size": [ 20, 20 ],
-                "anchor_from": "center",
-                "anchor_to": "center",
-                "offset": [ 0, 0 ],
-                "color": [ 255, 255, 255 ],
-                "shadow": true,
-                "localize": false,
-                "text_alignment": "center",
-                "font_size": "small",
-                "font_scale_factor": 0.85,
-                "layer": 1,
-                "text": "F1"
-              }
-            },
-            {
-              "ks_f1_hit@common.button": {
-                "size": [ 20, 20 ],
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [ 0, 0 ],
-                "layer": 2,
-                "$pressed_button_name": "button.hide_gui_all"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "ks_key_gap": {
-          "type": "panel",
-          "size": [ 2, 20 ]
-        }
-      },
       {
         "ks_f3_slot": {
           "type": "panel",
@@ -3296,115 +3248,6 @@
           "offset": [ 0, 0 ],
           "layer": 2,
           "$pressed_button_name": "button.hide_gui_all"
-        }
-      }
-    ]
-  },
-
-  // ---------- Hotbar scroll arrows (touch helper, same key style) ----------
-  // Clean-room KS rebuild of the reference pack's hotbar helpers.
-  // Real engine actions: button.hotbar_inventory_left / right.
-  "ks_hotbar_left": {
-    "type": "panel",
-    "size": [ 20, 20 ],
-    "anchor_from": "bottom_middle",
-    "anchor_to": "bottom_middle",
-    "offset": [ -113, -2 ],
-    "layer": 11,
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
-        "binding_type": "global"
-      }
-    ],
-    "controls": [
-      {
-        "ks_hl_bg": {
-          "type": "image",
-          "texture": "textures/ui/ks_key_btn",
-          "size": [ 20, 20 ],
-          "layer": 0
-        }
-      },
-      {
-        "ks_hl_lbl": {
-          "type": "label",
-          "size": [ 20, 20 ],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "offset": [ 0, 0 ],
-          "color": [ 255, 255, 255 ],
-          "shadow": true,
-          "localize": false,
-          "text_alignment": "center",
-          "font_size": "small",
-          "font_scale_factor": 0.85,
-          "layer": 1,
-          "text": "<"
-        }
-      },
-      {
-        "ks_hl_hit@common.button": {
-          "size": [ 20, 20 ],
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [ 0, 0 ],
-          "layer": 2,
-          "$pressed_button_name": "button.hotbar_inventory_left"
-        }
-      }
-    ]
-  },
-
-  "ks_hotbar_right": {
-    "type": "panel",
-    "size": [ 20, 20 ],
-    "anchor_from": "bottom_middle",
-    "anchor_to": "bottom_middle",
-    "offset": [ 113, -2 ],
-    "layer": 11,
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
-        "binding_type": "global"
-      }
-    ],
-    "controls": [
-      {
-        "ks_hr_bg": {
-          "type": "image",
-          "texture": "textures/ui/ks_key_btn",
-          "size": [ 20, 20 ],
-          "layer": 0
-        }
-      },
-      {
-        "ks_hr_lbl": {
-          "type": "label",
-          "size": [ 20, 20 ],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "offset": [ 0, 0 ],
-          "color": [ 255, 255, 255 ],
-          "shadow": true,
-          "localize": false,
-          "text_alignment": "center",
-          "font_size": "small",
-          "font_scale_factor": 0.85,
-          "layer": 1,
-          "text": ">"
-        }
-      },
-      {
-        "ks_hr_hit@common.button": {
-          "size": [ 20, 20 ],
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [ 0, 0 ],
-          "layer": 2,
-          "$pressed_button_name": "button.hotbar_inventory_right"
         }
       }
     ]
