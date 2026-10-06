@@ -1427,5 +1427,7 @@
   "textures/ui/ks_menu_bg",
   "textures/ui/ks_profile_bg",
   "textures/ui/ks_sidebar_bg",
-  "textures/ui/white"
+  "textures/ui/white",
+  "textures/totem/close_button",
+  "textures/totem/totem_button"
 ]
