@@ -1,8 +1,110 @@
 {
   "namespace": "hud",
 
+  // ---------- PandaMine Clean Touch Controls v1.4.1 (base layout tweaks) ----------
+  // Vanilla touch-layout redefinitions: centered bottom-middle cluster sizing,
+  // inventory button row, elipses helpers. No KS keys touched. Credit: PandaMine5.
+  "hotbar_elipses_button@borderless_button": {
+    "sound_volume": "$hud_elipses_sound_volume"
+  },
+
+  "elipses_image": {
+    "ignored": "(not $hud_elipses_enabled)"
+  },
+
+  "hotbar_elipses_panel_right_content": {
+    "ignored": "(not $hud_elipses_enabled)"
+  },
+
+  "inventory_button": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "size": [ 226, 22 ],
+    "offset": [ 0, -2 ],
+    "layer": 4,
+    "controls": [
+      {
+        "padding": {
+          "type": "panel",
+          "size": [ "fill", "100%" ]
+        }
+      },
+      {
+        "button@common.button": {
+          "$pressed_button_name": "button.hotbar_inventory_button",
+          "size": [ 22, "100%" ]
+        }
+      }
+    ]
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch": {
+    "size": "$size",
+    "$size": [ 180, 50 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$size": [ 200, 50 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/bubbles_rend_0": {
+    "offset": "$offset",
+    "$offset": [ 180, -50 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -50 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/bubbles_rend_1": {
+    "offset": "$offset",
+    "$offset": [ 180, -50 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -50 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/hunger_rend": {
+    "offset": "$offset",
+    "$offset": [ 180, -40 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -40 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/horse_heart_rend_1": {
+    "offset": "$offset",
+    "$offset": [ 180, -50 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -50 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/horse_heart_rend_0": {
+    "offset": "$offset",
+    "$offset": [ 180, -56 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -56 ]
+    }
+  },
+
   "root_panel": {
     "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "inv_button@hud.inventory_button": {}
+          }
+        ]
+      },
       {
         "array_name": "controls",
         "operation": "insert_back",
@@ -29,8 +131,18 @@
   // touch users tapping F1 could get stuck with no way back.
   // Slot Hotbar Button v1.3.0 by @Itzriyo157 (insert_front) + KS show-HUD
   // (insert_back) coexist as separate modifications on hud_content.
+  // PandaMine F1 button (insert_front) added alongside them.
   "hud_content": {
     "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "f1_button@hide_gui.f1_panel": {}
+          }
+        ]
+      },
       {
         "array_name": "controls",
         "operation": "insert_front",
@@ -56,5 +168,13 @@
         ]
       }
     ]
+  },
+
+  // PandaMine perf flags for the HUD screen (telemetry off, cached screen).
+  "hud_screen@common.base_screen": {
+    "send_telemetry": false,
+    "low_frequency_rendering": true,
+    "load_screen_immediately": true,
+    "cache_screen": true
   }
 }
