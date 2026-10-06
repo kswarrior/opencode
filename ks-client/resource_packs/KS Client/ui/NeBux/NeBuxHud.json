@@ -129,7 +129,55 @@
     ]
   },
 
+  "hotbar_inventory_left@common_buttons.light_text_button": {
+    "prevent_touch_input": true,
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [-113, -2.5],
+	"$border_visible": false,
+    "size": [20, 20],
+    "ignored": "$hideinventoryleft",
+    "$pressed_button_name": "button.hotbar_inventory_left",
+    "$button_text": "§f<",
+    "$button_pressed_offset":[ -2, 0],
+    "$default_button_texture|default": "NeBux/NeBuxUI/Black",
+    "$hover_button_texture|default": "NeBux/NeBuxUI/Black",
+    "$pressed_button_texture|default": "NeBux/NeBuxUI/Black",
+    "$locked_button_texture|default": "NeBux/NeBuxUI/Black",
+    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
 
+  "hotbar_inventory_right@common_buttons.light_text_button": {
+    "prevent_touch_input": true,
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [113, -2.5],
+	"$border_visible": false,
+    "size": [20, 20],
+    "ignored": "$hideinventoryright",
+    "$pressed_button_name": "button.hotbar_inventory_right",
+    "$button_text": "§f>",
+    "$button_pressed_offset":[ 2, 0],
+    "$default_button_texture|default": "NeBux/NeBuxUI/Black",
+    "$hover_button_texture|default": "NeBux/NeBuxUI/Black",
+    "$pressed_button_texture|default": "NeBux/NeBuxUI/Black",
+    "$locked_button_texture|default": "NeBux/NeBuxUI/Black",
+    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
   
   "level@NeBuxHud.nebux_xplevel":{},
   "NeBuxInventoryCounter@NeBuxInventoryCounter.NeBuxInventoryCounter":{},

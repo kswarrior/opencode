@@ -1,6 +1,150 @@
 {
   "namespace": "hud",
 
+  // ---------- NeBux F1 & F3 Buttons v1.1.3 (Default/mobile variant) ----------
+  // Hides vanilla doll/coords/days (F3 screens show their own), styles
+  // selected-slot art. Vanilla root_panel copy, touch-indicator override,
+  // progress/player_renderer2-3 and hud_content.controls deliberately NOT
+  // ported (stale-copy risk / missing toggle / unreferenced).
+  "hud_player_renderer": {
+    "type": "panel",
+    "size": [
+      65,
+      65
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "ignored": true,
+    "controls": [
+      {
+        "hud_player": {
+          "type": "custom",
+          "renderer": "hud_player_renderer",
+          "layer": 1,
+          "animation_reset_name": "screen_animation_reset",
+          "anims": [
+            "@common.screen_exit_size_animation_push",
+            "@common.screen_exit_size_animation_pop",
+            "@common.screen_entrance_size_animation_push",
+            "@common.screen_entrance_size_animation_pop"
+          ],
+          "bindings": [
+            {
+              "binding_name": "#paper_doll_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "root_panel/exp_rend": {
+    "ignored": "$always_visible_hotbar"
+  },
+  "centered_gui_elements_at_bottom_middle/exp_rend": {
+    "ignored": "$always_visible_hotbar"
+  },
+  "hotbar_slot_selected_image": {
+    "type": "image",
+    "texture": "textures/ui/selected_hotbar_slot",
+    "size": [
+      24,
+      24
+    ],
+    "layer": 8,
+    "bindings": [
+      {
+        "binding_name": "#slot_selected",
+        "binding_name_override": "#visible",
+        "binding_type": "collection",
+        "binding_collection_name": "$hotbar_collection_name"
+      }
+    ]
+  },
+  "player_position": {
+    "ignored": true,
+    "type": "image",
+    "size": [
+      "100%c + 6px",
+      "100%c + 2px"
+    ],
+    "texture": "textures/ui/Black",
+    "alpha": 0.7,
+    "controls": [
+      {
+        "player_position_text": {
+          "type": "label",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "layer": 1,
+          "enable_profanity_filter": false,
+          "color": "$chat_text_color",
+          "text": "#text",
+          "shadow": true
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#player_position_visible",
+        "binding_name_override": "#visible",
+        "binding_condition": "always",
+        "binding_type": "global"
+      },
+      {
+        "binding_name": "#number_of_days_played_text",
+        "binding_name_override": "#text",
+        "binding_condition": "always_when_visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+  // Displays number of played in-game days
+  "number_of_days_played": {
+    "ignored": true,
+    "type": "image",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "size": [
+      "100%c + 6px",
+      "100%c + 2px"
+    ],
+    "texture": "textures/ui/Black",
+    "alpha": 0.7,
+    "controls": [
+      {
+        "number_of_days_played_text": {
+          "type": "label",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "layer": 1,
+          "enable_profanity_filter": false,
+          "color": "$chat_text_color",
+          "text": "#text",
+          "shadow": true
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#number_of_days_played_visible",
+        "binding_name_override": "#visible",
+        "binding_condition": "always",
+        "binding_type": "global"
+      },
+      {
+        "binding_name": "#number_of_days_played_text",
+        "binding_name_override": "#text",
+        "binding_condition": "always_when_visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
   // ---------- PandaMine Clean Touch Controls v1.4.1 (base layout tweaks) ----------
   // Vanilla touch-layout redefinitions: centered bottom-middle cluster sizing,
   // inventory button row, elipses helpers. No KS keys touched. Credit: PandaMine5.
@@ -139,6 +283,84 @@
           }
         ]
       },
+      // NeBux F1/F3 HUD inserts (paper doll, F3+F1 buttons, debug screens).
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "hud_player_renderer@NeBuxHud.NeBux_hud_player_renderer": {}
+        }
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "f3_button@NeBuxHud.f3_button": {
+               
+               "$button_mappings": [
+                {
+                  "from_button_id": "button.menu_select",
+                  "to_button_id": "button.menu_select",
+                  "mapping_type": "pressed"
+                },
+                {
+                  "from_button_id": "button.scoreboard",
+                  "to_button_id": "button.menu_select",
+                  "mapping_type": "global"
+                }
+              ]
+            }
+          },
+          {
+            "f1_button@NeBuxHud.f1_button": {
+              
+            }
+          },
+          {
+            "f3@f3.f3_content": {
+              "bindings": [
+                {
+                  "binding_type": "view",
+                  "source_control_name": "f3_screen_toggle",
+                  "source_property_name": "#toggle_state",
+                  "target_property_name": "#f3_screen_visible"
+                },
+                {
+                  "binding_name": "#hud_visible",
+                  "binding_type": "global"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#hud_visible and #f3_screen_visible)",
+                  "target_property_name": "#visible"
+                }
+              ]
+            }
+          },
+          {
+            "f3_right@f3right.NeBux": {
+              "bindings": [
+                {
+                  "binding_type": "view",
+                  "source_control_name": "f3_screen_toggle",
+                  "source_property_name": "#toggle_state",
+                  "target_property_name": "#f3_screen_visible"
+                },
+                {
+                  "binding_name": "#hud_visible",
+                  "binding_type": "global"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#hud_visible and #f3_screen_visible)",
+                  "target_property_name": "#visible"
+                }
+              ]
+            }
+          }
+        ]
+      }
       {
         "array_name": "controls",
         "operation": "insert_front",
