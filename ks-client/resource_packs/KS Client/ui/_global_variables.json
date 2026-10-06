@@ -107,9 +107,9 @@
 	"$tab_secondary_unchecked_text_color": [ 1.0, 1.0, 1.0 ],
 	"$tab_secondary_unchecked_hover_text_color": [ 1.0, 1.0, 1.0 ],
 	"$tab_secondary_unchecked_locked_text_color": [ 1.0, 1.0, 1.0 ],
-	"$tab_secondary_unchecked_hover_locked_text_color": [ 1.0, 1.0, 1.0 ],
+	"$tab_secondary_unchecked_locked_hover_text_color": [ 1.0, 1.0, 1.0 ],
 	"$tab_secondary_checked_text_color": [ 1.0, 1.0, 1.0 ],
 	"$tab_secondary_checked_hover_text_color": [ 1.0, 1.0, 1.0 ],
 	"$tab_secondary_checked_locked_text_color": [ 1.0, 1.0, 1.0 ],
-	"$tab_secondary_checked_hover_locked_text_color": [ 1.0, 1.0, 1.0 ]
+	"$tab_secondary_checked_locked_hover_text_color": [ 1.0, 1.0, 1.0 ]
 }
