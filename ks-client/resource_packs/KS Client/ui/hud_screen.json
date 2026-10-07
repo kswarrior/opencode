@@ -373,8 +373,8 @@
         "target_property_name": "#anchored_offset_value_y"
       }
     ]
-  }
-}
+  },
+  // ---------- Quick Totem Offhand button (KS Client) ----------
   // Positioned live by the editor totem sliders via the resizer wrapper
   // ($ksb_totem_x/y are 0-100 slider positions: px offset = value-125 / value-35).
   // Visibility follows the totem toggle live; size tries the size slider.
