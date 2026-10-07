@@ -1,36 +1,131 @@
 {
   "namespace": "ks_fps",
   "fps_counter_mask": {
-    "type": "panel",
-    "size": [
-      150,
-      32
-    ],
-    "clips_children": true,
+    "type": "stack_panel",
+    "orientation": "vertical",
     "anchor_from": "top_left",
     "anchor_to": "top_left",
-    "offset": [
-      0,
-      0
-    ],
+    "offset": [3, 3],
     "controls": [
       {
-        "fps_counter_overlay": {
-          "type": "custom",
-          "renderer": "paper_doll_renderer",
-          "size": [
-            128,
-            128
-          ],
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "offset": [
-            -45,
-            48
-          ],
-          "camera_tilt_degrees": 0,
-          "starting_rotation": 180,
-          "use_skin_gui_scale": false
+        "ks_fps_client": {
+          "type": "label",
+          "size": ["100%", 12],
+          "color": [1, 1, 1],
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.8,
+          "text": "KS Client v1.1.3"
+        }
+      },
+      {
+        "ks_fps_mc_row": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": ["100%", 12],
+          "controls": [
+            {
+              "ks_fps_mc_static": {
+                "type": "label",
+                "size": ["default", 12],
+                "color": [1, 1, 1],
+                "shadow": true,
+                "enable_profanity_filter": false,
+                "localize": false,
+                "font_size": "normal",
+                "font_scale_factor": 0.8,
+                "text": "Minecraft Vanilla v"
+              }
+            },
+            {
+              "ks_fps_mc_ver": {
+                "type": "label",
+                "size": ["default", 12],
+                "color": [1, 1, 1],
+                "shadow": true,
+                "enable_profanity_filter": false,
+                "localize": false,
+                "font_size": "normal",
+                "font_scale_factor": 0.8,
+                "text": "#version",
+                "bindings": [
+                  {
+                    "binding_name": "#version"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_fps_row": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": ["100%", 16],
+          "controls": [
+            {
+              "ks_fps_tag": {
+                "type": "label",
+                "size": ["default", 16],
+                "color": [1, 1, 1],
+                "shadow": true,
+                "enable_profanity_filter": false,
+                "localize": false,
+                "font_size": "normal",
+                "font_scale_factor": 0.8,
+                "text": "FPS: "
+              }
+            },
+            {
+              "ks_fps_digits": {
+                "type": "panel",
+                "size": [75, 16],
+                "clips_children": true,
+                "controls": [
+                  {
+                    "fps_counter_overlay": {
+                      "type": "custom",
+                      "renderer": "paper_doll_renderer",
+                      "size": [64, 64],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [-22, 24],
+                      "camera_tilt_degrees": 0,
+                      "starting_rotation": 180,
+                      "use_skin_gui_scale": false
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_fps_pos": {
+          "type": "label",
+          "size": ["100%", 12],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "text": "#text",
+          "bindings": [
+            {
+              "binding_name": "#player_position_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_name": "#player_position_text",
+              "binding_name_override": "#text",
+              "binding_type": "global",
+              "binding_condition": "always_when_visible"
+            }
+          ]
         }
       }
     ]
