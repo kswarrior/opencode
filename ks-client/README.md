@@ -45,18 +45,18 @@
 | 7 | Clean Touch Controls | PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json` still in `_ui_defs.json`, `textures/ui/pandamine5/`, `textures/gui/controls/`) | Hide-GUI definition + clean joystick/D-pad/buttons art ships; PandaMine F1 HUD button removed per request (`hud_screen.json` comment). |
 | 8 | Connected Hotbar | v1.0.1 | Seamless hotbar (`hotbar_0`…`hotbar_8` + `start/end_cap`, `selected_hotbar_slot`) |
 | 9 | Clear & Borderless Glass | Mod MCPE v6.2 | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
-| 10 | Glass Doors & Trapdoors | v1.0.1 | Transparent doors/trapdoors (`textures/blocks/*door*`, `*trapdoor*`, `textures/items/door_*`) |
+| 10 | Glass Doors & Trapdoors | v1.0.1 | Transparent doors/trapdoors — 48 block entries in `terrain_texture.json` (`acacia/birch/…_door_*`, `*_trapdoor`) + `textures/blocks/*door*` PNGs. Item icons (`textures/items/door_*.png`, 17 files) exist on disk but `item_texture.json` (`atlas.items`) is currently empty `{}` so they fall back to vanilla. |
 | 11 | Fullbright Fog | KS custom (`fogs/ks_fullbright.json` + `biomes_client.json`) | No dark fog: air/weather `0.999–1.0` white, water `200–300`, lava handling |
-| 12 | Health Bar System | KS custom (`animations/health_bar.json`, `models/entity/health_bar.json`, `render_controllers/health_bar.json`) | Billboard health bar over mobs, hidden in UI/invisible/dead |
-| 13 | Player Animation QA System | KS `tools/` | Loop-rechecker for glide/fall/trident `loop=true`, shield/armor/sword bone fixes, strict-JSON + ref checks |
-| 14 | Custom UI Kit (KS + c_ui) | KS custom | `ks_btn_cyan`, `ks_menu_bg`, `ks_sidebar_bg`, `ks_icon_*`, `ks_info_*`, `attack_crosshair`, `totem`, `offhand_slot`, all effect icons |
+| 12 | Health Bar System — REMOVED | (was KS custom) | **Deleted from latest build:** `animations/`, `models/`, `render_controllers/`, `textures/health_bar/` do not exist. All 82 `entity/*.json` are minimal (`animations:{}`, `animate:[]`, `render_controllers:[]`) with no health hooks. |
+| 13 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`) are NOT shipped, so loop/shield gates skip gracefully; `player.json` stays minimal for compat. |
+| 14 | Custom UI Kit (KS + c_ui) | KS custom | `ks_btn_cyan`, `ks_menu_bg`, `ks_sidebar_bg`, `ks_icon_*`, `ks_info_*`, `totem`, all effect icons. Note: brand header/footer/center row removed (text-free screen); `ks_hud_keys` / `ks_inv_slot` / `ks_f3_panel` in `ks_client_common.json` are empty 0×0 stubs; `textures/c_ui/*` (totem/offhand/crosshair/toggles) ships but is unwired since Utility HUD removal. |
 | 15 | Custom Touch Button Art | KS + vanilla override | `jump`, `sneak`, `sprint`, `flyingascend/descend`, `waterascend/descend`, D-pad, joystick, `interact`, `mount`, `pick_block` |
-| 16 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard remap, `dev_console_screen.json`, pause config removed (HUD keys stay working) |
-| 17 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects + inventory-screen totem equip/exit (`inventory_screen.json`, `mob_effect_screen.json`) |
+| 16 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed (comment in `pause_screen.json`: HUD F1/F3 keys removed, `ks_show_hud` is the way back) |
+| 17 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
 | 18 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
-| 19 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` |
-| 20 | Full Vanilla Texture Override | vanilla-resampled | Complete `atlas.terrain` blocks, doors items, environment (clouds/sun/moon/rain/snow/end sky), colormap, misc |
-| 21 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/`, versioned `.mcpack` in `release/`, opencode MCP skills |
+| 19 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
+| 20 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 116 PNGs), doors items on disk but `atlas.items` empty, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc |
+| 21 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
 
 ---
 
