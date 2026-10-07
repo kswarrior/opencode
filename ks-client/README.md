@@ -48,7 +48,7 @@
 | 10 | Glass Doors & Trapdoors | v1.0.1 | Transparent doors/trapdoors — 48 block entries in `terrain_texture.json` (`acacia/birch/…_door_*`, `*_trapdoor`) + `textures/blocks/*door*` PNGs. Item icons (`textures/items/door_*.png`, 17 files) exist on disk but `item_texture.json` (`atlas.items`) is currently empty `{}` so they fall back to vanilla. |
 | 11 | Fullbright Fog | KS custom (`fogs/ks_fullbright.json` + `biomes_client.json`) | No dark fog: air/weather `0.999–1.0` white, water `200–300`, lava handling |
 | 12 | Health Bar System — REMOVED | (was KS custom) | **Deleted from latest build:** `animations/`, `models/`, `render_controllers/`, `textures/health_bar/` do not exist. All 82 `entity/*.json` are minimal (`animations:{}`, `animate:[]`, `render_controllers:[]`) with no health hooks. |
-| 13 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`) are NOT shipped, so loop/shield gates skip gracefully; `player.json` stays minimal for compat. |
+| 13 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/...`) are NOT shipped, so Gate A currently reports 8 expected FAILs (missing-file problems) — gates 1–2 + 5 + `mct validate` still run; `player.json` stays minimal for compat. |
 | 14 | Custom UI Kit (KS + c_ui) | KS custom | `ks_btn_cyan`, `ks_menu_bg`, `ks_sidebar_bg`, `ks_icon_*`, `ks_info_*`, `totem`, all effect icons. Note: brand header/footer/center row removed (text-free screen); `ks_hud_keys` / `ks_inv_slot` / `ks_f3_panel` in `ks_client_common.json` are empty 0×0 stubs; `textures/c_ui/*` (totem/offhand/crosshair/toggles) ships but is unwired since Utility HUD removal. |
 | 15 | Custom Touch Button Art | KS + vanilla override | `jump`, `sneak`, `sprint`, `flyingascend/descend`, `waterascend/descend`, D-pad, joystick, `interact`, `mount`, `pick_block` |
 | 16 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed (comment in `pause_screen.json`: HUD F1/F3 keys removed, `ks_show_hud` is the way back) |
@@ -198,7 +198,7 @@ The checker (`tools/check_player_animation_loop.py --iterations 3 --delay 1 --wa
 5. **Player refs** — every `scripts.animate` short exists in `animations` dict; every played `controller.*` is defined in-pack or vanilla-allowlisted; every anim referenced inside played controllers resolves.
 6. **mct validate** — optional (`--with-validate`), 0 errors (ignores `mcp.json`/`opencode.json`/`tools/` noise).
 
-Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 3×1 s). Drive reference anim: `https://drive.google.com/uc?export=download&id=1xna-mqKa7dyUNQZau7qx68o4zHxpAqAt` (Alex pack — verified by diff, only mob extras differ). Note: `animations/Animation|Attack` + `animation_controllers/...` Drive dirs are NOT shipped in latest build, so gates 3–4 skip gracefully — gates 1–2 + 5 + `mct validate` still run.
+Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 3×1 s). Drive reference anim: `https://drive.google.com/uc?export=download&id=1xna-mqKa7dyUNQZau7qx68o4zHxpAqAt` (Alex pack — verified by diff, only mob extras differ). Note: `animations/Animation|Attack` + `animation_controllers/...` Drive dirs are NOT shipped in latest build, so Gate A currently ends `FAIL (8 problems)`, all `No such file or directory` for the missing Drive anims — this is expected; strict-JSON/dotfile/player-ref gates + `mct validate` still run.
 
 ### 2.14 Custom UI Kit & Touch Art
 
@@ -257,7 +257,7 @@ ks-client/
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped in latest build — checks 3–4 skip gracefully. The shipped pack keeps all 82 `entity/*.json` minimal for compatibility. `ui/settings_sections/controls_section.json` is also unshipped from load order (not in `_ui_defs.json`).
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped in latest build — Gate A reports 8 expected missing-file FAILs. The shipped pack keeps all 82 `entity/*.json` minimal for compatibility. `ui/settings_sections/controls_section.json` is also unshipped from load order (not in `_ui_defs.json`).
 
 ---
 
@@ -329,7 +329,7 @@ Switch in pack settings; memory tier `0` for both.
 
 | Tool | Command | What it does |
 |------|---------|--------------|
-| Loop checker | `python3 tools/check_player_animation_loop.py [--iterations 3] [--delay 1] [--watch] [--with-validate]` | 5 gate loop: strict-JSON, dotfiles, loop flags, shield/armor/sword, player refs (+ optional `mct validate`). Gates 3–4 skip gracefully — target anim dirs not shipped. |
+| Loop checker | `python3 tools/check_player_animation_loop.py [--iterations 3] [--delay 1] [--watch] [--with-validate]` | 5 gate loop: strict-JSON, dotfiles, loop flags, shield/armor/sword, player refs (+ optional `mct validate`). Drive anim dirs not shipped → Gate A ends `FAIL (8 problems)`, all missing-file — expected in latest build. |
 | Shell wrapper | `bash tools/recheck_player_animation.sh [iterations] [delay]` | Re-syncs Drive anims when present, then loops checker (default 3×1 s) |
 | Validate | `npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_validate_loop` | Full pack validation; outputs CSV/JSON/HTML (see `out/`) |
 | MCP | `npx -y @minecraft/creator-tools@0.19.0 mcp -i .` (via `opencode.json`) | AI-editable pack (skills: `design-model`, `create-block/item/mob`, `debug-addon`, `creator-tools-cli` allowed) |
