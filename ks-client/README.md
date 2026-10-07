@@ -2,7 +2,7 @@
 
 > **KS Client v1.1.2 by KS Warrior**
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
-> Custom start screen, HUD (slot hotbar + inventory-HUD + totem/offhand shortcuts + `ks_show_hud`), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. Note: Utility HUD widgets, health bars, and NeBux F1/F3 buttons were removed/unwired per request — their files/keys ship as dead/reserved (see §1–§2).
+> Custom start screen, HUD (slot hotbar + inventory-HUD + totem/offhand shortcuts + `ks_show_hud`), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack.
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
@@ -68,7 +68,7 @@ How it works:
 - `text_panel` is replaced with `version_small` — `100% - 2px × 10` strip at bottom (`offset -52`) showing only `#version` in `150,180,210`, `scale 0.75`, shadowed. No Mojang/copyright text.
 - `friendsdrawer_button_panel` fixed to `28×32` at `top_right [-8,2]`, layer 3. Fixes the classic fullscreen `["default","default"]` bug that pushed the bell to top-left. Uses borderless `ks_inbox_icon_button` (bell + red dot only, reuses vanilla `inbox_icon_container` animation states).
 - `ks_client_common.json` provides: `ks_edge_left/right` (2 px, 28% futuristic side rails, `ks_divider_v`, alpha 0.6), `ks_settings_button` (30×30, `ks_icon_settings`, no-background button → `button.menu_settings`), `ks_dressing_button` (40×40, `ks_icon_dressing` → `button.menu_skins`), `ks_inbox_button` (28×32 → `button.menu_inbox`).
-- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer` (`KS CLIENT v1.1.2 • ONLINE`), `shb.howToSaveConfig`, `NeBux.f3isf/f3isa` (`Inventory Status: §cFull/§aAvailable`).
+- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer` (`KS CLIENT v1.1.2 • ONLINE`), `shb.howToSaveConfig`.
 
 In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
 
@@ -114,7 +114,7 @@ How it works:
 - `hide_gui.json` still ships and is listed in `_ui_defs.json`; `$f1_texture` still points at `textures/ui/pandamine5/hide_gui`.
 - `textures/ui/`: `joystick_frame/knob`, `jump/sneak/sprint (+_pressed/_disable/_dpad)`, `flyingascend/descend`, `waterascend/descend`, `interact`, `mount`, `pick_block`, `box_exit/ride`, `horse_exit/ride`.
 - `textures/gui/controls/`: D-pad set (`up/down/left/right + diagonals + pressed`), `jump_dpad`, `sneak_dpad`, `large_button`, `dismount`.
-- `hud_screen.json` F1/F8 redirects are gone (Utility HUD removal) — comment notes “PandaMine F1 button removed per request”.
+- `hud_screen.json` F1/F8 redirects are gone — comment notes “PandaMine F1 button removed per request”.
 
 In-game: cleaner touch art remains; the HUD hide button path is now `ks_show_hud` (`button.hide_gui_all`), not the PandaMine F1 button.
 
@@ -177,10 +177,10 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 
 ### 2.12 Texts, Subpacks, Full Texture Coverage
 
-- `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `shb.howToSaveConfig`, `NeBux.f3isf/f3isa` (`Inventory Status: §cFull/§aAvailable`).
+- `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `shb.howToSaveConfig`.
 - `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — currently just `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`).
 - `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) currently EMPTY (`texture_data:{}`) despite 17 door PNGs in `textures/items/` — vanilla fallback until re-registered; `texture_list.json`/`textures_list.json` legacy lists.
-- `textures/`: `blocks/` (1309 PNGs), `ui/` (116 PNGs), `c_ui/` (25 files, unwired since Utility HUD removal), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`). No `health_bar/`, no `animations/`, `models/`, `render_controllers/` in latest build.
+- `textures/`: `blocks/` (1309 PNGs), `ui/` (116 PNGs), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs, unregistered), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`). No `health_bar/`, no `animations/`, `models/`, `render_controllers/`, no `NeBux/` in latest build.
 
 ---
 
@@ -252,13 +252,9 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar 1–10 | `$shb_N_x`, `$shb_N_y`, `$shb_N_s`, `$shb_N_v` | pos/size(50)/visible. 1–4 `(4/14/24/34,20)`, 5–8 `(62/72/82/92,22)`, 9 `(92,44)`, 10 hidden |
 | Slot hotbar misc | `$shb_ssci`, `$shb_hba`, `$shb_sbi`, `$shb_sdbi` | `true, 4, true, true` — single-click/content/durability behaviors |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
-| F1 | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/pandamine5/hide_gui, [18,18], [47.5,1.0]` |
-| NeBux hide flags | `$hideinventoryleftbutton`, `$hideinventoryrightbutton`, `$hidef1button`, `$hidef8button`, `$hidef3button`, `$hideinventoryfullwarning`, `$hideinventorycounter`, `$hideclock&compass`, `$hidexplevel`, `$hidemodmenubutton` | all `false` = all visible; set `true` to hide (reserved — F1/F3 buttons currently unwired from HUD) |
-| NeBux IDs/offsets | `$recoverycompassid 45088768`, `$clockid 22740992`, `$compassid 22609920`, `f1buttonoffset [-38.5,0.5]`, `f8buttonoffset [38.5,0.5]`, `$f8buttonremove false`, `$f3alpha 0.4`, `$test "mod_menu_on"` | item-data IDs + button placement + F3 transparency + undocumented mod-menu toggle (reserved) |
-| Paperdoll | `$paperdollsize [65,65]`, `$paperdolloffset [-140,-35]`, `$paperdolltype hud_player_renderer`, `$armorbg false`, `$close_screen_on_hurt false` | HUD doll look (doll kept in `hud_screen.json`) |
+| F1 (hide_gui, PandaMine) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/pandamine5/hide_gui, [18,18], [47.5,1.0]` (used by `pandamine5/hide_gui.json`; F1 button itself not inserted into HUD) |
 | Inventory HUD | `$déesse:inventory_hud_size small`, `$déesse:use_highlight_slot true`, `$déesse:highlight_slot_color [0,1,0]`, `$déesse:highlight_slot_alpha 0.30`, `$déesse:inventory_slot_color [0,0,0]`, `$déesse:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
-| Utility HUD — DEAD/RESERVED | `$utility_hud::is_active true`, `$totem_button_offset [0,"25%"]`, `$totem_button_size [40,40]`, `$totem_button_alpha 0.7`, `$show_totem_button`, `$show_offhand_switch_button`, `$show_armor_durability`, `$show_offhand`, `$show_mainhand_durability`, `$show_counters`, `$show_attack_crosshair` (`true`), `$effects_per_column 10`, `$effects_overlay_anchor right_middle` | NOT wired to any UI since Utility HUD removal — editing has no in-game effect |
-| Utility item IDs — DEAD/RESERVED | `$golden_apple_item_id 18808832`, `$enchanted_golden_apple_item_id 18874368`, `$ender_pearls_item_id 29753344`, `$totem_item_id 39780352`, `$chest_item_id 3538946` | engine aux IDs — don’t change; unused since Utility HUD removal |
+| Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
 
 ---
