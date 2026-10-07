@@ -255,22 +255,14 @@
         ]
       },
       // KS Inventory HUD (Bottom Right): inventory grid overlay.
-      // Visibility follows the editor toggle live ($ksb_invhud_v is its default).
+      // Positioned live by the editor inventory row; visibility follows its
+      // toggle live ($ksb_invhud_v is the default). Compact via $ksb_invhud_small.
       {
         "array_name": "controls",
         "operation": "insert_front",
         "value": [
           {
-            "ks_inventory_hud@ks_hud.inventory_hud_panel": {
-              "bindings": [
-                {
-                  "binding_type": "view",
-                  "source_control_name": "ksb_invhud_show",
-                  "source_property_name": "#toggle_state",
-                  "target_property_name": "#visible"
-                }
-              ]
-            }
+            "ks_invhud_pos@hud.ks_invhud_pos": {}
           },
           {
             "ks_hotbar_data@ks_hud.hotbar_data": {}
@@ -343,7 +335,46 @@
     "cache_screen": true
   },
 
-  // ---------- Quick Totem Offhand button (KS Client) ----------
+  // ---------- KS Inventory HUD position wrapper (Bottom Right) ----------
+  // Bottom-right anchored; editor inventory sliders drive the offset live
+  // ($ksb_invhud_x/y are 0-100 slider positions: px offset = -value-1).
+  "ks_invhud_pos": {
+    "type": "panel",
+    "size": [1, 1],
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "use_anchored_offset": true,
+    "property_bag": {
+      "#anchored_offset_value_x": 1.0,
+      "#anchored_offset_value_y": 1.0
+    },
+    "controls": [
+      {
+        "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ksbT_invhud_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "hinvhud_x_slider",
+        "source_property_name": "((#slider_val * -1) - 1)",
+        "target_property_name": "#anchored_offset_value_x"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "hinvhud_y_slider",
+        "source_property_name": "((#slider_val * -1) - 1)",
+        "target_property_name": "#anchored_offset_value_y"
+      }
+    ]
+  }
+}
   // Positioned live by the editor totem sliders via the resizer wrapper
   // ($ksb_totem_x/y are 0-100 slider positions: px offset = value-125 / value-35).
   // Visibility follows the totem toggle live; size tries the size slider.
