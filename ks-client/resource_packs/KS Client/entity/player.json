@@ -8,7 +8,8 @@
                 "cape": "entity_alphatest",
                 "animated": "player_animated",
                 "spectator": "player_spectator",
-                "health_bar": "entity_emissive_alpha"
+                "health_bar": "entity_emissive_alpha",
+                "fps_counter": "entity_alphatest"
             },
             "textures": {
                 "default": "textures/entity/steve",
@@ -74,12 +75,14 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0"
+                "font0": "textures/health_bar/font/0",
+                "fps_counter": "textures/fps/digits_atlas"
             },
             "geometry": {
                 "default": "geometry.humanoid.custom",
                 "cape": "geometry.cape",
-                "health_bar": "geometry.health_bar"
+                "health_bar": "geometry.health_bar",
+                "fps_counter": "geometry.fps_counter"
             },
             "scripts": {
                 "scale": "0.9375",
@@ -87,7 +90,16 @@
                     "variable.is_holding_right = 0.0;",
                     "variable.is_blinking = 0.0;",
                     "variable.last_blink_time = 0.0;",
-                    "variable.hand_bob = 0.0;"
+                    "variable.hand_bob = 0.0;",
+                    "variable.melee_spear_java_to_bedrock_scale = 40.0;",
+                    "variable.first_person_item_rotation_factor = 0.0;",
+                    "variable.fps_accum = 0.0;",
+                    "variable.frame_count = 0;",
+                    "variable.display_fps = 0.0;",
+                    "variable.rounded_fps = 0;",
+                    "variable.digit_hundreds = 0;",
+                    "variable.digit_tens = 0;",
+                    "variable.digit_ones = 0;"
                 ],
                 "pre_animation": [
                     "variable.helmet_layer_visible = 1.0;",
@@ -101,12 +113,36 @@
                     "variable.map_angle = math.clamp(1 - variable.player_x_rotation / 45.1, 0.0, 1.0);",
                     "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
                     "v.health_bar_position = q.is_sneaking ? 33 : 37;",
-                    "v.health_bar_scale = q.model_scale;"
+                    "v.health_bar_scale = q.model_scale;",
+                    "variable.fps_accum = variable.fps_accum + query.delta_time;",
+                    "variable.frame_count = variable.frame_count + 1;",
+                    "variable.display_fps = variable.fps_accum >= 1.0 ? (variable.frame_count / math.max(variable.fps_accum, 0.0001)) : variable.display_fps;",
+                    "variable.frame_count = variable.fps_accum >= 1.0 ? 0 : variable.frame_count;",
+                    "variable.fps_accum = variable.fps_accum >= 1.0 ? 0.0 : variable.fps_accum;",
+                    "variable.rounded_fps = math.clamp(math.round(variable.display_fps), 0, 999);",
+                    "variable.digit_hundreds = math.floor(variable.rounded_fps / 100);",
+                    "variable.digit_tens = math.floor(math.mod(variable.rounded_fps / 10, 10));",
+                    "variable.digit_ones = math.mod(variable.rounded_fps, 10);"
                 ],
                 "animate": [
                     "root",
                     "health_bar"
-                ]
+                ],
+                "variables": {
+                    "variable.fp_melee_spear_use_attachable_rotation_z": "public",
+                    "variable.tp_melee_spear_use_attachable_rotation_z": "public",
+                    "variable.fp_melee_spear_attack_attachable_rotation_z": "public",
+                    "variable.tp_melee_spear_attack_attachable_position_z": "public",
+                    "variable.attack_time": "public",
+                    "variable.item_use_normalized": "public",
+                    "variable.melee_spear_equipped": "public",
+                    "variable.display_fps": "public",
+                    "variable.rounded_fps": "public",
+                    "variable.digit_hundreds": "public",
+                    "variable.digit_tens": "public",
+                    "variable.digit_ones": "public"
+                },
+                "should_update_effects_offscreen": "1.0"
             },
             "animations": {
                 "root": "controller.animation.player.root",
@@ -191,7 +227,10 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3"
+                "controller.render.health_bar.digit3",
+                {
+                    "controller.render.fps_counter": "variable.is_paperdoll"
+                }
             ],
             "enable_attachables": true
         }
