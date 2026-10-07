@@ -9,7 +9,7 @@
 
 - **Minecraft Bedrock resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
 - **Name/version:** `KS Client v1.1.4`, `min_engine_version [1,21,120]`. See `resource_packs/KS Client/manifest.json`.
-- **What it does:** premium mobile PvP UI — custom start screen, HUD (Utility HUD V-1.5), totem/offhand shortcut, 10 slot-hotbar buttons, bottom-right inventory HUD, NeBux F1/F3 buttons, clean touch controls, connected hotbar, clear glass, glass doors, fullbright fog, health bars.
+- **What it does:** premium mobile PvP UI — custom start screen, HUD (slot hotbar + inventory HUD + totem/offhand + FPS stack), clear chat, health bars, 3D hammer, clean touch controls, connected hotbar, clear glass, glass doors, fullbright fog.
 - **Full feature docs:** see `README.md` §1–§2. Read it first for user-facing behavior.
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP (`npx ... mct mcp -i .`). Skills allowed: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
 
@@ -188,5 +188,5 @@ Rules: zip must contain `manifest.json` at root (not nested `KS Client/` folder)
 - Button does nothing? → check `button_mappings` `from_button_id → to_button_id` in `hud_screen.json`/`inventory_screen.json` + `$pressed_button_name` + `#hud_visible`/`#visible` bindings.
 - Texture missing? → file exists under `textures/` AND registered in `terrain_texture.json` (`atlas.terrain`) or `item_texture.json` (`atlas.items`).
 - Fog wrong? → `biomes_client.json` identifier + `remove_all_prior_fog:true` + `fogs/ks_fullbright.json` distances.
-- Totem not equipping? → `$totem_item_id` unchanged + `inventory_screen.json` `master_totem_panel` bindings (`offhand_items`, `#item_id_aux = -1`) + hover text contains `Totem`.
+- Totem not equipping? → `inventory_screen.json` `master_totem_panel` bindings (`offhand_items`, `#item_id_aux = -1`) + hover text contains `Totem` (no item-ID globals exist anymore).
 - Anything else? → run §5 Gate A, read the flagged lines, fix narrowly, re-run, then Gate B.
