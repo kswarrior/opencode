@@ -37,12 +37,12 @@
 | # | Feature | Source / Version | What it gives you |
 |---|---------|------------------|-------------------|
 | 1 | Premium Start Screen | KS Client custom (`ui/start_screen.json`, `ui/ks_client_common.json`) | Text-free branded menu, paperdoll above Play, small version label, icon-only inbox bell, KS settings/dressing buttons |
-| 2 | Utility HUD V-1.5 (Without Counters base) | EchoRif | Totem button, offhand switch, armor durability, mainhand durability, attack crosshair, counters toggle, effects overlay |
-| 3 | Quick Totem Offhand | oSkullo v1.0.0 | One-tap totem → offhand from HUD + inventory screen (`inventory_scanner` / `hotbar_scanner`) |
+| 2 | Utility HUD V-1.5 (Without Counters base) — REMOVED | EchoRif (was) | **Removed per request in latest build:** `hud_screen.json` root is now `{always_accepts_input:true}`, `ui/._content_/inv_content.json` + `counter.json` are empty 0×0 stubs. Durability/crosshair/toggles/redirects gone. Keys in `_global_variables.json` (`$utility_hud::*`, `$show_*`, `$totem_button_*`, `$effects_*`) + `textures/c_ui/*` remain on disk as dead/reserved, not wired to any UI. |
+| 3 | Quick Totem Offhand | oSkullo v1.0.0 | One-tap totem → offhand from HUD `hud.totem_btn` (30×30 `bottom_middle [-125,-35]`, `textures/totem/totem_button`) + inventory screen `master_totem_panel` (`inventory_scanner` / `hotbar_scanner`) |
 | 4 | Slot Hotbar Buttons | itzriyo157 v1.3.0 | 10 floating hotbar slot shortcuts (`$shb_1` … `$shb_10`) with per-slot X/Y/size/visible |
 | 5 | Inventory HUD Bottom-Right | itzriyo157 v1.0.2 (`déesse_modules/hud.json`) | Live 9×4 inventory grid on HUD, highlight selected slot, durability + storage bars |
-| 6 | NeBux F1 & F3 Buttons | NeBux v1.1.3 (`ui/NeBux/`) | F1 hide-GUI, F8 hide-paperdoll, F3 debug ModMenu, inventory counter, full-warning, clock/compass/XP/mod-menu toggles |
-| 7 | Clean Touch Controls | PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json`, `textures/ui/pandamine5/`) | Borderless hide-GUI button + clean joystick/D-pad/buttons |
+| 6 | NeBux F1 & F3 Buttons — UNWIRED from HUD | NeBux v1.1.3 (`ui/NeBux/` ships + in `_ui_defs.json`) | Files ship but F1/F3 buttons removed from `hud_screen.json` per request — doll (`NeBux_hud_player_renderer`) kept. `NeBuxHud/Toggles/InventoryCounter + ModMenu/F3*.json` parse but are not inserted into HUD. Toggles/IDs/offsets in `_global_variables.json` remain as reserved. `ks_show_hud` (“Show HUD” bar, `ks_client.ks_show_hud`) is the way back after hide. |
+| 7 | Clean Touch Controls | PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json` still in `_ui_defs.json`, `textures/ui/pandamine5/`, `textures/gui/controls/`) | Hide-GUI definition + clean joystick/D-pad/buttons art ships; PandaMine F1 HUD button removed per request (`hud_screen.json` comment). |
 | 8 | Connected Hotbar | v1.0.1 | Seamless hotbar (`hotbar_0`…`hotbar_8` + `start/end_cap`, `selected_hotbar_slot`) |
 | 9 | Clear & Borderless Glass | Mod MCPE v6.2 | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
 | 10 | Glass Doors & Trapdoors | v1.0.1 | Transparent doors/trapdoors (`textures/blocks/*door*`, `*trapdoor*`, `textures/items/door_*`) |
