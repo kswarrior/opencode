@@ -71,31 +71,31 @@ How it works:
 - `text_panel` is replaced with `version_small` — `100% - 2px × 10` strip at bottom (`offset -52`) showing only `#version` in `150,180,210`, `scale 0.75`, shadowed. No Mojang/copyright text.
 - `friendsdrawer_button_panel` fixed to `28×32` at `top_right [-8,2]`, layer 3. Fixes the classic fullscreen `["default","default"]` bug that pushed the bell to top-left. Uses borderless `ks_inbox_icon_button` (bell + red dot only, reuses vanilla `inbox_icon_container` animation states).
 - `ks_client_common.json` provides: `ks_edge_left/right` (2 px, 28% futuristic side rails, `ks_divider_v`, alpha 0.6), `ks_settings_button` (30×30, `ks_icon_settings`, no-background button → `button.menu_settings`), `ks_dressing_button` (40×40, `ks_icon_dressing` → `button.menu_skins`), `ks_inbox_button` (28×32 → `button.menu_inbox`).
-- Strings from `texts/en_US.lang`: `ks_client.brand_title=KS CLIENT`, `brand_sub=PREMIUM MOBILE EXPERIENCE`, `season=SEASON 01`, `tap_to_start=TAP TO START`, `status_active=PREMIUM UI • ACTIVE`, `footer=KS CLIENT v1.1.2 • ONLINE`.
+- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer` (`KS CLIENT v1.1.2 • ONLINE`), `shb.howToSaveConfig`, `NeBux.f3isf/f3isa` (`Inventory Status: §cFull/§aAvailable`).
 
-In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text.
+In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
 
-### 2.2 Utility HUD V-1.5 (Without Counters) — EchoRif (`ui/hud_screen.json`, `ui/._content_/`, `textures/c_ui/`)
+### 2.2 Utility HUD V-1.5 (Without Counters) — EchoRif — REMOVED in latest build
 
-What it is: the core in-game HUD extension — durability, totem, crosshair, effects.
+What it was: durability, totem, crosshair, effects HUD extension.
 
-How it works:
-- `hud_screen.json` namespace `hud` injects `_toggles` (0×0 panel with three `component_toggle`s: `button.toggle_main_durability`, `button.toggle_counters`, `button.toggle_crosshair`), `force_close_screen` (slot3 → `menu_select`), `f1_redirect` (slot2 → hide-GUI logic, `button.hide_gui` ↔ `button.hide_gui_all`), `f8_redirect` (paperdoll hide).
-- `ui/._content_/inv_content.json` + `counter.json` (referenced in `_ui_defs.json`) implement the toggleable HUD components.
-- Art in `textures/c_ui/`: `totem.png` / `totem_pressed.png`, `offhand_slot.png`, `attack_crosshair.png`, `alert.png`, `switch_*`, `toggle_*`, `close_*`, `help_*`, `craft_1/all*`, `effect_bg.png`.
-- Config in `_global_variables.json`: `$utility_hud::is_active`, `$show_totem_button`, `$show_offhand_switch_button`, `$show_armor_durability`, `$show_mainhand_durability`, `$show_offhand`, `$show_counters`, `$show_attack_crosshair`, `$totem_button_offset [0,"25%"]`, `$totem_button_size [40,40]`, `$totem_button_alpha 0.7`, `$effects_per_column 10`, `$effects_overlay_anchor right_middle`, plus item IDs (`$golden_apple_item_id 18808832`, `$enchanted_golden_apple 18874368`, `$ender_pearls 29753344`, `$totem_item_id 39780352`, `$chest_item_id 3538946`).
+Current state:
+- `hud_screen.json` (namespace `hud`) root is now `{"always_accepts_input":true}` with comment “Utility HUD V-1.5 fully removed — durability/crosshair/toggles/redirects gone”. No `_toggles`, `force_close_screen`, `f1/f8_redirect` anymore.
+- `ui/._content_/inv_content.json` + `counter.json` (still in `_ui_defs.json`) are empty 0×0 stubs — `inv_content` carries comment “Utility HUD V-1.5 fully removed. Only component_toggle base kept for crafting limiter”, `counter` is just `_slot_count_panel` 0×0.
+- Art in `textures/c_ui/` (25 files: `totem/…_pressed`, `offhand_slot`, `attack_crosshair`, `alert`, `switch_*`, `toggle_*`, `close_*`, `help_*`, `craft_1/all*`, `effect_bg.png/json`) ships but is unwired.
+- Keys in `_global_variables.json` (`$utility_hud::is_active`, `$show_totem_button/offhand_switch/armor_durability/offhand/mainhand_durability/counters/attack_crosshair`, `$totem_button_offset/size/alpha`, `$effects_per_column/overlay_anchor`, `$golden_apple_item_id/$enchanted_golden_apple_item_id/$ender_pearls_item_id/$totem_item_id/$chest_item_id`) remain as dead/reserved — grep shows zero references in `ui/` outside `_global_variables.json`.
 
-In-game: totem button (40 px, 70% alpha, 25% offset), tap to equip; armor + hand durability bars; custom attack crosshair; effects stack on right-middle, 10 per column.
+In-game: none of the Utility HUD widgets appear. Use the surviving totem paths in §2.3 instead.
 
-### 2.3 Quick Totem Offhand — oSkullo v1.0.0 (`ui/inventory_screen.json`, `textures/totem/`)
+### 2.3 Quick Totem Offhand — oSkullo v1.0.0 (`ui/inventory_screen.json`, `ui/hud_screen.json`, `textures/totem/`)
 
-What it is: one-tap totem to offhand, from HUD *and* inside inventory.
+What it is: one-tap totem to offhand, from HUD *and* inside inventory (both paths still active).
 
 How it works:
 - `inventory_screen.json` (`crafting` namespace) inserts `master_totem_panel` (30×30, `bottom_middle [-125,-35]`, layer 100) at front of controls.
 - `exit_btn` shows `textures/totem/close_button` when offhand is occupied (`#item_id_aux != -1` on `offhand_items` collection) and sends `menu_exit` on press.
 - `equip_panel` shows `textures/totem/totem_button` + `inventory_scanner` + `hotbar_scanner` when offhand is empty (`#item_id_aux = -1`). `scanner_slot_template` creates an invisible full-size button per slot that only becomes visible if the slot hover text contains `Totem`, and sends `container_auto_place` (pressed/focused/slot1). So tapping the totem icon auto-places a totem from inventory or hotbar.
-- HUD-side totem button (Utility HUD) uses the same item ID binding.
+- HUD-side: `hud_screen.json` `hud_content` inserts `totem_btn@hud.totem_btn` (30×30 `bottom_middle [-125,-35]`, all states `textures/totem/totem_button`, `$pressed_button_name button.hotbar_inventory_button`) at front — this is the surviving HUD totem path (Utility HUD totem is gone, see §2.2).
 
 In-game: if offhand empty you see a totem icon near inventory; tap it → totem equipped. If occupied you see an X to quickly close/unequip context.
 
