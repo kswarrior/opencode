@@ -1,3 +1,3 @@
 {
-  "ui_defs": [ "ui/ks_client_common.json", "ui/start_screen.json", "ui/hud_screen.json", "ui/pause_screen.json", "ui/ks_modules/ksb_hotbar_button/settings.json", "ui/ks_modules/ksb_hotbar_button/main.json", "ui/ks_modules/ksb_hotbar_button/defs.json", "ui/ks_touch/hide_gui.json", "ui/inventory_screen.json", "ui/ks_modules/b6As_defs.json", "ui/ks_modules/hud.json", "ui/._content_/inv_content.json", "ui/.ui_assets/.screens/.chat/chat_tweaks.json" ]
+  "ui_defs": [ "ui/ks_client_common.json", "ui/start_screen.json", "ui/hud_screen.json", "ui/pause_screen.json", "ui/ks_modules/ksb_hotbar_button/settings.json", "ui/ks_modules/ksb_hotbar_button/main.json", "ui/ks_modules/ksb_hotbar_button/defs.json", "ui/ks_touch/hide_gui.json", "ui/inventory_screen.json", "ui/ks_modules/b6As_defs.json", "ui/ks_modules/hud.json", "ui/._content_/inv_content.json", "ui/.ui_assets/.screens/.chat/chat_tweaks.json", "ui/fps_hud.json" ]
 }
