@@ -1,0 +1,64 @@
+KS Client — Integrated Third-Party Content Record
+================================================
+This file lives in the project home (NOT inside the shipped .mcpack).
+All upstream code/assets merged into `resource_packs/KS Client/` were
+rebranded to KS Client naming. Original authors and sources are recorded
+here. Respect their licenses — get permission before redistributing.
+
+1. Slot Hotbar Buttons (floating hotbar slot shortcuts 1–10 + editor)
+   Author : itzriyo157 — Slot Hotbar Button v1.3.0
+   Now    : `ui/ks_modules/ksb_hotbar_button/` (namespace ksb_main/ksb_defs,
+            $ksb_* vars, ksb.howToSaveConfig)
+
+2. Inventory HUD Bottom-Right (live 9x4 inventory grid on HUD)
+   Author : itzriyo157 — Inventory HUD v1.0.2 Bottom Right
+   Now    : `ui/ks_modules/hud.json` + `b6As` defs (namespace ks_hud, $ks:*)
+
+3. Clean Touch Controls (touch buttons, D-pad, hide-GUI art)
+   Author : PandaMine5 — Clean Touch Controls v1.4.1
+   Now    : `ui/ks_touch/hide_gui.json` + `textures/ui/ks_touch/`
+
+4. Quick Totem Offhand (one-tap totem to offhand, HUD + inventory)
+   Author : oSkullo — Quick Totem Offhand v1.0.0
+   Now    : `hud.totem_btn` + `master_totem_panel` + `textures/totem/`
+
+5. Connected Hotbar (seamless hotbar art) v1.0.1
+   Now    : `textures/ui/hotbar_*.png` (no code changes needed)
+
+6. Glass Doors & Trapdoors (transparent doors/trapdoors) v1.0.1
+   Now    : `textures/blocks/*door*` (block textures only; item icons
+            unregistered in empty `atlas.items`)
+
+7. Clear & Borderless Glass
+   Author : Mod MCPE — Clear & Borderless Glass v6.2
+   Now    : `textures/blocks/glass*.png` + panes + tinted glass
+
+8. Clear Chat Screen (transparent chat + shortcut buttons, always on)
+   Author : Bruhh69 — file v3.0.10 (manifest v1.3.10)
+   Source : https://www.mcpedl.com/ (Clear Chat Screen v3.0.10)
+   Now    : `ui/chat_screen.json` + `ui/.ui_assets/.../chat_tweaks.json`
+            (namespace ks_chat_tweaks)
+
+9. Health Bar, Always Display (billboard HP bars over all mobs)
+   Author : Rvo JP — Health Bar v3.4.0 — https://rvo.jp/health-bar/
+   Now    : `animations/health_bar.json` (always_display variant),
+            `models/entity/health_bar.json`,
+            `render_controllers/health_bar.json`, `entity/*.json` hooks,
+            `textures/health_bar/` (only the hide_until_hurt variant was
+            left out; no subpack added)
+
+10. 3D Hammer (Getting Over It Hammer hold/item model, direct)
+    Author : Kareo Gamerz — 3D Mace HD+ V1.0.8 (kareo_gamerz3 variant)
+    Source : https://www.mcpedl.com/ (3D Mace HD+ V1.0.8)
+    Note   : (C) 2025 Kareo Gamerz — re-upload/modify/redistribute only
+             with the creator's permission.
+    Now    : `animations/mace.animation.json`,
+             `attachables/mace.attachable.json`,
+             `models/entity/attachable/mace.geo.json`,
+             `textures/entity/attachable/mace.png`,
+             `textures/items/mace.png` (+ `atlas.items` entry, lang name)
+
+Removed again after merge (no longer in pack, kept here for history):
+- Utility HUD V-1.5 Without Counters — EchoRif (fully purged)
+- F1 & F3 Buttons v1.1.3 — NeBux (fully purged, incl. doll)
+- PandaMine5 F1 HUD button (unwired, files rebranded as KS)
