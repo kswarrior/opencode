@@ -37,8 +37,8 @@
 | # | Feature | Source / Version | What it gives you |
 |---|---------|------------------|-------------------|
 | 1 | Premium Start Screen | KS Client custom (`ui/start_screen.json`, `ui/ks_client_common.json`) | Text-free branded menu, paperdoll above Play, small version label, icon-only inbox bell, KS settings/dressing buttons |
-| 2 | Quick Totem Offhand | KS Client | One-tap totem → offhand from HUD `hud.totem_btn` (30×30 `bottom_middle [-125,-35]`, `textures/totem/totem_button`) + inventory screen `master_totem_panel` (`inventory_scanner` / `hotbar_scanner`) |
-| 3 | Slot Hotbar Buttons | KS Client | 10 floating hotbar slot shortcuts (`$ksb_1` … `$ksb_10`) with per-slot X/Y/size/visible |
+| 2 | Quick Totem Offhand | KS Client | One-tap totem → offhand from HUD `hud.totem_btn` + inventory screen `master_totem_panel` (`inventory_scanner` / `hotbar_scanner`); position/size/visibility via `$ksb_totem_*` globals (editor totem row, repack to apply) |
+| 3 | Slot Hotbar Buttons + Settings Editor | KS Client | 10 floating hotbar slot shortcuts (`$ksb_1` … `$ksb_10`, defaults: slots 4/5/9 hidden, size 32) + in-game editor (gear, top-right) with per-slot X/Y/size/show, totem X/Y/size/show, inventory-HUD show/compact |
 | 4 | Inventory HUD Bottom-Right | KS Client (`ks_modules/hud.json`) | Live 9×4 inventory grid on HUD, highlight selected slot, durability + storage bars |
 | 5 | Clean Touch Controls | KS Client (`ui/ks_touch/hide_gui.json`, `textures/ui/ks_touch/`, `textures/gui/controls/`) | Hide-GUI definition + clean joystick/D-pad/buttons art. |
 | 6 | Connected Hotbar | KS Client | Seamless hotbar (`hotbar_0`…`hotbar_8` + `start/end_cap`, `selected_hotbar_slot`) |
@@ -88,16 +88,19 @@ How it works:
 
 In-game: if offhand empty you see a totem icon near inventory; tap it → totem equipped. If occupied you see an X to quickly close/unequip context.
 
-### 2.3 Slot Hotbar Buttons (KS Client: `ui/ks_modules/ksb_hotbar_button/`, `_global_variables.json`)
+### 2.3 Slot Hotbar Buttons + Settings Editor (KS Client: `ui/ks_modules/ksb_hotbar_button/`, `_global_variables.json`)
 
-What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap).
+What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap), plus an in-game settings editor (gear button, top-right) for slots, totem, and inventory HUD.
 
 How it works:
-- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`).
-- Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 50), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–4 top-left row (`y 20`, `x 4/14/24/34`), slots 5–8 second row (`y 22`, `x 62/72/82/92`), slot 9 (`92,44`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
+- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` with per-slot X/Y/size/show rows, a totem row, and inventory-HUD toggles.
+- Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slots 5 hidden + 6–8 second row (`y 22`, `x 62/72/82/92` with 5 hidden), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
 - Buttons use `textures/ui/ksb_slot_button.png` (+`_pressed`), `ksb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot).
+- Totem row (`$id: totem`): X/Y/size sliders + show toggle drive `$ksb_totem_x/y/s/v` globals (defaults `-125/-35/30/true`); `hud.totem_btn` reads them directly, so totem changes apply after copy + repack (slot buttons preview live, totem does not).
+- Inventory toggles: `Show Inventory HUD` (live — binds the `root_panel` insertion visibility to the toggle state, default `$ksb_invhud_v true`) and `Compact Inventory HUD` (adds a `requires ($ksb_invhud_small)` small-size entry in `ks hud.json`; repack to apply, default false).
+- All editor values feed the HowToSaveConfig copy box (`ksb.howToSaveConfig` string + `#totem`/`#invhud_v`/`#invhud_small` emitters in the concat).
 
-In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Move/resize/hide each via `_global_variables.json` (see §5). Copy the HowToSaveConfig code from the in-game config screen into `_global_variables.json` to persist (see `ksb.howToSaveConfig` string).
+In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the top-right gear → move/resize/hide each slot, totem, and inventory HUD (see §5). Copy the HowToSaveConfig code from the editor into `_global_variables.json` to persist.
 
 ### 2.4 Inventory HUD Bottom-Right (KS Client: `ui/ks_modules/hud.json`, `ks_b6As_defs`)
 
