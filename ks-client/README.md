@@ -224,10 +224,10 @@ In-game: hold or view a mace → 3D hammer model; inventory shows the custom ico
 
 ### 2.16 FPS Counter, Top Left (KS Client: `ui/fps_hud.json`, `entity/player.json`, `models/`, `textures/fps/`)
 
-What it is: real FPS digits overlay at top-left [0,0], always on (other position variants not merged, no subpack).
+What it is: stacked top-left readout — `KS Client vX.Y.Z`, `Minecraft Vanilla v<game>`, `FPS: <digits>`, `Position: X, Y, Z` — always on (other position variants not merged, no subpack).
 
 How it works:
-- `ui/fps_hud.json` (namespace `ks_fps`, base top-left file): 150×32 mask panel (`top_left`/`top_left`, offset [0,0]) with a `paper_doll_renderer` custom control rendering the counter.
+- `ui/fps_hud.json` (namespace `ks_fps`): vertical `stack_panel` pinned top-left (`offset [3,3]`) with 4 rows — (1) static `KS Client v1.1.3` label (**hardcoded: bump it on every version release**), (2) horizontal row: static `Minecraft Vanilla v` + dynamic `#version` label (game version, same binding as the start-screen version strip), (3) horizontal row: static `FPS: ` label + 75×16 clipped digits panel (paper-doll 64×64, ~50% of the original 150×32/128 size), (4) position label via the vanilla `#player_position_text` → `#text` binding (renders `Position: X, Y, Z`, same pattern as vanilla `hud_screen.json`).
 - `ui/hud_screen.json` `root_panel` gains an `insert_back` modification: `fps_counter@ks_fps.fps_counter_mask`.
 - `entity/player.json` gains fps slots only (minimal merge, health hooks untouched): `fps_counter` material/texture (`textures/fps/digits_atlas`)/geometry (`geometry.fps_counter`), fps `initialize` + `pre_animation` accumulators, public `display_fps`/`rounded_fps`/`digit_*` variables, and `{"controller.render.fps_counter": "variable.is_paperdoll"}` appended to render controllers. `animate` needed no change (`root` already played).
 - `models/entity/fps_counter.geo.json` (`geometry.fps_counter`, hundreds/tens/ones/plus bones), `render_controllers/fps_counter.render.json` (digit part-visibility), `textures/fps/digits_atlas.png` (direct path — legacy `texture_list.json` notice only, same as 70+ pre-existing).
