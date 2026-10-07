@@ -255,12 +255,22 @@
         ]
       },
       // KS Inventory HUD (Bottom Right): inventory grid overlay.
+      // Visibility follows the editor toggle live ($ksb_invhud_v is its default).
       {
         "array_name": "controls",
         "operation": "insert_front",
         "value": [
           {
-            "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
+            "ks_inventory_hud@ks_hud.inventory_hud_panel": {
+              "bindings": [
+                {
+                  "binding_type": "view",
+                  "source_control_name": "ksb_invhud_show",
+                  "source_property_name": "#toggle_state",
+                  "target_property_name": "#visible"
+                }
+              ]
+            }
           },
           {
             "ks_hotbar_data@ks_hud.hotbar_data": {}
@@ -333,15 +343,16 @@
     "cache_screen": true
   },
 
-  // ---------- Quick Totem Offhand button (KS Client), resized ----------
-  // Offhand default was 40x40 @ [-125, -5]; KS uses 30x30 (-25%) raised by the
-  // new size (30px) to [-125, -35], clearing the bottom hotbar row.
+  // ---------- Quick Totem Offhand button (KS Client) ----------
+  // Position/size/visibility from $ksb_totem_* globals (editor: totem row,
+  // copy HowToSaveConfig → _global_variables.json → repack to apply).
   "totem_btn@settings_common.action_button": {
     "prevent_touch_input": true,
     "anchor_from": "bottom_middle",
     "anchor_to": "bottom_middle",
-    "offset": [ -125, -35 ],
-    "size": [ 30, 30 ],
+    "offset": [ "$ksb_totem_x", "$ksb_totem_y" ],
+    "size": [ "$ksb_totem_s", "$ksb_totem_s" ],
+    "ignored": "(not $ksb_totem_v)",
     "$border_visible": false,
     "$button_text": "",
     "$pressed_button_name": "button.hotbar_inventory_button",
