@@ -70,6 +70,26 @@ here. Respect their licenses — get permission before redistributing.
               `render_controllers/fps_counter.render.json`,
               `textures/fps/digits_atlas.png` (no subpack, no manifest change)
 
+12. BlockTrace selective merge — trapped chest + directional hopper only
+    Pack    : BlockTrace by FrostAlpha (contains components from
+              Vanilla Tweaks / Bedrock Tweaks, directly or modified)
+    Source  : https://edge.mcpedl.com/files/7010/884/BlockTrace.mcpack
+    Note    : Only `trapped` chest + `hopper_outside` / `hopper_top`
+              taken. NOT taken: normal chest, double_normal, ender chest,
+              any ores (coal/copper/diamond/emerald/gold/iron/lapis/
+              redstone/quartz/nether_gold + deepslate variants), ancient
+              debris, budding_amethyst, infested, observer, suspicious,
+              powder_snow, trip_wire, gilded_blackstone.
+    Now     : `textures/entity/chest/trapped.png` +
+              `trapped_double.png` (plus legacy copies at
+              `textures/entity/trapped.png` / `trapped_double.png`),
+              `textures/blocks/hopper_outside/` (4 PNGs: left/right +
+              powered), `textures/blocks/hopper_top/` (12 PNGs: down/up/
+              north/south/west/east + powered), `blocks.json` hopper face
+              mapping only, `terrain_texture.json` hopper_top (16-frame)
+              + hopper_outside_east/north/south/west (16-frame each).
+              Normal/double/ender chests left vanilla; ores untouched.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Utility HUD V-1.5 Without Counters — EchoRif (fully purged)
 - F1 & F3 Buttons v1.1.3 — NeBux (fully purged, incl. doll)

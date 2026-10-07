@@ -52,12 +52,13 @@
 | 14 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
 | 15 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
 | 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
-| 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` holds only the mace entry, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
+| 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1322 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` holds only the mace entry, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
 | 18 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
 | 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
 | 21 | FPS Counter (Top Left) | KS Client | Stacked readout — client version, `FPS: <digits>`, position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
-| 22 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (15 files, `v1.0.0` + `v1.0.3`…`v1.1.6` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
+| 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
+| 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (15 files, `v1.0.0` + `v1.0.3`…`v1.1.6` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
 
 ---
 
@@ -257,16 +258,17 @@ ks-client/
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
+│   ├── blocks.json                  ← hopper face mapping only (BlockTrace directional hopper)
 │   ├── entity/ (82 json)            ← KS health-bar hooks on every mob + fps_counter slots on player.json (materials/textures/geometry/init/pre_anim/vars/render controller)
 │   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses)
 │   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
 │   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json
 │   ├── render_controllers/health_bar.json + fps_counter.render.json
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
-│   │   ├── terrain_texture.json (atlas.terrain, 1318 entries)
+│   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/attachable (mace.png) / fps (digits_atlas.png)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies / fps (digits_atlas.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
@@ -336,7 +338,8 @@ Switch in pack settings; memory tier `0` for both.
 
 ## 7. Textures Included
 
-- **Blocks (`atlas.terrain`, `terrain_texture.json`, 1318 entries):** full vanilla set — planks/logs/leaves, ores (incl. deepslate variants), concrete/powder, terracotta/glazed, shulker boxes, candles, copper (block/door/trapdoor + oxidized/weathered/exposed), cherry/mangrove/pale_oak, crimson/warped, deep-dark/sculk, amethyst, command blocks, campfire, cauldron, composter, bookshelf, TNT, sponge, ice/packed/blue, coral (alive/dead/fans), glass (clear + 16 colors + panes + tinted), doors/trapdoors (glass style, 48 entries), destroy stages, debug.
+- **Blocks (`atlas.terrain`, `terrain_texture.json`, 1322 entries):** full vanilla set — planks/logs/leaves, ores (incl. deepslate variants, untouched vanilla), concrete/powder, terracotta/glazed, shulker boxes, candles, copper (block/door/trapdoor + oxidized/weathered/exposed), cherry/mangrove/pale_oak, crimson/warped, deep-dark/sculk, amethyst, command blocks, campfire, cauldron, composter, bookshelf, TNT, sponge, ice/packed/blue, coral (alive/dead/fans), glass (clear + 16 colors + panes + tinted), doors/trapdoors (glass style, 48 entries), destroy stages, debug, plus BlockTrace directional hopper (`hopper_top` 16-frame + `hopper_outside_east/north/south/west` 16-frame each, via `blocks.json` hopper face mapping; `hopper_inside/outside` fallbacks kept).
+- **Trapped chest (BlockTrace, selective):** `textures/entity/chest/trapped.png` + `trapped_double.png` (plus legacy `textures/entity/trapped.png` / `trapped_double.png`). Normal / double-normal / ender chests NOT taken — left vanilla. No ores taken.
 - **Items (`atlas.items` = mace only):** `mace.png` registered as `mace` (custom icon + `item.mace.name`); 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) exist in `textures/items/` but unregistered — vanilla fallback.
 - **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (8 files — close/craft/effect_bg, all wired), `ks_touch/hide_gui`, `ksb_slot_button (+pressed)`, `ksb_numb_1-9`, chat art (`bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/`), every mob-effect icon, joystick/buttons/D-pad.
 - **Totem (active):** `totem/close_button.png`, `totem_button.png` — wired in `inventory_screen.json` + `hud_screen.json` `hud.totem_btn`.
@@ -412,4 +415,4 @@ Current (`manifest.json`): `KS Client v1.1.6`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `entity/` (82 with health hooks + player fps slots), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace + fps_counter) + `render_controllers/` (health_bar + fps_counter), `textures/` (blocks 1309 / items 18 incl. mace / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / fps digits_atlas / entity-attachable mace / environment / colormap / misc; terrain 1318 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*), `_ui_defs` 14 entries, `hud/start/inventory/pause/debug/chat_screen/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `copyright.txt`, `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (82 with health hooks + player fps slots), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace + fps_counter) + `render_controllers/` (health_bar + fps_counter), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 18 incl. mace / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / fps digits_atlas / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc; terrain 1322 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*), `_ui_defs` 14 entries, `hud/start/inventory/pause/debug/chat_screen/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `copyright.txt` (+12 BlockTrace selective), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
