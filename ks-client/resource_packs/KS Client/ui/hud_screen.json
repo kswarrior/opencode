@@ -333,7 +333,7 @@
     "cache_screen": true
   },
 
-  // ---------- Quick Totem Offhand button (oSkullo), resized per KS request ----------
+  // ---------- Quick Totem Offhand button (KS Client), resized ----------
   // Offhand default was 40x40 @ [-125, -5]; KS uses 30x30 (-25%) raised by the
   // new size (30px) to [-125, -35], clearing the bottom hotbar row.
   "totem_btn@settings_common.action_button": {
