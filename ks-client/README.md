@@ -45,7 +45,7 @@
 | 7 | Clear & Borderless Glass | KS Client | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
 | 8 | Glass Doors & Trapdoors | KS Client | Transparent doors/trapdoors — 48 block entries in `terrain_texture.json` (`acacia/birch/…_door_*`, `*_trapdoor`) + `textures/blocks/*door*` PNGs. Item icons (`textures/items/door_*.png`, 17 files) exist on disk but `atlas.items` holds only the mace entry, so door icons fall back to vanilla. |
 | 9 | Fullbright Fog | KS custom (`fogs/ks_fullbright.json` + `biomes_client.json`) | No dark fog: air/weather `0.999–1.0` white, water `200–300`, lava handling |
-| 10 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/.../Player|Items`) are NOT shipped, so Gate A currently reports 8 expected FAILs (missing-file problems) — gates 1–2 + 5 + `mct validate` still run; `player.json` now carries KS health-bar hooks (refs resolve via vanilla allowlist, no new checker problems). |
+| 10 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/.../Player|Items`) are NOT shipped, so Gate A reports those 8 checks as SKIP (missing optional input) and passes — gates 1–2 + 5 + `mct validate` still run; `player.json` now carries KS health-bar hooks (refs resolve via vanilla allowlist, no new checker problems). |
 | 11 | Custom UI Kit (KS + c_ui) | KS custom | `ks_btn_cyan`, `ks_menu_bg`, `ks_sidebar_bg`, `ks_icon_*`, `ks_info_*`, `totem`, all effect icons. Note: brand header/footer/center row removed (text-free screen); `ks_hud_keys` / `ks_inv_slot` / `ks_f3_panel` in `ks_client_common.json` are empty 0×0 stubs; `textures/c_ui/` is now 8 files, all wired (close/craft/effect_bg for mob-effect + inventory screens). |
 | 12 | Custom Touch Button Art | KS + vanilla override | `jump`, `sneak`, `sprint`, `flyingascend/descend`, `waterascend/descend`, D-pad, joystick, `interact`, `mount`, `pick_block` |
 | 13 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed (comment in `pause_screen.json`: HUD F1/F3 keys removed, `ks_show_hud` is the way back) |
@@ -173,7 +173,7 @@ The checker (`tools/check_player_animation_loop.py --iterations 3 --delay 1 --wa
 5. **Player refs** — every `scripts.animate` short exists in `animations` dict; every played `controller.*` is defined in-pack or vanilla-allowlisted; every anim referenced inside played controllers resolves.
 6. **mct validate** — optional (`--with-validate`), 0 errors (ignores `mcp.json`/`opencode.json`/`tools/` noise).
 
-Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 3×1 s). Drive reference anim: `https://drive.google.com/uc?export=download&id=1xna-mqKa7dyUNQZau7qx68o4zHxpAqAt` (Alex pack — verified by diff, only mob extras differ). Note: `animations/Animation|Attack` + `animation_controllers/...` Drive dirs are NOT shipped in latest build, so Gate A currently ends `FAIL (8 problems)`, all `No such file or directory` for the missing Drive anims — this is expected; strict-JSON/dotfile/player-ref gates + `mct validate` still run.
+Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 3×1 s). Drive reference anim: `https://drive.google.com/uc?export=download&id=1xna-mqKa7dyUNQZau7qx68o4zHxpAqAt` (Alex pack — verified by diff, only mob extras differ). Note: `animations/Animation|Attack` + `animation_controllers/...` Drive dirs are NOT shipped in latest build, so Gate A reports those 8 checks as SKIP and passes; strict-JSON/dotfile/player-ref gates + `mct validate` still run.
 
 ### 2.11 Custom UI Kit & Touch Art
 
@@ -212,7 +212,7 @@ How it works (all merged at top level — no subpack, active in both subpacks):
 - `textures/health_bar/`: `bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png` (entity textures, direct paths — no `terrain_texture.json`/`item_texture.json` registration needed).
 - No `_global_variables.json` additions; no `_ui_defs.json` additions (entity/animation/model/controller files load by path); `manifest.json` untouched (no version/UUID/subpack changes).
 
-In-game: look at any mob → bar + HP digits above head, always on. Gate A still reports the same 8 pre-existing FAILs (Drive player-anims absent); no new checker problems — `player.json` refs resolve via the vanilla allowlist.
+In-game: look at any mob → bar + HP digits above head, always on. Gate A passes (8 SKIP lines for absent Drive anims); no new checker problems — `player.json` refs resolve via the vanilla allowlist.
 
 ### 2.15 3D Hammer (KS Client: `attachables/`, `animations/`, `models/`, `textures/`)
 
@@ -236,7 +236,7 @@ How it works:
 - `models/entity/fps_counter.geo.json` (`geometry.fps_counter`, hundreds/tens/ones/plus bones), `render_controllers/fps_counter.render.json` (digit part-visibility), `textures/fps/digits_atlas.png` (direct path — legacy `texture_list.json` notice only, same as 70+ pre-existing).
 - No `_global_variables.json` (beyond the hook no config exists upstream) / `manifest.json` changes; `_ui_defs.json` 13 → 14 entries.
 
-In-game, top-left corner: `KS Client v1.1.6`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A unchanged (same 8 pre-existing FAILs); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
+In-game, top-left corner: `KS Client v1.1.6`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A passes (8 SKIP lines for absent Drive anims); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
 
 ---
 
@@ -284,7 +284,7 @@ ks-client/
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 expected missing-file FAILs. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json`. `ui/settings_sections/controls_section.json` is unshipped from load order (not in `_ui_defs.json`). `ui/chat_screen.json` loads by vanilla filename (no `_ui_defs.json` entry).
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 SKIP lines for them and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json`. `ui/settings_sections/controls_section.json` is unshipped from load order (not in `_ui_defs.json`). `ui/chat_screen.json` loads by vanilla filename (no `_ui_defs.json` entry).
 
 ---
 
@@ -358,7 +358,7 @@ Switch in pack settings; memory tier `0` for both.
 
 | Tool | Command | What it does |
 |------|---------|--------------|
-| Loop checker | `python3 tools/check_player_animation_loop.py [--iterations 3] [--delay 1] [--watch] [--with-validate]` | 5 gate loop: strict-JSON, dotfiles, loop flags, shield/armor/sword, player refs (+ optional `mct validate`). Drive anim dirs not shipped → Gate A ends `FAIL (8 problems)`, all missing-file — expected in latest build. |
+| Loop checker | `python3 tools/check_player_animation_loop.py [--iterations 3] [--delay 1] [--watch] [--with-validate]` | 5 gate loop: strict-JSON, dotfiles, loop flags, shield/armor/sword, player refs (+ optional `mct validate`). Absent optional Drive anim dirs report as SKIP, gate passes. |
 | Shell wrapper | `bash tools/recheck_player_animation.sh [iterations] [delay]` | Re-syncs Drive anims when present, then loops checker (default 3×1 s) |
 | Validate | `npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_validate_loop` | Full pack validation; outputs CSV/JSON/HTML (see `out/`) |
 | MCP | `npx -y @minecraft/creator-tools@0.19.0 mcp -i .` (via `opencode.json`) | AI-editable pack (skills: `design-model`, `create-block/item/mob`, `debug-addon`, `creator-tools-cli` allowed) |
