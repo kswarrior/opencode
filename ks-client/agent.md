@@ -81,6 +81,7 @@ release/ # shipped .mcpack v1.0.0..v1.1.2 — do NOT overwrite
 4. **No new dependencies.** Don't add new textures without adding them to `terrain_texture.json`/`item_texture.json`. Don't reference a `button.*` id that isn't mapped in `hud_screen.json`/`inventory_screen.json`.
 5. **Keep both subpacks in sync.** If you touch `ui/`, check whether `subpacks/hide_editor/ui/` overrides the same screen.
 6. **Never touch identity.** See §7 — no version/UUID/min_engine edits.
+7. **Update `README.md` on every change.** Any code/UI/texture/fog/entity change MUST also update the matching `README.md` section(s) in the same edit — see §3D.
 
 ### 3C. Bedrock JSON pitfalls (this pack has hit all of these)
 - **UI JSON (`ui/`) allows `//` comments; animation/entity JSON does NOT.** Never put `/* */` or `//` in `animations/`, `animation_controllers/`, `entity/`, `fogs/`, `biomes_client.json` — strict parser fails. The checker flags this.
