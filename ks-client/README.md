@@ -109,19 +109,19 @@ How it works:
 
 In-game: small translucent inventory grid bottom-right with counts, durability, and green highlight on selected slot.
 
-### 2.5 Clean Touch Controls — PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json`, `textures/ui/*`, `textures/gui/controls/`)
+### 2.5 Clean Touch Controls (KS Client: `ui/ks_touch/hide_gui.json`, `textures/ui/*`, `textures/gui/controls/`)
 
 What it is: minimal, clean mobile controls.
 
 How it works:
-- `hide_gui.json` still ships and is listed in `_ui_defs.json`; `$f1_texture` still points at `textures/ui/pandamine5/hide_gui`.
+- `hide_gui.json` ships and is listed in `_ui_defs.json`; `$f1_texture` points at `textures/ui/ks_touch/hide_gui`.
 - `textures/ui/`: `joystick_frame/knob`, `jump/sneak/sprint (+_pressed/_disable/_dpad)`, `flyingascend/descend`, `waterascend/descend`, `interact`, `mount`, `pick_block`, `box_exit/ride`, `horse_exit/ride`.
 - `textures/gui/controls/`: D-pad set (`up/down/left/right + diagonals + pressed`), `jump_dpad`, `sneak_dpad`, `large_button`, `dismount`.
 - `hud_screen.json` F1/F8 redirects are gone — comment notes “PandaMine F1 button removed per request”.
 
-In-game: cleaner touch art remains; the HUD hide button path is now `ks_show_hud` (`button.hide_gui_all`), not the PandaMine F1 button.
+In-game: cleaner touch art remains; the HUD hide button path is now `ks_show_hud` (`button.hide_gui_all`).
 
-### 2.6 Connected Hotbar v1.0.1 (`textures/ui/hotbar_*.png`)
+### 2.6 Connected Hotbar (`textures/ui/hotbar_*.png`)
 
 What it is: hotbar looks like one continuous bar instead of 9 separate boxes.
 
@@ -129,7 +129,7 @@ How it works: `hotbar_0`…`hotbar_8` + `hotbar_start_cap` + `hotbar_end_cap` ti
 
 In-game: cleaner, client-like hotbar.
 
-### 2.7 Clear & Borderless Glass v6.2 — Mod MCPE (`textures/blocks/glass*.png`)
+### 2.7 Clear & Borderless Glass (`textures/blocks/glass*.png`)
 
 What it is: PvP-essential clear glass.
 
@@ -137,7 +137,7 @@ How it works: replaces `glass.png` (no border streaks), all 16 `glass_<color>.pn
 
 In-game: crystal-clear windows, easier to see through in fights/builds.
 
-### 2.8 Glass Doors & Trapdoors v1.0.1 (`textures/blocks/*door*`, `*trapdoor*`, `textures/items/door_*`)
+### 2.8 Glass Doors & Trapdoors (`textures/blocks/*door*`, `*trapdoor*`, `textures/items/door_*`)
 
 What it is: doors/trapdoors with glass-like transparency.
 
@@ -159,7 +159,7 @@ In-game: caves/Nether/end are bright, water is clear light-blue, lava still fogg
 
 What it is: guarantees player animations never freeze/detach (shield/armor/sword are the usual victims).
 
-`entity/player.json` now carries Rvo health-bar hooks (vanilla player anims + `health_bar`); all other custom player anims are validated externally, not forced. Same pattern on the other 81 entities.
+`entity/player.json` now carries KS health-bar hooks (vanilla player anims + `health_bar`); all other custom player anims are validated externally, not forced. Same pattern on the other 81 entities.
 
 The checker (`tools/check_player_animation_loop.py --iterations 3 --delay 1 --watch --with-validate`) verifies in a loop:
 1. **Strict JSON** — no `/* */` comments, `json.loads` must pass (Minecraft strict parser breaks on comments).
@@ -173,33 +173,33 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 
 ### 2.11 Custom UI Kit & Touch Art
 
-- `textures/ui/ks_*`: `ks_btn_cyan(.json/.png)`, `ks_btn_green`, `ks_accent_cyan`, `ks_config_bg/btn`, `ks_divider_v`, `ks_icon_anim/dressing/settings`, `ks_info_armor/bossbar/chat/clock/coords/direction/fps/item/mob/score`, `ks_key_btn`, `ks_menu_bg`, `ks_profile_bg`, `ks_sidebar_bg`, numbered hotbar `hotbar_0-8`, `selected_hotbar_slot`, `shb_numb_1-9`, `sprint/sneak/jump (+_pressed/_disable)`, all 30+ mob-effect icons (`speed/slowness/haste/mining_fatigue/strength/regen/poison/wither/…`).
-- `textures/ui/pandamine5/`: `hide_gui` (+ F1 size `[18,18]` offset `[47.5,1.0]`).
+- `textures/ui/ks_*`: `ks_btn_cyan(.json/.png)`, `ks_btn_green`, `ks_accent_cyan`, `ks_config_bg/btn`, `ks_divider_v`, `ks_icon_anim/dressing/settings`, `ks_info_armor/bossbar/chat/clock/coords/direction/fps/item/mob/score`, `ks_key_btn`, `ks_menu_bg`, `ks_profile_bg`, `ks_sidebar_bg`, numbered hotbar `hotbar_0-8`, `selected_hotbar_slot`, `ksb_numb_1-9`, `sprint/sneak/jump (+_pressed/_disable)`, all 30+ mob-effect icons (`speed/slowness/haste/mining_fatigue/strength/regen/poison/wither/…`).
+- `textures/ui/ks_touch/`: `hide_gui` (+ F1 size `[18,18]` offset `[47.5,1.0]`).
 - `ui/ui_common.json`, `ui/ks_client_common.json` (namespace `ks_client`): shared button styles (light/dark/red/tab colors in `_global_variables.json`), no-background icon buttons, edge rails (`ks_edge_left/right`), `ks_top_bar`, `ks_bottom_left_row/right_play/right_menu`, `ks_start_menu_full`, `ks_show_hud`. Retired/stubbed: center KS row, scrims, brand header/footer; `ks_hud_keys` / `ks_inv_slot` / `ks_f3_panel` are empty 0×0 stubs.
 - `ui/mob_effect_screen.json` (namespace `mob_effect`): styled effect list; `ui/pause_screen.json` (namespace `pause`): pause Config removed (HUD F1/F3 keys removed, `ks_show_hud` is the way back); `ui/dev_console_screen.json` + `debug_screen.json` (`button.scoreboard → button.access`); `ui/settings_sections/controls_section.json` exists but NOT in `_ui_defs.json` and unreferenced (disables new touch control schemes button) — orphan/reserved.
 
 ### 2.12 Texts, Subpacks, Full Texture Coverage
 
-- `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `shb.howToSaveConfig`.
-- `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — currently just `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`).
+- `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `ksb.howToSaveConfig`, `item.mace.name`.
+- `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — currently just `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`).
 - `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) currently EMPTY (`texture_data:{}`) despite 17 door PNGs in `textures/items/` — vanilla fallback until re-registered; `texture_list.json`/`textures_list.json` legacy lists.
 - `textures/`: `blocks/` (1309 PNGs), `ui/` (124 PNGs incl. `bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs, unregistered), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`). No `NeBux/` in latest build.
 
-### 2.13 Clear Chat Screen — Bruhh69 (`ui/chat_screen.json`, `ui/.ui_assets/.screens/.chat/chat_tweaks.json`)
+### 2.13 Clear Chat Screen (KS Client: `ui/chat_screen.json`, `ui/.ui_assets/.screens/.chat/chat_tweaks.json`)
 
 What it is: transparent, clutter-free chat (always on, no subpack, no toggle).
 
 How it works:
 - `ui/chat_screen.json` (no namespace — vanilla-filename override, loaded by the game automatically; NOT in `_ui_defs.json`, same as upstream) hides `chat_background`, restyles `messages_text` (50% width, left-middle, layer 76, `black_ovr` 0.7 shade behind text), widens `messages_scrolling_panel`, sets `$jump_to_bottom_on_update true`, `close_on_player_hurt false`, `cache_screen true`.
-- `ui/.ui_assets/.screens/.chat/chat_tweaks.json` (namespace `bt_chat_tweaks`, appended to `_ui_defs.json`) adds 16×16 autocomplete/tab/up/down buttons (`button.chat_autocomplete/back`, `button.chat_previous/next_message`) using `textures/ui/bl_bt` + `.texture_assets/.chat_icons/*`.
+- `ui/.ui_assets/.screens/.chat/chat_tweaks.json` (namespace `ks_chat_tweaks`, appended to `_ui_defs.json`) adds 16×16 autocomplete/tab/up/down buttons (`button.chat_autocomplete/back`, `button.chat_previous/next_message`) using `textures/ui/bl_bt` + `.texture_assets/.chat_icons/*`.
 - Textures (no collisions, no atlas registration needed — direct UI paths): `textures/ui/bl_bt(.json/.png)`, `black_ovr(.json/.png)`, `blank.png`, `null.png`, `.texture_assets/.chat_icons/` (`tab/shift_tab/up/down/new_send` icons).
 - No `_global_variables.json` additions (`$is_ccs` local; other `$vars` are control-factory params or engine-resolved, same as upstream).
 
 In-game: chat background invisible, messages readable over gameplay, tab/shift-tab/up/down shortcut buttons.
 
-### 2.14 Health Bar (Always Display) — Rvo JP v3.4.0 (`animations/`, `models/`, `render_controllers/`, `entity/`, `textures/health_bar/`)
+### 2.14 Health Bar (Always Display, KS Client: `animations/`, `models/`, `render_controllers/`, `entity/`, `textures/health_bar/`)
 
-What it is: billboard HP bar + heart + numeric digits over every mob, always visible (always-display variant; the `hide_until_hurt` subpack variant was NOT merged).
+What it is: billboard HP bar + heart + numeric digits over every mob, always visible (always-display variant merged directly; no toggle, no subpack).
 
 How it works (all merged at top level — no subpack, active in both subpacks):
 - `animations/health_bar.json` (from upstream `subpacks/always_display/`): `animation.health_bar` billboards via camera rotation; scale `q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : ...` (differs from `hide_until_hurt` only by NOT hiding at full HP).
