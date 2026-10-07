@@ -2,7 +2,7 @@
 
 > **KS Client v1.1.2 by KS Warrior**
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
-> Custom start screen, HUD (slot hotbar + inventory-HUD + totem/offhand shortcuts + `ks_show_hud`), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack.
+> Custom start screen, HUD (slot hotbar + inventory-HUD + totem/offhand shortcuts + `ks_show_hud`), clear chat screen, mob health bars (always display), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack.
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
@@ -53,7 +53,9 @@
 | 15 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
 | 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
 | 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 116 PNGs), doors items on disk but `atlas.items` empty, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc |
-| 18 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
+| 18 | Clear Chat Screen | Bruhh69 (file v3.0.10; manifest v1.3.10) | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `bt_chat_tweaks`, always on) |
+| 19 | Health Bar (Always Display) | Rvo JP v3.4.0 (`rvo.jp/health-bar`) | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
+| 20 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
 
 ---
 
