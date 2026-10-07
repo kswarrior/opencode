@@ -48,6 +48,8 @@
 	"$ksb_invhud_s": 50,
 	"$ksb_invhud_v": true,
 	"$ksb_invhud_small": false,
+	// Start screen bottom-right Menu button (left of Play). false = removed.
+	"$ks_show_start_menu_button": false,
 	"$ksb_ssci": true,
 	"$ksb_hba": 4,
 	"$ksb_sbi": true,

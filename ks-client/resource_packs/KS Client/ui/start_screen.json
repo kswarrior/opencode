@@ -543,7 +543,7 @@
       { "ks_anim_above_dressing@ks_client.ks_anim_above_dressing": {} },
       { "ks_social_below_settings@ks_client.ks_social_below_settings": {} },
       { "ks_bottom_left_row@ks_client.ks_bottom_left_row": {} },
-      { "ks_bottom_right_menu@ks_client.ks_bottom_right_menu": {} },
+      { "ks_bottom_right_menu@ks_client.ks_bottom_right_menu": { "ignored": "(not $ks_show_start_menu_button)" } },
       { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} },
       { "ks_start_menu_full@ks_client.ks_start_menu_full": {} }
     ]

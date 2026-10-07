@@ -36,7 +36,7 @@
 
 | # | Feature | Source / Version | What it gives you |
 |---|---------|------------------|-------------------|
-| 1 | Premium Start Screen | KS Client custom (`ui/start_screen.json`, `ui/ks_client_common.json`) | Text-free branded menu, paperdoll above Play, small version label, icon-only inbox bell, KS settings/dressing buttons |
+| 1 | Premium Start Screen | KS Client custom (`ui/start_screen.json`, `ui/ks_client_common.json`) | Text-free branded menu, paperdoll above Play, small version label, icon-only inbox bell, KS settings/dressing buttons. Bottom-right Menu button (left of Play) removed by default — set `$ks_show_start_menu_button true` to bring it back |
 | 2 | Quick Totem Offhand | KS Client | One-tap totem → offhand from HUD `hud.totem_btn` + inventory screen `master_totem_panel` (`inventory_scanner` / `hotbar_scanner`); HUD button follows the editor totem row live (position wrapper + show toggle; durability always on, no toggle) |
 | 3 | Slot Hotbar Buttons + Settings Editor | KS Client | 10 floating hotbar slot shortcuts (`$ksb_1` … `$ksb_10`, defaults: slots 4/5/9 hidden, size 32, durability always on) + in-game editor (gear, top-right) with per-slot X/Y/size/show, totem X/Y/size/show, inventory-HUD position/show/compact |
 | 4 | Inventory HUD Bottom-Right | KS Client (`ks_modules/hud.json`) | Live 9×4 inventory grid on HUD, highlight selected slot, durability + storage bars |
