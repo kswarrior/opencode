@@ -254,22 +254,22 @@ ks-client/
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
-│   ├── entity/ (82 json)            ← KS health-bar hooks on every mob (vanilla refs + health_bar material/texture/geometry/animate/render_controllers)
+│   ├── entity/ (82 json)            ← KS health-bar hooks on every mob + fps_counter slots on player.json (materials/textures/geometry/init/pre_anim/vars/render controller)
 │   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses)
 │   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
-│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json
-│   ├── render_controllers/health_bar.json (`controller.render.health_bar.*`)
+│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json
+│   ├── render_controllers/health_bar.json + fps_counter.render.json
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1318 entries)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/attachable (mace.png)
+│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/attachable (mace.png) / fps (digits_atlas.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 13 entries (…+ chat_tweaks; chat_screen.json loads by vanilla filename, no entry needed)
-│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud), pause_screen.json (pause)
-│   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), debug/dev_console/ui_common
+│   │   ├── _ui_defs.json            ← load order, 14 entries (…+ chat_tweaks + fps_hud; chat_screen.json loads by vanilla filename, no entry needed)
+│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud + root_panel fps hook), pause_screen.json (pause)
+│   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug/dev_console/ui_common
 │   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings)
 │   │   ├── ks_touch/hide_gui.json
@@ -297,6 +297,7 @@ ks-client/
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
+   - FPS: digits top-left, always on.
 5. **Persist config:** in-game config screen → copy code (`ksb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
@@ -342,7 +343,7 @@ Switch in pack settings; memory tier `0` for both.
 
 ## 8. Entities, Animations, Fog, Render Controllers
 
-- `entity/`: 82 client entities (`allay` → `zombie_villager`, incl. `player.json`), all with KS health-bar hooks (see §2.14). Vanilla animation/controller/geometry/texture refs resolve engine-side.
+- `entity/`: 82 client entities (`allay` → `zombie_villager`, incl. `player.json`), all with KS health-bar hooks (see §2.14); `player.json` additionally carries fps_counter slots (see §2.16). Vanilla animation/controller/geometry/texture refs resolve engine-side.
 - `animations/health_bar.json` (always-display billboard logic) + `animations/mace.animation.json` (hammer hold poses), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
 - `fogs/ks_fullbright.json` + `biomes_client.json`: global fullbright (see §2.9).
 
@@ -367,7 +368,7 @@ Switch in pack settings; memory tier `0` for both.
 2. Only bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description` + `README.md` header/§12 if the user explicitly requested a new version — never auto-bump.
 3. Run `python3 tools/check_player_animation_loop.py --iterations 3` and `mct validate`.
 4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack` (never overwrite `release/` unasked; prefer `/tmp/`).
-5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), fullbright, glass/doors, connected hotbar.
+5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS digits top-left, fullbright, glass/doors, connected hotbar.
 
 Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, `create-item`, `create-mob`, `design-model`, `debug-addon`, `creator-tools-cli`.
 
@@ -406,4 +407,4 @@ Current (`manifest.json`): `KS Client v1.1.2`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `entity/` (82 with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 / items 18 incl. mace / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / entity-attachable mace / environment / colormap / misc; terrain 1318 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*), `_ui_defs` 13 entries, `hud/start/inventory/pause/debug/chat_screen`, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `copyright.txt`, `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `entity/` (82 with health hooks + player fps slots), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace + fps_counter) + `render_controllers/` (health_bar + fps_counter), `textures/` (blocks 1309 / items 18 incl. mace / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / fps digits_atlas / entity-attachable mace / environment / colormap / misc; terrain 1318 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*), `_ui_defs` 14 entries, `hud/start/inventory/pause/debug/chat_screen/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `copyright.txt`, `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
