@@ -278,7 +278,7 @@ Switch in pack settings; memory tier `0` for both.
 
 ---
 
-## 8. Entities, Animations, Fog, Render Controllers
+## 8. Entities & Fog (removed systems purged)
 
 - `entity/`: 82 minimal client entities (`allay` → `zombie_villager`, incl. `player.json`). All are `format_version 1.10.0` with `animations:{}`, `animate:[]`, `render_controllers:[]` — no health-bar, pose, or controller hooks shipped.
 - `animations/`, `animation_controllers/`, `models/`, `render_controllers/`, `textures/health_bar/`, `ui/NeBux/`, `NeBux/`: do NOT exist in latest build (purged per request). Drive player anims are validated by `tools/` when synced externally, not shipped.
