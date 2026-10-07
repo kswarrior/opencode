@@ -121,29 +121,30 @@ How it works:
 
 In-game: small translucent inventory grid bottom-right with counts, durability, and green highlight on selected slot.
 
-### 2.6 NeBux F1 & F3 Buttons v1.1.3 (`ui/NeBux/`, `NeBux/NeBuxUI/`, `textures/ui/pandamine5/`)
+### 2.6 NeBux F1 & F3 Buttons v1.1.3 — files ship, buttons UNWIRED (`ui/NeBux/`, `NeBux/NeBuxUI/`, `textures/ui/pandamine5/`)
 
-What it is: top-bar utility buttons — hide UI for screenshots/clean PvP, and a debug ModMenu.
+What it is: top-bar utility buttons + debug ModMenu — currently unwired from the HUD per request.
 
-How it works:
-- `NeBuxHud.json`: `f1_button` (20×20, `top_middle [-39,0.5]`, `hud_btn` texture, text `F1`, `→ button.hide_gui_all`, bound to `#hud_visible`), `hidehudm` (`H` button, `NeBuxUI/0` texture), `mod_menu_toggle` (`NeBuxToggles.NeBuxTopToggle`).
-- `NeBuxToggles.json` + `ModMenu/F3.json`, `F3NC.json`, `F3Right.json`: F3 debug panel (FPS, coords, direction, armor, bossbar, chat, clock, item, mob, score — see `ks_info_*.png`), inventory counter (`NeBuxInventoryCounter.json`: `NeBux.f3isf=Inventory Status: §cFull` / `f3isa=§aAvailable`), full-warning.
-- Offsets/colors in `_global_variables.json`: `f1buttonoffset [-38.5,0.5]`, `f8buttonoffset [38.5,0.5]`, `$f1_enabled`, `$f1_texture textures/ui/pandamine5/hide_gui`, `$f1_size [18,18]`, `$f1_offset [47.5,1.0]`, `$f3alpha 0.4`, `$paperdollsize [65,65]`, `$paperdolloffset [-140,-35]`, `$paperdolltype hud_player_renderer`, hide flags (`$hideinventoryleftbutton`, `$hidef1button`, `$hidef8button`, `$hideinventoryfullwarning`, `$hideinventorycounter`, `$hidef3button`, `$hideclock&compass`, `$hidexplevel`, `$hidemodmenubutton`), IDs (`$recoverycompassid 45088768`, `$clockid 22740992`, `$compassid 22609920`), `$f8buttonremove`, `$armorbg`, `$close_screen_on_hurt`, `$hud_elipses_*`.
-- Art: `NeBux/NeBuxUI/Buttons/`, `Icons/`, `0.png`, `Black.png`.
+Current state:
+- `ui/NeBux/` (`NeBuxHud.json`, `NeBuxToggles.json`, `NeBuxInventoryCounter.json`, `ModMenu/F3.json`, `F3NC.json`, `F3Right.json`) all ship and are listed in `_ui_defs.json` (19 entries total), so they parse.
+- `hud_screen.json` only inserts `hud_player_renderer@NeBuxHud.NeBux_hud_player_renderer` (doll kept) with comment “NeBux F1/F3 buttons removed per request — doll kept, buttons gone”. No `f1_button` / `hidehudm` / `mod_menu_toggle` insertion remains.
+- `NeBuxToggles.json` + `ModMenu/F3*.json` (FPS/coords/direction/armor/bossbar/chat/clock/item/mob/score, see `ks_info_*.png`), `NeBuxInventoryCounter.json` (`NeBux.f3isf=Inventory Status: §cFull` / `f3isa=§aAvailable`, full-warning) are defined but not shown in-game.
+- Offsets/colors/IDs in `_global_variables.json` remain as reserved: `f1buttonoffset [-38.5,0.5]`, `f8buttonoffset [38.5,0.5]`, `$f1_enabled`, `$f1_texture textures/ui/pandamine5/hide_gui`, `$f1_size [18,18]`, `$f1_offset [47.5,1.0]`, `$f3alpha 0.4`, `$paperdollsize [65,65]`, `$paperdolloffset [-140,-35]`, `$paperdolltype hud_player_renderer`, hide flags (`$hideinventoryleftbutton/rightbutton`, `$hidef1button/f8button/f3button`, `$hideinventoryfullwarning/counter`, `$hideclock&compass`, `$hidexplevel`, `$hidemodmenubutton`), IDs (`$recoverycompassid 45088768`, `$clockid 22740992`, `$compassid 22609920`), `$f8buttonremove`, `$armorbg`, `$close_screen_on_hurt`, `$hud_elipses_*` (spelled `elipses` in file), plus `$test:"mod_menu_on"` (undocumented toggle, see §5).
+- Art ships: `NeBux/NeBuxUI/Buttons/hud_btn.png`, `Icons/hud_btn.png`, `Icons/inv_icon.png`, `0.png`, `Black.png`.
 
-In-game: tap F1 → hide all HUD (screenshot/clean fight); F8 → hide paperdoll; F3 → debug overlay; inventory counter warns when full; clock/compass/XP widgets toggleable.
+In-game: F1/F3 buttons do NOT appear. Paperdoll doll still renders. `ks_show_hud` (“Show HUD” bar) is the way back after hide. Re-wire by re-adding the `NeBuxHud`/`NeBuxToggles` insertions in `hud_screen.json` `hud_content.modifications`.
 
 ### 2.7 Clean Touch Controls — PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json`, `textures/ui/*`, `textures/gui/controls/`)
 
 What it is: minimal, clean mobile controls.
 
 How it works:
-- `hide_gui.json` defines the hide-GUI button behavior referenced by `$f1_texture`.
+- `hide_gui.json` still ships and is listed in `_ui_defs.json`; `$f1_texture` still points at `textures/ui/pandamine5/hide_gui`.
 - `textures/ui/`: `joystick_frame/knob`, `jump/sneak/sprint (+_pressed/_disable/_dpad)`, `flyingascend/descend`, `waterascend/descend`, `interact`, `mount`, `pick_block`, `box_exit/ride`, `horse_exit/ride`.
 - `textures/gui/controls/`: D-pad set (`up/down/left/right + diagonals + pressed`), `jump_dpad`, `sneak_dpad`, `large_button`, `dismount`.
-- `hud_screen.json` F1/F8 redirects wire these buttons to `hide_gui` / `hide_paperdoll_hud` engine actions.
+- `hud_screen.json` F1/F8 redirects are gone (Utility HUD removal) — comment notes “PandaMine F1 button removed per request”.
 
-In-game: less visual noise, larger touch targets, consistent pressed states. The eye/hide button in top bar toggles everything.
+In-game: cleaner touch art remains; the HUD hide button path is now `ks_show_hud` (`button.hide_gui_all`), not the PandaMine F1 button.
 
 ### 2.8 Connected Hotbar v1.0.1 (`textures/ui/hotbar_*.png`)
 
@@ -165,7 +166,7 @@ In-game: crystal-clear windows, easier to see through in fights/builds.
 
 What it is: doors/trapdoors with glass-like transparency.
 
-How it works: block textures (`acacia/birch/dark_oak/bamboo/cherry/copper/crimson/..._door_*`, `*_trapdoor.png`) + item icons (`textures/items/door_acacia/birch/…/warped.png`, `bamboo/cherry/copper/crimson/mangrove/pale_oak door`) redrawn with transparency. Same `terrain_texture.json` + `item_texture.json` wiring.
+How it works: block textures (`acacia/birch/dark_oak/bamboo/cherry/copper/crimson/..._door_*`, `*_trapdoor.png` — 48 entries in `terrain_texture.json`) redrawn with transparency. Item icons (`textures/items/` 17 PNGs: `door_acacia/birch/…/warped`, `bamboo/cherry/copper/crimson/mangrove/pale_oak door`) exist on disk but `item_texture.json` (`atlas.items`) is currently empty (`{"texture_data":{}}`), so item icons fall back to vanilla until re-registered.
 
 In-game: modern glass-door aesthetic, matches clear glass.
 
@@ -179,22 +180,15 @@ How it works:
 
 In-game: caves/Nether/end are bright, water is clear light-blue, lava still fogged for safety. Toggle by removing the pack or editing `biomes_client.json`.
 
-### 2.12 Health Bar System (`animations/health_bar.json`, `models/entity/health_bar.json`, `render_controllers/health_bar.json`, `entity/*.json`, `textures/health_bar/`)
+### 2.12 Health Bar System — REMOVED in latest build
 
-What it is: floating health bars over mobs (PvE + minigame useful).
-
-How it works:
-- `animations/health_bar.json`: `animation.health_bar` (loop true) billboards the bone: `rotation [q.camera_rotation(0), q.camera_rotation(1) - q.body_y_rotation, 0]`, `position [0, v.health_bar_position, 0]`, `scale q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : 0.020 / v.health_bar_scale` (hidden in UI/invisible/dead).
-- `models/entity/health_bar.json` geometry + `render_controllers/health_bar.json` + `textures/health_bar/` draw it.
-- `entity/*.json` (80+ files: `creeper.json`, `zombie.json`, `skeleton.json`, `enderman.json`, … `player.json`) attach the controller/animation/damage hooks per mob.
-
-In-game: look at any mob → small bar above head tracking health.
+Was: floating health bars over mobs. Now: `animations/`, `animation_controllers/`, `models/`, `render_controllers/`, `textures/health_bar/` do not exist (deleted). All 82 `entity/*.json` (`allay` → `zombie_villager`, incl. `player.json`) are minimal (`format_version 1.10.0`, `animations:{}`, `animate:[]`, `render_controllers:[]`, only `identifier` + `min_engine_version`/`spawn_egg` differ) with no health hooks. No bars appear in-game. Re-add by restoring the deleted dirs + entity hooks.
 
 ### 2.13 Player Animation QA (`entity/player.json` + `tools/check_player_animation_loop.py`)
 
 What it is: guarantees player animations never freeze/detach (shield/armor/sword are the usual victims).
 
-Current `entity/player.json` is intentionally minimal (`identifier minecraft:player`, empty `animations`/`animate`/`render_controllers`) for max vanilla compatibility — all custom player anims are validated externally, not forced.
+Current `entity/player.json` is intentionally minimal (`identifier minecraft:player`, empty `animations`/`animate`/`render_controllers`) for max vanilla compatibility — all custom player anims are validated externally, not forced. Same for the other 81 entities.
 
 The checker (`tools/check_player_animation_loop.py --iterations 3 --delay 1 --watch --with-validate`) verifies in a loop:
 1. **Strict JSON** — no `/* */` comments, `json.loads` must pass (Minecraft strict parser breaks on comments).
