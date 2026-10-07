@@ -1,6 +1,6 @@
 {
-  "namespace": "bt_chat_tweaks",
-  "bt_chat_tweaks_ac_image": {
+  "namespace": "ks_chat_tweaks",
+  "ks_chat_tweaks_ac_image": {
     "type": "image",
     "size": [
       15,
@@ -8,16 +8,16 @@
     ],
     "texture": "textures/ui/.texture_assets/.chat_icons/tab_icon"
   },
-  "tab_icon@bt_chat_tweaks_ac_image": {
+  "tab_icon@ks_chat_tweaks_ac_image": {
     "texture": "textures/ui/.texture_assets/.chat_icons/tab_icon"
   },
-  "shift_tab_icon@bt_chat_tweaks_ac_image": {
+  "shift_tab_icon@ks_chat_tweaks_ac_image": {
     "texture": "textures/ui/.texture_assets/.chat_icons/shift_tab_icon"
   },
-  "up_icon@bt_chat_tweaks_ac_image": {
+  "up_icon@ks_chat_tweaks_ac_image": {
     "texture": "textures/ui/.texture_assets/.chat_icons/up_icon"
   },
-  "down_icon@bt_chat_tweaks_ac_image": {
+  "down_icon@ks_chat_tweaks_ac_image": {
     "texture": "textures/ui/.texture_assets/.chat_icons/down_icon"
   },
   "tab@common_buttons.light_content_button": {
@@ -27,7 +27,7 @@
       16
     ],
     "layer": 296,
-    "$button_content": "bt_chat_tweaks.tab_icon",
+    "$button_content": "ks_chat_tweaks.tab_icon",
     "$hover_button_texture": "textures/ui/bl_bt",
     "$pressed_button_texture": "textures/ui/bl_bt",
     "$default_button_texture": "textures/ui/bl_bt"
@@ -39,7 +39,7 @@
       16
     ],
     "layer": 296,
-    "$button_content": "bt_chat_tweaks.shift_tab_icon",
+    "$button_content": "ks_chat_tweaks.shift_tab_icon",
     "$hover_button_texture": "textures/ui/bl_bt",
     "$default_button_texture": "textures/ui/bl_bt",
     "$pressed_button_texture": "textures/ui/bl_bt"
@@ -51,7 +51,7 @@
       16
     ],
     "layer": 296,
-    "$button_content": "bt_chat_tweaks.up_icon",
+    "$button_content": "ks_chat_tweaks.up_icon",
     "$hover_button_texture": "textures/ui/bl_bt",
     "$default_button_texture": "textures/ui/bl_bt",
     "$pressed_button_texture": "textures/ui/bl_bt"
@@ -63,7 +63,7 @@
       16
     ],
     "layer": 296,
-    "$button_content": "bt_chat_tweaks.down_icon",
+    "$button_content": "ks_chat_tweaks.down_icon",
     "$hover_button_texture": "textures/ui/bl_bt",
     "$default_button_texture": "textures/ui/bl_bt",
     "$pressed_button_texture": "textures/ui/bl_bt"

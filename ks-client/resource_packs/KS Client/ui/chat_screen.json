@@ -416,7 +416,7 @@
               }
             },
             {
-              "tab@bt_chat_tweaks.tab": {}
+              "tab@ks_chat_tweaks.tab": {}
             },
             {
               "ac_padd": {
@@ -428,7 +428,7 @@
               }
             },
             {
-              "shift@bt_chat_tweaks.shift": {}
+              "shift@ks_chat_tweaks.shift": {}
             },
             {
               "ac_padd1": {
@@ -440,7 +440,7 @@
               }
             },
             {
-              "up@bt_chat_tweaks.up": {}
+              "up@ks_chat_tweaks.up": {}
             },
             {
               "ac_padd2": {
@@ -452,7 +452,7 @@
               }
             },
             {
-              "down@bt_chat_tweaks.down": {}
+              "down@ks_chat_tweaks.down": {}
             }
           ]
         }

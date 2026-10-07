@@ -260,10 +260,10 @@
         "operation": "insert_front",
         "value": [
           {
-            "déesse_inventory_hud@déesse_hud.inventory_hud_panel": {}
+            "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
           },
           {
-            "déesse_hotbar_data@déesse_hud.hotbar_data": {}
+            "ks_hotbar_data@ks_hud.hotbar_data": {}
           }
         ]
       }
@@ -274,7 +274,7 @@
   // Unhide MUST be a sibling of root_panel, not inside it: root_panel is
   // bound to #hud_visible, so anything inside it disappears with the HUD and
   // touch users tapping F1 could get stuck with no way back.
-  // Slot Hotbar Button v1.3.0 by @Itzriyo157 (insert_front) + KS show-HUD
+  // Slot Hotbar Button v1.3.0 by KS Client (insert_front) + KS show-HUD
   // (insert_back) coexist as separate modifications on hud_content.
   // (PandaMine F1 button removed per request.)
   // Quick Totem Offhand button by oSkullo (insert_front): 30x30 (40 -25%),
@@ -295,13 +295,13 @@
         "operation": "insert_front",
         "value": [
           {
-            "shb_buttons@shb_main.slot_hotbar_button_panel": {}
+            "ksb_buttons@ksb_main.slot_hotbar_button_panel": {}
           },
           {
-            "shb_button_editor@shb_main.editor_button": {}
+            "ksb_button_editor@ksb_main.editor_button": {}
           },
           {
-            "shb_editor_panel@shb_main.editor_panel": {}
+            "ksb_editor_panel@ksb_main.editor_panel": {}
           }
         ]
       },
