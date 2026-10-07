@@ -1,5 +1,5 @@
 pack.name=KS Client
-pack.description=KS Client v1.1.2 by KS Warrior
+pack.description=KS Client v1.1.3 by KS Warrior
 
 ks_client.start_button=KS Client Settings
 ks_client.title=KS Client
@@ -10,6 +10,6 @@ ks_client.premium=PREMIUM
 ks_client.online_member=ONLINE • MEMBER
 ks_client.tap_to_start=TAP TO START
 ks_client.status_active=PREMIUM UI  •  ACTIVE
-ks_client.footer=KS CLIENT v1.1.2  •  ONLINE
+ks_client.footer=KS CLIENT v1.1.3  •  ONLINE
 ksb.howToSaveConfig=Copy the entire code in this text box and replace it into the '_global_variables.json' file to save the configuration.
 item.mace.name=§d§lGetting Over It §fHammer
