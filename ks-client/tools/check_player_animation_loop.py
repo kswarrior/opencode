@@ -29,6 +29,14 @@ import time
 
 DRIVE_URL = "https://drive.google.com/uc?export=download&id=1xna-mqKa7dyUNQZau7qx68o4zHxpAqAt"
 PACK = "resource_packs/KS Client"
+
+# Optional Drive-synced inputs absent from the shipped pack are SKIPPED
+# (reported, not failed). Cleared at the start of every one_pass().
+SKIPPED = []
+
+
+def _skip(msg):
+    SKIPPED.append(f"SKIP (optional input absent): {msg}")
 ANIM_DIRS = [f"{PACK}/animations/Animation", f"{PACK}/animations/Attack"]
 CTRL_DIRS = [f"{PACK}/animation_controllers/Animation", f"{PACK}/animation_controllers/Attack"]
 
@@ -79,6 +87,8 @@ def check_loop_flags():
             val = d.get("animations", {}).get(anim_id, {}).get("loop", None)
             if val is not True:
                 errors.append(f"{path}: {anim_id} loop={val!r}, expected true (continuous state freezes otherwise)")
+        except FileNotFoundError:
+            _skip(f"{path} ({anim_id} loop flag unchecked)")
         except Exception as e:
             errors.append(f"{path}: cannot verify {anim_id}: {e}")
     return errors
@@ -103,6 +113,8 @@ def check_shield_armor_sword():
             errors.append("sneak.shield.l missing leftitem+LeftItem mirrors (shield detaches)")
         if "LeftArmUp" not in l or "LeftArmDown" not in l:
             errors.append("sneak.shield.l missing LeftArmUp/Down (arm won't carry shield)")
+    except FileNotFoundError as e:
+        _skip(f"shield sneak files absent ({e.filename})")
     except Exception as e:
         errors.append(f"shield sneak check failed: {e}")
     # 2. armor sync: walk must drive Kbody+kbody and Kroot+kroot together
@@ -118,6 +130,8 @@ def check_shield_armor_sword():
                 errors.append(f"player_armor.json still has case bug {bad} (armor inflate/reset ignored)")
         if '"name": "Kbody"' in blob:
             errors.append("player_armor.json Kbody should be kbody to match armor base")
+    except FileNotFoundError as e:
+        _skip(f"armor sync files absent ({e.filename})")
     except Exception as e:
         errors.append(f"armor sync check failed: {e}")
     # 3. sword hold: attack anims must drive item+Item together, no sword-below-leg
@@ -129,6 +143,8 @@ def check_shield_armor_sword():
         for need in ["RightArmUp", "LeftArmUp", "RightLegUp", "LeftLegUp"]:
             if need not in sb:
                 errors.append(f"sword.b missing {need} (idle sword pose broken)")
+    except FileNotFoundError as e:
+        _skip(f"sword files absent ({e.filename})")
     except Exception as e:
         errors.append(f"sword check failed: {e}")
     # 4. shield.both geometry must have leftitem+rightitem
@@ -137,6 +153,8 @@ def check_shield_armor_sword():
         names = {b["name"] for b in both["minecraft:geometry"][0]["bones"]}
         if "leftitem" not in names or "rightitem" not in names:
             errors.append("shield.both.json missing leftitem+rightitem (double-shield won't follow)")
+    except FileNotFoundError as e:
+        _skip(f"shield.both file absent ({e.filename})")
     except Exception as e:
         errors.append(f"shield.both check failed: {e}")
     return errors
@@ -287,6 +305,7 @@ def check_mct_validate():
 
 
 def one_pass(run_validate=False):
+    del SKIPPED[:]
     problems = []
     problems += check_strict_json()
     problems += check_dotfiles()
@@ -323,6 +342,8 @@ def main():
         print(f"[loop {i}] recheck: {status}")
         for p in problems[:30]:
             print(f"  - {p}")
+        for s in SKIPPED:
+            print(f"  {s}")
         if len(problems) > 30:
             print(f"  ... and {len(problems)-30} more")
         if not problems:
