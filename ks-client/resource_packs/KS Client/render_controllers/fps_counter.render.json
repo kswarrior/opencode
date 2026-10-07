@@ -2,6 +2,7 @@
     "format_version": "1.10.0",
     "render_controllers": {
         "controller.render.fps_counter": {
+            "uv_anim": { "offset": [ 0.0, 0.0 ], "scale": [ 1.0, 1.0 ] },
             "geometry": "Geometry.fps_counter",
             "materials": [ { "*": "Material.fps_counter" } ],
             "textures": [ "Texture.fps_counter" ],

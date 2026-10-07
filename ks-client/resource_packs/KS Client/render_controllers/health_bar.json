@@ -2,6 +2,7 @@
     "format_version": "1.8.0",
     "render_controllers": {
         "controller.render.health_bar.heart": {
+            "uv_anim": { "offset": [ 0.0, 0.0 ], "scale": [ 1.0, 1.0 ] },
             "geometry": "Geometry.health_bar",
             "textures": [ "Texture.heart" ],
             "materials": [ { "*": "Material.health_bar" } ],
@@ -15,6 +16,7 @@
             ]
         },
         "controller.render.health_bar.bar": {
+            "uv_anim": { "offset": [ 0.0, 0.0 ], "scale": [ 1.0, 1.0 ] },
             "geometry": "Geometry.health_bar",
             "textures": [ "Array.textures[q.health / q.max_health * 50]" ],
             "materials": [ { "*": "Material.health_bar" } ],
@@ -83,6 +85,7 @@
             }
         },
         "controller.render.health_bar.digit1": {
+            "uv_anim": { "offset": [ 0.0, 0.0 ], "scale": [ 1.0, 1.0 ] },
             "geometry": "Geometry.health_bar",
             "textures": [ "Array.textures[q.health / 100]" ],
             "materials": [ { "*": "Material.health_bar" } ],
@@ -110,6 +113,7 @@
             }
         },
         "controller.render.health_bar.digit2": {
+            "uv_anim": { "offset": [ 0.0, 0.0 ], "scale": [ 1.0, 1.0 ] },
             "geometry": "Geometry.health_bar",
             "textures": [ "Array.textures[math.mod(q.health, 100) / 10]" ],
             "materials": [ { "*": "Material.health_bar" } ],
@@ -138,6 +142,7 @@
             }
         },
         "controller.render.health_bar.digit3": {
+            "uv_anim": { "offset": [ 0.0, 0.0 ], "scale": [ 1.0, 1.0 ] },
             "geometry": "Geometry.health_bar",
             "textures": [ "Array.textures[math.mod(q.health, 10)]" ],
             "materials": [ { "*": "Material.health_bar" } ],
