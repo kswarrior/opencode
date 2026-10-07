@@ -1,0 +1,71 @@
+{
+  "namespace": "bt_chat_tweaks",
+  "bt_chat_tweaks_ac_image": {
+    "type": "image",
+    "size": [
+      15,
+      15
+    ],
+    "texture": "textures/ui/.texture_assets/.chat_icons/tab_icon"
+  },
+  "tab_icon@bt_chat_tweaks_ac_image": {
+    "texture": "textures/ui/.texture_assets/.chat_icons/tab_icon"
+  },
+  "shift_tab_icon@bt_chat_tweaks_ac_image": {
+    "texture": "textures/ui/.texture_assets/.chat_icons/shift_tab_icon"
+  },
+  "up_icon@bt_chat_tweaks_ac_image": {
+    "texture": "textures/ui/.texture_assets/.chat_icons/up_icon"
+  },
+  "down_icon@bt_chat_tweaks_ac_image": {
+    "texture": "textures/ui/.texture_assets/.chat_icons/down_icon"
+  },
+  "tab@common_buttons.light_content_button": {
+    "$pressed_button_name": "button.chat_autocomplete",
+    "size": [
+      16,
+      16
+    ],
+    "layer": 296,
+    "$button_content": "bt_chat_tweaks.tab_icon",
+    "$hover_button_texture": "textures/ui/bl_bt",
+    "$pressed_button_texture": "textures/ui/bl_bt",
+    "$default_button_texture": "textures/ui/bl_bt"
+  },
+  "shift@common_buttons.light_content_button": {
+    "$pressed_button_name": "button.chat_autocomplete_back",
+    "size": [
+      16,
+      16
+    ],
+    "layer": 296,
+    "$button_content": "bt_chat_tweaks.shift_tab_icon",
+    "$hover_button_texture": "textures/ui/bl_bt",
+    "$default_button_texture": "textures/ui/bl_bt",
+    "$pressed_button_texture": "textures/ui/bl_bt"
+  },
+  "up@common_buttons.light_content_button": {
+    "$pressed_button_name": "button.chat_previous_message",
+    "size": [
+      16,
+      16
+    ],
+    "layer": 296,
+    "$button_content": "bt_chat_tweaks.up_icon",
+    "$hover_button_texture": "textures/ui/bl_bt",
+    "$default_button_texture": "textures/ui/bl_bt",
+    "$pressed_button_texture": "textures/ui/bl_bt"
+  },
+  "down@common_buttons.light_content_button": {
+    "$pressed_button_name": "button.chat_next_message",
+    "size": [
+      16,
+      16
+    ],
+    "layer": 296,
+    "$button_content": "bt_chat_tweaks.down_icon",
+    "$hover_button_texture": "textures/ui/bl_bt",
+    "$default_button_texture": "textures/ui/bl_bt",
+    "$pressed_button_texture": "textures/ui/bl_bt"
+  }
+}
