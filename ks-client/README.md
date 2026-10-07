@@ -182,7 +182,32 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 - `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `shb.howToSaveConfig`.
 - `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — currently just `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`).
 - `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) currently EMPTY (`texture_data:{}`) despite 17 door PNGs in `textures/items/` — vanilla fallback until re-registered; `texture_list.json`/`textures_list.json` legacy lists.
-- `textures/`: `blocks/` (1309 PNGs), `ui/` (116 PNGs), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs, unregistered), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`). No `health_bar/`, no `animations/`, `models/`, `render_controllers/`, no `NeBux/` in latest build.
+- `textures/`: `blocks/` (1309 PNGs), `ui/` (124 PNGs incl. `bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs, unregistered), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`). No `NeBux/` in latest build.
+
+### 2.13 Clear Chat Screen — Bruhh69 (`ui/chat_screen.json`, `ui/.ui_assets/.screens/.chat/chat_tweaks.json`)
+
+What it is: transparent, clutter-free chat (always on, no subpack, no toggle).
+
+How it works:
+- `ui/chat_screen.json` (no namespace — vanilla-filename override, loaded by the game automatically; NOT in `_ui_defs.json`, same as upstream) hides `chat_background`, restyles `messages_text` (50% width, left-middle, layer 76, `black_ovr` 0.7 shade behind text), widens `messages_scrolling_panel`, sets `$jump_to_bottom_on_update true`, `close_on_player_hurt false`, `cache_screen true`.
+- `ui/.ui_assets/.screens/.chat/chat_tweaks.json` (namespace `bt_chat_tweaks`, appended to `_ui_defs.json`) adds 16×16 autocomplete/tab/up/down buttons (`button.chat_autocomplete/back`, `button.chat_previous/next_message`) using `textures/ui/bl_bt` + `.texture_assets/.chat_icons/*`.
+- Textures (no collisions, no atlas registration needed — direct UI paths): `textures/ui/bl_bt(.json/.png)`, `black_ovr(.json/.png)`, `blank.png`, `null.png`, `.texture_assets/.chat_icons/` (`tab/shift_tab/up/down/new_send` icons).
+- No `_global_variables.json` additions (`$is_ccs` local; other `$vars` are control-factory params or engine-resolved, same as upstream).
+
+In-game: chat background invisible, messages readable over gameplay, tab/shift-tab/up/down shortcut buttons.
+
+### 2.14 Health Bar (Always Display) — Rvo JP v3.4.0 (`animations/`, `models/`, `render_controllers/`, `entity/`, `textures/health_bar/`)
+
+What it is: billboard HP bar + heart + numeric digits over every mob, always visible (always-display variant; the `hide_until_hurt` subpack variant was NOT merged).
+
+How it works (all merged at top level — no subpack, active in both subpacks):
+- `animations/health_bar.json` (from upstream `subpacks/always_display/`): `animation.health_bar` billboards via camera rotation; scale `q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : ...` (differs from `hide_until_hurt` only by NOT hiding at full HP).
+- `models/entity/health_bar.json` (`geometry.health_bar`) + `render_controllers/health_bar.json` (`controller.render.health_bar.bar/heart/digit1-3`, `entity_emissive_alpha` material).
+- `entity/*.json` (82 files, same set as before — KS minimal files replaced wholesale): each adds `health_bar` material/texture/geometry slots, `v.health_bar_position/scale` in `pre_animation`, `health_bar` in `animate` + `animations` dict, and the 5 health render controllers. Vanilla animation/controller/geometry/texture refs (e.g. `animation.creeper.legs`, `geometry.creeper.v1.8`) resolve engine-side, same as upstream standalone.
+- `textures/health_bar/`: `bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png` (entity textures, direct paths — no `terrain_texture.json`/`item_texture.json` registration needed).
+- No `_global_variables.json` additions; no `_ui_defs.json` additions (entity/animation/model/controller files load by path); `manifest.json` untouched (no version/UUID/subpack changes).
+
+In-game: look at any mob → bar + HP digits above head, always on. Gate A still reports the same 8 pre-existing FAILs (Drive player-anims absent); no new checker problems — `player.json` refs resolve via the vanilla allowlist.
 
 ---
 
