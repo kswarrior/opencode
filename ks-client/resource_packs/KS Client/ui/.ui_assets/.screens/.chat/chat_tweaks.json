@@ -6,19 +6,19 @@
       15,
       15
     ],
-    "texture": "textures/ui/.texture_assets/.chat_icons/tab_icon"
+    "texture": "textures/ui/.texture_assets/.chat_icons/tab_icon.png"
   },
   "tab_icon@ks_chat_tweaks_ac_image": {
-    "texture": "textures/ui/.texture_assets/.chat_icons/tab_icon"
+    "texture": "textures/ui/.texture_assets/.chat_icons/tab_icon.png"
   },
   "shift_tab_icon@ks_chat_tweaks_ac_image": {
-    "texture": "textures/ui/.texture_assets/.chat_icons/shift_tab_icon"
+    "texture": "textures/ui/.texture_assets/.chat_icons/shift_tab_icon.png"
   },
   "up_icon@ks_chat_tweaks_ac_image": {
-    "texture": "textures/ui/.texture_assets/.chat_icons/up_icon"
+    "texture": "textures/ui/.texture_assets/.chat_icons/up_icon.png"
   },
   "down_icon@ks_chat_tweaks_ac_image": {
-    "texture": "textures/ui/.texture_assets/.chat_icons/down_icon"
+    "texture": "textures/ui/.texture_assets/.chat_icons/down_icon.png"
   },
   "tab@common_buttons.light_content_button": {
     "$pressed_button_name": "button.chat_autocomplete",

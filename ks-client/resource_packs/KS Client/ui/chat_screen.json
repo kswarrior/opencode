@@ -320,7 +320,7 @@
   },
   "new_send": {
     "type": "image",
-    "texture": "textures/ui/.texture_assets/.chat_icons/new_send",
+    "texture": "textures/ui/.texture_assets/.chat_icons/new_send.png",
     "size": [
       16,
       14
