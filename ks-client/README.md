@@ -202,13 +202,24 @@ In-game: chat background invisible, messages readable over gameplay, tab/shift-t
 What it is: billboard HP bar + heart + numeric digits over every mob, always visible (always-display variant merged directly; no toggle, no subpack).
 
 How it works (all merged at top level — no subpack, active in both subpacks):
-- `animations/health_bar.json` (from upstream `subpacks/always_display/`): `animation.health_bar` billboards via camera rotation; scale `q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : ...` (differs from `hide_until_hurt` only by NOT hiding at full HP).
+- `animations/health_bar.json` (always-display variant): `animation.health_bar` billboards via camera rotation; scale `q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : ...` (always visible, even at full HP).
 - `models/entity/health_bar.json` (`geometry.health_bar`) + `render_controllers/health_bar.json` (`controller.render.health_bar.bar/heart/digit1-3`, `entity_emissive_alpha` material).
-- `entity/*.json` (82 files, same set as before — KS minimal files replaced wholesale): each adds `health_bar` material/texture/geometry slots, `v.health_bar_position/scale` in `pre_animation`, `health_bar` in `animate` + `animations` dict, and the 5 health render controllers. Vanilla animation/controller/geometry/texture refs (e.g. `animation.creeper.legs`, `geometry.creeper.v1.8`) resolve engine-side, same as upstream standalone.
+- `entity/*.json` (82 files): each adds `health_bar` material/texture/geometry slots, `v.health_bar_position/scale` in `pre_animation`, `health_bar` in `animate` + `animations` dict, and the 5 health render controllers. Vanilla animation/controller/geometry/texture refs (e.g. `animation.creeper.legs`, `geometry.creeper.v1.8`) resolve engine-side.
 - `textures/health_bar/`: `bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png` (entity textures, direct paths — no `terrain_texture.json`/`item_texture.json` registration needed).
 - No `_global_variables.json` additions; no `_ui_defs.json` additions (entity/animation/model/controller files load by path); `manifest.json` untouched (no version/UUID/subpack changes).
 
 In-game: look at any mob → bar + HP digits above head, always on. Gate A still reports the same 8 pre-existing FAILs (Drive player-anims absent); no new checker problems — `player.json` refs resolve via the vanilla allowlist.
+
+### 2.15 3D Hammer (KS Client: `attachables/`, `animations/`, `models/`, `textures/`)
+
+What it is: Getting Over It style 3D hammer for the mace slot — hold pose + inventory icon (direct merge, always on, no subpack).
+
+How it works:
+- `attachables/mace.attachable.json` (`minecraft:mace`): `entity_alphatest` (+ glint) materials, `geometry.mace`, `animation.mace.first/third_person_hold` wired by `c.is_first_person`, `controller.render.item_default`.
+- `animations/mace.animation.json` (looping hold poses), `models/entity/attachable/mace.geo.json` (`geometry.mace`, 64×64), `textures/entity/attachable/mace.png` (held model), `textures/items/mace.png` (inventory icon, registered as `mace` in `item_texture.json` `atlas.items`), `item.mace.name` in `texts/en_US.lang`.
+- No `_global_variables.json` / `_ui_defs.json` / `manifest.json` changes (attachable + atlas entry load by path/ID).
+
+In-game: hold or view a mace → 3D hammer model; inventory shows the custom icon + name.
 
 ---
 
@@ -229,33 +240,34 @@ ks-client/
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
-│   ├── entity/ (82 json)            ← Rvo health-bar hooks on every mob (vanilla refs + health_bar material/texture/geometry/animate/render_controllers)
-│   ├── animations/health_bar.json ← always-display variant (from upstream subpack; hide_until_hurt NOT merged)
-│   ├── models/entity/health_bar.json (`geometry.health_bar`)
+│   ├── entity/ (82 json)            ← KS health-bar hooks on every mob (vanilla refs + health_bar material/texture/geometry/animate/render_controllers)
+│   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses)
+│   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
+│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json
 │   ├── render_controllers/health_bar.json (`controller.render.health_bar.*`)
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1318 entries)
-│   │   ├── item_texture.json (atlas.items — currently EMPTY {})
+│   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs, unregistered) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files)
+│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/attachable (mace.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
 │   │   ├── _ui_defs.json            ← load order, 13 entries (…+ chat_tweaks; chat_screen.json loads by vanilla filename, no entry needed)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), debug/dev_console/ui_common
-│   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (bt_chat_tweaks)
-│   │   ├── déesse_modules/ (hud.json, b6As_defs.json, slot_hotbar_button/defs+main+settings)
-│   │   ├── pandamine5/hide_gui.json
+│   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (ks_chat_tweaks)
+│   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings)
+│   │   ├── ks_touch/hide_gui.json
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
 │   │   └── ._content_/inv_content.json (component_toggle base for inventory crafting limiter)
-│   ├── subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json ← single-file override ($show_editor_button:false)
+│   ├── subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json ← single-file override ($show_editor_button:false)
 ├── .opencode/skills/ (create-block/item/mob, design-model, debug-addon, creator-tools-cli)
 ├── .mct/mcp/prefs.json
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 expected missing-file FAILs. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json`. `ui/settings_sections/controls_section.json` is unshipped from load order (not in `_ui_defs.json`). `ui/chat_screen.json` loads by vanilla filename (no `_ui_defs.json` entry, same as upstream).
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 expected missing-file FAILs. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json`. `ui/settings_sections/controls_section.json` is unshipped from load order (not in `_ui_defs.json`). `ui/chat_screen.json` loads by vanilla filename (no `_ui_defs.json` entry).
 
 ---
 
@@ -270,7 +282,8 @@ ks-client/
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
-5. **Persist config:** in-game config screen → copy code (`shb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
+   - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
+5. **Persist config:** in-game config screen → copy code (`ksb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
 
