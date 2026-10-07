@@ -6,8 +6,8 @@
     "always_accepts_input": true
   },
 
-  // ---------- NeBux F1 & F3 Buttons v1.1.3 (Default/mobile variant) ----------
-  // Hides vanilla doll/coords/days (F3 screens show their own), styles
+  // ---------- Paperdoll renderer (vanilla copy) ----------
+  // Hides vanilla doll/coords/days, styles
   // selected-slot art. Vanilla root_panel copy, touch-indicator override,
   // progress/player_renderer2-3 and hud_content.controls deliberately NOT
   // ported (stale-copy risk / missing toggle / unreferenced).
@@ -289,14 +289,6 @@
             "totem_btn@hud.totem_btn": {}
           }
         ]
-      },
-      // (NeBux F1/F3 buttons removed per request — doll kept, buttons gone.)
-      {
-        "array_name": "controls",
-        "operation": "insert_front",
-        "value": {
-          "hud_player_renderer@NeBuxHud.NeBux_hud_player_renderer": {}
-        }
       },
       {
         "array_name": "controls",
