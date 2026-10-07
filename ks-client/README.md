@@ -206,20 +206,18 @@ ks-client/
 │   │   ├── terrain_texture.json (atlas.terrain, 1318 entries)
 │   │   ├── item_texture.json (atlas.items — currently EMPTY {})
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs, unregistered) / ui/ (116 PNGs) / c_ui/ (25 files, unwired) / totem/ (2 PNGs)
+│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs, unregistered) / ui/ (116 PNGs) / c_ui/ (8 files, all wired) / totem/ (2 PNGs)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 19 entries (ks_common, start, hud, pause, déesse, pandamine5, NeBux, inv_content…)
+│   │   ├── _ui_defs.json            ← load order, 12 entries (ks_common, start, hud, pause, déesse×5, pandamine5, inventory, inv_content)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), debug/dev_console/ui_common
 │   │   ├── déesse_modules/ (hud.json, b6As_defs.json, slot_hotbar_button/defs+main+settings)
-│   │   ├── NeBux/ (NeBuxHud/Toggles/InventoryCounter, ModMenu/F3+F3NC+F3Right — ship but F1/F3 unwired from HUD)
 │   │   ├── pandamine5/hide_gui.json
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
-│   │   └── ._content_/ (inv_content.json, counter.json — both empty 0×0 stubs since Utility HUD removal)
+│   │   └── ._content_/inv_content.json (component_toggle base for inventory crafting limiter)
 │   ├── subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json ← single-file override ($show_editor_button:false)
-│   └── NeBux/NeBuxUI/ (Buttons/hud_btn.png, Icons/hud_btn.png + inv_icon.png, 0.png, Black.png)
 ├── .opencode/skills/ (create-block/item/mob, design-model, debug-addon, creator-tools-cli)
 ├── .mct/mcp/prefs.json
 └── .vscode/
@@ -236,9 +234,8 @@ ks-client/
 3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS) or `Show Editor`.
 4. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox.
-   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory; green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide. Note: Utility HUD widgets (durability/crosshair/counters/effects) removed; NeBux F1/F3 buttons unwired (doll kept); KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` stubbed empty.
+   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory; green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
-   - Inventory counter text (`NeBux.f3isf/f3isa`) still defined in `en_US.lang` but counter UI is not inserted into HUD in latest build.
 5. **Persist config:** in-game config screen → copy code (`shb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
@@ -274,7 +271,7 @@ Switch in pack settings; memory tier `0` for both.
 
 - **Blocks (`atlas.terrain`, `terrain_texture.json`, 1318 entries):** full vanilla set — planks/logs/leaves, ores (incl. deepslate variants), concrete/powder, terracotta/glazed, shulker boxes, candles, copper (block/door/trapdoor + oxidized/weathered/exposed), cherry/mangrove/pale_oak, crimson/warped, deep-dark/sculk, amethyst, command blocks, campfire, cauldron, composter, bookshelf, TNT, sponge, ice/packed/blue, coral (alive/dead/fans), glass (clear + 16 colors + panes + tinted), doors/trapdoors (glass style, 48 entries), destroy stages, debug.
 - **Items (`atlas.items` EMPTY):** 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) exist in `textures/items/` but `item_texture.json` is `{}` — unregistered, vanilla fallback.
-- **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (25 files — totem/offhand/crosshair/toggles, ships but unwired since Utility HUD removal), `pandamine5/hide_gui`, `slot_gui_button (+pressed)`, `shb_numb_1-9`, every mob-effect icon, joystick/buttons/D-pad.
+- **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (8 files — close/craft/effect_bg, all wired), `pandamine5/hide_gui`, `slot_gui_button (+pressed)`, `shb_numb_1-9`, every mob-effect icon, joystick/buttons/D-pad.
 - **Totem (active):** `totem/close_button.png`, `totem_button.png` — wired in `inventory_screen.json` + `hud_screen.json` `hud.totem_btn`.
 - **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`.
 - **Colormap/misc/gui/controls:** grass/leaves/water tints, `misc/vignette.png`, D-pad art. No `health_bar/` sprites in latest build.
@@ -284,8 +281,8 @@ Switch in pack settings; memory tier `0` for both.
 ## 8. Entities, Animations, Fog, Render Controllers
 
 - `entity/`: 82 minimal client entities (`allay` → `zombie_villager`, incl. `player.json`). All are `format_version 1.10.0` with `animations:{}`, `animate:[]`, `render_controllers:[]` — no health-bar, pose, or controller hooks shipped.
-- `animations/`, `animation_controllers/`, `models/`, `render_controllers/`, `textures/health_bar/`: do NOT exist in latest build (deleted; health-bar system removed, see §2.12). Drive player anims are validated by `tools/` when synced externally, not shipped.
-- `fogs/ks_fullbright.json` + `biomes_client.json`: global fullbright (see §2.11).
+- `animations/`, `animation_controllers/`, `models/`, `render_controllers/`, `textures/health_bar/`, `ui/NeBux/`, `NeBux/`: do NOT exist in latest build (purged per request). Drive player anims are validated by `tools/` when synced externally, not shipped.
+- `fogs/ks_fullbright.json` + `biomes_client.json`: global fullbright (see §2.9).
 
 ---
 
@@ -318,17 +315,15 @@ Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, 
 
 From `manifest.json → metadata.authors`:
 
-- **KS Warrior** — KS Client core (start screen, HUD wiring, fullbright, QA tools, packaging v1.0.0–1.1.2; health-bar + Utility HUD + F1/F3 since removed per request)
+- **KS Warrior** — KS Client core (start screen, HUD wiring, fullbright, QA tools, packaging v1.0.0–1.1.2)
 - **itzriyo157** — Slot Hotbar Button v1.3.0 + Inventory HUD v1.0.2 Bottom Right (both still active)
 - **PandaMine5** — Clean Touch Controls v1.4.1 (art + `hide_gui.json` ship; HUD F1 button removed)
 - **Connected Hotbar** v1.0.1
 - **Glass Doors & Trapdoors** v1.0.1 (block textures active; item icons unregistered — see §2.10)
 - **Mod MCPE** — Clear & Borderless Glass v6.2
 - **oSkullo** — Quick Totem Offhand v1.0.0 (HUD + inventory paths active)
-- **NeBux** — F1 & F3 Button v1.1.3 (files ship but buttons unwired from HUD — doll kept)
-- **EchoRif** — Utility HUD V-1.5 Without Counters (removed — keys/textures remain as dead/reserved)
 
-`generated_with: minecraft_creator_tools 0.19.0`. All upstream JSON retains its header (e.g. NeBux © 2025 — contact on Discord `NeBux18` before reuse; déesse `file_signature Itzriyo157`).
+`generated_with: minecraft_creator_tools 0.19.0`. All upstream JSON retains its header (e.g. déesse `file_signature Itzriyo157`).
 
 ---
 
@@ -352,4 +347,4 @@ Current (`manifest.json`): `KS Client v1.1.2`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json`, `biomes_client.json`, `fogs/`, `entity/` (82 minimal), `textures/` (blocks 1309 / items 17 / ui 116 / gui / c_ui 25 / totem 2 / environment / colormap / misc; terrain 1318 entries, items atlas empty; no health_bar/animations/models/render_controllers), `ui/` (`_global_variables`, `_ui_defs` 19 entries, `hud/start/inventory/pause/debug`, `déesse_modules`, `NeBux` (unwired F1/F3), `pandamine5`, `settings_sections` orphan, `._content_` stubs), `texts/`, `subpacks/` (single-file override), `NeBuxUI/`, `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json`, `biomes_client.json`, `fogs/`, `entity/` (82 minimal), `textures/` (blocks 1309 / items 17 / ui 116 / gui / c_ui 8 / totem 2 / environment / colormap / misc; terrain 1318 entries, items atlas empty), `ui/` (`_global_variables`, `_ui_defs` 12 entries, `hud/start/inventory/pause/debug`, `déesse_modules`, `pandamine5`, `settings_sections` orphan, `._content_/inv_content.json`), `texts/`, `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
