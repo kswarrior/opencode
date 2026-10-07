@@ -268,9 +268,9 @@ ks-client/
 3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS) or `Show Editor`.
 4. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox.
-   - HUD: F1 hides UI, F8 hides paperdoll, F3 opens debug; totem button equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory; green = selected.
+   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory; green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide. Note: Utility HUD widgets (durability/crosshair/counters/effects) removed; NeBux F1/F3 buttons unwired (doll kept); KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` stubbed empty.
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
-   - If inventory full: `Inventory Status: §cFull` warning (NeBux counter).
+   - Inventory counter text (`NeBux.f3isf/f3isa`) still defined in `en_US.lang` but counter UI is not inserted into HUD in latest build.
 5. **Persist config:** in-game config screen → copy code (`shb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
@@ -285,12 +285,12 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar misc | `$shb_ssci`, `$shb_hba`, `$shb_sbi`, `$shb_sdbi` | `true, 4, true, true` — single-click/content/durability behaviors |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/pandamine5/hide_gui, [18,18], [47.5,1.0]` |
-| NeBux hide flags | `$hideinventoryleftbutton/rightbutton`, `$hidef1button/f8button/f3button`, `$hideinventoryfullwarning/counter`, `$hideclock&compass`, `$hidexplevel`, `$hidemodmenubutton` | all `false` = all visible; set `true` to hide |
-| NeBux IDs/offsets | `$recoverycompassid 45088768`, `$clockid 22740992`, `$compassid 22609920`, `f1buttonoffset [-38.5,0.5]`, `f8buttonoffset [38.5,0.5]`, `$f8buttonremove false`, `$f3alpha 0.4` | item-data IDs + button placement + F3 transparency |
-| Paperdoll | `$paperdollsize [65,65]`, `$paperdolloffset [-140,-35]`, `$paperdolltype hud_player_renderer`, `$armorbg false`, `$close_screen_on_hurt false` | HUD doll look |
-| Inventory HUD | `$déesse:inventory_hud_size small`, `$déesse:use_highlight_slot true`, `$déesse:highlight_slot_color [0,1,0]`, `$déesse:highlight_slot_alpha 0.30`, `$déesse:inventory_slot_color [0,0,0]`, `$déesse:inventory_slot_alpha 0.27` | bottom-right grid styling |
-| Utility HUD | `$utility_hud::is_active true`, `$totem_button_offset [0,"25%"]`, `$totem_button_size [40,40]`, `$totem_button_alpha 0.7`, `$show_totem_button/offhand_switch/armor_durability/offhand/mainhand_durability/counters/attack_crosshair true`, `$effects_per_column 10`, `$effects_overlay_anchor right_middle` | totem/durability/crosshair/effects |
-| Utility item IDs | `$golden_apple 18808832`, `$enchanted_golden_apple 18874368`, `$ender_pearls 29753344`, `$totem 39780352`, `$chest 3538946` | must match engine aux IDs — don’t change unless counters break |
+| NeBux hide flags | `$hideinventoryleftbutton`, `$hideinventoryrightbutton`, `$hidef1button`, `$hidef8button`, `$hidef3button`, `$hideinventoryfullwarning`, `$hideinventorycounter`, `$hideclock&compass`, `$hidexplevel`, `$hidemodmenubutton` | all `false` = all visible; set `true` to hide (reserved — F1/F3 buttons currently unwired from HUD) |
+| NeBux IDs/offsets | `$recoverycompassid 45088768`, `$clockid 22740992`, `$compassid 22609920`, `f1buttonoffset [-38.5,0.5]`, `f8buttonoffset [38.5,0.5]`, `$f8buttonremove false`, `$f3alpha 0.4`, `$test "mod_menu_on"` | item-data IDs + button placement + F3 transparency + undocumented mod-menu toggle (reserved) |
+| Paperdoll | `$paperdollsize [65,65]`, `$paperdolloffset [-140,-35]`, `$paperdolltype hud_player_renderer`, `$armorbg false`, `$close_screen_on_hurt false` | HUD doll look (doll kept in `hud_screen.json`) |
+| Inventory HUD | `$déesse:inventory_hud_size small`, `$déesse:use_highlight_slot true`, `$déesse:highlight_slot_color [0,1,0]`, `$déesse:highlight_slot_alpha 0.30`, `$déesse:inventory_slot_color [0,0,0]`, `$déesse:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
+| Utility HUD — DEAD/RESERVED | `$utility_hud::is_active true`, `$totem_button_offset [0,"25%"]`, `$totem_button_size [40,40]`, `$totem_button_alpha 0.7`, `$show_totem_button`, `$show_offhand_switch_button`, `$show_armor_durability`, `$show_offhand`, `$show_mainhand_durability`, `$show_counters`, `$show_attack_crosshair` (`true`), `$effects_per_column 10`, `$effects_overlay_anchor right_middle` | NOT wired to any UI since Utility HUD removal — editing has no in-game effect |
+| Utility item IDs — DEAD/RESERVED | `$golden_apple_item_id 18808832`, `$enchanted_golden_apple_item_id 18874368`, `$ender_pearls_item_id 29753344`, `$totem_item_id 39780352`, `$chest_item_id 3538946` | engine aux IDs — don’t change; unused since Utility HUD removal |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
 
 ---
@@ -299,7 +299,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 
 Declared in `manifest.json → subpacks`:
 
-- `hide_editor` — “Hide Editor (§aBetter Performance§f)” — hides editor UI (`subpacks/hide_editor/ui/`), fewer JSON screens loaded → better FPS. **Recommended.**
+- `hide_editor` — “Hide Editor (§aBetter Performance§f)” — currently a single-file override (`subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json`, `$show_editor_button:false` vs main `true`), fewer editor affordances → better FPS. **Recommended.**
 - `show_editor` — vanilla editor UI visible (for creators).
 
 Switch in pack settings; memory tier `0` for both.
@@ -308,12 +308,12 @@ Switch in pack settings; memory tier `0` for both.
 
 ## 7. Textures Included
 
-- **Blocks (`atlas.terrain`, `terrain_texture.json`):** full vanilla set — planks/logs/leaves, ores (incl. deepslate variants), concrete/powder, terracotta/glazed, shulker boxes, candles, copper (block/door/trapdoor + oxidized/weathered/exposed), cherry/mangrove/pale_oak, crimson/warped, deep-dark/sculk, amethyst, command blocks, campfire, cauldron, composter, bookshelf, TNT, sponge, ice/packed/blue, coral (alive/dead/fans), glass (clear + 16 colors + panes + tinted), doors/trapdoors (glass style), destroy stages, debug.
-- **Items:** all doors (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`).
-- **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (totem/offhand/crosshair/toggles), `pandamine5/hide_gui`, `slot_gui_button (+pressed)`, `shb_numb_1-9`, every mob-effect icon, joystick/buttons/D-pad.
-- **Totem:** `totem/close_button.png`, `totem_button.png`.
-- **Environment:** `clouds/sun/moon_phases/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_*`.
-- **Colormap/misc/gui/controls/health_bar:** grass/leaves/water tints, misc particles, D-pad art, health bar sprites.
+- **Blocks (`atlas.terrain`, `terrain_texture.json`, 1318 entries):** full vanilla set — planks/logs/leaves, ores (incl. deepslate variants), concrete/powder, terracotta/glazed, shulker boxes, candles, copper (block/door/trapdoor + oxidized/weathered/exposed), cherry/mangrove/pale_oak, crimson/warped, deep-dark/sculk, amethyst, command blocks, campfire, cauldron, composter, bookshelf, TNT, sponge, ice/packed/blue, coral (alive/dead/fans), glass (clear + 16 colors + panes + tinted), doors/trapdoors (glass style, 48 entries), destroy stages, debug.
+- **Items (`atlas.items` EMPTY):** 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) exist in `textures/items/` but `item_texture.json` is `{}` — unregistered, vanilla fallback.
+- **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (25 files — totem/offhand/crosshair/toggles, ships but unwired since Utility HUD removal), `pandamine5/hide_gui`, `slot_gui_button (+pressed)`, `shb_numb_1-9`, every mob-effect icon, joystick/buttons/D-pad.
+- **Totem (active):** `totem/close_button.png`, `totem_button.png` — wired in `inventory_screen.json` + `hud_screen.json` `hud.totem_btn`.
+- **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`.
+- **Colormap/misc/gui/controls:** grass/leaves/water tints, `misc/vignette.png`, D-pad art. No `health_bar/` sprites in latest build.
 
 ---
 
