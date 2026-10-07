@@ -37,26 +37,23 @@
 | # | Feature | Source / Version | What it gives you |
 |---|---------|------------------|-------------------|
 | 1 | Premium Start Screen | KS Client custom (`ui/start_screen.json`, `ui/ks_client_common.json`) | Text-free branded menu, paperdoll above Play, small version label, icon-only inbox bell, KS settings/dressing buttons |
-| 2 | Utility HUD V-1.5 (Without Counters base) — REMOVED | EchoRif (was) | **Removed per request in latest build:** `hud_screen.json` root is now `{always_accepts_input:true}`, `ui/._content_/inv_content.json` + `counter.json` are empty 0×0 stubs. Durability/crosshair/toggles/redirects gone. Keys in `_global_variables.json` (`$utility_hud::*`, `$show_*`, `$totem_button_*`, `$effects_*`) + `textures/c_ui/*` remain on disk as dead/reserved, not wired to any UI. |
-| 3 | Quick Totem Offhand | oSkullo v1.0.0 | One-tap totem → offhand from HUD `hud.totem_btn` (30×30 `bottom_middle [-125,-35]`, `textures/totem/totem_button`) + inventory screen `master_totem_panel` (`inventory_scanner` / `hotbar_scanner`) |
-| 4 | Slot Hotbar Buttons | itzriyo157 v1.3.0 | 10 floating hotbar slot shortcuts (`$shb_1` … `$shb_10`) with per-slot X/Y/size/visible |
-| 5 | Inventory HUD Bottom-Right | itzriyo157 v1.0.2 (`déesse_modules/hud.json`) | Live 9×4 inventory grid on HUD, highlight selected slot, durability + storage bars |
-| 6 | NeBux F1 & F3 Buttons — UNWIRED from HUD | NeBux v1.1.3 (`ui/NeBux/` ships + in `_ui_defs.json`) | Files ship but F1/F3 buttons removed from `hud_screen.json` per request — doll (`NeBux_hud_player_renderer`) kept. `NeBuxHud/Toggles/InventoryCounter + ModMenu/F3*.json` parse but are not inserted into HUD. Toggles/IDs/offsets in `_global_variables.json` remain as reserved. `ks_show_hud` (“Show HUD” bar, `ks_client.ks_show_hud`) is the way back after hide. |
-| 7 | Clean Touch Controls | PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json` still in `_ui_defs.json`, `textures/ui/pandamine5/`, `textures/gui/controls/`) | Hide-GUI definition + clean joystick/D-pad/buttons art ships; PandaMine F1 HUD button removed per request (`hud_screen.json` comment). |
-| 8 | Connected Hotbar | v1.0.1 | Seamless hotbar (`hotbar_0`…`hotbar_8` + `start/end_cap`, `selected_hotbar_slot`) |
-| 9 | Clear & Borderless Glass | Mod MCPE v6.2 | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
-| 10 | Glass Doors & Trapdoors | v1.0.1 | Transparent doors/trapdoors — 48 block entries in `terrain_texture.json` (`acacia/birch/…_door_*`, `*_trapdoor`) + `textures/blocks/*door*` PNGs. Item icons (`textures/items/door_*.png`, 17 files) exist on disk but `item_texture.json` (`atlas.items`) is currently empty `{}` so they fall back to vanilla. |
-| 11 | Fullbright Fog | KS custom (`fogs/ks_fullbright.json` + `biomes_client.json`) | No dark fog: air/weather `0.999–1.0` white, water `200–300`, lava handling |
-| 12 | Health Bar System — REMOVED | (was KS custom) | **Deleted from latest build:** `animations/`, `models/`, `render_controllers/`, `textures/health_bar/` do not exist. All 82 `entity/*.json` are minimal (`animations:{}`, `animate:[]`, `render_controllers:[]`) with no health hooks. |
-| 13 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/...`) are NOT shipped, so Gate A currently reports 8 expected FAILs (missing-file problems) — gates 1–2 + 5 + `mct validate` still run; `player.json` stays minimal for compat. |
-| 14 | Custom UI Kit (KS + c_ui) | KS custom | `ks_btn_cyan`, `ks_menu_bg`, `ks_sidebar_bg`, `ks_icon_*`, `ks_info_*`, `totem`, all effect icons. Note: brand header/footer/center row removed (text-free screen); `ks_hud_keys` / `ks_inv_slot` / `ks_f3_panel` in `ks_client_common.json` are empty 0×0 stubs; `textures/c_ui/*` (totem/offhand/crosshair/toggles) ships but is unwired since Utility HUD removal. |
-| 15 | Custom Touch Button Art | KS + vanilla override | `jump`, `sneak`, `sprint`, `flyingascend/descend`, `waterascend/descend`, D-pad, joystick, `interact`, `mount`, `pick_block` |
-| 16 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed (comment in `pause_screen.json`: HUD F1/F3 keys removed, `ks_show_hud` is the way back) |
-| 17 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
-| 18 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
-| 19 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
-| 20 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 116 PNGs), doors items on disk but `atlas.items` empty, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc |
-| 21 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
+| 2 | Quick Totem Offhand | oSkullo v1.0.0 | One-tap totem → offhand from HUD `hud.totem_btn` (30×30 `bottom_middle [-125,-35]`, `textures/totem/totem_button`) + inventory screen `master_totem_panel` (`inventory_scanner` / `hotbar_scanner`) |
+| 3 | Slot Hotbar Buttons | itzriyo157 v1.3.0 | 10 floating hotbar slot shortcuts (`$shb_1` … `$shb_10`) with per-slot X/Y/size/visible |
+| 4 | Inventory HUD Bottom-Right | itzriyo157 v1.0.2 (`déesse_modules/hud.json`) | Live 9×4 inventory grid on HUD, highlight selected slot, durability + storage bars |
+| 5 | Clean Touch Controls | PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json` still in `_ui_defs.json`, `textures/ui/pandamine5/`, `textures/gui/controls/`) | Hide-GUI definition + clean joystick/D-pad/buttons art ships; PandaMine F1 HUD button removed per request (`hud_screen.json` comment). |
+| 6 | Connected Hotbar | v1.0.1 | Seamless hotbar (`hotbar_0`…`hotbar_8` + `start/end_cap`, `selected_hotbar_slot`) |
+| 7 | Clear & Borderless Glass | Mod MCPE v6.2 | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
+| 8 | Glass Doors & Trapdoors | v1.0.1 | Transparent doors/trapdoors — 48 block entries in `terrain_texture.json` (`acacia/birch/…_door_*`, `*_trapdoor`) + `textures/blocks/*door*` PNGs. Item icons (`textures/items/door_*.png`, 17 files) exist on disk but `item_texture.json` (`atlas.items`) is currently empty `{}` so they fall back to vanilla. |
+| 9 | Fullbright Fog | KS custom (`fogs/ks_fullbright.json` + `biomes_client.json`) | No dark fog: air/weather `0.999–1.0` white, water `200–300`, lava handling |
+| 10 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/...`) are NOT shipped, so Gate A currently reports 8 expected FAILs (missing-file problems) — gates 1–2 + 5 + `mct validate` still run; `player.json` stays minimal for compat. |
+| 11 | Custom UI Kit (KS + c_ui) | KS custom | `ks_btn_cyan`, `ks_menu_bg`, `ks_sidebar_bg`, `ks_icon_*`, `ks_info_*`, `totem`, all effect icons. Note: brand header/footer/center row removed (text-free screen); `ks_hud_keys` / `ks_inv_slot` / `ks_f3_panel` in `ks_client_common.json` are empty 0×0 stubs; `textures/c_ui/` is now 8 files, all wired (close/craft/effect_bg for mob-effect + inventory screens). |
+| 12 | Custom Touch Button Art | KS + vanilla override | `jump`, `sneak`, `sprint`, `flyingascend/descend`, `waterascend/descend`, D-pad, joystick, `interact`, `mount`, `pick_block` |
+| 13 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed (comment in `pause_screen.json`: HUD F1/F3 keys removed, `ks_show_hud` is the way back) |
+| 14 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
+| 15 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
+| 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
+| 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 116 PNGs), doors items on disk but `atlas.items` empty, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc |
+| 18 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
 
 ---
 
@@ -75,19 +72,7 @@ How it works:
 
 In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
 
-### 2.2 Utility HUD V-1.5 (Without Counters) — EchoRif — REMOVED in latest build
-
-What it was: durability, totem, crosshair, effects HUD extension.
-
-Current state:
-- `hud_screen.json` (namespace `hud`) root is now `{"always_accepts_input":true}` with comment “Utility HUD V-1.5 fully removed — durability/crosshair/toggles/redirects gone”. No `_toggles`, `force_close_screen`, `f1/f8_redirect` anymore.
-- `ui/._content_/inv_content.json` + `counter.json` (still in `_ui_defs.json`) are empty 0×0 stubs — `inv_content` carries comment “Utility HUD V-1.5 fully removed. Only component_toggle base kept for crafting limiter”, `counter` is just `_slot_count_panel` 0×0.
-- Art in `textures/c_ui/` (25 files: `totem/…_pressed`, `offhand_slot`, `attack_crosshair`, `alert`, `switch_*`, `toggle_*`, `close_*`, `help_*`, `craft_1/all*`, `effect_bg.png/json`) ships but is unwired.
-- Keys in `_global_variables.json` (`$utility_hud::is_active`, `$show_totem_button/offhand_switch/armor_durability/offhand/mainhand_durability/counters/attack_crosshair`, `$totem_button_offset/size/alpha`, `$effects_per_column/overlay_anchor`, `$golden_apple_item_id/$enchanted_golden_apple_item_id/$ender_pearls_item_id/$totem_item_id/$chest_item_id`) remain as dead/reserved — grep shows zero references in `ui/` outside `_global_variables.json`.
-
-In-game: none of the Utility HUD widgets appear. Use the surviving totem paths in §2.3 instead.
-
-### 2.3 Quick Totem Offhand — oSkullo v1.0.0 (`ui/inventory_screen.json`, `ui/hud_screen.json`, `textures/totem/`)
+### 2.2 Quick Totem Offhand — oSkullo v1.0.0 (`ui/inventory_screen.json`, `ui/hud_screen.json`, `textures/totem/`)
 
 What it is: one-tap totem to offhand, from HUD *and* inside inventory (both paths still active).
 
@@ -95,7 +80,7 @@ How it works:
 - `inventory_screen.json` (`crafting` namespace) inserts `master_totem_panel` (30×30, `bottom_middle [-125,-35]`, layer 100) at front of controls.
 - `exit_btn` shows `textures/totem/close_button` when offhand is occupied (`#item_id_aux != -1` on `offhand_items` collection) and sends `menu_exit` on press.
 - `equip_panel` shows `textures/totem/totem_button` + `inventory_scanner` + `hotbar_scanner` when offhand is empty (`#item_id_aux = -1`). `scanner_slot_template` creates an invisible full-size button per slot that only becomes visible if the slot hover text contains `Totem`, and sends `container_auto_place` (pressed/focused/slot1). So tapping the totem icon auto-places a totem from inventory or hotbar.
-- HUD-side: `hud_screen.json` `hud_content` inserts `totem_btn@hud.totem_btn` (30×30 `bottom_middle [-125,-35]`, all states `textures/totem/totem_button`, `$pressed_button_name button.hotbar_inventory_button`) at front — this is the surviving HUD totem path (Utility HUD totem is gone, see §2.2).
+- HUD-side: `hud_screen.json` `hud_content` inserts `totem_btn@hud.totem_btn` (30×30 `bottom_middle [-125,-35]`, all states `textures/totem/totem_button`, `$pressed_button_name button.hotbar_inventory_button`) at front.
 
 In-game: if offhand empty you see a totem icon near inventory; tap it → totem equipped. If occupied you see an X to quickly close/unequip context.
 
