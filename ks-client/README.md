@@ -94,7 +94,7 @@ What it is: up to 10 floating buttons that directly select hotbar slots (PvP slo
 
 How it works:
 - Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` with per-slot X/Y/size/show rows, a totem row, and inventory-HUD toggles.
-- Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slots 5 hidden + 6–8 second row (`y 22`, `x 62/72/82/92` with 5 hidden), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
+- Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slot 5 hidden (`62,22,false`), slots 6–8 second row (`y 22`, `x 72/82/92`), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
 - Buttons use `textures/ui/ksb_slot_button.png` (+`_pressed`), `ksb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot).
 - Totem row (`$id: totem`): X/Y/size sliders + show toggle drive `$ksb_totem_x/y/s/v` globals (defaults `-125/-35/30/true`); `hud.totem_btn` reads them directly, so totem changes apply after copy + repack (slot buttons preview live, totem does not).
 - Inventory toggles: `Show Inventory HUD` (live — binds the `root_panel` insertion visibility to the toggle state, default `$ksb_invhud_v true`) and `Compact Inventory HUD` (adds a `requires ($ksb_invhud_small)` small-size entry in `ks hud.json`; repack to apply, default false).
@@ -109,7 +109,7 @@ What it is: always-on mini inventory on the HUD (no need to open inventory to se
 How it works:
 - `ks_hud.inventory_hud_panel` (`ks_b6As_defs.variables`): panel `$m_size [162,54]` (small mode `[135,45]`), anchored bottom-right, layer 45. Contains `inv_grid` (grid 9×4, `inv_hud_container_item` template, bound to `hotbar_items` — actually shows rows beyond hotbar via `collection_index > 8` filter).
 - Each cell: `bg` (white texture tinted `$ks:inventory_slot_color [0,0,0]`, alpha `$ks:inventory_slot_alpha 0.27`), `item_renderer` (16×16, small 14×14), `stack_count_label` (scale 0.8/0.6), `durability_bar` + `storage_bar`, `green` highlight overlay (`$ks:use_highlight_slot true`, color `[0,1,0]`, alpha `0.30`) that lights the currently selected slot via `#ushdjsj` collection math over 37 slots.
-- Size mode via `$ks:inventory_hud_size = "small"`.
+- Size mode via `$ks:inventory_hud_size = "small"`, plus the editor `Compact` toggle (`$ksb_invhud_small` → extra small-size `requires` entry) and `Show` toggle (`$ksb_invhud_v` default, live via toggle-state binding on the `root_panel` insertion).
 
 In-game: small translucent inventory grid bottom-right with counts, durability, and green highlight on selected slot.
 
@@ -230,13 +230,13 @@ In-game: hold or view a mace → 3D hammer model; inventory shows the custom ico
 What it is: stacked top-left readout — `KS Client vX.Y.Z`, `Minecraft Vanilla v<game>`, `FPS: <digits>`, `Position: X, Y, Z` — always on (other position variants not merged, no subpack).
 
 How it works:
-- `ui/fps_hud.json` (namespace `ks_fps`): vertical `stack_panel` pinned top-left (`offset [3,3]`) with 4 rows — (1) static `KS Client v1.1.4` label (**hardcoded: bump it on every version release**), (2) horizontal row: static `Minecraft Vanilla v` + dynamic `#version` label (game version, same binding as the start-screen version strip), (3) horizontal row: static `FPS: ` label + 75×16 clipped digits panel (paper-doll 64×64, ~50% of the original 150×32/128 size), (4) position label via the vanilla `#player_position_text` → `#text` binding (renders `Position: X, Y, Z`, same pattern as vanilla `hud_screen.json`).
+- `ui/fps_hud.json` (namespace `ks_fps`): vertical `stack_panel` pinned top-left (`offset [3,3]`) with 3 rows — (1) static `KS Client v1.1.5` label (**hardcoded: bump it on every version release**), (2) horizontal row: static `FPS: ` label (0.7 scale) + 56×12 clipped digits panel (paper-doll 48×48 at `offset [-16,15]` — ~25% smaller than before, nudged up to sit on the text baseline), (3) position label via the vanilla `#player_position_text` → `#text` binding (renders `Position: X, Y, Z`, same pattern as vanilla `hud_screen.json`). No Minecraft-version row (removed per request).
 - `ui/hud_screen.json` `root_panel` gains an `insert_back` modification: `fps_counter@ks_fps.fps_counter_mask`.
 - `entity/player.json` gains fps slots only (minimal merge, health hooks untouched): `fps_counter` material/texture (`textures/fps/digits_atlas`)/geometry (`geometry.fps_counter`), fps `initialize` + `pre_animation` accumulators, public `display_fps`/`rounded_fps`/`digit_*` variables, and `{"controller.render.fps_counter": "variable.is_paperdoll"}` appended to render controllers. `animate` needed no change (`root` already played).
 - `models/entity/fps_counter.geo.json` (`geometry.fps_counter`, hundreds/tens/ones/plus bones), `render_controllers/fps_counter.render.json` (digit part-visibility), `textures/fps/digits_atlas.png` (direct path — legacy `texture_list.json` notice only, same as 70+ pre-existing).
 - No `_global_variables.json` (beyond the hook no config exists upstream) / `manifest.json` changes; `_ui_defs.json` 13 → 14 entries.
 
-In-game, top-left corner: `KS Client v1.1.4`, `Minecraft Vanilla v<game>`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A unchanged (same 8 pre-existing FAILs); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
+In-game, top-left corner: `KS Client v1.1.5`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A unchanged (same 8 pre-existing FAILs); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
 
 ---
 
@@ -300,7 +300,7 @@ ks-client/
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
-   - FPS: stacked readout top-left (versions, `FPS: <digits>`, position).
+   - FPS: stacked readout top-left (client version, `FPS: <digits>`, position).
 5. **Persist config:** in-game config screen → copy code (`ksb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
