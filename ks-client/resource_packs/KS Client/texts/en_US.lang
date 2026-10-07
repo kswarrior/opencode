@@ -12,5 +12,3 @@ ks_client.tap_to_start=TAP TO START
 ks_client.status_active=PREMIUM UI  •  ACTIVE
 ks_client.footer=KS CLIENT v1.1.2  •  ONLINE
 shb.howToSaveConfig=Copy the entire code in this text box and replace it into the '_global_variables.json' file to save the configuration.
-NeBux.f3isf=Inventory Status: §cFull
-NeBux.f3isa=Inventory Status: §aAvailable
