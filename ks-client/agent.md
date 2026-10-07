@@ -8,7 +8,7 @@
 ## 1. What KS Client Is
 
 - **Minecraft Bedrock resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
-- **Name/version:** `KS Client v1.1.2`, `min_engine_version [1,21,120]`. See `resource_packs/KS Client/manifest.json`.
+- **Name/version:** `KS Client v1.1.4`, `min_engine_version [1,21,120]`. See `resource_packs/KS Client/manifest.json`.
 - **What it does:** premium mobile PvP UI — custom start screen, HUD (Utility HUD V-1.5), totem/offhand shortcut, 10 slot-hotbar buttons, bottom-right inventory HUD, NeBux F1/F3 buttons, clean touch controls, connected hotbar, clear glass, glass doors, fullbright fog, health bars.
 - **Full feature docs:** see `README.md` §1–§2. Read it first for user-facing behavior.
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP (`npx ... mct mcp -i .`). Skills allowed: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
@@ -22,39 +22,35 @@ resource_packs/KS Client/
 ├── manifest.json                  # identity. DO NOT EDIT version/uuids (see §7)
 ├── biomes_client.json             # forces fog_identifier ks:fullbright on ALL biomes
 ├── fogs/ks_fullbright.json        # fullbright definition (air/weather 0.999-1.0)
-├── entity/ (80+ json)             # client_entity per mob. player.json is INTENTIONALLY minimal
-├── animations/health_bar.json     # billboard health-bar animation (loop:true)
-├── models/entity/health_bar.json
-├── render_controllers/health_bar.json
+├── entity/ (82 json)              # client_entity per mob. player.json carries health + fps hooks (merged, not minimal)
+├── animations/health_bar.json     # always-display billboard health-bar animation
+├── animations/mace.animation.json # hammer hold poses (attachable)
+├── attachables/mace.attachable.json  # minecraft:mace → geometry.mace
+├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json
+├── render_controllers/health_bar.json + fps_counter.render.json
 ├── textures/
 │   ├── terrain_texture.json       # atlas.terrain — must list every custom block texture
-│   ├── item_texture.json          # atlas.items (minimal by design)
-│   ├── blocks/ items/ ui/ gui/ c_ui/ totem/
-│   │   environment/ colormap/ misc/ health_bar/
+│   ├── item_texture.json          # atlas.items — currently `mace` entry only
+│   ├── blocks/ items/ ui/ gui/ c_ui/ totem/ health_bar/ fps/
+│   │   environment/ colormap/ misc/ entity/attachable/
 ├── texts/en_US.lang + languages.json
 ├── ui/
 │   ├── _global_variables.json     # ★ ALL user config lives here. Edit this, not hardcoded UI.
 │   ├── _ui_defs.json              # ★ load order. Never remove entries, only append.
 │   ├── ks_client_common.json      # KS shared buttons/rails (settings/dressing/inbox)
 │   ├── start_screen.json          # namespace `start`
-│   ├── hud_screen.json            # namespace `hud` (+ F1/F8 redirects, Utility HUD toggles)
+│   ├── hud_screen.json            # namespace `hud` (root_panel: inv HUD + fps hook; NO Utility/NeBux leftovers)
+│   ├── chat_screen.json           # NO namespace — vanilla override, loads by filename (NOT in _ui_defs)
+│   ├── fps_hud.json               # namespace `ks_fps` (top-left version/FPS/position stack)
 │   ├── inventory_screen.json      # namespace `crafting` (totem auto-equip panel)
 │   ├── pause_screen.json          # namespace `pause` (config removed by design)
 │   ├── debug_screen.json / dev_console_screen.json / mob_effect_screen.json / ui_common.json
-│   ├── déesse_modules/hud.json + b6As_defs.json            # Inventory HUD bottom-right
-│   ├── déesse_modules/slot_hotbar_button/{defs,main,settings}.json  # slot buttons 1-10
-│   ├── NeBux/{NeBuxHud,NeBuxToggles,NeBuxInventoryCounter}.json + ModMenu/F3*.json
-│   ├── pandamine5/hide_gui.json
-│   └── ._content_/{inv_content,counter}.json
-├── subpacks/hide_editor/ui/       # performance variant
-└── NeBux/NeBuxUI/Buttons|Icons/    # F1/F3 button art
-
-tools/
-├── check_player_animation_loop.py # 5-gate animation/QA checker (see §6)
-└── recheck_player_animation.sh    # wrapper: bash tools/recheck_player_animation.sh [n] [delay]
-
-out/     # mct validate reports (csv/mcr.json/html) — reference only
-release/ # shipped .mcpack v1.0.0..v1.1.2 — do NOT overwrite
+│   ├── ks_modules/hud.json + ks_b6As_defs  # Inventory HUD bottom-right
+│   ├── ks_modules/ksb_hotbar_button/{defs,main,settings}.json  # slot buttons 1-10
+│   ├── ks_touch/hide_gui.json
+│   ├── .ui_assets/.screens/.chat/chat_tweaks.json  # namespace `ks_chat_tweaks`
+│   └── ._content_/inv_content.json  # component_toggle base for inventory limiter (counter.json deleted)
+├── subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json  # single-file perf override
 ```
 
 **Key rule:** `ui/_global_variables.json` is the config API. `ui/*.json` files are the implementation. Prefer changing variables over editing UI logic.
@@ -160,7 +156,7 @@ npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_v
 
 ## 7. Version Policy — NO AUTO-BUMPING
 
-- **NEVER bump `manifest.json` `header.version`, `modules[0].version`, or `header.description` ("v1.1.2") as part of a fix/feature.** Leave at `[1,1,2]`.
+- **NEVER bump `manifest.json` `header.version`, `modules[0].version`, or `header.description` ("v1.1.4") as part of a fix/feature.** Leave at `[1,1,4]`.
 - **NEVER create `release/KS-Client-vX.Y.Z.mcpack` with a new version number unasked.** If the user asks for an `.mcpack`, reuse the current version in the filename (overwrite is still forbidden — write to `/tmp/` or ask for a filename).
 - **If the user explicitly requests a version bump** (e.g. "release 1.1.3"), then and only then: update all three spots (header version + module version + description string) together, and name the artifact accordingly.
 
@@ -176,8 +172,8 @@ python3 tools/check_player_animation_loop.py --iterations 3 --delay 1
 rm -rf /tmp/ks_pack && mkdir -p /tmp/ks_pack
 cp -r "resource_packs/KS Client" /tmp/ks_pack/
 # 3. zip CONTENTS of the pack folder (manifest.json at zip root), then rename
-python3 -c "import shutil; shutil.make_archive('/tmp/KS-Client-v1.1.2','zip','/tmp/ks_pack/KS Client')"
-mv /tmp/KS-Client-v1.1.2.zip /tmp/KS-Client-v1.1.2.mcpack
+python3 -c "import shutil; shutil.make_archive('/tmp/KS-Client-v1.1.4','zip','/tmp/ks_pack/KS Client')"
+mv /tmp/KS-Client-v1.1.4.zip /tmp/KS-Client-v1.1.4.mcpack
 # 4. do NOT drop into release/ unless user asked; report /tmp path + validation output
 ```
 
