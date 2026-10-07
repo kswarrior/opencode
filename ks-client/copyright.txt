@@ -58,6 +58,18 @@ here. Respect their licenses — get permission before redistributing.
              `textures/entity/attachable/mace.png`,
              `textures/items/mace.png` (+ `atlas.items` entry, lang name)
 
+11. Real FPS Counter, Top Left only (paper-doll digit FPS overlay)
+    Pack    : Real FPS Counter v1.4.6 (base ui/fps_hud.json = Top Left;
+              bottom_left/bottom_right/top_center/top_right variants NOT used)
+    Source  : https://www.mcpedl.com/ (Real FPS Counter v1.4.6)
+    Now     : `ui/fps_hud.json` (namespace ks_fps, top_left [0,0]),
+              `root_panel` insert_back hook in `ui/hud_screen.json`,
+              fps slots merged into `entity/player.json` (materials,
+              textures, geometry, initialize, pre_animation, variables,
+              render controller), `models/entity/fps_counter.geo.json`,
+              `render_controllers/fps_counter.render.json`,
+              `textures/fps/digits_atlas.png` (no subpack, no manifest change)
+
 Removed again after merge (no longer in pack, kept here for history):
 - Utility HUD V-1.5 Without Counters — EchoRif (fully purged)
 - F1 & F3 Buttons v1.1.3 — NeBux (fully purged, incl. doll)
