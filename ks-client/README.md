@@ -85,7 +85,7 @@ How it works:
 - `inventory_screen.json` (`crafting` namespace) inserts `master_totem_panel` (30×30, `bottom_middle [-125,-35]`, layer 100) at front of controls.
 - `exit_btn` shows `textures/totem/close_button` when offhand is occupied (`#item_id_aux != -1` on `offhand_items` collection) and sends `menu_exit` on press.
 - `equip_panel` shows `textures/totem/totem_button` + `inventory_scanner` + `hotbar_scanner` when offhand is empty (`#item_id_aux = -1`). `scanner_slot_template` creates an invisible full-size button per slot that only becomes visible if the slot hover text contains `Totem`, and sends `container_auto_place` (pressed/focused/slot1). So tapping the totem icon auto-places a totem from inventory or hotbar.
-- HUD-side: `hud_screen.json` `hud_content` inserts `totem_btn@hud.totem_btn` (30×30 `bottom_middle [-125,-35]`, all states `textures/totem/totem_button`, `$pressed_button_name button.hotbar_inventory_button`) at front.
+- HUD-side: `hud_screen.json` `hud_content` inserts `totem_btn_pos@hud.totem_btn_pos` wrapper (bottom-middle anchored, offsets `(htotem_y_slider - 125)` / `(htotem_x_slider - 35)`, defaults `[-125,-35]`) containing `totem_btn@settings_common.action_button` (30×30, all states `textures/totem/totem_button`, `$pressed_button_name button.hotbar_inventory_button`) at front. Visibility follows the editor totem toggle live (`ksbT_totem_t`). NOTE: template naming is swapped by design — `htotem_y_slider` is the X axis, `htotem_x_slider` is the Y axis (same as hotbar slots).
 
 In-game: if offhand empty you see a totem icon near inventory; tap it → totem equipped. If occupied you see an X to quickly close/unequip context.
 
