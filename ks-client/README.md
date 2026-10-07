@@ -84,7 +84,7 @@ How it works:
 
 In-game: if offhand empty you see a totem icon near inventory; tap it → totem equipped. If occupied you see an X to quickly close/unequip context.
 
-### 2.4 Slot Hotbar Buttons — itzriyo157 v1.3.0 (`ui/déesse_modules/slot_hotbar_button/`, `_global_variables.json`)
+### 2.3 Slot Hotbar Buttons — itzriyo157 v1.3.0 (`ui/déesse_modules/slot_hotbar_button/`, `_global_variables.json`)
 
 What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap).
 
@@ -95,7 +95,7 @@ How it works:
 
 In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Move/resize/hide each via `_global_variables.json` (see §5). Copy the HowToSaveConfig code from the in-game config screen into `_global_variables.json` to persist (see `shb.howToSaveConfig` string).
 
-### 2.5 Inventory HUD Bottom-Right — itzriyo157 v1.0.2 (`ui/déesse_modules/hud.json`, `b6As_defs.json`)
+### 2.4 Inventory HUD Bottom-Right — itzriyo157 v1.0.2 (`ui/déesse_modules/hud.json`, `b6As_defs.json`)
 
 What it is: always-on mini inventory on the HUD (no need to open inventory to see contents).
 
@@ -106,20 +106,7 @@ How it works:
 
 In-game: small translucent inventory grid bottom-right with counts, durability, and green highlight on selected slot.
 
-### 2.6 NeBux F1 & F3 Buttons v1.1.3 — files ship, buttons UNWIRED (`ui/NeBux/`, `NeBux/NeBuxUI/`, `textures/ui/pandamine5/`)
-
-What it is: top-bar utility buttons + debug ModMenu — currently unwired from the HUD per request.
-
-Current state:
-- `ui/NeBux/` (`NeBuxHud.json`, `NeBuxToggles.json`, `NeBuxInventoryCounter.json`, `ModMenu/F3.json`, `F3NC.json`, `F3Right.json`) all ship and are listed in `_ui_defs.json` (19 entries total), so they parse.
-- `hud_screen.json` only inserts `hud_player_renderer@NeBuxHud.NeBux_hud_player_renderer` (doll kept) with comment “NeBux F1/F3 buttons removed per request — doll kept, buttons gone”. No `f1_button` / `hidehudm` / `mod_menu_toggle` insertion remains.
-- `NeBuxToggles.json` + `ModMenu/F3*.json` (FPS/coords/direction/armor/bossbar/chat/clock/item/mob/score, see `ks_info_*.png`), `NeBuxInventoryCounter.json` (`NeBux.f3isf=Inventory Status: §cFull` / `f3isa=§aAvailable`, full-warning) are defined but not shown in-game.
-- Offsets/colors/IDs in `_global_variables.json` remain as reserved: `f1buttonoffset [-38.5,0.5]`, `f8buttonoffset [38.5,0.5]`, `$f1_enabled`, `$f1_texture textures/ui/pandamine5/hide_gui`, `$f1_size [18,18]`, `$f1_offset [47.5,1.0]`, `$f3alpha 0.4`, `$paperdollsize [65,65]`, `$paperdolloffset [-140,-35]`, `$paperdolltype hud_player_renderer`, hide flags (`$hideinventoryleftbutton/rightbutton`, `$hidef1button/f8button/f3button`, `$hideinventoryfullwarning/counter`, `$hideclock&compass`, `$hidexplevel`, `$hidemodmenubutton`), IDs (`$recoverycompassid 45088768`, `$clockid 22740992`, `$compassid 22609920`), `$f8buttonremove`, `$armorbg`, `$close_screen_on_hurt`, `$hud_elipses_*` (spelled `elipses` in file), plus `$test:"mod_menu_on"` (undocumented toggle, see §5).
-- Art ships: `NeBux/NeBuxUI/Buttons/hud_btn.png`, `Icons/hud_btn.png`, `Icons/inv_icon.png`, `0.png`, `Black.png`.
-
-In-game: F1/F3 buttons do NOT appear. Paperdoll doll still renders. `ks_show_hud` (“Show HUD” bar) is the way back after hide. Re-wire by re-adding the `NeBuxHud`/`NeBuxToggles` insertions in `hud_screen.json` `hud_content.modifications`.
-
-### 2.7 Clean Touch Controls — PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json`, `textures/ui/*`, `textures/gui/controls/`)
+### 2.5 Clean Touch Controls — PandaMine5 v1.4.1 (`ui/pandamine5/hide_gui.json`, `textures/ui/*`, `textures/gui/controls/`)
 
 What it is: minimal, clean mobile controls.
 
@@ -131,7 +118,7 @@ How it works:
 
 In-game: cleaner touch art remains; the HUD hide button path is now `ks_show_hud` (`button.hide_gui_all`), not the PandaMine F1 button.
 
-### 2.8 Connected Hotbar v1.0.1 (`textures/ui/hotbar_*.png`)
+### 2.6 Connected Hotbar v1.0.1 (`textures/ui/hotbar_*.png`)
 
 What it is: hotbar looks like one continuous bar instead of 9 separate boxes.
 
@@ -139,7 +126,7 @@ How it works: `hotbar_0`…`hotbar_8` + `hotbar_start_cap` + `hotbar_end_cap` ti
 
 In-game: cleaner, client-like hotbar.
 
-### 2.9 Clear & Borderless Glass v6.2 — Mod MCPE (`textures/blocks/glass*.png`)
+### 2.7 Clear & Borderless Glass v6.2 — Mod MCPE (`textures/blocks/glass*.png`)
 
 What it is: PvP-essential clear glass.
 
@@ -147,7 +134,7 @@ How it works: replaces `glass.png` (no border streaks), all 16 `glass_<color>.pn
 
 In-game: crystal-clear windows, easier to see through in fights/builds.
 
-### 2.10 Glass Doors & Trapdoors v1.0.1 (`textures/blocks/*door*`, `*trapdoor*`, `textures/items/door_*`)
+### 2.8 Glass Doors & Trapdoors v1.0.1 (`textures/blocks/*door*`, `*trapdoor*`, `textures/items/door_*`)
 
 What it is: doors/trapdoors with glass-like transparency.
 
@@ -155,7 +142,7 @@ How it works: block textures (`acacia/birch/dark_oak/bamboo/cherry/copper/crimso
 
 In-game: modern glass-door aesthetic, matches clear glass.
 
-### 2.11 Fullbright Fog — KS custom (`fogs/ks_fullbright.json`, `biomes_client.json`)
+### 2.9 Fullbright Fog — KS custom (`fogs/ks_fullbright.json`, `biomes_client.json`)
 
 What it is: never fight in the dark — removes distance/air fog.
 
@@ -165,11 +152,7 @@ How it works:
 
 In-game: caves/Nether/end are bright, water is clear light-blue, lava still fogged for safety. Toggle by removing the pack or editing `biomes_client.json`.
 
-### 2.12 Health Bar System — REMOVED in latest build
-
-Was: floating health bars over mobs. Now: `animations/`, `animation_controllers/`, `models/`, `render_controllers/`, `textures/health_bar/` do not exist (deleted). All 82 `entity/*.json` (`allay` → `zombie_villager`, incl. `player.json`) are minimal (`format_version 1.10.0`, `animations:{}`, `animate:[]`, `render_controllers:[]`, only `identifier` + `min_engine_version`/`spawn_egg` differ) with no health hooks. No bars appear in-game. Re-add by restoring the deleted dirs + entity hooks.
-
-### 2.13 Player Animation QA (`entity/player.json` + `tools/check_player_animation_loop.py`)
+### 2.10 Player Animation QA (`entity/player.json` + `tools/check_player_animation_loop.py`)
 
 What it is: guarantees player animations never freeze/detach (shield/armor/sword are the usual victims).
 
@@ -185,14 +168,14 @@ The checker (`tools/check_player_animation_loop.py --iterations 3 --delay 1 --wa
 
 Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 3×1 s). Drive reference anim: `https://drive.google.com/uc?export=download&id=1xna-mqKa7dyUNQZau7qx68o4zHxpAqAt` (Alex pack — verified by diff, only mob extras differ). Note: `animations/Animation|Attack` + `animation_controllers/...` Drive dirs are NOT shipped in latest build, so Gate A currently ends `FAIL (8 problems)`, all `No such file or directory` for the missing Drive anims — this is expected; strict-JSON/dotfile/player-ref gates + `mct validate` still run.
 
-### 2.14 Custom UI Kit & Touch Art
+### 2.11 Custom UI Kit & Touch Art
 
 - `textures/ui/ks_*`: `ks_btn_cyan(.json/.png)`, `ks_btn_green`, `ks_accent_cyan`, `ks_config_bg/btn`, `ks_divider_v`, `ks_icon_anim/dressing/settings`, `ks_info_armor/bossbar/chat/clock/coords/direction/fps/item/mob/score`, `ks_key_btn`, `ks_menu_bg`, `ks_profile_bg`, `ks_sidebar_bg`, numbered hotbar `hotbar_0-8`, `selected_hotbar_slot`, `shb_numb_1-9`, `sprint/sneak/jump (+_pressed/_disable)`, all 30+ mob-effect icons (`speed/slowness/haste/mining_fatigue/strength/regen/poison/wither/…`).
 - `textures/ui/pandamine5/`: `hide_gui` (+ F1 size `[18,18]` offset `[47.5,1.0]`).
 - `ui/ui_common.json`, `ui/ks_client_common.json` (namespace `ks_client`): shared button styles (light/dark/red/tab colors in `_global_variables.json`), no-background icon buttons, edge rails (`ks_edge_left/right`), `ks_top_bar`, `ks_bottom_left_row/right_play/right_menu`, `ks_start_menu_full`, `ks_show_hud`. Retired/stubbed: center KS row, scrims, brand header/footer; `ks_hud_keys` / `ks_inv_slot` / `ks_f3_panel` are empty 0×0 stubs.
 - `ui/mob_effect_screen.json` (namespace `mob_effect`): styled effect list; `ui/pause_screen.json` (namespace `pause`): pause Config removed (HUD F1/F3 keys removed, `ks_show_hud` is the way back); `ui/dev_console_screen.json` + `debug_screen.json` (`button.scoreboard → button.access`); `ui/settings_sections/controls_section.json` exists but NOT in `_ui_defs.json` and unreferenced (disables new touch control schemes button) — orphan/reserved.
 
-### 2.15 Texts, Subpacks, Full Texture Coverage
+### 2.12 Texts, Subpacks, Full Texture Coverage
 
 - `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `shb.howToSaveConfig`, `NeBux.f3isf/f3isa` (`Inventory Status: §cFull/§aAvailable`).
 - `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — currently just `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`).
