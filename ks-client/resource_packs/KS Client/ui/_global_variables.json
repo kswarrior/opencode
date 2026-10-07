@@ -51,7 +51,6 @@
 	"$ksb_ssci": true,
 	"$ksb_hba": 4,
 	"$ksb_sbi": true,
-	"$ksb_sdbi": true,
 	"$hud_elipses_enabled": false,
 	"$hud_elipses_sound_volume": 0.0,
 	"$f1_enabled": true,
