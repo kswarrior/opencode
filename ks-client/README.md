@@ -45,14 +45,14 @@
 | 7 | Clear & Borderless Glass | Mod MCPE v6.2 | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
 | 8 | Glass Doors & Trapdoors | v1.0.1 | Transparent doors/trapdoors — 48 block entries in `terrain_texture.json` (`acacia/birch/…_door_*`, `*_trapdoor`) + `textures/blocks/*door*` PNGs. Item icons (`textures/items/door_*.png`, 17 files) exist on disk but `item_texture.json` (`atlas.items`) is currently empty `{}` so they fall back to vanilla. |
 | 9 | Fullbright Fog | KS custom (`fogs/ks_fullbright.json` + `biomes_client.json`) | No dark fog: air/weather `0.999–1.0` white, water `200–300`, lava handling |
-| 10 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/...`) are NOT shipped, so Gate A currently reports 8 expected FAILs (missing-file problems) — gates 1–2 + 5 + `mct validate` still run; `player.json` stays minimal for compat. |
+| 10 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/.../Player|Items`) are NOT shipped, so Gate A currently reports 8 expected FAILs (missing-file problems) — gates 1–2 + 5 + `mct validate` still run; `player.json` now carries Rvo health-bar hooks (refs resolve via vanilla allowlist, no new checker problems). |
 | 11 | Custom UI Kit (KS + c_ui) | KS custom | `ks_btn_cyan`, `ks_menu_bg`, `ks_sidebar_bg`, `ks_icon_*`, `ks_info_*`, `totem`, all effect icons. Note: brand header/footer/center row removed (text-free screen); `ks_hud_keys` / `ks_inv_slot` / `ks_f3_panel` in `ks_client_common.json` are empty 0×0 stubs; `textures/c_ui/` is now 8 files, all wired (close/craft/effect_bg for mob-effect + inventory screens). |
 | 12 | Custom Touch Button Art | KS + vanilla override | `jump`, `sneak`, `sprint`, `flyingascend/descend`, `waterascend/descend`, D-pad, joystick, `interact`, `mount`, `pick_block` |
 | 13 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed (comment in `pause_screen.json`: HUD F1/F3 keys removed, `ks_show_hud` is the way back) |
 | 14 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
 | 15 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
 | 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
-| 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 116 PNGs), doors items on disk but `atlas.items` empty, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc |
+| 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` empty, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
 | 18 | Clear Chat Screen | Bruhh69 (file v3.0.10; manifest v1.3.10) | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `bt_chat_tweaks`, always on) |
 | 19 | Health Bar (Always Display) | Rvo JP v3.4.0 (`rvo.jp/health-bar`) | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
 | 20 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
@@ -158,7 +158,7 @@ In-game: caves/Nether/end are bright, water is clear light-blue, lava still fogg
 
 What it is: guarantees player animations never freeze/detach (shield/armor/sword are the usual victims).
 
-Current `entity/player.json` is intentionally minimal (`identifier minecraft:player`, empty `animations`/`animate`/`render_controllers`) for max vanilla compatibility — all custom player anims are validated externally, not forced. Same for the other 81 entities.
+`entity/player.json` now carries Rvo health-bar hooks (vanilla player anims + `health_bar`); all other custom player anims are validated externally, not forced. Same pattern on the other 81 entities.
 
 The checker (`tools/check_player_animation_loop.py --iterations 3 --delay 1 --watch --with-validate`) verifies in a loop:
 1. **Strict JSON** — no `/* */` comments, `json.loads` must pass (Minecraft strict parser breaks on comments).
@@ -311,10 +311,10 @@ Switch in pack settings; memory tier `0` for both.
 
 ---
 
-## 8. Entities & Fog (removed systems purged)
+## 8. Entities, Animations, Fog, Render Controllers
 
-- `entity/`: 82 minimal client entities (`allay` → `zombie_villager`, incl. `player.json`). All are `format_version 1.10.0` with `animations:{}`, `animate:[]`, `render_controllers:[]` — no health-bar, pose, or controller hooks shipped.
-- `animations/`, `animation_controllers/`, `models/`, `render_controllers/`, `textures/health_bar/`, `ui/NeBux/`, `NeBux/`: do NOT exist in latest build (purged per request). Drive player anims are validated by `tools/` when synced externally, not shipped.
+- `entity/`: 82 client entities (`allay` → `zombie_villager`, incl. `player.json`), all with Rvo health-bar hooks (see §2.14). Vanilla animation/controller/geometry/texture refs resolve engine-side.
+- `animations/health_bar.json` (always-display billboard logic), `models/entity/health_bar.json` (`geometry.health_bar`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`): draw path. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
 - `fogs/ks_fullbright.json` + `biomes_client.json`: global fullbright (see §2.9).
 
 ---
@@ -338,7 +338,7 @@ Switch in pack settings; memory tier `0` for both.
 2. Only bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description` + `README.md` header/§12 if the user explicitly requested a new version — never auto-bump.
 3. Run `python3 tools/check_player_animation_loop.py --iterations 3` and `mct validate`.
 4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack` (never overwrite `release/` unasked; prefer `/tmp/`).
-5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, fullbright, glass/doors, connected hotbar. (No health bars / Utility HUD widgets / F1-F3 buttons in latest build — do not expect them.)
+5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), fullbright, glass/doors, connected hotbar.
 
 Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, `create-item`, `create-mob`, `design-model`, `debug-addon`, `creator-tools-cli`.
 
@@ -355,8 +355,10 @@ From `manifest.json → metadata.authors`:
 - **Glass Doors & Trapdoors** v1.0.1 (block textures active; item icons unregistered — see §2.10)
 - **Mod MCPE** — Clear & Borderless Glass v6.2
 - **oSkullo** — Quick Totem Offhand v1.0.0 (HUD + inventory paths active)
+- **Bruhh69** — Clear Chat Screen (file v3.0.10; manifest v1.3.10 — `ui/chat_screen.json` + `bt_chat_tweaks`, always on)
+- **Rvo JP** — Health Bar v3.4.0 (`https://rvo.jp/health-bar/` — always-display variant merged at top level, no subpack)
 
-`generated_with: minecraft_creator_tools 0.19.0`. All upstream JSON retains its header (e.g. déesse `file_signature Itzriyo157`).
+`generated_with: minecraft_creator_tools 0.19.0`. All upstream JSON retains its header (déesse `file_signature Itzriyo157`; Rvo files keep their structure unmodified).
 
 ---
 
@@ -380,4 +382,4 @@ Current (`manifest.json`): `KS Client v1.1.2`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json`, `biomes_client.json`, `fogs/`, `entity/` (82 minimal), `textures/` (blocks 1309 / items 17 / ui 116 / gui / c_ui 8 / totem 2 / environment / colormap / misc; terrain 1318 entries, items atlas empty), `ui/` (`_global_variables`, `_ui_defs` 12 entries, `hud/start/inventory/pause/debug`, `déesse_modules`, `pandamine5`, `settings_sections` orphan, `._content_/inv_content.json`), `texts/`, `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json`, `biomes_client.json`, `fogs/`, `entity/` (82 with health hooks), `animations/health_bar.json`, `models/` + `render_controllers/` (health_bar), `textures/` (blocks 1309 / items 17 / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / environment / colormap / misc; terrain 1318 entries, items atlas empty), `ui/` (`_global_variables`, `_ui_defs` 13 entries, `hud/start/inventory/pause/debug/chat_screen`, `déesse_modules`, `pandamine5`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/`, `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
