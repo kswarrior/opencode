@@ -57,7 +57,7 @@
 | 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
 | 21 | FPS Counter (Top Left) | KS Client | Real paper-doll digit FPS overlay, top-left [0,0], always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
-| 21 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
+| 22 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
 
 ---
 
@@ -221,6 +221,19 @@ How it works:
 - No `_global_variables.json` / `_ui_defs.json` / `manifest.json` changes (attachable + atlas entry load by path/ID).
 
 In-game: hold or view a mace → 3D hammer model; inventory shows the custom icon + name.
+
+### 2.16 FPS Counter, Top Left (KS Client: `ui/fps_hud.json`, `entity/player.json`, `models/`, `textures/fps/`)
+
+What it is: real FPS digits overlay at top-left [0,0], always on (other position variants not merged, no subpack).
+
+How it works:
+- `ui/fps_hud.json` (namespace `ks_fps`, base top-left file): 150×32 mask panel (`top_left`/`top_left`, offset [0,0]) with a `paper_doll_renderer` custom control rendering the counter.
+- `ui/hud_screen.json` `root_panel` gains an `insert_back` modification: `fps_counter@ks_fps.fps_counter_mask`.
+- `entity/player.json` gains fps slots only (minimal merge, health hooks untouched): `fps_counter` material/texture (`textures/fps/digits_atlas`)/geometry (`geometry.fps_counter`), fps `initialize` + `pre_animation` accumulators, public `display_fps`/`rounded_fps`/`digit_*` variables, and `{"controller.render.fps_counter": "variable.is_paperdoll"}` appended to render controllers. `animate` needed no change (`root` already played).
+- `models/entity/fps_counter.geo.json` (`geometry.fps_counter`, hundreds/tens/ones/plus bones), `render_controllers/fps_counter.render.json` (digit part-visibility), `textures/fps/digits_atlas.png` (direct path — legacy `texture_list.json` notice only, same as 70+ pre-existing).
+- No `_global_variables.json` (beyond the hook no config exists upstream) / `manifest.json` changes; `_ui_defs.json` 13 → 14 entries.
+
+In-game: FPS digits top-left, updating every second. Gate A unchanged (same 8 pre-existing FAILs); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
 
 ---
 
