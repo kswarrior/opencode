@@ -293,11 +293,11 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 
 | Group | Keys | Defaults / meaning |
 |-------|------|--------------------|
-| Slot hotbar 1–10 | `$shb_N_x`, `$shb_N_y`, `$shb_N_s`, `$shb_N_v` | pos/size(50)/visible. 1–4 `(4/14/24/34,20)`, 5–8 `(62/72/82/92,22)`, 9 `(92,44)`, 10 hidden |
-| Slot hotbar misc | `$shb_ssci`, `$shb_hba`, `$shb_sbi`, `$shb_sdbi` | `true, 4, true, true` — single-click/content/durability behaviors |
+| Slot hotbar 1–10 | `$ksb_N_x`, `$ksb_N_y`, `$ksb_N_s`, `$ksb_N_v` | pos/size(50)/visible. 1–4 `(4/14/24/34,20)`, 5–8 `(62/72/82/92,22)`, 9 `(92,44)`, 10 hidden |
+| Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi`, `$ksb_sdbi` | `true, 4, true, true` — single-click/content/durability behaviors |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
-| F1 (hide_gui, PandaMine) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/pandamine5/hide_gui, [18,18], [47.5,1.0]` (used by `pandamine5/hide_gui.json`; F1 button itself not inserted into HUD) |
-| Inventory HUD | `$déesse:inventory_hud_size small`, `$déesse:use_highlight_slot true`, `$déesse:highlight_slot_color [0,1,0]`, `$déesse:highlight_slot_alpha 0.30`, `$déesse:inventory_slot_color [0,0,0]`, `$déesse:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
+| F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`; F1 button itself not inserted into HUD) |
+| Inventory HUD | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
 | Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
 
@@ -307,7 +307,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 
 Declared in `manifest.json → subpacks`:
 
-- `hide_editor` — “Hide Editor (§aBetter Performance§f)” — currently a single-file override (`subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json`, `$show_editor_button:false` vs main `true`), fewer editor affordances → better FPS. **Recommended.**
+- `hide_editor` — “Hide Editor (§aBetter Performance§f)” — currently a single-file override (`subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json`, `$show_editor_button:false` vs main `true`), fewer editor affordances → better FPS. **Recommended.**
 - `show_editor` — vanilla editor UI visible (for creators).
 
 Switch in pack settings; memory tier `0` for both.
@@ -317,18 +317,19 @@ Switch in pack settings; memory tier `0` for both.
 ## 7. Textures Included
 
 - **Blocks (`atlas.terrain`, `terrain_texture.json`, 1318 entries):** full vanilla set — planks/logs/leaves, ores (incl. deepslate variants), concrete/powder, terracotta/glazed, shulker boxes, candles, copper (block/door/trapdoor + oxidized/weathered/exposed), cherry/mangrove/pale_oak, crimson/warped, deep-dark/sculk, amethyst, command blocks, campfire, cauldron, composter, bookshelf, TNT, sponge, ice/packed/blue, coral (alive/dead/fans), glass (clear + 16 colors + panes + tinted), doors/trapdoors (glass style, 48 entries), destroy stages, debug.
-- **Items (`atlas.items` EMPTY):** 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) exist in `textures/items/` but `item_texture.json` is `{}` — unregistered, vanilla fallback.
-- **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (8 files — close/craft/effect_bg, all wired), `pandamine5/hide_gui`, `slot_gui_button (+pressed)`, `shb_numb_1-9`, every mob-effect icon, joystick/buttons/D-pad.
+- **Items (`atlas.items` = mace only):** `mace.png` registered as `mace` (custom icon + `item.mace.name`); 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) exist in `textures/items/` but unregistered — vanilla fallback.
+- **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (8 files — close/craft/effect_bg, all wired), `ks_touch/hide_gui`, `ksb_slot_button (+pressed)`, `ksb_numb_1-9`, chat art (`bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/`), every mob-effect icon, joystick/buttons/D-pad.
 - **Totem (active):** `totem/close_button.png`, `totem_button.png` — wired in `inventory_screen.json` + `hud_screen.json` `hud.totem_btn`.
+- **Hammer (active):** `textures/entity/attachable/mace.png` (held 3D model) + `textures/items/mace.png` (icon).
 - **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`.
-- **Colormap/misc/gui/controls:** grass/leaves/water tints, `misc/vignette.png`, D-pad art. No `health_bar/` sprites in latest build.
+- **Colormap/misc/gui/controls/health_bar:** grass/leaves/water tints, `misc/vignette.png`, D-pad art, health bar sprites (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
 
 ---
 
 ## 8. Entities, Animations, Fog, Render Controllers
 
-- `entity/`: 82 client entities (`allay` → `zombie_villager`, incl. `player.json`), all with Rvo health-bar hooks (see §2.14). Vanilla animation/controller/geometry/texture refs resolve engine-side.
-- `animations/health_bar.json` (always-display billboard logic), `models/entity/health_bar.json` (`geometry.health_bar`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`): draw path. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
+- `entity/`: 82 client entities (`allay` → `zombie_villager`, incl. `player.json`), all with KS health-bar hooks (see §2.14). Vanilla animation/controller/geometry/texture refs resolve engine-side.
+- `animations/health_bar.json` (always-display billboard logic) + `animations/mace.animation.json` (hammer hold poses), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
 - `fogs/ks_fullbright.json` + `biomes_client.json`: global fullbright (see §2.9).
 
 ---
