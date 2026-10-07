@@ -1,0 +1,38 @@
+{
+  "namespace": "ks_fps",
+  "fps_counter_mask": {
+    "type": "panel",
+    "size": [
+      150,
+      32
+    ],
+    "clips_children": true,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [
+      0,
+      0
+    ],
+    "controls": [
+      {
+        "fps_counter_overlay": {
+          "type": "custom",
+          "renderer": "paper_doll_renderer",
+          "size": [
+            128,
+            128
+          ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [
+            -45,
+            48
+          ],
+          "camera_tilt_degrees": 0,
+          "starting_rotation": 180,
+          "use_skin_gui_scale": false
+        }
+      }
+    ]
+  }
+}
