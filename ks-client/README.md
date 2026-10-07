@@ -56,7 +56,7 @@
 | 18 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
 | 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
-| 21 | FPS Counter (Top Left) | KS Client | Real paper-doll digit FPS overlay, top-left [0,0], always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
+| 21 | FPS Counter (Top Left) | KS Client | Stacked readout — client version, game version, `FPS: <digits>`, position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
 | 22 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (12 files, `v1.0.0` + `v1.0.3`…`v1.1.3` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
 
 ---
@@ -233,7 +233,7 @@ How it works:
 - `models/entity/fps_counter.geo.json` (`geometry.fps_counter`, hundreds/tens/ones/plus bones), `render_controllers/fps_counter.render.json` (digit part-visibility), `textures/fps/digits_atlas.png` (direct path — legacy `texture_list.json` notice only, same as 70+ pre-existing).
 - No `_global_variables.json` (beyond the hook no config exists upstream) / `manifest.json` changes; `_ui_defs.json` 13 → 14 entries.
 
-In-game: FPS digits top-left, updating every second. Gate A unchanged (same 8 pre-existing FAILs); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
+In-game, top-left corner: `KS Client v1.1.3`, `Minecraft Vanilla v<game>`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A unchanged (same 8 pre-existing FAILs); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
 
 ---
 
@@ -297,7 +297,7 @@ ks-client/
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
-   - FPS: digits top-left, always on.
+   - FPS: stacked readout top-left (versions, `FPS: <digits>`, position).
 5. **Persist config:** in-game config screen → copy code (`ksb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
@@ -368,7 +368,7 @@ Switch in pack settings; memory tier `0` for both.
 2. Only bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description` + `README.md` header/§12 if the user explicitly requested a new version — never auto-bump.
 3. Run `python3 tools/check_player_animation_loop.py --iterations 3` and `mct validate`.
 4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack` (never overwrite `release/` unasked; prefer `/tmp/`).
-5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS digits top-left, fullbright, glass/doors, connected hotbar.
+5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS stack top-left (versions, digits, position), fullbright, glass/doors, connected hotbar.
 
 Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, `create-item`, `create-mob`, `design-model`, `debug-addon`, `creator-tools-cli`.
 
