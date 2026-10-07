@@ -2,7 +2,7 @@
 
 > **KS Client v1.1.2 by KS Warrior**
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
-> Custom start screen, HUD (slot hotbar + inventory-HUD + totem/offhand shortcuts + `ks_show_hud`), clear chat screen, mob health bars (always display), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack.
+> Custom start screen, HUD (slot hotbar + inventory-HUD + totem/offhand shortcuts + `ks_show_hud`), clear chat screen, mob health bars (always display), 3D hammer, fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack.
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
@@ -26,7 +26,7 @@
 8. [Entities, Animations, Fog, Render Controllers](#8-entities-animations-fog-render-controllers)
 9. [Developer Tools & Validation](#9-developer-tools--validation)
 10. [Build / Package / Edit Workflow](#10-build--package--edit-workflow)
-11. [Credits & Integrated Upstream Packs](#11-credits--integrated-upstream-packs)
+11. [Credits](#11-credits)
 12. [Version History](#12-version-history)
 13. [Requirements & Compatibility](#13-requirements--compatibility)
 
@@ -52,7 +52,7 @@
 | 14 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
 | 15 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
 | 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
-| 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` empty, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
+| 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1318 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` holds only the mace entry, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
 | 18 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
 | 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
@@ -117,7 +117,7 @@ How it works:
 - `hide_gui.json` ships and is listed in `_ui_defs.json`; `$f1_texture` points at `textures/ui/ks_touch/hide_gui`.
 - `textures/ui/`: `joystick_frame/knob`, `jump/sneak/sprint (+_pressed/_disable/_dpad)`, `flyingascend/descend`, `waterascend/descend`, `interact`, `mount`, `pick_block`, `box_exit/ride`, `horse_exit/ride`.
 - `textures/gui/controls/`: D-pad set (`up/down/left/right + diagonals + pressed`), `jump_dpad`, `sneak_dpad`, `large_button`, `dismount`.
-- `hud_screen.json` F1/F8 redirects are gone — comment notes “PandaMine F1 button removed per request”.
+- `hud_screen.json` F1/F8 redirects are gone — comment notes the legacy F1 button removal.
 
 In-game: cleaner touch art remains; the HUD hide button path is now `ks_show_hud` (`button.hide_gui_all`).
 
@@ -141,7 +141,7 @@ In-game: crystal-clear windows, easier to see through in fights/builds.
 
 What it is: doors/trapdoors with glass-like transparency.
 
-How it works: block textures (`acacia/birch/dark_oak/bamboo/cherry/copper/crimson/..._door_*`, `*_trapdoor.png` — 48 entries in `terrain_texture.json`) redrawn with transparency. Item icons (`textures/items/` 17 PNGs: `door_acacia/birch/…/warped`, `bamboo/cherry/copper/crimson/mangrove/pale_oak door`) exist on disk but `item_texture.json` (`atlas.items`) is currently empty (`{"texture_data":{}}`), so item icons fall back to vanilla until re-registered.
+How it works: block textures (`acacia/birch/dark_oak/bamboo/cherry/copper/crimson/..._door_*`, `*_trapdoor.png` — 48 entries in `terrain_texture.json`) redrawn with transparency. Item icons (`textures/items/` 17 door PNGs: `door_acacia/birch/…/warped`, `bamboo/cherry/copper/crimson/mangrove/pale_oak door`) exist on disk but `atlas.items` holds only the mace entry, so door icons fall back to vanilla.
 
 In-game: modern glass-door aesthetic, matches clear glass.
 
@@ -182,8 +182,8 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 
 - `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `ksb.howToSaveConfig`, `item.mace.name`.
 - `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — currently just `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`).
-- `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) currently EMPTY (`texture_data:{}`) despite 17 door PNGs in `textures/items/` — vanilla fallback until re-registered; `texture_list.json`/`textures_list.json` legacy lists.
-- `textures/`: `blocks/` (1309 PNGs), `ui/` (124 PNGs incl. `bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs, unregistered), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`). No `NeBux/` in latest build.
+- `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) holds only the `mace` entry (17 door PNGs unregistered → vanilla fallback); `texture_list.json`/`textures_list.json` legacy lists.
+- `textures/`: `blocks/` (1309 PNGs), `ui/` (124 PNGs incl. `bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
 
 ### 2.13 Clear Chat Screen (KS Client: `ui/chat_screen.json`, `ui/.ui_assets/.screens/.chat/chat_tweaks.json`)
 
@@ -353,27 +353,22 @@ Switch in pack settings; memory tier `0` for both.
 2. Only bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description` + `README.md` header/§12 if the user explicitly requested a new version — never auto-bump.
 3. Run `python3 tools/check_player_animation_loop.py --iterations 3` and `mct validate`.
 4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack` (never overwrite `release/` unasked; prefer `/tmp/`).
-5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), fullbright, glass/doors, connected hotbar.
+5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), fullbright, glass/doors, connected hotbar.
 
 Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, `create-item`, `create-mob`, `design-model`, `debug-addon`, `creator-tools-cli`.
 
 ---
 
-## 11. Credits & Integrated Upstream Packs
+## 11. Credits
 
-From `manifest.json → metadata.authors`:
+Everything in this pack is branded as KS Client (see `manifest.json → metadata.authors: ["KS Warrior"]`).
 
-- **KS Warrior** — KS Client core (start screen, HUD wiring, fullbright, QA tools, packaging v1.0.0–1.1.2)
-- **itzriyo157** — Slot Hotbar Button v1.3.0 + Inventory HUD v1.0.2 Bottom Right (both still active)
-- **PandaMine5** — Clean Touch Controls v1.4.1 (art + `hide_gui.json` ship; HUD F1 button removed)
-- **Connected Hotbar** v1.0.1
-- **Glass Doors & Trapdoors** v1.0.1 (block textures active; item icons unregistered — see §2.10)
-- **Mod MCPE** — Clear & Borderless Glass v6.2
-- **oSkullo** — Quick Totem Offhand v1.0.0 (HUD + inventory paths active)
-- **Bruhh69** — Clear Chat Screen (file v3.0.10; manifest v1.3.10 — `ui/chat_screen.json` + `bt_chat_tweaks`, always on)
-- **Rvo JP** — Health Bar v3.4.0 (`https://rvo.jp/health-bar/` — always-display variant merged at top level, no subpack)
+Upstream sources integrated over time are recorded — with authors, versions,
+and what was taken — in [`copyright.txt`](./copyright.txt) in the project
+home (not shipped inside the `.mcpack`). Check that file before
+redistributing: some upstream licenses require the creator's permission.
 
-`generated_with: minecraft_creator_tools 0.19.0`. All upstream JSON retains its header (déesse `file_signature Itzriyo157`; Rvo files keep their structure unmodified).
+`generated_with: minecraft_creator_tools 0.19.0`.
 
 ---
 
@@ -397,4 +392,4 @@ Current (`manifest.json`): `KS Client v1.1.2`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json`, `biomes_client.json`, `fogs/`, `entity/` (82 with health hooks), `animations/health_bar.json`, `models/` + `render_controllers/` (health_bar), `textures/` (blocks 1309 / items 17 / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / environment / colormap / misc; terrain 1318 entries, items atlas empty), `ui/` (`_global_variables`, `_ui_defs` 13 entries, `hud/start/inventory/pause/debug/chat_screen`, `déesse_modules`, `pandamine5`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/`, `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `entity/` (82 with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 / items 18 incl. mace / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / entity-attachable mace / environment / colormap / misc; terrain 1318 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*), `_ui_defs` 13 entries, `hud/start/inventory/pause/debug/chat_screen`, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `copyright.txt`, `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
