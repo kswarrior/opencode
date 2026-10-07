@@ -93,6 +93,18 @@ release/ # shipped .mcpack v1.0.0..v1.1.2 — do NOT overwrite
 - **Offsets are `[x, y]`, sizes `[w, h]`.** Negative x moves left. `"25%"` strings are allowed in offsets — keep the quotes.
 - **Item IDs are engine-bound** (`$totem_item_id 39780352` etc.). Do not "clean up" or renumber them.
 
+### 3D. Keep `README.md` in sync (mandatory on every change)
+1. **Same-edit rule.** Every pack change MUST include a `README.md` update in the same working-tree diff — never leave code changed with docs stale.
+2. **What to update:**
+   - UI/layout/config change → §1 quick-list row + §2 detail subsection + §5 `_global_variables.json` table if a `$var` was added/renamed.
+   - New/changed texture/icon → §7 list + check §3 project structure if a folder/file was added.
+   - Fog/biome/entity/animation/render_controller change → §8.
+   - New file/folder or moved screen → §3 project structure tree.
+   - Behavior/usage/install difference → §4.
+   - Only `tools/`, `out/`, or comment-only edits with zero user-visible effect → no `README.md` content change needed, but state that explicitly in your report.
+3. **Do NOT bump version strings** in `README.md` header/§12 unless the user explicitly requested a version bump (see §7).
+4. **Verify:** `git status` / `git diff --stat` must show `README.md` alongside the changed pack files, or an explicit "no user-visible change, README untouched" note.
+
 ---
 
 ## 4. Safety Rules (read as hard constraints)
@@ -103,6 +115,7 @@ release/ # shipped .mcpack v1.0.0..v1.1.2 — do NOT overwrite
 4. **DO NOT bulk-reformat JSON.** Keep diffs reviewable; one feature per edit.
 5. **DO NOT commit/push unless asked.** Leave changes in working tree + report validation output.
 6. **DO NOT guess in-game results.** Always run §5 recheck + §6 debug after any change, and report evidence (checker output, validate CSV errors, Content Log).
+7. **DO NOT leave `README.md` stale.** If the change is user-visible, the same diff MUST update `README.md` (see §3D). Report `git diff --stat` proving it.
 
 ---
 
@@ -126,7 +139,7 @@ npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_v
 **What Gate A checks (5 sub-gates, see `tools/check_player_animation_loop.py`):**
 1. strict JSON parse (no `/* */`), 2. no dotfile JSON, 3. `loop:true` on glide/fall/trident.sh/rh + sleep stays non-loop, 4. shield sneak drives `rightitem+rightItem` & arm caps both sides / walk drives `Kbody+kbody`+`Kroot+kroot` / no `rightArmup` case bugs / sword `item+Item` / `shield.both` has `leftitem+rightitem`, 5. player `animate` refs resolve (short→dict, controller defined or vanilla-allowlisted, anims inside played controllers exist).
 
-**Pass criteria:** `[loop N] recheck: PASS` and `OK - all JSON strict-parse...`. If FAIL, fix exactly the listed `- <file>: ...` lines — do not refactor surrounding code.
+**Pass criteria:** `[loop N] recheck: PASS` and `OK - all JSON strict-parse...`. If FAIL, fix exactly the listed `- <file>: ...` lines — do not refactor surrounding code. Then confirm `README.md` is updated per §3D (`git diff --stat` shows it, or note why no docs change was needed).
 
 ---
 
