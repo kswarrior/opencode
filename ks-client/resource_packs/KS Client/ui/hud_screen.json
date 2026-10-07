@@ -150,9 +150,9 @@
     ]
   },
 
-  // ---------- PandaMine Clean Touch Controls v1.4.1 (base layout tweaks) ----------
+  // ---------- KS Clean Touch Controls (base layout tweaks) ----------
   // Vanilla touch-layout redefinitions: centered bottom-middle cluster sizing,
-  // inventory button row, elipses helpers. No KS keys touched. Credit: PandaMine5.
+  // inventory button row, elipses helpers.
   "hotbar_elipses_button@borderless_button": {
     "sound_volume": "$hud_elipses_sound_volume"
   },
@@ -254,7 +254,7 @@
           }
         ]
       },
-      // Déesse Inventory HUD v1.0.2 (Bottom Right): inventory grid overlay.
+      // KS Inventory HUD (Bottom Right): inventory grid overlay.
       {
         "array_name": "controls",
         "operation": "insert_front",
@@ -274,10 +274,10 @@
   // Unhide MUST be a sibling of root_panel, not inside it: root_panel is
   // bound to #hud_visible, so anything inside it disappears with the HUD and
   // touch users tapping F1 could get stuck with no way back.
-  // Slot Hotbar Button v1.3.0 by KS Client (insert_front) + KS show-HUD
+  // Slot Hotbar Button by KS Client (insert_front) + KS show-HUD
   // (insert_back) coexist as separate modifications on hud_content.
-  // (PandaMine F1 button removed per request.)
-  // Quick Totem Offhand button by oSkullo (insert_front): 30x30 (40 -25%),
+  // (Legacy F1 button removed per request.)
+  // Quick Totem Offhand button by KS Client (insert_front): 30x30 (40 -25%),
   // raised 30px (new size) above the Offhand default.
   "hud_content": {
     "modifications": [
@@ -317,7 +317,7 @@
     ]
   },
 
-  // PandaMine perf flags for the HUD screen (telemetry off, cached screen).
+  // KS perf flags for the HUD screen (telemetry off, cached screen).
   "hud_screen@common.base_screen": {
     "send_telemetry": false,
     "low_frequency_rendering": true,

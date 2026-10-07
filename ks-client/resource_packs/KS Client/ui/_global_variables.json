@@ -89,7 +89,7 @@
 	"$tab_secondary_checked_locked_text_color": [ 1.0, 1.0, 1.0 ],
 	"$tab_secondary_checked_locked_hover_text_color": [ 1.0, 1.0, 1.0 ],
 
-	// === Déesse Inventory HUD v1.0.2 (Bottom Right) ===
+	// === KS Inventory HUD (Bottom Right) ===
 	"$ks:inventory_hud_size": "small",
 	"$ks:use_highlight_slot": true,
 	"$ks:highlight_slot_color": [ 0, 1, 0 ],
