@@ -56,7 +56,7 @@
 | 18 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
 | 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
-| 20 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
+| 21 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (11 files, `v1.0.0` + `v1.0.3`…`v1.1.2` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
 
 ---
 
@@ -71,11 +71,11 @@ How it works:
 - `text_panel` is replaced with `version_small` — `100% - 2px × 10` strip at bottom (`offset -52`) showing only `#version` in `150,180,210`, `scale 0.75`, shadowed. No Mojang/copyright text.
 - `friendsdrawer_button_panel` fixed to `28×32` at `top_right [-8,2]`, layer 3. Fixes the classic fullscreen `["default","default"]` bug that pushed the bell to top-left. Uses borderless `ks_inbox_icon_button` (bell + red dot only, reuses vanilla `inbox_icon_container` animation states).
 - `ks_client_common.json` provides: `ks_edge_left/right` (2 px, 28% futuristic side rails, `ks_divider_v`, alpha 0.6), `ks_settings_button` (30×30, `ks_icon_settings`, no-background button → `button.menu_settings`), `ks_dressing_button` (40×40, `ks_icon_dressing` → `button.menu_skins`), `ks_inbox_button` (28×32 → `button.menu_inbox`).
-- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer` (`KS CLIENT v1.1.2 • ONLINE`), `shb.howToSaveConfig`.
+- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.*` (`start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer`, `KS CLIENT v1.1.2 • ONLINE`), `ksb.howToSaveConfig`, `item.mace.name`.
 
 In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
 
-### 2.2 Quick Totem Offhand — oSkullo v1.0.0 (`ui/inventory_screen.json`, `ui/hud_screen.json`, `textures/totem/`)
+### 2.2 Quick Totem Offhand (KS Client: `ui/inventory_screen.json`, `ui/hud_screen.json`, `textures/totem/`)
 
 What it is: one-tap totem to offhand, from HUD *and* inside inventory (both paths still active).
 
@@ -87,25 +87,25 @@ How it works:
 
 In-game: if offhand empty you see a totem icon near inventory; tap it → totem equipped. If occupied you see an X to quickly close/unequip context.
 
-### 2.3 Slot Hotbar Buttons — itzriyo157 v1.3.0 (`ui/déesse_modules/slot_hotbar_button/`, `_global_variables.json`)
+### 2.3 Slot Hotbar Buttons (KS Client: `ui/ks_modules/ksb_hotbar_button/`, `_global_variables.json`)
 
 What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap).
 
 How it works:
-- Defs in `ui/déesse_modules/slot_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`).
-- Each slot `1…10` has four globals: `$shb_N_x`, `$shb_N_y` (position), `$shb_N_s` (size, default 50), `$shb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–4 top-left row (`y 20`, `x 4/14/24/34`), slots 5–8 second row (`y 22`, `x 62/72/82/92`), slot 9 (`92,44`), slot 10 hidden (`82,44,false`). `$shb_ssci true` (single-click inventory content?), `$shb_hba 4`, `$shb_sbi/$shb_sdbi true`.
-- Buttons use `textures/ui/slot_gui_button.png` (+`_pressed`), `shb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot).
+- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`).
+- Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 50), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–4 top-left row (`y 20`, `x 4/14/24/34`), slots 5–8 second row (`y 22`, `x 62/72/82/92`), slot 9 (`92,44`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
+- Buttons use `textures/ui/ksb_slot_button.png` (+`_pressed`), `ksb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot).
 
-In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Move/resize/hide each via `_global_variables.json` (see §5). Copy the HowToSaveConfig code from the in-game config screen into `_global_variables.json` to persist (see `shb.howToSaveConfig` string).
+In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Move/resize/hide each via `_global_variables.json` (see §5). Copy the HowToSaveConfig code from the in-game config screen into `_global_variables.json` to persist (see `ksb.howToSaveConfig` string).
 
-### 2.4 Inventory HUD Bottom-Right — itzriyo157 v1.0.2 (`ui/déesse_modules/hud.json`, `b6As_defs.json`)
+### 2.4 Inventory HUD Bottom-Right (KS Client: `ui/ks_modules/hud.json`, `ks_b6As_defs`)
 
 What it is: always-on mini inventory on the HUD (no need to open inventory to see contents).
 
 How it works:
-- `déesse_hud.inventory_hud_panel` (`déesse_b6As_defs.variables`): panel `$m_size [162,54]` (small mode `[135,45]`), anchored bottom-right, layer 45. Contains `inv_grid` (grid 9×4, `inv_hud_container_item` template, bound to `hotbar_items` — actually shows rows beyond hotbar via `collection_index > 8` filter).
-- Each cell: `bg` (white texture tinted `$déesse:inventory_slot_color [0,0,0]`, alpha `$déesse:inventory_slot_alpha 0.27`), `item_renderer` (16×16, small 14×14), `stack_count_label` (scale 0.8/0.6), `durability_bar` + `storage_bar`, `green` highlight overlay (`$déesse:use_highlight_slot true`, color `[0,1,0]`, alpha `0.30`) that lights the currently selected slot via `#ushdjsj` collection math over 37 slots.
-- Size mode via `$déesse:inventory_hud_size = "small"`.
+- `ks_hud.inventory_hud_panel` (`ks_b6As_defs.variables`): panel `$m_size [162,54]` (small mode `[135,45]`), anchored bottom-right, layer 45. Contains `inv_grid` (grid 9×4, `inv_hud_container_item` template, bound to `hotbar_items` — actually shows rows beyond hotbar via `collection_index > 8` filter).
+- Each cell: `bg` (white texture tinted `$ks:inventory_slot_color [0,0,0]`, alpha `$ks:inventory_slot_alpha 0.27`), `item_renderer` (16×16, small 14×14), `stack_count_label` (scale 0.8/0.6), `durability_bar` + `storage_bar`, `green` highlight overlay (`$ks:use_highlight_slot true`, color `[0,1,0]`, alpha `0.30`) that lights the currently selected slot via `#ushdjsj` collection math over 37 slots.
+- Size mode via `$ks:inventory_hud_size = "small"`.
 
 In-game: small translucent inventory grid bottom-right with counts, durability, and green highlight on selected slot.
 
