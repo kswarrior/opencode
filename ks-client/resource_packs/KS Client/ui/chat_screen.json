@@ -407,7 +407,7 @@
               }
             },
             {
-              "ac_padd": {
+              "ac_padd0": {
                 "type": "panel",
                 "size": [
                   1,
