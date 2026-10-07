@@ -304,7 +304,7 @@
         "operation": "insert_front",
         "value": [
           {
-            "totem_btn@hud.totem_btn": {}
+            "totem_pos@hud.totem_btn_pos": {}
           }
         ]
       },
@@ -344,21 +344,74 @@
   },
 
   // ---------- Quick Totem Offhand button (KS Client) ----------
-  // Position/size/visibility from $ksb_totem_* globals (editor: totem row,
-  // copy HowToSaveConfig → _global_variables.json → repack to apply).
-  "totem_btn@settings_common.action_button": {
-    "prevent_touch_input": true,
+  // Positioned live by the editor totem sliders via the resizer wrapper
+  // ($ksb_totem_x/y are 0-100 slider positions: px offset = value-125 / value-35).
+  // Visibility follows the totem toggle live; size tries the size slider.
+  "totem_btn_pos": {
+    "type": "panel",
+    "size": [1, 1],
     "anchor_from": "bottom_middle",
     "anchor_to": "bottom_middle",
-    "offset": [ "$ksb_totem_x", "$ksb_totem_y" ],
-    "size": [ "$ksb_totem_s", "$ksb_totem_s" ],
-    "ignored": "(not $ksb_totem_v)",
-    "$border_visible": false,
-    "$button_text": "",
-    "$pressed_button_name": "button.hotbar_inventory_button",
-    "$default_button_texture|default": "textures/totem/totem_button",
-    "$hover_button_texture|default": "textures/totem/totem_button",
-    "$pressed_button_texture|default": "textures/totem/totem_button",
-    "$locked_button_texture|default": "textures/totem/totem_button"
+    "use_anchored_offset": true,
+    "property_bag": {
+      "#anchored_offset_value_x": 1.0,
+      "#anchored_offset_value_y": 1.0
+    },
+    "controls": [
+      {
+        "totem_btn@settings_common.action_button": {
+          "prevent_touch_input": true,
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [0, 0],
+          "size": [30, 30],
+          "property_bag": {
+            "#size_binding_x": 1.0,
+            "#size_binding_y": 1.0
+          },
+          "$border_visible": false,
+          "$button_text": "",
+          "$pressed_button_name": "button.hotbar_inventory_button",
+          "$default_button_texture|default": "textures/totem/totem_button",
+          "$hover_button_texture|default": "textures/totem/totem_button",
+          "$pressed_button_texture|default": "textures/totem/totem_button",
+          "$locked_button_texture|default": "textures/totem/totem_button",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ksbT_totem_t",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "htotem_size_slider",
+              "source_property_name": "#slider_val",
+              "target_property_name": "#size_binding_x"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "htotem_size_slider",
+              "source_property_name": "#slider_val",
+              "target_property_name": "#size_binding_y"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "htotem_x_slider",
+        "source_property_name": "(#slider_val - 125)",
+        "target_property_name": "#anchored_offset_value_x"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "htotem_y_slider",
+        "source_property_name": "(#slider_val - 35)",
+        "target_property_name": "#anchored_offset_value_y"
+      }
+    ]
   }
 }
