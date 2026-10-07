@@ -228,18 +228,22 @@ ks-client/
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
-│   ├── entity/ (82 json)            ← all minimal client_entity (animations:{}, animate:[], render_controllers:[]) incl. player.json — NO health/animation hooks shipped
-│   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/…)
+│   ├── entity/ (82 json)            ← Rvo health-bar hooks on every mob (vanilla refs + health_bar material/texture/geometry/animate/render_controllers)
+│   ├── animations/health_bar.json ← always-display variant (from upstream subpack; hide_until_hurt NOT merged)
+│   ├── models/entity/health_bar.json (`geometry.health_bar`)
+│   ├── render_controllers/health_bar.json (`controller.render.health_bar.*`)
+│   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1318 entries)
 │   │   ├── item_texture.json (atlas.items — currently EMPTY {})
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs, unregistered) / ui/ (116 PNGs) / c_ui/ (8 files, all wired) / totem/ (2 PNGs)
+│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs, unregistered) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 12 entries (ks_common, start, hud, pause, déesse×5, pandamine5, inventory, inv_content)
+│   │   ├── _ui_defs.json            ← load order, 13 entries (…+ chat_tweaks; chat_screen.json loads by vanilla filename, no entry needed)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), debug/dev_console/ui_common
+│   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (bt_chat_tweaks)
 │   │   ├── déesse_modules/ (hud.json, b6As_defs.json, slot_hotbar_button/defs+main+settings)
 │   │   ├── pandamine5/hide_gui.json
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
@@ -250,7 +254,7 @@ ks-client/
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped in latest build — Gate A reports 8 expected missing-file FAILs. The shipped pack keeps all 82 `entity/*.json` minimal for compatibility. `ui/settings_sections/controls_section.json` is also unshipped from load order (not in `_ui_defs.json`).
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 expected missing-file FAILs. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json`. `ui/settings_sections/controls_section.json` is unshipped from load order (not in `_ui_defs.json`). `ui/chat_screen.json` loads by vanilla filename (no `_ui_defs.json` entry, same as upstream).
 
 ---
 
@@ -263,6 +267,8 @@ ks-client/
    - Start screen → `TAP TO START` / skin preview / bell inbox.
    - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory; green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
+   - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
+   - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
 5. **Persist config:** in-game config screen → copy code (`shb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
