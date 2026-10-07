@@ -338,6 +338,9 @@
   // ---------- KS Inventory HUD position wrapper (Bottom Right) ----------
   // Bottom-right anchored; editor inventory sliders drive the offset live
   // ($ksb_invhud_x/y are 0-100 slider positions: px offset = -value-1).
+  // NOTE: template naming is swapped by design (see ksb_main.editor_stack_templete):
+  // h<id>_y_slider holds the X axis, h<id>_x_slider holds the Y axis —
+  // same as slot_button_item resizer (x_slider->Y, y_slider->X).
   "ks_invhud_pos": {
     "type": "panel",
     "size": [1, 1],
@@ -362,13 +365,13 @@
       },
       {
         "binding_type": "view",
-        "source_control_name": "hinvhud_x_slider",
+        "source_control_name": "hinvhud_y_slider",
         "source_property_name": "((#slider_val * -1) - 1)",
         "target_property_name": "#anchored_offset_value_x"
       },
       {
         "binding_type": "view",
-        "source_control_name": "hinvhud_y_slider",
+        "source_control_name": "hinvhud_x_slider",
         "source_property_name": "((#slider_val * -1) - 1)",
         "target_property_name": "#anchored_offset_value_y"
       }
@@ -377,6 +380,8 @@
   // ---------- Quick Totem Offhand button (KS Client) ----------
   // Positioned live by the editor totem sliders via the resizer wrapper
   // ($ksb_totem_x/y are 0-100 slider positions: px offset = value-125 / value-35).
+  // NOTE: htotem_y_slider is the X axis (-125), htotem_x_slider is the Y axis (-35),
+  // matching ksb_main.editor_stack_templete + slot_button_item resizer mapping.
   // Visibility follows the totem toggle live; size tries the size slider.
   "totem_btn_pos": {
     "type": "panel",
@@ -433,13 +438,13 @@
     "bindings": [
       {
         "binding_type": "view",
-        "source_control_name": "htotem_x_slider",
+        "source_control_name": "htotem_y_slider",
         "source_property_name": "(#slider_val - 125)",
         "target_property_name": "#anchored_offset_value_x"
       },
       {
         "binding_type": "view",
-        "source_control_name": "htotem_y_slider",
+        "source_control_name": "htotem_x_slider",
         "source_property_name": "(#slider_val - 35)",
         "target_property_name": "#anchored_offset_value_y"
       }
