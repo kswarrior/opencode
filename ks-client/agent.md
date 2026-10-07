@@ -8,7 +8,7 @@
 ## 1. What KS Client Is
 
 - **Minecraft Bedrock resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
-- **Name/version:** `KS Client v1.1.4`, `min_engine_version [1,21,120]`. See `resource_packs/KS Client/manifest.json`.
+- **Name/version:** `KS Client v1.1.5`, `min_engine_version [1,21,120]`. See `resource_packs/KS Client/manifest.json`.
 - **What it does:** premium mobile PvP UI — custom start screen, HUD (slot hotbar + inventory HUD + totem/offhand + FPS stack), clear chat, health bars, 3D hammer, clean touch controls, connected hotbar, clear glass, glass doors, fullbright fog.
 - **Full feature docs:** see `README.md` §1–§2. Read it first for user-facing behavior.
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP (`npx ... mct mcp -i .`). Skills allowed: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
@@ -156,7 +156,7 @@ npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_v
 
 ## 7. Version Policy — NO AUTO-BUMPING
 
-- **NEVER bump `manifest.json` `header.version`, `modules[0].version`, or `header.description` ("v1.1.4") as part of a fix/feature.** Leave at `[1,1,4]`.
+- **NEVER bump `manifest.json` `header.version`, `modules[0].version`, or `header.description` ("v1.1.5") as part of a fix/feature.** Leave at `[1,1,5]`.
 - **NEVER create `release/KS-Client-vX.Y.Z.mcpack` with a new version number unasked.** If the user asks for an `.mcpack`, reuse the current version in the filename (overwrite is still forbidden — write to `/tmp/` or ask for a filename).
 - **If the user explicitly requests a version bump** (e.g. "release 1.1.3"), then and only then: update all three spots (header version + module version + description string) together, and name the artifact accordingly.
 
@@ -172,8 +172,8 @@ python3 tools/check_player_animation_loop.py --iterations 3 --delay 1
 rm -rf /tmp/ks_pack && mkdir -p /tmp/ks_pack
 cp -r "resource_packs/KS Client" /tmp/ks_pack/
 # 3. zip CONTENTS of the pack folder (manifest.json at zip root), then rename
-python3 -c "import shutil; shutil.make_archive('/tmp/KS-Client-v1.1.4','zip','/tmp/ks_pack/KS Client')"
-mv /tmp/KS-Client-v1.1.4.zip /tmp/KS-Client-v1.1.4.mcpack
+python3 -c "import shutil; shutil.make_archive('/tmp/KS-Client-v1.1.5','zip','/tmp/ks_pack/KS Client')"
+mv /tmp/KS-Client-v1.1.5.zip /tmp/KS-Client-v1.1.5.mcpack
 # 4. do NOT drop into release/ unless user asked; report /tmp path + validation output
 ```
 
