@@ -75,7 +75,7 @@ How it works:
 - `ks_client_common.json` provides: `ks_edge_left/right` (2 px, 28% futuristic side rails, `ks_divider_v`, alpha 0.6), `ks_settings_button` (30×30, `ks_icon_settings`, no-background button → `button.menu_settings`), `ks_dressing_button` (40×40, `ks_icon_dressing` → `button.menu_skins`), `ks_inbox_button` (28×32 → `button.menu_inbox`).
 - Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.*` (`start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer`, `KS CLIENT v1.1.7 • ONLINE`), `ksb.howToSaveConfig`, `item.mace.name`.
 
-In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
+In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free. The bottom-right `Menu` button (left of Play, `ks_bottom_right_menu`) is hidden by default via `$ks_show_start_menu_button false` (`ignored` on the `start_screen.json` instance); the full-screen menu (`ks_start_menu_full`) stays dormant since its toggle is unreachable — set the flag `true` and repack to restore it.
 
 ### 2.2 Quick Totem Offhand (KS Client: `ui/inventory_screen.json`, `ui/hud_screen.json`, `textures/totem/`)
 
@@ -317,6 +317,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors (durability is always on, no toggle) |
 | Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | slider positions (px offset = value−125 / value−35), size px, show — editor totem row, live |
 | Inventory HUD extra | `$ksb_invhud_x 0`, `$ksb_invhud_y 0`, `$ksb_invhud_s 50`, `$ksb_invhud_v true`, `$ksb_invhud_small false` | position slider spots (px offset = −value−1), show (live), compact (repack) — editor inventory rows |
+| Start Menu button | `$ks_show_start_menu_button false` | bottom-right Menu button left of Play (`ks_bottom_right_menu` ignored when false) — set `true` + repack to restore |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`; F1 button itself not inserted into HUD) |
 | Inventory HUD | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
