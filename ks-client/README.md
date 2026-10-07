@@ -209,10 +209,10 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 
 ### 2.15 Texts, Subpacks, Full Texture Coverage
 
-- `texts/en_US.lang` + `languages.json`: pack name/description + all `ks_client.*`, `shb.*`, `NeBux.*` strings.
-- `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance”.
-- `textures/terrain_texture.json` enumerates the entire block atlas (acacia → zombie, deepslate variants, copper, cherry, etc.); `item_texture.json` (`atlas.items`) minimal by design; `texture_list.json`/`textures_list.json` legacy lists.
-- `textures/environment/`: `clouds/sun/moon_phases/end_sky/end_portal_colors/rain/snow/weather/destroy_stage_0-9/overworld_cubemap`; `colormap/`, `misc/`, `blocks/`, `items/`, `gui/`, `c_ui/`, `totem/`, `health_bar/`.
+- `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `shb.howToSaveConfig`, `NeBux.f3isf/f3isa` (`Inventory Status: §cFull/§aAvailable`).
+- `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — currently just `subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`).
+- `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) currently EMPTY (`texture_data:{}`) despite 17 door PNGs in `textures/items/` — vanilla fallback until re-registered; `texture_list.json`/`textures_list.json` legacy lists.
+- `textures/`: `blocks/` (1309 PNGs), `ui/` (116 PNGs), `c_ui/` (25 files, unwired since Utility HUD removal), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`). No `health_bar/`, no `animations/`, `models/`, `render_controllers/` in latest build.
 
 ---
 
@@ -226,39 +226,38 @@ ks-client/
 ├── tools/
 │   ├── check_player_animation_loop.py ← strict-JSON / dotfile / loop / shield-armor-sword / refs / mct loop checker
 │   └── recheck_player_animation.sh    ← bash wrapper (iterations delay)
-├── out/                             ← mct validate outputs (csv + mcr.json + report.html ×3 runs)
-├── release/                         ← shippable .mcpack v1.0.0 … v1.1.2 (11 files)
+├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
+├── release/                         ← shippable .mcpack (11 files: v1.0.0 + v1.0.3…v1.1.2, no v1.0.1/v1.0.2)
 ├── resource_packs/KS Client/
 │   ├── manifest.json                ← name KS Client, v1.1.2, min_engine 1.21.120, subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
-│   ├── animations/health_bar.json
-│   ├── animation_controllers/ …     ← (when present) player/attack controllers validated by tools/
-│   ├── entity/ (80+ json)           ← per-mob client_entity incl. player.json (minimal) + health hooks
-│   ├── models/entity/health_bar.json (+ Player/armor/items when present)
-│   ├── render_controllers/health_bar.json
-│   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
-│   │   ├── terrain_texture.json (atlas.terrain full list)
-│   │   └── item_texture.json (atlas.items)
+│   ├── entity/ (82 json)            ← all minimal client_entity (animations:{}, animate:[], render_controllers:[]) incl. player.json — NO health/animation hooks shipped
+│   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/…)
+│   │   ├── terrain_texture.json (atlas.terrain, 1318 entries)
+│   │   ├── item_texture.json (atlas.items — currently EMPTY {})
+│   │   ├── texture_list.json / textures_list.json (legacy lists)
+│   │   ├── blocks/ (1309 PNGs) / items/ (17 door PNGs, unregistered) / ui/ (116 PNGs) / c_ui/ (25 files, unwired) / totem/ (2 PNGs)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order (ks_common, start, hud, pause, déesse, pandamine5, NeBux, inv_content…)
-│   │   ├── ks_client_common.json, start_screen.json, hud_screen.json, pause_screen.json
-│   │   ├── inventory_screen.json (totem), mob_effect_screen.json, debug/dev_console/ui_common
-│   │   ├── déesse_modules/ (hud.json, b6As_defs.json, slot_hotbar_button/)
-│   │   ├── NeBux/ (NeBuxHud/Toggles/InventoryCounter, ModMenu/F3*.json)
+│   │   ├── _ui_defs.json            ← load order, 19 entries (ks_common, start, hud, pause, déesse, pandamine5, NeBux, inv_content…)
+│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud), pause_screen.json (pause)
+│   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), debug/dev_console/ui_common
+│   │   ├── déesse_modules/ (hud.json, b6As_defs.json, slot_hotbar_button/defs+main+settings)
+│   │   ├── NeBux/ (NeBuxHud/Toggles/InventoryCounter, ModMenu/F3+F3NC+F3Right — ship but F1/F3 unwired from HUD)
 │   │   ├── pandamine5/hide_gui.json
-│   │   └── ._content_/ (inv_content.json, counter.json)
-│   ├── subpacks/hide_editor/ui/    ← performance variant
-│   └── NeBux/NeBuxUI/ (Buttons/Icons/0.png/Black.png)
+│   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
+│   │   └── ._content_/ (inv_content.json, counter.json — both empty 0×0 stubs since Utility HUD removal)
+│   ├── subpacks/hide_editor/ui/déesse_modules/slot_hotbar_button/defs.json ← single-file override ($show_editor_button:false)
+│   └── NeBux/NeBuxUI/ (Buttons/hud_btn.png, Icons/hud_btn.png + inv_icon.png, 0.png, Black.png)
 ├── .opencode/skills/ (create-block/item/mob, design-model, debug-addon, creator-tools-cli)
 ├── .mct/mcp/prefs.json
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). If missing, checks 3–4 skip gracefully — the shipped pack keeps `player.json` minimal for compatibility.
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped in latest build — checks 3–4 skip gracefully. The shipped pack keeps all 82 `entity/*.json` minimal for compatibility. `ui/settings_sections/controls_section.json` is also unshipped from load order (not in `_ui_defs.json`).
 
 ---
 
