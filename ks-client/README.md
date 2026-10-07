@@ -319,11 +319,9 @@ Switch in pack settings; memory tier `0` for both.
 
 ## 8. Entities, Animations, Fog, Render Controllers
 
-- `entity/`: 80+ client entities (allay → zombie_villager, incl. `player.json`). Most attach health-bar + vanilla poses; `player.json` is minimal (`1.10.0`, empty animate) for forward-compat.
-- `animations/health_bar.json`: looping billboard logic (see §2.12).
-- `models/entity/health_bar.json` + `render_controllers/health_bar.json`: draw path.
+- `entity/`: 82 minimal client entities (`allay` → `zombie_villager`, incl. `player.json`). All are `format_version 1.10.0` with `animations:{}`, `animate:[]`, `render_controllers:[]` — no health-bar, pose, or controller hooks shipped.
+- `animations/`, `animation_controllers/`, `models/`, `render_controllers/`, `textures/health_bar/`: do NOT exist in latest build (deleted; health-bar system removed, see §2.12). Drive player anims are validated by `tools/` when synced externally, not shipped.
 - `fogs/ks_fullbright.json` + `biomes_client.json`: global fullbright (see §2.11).
-- `render_controllers/`, `models/entity/` extended when Drive player anims are synced (validated by `tools/`, not shipped by default to avoid version breakage).
 
 ---
 
@@ -331,8 +329,8 @@ Switch in pack settings; memory tier `0` for both.
 
 | Tool | Command | What it does |
 |------|---------|--------------|
-| Loop checker | `python3 tools/check_player_animation_loop.py [--iterations 3] [--delay 1] [--watch] [--with-validate]` | 5 gate loop: strict-JSON, dotfiles, loop flags, shield/armor/sword, player refs (+ optional `mct validate`) |
-| Shell wrapper | `bash tools/recheck_player_animation.sh [iterations] [delay]` | Replaces buggy anims with Drive version, then loops checker (default 3×1 s) |
+| Loop checker | `python3 tools/check_player_animation_loop.py [--iterations 3] [--delay 1] [--watch] [--with-validate]` | 5 gate loop: strict-JSON, dotfiles, loop flags, shield/armor/sword, player refs (+ optional `mct validate`). Gates 3–4 skip gracefully — target anim dirs not shipped. |
+| Shell wrapper | `bash tools/recheck_player_animation.sh [iterations] [delay]` | Re-syncs Drive anims when present, then loops checker (default 3×1 s) |
 | Validate | `npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_validate_loop` | Full pack validation; outputs CSV/JSON/HTML (see `out/`) |
 | MCP | `npx -y @minecraft/creator-tools@0.19.0 mcp -i .` (via `opencode.json`) | AI-editable pack (skills: `design-model`, `create-block/item/mob`, `debug-addon`, `creator-tools-cli` allowed) |
 
@@ -342,11 +340,11 @@ Switch in pack settings; memory tier `0` for both.
 
 ## 10. Build / Package / Edit Workflow
 
-1. Edit JSON/PNG under `resource_packs/KS Client/` (config in `ui/_global_variables.json`).
-2. Bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description`.
+1. Edit JSON/PNG under `resource_packs/KS Client/` (config in `ui/_global_variables.json`). Keep `README.md` in sync in the same edit (see `agent.md` §3D).
+2. Only bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description` + `README.md` header/§12 if the user explicitly requested a new version — never auto-bump.
 3. Run `python3 tools/check_player_animation_loop.py --iterations 3` and `mct validate`.
-4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack`.
-5. Test: import on device, activate on top, check subpack, F1/F3/totem/slot buttons, fullbright, glass, health bars.
+4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack` (never overwrite `release/` unasked; prefer `/tmp/`).
+5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, `ks_show_hud`, fullbright, glass/doors, connected hotbar. (No health bars / Utility HUD widgets / F1-F3 buttons in latest build — do not expect them.)
 
 Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, `create-item`, `create-mob`, `design-model`, `debug-addon`, `creator-tools-cli`.
 
@@ -356,15 +354,15 @@ Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, 
 
 From `manifest.json → metadata.authors`:
 
-- **KS Warrior** — KS Client core (start screen, HUD wiring, fullbright, health bar, QA tools, packaging v1.0.0–1.1.2)
-- **itzriyo157** — Slot Hotbar Button v1.3.0 + Inventory HUD v1.0.2 Bottom Right
-- **PandaMine5** — Clean Touch Controls v1.4.1
+- **KS Warrior** — KS Client core (start screen, HUD wiring, fullbright, QA tools, packaging v1.0.0–1.1.2; health-bar + Utility HUD + F1/F3 since removed per request)
+- **itzriyo157** — Slot Hotbar Button v1.3.0 + Inventory HUD v1.0.2 Bottom Right (both still active)
+- **PandaMine5** — Clean Touch Controls v1.4.1 (art + `hide_gui.json` ship; HUD F1 button removed)
 - **Connected Hotbar** v1.0.1
-- **Glass Doors & Trapdoors** v1.0.1
+- **Glass Doors & Trapdoors** v1.0.1 (block textures active; item icons unregistered — see §2.10)
 - **Mod MCPE** — Clear & Borderless Glass v6.2
-- **oSkullo** — Quick Totem Offhand v1.0.0
-- **NeBux** — F1 & F3 Button v1.1.3
-- **EchoRif** — Utility HUD V-1.5 Without Counters
+- **oSkullo** — Quick Totem Offhand v1.0.0 (HUD + inventory paths active)
+- **NeBux** — F1 & F3 Button v1.1.3 (files ship but buttons unwired from HUD — doll kept)
+- **EchoRif** — Utility HUD V-1.5 Without Counters (removed — keys/textures remain as dead/reserved)
 
 `generated_with: minecraft_creator_tools 0.19.0`. All upstream JSON retains its header (e.g. NeBux © 2025 — contact on Discord `NeBux18` before reuse; déesse `file_signature Itzriyo157`).
 
@@ -372,7 +370,7 @@ From `manifest.json → metadata.authors`:
 
 ## 12. Version History
 
-`release/` contains every shippable build:
+`release/` contains shippable builds (11 files — no `v1.0.1`/`v1.0.2` were ever cut):
 
 `v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → **`v1.1.2` (current)**
 
