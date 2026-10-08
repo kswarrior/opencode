@@ -1,0 +1,12 @@
+{
+  "furnace_screen@global.container_screen": {
+    "$screen_content": "furnace_screen.furnace_panel",
+    "$recipe_container_type|default": "furnace_screen.furnace_panel",
+    "variables": [
+      {
+        "requires": "$is_jei_recipe_book_layout_pack",
+        "$screen_content": "jei_layout_bridge.jei_smelting_layout"
+      }
+    ]
+  }
+}

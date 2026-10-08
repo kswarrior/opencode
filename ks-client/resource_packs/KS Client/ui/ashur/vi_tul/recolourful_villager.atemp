@@ -1,0 +1,229 @@
+/**
+// © 2026 ashura_temps,    All Rights Reserved.
+//
+// This UI is custom-made. You are allowed to use it **only as-is**, inside the game.
+// Do not modify, extract, reuse, or share any part of this UI including .json, .atemp files,
+// layout structure, or design.
+//
+// Not allowed:
+//   - Editing the UI (even for private/personal use)
+//   - Using parts of the code or layout in your own pack
+//   - Reuploading, redistributing, or hosting these files elsewhere
+//   - Converting texture packs to Bedrock using this UI
+//
+// By using this project, you agree to these terms.
+*/
+
+{
+  "namespace": "recolourful_villager",
+  "villager_panel@global.empty_panel": {
+    "size": [276, 166],
+    "layer": 1,
+    "$profession|default": "none",
+    "controls": [
+      /*
+        redstone chicken stay out of this file ik you been reading these if your going to yoink my code again atleast credit me this time
+      */
+      {
+        "villager_renamed@screen_content.image_element": {
+          "size": [276, 166],
+          "uv_size": [276, 166],
+          "layer": 1,
+          "texture": "assets/variants/trade/villager"
+          // for now i am just underlaying this because useing this binding makes the screen flicker with no texture on first load 
+          //,
+          // "bindings": [
+          //   {
+          //     "binding_type": "view",
+          //     "source_control_name": "profession_bindings",
+          //     "source_property_name": "#is_renamed",
+          //     "target_property_name": "#visible"
+          //   }
+          // ]
+        }
+      },
+      {
+        "profession_bindings@screen_content.image_element": {
+          "size": [276, 166],
+          "uv_size": [276, 166],
+          "layer": 2,
+          "texture": "#texture",
+          "allow_debug_missing_texture": false,
+          "property_bag": {
+            "#profession_id::ws:": "assets/variants/trade/weapon",
+            "#profession_id::ar:": "assets/variants/trade/armor",
+            "#profession_id::bt:": "assets/variants/trade/butcher",
+            "#profession_id::ct:": "assets/variants/trade/cartographer",
+            "#profession_id::cl:": "assets/variants/trade/cleric",
+            "#profession_id::fr:": "assets/variants/trade/farmer",
+            "#profession_id::fs:": "assets/variants/trade/fisherman",
+            "#profession_id::fl:": "assets/variants/trade/fletcher",
+            "#profession_id::lt:": "assets/variants/trade/leather",
+            "#profession_id::lb:": "assets/variants/trade/librarian",
+            "#profession_id::ms:": "assets/variants/trade/mason",
+            "#profession_id::sh:": "assets/variants/trade/shepherd",
+            "#profession_id::tl:": "assets/variants/trade/tool"
+          },
+          "bindings": [
+            { "binding_name": "#name_label", "binding_condition": "always" },
+            {
+              "binding_type": "view",
+              "binding_condition": "always",
+              "source_property_name": "(#name_label - 'index:_1' - 'index:_2' - 'index:_3' - 'index:_4' - 'index:_5')",
+              "target_property_name": "#villager_name"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#villager_name - ':ws:' - ':ar:' - ':bt:' - ':ct:' - ':cl:' - ':fr:' - ':fs:' - ':fl:' - ':lt:' - ':lb:' - ':ms:' - ':sh:' - ':tl:') = #villager_name)",
+              "target_property_name": "#is_renamed"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#name_label - #villager_name)",
+              "target_property_name": "#villager_level"
+            },
+            {
+              "binding_type": "view",
+              "binding_condition": "always",
+              "source_property_name": "('#profession_' + #villager_name)",
+              "target_property_name": "#texture"
+            },
+            { "binding_type": "view", "source_property_name": "(not #is_renamed)", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "inventory_side_content@global.empty_panel": {
+          "size": [171, 16],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "controls": [
+            {
+              "eyes@global.empty_panel": {
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "size": [160, 54],
+                "controls": [
+                  {
+                    // underlays the others
+                    "default@recolourful_villager.villager_eye_template": {
+                      "layer": 3,
+                      "texture": "assets/variants/animated/trade/default/default",
+                      "bindings": []
+                    }
+                  },
+                  {
+                    "weaponsmith@recolourful_villager.villager_eye_template": {
+                      "texture": "assets/variants/animated/trade/default/weaponsmith",
+                      "uv": "@villager_animation.weaponsmith_eyes_0",
+                      "$profession": "id::ws:"
+                    }
+                  },
+                  {"armorer@recolourful_villager.villager_eye_template"      : {"texture": "assets/variants/animated/trade/default/armorer"      ,  "$profession": "id::ar:"}},
+                  {"cartographer@recolourful_villager.villager_eye_template" : {"texture": "assets/variants/animated/trade/default/cartographer" ,  "$profession": "id::ct:"}},
+                  {"farmer@recolourful_villager.villager_eye_template"       : {"texture": "assets/variants/animated/trade/default/farmer"       ,  "$profession": "id::fr:"}},
+                  {"fletcher@recolourful_villager.villager_eye_template"     : {"texture": "assets/variants/animated/trade/default/fletcher"     ,  "$profession": "id::fl:"}}
+                ]
+              }
+            },
+            {
+              "label_stack@global.empty_stack": {
+                "orientation": "horizontal",
+                "anchor_from": "bottom_middle",
+                "anchor_to": "bottom_middle",
+                "size": ["100%c", 10],
+                "layer": 3,
+                "controls": [
+                  {
+                    "profession@global.empty_label": {
+                      "text": "#text",
+                      "size": ["default", 10],
+                      "localize": true,
+                      "color": "$villager_name_color",
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "profession_bindings",
+                          "source_property_name": "('atemp.entity.' + #villager_name + '.villager')",
+                          "target_property_name": "#text"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "profession_bindings",
+                          "source_property_name": "(not #is_renamed)",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "profession_renamed@global.empty_label": {
+                      "text": "#text",
+                      "size": ["default", 10],
+                      "localize": true,
+                      "color": "$villager_name_color",
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "profession_bindings",
+                          "source_property_name": "#villager_name",
+                          "target_property_name": "#text"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "profession_bindings",
+                          "source_property_name": "#is_renamed",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "skill_level@global.empty_label": {
+                      "text": "#text",
+                      "size": ["default", 10],
+                      "localize": true,
+                      "color": "$villager_name_color",
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "profession_bindings",
+                          "source_property_name": "('atemp.trade.' + #villager_level)",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#exp_bar_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+  "villager_eye_template@screen_content.image_element": {
+    "layer": 4,
+    "uv_size": [12, 5],
+    "animation_reset_name": "screen_animation_reset",
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "size": [12, 5],
+    "uv": "@villager_animation.default_eyes_0",
+    "$source_property": "(#villager_name = $profession)",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "profession_bindings",
+        "source_property_name": "$source_property",
+        "target_property_name": "#visible"
+      }
+    ]
+  }
+}
