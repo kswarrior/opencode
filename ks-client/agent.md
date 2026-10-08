@@ -97,13 +97,15 @@ resource_packs/KS Client/
    - Fog/biome/entity/animation/render_controller change → §8.
    - New file/folder or moved screen → §3 project structure tree.
    - Behavior/usage/install difference → §4.
-   - Only `tools/`, `out/`, or comment-only edits with zero user-visible effect → no `README.md` content change needed, but state that explicitly in your report.
+    - Only `tools/`, `./tmp/`, `out/`, or comment-only edits with zero user-visible effect → no `README.md` content change needed, but state that explicitly in your report.
 3. **Do NOT bump version strings** in `README.md` header/§12 unless the user explicitly requested a version bump (see §7).
 4. **Verify:** `git status` / `git diff --stat` must show `README.md` alongside the changed pack files, or an explicit "no user-visible change, README untouched" note.
 
 ---
 
 ## 4. Safety Rules (read as hard constraints)
+
+0. **Workspace containment — stay inside `./`. NEVER use root / outer folders.** Forbidden: `/tmp/`, `/root/`, `~/`, `C:\`, `/home/...`, parent `../`, or any absolute path outside this repo. Always run commands from repo root (`ks-client/`) with relative `./` paths (e.g. `./tools/...`, `./resource_packs/...`). If a temp / staging / validate / output dir is needed, create and use `./tmp/` inside the repo (e.g. `./tmp/ks_validate_loop`, `./tmp/ks_pack`, `./tmp/*.mcpack`) and clean only that. Never `rm -rf /tmp/...` or write outside `./`. This applies to ALL sections below.
 
 1. **DO NOT auto-bump versions. DO NOT update `manifest.json` version/header/modules, DO NOT rename release files, DO NOT invent a new version number.** If the user wants a new version, they will explicitly say so (e.g. "bump to 1.1.3"). Otherwise leave identity alone.
 2. **DO NOT change `uuid`, `min_engine_version`, `pack_icon.png`, or `metadata.authors`.** Attribute upstream authors (NeBux, itzriyo157, PandaMine5, oSkullo, EchoRif, Mod MCPE) — keep their headers/signatures.
@@ -128,8 +130,8 @@ python3 tools/check_player_animation_loop.py --watch
 
 # Gate B — full content validation (slow, ~180s, needs npx)
 python3 tools/check_player_animation_loop.py --iterations 1 --delay 0 --with-validate
-# or directly:
-npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_validate_loop
+# or directly (must stay inside ./ — use ./tmp/, never /tmp/):
+npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o ./tmp/ks_validate_loop
 ```
 
 **What Gate A checks (5 sub-gates, see `tools/check_player_animation_loop.py`):**
@@ -157,7 +159,7 @@ npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_v
 ## 7. Version Policy — NO AUTO-BUMPING
 
 - **NEVER bump `manifest.json` `header.version`, `modules[0].version`, or `header.description` ("v1.1.7") as part of a fix/feature.** Leave at `[1,1,7]`.
-- **NEVER create `release/KS-Client-vX.Y.Z.mcpack` with a new version number unasked.** If the user asks for an `.mcpack`, reuse the current version in the filename (overwrite is still forbidden — write to `/tmp/` or ask for a filename).
+- **NEVER create `release/KS-Client-vX.Y.Z.mcpack` with a new version number unasked.** If the user asks for an `.mcpack`, reuse the current version in the filename (overwrite is still forbidden — write to `./tmp/` inside the repo or ask for a filename). Never write to `/tmp/` or any outer folder.
 - **If the user explicitly requests a version bump** (e.g. "release 1.1.3"), then and only then: update all three spots (header version + module version + description string) together, and name the artifact accordingly.
 
 ---
@@ -165,19 +167,19 @@ npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o /tmp/ks_v
 ## 8. Create `.mcpack` (without version change)
 
 ```bash
-# from repo root ks-client/
+# from repo root ks-client/ — stay inside ./, never /tmp/ or outer folders
 # 1. gates must pass (see §5)
 python3 tools/check_player_animation_loop.py --iterations 3 --delay 1
-# 2. stage a clean copy (never zip .opencode/node_modules, out/, release/, tools/)
-rm -rf /tmp/ks_pack && mkdir -p /tmp/ks_pack
-cp -r "resource_packs/KS Client" /tmp/ks_pack/
+# 2. stage a clean copy in ./tmp/ (never zip .opencode/node_modules, out/, release/, tools/)
+rm -rf ./tmp/ks_pack && mkdir -p ./tmp/ks_pack
+cp -r "resource_packs/KS Client" ./tmp/ks_pack/
 # 3. zip CONTENTS of the pack folder (manifest.json at zip root), then rename
-python3 -c "import shutil; shutil.make_archive('/tmp/KS-Client-v1.1.7','zip','/tmp/ks_pack/KS Client')"
-mv /tmp/KS-Client-v1.1.7.zip /tmp/KS-Client-v1.1.7.mcpack
-# 4. do NOT drop into release/ unless user asked; report /tmp path + validation output
+python3 -c "import shutil; shutil.make_archive('./tmp/KS-Client-v1.1.7','zip','./tmp/ks_pack/KS Client')"
+mv ./tmp/KS-Client-v1.1.7.zip ./tmp/KS-Client-v1.1.7.mcpack
+# 4. do NOT drop into release/ unless user asked; report ./tmp path + validation output
 ```
 
-Rules: zip must contain `manifest.json` at root (not nested `KS Client/` folder). Test import the `.mcpack` on a device before calling it done. Never overwrite files in `release/`.
+Rules: zip must contain `manifest.json` at root (not nested `KS Client/` folder). Test import the `.mcpack` on a device before calling it done. Never overwrite files in `release/`. All staging/output stays inside `./tmp/` — never `/tmp/` or any outer folder.
 
 ---
 
