@@ -13,7 +13,7 @@
 ## 1. What KS Client is
 
 - **Resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
-- **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.1.x, `min_engine_version [1,21,120]`). Do NOT hardcode a new version — read it from disk.
+- **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.2.3, `min_engine_version [1,21,120]`). Do NOT hardcode a new version — read it from disk.
 - **Does:** mobile PvP UI — start screen, HUD (slot hotbar + inventory HUD + totem/offhand + FPS stack), clear chat, health bars, 3D hammer, touch controls, connected hotbar, clear glass/doors, fullbright fog.
 - **Docs:** `README.md` §1–§2 = user-facing behavior. Read first.
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP. Skills: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
@@ -85,7 +85,7 @@ Safe procedure:
 
 ## 5. Hard constraints
 
-1. **Identity:** NEVER bump `manifest.json` version/modules/description, `uuid`, `min_engine_version`, `pack_icon.png`, `metadata.authors`. Keep upstream credits. New version only if user explicitly says e.g. "bump to 1.1.x" — then update header + module + description together.
+1. **Identity:** NEVER bump `manifest.json` version/modules/description, `uuid`, `min_engine_version`, `pack_icon.png`, `metadata.authors`. Keep upstream credits. New version only if user explicitly says e.g. "bump to 1.2.x" — then update header + module + description together.
 2. **Artifacts (ALWAYS release):** on ANY version bump or `.mcpack` build request, ALWAYS place the artifact in `release/` as `release/KS-Client-vX.Y.Z.mcpack` (X.Y.Z from `manifest.json` header). Never overwrite an existing `release/` file — if that version file already exists, stop and ask the user. On plain build requests (no bump) reuse the current version. Keep `./tmp/` staging (`ks_pack`, `ks_validate_loop`, `*.mcpack` copies) out of git.
 3. **`_ui_defs.json` append-only.** No bulk JSON reformat. One feature per edit.
 4. **No commit/push unless asked.** Leave working tree + report evidence.
