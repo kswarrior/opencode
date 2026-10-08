@@ -1,0 +1,8 @@
+{
+	
+	"namespace": "ks_b6As_defs",
+	"variables": {
+		"$inv_pos": "bottom_right",
+		"$inv_offs": [-1, -1]
+	}
+}

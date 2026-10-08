@@ -1,0 +1,1128 @@
+{
+ "editor_button@ksb_defs.flags": {
+  "$offset": [
+   1000,
+   1000
+  ],
+  "anchor_from": "top_right",
+  "anchor_to": "top_right",
+  "bindings": [
+   {
+    "binding_type": "view",
+    "source_control_name": "slot_hotbar_button_panel",
+    "source_property_name": "#visible",
+    "target_property_name": "#visible"
+   }
+  ],
+  "controls": [
+   {
+    "toggle@common_toggles.dark_content_toggle": {
+     "$button_content": "ksb_main.editor_icon",
+     "$toggle_name": "slot_hotbar_button_rditor",
+     "$toggle_view_binding_name": "slot_hotbar_editor_toggle"
+    }
+   }
+  ],
+  "focus_enabled": false,
+  "layer": 555,
+  "offset": "$offset",
+  "prevent_touch_input": true,
+  "size": [
+   16,
+   16
+  ],
+  "type": "input_panel",
+  "variables": [
+   {
+    "$offset": [
+     -20,
+     2
+    ],
+    "requires": "$show_editor_button"
+   }
+  ]
+ },
+ "editor_icon": {
+  "texture": "textures/ui/gear",
+  "type": "image"
+ },
+ "editor_opacity_icon": {
+  "color": "$text_color",
+  "texture": "textures/ui/settings_glyph_2x",
+  "type": "image"
+ },
+ "editor_stack_templete": {
+  "$shslider_text|default": "('Show Hotbar ' + $id)",
+  "$sslider_text|default": "('Slot ' + $id + ' Size:')",
+  "$xslider_text|default": "('Slot ' + $id + ' Y Axis:')",
+  "$yslider_text|default": "('Slot ' + $id + ' X Axis:')",
+  "controls": [
+   {
+    "togl@ksb_main.toggle_option": {
+     "$toggle_default_state": "$tggle_state",
+     "$toggle_name": "('ksbT_' + $id)",
+     "$toggle_text": "$shslider_text",
+     "$toggle_view_binding_name": "('ksbT_' + $id + '_t')"
+    }
+   },
+   {
+    "bg": {
+     "alpha": 0.76,
+     "bindings": [
+      {
+       "binding_type": "view",
+       "source_control_name": "('ksbT_' + $id + '_t')",
+       "source_property_name": "#toggle_state",
+       "target_property_name": "#visible"
+      }
+     ],
+     "controls": [
+      {
+       "stack": {
+        "$dec": 100.0,
+        "controls": [
+         {
+          "y_slider@ksb_main.slider_panel": {
+           "$slider_name": "('h' + $id + '_y_slider@common.slider')",
+           "$slider_steps": 1,
+           "$slider_value": "($x_slider_value / $dec)",
+           "$title_text": "$yslider_text"
+          }
+         },
+         {
+          "x_slider@ksb_main.slider_panel": {
+           "$slider_name": "('h' + $id + '_x_slider@common.slider')",
+           "$slider_steps": 1,
+           "$slider_value": "($y_slider_value / $dec)",
+           "$title_text": "$xslider_text"
+          }
+         },
+         {
+          "size_slider@ksb_main.slider_panel": {
+           "$slider_name": "('h' + $id + '_size_slider@common.slider')",
+           "$slider_steps": 1,
+           "$slider_value": "($sizs_value / $dec)",
+           "$title_text": "$sslider_text"
+          }
+         },
+         {
+          "pad@common.empty_panel": {
+           "size": [
+            0,
+            4
+           ]
+          }
+         }
+        ],
+        "layer": 3,
+        "size": [
+         "100%",
+         "100%c"
+        ],
+        "type": "stack_panel"
+       }
+      }
+     ],
+     "size": [
+      "100%",
+      "100%c"
+     ],
+     "texture": "textures/ui/Black",
+     "type": "image"
+    }
+   }
+  ],
+  "layer": 2,
+  "size": [
+   "100%",
+   "100%c + 4px"
+  ],
+  "type": "stack_panel"
+ },
+ "hotbar_vapue_templete": {
+  "controls": [
+   {
+    "contained": {
+     "$hvv": "('hval_' + $id)",
+     "controls": [
+      {
+       "$hvv": {
+        "$hs_c": "('h' + $id + '_s@ksb_main.value_panel')",
+        "$ht_c": "('h' + $id + '_t@ksb_main.value_panel')",
+        "$hx_c": "('h' + $id + '_x@ksb_main.value_panel')",
+        "$hy_c": "('h' + $id + '_y@ksb_main.value_panel')",
+        "bindings": [
+         {
+          "binding_type": "view",
+          "source_control_name": "('h' + $id + '_x')",
+          "source_property_name": "#text",
+          "target_property_name": "#y"
+         },
+         {
+          "binding_type": "view",
+          "source_control_name": "('h' + $id + '_y')",
+          "source_property_name": "#text",
+          "target_property_name": "#x"
+         },
+         {
+          "binding_type": "view",
+          "source_control_name": "('h' + $id + '_s')",
+          "source_property_name": "#text",
+          "target_property_name": "#s"
+         },
+         {
+          "binding_type": "view",
+          "source_control_name": "('h' + $id + '_t')",
+          "source_property_name": "#text",
+          "target_property_name": "#t"
+         },
+         {
+          "binding_type": "view",
+          "source_property_name": "(#y + #x + #s + #t)",
+          "target_property_name": "#h_val"
+         }
+        ],
+        "controls": [
+         {
+          "$hx_c": {
+           "$prop_get": "#y_value",
+           "$variable_name": "('ksb_' + $id + '_x')"
+          }
+         },
+         {
+          "$hy_c": {
+           "$prop_get": "#x_value",
+           "$variable_name": "('ksb_' + $id + '_y')"
+          }
+         },
+         {
+          "$hs_c": {
+           "$prop_get": "#s_value",
+           "$variable_name": "('ksb_' + $id + '_s')"
+          }
+         },
+         {
+          "$ht_c": {
+           "$prop_get": "#tog_value",
+           "$variable_name": "('ksb_' + $id + '_v')"
+          }
+         }
+        ],
+        "type": "panel"
+       }
+      }
+     ],
+     "type": "panel"
+    }
+   }
+  ],
+  "size": [
+   0,
+   0
+  ],
+  "type": "panel",
+  "visible": false
+ },
+ "imventory_icon": {
+  "bindings": [
+   {
+    "binding_type": "view",
+    "source_control_name": "ksb_balp",
+    "source_property_name": "#alpha",
+    "target_property_name": "#alpha"
+   }
+  ],
+  "layer": 3,
+  "size": [
+   "130%",
+   "130%"
+  ],
+  "texture": "textures/ui/inventory_icon",
+  "type": "image"
+ },
+ "json_value_text": {
+  "$child_size|default": [
+   "100%",
+   "100%sm"
+  ],
+  "button_mappings": [
+   {
+    "from_button_id": "button.menu_select",
+    "handle_deselect": false,
+    "handle_select": true,
+    "mapping_type": "pressed",
+    "to_button_id": "button.text_edit_box_selected"
+   },
+   {
+    "consume_event": false,
+    "from_button_id": "button.menu_select",
+    "handle_deselect": true,
+    "handle_select": false,
+    "mapping_type": "global",
+    "to_button_id": "button.text_edit_box_selected"
+   },
+   {
+    "from_button_id": "button.menu_cancel",
+    "handle_deselect": true,
+    "handle_select": false,
+    "mapping_type": "global",
+    "to_button_id": "button.text_edit_box_deselected"
+   },
+   {
+    "mapping_type": "pressed",
+    "to_button_id": "button.text_edit_box_hovered"
+   },
+   {
+    "from_button_id": "button.menu_clear",
+    "handle_deselect": false,
+    "handle_select": false,
+    "mapping_type": "focused",
+    "to_button_id": "button.text_edit_box_clear"
+   }
+  ],
+  "can_be_deselected": true,
+  "controls": [
+   {
+    "default@common.edit_box_indent": {}
+   },
+   {
+    "hover@common.edit_box_indent_hover": {}
+   },
+   {
+    "pressed@common.edit_box_indent_hover": {}
+   },
+   {
+    "inner_panel": {
+     "controls": [
+      {
+       "clipp_panel": {
+        "anchor_from": "left_middle",
+        "anchor_to": "left_middle",
+        "clips_children": true,
+        "controls": [
+         {
+          "ksb_json_text": {
+           "$text_box_name": "chat_copy_edit",
+           "anchor_from": "top_left",
+           "anchor_to": "top_left",
+           "bindings": [
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_1",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h1"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_2",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h2"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_3",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h3"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_4",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h4"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_5",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h5"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_6",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h6"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_7",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h7"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_8",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h8"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_9",
+             "source_property_name": "#h_val",
+             "target_property_name": "#h9"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_10",
+             "source_property_name": "#h_val",
+             "target_property_name": "#inv"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_totem",
+             "source_property_name": "#h_val",
+             "target_property_name": "#totem"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "hval_invhud",
+             "source_property_name": "#h_val",
+             "target_property_name": "#invhud"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "ksb_ssc",
+             "source_property_name": "#text",
+             "target_property_name": "#ssc"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "ksb_balp",
+             "source_property_name": "#text",
+             "target_property_name": "#balp"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "ksb_invhud_small_val",
+             "source_property_name": "#text",
+             "target_property_name": "#invhud_small"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "ksb_sbi",
+             "source_property_name": "#text",
+             "target_property_name": "#sbi"
+            },
+            {
+             "binding_type": "view",
+             "source_property_name": "('{' + #h1 + #h2 + #h3 + #h4 + #h5 + #h6 + #h7 + #h8 + #h9 + #inv + #totem + #invhud + #ssc + #balp + #sbi + #invhud_small + '}')",
+             "target_property_name": "#text"
+            }
+           ],
+           "color": "$f_color_format",
+           "hide_hyphen": true,
+           "localize": false,
+           "size": [
+            "100%",
+            "default"
+           ],
+           "text": "#text",
+           "type": "label"
+          }
+         }
+        ],
+        "type": "panel"
+       }
+      }
+     ],
+     "layer": 3,
+     "size": [
+      "100% - 6px",
+      "100% - 4px"
+     ],
+     "type": "panel"
+    }
+   }
+  ],
+  "default_control": "default",
+  "enabled_newline": true,
+  "focus_enabled": true,
+  "hover_control": "hover",
+  "max_length": 901,
+  "place_holder_control": "empty",
+  "pressed_control": "pressed",
+  "size": [
+   "100%",
+   260
+  ],
+  "text_box_name": "ksb_json_text",
+  "text_control": "ksb_json_text",
+  "text_type": "ExtendedASCII",
+  "type": "edit_box"
+ },
+ "namespace": "ksb_main",
+ "option_toggle_cus_checked@ksb_main.option_toggle_cus_unchecked": {
+  "$toggle_ctrl_name": "settings_common.option_toggle_on"
+ },
+ "option_toggle_cus_checked_hover@ksb_main.option_toggle_cus_unchecked": {
+  "$toggle_ctrl_name": "settings_common.option_toggle_on_hover"
+ },
+ "option_toggle_cus_off_locked@ksb_main.option_toggle_cus_unchecked": {
+  "$alpha": 0.5,
+  "$toggle_ctrl_name": "settings_common.option_toggle_off_locked"
+ },
+ "option_toggle_cus_on_locked@ksb_main.option_toggle_cus_unchecked": {
+  "$alpha": 0.5,
+  "$toggle_ctrl_name": "settings_common.option_toggle_on_locked"
+ },
+ "option_toggle_cus_unchecked": {
+  "$alpha|default": 1.0,
+  "$toggle_ctrl_name|default": "settings_common.option_toggle_off",
+  "controls": [
+   {
+    "option_texture@$toggle_ctrl_name": {}
+   },
+   {
+    "text": {
+     "$is_ks_ui_pack|default": false,
+     "$offset|default": [
+      32,
+      0
+     ],
+     "alpha": "$alpha",
+     "anchor_from": "left_middle",
+     "anchor_to": "left_middle",
+     "offset": "$offset",
+     "propagate_alpha": true,
+     "size": [
+      "default",
+      10
+     ],
+     "text": "$toggle_text",
+     "type": "label",
+     "variables": [
+      {
+       "$offset|default": [
+        2,
+        0
+       ],
+       "requires": "$is_ks_ui_pack"
+      }
+     ]
+    }
+   }
+  ],
+  "type": "panel"
+ },
+ "option_toggle_cus_unchecked_hover@ksb_main.option_toggle_cus_unchecked": {
+  "$toggle_ctrl_name": "settings_common.option_toggle_off_hover"
+ },
+ "pad2px_y@common.empty_panel": {
+  "size": [
+   0,
+   2
+  ]
+ },
+ "slider_panel": {
+  "controls": [
+   {
+    "title_text": {
+     "anchor_from": "top_middle",
+     "anchor_to": "top_middle",
+     "offset": [
+      0,
+      4
+     ],
+     "size": [
+      "100% - 12px",
+      10
+     ],
+     "text": "$title_text",
+     "type": "label"
+    }
+   },
+   {
+    "$slider_name": {
+     "anchor_from": "bottom_middle",
+     "anchor_to": "bottom_middle",
+     "bindings": [
+      {
+       "binding_name": "#slider_value"
+      },
+      {
+       "binding_name": "#slider_steps"
+      },
+      {
+       "binding_type": "view",
+       "source_property_name": "(101 - #slider_value * 101)",
+       "target_property_name": "#val_0"
+      },
+      {
+       "binding_type": "view",
+       "source_property_name": "(100 * (#val_0 > 100))",
+       "target_property_name": "#val0"
+      },
+      {
+       "binding_type": "view",
+       "source_property_name": "(#val_0 - #val0)",
+       "target_property_name": "#val_1"
+      },
+      {
+       "binding_type": "view",
+       "source_property_name": "(10 * ((#val_1 > 10) + (#val_1 > 20) + (#val_1 > 30) + (#val_1 > 40) + (#val_1 > 50) + (#val_1 > 60) + (#val_1 > 70) + (#val_1 > 80) + (#val_1 > 90)))",
+       "target_property_name": "#val1"
+      },
+      {
+       "binding_type": "view",
+       "source_property_name": "(#val_1 - #val1)",
+       "target_property_name": "#val_2"
+      },
+      {
+       "binding_type": "view",
+       "source_property_name": "(1 * ((#val_2 > 1) + (#val_2 > 2) + (#val_2 > 3) + (#val_2 > 4) + (#val_2 > 5) + (#val_2 > 6) + (#val_2 > 7) + (#val_2 > 8) + (#val_2 > 9)))",
+       "target_property_name": "#val2"
+      },
+      {
+       "binding_type": "view",
+       "source_property_name": "(((#val0 + #val1 + #val2) - 100) * -1)",
+       "target_property_name": "#slider_val"
+      }
+     ],
+     "property_bag": {
+      "#slider_steps": "$slider_steps",
+      "#slider_value": "$slider_value"
+     },
+     "size": [
+      "100% - 8px",
+      10
+     ],
+     "slider_steps": "$slider_steps"
+    }
+   }
+  ],
+  "layer": 2,
+  "size": [
+   "100%",
+   28
+  ],
+  "type": "panel"
+ },
+ "slider_value_templete": {
+  "bindings": [
+   {
+    "binding_type": "view",
+    "source_control_name": "('h' + $id + '_x_slider')",
+    "source_property_name": "#slider_val",
+    "target_property_name": "#x_value"
+   },
+   {
+    "binding_type": "view",
+    "source_control_name": "('h' + $id + '_y_slider')",
+    "source_property_name": "#slider_val",
+    "target_property_name": "#y_value"
+   },
+   {
+    "binding_type": "view",
+    "source_control_name": "('h' + $id + '_size_slider')",
+    "source_property_name": "#slider_val",
+    "target_property_name": "#s_value"
+   },
+   {
+    "binding_type": "view",
+    "source_control_name": "('ksbT_' + $id + '_t')",
+    "source_property_name": "#toggle_state",
+    "target_property_name": "#tog_value"
+   }
+  ],
+  "size": [
+   0,
+   0
+  ],
+  "type": "panel",
+  "visible": false
+ },
+ "slot_button@hud.gui_hotbar_slot_button_prototype": {
+  "$hotbar_collection_name": "$collection_name",
+  "$item_collection_name": "$collection_name",
+  "anchor_from": "top_left",
+  "bindings": [
+   {
+    "binding_collection_name": "$collection_name",
+    "binding_type": "collection_details"
+   },
+   {
+    "binding_type": "view",
+    "source_control_name": "('h' + $id + '_size_slider')",
+    "source_property_name": "#slider_val",
+    "target_property_name": "#size_binding_x"
+   },
+   {
+    "binding_type": "view",
+    "source_control_name": "('h' + $id + '_size_slider')",
+    "source_property_name": "#slider_val",
+    "target_property_name": "#size_binding_y"
+   }
+  ],
+  "controls": [
+   {
+    "button_texture": {
+     "bindings": [
+      {
+       "binding_collection_name": "$collection_name",
+       "binding_name": "#slot_selected",
+       "binding_type": "collection"
+      },
+      {
+       "binding_type": "view",
+       "source_control_name": "ksb_balp",
+       "source_property_name": "#alpha",
+       "target_property_name": "#alpha"
+      },
+      {
+       "binding_type": "view",
+       "source_property_name": "('textures/ui/ksb_slot_button' + ('#' + #slot_selected))",
+       "target_property_name": "#texture"
+      }
+     ],
+     "controls": [
+      {
+       "hotbar_number": {
+        "bindings": [
+         {
+          "binding_collection_name": "$collection_name",
+          "binding_name": "#collection_index",
+          "binding_type": "collection"
+         },
+         {
+          "binding_collection_name": "$collection_name",
+          "binding_name": "#slot_selected",
+          "binding_type": "collection"
+         },
+         {
+          "binding_type": "view",
+          "source_property_name": "('#' + #slot_selected)",
+          "target_property_name": "#offset"
+         },
+         {
+          "binding_type": "view",
+          "source_property_name": "('textures/ui/ksb_numb_' + (#collection_index + 1))",
+          "target_property_name": "#texture"
+         }
+        ],
+        "ignored": "($id = '10')",
+        "property_bag": {
+         "#false": [
+          0,
+          0
+         ],
+         "#true": [
+          0,
+          2
+         ]
+        },
+        "type": "image"
+       }
+      }
+     ],
+     "propagate_alpha": true,
+     "property_bag": {
+      "#false": "",
+      "#true": "_pressed"
+     },
+     "type": "image"
+    }
+   },
+   {
+    "slot_button_content@ksb_main.slot_button_content": {}
+   }
+  ],
+  "prevent_touch_input": true,
+  "property_bag": {
+   "#size_binding_x": 1.0,
+   "#size_binding_y": 1.0
+  },
+  "size": [
+   "100%",
+   "100%"
+  ]
+ },
+ "slot_button_content": {
+  "$controls|default": [
+   {
+    "item_renderer_panel": {
+     "bindings": [
+      {
+       "binding_type": "view",
+       "source_control_name": "ksb_item",
+       "source_property_name": "#toggle_state",
+       "target_property_name": "#visible"
+      }
+     ],
+     "controls": [
+      {
+       "item_renderer@common.item_renderer": {}
+      },
+      {
+       "container": {
+        "bindings": [
+         {
+          "binding_type": "view",
+          "source_control_name": "('hotbar_' + $id + '_ksb_data')",
+          "source_property_name": "(#s_value > 20)",
+          "target_property_name": "#visible"
+         }
+        ],
+        "controls": [
+         {
+          "stack_count_text": {
+           "anchor_from": "bottom_right",
+           "anchor_to": "bottom_right",
+           "bindings": [
+            {
+             "binding_collection_name": "$collection_name",
+             "binding_name": "#inventory_stack_count",
+             "binding_type": "collection"
+            },
+            {
+             "binding_type": "view",
+             "source_control_name": "ksb_show_stack",
+             "source_property_name": "#toggle_state",
+             "target_property_name": "#visible"
+            }
+           ],
+           "font_scale_factor": 1.2,
+           "layer": 12,
+           "offset": [
+            1,
+            3
+           ],
+           "shadow": true,
+           "size": [
+            "default",
+            "default"
+           ],
+           "text": "#inventory_stack_count",
+           "type": "label"
+          }
+         },
+         {
+          "dura_panel": {
+           "controls": [
+            {
+             "durability_bar@common.durability_bar": {
+              "$durability_bar_offset": [
+               0,
+               -2
+              ],
+              "$durability_bar_size": [
+               "90%",
+               2
+              ],
+              "anchor_from": "bottom_middle",
+              "anchor_to": "bottom_middle",
+              "ignored": false
+             }
+            }
+           ],
+           "type": "panel"
+          }
+         }
+        ],
+        "type": "panel"
+       }
+      }
+     ],
+     "type": "panel"
+    }
+   }
+  ],
+  "bindings": [
+   {
+    "binding_collection_name": "$collection_name",
+    "binding_name": "#slot_selected",
+    "binding_type": "collection"
+   },
+   {
+    "binding_type": "view",
+    "source_property_name": "('#' + #slot_selected)",
+    "target_property_name": "#offset"
+   }
+  ],
+  "controls": "$controls",
+  "layer": 2,
+  "property_bag": {
+   "#false": [
+    0,
+    -2
+   ],
+   "#true": [
+    0,
+    0
+   ]
+  },
+  "size": [
+   "60%",
+   "60%"
+  ],
+  "type": "panel"
+ },
+ "slot_button_item": {
+  "anchor_from": "top_left",
+  "anchor_to": "top_left",
+  "bindings": [
+   {
+    "binding_type": "view",
+    "source_control_name": "('ksbT_' + $id + '_t')",
+    "source_property_name": "#toggle_state",
+    "target_property_name": "#visible"
+   }
+  ],
+  "collection_index": "$index",
+  "controls": [
+   {
+    "resizer": {
+     "anchor_from": "top_left",
+     "anchor_to": "top_left",
+     "bindings": [
+      {
+       "binding_type": "view",
+       "source_control_name": "('h' + $id + '_x_slider')",
+       "source_property_name": "#slider_val",
+       "target_property_name": "#anchored_offset_value_y"
+      },
+      {
+       "binding_type": "view",
+       "source_control_name": "('h' + $id + '_y_slider')",
+       "source_property_name": "#slider_val",
+       "target_property_name": "#anchored_offset_value_x"
+      }
+     ],
+     "controls": [
+      {
+       "slot_button@ksb_main.slot_button": {}
+      }
+     ],
+     "property_bag": {
+      "#anchored_offset_value_x": 1.0,
+      "#anchored_offset_value_y": 1.0
+     },
+     "size": [
+      1,
+      1
+     ],
+     "type": "panel",
+     "use_anchored_offset": true
+    }
+   }
+  ],
+  "size": [
+   "1%",
+   "1%"
+  ],
+  "type": "panel"
+ },
+ "slot_hotbar_button_panel": {
+  "$collection_name": "hotbar_items",
+  "bindings": [
+   {
+    "binding_name": "#hud_visible",
+    "binding_type": "global"
+   },
+   {
+    "binding_name": "#inventory_touch_button",
+    "binding_type": "global"
+   },
+   {
+    "binding_type": "view",
+    "source_property_name": "(#hud_visible and #inventory_touch_button)",
+    "target_property_name": "#visible"
+   }
+  ],
+  "collection_name": "$collection_name",
+  "controls": [
+   {
+    "hotbar_1@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_1",
+     "$id": "1",
+     "$index": 0
+    }
+   },
+   {
+    "hotbar_2@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_2",
+     "$id": "2",
+     "$index": 1
+    }
+   },
+   {
+    "hotbar_3@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_3",
+     "$id": "3",
+     "$index": 2
+    }
+   },
+   {
+    "hotbar_4@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_4",
+     "$id": "4",
+     "$index": 3
+    }
+   },
+   {
+    "hotbar_5@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_5",
+     "$id": "5",
+     "$index": 4
+    }
+   },
+   {
+    "hotbar_6@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_6",
+     "$id": "6",
+     "$index": 5
+    }
+   },
+   {
+    "hotbar_7@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_7",
+     "$id": "7",
+     "$index": 6
+    }
+   },
+   {
+    "hotbar_8@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_8",
+     "$id": "8",
+     "$index": 7
+    }
+   },
+   {
+    "hotbar_9@ksb_main.slot_button_item": {
+     "$hotbar_select": "button.slot_9",
+     "$id": "9",
+     "$index": 8
+    }
+   },
+   {
+    "inventory_button@ksb_main.slot_button_item": {
+     "$controls": [
+      {
+       "icon@ksb_main.imventory_icon": {}
+      }
+     ],
+     "$hotbar_select": "button.hotbar_inventory_button",
+     "$id": "10",
+     "$index": 9
+    }
+   }
+  ],
+  "type": "collection_panel"
+ },
+ "tab_icon": {
+  "controls": [
+   {
+    "icon": {
+     "size": [
+      15,
+      15
+     ],
+     "texture": "$icon_texture",
+     "type": "image"
+    }
+   }
+  ],
+  "size": [
+   24,
+   25
+  ],
+  "type": "panel"
+ },
+ "tab_navigation@common_tabs.tab_right": {
+  "$tab_content": "ksb_main.tab_icon",
+  "size": [
+   27,
+   25
+  ]
+ },
+ "tab_navigation_panep": {
+  "anchor_from": "top_right",
+  "anchor_to": "top_left",
+  "controls": [
+   {
+    "stack": {
+     "$radio_toggle_group": true,
+     "$toggle_name": "ksb_tab_",
+     "anchor_from": "top_left",
+     "anchor_to": "top_left",
+     "controls": [
+      {
+       "home_tab@ksb_main.tab_navigation": {
+        "": "textures/ui/ks_info_item"
+       }
+      },
+      {
+       "hub_tab@ksb_main.tab_navigation": {
+        "": "textures/ui/settings_pause_menu_icon"
+       }
+      },
+      {
+       "display_tab@ksb_main.tab_navigation": {
+        "": "textures/ui/ks_info_bossbar"
+       }
+      }
+     ],
+     "size": [
+      27,
+      "100%c"
+     ],
+     "type": "stack_panel"
+    }
+   }
+  ],
+  "offset": [
+   -5,
+   0
+  ],
+  "prevent_touch_input": true,
+  "size": [
+   27,
+   "100%c"
+  ],
+  "type": "input_panel"
+ },
+ "toggle_option": {
+  "$toggle_view_binding_name|default": "blabla",
+  "controls": [
+   {
+    "$toggle_view_binding_name@common.toggle": {
+     "$checked_control": "ksb_main.option_toggle_cus_checked",
+     "$checked_hover_control": "ksb_main.option_toggle_cus_checked_hover",
+     "$checked_locked_control": "ksb_main.option_toggle_cus_on_locked",
+     "$checked_locked_hover_control": "ksb_main.option_toggle_cus_on_locked",
+     "$unchecked_control": "ksb_main.option_toggle_cus_unchecked",
+     "$unchecked_hover_control": "ksb_main.option_toggle_cus_unchecked_hover",
+     "$unchecked_locked_control": "ksb_main.option_toggle_cus_off_locked",
+     "$unchecked_locked_hover_control": "ksb_main.option_toggle_cus_off_locked"
+    }
+   }
+  ],
+  "size": [
+   "100%",
+   16
+  ],
+  "type": "panel"
+ },
+ "value_panel": {
+  "bindings": [
+   {
+    "binding_type": "view",
+    "source_control_name": "('hotbar_' + $id + '_ksb_data')",
+    "source_property_name": "$prop_get",
+    "target_property_name": "#val"
+   },
+   {
+    "binding_type": "view",
+    "source_property_name": "(#var + #val + ',')",
+    "target_property_name": "#text"
+   }
+  ],
+  "property_bag": {
+   "#var": "('\"$' + $variable_name + '\":')"
+  },
+  "size": [
+   0,
+   0
+  ],
+  "type": "panel",
+  "visible": false
+ }
+}

@@ -1,0 +1,95 @@
+{
+  "namespace": "ks_fps",
+  "fps_counter_mask": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [3, 3],
+    "controls": [
+      {
+        "ks_fps_client": {
+          "type": "label",
+          "size": ["100%", 10],
+          "color": [1, 1, 1],
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.6,
+          "text": "KS Client v1.2.4"
+        }
+      },
+      {
+        "ks_fps_row": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": ["100%", 10],
+          "controls": [
+            {
+              "ks_fps_tag": {
+                "type": "label",
+                "size": ["default", 10],
+                "color": [1, 1, 1],
+                "shadow": true,
+                "enable_profanity_filter": false,
+                "localize": false,
+                "font_size": "normal",
+                "font_scale_factor": 0.6,
+                "text": "FPS: "
+              }
+            },
+            {
+              "ks_fps_digits": {
+                "type": "panel",
+                "size": [48, 10],
+                "clips_children": true,
+                "controls": [
+                  {
+                    "fps_counter_overlay": {
+                      "type": "custom",
+                      "renderer": "paper_doll_renderer",
+                      "size": [40, 40],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [-13, 12],
+                      "camera_tilt_degrees": 0,
+                      "starting_rotation": 180,
+                      "use_skin_gui_scale": false
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_fps_pos": {
+          "type": "label",
+          "size": ["100%", 10],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.75,
+          "text": "#text",
+          "bindings": [
+            {
+              "binding_name": "#player_position_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_name": "#player_position_text",
+              "binding_name_override": "#text",
+              "binding_type": "global",
+              "binding_condition": "always_when_visible"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

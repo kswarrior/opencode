@@ -1,0 +1,26 @@
+{
+  "namespace": "inv_content",
+
+  // (Removed per request: Utility HUD V-1.5 fully removed. Only component_toggle base kept for crafting limiter.)
+  "inventory_content": {
+    "type": "panel",
+    "size": [0, 0],
+    "controls": []
+  },
+
+  "component_toggle@common.toggle": {
+    "$toggle_name": "_",
+    "size": [0, 0],
+    "sound_volume": 0,
+    "$activator": "",
+    "toggle_default_state": true,
+    "controls": [],
+    "button_mappings": [
+      {
+        "from_button_id": "$activator",
+        "to_button_id": "button.menu_select",
+        "mapping_type": "global"
+      }
+    ]
+  }
+}

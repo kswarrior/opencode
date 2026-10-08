@@ -1,0 +1,512 @@
+{
+  "namespace": "hud",
+
+  // (Removed per request: Utility HUD V-1.5 fully removed — durability/crosshair/toggles/redirects gone.)
+  "hud_screen": {
+    "always_accepts_input": true
+  },
+
+  // ---------- Paperdoll renderer (vanilla copy) ----------
+  // Hides vanilla doll/coords/days, styles
+  // selected-slot art. Vanilla root_panel copy, touch-indicator override,
+  // progress/player_renderer2-3 and hud_content.controls deliberately NOT
+  // ported (stale-copy risk / missing toggle / unreferenced).
+  "hud_player_renderer": {
+    "type": "panel",
+    "size": [
+      65,
+      65
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "ignored": true,
+    "controls": [
+      {
+        "hud_player": {
+          "type": "custom",
+          "renderer": "hud_player_renderer",
+          "layer": 1,
+          "animation_reset_name": "screen_animation_reset",
+          "anims": [
+            "@common.screen_exit_size_animation_push",
+            "@common.screen_exit_size_animation_pop",
+            "@common.screen_entrance_size_animation_push",
+            "@common.screen_entrance_size_animation_pop"
+          ],
+          "bindings": [
+            {
+              "binding_name": "#paper_doll_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "root_panel/exp_rend": {
+    "ignored": "$always_visible_hotbar"
+  },
+  "centered_gui_elements_at_bottom_middle/exp_rend": {
+    "ignored": "$always_visible_hotbar"
+  },
+  "hotbar_slot_selected_image": {
+    "type": "image",
+    "texture": "textures/ui/selected_hotbar_slot",
+    "size": [
+      24,
+      24
+    ],
+    "layer": 8,
+    "bindings": [
+      {
+        "binding_name": "#slot_selected",
+        "binding_name_override": "#visible",
+        "binding_type": "collection",
+        "binding_collection_name": "$hotbar_collection_name"
+      }
+    ]
+  },
+  "player_position": {
+    "ignored": true,
+    "type": "image",
+    "size": [
+      "100%c + 6px",
+      "100%c + 2px"
+    ],
+    "texture": "textures/ui/Black",
+    "alpha": 0.7,
+    "controls": [
+      {
+        "player_position_text": {
+          "type": "label",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "layer": 1,
+          "enable_profanity_filter": false,
+          "color": "$chat_text_color",
+          "text": "#text",
+          "shadow": true
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#player_position_visible",
+        "binding_name_override": "#visible",
+        "binding_condition": "always",
+        "binding_type": "global"
+      },
+      {
+        "binding_name": "#number_of_days_played_text",
+        "binding_name_override": "#text",
+        "binding_condition": "always_when_visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+  // Displays number of played in-game days
+  "number_of_days_played": {
+    "ignored": true,
+    "type": "image",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "size": [
+      "100%c + 6px",
+      "100%c + 2px"
+    ],
+    "texture": "textures/ui/Black",
+    "alpha": 0.7,
+    "controls": [
+      {
+        "number_of_days_played_text": {
+          "type": "label",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "layer": 1,
+          "enable_profanity_filter": false,
+          "color": "$chat_text_color",
+          "text": "#text",
+          "shadow": true
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#number_of_days_played_visible",
+        "binding_name_override": "#visible",
+        "binding_condition": "always",
+        "binding_type": "global"
+      },
+      {
+        "binding_name": "#number_of_days_played_text",
+        "binding_name_override": "#text",
+        "binding_condition": "always_when_visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+  // ---------- KS Clean Touch Controls (base layout tweaks) ----------
+  // Vanilla touch-layout redefinitions: centered bottom-middle cluster sizing,
+  // inventory button row, elipses helpers.
+  "hotbar_elipses_button@borderless_button": {
+    "sound_volume": "$hud_elipses_sound_volume"
+  },
+
+  "elipses_image": {
+    "ignored": "(not $hud_elipses_enabled)"
+  },
+
+  "hotbar_elipses_panel_right_content": {
+    "ignored": "(not $hud_elipses_enabled)"
+  },
+
+  "inventory_button": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "size": [ 226, 22 ],
+    "offset": [ 0, -2 ],
+    "layer": 4,
+    "controls": [
+      {
+        "padding": {
+          "type": "panel",
+          "size": [ "fill", "100%" ]
+        }
+      },
+      {
+        "button@common.button": {
+          "$pressed_button_name": "button.hotbar_inventory_button",
+          "size": [ 22, "100%" ]
+        }
+      }
+    ]
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch": {
+    "size": "$size",
+    "$size": [ 180, 50 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$size": [ 200, 50 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/bubbles_rend_0": {
+    "offset": "$offset",
+    "$offset": [ 180, -50 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -50 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/bubbles_rend_1": {
+    "offset": "$offset",
+    "$offset": [ 180, -50 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -50 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/hunger_rend": {
+    "offset": "$offset",
+    "$offset": [ 180, -40 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -40 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/horse_heart_rend_1": {
+    "offset": "$offset",
+    "$offset": [ 180, -50 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -50 ]
+    }
+  },
+
+  "centered_gui_elements_at_bottom_middle_touch/horse_heart_rend_0": {
+    "offset": "$offset",
+    "$offset": [ 180, -56 ],
+    "variables": {
+      "requires": "$hud_elipses_enabled",
+      "$offset": [ 200, -56 ]
+    }
+  },
+
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "inv_button@hud.inventory_button": {}
+          }
+        ]
+      },
+      // KS Inventory HUD (Bottom Right): inventory grid overlay.
+      // Positioned live by the editor inventory row; visibility follows its
+      // toggle live ($ksb_invhud_v is the default). Compact via $ksb_invhud_small.
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "ks_invhud_pos@hud.ks_invhud_pos": {}
+          },
+          {
+            "ks_hotbar_data@ks_hud.hotbar_data": {}
+          }
+        ]
+      },
+      // (Removed per request: Utility HUD + KS F3/F8 keys fully removed.)
+      // KS FPS counter (Top Left, always on): paper-doll digits overlay.
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": {
+          "fps_counter@ks_fps.fps_counter_mask": {}
+        }
+      },
+      // KS crosshair indicator: default/entity hit crosshair, center.
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "ks_crosshair@hud.ks_crosshair_panel": {}
+          }
+        ]
+      }
+    ]
+  },
+
+  // Unhide MUST be a sibling of root_panel, not inside it: root_panel is
+  // bound to #hud_visible, so anything inside it disappears with the HUD and
+  // touch users tapping F1 could get stuck with no way back.
+  // Slot Hotbar Button by KS Client (insert_front) + KS show-HUD
+  // (insert_back) coexist as separate modifications on hud_content.
+  // (Legacy F1 button removed per request.)
+  // Quick Totem Offhand button by KS Client (insert_front): 30x30 (40 -25%),
+  // raised 30px (new size) above the Offhand default.
+  "hud_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "totem_pos@hud.totem_btn_pos": {}
+          }
+        ]
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "ksb_buttons@ksb_main.slot_hotbar_button_panel": {}
+          },
+          {
+            "ksb_button_editor@ksb_main.editor_button": {}
+          },
+          {
+            "ksb_editor_panel@ksb_main.editor_panel": {}
+          }
+        ]
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": [
+          {
+            "ks_show_hud@ks_client.ks_show_hud": {}
+          }
+        ]
+      }
+    ]
+  },
+
+  // KS perf flags for the HUD screen (telemetry off, cached screen).
+  "hud_screen@common.base_screen": {
+    "send_telemetry": false,
+    "low_frequency_rendering": true,
+    "load_screen_immediately": true,
+    "cache_screen": true
+  },
+
+  // ---------- KS Inventory HUD position wrapper (fullscreen neutral) ----------
+  // Fullscreen so the inner panel's $inv_pos/$inv_offs (base bottom_right,
+  // or InvHUD * subpack corner) map to screen corners. Visibility follows
+  // the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
+  "ks_invhud_pos": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [0, 0],
+    "visible": "$ksb_invhud_v",
+    "layer": 44,
+    "controls": [
+      {
+        "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ksbT_invhud_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  // ---------- Quick Totem Offhand button (KS Client) ----------
+  // Positioned live by the editor totem sliders via the resizer wrapper
+  // ($ksb_totem_x/y are 0-100 slider positions: px offset = value-125 / value-35).
+  // NOTE: htotem_y_slider is the X axis (-125), htotem_x_slider is the Y axis (-35),
+  // matching ksb_main.editor_stack_templete + slot_button_item resizer mapping.
+  // Visibility follows the totem toggle live; size tries the size slider.
+  "totem_btn_pos": {
+    "type": "panel",
+    "size": [1, 1],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "visible": "$ksb_totem_v",
+    "layer": 50,
+    "use_anchored_offset": true,
+    "property_bag": {
+      "#anchored_offset_value_x": 1.0,
+      "#anchored_offset_value_y": 1.0
+    },
+    "controls": [
+      {
+        "totem_btn@settings_common.action_button": {
+          "prevent_touch_input": true,
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [0, 0],
+          "size": [30, 30],
+          "visible": "$ksb_totem_v",
+          "layer": 50,
+          "property_bag": {
+            "#size_binding_x": 1.0,
+            "#size_binding_y": 1.0
+          },
+          "$border_visible": false,
+          "$button_text": "",
+          "$pressed_button_name": "button.hotbar_inventory_button",
+          "$default_button_texture|default": "textures/totem/totem_button",
+          "$hover_button_texture|default": "textures/totem/totem_button",
+          "$pressed_button_texture|default": "textures/totem/totem_button",
+          "$locked_button_texture|default": "textures/totem/totem_button",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ksbT_totem_t",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "htotem_size_slider",
+              "source_property_name": "#slider_val",
+              "target_property_name": "#size_binding_x"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "htotem_size_slider",
+              "source_property_name": "#slider_val",
+              "target_property_name": "#size_binding_y"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "htotem_y_slider",
+        "source_property_name": "(#slider_val - 125)",
+        "target_property_name": "#anchored_offset_value_x"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "htotem_x_slider",
+        "source_property_name": "(#slider_val - 35)",
+        "target_property_name": "#anchored_offset_value_y"
+      }
+    ]
+  },
+  // ---------- KS crosshair indicator ----------
+  // Center crosshair: default vs entity (hit) art, toggled by right_helper_collection.
+  // Textures: textures/ui/crosshair_default + crosshair_entity (direct UI paths, no atlas).
+  // Config: $ks_crosshair_v/size/alpha/offset in _global_variables.json.
+  "ks_crosshair_panel": {
+    "type": "panel",
+    "size": "$ks_crosshair_size",
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "offset": "$ks_crosshair_offset",
+    "visible": "$ks_crosshair_v",
+    "layer": 13,
+    "controls": [
+      {
+        "default@hud.ks_crosshair_default": {}
+      },
+      {
+        "entity@hud.ks_crosshair_entity": {}
+      }
+    ]
+  },
+  "ks_crosshair_default": {
+    "type": "image",
+    "texture": "textures/ui/crosshair_default",
+    "size": ["100%", "100%"],
+    "alpha": "$ks_crosshair_alpha",
+    "bindings": [
+      {
+        "binding_type": "collection",
+        "binding_name": "(#helper_description - 'hudScreen.tooltip.')",
+        "binding_name_override": "#get",
+        "binding_collection_name": "right_helper_collection",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#get = '') or (not (#get = 'hit'))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "ks_crosshair_entity": {
+    "type": "image",
+    "texture": "textures/ui/crosshair_entity",
+    "size": ["100%", "100%"],
+    "alpha": "$ks_crosshair_alpha",
+    "bindings": [
+      {
+        "binding_type": "collection",
+        "binding_name": "(#helper_description - 'hudScreen.tooltip.')",
+        "binding_name_override": "#get",
+        "binding_collection_name": "right_helper_collection",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#get - (#get - 'hit')) = 'hit')",
+        "target_property_name": "#visible"
+      }
+    ]
+  }
+}
