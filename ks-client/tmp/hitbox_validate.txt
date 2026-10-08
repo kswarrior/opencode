@@ -1,0 +1,2480 @@
+Validated KS Client: 204 error(s), 42 warning(s), 0 vanilla reference(s) to check, 2 likely-noise warning(s), 549 recommendation(s)
+
+ERRORS - fix these
+  [FORMATVER] Resource animation does not define a format_version.
+      file: /textures/ui/ashur/animations/blast_furnace_lit.json
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/formatver
+  [FORMATVER] Resource animation does not define a format_version.
+      file: /textures/ui/ashur/animations/dispenser.json
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/formatver
+  [FORMATVER] Resource animation does not define a format_version.
+      file: /textures/ui/ashur/animations/dropper.json
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/formatver
+  [FORMATVER] Resource animation does not define a format_version.
+      file: /textures/ui/ashur/animations/exp_full.json
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/formatver
+  [FORMATVER] Resource animation does not define a format_version.
+      file: /textures/ui/ashur/animations/exp_mobile_full.json
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/formatver
+  [FORMATVER] Resource animation does not define a format_version.
+      file: /textures/ui/ashur/animations/furnace_burn_lit.json
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/formatver
+  [FORMATVER] Resource animation does not define a format_version.
+      file: /textures/ui/ashur/animations/smoker_burn_lit.json
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/formatver
+  [PRJINT] Project contains extraneous file or folder
+      detail: /home/runner/work/opencode/opencode/ks-client/resource_packs/KS Client/textures/ui/ashur/cell_icons/underlays/info.txt
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/prjint
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/anvil_highlight.png
+      detail: textures/anvil_highlight
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/bamboo_door_top.png
+      detail: textures/blocks/bamboo_door_top
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/bamboo_trapdoor.png
+      detail: textures/blocks/bamboo_trapdoor
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/cherry_door_bottom.png
+      detail: textures/blocks/cherry_door_bottom
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/cherry_door_top.png
+      detail: textures/blocks/cherry_door_top
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/cherry_trapdoor.png
+      detail: textures/blocks/cherry_trapdoor
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/copper_door_top.png
+      detail: textures/blocks/copper_door_top
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/copper_trapdoor.png
+      detail: textures/blocks/copper_trapdoor
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/exposed_copper_door_top.png
+      detail: textures/blocks/exposed_copper_door_top
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/exposed_copper_trapdoor.png
+      detail: textures/blocks/exposed_copper_trapdoor
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_outside/hopper_outside_left.png
+      detail: textures/blocks/hopper_outside/hopper_outside_left
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_outside/hopper_outside_left_powered.png
+      detail: textures/blocks/hopper_outside/hopper_outside_left_powered
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_outside/hopper_outside_right.png
+      detail: textures/blocks/hopper_outside/hopper_outside_right
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_outside/hopper_outside_right_powered.png
+      detail: textures/blocks/hopper_outside/hopper_outside_right_powered
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_down.png
+      detail: textures/blocks/hopper_top/hopper_top_down
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_down_powered.png
+      detail: textures/blocks/hopper_top/hopper_top_down_powered
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_east.png
+      detail: textures/blocks/hopper_top/hopper_top_east
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_east_powered.png
+      detail: textures/blocks/hopper_top/hopper_top_east_powered
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_north.png
+      detail: textures/blocks/hopper_top/hopper_top_north
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_north_powered.png
+      detail: textures/blocks/hopper_top/hopper_top_north_powered
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_south.png
+      detail: textures/blocks/hopper_top/hopper_top_south
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_south_powered.png
+      detail: textures/blocks/hopper_top/hopper_top_south_powered
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_up.png
+      detail: textures/blocks/hopper_top/hopper_top_up
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_up_powered.png
+      detail: textures/blocks/hopper_top/hopper_top_up_powered
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_west.png
+      detail: textures/blocks/hopper_top/hopper_top_west
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/hopper_top/hopper_top_west_powered.png
+      detail: textures/blocks/hopper_top/hopper_top_west_powered
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/mangrove_door_bottom.png
+      detail: textures/blocks/mangrove_door_bottom
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/mangrove_door_top.png
+      detail: textures/blocks/mangrove_door_top
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/mangrove_trapdoor.png
+      detail: textures/blocks/mangrove_trapdoor
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/oxidized_copper_door_top.png
+      detail: textures/blocks/oxidized_copper_door_top
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/oxidized_copper_trapdoor.png
+      detail: textures/blocks/oxidized_copper_trapdoor
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/pale_oak_door_bottom.png
+      detail: textures/blocks/pale_oak_door_bottom
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/pale_oak_door_top.png
+      detail: textures/blocks/pale_oak_door_top
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/pale_oak_trapdoor.png
+      detail: textures/blocks/pale_oak_trapdoor
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/weathered_copper_door_top.png
+      detail: textures/blocks/weathered_copper_door_top
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/blocks/weathered_copper_trapdoor.png
+      detail: textures/blocks/weathered_copper_trapdoor
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/black_bundle.png
+      detail: textures/bundles/black_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/blue_bundle.png
+      detail: textures/bundles/blue_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/brown_bundle.png
+      detail: textures/bundles/brown_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/bundle_full_progress.png
+      detail: textures/bundles/bundle_full_progress
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/bundle_progress.png
+      detail: textures/bundles/bundle_progress
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/cyan_bundle.png
+      detail: textures/bundles/cyan_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/default_bundle.png
+      detail: textures/bundles/default_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/empty_stack_progress_bar.png
+      detail: textures/bundles/empty_stack_progress_bar
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/gray_bundle.png
+      detail: textures/bundles/gray_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/green_bundle.png
+      detail: textures/bundles/green_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/light_blue_bundle.png
+      detail: textures/bundles/light_blue_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/light_gray_bundle.png
+      detail: textures/bundles/light_gray_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/lime_bundle.png
+      detail: textures/bundles/lime_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/magenta_bundle.png
+      detail: textures/bundles/magenta_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/orange_bundle.png
+      detail: textures/bundles/orange_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/pink_bundle.png
+      detail: textures/bundles/pink_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/purple_bundle.png
+      detail: textures/bundles/purple_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/red_bundle.png
+      detail: textures/bundles/red_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/white_bundle.png
+      detail: textures/bundles/white_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/bundles/yellow_bundle.png
+      detail: textures/bundles/yellow_bundle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/common.png
+      detail: textures/common
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/entity/attachable/mace.png
+      detail: textures/entity/attachable/mace
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/entity/chest/trapped.png
+      detail: textures/entity/chest/trapped
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/entity/chest/trapped_double.png
+      detail: textures/entity/chest/trapped_double
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/entity/ks_hitbox/hitbox.png
+      detail: textures/entity/ks_hitbox/hitbox
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/entity/ks_hitbox/mob_hitbox.png
+      detail: textures/entity/ks_hitbox/mob_hitbox
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/entity/trapped.png
+      detail: textures/entity/trapped
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/entity/trapped_double.png
+      detail: textures/entity/trapped_double
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/epic.png
+      detail: textures/epic
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/fps/digits_atlas.png
+      detail: textures/fps/digits_atlas
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/dismount.png
+      detail: textures/gui/controls/dismount
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/dismount_pressed.png
+      detail: textures/gui/controls/dismount_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/down.png
+      detail: textures/gui/controls/down
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/down_left.png
+      detail: textures/gui/controls/down_left
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/down_left_pressed.png
+      detail: textures/gui/controls/down_left_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/down_pressed.png
+      detail: textures/gui/controls/down_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/down_right.png
+      detail: textures/gui/controls/down_right
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/down_right_pressed.png
+      detail: textures/gui/controls/down_right_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/flyingascend.png
+      detail: textures/gui/controls/flyingascend
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/flyingascend_pressed.png
+      detail: textures/gui/controls/flyingascend_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/flyingdescend.png
+      detail: textures/gui/controls/flyingdescend
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/flyingdescend_pressed.png
+      detail: textures/gui/controls/flyingdescend_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/jump.png
+      detail: textures/gui/controls/jump
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/jump_dpad.png
+      detail: textures/gui/controls/jump_dpad
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/jump_dpad_pressed.png
+      detail: textures/gui/controls/jump_dpad_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/jump_pressed.png
+      detail: textures/gui/controls/jump_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/large_button.png
+      detail: textures/gui/controls/large_button
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/large_button_pressed.png
+      detail: textures/gui/controls/large_button_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/left.png
+      detail: textures/gui/controls/left
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/left_pressed.png
+      detail: textures/gui/controls/left_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/right.png
+      detail: textures/gui/controls/right
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/right_pressed.png
+      detail: textures/gui/controls/right_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/sneak.png
+      detail: textures/gui/controls/sneak
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/sneak_dpad.png
+      detail: textures/gui/controls/sneak_dpad
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/sneak_dpad_pressed.png
+      detail: textures/gui/controls/sneak_dpad_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/sneak_pressed.png
+      detail: textures/gui/controls/sneak_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/up.png
+      detail: textures/gui/controls/up
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/up_left.png
+      detail: textures/gui/controls/up_left
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/up_left_pressed.png
+      detail: textures/gui/controls/up_left_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/up_pressed.png
+      detail: textures/gui/controls/up_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/up_right.png
+      detail: textures/gui/controls/up_right
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/up_right_pressed.png
+      detail: textures/gui/controls/up_right_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/waterascend.png
+      detail: textures/gui/controls/waterascend
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/waterascend_pressed.png
+      detail: textures/gui/controls/waterascend_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/waterdescend.png
+      detail: textures/gui/controls/waterdescend
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/controls/waterdescend_pressed.png
+      detail: textures/gui/controls/waterdescend_pressed
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/gui/gui.png
+      detail: textures/gui/gui
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/00.png
+      detail: textures/health_bar/bar/00
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/01.png
+      detail: textures/health_bar/bar/01
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/02.png
+      detail: textures/health_bar/bar/02
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/03.png
+      detail: textures/health_bar/bar/03
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/04.png
+      detail: textures/health_bar/bar/04
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/05.png
+      detail: textures/health_bar/bar/05
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/06.png
+      detail: textures/health_bar/bar/06
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/07.png
+      detail: textures/health_bar/bar/07
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/08.png
+      detail: textures/health_bar/bar/08
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/09.png
+      detail: textures/health_bar/bar/09
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/10.png
+      detail: textures/health_bar/bar/10
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/11.png
+      detail: textures/health_bar/bar/11
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/12.png
+      detail: textures/health_bar/bar/12
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/13.png
+      detail: textures/health_bar/bar/13
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/14.png
+      detail: textures/health_bar/bar/14
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/15.png
+      detail: textures/health_bar/bar/15
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/16.png
+      detail: textures/health_bar/bar/16
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/17.png
+      detail: textures/health_bar/bar/17
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/18.png
+      detail: textures/health_bar/bar/18
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/19.png
+      detail: textures/health_bar/bar/19
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/20.png
+      detail: textures/health_bar/bar/20
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/21.png
+      detail: textures/health_bar/bar/21
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/22.png
+      detail: textures/health_bar/bar/22
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/23.png
+      detail: textures/health_bar/bar/23
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/24.png
+      detail: textures/health_bar/bar/24
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/25.png
+      detail: textures/health_bar/bar/25
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/26.png
+      detail: textures/health_bar/bar/26
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/27.png
+      detail: textures/health_bar/bar/27
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/28.png
+      detail: textures/health_bar/bar/28
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/29.png
+      detail: textures/health_bar/bar/29
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/30.png
+      detail: textures/health_bar/bar/30
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/31.png
+      detail: textures/health_bar/bar/31
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/32.png
+      detail: textures/health_bar/bar/32
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/33.png
+      detail: textures/health_bar/bar/33
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/34.png
+      detail: textures/health_bar/bar/34
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/35.png
+      detail: textures/health_bar/bar/35
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/36.png
+      detail: textures/health_bar/bar/36
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/37.png
+      detail: textures/health_bar/bar/37
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/38.png
+      detail: textures/health_bar/bar/38
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/39.png
+      detail: textures/health_bar/bar/39
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/40.png
+      detail: textures/health_bar/bar/40
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/41.png
+      detail: textures/health_bar/bar/41
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/42.png
+      detail: textures/health_bar/bar/42
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/43.png
+      detail: textures/health_bar/bar/43
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/44.png
+      detail: textures/health_bar/bar/44
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/45.png
+      detail: textures/health_bar/bar/45
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/46.png
+      detail: textures/health_bar/bar/46
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/47.png
+      detail: textures/health_bar/bar/47
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/48.png
+      detail: textures/health_bar/bar/48
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/49.png
+      detail: textures/health_bar/bar/49
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/50.png
+      detail: textures/health_bar/bar/50
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/g.png
+      detail: textures/health_bar/bar/g
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/r.png
+      detail: textures/health_bar/bar/r
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/bar/y.png
+      detail: textures/health_bar/bar/y
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/0.png
+      detail: textures/health_bar/font/0
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/1.png
+      detail: textures/health_bar/font/1
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/2.png
+      detail: textures/health_bar/font/2
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/3.png
+      detail: textures/health_bar/font/3
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/4.png
+      detail: textures/health_bar/font/4
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/5.png
+      detail: textures/health_bar/font/5
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/6.png
+      detail: textures/health_bar/font/6
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/7.png
+      detail: textures/health_bar/font/7
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/8.png
+      detail: textures/health_bar/font/8
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/font/9.png
+      detail: textures/health_bar/font/9
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/health_bar/heart.png
+      detail: textures/health_bar/heart
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/bamboo_door.png
+      detail: textures/items/bamboo_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/cherry_door.png
+      detail: textures/items/cherry_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/copper_door.png
+      detail: textures/items/copper_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/crimson_door.png
+      detail: textures/items/crimson_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/door_acacia.png
+      detail: textures/items/door_acacia
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/door_birch.png
+      detail: textures/items/door_birch
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/door_dark_oak.png
+      detail: textures/items/door_dark_oak
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/door_iron.png
+      detail: textures/items/door_iron
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/door_jungle.png
+      detail: textures/items/door_jungle
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/door_spruce.png
+      detail: textures/items/door_spruce
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/door_wood.png
+      detail: textures/items/door_wood
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/exposed_copper_door.png
+      detail: textures/items/exposed_copper_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/mace.png
+      detail: textures/items/mace
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/mangrove_door.png
+      detail: textures/items/mangrove_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/oxidized_copper_door.png
+      detail: textures/items/oxidized_copper_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/pale_oak_door.png
+      detail: textures/items/pale_oak_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/warped_door.png
+      detail: textures/items/warped_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/items/weathered_copper_door.png
+      detail: textures/items/weathered_copper_door
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/mobile_craft_button.png
+      detail: textures/mobile_craft_button
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/mobile_craft_button_table.png
+      detail: textures/mobile_craft_button_table
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/rare.png
+      detail: textures/rare
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/search_clear.png
+      detail: textures/search_clear
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/search_clear_hover.png
+      detail: textures/search_clear_hover
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/slot_highlight_back.png
+      detail: textures/slot_highlight_back
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/slot_highlight_front.png
+      detail: textures/slot_highlight_front
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/stack_split_progress.png
+      detail: textures/stack_split_progress
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/stack_split_underlay.png
+      detail: textures/stack_split_underlay
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+  [TEXTURELIST] Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture
+      file: /textures/uncommon.png
+      detail: textures/uncommon
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/texturelist
+
+WARNINGS - usually real problems (for example, a broken reference)
+  [FORMATVER] Resource animation version (1.12.0) has a higher minor version number compared to the expected version (1.10.0)
+      file: /animations/health_bar.json
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/formatver
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/anvil_highlight.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/black_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/blue_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/brown_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/bundle_full_progress.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/bundle_progress.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/cyan_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/default_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/empty_stack_progress_bar.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/gray_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/green_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/light_blue_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/light_gray_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/lime_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/magenta_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/orange_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/pink_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/purple_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/red_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/white_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/bundles/yellow_bundle.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/c_ui/close_default.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/c_ui/close_hover.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/common.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/entity/trapped.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/entity/trapped_double.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/epic.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/health_bar/bar/g.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/health_bar/bar/r.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/health_bar/bar/y.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/mobile_craft_button.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/mobile_craft_button_table.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/rare.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/search_clear.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/search_clear_hover.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/slot_highlight_back.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/slot_highlight_front.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/stack_split_progress.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/stack_split_underlay.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Texture does not have any items in this pack that are using this.
+      file: /textures/uncommon.png
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+  [UNLINK] Link to texture is not found in this pack
+      file: /ui/chat_screen.json
+      detail: /ui/chat_screen.json to `textures/ui/.texture_assets/.chat_icons/new_send`
+      docs: https://learn.microsoft.com/minecraft/creator/reference/content/mctoolsvalreference/unlink
+
+LIKELY NOISE - Bedrock accepts these; leave them unless the user wants a clean report
+  [COMJSON] JSON structure error
+      file: /render_controllers/ks_hitbox.render_controllers.json
+      detail: (render_controllers.controller.render.ks_hitbox.uv_anim) is missing and it is required
+      why it's likely fine: render controllers don't need uv_anim
+  [COMJSON] JSON structure error
+      file: /render_controllers/ks_mob_hitbox.render_controllers.json
+      detail: (render_controllers.controller.render.ks_mob_hitbox.uv_anim) is missing and it is required
+      why it's likely fine: render controllers don't need uv_anim
+
+RECOMMENDATIONS - optional
+  [BLOCKSCAT] Overrides vanilla resource, which is not recommended
+      file: /blocks.json
+      detail: hopper
+  [FORMATVER] Resource animation version (1.8.0) has a lower minor version number compared to the expected version (1.10.0) or its previous minor version
+      file: /animations/ks_hitbox.animation.json
+  [FORMATVER] Resource animation version (1.8.0) has a lower minor version number compared to the expected version (1.10.0) or its previous minor version
+      file: /animations/ks_mob_hitbox.animation.json
+  [FORMATVER] Resource animation version (1.8.0) has a lower minor version number compared to the expected version (1.10.0) or its previous minor version
+      file: /animations/mace.animation.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/allay.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/armadillo.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/axolotl.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/bat.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/bee.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/blaze.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/bogged.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/breeze.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/camel.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/cat.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/cave_spider.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/chicken.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/cod.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/cow.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/creaking.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/creeper.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/dolphin.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/donkey.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/drowned.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/elder_guardian.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/enderman.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/endermite.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/evocation_illager.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/fox.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/frog.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/ghast.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/glow_squid.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/goat.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/guardian.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/happy_ghast.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/hoglin.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/horse.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/husk.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/iron_golem.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/llama.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/magma_cube.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/mooshroom.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/mule.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/ocelot.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/panda.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/parrot.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/phantom.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/pig.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/piglin.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/piglin_brute.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/pillager.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/player.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/polar_bear.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/pufferfish.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/rabbit.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/ravager.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/salmon.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/sheep.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/shulker.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/silverfish.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/skeleton.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/skeleton_horse.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/slime.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/sniffer.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/snow_golem.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/spider.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/squid.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/stray.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/strider.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/tadpole.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/trader_llama.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/tropicalfish.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/turtle.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/vex.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/villager.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/vindicator.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/wandering_trader.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/warden.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/witch.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/wither.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/wither_skeleton.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/wolf.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/zoglin.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/zombie.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/zombie_horse.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/zombie_pigman.json
+  [FORMATVER] Entity type resource version (1.10.0) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /entity/zombie_villager.json
+  [FORMATVER] Fog resource version (1.16.100) has a lower minor version number compared to the expected version (1.26.50) or its previous minor version
+      file: /fogs/ks_fullbright.json
+  [PATHLENGTH] File path contains non-lowercase letters
+      detail: ks_modules/b6As_defs.json
+  [PATHLENGTH] File path contains non-lowercase letters
+      detail: ui/ScrollRail.png
+  [PATHLENGTH] File path contains non-lowercase letters
+      detail: ui/purpleBorder.png
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /attachables/mace.attachable.json
+      detail: textures/misc/enchanted_item_glint
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/allay.json
+      detail: geometry.allay
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/allay.json
+      detail: textures/entity/allay/allay
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/armadillo.json
+      detail: geometry.armadillo
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/armadillo.json
+      detail: textures/entity/armadillo
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/axolotl.json
+      detail: geometry.axolotl
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/axolotl.json
+      detail: textures/entity/axolotl/axolotl_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/axolotl.json
+      detail: textures/entity/axolotl/axolotl_cyan
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/axolotl.json
+      detail: textures/entity/axolotl/axolotl_gold
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/axolotl.json
+      detail: textures/entity/axolotl/axolotl_lucy
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/axolotl.json
+      detail: textures/entity/axolotl/axolotl_wild
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/bat.json
+      detail: geometry.bat_v2
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/bat.json
+      detail: textures/entity/bat_v2
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/bee.json
+      detail: geometry.bee
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/bee.json
+      detail: textures/entity/bee/bee
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/bee.json
+      detail: textures/entity/bee/bee_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/bee.json
+      detail: textures/entity/bee/bee_angry_nectar
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/bee.json
+      detail: textures/entity/bee/bee_nectar
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/blaze.json
+      detail: geometry.blaze
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/blaze.json
+      detail: textures/entity/blaze
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/bogged.json
+      detail: geometry.bogged.armor
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/bogged.json
+      detail: geometry.skeleton.bogged
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/bogged.json
+      detail: textures/entity/skeleton/bogged
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/bogged.json
+      detail: textures/entity/skeleton/bogged_clothes
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/breeze.json
+      detail: geometry.breeze
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/breeze.json
+      detail: geometry.breeze_eyes
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/breeze.json
+      detail: geometry.breeze_wind_bottom
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/breeze.json
+      detail: geometry.breeze_wind_mid
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/breeze.json
+      detail: geometry.breeze_wind_top
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/breeze.json
+      detail: textures/entity/breeze/breeze
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/breeze.json
+      detail: textures/entity/breeze/breeze_eyes
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/breeze.json
+      detail: textures/entity/breeze/breeze_wind
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/camel.json
+      detail: geometry.camel
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/camel.json
+      detail: textures/entity/camel/camel
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/cat.json
+      detail: geometry.cat
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/allblackcat
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/allblackcat_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/britishshorthair
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/britishshorthair_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/calico
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/calico_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/jellie
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/jellie_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/persian
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/persian_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/ragdoll
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/ragdoll_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/redtabby
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/redtabby_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/siamesecat
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/siamesecat_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/tabby
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/tabby_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/tuxedo
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/tuxedo_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/white
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cat.json
+      detail: textures/entity/cat/white_tame
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/cave_spider.json
+      detail: geometry.spider.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cave_spider.json
+      detail: textures/entity/spider/cave_spider
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/chicken.json
+      detail: geometry.chicken.cold
+  [UNLINK] Link to vanilla model item; avoid if possible (x2)
+      file: /entity/chicken.json
+      detail: geometry.chicken.v1.12
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/chicken.json
+      detail: textures/entity/chicken/chicken
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/chicken.json
+      detail: textures/entity/chicken/chicken_cold
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/chicken.json
+      detail: textures/entity/chicken/chicken_warm
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/cod.json
+      detail: geometry.cod
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cod.json
+      detail: textures/entity/fish/cod
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/cow.json
+      detail: geometry.cow.cold
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/cow.json
+      detail: geometry.cow.v2
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/cow.json
+      detail: geometry.cow.warm
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cow.json
+      detail: textures/entity/cow/cow_cold
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cow.json
+      detail: textures/entity/cow/cow_v2
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/cow.json
+      detail: textures/entity/cow/cow_warm
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/creaking.json
+      detail: geometry.creaking
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/creaking.json
+      detail: textures/entity/creaking/creaking
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/creaking.json
+      detail: textures/entity/creaking/creaking_eyes
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/creeper.json
+      detail: geometry.creeper.charged.v1.8
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/creeper.json
+      detail: geometry.creeper.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/creeper.json
+      detail: textures/entity/creeper/creeper
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/creeper.json
+      detail: textures/entity/creeper/creeper_armor
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/dolphin.json
+      detail: geometry.dolphin
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/dolphin.json
+      detail: textures/entity/dolphin
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/donkey.json
+      detail: geometry.horse.v3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/donkey.json
+      detail: textures/entity/horse2/armor/horse_armor_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/donkey.json
+      detail: textures/entity/horse2/donkey
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/donkey.json
+      detail: textures/entity/horse2/horse_markings_none
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/drowned.json
+      detail: geometry.zombie.drowned.v1.16
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/drowned.json
+      detail: textures/entity/zombie/drowned
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/elder_guardian.json
+      detail: geometry.guardian
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/elder_guardian.json
+      detail: geometry.guardian.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/elder_guardian.json
+      detail: textures/entity/guardian
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/elder_guardian.json
+      detail: textures/entity/guardian_beam
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/elder_guardian.json
+      detail: textures/entity/guardian_elder
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/enderman.json
+      detail: geometry.enderman.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/enderman.json
+      detail: textures/entity/enderman/enderman
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/endermite.json
+      detail: geometry.endermite
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/endermite.json
+      detail: textures/entity/endermite
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/evocation_illager.json
+      detail: geometry.evoker.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/evocation_illager.json
+      detail: textures/entity/illager/evoker
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/fox.json
+      detail: geometry.fox
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/fox.json
+      detail: textures/entity/fox/arctic_fox
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/fox.json
+      detail: textures/entity/fox/fox
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/frog.json
+      detail: geometry.frog
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/frog.json
+      detail: textures/entity/frog/cold_frog
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/frog.json
+      detail: textures/entity/frog/temperate_frog
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/frog.json
+      detail: textures/entity/frog/warm_frog
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/ghast.json
+      detail: geometry.ghast
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/ghast.json
+      detail: textures/entity/ghast/ghast
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/ghast.json
+      detail: textures/entity/ghast/ghast_shooting
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/glow_squid.json
+      detail: geometry.squid
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/glow_squid.json
+      detail: textures/entity/glow_squid/glow_squid
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/goat.json
+      detail: geometry.goat
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/goat.json
+      detail: textures/entity/goat/goat
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/guardian.json
+      detail: geometry.guardian
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/guardian.json
+      detail: geometry.guardian.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/guardian.json
+      detail: textures/entity/guardian
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/guardian.json
+      detail: textures/entity/guardian_beam
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/guardian.json
+      detail: textures/entity/guardian_elder
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/happy_ghast.json
+      detail: geometry.happy_ghast
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/happy_ghast.json
+      detail: geometry.happy_ghast_ropes
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/happy_ghast.json
+      detail: textures/entity/happy_ghast/ghastling
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/happy_ghast.json
+      detail: textures/entity/happy_ghast/happy_ghast
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/happy_ghast.json
+      detail: textures/entity/happy_ghast/happy_ghast_ropes
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/hoglin.json
+      detail: geometry.hoglin
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/hoglin.json
+      detail: textures/entity/hoglin/hoglin
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/horse.json
+      detail: geometry.horse.v3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/armor/horse_armor_diamond
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/armor/horse_armor_gold
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/armor/horse_armor_iron
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/armor/horse_armor_leather
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/armor/horse_armor_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_black
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_brown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_chestnut
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_creamy
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_darkbrown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_gray
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_markings_blackdots
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_markings_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_markings_white
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_markings_whitedots
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_markings_whitefield
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/horse.json
+      detail: textures/entity/horse2/horse_white
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/husk.json
+      detail: geometry.zombie.husk.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/husk.json
+      detail: textures/entity/zombie/husk
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/iron_golem.json
+      detail: geometry.irongolem
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/iron_golem.json
+      detail: textures/entity/iron_golem
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/iron_golem.json
+      detail: textures/entity/iron_golem/cracked_high
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/iron_golem.json
+      detail: textures/entity/iron_golem/cracked_low
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/iron_golem.json
+      detail: textures/entity/iron_golem/cracked_medium
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/iron_golem.json
+      detail: textures/entity/iron_golem/cracked_none
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/llama.json
+      detail: geometry.llama.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_black
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_brown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_cyan
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_gray
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_green
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_light_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_lime
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_magenta
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_orange
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_pink
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_purple
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_red
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_silver
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_white
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/decor_yellow
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/decor/trader_llama_decor
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/llama_brown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/llama_creamy
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/llama_gray
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/llama.json
+      detail: textures/entity/llama/llama_white
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/magma_cube.json
+      detail: geometry.lavaslime
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/magma_cube.json
+      detail: textures/entity/slime/magmacube
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/mooshroom.json
+      detail: geometry.mooshroom.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/mooshroom.json
+      detail: textures/entity/cow/brown_mooshroom
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/mooshroom.json
+      detail: textures/entity/cow/mooshroom
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/mule.json
+      detail: geometry.horse.v3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/mule.json
+      detail: textures/entity/horse2/armor/horse_armor_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/mule.json
+      detail: textures/entity/horse2/horse_markings_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/mule.json
+      detail: textures/entity/horse2/mule
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/ocelot.json
+      detail: geometry.ocelot.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/ocelot.json
+      detail: textures/entity/cat/blackcat
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/ocelot.json
+      detail: textures/entity/cat/ocelot
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/ocelot.json
+      detail: textures/entity/cat/red
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/ocelot.json
+      detail: textures/entity/cat/siamese
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/panda.json
+      detail: geometry.panda
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/panda.json
+      detail: textures/entity/panda/panda
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/panda.json
+      detail: textures/entity/panda/panda_aggressive
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/panda.json
+      detail: textures/entity/panda/panda_brown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/panda.json
+      detail: textures/entity/panda/panda_lazy
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/panda.json
+      detail: textures/entity/panda/panda_playful
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/panda.json
+      detail: textures/entity/panda/panda_sneezy
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/panda.json
+      detail: textures/entity/panda/panda_worried
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/parrot.json
+      detail: geometry.parrot
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/parrot.json
+      detail: textures/entity/parrot/parrot_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/parrot.json
+      detail: textures/entity/parrot/parrot_green
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/parrot.json
+      detail: textures/entity/parrot/parrot_grey
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/parrot.json
+      detail: textures/entity/parrot/parrot_red_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/parrot.json
+      detail: textures/entity/parrot/parrot_yellow_blue
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/phantom.json
+      detail: geometry.phantom
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/phantom.json
+      detail: textures/entity/phantom
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/pig.json
+      detail: geometry.pig.v3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/pig.json
+      detail: textures/entity/pig/pig_cold
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/pig.json
+      detail: textures/entity/pig/pig_saddle
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/pig.json
+      detail: textures/entity/pig/pig_v3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/pig.json
+      detail: textures/entity/pig/pig_warm
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/pig.json
+      detail: textures/entity/saddle_v2
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/piglin.json
+      detail: geometry.piglin
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/piglin.json
+      detail: textures/entity/piglin/piglin
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/piglin_brute.json
+      detail: geometry.piglin
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/piglin_brute.json
+      detail: textures/entity/piglin/piglin_brute
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/pillager.json
+      detail: geometry.pillager
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/pillager.json
+      detail: textures/entity/pillager
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/player.json
+      detail: geometry.cape
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/player.json
+      detail: geometry.humanoid.custom
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/player.json
+      detail: textures/entity/cape_invisible
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/player.json
+      detail: textures/entity/steve
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/polar_bear.json
+      detail: geometry.polarbear
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/polar_bear.json
+      detail: textures/entity/polarbear
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/pufferfish.json
+      detail: geometry.pufferfish.large.v1.8
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/pufferfish.json
+      detail: geometry.pufferfish.mid.v1.8
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/pufferfish.json
+      detail: geometry.pufferfish.small.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/pufferfish.json
+      detail: textures/entity/fish/pufferfish
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/rabbit.json
+      detail: geometry.rabbit.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/rabbit.json
+      detail: textures/entity/rabbit/blackrabbit
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/rabbit.json
+      detail: textures/entity/rabbit/brown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/rabbit.json
+      detail: textures/entity/rabbit/gold
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/rabbit.json
+      detail: textures/entity/rabbit/salt
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/rabbit.json
+      detail: textures/entity/rabbit/toast
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/rabbit.json
+      detail: textures/entity/rabbit/white
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/rabbit.json
+      detail: textures/entity/rabbit/white_splotched
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/ravager.json
+      detail: geometry.ravager
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/ravager.json
+      detail: textures/entity/illager/ravager
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/salmon.json
+      detail: geometry.salmon
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/salmon.json
+      detail: textures/entity/fish/salmon
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/sheep.json
+      detail: geometry.sheep.sheared.v1.8
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/sheep.json
+      detail: geometry.sheep.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/sheep.json
+      detail: textures/entity/sheep/sheep
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/shulker.json
+      detail: geometry.shulker.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_black
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_brown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_cyan
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_gray
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_green
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_light_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_lime
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_magenta
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_orange
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_pink
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_purple
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_red
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_silver
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_undyed
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_white
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/shulker.json
+      detail: textures/entity/shulker/shulker_yellow
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/silverfish.json
+      detail: geometry.silverfish
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/silverfish.json
+      detail: textures/entity/silverfish
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/skeleton.json
+      detail: geometry.skeleton.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/skeleton.json
+      detail: textures/entity/skeleton/skeleton
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/skeleton_horse.json
+      detail: geometry.horse.v3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/skeleton_horse.json
+      detail: textures/entity/horse2/armor/horse_armor_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/skeleton_horse.json
+      detail: textures/entity/horse2/horse_markings_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/skeleton_horse.json
+      detail: textures/entity/horse2/horse_skeleton
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/slime.json
+      detail: geometry.slime
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/slime.json
+      detail: geometry.slime.armor
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/slime.json
+      detail: textures/entity/slime/slime
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/sniffer.json
+      detail: geometry.sniffer
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/sniffer.json
+      detail: textures/entity/sniffer/sniffer
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/snow_golem.json
+      detail: geometry.snowgolem.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/snow_golem.json
+      detail: textures/entity/snow_golem
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/spider.json
+      detail: geometry.spider.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/spider.json
+      detail: textures/entity/spider/spider
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/squid.json
+      detail: geometry.squid
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/squid.json
+      detail: textures/entity/squid
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/stray.json
+      detail: geometry.skeleton.stray.v1.8
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/stray.json
+      detail: geometry.stray.armor.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/stray.json
+      detail: textures/entity/skeleton/stray
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/stray.json
+      detail: textures/entity/skeleton/stray_overlay
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/strider.json
+      detail: geometry.strider
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/strider.json
+      detail: textures/entity/strider/strider
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/strider.json
+      detail: textures/entity/strider/strider_saddled
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/strider.json
+      detail: textures/entity/strider/strider_suffocated
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/strider.json
+      detail: textures/entity/strider/strider_suffocated_saddled
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/tadpole.json
+      detail: geometry.tadpole
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tadpole.json
+      detail: textures/entity/tadpole/tadpole
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: geometry.llama.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_black
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_brown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_cyan
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_gray
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_green
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_light_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_lime
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_magenta
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_orange
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_pink
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_purple
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_red
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_silver
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_white
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/decor_yellow
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/decor/trader_llama_decor
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/llama_brown
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/llama_creamy
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/llama_gray
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/trader_llama.json
+      detail: textures/entity/llama/llama_white
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: geometry.tropicalfish_a
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: geometry.tropicalfish_b
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_a
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_a_pattern_1
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_a_pattern_2
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_a_pattern_3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_a_pattern_4
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_a_pattern_5
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_a_pattern_6
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_b
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_b_pattern_1
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_b_pattern_2
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_b_pattern_3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_b_pattern_4
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_b_pattern_5
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/tropicalfish.json
+      detail: textures/entity/fish/tropical_b_pattern_6
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/turtle.json
+      detail: geometry.turtle
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/turtle.json
+      detail: textures/entity/sea_turtle
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/vex.json
+      detail: geometry.vex.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/vex.json
+      detail: textures/entity/vex/vex
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/vex.json
+      detail: textures/entity/vex/vex_charging
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/villager.json
+      detail: geometry.villager_v2
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/biomes/biome_desert
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/biomes/biome_jungle
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/biomes/biome_plains
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/biomes/biome_savanna
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/biomes/biome_snow
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/biomes/biome_swamp
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/biomes/biome_taiga
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/levels/level_diamond
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/levels/level_emerald
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/levels/level_gold
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/levels/level_iron
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/levels/level_stone
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/armorer
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/butcher
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/cartographer
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/cleric
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/farmer
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/fisherman
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/fletcher
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/leatherworker
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/librarian
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/nitwit
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/shepherd
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/stonemason
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/toolsmith
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/unskilled
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/villager.json
+      detail: textures/entity/villager2/professions/weaponsmith
+  [UNLINK] Link to vanilla texture item; avoid if possible (x6)
+      file: /entity/villager.json
+      detail: textures/entity/villager2/villager
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/vindicator.json
+      detail: geometry.vindicator.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/vindicator.json
+      detail: textures/entity/vindicator
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/wandering_trader.json
+      detail: geometry.villager_v2
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wandering_trader.json
+      detail: textures/entity/wandering_trader
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/warden.json
+      detail: geometry.warden
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/warden.json
+      detail: textures/entity/warden/warden
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/warden.json
+      detail: textures/entity/warden/warden_bioluminescent_layer
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/warden.json
+      detail: textures/entity/warden/warden_pulsating_spots_1
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/warden.json
+      detail: textures/entity/warden/warden_pulsating_spots_2
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/warden.json
+      detail: textures/entity/warden/warden_tendrils
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/witch.json
+      detail: geometry.villager.witch.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/witch.json
+      detail: textures/entity/witch
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/wither.json
+      detail: geometry.witherBoss
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/wither.json
+      detail: geometry.witherBoss.armor.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wither.json
+      detail: textures/entity/wither_boss/wither
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wither.json
+      detail: textures/entity/wither_boss/wither_armor_blue
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wither.json
+      detail: textures/entity/wither_boss/wither_armor_white
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wither.json
+      detail: textures/entity/wither_boss/wither_invulnerable
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/wither_skeleton.json
+      detail: geometry.skeleton.wither.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wither_skeleton.json
+      detail: textures/entity/skeleton/wither_skeleton
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/wolf.json
+      detail: geometry.wolf
+  [UNLINK] Link to vanilla texture item; avoid if possible (x2)
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf
+  [UNLINK] Link to vanilla texture item; avoid if possible (x2)
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_ashen
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_ashen_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_ashen_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_black
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_black_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_black_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_chestnut
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_chestnut_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_chestnut_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_rusty
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_rusty_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_rusty_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_snowy
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_snowy_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_snowy_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_spotted
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_spotted_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_spotted_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_striped
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_striped_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_striped_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible (x2)
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_tame
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_woods
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_woods_angry
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/wolf.json
+      detail: textures/entity/wolf/wolf_woods_tame
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/zoglin.json
+      detail: geometry.hoglin
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zoglin.json
+      detail: textures/entity/zoglin/zoglin
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/zombie.json
+      detail: geometry.zombie.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie.json
+      detail: textures/entity/zombie/zombie
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/zombie_horse.json
+      detail: geometry.horse.v3
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_horse.json
+      detail: textures/entity/horse2/armor/horse_armor_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_horse.json
+      detail: textures/entity/horse2/horse_markings_none
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_horse.json
+      detail: textures/entity/horse2/horse_zombie
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/zombie_pigman.json
+      detail: geometry.piglin
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/zombie_pigman.json
+      detail: geometry.pigzombie.baby.v1.8
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_pigman.json
+      detail: textures/entity/piglin/zombie_piglin
+  [UNLINK] Link to vanilla model item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: geometry.zombie.villager_v2
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/biomes/biome-desert-zombie
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/biomes/biome-jungle-zombie
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/biomes/biome-plains-zombie
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/biomes/biome-savanna-zombie
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/biomes/biome-snow-zombie
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/biomes/biome-swamp-zombie
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/biomes/biome-taiga-zombie
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/armorer
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/butcher
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/cartographer
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/cleric
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/farmer
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/fisherman
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/fletcher
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/leatherworker
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/librarian
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/nitwit
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/shepherd
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/stonemason
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/toolsmith
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/unskilled
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/professions/weaponsmith
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /entity/zombie_villager.json
+      detail: textures/entity/zombie_villager2/zombie-villager
+  [UNLINK] Link to vanilla texture item; avoid if possible (x2)
+      file: /ui/hud_screen.json
+      detail: textures/ui/black
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /ui/ks_modules/ksb_hotbar_button/main.json
+      detail: textures/ui/black
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /ui/ks_modules/ksb_hotbar_button/main.json
+      detail: textures/ui/gear
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /ui/ks_modules/ksb_hotbar_button/main.json
+      detail: textures/ui/inventory_icon
+  [UNLINK] Link to vanilla texture item; avoid if possible
+      file: /ui/ks_modules/ksb_hotbar_button/settings.json
+      detail: textures/ui/tabrightfrontbottommost
