@@ -60,6 +60,7 @@
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (17 files, `v1.0.0` + `v1.0.3`…`v1.1.8` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
 | 24 | Crosshair Indicator (Center) | PandaMine5 v1.1 (`ui/hud_screen.json` + `textures/ui/crosshair_*`) | Java-like default/entity hit crosshair, center screen, `$ks_crosshair_v/size/alpha/offset` config |
+| 25 | Loading Bar Subpack (Block Cracks) | TsPlaysMCBE Better Breaking v1.0.0, `loading_bar` subpack only (`subpacks/loading_bar/…/destroy_stage_0-9`) | Block-break cracks drawn as loading bar, opt-in via subpack (colorful/progress/rainbow variants NOT taken) |
 
 ---
 
@@ -253,6 +254,17 @@ How it works:
 
 In-game: center crosshair swaps art when hovering an entity. Gate A passes; `mct validate` clean (direct UI textures, no atlas entries).
 
+### 2.18 Loading Bar Subpack (TsPlaysMCBE Better Breaking v1.0.0, `loading_bar` only)
+
+What it is: opt-in block-breaking overlay — cracks drawn as a loading bar instead of vanilla cracks — active only when the `Loading Bar` subpack is selected (no toggle, no `$var`).
+
+How it works:
+- `subpacks/loading_bar/textures/environment/destroy_stage_0-9.png` (10 files, 16×16) path-override the main pack's `textures/environment/destroy_stage_0-9.png` when the subpack is selected. File names are vanilla engine paths — renaming would break the crack overlay, so they are kept exact (generic names, no owner branding).
+- `manifest.json → subpacks` gains `loading_bar` ("Loading Bar", memory tier 0) alongside `hide_editor` / `show_editor`. Only the `loading_bar` variant was taken (colorful / progress / rainbow variants NOT taken).
+- No `_global_variables.json` / `_ui_defs.json` / `terrain_texture.json` / `item_texture.json` changes (environment path override, no atlas registration — same as main-pack destroy stages).
+
+In-game: select `Loading Bar` in pack settings → mining blocks shows a loading-bar crack animation. Main pack (other subpacks) keeps the default cracks. Note: Bedrock activates one subpack at a time, so `Loading Bar` can't combine with `Hide Editor` — pick one per session.
+
 ---
 
 ## 3. Project Structure
@@ -295,6 +307,7 @@ ks-client/
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
 │   │   └── ._content_/inv_content.json (component_toggle base for inventory crafting limiter)
 │   ├── subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json ← single-file override ($show_editor_button:false)
+│   ├── subpacks/loading_bar/textures/environment/destroy_stage_0-9.png ← 10-file override (loading-bar cracks, opt-in)
 ├── .opencode/skills/ (create-block/item/mob, design-model, debug-addon, creator-tools-cli)
 ├── .mct/mcp/prefs.json
 └── .vscode/
@@ -308,7 +321,7 @@ ks-client/
 
 1. Copy a file from `release/` (e.g. `KS-Client-v1.1.8.mcpack` — or `./tmp/KS-Client-v1.1.9.mcpack` after a version bump) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs).
-3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS) or `Show Editor`.
+3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS), `Show Editor`, or `Loading Bar` (block-crack loading-bar art — one subpack at a time).
 4. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox.
    - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory; green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
@@ -347,8 +360,9 @@ Declared in `manifest.json → subpacks`:
 
 - `hide_editor` — “Hide Editor (§aBetter Performance§f)” — currently a single-file override (`subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json`, `$show_editor_button:false` vs main `true`), fewer editor affordances → better FPS. **Recommended.**
 - `show_editor` — vanilla editor UI visible (for creators).
+- `loading_bar` — “Loading Bar” — block-crack overlay redrawn as a loading bar (`subpacks/loading_bar/textures/environment/destroy_stage_0-9.png`, 10-file path override of the main-pack cracks; TsPlaysMCBE Better Breaking v1.0.0 `loading_bar` variant only).
 
-Switch in pack settings; memory tier `0` for both.
+Switch in pack settings; memory tier `0` for all three. One subpack at a time — `Loading Bar` can't combine with `Hide Editor`.
 
 ---
 
