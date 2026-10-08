@@ -1,0 +1,102 @@
+/**
+// © 2026 ashura_temps,    All Rights Reserved.
+//
+// This UI is custom-made. You are allowed to use it **only as-is**, inside the game.
+// Do not modify, extract, reuse, or share any part of this UI including .json, .atemp files,
+// layout structure, or design.
+//
+// Not allowed:
+//   - Editing the UI (even for private/personal use)
+//   - Using parts of the code or layout in your own pack
+//   - Reuploading, redistributing, or hosting these files elsewhere
+//   - Converting texture packs to Bedrock using this UI
+//
+// By using this project, you agree to these terms.
+*/
+
+{
+  "namespace": "dispenser_screen",
+  "dispenser_panel@container_common.container_details": {
+    "size": [176, 166],
+    "$screen_controls": [
+      { "common_panel@screen_content.dispenser": {} },
+      { "extensions@rcc-extensions.dispenser_screen": {} },
+      {
+        "redstone@global.empty_panel": {
+          "size": [117, 77],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "controls": [
+            {
+              "dispenser_redstone@screen_content.image_element": {
+                "size": [117, 77],
+                "uv_size": [117, 77],
+                "layer": 2,
+                "animation_reset_name": "screen_animation_reset",
+                "disable_anim_fast_forward": true,
+                "texture": "textures/ui/ashur/animations/dispenser",
+                "uv": { "anim_type": "aseprite_flip_book", "initial_uv": [0, 0] }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "dispenser_bow@screen_content.image_element": {
+          "size": [51, 68],
+          "uv_size": [51, 68],
+          "animation_reset_name": "screen_animation_reset",
+          "disable_anim_fast_forward": true,
+          "layer": 3,
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "offset": [-8, -41],
+          "texture": "assets/variants/animated/dispenser/bow.png",
+          "uv": "@dispenser_bow.bow_20"
+        }
+      },
+      {
+        "dispenser_top_half@global.empty_stack": {
+          "orientation": "vertical",
+          "size": [176, 70],
+          "anchor_to": "top_middle",
+          "anchor_from": "top_middle",
+          "controls": [
+            { "filler_1@global.empty_panel": { "size": ["fill", 6] } },
+            {
+              "dispenser_main_content@global.empty_stack": {
+                "orientation": "horizontal",
+                "size": [176, 64],
+                "controls": [
+                  { "filler_2@global.empty_panel": { "size": [61, "fill"] } },
+                  {
+                    "label_and_grid_holder@global.empty_stack": {
+                      "orientation": "vertical",
+                      "size": [54, 64],
+                      "controls": [
+                        { "filler_0@global.empty_panel": { "size": [54, 10] } },
+                        {
+                          "dispenser_item_input@global.empty_grid": {
+                            "size": [54, 54],
+                            "grid_dimensions": [3, 3],
+                            "$item_collection": "container_items",
+                            "collection_name": "$item_collection",
+                            "grid_item_template": "jc_container_item.container_item"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  { "filler_3@global.empty_panel": { "size": [61, "fill"] } }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "inventory_and_hotbar@container_common.container_bottom_section": {}
+      }
+    ]
+  }
+}

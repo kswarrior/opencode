@@ -1,0 +1,225 @@
+/**
+// © 2026 ashura_temps,    All Rights Reserved.
+//
+// This UI is custom-made. You are allowed to use it **only as-is**, inside the game.
+// Do not modify, extract, reuse, or share any part of this UI including .json, .atemp files,
+// layout structure, or design.
+//
+// Not allowed:
+//   - Editing the UI (even for private/personal use)
+//   - Using parts of the code or layout in your own pack
+//   - Reuploading, redistributing, or hosting these files elsewhere
+//   - Converting texture packs to Bedrock using this UI
+//
+// By using this project, you agree to these terms.
+*/
+
+{
+  "namespace": "brewing_stand_screen",
+  "brewing_panel@global.empty_stack": {
+    "orientation": "horizontal",
+    "anchor_to": "center",
+    "anchor_from": "center",
+    "min_size": [176, 166],
+    "max_size": [359, 166],
+    "controls": [
+      { "recipe_book@rcc-extensions.brewing_guide": {} },
+      {
+        "right_half@container_common.container_details": {
+          "size": [176, 166],
+          "$screen_controls": [
+            { "common_panel@screen_content.brewing_stand": {} },
+            { "extensions@rcc-extensions.brewing_stand_screen": {} },
+            {
+              "sprite_stack@global.empty_stack": {
+                "size": [176, 48],
+                "orientation": "horizontal",
+                "anchor_to": "top_middle",
+                "anchor_from": "top_middle",
+                "controls": [
+                  { "filler_1@global.empty_panel": { "size": [60, "fill"] } },
+                  {
+                    "bubbles_and_fuel@global.empty_stack": {
+                      "orientation": "vertical",
+                      "size": [18, 48],
+                      "controls": [
+                        { "filler_1@global.empty_panel": { "size": ["fill", 14] } },
+                        {
+                          "bubbles_holder@global.empty_stack": {
+                            "orientation": "horizontal",
+                            "size": [18, 29],
+                            "controls": [
+                              { "filler_1@global.empty_panel": { "size": [3, "fill"] } },
+                              {
+                                "bubbles@brewing_stand_screen.image_panel": {
+                                  "$sprite": "bubbles.png",
+                                  "$image_size": [12, 29],
+                                  "$houkou": "down",
+                                  "$type": "bubbles"
+                                }
+                              },
+                              { "filler_2@global.empty_panel": { "size": [3, "fill"] } }
+                            ]
+                          }
+                        },
+                        { "filler_2@global.empty_panel": { "size": ["fill", 1] } },
+                        {
+                          "brewing_fuel_bar@brewing_stand_screen.image_panel": {
+                            "$sprite": "fuel_length.png",
+                            "$image_size": [18, 4],
+                            "$houkou": "left",
+                            "$type": "fuel"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  { "filler_2@global.empty_panel": { "size": [19, "fill"] } },
+                  {
+                    "arrow_stack@global.empty_stack": {
+                      "orientation": "vertical",
+                      "size": [9, 48],
+                      "controls": [
+                        { "filler_1@global.empty_panel": { "size": ["fill", 16] } },
+                        {
+                          "brewing_arrow@brewing_stand_screen.image_panel": {
+                            "$sprite": "brew_progress.png",
+                            "$image_size": [9, 28],
+                            "$houkou": "up",
+                            "$type": "arrow"
+                          }
+                        },
+                        { "filler_2@global.empty_panel": { "size": ["fill", 4] } }
+                      ]
+                    }
+                  },
+                  { "filler_3@global.empty_panel": { "size": [70, "fill"] } }
+                ]
+              }
+            },
+            {
+              "brewing_top_stack@global.empty_stack": {
+                "orientation": "vertical",
+                "size": [176, 75],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "controls": [
+                  { "filler_1@global.empty_panel": { "size": ["fill", 16] } },
+                  {
+                    "main_content@global.empty_stack": {
+                      "orientation": "horizontal",
+                      "size": [176, 59],
+                      "controls": [
+                        { "filler_1@global.empty_panel": { "size": [16, "fill"] } },
+                        {
+                          "blaze_powder@global.empty_stack": {
+                            "orientation": "vertical",
+                            "size": [18, 59],
+                            "controls": [
+                              {
+                                "fuel_item@jc_container_item.container_item": {
+                                  "$item_collection": "brewing_fuel_item"
+                                }
+                              },
+                              { "filler_1@global.empty_panel": { "size": ["fill", 41] } }
+                            ]
+                          }
+                        },
+                        { "filler_2@global.empty_panel": { "size": [21, "fill"] } },
+                        {
+                          "bottle_output_1@brewing_stand_screen.collection_template": {
+                            "controls": [
+                              { "filler_1@global.empty_panel": { "size": ["fill", 34] } },
+                              { "bottle_left@brewing_stand_screen.bottle_template": { "collection_index": 0 } },
+                              { "filler_2@global.empty_panel": { "size": ["fill", 7] } }
+                            ]
+                          }
+                        },
+                        { "filler_3@global.empty_panel": { "size": [5, "fill"] } },
+                        {
+                          "bottle_output_2@brewing_stand_screen.collection_template": {
+                            "controls": [
+                              {
+                                "input_item@jc_container_item.container_item": {
+                                  "$item_collection": "brewing_input_item",
+                                  "$collection_type": "brewing_input_item"
+                                }
+                              },
+                              { "filler_1@global.empty_panel": { "size": ["fill", 23] } },
+                              { "bottle_middle@brewing_stand_screen.bottle_template": { "collection_index": 1 } }
+                            ]
+                          }
+                        },
+                        { "filler_4@global.empty_panel": { "size": [5, "fill"] } },
+                        {
+                          "bottle_output_3@brewing_stand_screen.collection_template": {
+                            "controls": [
+                              { "filler_1@global.empty_panel": { "size": ["fill", 34] } },
+                              { "bottom_right@brewing_stand_screen.bottle_template": { "collection_index": 2 } },
+                              { "filler_2@global.empty_panel": { "size": ["fill", 7] } }
+                            ]
+                          }
+                        },
+                        { "filler_5@global.empty_panel": { "size": [57, "fill"] } }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "inventory_and_hotbar@container_common.container_bottom_section": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bottle_template@jc_container_item.container_item": {
+    "$item_collection": "$collection_type",
+    "$background_control": "brewing_stand_screen.brewing_bottle"
+  },
+  "brewing_bottle@screen_content.image_element": {
+    "size": [16, 16],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "layer": 2,
+    "texture": "textures/ui/ashur/cell_icons/underlays/potion.png",
+    "bindings": [
+      {
+        "binding_name": "#empty_bottle_image_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection"
+      }
+    ]
+  },
+  "collection_template@global.empty_stack": {
+    "orientation": "vertical",
+    "size": [18, 59],
+    "$collection_type": "brewing_result_items",
+    "collection_name": "$collection_type"
+  },
+  "image_panel@global.empty_panel": {
+    "size": "$image_size",
+    "$sprite_src|default": "('assets/sprites/container/brewing_stand/' + $sprite)",
+    "controls": [
+      {
+        "brewing_texture_template@screen_content.image_element": {
+          "layer": 3,
+          "clip_direction": "$houkou",
+          "size": "$image_size",
+          "texture": "$sprite_src",
+          "clip_pixelperfect": true,
+          "bindings": [
+            {
+              "binding_name": "('#brewing_' + $type + '_ratio')",
+              "binding_name_override": "#clip_ratio",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

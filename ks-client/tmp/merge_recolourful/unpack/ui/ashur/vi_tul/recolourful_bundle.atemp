@@ -1,0 +1,74 @@
+/**
+// © 2026 ashura_temps,    All Rights Reserved.
+//
+// This UI is custom-made. You are allowed to use it **only as-is**, inside the game.
+// Do not modify, extract, reuse, or share any part of this UI including .json, .atemp files,
+// layout structure, or design.
+//
+// Not allowed:
+//   - Editing the UI (even for private/personal use)
+//   - Using parts of the code or layout in your own pack
+//   - Reuploading, redistributing, or hosting these files elsewhere
+//   - Converting texture packs to Bedrock using this UI
+//
+// By using this project, you agree to these terms.
+*/
+
+{
+  "namespace": "recolourful_bundle",
+  "colors@screen_content.image_element": {
+    "texture": "#texture",
+    "allow_debug_missing_texture": false,
+    "property_bag": {
+      /*
+        redstone chicken stay out of this file ik you been reading these if your going to yoink my code again atleast credit me this time
+      */
+      "#bundle_name": "Minecraft",
+      "#bundle_§f§0§r": "textures/bundles/black_bundle",
+      "#bundle_§f§f§r": "textures/bundles/white_bundle",
+      "#bundle_§f§c§r": "textures/bundles/red_bundle",
+      "#bundle_§f§n§r": "textures/bundles/orange_bundle",
+      "#bundle_§f§e§r": "textures/bundles/yellow_bundle",
+      "#bundle_§f§2§r": "textures/bundles/green_bundle",
+      "#bundle_§f§a§r": "textures/bundles/lime_bundle",
+      "#bundle_§f§9§r": "textures/bundles/brown_bundle",
+      "#bundle_§f§7§r": "textures/bundles/light_gray_bundle",
+      "#bundle_§f§b§r": "textures/bundles/light_blue_bundle",
+      "#bundle_§f§u§r": "textures/bundles/blue_bundle",
+      "#bundle_§f§8§r": "textures/bundles/gray_bundle",
+      "#bundle_§f§p§r": "textures/bundles/pink_bundle",
+      "#bundle_§f§d§r": "textures/bundles/magenta_bundle",
+      "#bundle_§f§5§r": "textures/bundles/purple_bundle",
+      "#bundle_§f§3§r": "textures/bundles/cyan_bundle",
+      "#bundle_": "textures/bundles/default_bundle"
+    },
+    "bindings": [
+      { "binding_condition": "always", "binding_name": "#bundle_name" },
+      {
+        "binding_type": "view",
+        "binding_condition": "always",
+        "source_property_name": "('%.9s' * (#bundle_name - '§o'))",
+        "target_property_name": "#first_9_bytes"
+      },
+      {
+        "binding_type": "view",
+        "binding_condition": "always",
+        "source_property_name": "(#first_9_bytes - '§f§0§r' - '§f§f§r' - '§f§c§r' - '§f§n§r' - '§f§e§r' - '§f§2§r' - '§f§a§r' - '§f§9§r' - '§f§7§r' - '§f§b§r' - '§f§u§r' - '§f§8§r' - '§f§p§r' - '§f§d§r' - '§f§5§r' - '§f§3§r')",
+        "target_property_name": "#leftovers"
+      },
+      {
+        "binding_type": "view",
+        "binding_condition": "always",
+        "source_property_name": "('#bundle_' + (#first_9_bytes - #leftovers))",
+        "target_property_name": "#texture"
+      },
+      {
+        "binding_name": "#show_bundle_item_slot",
+        "binding_name_override": "#visible",
+        "ignored": "(not $is_item_slot)",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection"
+      }
+    ]
+  }
+}

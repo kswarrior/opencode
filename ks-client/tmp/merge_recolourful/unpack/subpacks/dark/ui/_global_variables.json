@@ -1,0 +1,132 @@
+{
+  //used for compatibility
+  "$is_recolourful_containers": true,
+  "$_pack_name": "recolourful",
+  //set UI transparency
+  "$container_opacity": 1,
+  "$background_blur_opacity": 0.4, //the base png is transparent
+
+  //if true forces the container close buttons to render no matter the input type
+  "$show_exit_buttons": false,
+  //if true allows pc users to trigger the page buttons useing the scroll wheel
+  "$use_experimental_recipe_scroll_input": false,
+  //if true allows the user to hover over a tab to auto select it
+  "$use_experimental_tab_toggle_input": false,
+  //if false it will remove the container open animation
+  "$use_container_ui_animations": true,
+  //if true will unlock villager trades
+  "$use_unlocked_villager_trades": false,
+  //if true will show villager trades
+  "$use_view_villager_trades": false,
+  //if true removes the empty bundle text and makes the bundle ui more compact
+  "$use_slim_bundle_tooltips": true,
+  //if true will make the tooltip text have shadow
+  "$use_tooltip_text_shadow": false,
+  
+  //title text color
+  "$container_title_color": [1, 1, 1],
+
+  //these item indexes are whats used to render the items in the recipe book tabs
+  //you can find the index for a item useing this --> https://www.planetminecraft.com/texture-pack/item-id-visualizer-mcbe-mcpe/
+  //item_index = (#item_id_aux / 65536)
+
+  //creative inventory tabs
+  "$chest_item_index": 54,
+  "$redstone_item_index": 376,
+  "$iron_sword_item_index": 309,
+  "$purple_froglight_item_index": -469,
+  "$bricks_item_index": 45,
+
+  //crafting recipe book tabs
+  "$apple_item_index": 878,
+  "$bucket_lava_item_index": 366,
+  "$golden_sword_item_index": 325,
+  "$iron_axe_item_index": 300,
+
+  //furnace recipe book tabs
+  "$raw_porkchop_item_index": 262,
+  "$stone_item_index": 1,
+  "$emerald_item_index": 523,
+
+  //blast furnace recipe book tabs
+  "$golden_leggings_item_index": 356,
+  "$iron_shovel_item_index": 298,
+
+  //development variables (dont modify)
+  //will add links to each creators pages when i get the chance
+  "$is_jei_recipe_book_layout_pack": false,
+  "$is_déesse_ui_pack": false,
+  "$is_overcomplicated_brewing_guide": false,
+
+  "$pack_scope": "global",
+  
+  //villager label colors    'if needed the wandering traders color can be separated'
+  "$villager_name_color": [0.247, 0.247, 0.247, 1.0],
+  "$villager_trade_color": [0.247, 0.247, 0.247, 1.0],// trade label above scroll pane
+
+  //recipe book
+  "$recipe_edit_shadow_text_color": [0.5725, 0.5725, 0.5725, 1.0],
+  "$recipe_edit_text_color": [0.67059, 0.67059, 0.67059, 1.0],
+  "$recipe_text_box_content_color": [0.247, 0.247, 0.247, 1.0],
+  "$page_count_shadow_color": [0.5725, 0.5725, 0.5725, 1.0],
+  "$page_count_color": [0.7647, 0.7647, 0.7647, 1.0],
+
+
+  //enchanting table text colors
+  "$xp_price_color_enabled_state": [0.475, 0.95, 0.11875],
+  "$xp_price_shadow_color_enabled_state": [0.1255, 0.2431, 0.0314, 1],
+
+  "$xp_price_color_disabled_state": [0.318, 0.475, 0.216],
+  "$xp_price_shadow_color_disabled_state": [0.0627, 0.1216, 0.0157, 1],
+
+  "$runes_disabled_color": [0.2, 0.18, 0.145],
+  "$runes_enabled_color": [0.2, 0.18, 0.145],
+
+  "$runes_enabled_hover_color": [0.404, 0.365, 0.286],
+
+
+  //vanilla variables
+  "$light_glyph_default_color": [1, 1, 1],
+
+  //Dropdown item background colors
+  "$dropdown_radio_background_unchecked_color": [0.17, 0.17, 0.17],
+  "$dropdown_radio_background_checked_color": [0.22, 0.22, 0.22],
+  "$dropdown_radio_background_hover_color": [0.35, 0.35, 0.35],
+
+  //Store colors
+  "$store_sales_banner_text_color": [1, 1, 1],
+  "$new_offer_icon_text_color": [1, 1, 1],
+  "$store_dark_grey_text_color": [1, 1, 1],
+
+  //Dressing Room colors
+  "$dressing_room_sub_category_seperator_color": [1, 1, 1],
+  "$dressing_room_right_side_dark_text_color": [1, 1, 1],
+  "$dressing_room_dark_button_color": [1, 1, 1],
+
+  //Profile Create Character Picker 
+  "$profile_create_character_selected_color": [1, 1, 1],
+ 
+  //other
+  "$light_button_default_text_color": [1, 1, 1],
+  "$light_toggle_default_text_color": [1, 1, 1],
+  "$light_toggle_checked_default_text_color": [1, 1, 1],
+  "$dark_button_secondary_default_text_color": [1, 1, 1, 1],
+  "$title_text_color": [1, 1, 1],
+  "$pocket_title_text_color": [1, 1, 1],
+  "$tab_unchecked_text_color": [1, 1, 1],
+  "$tab_unchecked_locked_text_color": [1, 1, 1],
+  "$tab_checked_text_color": [1, 1, 1],
+  "$tab_checked_hover_text_color": [1, 1, 1],
+  "$tab_checked_locked_text_color": [1, 1, 1],
+  "$tab_checked_locked_hover_text_color": [1, 1, 1],
+  "$tab_unchecked_glyph_color": [1, 1, 1],
+  "$tab_unchecked_hover_glyph_color": [1, 1, 1],
+  "$tab_unchecked_locked_glyph_color": [1, 1, 1],
+  "$tab_unchecked_locked_hover_glyph_color": [1, 1, 1],
+  "$tab_checked_glyph_color": [1, 1, 1],
+  "$tab_checked_hover_glyph_color": [1, 1, 1],
+  "$tab_checked_locked_glyph_color": [1, 1, 1],
+  "$tab_checked_locked_hover_glyph_color": [1, 1, 1],
+  "$dark_body_text_color": [1, 1, 1],
+  "$book_page_number_color": [0.665, 0.575, 0.475]
+}

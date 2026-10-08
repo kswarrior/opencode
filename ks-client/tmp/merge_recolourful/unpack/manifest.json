@@ -1,0 +1,35 @@
+{
+  "format_version": 3,
+  "header": {
+    "name": "§4R§ce§6c§eo§al§2o§3ur§9fu§5l §rContainers §lBE§r",
+    "description": "Original textures by Vi_Tul\nUI Code by Ashura_temps\n§lJoin Discord! §9discord.gg/zTYjykBHkJ§r",
+    "uuid": "994527d4-81ca-46a6-a428-901065b960b3",
+    "version": "1.4.0",
+    "min_engine_version": "1.26.40"
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "description": "§3By Vi_Tul",
+      "uuid": "20e8d34d-7cb3-47c8-b80e-c2ccd6c50ca2",
+      "version": "1.4.0"
+    }
+  ],
+  "metadata": {
+    "authors": [
+      // texture creator
+      "Vi_Tul",
+      "https://www.curseforge.com/members/vi_tul/projects",
+      // ui code developer
+      "Ashura_temps",
+      "https://www.planetminecraft.com/member/ashura_tepes/",
+      // offical download!
+      "https://www.curseforge.com/minecraft-bedrock/texture-packs/recolourful-containers-be"
+    ]
+  },
+  "capabilities": ["pbr"],
+  "subpacks": [
+    { "folder_name": "dark" , "name": "§lDark mode§r" , "memory_performance_tier": 0 },
+    { "folder_name": "light", "name": "§lLight mode§r", "memory_performance_tier": 0 }
+  ]
+}
