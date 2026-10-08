@@ -108,7 +108,7 @@ In-game: tap a numbered floating slot → instantly switches selected hotbar slo
 What it is: always-on mini inventory on the HUD (no need to open inventory to see contents).
 
 How it works:
-- `ks_hud.inventory_hud_panel` (`ks_b6As_defs.variables`): panel `$m_size [162,54]` (small mode `[135,45]`), anchored bottom-right, layer 45. Contains `inv_grid` (grid 9×4, `inv_hud_container_item` template, bound to `hotbar_items`, cells `(#collection_index >= 0)` so grid is never empty — old `> 8` filter hid all 0–8 slots and made the whole HUD invisible).
+- `ks_hud.inventory_hud_panel` (`ks_b6As_defs.variables`): panel `$m_size [162,54]` (small mode `[135,45]`), anchored bottom-right, layer 45. Contains `inv_grid` (grid 9×4, `inv_hud_container_item` template, bound to `hotbar_items`, cells `(#collection_index > 8)` per upstream — hotbar row hidden, inventory rows shown).
 - Each cell: `bg` (`textures/ui/white` lowercase — was `White` which is missing on case-sensitive Android — tinted `$ks:inventory_slot_color [0,0,0]`, alpha `$ks:inventory_slot_alpha 0.27`), `item_renderer` (16×16, small 14×14), `stack_count_label` (scale 0.8/0.6), `durability_bar` + `storage_bar`, `green` highlight overlay (same `white` fix, `$ks:use_highlight_slot true`, color `[0,1,0]`, alpha `0.30`) that lights the currently selected slot via `#ushdjsj` collection math over 37 slots.
 - Size mode via `$ks:inventory_hud_size = "small"`, plus the editor `Compact` toggle (`$ksb_invhud_small` → extra small-size `requires` entry, repack) and the editor position/show row (`$ksb_invhud_x/y`, live wrapper offsets; `Show` toggle live via `ksbT_invhud_t`, default `$ksb_invhud_v true`).
 
