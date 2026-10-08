@@ -36,6 +36,11 @@
       "folder_name": "show_editor",
       "name": "Show Editor",
       "memory_tier": 0
+    },
+    {
+      "folder_name": "loading_bar",
+      "name": "Loading Bar",
+      "memory_tier": 0
     }
   ],
   "metadata": {
