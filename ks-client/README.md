@@ -60,6 +60,7 @@
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (28 files, `v1.0.0` + `v1.0.3`…`v1.3.0` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
 | 24 | Recolourful Containers (Light, direct) | Vi_Tul textures + Ashura UI v1.4 LIGHT only, no subpack (PERMISSION PENDING — do not ship) | Light container UI for 17 screens (chest/double/ender/shulker/barrel/furnace/blast/smoker/anvil/beacon/brewing/cartography/enchant/grindstone/horse/loom/redstone/smithing/stonecutter/trade + inventory/hud exp bars); KS hotbar/totem/effects kept |
+| 25 | White Hitbox, Always-On (player + 15 mobs) | Baku Java Hitbox v1.9.1 MOBS, BoxOnly art only (PERMISSION PENDING — do not ship) | White box outline on player + 15 mobs, always on; eye/ray/colors NOT taken; INFO tab shows status (no toggle possible in RP-only pack); Home tab shows KS logo + version + owner |
 
 ---
 
@@ -281,23 +282,25 @@ ks-client/
 │   ├── check_player_animation_loop.py ← strict-JSON / dotfile / loop / shield-armor-sword / refs / mct loop checker
 │   └── recheck_player_animation.sh    ← bash wrapper (iterations delay)
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
-├── release/                         ← shippable .mcpack (26 files: v1.0.0 + v1.0.3…v1.2.5, no v1.0.1/v1.0.2/v1.1.9 mcpack)
+├── release/                         ← shippable .mcpack (28 files: v1.0.0 + v1.0.3…v1.3.0, no v1.0.1/v1.0.2/v1.1.9 mcpack)
 ├── resource_packs/KS Client/
 │   ├── manifest.json                ← name KS Client, v1.3.0, min_engine 1.21.120, no subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
 │   ├── blocks.json                  ← hopper face mapping only (BlockTrace directional hopper)
-│   ├── entity/ (82 json)            ← KS health-bar hooks on every mob + fps_counter slots on player.json (materials/textures/geometry/init/pre_anim/vars/render controller)
-│   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses)
+│   ├── entity/ (82 json)            ← KS health-bar hooks on every mob + fps_counter slots on player.json (materials/textures/geometry/init/pre_anim/vars/render controller) + ks_hitbox hooks on player + 15 mobs (white box only)
+│   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses) + ks_hitbox.animation.json + ks_mob_hitbox.animation.json
 │   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
-│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json
-│   ├── render_controllers/health_bar.json + fps_counter.render.json
+│   ├── animation_controllers/ks_hitbox.animation_controllers.json + ks_mob_hitbox.animation_controllers.json (hitbox overlay controllers)
+│   ├── materials/entity.material       ← ks_hitbox emissive materials only (new file for hitbox)
+│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json + models/entity/ks_hitbox.geo.json + ks_mob_hitbox.geo.json
+│   ├── render_controllers/health_bar.json + fps_counter.render.json + ks_hitbox.render_controllers.json + ks_mob_hitbox.render_controllers.json
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/… + recolourful-light dialog_background/inventory/book/bundles/ashur)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies / fps (digits_atlas.png)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (125 PNGs incl. chat art + ks_client_logo.png) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies + entity/ks_hitbox (hitbox.png + mob_hitbox.png, white BoxOnly art) / fps (digits_atlas.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
