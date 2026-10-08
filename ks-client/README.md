@@ -1,12 +1,12 @@
 # KS Client — Premium Mobile PvP Resource Pack for Minecraft Bedrock
 
-> **KS Client v1.1.9 by KS Warrior**
+> **KS Client v1.1.8 by KS Warrior**
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
 > Custom start screen, HUD (slot hotbar + inventory-HUD + totem/offhand shortcuts + `ks_show_hud`), clear chat screen, mob health bars (always display), 3D hammer, FPS counter (top-left), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack.
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
-- **Current version:** `1.1.9` (`manifest.json` header + modules)
+- **Current version:** `1.1.8` (`manifest.json` header + modules)
 - **UUID:** `3cb32de7-ef64-4969-a447-dadba4bf9a8f` / `01ec78ed-44f8-4077-bc80-0904b4a83d51`
 - **Releases:** `release/` 17 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.1.8.mcpack` (no `v1.0.1`/`v1.0.2`)
 - **Validation reports:** `out/` 9 files — `ks client.*`, `ks-clean.*`, `ks-client.*` (each `.csv` / `.mcr.json` / `.report.html`)
@@ -51,7 +51,7 @@
 | 13 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed (comment in `pause_screen.json`: HUD F1/F3 keys removed, `ks_show_hud` is the way back) |
 | 14 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
 | 15 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
-| 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — single-file override: `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). Plus `loading_bar` crack-art subpack (see #25). |
+| 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
 | 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1322 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` holds only the mace entry, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
 | 18 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
 | 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
@@ -59,8 +59,6 @@
 | 21 | FPS Counter (Top Left) | KS Client | Stacked readout — client version, `FPS: <digits>`, position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (17 files, `v1.0.0` + `v1.0.3`…`v1.1.8` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
-| 24 | Crosshair Indicator (Center) | PandaMine5 v1.1 (`ui/hud_screen.json` + `textures/ui/crosshair_*`) | Java-like default/entity hit crosshair, center screen, `$ks_crosshair_v/size/alpha/offset` config |
-| 25 | Loading Bar Subpack (Block Cracks) | TsPlaysMCBE Better Breaking v1.0.0, `loading_bar` subpack only (`subpacks/loading_bar/…/destroy_stage_0-9`) | Block-break cracks drawn as loading bar, opt-in via subpack (colorful/progress/rainbow variants NOT taken) |
 
 ---
 
@@ -75,7 +73,7 @@ How it works:
 - `text_panel` is replaced with `version_small` — `100% - 2px × 10` strip at bottom (`offset -52`) showing only `#version` in `150,180,210`, `scale 0.75`, shadowed. No Mojang/copyright text.
 - `friendsdrawer_button_panel` fixed to `28×32` at `top_right [-8,2]`, layer 3. Fixes the classic fullscreen `["default","default"]` bug that pushed the bell to top-left. Uses borderless `ks_inbox_icon_button` (bell + red dot only, reuses vanilla `inbox_icon_container` animation states).
 - `ks_client_common.json` provides: `ks_edge_left/right` (2 px, 28% futuristic side rails, `ks_divider_v`, alpha 0.6), `ks_settings_button` (30×30, `ks_icon_settings`, no-background button → `button.menu_settings`), `ks_dressing_button` (40×40, `ks_icon_dressing` → `button.menu_skins`), `ks_inbox_button` (28×32 → `button.menu_inbox`).
-- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.*` (`start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer`, `KS CLIENT v1.1.9 • ONLINE`), `ksb.howToSaveConfig`, `item.mace.name`.
+- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.*` (`start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer`, `KS CLIENT v1.1.8 • ONLINE`), `ksb.howToSaveConfig`, `item.mace.name`.
 
 In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
 
@@ -188,9 +186,9 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 ### 2.12 Texts, Subpacks, Full Texture Coverage
 
 - `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `ksb.howToSaveConfig`, `item.mace.name`.
-- `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — just `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`). Plus `subpacks/loading_bar` (see §2.18).
+- `subpacks/hide_editor` vs `show_editor` (manifest): Hide Editor = “Better Performance” — currently just `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` flipping `$show_editor_button:false` (main `true`).
 - `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) holds only the `mace` entry (17 door PNGs unregistered → vanilla fallback); `texture_list.json`/`textures_list.json` legacy lists.
-- `textures/`: `blocks/` (1309 PNGs), `ui/` (126 PNGs incl. crosshair_default/entity + chat art + `.texture_assets/.chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9` + `loading_bar` subpack variant), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
+- `textures/`: `blocks/` (1309 PNGs), `ui/` (124 PNGs incl. `bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
 
 ### 2.13 Clear Chat Screen (KS Client: `ui/chat_screen.json`, `ui/.ui_assets/.screens/.chat/chat_tweaks.json`)
 
@@ -233,37 +231,13 @@ In-game: hold or view a mace → 3D hammer model; inventory shows the custom ico
 What it is: stacked top-left readout — `KS Client vX.Y.Z`, `Minecraft Vanilla v<game>`, `FPS: <digits>`, `Position: X, Y, Z` — always on (other position variants not merged, no subpack).
 
 How it works:
-- `ui/fps_hud.json` (namespace `ks_fps`): vertical `stack_panel` pinned top-left (`offset [3,3]`) with 3 rows — (1) static `KS Client v1.1.9` label (**hardcoded: bump it on every version release**), (2) horizontal row: static `FPS: ` label (0.7 scale) + 56×12 clipped digits panel (paper-doll 48×48 at `offset [-16,15]` — ~25% smaller than before, nudged up to sit on the text baseline), (3) position label via the vanilla `#player_position_text` → `#text` binding (renders `Position: X, Y, Z`, same pattern as vanilla `hud_screen.json`). No Minecraft-version row (removed per request).
+- `ui/fps_hud.json` (namespace `ks_fps`): vertical `stack_panel` pinned top-left (`offset [3,3]`) with 3 rows — (1) static `KS Client v1.1.8` label (**hardcoded: bump it on every version release**), (2) horizontal row: static `FPS: ` label (0.7 scale) + 56×12 clipped digits panel (paper-doll 48×48 at `offset [-16,15]` — ~25% smaller than before, nudged up to sit on the text baseline), (3) position label via the vanilla `#player_position_text` → `#text` binding (renders `Position: X, Y, Z`, same pattern as vanilla `hud_screen.json`). No Minecraft-version row (removed per request).
 - `ui/hud_screen.json` `root_panel` gains an `insert_back` modification: `fps_counter@ks_fps.fps_counter_mask`.
 - `entity/player.json` gains fps slots only (minimal merge, health hooks untouched): `fps_counter` material/texture (`textures/fps/digits_atlas`)/geometry (`geometry.fps_counter`), fps `initialize` + `pre_animation` accumulators, public `display_fps`/`rounded_fps`/`digit_*` variables, and `{"controller.render.fps_counter": "variable.is_paperdoll"}` appended to render controllers. `animate` needed no change (`root` already played).
 - `models/entity/fps_counter.geo.json` (`geometry.fps_counter`, hundreds/tens/ones/plus bones), `render_controllers/fps_counter.render.json` (digit part-visibility), `textures/fps/digits_atlas.png` (direct path — legacy `texture_list.json` notice only, same as 70+ pre-existing).
 - No `_global_variables.json` (beyond the hook no config exists upstream) / `manifest.json` changes; `_ui_defs.json` 13 → 14 entries.
 
-In-game, top-left corner: `KS Client v1.1.9`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A passes (8 SKIP lines for absent Drive anims); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
-
-### 2.17 Crosshair Indicator, Center (PandaMine5 v1.1: `ui/hud_screen.json`, `textures/ui/crosshair_*`)
-
-What it is: Java-like PvP crosshair — default art normally, entity (hit) art when aiming at an entity — centered on HUD, always on (configurable, no subpack).
-
-How it works:
-- `ui/hud_screen.json` (namespace `hud`): `ks_crosshair_panel` (center-anchored, `size $ks_crosshair_size [15,15]`, `offset $ks_crosshair_offset [0,0]`, `visible $ks_crosshair_v`, layer 13) with `default@hud.ks_crosshair_default` + `entity@hud.ks_crosshair_entity` children (rebranded from upstream `pm5_crosshair_panel/crosshair_default/entity`, bindings preserved).
-- `ks_crosshair_default/entity` (`type image`, `size ["100%","100%"]`, `alpha $ks_crosshair_alpha 0.7`, `textures/ui/crosshair_default` / `crosshair_entity` direct UI paths — no `terrain_texture.json`/`item_texture.json` registration needed, same as chat art + fps digits): visibility toggled by `right_helper_collection` `#helper_description` (`hudScreen.tooltip.` prefix stripped to `#get`): default shows when `#get` empty or not `hit`, entity shows when `#get` contains `hit`.
-- `root_panel` gains an `insert_front` modification: `ks_crosshair@hud.ks_crosshair_panel`.
-- `ui/_global_variables.json`: `$ks_crosshair_v true`, `$ks_crosshair_size [15,15]`, `$ks_crosshair_alpha 0.7`, `$ks_crosshair_offset [0,0]` — edit + repack to tune.
-- No `_ui_defs.json` / `manifest.json` changes (hud_screen hook loads by existing entry); `subpacks/hide_editor` untouched (single-file override only, no hud_screen override to sync).
-
-In-game: center crosshair swaps art when hovering an entity. Gate A passes; `mct validate` clean (direct UI textures, no atlas entries).
-
-### 2.18 Loading Bar Subpack (TsPlaysMCBE Better Breaking v1.0.0, `loading_bar` only)
-
-What it is: opt-in block-breaking overlay — cracks drawn as a loading bar instead of vanilla cracks — active only when the `Loading Bar` subpack is selected (no toggle, no `$var`).
-
-How it works:
-- `subpacks/loading_bar/textures/environment/destroy_stage_0-9.png` (10 files, 16×16) path-override the main pack's `textures/environment/destroy_stage_0-9.png` when the subpack is selected. File names are vanilla engine paths — renaming would break the crack overlay, so they are kept exact (generic names, no owner branding).
-- `manifest.json → subpacks` gains `loading_bar` ("Loading Bar", memory tier 0) alongside `hide_editor` / `show_editor`. Only the `loading_bar` variant was taken (colorful / progress / rainbow variants NOT taken).
-- No `_global_variables.json` / `_ui_defs.json` / `terrain_texture.json` / `item_texture.json` changes (environment path override, no atlas registration — same as main-pack destroy stages).
-
-In-game: select `Loading Bar` in pack settings → mining blocks shows a loading-bar crack animation. Main pack (other subpacks) keeps the default cracks. Note: Bedrock activates one subpack at a time, so `Loading Bar` can't combine with `Hide Editor` — pick one per session.
+In-game, top-left corner: `KS Client v1.1.8`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A passes (8 SKIP lines for absent Drive anims); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
 
 ---
 
@@ -280,7 +254,7 @@ ks-client/
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
 ├── release/                         ← shippable .mcpack (17 files: v1.0.0 + v1.0.3…v1.1.8, no v1.0.1/v1.0.2)
 ├── resource_packs/KS Client/
-│   ├── manifest.json                ← name KS Client, v1.1.9, min_engine 1.21.120, subpacks, authors
+│   ├── manifest.json                ← name KS Client, v1.1.8, min_engine 1.21.120, subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
@@ -294,12 +268,12 @@ ks-client/
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (126 PNGs incl. crosshair_default/entity + chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies / fps (digits_atlas.png)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies / fps (digits_atlas.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
 │   │   ├── _ui_defs.json            ← load order, 14 entries (…+ chat_tweaks + fps_hud; chat_screen.json loads by vanilla filename, no entry needed)
-│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud + root_panel fps + crosshair hooks), pause_screen.json (pause)
+│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud + root_panel fps hook), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug/dev_console/ui_common
 │   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings)
@@ -307,7 +281,6 @@ ks-client/
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
 │   │   └── ._content_/inv_content.json (component_toggle base for inventory crafting limiter)
 │   ├── subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json ← single-file override ($show_editor_button:false)
-│   ├── subpacks/loading_bar/textures/environment/destroy_stage_0-9.png ← 10-file override (loading-bar cracks, opt-in)
 ├── .opencode/skills/ (create-block/item/mob, design-model, debug-addon, creator-tools-cli)
 ├── .mct/mcp/prefs.json
 └── .vscode/
@@ -319,9 +292,9 @@ ks-client/
 
 ## 4. Installation & Usage In-Game
 
-1. Copy a file from `release/` (e.g. `KS-Client-v1.1.8.mcpack` — or `./tmp/KS-Client-v1.1.9.mcpack` after a version bump) to your Bedrock device and open it — Minecraft imports “KS Client”.
+1. Copy a file from `release/` (e.g. `KS-Client-v1.1.8.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs).
-3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS), `Show Editor`, or `Loading Bar` (block-crack loading-bar art — one subpack at a time).
+3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS) or `Show Editor`.
 4. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox.
    - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory; green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
@@ -329,8 +302,7 @@ ks-client/
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
-    - FPS: stacked readout top-left (client version, `FPS: <digits>`, position).
-    - Crosshair: center default/entity hit indicator (PandaMine5 v1.1, `$ks_crosshair_v/size/alpha/offset` in `_global_variables.json`).
+   - FPS: stacked readout top-left (client version, `FPS: <digits>`, position).
 5. **Persist config:** in-game config screen → copy code (`ksb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
@@ -348,7 +320,6 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`; F1 button itself not inserted into HUD) |
 | Inventory HUD | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
-| Crosshair indicator | `$ks_crosshair_v true`, `$ks_crosshair_size [15,15]`, `$ks_crosshair_alpha 0.7`, `$ks_crosshair_offset [0,0]` | center default/entity hit crosshair (PandaMine5 v1.1) — visible/size/alpha/offset, edit + repack |
 | Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
 
@@ -360,9 +331,8 @@ Declared in `manifest.json → subpacks`:
 
 - `hide_editor` — “Hide Editor (§aBetter Performance§f)” — currently a single-file override (`subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json`, `$show_editor_button:false` vs main `true`), fewer editor affordances → better FPS. **Recommended.**
 - `show_editor` — vanilla editor UI visible (for creators).
-- `loading_bar` — “Loading Bar” — block-crack overlay redrawn as a loading bar (`subpacks/loading_bar/textures/environment/destroy_stage_0-9.png`, 10-file path override of the main-pack cracks; TsPlaysMCBE Better Breaking v1.0.0 `loading_bar` variant only).
 
-Switch in pack settings; memory tier `0` for all three. One subpack at a time — `Loading Bar` can't combine with `Hide Editor`.
+Switch in pack settings; memory tier `0` for both.
 
 ---
 
@@ -373,9 +343,8 @@ Switch in pack settings; memory tier `0` for all three. One subpack at a time �
 - **Items (`atlas.items` = mace only):** `mace.png` registered as `mace` (custom icon + `item.mace.name`); 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) exist in `textures/items/` but unregistered — vanilla fallback.
 - **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (8 files — close/craft/effect_bg, all wired), `ks_touch/hide_gui`, `ksb_slot_button (+pressed)`, `ksb_numb_1-9`, chat art (`bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/`), every mob-effect icon, joystick/buttons/D-pad.
 - **Totem (active):** `totem/close_button.png`, `totem_button.png` — wired in `inventory_screen.json` + `hud_screen.json` `hud.totem_btn`.
-- **Crosshair (active):** `textures/ui/crosshair_default.png`, `crosshair_entity.png` — Java-like hit indicator, wired in `ui/hud_screen.json` (`hud.ks_crosshair_panel`, direct UI paths, no atlas).
 - **Hammer (active):** `textures/entity/attachable/mace.png` (held 3D model) + `textures/items/mace.png` (icon).
-- **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9` (main-pack cracks; `Loading Bar` subpack swaps in the loading-bar variant).
+- **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`.
 - **Colormap/misc/gui/controls/health_bar:** grass/leaves/water tints, `misc/vignette.png`, D-pad art, health bar sprites (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
 
 ---
@@ -430,9 +399,9 @@ redistributing: some upstream licenses require the creator's permission.
 
 `release/` contains shippable builds (17 files — no `v1.0.1`/`v1.0.2` were ever cut):
 
-`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → **`v1.1.9` (current)**
+`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → **`v1.1.8` (current)**
 
-Current (`manifest.json`): `KS Client v1.1.9`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
+Current (`manifest.json`): `KS Client v1.1.8`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
 
 ---
 
@@ -446,4 +415,4 @@ Current (`manifest.json`): `KS Client v1.1.9`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (82 with health hooks + player fps slots), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace + fps_counter) + `render_controllers/` (health_bar + fps_counter), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 18 incl. mace / ui 126 incl. crosshair_default/entity / gui / c_ui 8 / totem 2 / health_bar 65 / fps digits_atlas / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc; terrain 1322 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ks_crosshair_*), `_ui_defs` 14 entries, `hud/start/inventory/pause/debug/chat_screen/fps_hud` + hud crosshair hook, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), `subpacks/` (hide_editor single-file override + loading_bar 10-file crack override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `copyright.txt` (+13 PandaMine5 crosshair v1.1, +14 TsPlaysMCBE loading-bar v1.0.0), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (82 with health hooks + player fps slots), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace + fps_counter) + `render_controllers/` (health_bar + fps_counter), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 18 incl. mace / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / fps digits_atlas / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc; terrain 1322 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*), `_ui_defs` 14 entries, `hud/start/inventory/pause/debug/chat_screen/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (11 files), `copyright.txt` (+12 BlockTrace selective), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
