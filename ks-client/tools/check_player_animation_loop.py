@@ -37,8 +37,8 @@ SKIPPED = []
 
 def _skip(msg):
     SKIPPED.append(f"SKIP (optional input absent): {msg}")
-ANIM_DIRS = [f"{PACK}/animations/Animation", f"{PACK}/animations/Attack"]
-CTRL_DIRS = [f"{PACK}/animation_controllers/Animation", f"{PACK}/animation_controllers/Attack"]
+ANIM_DIRS = [f"{PACK}/animations", f"{PACK}/animations/Animation", f"{PACK}/animations/Attack"]
+CTRL_DIRS = [f"{PACK}/animation_controllers", f"{PACK}/animation_controllers/Animation", f"{PACK}/animation_controllers/Attack"]
 
 # animations that MUST loop (continuous states, exit on query condition, not on all_finished)
 MUST_LOOP_TRUE = {
