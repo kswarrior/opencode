@@ -345,24 +345,18 @@
     "cache_screen": true
   },
 
-  // ---------- KS Inventory HUD position wrapper (Bottom Right) ----------
-  // Bottom-right anchored; editor inventory sliders drive the offset live
-  // ($ksb_invhud_x/y are 0-100 slider positions: px offset = -value-1).
-  // NOTE: template naming is swapped by design (see ksb_main.editor_stack_templete):
-  // h<id>_y_slider holds the X axis, h<id>_x_slider holds the Y axis —
-  // same as slot_button_item resizer (x_slider->Y, y_slider->X).
+  // ---------- KS Inventory HUD position wrapper (fullscreen neutral) ----------
+  // Fullscreen so the inner panel's $inv_pos/$inv_offs (base bottom_right,
+  // or InvHUD * subpack corner) map to screen corners. Visibility follows
+  // the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
   "ks_invhud_pos": {
     "type": "panel",
-    "size": [1, 1],
-    "anchor_from": "bottom_right",
-    "anchor_to": "bottom_right",
+    "size": ["100%", "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [0, 0],
     "visible": "$ksb_invhud_v",
     "layer": 44,
-    "use_anchored_offset": true,
-    "property_bag": {
-      "#anchored_offset_value_x": 1.0,
-      "#anchored_offset_value_y": 1.0
-    },
     "controls": [
       {
         "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
@@ -374,18 +368,6 @@
         "source_control_name": "ksbT_invhud_t",
         "source_property_name": "#toggle_state",
         "target_property_name": "#visible"
-      },
-      {
-        "binding_type": "view",
-        "source_control_name": "hinvhud_y_slider",
-        "source_property_name": "((#slider_val * -1) - 1)",
-        "target_property_name": "#anchored_offset_value_x"
-      },
-      {
-        "binding_type": "view",
-        "source_control_name": "hinvhud_x_slider",
-        "source_property_name": "((#slider_val * -1) - 1)",
-        "target_property_name": "#anchored_offset_value_y"
       }
     ]
   },
