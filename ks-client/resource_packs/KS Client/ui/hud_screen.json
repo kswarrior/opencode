@@ -346,6 +346,8 @@
     "size": [1, 1],
     "anchor_from": "bottom_right",
     "anchor_to": "bottom_right",
+    "visible": "$ksb_invhud_v",
+    "layer": 44,
     "use_anchored_offset": true,
     "property_bag": {
       "#anchored_offset_value_x": 1.0,
@@ -388,6 +390,8 @@
     "size": [1, 1],
     "anchor_from": "bottom_middle",
     "anchor_to": "bottom_middle",
+    "visible": "$ksb_totem_v",
+    "layer": 50,
     "use_anchored_offset": true,
     "property_bag": {
       "#anchored_offset_value_x": 1.0,
@@ -401,6 +405,8 @@
           "anchor_to": "top_left",
           "offset": [0, 0],
           "size": [30, 30],
+          "visible": "$ksb_totem_v",
+          "layer": 50,
           "property_bag": {
             "#size_binding_x": 1.0,
             "#size_binding_y": 1.0
