@@ -394,18 +394,22 @@
   },
   // ---------- KS Inventory HUD corner wrapper (fullscreen neutral) ----------
   // One fullscreen instance per corner; only the dropdown-selected corner
-  // (ksb_corner_* radio) is visible. Anchors/offsets match the old InvHUD
-  // subpacks: TL top_left [1,1], TR top_right [-1,1], BL bottom_left [1,-1],
-  // BR bottom_right [-1,-1]. Outer ks_invhud_pos still gates master visibility.
+  // (ksb_corner_* radio) is visible. Each instance forwards its own
+  // $inv_pos/$inv_offs into the grid panel so it pins to its own corner
+  // (TL top_left [1,1], TR top_right [-1,1], BL bottom_left [1,-1],
+  // BR bottom_right [-1,-1]). Defaults hidden until the radio binding
+  // resolves, so a missing source can never flash 4 stacked grids at join.
+  // Outer ks_invhud_pos still gates master visibility.
   "ks_invhud_corner": {
     "type": "panel",
     "size": ["100%", "100%"],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "offset": [0, 0],
+    "visible": false,
     "controls": [
       {
-        "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
+        "ks_inventory_hud@ks_hud.inventory_hud_panel": {"$inv_pos": "$inv_pos", "$inv_offs": "$inv_offs"}
       }
     ],
     "bindings": [
