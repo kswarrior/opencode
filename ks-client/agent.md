@@ -60,6 +60,7 @@ Rule: `_global_variables.json` = config API, `ui/*.json` = implementation. Prefe
 | health-bar size / visibility | `animations/health_bar.json` (scale/conditions only) |
 | animation freeze / detach | run `./tools/` checker first, fix only flagged lines (§5–§6) |
 | new block / item / mob look | skills `create-block` / `create-item` / `create-mob` / `design-model`, then validate |
+| merge another resource pack into KS Client | see §5.7 rebrand-to-KS + `copyright.txt` rule |
 
 Safe procedure:
 1. Read target + `_global_variables.json` + relevant `_ui_defs.json` entry. Never add UI file without registering it. Don't glob the whole pack.
@@ -91,6 +92,7 @@ Safe procedure:
 4. **No commit/push unless asked.** Leave working tree + report evidence.
 5. **No guessing.** Always run §6 gates after change; report checker output + validate errors + Content Log.
 6. **README sync (same diff):** user-visible change MUST update `README.md` together: UI/layout/config → §1+§2+§5 table if `$var` added; texture/icon → §7 (+§3 if file added); fog/biome/entity/anim/render → §8; new/moved file → §3 tree; usage/install → §4. Version strings only on explicit bump. Verify via `git diff --stat`. `tools/`/`./tmp/`/`out/`/comment-only with zero visible effect → no README change, state why.
+7. **External pack merge — rebrand to KS, credit in `copyright.txt`:** when adding another resource pack into `resource_packs/KS Client/`: (a) stage in `./tmp/merge_<name>/` (stay in `./`), copy only needed files, NEVER overwrite `manifest.json`/uuids/version; (b) strip ALL owner branding — owner-name strings, custom folder/file names, namespaces, control IDs (`@owner.*`), `$owner_*` vars, texture paths, lang keys — rename to KS style (`ui/ks_*/`, `ks_*` namespace, `$ks_*`, `KS Client` strings). Grep to verify zero leftovers; (c) append to `./copyright.txt` (project root, NEVER shipped in `.mcpack`): `Feature / Author – Pack vX.Y.Z / Source URL / Now: new KS paths`. Never delete history — move purged packs to `Removed again` section; (d) update `README.md` (§3 tree, §7/§8, §11 credits) in same diff + run §6 gates.
 
 ---
 

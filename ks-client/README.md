@@ -59,6 +59,7 @@
 | 21 | FPS Counter (Top Left) | KS Client | Stacked readout — client version, `FPS: <digits>`, position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (17 files, `v1.0.0` + `v1.0.3`…`v1.1.8` — no `v1.0.1`/`v1.0.2`), opencode MCP skills |
+| 24 | Crosshair Indicator (Center) | PandaMine5 v1.1 (`ui/hud_screen.json` + `textures/ui/crosshair_*`) | Java-like default/entity hit crosshair, center screen, `$ks_crosshair_v/size/alpha/offset` config |
 
 ---
 
@@ -239,6 +240,19 @@ How it works:
 
 In-game, top-left corner: `KS Client v1.1.9`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A passes (8 SKIP lines for absent Drive anims); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
 
+### 2.17 Crosshair Indicator, Center (PandaMine5 v1.1: `ui/hud_screen.json`, `textures/ui/crosshair_*`)
+
+What it is: Java-like PvP crosshair — default art normally, entity (hit) art when aiming at an entity — centered on HUD, always on (configurable, no subpack).
+
+How it works:
+- `ui/hud_screen.json` (namespace `hud`): `ks_crosshair_panel` (center-anchored, `size $ks_crosshair_size [15,15]`, `offset $ks_crosshair_offset [0,0]`, `visible $ks_crosshair_v`, layer 13) with `default@hud.ks_crosshair_default` + `entity@hud.ks_crosshair_entity` children (rebranded from upstream `pm5_crosshair_panel/crosshair_default/entity`, bindings preserved).
+- `ks_crosshair_default/entity` (`type image`, `size ["100%","100%"]`, `alpha $ks_crosshair_alpha 0.7`, `textures/ui/crosshair_default` / `crosshair_entity` direct UI paths — no `terrain_texture.json`/`item_texture.json` registration needed, same as chat art + fps digits): visibility toggled by `right_helper_collection` `#helper_description` (`hudScreen.tooltip.` prefix stripped to `#get`): default shows when `#get` empty or not `hit`, entity shows when `#get` contains `hit`.
+- `root_panel` gains an `insert_front` modification: `ks_crosshair@hud.ks_crosshair_panel`.
+- `ui/_global_variables.json`: `$ks_crosshair_v true`, `$ks_crosshair_size [15,15]`, `$ks_crosshair_alpha 0.7`, `$ks_crosshair_offset [0,0]` — edit + repack to tune.
+- No `_ui_defs.json` / `manifest.json` changes (hud_screen hook loads by existing entry); `subpacks/hide_editor` untouched (single-file override only, no hud_screen override to sync).
+
+In-game: center crosshair swaps art when hovering an entity. Gate A passes; `mct validate` clean (direct UI textures, no atlas entries).
+
 ---
 
 ## 3. Project Structure
@@ -268,12 +282,12 @@ ks-client/
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies / fps (digits_atlas.png)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (126 PNGs incl. crosshair_default/entity + chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies / fps (digits_atlas.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
 │   │   ├── _ui_defs.json            ← load order, 14 entries (…+ chat_tweaks + fps_hud; chat_screen.json loads by vanilla filename, no entry needed)
-│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud + root_panel fps hook), pause_screen.json (pause)
+│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud + root_panel fps + crosshair hooks), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug/dev_console/ui_common
 │   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings)
@@ -302,7 +316,8 @@ ks-client/
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
-   - FPS: stacked readout top-left (client version, `FPS: <digits>`, position).
+    - FPS: stacked readout top-left (client version, `FPS: <digits>`, position).
+    - Crosshair: center default/entity hit indicator (PandaMine5 v1.1, `$ks_crosshair_v/size/alpha/offset` in `_global_variables.json`).
 5. **Persist config:** in-game config screen → copy code (`ksb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
 
 ---
