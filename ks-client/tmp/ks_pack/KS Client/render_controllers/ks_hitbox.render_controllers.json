@@ -2,14 +2,14 @@
   "format_version": "1.8.0",
   "render_controllers": {
     "controller.render.ks_hitbox": {
-      "geometry": "Geometry.hitbox",
+      "geometry": "Geometry.ks_hitbox",
       "materials": [
         {
           "*": "Material.emissive"
         }
       ],
       "textures": [
-        "Texture.hitbox"
+        "Texture.ks_hitbox"
       ],
       "is_hurt_color": {
         "r": 0.0,

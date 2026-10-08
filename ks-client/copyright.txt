@@ -180,6 +180,12 @@ here. Respect their licenses — get permission before redistributing.
              jsons (health-bar/fps hooks preserved),
              `textures/entity/ks_hitbox/hitbox.png` + `mob_hitbox.png`
              (white BoxOnly art only). No subpacks, no manifest change.
+    Fix    : v1.3.1 — player render controller referenced
+             `Geometry.hitbox` / `Texture.hitbox` but the entity shorts
+             were rebranded `ks_hitbox` (dangling refs crashed world
+             join); now `Geometry.ks_hitbox` / `Texture.ks_hitbox` and
+             every ks_hitbox Geometry/Texture/Material/animation/
+             controller ref was audited to resolve.
 
 Removed again after merge (no longer in pack, kept here for history):
 - Utility HUD V-1.5 Without Counters — EchoRif (fully purged)
