@@ -278,7 +278,7 @@
           "fps_counter@ks_fps.fps_counter_mask": {}
         }
       },
-      // KS Crosshair Indicator (PandaMine5 v1.1): java-like default/entity crosshair, center.
+      // KS crosshair indicator: default/entity hit crosshair, center.
       {
         "array_name": "controls",
         "operation": "insert_front",
@@ -466,9 +466,8 @@
       }
     ]
   },
-  // ---------- KS Crosshair Indicator (PandaMine5 v1.1, rebranded) ----------
+  // ---------- KS crosshair indicator ----------
   // Center crosshair: default vs entity (hit) art, toggled by right_helper_collection.
-  // Upstream: pm5_crosshair_panel/crosshair_default/crosshair_entity; rebranded ks_.
   // Textures: textures/ui/crosshair_default + crosshair_entity (direct UI paths, no atlas).
   // Config: $ks_crosshair_v/size/alpha/offset in _global_variables.json.
   "ks_crosshair_panel": {

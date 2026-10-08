@@ -107,7 +107,7 @@
 	"$ks:inventory_slot_color": [ 0, 0, 0 ],
 	"$ks:inventory_slot_alpha": 0.27,
 
-	// === KS Crosshair Indicator (PandaMine5 v1.1, center) ===
+	// === KS Crosshair Indicator (center) ===
 	"$ks_crosshair_v": true,
 	"$ks_crosshair_size": [ 15, 15 ],
 	"$ks_crosshair_alpha": 0.7,
