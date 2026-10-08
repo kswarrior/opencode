@@ -430,9 +430,9 @@ redistributing: some upstream licenses require the creator's permission.
 
 ## 12. Version History
 
-`release/` contains shippable builds (27 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
+`release/` contains shippable builds (28 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
 
-`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → **`v1.2.9` (current)**
+`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → `v1.2.9` → **`v1.3.0` (current)**
 
 Current (`manifest.json`): `KS Client v1.3.0`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
 

@@ -6,7 +6,8 @@
             "min_engine_version": "1.17.10",
             "materials": {
                 "default": "horse_leather_armor",
-                "health_bar": "entity_emissive_alpha"
+                "health_bar": "entity_emissive_alpha",
+                "ks_mob_emissive": "ks_hitbox"
             },
             "textures": {
                 "base_brown": "textures/entity/horse2/horse_brown",
@@ -87,11 +88,13 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0"
+                "font0": "textures/health_bar/font/0",
+                "ks_mob_hitbox": "textures/entity/ks_hitbox/mob_hitbox"
             },
             "geometry": {
                 "default": "geometry.horse.v3",
-                "health_bar": "geometry.health_bar"
+                "health_bar": "geometry.health_bar",
+                "ks_mob_hitbox": "geometry.ks_mob_hitbox"
             },
             "animations": {
                 "baby_transform": "animation.horse.v3.baby_transform",
@@ -100,7 +103,8 @@
                 "rear": "animation.horse.v3.rear",
                 "tail": "animation.horse.v3.tail",
                 "look_at_player": "animation.horse.v3.look_at_player",
-                "health_bar": "animation.health_bar"
+                "health_bar": "animation.health_bar",
+                "ks_mob_hitbox_overlay": "animation.ks_mob_hitbox.horse"
             },
             "scripts": {
                 "initialize": [
@@ -131,7 +135,8 @@
                     {
                         "tail": "variable.shake_tail"
                     },
-                    "health_bar"
+                    "health_bar",
+                    "ks_mob_hitbox_overlay"
                 ]
             },
             "render_controllers": [
@@ -140,7 +145,10 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3"
+                "controller.render.health_bar.digit3",
+                {
+                    "controller.render.ks_mob_hitbox": "query.is_alive"
+                }
             ],
             "spawn_egg": {
                 "texture": "spawn_egg_horse"

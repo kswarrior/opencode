@@ -1,0 +1,9 @@
+{
+  "materials": {
+    "version": "1.0.0",
+    "ks_hitbox:entity_emissive_alpha": {},
+    "ks_hitbox_depthfunc:entity_emissive_alpha": {
+      "depthFunc": "Always"
+    }
+  }
+}

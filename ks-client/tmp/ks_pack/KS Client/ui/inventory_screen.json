@@ -362,5 +362,27 @@
 
   "items_tab": {
     "variables": []
+  },
+
+  // Recolourful Containers BE 1.4 LIGHT - container_screen mappings (totem preserved)
+  "crafting_screen@global.container_screen": {
+    "$screen_content": "crafting_screen.screen_base",
+    "$recipe_container_type|default": "crafting_screen.screen_base",
+    "variables": [
+      {
+        "requires": "$is_jei_recipe_book_layout_pack", 
+        "$screen_content": "jei_layout_bridge.jei_inventory_layout"
+      }
+    ]
+  },
+  "inventory_screen@global.container_screen": {
+    "$screen_content": "inventory_screen.screen_base",
+    "$recipe_container_type|default": "inventory_screen.screen_base",
+    "variables": [
+      {
+        "requires": "$is_jei_recipe_book_layout_pack", 
+        "$screen_content": "jei_layout_bridge.jei_inventory_layout"
+      }
+    ]
   }
 }

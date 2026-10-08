@@ -7,7 +7,8 @@
             "materials": {
                 "default": "enderman",
                 "invisible": "enderman_invisible",
-                "health_bar": "entity_emissive_alpha"
+                "health_bar": "entity_emissive_alpha",
+                "ks_mob_emissive": "ks_hitbox"
             },
             "textures": {
                 "default": "textures/entity/enderman/enderman",
@@ -72,11 +73,13 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0"
+                "font0": "textures/health_bar/font/0",
+                "ks_mob_hitbox": "textures/entity/ks_hitbox/mob_hitbox"
             },
             "geometry": {
                 "default": "geometry.enderman.v1.8",
-                "health_bar": "geometry.health_bar"
+                "health_bar": "geometry.health_bar",
+                "ks_mob_hitbox": "geometry.ks_mob_hitbox"
             },
             "scripts": {
                 "pre_animation": [
@@ -92,7 +95,8 @@
                     "base_pose_controller",
                     "carrying_controller",
                     "scary_face_controller",
-                    "health_bar"
+                    "health_bar",
+                    "ks_mob_hitbox_overlay"
                 ]
             },
             "animations": {
@@ -113,7 +117,8 @@
                 "base_pose_controller": "controller.animation.enderman.base_pose",
                 "carrying_controller": "controller.animation.enderman.carrying",
                 "scary_face_controller": "controller.animation.enderman.scary_face",
-                "health_bar": "animation.health_bar"
+                "health_bar": "animation.health_bar",
+                "ks_mob_hitbox_overlay": "animation.ks_mob_hitbox.enderman"
             },
             "render_controllers": [
                 "controller.render.enderman",
@@ -121,11 +126,19 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3"
+                "controller.render.health_bar.digit3",
+                {
+                    "controller.render.ks_mob_hitbox": "query.is_alive"
+                }
             ],
             "spawn_egg": {
                 "texture": "spawn_egg_enderman"
-            }
+            },
+            "animation_controllers": [
+                {
+                    "ks_mob_hitbox_overlay": "controller.animation.ks_mob_hitbox.enderman"
+                }
+            ]
         }
     }
 }

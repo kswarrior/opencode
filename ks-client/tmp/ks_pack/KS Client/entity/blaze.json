@@ -7,7 +7,8 @@
             "materials": {
                 "body": "blaze_body",
                 "head": "blaze_head",
-                "health_bar": "entity_emissive_alpha"
+                "health_bar": "entity_emissive_alpha",
+                "ks_mob_emissive": "ks_hitbox"
             },
             "textures": {
                 "default": "textures/entity/blaze",
@@ -72,18 +73,21 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0"
+                "font0": "textures/health_bar/font/0",
+                "ks_mob_hitbox": "textures/entity/ks_hitbox/mob_hitbox"
             },
             "geometry": {
                 "default": "geometry.blaze",
-                "health_bar": "geometry.health_bar"
+                "health_bar": "geometry.health_bar",
+                "ks_mob_hitbox": "geometry.ks_mob_hitbox"
             },
             "animations": {
                 "look_at_target": "animation.common.look_at_target",
                 "move": "animation.blaze.move",
                 "move_controller": "controller.animation.blaze.move",
                 "flame_controller": "controller.animation.blaze.flame",
-                "health_bar": "animation.health_bar"
+                "health_bar": "animation.health_bar",
+                "ks_mob_hitbox_overlay": "animation.ks_mob_hitbox.blaze"
             },
             "particle_effects": {
                 "charged_flames": "minecraft:mobflame_emitter"
@@ -94,7 +98,10 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3"
+                "controller.render.health_bar.digit3",
+                {
+                    "controller.render.ks_mob_hitbox": "query.is_alive"
+                }
             ],
             "spawn_egg": {
                 "texture": "spawn_egg_blaze"
@@ -107,9 +114,15 @@
                 "animate": [
                     "move_controller",
                     "flame_controller",
-                    "health_bar"
+                    "health_bar",
+                    "ks_mob_hitbox_overlay"
                 ]
-            }
+            },
+            "animation_controllers": [
+                {
+                    "ks_mob_hitbox_overlay": "controller.animation.ks_mob_hitbox.blaze"
+                }
+            ]
         }
     }
 }

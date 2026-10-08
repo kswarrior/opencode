@@ -8,12 +8,13 @@
                 "default": "chicken",
                 "legs": "chicken_legs",
                 "cold": "chicken_cold",
-                "health_bar": "entity_emissive_alpha"
+                "health_bar": "entity_emissive_alpha",
+                "ks_mob_emissive": "ks_hitbox"
             },
             "textures": {
                 "default": "textures/entity/chicken/chicken",
                 "warm": "textures/entity/chicken/chicken_warm",
-                "cold": "textures/entity/chicken/chicken_cold",        
+                "cold": "textures/entity/chicken/chicken_cold",
                 "heart": "textures/health_bar/heart",
                 "bar50": "textures/health_bar/bar/50",
                 "bar49": "textures/health_bar/bar/49",
@@ -75,20 +76,23 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0"
+                "font0": "textures/health_bar/font/0",
+                "ks_mob_hitbox": "textures/entity/ks_hitbox/mob_hitbox"
             },
             "geometry": {
                 "default": "geometry.chicken.v1.12",
                 "warm": "geometry.chicken.v1.12",
                 "cold": "geometry.chicken.cold",
-                "health_bar": "geometry.health_bar"
+                "health_bar": "geometry.health_bar",
+                "ks_mob_hitbox": "geometry.ks_mob_hitbox"
             },
             "animations": {
                 "move": "animation.chicken.move",
                 "general": "animation.chicken.general",
                 "look_at_target": "animation.common.look_at_target",
                 "baby_transform": "animation.chicken.baby_transform",
-                "health_bar": "animation.health_bar"
+                "health_bar": "animation.health_bar",
+                "ks_mob_hitbox_overlay": "animation.ks_mob_hitbox.chicken"
             },
             "scripts": {
                 "animate": [
@@ -100,12 +104,13 @@
                     {
                         "baby_transform": "query.is_baby"
                     },
-                    "health_bar"
+                    "health_bar",
+                    "ks_mob_hitbox_overlay"
                 ],
                 "pre_animation": [
                     "t.variant = query.property('minecraft:climate_variant');",
                     "v.index = (t.variant == 'temperate') ? 0 : ((t.variant == 'warm') ? 1 : 2);",
-                    "v.is_cold = t.variant == 'cold';",          
+                    "v.is_cold = t.variant == 'cold';",
                     "v.health_bar_position = q.is_baby ? 27 : 17;",
                     "v.health_bar_scale = q.model_scale;"
                 ]
@@ -116,7 +121,10 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3"
+                "controller.render.health_bar.digit3",
+                {
+                    "controller.render.ks_mob_hitbox": "query.is_alive"
+                }
             ],
             "spawn_egg": {
                 "texture": "spawn_egg_chicken"

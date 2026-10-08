@@ -6,7 +6,8 @@
             "min_engine_version": "1.8.0",
             "materials": {
                 "default": "zombie",
-                "health_bar": "entity_emissive_alpha"
+                "health_bar": "entity_emissive_alpha",
+                "ks_mob_emissive": "ks_hitbox"
             },
             "textures": {
                 "default": "textures/entity/zombie/zombie",
@@ -71,11 +72,13 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0"
+                "font0": "textures/health_bar/font/0",
+                "ks_mob_hitbox": "textures/entity/ks_hitbox/mob_hitbox"
             },
             "geometry": {
                 "default": "geometry.zombie.v1.8",
-                "health_bar": "geometry.health_bar"
+                "health_bar": "geometry.health_bar",
+                "ks_mob_hitbox": "geometry.ks_mob_hitbox"
             },
             "spawn_egg": {
                 "texture": "spawn_egg_zombie"
@@ -102,7 +105,8 @@
                     "use_item_progress_controller",
                     "zombie_attack_bare_hand_controller",
                     "swimming_controller",
-                    "health_bar"
+                    "health_bar",
+                    "ks_mob_hitbox_overlay"
                 ]
             },
             "animations": {
@@ -139,7 +143,8 @@
                 "use_item_progress_controller": "controller.animation.humanoid.use_item_progress",
                 "zombie_attack_bare_hand_controller": "controller.animation.zombie.attack_bare_hand",
                 "swimming_controller": "controller.animation.zombie.swimming",
-                "health_bar": "animation.health_bar"
+                "health_bar": "animation.health_bar",
+                "ks_mob_hitbox_overlay": "animation.ks_mob_hitbox.zombie"
             },
             "render_controllers": [
                 "controller.render.zombie",
@@ -147,7 +152,10 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3"
+                "controller.render.health_bar.digit3",
+                {
+                    "controller.render.ks_mob_hitbox": "query.is_alive"
+                }
             ],
             "enable_attachables": true
         }

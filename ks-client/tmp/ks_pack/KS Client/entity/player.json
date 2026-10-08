@@ -9,7 +9,9 @@
                 "animated": "player_animated",
                 "spectator": "player_spectator",
                 "health_bar": "entity_emissive_alpha",
-                "fps_counter": "entity_alphatest"
+                "fps_counter": "entity_alphatest",
+                "emissive": "ks_hitbox",
+                "emissive_depthfunc": "ks_hitbox_depthfunc"
             },
             "textures": {
                 "default": "textures/entity/steve",
@@ -76,13 +78,15 @@
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
                 "font0": "textures/health_bar/font/0",
-                "fps_counter": "textures/fps/digits_atlas"
+                "fps_counter": "textures/fps/digits_atlas",
+                "ks_hitbox": "textures/entity/ks_hitbox/hitbox"
             },
             "geometry": {
                 "default": "geometry.humanoid.custom",
                 "cape": "geometry.cape",
                 "health_bar": "geometry.health_bar",
-                "fps_counter": "geometry.fps_counter"
+                "fps_counter": "geometry.fps_counter",
+                "ks_hitbox": "geometry.ks_hitbox"
             },
             "scripts": {
                 "scale": "0.9375",
@@ -126,7 +130,8 @@
                 ],
                 "animate": [
                     "root",
-                    "health_bar"
+                    "health_bar",
+                    "ks_hitbox.root"
                 ],
                 "variables": {
                     "variable.fp_melee_spear_use_attachable_rotation_z": "public",
@@ -205,7 +210,26 @@
                 "brushing": "animation.humanoid.brushing",
                 "crawling": "animation.player.crawl",
                 "crawling.legs": "animation.player.crawl.legs",
-                "health_bar": "animation.health_bar"
+                "health_bar": "animation.health_bar",
+                "ks_hitbox.root": "controller.animation.ks_hitbox.root",
+                "ks_hitbox_controller": "controller.animation.ks_hitbox.hitbox",
+                "ks_hitbox_one": "animation.ks_hitbox.hitbox.one",
+                "ks_hitbox_two": "animation.ks_hitbox.hitbox.two",
+                "ks_hitbox_three_one": "animation.ks_hitbox.hitbox.three_one",
+                "ks_hitbox_three_two": "animation.ks_hitbox.hitbox.three_two",
+                "ks_hitbox_four": "animation.ks_hitbox.hitbox.four",
+                "eye_controller": "controller.animation.ks_hitbox.eye",
+                "eye_one": "animation.ks_hitbox.eye.one",
+                "eye_two": "animation.ks_hitbox.eye.two",
+                "eye_three_one": "animation.ks_hitbox.eye.three_one",
+                "eye_three_two": "animation.ks_hitbox.eye.three_two",
+                "eye_four": "animation.ks_hitbox.eye.four",
+                "ray_controller": "controller.animation.ks_hitbox.ray",
+                "ray_one": "animation.ks_hitbox.ray.one",
+                "ray_two": "animation.ks_hitbox.ray.two",
+                "ray_three_one": "animation.ks_hitbox.ray.three_one",
+                "ray_three_two": "animation.ks_hitbox.ray.three_two",
+                "ray_four": "animation.ks_hitbox.ray.four"
             },
             "render_controllers": [
                 {
@@ -230,6 +254,9 @@
                 "controller.render.health_bar.digit3",
                 {
                     "controller.render.fps_counter": "variable.is_paperdoll"
+                },
+                {
+                    "controller.render.ks_hitbox": "!variable.is_first_person && !query.is_in_ui && query.is_alive && !query.is_spectator"
                 }
             ],
             "enable_attachables": true

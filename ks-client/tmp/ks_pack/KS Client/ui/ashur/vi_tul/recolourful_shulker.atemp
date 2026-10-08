@@ -1,0 +1,47 @@
+/**
+// © 2026 ashura_temps,    All Rights Reserved.
+//
+// This UI is custom-made. You are allowed to use it **only as-is**, inside the game.
+// Do not modify, extract, reuse, or share any part of this UI including .json, .atemp files,
+// layout structure, or design.
+//
+// Not allowed:
+//   - Editing the UI (even for private/personal use)
+//   - Using parts of the code or layout in your own pack
+//   - Reuploading, redistributing, or hosting these files elsewhere
+//   - Converting texture packs to Bedrock using this UI
+//
+//
+// By using this project, you agree to these terms.
+*/
+{
+  "namespace": "recolourful_shulker",
+  //possibly the current best way of doing this (it i way less likely to break than the other version)
+  "shulker_box@screen_content.container_template": {
+    "$size": [176, 166],
+    "$container_name|default": "$container_title",
+    "$shulker_texture": "assets/variants/shulkers/default",
+    "texture": "$shulker_texture",
+    /*
+      redstone chicken stay out of this file ik you been reading these if your going to yoink my code again atleast credit me this time
+    */
+    "variables": [
+      {"requires":"(('%.6s' * $container_name) = '§f§r')","$shulker_texture":"assets/variants/shulkers/white"      },
+      {"requires":"(('%.6s' * $container_name) = '§p§r')","$shulker_texture":"assets/variants/shulkers/orange"     },
+      {"requires":"(('%.6s' * $container_name) = '§5§r')","$shulker_texture":"assets/variants/shulkers/magenta"    },
+      {"requires":"(('%.6s' * $container_name) = '§b§r')","$shulker_texture":"assets/variants/shulkers/light_blue" },
+      {"requires":"(('%.6s' * $container_name) = '§e§r')","$shulker_texture":"assets/variants/shulkers/yellow"     },
+      {"requires":"(('%.6s' * $container_name) = '§a§r')","$shulker_texture":"assets/variants/shulkers/lime"       },
+      {"requires":"(('%.6s' * $container_name) = '§d§r')","$shulker_texture":"assets/variants/shulkers/pink"       },
+      {"requires":"(('%.6s' * $container_name) = '§8§r')","$shulker_texture":"assets/variants/shulkers/gray"       },
+      {"requires":"(('%.6s' * $container_name) = '§7§r')","$shulker_texture":"assets/variants/shulkers/light_gray" },
+      {"requires":"(('%.6s' * $container_name) = '§3§r')","$shulker_texture":"assets/variants/shulkers/cyan"       },
+      {"requires":"(('%.6s' * $container_name) = '§u§r')","$shulker_texture":"assets/variants/shulkers/purple"     },
+      {"requires":"(('%.6s' * $container_name) = '§9§r')","$shulker_texture":"assets/variants/shulkers/blue"       },
+      {"requires":"(('%.6s' * $container_name) = '§n§r')","$shulker_texture":"assets/variants/shulkers/brown"      },
+      {"requires":"(('%.6s' * $container_name) = '§2§r')","$shulker_texture":"assets/variants/shulkers/green"      },
+      {"requires":"(('%.6s' * $container_name) = '§c§r')","$shulker_texture":"assets/variants/shulkers/red"        },
+      {"requires":"(('%.6s' * $container_name) = '§0§r')","$shulker_texture":"assets/variants/shulkers/black"      }
+    ]
+  }
+}

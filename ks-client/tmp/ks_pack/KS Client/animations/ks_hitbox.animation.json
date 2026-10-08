@@ -1,0 +1,1501 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.ks_hitbox.hitbox.one": {
+      "loop": true,
+      "bones": {
+        "hitbox": {
+          "position": [
+            0.0,
+            -1.815,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            "0.0 - query.body_y_rotation",
+            0.0
+          ],
+          "scale": [
+            1.4225,
+            1.185,
+            1.4225
+          ]
+        },
+        "hitbox_part_one": {
+          "scale": [
+            1.0,
+            0.84388,
+            1.0
+          ]
+        },
+        "hitbox_part_one_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_one_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_one_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_one_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_two": {
+          "position": [
+            0.0,
+            0.01561,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            0.84388,
+            1.0
+          ]
+        },
+        "hitbox_part_two_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_two_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_two_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_two_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_three_one": {
+          "position": [
+            1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_two": {
+          "position": [
+            -1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_three": {
+          "position": [
+            1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.hitbox.two": {
+      "loop": true,
+      "bones": {
+        "hitbox": {
+          "position": [
+            0.0,
+            -1.815,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            "0.0 - query.body_y_rotation",
+            0.0
+          ],
+          "scale": [
+            1.4225,
+            1.001,
+            1.4225
+          ]
+        },
+        "hitbox_part_one": {
+          "scale": [
+            1.0,
+            0.999,
+            1.0
+          ]
+        },
+        "hitbox_part_one_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_one_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_one_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_one_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_two": {
+          "position": [
+            0.0,
+            0.0001,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            0.999,
+            1.0
+          ]
+        },
+        "hitbox_part_two_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_two_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_two_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_two_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_three_one": {
+          "position": [
+            1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_two": {
+          "position": [
+            -1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_three": {
+          "position": [
+            1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.hitbox.three_one": {
+      "loop": true,
+      "bones": {
+        "hitbox": {
+          "position": [
+            0.0,
+            -1.815,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            "0.0 - query.body_y_rotation",
+            0.0
+          ],
+          "scale": [
+            1.4225,
+            0.47375,
+            1.4225
+          ]
+        },
+        "hitbox_part_one": {
+          "scale": [
+            1.0,
+            2.11082,
+            1.0
+          ]
+        },
+        "hitbox_part_one_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_one_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_one_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_one_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_two": {
+          "position": [
+            0.0,
+            -0.11108,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            2.11082,
+            1.0
+          ]
+        },
+        "hitbox_part_two_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_two_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_two_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_two_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_three_one": {
+          "position": [
+            1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_two": {
+          "position": [
+            -1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_three": {
+          "position": [
+            1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "hitbox_part_three_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.hitbox.three_two": {
+      "loop": true,
+      "bones": {
+        "root_hitbox": {
+          "scale": 0.0
+        }
+      }
+    },
+    "animation.ks_hitbox.hitbox.four": {
+      "loop": true,
+      "bones": {
+        "hitbox": {
+          "position": [
+            0.0,
+            -1.8,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            "0.0 - query.body_y_rotation",
+            0.0
+          ],
+          "scale": [
+            0.705,
+            0.23665,
+            0.705
+          ]
+        },
+        "hitbox_part_one": {
+          "scale": [
+            1.0,
+            4.22565,
+            1.0
+          ]
+        },
+        "hitbox_part_one_one": {
+          "position": [
+            0.0,
+            0.0,
+            2.00851
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.41844
+          ]
+        },
+        "hitbox_part_one_two": {
+          "position": [
+            0.0,
+            0.0,
+            -2.00851
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.41844
+          ]
+        },
+        "hitbox_part_one_three": {
+          "position": [
+            -2.00851,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_one_four": {
+          "position": [
+            2.00851,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_two": {
+          "position": [
+            0.0,
+            -0.32256,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            4.22565,
+            1.0
+          ]
+        },
+        "hitbox_part_two_one": {
+          "position": [
+            0.0,
+            0.0,
+            2.00851
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.41844
+          ]
+        },
+        "hitbox_part_two_two": {
+          "position": [
+            0.0,
+            0.0,
+            -2.00851
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.41844
+          ]
+        },
+        "hitbox_part_two_three": {
+          "position": [
+            -2.00851,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_two_four": {
+          "position": [
+            2.00851,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.0
+          ]
+        },
+        "hitbox_part_three_one": {
+          "position": [
+            -2.00851,
+            0.0,
+            2.00851
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.41844
+          ]
+        },
+        "hitbox_part_three_two": {
+          "position": [
+            2.00851,
+            0.0,
+            2.00851
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.41844
+          ]
+        },
+        "hitbox_part_three_three": {
+          "position": [
+            -2.00851,
+            0.0,
+            -2.00851
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.41844
+          ]
+        },
+        "hitbox_part_three_four": {
+          "position": [
+            2.00851,
+            0.0,
+            -2.00851
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.41844
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.eye.one": {
+      "loop": true,
+      "bones": {
+        "eye": {
+          "position": [
+            0.0,
+            27.5,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            "0.0 - query.body_y_rotation",
+            0.0
+          ],
+          "scale": [
+            1.4225,
+            1.0,
+            1.4225
+          ]
+        },
+        "eye_part_one_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_one_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_one_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_one_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_two_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_two_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_two_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_two_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_three_one": {
+          "position": [
+            1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_two": {
+          "position": [
+            -1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_three": {
+          "position": [
+            1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.eye.two": {
+      "loop": true,
+      "bones": {
+        "eye": {
+          "position": [
+            0.0,
+            23.25,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            "0.0 - query.body_y_rotation",
+            0.0
+          ],
+          "scale": [
+            1.4225,
+            1.0,
+            1.4225
+          ]
+        },
+        "eye_part_one_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_one_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_one_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_one_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_two_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_two_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_two_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_two_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_three_one": {
+          "position": [
+            1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_two": {
+          "position": [
+            -1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_three": {
+          "position": [
+            1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.eye.three_one": {
+      "loop": true,
+      "bones": {
+        "eye": {
+          "position": [
+            0.0,
+            4.795,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            "0.0 - query.body_y_rotation",
+            0.0
+          ],
+          "scale": [
+            1.4225,
+            1.0,
+            1.4225
+          ]
+        },
+        "eye_part_one_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_one_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_one_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_one_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_two_one": {
+          "position": [
+            0.0,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_two_two": {
+          "position": [
+            0.0,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_two_three": {
+          "position": [
+            1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_two_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_three_one": {
+          "position": [
+            1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_two": {
+          "position": [
+            -1.42565,
+            0.0,
+            -1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_three": {
+          "position": [
+            1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        },
+        "eye_part_three_four": {
+          "position": [
+            -1.42565,
+            0.0,
+            1.42565
+          ],
+          "scale": [
+            0.70299,
+            1.0,
+            0.70299
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.eye.three_two": {
+      "loop": true,
+      "bones": {
+        "root_hitbox": {
+          "scale": 0.0
+        }
+      }
+    },
+    "animation.ks_hitbox.eye.four": {
+      "loop": true,
+      "bones": {
+        "eye": {
+          "position": [
+            0.0,
+            4.925,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            "0.0 - query.body_y_rotation",
+            0.0
+          ],
+          "scale": [
+            0.705,
+            1.0,
+            0.705
+          ]
+        },
+        "eye_part_one_one": {
+          "position": [
+            0.0,
+            0.0,
+            2.00851
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.41844
+          ]
+        },
+        "eye_part_one_two": {
+          "position": [
+            0.0,
+            0.0,
+            -2.00851
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.41844
+          ]
+        },
+        "eye_part_one_three": {
+          "position": [
+            -2.00851,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_one_four": {
+          "position": [
+            2.00851,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_two_one": {
+          "position": [
+            0.0,
+            0.0,
+            2.00851
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.41844
+          ]
+        },
+        "eye_part_two_two": {
+          "position": [
+            0.0,
+            0.0,
+            -2.00851
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.41844
+          ]
+        },
+        "eye_part_two_three": {
+          "position": [
+            -2.00851,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_two_four": {
+          "position": [
+            2.00851,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.0
+          ]
+        },
+        "eye_part_three_one": {
+          "position": [
+            -2.00851,
+            0.0,
+            2.00851
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.41844
+          ]
+        },
+        "eye_part_three_two": {
+          "position": [
+            2.00851,
+            0.0,
+            2.00851
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.41844
+          ]
+        },
+        "eye_part_three_three": {
+          "position": [
+            -2.00851,
+            0.0,
+            -2.00851
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.41844
+          ]
+        },
+        "eye_part_three_four": {
+          "position": [
+            2.00851,
+            0.0,
+            -2.00851
+          ],
+          "scale": [
+            1.41844,
+            1.0,
+            1.41844
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.ray.one": {
+      "loop": true,
+      "bones": {
+        "ray": {
+          "position": [
+            0.0,
+            27.5,
+            0.0
+          ],
+          "rotation": [
+            "0.0 + query.target_x_rotation",
+            "0.0 + query.target_y_rotation",
+            0.0
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.ray.two": {
+      "loop": true,
+      "bones": {
+        "ray": {
+          "position": [
+            0.0,
+            23.25,
+            0.0
+          ],
+          "rotation": [
+            "0.0 + query.target_x_rotation",
+            "0.0 + query.target_y_rotation",
+            0.0
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.ray.three_one": {
+      "loop": true,
+      "bones": {
+        "ray": {
+          "position": [
+            0.0,
+            4.795,
+            0.0
+          ],
+          "rotation": [
+            "0.0 + query.target_x_rotation",
+            "0.0 + query.target_y_rotation",
+            0.0
+          ]
+        }
+      }
+    },
+    "animation.ks_hitbox.ray.three_two": {
+      "loop": true,
+      "bones": {
+        "root_hitbox": {
+          "scale": 0.0
+        }
+      }
+    },
+    "animation.ks_hitbox.ray.four": {
+      "loop": true,
+      "bones": {
+        "ray": {
+          "position": [
+            0.0,
+            4.925,
+            0.0
+          ],
+          "rotation": [
+            "0.0 + query.target_x_rotation",
+            "0.0 + query.target_y_rotation",
+            0.0
+          ]
+        }
+      }
+    }
+  }
+}

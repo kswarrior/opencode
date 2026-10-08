@@ -1,0 +1,155 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.ks_mob_hitbox.zombie": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.skeleton": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.creeper": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.spider": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.enderman": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.pig": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.cow": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.sheep": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.chicken": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.villager": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.iron_golem": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.wolf": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.horse": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.slime": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_mob_hitbox.blaze": {
+      "initial_state": "show",
+      "states": {
+        "show": {
+          "animations": [
+            "ks_mob_hitbox_overlay"
+          ]
+        }
+      }
+    }
+  }
+}

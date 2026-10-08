@@ -6,7 +6,8 @@
             "materials": {
                 "default": "villager_v2",
                 "masked": "villager_v2_masked",
-                "health_bar": "entity_emissive_alpha"
+                "health_bar": "entity_emissive_alpha",
+                "ks_mob_emissive": "ks_hitbox"
             },
             "textures": {
                 "base": "textures/entity/villager2/villager",
@@ -103,11 +104,13 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0"
+                "font0": "textures/health_bar/font/0",
+                "ks_mob_hitbox": "textures/entity/ks_hitbox/mob_hitbox"
             },
             "geometry": {
                 "default": "geometry.villager_v2",
-                "health_bar": "geometry.health_bar"
+                "health_bar": "geometry.health_bar",
+                "ks_mob_hitbox": "geometry.ks_mob_hitbox"
             },
             "scripts": {
                 "scale": "0.9375",
@@ -124,7 +127,8 @@
                     "move_controller",
                     "raise_arms_controller",
                     "baby_controller",
-                    "health_bar"
+                    "health_bar",
+                    "ks_mob_hitbox_overlay"
                 ]
             },
             "animations": {
@@ -138,7 +142,8 @@
                 "move_controller": "controller.animation.villager_v2.move",
                 "raise_arms_controller": "controller.animation.villager_v2.raise_arms",
                 "baby_controller": "controller.animation.villager_v2.baby",
-                "health_bar": "animation.health_bar"
+                "health_bar": "animation.health_bar",
+                "ks_mob_hitbox_overlay": "animation.ks_mob_hitbox.villager"
             },
             "render_controllers": [
                 "controller.render.villager_v2_base",
@@ -148,11 +153,19 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3"
+                "controller.render.health_bar.digit3",
+                {
+                    "controller.render.ks_mob_hitbox": "query.is_alive"
+                }
             ],
             "spawn_egg": {
                 "texture": "spawn_egg_villager"
-            }
+            },
+            "animation_controllers": [
+                {
+                    "ks_mob_hitbox_overlay": "controller.animation.ks_mob_hitbox.villager"
+                }
+            ]
         }
     }
 }

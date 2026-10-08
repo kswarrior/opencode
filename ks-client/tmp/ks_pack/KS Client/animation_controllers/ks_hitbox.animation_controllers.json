@@ -1,0 +1,257 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.ks_hitbox.hitbox": {
+      "initial_state": "one",
+      "states": {
+        "one": {
+          "animations": [
+            "ks_hitbox_one"
+          ],
+          "transitions": [
+            {
+              "two": "query.is_sneaking"
+            },
+            {
+              "three_one_one": "query.is_crawling"
+            },
+            {
+              "three_one_two": "query.is_swimming"
+            },
+            {
+              "three_two": "query.is_gliding"
+            },
+            {
+              "four": "query.is_sleeping"
+            }
+          ]
+        },
+        "two": {
+          "animations": [
+            "ks_hitbox_two"
+          ],
+          "transitions": [
+            {
+              "four": "query.is_sleeping"
+            },
+            {
+              "one": "!query.is_sneaking"
+            }
+          ]
+        },
+        "three_one_one": {
+          "animations": [
+            "ks_hitbox_three_one"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_crawling"
+            }
+          ]
+        },
+        "three_one_two": {
+          "animations": [
+            "ks_hitbox_three_one"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_swimming"
+            }
+          ]
+        },
+        "three_two": {
+          "animations": [
+            "ks_hitbox_three_two"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_gliding"
+            }
+          ]
+        },
+        "four": {
+          "animations": [
+            "ks_hitbox_four"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_sleeping"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_hitbox.eye": {
+      "initial_state": "one",
+      "states": {
+        "one": {
+          "animations": [
+            "eye_one"
+          ],
+          "transitions": [
+            {
+              "two": "query.is_sneaking"
+            },
+            {
+              "three_one_one": "query.is_crawling"
+            },
+            {
+              "three_one_two": "query.is_swimming"
+            },
+            {
+              "three_two": "query.is_gliding"
+            },
+            {
+              "four": "query.is_sleeping"
+            }
+          ]
+        },
+        "two": {
+          "animations": [
+            "eye_two"
+          ],
+          "transitions": [
+            {
+              "four": "query.is_sleeping"
+            },
+            {
+              "one": "!query.is_sneaking"
+            }
+          ]
+        },
+        "three_one_one": {
+          "animations": [
+            "eye_three_one"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_crawling"
+            }
+          ]
+        },
+        "three_one_two": {
+          "animations": [
+            "eye_three_one"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_swimming"
+            }
+          ]
+        },
+        "three_two": {
+          "animations": [
+            "eye_three_two"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_gliding"
+            }
+          ]
+        },
+        "four": {
+          "animations": [
+            "eye_four"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_sleeping"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_hitbox.ray": {
+      "initial_state": "one",
+      "states": {
+        "one": {
+          "animations": [
+            "ray_one"
+          ],
+          "transitions": [
+            {
+              "two": "query.is_sneaking"
+            },
+            {
+              "three_one_one": "query.is_crawling"
+            },
+            {
+              "three_one_two": "query.is_swimming"
+            },
+            {
+              "three_two": "query.is_gliding"
+            },
+            {
+              "four": "query.is_sleeping"
+            }
+          ]
+        },
+        "two": {
+          "animations": [
+            "ray_two"
+          ],
+          "transitions": [
+            {
+              "four": "query.is_sleeping"
+            },
+            {
+              "one": "!query.is_sneaking"
+            }
+          ]
+        },
+        "three_one_one": {
+          "animations": [
+            "ray_three_one"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_crawling"
+            }
+          ]
+        },
+        "three_one_two": {
+          "animations": [
+            "ray_three_one"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_swimming"
+            }
+          ]
+        },
+        "three_two": {
+          "animations": [
+            "ray_three_two"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_gliding"
+            }
+          ]
+        },
+        "four": {
+          "animations": [
+            "ray_four"
+          ],
+          "transitions": [
+            {
+              "one": "!query.is_sleeping"
+            }
+          ]
+        }
+      }
+    },
+    "controller.animation.ks_hitbox.root": {
+      "initial_state": "model",
+      "states": {
+        "model": {
+          "animations": [
+            "ks_hitbox_controller",
+            "ray_controller",
+            "eye_controller"
+          ]
+        }
+      }
+    }
+  }
+}
