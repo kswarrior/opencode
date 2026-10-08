@@ -13,7 +13,7 @@
 ## 1. What KS Client is
 
 - **Resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
-- **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.2.4, `min_engine_version [1,21,120]`). Do NOT hardcode a new version — read it from disk.
+- **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.2.5, `min_engine_version [1,21,120]`). Do NOT hardcode a new version — read it from disk.
 - **Does:** mobile PvP UI — start screen, HUD (slot hotbar + inventory HUD + totem/offhand + FPS stack), clear chat, health bars, 3D hammer, touch controls, connected hotbar, clear glass/doors, fullbright fog.
 - **Docs:** `README.md` §1–§2 = user-facing behavior. Read first.
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP. Skills: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
