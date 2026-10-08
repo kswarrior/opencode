@@ -242,6 +242,19 @@ How it works:
 
 In-game, top-left corner: `KS Client v1.2.9`, `FPS: <digits>`, `Position: X, Y, Z`. Gate A passes (8 SKIP lines for absent Drive anims); `mct validate` adds 1 legacy-list notice for `digits_atlas.png`.
 
+### 2.17 Recolourful Containers, Light Only (KS Client: `ui/ashur/**`, 17 screens, `textures/`)
+
+What it is: light-theme container UI (chest / double / ender / shulker / barrel / furnace / blast / smoker / anvil / beacon / brewing / cartography / enchanting / grindstone / horse-mount / loom / redstone / smithing / stonecutter / trading + crafting/inventory + pocket + HUD exp bars), merged DIRECTLY at top level — no Bedrock subpack (dark mode NOT taken, Java `assets/` NOT taken, `sounds/` NOT taken).
+
+How it works:
+- `ui/ashur/**` (70 `.atemp`, kept as-is with upstream headers/namespaces — NO KS rebrand as an exception to `agent.md` §5.7 due to the All-Rights-Reserved header) + 17 new `ui/*.json` screens + `inventory_screen_pocket.json`, listed in `_ui_defs.json` (14 → 84 entries; dangling upstream `ui/ashur/horse_screen.atemp` + `beveled_buttons_bridge.atemp` refs skipped — missing on disk).
+- `ui/hud_screen.json` gains 3 upstream exp-bar keys; `ui/inventory_screen.json` gains 2 container mappings (`crafting_screen@global.container_screen`, `inventory_screen@global.container_screen`) — KS `master_totem_panel` + HUD totem/crosshair/FPS/InvHUD untouched.
+- `_global_variables.json` gains upstream vars verbatim (`$is_recolourful_containers`, `$container_opacity`, `$background_blur_opacity`, `$container_title_color`, `$show_exit_buttons`, `$use_*`, recipe `$*_item_index`, `$xp_price_*`, `$runes_*`, `$villager_*`, `$pack_scope`).
+- `textures/`: base 218 new + light 58 new; SKIPPED on conflict to protect KS PvP kit — 10 light hotbar files (`hotbar_0-8`, `selected_hotbar_slot` → connected hotbar kept) + 34 base effect icons (KS kit kept); `button_borderless_darkhover.png` overwritten with light variant. `texts/en_US.lang` gains 140 light keys (no overlap with KS keys).
+- `manifest.json` untouched (no `subpacks` key, no version/UUID change).
+
+In-game: open any container → light recoloured panels/slots/buttons. PERMISSION PENDING (Vi_Tul + Ashura) — local merge only, do NOT publish a `.mcpack` with this content until cleared. Gate A passes (same 8 SKIP lines).
+
 ---
 
 ## 3. Project Structure
@@ -267,7 +280,7 @@ ks-client/
 │   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
 │   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json
 │   ├── render_controllers/health_bar.json + fps_counter.render.json
-│   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
+│   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/… + recolourful-light dialog_background/inventory/book/bundles/ashur)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
@@ -275,10 +288,11 @@ ks-client/
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 14 entries (…+ chat_tweaks + fps_hud; chat_screen.json loads by vanilla filename, no entry needed)
+│   │   ├── _ui_defs.json            ← load order, 84 entries (14 KS + 70 recolourful-light `.atemp`; chat_screen.json loads by vanilla filename, no entry needed)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud + root_panel fps hook), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug/dev_console/ui_common
 │   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (ks_chat_tweaks)
+│   │   ├── 17 recolourful-light screens (anvil→trade_2 + inventory_pocket, merged hud/inventory) + ui/ashur/** (70 .atemp as-is, no rebrand — permission pending)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings)
 │   │   ├── ks_touch/hide_gui.json
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
