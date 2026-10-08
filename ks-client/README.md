@@ -254,7 +254,7 @@ ks-client/
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
 ├── release/                         ← shippable .mcpack (20 files: v1.0.0 + v1.0.3…v1.2.2, no v1.0.1/v1.0.2/v1.1.9 mcpack)
 ├── resource_packs/KS Client/
-│   ├── manifest.json                ← name KS Client, v1.2.2, min_engine 1.21.120, subpacks, authors
+│   ├── manifest.json                ← name KS Client, v1.2.2, min_engine 1.21.120, no subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
@@ -280,8 +280,6 @@ ks-client/
 │   │   ├── ks_touch/hide_gui.json
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
 │   │   └── ._content_/inv_content.json (component_toggle base for inventory crafting limiter)
-│   ├── subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json ← single-file override ($show_editor_button:false)
-│   ├── subpacks/invhud_{top_left,top_right,bottom_left,bottom_right}/ui/ks_modules/b6As_defs.json ← corner presets ($inv_pos/$inv_offs)
 ├── .opencode/skills/ (create-block/item/mob, design-model, debug-addon, creator-tools-cli)
 ├── .mct/mcp/prefs.json
 └── .vscode/
@@ -294,17 +292,16 @@ ks-client/
 ## 4. Installation & Usage In-Game
 
 1. Copy a file from `release/` (e.g. `KS-Client-v1.1.8.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
-2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs).
-3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS) or `Show Editor`, plus an `InvHUD *` corner for the inventory grid (one subpack at a time; corners keep the gear visible).
-4. **Use:**
+2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
+3. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox.
-   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; corner grid shows inventory (see §2.4); green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
+   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; corner grid shows inventory (HUB dropdown, see §2.4); green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
    - FPS: stacked readout top-left (client version, `FPS: <digits>`, position).
-5. **Persist config:** edit `ui/_global_variables.json` (§5) → repack → reactivate.
+4. **Persist config:** edit `ui/_global_variables.json` (§5) → repack → reactivate.
 
 ---
 
@@ -317,7 +314,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar 1–10 | `$ksb_N_x`, `$ksb_N_y`, `$ksb_N_s`, `$ksb_N_v` | pos/size(32)/visible. 1–3 `(4/14/24,20)`, 4 hidden, 5 hidden, 6–8 `(72/82/92,22)`, 9–10 hidden |
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors (durability is always on, no toggle) |
 | Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | slider positions (px offset = value−125 / value−35), size px, show — editor totem row, live |
-| Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | show toggle (live, HUB tab), compact (repack). Position via InvHUD subpacks. (`$ksb_invhud_x/y/s` kept but unused — no sliders anymore) |
+| Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false`, `$ksb_invhud_corner 3` | show toggle (live, HUB tab), compact (repack), corner default (0 TL, 1 TR, 2 BL, 3 BR). Position via HUB dropdown (live radio). (`$ksb_invhud_x/y/s` kept but unused — no sliders anymore) |
 | Editor menu | `$ksb_menu_w 142`, `$ksb_menu_h 182`, `$ksb_menu_x 10` | in-world gear menu size (25% narrower than 190) + px from left edge |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`; F1 button itself not inserted into HUD) |
