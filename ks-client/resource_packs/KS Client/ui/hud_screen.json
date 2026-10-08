@@ -321,10 +321,19 @@
             "ksb_button_editor@ksb_main.editor_button": {}
           },
           {
+            "ksb_button_editor_right@ksb_main.editor_button_right": {}
+          },
+          {
             "ksb_scrim_panel@ksb_main.ksb_scrim": {}
           },
           {
+            "ksb_scrim_panel_right@ksb_main.ksb_scrim_right": {}
+          },
+          {
             "ksb_editor_panel@ksb_main.editor_panel": {}
+          },
+          {
+            "ksb_editor_panel_right@ksb_main.editor_panel_right": {}
           }
         ]
       },
