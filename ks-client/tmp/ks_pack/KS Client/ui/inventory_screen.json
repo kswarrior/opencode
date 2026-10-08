@@ -19,6 +19,7 @@
     "anchor_to": "bottom_middle",
     "offset": [ -125, -35 ],
     "layer": 100,
+    "clips_children": true,
     "controls": [
       { "exit_button@crafting.exit_btn": {} },
       { "equip_system@crafting.equip_panel": {} }
@@ -28,6 +29,7 @@
   "exit_btn": {
     "type": "button",
     "size": [ "100%", "100%" ],
+    "consume_hover_events": false,
     "controls": [
       { "bg": { "type": "image", "texture": "textures/totem/close_button", "size": [ "100%", "100%" ] } }
     ],
@@ -43,6 +45,7 @@
   "equip_panel": {
     "type": "panel",
     "size": [ "100%", "100%" ],
+    "clips_children": true,
     "controls": [
       { "bg": { "type": "image", "texture": "textures/totem/totem_button", "size": [ "100%", "100%" ], "layer": 1 } },
       { "inv_scanner@crafting.inventory_scanner": { "layer": 2 } },
@@ -137,10 +140,13 @@
   },
 
   // ---------- Utility HUD V-1.5 (help button removed) ----------
+  // Touch buttons (jump/more/etc) are texture-only PNGs: inventory must cover HUD.
+  // force_render_below false + is_showing_menu true hides phone controls,
+  // absorbs_input true stops touches falling through to HUD buttons below.
   "inventory_screen": {
-    "force_render_below": true,
-    "is_showing_menu": false,
-    "absorbs_input": false,
+    "force_render_below": false,
+    "is_showing_menu": true,
+    "absorbs_input": true,
     "always_accepts_input": true,
     "low_frequency_rendering": true,
     "$screen_animations": [],

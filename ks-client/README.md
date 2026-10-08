@@ -82,7 +82,7 @@ In-game: you see a clean black menu, skin preview centered above Play, version b
 What it is: one-tap totem to offhand, from HUD *and* inside inventory (both paths still active).
 
 How it works:
-- `inventory_screen.json` (`crafting` namespace) inserts `master_totem_panel` (30×30, `bottom_middle [-125,-35]`, layer 100) at front of controls.
+- `inventory_screen.json` (`crafting` namespace) inserts `master_totem_panel` (30×30, `bottom_middle [-125,-35]`, layer 100, `clips_children true`) at front of controls. Scanners are clipped to the 30×30 icon so they never cover inventory slots and block taps (texture-only footprint).
 - `exit_btn` shows `textures/totem/close_button` when offhand is occupied (`#item_id_aux != -1` on `offhand_items` collection) and sends `menu_exit` on press.
 - `equip_panel` shows `textures/totem/totem_button` + `inventory_scanner` + `hotbar_scanner` when offhand is empty (`#item_id_aux = -1`). `scanner_slot_template` creates an invisible full-size button per slot that only becomes visible if the slot hover text contains `Totem`, and sends `container_auto_place` (pressed/focused/slot1). So tapping the totem icon auto-places a totem from inventory or hotbar.
 - HUD-side: `hud_screen.json` `hud_content` inserts `totem_btn_pos@hud.totem_btn_pos` wrapper (bottom-middle anchored, offsets `(htotem_y_slider - 125)` / `(htotem_x_slider - 35)`, defaults `[-125,-35]`, `visible $ksb_totem_v` fallback + layer 50) containing `totem_btn@settings_common.action_button` (30×30, all states `textures/totem/totem_button`, `$pressed_button_name button.hotbar_inventory_button`, `visible $ksb_totem_v` fallback + layer 50) at front. Visibility follows the editor totem toggle live (`ksbT_totem_t`) but stays on via `$ksb_totem_v true` even when the editor is closed/hidden — fixes totem invisible in world. NOTE: template naming is swapped by design — `htotem_y_slider` is the X axis, `htotem_x_slider` is the Y axis (same as hotbar slots).
@@ -120,12 +120,13 @@ In-game: small translucent inventory grid bottom-right with counts, durability, 
 What it is: minimal, clean mobile controls.
 
 How it works:
-- `hide_gui.json` ships and is listed in `_ui_defs.json`; `$f1_texture` points at `textures/ui/ks_touch/hide_gui`.
+- Touch buttons (jump/more/sneak/sprint/joystick/D-pad/etc) are texture-only PNG overrides — no JSON button overlays. `hide_gui.json` ships and is listed in `_ui_defs.json`; `$f1_texture` points at `textures/ui/ks_touch/hide_gui`.
 - `textures/ui/`: `joystick_frame/knob`, `jump/sneak/sprint (+_pressed/_disable/_dpad)`, `flyingascend/descend`, `waterascend/descend`, `interact`, `mount`, `pick_block`, `box_exit/ride`, `horse_exit/ride`.
 - `textures/gui/controls/`: D-pad set (`up/down/left/right + diagonals + pressed`), `jump_dpad`, `sneak_dpad`, `large_button`, `dismount`.
 - `hud_screen.json` F1/F8 redirects are gone — comment notes the legacy F1 button removal.
+- `inventory_screen.json` uses normal covering (`force_render_below false`, `is_showing_menu true`, `absorbs_input true`) so open inventory covers phone controls instead of buttons floating over inventory and blocking taps. KS HUD overlays (`totem_btn_pos`, `ks_invhud_pos`) also respect `#hud_visible` so they hide with the HUD.
 
-In-game: cleaner touch art remains; the HUD hide button path is now `ks_show_hud` (`button.hide_gui_all`).
+In-game: cleaner touch art remains; the HUD hide button path is now `ks_show_hud` (`button.hide_gui_all`). Open inventory → phone buttons covered, inventory fully usable.
 
 ### 2.6 Connected Hotbar (`textures/ui/hotbar_*.png`)
 

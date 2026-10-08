@@ -361,9 +361,13 @@
     ],
     "bindings": [
       {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
         "binding_type": "view",
         "source_control_name": "ksbT_invhud_t",
-        "source_property_name": "#toggle_state",
+        "source_property_name": "(#toggle_state and #hud_visible)",
         "target_property_name": "#visible"
       }
     ]
@@ -432,6 +436,15 @@
       }
     ],
     "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "#hud_visible",
+        "target_property_name": "#visible"
+      },
       {
         "binding_type": "view",
         "source_control_name": "htotem_y_slider",
