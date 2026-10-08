@@ -107,6 +107,12 @@
 	"$ks:inventory_slot_color": [ 0, 0, 0 ],
 	"$ks:inventory_slot_alpha": 0.27,
 
+	// === KS Crosshair Indicator (PandaMine5 v1.1, center) ===
+	"$ks_crosshair_v": true,
+	"$ks_crosshair_size": [ 15, 15 ],
+	"$ks_crosshair_alpha": 0.7,
+	"$ks_crosshair_offset": [ 0, 0 ],
+
 	// $effects_per_column kept: used by mob_effect_screen.json effect grid pagination.
 	"$effects_per_column": 10
 }
