@@ -346,9 +346,9 @@
   },
 
   // ---------- KS Inventory HUD position wrapper (fullscreen neutral) ----------
-  // Fullscreen so the inner panel's $inv_pos/$inv_offs (base bottom_right,
-  // or InvHUD * subpack corner) map to screen corners. Visibility follows
-  // the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
+  // Fullscreen so the inner corner panels' anchors map to screen corners.
+  // Corner comes from the menu dropdown (ksb_corner_* radio, default BR).
+  // Visibility follows the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
   "ks_invhud_pos": {
     "type": "panel",
     "size": ["100%", "100%"],
@@ -359,13 +359,47 @@
     "layer": 44,
     "controls": [
       {
-        "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
+        "inv_tl@hud.ks_invhud_corner": {"$inv_pos": "top_left", "$inv_offs": [1, 1], "$corner_toggle": "ksb_corner_tl"}
+      },
+      {
+        "inv_tr@hud.ks_invhud_corner": {"$inv_pos": "top_right", "$inv_offs": [-1, 1], "$corner_toggle": "ksb_corner_tr"}
+      },
+      {
+        "inv_bl@hud.ks_invhud_corner": {"$inv_pos": "bottom_left", "$inv_offs": [1, -1], "$corner_toggle": "ksb_corner_bl"}
+      },
+      {
+        "inv_br@hud.ks_invhud_corner": {"$inv_pos": "bottom_right", "$inv_offs": [-1, -1], "$corner_toggle": "ksb_corner_br"}
       }
     ],
     "bindings": [
       {
         "binding_type": "view",
         "source_control_name": "ksbT_invhud_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  // ---------- KS Inventory HUD corner wrapper (fullscreen neutral) ----------
+  // One fullscreen instance per corner; only the dropdown-selected corner
+  // (ksb_corner_* radio) is visible. Anchors/offsets match the old InvHUD
+  // subpacks: TL top_left [1,1], TR top_right [-1,1], BL bottom_left [1,-1],
+  // BR bottom_right [-1,-1]. Outer ks_invhud_pos still gates master visibility.
+  "ks_invhud_corner": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [0, 0],
+    "controls": [
+      {
+        "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$corner_toggle",
         "source_property_name": "#toggle_state",
         "target_property_name": "#visible"
       }
