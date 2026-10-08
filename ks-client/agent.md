@@ -1,194 +1,146 @@
 # agent.md — KS Client Codebase Guide for AI Models
 
-> Read this file BEFORE editing anything in this repo.
-> Goal: let any AI model understand KS Client, make small safe edits, recheck + debug, and build an `.mcpack` — without breaking the pack.
+> Read this BEFORE editing. Goal: small safe edits + recheck + debug + `.mcpack` without breaking the pack.
+
+## 0. Global workspace rule (applies to ALL sections)
+
+- Workdir is repo root `ks-client/`. Use relative `./` paths only (`./tools/...`, `./resource_packs/...`, `./tmp/...`).
+- NEVER use outer/root folders: `/tmp/`, `/root/`, `~/`, `C:\`, `/home/...`, `../`, or any absolute path outside this repo. Never `rm -rf /tmp/...`.
+- If temp/staging/output is needed, create/use `./tmp/` inside the repo: `./tmp/ks_validate_loop`, `./tmp/ks_pack`, `./tmp/*.mcpack`. Clean only `./tmp/...`.
 
 ---
 
-## 1. What KS Client Is
+## 1. What KS Client is
 
-- **Minecraft Bedrock resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
-- **Name/version:** `KS Client v1.1.7`, `min_engine_version [1,21,120]`. See `resource_packs/KS Client/manifest.json`.
-- **What it does:** premium mobile PvP UI — custom start screen, HUD (slot hotbar + inventory HUD + totem/offhand + FPS stack), clear chat, health bars, 3D hammer, clean touch controls, connected hotbar, clear glass, glass doors, fullbright fog.
-- **Full feature docs:** see `README.md` §1–§2. Read it first for user-facing behavior.
-- **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP (`npx ... mct mcp -i .`). Skills allowed: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
+- **Resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
+- **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.1.x, `min_engine_version [1,21,120]`). Do NOT hardcode a new version — read it from disk.
+- **Does:** mobile PvP UI — start screen, HUD (slot hotbar + inventory HUD + totem/offhand + FPS stack), clear chat, health bars, 3D hammer, touch controls, connected hotbar, clear glass/doors, fullbright fog.
+- **Docs:** `README.md` §1–§2 = user-facing behavior. Read first.
+- **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP. Skills: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
 
 ---
 
-## 2. Codebase Map (source of truth)
+## 2. Codebase map
 
 ```
 resource_packs/KS Client/
-├── manifest.json                  # identity. DO NOT EDIT version/uuids (see §7)
-├── biomes_client.json             # forces fog_identifier ks:fullbright on ALL biomes
-├── fogs/ks_fullbright.json        # fullbright definition (air/weather 0.999-1.0)
-├── entity/ (82 json)              # client_entity per mob. player.json carries health + fps hooks (merged, not minimal)
-├── animations/health_bar.json     # always-display billboard health-bar animation
-├── animations/mace.animation.json # hammer hold poses (attachable)
-├── attachables/mace.attachable.json  # minecraft:mace → geometry.mace
-├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json
-├── render_controllers/health_bar.json + fps_counter.render.json
-├── textures/
-│   ├── terrain_texture.json       # atlas.terrain — must list every custom block texture
-│   ├── item_texture.json          # atlas.items — currently `mace` entry only
-│   ├── blocks/ items/ ui/ gui/ c_ui/ totem/ health_bar/ fps/
-│   │   environment/ colormap/ misc/ entity/attachable/
+├── manifest.json, biomes_client.json, fogs/ks_fullbright.json
+├── entity/ (~82 json, player.json = health + fps hooks)
+├── animations/health_bar.json, animations/mace.animation.json
+├── attachables/mace.attachable.json
+├── models/entity/health_bar.json, attachable/mace.geo.json, fps_counter.geo.json
+├── render_controllers/health_bar.json, fps_counter.render.json
+├── textures/ + terrain_texture.json (atlas.terrain) + item_texture.json (atlas.items, mace only)
+│   └── blocks/ items/ ui/ gui/ c_ui/ totem/ health_bar/ fps/ environment/ colormap/ misc/ entity/attachable/
 ├── texts/en_US.lang + languages.json
 ├── ui/
-│   ├── _global_variables.json     # ★ ALL user config lives here. Edit this, not hardcoded UI.
-│   ├── _ui_defs.json              # ★ load order. Never remove entries, only append.
-│   ├── ks_client_common.json      # KS shared buttons/rails (settings/dressing/inbox)
-│   ├── start_screen.json          # namespace `start`
-│   ├── hud_screen.json            # namespace `hud` (root_panel: inv HUD + fps hook; NO Utility/NeBux leftovers)
-│   ├── chat_screen.json           # NO namespace — vanilla override, loads by filename (NOT in _ui_defs)
-│   ├── fps_hud.json               # namespace `ks_fps` (top-left version/FPS/position stack)
-│   ├── inventory_screen.json      # namespace `crafting` (totem auto-equip panel)
-│   ├── pause_screen.json          # namespace `pause` (config removed by design)
-│   ├── debug_screen.json / dev_console_screen.json / mob_effect_screen.json / ui_common.json
-│   ├── ks_modules/hud.json + ks_b6As_defs  # Inventory HUD bottom-right
-│   ├── ks_modules/ksb_hotbar_button/{defs,main,settings}.json  # slot buttons 1-10
-│   ├── ks_touch/hide_gui.json
-│   ├── .ui_assets/.screens/.chat/chat_tweaks.json  # namespace `ks_chat_tweaks`
-│   └── ._content_/inv_content.json  # component_toggle base for inventory limiter (counter.json deleted)
-├── subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json  # single-file perf override
+│   ├── _global_variables.json  # ★ ALL user config. Edit this, not hardcoded UI.
+│   ├── _ui_defs.json           # ★ load order. Append-only, never remove/reorder.
+│   ├── start_screen.json (`start`), hud_screen.json (`hud`), chat_screen.json (no namespace, by filename)
+│   ├── fps_hud.json (`ks_fps`), inventory_screen.json (`crafting`), pause_screen.json (`pause`)
+│   ├── ks_client_common.json, debug/dev_console/mob_effect/ui_common.json
+│   ├── ks_modules/hud.json, ks_modules/ksb_hotbar_button/{defs,main,settings}.json
+│   ├── ks_touch/hide_gui.json, .ui_assets/.screens/.chat/chat_tweaks.json (`ks_chat_tweaks`)
+│   └── ._content_/inv_content.json
+└── subpacks/hide_editor/ui/.../defs.json  # perf override, keep in sync if you touch ui/
 ```
 
-**Key rule:** `ui/_global_variables.json` is the config API. `ui/*.json` files are the implementation. Prefer changing variables over editing UI logic.
+Rule: `_global_variables.json` = config API, `ui/*.json` = implementation. Prefer `$variable` over hardcoded values.
 
 ---
 
-## 3. How to Modify / Make Changes (recipes)
+## 3. Request router
 
-### 3A. First: classify the request
 | User says | Edit |
 |---|---|
-| "move/resize/hide slot button / totem / F1 / paperdoll / highlight" | ONLY `ui/_global_variables.json` |
-| "change start screen / HUD layout / add button" | `ui/start_screen.json` or `hud_screen.json` + `ks_client_common.json`, expose new knob in `_global_variables.json` |
-| "change colors/icons/hotbar/glass" | `textures/...png` + check `terrain_texture.json` / `item_texture.json` registration |
-| "brighter/darker fog, water color" | `fogs/ks_fullbright.json` + `biomes_client.json` |
-| "health bar size/visibility" | `animations/health_bar.json` (scale/conditions only) |
-| "player animation freeze/detach" | Do NOT hand-edit blindly — run `tools/` checker first, fix exactly what it flags (see §6) |
-| "new block/item/mob look" | Use skills: `create-block` / `create-item` / `create-mob` / `design-model`, then validate |
+| move/resize/hide slot / totem / F1 / paperdoll / highlight | ONLY `ui/_global_variables.json` |
+| start screen / HUD layout / new button | `start_screen.json` or `hud_screen.json` + `ks_client_common.json`, expose knob in `_global_variables.json` |
+| colors / icons / hotbar / glass | `textures/...png` + register in `terrain_texture.json` / `item_texture.json` |
+| fog brightness / water color | `fogs/ks_fullbright.json` + `biomes_client.json` |
+| health-bar size / visibility | `animations/health_bar.json` (scale/conditions only) |
+| animation freeze / detach | run `./tools/` checker first, fix only flagged lines (§5–§6) |
+| new block / item / mob look | skills `create-block` / `create-item` / `create-mob` / `design-model`, then validate |
 
-### 3B. Safe edit procedure (always follow)
-1. **Read before writing.** Read the target file + `_global_variables.json` + `_ui_defs.json` entries for it. Never create a new UI file without registering it in `_ui_defs.json`.
-2. **Minimal diff.** Change the fewest lines possible. Preserve `namespace`, control names (`@namespace.control`), `$`-variables, and binding names exactly. Bedrock UI breaks on renames.
-3. **Config-first.** If a value could be user-tunable (offset/size/alpha/visible/color), add/use a `$variable` in `_global_variables.json` instead of hardcoding.
-4. **No new dependencies.** Don't add new textures without adding them to `terrain_texture.json`/`item_texture.json`. Don't reference a `button.*` id that isn't mapped in `hud_screen.json`/`inventory_screen.json`.
-5. **Keep both subpacks in sync.** If you touch `ui/`, check whether `subpacks/hide_editor/ui/` overrides the same screen.
-6. **Never touch identity.** See §7 — no version/UUID/min_engine edits.
-7. **Update `README.md` on every change.** Any code/UI/texture/fog/entity change MUST also update the matching `README.md` section(s) in the same edit — see §3D.
-
-### 3C. Bedrock JSON pitfalls (this pack has hit all of these)
-- **UI JSON (`ui/`) allows `//` comments; animation/entity JSON does NOT.** Never put `/* */` or `//` in `animations/`, `animation_controllers/`, `entity/`, `fogs/`, `biomes_client.json` — strict parser fails. The checker flags this.
-- **No dotfile JSON.** Files starting with `.` (`.FIX.json`) are skipped by the loader on some platforms. Rename, don't dot-hide.
-- **Size `["default","default"]` = fullscreen.** For top-right pins (e.g. inbox bell) always set explicit `size` like `[28,32]` with `anchor_from/to top_right`. See `start_screen.json` fix comment.
-- **Case-sensitive bones.** `rightArmup` ≠ `RightArmUp`; `Kbody` ≠ `kbody`; `item` ≠ `Item`; `rightitem` ≠ `rightItem`. Shields/swords/armor need BOTH mirrors driven (see §6 gate 4).
-- **`loop` semantics.** Continuous states (`glide`, `fall`, `trident.sh/rh`) MUST be `loop:true` — they exit on Molang query, not `all_finished`. One-shots using `query.all_animations_finished` (e.g. `sleep`) must stay non-loop.
-- **Animate refs must resolve.** Every `scripts.animate` short must exist in `animations` dict; every played `controller.*` must be defined in-pack or on the vanilla allowlist; every anim inside a played controller must resolve. Dead dict entries are OK only if never played.
-- **Offsets are `[x, y]`, sizes `[w, h]`.** Negative x moves left. `"25%"` strings are allowed in offsets — keep the quotes.
-- **Item IDs are engine-bound** (`$totem_item_id 39780352` etc.). Do not "clean up" or renumber them.
-
-### 3D. Keep `README.md` in sync (mandatory on every change)
-1. **Same-edit rule.** Every pack change MUST include a `README.md` update in the same working-tree diff — never leave code changed with docs stale.
-2. **What to update:**
-   - UI/layout/config change → §1 quick-list row + §2 detail subsection + §5 `_global_variables.json` table if a `$var` was added/renamed.
-   - New/changed texture/icon → §7 list + check §3 project structure if a folder/file was added.
-   - Fog/biome/entity/animation/render_controller change → §8.
-   - New file/folder or moved screen → §3 project structure tree.
-   - Behavior/usage/install difference → §4.
-    - Only `tools/`, `./tmp/`, `out/`, or comment-only edits with zero user-visible effect → no `README.md` content change needed, but state that explicitly in your report.
-3. **Do NOT bump version strings** in `README.md` header/§12 unless the user explicitly requested a version bump (see §7).
-4. **Verify:** `git status` / `git diff --stat` must show `README.md` alongside the changed pack files, or an explicit "no user-visible change, README untouched" note.
+Safe procedure:
+1. Read target + `_global_variables.json` + relevant `_ui_defs.json` entry. Never add UI file without registering it. Don't glob the whole pack.
+2. Minimal diff. Preserve `namespace`, `@namespace.control`, `$vars`, bindings exactly — renames break Bedrock UI.
+3. Config-first: tunable offset/size/alpha/visible/color → `$var` in `_global_variables.json`.
+4. No orphan refs: new texture → atlas registration; new `button.*` → mapping in `hud/inventory_screen.json`.
+5. Sync `subpacks/hide_editor/ui/` if it overrides the same screen.
 
 ---
 
-## 4. Safety Rules (read as hard constraints)
+## 4. Bedrock pitfalls (already hit in this pack)
 
-0. **Workspace containment — stay inside `./`. NEVER use root / outer folders.** Forbidden: `/tmp/`, `/root/`, `~/`, `C:\`, `/home/...`, parent `../`, or any absolute path outside this repo. Always run commands from repo root (`ks-client/`) with relative `./` paths (e.g. `./tools/...`, `./resource_packs/...`). If a temp / staging / validate / output dir is needed, create and use `./tmp/` inside the repo (e.g. `./tmp/ks_validate_loop`, `./tmp/ks_pack`, `./tmp/*.mcpack`) and clean only that. Never `rm -rf /tmp/...` or write outside `./`. This applies to ALL sections below.
-
-1. **DO NOT auto-bump versions. DO NOT update `manifest.json` version/header/modules, DO NOT rename release files, DO NOT invent a new version number.** If the user wants a new version, they will explicitly say so (e.g. "bump to 1.1.3"). Otherwise leave identity alone.
-2. **DO NOT change `uuid`, `min_engine_version`, `pack_icon.png`, or `metadata.authors`.** Attribute upstream authors (NeBux, itzriyo157, PandaMine5, oSkullo, EchoRif, Mod MCPE) — keep their headers/signatures.
-3. **DO NOT delete or reorder `_ui_defs.json` entries.** Append-only.
-4. **DO NOT bulk-reformat JSON.** Keep diffs reviewable; one feature per edit.
-5. **DO NOT commit/push unless asked.** Leave changes in working tree + report validation output.
-6. **DO NOT guess in-game results.** Always run §5 recheck + §6 debug after any change, and report evidence (checker output, validate CSV errors, Content Log).
-7. **DO NOT leave `README.md` stale.** If the change is user-visible, the same diff MUST update `README.md` (see §3D). Report `git diff --stat` proving it.
+- `//` comments allowed in `ui/` only. NEVER in `animations/`, `entity/`, `fogs/`, `biomes_client.json`.
+- No dotfile JSON (`.FIX.json` skipped on some platforms).
+- `size ["default","default"]` = fullscreen. Top-right pins need explicit `size` e.g. `[28,32]` + `anchor_from/to top_right`.
+- Case-sensitive bones: `rightArmup`≠`RightArmUp`, `Kbody`≠`kbody`, `item`≠`Item`, `rightitem`≠`rightItem`. Shields/swords/armor need both mirrors.
+- `loop:true` for continuous `glide`/`fall`/`trident.sh|rh`; one-shots with `query.all_animations_finished` (e.g. `sleep`) stay non-loop.
+- `scripts.animate` short must exist in `animations` dict; played `controller.*` must be defined in-pack or vanilla-allowlisted; anims inside played controllers must exist.
+- Offsets `[x,y]`, sizes `[w,h]`. Negative x = left. Keep `"25%"` quoted.
+- Item IDs engine-bound (e.g. `$totem_item_id 39780352`). Never renumber.
 
 ---
 
-## 5. Mandatory Recheck After EVERY Change
+## 5. Hard constraints
 
-Run these in order. Stop and fix before proceeding if a gate fails.
+1. **Identity:** NEVER bump `manifest.json` version/modules/description, `uuid`, `min_engine_version`, `pack_icon.png`, `metadata.authors`. Keep upstream credits. New version only if user explicitly says e.g. "bump to 1.1.x" — then update header + module + description together.
+2. **Artifacts:** NEVER create `release/KS-Client-v*.mcpack` with a new version unasked, never overwrite `release/`. On `.mcpack` request reuse current version, output to `./tmp/`.
+3. **`_ui_defs.json` append-only.** No bulk JSON reformat. One feature per edit.
+4. **No commit/push unless asked.** Leave working tree + report evidence.
+5. **No guessing.** Always run §6 gates after change; report checker output + validate errors + Content Log.
+6. **README sync (same diff):** user-visible change MUST update `README.md` together: UI/layout/config → §1+§2+§5 table if `$var` added; texture/icon → §7 (+§3 if file added); fog/biome/entity/anim/render → §8; new/moved file → §3 tree; usage/install → §4. Version strings only on explicit bump. Verify via `git diff --stat`. `tools/`/`./tmp/`/`out/`/comment-only with zero visible effect → no README change, state why.
+
+---
+
+## 6. Validate after EVERY change (stop on FAIL)
 
 ```bash
-# Gate A — animation/QA loop (fast, no network validate)
-python3 tools/check_player_animation_loop.py --iterations 3 --delay 1
-
-# Gate A (watch mode, optional for animation work)
-python3 tools/check_player_animation_loop.py --watch
-
-# Gate B — full content validation (slow, ~180s, needs npx)
-python3 tools/check_player_animation_loop.py --iterations 1 --delay 0 --with-validate
-# or directly (must stay inside ./ — use ./tmp/, never /tmp/):
+# Gate A — fast, no network
+python3 ./tools/check_player_animation_loop.py --iterations 3 --delay 1
+# Gate A watch (animation work only)
+python3 ./tools/check_player_animation_loop.py --watch
+# Gate B — slow ~180s, needs npx
+python3 ./tools/check_player_animation_loop.py --iterations 1 --delay 0 --with-validate
+# or direct (stay in ./):
 npx -y @minecraft/creator-tools@0.19.0 validate -i . --json --force -o ./tmp/ks_validate_loop
 ```
 
-**What Gate A checks (5 sub-gates, see `tools/check_player_animation_loop.py`):**
-1. strict JSON parse (no `/* */`), 2. no dotfile JSON, 3. `loop:true` on glide/fall/trident.sh/rh + sleep stays non-loop, 4. shield sneak drives `rightitem+rightItem` & arm caps both sides / walk drives `Kbody+kbody`+`Kroot+kroot` / no `rightArmup` case bugs / sword `item+Item` / `shield.both` has `leftitem+rightitem`, 5. player `animate` refs resolve (short→dict, controller defined or vanilla-allowlisted, anims inside played controllers exist).
+Gate A checks: (1) strict JSON parse, (2) no dotfile JSON, (3) loop flags, (4) bones/case + shield/sword/armor mirrors, (5) animate/controller refs resolve. See script header for details.
+Pass = `[loop N] recheck: PASS` + `OK - all JSON strict-parse...`. On FAIL fix only listed `- <file>: ...` lines, re-run, then confirm README per §5.6.
 
-**Pass criteria:** `[loop N] recheck: PASS` and `OK - all JSON strict-parse...`. If FAIL, fix exactly the listed `- <file>: ...` lines — do not refactor surrounding code. Then confirm `README.md` is updated per §3D (`git diff --stat` shows it, or note why no docs change was needed).
-
----
-
-## 6. Debugging After Changes (when Gates fail or game breaks)
-
-1. **Read the error literally.** Checker lines include `file: reason (fix hint)`. `mct validate` CSV (`Type,Test,Message,Path`) — filter `Type=error`, ignore `mcp.json`/`opencode.json`/`tools/` noise (already filtered in checker).
-2. **Bisect by feature.** `git status` / `git diff --stat` → revert or isolate the last UI file touched. Common culprits: `_ui_defs.json` typo, missing `$var` in `_global_variables.json`, unregistered texture, renamed control.
-3. **Use the right skill:** `debug-addon` for invisible/broken pack, content-log errors, missing textures (`item.foo:bar`), version upgrade; `design-model` for icon/model redraws; `creator-tools-cli` for `mct` commands not covered by MCP.
-4. **In-game checklist (report which you verified):**
-   - Pack imports without error, activates on TOP of stack, correct subpack selected.
-   - Start screen: skin above Play, version bottom-right, bell top-right.
-   - HUD: F1 hides/shows, F8 paperdoll, F3 panel, totem equips, slot buttons switch hotbar, bottom-right grid + green highlight, durability/crosshair visible.
-   - Fullbright: cave/night bright, water `#44AFF5`. Glass clear, doors transparent, hotbar connected, health bars billboard.
-   - Content Log (Settings → Creator → Content Log): 0 errors on world load.
-5. **If stuck:** stop, paste Gate A output + `git diff --stat` + Content Log lines, and ask the user — do not pile on speculative fixes.
+Debug:
+1. Read error literally (`file: reason (hint)`; validate CSV filter `Type=error`, ignore `mcp/opencode/tools` noise).
+2. Bisect: `git status` / `git diff --stat` → isolate last UI file. Typical: `_ui_defs` typo, missing `$var`, unregistered texture, renamed control.
+3. Skill: `debug-addon` (invisible/broken, `item.foo:bar`, log errors), `design-model` (redraw), `creator-tools-cli` (other `mct` cmds).
+4. In-game (report verified): imports clean, activates on TOP, correct subpack; start (skin above Play, version bottom-right, bell top-right); HUD (F1/F8/F3, totem equips, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
+5. If stuck: stop, paste Gate A + `git diff --stat` + log lines, ask user. No speculative pile-ons.
 
 ---
 
-## 7. Version Policy — NO AUTO-BUMPING
-
-- **NEVER bump `manifest.json` `header.version`, `modules[0].version`, or `header.description` ("v1.1.7") as part of a fix/feature.** Leave at `[1,1,7]`.
-- **NEVER create `release/KS-Client-vX.Y.Z.mcpack` with a new version number unasked.** If the user asks for an `.mcpack`, reuse the current version in the filename (overwrite is still forbidden — write to `./tmp/` inside the repo or ask for a filename). Never write to `/tmp/` or any outer folder.
-- **If the user explicitly requests a version bump** (e.g. "release 1.1.3"), then and only then: update all three spots (header version + module version + description string) together, and name the artifact accordingly.
-
----
-
-## 8. Create `.mcpack` (without version change)
+## 7. Build `.mcpack` (no version change)
 
 ```bash
-# from repo root ks-client/ — stay inside ./, never /tmp/ or outer folders
-# 1. gates must pass (see §5)
-python3 tools/check_player_animation_loop.py --iterations 3 --delay 1
-# 2. stage a clean copy in ./tmp/ (never zip .opencode/node_modules, out/, release/, tools/)
+# gates must pass first (§6)
+python3 ./tools/check_player_animation_loop.py --iterations 3 --delay 1
 rm -rf ./tmp/ks_pack && mkdir -p ./tmp/ks_pack
 cp -r "resource_packs/KS Client" ./tmp/ks_pack/
-# 3. zip CONTENTS of the pack folder (manifest.json at zip root), then rename
-python3 -c "import shutil; shutil.make_archive('./tmp/KS-Client-v1.1.7','zip','./tmp/ks_pack/KS Client')"
-mv ./tmp/KS-Client-v1.1.7.zip ./tmp/KS-Client-v1.1.7.mcpack
-# 4. do NOT drop into release/ unless user asked; report ./tmp path + validation output
+python3 -c "import shutil,glob,os; v=open('resource_packs/KS Client/manifest.json').read().split('\"version\"')[1]; print(v)"
+python3 -c "import shutil; shutil.make_archive('./tmp/KS-Client-current','zip','./tmp/ks_pack/KS Client')"
+mv ./tmp/KS-Client-current.zip ./tmp/KS-Client-current.mcpack
+# report ./tmp path + validation output; never drop into release/ unasked
 ```
 
-Rules: zip must contain `manifest.json` at root (not nested `KS Client/` folder). Test import the `.mcpack` on a device before calling it done. Never overwrite files in `release/`. All staging/output stays inside `./tmp/` — never `/tmp/` or any outer folder.
+Zip must have `manifest.json` at root (not nested `KS Client/`). Test import before calling done. Exclude `.opencode/node_modules`, `out/`, `release/`, `tools/`.
 
 ---
 
-## 9. Quick Reference for AI
+## 8. Quick ref
 
-- User config? → `ui/_global_variables.json` only.
-- Layout bug? → check explicit `size` + `anchor_from/to` + `offset` + `layer` in that screen's JSON; compare with `start_screen.json` bell fix.
-- Button does nothing? → check `button_mappings` `from_button_id → to_button_id` in `hud_screen.json`/`inventory_screen.json` + `$pressed_button_name` + `#hud_visible`/`#visible` bindings.
-- Texture missing? → file exists under `textures/` AND registered in `terrain_texture.json` (`atlas.terrain`) or `item_texture.json` (`atlas.items`).
-- Fog wrong? → `biomes_client.json` identifier + `remove_all_prior_fog:true` + `fogs/ks_fullbright.json` distances.
-- Totem not equipping? → `inventory_screen.json` `master_totem_panel` bindings (`offhand_items`, `#item_id_aux = -1`) + hover text contains `Totem` (no item-ID globals exist anymore).
-- Anything else? → run §5 Gate A, read the flagged lines, fix narrowly, re-run, then Gate B.
+- config? → `_global_variables.json`.
+- layout? → `size` + `anchor_from/to` + `offset` + `layer` (cf. start bell fix).
+- button dead? → `button_mappings from→to` in hud/inventory + `$pressed_button_name` + `#hud_visible`/`#visible`.
+- texture missing? → file under `textures/` AND atlas registration.
+- fog? → `biomes_client.json` id + `remove_all_prior_fog:true` + fog distances.
+- totem? → `master_totem_panel` (`offhand_items`, `#item_id_aux=-1`) + hover contains `Totem`.
