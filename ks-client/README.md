@@ -38,8 +38,8 @@
 |---|---------|------------------|-------------------|
 | 1 | Premium Start Screen | KS Client custom (`ui/start_screen.json`, `ui/ks_client_common.json`) | Text-free branded menu, paperdoll above Play, small version label, icon-only inbox bell, KS settings/dressing buttons |
 | 2 | Quick Totem Offhand | KS Client | One-tap totem → offhand from HUD `hud.totem_btn` + inventory screen `master_totem_panel` (`inventory_scanner` / `hotbar_scanner`); HUD button follows the editor totem row live (position wrapper + show toggle) with `$ksb_totem_v` visible fallback + layer 50 so it stays visible when the editor is closed |
-| 3 | Slot Hotbar Buttons + Settings Editor | KS Client | 10 floating hotbar slot shortcuts (`$ksb_1` … `$ksb_10`, defaults: slots 4/5/9 hidden, size 32, durability always on) + in-game editor (gear, top-right, panel 190×182) with totem/invHUD rows first, then per-slot X/Y/size/show, inventory-HUD position/show/compact — totem/invHUD visible without scrolling |
-| 4 | Inventory HUD Bottom-Right | KS Client (`ks_modules/hud.json`) | Live inventory grid on HUD (hotbar items, `white.png` lowercase + `>=0` visibility so grid is never empty), highlight selected slot, durability + storage bars, `$ksb_invhud_v` visible fallback + layer 44 |
+| 3 | Slot Hotbar Buttons + Settings Editor | KS Client | 10 floating hotbar slot shortcuts (`$ksb_1` … `$ksb_10`, defaults: slots 4/5/9 hidden, size 32, durability always on) + left-side menu (gear opens 190×182 panel, Home/HUB/Display tabs) — HUB holds slots + totem + InvHUD on/off, corners via InvHUD subpacks |
+| 4 | Inventory HUD Bottom-Right | KS Client (`ks_modules/hud.json`) | Live 9×4 inventory grid on HUD (upstream itzriyo157 design, `> 8` filter shows inventory rows), highlight selected slot, durability + storage bars, corner via subpacks, on/off via menu toggle |
 | 5 | Clean Touch Controls | KS Client (`ui/ks_touch/hide_gui.json`, `textures/ui/ks_touch/`, `textures/gui/controls/`) | Hide-GUI definition + clean joystick/D-pad/buttons art. |
 | 6 | Connected Hotbar | KS Client | Seamless hotbar (`hotbar_0`…`hotbar_8` + `start/end_cap`, `selected_hotbar_slot`) |
 | 7 | Clear & Borderless Glass | KS Client | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
@@ -51,7 +51,7 @@
 | 13 | Debug / Dev Console Tweaks | KS custom | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed (comment in `pause_screen.json`: HUD F1/F3 keys removed, `ks_show_hud` is the way back) |
 | 14 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
 | 15 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
-| 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` — currently a single-file override: `subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json` sets `$show_editor_button:false` (main pack `true`). |
+| 16 | Performance Subpacks | KS custom | `hide_editor` (“Better Performance”) vs `show_editor` (gear on/off) + `invhud_top_left/top_right/bottom_left/bottom_right` (HUD corner presets, gear stays on; one subpack at a time). |
 | 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1322 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` holds only the mace entry, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
 | 18 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
 | 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
@@ -94,23 +94,23 @@ In-game: if offhand empty you see a totem icon near inventory; tap it → totem 
 What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap), plus an in-game settings editor (gear button, top-right) for slots, totem, and inventory HUD.
 
 How it works:
-- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` (190×182, 35% shorter) with totem/invHUD/compact rows first, then per-slot X/Y/size/show rows and inventory-button row — totem/invHUD visible without scrolling.
+- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` on the LEFT side (`left_middle`, 40px gap, 190×182) with 3 side tabs — Home (“Coming Soon”), HUB (slots + totem + InvHUD toggle, renamed from editor tab), Display (“Coming Soon”). Copy-codes tab removed.
 - Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slot 5 hidden (`62,22,false`), slots 6–8 second row (`y 22`, `x 72/82/92`), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
 - Buttons use `textures/ui/ksb_slot_button.png` (+`_pressed`), `ksb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot). Durability bars on slot buttons always show for damageable held/worn items (no toggle — the old `Show Durability Item` toggle, `$ksb_sdbi`, and its emitter were removed).
 - Totem row (`$id: totem`): X/Y/size sliders + show toggle, all live. `hud.totem_btn` sits in a `totem_btn_pos` resizer wrapper (bottom-middle anchored): X follows `htotem_y_slider` via `(#slider_val - 125)`, Y follows `htotem_x_slider` via `(#slider_val - 35)` (`$ksb_totem_x/y` are 0–100 slider positions, both default 0, so defaults `[-125,-35]`); visibility follows the row toggle live (`ksbT_totem_t`, default `$ksb_totem_v true`); size tries the size slider with fixed 30 fallback. Fixed: X/Y were swapped (X drove Y and vice-versa, so the button moved off-screen when configured) — now matches the hotbar-slot `x_slider→Y / y_slider→X` mapping.
-- Inventory rows: an `invhud` template row (X/Y/size/show, `$ksb_invhud_x/y/s/v`, position defaults 0/0 = bottom-right `[-1,-1]`) drives a `ks_invhud_pos` wrapper (`bottom_right` anchored, `visible $ksb_invhud_v` fallback + layer 44, X from `hinvhud_y_slider` / Y from `hinvhud_x_slider`, both offsets `((#slider_val * -1) - 1)`, visibility live via `ksbT_invhud_t` but stays on via `$ksb_invhud_v true` when editor closed — fixes invHUD invisible in world), plus a `Compact` toggle (`$ksb_invhud_small` → extra small-size `requires` entry in `ks hud.json`; repack to apply, default false). Fixed: same X/Y swap as totem — now the editor X slider moves the HUD horizontally as labelled.
-- All editor values feed the HowToSaveConfig copy box (`ksb.howToSaveConfig` string + `#totem`/`#invhud`/`#invhud_small` emitters in the concat).
+- Inventory row: a single `Show Inv HUD` toggle (`ksbT_invhud`, default `$ksb_invhud_v true`, live via `ksbT_invhud_t` into the fullscreen-neutral `ks_invhud_pos` wrapper, layer 44). Corner position comes from the InvHUD subpacks (`$inv_pos`/`$inv_offs` in `ks_b6As_defs`), NOT sliders — the old X/Y/size sliders are gone. Plus a `Compact` toggle (`$ksb_invhud_small` → extra small-size `requires` entry in `ks hud.json`; repack to apply, default false).
+- The old HowToSaveConfig copy box is gone with the codes tab — persist by editing `ui/_global_variables.json` directly (see §5) and repacking.
 
-In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the top-right gear → move/resize/hide each slot, totem, and inventory HUD (see §5). Copy the HowToSaveConfig code from the editor into `_global_variables.json` to persist.
+In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the gear → left-side menu (Home/HUB/Display tabs): HUB toggles totem + inventory HUD and moves/resizes slots (see §5). Pick the HUD corner in pack Settings → subpacks. Edit `_global_variables.json` + repack to persist.
 
-### 2.4 Inventory HUD Bottom-Right (KS Client: `ui/ks_modules/hud.json`, `ks_b6As_defs`)
+### 2.4 Inventory HUD Corners (KS Client: `ui/ks_modules/hud.json`, `ks_b6As_defs`)
 
-What it is: always-on mini inventory on the HUD (no need to open inventory to see contents).
+What it is: always-on mini inventory on the HUD (no need to open inventory to see contents), pinned to the picked corner.
 
 How it works:
-- `ks_hud.inventory_hud_panel` (`ks_b6As_defs.variables`): panel `$m_size [162,54]` (small mode `[135,45]`), anchored bottom-right, layer 45. Contains `inv_grid` (grid 9×4, `inv_hud_container_item` template, bound to `hotbar_items`, cells `(#collection_index > 8)` per upstream — hotbar row hidden, inventory rows shown).
+- `ks_hud.inventory_hud_panel` (`ks_b6As_defs.variables`): panel `$m_size [162,54]` (small mode `[135,45]`), anchored `$inv_pos` (base bottom-right), layer 45. Contains `inv_grid` (grid 9×4, `inv_hud_container_item` template, bound to `hotbar_items`, cells `(#collection_index > 8)` per upstream — hotbar row hidden, inventory rows shown).
 - Each cell: `bg` (`textures/ui/white` lowercase — was `White` which is missing on case-sensitive Android — tinted `$ks:inventory_slot_color [0,0,0]`, alpha `$ks:inventory_slot_alpha 0.27`), `item_renderer` (16×16, small 14×14), `stack_count_label` (scale 0.8/0.6), `durability_bar` + `storage_bar`, `green` highlight overlay (same `white` fix, `$ks:use_highlight_slot true`, color `[0,1,0]`, alpha `0.30`) that lights the currently selected slot via `#ushdjsj` collection math over 37 slots.
-- Size mode via `$ks:inventory_hud_size = "small"`, plus the editor `Compact` toggle (`$ksb_invhud_small` → extra small-size `requires` entry, repack) and the editor position/show row (`$ksb_invhud_x/y`, live wrapper offsets; `Show` toggle live via `ksbT_invhud_t`, default `$ksb_invhud_v true`).
+- Size mode via `$ks:inventory_hud_size = "small"`, plus the menu `Compact` toggle (`$ksb_invhud_small` → extra small-size `requires` entry, repack) and `Show Inv HUD` toggle (live via `ksbT_invhud_t`, default `$ksb_invhud_v true`). Corner/offset from `$inv_pos`/`$inv_offs` — base bottom-right, or the picked InvHUD subpack corner.
 
 In-game: small translucent inventory grid bottom-right with counts, durability, and green highlight on selected slot.
 
@@ -281,6 +281,7 @@ ks-client/
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
 │   │   └── ._content_/inv_content.json (component_toggle base for inventory crafting limiter)
 │   ├── subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json ← single-file override ($show_editor_button:false)
+│   ├── subpacks/invhud_{top_left,top_right,bottom_left,bottom_right}/ui/ks_modules/b6As_defs.json ← corner presets ($inv_pos/$inv_offs)
 ├── .opencode/skills/ (create-block/item/mob, design-model, debug-addon, creator-tools-cli)
 ├── .mct/mcp/prefs.json
 └── .vscode/
@@ -294,16 +295,16 @@ ks-client/
 
 1. Copy a file from `release/` (e.g. `KS-Client-v1.1.8.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs).
-3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS) or `Show Editor`.
+3. **Subpack:** Pack Settings → gear → choose `Hide Editor (Better Performance)` (recommended for PvP/FPS) or `Show Editor`, plus an `InvHUD *` corner for the inventory grid (one subpack at a time; corners keep the gear visible).
 4. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox.
-   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory; green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
+   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; corner grid shows inventory (see §2.4); green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
    - FPS: stacked readout top-left (client version, `FPS: <digits>`, position).
-5. **Persist config:** in-game config screen → copy code (`ksb.howToSaveConfig`) → paste into `ui/_global_variables.json` → repack.
+5. **Persist config:** edit `ui/_global_variables.json` (§5) → repack → reactivate.
 
 ---
 
@@ -316,7 +317,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar 1–10 | `$ksb_N_x`, `$ksb_N_y`, `$ksb_N_s`, `$ksb_N_v` | pos/size(32)/visible. 1–3 `(4/14/24,20)`, 4 hidden, 5 hidden, 6–8 `(72/82/92,22)`, 9–10 hidden |
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors (durability is always on, no toggle) |
 | Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | slider positions (px offset = value−125 / value−35), size px, show — editor totem row, live |
-| Inventory HUD extra | `$ksb_invhud_x 0`, `$ksb_invhud_y 0`, `$ksb_invhud_s 50`, `$ksb_invhud_v true`, `$ksb_invhud_small false` | position slider spots (px offset = −value−1), show (live), compact (repack) — editor inventory rows |
+| Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | show toggle (live, HUB tab), compact (repack). Position via InvHUD subpacks. (`$ksb_invhud_x/y/s` kept but unused — no sliders anymore) |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`; F1 button itself not inserted into HUD) |
 | Inventory HUD | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
@@ -331,6 +332,7 @@ Declared in `manifest.json → subpacks`:
 
 - `hide_editor` — “Hide Editor (§aBetter Performance§f)” — currently a single-file override (`subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json`, `$show_editor_button:false` vs main `true`), fewer editor affordances → better FPS. **Recommended.**
 - `show_editor` — vanilla editor UI visible (for creators).
+- `invhud_top_left` / `invhud_top_right` / `invhud_bottom_left` / `invhud_bottom_right` — “InvHUD *” — each a single-file override (`subpacks/invhud_*/ui/ks_modules/b6As_defs.json` setting `$inv_pos`/`$inv_offs`, upstream offsets) that pins the inventory grid to that corner. Gear menu stays visible. Only one subpack at a time, so a corner pick replaces Hide Editor.
 
 Switch in pack settings; memory tier `0` for both.
 
