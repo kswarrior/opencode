@@ -59,6 +59,7 @@
 | 21 | FPS Counter (Top Left) | KS Client | Stacked readout — client version, `FPS: <digits>`, position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (27 files, `v1.0.0` + `v1.0.3`…`v1.2.9` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
+| 24 | Recolourful Containers (Light, direct) | Vi_Tul textures + Ashura UI v1.4 LIGHT only, no subpack (PERMISSION PENDING — do not ship) | Light container UI for 17 screens (chest/double/ender/shulker/barrel/furnace/blast/smoker/anvil/beacon/brewing/cartography/enchant/grindstone/horse/loom/redstone/smithing/stonecutter/trade + inventory/hud exp bars); KS hotbar/totem/effects kept |
 
 ---
 
@@ -323,6 +324,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`; F1 button itself not inserted into HUD) |
 | Inventory HUD | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
 | Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
+| Recolourful containers | `$is_recolourful_containers true`, `$container_opacity 1`, `$background_blur_opacity 0.4`, `$container_title_color`, `$show_exit_buttons false`, `$use_container_ui_animations true`, recipe-book `$*_item_index`, enchanting `$xp_price_*`/`$runes_*`, villager `$villager_*`, `$pack_scope global` | LIGHT-only direct merge (dark NOT taken); upstream vars appended verbatim, no KS rebrand — permission pending, do not ship |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
 
 ---
@@ -346,6 +348,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 - **Hammer (active):** `textures/entity/attachable/mace.png` (held 3D model) + `textures/items/mace.png` (icon).
 - **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`.
 - **Colormap/misc/gui/controls/health_bar:** grass/leaves/water tints, `misc/vignette.png`, D-pad art, health bar sprites (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
+- **Recolourful Containers LIGHT (direct, no subpack, permission pending):** `textures/` base 218 new + light 58 new (`dialog_background_hollow_1-8` + opaque, `inventory_desktop/mobile`, `book_*`, `trash_*`, `search_clear*`, `gui/gui.png`, `bundles/`, `common/epic/rare`, `slot_highlight_*`, `ui/ashur/*` animations/banner/cell/close/screen_background); KS `hotbar_0-8` + `selected_hotbar_slot` + 34 effect icons kept (not overwritten); `ui/ashur/**` 70 `.atemp` + 17 new `ui/` screens + `hud` exp-bar keys + container mappings + 140 `en_US` keys.
 
 ---
 
