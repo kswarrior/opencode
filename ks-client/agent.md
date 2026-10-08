@@ -126,9 +126,7 @@ Debug:
 python3 ./tools/check_player_animation_loop.py --iterations 3 --delay 1
 rm -rf ./tmp/ks_pack && mkdir -p ./tmp/ks_pack
 cp -r "resource_packs/KS Client" ./tmp/ks_pack/
-python3 -c "import shutil,glob,os; v=open('resource_packs/KS Client/manifest.json').read().split('\"version\"')[1]; print(v)"
-python3 -c "import shutil; shutil.make_archive('./tmp/KS-Client-current','zip','./tmp/ks_pack/KS Client')"
-mv ./tmp/KS-Client-current.zip ./tmp/KS-Client-current.mcpack
+python3 -c "import json,shutil,os; v='.'.join(map(str,json.load(open('resource_packs/KS Client/manifest.json'))['header']['version'])); b=f'./tmp/KS-Client-v{v}'; shutil.make_archive(b,'zip','./tmp/ks_pack/KS Client'); os.rename(b+'.zip',b+'.mcpack'); print(b+'.mcpack')"
 # report ./tmp path + validation output; never drop into release/ unasked
 ```
 
