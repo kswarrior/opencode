@@ -2,7 +2,6 @@
 	
 	"namespace": "ksb_defs",
 	"flags": {
-		"$show_editor_button": true,
-		"$show_editor_button_right": true
+		"$show_editor_button": true
 	}
 }
