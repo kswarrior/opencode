@@ -42,7 +42,7 @@ resource_packs/KS Client/
 │   ├── ks_modules/hud.json, ks_modules/ksb_hotbar_button/{defs,main,settings}.json
 │   ├── ks_touch/hide_gui.json, .ui_assets/.screens/.chat/chat_tweaks.json (`ks_chat_tweaks`)
 │   └── ._content_/inv_content.json
-└── subpacks/hide_editor/ui/.../defs.json  # perf override, keep in sync if you touch ui/
+└── (no subpacks — manifest has no `subpacks` key; InvHUD corner = HUB dropdown radio)
 ```
 
 Rule: `_global_variables.json` = config API, `ui/*.json` = implementation. Prefer `$variable` over hardcoded values.
@@ -66,8 +66,7 @@ Safe procedure:
 1. Read target + `_global_variables.json` + relevant `_ui_defs.json` entry. Never add UI file without registering it. Don't glob the whole pack.
 2. Minimal diff. Preserve `namespace`, `@namespace.control`, `$vars`, bindings exactly — renames break Bedrock UI.
 3. Config-first: tunable offset/size/alpha/visible/color → `$var` in `_global_variables.json`.
-4. No orphan refs: new texture → atlas registration; new `button.*` → mapping in `hud/inventory_screen.json`.
-5. Sync `subpacks/hide_editor/ui/` if it overrides the same screen.
+4. No orphan refs: new texture → atlas registration; new `button.*` → mapping in `hud/inventory_screen.json`. Native `type: toggle` radio = shared `toggle_name` + `toggle_group_forced_index` (+ `toggle_group_default_selected`); vanilla `common.toggle` template drops radio params — don't use it for radios.
 
 ---
 
@@ -116,7 +115,7 @@ Debug:
 1. Read error literally (`file: reason (hint)`; validate CSV filter `Type=error`, ignore `mcp/opencode/tools` noise).
 2. Bisect: `git status` / `git diff --stat` → isolate last UI file. Typical: `_ui_defs` typo, missing `$var`, unregistered texture, renamed control.
 3. Skill: `debug-addon` (invisible/broken, `item.foo:bar`, log errors), `design-model` (redraw), `creator-tools-cli` (other `mct` cmds).
-4. In-game (report verified): imports clean, activates on TOP, correct subpack; start (skin above Play, version bottom-right, bell top-right); HUD (F1/F8/F3, totem equips, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
+4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F8/F3, totem equips, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
 5. If stuck: stop, paste Gate A + `git diff --stat` + log lines, ask user. No speculative pile-ons.
 
 ---
