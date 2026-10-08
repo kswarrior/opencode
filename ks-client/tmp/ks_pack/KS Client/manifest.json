@@ -1,0 +1,51 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "KS Client",
+    "description": "KS Client v1.1.9 by KS Warrior",
+    "uuid": "3cb32de7-ef64-4969-a447-dadba4bf9a8f",
+    "version": [
+      1,
+      1,
+      9
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      120
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "01ec78ed-44f8-4077-bc80-0904b4a83d51",
+      "version": [
+        1,
+        1,
+        9
+      ]
+    }
+  ],
+  "subpacks": [
+    {
+      "folder_name": "hide_editor",
+      "name": "Hide Editor (§aBetter Performance§f)",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "show_editor",
+      "name": "Show Editor",
+      "memory_tier": 0
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "KS Warrior"
+    ],
+    "generated_with": {
+      "minecraft_creator_tools": [
+        "0.19.0"
+      ]
+    }
+  }
+}
