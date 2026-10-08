@@ -6,7 +6,7 @@
       "states": {
         "one": {
           "animations": [
-            "hitbox_one"
+            "ks_hitbox_one"
           ],
           "transitions": [
             {
@@ -28,7 +28,7 @@
         },
         "two": {
           "animations": [
-            "hitbox_two"
+            "ks_hitbox_two"
           ],
           "transitions": [
             {
@@ -41,7 +41,7 @@
         },
         "three_one_one": {
           "animations": [
-            "hitbox_three_one"
+            "ks_hitbox_three_one"
           ],
           "transitions": [
             {
@@ -51,7 +51,7 @@
         },
         "three_one_two": {
           "animations": [
-            "hitbox_three_one"
+            "ks_hitbox_three_one"
           ],
           "transitions": [
             {
@@ -61,7 +61,7 @@
         },
         "three_two": {
           "animations": [
-            "hitbox_three_two"
+            "ks_hitbox_three_two"
           ],
           "transitions": [
             {
@@ -71,7 +71,7 @@
         },
         "four": {
           "animations": [
-            "hitbox_four"
+            "ks_hitbox_four"
           ],
           "transitions": [
             {
@@ -246,7 +246,7 @@
       "states": {
         "model": {
           "animations": [
-            "hitbox_controller",
+            "ks_hitbox_controller",
             "ray_controller",
             "eye_controller"
           ]

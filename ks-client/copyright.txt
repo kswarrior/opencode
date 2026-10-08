@@ -156,6 +156,31 @@ here. Respect their licenses — get permission before redistributing.
                140 light keys appended. `manifest.json` untouched
                (no subpacks key, no version/UUID change).
 
+16. Java Hitbox, WHITE BOX-ONLY mode only (always-on white
+    hitbox overlay on player + 15 mobs; red eye marker, blue
+    look-ray and all color subpacks NOT taken)
+    Author : Baku — Java Hitbox v1.9.1 (MOBS)
+    Source : https://www.curseforge.com/minecraft-bedrock/texture-packs/java-hitbox-by-baku
+             (file: JAVA_HITBOX_BY_BAKU_v1_9_1_MOBS.mcpack via mcpedl edge)
+    Note   : (C) Baku, All Rights Reserved — get permission before
+             redistributing. A menu on/off toggle is NOT possible in a
+             resource-pack-only client (UI toggle state cannot reach
+             entity render controllers), so the hitbox is always on;
+             INFO tab shows status text instead of a toggle.
+    Now    : `animations/ks_hitbox.animation.json` +
+             `ks_mob_hitbox.animation.json`,
+             `animation_controllers/ks_hitbox.animation_controllers.json` +
+             `ks_mob_hitbox.animation_controllers.json`,
+             `models/entity/ks_hitbox.geo.json` +
+             `ks_mob_hitbox.geo.json`,
+             `render_controllers/ks_hitbox.render_controllers.json` +
+             `ks_mob_hitbox.render_controllers.json`,
+             `materials/entity.material` (ks_hitbox materials only),
+             `entity/` ks_hitbox hooks merged into player.json + 15 mob
+             jsons (health-bar/fps hooks preserved),
+             `textures/entity/ks_hitbox/hitbox.png` + `mob_hitbox.png`
+             (white BoxOnly art only). No subpacks, no manifest change.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Utility HUD V-1.5 Without Counters — EchoRif (fully purged)
 - F1 & F3 Buttons v1.1.3 — NeBux (fully purged, incl. doll)
