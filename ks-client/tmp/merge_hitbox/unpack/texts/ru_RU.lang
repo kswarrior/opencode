@@ -1,0 +1,16 @@
+pack.name=Java Hitbox PRO от Baku
+pack.description=Профессиональный Java-стиль хитбоксов игроков и мобов с корректным масштабом поз, красной меткой глаз, синим лучом взгляда, 10 цветами контура и минимальными режимами.
+pack.subpack.on=Режим: Java Classic (по умолчанию)
+pack.subpack.box_only=Режим: Только хитбокс
+pack.subpack.no_ray=Режим: Хитбокс + глаза (без луча)
+pack.subpack.red=Цвет рамки: Красный
+pack.subpack.lime=Цвет рамки: Салатовый
+pack.subpack.yellow=Цвет рамки: Жёлтый
+pack.subpack.cyan=Цвет рамки: Голубой
+pack.subpack.magenta=Цвет рамки: Пурпурный
+pack.subpack.blue=Цвет рамки: Синий
+pack.subpack.orange=Цвет рамки: Оранжевый
+pack.subpack.purple=Цвет рамки: Фиолетовый
+pack.subpack.pink=Цвет рамки: Розовый
+
+pack.subpack.player_only=Производительность: только игроки (мобы выкл.)

@@ -1,0 +1,75 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:enderman",
+      "materials": {
+        "default": "enderman",
+        "invisible": "enderman_invisible",
+        "baku_mob_emissive": "baku_hitbox"
+      },
+      "textures": {
+        "default": "textures/entity/enderman/enderman",
+        "baku_mob_hitbox": "textures/entity/baku_hitbox/mob_hitbox"
+      },
+      "geometry": {
+        "default": "geometry.enderman.v1.8",
+        "baku_mob_hitbox": "geometry.baku_mob_hitbox"
+      },
+      "animations": {
+        "look_at_target_default": "animation.humanoid.look_at_target.default",
+        "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+        "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+        "move": "animation.humanoid.move",
+        "attack.rotations": "animation.humanoid.attack.rotations",
+        "bob": "animation.humanoid.bob",
+        "base_pose": "animation.enderman.base_pose",
+        "arms_legs": "animation.enderman.arms_legs",
+        "carrying": "animation.enderman.carrying",
+        "scary_face": "animation.enderman.scary_face",
+        "baku_mob_hitbox_overlay": "animation.baku_mob_hitbox.enderman"
+      },
+      "render_controllers": [
+        "controller.render.enderman",
+        {
+          "controller.render.baku_mob_hitbox": "query.is_alive"
+        }
+      ],
+      "animation_controllers": [
+        {
+          "look_at_target": "controller.animation.humanoid.look_at_target"
+        },
+        {
+          "move": "controller.animation.humanoid.move"
+        },
+        {
+          "attack": "controller.animation.humanoid.attack"
+        },
+        {
+          "bob": "controller.animation.humanoid.bob"
+        },
+        {
+          "base_pose": "controller.animation.enderman.base_pose"
+        },
+        {
+          "carrying": "controller.animation.enderman.carrying"
+        },
+        {
+          "scary_face": "controller.animation.enderman.scary_face"
+        },
+        {
+          "baku_mob_hitbox_overlay": "controller.animation.baku_mob_hitbox.enderman"
+        }
+      ],
+      "scripts": {
+        "pre_animation": [
+          "variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 28.65;"
+        ]
+      },
+      "spawn_egg": {
+        "texture": "spawn_egg_enderman"
+      },
+      "min_engine_version": "1.8.0"
+    }
+  }
+}

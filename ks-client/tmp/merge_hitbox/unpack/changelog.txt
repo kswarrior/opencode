@@ -1,0 +1,14 @@
+v1.9.1 - Fixes
+- Slime hitbox size corrected from 0.51 to Java 0.52.
+- Version bumped to 1.9.1.
+
+v1.9.0 - Mob Hitboxes
+- Added 15 vanilla mob client-entity render overlays.
+- Added separate mob geometry (12 box edges, eye marker and look-ray).
+- Added individual animations scaled to common Java hitbox dimensions.
+- Added baby state resizing and variant resizing for slime.
+- Added mob color textures for every existing 12 subpacks.
+- Added 13th PlayerOnly performance subpack (mobs entirely disabled).
+- Preserved original v1.8.0 player entity, animations, controllers and graphics.
+- Incremented header and module versions to 1.9.0.
+- Visual only: does not modify collisions or attack reach.

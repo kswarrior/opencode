@@ -1,0 +1,51 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:slime",
+      "materials": {
+        "default": "slime",
+        "outer": "slime_outer",
+        "baku_mob_emissive": "baku_hitbox"
+      },
+      "textures": {
+        "default": "textures/entity/slime/slime",
+        "baku_mob_hitbox": "textures/entity/baku_hitbox/mob_hitbox"
+      },
+      "geometry": {
+        "default": "geometry.slime",
+        "armor": "geometry.slime.armor",
+        "baku_mob_hitbox": "geometry.baku_mob_hitbox"
+      },
+      "animations": {
+        "baku_mob_hitbox_overlay": "animation.baku_mob_hitbox.slime"
+      },
+      "render_controllers": [
+        "controller.render.slime",
+        "controller.render.slime_armor",
+        {
+          "controller.render.baku_mob_hitbox": "query.is_alive"
+        }
+      ],
+      "scripts": {
+        "pre_animation": [
+          "variable.squish_factor = (query.previous_squish_value + (query.current_squish_value - query.previous_squish_value) * query.frame_alpha);",
+          "variable.bounce = 1 / ((variable.squish_factor / (query.variant * 0.5 + 1)) + 1);",
+          "variable.horizontal_scale_amount = variable.bounce * query.variant;",
+          "variable.vertical_scale_amount = (1 / variable.bounce) * query.variant;"
+        ],
+        "scaleX": "variable.horizontal_scale_amount",
+        "scaleY": "variable.vertical_scale_amount",
+        "scaleZ": "variable.horizontal_scale_amount"
+      },
+      "spawn_egg": {
+        "texture": "spawn_egg_slime"
+      },
+      "animation_controllers": [
+        {
+          "baku_mob_hitbox_overlay": "controller.animation.baku_mob_hitbox.slime"
+        }
+      ]
+    }
+  }
+}

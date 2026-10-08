@@ -1,0 +1,16 @@
+pack.name=Java Hitbox PRO by Baku
+pack.description=Professional Java-style player and mob hitboxes with accurate stance scaling, red eye marker, blue look-ray, 10 outline colors, and minimal display modes.
+pack.subpack.on=Mode: Java Classic (Default)
+pack.subpack.box_only=Mode: Hitbox Only
+pack.subpack.no_ray=Mode: Hitbox + Eye (No Look-Ray)
+pack.subpack.red=Box Color: Red
+pack.subpack.lime=Box Color: Lime Green
+pack.subpack.yellow=Box Color: Yellow
+pack.subpack.cyan=Box Color: Cyan
+pack.subpack.magenta=Box Color: Magenta
+pack.subpack.blue=Box Color: Blue
+pack.subpack.orange=Box Color: Orange
+pack.subpack.purple=Box Color: Purple
+pack.subpack.pink=Box Color: Pink
+
+pack.subpack.player_only=Performance: Player Hitbox Only (Mobs OFF)

@@ -1,0 +1,46 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:spider",
+      "materials": {
+        "default": "spider",
+        "invisible": "spider_invisible",
+        "baku_mob_emissive": "baku_hitbox"
+      },
+      "textures": {
+        "default": "textures/entity/spider/spider",
+        "baku_mob_hitbox": "textures/entity/baku_hitbox/mob_hitbox"
+      },
+      "geometry": {
+        "default": "geometry.spider.v1.8",
+        "baku_mob_hitbox": "geometry.baku_mob_hitbox"
+      },
+      "animations": {
+        "default_leg_pose": "animation.spider.default_leg_pose",
+        "look_at_target": "animation.spider.look_at_target",
+        "walk": "animation.spider.walk",
+        "baku_mob_hitbox_overlay": "animation.baku_mob_hitbox.spider"
+      },
+      "render_controllers": [
+        "controller.render.spider",
+        {
+          "controller.render.baku_mob_hitbox": "query.is_alive"
+        }
+      ],
+      "animation_controllers": [
+        {
+          "move": "controller.animation.spider.move"
+        },
+        {
+          "baku_mob_hitbox_overlay": "controller.animation.baku_mob_hitbox.spider"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "spawn_egg_spider"
+      },
+      "min_engine_version": "1.8.0",
+      "scripts": {}
+    }
+  }
+}

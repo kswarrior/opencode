@@ -1,0 +1,104 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "pack.description",
+    "name": "pack.name",
+    "uuid": "a6d53ded-cc85-4469-9372-3ff4d03e271b",
+    "version": [
+      1,
+      9,
+      1
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      130
+    ]
+  },
+  "modules": [
+    {
+      "description": "Java-style player and 15 mob visual hitbox overlays by Baku.",
+      "type": "resources",
+      "uuid": "8383670f-9786-455f-b115-857e65ece442",
+      "version": [
+        1,
+        9,
+        1
+      ]
+    }
+  ],
+  "subpacks": [
+    {
+      "folder_name": "On",
+      "name": "pack.subpack.on",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "BoxOnly",
+      "name": "pack.subpack.box_only",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "NoRay",
+      "name": "pack.subpack.no_ray",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Red",
+      "name": "pack.subpack.red",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Lime",
+      "name": "pack.subpack.lime",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Yellow",
+      "name": "pack.subpack.yellow",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Cyan",
+      "name": "pack.subpack.cyan",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Magenta",
+      "name": "pack.subpack.magenta",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Blue",
+      "name": "pack.subpack.blue",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Orange",
+      "name": "pack.subpack.orange",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Purple",
+      "name": "pack.subpack.purple",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "Pink",
+      "name": "pack.subpack.pink",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "PlayerOnly",
+      "name": "pack.subpack.player_only",
+      "memory_tier": 0
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "Baku"
+    ],
+    "license": "All Rights Reserved \u00a9 Baku",
+    "url": "https://www.curseforge.com/minecraft-bedrock/texture-packs/java-hitbox-by-baku"
+  }
+}
