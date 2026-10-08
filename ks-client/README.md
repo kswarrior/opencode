@@ -8,7 +8,7 @@
 - **Type:** Resource pack (`resources` module)
 - **Current version:** `1.2.1` (`manifest.json` header + modules)
 - **UUID:** `3cb32de7-ef64-4969-a447-dadba4bf9a8f` / `01ec78ed-44f8-4077-bc80-0904b4a83d51`
-- **Releases:** `release/` 18 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.2.0.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
+- **Releases:** `release/` 19 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.2.1.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
 - **Validation reports:** `out/` 9 files — `ks client.*`, `ks-clean.*`, `ks-client.*` (each `.csv` / `.mcr.json` / `.report.html`)
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP + allowed skills
 
@@ -58,7 +58,7 @@
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
 | 21 | FPS Counter (Top Left) | KS Client | Stacked readout — client version, `FPS: <digits>`, position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
-| 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (18 files, `v1.0.0` + `v1.0.3`…`v1.2.0` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
+| 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (19 files, `v1.0.0` + `v1.0.3`…`v1.2.1` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
 
 ---
 
@@ -252,7 +252,7 @@ ks-client/
 │   ├── check_player_animation_loop.py ← strict-JSON / dotfile / loop / shield-armor-sword / refs / mct loop checker
 │   └── recheck_player_animation.sh    ← bash wrapper (iterations delay)
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
-├── release/                         ← shippable .mcpack (18 files: v1.0.0 + v1.0.3…v1.2.0, no v1.0.1/v1.0.2/v1.1.9 mcpack)
+├── release/                         ← shippable .mcpack (19 files: v1.0.0 + v1.0.3…v1.2.1, no v1.0.1/v1.0.2/v1.1.9 mcpack)
 ├── resource_packs/KS Client/
 │   ├── manifest.json                ← name KS Client, v1.2.1, min_engine 1.21.120, subpacks, authors
 │   ├── pack_icon.png
@@ -397,7 +397,7 @@ redistributing: some upstream licenses require the creator's permission.
 
 ## 12. Version History
 
-`release/` contains shippable builds (18 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
+`release/` contains shippable builds (19 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
 
 `v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → **`v1.2.1` (current)**
 

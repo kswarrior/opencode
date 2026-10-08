@@ -87,7 +87,7 @@ Safe procedure:
 ## 5. Hard constraints
 
 1. **Identity:** NEVER bump `manifest.json` version/modules/description, `uuid`, `min_engine_version`, `pack_icon.png`, `metadata.authors`. Keep upstream credits. New version only if user explicitly says e.g. "bump to 1.1.x" — then update header + module + description together.
-2. **Artifacts:** NEVER create `release/KS-Client-v*.mcpack` with a new version unasked, never overwrite `release/`. On `.mcpack` request reuse current version, output to `./tmp/`.
+2. **Artifacts (ALWAYS release):** on ANY version bump or `.mcpack` build request, ALWAYS place the artifact in `release/` as `release/KS-Client-vX.Y.Z.mcpack` (X.Y.Z from `manifest.json` header). Never overwrite an existing `release/` file — if that version file already exists, stop and ask the user. On plain build requests (no bump) reuse the current version. Keep `./tmp/` staging (`ks_pack`, `ks_validate_loop`, `*.mcpack` copies) out of git.
 3. **`_ui_defs.json` append-only.** No bulk JSON reformat. One feature per edit.
 4. **No commit/push unless asked.** Leave working tree + report evidence.
 5. **No guessing.** Always run §6 gates after change; report checker output + validate errors + Content Log.
@@ -129,7 +129,10 @@ python3 ./tools/check_player_animation_loop.py --iterations 3 --delay 1
 rm -rf ./tmp/ks_pack && mkdir -p ./tmp/ks_pack
 cp -r "resource_packs/KS Client" ./tmp/ks_pack/
 python3 -c "import json,shutil,os; v='.'.join(map(str,json.load(open('resource_packs/KS Client/manifest.json'))['header']['version'])); b=f'./tmp/KS-Client-v{v}'; shutil.make_archive(b,'zip','./tmp/ks_pack/KS Client'); os.rename(b+'.zip',b+'.mcpack'); print(b+'.mcpack')"
-# report ./tmp path + validation output; never drop into release/ unasked
+# ALWAYS drop into release/ (project rule): copy, never overwrite; then update README releases counts + verify
+python3 -c "import shutil,json,os; v='.'.join(map(str,json.load(open('resource_packs/KS Client/manifest.json'))['header']['version'])); s=f'./tmp/KS-Client-v{v}.mcpack'; d=f'./release/KS-Client-v{v}.mcpack'; assert not os.path.exists(d), d+' exists - stop and ask'; shutil.copy(s,d); print(d)"
+# update README releases counts (§1 bullet, §1 row 23, §3 tree, §12) in the same diff + verify `git status`
+# report release/ path + validation output
 ```
 
 Zip must have `manifest.json` at root (not nested `KS Client/`). Test import before calling done. Exclude `.opencode/node_modules`, `out/`, `release/`, `tools/`.
