@@ -263,9 +263,6 @@
         "value": [
           {
             "ks_invhud_pos@hud.ks_invhud_pos": {}
-          },
-          {
-            "ks_hotbar_data@ks_hud.hotbar_data": {}
           }
         ]
       },
