@@ -1,14 +1,14 @@
 # KS Client — Premium Mobile PvP Resource Pack for Minecraft Bedrock
 
-> **KS Client v1.2.8 by KS Warrior**
+> **KS Client v1.2.9 by KS Warrior**
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
 > Custom start screen, HUD (slot hotbar + inventory-HUD + totem/offhand shortcuts + `ks_show_hud`), clear chat screen, mob health bars (always display), 3D hammer, FPS counter (top-left), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack.
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
-- **Current version:** `1.2.8` (`manifest.json` header + modules)
+- **Current version:** `1.2.9` (`manifest.json` header + modules)
 - **UUID:** `3cb32de7-ef64-4969-a447-dadba4bf9a8f` / `01ec78ed-44f8-4077-bc80-0904b4a83d51`
-- **Releases:** `release/` 26 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.2.8.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
+- **Releases:** `release/` 27 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.2.9.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
 - **Validation reports:** `out/` 9 files — `ks client.*`, `ks-clean.*`, `ks-client.*` (each `.csv` / `.mcr.json` / `.report.html`)
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP + allowed skills
 
@@ -58,7 +58,7 @@
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
 | 21 | FPS Counter (Top Left) | KS Client | Stacked readout — client version, `FPS: <digits>`, position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
-| 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (26 files, `v1.0.0` + `v1.0.3`…`v1.2.8` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
+| 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (27 files, `v1.0.0` + `v1.0.3`…`v1.2.9` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
 
 ---
 
