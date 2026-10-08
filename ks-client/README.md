@@ -21,7 +21,7 @@
 3. [Project Structure](#3-project-structure)
 4. [Installation & Usage In-Game](#4-installation--usage-in-game)
 5. [Configuration — `_global_variables.json`](#5-configuration--_global_variablesjson)
-6. [Subpacks (Performance Option)](#6-subpacks-performance-option)
+6. [Options (menu-driven, no subpacks)](#6-options-menu-driven-no-subpacks)
 7. [Textures Included](#7-textures-included)
 8. [Entities, Animations, Fog, Render Controllers](#8-entities-animations-fog-render-controllers)
 9. [Developer Tools & Validation](#9-developer-tools--validation)
@@ -54,7 +54,7 @@
 | 16 | Menu-Driven Options (no subpacks) | KS custom | No subpacks ship — gear menu is always on; InvHUD corner (TopLeft/TopRight/BottomLeft/BottomRight, default BottomRight) via the HUB dropdown. |
 | 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1322 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` holds only the mace entry, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
 | 18 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
-| 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, active in both subpacks |
+| 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 82 mobs, always visible (not only when hurt); merged at top level, no subpack, always on |
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
 | 21 | FPS Counter (Top Left) | KS Client | Stacked readout — client version, `FPS: <digits>`, position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook + player entity slots, no subpack) |
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
@@ -206,7 +206,7 @@ In-game: chat background invisible, messages readable over gameplay, tab/shift-t
 
 What it is: billboard HP bar + heart + numeric digits over every mob, always visible (always-display variant merged directly; no toggle, no subpack).
 
-How it works (all merged at top level — no subpack, active in both subpacks):
+How it works (all merged at top level — no subpack, always on):
 - `animations/health_bar.json` (always-display variant): `animation.health_bar` billboards via camera rotation; scale `q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : ...` (always visible, even at full HP).
 - `models/entity/health_bar.json` (`geometry.health_bar`) + `render_controllers/health_bar.json` (`controller.render.health_bar.bar/heart/digit1-3`, `entity_emissive_alpha` material).
 - `entity/*.json` (82 files): each adds `health_bar` material/texture/geometry slots, `v.health_bar_position/scale` in `pre_animation`, `health_bar` in `animate` + `animations` dict, and the 5 health render controllers. Vanilla animation/controller/geometry/texture refs (e.g. `animation.creeper.legs`, `geometry.creeper.v1.8`) resolve engine-side.
@@ -324,15 +324,12 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 
 ---
 
-## 6. Subpacks (Performance Option)
+## 6. Options (menu-driven, no subpacks)
 
-Declared in `manifest.json → subpacks`:
+No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hide_editor`/`show_editor`/`invhud_*` folders are gone):
 
-- `hide_editor` — “Hide Editor (§aBetter Performance§f)” — currently a single-file override (`subpacks/hide_editor/ui/ks_modules/ksb_hotbar_button/defs.json`, `$show_editor_button:false` vs main `true`), fewer editor affordances → better FPS. **Recommended.**
-- `show_editor` — vanilla editor UI visible (for creators).
-- `invhud_top_left` / `invhud_top_right` / `invhud_bottom_left` / `invhud_bottom_right` — “InvHUD *” — each a single-file override (`subpacks/invhud_*/ui/ks_modules/b6As_defs.json` setting `$inv_pos`/`$inv_offs`, upstream offsets) that pins the inventory grid to that corner. Gear menu stays visible. Only one subpack at a time, so a corner pick replaces Hide Editor.
-
-Switch in pack settings; memory tier `0` for both.
+- Gear menu is always on (`$show_editor_button: true` in `ksb_hotbar_button/defs.json`).
+- InvHUD corner lives in the HUB tab dropdown (`ksb_corner_face` + `ksb_corner_popup`, visible only while Show Inv HUD is on): TopLeft/TopRight/BottomLeft/BottomRight radio (`ksb_corner_*`, default `$ksb_invhud_corner` = 3 BottomRight). Nothing to pick in pack Settings.
 
 ---
 
@@ -376,7 +373,7 @@ Switch in pack settings; memory tier `0` for both.
 2. Only bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description` + `README.md` header/§12 if the user explicitly requested a new version — never auto-bump.
 3. Run `python3 tools/check_player_animation_loop.py --iterations 3` and `mct validate`.
 4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack` (never overwrite `release/` unasked; prefer `/tmp/`).
-5. Test: import on device, activate on top, check subpack, totem/slot buttons/inventory-HUD, durability bars on damageable items (no toggle), settings gear top-right (slot/totem/inventory options), `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS stack top-left (version, digits, position), fullbright, glass/doors, connected hotbar.
+5. Test: import on device, activate on top, totem/slot buttons/inventory-HUD (incl. corner dropdown), durability bars on damageable items (no toggle), settings gear top-right (slot/totem/inventory options), `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS stack top-left (version, digits, position), fullbright, glass/doors, connected hotbar.
 
 Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, `create-item`, `create-mob`, `design-model`, `debug-addon`, `creator-tools-cli`.
 
@@ -411,8 +408,8 @@ Current (`manifest.json`): `KS Client v1.2.2`, `min_engine_version [1,21,120]`. 
 - **Resource-pack only** — no behavior pack, no scripts, no cheats-flag. Safe for Realms/servers (server needs not install it; each player installs locally).
 - **Load order:** put KS Client at the **top** of Global Resources / World Resource Packs so its `hud/start/inventory` overrides win.
 - **Conflicts:** any other UI/HUD pack (other custom HUDs, F3 menus, hotbar packs) — pick one. Fullbright conflicts with mood/fog packs.
-- **Performance:** use `Hide Editor` subpack; fullbright slightly increases GPU load (more visible chunks).
+- **Performance:** no subpacks to manage (gear menu is always on); fullbright slightly increases GPU load (more visible chunks).
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (82 with health hooks + player fps slots), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace + fps_counter) + `render_controllers/` (health_bar + fps_counter), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 18 incl. mace / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / fps digits_atlas / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc; terrain 1322 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*), `_ui_defs` 14 entries, `hud/start/inventory/pause/debug/chat_screen/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), `subpacks/` (single-file override), `tools/` (py+sh), `out/` (9 files), `release/` (20 files), `copyright.txt` (+12 BlockTrace selective), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (82 with health hooks + player fps slots), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace + fps_counter) + `render_controllers/` (health_bar + fps_counter), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 18 incl. mace / ui 124 / gui / c_ui 8 / totem 2 / health_bar 65 / fps digits_atlas / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc; terrain 1322 entries, items atlas = mace only), `ui/` (`_global_variables` ($ksb_*, $ks:*), `_ui_defs` 14 entries, `hud/start/inventory/pause/debug/chat_screen/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections` orphan, `._content_/inv_content.json`, `.ui_assets` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (20 files), `copyright.txt` (+12 BlockTrace selective), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
