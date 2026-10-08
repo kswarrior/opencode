@@ -2,12 +2,12 @@
   "format_version": 2,
   "header": {
     "name": "KS Client",
-    "description": "KS Client v1.2.2 by KS Warrior",
+    "description": "KS Client v1.2.3 by KS Warrior",
     "uuid": "3cb32de7-ef64-4969-a447-dadba4bf9a8f",
     "version": [
       1,
       2,
-      2
+      3
     ],
     "min_engine_version": [
       1,
@@ -22,40 +22,8 @@
       "version": [
         1,
         2,
-        2
+        3
       ]
-    }
-  ],
-  "subpacks": [
-    {
-      "folder_name": "hide_editor",
-      "name": "Hide Editor (§aBetter Performance§f)",
-      "memory_tier": 0
-    },
-    {
-      "folder_name": "show_editor",
-      "name": "Show Editor",
-      "memory_tier": 0
-    },
-    {
-      "folder_name": "invhud_top_left",
-      "name": "InvHUD Top Left",
-      "memory_tier": 0
-    },
-    {
-      "folder_name": "invhud_top_right",
-      "name": "InvHUD Top Right",
-      "memory_tier": 0
-    },
-    {
-      "folder_name": "invhud_bottom_left",
-      "name": "InvHUD Bottom Left",
-      "memory_tier": 0
-    },
-    {
-      "folder_name": "invhud_bottom_right",
-      "name": "InvHUD Bottom Right",
-      "memory_tier": 0
     }
   ],
   "metadata": {

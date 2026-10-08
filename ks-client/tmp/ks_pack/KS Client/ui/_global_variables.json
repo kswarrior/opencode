@@ -48,6 +48,16 @@
 	"$ksb_invhud_s": 50,
 	"$ksb_invhud_v": true,
 	"$ksb_invhud_small": false,
+	// InvHUD corner default for the menu dropdown (0 TopLeft, 1 TopRight, 2 BottomLeft, 3 BottomRight).
+	"$ksb_invhud_corner": 3,
+	// In-world HUD editor menu (left side). w = 190*0.75 (25% narrower), h unchanged, x = px from left edge.
+	"$ksb_menu_w": 142,
+	"$ksb_menu_h": 182,
+	"$ksb_menu_x": 10,
+	// Right-side info menu (mirrors left). x is negative: px inward from right edge.
+	"$ksb_menu_r_w": 142,
+	"$ksb_menu_r_h": 182,
+	"$ksb_menu_r_x": -10,
 	// Start screen bottom-right Menu button (left of Play). false = removed.
 	"$ks_show_start_menu_button": false,
 	"$ksb_ssci": true,
