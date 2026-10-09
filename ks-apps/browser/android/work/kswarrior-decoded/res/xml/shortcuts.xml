@@ -2,9 +2,9 @@
 <shortcuts
   xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut android:icon="@null" android:enabled="true" android:shortcutId="shortcut_tab_normal" android:shortcutShortLabel="@string/new_url" android:shortcutLongLabel="@string/new_url" android:shortcutDisabledMessage="@string/fail">
-        <intent android:targetPackage="com.mycompany.app.soulbrowser" android:action="com.mycompany.app.soulbrowser.ACTION_TAB_NORMAL" android:targetClass="com.mycompany.app.web.WebShortTab" />
+        <intent android:targetPackage="com.kswarrior.ksportal" android:action="com.kswarrior.ksportal.ACTION_TAB_NORMAL" android:targetClass="com.mycompany.app.web.WebShortTab" />
     </shortcut>
     <shortcut android:icon="@null" android:enabled="true" android:shortcutId="shortcut_tab_secret" android:shortcutShortLabel="@string/secret_tab" android:shortcutLongLabel="@string/secret_tab" android:shortcutDisabledMessage="@string/fail">
-        <intent android:targetPackage="com.mycompany.app.soulbrowser" android:action="com.mycompany.app.soulbrowser.ACTION_TAB_SECRET" android:targetClass="com.mycompany.app.web.WebShortTab" />
+        <intent android:targetPackage="com.kswarrior.ksportal" android:action="com.kswarrior.ksportal.ACTION_TAB_SECRET" android:targetClass="com.mycompany.app.web.WebShortTab" />
     </shortcut>
 </shortcuts>
