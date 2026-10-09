@@ -5,8 +5,7 @@
             "identifier": "minecraft:iron_golem",
             "materials": {
                 "default": "iron_golem",
-                "health_bar": "entity_emissive_alpha",
-                "ks_mob_emissive": "ks_hitbox"
+                "health_bar": "entity_emissive_alpha"
             },
             "textures": {
                 "default": "textures/entity/iron_golem",
@@ -75,13 +74,11 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0",
-                "ks_mob_hitbox": "textures/entity/ks_hitbox/mob_hitbox"
+                "font0": "textures/health_bar/font/0"
             },
             "geometry": {
                 "default": "geometry.irongolem",
-                "health_bar": "geometry.health_bar",
-                "ks_mob_hitbox": "geometry.ks_mob_hitbox"
+                "health_bar": "geometry.health_bar"
             },
             "animations": {
                 "walk": "animation.iron_golem.walk",
@@ -93,8 +90,7 @@
                 "move_to_target": "animation.iron_golem.move_to_target",
                 "move_controller": "controller.animation.iron_golem.move",
                 "arm_controller": "controller.animation.iron_golem.arm_movement",
-                "health_bar": "animation.health_bar",
-                "ks_mob_hitbox_overlay": "animation.ks_mob_hitbox.iron_golem"
+                "health_bar": "animation.health_bar"
             },
             "render_controllers": [
                 "controller.render.iron_golem",
@@ -103,10 +99,7 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3",
-                {
-                    "controller.render.ks_mob_hitbox": "query.is_alive"
-                }
+                "controller.render.health_bar.digit3"
             ],
             "scripts": {
                 "pre_animation": [
@@ -118,8 +111,7 @@
                     "look_at_target",
                     "move_controller",
                     "arm_controller",
-                    "health_bar",
-                    "ks_mob_hitbox_overlay"
+                    "health_bar"
                 ]
             },
             "spawn_egg": {
