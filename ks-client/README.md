@@ -60,7 +60,6 @@
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 23 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (30 files, `v1.0.0` + `v1.0.3`…`v1.3.2` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
 | 24 | Recolourful Containers (Light, direct) | Vi_Tul textures + Ashura UI v1.4 LIGHT only, no subpack (PERMISSION PENDING — do not ship) | Light container UI for 17 screens (chest/double/ender/shulker/barrel/furnace/blast/smoker/anvil/beacon/brewing/cartography/enchant/grindstone/horse/loom/redstone/smithing/stonecutter/trade + inventory/hud exp bars); KS hotbar/totem/effects kept |
-| 25 | White Hitbox, Always-On (player + 15 mobs) | Baku Java Hitbox v1.9.1 MOBS, BoxOnly art only (PERMISSION PENDING — do not ship) | White box outline on player + 15 mobs, always on; eye/ray/colors NOT taken; INFO tab shows status (no toggle possible in RP-only pack); Home tab shows KS logo + version + owner |
 
 ---
 
@@ -96,7 +95,7 @@ In-game: if offhand empty you see a totem icon near inventory; tap it → totem 
 What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap), plus an in-game settings editor (gear button, top-right) for slots, totem, and inventory HUD.
 
 How it works:
-- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` box card on the LEFT side (`left_middle`, 212×230 at `offset [40,0]`) with 6 square icon-only tabs top-inside in the `ks_menu_tabs` radio group — Home, HUD (open by default), Display, Info, Advanced, Settings. HUD holds all current options (slots + totem + InvHUD toggles/sliders); Home shows KS logo + client version + owner (KS Warrior); INFO shows white-hitbox status; Display/Advanced/Settings show Coming Soon. One tap shows exactly one page. Panel background is `textures/ui/ks_menu_bg_blur.png` (translucent black, swap the PNG to restyle). Close via the gear button. Copy-codes tab removed.
+- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` box card on the LEFT side (`left_middle`, 212×230 at `offset [40,0]`) with 6 square icon-only tabs top-inside in the `ks_menu_tabs` radio group — Home, HUD (open by default), Display, Info, Advanced, Settings. HUD holds all current options (slots + totem + InvHUD toggles/sliders); Home shows KS logo + client version + owner (KS Warrior); Display/Info/Advanced/Settings show Coming Soon. One tap shows exactly one page. Panel background is `textures/ui/ks_menu_bg_blur.png` (translucent black, swap the PNG to restyle). Close via the gear button. Copy-codes tab removed.
 - Menu tabs: 6-tab box card (212×230) replaces the v1.2.2 3-tab side layout; all slot/totem/InvHUD rows unchanged and live under HUD tab.
 - Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slot 5 hidden (`62,22,false`), slots 6–8 second row (`y 22`, `x 72/82/92`), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
 - Buttons use `textures/ui/ksb_slot_button.png` (+`_pressed`), `ksb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot). Durability bars on slot buttons always show for damageable held/worn items (no toggle — the old `Show Durability Item` toggle, `$ksb_sdbi`, and its emitter were removed).
@@ -256,19 +255,6 @@ How it works:
 
 In-game: open any container → light recoloured panels/slots/buttons. PERMISSION PENDING (Vi_Tul + Ashura) — local merge only, do NOT publish a `.mcpack` with this content until cleared. Gate A passes (same 8 SKIP lines).
 
-### 2.18 White Hitbox, Always-On (KS Client: `entity/`, `animations/ks_hitbox*`, `render_controllers/ks_hitbox*`, `materials/entity.material`)
-
-What it is: Java-style white hitbox outline on the player + 15 mobs (blaze, chicken, cow, creeper, enderman, horse, iron_golem, pig, sheep, skeleton, slime, spider, villager, wolf, zombie), always visible when alive (third-person / out of UI).
-
-How it works:
-- Upstream Baku `baku_hitbox` / `baku_mob_hitbox` stack rebranded to `ks_hitbox` / `ks_mob_hitbox` (geometry, render/material/texture/animation/animation-controller ids + `textures/entity/ks_hitbox/`); entity hooks merged into `entity/player.json` + 15 mob jsons (health-bar/fps hooks preserved, vanilla render controllers untouched).
-- White box ONLY: `hitbox.png` + `mob_hitbox.png` taken from upstream BoxOnly art (red eye marker, blue look-ray and all color subpacks NOT taken — eye/ray bones stay but render transparent).
-- Small consistency fix vs upstream: the 7 mob files whose overlay animation was never played now play `ks_mob_hitbox_overlay` in `scripts.animate`, so all 15 mobs show the box.
-- No menu on/off toggle exists: UI toggle state cannot reach entity render controllers in a resource-pack-only client, so INFO tab shows `White Hitbox: ON / Player + 15 mobs` status text instead (see `home_panel`/`info_panel` in `ksb_hotbar_button/settings.json`; Home tab shows `textures/ui/ks_client_logo.png` + client version + `KS Warrior`).
-- No subpacks, no `manifest.json` identity change.
-
-In-game: look at any covered mob/player → white outline box. Permission: Baku All Rights Reserved — see `copyright.txt` §16, get permission before redistributing.
-
 ---
 
 ## 3. Project Structure
@@ -289,18 +275,16 @@ ks-client/
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
 │   ├── blocks.json                  ← hopper face mapping only (BlockTrace directional hopper)
-│   ├── entity/ (82 json)            ← KS health-bar hooks on every mob + fps_counter slots on player.json (materials/textures/geometry/init/pre_anim/vars/render controller) + ks_hitbox hooks on player + 15 mobs (white box only)
-│   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses) + ks_hitbox.animation.json + ks_mob_hitbox.animation.json
+│   ├── entity/ (82 json)            ← KS health-bar hooks on every mob + fps_counter slots on player.json (materials/textures/geometry/init/pre_anim/vars/render controller)
+│   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses)
 │   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
-│   ├── animation_controllers/ks_hitbox.animation_controllers.json + ks_mob_hitbox.animation_controllers.json (hitbox overlay controllers)
-│   ├── materials/entity.material       ← ks_hitbox emissive materials only (new file for hitbox)
-│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json + models/entity/ks_hitbox.geo.json + ks_mob_hitbox.geo.json
-│   ├── render_controllers/health_bar.json + fps_counter.render.json + ks_hitbox.render_controllers.json + ks_mob_hitbox.render_controllers.json
+│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + models/entity/fps_counter.geo.json
+│   ├── render_controllers/health_bar.json + fps_counter.render.json
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/… + recolourful-light dialog_background/inventory/book/bundles/ashur)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
 │   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (125 PNGs incl. chat art + ks_client_logo.png) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies + entity/ks_hitbox (hitbox.png + mob_hitbox.png, white BoxOnly art) / fps (digits_atlas.png)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (125 PNGs incl. chat art + ks_client_logo.png) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies / fps (digits_atlas.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
@@ -384,8 +368,8 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 
 ## 8. Entities, Animations, Fog, Render Controllers
 
-- `entity/`: 82 client entities (`allay` → `zombie_villager`, incl. `player.json`), all with KS health-bar hooks (see §2.14); `player.json` additionally carries fps_counter slots (see §2.16) + ks_hitbox slots, and 15 mob jsons carry ks_mob_hitbox slots (see §2.18). Vanilla animation/controller/geometry/texture refs resolve engine-side.
-- `animations/health_bar.json` (always-display billboard logic) + `animations/mace.animation.json` (hammer hold poses) + `animations/ks_hitbox.animation.json` + `animations/ks_mob_hitbox.animation.json` (white hitbox overlays), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`) + `models/entity/ks_hitbox.geo.json` (`geometry.ks_hitbox`) + `models/entity/ks_mob_hitbox.geo.json` (`geometry.ks_mob_hitbox`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`) + `render_controllers/ks_hitbox.render_controllers.json` + `ks_mob_hitbox.render_controllers.json`, `animation_controllers/ks_hitbox.animation_controllers.json` + `ks_mob_hitbox.animation_controllers.json`, `materials/entity.material` (ks_hitbox emissive only), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `models/entity/Player|Items`, Drive `animations/Animation|Attack` + `animation_controllers/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally; `tools/` now also scans shipped top-level `animations/` + `animation_controllers/`).
+- `entity/`: 82 client entities (`allay` → `zombie_villager`, incl. `player.json`), all with KS health-bar hooks (see §2.14); `player.json` additionally carries fps_counter slots (see §2.16). Vanilla animation/controller/geometry/texture refs resolve engine-side.
+- `animations/health_bar.json` (always-display billboard logic) + `animations/mace.animation.json` (hammer hold poses), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `models/entity/Player|Items`, Drive `animations/Animation|Attack` + `animation_controllers/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally; `tools/` now also scans shipped top-level `animations/` + `animation_controllers/`).
 - `fogs/ks_fullbright.json` + `biomes_client.json`: global fullbright (see §2.9).
 
 ---
