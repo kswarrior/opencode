@@ -33,7 +33,7 @@
     <string name="add_home_2">"Add to phone's home screen"</string>
     <string name="add_icon">Add button</string>
     <string name="add_page">Add current page</string>
-    <string name="add_quick">Add to KS Portal homepage</string>
+    <string name="add_quick">Add to Soul homepage</string>
     <string name="add_site">Add current site</string>
     <string name="added">Added</string>
     <string name="addr_icon_info">2. You can remove it by clicking the icon.</string>
@@ -47,13 +47,13 @@
     <string name="ads_block_info">At least one filter must be active to block ads.</string>
     <string name="ads_filter">Ad filter</string>
     <string name="ads_guide_1">In-app ads are ads displayed by apps.</string>
-    <string name="ads_guide_2">"KS Portal's in-app ads don't bother you."</string>
+    <string name="ads_guide_2">"Soul Browser's in-app ads don't bother you."</string>
     <string name="ads_guide_3">It only appears in very limited locations.</string>
-    <string name="ads_guide_4">"KS Portal's goal is to provide convenience and comfort to its users."</string>
+    <string name="ads_guide_4">"Soul Browser's goal is to provide convenience and comfort to its users."</string>
     <string name="ads_guide_5">Website ads are advertisements displayed by website administrators.</string>
-    <string name="ads_guide_6">It has nothing to do with KS Portal.</string>
-    <string name="ads_guide_7">KS Portal does not display in-app ads on websites.</string>
-    <string name="ads_guide_8">All features of KS Portal are free.</string>
+    <string name="ads_guide_6">It has nothing to do with Soul Browser.</string>
+    <string name="ads_guide_7">Soul Browser does not display in-app ads on websites.</string>
+    <string name="ads_guide_8">All features of Soul Browser are free.</string>
     <string name="ads_retry">"The advertisement is not ready yet.
 Please try again later."</string>
     <string name="ads_white">Ad whitelist</string>
@@ -82,7 +82,7 @@ Please try again later."</string>
     <string name="app_exit">Exit app</string>
     <string name="app_keyboard">Keyboard activation on app startup</string>
     <string name="app_lock">App lock</string>
-    <string name="app_name">KS Portal</string>
+    <string name="app_name">Soul</string>
     <string name="app_restart">You need to restart the app.</string>
     <string name="app_site">Open in browser</string>
     <string name="app_ver">App version</string>
@@ -362,8 +362,8 @@ It is a good idea to clean up your data periodically."</string>
     <string name="domain_url">Domain or URL</string>
     <string name="donate_1">Coffee</string>
     <string name="donate_2">Delicious coffee</string>
-    <string name="donate_info_1">Thank you for using KS Portal.</string>
-    <string name="donate_info_2">KS Portal is maintained by your donation.</string>
+    <string name="donate_info_1">Thank you for using Soul Browser.</string>
+    <string name="donate_info_2">Soul Browser is maintained by your donation.</string>
     <string name="donation">Donation</string>
     <string name="double_back">Back button twice to app exit</string>
     <string name="double_tap">Double tap</string>
@@ -442,7 +442,7 @@ It is a good idea to clean up your data periodically."</string>
     <string name="filter_guide_2">Adding filters increases memory usage.</string>
     <string name="filter_guide_3">We recommend that you only add filters that are appropriate for you.</string>
     <string name="filter_link_1">Filter copyright remains with the filter creator or filter supplier.</string>
-    <string name="filter_link_2">KS Portal has no rights to filter files.</string>
+    <string name="filter_link_2">Soul Browser has no rights to filter files.</string>
     <string name="filter_link_3">Thanks to the creators of the filter.</string>
     <string name="filter_link_4">Filters may not be updated if the filter address changes.</string>
     <string name="filter_link_5">In this case, please inform the developer.</string>
@@ -883,7 +883,7 @@ you need to log in to Instagram."</string>
     <string name="noti_invalid">Invalid</string>
     <string name="noti_pms">Notification permission</string>
     <string name="noti_pms_guide_1">"'Notification permission' is required for status notifications for the features below."</string>
-    <string name="notice">"By pressing the Start button, you agree to the KS Portal
+    <string name="notice">"By pressing the Start button, you agree to the Soul Browser
 %1$s and %2$s."</string>
     <string name="notice_privacy">Privacy Policy</string>
     <string name="notice_tos">Terms of Service</string>
@@ -1179,7 +1179,7 @@ Please try again later."</string>
     <string name="sort_size">Size</string>
     <string name="sort_time">Time</string>
     <string name="sort_user">User sort</string>
-    <string name="soul_home">KS Portal homepage</string>
+    <string name="soul_home">Soul homepage</string>
     <string name="space_guide">Spaces are not visible on the running screen.</string>
     <string name="space_title">Space</string>
     <string name="spage">Startpage</string>
