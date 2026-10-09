@@ -1985,7 +1985,7 @@
 
     .line 512
     .line 513
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->reader_empty:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->reader_empty:I
 
     .line 514
     .line 515

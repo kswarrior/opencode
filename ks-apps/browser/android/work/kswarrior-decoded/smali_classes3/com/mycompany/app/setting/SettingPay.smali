@@ -203,7 +203,7 @@
     .line 6
     .line 7
     .line 8
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->remove_ads_info_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->remove_ads_info_1:I
 
     .line 9
     .line 10
@@ -229,7 +229,7 @@
     .line 20
     .line 21
     .line 22
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->remove_ads_info_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->remove_ads_info_2:I
 
     .line 23
     .line 24
@@ -255,7 +255,7 @@
     .line 34
     .line 35
     .line 36
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->remove_ads_info_3:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->remove_ads_info_3:I
 
     .line 37
     .line 38
@@ -277,7 +277,7 @@
     .line 46
     .line 47
     .line 48
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->remove_ads_info_4:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->remove_ads_info_4:I
 
     .line 49
     .line 50
@@ -303,7 +303,7 @@
     .line 60
     .line 61
     .line 62
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->donate_info_1:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->donate_info_1:I
 
     .line 63
     .line 64
@@ -325,7 +325,7 @@
     .line 72
     .line 73
     .line 74
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->donate_info_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->donate_info_2:I
 
     .line 75
     .line 76
@@ -342,7 +342,7 @@
     .line 81
     .line 82
     .line 83
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->loading:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->loading:I
 
     .line 84
     .line 85
@@ -386,11 +386,11 @@
 
     .line 104
     .line 105
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_favorite_dark_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_favorite_dark_20:I
 
     .line 106
     .line 107
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_cafe_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_local_cafe_dark_24:I
 
     .line 108
     .line 109
@@ -398,11 +398,11 @@
 
     .line 110
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_favorite_black_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_favorite_black_20:I
 
     .line 111
     .line 112
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_cafe_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_local_cafe_black_24:I
 
     .line 113
     .line 114
@@ -440,7 +440,7 @@
 
     .line 130
     .line 131
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->remove_ads:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->remove_ads:I
 
     .line 132
     .line 133
@@ -564,7 +564,7 @@
 
     .line 190
     .line 191
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->donation:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->donation:I
 
     .line 192
     .line 193
@@ -608,7 +608,7 @@
 
     .line 212
     .line 213
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->donate_1:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->donate_1:I
 
     .line 214
     .line 215
@@ -649,7 +649,7 @@
 
     .line 231
     .line 232
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->donate_2:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->donate_2:I
 
     .line 233
     .line 234
@@ -706,7 +706,7 @@
 
     .line 260
     .line 261
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->dev_cat:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->dev_cat:I
 
     .line 262
     .line 263
@@ -937,7 +937,7 @@
 
     .line 24
     .line 25
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->pay_fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->pay_fail:I
 
     .line 26
     .line 27
@@ -950,7 +950,7 @@
 
     .line 31
     :cond_3
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 32
     .line 33
@@ -975,7 +975,7 @@
 
     .line 42
     .line 43
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->already_paid:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->already_paid:I
 
     .line 44
     .line 45
@@ -1454,7 +1454,7 @@
     .line 20
     .line 21
     .line 22
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->purchase:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->purchase:I
 
     .line 23
     .line 24

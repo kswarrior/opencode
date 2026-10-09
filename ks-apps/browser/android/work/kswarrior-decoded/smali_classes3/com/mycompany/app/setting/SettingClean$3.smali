@@ -146,7 +146,7 @@
 
     .line 48
     .line 49
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ads_block:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ads_block:I
 
     .line 50
     .line 51
@@ -167,7 +167,7 @@
     const/4 v1, 0x1
 
     .line 60
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->check_element:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->check_element:I
 
     .line 61
     .line 62
@@ -188,7 +188,7 @@
     const/4 v1, 0x2
 
     .line 71
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->block_area:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->block_area:I
 
     .line 72
     .line 73
@@ -209,7 +209,7 @@
     const/4 v1, 0x3
 
     .line 82
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->over_block:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->over_block:I
 
     .line 83
     .line 84

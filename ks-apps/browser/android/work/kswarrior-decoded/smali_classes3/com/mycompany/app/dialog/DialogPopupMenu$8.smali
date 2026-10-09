@@ -61,7 +61,7 @@
 
     .line 8
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 9
     .line 10
@@ -181,7 +181,7 @@
 
     .line 27
     .line 28
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 29
     .line 30

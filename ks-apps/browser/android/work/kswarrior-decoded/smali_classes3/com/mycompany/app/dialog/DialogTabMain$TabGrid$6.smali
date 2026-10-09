@@ -236,7 +236,7 @@
     const/4 v2, 0x0
 
     .line 31
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->edit:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->edit:I
 
     .line 32
     .line 33
@@ -257,7 +257,7 @@
     const/4 v2, 0x1
 
     .line 42
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 43
     .line 44

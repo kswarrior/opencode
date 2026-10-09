@@ -353,7 +353,7 @@
 
     .line 142
     .line 143
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->permission_removed:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->permission_removed:I
 
     .line 144
     .line 145
@@ -373,7 +373,7 @@
 
     .line 152
     .line 153
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->permission_removed:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->permission_removed:I
 
     .line 154
     .line 155
@@ -417,7 +417,7 @@
 
     .line 173
     .line 174
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->permission_granted:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->permission_granted:I
 
     .line 175
     .line 176
@@ -435,7 +435,7 @@
     .line 181
     :cond_7
     :goto_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->already_added:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->already_added:I
 
     .line 182
     .line 183

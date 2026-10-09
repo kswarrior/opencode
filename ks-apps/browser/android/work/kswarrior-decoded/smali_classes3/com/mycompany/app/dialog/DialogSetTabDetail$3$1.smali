@@ -85,7 +85,7 @@
 
     .line 19
     .line 20
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->dev_cat:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->dev_cat:I
 
     .line 21
     .line 22

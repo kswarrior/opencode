@@ -1414,7 +1414,7 @@
 
     .line 88
     .line 89
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_block_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_block_dark_24:I
 
     .line 90
     .line 91
@@ -1431,7 +1431,7 @@
 
     .line 96
     .line 97
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_block_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_block_black_24:I
 
     .line 98
     .line 99
@@ -2505,7 +2505,7 @@
 
     .line 11
     .line 12
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_open_in_new_dark_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_open_in_new_dark_24:I
 
     .line 13
     .line 14
@@ -2517,7 +2517,7 @@
 
     .line 16
     .line 17
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_dark_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_dark_24:I
 
     .line 18
     .line 19
@@ -2529,7 +2529,7 @@
 
     .line 21
     .line 22
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_menu_dark_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_menu_dark_24:I
 
     .line 23
     .line 24
@@ -2541,7 +2541,7 @@
 
     .line 26
     .line 27
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_box_dark_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_add_box_dark_24:I
 
     .line 28
     .line 29
@@ -2553,7 +2553,7 @@
 
     .line 31
     .line 32
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_refresh_dark_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_refresh_dark_24:I
 
     .line 33
     .line 34
@@ -2565,7 +2565,7 @@
 
     .line 36
     .line 37
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_open_in_new_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_open_in_new_black_24:I
 
     .line 38
     .line 39
@@ -2577,7 +2577,7 @@
 
     .line 41
     .line 42
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_black_24:I
 
     .line 43
     .line 44
@@ -2589,7 +2589,7 @@
 
     .line 46
     .line 47
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_menu_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_menu_black_24:I
 
     .line 48
     .line 49
@@ -2601,7 +2601,7 @@
 
     .line 51
     .line 52
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_box_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_add_box_black_24:I
 
     .line 53
     .line 54
@@ -2613,7 +2613,7 @@
 
     .line 56
     .line 57
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_refresh_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_refresh_black_24:I
 
     .line 58
     .line 59
@@ -2794,7 +2794,7 @@
 
     .line 27
     :cond_2
-    const-string v1, "com.mycompany.app.soulbrowser"
+    const-string v1, "com.kswarrior.ksportal"
 
     .line 28
     .line 29
@@ -7288,7 +7288,7 @@
 
     .line 14
     .line 15
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_android_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_android_dark_24:I
 
     .line 16
     .line 17
@@ -7296,7 +7296,7 @@
 
     .line 18
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_android_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_android_black_24:I
 
     .line 19
     .line 20
@@ -7312,7 +7312,7 @@
 
     .line 24
     .line 25
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_dark_24:I
 
     .line 26
     .line 27
@@ -7320,7 +7320,7 @@
 
     .line 28
     :cond_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 29
     .line 30

@@ -112,7 +112,7 @@
 
     .line 30
     .line 31
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->blog_title:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->blog_title:I
 
     .line 32
     .line 33
@@ -164,7 +164,7 @@
 
     .line 55
     .line 56
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->notice_privacy:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->notice_privacy:I
 
     .line 57
     .line 58
@@ -181,7 +181,7 @@
 
     .line 63
     .line 64
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->notice_tos:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->notice_tos:I
 
     .line 65
     .line 66
@@ -194,7 +194,7 @@
 
     .line 70
     :cond_5
-    const-string p2, "com.mycompany.app.soulbrowser"
+    const-string p2, "com.kswarrior.ksportal"
 
     .line 71
     .line 72

@@ -1189,7 +1189,7 @@
 
     .line 69
     .line 70
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->password:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->password:I
 
     .line 71
     .line 72

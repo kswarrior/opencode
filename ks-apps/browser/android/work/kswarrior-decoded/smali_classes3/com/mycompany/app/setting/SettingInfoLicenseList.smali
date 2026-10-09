@@ -2153,7 +2153,7 @@
     .line 2
     .line 3
     .line 4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->license:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->license:I
 
     .line 5
     .line 6

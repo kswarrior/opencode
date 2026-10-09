@@ -181,7 +181,7 @@
 
     .line 65
     .line 66
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 67
     .line 68
@@ -269,7 +269,7 @@
 
     .line 107
     .line 108
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->auto_detect:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->auto_detect:I
 
     .line 109
     .line 110

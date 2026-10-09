@@ -53,7 +53,7 @@
 
     .line 4
     .line 5
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 6
     .line 7

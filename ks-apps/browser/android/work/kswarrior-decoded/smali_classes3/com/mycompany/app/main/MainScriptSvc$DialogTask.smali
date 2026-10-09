@@ -476,7 +476,7 @@
 
     .line 117
     .line 118
-    const-string v6, "com.mycompany.app.soulbrowser.ACTION_SCRIPT_CANCEL"
+    const-string v6, "com.kswarrior.ksportal.ACTION_SCRIPT_CANCEL"
 
     .line 119
     .line 120
@@ -526,7 +526,7 @@
 
     .line 143
     .line 144
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_24:I
 
     .line 145
     .line 146
@@ -534,7 +534,7 @@
 
     .line 147
     .line 148
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 149
     .line 150
@@ -1817,7 +1817,7 @@
 
     .line 19
     .line 20
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 21
     .line 22
@@ -1924,7 +1924,7 @@
 
     .line 23
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 25
     .line 26

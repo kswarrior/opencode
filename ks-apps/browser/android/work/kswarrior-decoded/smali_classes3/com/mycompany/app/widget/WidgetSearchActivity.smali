@@ -260,7 +260,7 @@
 
     .line 77
     .line 78
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 79
     .line 80
@@ -270,7 +270,7 @@
     .line 82
     .line 83
     :cond_1
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->web_edit_hint:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->web_edit_hint:I
 
     .line 84
     .line 85
@@ -2875,7 +2875,7 @@
 
     .line 57
     .line 58
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_black_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_black_18:I
 
     .line 59
     .line 60
@@ -2888,7 +2888,7 @@
 
     .line 64
     .line 65
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_content_copy_black_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_content_copy_black_18:I
 
     .line 66
     .line 67
@@ -2901,7 +2901,7 @@
 
     .line 71
     .line 72
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_delete_black_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_delete_black_20:I
 
     .line 73
     .line 74
@@ -2918,7 +2918,7 @@
 
     .line 79
     .line 80
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_dark_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_dark_18:I
 
     .line 81
     .line 82
@@ -2931,7 +2931,7 @@
 
     .line 86
     .line 87
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_content_copy_dark_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_content_copy_dark_18:I
 
     .line 88
     .line 89
@@ -2944,7 +2944,7 @@
 
     .line 93
     .line 94
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_delete_dark_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_delete_dark_20:I
 
     .line 95
     .line 96
@@ -3695,7 +3695,7 @@
 
     .line 50
     :cond_3
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 51
     .line 52
@@ -4968,7 +4968,7 @@
 
     .line 43
     .line 44
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported:I
 
     .line 45
     .line 46
@@ -4985,7 +4985,7 @@
 
     .line 51
     .line 52
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 53
     .line 54

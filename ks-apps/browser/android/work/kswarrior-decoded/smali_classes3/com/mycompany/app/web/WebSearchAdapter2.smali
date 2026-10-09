@@ -2705,7 +2705,7 @@
     invoke-direct {v3, v11}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
 
     .line 16
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->search_item_frame:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->search_item_frame:I
 
     .line 17
     invoke-virtual {v3, v4}, Landroid/view/View;->setId(I)V
@@ -3374,7 +3374,7 @@
     .line 132
     iget-object v5, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->v:Lcom/mycompany/app/view/MyRoundImage;
 
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_find_in_page_dark_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_find_in_page_dark_24:I
 
     invoke-virtual {v5, v6}, Lcom/mycompany/app/view/MyRoundImage;->setImageResource(I)V
 
@@ -3384,7 +3384,7 @@
     :cond_f
     iget-object v5, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->v:Lcom/mycompany/app/view/MyRoundImage;
 
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_find_in_page_black_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_find_in_page_black_24:I
 
     invoke-virtual {v5, v6}, Lcom/mycompany/app/view/MyRoundImage;->setImageResource(I)V
 
@@ -3399,7 +3399,7 @@
     .line 135
     iget-object v5, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->x:Landroidx/appcompat/widget/AppCompatTextView;
 
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->find_word:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->find_word:I
 
     invoke-virtual {v5, v6}, Landroid/widget/TextView;->setText(I)V
 
@@ -3594,7 +3594,7 @@
     .line 154
     iget-object v6, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->A:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     invoke-virtual {v6, v13}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -3609,7 +3609,7 @@
     :cond_17
     iget-object v6, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->A:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     invoke-virtual {v6, v13}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -3661,7 +3661,7 @@
     .line 163
     iget-object v6, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->B:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_south_west_dark_20:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_south_west_dark_20:I
 
     invoke-virtual {v6, v10}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -3676,7 +3676,7 @@
     :cond_19
     iget-object v6, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->B:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_south_west_black_20:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_south_west_black_20:I
 
     invoke-virtual {v6, v12}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -3693,7 +3693,7 @@
     .line 167
     iget-object v6, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->B:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_north_west_dark_20:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_north_west_dark_20:I
 
     invoke-virtual {v6, v10}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -3708,7 +3708,7 @@
     :cond_1b
     iget-object v6, v2, Lcom/mycompany/app/web/WebSearchAdapter$SearchHolder;->B:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_north_west_black_20:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_north_west_black_20:I
 
     invoke-virtual {v6, v12}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -3760,7 +3760,7 @@
     if-eqz v6, :cond_1d
 
     .line 177
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_history_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_history_dark_24:I
 
     invoke-virtual {v2, v5}, Lcom/mycompany/app/view/MyRoundImage;->setImageResource(I)V
 
@@ -3768,7 +3768,7 @@
 
     .line 178
     :cond_1d
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_history_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_history_black_24:I
 
     invoke-virtual {v2, v5}, Lcom/mycompany/app/view/MyRoundImage;->setImageResource(I)V
 
@@ -3780,7 +3780,7 @@
     if-eqz v6, :cond_1f
 
     .line 179
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_search_dark_24:I
 
     invoke-virtual {v2, v5}, Lcom/mycompany/app/view/MyRoundImage;->setImageResource(I)V
 
@@ -3788,7 +3788,7 @@
 
     .line 180
     :cond_1f
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_search_black_24:I
 
     invoke-virtual {v2, v5}, Lcom/mycompany/app/view/MyRoundImage;->setImageResource(I)V
 
@@ -3807,7 +3807,7 @@
     if-eqz v6, :cond_21
 
     .line 182
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_public_dark_24:I
 
     invoke-virtual {v2, v5}, Lcom/mycompany/app/view/MyRoundImage;->setImageResource(I)V
 
@@ -3815,7 +3815,7 @@
 
     .line 183
     :cond_21
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     invoke-virtual {v2, v5}, Lcom/mycompany/app/view/MyRoundImage;->setImageResource(I)V
 
@@ -3838,7 +3838,7 @@
     if-eqz v6, :cond_23
 
     .line 185
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_dark_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_public_dark_24:I
 
     iget-object v5, v5, Lcom/mycompany/app/web/WebSearchAdapter$SearchItem;->f:Ljava/lang/String;
 
@@ -3852,7 +3852,7 @@
 
     .line 186
     :cond_23
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     iget-object v5, v5, Lcom/mycompany/app/web/WebSearchAdapter$SearchItem;->f:Ljava/lang/String;
 
@@ -3921,7 +3921,7 @@
     if-eqz v6, :cond_26
 
     .line 199
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_dark_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_public_dark_24:I
 
     iget-object v5, v5, Lcom/mycompany/app/web/WebSearchAdapter$SearchItem;->f:Ljava/lang/String;
 
@@ -3939,7 +3939,7 @@
     const/4 v15, 0x0
 
     .line 200
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     iget-object v5, v5, Lcom/mycompany/app/web/WebSearchAdapter$SearchItem;->f:Ljava/lang/String;
 
@@ -4029,7 +4029,7 @@
     if-eqz v9, :cond_2a
 
     .line 211
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     invoke-virtual {v4, v2}, Landroid/view/View;->setBackgroundResource(I)V
 
@@ -4040,7 +4040,7 @@
 
     .line 212
     :cond_2a
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     invoke-virtual {v4, v2}, Landroid/view/View;->setBackgroundResource(I)V
 

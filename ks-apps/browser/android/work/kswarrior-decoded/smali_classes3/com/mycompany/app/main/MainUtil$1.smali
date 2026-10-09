@@ -69,7 +69,7 @@
 
     .line 11
     .line 12
-    const-string v3, "com.mycompany.app.soulbrowser.ACTION_SECRET_EXIT"
+    const-string v3, "com.kswarrior.ksportal.ACTION_SECRET_EXIT"
 
     .line 13
     .line 14
@@ -110,11 +110,11 @@
 
     .line 32
     .line 33
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_24:I
 
     .line 34
     .line 35
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->secret_exit:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->secret_exit:I
 
     .line 36
     .line 37
@@ -144,7 +144,7 @@
     .line 49
     .line 50
     .line 51
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_white_24:I
 
     .line 52
     .line 53
@@ -156,7 +156,7 @@
 
     .line 56
     .line 57
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->secret_exit:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->secret_exit:I
 
     .line 58
     .line 59
@@ -198,7 +198,7 @@
 
     .line 76
     .line 77
-    const-string v2, "com.mycompany.app.soulbrowser.NOTI_GROUP_SECRET"
+    const-string v2, "com.kswarrior.ksportal.NOTI_GROUP_SECRET"
 
     .line 78
     .line 79
@@ -247,7 +247,7 @@
 
     .line 101
     .line 102
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->secret_mode:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->secret_mode:I
 
     .line 103
     .line 104

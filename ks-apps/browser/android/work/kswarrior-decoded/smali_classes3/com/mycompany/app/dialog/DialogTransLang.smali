@@ -576,11 +576,11 @@
     .line 8
     .line 9
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->item_frame_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->item_frame_view:I
 
     .line 10
     .line 11
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_trans_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_trans_view:I
 
     .line 12
     .line 13
@@ -945,7 +945,7 @@
 
     .line 207
     .line 208
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 209
     .line 210
@@ -955,7 +955,7 @@
     .line 212
     .line 213
     :cond_2
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->search_url:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->search_url:I
 
     .line 214
     .line 215
@@ -1188,7 +1188,7 @@
     .line 336
     .line 337
     .line 338
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->close:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->close:I
 
     .line 339
     .line 340
@@ -1610,7 +1610,7 @@
 
     .line 56
     .line 57
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 58
     .line 59

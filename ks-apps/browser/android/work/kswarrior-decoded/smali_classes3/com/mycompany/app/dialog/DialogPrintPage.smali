@@ -646,7 +646,7 @@
     move-result-object v3
 
     .line 158
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 159
     .line 160
@@ -694,7 +694,7 @@
 
     .line 183
     .line 184
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 185
     .line 186
@@ -768,7 +768,7 @@
     .line 223
     .line 224
     .line 225
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 226
     .line 227
@@ -1226,7 +1226,7 @@
 
     .line 22
     .line 23
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 24
     .line 25
@@ -1266,7 +1266,7 @@
 
     .line 41
     .line 42
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->long_name:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->long_name:I
 
     .line 43
     .line 44

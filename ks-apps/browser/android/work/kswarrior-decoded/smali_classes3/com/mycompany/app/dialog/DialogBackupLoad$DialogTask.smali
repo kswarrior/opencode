@@ -111,7 +111,7 @@
     .line 40
     .line 41
     .line 42
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->loading:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->loading:I
 
     .line 43
     .line 44
@@ -129,7 +129,7 @@
 
     .line 51
     .line 52
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 53
     .line 54
@@ -6409,7 +6409,7 @@
 
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->app_restart:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->app_restart:I
 
     .line 28
     .line 29
@@ -6452,7 +6452,7 @@
 
     .line 48
     .line 49
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 50
     .line 51
@@ -6474,7 +6474,7 @@
 
     .line 59
     .line 60
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 61
     .line 62
@@ -6647,7 +6647,7 @@
 
     .line 28
     .line 29
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->app_restart:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->app_restart:I
 
     .line 30
     .line 31
@@ -6684,7 +6684,7 @@
 
     .line 48
     .line 49
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 50
     .line 51
@@ -6718,7 +6718,7 @@
 
     .line 65
     .line 66
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 67
     .line 68
@@ -6761,7 +6761,7 @@
 
     .line 87
     .line 88
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->backup_changed_1:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->backup_changed_1:I
 
     .line 89
     .line 90
@@ -6778,7 +6778,7 @@
 
     .line 96
     .line 97
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->backup_changed_2:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->backup_changed_2:I
 
     .line 98
     .line 99
@@ -6791,7 +6791,7 @@
 
     .line 103
     .line 104
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->backup_changed_3:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->backup_changed_3:I
 
     .line 105
     .line 106
@@ -6870,7 +6870,7 @@
 
     .line 144
     .line 145
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 146
     .line 147
@@ -6905,7 +6905,7 @@
     .line 161
     .line 162
     .line 163
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_changed:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_changed:I
 
     .line 164
     .line 165
@@ -6923,7 +6923,7 @@
 
     .line 172
     .line 173
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 174
     .line 175
@@ -6946,7 +6946,7 @@
     .line 183
     .line 184
     .line 185
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 186
     .line 187
@@ -6964,7 +6964,7 @@
 
     .line 194
     .line 195
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 196
     .line 197

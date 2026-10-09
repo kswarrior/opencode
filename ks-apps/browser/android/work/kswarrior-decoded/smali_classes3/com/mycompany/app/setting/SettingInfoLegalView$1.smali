@@ -77,7 +77,7 @@
 
     .line 15
     .line 16
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_dark_24:I
 
     .line 17
     .line 18
@@ -136,7 +136,7 @@
 
     .line 47
     .line 48
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_black_24:I
 
     .line 49
     .line 50

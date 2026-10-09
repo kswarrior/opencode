@@ -151,7 +151,7 @@
     move-result-object v0
 
     .line 60
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_right_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_right_white_24:I
 
     .line 61
     .line 62

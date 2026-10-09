@@ -91,7 +91,7 @@
 
     .line 20
     .line 21
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->pdf:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->pdf:I
 
     .line 22
     .line 23
@@ -106,7 +106,7 @@
 
     .line 26
     .line 27
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->zip:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->zip:I
 
     .line 28
     .line 29
@@ -114,7 +114,7 @@
 
     .line 30
     :cond_3
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->album:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->album:I
 
     .line 31
     .line 32

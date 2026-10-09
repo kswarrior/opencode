@@ -8072,7 +8072,7 @@
 
     .line 18
     .line 19
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 20
     .line 21

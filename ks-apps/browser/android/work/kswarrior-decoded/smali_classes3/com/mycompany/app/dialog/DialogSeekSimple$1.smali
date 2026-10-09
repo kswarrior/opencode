@@ -70,7 +70,7 @@
     .line 12
     .line 13
     :cond_0
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->item_seek_text:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->item_seek_text:I
 
     .line 14
     .line 15
@@ -745,7 +745,7 @@
     .line 357
     .line 358
     .line 359
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 360
     .line 361
@@ -806,7 +806,7 @@
     .line 388
     .line 389
     .line 390
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 391
     .line 392
@@ -867,7 +867,7 @@
     move-result-object v8
 
     .line 419
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 420
     .line 421

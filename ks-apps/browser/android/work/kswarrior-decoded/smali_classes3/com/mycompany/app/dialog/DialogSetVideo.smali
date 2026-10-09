@@ -448,7 +448,7 @@
     const/4 p3, 0x0
 
     .line 57
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->default_title:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->default_title:I
 
     .line 58
     .line 59
@@ -466,7 +466,7 @@
 
     .line 66
     .line 67
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->other_app:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->other_app:I
 
     .line 68
     .line 69
@@ -585,7 +585,7 @@
 
     .line 123
     .line 124
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->default_title:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->default_title:I
 
     .line 125
     .line 126
@@ -617,7 +617,7 @@
 
     .line 138
     .line 139
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->video_player:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->video_player:I
 
     .line 140
     .line 141

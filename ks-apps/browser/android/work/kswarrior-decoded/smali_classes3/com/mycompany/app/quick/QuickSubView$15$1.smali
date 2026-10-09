@@ -138,7 +138,7 @@
 
     .line 25
     .line 26
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->deleted:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->deleted:I
 
     .line 27
     .line 28

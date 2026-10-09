@@ -515,7 +515,7 @@
 
     .line 9
     .line 10
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_DOWN_DELETE"
+    const-string v2, "com.kswarrior.ksportal.ACTION_DOWN_DELETE"
 
     .line 11
     .line 12

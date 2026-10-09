@@ -257,7 +257,7 @@
     move-result-object v1
 
     .line 110
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 111
     .line 112

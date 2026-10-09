@@ -192,7 +192,7 @@
     .line 12
     .line 13
     .line 14
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->history:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->history:I
 
     .line 15
     .line 16
@@ -201,7 +201,7 @@
     .line 17
     .line 18
     .line 19
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cache:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cache:I
 
     .line 20
     .line 21
@@ -210,7 +210,7 @@
     .line 22
     .line 23
     .line 24
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cookie:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cookie:I
 
     .line 25
     .line 26
@@ -219,7 +219,7 @@
     .line 27
     .line 28
     .line 29
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->normal_tab:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->normal_tab:I
 
     .line 30
     .line 31
@@ -228,7 +228,7 @@
     .line 32
     .line 33
     .line 34
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->secret_tab:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->secret_tab:I
 
     .line 35
     .line 36
@@ -266,7 +266,7 @@
     .line 49
     .line 50
     .line 51
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->recent_search:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->recent_search:I
 
     .line 52
     .line 53
@@ -328,7 +328,7 @@
     .line 78
     .line 79
     :goto_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->history:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->history:I
 
     .line 80
     .line 81
@@ -384,7 +384,7 @@
     .line 105
     .line 106
     :goto_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cookie:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cookie:I
 
     .line 107
     .line 108
@@ -440,7 +440,7 @@
     .line 132
     .line 133
     :goto_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cache:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cache:I
 
     .line 134
     .line 135
@@ -496,7 +496,7 @@
     .line 159
     .line 160
     :goto_4
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->normal_tab:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->normal_tab:I
 
     .line 161
     .line 162
@@ -552,7 +552,7 @@
     .line 186
     .line 187
     :goto_5
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->secret_tab:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->secret_tab:I
 
     .line 188
     .line 189
@@ -1016,7 +1016,7 @@
 
     .line 17
     .line 18
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->now_delete:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->now_delete:I
 
     .line 19
     .line 20
@@ -1063,7 +1063,7 @@
 
     .line 40
     .line 41
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->exit_delete:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->exit_delete:I
 
     .line 42
     .line 43
@@ -1075,7 +1075,7 @@
     move-result-object v7
 
     .line 47
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->exit_guide:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->exit_guide:I
 
     .line 48
     .line 49
@@ -1099,7 +1099,7 @@
 
     .line 58
     .line 59
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->exit_del_noti:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->exit_del_noti:I
 
     .line 60
     .line 61
@@ -1150,7 +1150,7 @@
 
     .line 83
     .line 84
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->clean_data_info:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->clean_data_info:I
 
     .line 85
     .line 86
@@ -1528,7 +1528,7 @@
 
     .line 20
     .line 21
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->clear_data:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->clear_data:I
 
     .line 22
     .line 23

@@ -468,7 +468,7 @@
 
     .line 30
     .line 31
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_left_b:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->round_bot_left_b:I
 
     .line 32
     .line 33
@@ -477,7 +477,7 @@
     .line 34
     .line 35
     .line 36
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_right_b:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->round_bot_right_b:I
 
     .line 37
     .line 38
@@ -490,7 +490,7 @@
 
     .line 42
     :cond_2
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_left_g:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->round_bot_left_g:I
 
     .line 43
     .line 44
@@ -499,7 +499,7 @@
     .line 45
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_right_g:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->round_bot_right_g:I
 
     .line 48
     .line 49

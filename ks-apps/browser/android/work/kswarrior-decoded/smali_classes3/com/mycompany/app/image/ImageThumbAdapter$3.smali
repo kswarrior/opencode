@@ -228,7 +228,7 @@
 
     .line 88
     .line 89
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_24:I
 
     .line 90
     .line 91
@@ -365,7 +365,7 @@
 
     .line 41
     :cond_4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_24:I
 
     .line 42
     .line 43

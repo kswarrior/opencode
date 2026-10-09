@@ -358,7 +358,7 @@
 
     .line 107
     :cond_8
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->no_title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->no_title:I
 
     .line 108
     .line 109

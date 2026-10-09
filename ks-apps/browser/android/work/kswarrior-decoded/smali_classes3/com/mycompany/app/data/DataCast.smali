@@ -214,7 +214,7 @@
 
     .line 40
     .line 41
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_image_black_24:I
 
     .line 42
     .line 43
@@ -240,7 +240,7 @@
 
     .line 51
     .line 52
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_music_note_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->baseline_music_note_black_24:I
 
     .line 53
     .line 54
@@ -271,7 +271,7 @@
 
     .line 65
     .line 66
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 67
     .line 68

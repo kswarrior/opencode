@@ -126,7 +126,7 @@
 
     .line 47
     .line 48
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_left_d:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->round_top_left_d:I
 
     .line 49
     .line 50
@@ -138,7 +138,7 @@
     move-result-object v3
 
     .line 54
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_right_d:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->round_top_right_d:I
 
     .line 55
     .line 56
@@ -154,7 +154,7 @@
 
     .line 61
     :cond_3
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_left_w:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->round_top_left_w:I
 
     .line 62
     .line 63
@@ -166,7 +166,7 @@
     move-result-object v3
 
     .line 67
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_right_w:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->round_top_right_w:I
 
     .line 68
     .line 69

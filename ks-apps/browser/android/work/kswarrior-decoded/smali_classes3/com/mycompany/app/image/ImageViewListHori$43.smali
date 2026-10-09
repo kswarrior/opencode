@@ -81,7 +81,7 @@
 
     .line 18
     .line 19
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 20
     .line 21
@@ -188,7 +188,7 @@
 
     .line 67
     .line 68
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 69
     .line 70
@@ -206,7 +206,7 @@
 
     .line 75
     .line 76
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->no_image:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->no_image:I
 
     .line 77
     .line 78
@@ -1185,7 +1185,7 @@
 
     .line 36
     .line 37
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_image:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_image:I
 
     .line 38
     .line 39

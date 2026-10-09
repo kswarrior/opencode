@@ -240,7 +240,7 @@
 
     .line 51
     .line 52
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->only_secret:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->only_secret:I
 
     .line 53
     .line 54

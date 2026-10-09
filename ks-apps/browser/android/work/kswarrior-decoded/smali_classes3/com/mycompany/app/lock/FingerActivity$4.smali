@@ -95,7 +95,7 @@
 
     .line 24
     .line 25
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_dark_84:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_dark_84:I
 
     .line 26
     .line 27
@@ -108,7 +108,7 @@
 
     .line 31
     :cond_2
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_black_84:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_black_84:I
 
     .line 32
     .line 33
@@ -243,7 +243,7 @@
 
     .line 100
     .line 101
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->secret_reset:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->secret_reset:I
 
     .line 102
     .line 103
@@ -258,7 +258,7 @@
 
     .line 106
     .line 107
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 108
     .line 109
@@ -274,7 +274,7 @@
 
     .line 113
     .line 114
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->normal_start:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->normal_start:I
 
     .line 115
     .line 116
@@ -282,7 +282,7 @@
 
     .line 117
     :cond_7
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->secret_reset:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->secret_reset:I
 
     .line 118
     .line 119
@@ -291,7 +291,7 @@
 
     .line 120
     .line 121
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->finger_print:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->finger_print:I
 
     .line 122
     .line 123

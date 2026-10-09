@@ -89,7 +89,7 @@
 
     .line 21
     .line 22
-    sget v1, Lcom/mycompany/app/soulbrowser/R$anim;->ic_slide_in:I
+    sget v1, Lcom/kswarrior/ksportal/R$anim;->ic_slide_in:I
 
     .line 23
     .line 24
@@ -113,7 +113,7 @@
 
     .line 32
     .line 33
-    sget v1, Lcom/mycompany/app/soulbrowser/R$anim;->ic_slide_out:I
+    sget v1, Lcom/kswarrior/ksportal/R$anim;->ic_slide_out:I
 
     .line 34
     .line 35

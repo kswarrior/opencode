@@ -209,7 +209,7 @@
     move-result-object p2
 
     .line 39
-    sget v1, Lcom/mycompany/app/soulbrowser/R$array;->names:I
+    sget v1, Lcom/kswarrior/ksportal/R$array;->names:I
 
     .line 40
     .line 41
@@ -660,7 +660,7 @@
     move-result-object v0
 
     .line 45
-    sget v3, Lcom/mycompany/app/soulbrowser/R$array;->names:I
+    sget v3, Lcom/kswarrior/ksportal/R$array;->names:I
 
     .line 46
     .line 47
@@ -724,7 +724,7 @@
 
     .line 71
     .line 72
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->name0:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->name0:I
 
     .line 73
     .line 74
@@ -913,7 +913,7 @@
     move-result-object v0
 
     .line 43
-    sget v3, Lcom/mycompany/app/soulbrowser/R$array;->server_websites:I
+    sget v3, Lcom/kswarrior/ksportal/R$array;->server_websites:I
 
     .line 44
     .line 45
@@ -977,7 +977,7 @@
 
     .line 69
     .line 70
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->website0:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->website0:I
 
     .line 71
     .line 72
@@ -1255,7 +1255,7 @@
 
     .line 62
     .line 63
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->vpn_active:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->vpn_active:I
 
     .line 64
     .line 65

@@ -166,7 +166,7 @@
 
     .line 60
     .line 61
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->reinput:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->reinput:I
 
     .line 62
     .line 63
@@ -179,7 +179,7 @@
 
     .line 67
     .line 68
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 69
     .line 70
@@ -255,7 +255,7 @@
 
     .line 105
     .line 106
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->wrong_input:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->wrong_input:I
 
     .line 107
     .line 108

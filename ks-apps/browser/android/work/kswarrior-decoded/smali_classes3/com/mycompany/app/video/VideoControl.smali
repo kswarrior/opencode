@@ -3686,7 +3686,7 @@
 
     .line 144
     .line 145
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_volume_off_white_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_volume_off_white_24:I
 
     .line 146
     .line 147
@@ -3703,7 +3703,7 @@
 
     .line 152
     .line 153
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_volume_up_white_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_volume_up_white_24:I
 
     .line 154
     .line 155
@@ -6559,7 +6559,7 @@
 
     .line 43
     .line 44
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->touch_locked:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->touch_locked:I
 
     .line 45
     .line 46
@@ -6624,7 +6624,7 @@
 
     .line 75
     .line 76
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->touch_unlocked:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->touch_unlocked:I
 
     .line 77
     .line 78
@@ -7244,7 +7244,7 @@
 
     .line 9
     .line 10
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_repeat_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_repeat_white_24:I
 
     .line 11
     .line 12
@@ -7257,7 +7257,7 @@
 
     .line 16
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_right_alt_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_right_alt_white_24:I
 
     .line 17
     .line 18
@@ -7315,7 +7315,7 @@
 
     .line 18
     .line 19
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_white_24:I
 
     .line 20
     .line 21
@@ -7348,7 +7348,7 @@
 
     .line 34
     .line 35
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_white_24:I
 
     .line 36
     .line 37
@@ -7365,7 +7365,7 @@
 
     .line 42
     .line 43
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     .line 44
     .line 45
@@ -7419,7 +7419,7 @@
 
     .line 10
     .line 11
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_screen_lock_portrait_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_screen_lock_portrait_white_24:I
 
     .line 12
     .line 13
@@ -7439,7 +7439,7 @@
 
     .line 19
     .line 20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_screen_lock_landscape_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_screen_lock_landscape_white_24:I
 
     .line 21
     .line 22
@@ -7452,7 +7452,7 @@
 
     .line 26
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_screen_rotation_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_screen_rotation_white_24:I
 
     .line 27
     .line 28
@@ -7581,25 +7581,25 @@
     iput v2, v0, Lcom/mycompany/app/video/VideoControl;->U:I
 
     .line 11
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->ctrl_bottom_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->ctrl_bottom_view:I
 
     .line 12
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->ctrl_icon_play:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->ctrl_icon_play:I
 
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->ctrl_vol_info:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->ctrl_vol_info:I
 
     .line 14
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->ctrl_pad_bot:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->ctrl_pad_bot:I
 
     .line 15
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->ctrl_curr_time:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->ctrl_curr_time:I
 
     .line 16
-    sget v7, Lcom/mycompany/app/soulbrowser/R$id;->ctrl_total_time:I
+    sget v7, Lcom/kswarrior/ksportal/R$id;->ctrl_total_time:I
 
     .line 17
-    sget v8, Lcom/mycompany/app/soulbrowser/R$id;->ctrl_cast_icon:I
+    sget v8, Lcom/kswarrior/ksportal/R$id;->ctrl_cast_icon:I
 
     .line 18
     iget-boolean v9, v0, Lcom/mycompany/app/video/VideoControl;->r0:Z
@@ -7786,7 +7786,7 @@
     invoke-virtual {v8, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 50
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_white_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_white_24:I
 
     invoke-virtual {v8, v13}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7889,7 +7889,7 @@
     invoke-virtual {v11, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 71
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_zoom_out_map_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_zoom_out_map_white_24:I
 
     invoke-virtual {v11, v15}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7958,7 +7958,7 @@
     invoke-virtual {v11, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 82
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_slow_motion_video_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_slow_motion_video_white_24:I
 
     invoke-virtual {v11, v15}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7996,7 +7996,7 @@
     invoke-virtual {v13, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 88
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_crop_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_crop_white_24:I
 
     invoke-virtual {v13, v15}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8034,7 +8034,7 @@
     invoke-virtual {v11, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 94
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_in_picture_alt_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_in_picture_alt_white_24:I
 
     invoke-virtual {v11, v15}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8072,7 +8072,7 @@
     invoke-virtual {v13, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 100
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_white_24:I
 
     invoke-virtual {v13, v15}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8171,9 +8171,9 @@
     invoke-direct {v10, v1}, Lcom/mycompany/app/view/MyButtonCheck;-><init>(Landroid/content/Context;)V
 
     .line 117
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_red_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_red_24:I
 
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_white_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_white_24:I
 
     invoke-virtual {v10, v11, v13}, Lcom/mycompany/app/view/MyButtonCheck;->p(II)V
 
@@ -8242,7 +8242,7 @@
     invoke-virtual {v11, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 128
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_white_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_white_24:I
 
     invoke-virtual {v11, v13}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8298,7 +8298,7 @@
     invoke-virtual {v13, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 138
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_white_24:I
 
     invoke-virtual {v13, v15}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8369,7 +8369,7 @@
     invoke-virtual {v10, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 149
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_white_24:I
 
     invoke-virtual {v10, v11}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8436,7 +8436,7 @@
     invoke-virtual {v3, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 160
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_music_note_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->baseline_music_note_white_24:I
 
     invoke-virtual {v3, v11}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8492,7 +8492,7 @@
     invoke-virtual {v11, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 170
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subtitles_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_subtitles_white_24:I
 
     invoke-virtual {v11, v15}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8555,7 +8555,7 @@
     invoke-virtual {v3, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 181
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_brightness_6_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_brightness_6_white_24:I
 
     invoke-virtual {v3, v15}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8688,7 +8688,7 @@
     invoke-virtual {v3, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 202
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_volume_up_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_volume_up_white_24:I
 
     invoke-virtual {v3, v11}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -8837,7 +8837,7 @@
     invoke-virtual {v3, v12}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 227
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_download_white_24:I
 
     invoke-virtual {v3, v11}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -9039,7 +9039,7 @@
     invoke-direct {v11, v1}, Landroid/widget/SeekBar;-><init>(Landroid/content/Context;)V
 
     .line 267
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_w:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_w:I
 
     invoke-static {v1, v15}, Lcom/mycompany/app/main/MainUtil;->S(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
 
@@ -9048,7 +9048,7 @@
     invoke-virtual {v11, v15}, Landroid/widget/ProgressBar;->setProgressDrawable(Landroid/graphics/drawable/Drawable;)V
 
     .line 268
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_w:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_w:I
 
     invoke-static {v1, v15}, Lcom/mycompany/app/main/MainUtil;->S(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
 

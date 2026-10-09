@@ -144,7 +144,7 @@
     .line 45
     .line 46
     :cond_3
-    sget v2, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v2, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 47
     .line 48

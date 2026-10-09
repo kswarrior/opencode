@@ -725,7 +725,7 @@
 
     .line 58
     .line 59
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->filtered_image:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->filtered_image:I
 
     .line 60
     .line 61

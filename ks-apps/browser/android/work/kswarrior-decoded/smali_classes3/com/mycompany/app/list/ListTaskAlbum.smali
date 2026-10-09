@@ -779,7 +779,7 @@
 
     .line 45
     .line 46
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_library_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_local_library_black_24:I
 
     .line 47
     .line 48

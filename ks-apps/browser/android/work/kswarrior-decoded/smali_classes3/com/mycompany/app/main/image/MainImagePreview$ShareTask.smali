@@ -1337,7 +1337,7 @@
     .line 29
     .line 30
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 31
     .line 32

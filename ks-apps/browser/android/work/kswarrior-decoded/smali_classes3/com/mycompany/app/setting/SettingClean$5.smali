@@ -318,7 +318,7 @@
 
     .line 128
     .line 129
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->password_lock_1:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->password_lock_1:I
 
     .line 130
     .line 131

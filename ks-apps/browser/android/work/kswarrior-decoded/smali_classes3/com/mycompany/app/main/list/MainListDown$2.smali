@@ -66,7 +66,7 @@
 
     .line 12
     .line 13
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 14
     .line 15
@@ -1976,7 +1976,7 @@
 
     .line 12
     .line 13
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 14
     .line 15

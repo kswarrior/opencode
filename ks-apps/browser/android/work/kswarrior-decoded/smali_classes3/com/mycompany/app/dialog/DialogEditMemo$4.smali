@@ -119,7 +119,7 @@
 
     .line 39
     .line 40
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 41
     .line 42
@@ -163,7 +163,7 @@
 
     .line 62
     .line 63
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 64
     .line 65
@@ -420,7 +420,7 @@
 
     .line 192
     .line 193
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->user_agent:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->user_agent:I
 
     .line 194
     .line 195

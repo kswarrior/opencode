@@ -1053,7 +1053,7 @@
 
     .line 65
     .line 66
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->file_found:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->file_found:I
 
     .line 67
     .line 68
@@ -1124,7 +1124,7 @@
 
     .line 100
     .line 101
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_found:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_found:I
 
     .line 102
     .line 103

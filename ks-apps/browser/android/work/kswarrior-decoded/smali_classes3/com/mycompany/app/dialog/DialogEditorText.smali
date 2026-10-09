@@ -46,11 +46,11 @@
     .locals 8
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_24:I
 
     .line 2
     .line 3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_white_24:I
 
     .line 4
     .line 5
@@ -446,7 +446,7 @@
     .line 8
     .line 9
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->item_color_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->item_color_view:I
 
     .line 10
     .line 11
@@ -582,7 +582,7 @@
 
     .line 78
     .line 79
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 80
     .line 81
@@ -601,7 +601,7 @@
     .line 87
     .line 88
     .line 89
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->text_border:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->text_border:I
 
     .line 90
     .line 91
@@ -1188,7 +1188,7 @@
     .line 394
     .line 395
     .line 396
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 397
     .line 398
@@ -1197,7 +1197,7 @@
     .line 399
     .line 400
     .line 401
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_view:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->selector_view:I
 
     .line 402
     .line 403

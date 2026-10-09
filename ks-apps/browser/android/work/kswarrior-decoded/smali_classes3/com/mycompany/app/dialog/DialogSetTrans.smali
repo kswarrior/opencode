@@ -454,7 +454,7 @@
 
     .line 83
     .line 84
-    sget v16, Lcom/mycompany/app/soulbrowser/R$string;->trans_detect:I
+    sget v16, Lcom/kswarrior/ksportal/R$string;->trans_detect:I
 
     .line 85
     .line 86
@@ -512,7 +512,7 @@
 
     .line 112
     .line 113
-    sget v16, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v16, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 114
     .line 115
@@ -566,7 +566,7 @@
 
     .line 139
     .line 140
-    sget v16, Lcom/mycompany/app/soulbrowser/R$string;->trans_icon_always:I
+    sget v16, Lcom/kswarrior/ksportal/R$string;->trans_icon_always:I
 
     .line 141
     .line 142
@@ -620,7 +620,7 @@
 
     .line 166
     .line 167
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->trans_block_site:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->trans_block_site:I
 
     .line 168
     .line 169
@@ -667,7 +667,7 @@
 
     .line 188
     .line 189
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->trans_block_page:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->trans_block_page:I
 
     .line 190
     .line 191

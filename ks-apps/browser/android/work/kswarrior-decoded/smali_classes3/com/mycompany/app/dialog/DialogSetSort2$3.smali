@@ -162,7 +162,7 @@
 
     .line 54
     .line 55
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->order_ascend:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->order_ascend:I
 
     .line 56
     .line 57
@@ -187,7 +187,7 @@
 
     .line 67
     .line 68
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->order_descend:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->order_descend:I
 
     .line 69
     .line 70

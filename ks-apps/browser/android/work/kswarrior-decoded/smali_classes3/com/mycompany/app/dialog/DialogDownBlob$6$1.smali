@@ -69,7 +69,7 @@
 
     .line 11
     .line 12
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->exist_file:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->exist_file:I
 
     .line 13
     .line 14

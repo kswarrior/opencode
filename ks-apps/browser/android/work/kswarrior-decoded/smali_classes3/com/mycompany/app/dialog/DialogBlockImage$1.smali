@@ -390,7 +390,7 @@
     .line 183
     .line 184
     .line 185
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->refresh:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->refresh:I
 
     .line 186
     .line 187

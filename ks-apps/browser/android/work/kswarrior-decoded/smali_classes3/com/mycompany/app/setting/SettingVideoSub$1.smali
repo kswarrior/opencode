@@ -178,7 +178,7 @@
     .line 66
     .line 67
     .line 68
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->size:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->size:I
 
     .line 69
     .line 70

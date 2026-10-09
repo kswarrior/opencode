@@ -74,7 +74,7 @@
 
     .line 15
     .line 16
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->reset_noti:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->reset_noti:I
 
     .line 17
     .line 18

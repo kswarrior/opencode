@@ -230,7 +230,7 @@
     .line 88
     .line 89
     .line 90
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->time_s:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->time_s:I
 
     .line 91
     .line 92
@@ -300,7 +300,7 @@
     .line 122
     .line 123
     .line 124
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->time_s:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->time_s:I
 
     .line 125
     .line 126
@@ -367,7 +367,7 @@
     .line 155
     .line 156
     .line 157
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->pause:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->pause:I
 
     .line 158
     .line 159
@@ -437,7 +437,7 @@
     .line 189
     .line 190
     .line 191
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 192
     .line 193

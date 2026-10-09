@@ -96,7 +96,7 @@
 
     .line 26
     .line 27
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 28
     .line 29
@@ -109,7 +109,7 @@
 
     .line 33
     .line 34
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 35
     .line 36
@@ -157,7 +157,7 @@
 
     .line 58
     .line 59
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 60
     .line 61
@@ -170,7 +170,7 @@
 
     .line 65
     .line 66
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 67
     .line 68
@@ -223,7 +223,7 @@
 
     .line 93
     .line 94
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_stay_current_landscape_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_stay_current_landscape_dark_24:I
 
     .line 95
     .line 96
@@ -231,7 +231,7 @@
 
     .line 97
     :cond_2
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_stay_current_landscape_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_stay_current_landscape_black_24:I
 
     .line 98
     .line 99
@@ -245,7 +245,7 @@
 
     .line 103
     .line 104
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->view_land:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->view_land:I
 
     .line 105
     .line 106
@@ -270,7 +270,7 @@
 
     .line 115
     .line 116
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_stay_current_portrait_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_stay_current_portrait_dark_24:I
 
     .line 117
     .line 118
@@ -278,7 +278,7 @@
 
     .line 119
     :cond_4
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_stay_current_portrait_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_stay_current_portrait_black_24:I
 
     .line 120
     .line 121
@@ -292,7 +292,7 @@
 
     .line 125
     .line 126
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->view_port:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->view_port:I
 
     .line 127
     .line 128

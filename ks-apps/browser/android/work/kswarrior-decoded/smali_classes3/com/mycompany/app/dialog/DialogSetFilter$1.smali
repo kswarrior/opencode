@@ -66,7 +66,7 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_count_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_count_view:I
 
     .line 12
     .line 13
@@ -440,7 +440,7 @@
     .line 211
     .line 212
     .line 213
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->add:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->add:I
 
     .line 214
     .line 215

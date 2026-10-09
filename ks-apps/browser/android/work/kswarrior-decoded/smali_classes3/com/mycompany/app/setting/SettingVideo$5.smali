@@ -164,7 +164,7 @@
 
     .line 33
     .line 34
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->video_icon_long:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->video_icon_long:I
 
     .line 35
     .line 36
@@ -172,7 +172,7 @@
 
     .line 37
     :cond_2
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->video_icon_tap:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->video_icon_tap:I
 
     .line 38
     .line 39

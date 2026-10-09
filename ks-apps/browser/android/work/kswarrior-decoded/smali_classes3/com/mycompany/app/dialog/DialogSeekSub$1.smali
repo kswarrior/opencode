@@ -66,7 +66,7 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_seek_text:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_seek_text:I
 
     .line 12
     .line 13
@@ -436,7 +436,7 @@
     .line 209
     .line 210
     .line 211
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 212
     .line 213
@@ -480,7 +480,7 @@
     .line 231
     .line 232
     .line 233
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 234
     .line 235

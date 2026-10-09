@@ -74,7 +74,7 @@
     .line 9
     .line 10
     .line 11
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_DOWN_COMPLETE"
+    const-string v0, "com.kswarrior.ksportal.ACTION_DOWN_COMPLETE"
 
     .line 12
     .line 13

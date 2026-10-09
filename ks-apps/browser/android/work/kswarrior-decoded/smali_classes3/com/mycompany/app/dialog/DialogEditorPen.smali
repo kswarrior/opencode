@@ -58,11 +58,11 @@
     .locals 8
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_24:I
 
     .line 2
     .line 3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_white_24:I
 
     .line 4
     .line 5

@@ -970,7 +970,7 @@
 
     .line 64
     .line 65
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->update_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->update_fail:I
 
     .line 66
     .line 67

@@ -244,7 +244,7 @@
 
     .line 38
     .line 39
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 40
     .line 41
@@ -252,7 +252,7 @@
 
     .line 42
     :cond_1
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 43
     .line 44

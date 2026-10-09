@@ -92,7 +92,7 @@
 
     .line 23
     .line 24
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_down_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_down_video:I
 
     .line 25
     .line 26
@@ -172,7 +172,7 @@
 
     .line 61
     .line 62
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->video_down_guide_3:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->video_down_guide_3:I
 
     .line 63
     .line 64

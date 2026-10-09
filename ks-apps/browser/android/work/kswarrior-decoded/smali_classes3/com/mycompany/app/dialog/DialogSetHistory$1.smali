@@ -66,11 +66,11 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->set_default_title:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->set_default_title:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->set_default_value:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->set_default_value:I
 
     .line 14
     .line 15
@@ -179,7 +179,7 @@
     move-result-object v13
 
     .line 70
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->history_time:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->history_time:I
 
     .line 71
     .line 72
@@ -294,7 +294,7 @@
     .line 129
     .line 130
     .line 131
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 132
     .line 133

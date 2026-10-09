@@ -66,19 +66,19 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->area_view_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->area_view_1:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->area_view_2:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->area_view_2:I
 
     .line 14
     .line 15
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->area_view_3:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->area_view_3:I
 
     .line 16
     .line 17
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->area_view_4:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->area_view_4:I
 
     .line 18
     .line 19
@@ -167,7 +167,7 @@
     .line 60
     .line 61
     .line 62
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->loading:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->loading:I
 
     .line 63
     .line 64
@@ -553,7 +553,7 @@
     .line 264
     .line 265
     .line 266
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->exist_pass:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->exist_pass:I
 
     .line 267
     .line 268
@@ -643,7 +643,7 @@
     .line 312
     .line 313
     .line 314
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->change_before:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->change_before:I
 
     .line 315
     .line 316
@@ -898,7 +898,7 @@
     .line 447
     .line 448
     .line 449
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->change_after:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->change_after:I
 
     .line 450
     .line 451
@@ -1165,7 +1165,7 @@
     move-result-object v5
 
     .line 590
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->apply_pass_equal:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->apply_pass_equal:I
 
     .line 591
     .line 592
@@ -1325,7 +1325,7 @@
     .line 672
     .line 673
     .line 674
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->skip:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->skip:I
 
     .line 675
     .line 676
@@ -1407,7 +1407,7 @@
     .line 714
     .line 715
     .line 716
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 717
     .line 718

@@ -135,7 +135,7 @@
     .line 41
     .line 42
     :try_start_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$id;->list_view:I
+    sget v0, Lcom/kswarrior/ksportal/R$id;->list_view:I
 
     .line 43
     .line 44

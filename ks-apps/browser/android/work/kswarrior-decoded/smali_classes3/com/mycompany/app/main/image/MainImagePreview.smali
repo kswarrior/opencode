@@ -2129,7 +2129,7 @@
 
     .line 26
     .line 27
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_white_2:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_white_2:I
 
     .line 28
     .line 29
@@ -2607,7 +2607,7 @@
 
     .line 17
     :cond_1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->down_start:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->down_start:I
 
     .line 18
     .line 19
@@ -2681,7 +2681,7 @@
     .line 51
     .line 52
     :cond_3
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 53
     .line 54
@@ -5266,7 +5266,7 @@
 
     .line 46
     .line 47
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_48:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_48:I
 
     .line 48
     .line 49
@@ -6294,7 +6294,7 @@
 
     .line 91
     .line 92
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 93
     .line 94
@@ -6625,7 +6625,7 @@
     .line 263
     .line 264
     .line 265
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_white_24:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->outline_download_white_24:I
 
     .line 266
     .line 267
@@ -6721,7 +6721,7 @@
     .line 315
     .line 316
     .line 317
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_share_white_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_share_white_24:I
 
     .line 318
     .line 319
@@ -6805,7 +6805,7 @@
     .line 359
     .line 360
     .line 361
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_wallpaper_white_24:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->outline_wallpaper_white_24:I
 
     .line 362
     .line 363
@@ -6887,7 +6887,7 @@
     .line 403
     .line 404
     .line 405
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_crop_white_24:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->outline_crop_white_24:I
 
     .line 406
     .line 407
@@ -6965,7 +6965,7 @@
     .line 445
     .line 446
     .line 447
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_edit_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_edit_white_24:I
 
     .line 448
     .line 449
@@ -7034,7 +7034,7 @@
     .line 482
     .line 483
     .line 484
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_g_translate_white_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_g_translate_white_24:I
 
     .line 485
     .line 486
@@ -10100,7 +10100,7 @@
 
     .line 32
     .line 33
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 34
     .line 35

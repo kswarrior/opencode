@@ -1016,7 +1016,7 @@
 
     .line 360
     .line 361
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_text_snippet_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_text_snippet_black_24:I
 
     .line 362
     .line 363
@@ -1028,7 +1028,7 @@
 
     .line 366
     :cond_10
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_kid_star_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_kid_star_black_24:I
 
     .line 367
     .line 368

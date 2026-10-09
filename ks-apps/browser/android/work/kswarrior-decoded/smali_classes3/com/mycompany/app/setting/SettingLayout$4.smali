@@ -78,11 +78,11 @@
 
     .line 16
     .line 17
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->reset_setting:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->reset_setting:I
 
     .line 18
     .line 19
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 20
     .line 21

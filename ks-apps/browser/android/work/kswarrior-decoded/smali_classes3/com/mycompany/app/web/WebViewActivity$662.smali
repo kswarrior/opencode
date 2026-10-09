@@ -124,7 +124,7 @@
 
     .line 37
     .line 38
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->press_again:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->press_again:I
 
     .line 39
     .line 40

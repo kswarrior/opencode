@@ -626,7 +626,7 @@
 
     .line 280
     .line 281
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->history_zero:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->history_zero:I
 
     .line 282
     .line 283
@@ -644,7 +644,7 @@
 
     .line 290
     .line 291
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 292
     .line 293
@@ -665,7 +665,7 @@
     const/4 p3, 0x2
 
     .line 302
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 303
     .line 304

@@ -126,7 +126,7 @@
 
     .line 50
     .line 51
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 52
     .line 53
@@ -675,7 +675,7 @@
 
     .line 21
     .line 22
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 23
     .line 24
@@ -788,7 +788,7 @@
 
     .line 27
     .line 28
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 29
     .line 30
@@ -855,7 +855,7 @@
 
     .line 58
     .line 59
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 60
     .line 61
@@ -914,7 +914,7 @@
 
     .line 89
     .line 90
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 91
     .line 92
@@ -940,7 +940,7 @@
 
     .line 102
     .line 103
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 104
     .line 105
@@ -967,7 +967,7 @@
 
     .line 115
     .line 116
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->no_bookmark:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->no_bookmark:I
 
     .line 117
     .line 118

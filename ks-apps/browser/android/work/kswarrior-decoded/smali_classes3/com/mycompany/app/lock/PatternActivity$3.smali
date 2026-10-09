@@ -87,7 +87,7 @@
 
     .line 21
     .line 22
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_dark_84:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_dark_84:I
 
     .line 23
     .line 24
@@ -146,7 +146,7 @@
 
     .line 53
     .line 54
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 55
     .line 56
@@ -164,7 +164,7 @@
 
     .line 62
     .line 63
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 64
     .line 65
@@ -181,7 +181,7 @@
 
     .line 70
     .line 71
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_black_84:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_black_84:I
 
     .line 72
     .line 73
@@ -240,7 +240,7 @@
 
     .line 102
     .line 103
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_gray:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_gray:I
 
     .line 104
     .line 105
@@ -258,7 +258,7 @@
 
     .line 111
     .line 112
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_gray:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_gray:I
 
     .line 113
     .line 114
@@ -405,7 +405,7 @@
 
     .line 183
     .line 184
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->secret_reset:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->secret_reset:I
 
     .line 185
     .line 186
@@ -468,7 +468,7 @@
 
     .line 214
     .line 215
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 216
     .line 217
@@ -534,7 +534,7 @@
 
     .line 246
     .line 247
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->normal_start:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->normal_start:I
 
     .line 248
     .line 249
@@ -551,7 +551,7 @@
 
     .line 254
     .line 255
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->secret_reset:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->secret_reset:I
 
     .line 256
     .line 257

@@ -105,7 +105,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->share_limit:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->share_limit:I
 
     .line 31
     .line 32
@@ -698,7 +698,7 @@
     .line 310
     .line 311
     .line 312
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->share:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->share:I
 
     .line 313
     .line 314
@@ -731,7 +731,7 @@
     .line 326
     .line 327
     :catch_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 328
     .line 329
@@ -744,7 +744,7 @@
 
     .line 333
     :catch_1
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 334
     .line 335
@@ -1148,7 +1148,7 @@
     .line 521
     .line 522
     .line 523
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->share:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->share:I
 
     .line 524
     .line 525
@@ -1180,7 +1180,7 @@
 
     .line 537
     :catch_2
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 538
     .line 539
@@ -1194,7 +1194,7 @@
     .line 543
     .line 544
     :catch_3
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 545
     .line 546

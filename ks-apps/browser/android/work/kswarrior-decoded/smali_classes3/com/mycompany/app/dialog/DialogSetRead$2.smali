@@ -81,7 +81,7 @@
 
     .line 17
     .line 18
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 19
     .line 20
@@ -112,7 +112,7 @@
 
     .line 33
     .line 34
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 35
     .line 36

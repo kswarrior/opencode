@@ -2038,7 +2038,7 @@
 
     .line 7
     .line 8
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->preview:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->preview:I
 
     .line 9
     .line 10
@@ -4134,23 +4134,23 @@
     .line 91
     :cond_7
     :goto_3
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->set_icon_reset:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->set_icon_reset:I
 
     .line 92
     .line 93
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->set_icon_apply:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->set_icon_apply:I
 
     .line 94
     .line 95
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->set_prev_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->set_prev_view:I
 
     .line 96
     .line 97
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->set_cast_icon:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->set_cast_icon:I
 
     .line 98
     .line 99
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->set_cast_ctrl:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->set_cast_ctrl:I
 
     .line 100
     .line 101
@@ -4285,7 +4285,7 @@
     .line 170
     .line 171
     .line 172
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->sub_setting:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->sub_setting:I
 
     .line 173
     .line 174
@@ -4627,7 +4627,7 @@
     .line 358
     .line 359
     .line 360
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->shadow_list_up:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->shadow_list_up:I
 
     .line 361
     .line 362

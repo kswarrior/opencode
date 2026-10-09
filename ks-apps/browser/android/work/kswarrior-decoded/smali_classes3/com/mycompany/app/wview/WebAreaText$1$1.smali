@@ -70,7 +70,7 @@
 
     .line 13
     .line 14
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 15
     .line 16

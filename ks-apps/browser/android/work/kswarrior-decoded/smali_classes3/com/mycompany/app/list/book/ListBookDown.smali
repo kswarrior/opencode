@@ -158,7 +158,7 @@
 
     .line 54
     :cond_5
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 55
     .line 56

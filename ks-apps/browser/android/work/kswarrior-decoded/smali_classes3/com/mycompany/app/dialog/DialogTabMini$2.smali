@@ -105,7 +105,7 @@
 
     .line 31
     .line 32
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_dark_20:I
 
     .line 33
     .line 34
@@ -118,11 +118,11 @@
 
     .line 38
     .line 39
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 40
     .line 41
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 42
     .line 43
@@ -135,7 +135,7 @@
 
     .line 47
     .line 48
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_mood_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_mood_dark_20:I
 
     .line 49
     .line 50
@@ -148,7 +148,7 @@
 
     .line 54
     .line 55
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_dark_20:I
 
     .line 56
     .line 57
@@ -239,7 +239,7 @@
 
     .line 104
     .line 105
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_black_20:I
 
     .line 106
     .line 107
@@ -252,11 +252,11 @@
 
     .line 111
     .line 112
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 113
     .line 114
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 115
     .line 116
@@ -269,7 +269,7 @@
 
     .line 120
     .line 121
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_mood_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_mood_black_20:I
 
     .line 122
     .line 123
@@ -282,7 +282,7 @@
 
     .line 127
     .line 128
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_black_20:I
 
     .line 129
     .line 130

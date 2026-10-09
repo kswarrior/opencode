@@ -91,7 +91,7 @@
 
     .line 23
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 25
     .line 26
@@ -132,7 +132,7 @@
 
     .line 45
     .line 46
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 47
     .line 48
@@ -155,7 +155,7 @@
 
     .line 57
     .line 58
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->youtube_speed:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->youtube_speed:I
 
     .line 59
     .line 60
@@ -253,7 +253,7 @@
 
     .line 108
     .line 109
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->normal_rate:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->normal_rate:I
 
     .line 110
     .line 111

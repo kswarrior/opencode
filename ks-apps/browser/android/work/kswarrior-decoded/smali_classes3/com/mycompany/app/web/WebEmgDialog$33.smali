@@ -60,7 +60,7 @@
 
     .line 7
     .line 8
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->play_error:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->play_error:I
 
     .line 9
     .line 10

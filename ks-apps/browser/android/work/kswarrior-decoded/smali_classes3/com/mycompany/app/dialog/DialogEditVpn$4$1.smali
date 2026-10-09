@@ -470,7 +470,7 @@
 
     .line 191
     .line 192
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->noti_invalid:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->noti_invalid:I
 
     .line 193
     .line 194
@@ -521,7 +521,7 @@
 
     .line 215
     .line 216
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 217
     .line 218

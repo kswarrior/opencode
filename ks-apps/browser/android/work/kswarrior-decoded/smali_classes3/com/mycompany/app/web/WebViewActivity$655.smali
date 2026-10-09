@@ -489,7 +489,7 @@
 
     .line 239
     .line 240
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->gesture_guide:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->gesture_guide:I
 
     .line 241
     .line 242
@@ -498,7 +498,7 @@
     .line 243
     .line 244
     .line 245
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 246
     .line 247
@@ -507,7 +507,7 @@
     .line 248
     .line 249
     .line 250
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 251
     .line 252

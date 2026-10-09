@@ -339,7 +339,7 @@
 
     .line 18
     .line 19
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 20
     .line 21
@@ -372,7 +372,7 @@
 
     .line 34
     .line 35
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->down_fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->down_fail:I
 
     .line 36
     .line 37

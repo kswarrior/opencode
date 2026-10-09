@@ -185,7 +185,7 @@
 
     .line 69
     .line 70
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_in_picture_alt_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_in_picture_alt_dark_24:I
 
     .line 71
     .line 72
@@ -202,7 +202,7 @@
 
     .line 77
     .line 78
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_in_picture_alt_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_in_picture_alt_black_24:I
 
     .line 79
     .line 80
@@ -216,7 +216,7 @@
 
     .line 84
     .line 85
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->pip_mode:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->pip_mode:I
 
     .line 86
     .line 87
@@ -245,7 +245,7 @@
 
     .line 98
     .line 99
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_fullscreen_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_fullscreen_dark_24:I
 
     .line 100
     .line 101
@@ -262,7 +262,7 @@
 
     .line 106
     .line 107
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_fullscreen_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_fullscreen_black_24:I
 
     .line 108
     .line 109
@@ -276,7 +276,7 @@
 
     .line 113
     .line 114
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->full_screen:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->full_screen:I
 
     .line 115
     .line 116
@@ -301,7 +301,7 @@
 
     .line 125
     .line 126
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_download_dark_24:I
 
     .line 127
     .line 128
@@ -318,7 +318,7 @@
 
     .line 133
     .line 134
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_download_black_24:I
 
     .line 135
     .line 136
@@ -332,7 +332,7 @@
 
     .line 140
     .line 141
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 142
     .line 143

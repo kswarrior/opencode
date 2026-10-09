@@ -770,7 +770,7 @@
 
     .line 334
     .line 335
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 336
     .line 337
@@ -830,7 +830,7 @@
 
     .line 364
     .line 365
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 366
     .line 367
@@ -1101,7 +1101,7 @@
 
     .line 492
     .line 493
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 494
     .line 495

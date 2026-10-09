@@ -66,15 +66,15 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->list_icon_frame:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->list_icon_frame:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->list_bottom_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->list_bottom_view:I
 
     .line 14
     .line 15
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->list_cast_icon:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->list_cast_icon:I
 
     .line 16
     .line 17
@@ -309,7 +309,7 @@
     .line 140
     .line 141
     .line 142
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 143
     .line 144

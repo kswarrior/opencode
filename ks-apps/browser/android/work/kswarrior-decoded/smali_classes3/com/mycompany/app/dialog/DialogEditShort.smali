@@ -879,7 +879,7 @@
 
     .line 114
     .line 115
-    sget v2, Lcom/mycompany/app/soulbrowser/R$mipmap;->ic_launcher:I
+    sget v2, Lcom/kswarrior/ksportal/R$mipmap;->ic_launcher:I
 
     .line 116
     .line 117
@@ -1101,7 +1101,7 @@
 
     .line 226
     :cond_a
-    sget v2, Lcom/mycompany/app/soulbrowser/R$mipmap;->ic_launcher:I
+    sget v2, Lcom/kswarrior/ksportal/R$mipmap;->ic_launcher:I
 
     .line 227
     .line 228
@@ -1235,7 +1235,7 @@
 
     .line 285
     .line 286
-    sget p2, Lcom/mycompany/app/soulbrowser/R$mipmap;->ic_launcher:I
+    sget p2, Lcom/kswarrior/ksportal/R$mipmap;->ic_launcher:I
 
     .line 287
     .line 288
@@ -2047,7 +2047,7 @@
     .line 114
     .line 115
     .line 116
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->noti_dot_red:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->noti_dot_red:I
 
     .line 117
     .line 118
@@ -2158,7 +2158,7 @@
 
     .line 172
     .line 173
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 174
     .line 175
@@ -2168,7 +2168,7 @@
     .line 177
     .line 178
     :cond_2
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 179
     .line 180
@@ -2365,7 +2365,7 @@
 
     .line 282
     .line 283
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 284
     .line 285
@@ -2458,7 +2458,7 @@
     move-result-object v1
 
     .line 331
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 332
     .line 333
@@ -2815,7 +2815,7 @@
 
     .line 23
     .line 24
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 25
     .line 26
@@ -2869,7 +2869,7 @@
 
     .line 50
     .line 51
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->input_url:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->input_url:I
 
     .line 52
     .line 53
@@ -3103,7 +3103,7 @@
 
     .line 41
     .line 42
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 43
     .line 44
@@ -3148,7 +3148,7 @@
 
     .line 63
     .line 64
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 65
     .line 66
@@ -3293,7 +3293,7 @@
 
     .line 133
     .line 134
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 135
     .line 136
@@ -4276,7 +4276,7 @@
 
     .line 127
     .line 128
-    sget v0, Lcom/mycompany/app/soulbrowser/R$mipmap;->ic_launcher:I
+    sget v0, Lcom/kswarrior/ksportal/R$mipmap;->ic_launcher:I
 
     .line 129
     .line 130
@@ -4297,7 +4297,7 @@
 
     .line 137
     .line 138
-    sget p2, Lcom/mycompany/app/soulbrowser/R$mipmap;->ic_launcher:I
+    sget p2, Lcom/kswarrior/ksportal/R$mipmap;->ic_launcher:I
 
     .line 139
     .line 140

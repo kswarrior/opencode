@@ -1512,7 +1512,7 @@
 
     .line 594
     .line 595
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_extension_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_extension_black_24:I
 
     .line 596
     .line 597

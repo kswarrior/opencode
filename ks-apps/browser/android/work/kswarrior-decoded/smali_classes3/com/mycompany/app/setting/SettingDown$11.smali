@@ -398,7 +398,7 @@
     .line 155
     .line 156
     .line 157
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->time_hour:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->time_hour:I
 
     .line 158
     .line 159

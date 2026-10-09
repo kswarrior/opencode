@@ -139,7 +139,7 @@
 
     .line 46
     .line 47
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->not_loaded:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->not_loaded:I
 
     .line 48
     .line 49

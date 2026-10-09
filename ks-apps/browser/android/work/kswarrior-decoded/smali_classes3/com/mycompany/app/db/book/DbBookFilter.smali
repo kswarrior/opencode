@@ -735,7 +735,7 @@
 
     .line 8
     .line 9
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_red_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_red_24:I
 
     .line 10
     .line 11
@@ -755,7 +755,7 @@
 
     .line 17
     .line 18
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_draft_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_draft_black_24:I
 
     .line 19
     .line 20
@@ -859,7 +859,7 @@
 
     .line 64
     .line 65
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adguard:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->ic_adguard:I
 
     .line 66
     .line 67
@@ -911,7 +911,7 @@
 
     .line 87
     .line 88
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adblock:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->ic_adblock:I
 
     .line 89
     .line 90
@@ -927,7 +927,7 @@
 
     .line 94
     :cond_7
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 95
     .line 96
@@ -1534,7 +1534,7 @@
 
     .line 188
     .line 189
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_red_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_red_24:I
 
     .line 190
     .line 191
@@ -1542,7 +1542,7 @@
 
     .line 192
     .line 193
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adblock:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->ic_adblock:I
 
     .line 194
     .line 195
@@ -1550,7 +1550,7 @@
 
     .line 196
     .line 197
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adguard:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->ic_adguard:I
 
     .line 198
     .line 199
@@ -1591,7 +1591,7 @@
 
     .line 213
     :cond_b
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adblock:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->ic_adblock:I
 
     .line 214
     .line 215
@@ -1603,7 +1603,7 @@
 
     .line 218
     :cond_c
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adguard:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->ic_adguard:I
 
     .line 219
     .line 220
@@ -1618,7 +1618,7 @@
 
     .line 224
     :cond_d
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 225
     .line 226
@@ -1676,7 +1676,7 @@
 
     .line 249
     .line 250
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->user_filter:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->user_filter:I
 
     .line 251
     .line 252
@@ -1736,7 +1736,7 @@
 
     .line 278
     .line 279
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->permission_removed:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->permission_removed:I
 
     .line 280
     .line 281

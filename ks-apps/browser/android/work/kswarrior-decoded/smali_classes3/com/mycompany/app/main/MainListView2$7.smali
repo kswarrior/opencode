@@ -159,7 +159,7 @@
 
     .line 57
     .line 58
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->sort:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->sort:I
 
     .line 59
     .line 60
@@ -178,7 +178,7 @@
 
     .line 67
     .line 68
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->show_detail:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->show_detail:I
 
     .line 69
     .line 70
@@ -207,7 +207,7 @@
 
     .line 82
     .line 83
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->show_single:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->show_single:I
 
     .line 84
     .line 85
@@ -247,7 +247,7 @@
     const/4 v2, 0x3
 
     .line 103
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->import_html:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->import_html:I
 
     .line 104
     .line 105
@@ -268,7 +268,7 @@
     const/4 v2, 0x4
 
     .line 114
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->export_html:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->export_html:I
 
     .line 115
     .line 116
@@ -297,7 +297,7 @@
     const/4 v2, 0x5
 
     .line 129
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->import_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->import_normal:I
 
     .line 130
     .line 131

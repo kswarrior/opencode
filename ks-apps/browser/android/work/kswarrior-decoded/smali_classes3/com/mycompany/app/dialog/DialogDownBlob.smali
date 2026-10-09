@@ -696,7 +696,7 @@
 
     .line 34
     .line 35
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->canceling:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->canceling:I
 
     .line 36
     .line 37

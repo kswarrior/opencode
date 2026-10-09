@@ -1155,7 +1155,7 @@
 
     .line 58
     .line 59
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->import_no_quick:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->import_no_quick:I
 
     .line 60
     .line 61
@@ -1520,7 +1520,7 @@
 
     .line 31
     .line 32
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_drop_down_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_drop_down_black_24:I
 
     .line 33
     .line 34
@@ -1575,7 +1575,7 @@
 
     .line 58
     .line 59
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_drop_down_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_drop_down_dark_24:I
 
     .line 60
     .line 61
@@ -1641,7 +1641,7 @@
 
     .line 91
     .line 92
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_drop_down_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_drop_down_dark_24:I
 
     .line 93
     .line 94
@@ -1681,7 +1681,7 @@
 
     .line 112
     .line 113
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_drop_down_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_drop_down_black_24:I
 
     .line 114
     .line 115
@@ -5593,7 +5593,7 @@
     .line 9
     .line 10
     .line 11
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->quick_view_set:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->quick_view_set:I
 
     .line 12
     .line 13

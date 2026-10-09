@@ -110,7 +110,7 @@
 
     .line 4
     .line 5
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogFullBlack:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogFullBlack:I
 
     .line 6
     .line 7
@@ -118,7 +118,7 @@
 
     .line 8
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogFullTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogFullTheme:I
 
     .line 9
     .line 10
@@ -591,7 +591,7 @@
 
     .line 19
     .line 20
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 21
     .line 22
@@ -1414,7 +1414,7 @@
 
     .line 48
     .line 49
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_dark_24:I
 
     .line 50
     .line 51
@@ -1441,7 +1441,7 @@
 
     .line 63
     .line 64
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_dark_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_dark_20:I
 
     .line 65
     .line 66
@@ -1549,7 +1549,7 @@
 
     .line 120
     .line 121
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_black_24:I
 
     .line 122
     .line 123
@@ -1571,7 +1571,7 @@
 
     .line 132
     .line 133
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_20:I
 
     .line 134
     .line 135

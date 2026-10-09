@@ -2048,7 +2048,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->quick_access:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->quick_access:I
 
     .line 31
     .line 32
@@ -2077,7 +2077,7 @@
 
     .line 44
     .line 45
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->news_title:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->news_title:I
 
     .line 46
     .line 47
@@ -2102,7 +2102,7 @@
     const/4 v1, 0x2
 
     .line 57
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->background:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->background:I
 
     .line 58
     .line 59
@@ -2131,7 +2131,7 @@
     const/4 v1, 0x3
 
     .line 72
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->add:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->add:I
 
     .line 73
     .line 74
@@ -2150,7 +2150,7 @@
 
     .line 81
     .line 82
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->at_bottom:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->at_bottom:I
 
     .line 83
     .line 84
@@ -2957,7 +2957,7 @@
     move-result-object v5
 
     .line 113
-    sget v6, Lcom/mycompany/app/soulbrowser/R$array;->news_code:I
+    sget v6, Lcom/kswarrior/ksportal/R$array;->news_code:I
 
     .line 114
     .line 115

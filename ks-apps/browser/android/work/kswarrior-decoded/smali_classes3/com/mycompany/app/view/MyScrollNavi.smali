@@ -584,7 +584,7 @@
 
     .line 49
     .line 50
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_right_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_right_white_24:I
 
     .line 51
     .line 52
@@ -596,7 +596,7 @@
 
     .line 55
     :cond_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_white_24:I
 
     .line 56
     .line 57
@@ -616,7 +616,7 @@
 
     .line 63
     .line 64
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_white_24:I
 
     .line 65
     .line 66
@@ -628,7 +628,7 @@
 
     .line 69
     :cond_2
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_right_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_right_white_24:I
 
     .line 70
     .line 71

@@ -431,7 +431,7 @@
 
     .line 71
     .line 72
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_bookmark:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_bookmark:I
 
     .line 73
     .line 74
@@ -707,7 +707,7 @@
     const/4 v2, 0x0
 
     .line 37
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->add_folder:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->add_folder:I
 
     .line 38
     .line 39
@@ -728,7 +728,7 @@
     const/4 v2, 0x1
 
     .line 48
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->direct_input:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->direct_input:I
 
     .line 49
     .line 50
@@ -749,7 +749,7 @@
     const/4 v2, 0x2
 
     .line 59
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->add_page:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->add_page:I
 
     .line 60
     .line 61

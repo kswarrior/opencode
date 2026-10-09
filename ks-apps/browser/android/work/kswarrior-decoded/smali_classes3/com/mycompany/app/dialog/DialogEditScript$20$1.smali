@@ -118,7 +118,7 @@
 
     .line 36
     .line 37
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->exist_name:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->exist_name:I
 
     .line 38
     .line 39
@@ -185,7 +185,7 @@
 
     .line 69
     .line 70
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->check_format:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->check_format:I
 
     .line 71
     .line 72

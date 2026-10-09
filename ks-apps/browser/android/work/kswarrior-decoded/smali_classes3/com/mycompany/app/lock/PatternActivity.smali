@@ -496,7 +496,7 @@
     .line 74
     .line 75
     :cond_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->lock_button_view:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->lock_button_view:I
 
     .line 76
     .line 77
@@ -891,7 +891,7 @@
     .line 286
     .line 287
     .line 288
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 289
     .line 290
@@ -2020,7 +2020,7 @@
 
     .line 75
     .line 76
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->wrong_input:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->wrong_input:I
 
     .line 77
     .line 78
@@ -2103,7 +2103,7 @@
 
     .line 116
     .line 117
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 118
     .line 119
@@ -2120,7 +2120,7 @@
 
     .line 124
     .line 125
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->reinput:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->reinput:I
 
     .line 126
     .line 127
@@ -2137,7 +2137,7 @@
 
     .line 133
     .line 134
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->continue_input:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->continue_input:I
 
     .line 135
     .line 136
@@ -2154,7 +2154,7 @@
 
     .line 141
     .line 142
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->input:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->input:I
 
     .line 143
     .line 144
@@ -2171,7 +2171,7 @@
 
     .line 150
     .line 151
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->continue_input:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->continue_input:I
 
     .line 152
     .line 153

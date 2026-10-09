@@ -409,7 +409,7 @@
 
     .line 15
     :cond_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->default_title:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->default_title:I
 
     .line 16
     .line 17
@@ -434,7 +434,7 @@
     .line 25
     .line 26
     .line 27
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->down_expire_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->down_expire_1:I
 
     .line 28
     .line 29
@@ -460,7 +460,7 @@
     .line 39
     .line 40
     .line 41
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->down_limit_info:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->down_limit_info:I
 
     .line 42
     .line 43
@@ -494,7 +494,7 @@
     .line 57
     .line 58
     .line 59
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->down_back_info_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->down_back_info_1:I
 
     .line 60
     .line 61
@@ -516,7 +516,7 @@
     .line 69
     .line 70
     .line 71
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->down_back_info_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->down_back_info_2:I
 
     .line 72
     .line 73
@@ -574,7 +574,7 @@
 
     .line 100
     .line 101
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->down_manager:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->down_manager:I
 
     .line 102
     .line 103
@@ -598,7 +598,7 @@
 
     .line 112
     .line 113
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->down_location:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->down_location:I
 
     .line 114
     .line 115
@@ -646,7 +646,7 @@
 
     .line 136
     .line 137
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->fast_down:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->fast_down:I
 
     .line 138
     .line 139
@@ -666,7 +666,7 @@
     move-result-object v7
 
     .line 147
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 148
     .line 149
@@ -690,7 +690,7 @@
 
     .line 158
     .line 159
-    sget v18, Lcom/mycompany/app/soulbrowser/R$string;->retry_count:I
+    sget v18, Lcom/kswarrior/ksportal/R$string;->retry_count:I
 
     .line 160
     .line 161
@@ -710,7 +710,7 @@
     move-result-object v19
 
     .line 169
-    sget v20, Lcom/mycompany/app/soulbrowser/R$string;->retry_count_info:I
+    sget v20, Lcom/kswarrior/ksportal/R$string;->retry_count_info:I
 
     .line 170
     .line 171
@@ -740,7 +740,7 @@
 
     .line 184
     .line 185
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->down_limit:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->down_limit:I
 
     .line 186
     .line 187
@@ -782,7 +782,7 @@
 
     .line 204
     .line 205
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->down_back_time:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->down_back_time:I
 
     .line 206
     .line 207
@@ -813,7 +813,7 @@
     .line 220
     .line 221
     .line 222
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->time_hour:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->time_hour:I
 
     .line 223
     .line 224
@@ -878,7 +878,7 @@
 
     .line 254
     .line 255
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->down_noti:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->down_noti:I
 
     .line 256
     .line 257
@@ -931,11 +931,11 @@
 
     .line 281
     .line 282
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->report_site:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->report_site:I
 
     .line 283
     .line 284
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->report_down:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->report_down:I
 
     .line 285
     .line 286
@@ -963,7 +963,7 @@
 
     .line 297
     .line 298
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->video_down_guide_3:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->video_down_guide_3:I
 
     .line 299
     .line 300
@@ -1062,7 +1062,7 @@
 
     .line 2
     .line 3
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 4
     .line 5
@@ -1085,7 +1085,7 @@
 
     .line 12
     .line 13
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_allow:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_allow:I
 
     .line 14
     .line 15
@@ -1236,7 +1236,7 @@
 
     .line 21
     :cond_1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_selected:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_selected:I
 
     .line 22
     .line 23
@@ -1615,7 +1615,7 @@
 
     .line 16
     .line 17
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 18
     .line 19
@@ -1648,7 +1648,7 @@
 
     .line 32
     .line 33
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 34
     .line 35
@@ -1833,7 +1833,7 @@
     .line 20
     .line 21
     .line 22
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->down_set:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->down_set:I
 
     .line 23
     .line 24

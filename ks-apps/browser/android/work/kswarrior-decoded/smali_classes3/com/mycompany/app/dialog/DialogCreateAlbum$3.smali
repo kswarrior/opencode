@@ -169,7 +169,7 @@
 
     .line 60
     .line 61
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->default_image:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->default_image:I
 
     .line 62
     .line 63
@@ -190,7 +190,7 @@
     const/4 v2, 0x1
 
     .line 72
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 73
     .line 74
@@ -211,7 +211,7 @@
     const/4 v2, 0x2
 
     .line 83
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->camera:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->camera:I
 
     .line 84
     .line 85

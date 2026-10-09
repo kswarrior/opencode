@@ -190,7 +190,7 @@
 
     .line 54
     .line 55
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 56
     .line 57

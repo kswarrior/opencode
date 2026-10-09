@@ -131,7 +131,7 @@
     move-result-object p2
 
     .line 31
-    sget v1, Lcom/mycompany/app/soulbrowser/R$array;->names:I
+    sget v1, Lcom/kswarrior/ksportal/R$array;->names:I
 
     .line 32
     .line 33
@@ -541,11 +541,11 @@
 
     .line 25
     .line 26
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->vpn:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->vpn:I
 
     .line 27
     .line 28
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->not_support_locale:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->not_support_locale:I
 
     .line 29
     .line 30
@@ -594,7 +594,7 @@
 
     .line 52
     .line 53
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->vpn_server:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->vpn_server:I
 
     .line 54
     .line 55
@@ -629,7 +629,7 @@
 
     .line 69
     .line 70
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->visit_site:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->visit_site:I
 
     .line 71
     .line 72
@@ -815,7 +815,7 @@
     move-result-object v0
 
     .line 37
-    sget v2, Lcom/mycompany/app/soulbrowser/R$array;->names:I
+    sget v2, Lcom/kswarrior/ksportal/R$array;->names:I
 
     .line 38
     .line 39
@@ -878,7 +878,7 @@
 
     .line 62
     .line 63
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->name0:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->name0:I
 
     .line 64
     .line 65
@@ -1057,7 +1057,7 @@
     move-result-object v0
 
     .line 35
-    sget v2, Lcom/mycompany/app/soulbrowser/R$array;->server_websites:I
+    sget v2, Lcom/kswarrior/ksportal/R$array;->server_websites:I
 
     .line 36
     .line 37
@@ -1120,7 +1120,7 @@
 
     .line 60
     .line 61
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->website0:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->website0:I
 
     .line 62
     .line 63
@@ -1403,7 +1403,7 @@
 
     .line 60
     .line 61
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->vpn_active:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->vpn_active:I
 
     .line 62
     .line 63
@@ -1997,7 +1997,7 @@
     .line 11
     .line 12
     .line 13
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->vpn:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->vpn:I
 
     .line 14
     .line 15

@@ -1257,7 +1257,7 @@
 
     .line 6
     .line 7
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_up_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_up_black_24:I
 
     .line 8
     .line 9
@@ -1265,7 +1265,7 @@
 
     .line 10
     :cond_0
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_up_dark_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_up_dark_24:I
 
     .line 11
     .line 12

@@ -485,7 +485,7 @@
 
     .line 198
     .line 199
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->pdf:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->pdf:I
 
     .line 200
     .line 201
@@ -500,7 +500,7 @@
 
     .line 204
     .line 205
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->zip:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->zip:I
 
     .line 206
     .line 207
@@ -508,7 +508,7 @@
 
     .line 208
     :cond_b
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->album:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->album:I
 
     .line 209
     .line 210

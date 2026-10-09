@@ -809,7 +809,7 @@
 
     .line 318
     .line 319
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_library_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_local_library_black_24:I
 
     .line 320
     .line 321

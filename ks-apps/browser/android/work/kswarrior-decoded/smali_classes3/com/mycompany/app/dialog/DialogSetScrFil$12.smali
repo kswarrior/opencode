@@ -208,7 +208,7 @@
 
     .line 76
     .line 77
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->filter_color:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->filter_color:I
 
     .line 78
     .line 79

@@ -97,7 +97,7 @@
 
     .line 4
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     :goto_0
     invoke-direct {p0, p1, v0}, Lcom/mycompany/app/view/MyDialogBottom;-><init>(Landroid/content/Context;I)V
@@ -126,7 +126,7 @@
 
     .line 1
     :cond_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v1, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     :goto_0
     invoke-direct {p0, p1, v1}, Lcom/mycompany/app/view/MyDialogBottom;-><init>(Landroid/content/Context;I)V
@@ -601,7 +601,7 @@
 
     .line 96
     :cond_8
-    const-string v5, "com.mycompany.app.soulbrowser"
+    const-string v5, "com.kswarrior.ksportal"
 
     .line 97
     .line 98

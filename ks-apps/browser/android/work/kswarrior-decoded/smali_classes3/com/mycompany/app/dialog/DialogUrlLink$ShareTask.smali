@@ -1369,7 +1369,7 @@
 
     .line 31
     .line 32
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 33
     .line 34

@@ -70,7 +70,7 @@
 
     .line 13
     .line 14
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 15
     .line 16

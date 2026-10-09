@@ -103,7 +103,7 @@
     .line 27
     .line 28
     .line 29
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->introducing_cast:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->introducing_cast:I
 
     .line 30
     .line 31
@@ -119,7 +119,7 @@
 
     .line 36
     .line 37
-    sget v2, Lcom/mycompany/app/soulbrowser/R$color;->cast_overlay:I
+    sget v2, Lcom/kswarrior/ksportal/R$color;->cast_overlay:I
 
     .line 38
     .line 39

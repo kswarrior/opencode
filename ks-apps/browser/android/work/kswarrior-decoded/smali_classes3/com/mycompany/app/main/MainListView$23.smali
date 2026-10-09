@@ -455,7 +455,7 @@
 
     .line 222
     .line 223
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->delete_file:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->delete_file:I
 
     .line 224
     .line 225
@@ -468,7 +468,7 @@
 
     .line 229
     .line 230
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->delete_record:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->delete_record:I
 
     .line 231
     .line 232
@@ -481,7 +481,7 @@
 
     .line 236
     .line 237
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->rename:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->rename:I
 
     .line 238
     .line 239
@@ -494,7 +494,7 @@
 
     .line 243
     .line 244
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->share:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->share:I
 
     .line 245
     .line 246
@@ -520,7 +520,7 @@
 
     .line 256
     .line 257
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 258
     .line 259
@@ -641,7 +641,7 @@
 
     .line 315
     .line 316
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->share:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->share:I
 
     .line 317
     .line 318
@@ -679,7 +679,7 @@
 
     .line 333
     .line 334
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->edit:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->edit:I
 
     .line 335
     .line 336
@@ -692,7 +692,7 @@
 
     .line 340
     .line 341
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->share:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->share:I
 
     .line 342
     .line 343
@@ -710,7 +710,7 @@
 
     .line 348
     .line 349
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->update:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->update:I
 
     .line 350
     .line 351
@@ -728,7 +728,7 @@
 
     .line 356
     .line 357
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->edit:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->edit:I
 
     .line 358
     .line 359
@@ -753,7 +753,7 @@
 
     .line 368
     .line 369
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 370
     .line 371
@@ -766,7 +766,7 @@
 
     .line 375
     .line 376
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->rename:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->rename:I
 
     .line 377
     .line 378
@@ -779,7 +779,7 @@
 
     .line 382
     .line 383
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->share:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->share:I
 
     .line 384
     .line 385
@@ -818,7 +818,7 @@
 
     .line 400
     .line 401
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->extract:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->extract:I
 
     .line 402
     .line 403

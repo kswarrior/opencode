@@ -412,7 +412,7 @@
 
     .line 19
     .line 20
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 21
     .line 22
@@ -445,7 +445,7 @@
 
     .line 35
     .line 36
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 37
     .line 38
@@ -670,7 +670,7 @@
     .line 146
     .line 147
     :cond_7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->dir_scanning:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->dir_scanning:I
 
     .line 148
     .line 149
@@ -1770,19 +1770,19 @@
     .line 34
     .line 35
     .line 36
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->list_title_text:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->list_title_text:I
 
     .line 37
     .line 38
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->list_icon_frame:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->list_icon_frame:I
 
     .line 39
     .line 40
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->list_bottom_view:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->list_bottom_view:I
 
     .line 41
     .line 42
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->list_cast_icon:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->list_cast_icon:I
 
     .line 43
     .line 44
@@ -1992,7 +1992,7 @@
     .line 154
     .line 155
     .line 156
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 157
     .line 158
@@ -2083,7 +2083,7 @@
     .line 203
     .line 204
     .line 205
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->select_dir:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->select_dir:I
 
     .line 206
     .line 207
@@ -2410,7 +2410,7 @@
     .line 378
     .line 379
     .line 380
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->down_list:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->down_list:I
 
     .line 381
     .line 382

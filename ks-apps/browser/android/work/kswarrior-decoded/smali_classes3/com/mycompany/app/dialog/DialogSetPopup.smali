@@ -414,7 +414,7 @@
 
     .line 45
     .line 46
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_mood_dark_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_mood_dark_24:I
 
     .line 47
     .line 48
@@ -422,7 +422,7 @@
 
     .line 49
     :cond_1
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_mood_black_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_mood_black_24:I
 
     .line 50
     .line 51
@@ -431,7 +431,7 @@
 
     .line 52
     .line 53
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->normal_tab:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->normal_tab:I
 
     .line 54
     .line 55

@@ -125,7 +125,7 @@
 
     .line 41
     .line 42
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_dark_24:I
 
     .line 43
     .line 44
@@ -138,7 +138,7 @@
 
     .line 48
     .line 49
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_dark_24:I
 
     .line 50
     .line 51
@@ -151,7 +151,7 @@
 
     .line 55
     .line 56
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_stop_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_stop_dark_24:I
 
     .line 57
     .line 58
@@ -164,7 +164,7 @@
 
     .line 62
     .line 63
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_search_dark_24:I
 
     .line 64
     .line 65
@@ -177,7 +177,7 @@
 
     .line 69
     .line 70
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_dark_24:I
 
     .line 71
     .line 72
@@ -307,7 +307,7 @@
 
     .line 140
     .line 141
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_black_24:I
 
     .line 142
     .line 143
@@ -320,7 +320,7 @@
 
     .line 147
     .line 148
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_black_24:I
 
     .line 149
     .line 150
@@ -333,7 +333,7 @@
 
     .line 154
     .line 155
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_stop_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_stop_black_24:I
 
     .line 156
     .line 157
@@ -346,7 +346,7 @@
 
     .line 161
     .line 162
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_search_black_24:I
 
     .line 163
     .line 164
@@ -359,7 +359,7 @@
 
     .line 168
     .line 169
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_black_24:I
 
     .line 170
     .line 171

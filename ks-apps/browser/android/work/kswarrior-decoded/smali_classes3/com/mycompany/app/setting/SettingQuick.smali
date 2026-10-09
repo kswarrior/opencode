@@ -354,7 +354,7 @@
 
     .line 17
     .line 18
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->quick_home:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->quick_home:I
 
     .line 19
     .line 20
@@ -405,7 +405,7 @@
 
     .line 42
     .line 43
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->big_icon:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->big_icon:I
 
     .line 44
     .line 45
@@ -443,7 +443,7 @@
 
     .line 60
     .line 61
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->add_icon:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->add_icon:I
 
     .line 62
     .line 63
@@ -477,7 +477,7 @@
 
     .line 76
     .line 77
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->column_count:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->column_count:I
 
     .line 78
     .line 79
@@ -859,7 +859,7 @@
 
     .line 23
     .line 24
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->quick_access:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->quick_access:I
 
     .line 25
     .line 26

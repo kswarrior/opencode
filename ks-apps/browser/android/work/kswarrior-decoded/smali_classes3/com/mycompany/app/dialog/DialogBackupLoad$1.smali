@@ -66,7 +66,7 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_seek_text:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_seek_text:I
 
     .line 12
     .line 13
@@ -197,7 +197,7 @@
     move-result-object v15
 
     .line 76
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 77
     .line 78
@@ -313,7 +313,7 @@
     move-result-object v10
 
     .line 138
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->quick_access:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->quick_access:I
 
     .line 139
     .line 140
@@ -446,7 +446,7 @@
     move-result-object v10
 
     .line 207
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->bookmark:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->bookmark:I
 
     .line 208
     .line 209
@@ -583,7 +583,7 @@
     move-result-object v9
 
     .line 278
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->history:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->history:I
 
     .line 279
     .line 280
@@ -720,7 +720,7 @@
     move-result-object v7
 
     .line 349
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->tab_item:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->tab_item:I
 
     .line 350
     .line 351
@@ -844,7 +844,7 @@
     move-result-object v8
 
     .line 413
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->password:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->password:I
 
     .line 414
     .line 415
@@ -1048,7 +1048,7 @@
     .line 519
     .line 520
     .line 521
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->size:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->size:I
 
     .line 522
     .line 523

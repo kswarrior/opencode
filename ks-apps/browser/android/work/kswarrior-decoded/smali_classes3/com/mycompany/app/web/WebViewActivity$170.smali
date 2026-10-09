@@ -142,7 +142,7 @@
     const/4 v0, 0x0
 
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->edit:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->edit:I
 
     .line 25
     .line 26
@@ -163,7 +163,7 @@
     const/4 v0, 0x1
 
     .line 35
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 36
     .line 37

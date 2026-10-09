@@ -761,7 +761,7 @@
 
     .line 284
     .line 285
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_black_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_image_black_24:I
 
     .line 286
     .line 287

@@ -111,7 +111,7 @@
 
     .line 31
     .line 32
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->swipe_sense:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->swipe_sense:I
 
     .line 33
     .line 34

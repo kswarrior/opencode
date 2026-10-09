@@ -440,7 +440,7 @@
 
     .line 163
     .line 164
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->input_url:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->input_url:I
 
     .line 165
     .line 166

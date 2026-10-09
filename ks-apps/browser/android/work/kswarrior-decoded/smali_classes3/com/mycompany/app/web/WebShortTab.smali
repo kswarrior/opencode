@@ -68,7 +68,7 @@
     move-result-object p1
 
     .line 15
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_TAB_SECRET"
+    const-string v0, "com.kswarrior.ksportal.ACTION_TAB_SECRET"
 
     .line 16
     .line 17

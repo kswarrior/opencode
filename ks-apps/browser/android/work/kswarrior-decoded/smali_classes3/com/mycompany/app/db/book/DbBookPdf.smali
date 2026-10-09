@@ -800,7 +800,7 @@
 
     .line 313
     .line 314
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_as_pdf_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_as_pdf_black_24:I
 
     .line 315
     .line 316

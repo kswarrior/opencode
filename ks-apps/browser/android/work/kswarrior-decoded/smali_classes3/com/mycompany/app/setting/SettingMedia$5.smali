@@ -176,7 +176,7 @@
 
     .line 41
     .line 42
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 43
     .line 44
@@ -264,7 +264,7 @@
 
     .line 84
     .line 85
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 86
     .line 87

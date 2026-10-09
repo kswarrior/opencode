@@ -133,7 +133,7 @@
 
     .line 41
     .line 42
-    const-string v3, "com.mycompany.app.soulbrowser.ACTION_SRCHGET_UPDATE"
+    const-string v3, "com.kswarrior.ksportal.ACTION_SRCHGET_UPDATE"
 
     .line 43
     .line 44

@@ -341,7 +341,7 @@
 
     .line 80
     :cond_4
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_page_loading:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_page_loading:I
 
     .line 81
     .line 82

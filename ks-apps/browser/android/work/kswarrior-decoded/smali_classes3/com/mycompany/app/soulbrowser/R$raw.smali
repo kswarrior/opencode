@@ -1,10 +1,10 @@
-.class public final Lcom/mycompany/app/soulbrowser/R$raw;
+.class public final Lcom/kswarrior/ksportal/R$raw;
 .super Ljava/lang/Object;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/mycompany/app/soulbrowser/R;
+    value = Lcom/kswarrior/ksportal/R;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;

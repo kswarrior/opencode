@@ -440,7 +440,7 @@
 
     .line 34
     .line 35
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->type:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->type:I
 
     .line 36
     .line 37
@@ -492,7 +492,7 @@
 
     .line 58
     .line 59
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->size:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->size:I
 
     .line 60
     .line 61
@@ -532,11 +532,11 @@
 
     .line 78
     .line 79
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->page_split:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->page_split:I
 
     .line 80
     .line 81
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->split_info:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->split_info:I
 
     .line 82
     .line 83
@@ -587,7 +587,7 @@
 
     .line 102
     .line 103
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->margin:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->margin:I
 
     .line 104
     .line 105

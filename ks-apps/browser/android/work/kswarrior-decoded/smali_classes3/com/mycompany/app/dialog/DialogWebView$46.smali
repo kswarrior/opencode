@@ -95,7 +95,7 @@
 
     .line 8
     .line 9
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->http_warning:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->http_warning:I
 
     .line 10
     .line 11
@@ -123,7 +123,7 @@
 
     .line 21
     .line 22
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 23
     .line 24
@@ -264,7 +264,7 @@
 
     .line 34
     .line 35
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 36
     .line 37
@@ -455,7 +455,7 @@
 
     .line 8
     .line 9
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->http_warning:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->http_warning:I
 
     .line 10
     .line 11
@@ -483,7 +483,7 @@
 
     .line 21
     .line 22
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 23
     .line 24
@@ -558,7 +558,7 @@
 
     .line 58
     .line 59
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->select_lang:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->select_lang:I
 
     .line 60
     .line 61

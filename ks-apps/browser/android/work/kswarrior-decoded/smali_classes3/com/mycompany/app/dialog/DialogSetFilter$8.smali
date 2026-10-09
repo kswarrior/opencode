@@ -104,7 +104,7 @@
 
     .line 27
     .line 28
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->filter_link_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->filter_link_1:I
 
     .line 29
     .line 30
@@ -121,7 +121,7 @@
 
     .line 36
     .line 37
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->filter_link_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->filter_link_2:I
 
     .line 38
     .line 39
@@ -134,7 +134,7 @@
 
     .line 43
     .line 44
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->filter_link_3:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->filter_link_3:I
 
     .line 45
     .line 46
@@ -151,7 +151,7 @@
 
     .line 52
     .line 53
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->filter_link_4:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->filter_link_4:I
 
     .line 54
     .line 55
@@ -164,7 +164,7 @@
 
     .line 59
     .line 60
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->filter_link_5:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->filter_link_5:I
 
     .line 61
     .line 62

@@ -81,7 +81,7 @@
 
     .line 18
     .line 19
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->vpn_server:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->vpn_server:I
 
     .line 20
     .line 21
@@ -120,7 +120,7 @@
 
     .line 37
     .line 38
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->visit_site:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->visit_site:I
 
     .line 39
     .line 40

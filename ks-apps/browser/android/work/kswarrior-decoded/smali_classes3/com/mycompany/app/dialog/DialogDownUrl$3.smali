@@ -118,15 +118,15 @@
     .line 34
     .line 35
     :cond_4
-    sget v7, Lcom/mycompany/app/soulbrowser/R$id;->down_icon_frame:I
+    sget v7, Lcom/kswarrior/ksportal/R$id;->down_icon_frame:I
 
     .line 36
     .line 37
-    sget v8, Lcom/mycompany/app/soulbrowser/R$id;->down_path_title:I
+    sget v8, Lcom/kswarrior/ksportal/R$id;->down_path_title:I
 
     .line 38
     .line 39
-    sget v9, Lcom/mycompany/app/soulbrowser/R$id;->down_load_view:I
+    sget v9, Lcom/kswarrior/ksportal/R$id;->down_load_view:I
 
     .line 40
     .line 41
@@ -607,7 +607,7 @@
     move-result-object v15
 
     .line 292
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->down_location:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->down_location:I
 
     .line 293
     .line 294
@@ -915,7 +915,7 @@
     .line 448
     .line 449
     .line 450
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->waiting:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->waiting:I
 
     .line 451
     .line 452
@@ -1026,7 +1026,7 @@
     .line 507
     .line 508
     .line 509
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->report_error:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->report_error:I
 
     .line 510
     .line 511
@@ -1238,7 +1238,7 @@
     move-result-object v9
 
     .line 621
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 622
     .line 623
@@ -1292,7 +1292,7 @@
     .line 647
     .line 648
     .line 649
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->fast_down:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->fast_down:I
 
     .line 650
     .line 651

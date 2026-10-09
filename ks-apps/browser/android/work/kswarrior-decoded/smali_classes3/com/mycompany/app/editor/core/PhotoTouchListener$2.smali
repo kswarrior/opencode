@@ -373,7 +373,7 @@
 
     .line 41
     .line 42
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->text_border:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->text_border:I
 
     .line 43
     .line 44

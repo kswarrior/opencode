@@ -1104,7 +1104,7 @@
 
     .line 214
     .line 215
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 216
     .line 217
@@ -1979,7 +1979,7 @@
 
     .line 620
     .line 621
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_shift_2_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_shift_2_black_24:I
 
     .line 622
     .line 623
@@ -2575,7 +2575,7 @@
 
     .line 899
     .line 900
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_black_24:I
 
     .line 901
     .line 902
@@ -2713,7 +2713,7 @@
 
     .line 964
     .line 965
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 966
     .line 967

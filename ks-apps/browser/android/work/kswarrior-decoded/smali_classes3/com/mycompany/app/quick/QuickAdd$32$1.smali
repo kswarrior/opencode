@@ -106,7 +106,7 @@
     .line 29
     .line 30
     .line 31
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->already_added:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->already_added:I
 
     .line 32
     .line 33

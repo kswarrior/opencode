@@ -119,7 +119,7 @@
 
     .line 37
     .line 38
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_dark_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_search_dark_24:I
 
     .line 39
     .line 40
@@ -146,7 +146,7 @@
 
     .line 52
     .line 53
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_help_dark_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_help_dark_24:I
 
     .line 54
     .line 55
@@ -271,7 +271,7 @@
 
     .line 115
     .line 116
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_black_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_search_black_24:I
 
     .line 117
     .line 118
@@ -298,7 +298,7 @@
 
     .line 130
     .line 131
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_help_black_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_help_black_24:I
 
     .line 132
     .line 133

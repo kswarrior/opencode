@@ -130,7 +130,7 @@
 
     .line 36
     .line 37
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->mem_limit:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->mem_limit:I
 
     .line 38
     .line 39
@@ -225,7 +225,7 @@
 
     .line 81
     .line 82
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->open_limit:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->open_limit:I
 
     .line 83
     .line 84
@@ -323,7 +323,7 @@
 
     .line 127
     .line 128
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->mem_limit:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->mem_limit:I
 
     .line 129
     .line 130
@@ -415,7 +415,7 @@
 
     .line 170
     .line 171
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->mem_keep:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->mem_keep:I
 
     .line 172
     .line 173
@@ -431,7 +431,7 @@
     move-result-object v5
 
     .line 179
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->mem_keep_info:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->mem_keep_info:I
 
     .line 180
     .line 181
@@ -761,7 +761,7 @@
 
     .line 14
     .line 15
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->limit_info_3:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->limit_info_3:I
 
     .line 16
     .line 17
@@ -775,7 +775,7 @@
     .line 21
     .line 22
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->without_load_info:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->without_load_info:I
 
     .line 23
     .line 24
@@ -856,7 +856,7 @@
 
     .line 14
     .line 15
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->limit_info_2:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->limit_info_2:I
 
     .line 16
     .line 17
@@ -870,7 +870,7 @@
     .line 21
     .line 22
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->tab_tip:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->tab_tip:I
 
     .line 23
     .line 24
@@ -951,7 +951,7 @@
 
     .line 14
     .line 15
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->limit_info_1:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->limit_info_1:I
 
     .line 16
     .line 17
@@ -965,7 +965,7 @@
     .line 21
     .line 22
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->tab_tip:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->tab_tip:I
 
     .line 23
     .line 24
@@ -1029,11 +1029,11 @@
 
     .line 6
     .line 7
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_description_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_description_dark_24:I
 
     .line 8
     .line 9
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_filter_none_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_filter_none_dark_24:I
 
     .line 10
     .line 11
@@ -1045,11 +1045,11 @@
 
     .line 13
     :cond_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_description_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_description_black_24:I
 
     .line 14
     .line 15
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_filter_none_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_filter_none_black_24:I
 
     .line 16
     .line 17
@@ -1066,7 +1066,7 @@
     .line 21
     .line 22
     .line 23
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 24
     .line 25
@@ -1092,7 +1092,7 @@
     .line 35
     .line 36
     .line 37
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->memory_warning_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->memory_warning_1:I
 
     .line 38
     .line 39
@@ -1158,7 +1158,7 @@
 
     .line 70
     .line 71
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->page:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->page:I
 
     .line 72
     .line 73
@@ -1182,7 +1182,7 @@
 
     .line 82
     .line 83
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->without_load:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->without_load:I
 
     .line 84
     .line 85
@@ -1210,7 +1210,7 @@
     move v1, v10
 
     .line 97
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->mem_limit:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->mem_limit:I
 
     .line 98
     .line 99
@@ -1290,7 +1290,7 @@
     move v4, v3
 
     .line 135
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->tab_item:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->tab_item:I
 
     .line 136
     .line 137
@@ -1326,7 +1326,7 @@
 
     .line 150
     .line 151
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->open_limit:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->open_limit:I
 
     .line 152
     .line 153
@@ -1381,7 +1381,7 @@
 
     .line 177
     .line 178
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->mem_limit:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->mem_limit:I
 
     .line 179
     .line 180
@@ -1434,7 +1434,7 @@
 
     .line 204
     .line 205
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->mem_block_list:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->mem_block_list:I
 
     .line 206
     .line 207
@@ -1483,7 +1483,7 @@
 
     .line 229
     .line 230
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->mem_keep:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->mem_keep:I
 
     .line 231
     .line 232
@@ -1499,7 +1499,7 @@
     move-result-object v14
 
     .line 238
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->mem_keep_info:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->mem_keep_info:I
 
     .line 239
     .line 240
@@ -1659,7 +1659,7 @@
 
     .line 3
     .line 4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 5
     .line 6
@@ -1698,7 +1698,7 @@
     .line 22
     .line 23
     .line 24
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->time_day:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->time_day:I
 
     .line 25
     .line 26
@@ -1759,7 +1759,7 @@
 
     .line 3
     .line 4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 5
     .line 6
@@ -1864,7 +1864,7 @@
 
     .line 18
     .line 19
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->mem_save:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->mem_save:I
 
     .line 20
     .line 21

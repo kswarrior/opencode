@@ -155,7 +155,7 @@
     .line 53
     .line 54
     .line 55
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_DOWN_PAUSE"
+    const-string v2, "com.kswarrior.ksportal.ACTION_DOWN_PAUSE"
 
     .line 56
     .line 57
@@ -164,7 +164,7 @@
     .line 58
     .line 59
     .line 60
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_DOWN_RETRY"
+    const-string v2, "com.kswarrior.ksportal.ACTION_DOWN_RETRY"
 
     .line 61
     .line 62
@@ -173,7 +173,7 @@
     .line 63
     .line 64
     .line 65
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_DOWN_CANCEL"
+    const-string v2, "com.kswarrior.ksportal.ACTION_DOWN_CANCEL"
 
     .line 66
     .line 67
@@ -182,7 +182,7 @@
     .line 68
     .line 69
     .line 70
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_DOWN_EXIT"
+    const-string v2, "com.kswarrior.ksportal.ACTION_DOWN_EXIT"
 
     .line 71
     .line 72
@@ -191,7 +191,7 @@
     .line 73
     .line 74
     .line 75
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_IMAGE_CANCEL"
+    const-string v2, "com.kswarrior.ksportal.ACTION_IMAGE_CANCEL"
 
     .line 76
     .line 77

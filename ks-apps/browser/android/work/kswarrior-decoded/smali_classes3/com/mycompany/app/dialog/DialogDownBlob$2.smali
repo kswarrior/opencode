@@ -113,7 +113,7 @@
 
     .line 35
     .line 36
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 37
     .line 38
@@ -170,7 +170,7 @@
 
     .line 65
     .line 66
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 67
     .line 68
@@ -201,7 +201,7 @@
     move-result v1
 
     .line 82
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_draft_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_draft_black_24:I
 
     .line 83
     .line 84
@@ -209,7 +209,7 @@
 
     .line 85
     .line 86
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 87
     .line 88
@@ -245,7 +245,7 @@
 
     .line 104
     .line 105
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 106
     .line 107

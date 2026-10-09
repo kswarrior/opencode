@@ -265,7 +265,7 @@
 
     .line 69
     .line 70
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 71
     .line 72
@@ -294,7 +294,7 @@
 
     .line 83
     .line 84
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 85
     .line 86
@@ -801,7 +801,7 @@
 
     .line 331
     .line 332
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 333
     .line 334

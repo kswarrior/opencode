@@ -222,7 +222,7 @@
     .line 93
     .line 94
     .line 95
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 96
     .line 97

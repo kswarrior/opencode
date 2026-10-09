@@ -57,7 +57,7 @@
     move-result-object v0
 
     .line 7
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->down_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->down_fail:I
 
     .line 8
     .line 9

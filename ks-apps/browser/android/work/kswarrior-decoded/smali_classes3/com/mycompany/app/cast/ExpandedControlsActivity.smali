@@ -81,7 +81,7 @@
     move-result-object v0
 
     .line 8
-    sget v1, Lcom/mycompany/app/soulbrowser/R$menu;->expanded_controller:I
+    sget v1, Lcom/kswarrior/ksportal/R$menu;->expanded_controller:I
 
     .line 9
     .line 10
@@ -90,7 +90,7 @@
     .line 11
     .line 12
     .line 13
-    sget v0, Lcom/mycompany/app/soulbrowser/R$id;->media_route_menu_item:I
+    sget v0, Lcom/kswarrior/ksportal/R$id;->media_route_menu_item:I
 
     .line 14
     .line 15

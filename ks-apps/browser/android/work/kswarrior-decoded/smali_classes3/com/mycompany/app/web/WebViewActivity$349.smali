@@ -145,7 +145,7 @@
 
     .line 50
     :catch_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_supported:I
 
     .line 51
     .line 52

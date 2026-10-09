@@ -987,7 +987,7 @@
 
     .line 348
     .line 349
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_as_pdf_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_as_pdf_black_24:I
 
     .line 350
     .line 351

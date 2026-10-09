@@ -148,7 +148,7 @@
 
     .line 43
     .line 44
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_48:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_48:I
 
     .line 45
     .line 46
@@ -304,7 +304,7 @@
 
     .line 24
     .line 25
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_48:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_48:I
 
     .line 26
     .line 27

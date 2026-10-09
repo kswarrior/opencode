@@ -269,7 +269,7 @@
 
     .line 88
     .line 89
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->do_change:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->do_change:I
 
     .line 90
     .line 91
@@ -287,7 +287,7 @@
 
     .line 98
     .line 99
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 100
     .line 101

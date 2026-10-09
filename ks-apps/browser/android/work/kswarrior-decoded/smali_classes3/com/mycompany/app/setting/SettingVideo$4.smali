@@ -442,7 +442,7 @@
 
     .line 190
     .line 191
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->swipe_sense:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->swipe_sense:I
 
     .line 192
     .line 193
@@ -589,7 +589,7 @@
 
     .line 259
     .line 260
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->video_icon_tap:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->video_icon_tap:I
 
     .line 261
     .line 262
@@ -614,7 +614,7 @@
 
     .line 272
     .line 273
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->video_icon_long:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->video_icon_long:I
 
     .line 274
     .line 275

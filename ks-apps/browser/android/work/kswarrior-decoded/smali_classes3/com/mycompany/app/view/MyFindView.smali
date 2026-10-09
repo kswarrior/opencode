@@ -350,7 +350,7 @@
 
     .line 53
     .line 54
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 55
     .line 56
@@ -360,7 +360,7 @@
     .line 58
     .line 59
     :cond_2
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->find_word:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->find_word:I
 
     .line 60
     .line 61
@@ -2218,7 +2218,7 @@
 
     .line 131
     .line 132
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_black_24:I
 
     .line 133
     .line 134
@@ -2231,7 +2231,7 @@
 
     .line 138
     .line 139
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_black_18:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_black_18:I
 
     .line 140
     .line 141
@@ -2244,7 +2244,7 @@
 
     .line 145
     .line 146
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_up_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_up_black_24:I
 
     .line 147
     .line 148
@@ -2257,7 +2257,7 @@
 
     .line 152
     .line 153
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_down_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_down_black_24:I
 
     .line 154
     .line 155
@@ -2274,7 +2274,7 @@
 
     .line 160
     .line 161
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_dark_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_dark_24:I
 
     .line 162
     .line 163
@@ -2287,7 +2287,7 @@
 
     .line 167
     .line 168
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_dark_18:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_dark_18:I
 
     .line 169
     .line 170
@@ -2300,7 +2300,7 @@
 
     .line 174
     .line 175
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_up_dark_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_up_dark_24:I
 
     .line 176
     .line 177
@@ -2313,7 +2313,7 @@
 
     .line 181
     .line 182
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_down_dark_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_down_dark_24:I
 
     .line 183
     .line 184

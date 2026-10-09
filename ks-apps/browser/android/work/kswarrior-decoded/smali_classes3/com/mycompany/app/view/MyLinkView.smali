@@ -260,7 +260,7 @@
 
     .line 93
     .line 94
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 95
     .line 96
@@ -283,7 +283,7 @@
 
     .line 106
     :cond_4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 107
     .line 108
@@ -424,7 +424,7 @@
 
     .line 9
     .line 10
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->shadow_list_up:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->shadow_list_up:I
 
     .line 11
     .line 12

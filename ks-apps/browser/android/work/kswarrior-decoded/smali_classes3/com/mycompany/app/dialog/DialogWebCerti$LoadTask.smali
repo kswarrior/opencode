@@ -493,7 +493,7 @@
 
     .line 103
     .line 104
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->no_info:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->no_info:I
 
     .line 105
     .line 106

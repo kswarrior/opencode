@@ -149,7 +149,7 @@
     move-result-object v12
 
     .line 52
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->loading:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->loading:I
 
     .line 53
     .line 54
@@ -346,7 +346,7 @@
     .line 157
     .line 158
     .line 159
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->new_url:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->new_url:I
 
     .line 160
     .line 161
@@ -403,7 +403,7 @@
     .line 188
     .line 189
     .line 190
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 191
     .line 192

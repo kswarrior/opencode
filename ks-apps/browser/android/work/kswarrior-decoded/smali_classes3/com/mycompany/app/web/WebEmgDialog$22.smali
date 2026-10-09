@@ -320,7 +320,7 @@
 
     .line 90
     .line 91
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->server_error:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->server_error:I
 
     .line 92
     .line 93
@@ -345,7 +345,7 @@
 
     .line 102
     .line 103
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->check_network:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->check_network:I
 
     .line 104
     .line 105

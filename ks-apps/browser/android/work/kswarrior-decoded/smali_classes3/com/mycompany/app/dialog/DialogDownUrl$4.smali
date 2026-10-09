@@ -525,7 +525,7 @@
 
     .line 239
     .line 240
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 241
     .line 242
@@ -538,7 +538,7 @@
 
     .line 246
     .line 247
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 248
     .line 249
@@ -560,7 +560,7 @@
 
     .line 258
     .line 259
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_contact_support_dark_20:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_contact_support_dark_20:I
 
     .line 260
     .line 261
@@ -573,7 +573,7 @@
 
     .line 265
     .line 266
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 267
     .line 268
@@ -613,7 +613,7 @@
 
     .line 287
     .line 288
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_open_with_dark_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_open_with_dark_24:I
 
     .line 289
     .line 290
@@ -649,7 +649,7 @@
 
     .line 306
     .line 307
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_share_dark_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_share_dark_24:I
 
     .line 308
     .line 309
@@ -685,7 +685,7 @@
 
     .line 325
     .line 326
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_info_dark_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_info_dark_24:I
 
     .line 327
     .line 328
@@ -721,7 +721,7 @@
 
     .line 344
     .line 345
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 346
     .line 347
@@ -757,7 +757,7 @@
 
     .line 363
     .line 364
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 365
     .line 366
@@ -875,7 +875,7 @@
 
     .line 428
     .line 429
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 430
     .line 431
@@ -888,7 +888,7 @@
 
     .line 435
     .line 436
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 437
     .line 438
@@ -915,7 +915,7 @@
 
     .line 450
     .line 451
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_contact_support_black_20:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_contact_support_black_20:I
 
     .line 452
     .line 453
@@ -928,7 +928,7 @@
 
     .line 457
     .line 458
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 459
     .line 460
@@ -968,7 +968,7 @@
 
     .line 479
     .line 480
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_open_with_black_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_open_with_black_24:I
 
     .line 481
     .line 482
@@ -1004,7 +1004,7 @@
 
     .line 498
     .line 499
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_share_black_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_share_black_24:I
 
     .line 500
     .line 501
@@ -1040,7 +1040,7 @@
 
     .line 517
     .line 518
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_info_black_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_info_black_24:I
 
     .line 519
     .line 520
@@ -1076,7 +1076,7 @@
 
     .line 536
     .line 537
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 538
     .line 539
@@ -1112,7 +1112,7 @@
 
     .line 555
     .line 556
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 557
     .line 558

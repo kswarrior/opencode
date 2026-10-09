@@ -1608,7 +1608,7 @@
 
     .line 9
     .line 10
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->user_defined:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->user_defined:I
 
     .line 11
     .line 12
@@ -1621,7 +1621,7 @@
 
     .line 16
     .line 17
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->bright_info:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->bright_info:I
 
     .line 18
     .line 19
@@ -1647,7 +1647,7 @@
 
     .line 30
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->system_name:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->system_name:I
 
     .line 31
     .line 32
@@ -1660,7 +1660,7 @@
 
     .line 36
     .line 37
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->screen_info_system:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->screen_info_system:I
 
     .line 38
     .line 39

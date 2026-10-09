@@ -131,7 +131,7 @@
 
     .line 21
     .line 22
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->down_complete:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->down_complete:I
 
     .line 23
     .line 24
@@ -179,7 +179,7 @@
 
     .line 43
     .line 44
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 45
     .line 46

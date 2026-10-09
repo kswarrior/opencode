@@ -536,7 +536,7 @@
 
     .line 115
     :cond_9
-    sget v0, Lcom/mycompany/app/soulbrowser/R$array;->urls:I
+    sget v0, Lcom/kswarrior/ksportal/R$array;->urls:I
 
     .line 116
     .line 117
@@ -548,7 +548,7 @@
     move-result-object v0
 
     .line 121
-    sget v2, Lcom/mycompany/app/soulbrowser/R$array;->ips:I
+    sget v2, Lcom/kswarrior/ksportal/R$array;->ips:I
 
     .line 122
     .line 123
@@ -629,7 +629,7 @@
     .line 157
     .line 158
     .line 159
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->url0:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->url0:I
 
     .line 160
     .line 161
@@ -645,7 +645,7 @@
 
     .line 166
     .line 167
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->ips0:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->ips0:I
 
     .line 168
     .line 169
@@ -679,7 +679,7 @@
     .line 181
     .line 182
     .line 183
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->url0:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->url0:I
 
     .line 184
     .line 185
@@ -695,7 +695,7 @@
 
     .line 190
     .line 191
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->ips0:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->ips0:I
 
     .line 192
     .line 193

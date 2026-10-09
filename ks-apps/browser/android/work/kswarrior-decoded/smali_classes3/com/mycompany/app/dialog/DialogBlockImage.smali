@@ -444,7 +444,7 @@
     .line 7
     .line 8
     .line 9
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_image_black_24:I
 
     .line 10
     .line 11
@@ -1091,7 +1091,7 @@
 
     .line 43
     .line 44
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->item_block_site:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->item_block_site:I
 
     .line 45
     .line 46
@@ -1138,7 +1138,7 @@
 
     .line 65
     .line 66
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->item_block_page:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->item_block_page:I
 
     .line 67
     .line 68

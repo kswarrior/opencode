@@ -81,7 +81,7 @@
 
     .line 17
     .line 18
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 19
     .line 20
@@ -112,7 +112,7 @@
 
     .line 33
     .line 34
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 35
     .line 36
@@ -148,11 +148,11 @@
 
     .line 52
     .line 53
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->tts_on:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->tts_on:I
 
     .line 54
     .line 55
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->tts_info_1:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->tts_info_1:I
 
     .line 56
     .line 57
@@ -183,7 +183,7 @@
 
     .line 69
     .line 70
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->detail_setting:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->detail_setting:I
 
     .line 71
     .line 72

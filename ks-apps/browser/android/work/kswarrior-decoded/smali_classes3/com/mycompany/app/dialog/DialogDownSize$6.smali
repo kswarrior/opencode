@@ -123,7 +123,7 @@
 
     .line 39
     .line 40
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 41
     .line 42
@@ -159,7 +159,7 @@
 
     .line 56
     .line 57
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->unknown:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->unknown:I
 
     .line 58
     .line 59
@@ -172,7 +172,7 @@
 
     .line 63
     .line 64
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 65
     .line 66

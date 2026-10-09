@@ -217,7 +217,7 @@
 
     .line 57
     .line 58
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 59
     .line 60

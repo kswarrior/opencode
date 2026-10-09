@@ -116,7 +116,7 @@
 
     .line 42
     .line 43
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 44
     .line 45
@@ -1350,7 +1350,7 @@
 
     .line 455
     .line 456
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 457
     .line 458

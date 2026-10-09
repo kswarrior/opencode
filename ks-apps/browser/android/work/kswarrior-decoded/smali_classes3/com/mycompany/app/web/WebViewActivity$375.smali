@@ -82,7 +82,7 @@
 
     .line 18
     .line 19
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->normal_mode:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->normal_mode:I
 
     .line 20
     .line 21
@@ -106,7 +106,7 @@
 
     .line 30
     .line 31
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->scroll_mode:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->scroll_mode:I
 
     .line 32
     .line 33

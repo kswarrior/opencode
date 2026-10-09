@@ -196,7 +196,7 @@
 
     .line 52
     :cond_2
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->home_page:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->home_page:I
 
     .line 53
     .line 54
@@ -225,7 +225,7 @@
 
     .line 64
     :cond_4
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->last_page:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->last_page:I
 
     .line 65
     .line 66

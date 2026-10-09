@@ -3528,7 +3528,7 @@
 
     .line 288
     .line 289
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 290
     .line 291
@@ -5139,7 +5139,7 @@
 
     .line 7
     .line 8
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     .line 9
     .line 10
@@ -5152,7 +5152,7 @@
 
     .line 14
     :cond_1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_white_24:I
 
     .line 15
     .line 16
@@ -6057,7 +6057,7 @@
 
     .line 34
     .line 35
-    const-string v3, "com.mycompany.app.soulbrowser.ACTION_PIP_FRWD"
+    const-string v3, "com.kswarrior.ksportal.ACTION_PIP_FRWD"
 
     .line 36
     .line 37
@@ -6094,7 +6094,7 @@
 
     .line 53
     .line 54
-    const-string v4, "com.mycompany.app.soulbrowser.ACTION_PIP_PLAY"
+    const-string v4, "com.kswarrior.ksportal.ACTION_PIP_PLAY"
 
     .line 55
     .line 56
@@ -6127,7 +6127,7 @@
 
     .line 70
     .line 71
-    const-string v6, "com.mycompany.app.soulbrowser.ACTION_PIP_FFWD"
+    const-string v6, "com.kswarrior.ksportal.ACTION_PIP_FFWD"
 
     .line 72
     .line 73
@@ -6160,7 +6160,7 @@
 
     .line 87
     .line 88
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     .line 89
     .line 90
@@ -6172,7 +6172,7 @@
 
     .line 93
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_white_24:I
 
     .line 94
     .line 95
@@ -6189,11 +6189,11 @@
 
     .line 100
     .line 101
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_white_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_white_24:I
 
     .line 102
     .line 103
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_white_24:I
 
     .line 104
     .line 105
@@ -6201,11 +6201,11 @@
 
     .line 106
     :cond_3
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_white_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_white_24:I
 
     .line 107
     .line 108
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_white_24:I
 
     .line 109
     .line 110
@@ -6963,7 +6963,7 @@
 
     .line 36
     .line 37
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->touch_locked:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->touch_locked:I
 
     .line 38
     .line 39
@@ -7016,7 +7016,7 @@
 
     .line 64
     .line 65
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->touch_unlocked:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->touch_unlocked:I
 
     .line 66
     .line 67
@@ -10018,7 +10018,7 @@
 
     .line 25
     .line 26
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->pip_info:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->pip_info:I
 
     .line 27
     .line 28
@@ -11368,7 +11368,7 @@
 
     .line 9
     .line 10
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_repeat_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_repeat_white_24:I
 
     .line 11
     .line 12
@@ -11381,7 +11381,7 @@
 
     .line 16
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_right_alt_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_right_alt_white_24:I
 
     .line 17
     .line 18
@@ -11499,7 +11499,7 @@
 
     .line 10
     .line 11
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_screen_lock_portrait_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_screen_lock_portrait_white_24:I
 
     .line 12
     .line 13
@@ -11519,7 +11519,7 @@
 
     .line 19
     .line 20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_screen_lock_landscape_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_screen_lock_landscape_white_24:I
 
     .line 21
     .line 22
@@ -11532,7 +11532,7 @@
 
     .line 26
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_screen_rotation_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_screen_rotation_white_24:I
 
     .line 27
     .line 28
@@ -11669,7 +11669,7 @@
 
     .line 40
     .line 41
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 42
     .line 43
@@ -11727,7 +11727,7 @@
 
     .line 66
     .line 67
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 68
     .line 69
@@ -11786,7 +11786,7 @@
 
     .line 92
     .line 93
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 94
     .line 95
@@ -16808,7 +16808,7 @@
 
     .line 11
     .line 12
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 13
     .line 14
@@ -16858,7 +16858,7 @@
 
     .line 11
     .line 12
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 13
     .line 14
@@ -16908,7 +16908,7 @@
 
     .line 11
     .line 12
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 13
     .line 14

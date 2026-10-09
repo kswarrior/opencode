@@ -57,7 +57,7 @@
 
     .line 6
     .line 7
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->down_complete:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->down_complete:I
 
     .line 8
     .line 9

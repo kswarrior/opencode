@@ -74,7 +74,7 @@
     .line 9
     .line 10
     .line 11
-    const-string p2, "com.mycompany.app.soulbrowser.ACTION_SCRIPT_CANCEL"
+    const-string p2, "com.kswarrior.ksportal.ACTION_SCRIPT_CANCEL"
 
     .line 12
     .line 13
@@ -142,7 +142,7 @@
 
     .line 40
     .line 41
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 42
     .line 43

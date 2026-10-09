@@ -106,7 +106,7 @@
 
     .line 29
     .line 30
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->deleted:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->deleted:I
 
     .line 31
     .line 32

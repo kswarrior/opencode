@@ -85,7 +85,7 @@
 
     .line 4
     .line 5
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogFullBlack:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogFullBlack:I
 
     .line 6
     .line 7
@@ -93,7 +93,7 @@
 
     .line 8
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogFullTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogFullTheme:I
 
     .line 9
     .line 10

@@ -70,7 +70,7 @@
 
     .line 12
     .line 13
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->search_engine:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->search_engine:I
 
     .line 14
     .line 15

@@ -1201,19 +1201,19 @@
     .line 8
     .line 9
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->item_frame_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->item_frame_view:I
 
     .line 10
     .line 11
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_title_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_title_view:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->item_seek_text:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->item_seek_text:I
 
     .line 14
     .line 15
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->item_zoom_text:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->item_zoom_text:I
 
     .line 16
     .line 17
@@ -1496,7 +1496,7 @@
 
     .line 161
     .line 162
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 163
     .line 164
@@ -2988,7 +2988,7 @@
     .line 951
     .line 952
     .line 953
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 954
     .line 955
@@ -3050,7 +3050,7 @@
     .line 981
     .line 982
     .line 983
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 984
     .line 985
@@ -5290,7 +5290,7 @@
 
     .line 34
     .line 35
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 36
     .line 37
@@ -8001,7 +8001,7 @@
 
     .line 38
     .line 39
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_refresh_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_refresh_dark_24:I
 
     .line 40
     .line 41
@@ -8014,7 +8014,7 @@
 
     .line 45
     .line 46
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_24:I
 
     .line 47
     .line 48
@@ -8082,7 +8082,7 @@
 
     .line 83
     .line 84
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_dark_24:I
 
     .line 85
     .line 86
@@ -8095,7 +8095,7 @@
 
     .line 90
     .line 91
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_add_dark_24:I
 
     .line 92
     .line 93
@@ -8112,7 +8112,7 @@
 
     .line 99
     .line 100
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 101
     .line 102
@@ -8137,7 +8137,7 @@
 
     .line 112
     .line 113
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 114
     .line 115
@@ -8254,7 +8254,7 @@
 
     .line 176
     .line 177
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_refresh_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_refresh_black_24:I
 
     .line 178
     .line 179
@@ -8267,7 +8267,7 @@
 
     .line 183
     .line 184
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_24:I
 
     .line 185
     .line 186
@@ -8335,7 +8335,7 @@
 
     .line 221
     .line 222
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_black_24:I
 
     .line 223
     .line 224
@@ -8348,7 +8348,7 @@
 
     .line 228
     .line 229
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_add_black_24:I
 
     .line 230
     .line 231
@@ -8365,7 +8365,7 @@
 
     .line 237
     .line 238
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 239
     .line 240
@@ -8390,7 +8390,7 @@
 
     .line 250
     .line 251
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 252
     .line 253
@@ -9068,7 +9068,7 @@
 
     .line 18
     .line 19
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 20
     .line 21
@@ -9081,7 +9081,7 @@
 
     .line 25
     .line 26
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 27
     .line 28
@@ -9172,7 +9172,7 @@
 
     .line 76
     .line 77
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_dark_24:I
 
     .line 78
     .line 79
@@ -9185,7 +9185,7 @@
 
     .line 83
     .line 84
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_add_dark_24:I
 
     .line 85
     .line 86
@@ -9202,7 +9202,7 @@
 
     .line 92
     .line 93
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 94
     .line 95
@@ -9227,7 +9227,7 @@
 
     .line 105
     .line 106
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 107
     .line 108
@@ -9248,7 +9248,7 @@
 
     .line 116
     .line 117
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 118
     .line 119
@@ -9261,7 +9261,7 @@
 
     .line 123
     .line 124
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 125
     .line 126
@@ -9292,7 +9292,7 @@
 
     .line 139
     .line 140
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 141
     .line 142
@@ -9305,7 +9305,7 @@
 
     .line 146
     .line 147
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 148
     .line 149
@@ -9389,7 +9389,7 @@
 
     .line 192
     .line 193
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_black_24:I
 
     .line 194
     .line 195
@@ -9402,7 +9402,7 @@
 
     .line 199
     .line 200
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_add_black_24:I
 
     .line 201
     .line 202
@@ -9419,7 +9419,7 @@
 
     .line 208
     .line 209
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 210
     .line 211
@@ -9444,7 +9444,7 @@
 
     .line 221
     .line 222
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 223
     .line 224
@@ -9465,7 +9465,7 @@
 
     .line 232
     .line 233
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 234
     .line 235
@@ -9478,7 +9478,7 @@
 
     .line 239
     .line 240
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 241
     .line 242

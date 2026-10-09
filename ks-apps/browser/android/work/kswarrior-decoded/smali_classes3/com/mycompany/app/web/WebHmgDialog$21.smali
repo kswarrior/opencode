@@ -300,7 +300,7 @@
 
     .line 80
     .line 81
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->server_error:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->server_error:I
 
     .line 82
     .line 83
@@ -325,7 +325,7 @@
 
     .line 92
     .line 93
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->check_network:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->check_network:I
 
     .line 94
     .line 95

@@ -1494,7 +1494,7 @@
 
     .line 47
     .line 48
-    sget v10, Lcom/mycompany/app/soulbrowser/R$id;->web_view_ads:I
+    sget v10, Lcom/kswarrior/ksportal/R$id;->web_view_ads:I
 
     .line 49
     .line 50
@@ -1876,7 +1876,7 @@
 
     .line 245
     .line 246
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 247
     .line 248
@@ -2024,7 +2024,7 @@
 
     .line 324
     .line 325
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 326
     .line 327
@@ -2587,7 +2587,7 @@
 
     .line 609
     .line 610
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 611
     .line 612
@@ -3316,7 +3316,7 @@
     .line 990
     .line 991
     .line 992
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->close:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->close:I
 
     .line 993
     .line 994
@@ -3370,7 +3370,7 @@
     move-result-object v5
 
     .line 1018
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->new_url:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->new_url:I
 
     .line 1019
     .line 1020
@@ -5545,7 +5545,7 @@
 
     .line 32
     .line 33
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 34
     .line 35
@@ -5819,7 +5819,7 @@
 
     .line 48
     .line 49
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 50
     .line 51

@@ -52,19 +52,19 @@
 
     .line 10
     .line 11
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 12
     .line 13
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->top_bar:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->top_bar:I
 
     .line 14
     .line 15
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->bot_bar:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->bot_bar:I
 
     .line 16
     .line 17
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->float_button:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->float_button:I
 
     .line 18
     .line 19
@@ -1086,7 +1086,7 @@
 
     .line 8
     .line 9
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 10
     .line 11
@@ -1126,7 +1126,7 @@
     .line 25
     .line 26
     .line 27
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->video_down_guide_1:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->video_down_guide_1:I
 
     .line 28
     .line 29
@@ -1152,7 +1152,7 @@
     .line 39
     .line 40
     .line 41
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->video_down_guide_2:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->video_down_guide_2:I
 
     .line 42
     .line 43
@@ -1174,7 +1174,7 @@
     .line 51
     .line 52
     .line 53
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->cast_info_6:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->cast_info_6:I
 
     .line 54
     .line 55
@@ -1207,7 +1207,7 @@
 
     .line 69
     .line 70
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_youtube_activity_2_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_youtube_activity_2_dark_24:I
 
     .line 71
     .line 72
@@ -1220,7 +1220,7 @@
 
     .line 75
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_youtube_activity_2_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_youtube_activity_2_black_24:I
 
     .line 76
     .line 77
@@ -1236,7 +1236,7 @@
 
     .line 81
     .line 82
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 83
     .line 84
@@ -1299,7 +1299,7 @@
 
     .line 112
     .line 113
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->video_manager:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->video_manager:I
 
     .line 114
     .line 115
@@ -1335,7 +1335,7 @@
 
     .line 130
     .line 131
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 132
     .line 133
@@ -1362,7 +1362,7 @@
 
     .line 143
     .line 144
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->detail_setting:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->detail_setting:I
 
     .line 145
     .line 146
@@ -1437,11 +1437,11 @@
 
     .line 180
     .line 181
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->back_play:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->back_play:I
 
     .line 182
     .line 183
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 184
     .line 185
@@ -1472,7 +1472,7 @@
 
     .line 197
     .line 198
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->back_play_info:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->back_play_info:I
 
     .line 199
     .line 200
@@ -1554,7 +1554,7 @@
 
     .line 239
     .line 240
-    sget v24, Lcom/mycompany/app/soulbrowser/R$string;->youtube_manager:I
+    sget v24, Lcom/kswarrior/ksportal/R$string;->youtube_manager:I
 
     .line 241
     .line 242
@@ -1592,7 +1592,7 @@
 
     .line 259
     .line 260
-    sget v29, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v29, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 261
     .line 262
@@ -1626,7 +1626,7 @@
 
     .line 277
     .line 278
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->detail_setting:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->detail_setting:I
 
     .line 279
     .line 280
@@ -1675,7 +1675,7 @@
 
     .line 302
     .line 303
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->youtube_auto:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->youtube_auto:I
 
     .line 304
     .line 305
@@ -1707,7 +1707,7 @@
 
     .line 318
     .line 319
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->youtube_unmute:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->youtube_unmute:I
 
     .line 320
     .line 321
@@ -2220,7 +2220,7 @@
     .line 2
     .line 3
     .line 4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->media:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->media:I
 
     .line 5
     .line 6

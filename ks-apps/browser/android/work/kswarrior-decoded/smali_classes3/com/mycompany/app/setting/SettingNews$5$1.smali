@@ -81,7 +81,7 @@
 
     .line 17
     .line 18
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->news_locale:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->news_locale:I
 
     .line 19
     .line 20

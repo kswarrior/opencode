@@ -66,7 +66,7 @@
 
     .line 10
     .line 11
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->swipe_sense:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->swipe_sense:I
 
     .line 12
     .line 13
@@ -96,7 +96,7 @@
 
     .line 26
     .line 27
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_dark_24:I
 
     .line 28
     .line 29
@@ -118,7 +118,7 @@
 
     .line 38
     .line 39
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_replay_dark_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_replay_dark_20:I
 
     .line 40
     .line 41
@@ -131,7 +131,7 @@
 
     .line 45
     .line 46
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_dark_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_check_dark_20:I
 
     .line 47
     .line 48
@@ -194,7 +194,7 @@
 
     .line 79
     .line 80
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_black_24:I
 
     .line 81
     .line 82
@@ -216,7 +216,7 @@
 
     .line 91
     .line 92
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_replay_black_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_replay_black_20:I
 
     .line 93
     .line 94
@@ -229,7 +229,7 @@
 
     .line 98
     .line 99
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_20:I
 
     .line 100
     .line 101
@@ -382,7 +382,7 @@
 
     .line 177
     .line 178
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 179
     .line 180
@@ -429,7 +429,7 @@
 
     .line 201
     .line 202
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 203
     .line 204

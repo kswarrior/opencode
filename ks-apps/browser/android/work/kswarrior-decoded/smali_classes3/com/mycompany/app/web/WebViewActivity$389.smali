@@ -120,7 +120,7 @@
 
     .line 35
     .line 36
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 37
     .line 38
@@ -155,7 +155,7 @@
     .line 52
     :cond_3
     :goto_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->blank_page:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->blank_page:I
 
     .line 53
     .line 54

@@ -61,7 +61,7 @@
 
     .line 8
     .line 9
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 10
     .line 11
@@ -172,7 +172,7 @@
 
     .line 62
     .line 63
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->font:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->font:I
 
     .line 64
     .line 65
@@ -211,7 +211,7 @@
 
     .line 83
     .line 84
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->tts_highlight:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->tts_highlight:I
 
     .line 85
     .line 86
@@ -236,7 +236,7 @@
 
     .line 96
     .line 97
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->auto_speak:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->auto_speak:I
 
     .line 98
     .line 99
@@ -261,7 +261,7 @@
 
     .line 109
     .line 110
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->trans_auto:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->trans_auto:I
 
     .line 111
     .line 112

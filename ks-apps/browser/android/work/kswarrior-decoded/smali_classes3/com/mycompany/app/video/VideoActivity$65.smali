@@ -157,7 +157,7 @@
 
     .line 46
     .line 47
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->normal_rate:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->normal_rate:I
 
     .line 48
     .line 49

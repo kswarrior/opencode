@@ -45,7 +45,7 @@
     .locals 0
 
     .line 1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->save_success:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->save_success:I
 
     .line 2
     .line 3

@@ -595,7 +595,7 @@
     .line 79
     iget-object v1, v0, Lcom/mycompany/app/image/ImageViewListVert;->a:Landroid/content/Context;
 
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     invoke-static {v1, v2}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
 
@@ -759,7 +759,7 @@
     invoke-virtual {v4, v6}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 110
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     invoke-virtual {v4, v6}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -861,7 +861,7 @@
     invoke-virtual {v9, v10, v10, v10, v10}, Landroid/view/View;->setPadding(IIII)V
 
     .line 130
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->round_guide_16:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->round_guide_16:I
 
     invoke-virtual {v9, v10}, Landroid/view/View;->setBackgroundResource(I)V
 
@@ -1590,7 +1590,7 @@
     .line 253
     iget-object v1, v0, Lcom/mycompany/app/image/ImageViewListHori;->a:Landroid/content/Context;
 
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     invoke-static {v1, v2}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
 
@@ -1754,7 +1754,7 @@
     invoke-virtual {v5, v6}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
     .line 284
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     invoke-virtual {v5, v6}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -1856,7 +1856,7 @@
     invoke-virtual {v9, v10, v10, v10, v10}, Landroid/view/View;->setPadding(IIII)V
 
     .line 304
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->round_guide_16:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->round_guide_16:I
 
     invoke-virtual {v9, v10}, Landroid/view/View;->setBackgroundResource(I)V
 

@@ -290,7 +290,7 @@
     .line 8
     .line 9
     .line 10
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->bookmark:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->bookmark:I
 
     .line 11
     .line 12
@@ -576,7 +576,7 @@
     .line 149
     .line 150
     .line 151
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 152
     .line 153
@@ -608,7 +608,7 @@
     .line 165
     .line 166
     .line 167
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_gray:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_gray:I
 
     .line 168
     .line 169

@@ -120,7 +120,7 @@
 
     .line 37
     .line 38
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->search_engine:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->search_engine:I
 
     .line 39
     .line 40

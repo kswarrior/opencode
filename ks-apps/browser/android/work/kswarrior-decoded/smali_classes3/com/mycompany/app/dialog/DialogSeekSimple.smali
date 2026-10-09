@@ -274,7 +274,7 @@
 
     .line 100
     .line 101
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->time_hour:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->time_hour:I
 
     .line 102
     .line 103
@@ -382,7 +382,7 @@
 
     .line 150
     .line 151
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->time_day:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->time_day:I
 
     .line 152
     .line 153
@@ -1083,7 +1083,7 @@
 
     .line 40
     .line 41
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_r:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_r:I
 
     .line 42
     .line 43
@@ -1108,7 +1108,7 @@
 
     .line 53
     .line 54
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_r:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_r:I
 
     .line 55
     .line 56
@@ -1137,7 +1137,7 @@
 
     .line 67
     .line 68
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 69
     .line 70
@@ -1162,7 +1162,7 @@
 
     .line 80
     .line 81
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 82
     .line 83

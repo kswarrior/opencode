@@ -165,7 +165,7 @@
 
     .line 32
     .line 33
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 34
     .line 35
@@ -196,7 +196,7 @@
 
     .line 49
     .line 50
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->item:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->item:I
 
     .line 51
     .line 52
@@ -204,7 +204,7 @@
 
     .line 53
     :cond_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->items:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->items:I
 
     .line 54
     .line 55
@@ -325,7 +325,7 @@
 
     .line 112
     :cond_6
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 113
     .line 114
@@ -372,7 +372,7 @@
 
     .line 135
     .line 136
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->item:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->item:I
 
     .line 137
     .line 138

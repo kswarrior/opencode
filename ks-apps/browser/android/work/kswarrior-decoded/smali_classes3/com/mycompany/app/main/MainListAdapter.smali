@@ -201,7 +201,7 @@
 
     .line 59
     .line 60
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_offline_pin_black_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_offline_pin_black_24:I
 
     .line 61
     .line 62
@@ -4523,10 +4523,10 @@
     invoke-virtual {v11, v4}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 5
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->main_down_ftext:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->main_down_ftext:I
 
     .line 6
-    sget v12, Lcom/mycompany/app/soulbrowser/R$id;->main_down_button:I
+    sget v12, Lcom/kswarrior/ksportal/R$id;->main_down_button:I
 
     .line 7
     new-instance v8, Lcom/mycompany/app/view/MySelectView;
@@ -4685,7 +4685,7 @@
     invoke-direct {v5, v3, v10}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 41
-    sget v14, Lcom/mycompany/app/soulbrowser/R$id;->main_down_name:I
+    sget v14, Lcom/kswarrior/ksportal/R$id;->main_down_name:I
 
     .line 42
     invoke-virtual {v5, v14}, Landroid/view/View;->setId(I)V
@@ -4714,7 +4714,7 @@
     invoke-direct {v10, v3, v15}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 48
-    sget v15, Lcom/mycompany/app/soulbrowser/R$id;->main_down_date:I
+    sget v15, Lcom/kswarrior/ksportal/R$id;->main_down_date:I
 
     .line 49
     invoke-virtual {v10, v15}, Landroid/view/View;->setId(I)V
@@ -4799,7 +4799,7 @@
     invoke-direct {v1, v3}, Lcom/mycompany/app/view/MyProgressBar;-><init>(Landroid/content/Context;)V
 
     .line 65
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->main_down_prog:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->main_down_prog:I
 
     .line 66
     invoke-virtual {v1, v6}, Landroid/view/View;->setId(I)V
@@ -4847,7 +4847,7 @@
     invoke-direct {v0, v3, v15}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 75
-    sget v10, Lcom/mycompany/app/soulbrowser/R$id;->main_down_percent:I
+    sget v10, Lcom/kswarrior/ksportal/R$id;->main_down_percent:I
 
     .line 76
     invoke-virtual {v0, v10}, Landroid/view/View;->setId(I)V
@@ -4972,7 +4972,7 @@
     invoke-direct {v1, v3}, Lcom/mycompany/app/view/MyButtonImage;-><init>(Landroid/content/Context;)V
 
     .line 100
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->main_down_pause:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->main_down_pause:I
 
     .line 101
     invoke-virtual {v1, v4}, Landroid/view/View;->setId(I)V
@@ -5213,10 +5213,10 @@
     invoke-virtual {v0, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 140
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->main_search_ftext:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->main_search_ftext:I
 
     .line 141
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->main_search_button:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->main_search_button:I
 
     .line 142
     new-instance v5, Lcom/mycompany/app/view/MySelectView;
@@ -5383,7 +5383,7 @@
     invoke-direct {v9, v3, v10}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 176
-    sget v12, Lcom/mycompany/app/soulbrowser/R$id;->main_search_name:I
+    sget v12, Lcom/kswarrior/ksportal/R$id;->main_search_name:I
 
     .line 177
     invoke-virtual {v9, v12}, Landroid/view/View;->setId(I)V
@@ -5408,7 +5408,7 @@
     invoke-direct {v14, v3, v10}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 183
-    sget v10, Lcom/mycompany/app/soulbrowser/R$id;->main_search_date:I
+    sget v10, Lcom/kswarrior/ksportal/R$id;->main_search_date:I
 
     .line 184
     invoke-virtual {v14, v10}, Landroid/view/View;->setId(I)V
@@ -5644,10 +5644,10 @@
     invoke-virtual {v0, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 228
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->main_child_ftext:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->main_child_ftext:I
 
     .line 229
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->main_child_button:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->main_child_button:I
 
     .line 230
     new-instance v4, Lcom/mycompany/app/view/MySelectView;
@@ -5811,7 +5811,7 @@
     invoke-direct {v7, v3, v15}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 263
-    sget v10, Lcom/mycompany/app/soulbrowser/R$id;->main_child_name:I
+    sget v10, Lcom/kswarrior/ksportal/R$id;->main_child_name:I
 
     .line 264
     invoke-virtual {v7, v10}, Landroid/view/View;->setId(I)V
@@ -5838,7 +5838,7 @@
     invoke-direct {v12, v3, v15}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 270
-    sget v15, Lcom/mycompany/app/soulbrowser/R$id;->main_child_date:I
+    sget v15, Lcom/kswarrior/ksportal/R$id;->main_child_date:I
 
     .line 271
     invoke-virtual {v12, v15}, Landroid/view/View;->setId(I)V
@@ -6052,10 +6052,10 @@
     invoke-virtual {v0, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 315
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->main_filter_ftext:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->main_filter_ftext:I
 
     .line 316
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->main_filter_button:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->main_filter_button:I
 
     .line 317
     new-instance v4, Lcom/mycompany/app/view/MySelectView;
@@ -6227,7 +6227,7 @@
     invoke-direct {v8, v3, v15}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 352
-    sget v9, Lcom/mycompany/app/soulbrowser/R$id;->main_filter_name:I
+    sget v9, Lcom/kswarrior/ksportal/R$id;->main_filter_name:I
 
     .line 353
     invoke-virtual {v8, v9}, Landroid/view/View;->setId(I)V
@@ -6254,7 +6254,7 @@
     invoke-direct {v11, v3, v15}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 359
-    sget v12, Lcom/mycompany/app/soulbrowser/R$id;->main_filter_date:I
+    sget v12, Lcom/kswarrior/ksportal/R$id;->main_filter_date:I
 
     .line 360
     invoke-virtual {v11, v12}, Landroid/view/View;->setId(I)V
@@ -6497,10 +6497,10 @@
     invoke-virtual {v1, v2}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 411
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->main_small_ftext:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->main_small_ftext:I
 
     .line 412
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->main_small_button:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->main_small_button:I
 
     .line 413
     new-instance v7, Lcom/mycompany/app/view/MySelectView;
@@ -6661,7 +6661,7 @@
     invoke-direct {v13, v3, v0}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 447
-    sget v14, Lcom/mycompany/app/soulbrowser/R$id;->main_small_name:I
+    sget v14, Lcom/kswarrior/ksportal/R$id;->main_small_name:I
 
     .line 448
     invoke-virtual {v13, v14}, Landroid/view/View;->setId(I)V
@@ -6686,7 +6686,7 @@
     invoke-direct {v8, v3, v0}, Landroidx/appcompat/widget/AppCompatTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 454
-    sget v0, Lcom/mycompany/app/soulbrowser/R$id;->main_small_date:I
+    sget v0, Lcom/kswarrior/ksportal/R$id;->main_small_date:I
 
     .line 455
     invoke-virtual {v8, v0}, Landroid/view/View;->setId(I)V
@@ -6929,14 +6929,14 @@
     .line 503
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->p:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_dark_24:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
     .line 504
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->q:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -6970,7 +6970,7 @@
     .line 509
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->o:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -6996,7 +6996,7 @@
     .line 512
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->o:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7020,7 +7020,7 @@
     .line 515
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->o:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7040,7 +7040,7 @@
     .line 518
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->o:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_dark_24:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7073,14 +7073,14 @@
     .line 523
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->p:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_black_24:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
     .line 524
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->q:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7112,7 +7112,7 @@
     .line 529
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->o:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7138,7 +7138,7 @@
     .line 532
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->o:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7162,7 +7162,7 @@
     .line 535
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->o:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7182,7 +7182,7 @@
     .line 538
     iget-object v0, v5, Lcom/mycompany/app/main/MainListAdapter$ChildHolder;->o:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_black_24:I
 
     invoke-virtual {v0, v4}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -7505,12 +7505,12 @@
 
     if-eqz v1, :cond_20
 
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     goto :goto_d
 
     :cond_20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     :goto_d
     invoke-virtual {v2, v1}, Landroid/view/View;->setBackgroundResource(I)V
@@ -7896,7 +7896,7 @@
 
     if-eqz v3, :cond_33
 
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     :goto_16
     const/4 v11, 0x0
@@ -7904,7 +7904,7 @@
     goto :goto_17
 
     :cond_33
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     goto :goto_16
 
@@ -8260,7 +8260,7 @@
     .line 668
     iget v5, v4, Lcom/mycompany/app/main/MainItem$ChildItem;->w:I
 
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_black_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_black_24:I
 
     if-ne v5, v7, :cond_42
 
@@ -8345,7 +8345,7 @@
     .line 676
     iget v5, v4, Lcom/mycompany/app/main/MainItem$ChildItem;->w:I
 
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_black_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_black_24:I
 
     if-ne v5, v7, :cond_47
 
@@ -8601,12 +8601,12 @@
 
     if-eqz v1, :cond_53
 
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     goto :goto_2a
 
     :cond_53
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     :goto_2a
     invoke-virtual {v2, v1}, Landroid/view/View;->setBackgroundResource(I)V
@@ -8853,7 +8853,7 @@
 
     .line 28
     .line 29
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 30
     .line 31
@@ -8861,7 +8861,7 @@
 
     .line 32
     :cond_4
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 33
     .line 34
@@ -8942,7 +8942,7 @@
 
     .line 70
     .line 71
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 72
     .line 73
@@ -8950,7 +8950,7 @@
 
     .line 74
     :cond_7
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 75
     .line 76
@@ -9321,7 +9321,7 @@
     .line 41
     .line 42
     .line 43
-    sget v10, Lcom/mycompany/app/soulbrowser/R$id;->main_group_ftext:I
+    sget v10, Lcom/kswarrior/ksportal/R$id;->main_group_ftext:I
 
     .line 44
     .line 45
@@ -9432,7 +9432,7 @@
     .line 102
     .line 103
     .line 104
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_white_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_check_white_24:I
 
     .line 105
     .line 106
@@ -9500,11 +9500,11 @@
     .line 138
     .line 139
     .line 140
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_folder_white_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_folder_white_24:I
 
     .line 141
     .line 142
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_white_24:I
 
     .line 143
     .line 144
@@ -9608,7 +9608,7 @@
     .line 196
     .line 197
     .line 198
-    sget v8, Lcom/mycompany/app/soulbrowser/R$id;->main_group_name:I
+    sget v8, Lcom/kswarrior/ksportal/R$id;->main_group_name:I
 
     .line 199
     .line 200
@@ -9981,7 +9981,7 @@
 
     .line 390
     .line 391
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_dark_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_dark_24:I
 
     .line 392
     .line 393
@@ -10008,11 +10008,11 @@
 
     .line 405
     .line 406
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 407
     .line 408
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 409
     .line 410
@@ -10052,7 +10052,7 @@
 
     .line 428
     .line 429
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_black_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_black_24:I
 
     .line 430
     .line 431
@@ -10078,11 +10078,11 @@
 
     .line 442
     .line 443
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 444
     .line 445
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 446
     .line 447
@@ -10750,7 +10750,7 @@
 
     .line 776
     .line 777
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->items:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->items:I
 
     .line 778
     .line 779
@@ -10763,7 +10763,7 @@
 
     .line 782
     :cond_12
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->item:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->item:I
 
     .line 783
     .line 784
@@ -10992,7 +10992,7 @@
 
     .line 899
     .line 900
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 901
     .line 902
@@ -11000,7 +11000,7 @@
 
     .line 903
     :cond_19
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 904
     .line 905
@@ -12620,7 +12620,7 @@
 
     .line 55
     .line 56
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 57
     .line 58
@@ -12628,7 +12628,7 @@
 
     .line 59
     :cond_4
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 60
     .line 61
@@ -17403,7 +17403,7 @@
 
     .line 111
     .line 112
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->down_fail:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->down_fail:I
 
     .line 113
     .line 114
@@ -17821,7 +17821,7 @@
 
     .line 322
     .line 323
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 324
     .line 325
@@ -17918,7 +17918,7 @@
 
     .line 370
     .line 371
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_stop_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_stop_dark_24:I
 
     .line 372
     .line 373
@@ -17926,7 +17926,7 @@
 
     .line 374
     :cond_11
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_stop_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_stop_black_24:I
 
     .line 375
     .line 376
@@ -18017,7 +18017,7 @@
 
     .line 417
     .line 418
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     .line 419
     .line 420
@@ -18025,7 +18025,7 @@
 
     .line 421
     :cond_14
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     .line 422
     .line 423
@@ -18040,7 +18040,7 @@
 
     .line 427
     .line 428
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 429
     .line 430
@@ -18124,7 +18124,7 @@
 
     .line 473
     .line 474
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 475
     .line 476
@@ -18132,7 +18132,7 @@
 
     .line 477
     :cond_15
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 478
     .line 479
@@ -18234,7 +18234,7 @@
 
     .line 528
     .line 529
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_stop_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_stop_dark_24:I
 
     .line 530
     .line 531
@@ -18242,7 +18242,7 @@
 
     .line 532
     :cond_17
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_stop_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_stop_black_24:I
 
     .line 533
     .line 534
@@ -18333,7 +18333,7 @@
 
     .line 575
     .line 576
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     .line 577
     .line 578
@@ -18341,7 +18341,7 @@
 
     .line 579
     :cond_1a
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     .line 580
     .line 581
@@ -18364,7 +18364,7 @@
 
     .line 589
     .line 590
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->reserved:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->reserved:I
 
     .line 591
     .line 592
@@ -18372,7 +18372,7 @@
 
     .line 593
     :cond_1b
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->paused:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->paused:I
 
     .line 594
     .line 595
@@ -18457,7 +18457,7 @@
 
     .line 638
     .line 639
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 640
     .line 641
@@ -18465,7 +18465,7 @@
 
     .line 642
     :cond_1c
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 643
     .line 644
@@ -18583,7 +18583,7 @@
 
     .line 701
     .line 702
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_stop_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_stop_dark_24:I
 
     .line 703
     .line 704
@@ -18591,7 +18591,7 @@
 
     .line 705
     :cond_1e
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_stop_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_stop_black_24:I
 
     .line 706
     .line 707
@@ -18733,7 +18733,7 @@
     .line 765
     .line 766
     .line 767
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->time_s:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->time_s:I
 
     .line 768
     .line 769
@@ -18778,7 +18778,7 @@
     .line 787
     .line 788
     .line 789
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->time_s:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->time_s:I
 
     .line 790
     .line 791
@@ -18829,7 +18829,7 @@
     .line 813
     .line 814
     .line 815
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->time_s:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->time_s:I
 
     .line 816
     .line 817
@@ -18888,7 +18888,7 @@
     .line 843
     .line 844
     .line 845
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->time_m:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->time_m:I
 
     .line 846
     .line 847
@@ -18919,7 +18919,7 @@
     .line 860
     .line 861
     .line 862
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->time_s:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->time_s:I
 
     .line 863
     .line 864
@@ -18970,7 +18970,7 @@
     .line 886
     .line 887
     .line 888
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->time_h:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->time_h:I
 
     .line 889
     .line 890
@@ -19001,7 +19001,7 @@
     .line 903
     .line 904
     .line 905
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->time_m:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->time_m:I
 
     .line 906
     .line 907
@@ -19048,7 +19048,7 @@
     .line 926
     .line 927
     .line 928
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->time_h:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->time_h:I
 
     .line 929
     .line 930
@@ -19082,7 +19082,7 @@
     .line 943
     .line 944
     .line 945
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->finishing:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->finishing:I
 
     .line 946
     .line 947
@@ -19177,7 +19177,7 @@
 
     .line 994
     .line 995
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     .line 996
     .line 997
@@ -19185,7 +19185,7 @@
 
     .line 998
     :cond_28
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     .line 999
     .line 1000
@@ -19271,7 +19271,7 @@
 
     .line 1043
     .line 1044
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_dark_24:I
 
     .line 1045
     .line 1046
@@ -19279,7 +19279,7 @@
 
     .line 1047
     :cond_29
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_black_24:I
 
     .line 1048
     .line 1049

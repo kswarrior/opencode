@@ -126,7 +126,7 @@
 
     .line 42
     .line 43
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_dark_18:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_dark_18:I
 
     .line 44
     .line 45
@@ -153,7 +153,7 @@
 
     .line 57
     .line 58
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_delete_dark_20:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_delete_dark_20:I
 
     .line 59
     .line 60
@@ -184,7 +184,7 @@
 
     .line 74
     .line 75
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_dark:I
 
     .line 76
     .line 77
@@ -206,7 +206,7 @@
 
     .line 86
     .line 87
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 88
     .line 89
@@ -255,7 +255,7 @@
 
     .line 112
     .line 113
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_black_18:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_black_18:I
 
     .line 114
     .line 115
@@ -282,7 +282,7 @@
 
     .line 127
     .line 128
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_delete_black_20:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_delete_black_20:I
 
     .line 129
     .line 130
@@ -313,7 +313,7 @@
 
     .line 144
     .line 145
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_color:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_color:I
 
     .line 146
     .line 147
@@ -335,7 +335,7 @@
 
     .line 156
     .line 157
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 158
     .line 159

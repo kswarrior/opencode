@@ -82,7 +82,7 @@
 
     .line 18
     .line 19
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 20
     .line 21
@@ -113,7 +113,7 @@
 
     .line 34
     .line 35
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 36
     .line 37
@@ -239,7 +239,7 @@
 
     .line 90
     .line 91
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->mobile_mode:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->mobile_mode:I
 
     .line 92
     .line 93
@@ -257,7 +257,7 @@
 
     .line 100
     .line 101
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->desk_one:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->desk_one:I
 
     .line 102
     .line 103
@@ -275,7 +275,7 @@
 
     .line 110
     .line 111
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->desk_all:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->desk_all:I
 
     .line 112
     .line 113

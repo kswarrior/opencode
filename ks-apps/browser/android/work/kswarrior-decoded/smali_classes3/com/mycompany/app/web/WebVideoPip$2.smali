@@ -107,7 +107,7 @@
     .line 28
     .line 29
     .line 30
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_VIDEO_FRWD"
+    const-string v2, "com.kswarrior.ksportal.ACTION_VIDEO_FRWD"
 
     .line 31
     .line 32
@@ -116,7 +116,7 @@
     .line 33
     .line 34
     .line 35
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_VIDEO_PLAY"
+    const-string v2, "com.kswarrior.ksportal.ACTION_VIDEO_PLAY"
 
     .line 36
     .line 37
@@ -125,7 +125,7 @@
     .line 38
     .line 39
     .line 40
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_VIDEO_FFWD"
+    const-string v2, "com.kswarrior.ksportal.ACTION_VIDEO_FFWD"
 
     .line 41
     .line 42
@@ -134,7 +134,7 @@
     .line 43
     .line 44
     .line 45
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_MUSIC_PAUSE"
+    const-string v2, "com.kswarrior.ksportal.ACTION_MUSIC_PAUSE"
 
     .line 46
     .line 47

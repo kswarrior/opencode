@@ -104,7 +104,7 @@
     .line 26
     .line 27
     .line 28
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->size_guide_1:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->size_guide_1:I
 
     .line 29
     .line 30
@@ -130,7 +130,7 @@
     .line 40
     .line 41
     .line 42
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->size_guide_2:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->size_guide_2:I
 
     .line 43
     .line 44
@@ -156,7 +156,7 @@
     .line 54
     .line 55
     .line 56
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->size_guide_3:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->size_guide_3:I
 
     .line 57
     .line 58

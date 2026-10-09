@@ -238,7 +238,7 @@
     .line 101
     .line 102
     .line 103
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_fullscreen_exit_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_fullscreen_exit_white_24:I
 
     .line 104
     .line 105
@@ -420,7 +420,7 @@
     .line 195
     .line 196
     .line 197
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_fullscreen_white_24:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->outline_fullscreen_white_24:I
 
     .line 198
     .line 199
@@ -588,7 +588,7 @@
     .line 285
     .line 286
     .line 287
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 288
     .line 289
@@ -597,7 +597,7 @@
     .line 290
     .line 291
     .line 292
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_view:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->selector_view:I
 
     .line 293
     .line 294
@@ -663,7 +663,7 @@
     .line 326
     .line 327
     .line 328
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->crop_save:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->crop_save:I
 
     .line 329
     .line 330
@@ -672,7 +672,7 @@
     .line 331
     .line 332
     .line 333
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_view:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->selector_view:I
 
     .line 334
     .line 335

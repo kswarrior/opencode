@@ -107,7 +107,7 @@
 
     .line 4
     .line 5
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogFullBlack:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogFullBlack:I
 
     .line 6
     .line 7
@@ -115,7 +115,7 @@
 
     .line 8
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogFullTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogFullTheme:I
 
     .line 9
     .line 10
@@ -1414,7 +1414,7 @@
 
     .line 84
     .line 85
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_dark_24:I
 
     .line 86
     .line 87
@@ -1427,7 +1427,7 @@
 
     .line 91
     .line 92
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_dark_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_download_dark_20:I
 
     .line 93
     .line 94
@@ -1440,7 +1440,7 @@
 
     .line 98
     .line 99
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_brightness_6_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_brightness_6_dark_24:I
 
     .line 100
     .line 101
@@ -1453,7 +1453,7 @@
 
     .line 105
     .line 106
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_search_dark_24:I
 
     .line 107
     .line 108
@@ -1615,7 +1615,7 @@
 
     .line 193
     .line 194
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_black_24:I
 
     .line 195
     .line 196
@@ -1628,7 +1628,7 @@
 
     .line 200
     .line 201
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_black_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_download_black_20:I
 
     .line 202
     .line 203
@@ -1641,7 +1641,7 @@
 
     .line 207
     .line 208
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_brightness_6_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_brightness_6_black_24:I
 
     .line 209
     .line 210
@@ -1654,7 +1654,7 @@
 
     .line 214
     .line 215
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_search_black_24:I
 
     .line 216
     .line 217

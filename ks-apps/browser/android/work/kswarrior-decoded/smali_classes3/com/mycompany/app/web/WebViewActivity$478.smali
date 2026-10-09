@@ -436,7 +436,7 @@
 
     .line 27
     .line 28
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->tab_items:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->tab_items:I
 
     .line 29
     .line 30
@@ -444,7 +444,7 @@
 
     .line 31
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->tab_item:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->tab_item:I
 
     .line 32
     .line 33
@@ -467,7 +467,7 @@
     .line 41
     .line 42
     .line 43
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 44
     .line 45

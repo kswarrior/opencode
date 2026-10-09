@@ -1150,7 +1150,7 @@
     .line 8
     .line 9
     .line 10
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->button_title:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->button_title:I
 
     .line 11
     .line 12
@@ -1360,7 +1360,7 @@
     move-result v6
 
     .line 70
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 71
     .line 72
@@ -1384,7 +1384,7 @@
 
     .line 81
     .line 82
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 83
     .line 84
@@ -1411,7 +1411,7 @@
 
     .line 94
     .line 95
-    sget v23, Lcom/mycompany/app/soulbrowser/R$string;->always_visible:I
+    sget v23, Lcom/kswarrior/ksportal/R$string;->always_visible:I
 
     .line 96
     .line 97
@@ -1482,7 +1482,7 @@
     move-result v9
 
     .line 132
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 133
     .line 134
@@ -1512,7 +1512,7 @@
 
     .line 145
     .line 146
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 147
     .line 148
@@ -1544,7 +1544,7 @@
 
     .line 161
     .line 162
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->always_visible:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->always_visible:I
 
     .line 163
     .line 164
@@ -1608,7 +1608,7 @@
     move-result v9
 
     .line 194
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 195
     .line 196
@@ -1633,7 +1633,7 @@
 
     .line 206
     .line 207
-    sget v19, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v19, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 208
     .line 209
@@ -1667,7 +1667,7 @@
 
     .line 224
     .line 225
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->always_visible:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->always_visible:I
 
     .line 226
     .line 227
@@ -1844,7 +1844,7 @@
     .line 2
     .line 3
     .line 4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->float_button:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->float_button:I
 
     .line 5
     .line 6

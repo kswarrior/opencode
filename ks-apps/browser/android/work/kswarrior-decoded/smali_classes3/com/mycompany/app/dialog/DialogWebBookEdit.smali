@@ -732,7 +732,7 @@
     .line 8
     .line 9
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->item_title_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->item_title_view:I
 
     .line 10
     .line 11
@@ -913,7 +913,7 @@
 
     .line 103
     .line 104
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 105
     .line 106
@@ -923,7 +923,7 @@
     .line 108
     .line 109
     :cond_1
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 110
     .line 111
@@ -1107,7 +1107,7 @@
     move-result-object v12
 
     .line 205
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 206
     .line 207
@@ -1159,7 +1159,7 @@
 
     .line 232
     .line 233
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 234
     .line 235
@@ -1323,7 +1323,7 @@
     .line 322
     .line 323
     .line 324
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->save_location:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->save_location:I
 
     .line 325
     .line 326
@@ -1413,7 +1413,7 @@
     .line 370
     .line 371
     .line 372
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->save:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->save:I
 
     .line 373
     .line 374
@@ -1736,7 +1736,7 @@
 
     .line 24
     .line 25
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 26
     .line 27
@@ -1790,7 +1790,7 @@
 
     .line 51
     .line 52
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->input_url:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->input_url:I
 
     .line 53
     .line 54
@@ -2198,7 +2198,7 @@
 
     .line 36
     .line 37
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 38
     .line 39
@@ -2414,7 +2414,7 @@
 
     .line 31
     .line 32
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->bookmark:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->bookmark:I
 
     .line 33
     .line 34
@@ -2458,7 +2458,7 @@
 
     .line 53
     .line 54
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->bookmark:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->bookmark:I
 
     .line 55
     .line 56

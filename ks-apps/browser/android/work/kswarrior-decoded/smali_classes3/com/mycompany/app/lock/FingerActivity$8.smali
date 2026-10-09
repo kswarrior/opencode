@@ -103,7 +103,7 @@
 
     .line 29
     :cond_2
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 30
     .line 31

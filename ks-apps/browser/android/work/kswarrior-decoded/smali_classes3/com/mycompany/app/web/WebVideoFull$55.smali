@@ -305,7 +305,7 @@
 
     .line 134
     .line 135
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_volume_off_white_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_volume_off_white_24:I
 
     .line 136
     .line 137
@@ -322,7 +322,7 @@
 
     .line 142
     .line 143
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_volume_up_white_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_volume_up_white_24:I
 
     .line 144
     .line 145

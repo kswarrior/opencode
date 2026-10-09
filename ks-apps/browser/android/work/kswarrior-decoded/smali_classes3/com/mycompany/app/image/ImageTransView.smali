@@ -937,7 +937,7 @@
 
     .line 7
     .line 8
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_g_translate_color_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_g_translate_color_24:I
 
     .line 9
     .line 10
@@ -945,7 +945,7 @@
 
     .line 11
     :cond_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_g_translate_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_g_translate_white_24:I
 
     .line 12
     .line 13
@@ -957,7 +957,7 @@
 
     .line 15
     .line 16
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_search_white_24:I
 
     .line 17
     .line 18
@@ -972,7 +972,7 @@
 
     .line 21
     .line 22
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_refresh_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_refresh_white_24:I
 
     .line 23
     .line 24
@@ -987,7 +987,7 @@
 
     .line 27
     .line 28
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_format_color_fill_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_format_color_fill_white_24:I
 
     .line 29
     .line 30
@@ -1002,7 +1002,7 @@
 
     .line 33
     .line 34
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_center_focus_strong_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_center_focus_strong_white_24:I
 
     .line 35
     .line 36

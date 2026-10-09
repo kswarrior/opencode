@@ -240,7 +240,7 @@
 
     .line 16
     .line 17
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 18
     .line 19
@@ -574,7 +574,7 @@
 
     .line 20
     .line 21
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->file_added:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->file_added:I
 
     .line 22
     .line 23
@@ -643,7 +643,7 @@
 
     .line 54
     .line 55
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->no_added:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->no_added:I
 
     .line 56
     .line 57

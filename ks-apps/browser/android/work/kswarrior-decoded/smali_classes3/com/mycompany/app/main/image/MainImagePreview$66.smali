@@ -196,7 +196,7 @@
     .line 50
     .line 51
     .line 52
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fast_down_guide:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fast_down_guide:I
 
     .line 53
     .line 54
@@ -222,7 +222,7 @@
     .line 64
     .line 65
     .line 66
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->dark_mode_info_2:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->dark_mode_info_2:I
 
     .line 67
     .line 68

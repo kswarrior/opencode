@@ -371,7 +371,7 @@
 
     .line 19
     .line 20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$anim;->ic_rotate_out:I
+    sget v1, Lcom/kswarrior/ksportal/R$anim;->ic_rotate_out:I
 
     .line 21
     .line 22
@@ -388,7 +388,7 @@
 
     .line 28
     .line 29
-    sget v1, Lcom/mycompany/app/soulbrowser/R$anim;->ic_scale_in:I
+    sget v1, Lcom/kswarrior/ksportal/R$anim;->ic_scale_in:I
 
     .line 30
     .line 31
@@ -405,7 +405,7 @@
 
     .line 37
     .line 38
-    sget v0, Lcom/mycompany/app/soulbrowser/R$anim;->ic_rotate_in:I
+    sget v0, Lcom/kswarrior/ksportal/R$anim;->ic_rotate_in:I
 
     .line 39
     .line 40
@@ -461,7 +461,7 @@
 
     .line 65
     .line 66
-    sget v1, Lcom/mycompany/app/soulbrowser/R$anim;->ic_rotate_in:I
+    sget v1, Lcom/kswarrior/ksportal/R$anim;->ic_rotate_in:I
 
     .line 67
     .line 68
@@ -478,7 +478,7 @@
 
     .line 74
     .line 75
-    sget v1, Lcom/mycompany/app/soulbrowser/R$anim;->ic_scale_out:I
+    sget v1, Lcom/kswarrior/ksportal/R$anim;->ic_scale_out:I
 
     .line 76
     .line 77
@@ -495,7 +495,7 @@
 
     .line 83
     .line 84
-    sget v0, Lcom/mycompany/app/soulbrowser/R$anim;->ic_rotate_out:I
+    sget v0, Lcom/kswarrior/ksportal/R$anim;->ic_rotate_out:I
 
     .line 85
     .line 86

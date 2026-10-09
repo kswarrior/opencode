@@ -138,7 +138,7 @@
 
     .line 44
     .line 45
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->delete_tab:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->delete_tab:I
 
     .line 46
     .line 47
@@ -163,7 +163,7 @@
 
     .line 57
     .line 58
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->app_exit:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->app_exit:I
 
     .line 59
     .line 60
@@ -776,7 +776,7 @@
 
     .line 358
     .line 359
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->tab_add_next:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->tab_add_next:I
 
     .line 360
     .line 361
@@ -801,7 +801,7 @@
 
     .line 371
     .line 372
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->tab_add_last:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->tab_add_last:I
 
     .line 373
     .line 374

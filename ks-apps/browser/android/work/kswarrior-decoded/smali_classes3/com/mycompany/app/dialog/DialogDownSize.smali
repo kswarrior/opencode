@@ -681,7 +681,7 @@
 
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 28
     .line 29

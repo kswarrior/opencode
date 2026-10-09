@@ -159,7 +159,7 @@
 
     .line 54
     :cond_4
-    sget v2, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v2, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 55
     .line 56

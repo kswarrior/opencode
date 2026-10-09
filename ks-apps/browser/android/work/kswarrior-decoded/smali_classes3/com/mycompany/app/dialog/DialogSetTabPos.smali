@@ -99,23 +99,23 @@
 
     .line 11
     .line 12
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_show:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_show:I
 
     .line 13
     .line 14
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->above_top:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->above_top:I
 
     .line 15
     .line 16
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->below_top:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->below_top:I
 
     .line 17
     .line 18
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->above_bot:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->above_bot:I
 
     .line 19
     .line 20
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->below_bot:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->below_bot:I
 
     .line 21
     .line 22

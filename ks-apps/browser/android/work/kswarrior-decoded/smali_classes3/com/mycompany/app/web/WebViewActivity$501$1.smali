@@ -169,7 +169,7 @@
 
     .line 60
     .line 61
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_account_circle_dark_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_account_circle_dark_24:I
 
     .line 62
     .line 63
@@ -177,7 +177,7 @@
 
     .line 64
     :cond_3
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_account_circle_black_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_account_circle_black_24:I
 
     .line 65
     .line 66
@@ -212,7 +212,7 @@
 
     .line 81
     .line 82
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_vpn_key_dark_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_vpn_key_dark_24:I
 
     .line 83
     .line 84
@@ -220,7 +220,7 @@
 
     .line 85
     :cond_4
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_vpn_key_black_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_vpn_key_black_24:I
 
     .line 86
     .line 87
@@ -641,7 +641,7 @@
     .line 272
     :cond_1c
     :goto_7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 273
     .line 274

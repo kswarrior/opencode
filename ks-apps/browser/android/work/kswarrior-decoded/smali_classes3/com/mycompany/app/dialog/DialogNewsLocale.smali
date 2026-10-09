@@ -679,11 +679,11 @@
     .line 8
     .line 9
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->item_frame_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->item_frame_view:I
 
     .line 10
     .line 11
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_trans_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_trans_view:I
 
     .line 12
     .line 13
@@ -1048,7 +1048,7 @@
 
     .line 207
     .line 208
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 209
     .line 210
@@ -1058,7 +1058,7 @@
     .line 212
     .line 213
     :cond_2
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->search_url:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->search_url:I
 
     .line 214
     .line 215
@@ -1302,7 +1302,7 @@
     .line 341
     .line 342
     .line 343
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->close:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->close:I
 
     .line 344
     .line 345
@@ -2525,7 +2525,7 @@
 
     .line 9
     .line 10
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_g_translate_color_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_g_translate_color_18:I
 
     .line 11
     .line 12
@@ -2546,7 +2546,7 @@
 
     .line 19
     .line 20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_g_translate_dark_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_g_translate_dark_18:I
 
     .line 21
     .line 22
@@ -2559,7 +2559,7 @@
 
     .line 26
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_g_translate_black_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_g_translate_black_18:I
 
     .line 27
     .line 28

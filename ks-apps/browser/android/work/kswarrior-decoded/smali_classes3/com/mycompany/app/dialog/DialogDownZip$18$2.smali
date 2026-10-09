@@ -207,7 +207,7 @@
 
     .line 83
     .line 84
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->not_loaded:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->not_loaded:I
 
     .line 85
     .line 86
@@ -319,7 +319,7 @@
 
     .line 139
     .line 140
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 141
     .line 142
@@ -370,7 +370,7 @@
 
     .line 163
     .line 164
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->create_zip:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->create_zip:I
 
     .line 165
     .line 166
@@ -437,7 +437,7 @@
 
     .line 195
     .line 196
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->close:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->close:I
 
     .line 197
     .line 198

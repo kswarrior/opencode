@@ -104,7 +104,7 @@
 
     .line 27
     .line 28
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->layout_title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->layout_title:I
 
     .line 29
     .line 30
@@ -147,7 +147,7 @@
 
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->long_press:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->long_press:I
 
     .line 48
     .line 49
@@ -184,7 +184,7 @@
 
     .line 63
     .line 64
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->swipe_up:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->swipe_up:I
 
     .line 65
     .line 66

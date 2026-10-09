@@ -326,7 +326,7 @@
 
     .line 86
     .line 87
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->no_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->no_title:I
 
     .line 88
     .line 89
@@ -389,7 +389,7 @@
 
     .line 115
     .line 116
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->server_error:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->server_error:I
 
     .line 117
     .line 118
@@ -414,7 +414,7 @@
 
     .line 127
     .line 128
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->check_network:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->check_network:I
 
     .line 129
     .line 130

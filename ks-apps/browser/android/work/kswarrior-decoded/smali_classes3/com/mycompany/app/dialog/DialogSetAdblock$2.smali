@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 27
     .line 28
@@ -122,7 +122,7 @@
 
     .line 40
     .line 41
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 42
     .line 43
@@ -167,7 +167,7 @@
 
     .line 64
     .line 65
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 66
     .line 67
@@ -193,7 +193,7 @@
 
     .line 78
     .line 79
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 80
     .line 81
@@ -221,7 +221,7 @@
 
     .line 93
     .line 94
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->refresh:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->refresh:I
 
     .line 95
     .line 96
@@ -380,11 +380,11 @@
 
     .line 167
     .line 168
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->ads_block:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->ads_block:I
 
     .line 169
     .line 170
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->ads_block_info:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->ads_block_info:I
 
     .line 171
     .line 172
@@ -432,7 +432,7 @@
 
     .line 193
     .line 194
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->ads_allow_site:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->ads_allow_site:I
 
     .line 195
     .line 196
@@ -466,7 +466,7 @@
 
     .line 209
     .line 210
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->ads_allow_page:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->ads_allow_page:I
 
     .line 211
     .line 212
@@ -500,7 +500,7 @@
 
     .line 225
     .line 226
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->ads_white:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->ads_white:I
 
     .line 227
     .line 228

@@ -98,11 +98,11 @@
 
     .line 24
     .line 25
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->lang_delete:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->lang_delete:I
 
     .line 26
     .line 27
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 28
     .line 29

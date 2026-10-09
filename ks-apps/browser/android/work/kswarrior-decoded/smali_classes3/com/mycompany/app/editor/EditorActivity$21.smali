@@ -105,7 +105,7 @@
 
     .line 29
     .line 30
-    sget v2, Lcom/mycompany/app/soulbrowser/R$anim;->ic_slide_out:I
+    sget v2, Lcom/kswarrior/ksportal/R$anim;->ic_slide_out:I
 
     .line 31
     .line 32

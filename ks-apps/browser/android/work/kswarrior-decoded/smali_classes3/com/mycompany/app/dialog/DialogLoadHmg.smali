@@ -704,7 +704,7 @@
 
     .line 33
     .line 34
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->no_image:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->no_image:I
 
     .line 35
     .line 36
@@ -729,7 +729,7 @@
 
     .line 46
     .line 47
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->close:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->close:I
 
     .line 48
     .line 49
@@ -776,7 +776,7 @@
 
     .line 68
     .line 69
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->server_error:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->server_error:I
 
     .line 70
     .line 71
@@ -797,7 +797,7 @@
 
     .line 78
     .line 79
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->check_network:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->check_network:I
 
     .line 80
     .line 81
@@ -814,7 +814,7 @@
 
     .line 86
     .line 87
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->no_image:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->no_image:I
 
     .line 88
     .line 89
@@ -837,7 +837,7 @@
 
     .line 98
     .line 99
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 100
     .line 101
@@ -1748,7 +1748,7 @@
 
     .line 60
     .line 61
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->server_delay:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->server_delay:I
 
     .line 62
     .line 63
@@ -1867,7 +1867,7 @@
 
     .line 118
     .line 119
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->loading:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->loading:I
 
     .line 120
     .line 121
@@ -1903,7 +1903,7 @@
 
     .line 137
     .line 138
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 139
     .line 140

@@ -348,15 +348,15 @@
 
     .line 35
     .line 36
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->list_icon_frame:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->list_icon_frame:I
 
     .line 37
     .line 38
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->list_bottom_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->list_bottom_view:I
 
     .line 39
     .line 40
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->list_cast_icon:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->list_cast_icon:I
 
     .line 41
     .line 42
@@ -591,7 +591,7 @@
     .line 165
     .line 166
     .line 167
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 168
     .line 169

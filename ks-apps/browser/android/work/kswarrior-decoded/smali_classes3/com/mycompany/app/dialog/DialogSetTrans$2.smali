@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_regular_white:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_regular_white:I
 
     .line 27
     .line 28
@@ -108,7 +108,7 @@
 
     .line 32
     .line 33
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 34
     .line 35
@@ -135,7 +135,7 @@
 
     .line 47
     .line 48
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 49
     .line 50
@@ -180,7 +180,7 @@
 
     .line 71
     .line 72
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_regular_color:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_regular_color:I
 
     .line 73
     .line 74
@@ -193,7 +193,7 @@
 
     .line 78
     .line 79
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 80
     .line 81
@@ -219,7 +219,7 @@
 
     .line 92
     .line 93
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 94
     .line 95
@@ -247,7 +247,7 @@
 
     .line 107
     .line 108
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->translate:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->translate:I
 
     .line 109
     .line 110
@@ -438,7 +438,7 @@
 
     .line 197
     .line 198
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->trans_detect:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->trans_detect:I
 
     .line 199
     .line 200
@@ -462,7 +462,7 @@
 
     .line 209
     .line 210
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 211
     .line 212
@@ -490,7 +490,7 @@
 
     .line 223
     .line 224
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->trans_icon_always:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->trans_icon_always:I
 
     .line 225
     .line 226
@@ -541,7 +541,7 @@
 
     .line 248
     .line 249
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->trans_block_site:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->trans_block_site:I
 
     .line 250
     .line 251
@@ -569,7 +569,7 @@
 
     .line 262
     .line 263
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->trans_block_page:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->trans_block_page:I
 
     .line 264
     .line 265
@@ -603,7 +603,7 @@
 
     .line 278
     .line 279
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->trans_except:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->trans_except:I
 
     .line 280
     .line 281

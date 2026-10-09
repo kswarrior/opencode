@@ -26,7 +26,7 @@
     .locals 1
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$raw;->cast_icon:I
+    sget v0, Lcom/kswarrior/ksportal/R$raw;->cast_icon:I
 
     .line 2
     .line 3

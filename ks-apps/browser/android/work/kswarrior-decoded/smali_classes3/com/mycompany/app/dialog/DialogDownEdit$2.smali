@@ -105,11 +105,11 @@
     .line 28
     .line 29
     :cond_3
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->down_icon_frame:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->down_icon_frame:I
 
     .line 30
     .line 31
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->down_path_title:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->down_path_title:I
 
     .line 32
     .line 33
@@ -393,7 +393,7 @@
     move-result-object v5
 
     .line 181
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->down_location:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->down_location:I
 
     .line 182
     .line 183
@@ -517,7 +517,7 @@
     move-result-object v2
 
     .line 247
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 248
     .line 249

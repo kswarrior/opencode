@@ -82,7 +82,7 @@
 
     .line 18
     .line 19
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 20
     .line 21
@@ -123,7 +123,7 @@
 
     .line 41
     .line 42
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 43
     .line 44
@@ -154,7 +154,7 @@
 
     .line 57
     .line 58
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 59
     .line 60
@@ -193,7 +193,7 @@
 
     .line 78
     .line 79
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 80
     .line 81
@@ -347,7 +347,7 @@
 
     .line 152
     .line 153
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->item_block_site:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->item_block_site:I
 
     .line 154
     .line 155
@@ -381,7 +381,7 @@
 
     .line 168
     .line 169
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->item_block_page:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->item_block_page:I
 
     .line 170
     .line 171
@@ -412,7 +412,7 @@
 
     .line 183
     .line 184
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->blocked_image:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->blocked_image:I
 
     .line 185
     .line 186

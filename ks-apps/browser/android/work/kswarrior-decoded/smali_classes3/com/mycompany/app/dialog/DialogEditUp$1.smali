@@ -66,11 +66,11 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_title_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_title_view:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->item_value_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->item_value_view:I
 
     .line 14
     .line 15
@@ -477,7 +477,7 @@
     move-result-object v3
 
     .line 226
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->color_alpha:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->color_alpha:I
 
     .line 227
     .line 228
@@ -598,7 +598,7 @@
     .line 289
     .line 290
     .line 291
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_white_24:I
 
     .line 292
     .line 293
@@ -688,7 +688,7 @@
     move-result-object v5
 
     .line 339
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_white_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_add_white_24:I
 
     .line 340
     .line 341
@@ -796,7 +796,7 @@
     .line 395
     .line 396
     .line 397
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 398
     .line 399
@@ -858,7 +858,7 @@
     .line 425
     .line 426
     .line 427
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 428
     .line 429

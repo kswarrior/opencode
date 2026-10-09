@@ -876,7 +876,7 @@
 
     .line 17
     .line 18
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_help_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_help_dark_24:I
 
     .line 19
     .line 20
@@ -889,7 +889,7 @@
 
     .line 24
     .line 25
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_check_dark_24:I
 
     .line 26
     .line 27
@@ -902,7 +902,7 @@
 
     .line 31
     .line 32
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_24:I
 
     .line 33
     .line 34
@@ -968,7 +968,7 @@
 
     .line 66
     .line 67
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_help_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_help_black_24:I
 
     .line 68
     .line 69
@@ -981,7 +981,7 @@
 
     .line 73
     .line 74
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_24:I
 
     .line 75
     .line 76
@@ -994,7 +994,7 @@
 
     .line 80
     .line 81
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_24:I
 
     .line 82
     .line 83
@@ -1523,7 +1523,7 @@
 
     .line 13
     .line 14
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_shadow_add_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_shadow_add_dark_24:I
 
     .line 15
     .line 16
@@ -1536,7 +1536,7 @@
 
     .line 20
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_shadow_minus_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_shadow_minus_dark_24:I
 
     .line 21
     .line 22
@@ -1557,7 +1557,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_shadow_add_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_shadow_add_black_24:I
 
     .line 31
     .line 32
@@ -1570,7 +1570,7 @@
 
     .line 36
     :cond_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_shadow_minus_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_shadow_minus_black_24:I
 
     .line 37
     .line 38

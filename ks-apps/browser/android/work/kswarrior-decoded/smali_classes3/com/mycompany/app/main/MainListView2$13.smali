@@ -144,7 +144,7 @@
 
     .line 48
     .line 49
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 50
     .line 51
@@ -157,7 +157,7 @@
 
     .line 55
     .line 56
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->move:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->move:I
 
     .line 57
     .line 58
@@ -170,7 +170,7 @@
 
     .line 62
     .line 63
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->share:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->share:I
 
     .line 64
     .line 65

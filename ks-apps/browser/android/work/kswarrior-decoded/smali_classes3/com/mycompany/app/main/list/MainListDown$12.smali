@@ -146,7 +146,7 @@
 
     .line 18
     :cond_1
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->down_start:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->down_start:I
 
     .line 19
     .line 20

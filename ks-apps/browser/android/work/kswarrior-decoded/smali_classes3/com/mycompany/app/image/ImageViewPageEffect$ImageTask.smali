@@ -2549,7 +2549,7 @@
 
     .line 1043
     .line 1044
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->next_file:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->next_file:I
 
     .line 1045
     .line 1046

@@ -83,7 +83,7 @@
 
     .line 19
     .line 20
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_dark_24:I
 
     .line 21
     .line 22
@@ -110,7 +110,7 @@
 
     .line 34
     .line 35
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_replay_dark_20:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_replay_dark_20:I
 
     .line 36
     .line 37
@@ -123,7 +123,7 @@
 
     .line 41
     .line 42
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_dark_20:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_check_dark_20:I
 
     .line 43
     .line 44
@@ -208,7 +208,7 @@
 
     .line 87
     .line 88
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_black_24:I
 
     .line 89
     .line 90
@@ -234,7 +234,7 @@
 
     .line 101
     .line 102
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_replay_black_20:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_replay_black_20:I
 
     .line 103
     .line 104
@@ -247,7 +247,7 @@
 
     .line 108
     .line 109
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_20:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_20:I
 
     .line 110
     .line 111

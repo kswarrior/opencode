@@ -406,7 +406,7 @@
 
     .line 171
     .line 172
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_24:I
 
     .line 173
     .line 174
@@ -414,7 +414,7 @@
 
     .line 175
     :cond_e
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_black_web_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_error_black_web_24:I
 
     .line 176
     .line 177
@@ -1386,7 +1386,7 @@
 
     .line 138
     .line 139
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_24:I
 
     .line 140
     .line 141
@@ -1394,7 +1394,7 @@
 
     .line 142
     :cond_a
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_black_web_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_black_web_24:I
 
     .line 143
     .line 144

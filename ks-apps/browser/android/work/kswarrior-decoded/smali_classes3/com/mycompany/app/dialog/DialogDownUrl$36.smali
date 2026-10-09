@@ -309,7 +309,7 @@
 
     .line 125
     .line 126
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->video_down_guide_3:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->video_down_guide_3:I
 
     .line 127
     .line 128
@@ -326,7 +326,7 @@
 
     .line 133
     .line 134
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->no_down_video:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->no_down_video:I
 
     .line 135
     .line 136

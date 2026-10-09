@@ -212,7 +212,7 @@
     .line 85
     .line 86
     .line 87
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->extract:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->extract:I
 
     .line 88
     .line 89

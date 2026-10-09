@@ -200,7 +200,7 @@
 
     .line 39
     .line 40
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 41
     .line 42
@@ -229,7 +229,7 @@
 
     .line 53
     .line 54
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 55
     .line 56
@@ -960,7 +960,7 @@
     move-result-object v1
 
     .line 410
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 411
     .line 412
@@ -977,7 +977,7 @@
 
     .line 417
     .line 418
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 419
     .line 420

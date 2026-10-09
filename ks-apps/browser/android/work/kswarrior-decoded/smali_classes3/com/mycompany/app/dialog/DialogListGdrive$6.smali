@@ -156,7 +156,7 @@
 
     .line 54
     .line 55
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 56
     .line 57

@@ -970,7 +970,7 @@
 
     .line 60
     .line 61
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->deleted:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->deleted:I
 
     .line 62
     .line 63
@@ -1204,7 +1204,7 @@
 
     .line 180
     .line 181
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 182
     .line 183

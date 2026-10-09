@@ -170,7 +170,7 @@
 
     .line 58
     .line 59
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->trans_except:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->trans_except:I
 
     .line 60
     .line 61
@@ -370,7 +370,7 @@
 
     .line 159
     .line 160
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->address_bar:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->address_bar:I
 
     .line 161
     .line 162
@@ -395,7 +395,7 @@
 
     .line 172
     .line 173
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->float_button:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->float_button:I
 
     .line 174
     .line 175
@@ -548,7 +548,7 @@
 
     .line 248
     .line 249
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->history_zero:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->history_zero:I
 
     .line 250
     .line 251
@@ -566,7 +566,7 @@
 
     .line 258
     .line 259
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 260
     .line 261
@@ -584,7 +584,7 @@
 
     .line 268
     .line 269
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 270
     .line 271

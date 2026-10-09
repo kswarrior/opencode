@@ -160,7 +160,7 @@
 
     .line 31
     .line 32
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->float_button:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->float_button:I
 
     .line 33
     .line 34
@@ -168,7 +168,7 @@
 
     .line 35
     :cond_2
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->address_bar:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->address_bar:I
 
     .line 36
     .line 37
@@ -177,7 +177,7 @@
 
     .line 38
     .line 39
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 40
     .line 41

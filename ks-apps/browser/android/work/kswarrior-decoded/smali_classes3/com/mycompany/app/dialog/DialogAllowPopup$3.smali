@@ -149,7 +149,7 @@
 
     .line 48
     .line 49
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->pop_white:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->pop_white:I
 
     .line 50
     .line 51

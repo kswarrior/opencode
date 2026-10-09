@@ -193,7 +193,7 @@
 
     .line 30
     .line 31
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_list_footer_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_list_footer_dark_24:I
 
     .line 32
     .line 33
@@ -213,7 +213,7 @@
 
     .line 39
     .line 40
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_list_footer_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_list_footer_black_24:I
 
     .line 41
     .line 42
@@ -232,7 +232,7 @@
 
     .line 48
     .line 49
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 50
     .line 51
@@ -245,7 +245,7 @@
 
     .line 55
     :cond_4
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 56
     .line 57
@@ -321,7 +321,7 @@
 
     .line 91
     .line 92
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_shift_2_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_shift_2_black_24:I
 
     .line 93
     .line 94
@@ -338,7 +338,7 @@
 
     .line 99
     .line 100
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_black_24:I
 
     .line 101
     .line 102
@@ -612,7 +612,7 @@
 
     .line 244
     .line 245
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     .line 246
     .line 247
@@ -679,7 +679,7 @@
 
     .line 280
     .line 281
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     .line 282
     .line 283
@@ -1688,7 +1688,7 @@
     .line 108
     .line 109
     .line 110
-    sget v8, Lcom/mycompany/app/soulbrowser/R$id;->gdrive_item_delete:I
+    sget v8, Lcom/kswarrior/ksportal/R$id;->gdrive_item_delete:I
 
     .line 111
     .line 112
@@ -1823,7 +1823,7 @@
     .line 183
     .line 184
     .line 185
-    sget v8, Lcom/mycompany/app/soulbrowser/R$id;->gdrive_item_name:I
+    sget v8, Lcom/kswarrior/ksportal/R$id;->gdrive_item_name:I
 
     .line 186
     .line 187
@@ -1863,7 +1863,7 @@
     .line 205
     .line 206
     .line 207
-    sget v12, Lcom/mycompany/app/soulbrowser/R$id;->gdrive_item_date:I
+    sget v12, Lcom/kswarrior/ksportal/R$id;->gdrive_item_date:I
 
     .line 208
     .line 209

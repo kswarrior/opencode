@@ -95,7 +95,7 @@
 
     .line 24
     .line 25
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_backspace_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_backspace_dark_24:I
 
     .line 26
     .line 27
@@ -117,7 +117,7 @@
 
     .line 36
     :cond_2
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_backspace_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_backspace_black_24:I
 
     .line 37
     .line 38

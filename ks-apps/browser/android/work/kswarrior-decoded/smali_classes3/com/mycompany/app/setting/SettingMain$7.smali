@@ -113,7 +113,7 @@
 
     .line 35
     .line 36
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_dark_24:I
 
     .line 37
     .line 38
@@ -126,7 +126,7 @@
 
     .line 42
     .line 43
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_dark_18:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_dark_18:I
 
     .line 44
     .line 45
@@ -185,7 +185,7 @@
 
     .line 74
     .line 75
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_black_24:I
 
     .line 76
     .line 77
@@ -198,7 +198,7 @@
 
     .line 81
     .line 82
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_black_18:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_black_18:I
 
     .line 83
     .line 84

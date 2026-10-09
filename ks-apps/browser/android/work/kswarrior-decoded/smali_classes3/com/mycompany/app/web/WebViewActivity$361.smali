@@ -538,7 +538,7 @@
 
     .line 126
     .line 127
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->down_fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->down_fail:I
 
     .line 128
     .line 129

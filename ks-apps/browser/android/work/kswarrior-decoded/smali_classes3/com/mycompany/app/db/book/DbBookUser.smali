@@ -2291,7 +2291,7 @@
 
     .line 155
     .line 156
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_black_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_black_24:I
 
     .line 157
     .line 158

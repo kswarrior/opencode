@@ -133,11 +133,11 @@
 
     .line 47
     .line 48
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_off_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_off_dark_24:I
 
     .line 49
     .line 50
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_dark_24:I
 
     .line 51
     .line 52
@@ -150,7 +150,7 @@
 
     .line 56
     .line 57
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 58
     .line 59
@@ -235,11 +235,11 @@
 
     .line 102
     .line 103
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_off_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_off_black_24:I
 
     .line 104
     .line 105
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_black_24:I
 
     .line 106
     .line 107
@@ -252,7 +252,7 @@
 
     .line 111
     .line 112
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 113
     .line 114

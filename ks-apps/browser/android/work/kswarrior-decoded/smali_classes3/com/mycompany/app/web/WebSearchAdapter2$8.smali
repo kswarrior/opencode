@@ -2059,7 +2059,7 @@
 
     .line 895
     .line 896
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->history:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->history:I
 
     .line 897
     .line 898
@@ -2093,7 +2093,7 @@
 
     .line 912
     .line 913
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->bookmark:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->bookmark:I
 
     .line 914
     .line 915
@@ -2127,7 +2127,7 @@
 
     .line 929
     .line 930
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->quick_access:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->quick_access:I
 
     .line 931
     .line 932

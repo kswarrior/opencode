@@ -325,7 +325,7 @@
 
     .line 79
     .line 80
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 81
     .line 82
@@ -356,7 +356,7 @@
 
     .line 95
     .line 96
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 97
     .line 98
@@ -420,7 +420,7 @@
 
     .line 127
     .line 128
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_android_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_android_black_24:I
 
     .line 129
     .line 130
@@ -498,7 +498,7 @@
 
     .line 166
     :cond_6
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_android_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_android_black_24:I
 
     .line 167
     .line 168

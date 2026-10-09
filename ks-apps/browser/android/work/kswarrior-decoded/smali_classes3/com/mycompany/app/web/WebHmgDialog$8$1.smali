@@ -316,7 +316,7 @@
 
     .line 124
     .line 125
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 126
     .line 127

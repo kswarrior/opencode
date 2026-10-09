@@ -153,7 +153,7 @@
     .line 43
     .line 44
     .line 45
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 46
     .line 47
@@ -570,7 +570,7 @@
     .line 27
     .line 28
     .line 29
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 30
     .line 31

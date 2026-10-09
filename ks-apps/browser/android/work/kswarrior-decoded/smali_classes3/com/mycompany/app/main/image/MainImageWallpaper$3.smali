@@ -65,7 +65,7 @@
 
     .line 9
     .line 10
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->set_wallpaper:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->set_wallpaper:I
 
     .line 11
     .line 12

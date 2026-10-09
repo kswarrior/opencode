@@ -53,7 +53,7 @@
 
     .line 4
     .line 5
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_supported:I
 
     .line 6
     .line 7

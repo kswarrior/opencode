@@ -116,7 +116,7 @@
     iput-boolean p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->p0:Z
 
     .line 26
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->q0:I
 
@@ -168,7 +168,7 @@
     iput-boolean p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->p0:Z
 
     .line 7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->q0:I
 
@@ -212,7 +212,7 @@
     iput-boolean p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->d0:Z
 
     .line 69
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->q0:I
 
@@ -233,32 +233,32 @@
 
     .line 73
     :cond_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->h0:I
 
     .line 74
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage_guide_1:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage_guide_1:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->i0:I
 
     .line 75
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage_guide_2:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage_guide_2:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->k0:I
 
     .line 76
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage_guide_3:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage_guide_3:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->l0:I
 
     .line 77
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage_guide_4:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage_guide_4:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->m0:I
 
     .line 78
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->r0:I
 
@@ -309,7 +309,7 @@
     iput-boolean p3, p0, Lcom/mycompany/app/dialog/DialogConfirm;->p0:Z
 
     .line 16
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->q0:I
 
@@ -353,12 +353,12 @@
     iput-boolean p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->d0:Z
 
     .line 59
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->dark_guide_1:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->dark_guide_1:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->e0:I
 
     .line 60
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->check_ver:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->check_ver:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->o0:I
 
@@ -366,7 +366,7 @@
     iput-boolean p2, p0, Lcom/mycompany/app/dialog/DialogConfirm;->p0:Z
 
     .line 62
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->q0:I
 
@@ -405,12 +405,12 @@
     iput-object p2, p0, Lcom/mycompany/app/dialog/DialogConfirm;->b0:Lcom/mycompany/app/dialog/DialogConfirm$DialogConfListener;
 
     .line 32
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->right_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->right_title:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->h0:I
 
     .line 33
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->important_copyright:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->important_copyright:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->n0:I
 
@@ -420,7 +420,7 @@
     iput-boolean p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->p0:Z
 
     .line 35
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     iput p1, p0, Lcom/mycompany/app/dialog/DialogConfirm;->q0:I
 
@@ -432,7 +432,7 @@
     .line 37
     iget-object p2, p0, Lcom/mycompany/app/dialog/DialogConfirm;->a0:Landroid/content/Context;
 
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->guide_right_1:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->guide_right_1:I
 
     .line 38
     const-string v1, " "
@@ -442,7 +442,7 @@
     .line 39
     iget-object p2, p0, Lcom/mycompany/app/dialog/DialogConfirm;->a0:Landroid/content/Context;
 
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->guide_right_2:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->guide_right_2:I
 
     .line 40
     invoke-static {p2, v0, p1, v1}, Lcom/google/android/gms/internal/mlkit_vision_text_common/a;->x(Landroid/content/Context;ILjava/lang/StringBuilder;Ljava/lang/String;)V
@@ -450,7 +450,7 @@
     .line 41
     iget-object p2, p0, Lcom/mycompany/app/dialog/DialogConfirm;->a0:Landroid/content/Context;
 
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->guide_right_3:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->guide_right_3:I
 
     .line 42
     invoke-static {v0, p2, p1}, Lcom/google/android/gms/internal/mlkit_vision_text_common/a;->v(ILandroid/content/Context;Ljava/lang/StringBuilder;)Ljava/lang/String;
@@ -690,7 +690,7 @@
     .line 106
     .line 107
     .line 108
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->tip:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->tip:I
 
     .line 109
     .line 110
@@ -1943,7 +1943,7 @@
     move-result-object v4
 
     .line 719
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->message_confirm:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->message_confirm:I
 
     .line 720
     .line 721

@@ -161,7 +161,7 @@
     .line 59
     .line 60
     .line 61
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_sub_pos:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->ic_sub_pos:I
 
     .line 62
     .line 63

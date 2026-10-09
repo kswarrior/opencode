@@ -1451,7 +1451,7 @@
     move-result-object v1
 
     .line 188
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->delete_tab:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->delete_tab:I
 
     .line 189
     .line 190

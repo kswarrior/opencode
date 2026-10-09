@@ -113,7 +113,7 @@
 
     .line 35
     .line 36
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 37
     .line 38
@@ -126,7 +126,7 @@
 
     .line 42
     .line 43
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 44
     .line 45
@@ -174,7 +174,7 @@
 
     .line 67
     .line 68
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 69
     .line 70
@@ -187,7 +187,7 @@
 
     .line 74
     .line 75
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 76
     .line 77
@@ -201,7 +201,7 @@
 
     .line 81
     .line 82
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->trans_blocked:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->trans_blocked:I
 
     .line 83
     .line 84
@@ -214,7 +214,7 @@
 
     .line 88
     .line 89
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->trans_allowed:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->trans_allowed:I
 
     .line 90
     .line 91
@@ -227,7 +227,7 @@
 
     .line 95
     .line 96
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->open_chrome:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->open_chrome:I
 
     .line 97
     .line 98

@@ -170,7 +170,7 @@
 
     .line 68
     .line 69
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 70
     .line 71
@@ -183,7 +183,7 @@
 
     .line 75
     .line 76
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 77
     .line 78
@@ -210,7 +210,7 @@
 
     .line 90
     .line 91
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 92
     .line 93
@@ -313,7 +313,7 @@
 
     .line 146
     .line 147
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 148
     .line 149
@@ -326,7 +326,7 @@
 
     .line 153
     .line 154
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 155
     .line 156
@@ -353,7 +353,7 @@
 
     .line 168
     .line 169
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 170
     .line 171
@@ -381,7 +381,7 @@
 
     .line 183
     .line 184
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->save_location:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->save_location:I
 
     .line 185
     .line 186
@@ -394,7 +394,7 @@
 
     .line 190
     .line 191
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->save:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->save:I
 
     .line 192
     .line 193
@@ -486,7 +486,7 @@
 
     .line 236
     .line 237
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_image_black_24:I
 
     .line 238
     .line 239

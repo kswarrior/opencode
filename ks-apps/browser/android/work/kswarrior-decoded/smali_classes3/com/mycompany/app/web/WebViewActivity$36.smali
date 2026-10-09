@@ -57,7 +57,7 @@
 
     .line 6
     .line 7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->play_error:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->play_error:I
 
     .line 8
     .line 9

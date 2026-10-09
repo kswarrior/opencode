@@ -719,7 +719,7 @@
 
     .line 71
     .line 72
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->title:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->title:I
 
     .line 73
     .line 74
@@ -816,7 +816,7 @@
 
     .line 121
     .line 122
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->artist:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->artist:I
 
     .line 123
     .line 124
@@ -913,7 +913,7 @@
 
     .line 171
     .line 172
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->album:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->album:I
 
     .line 173
     .line 174
@@ -1010,7 +1010,7 @@
 
     .line 221
     .line 222
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->genre:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->genre:I
 
     .line 223
     .line 224
@@ -1107,7 +1107,7 @@
 
     .line 271
     .line 272
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->duration:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->duration:I
 
     .line 273
     .line 274

@@ -92,7 +92,7 @@
 
     .line 21
     .line 22
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 23
     .line 24
@@ -107,7 +107,7 @@
 
     .line 27
     .line 28
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->audio:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->audio:I
 
     .line 29
     .line 30
@@ -115,7 +115,7 @@
 
     .line 31
     :cond_3
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->video:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->video:I
 
     .line 32
     .line 33

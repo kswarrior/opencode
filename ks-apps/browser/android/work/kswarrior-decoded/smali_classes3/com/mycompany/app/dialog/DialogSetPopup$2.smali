@@ -96,7 +96,7 @@
 
     .line 26
     .line 27
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 28
     .line 29
@@ -109,7 +109,7 @@
 
     .line 33
     .line 34
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 35
     .line 36
@@ -157,7 +157,7 @@
 
     .line 58
     .line 59
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 60
     .line 61
@@ -170,7 +170,7 @@
 
     .line 65
     .line 66
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 67
     .line 68

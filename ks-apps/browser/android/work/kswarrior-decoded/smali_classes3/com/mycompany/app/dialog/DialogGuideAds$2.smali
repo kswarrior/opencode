@@ -83,7 +83,7 @@
 
     .line 19
     .line 20
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ads_guide_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ads_guide_1:I
 
     .line 21
     .line 22
@@ -100,7 +100,7 @@
 
     .line 28
     .line 29
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ads_guide_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ads_guide_2:I
 
     .line 30
     .line 31
@@ -113,7 +113,7 @@
 
     .line 35
     .line 36
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ads_guide_3:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ads_guide_3:I
 
     .line 37
     .line 38
@@ -130,7 +130,7 @@
 
     .line 44
     .line 45
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ads_guide_4:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ads_guide_4:I
 
     .line 46
     .line 47
@@ -160,7 +160,7 @@
 
     .line 60
     .line 61
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->ads_guide_5:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->ads_guide_5:I
 
     .line 62
     .line 63
@@ -173,7 +173,7 @@
 
     .line 67
     .line 68
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->ads_guide_6:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->ads_guide_6:I
 
     .line 69
     .line 70
@@ -186,7 +186,7 @@
 
     .line 74
     .line 75
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->ads_guide_7:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->ads_guide_7:I
 
     .line 76
     .line 77
@@ -199,7 +199,7 @@
 
     .line 81
     .line 82
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->remove_ads_info_4:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->remove_ads_info_4:I
 
     .line 83
     .line 84
@@ -212,7 +212,7 @@
 
     .line 88
     .line 89
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->ads_guide_8:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->ads_guide_8:I
 
     .line 90
     .line 91
@@ -246,7 +246,7 @@
 
     .line 106
     .line 107
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->inapp_ads_sample:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->inapp_ads_sample:I
 
     .line 108
     .line 109
@@ -263,7 +263,7 @@
 
     .line 115
     .line 116
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->inapp_ads:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->inapp_ads:I
 
     .line 117
     .line 118
@@ -293,7 +293,7 @@
 
     .line 131
     .line 132
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->website_ads:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->website_ads:I
 
     .line 133
     .line 134
@@ -352,7 +352,7 @@
 
     .line 162
     .line 163
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_wb_incandescent_2_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_wb_incandescent_2_dark_24:I
 
     .line 164
     .line 165
@@ -424,7 +424,7 @@
 
     .line 202
     .line 203
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 204
     .line 205
@@ -482,7 +482,7 @@
 
     .line 233
     .line 234
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_wb_incandescent_2_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_wb_incandescent_2_black_24:I
 
     .line 235
     .line 236
@@ -549,7 +549,7 @@
 
     .line 270
     .line 271
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 272
     .line 273
@@ -630,7 +630,7 @@
 
     .line 314
     .line 315
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->ads_noti:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->ads_noti:I
 
     .line 316
     .line 317
@@ -643,7 +643,7 @@
 
     .line 321
     .line 322
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->ads_info:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->ads_info:I
 
     .line 323
     .line 324
@@ -656,7 +656,7 @@
 
     .line 328
     .line 329
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->ads_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->ads_back:I
 
     .line 330
     .line 331
@@ -669,7 +669,7 @@
 
     .line 335
     .line 336
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->ads_icon:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->ads_icon:I
 
     .line 337
     .line 338

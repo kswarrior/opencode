@@ -416,7 +416,7 @@
 
     .line 11
     .line 12
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 13
     .line 14
@@ -455,7 +455,7 @@
 
     .line 30
     .line 31
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->password_lock_1:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->password_lock_1:I
 
     .line 32
     .line 33
@@ -483,7 +483,7 @@
 
     .line 43
     .line 44
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->link_block_site:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->link_block_site:I
 
     .line 45
     .line 46
@@ -517,7 +517,7 @@
 
     .line 59
     .line 60
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->link_block_page:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->link_block_page:I
 
     .line 61
     .line 62
@@ -548,7 +548,7 @@
 
     .line 74
     .line 75
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->blocked_link:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->blocked_link:I
 
     .line 76
     .line 77
@@ -1029,7 +1029,7 @@
 
     .line 66
     .line 67
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 68
     .line 69

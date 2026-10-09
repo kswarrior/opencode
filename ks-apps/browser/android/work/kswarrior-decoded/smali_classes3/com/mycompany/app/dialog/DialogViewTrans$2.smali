@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 27
     .line 28
@@ -136,7 +136,7 @@
 
     .line 48
     .line 49
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_dark:I
 
     .line 50
     .line 51
@@ -153,7 +153,7 @@
 
     .line 56
     .line 57
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 58
     .line 59
@@ -194,7 +194,7 @@
 
     .line 79
     .line 80
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_color:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_color:I
 
     .line 81
     .line 82

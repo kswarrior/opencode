@@ -379,7 +379,7 @@
     .line 6
     .line 7
     .line 8
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->accept_cookie_info_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->accept_cookie_info_1:I
 
     .line 9
     .line 10
@@ -405,7 +405,7 @@
     .line 20
     .line 21
     .line 22
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->accept_cookie_info_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->accept_cookie_info_2:I
 
     .line 23
     .line 24
@@ -431,7 +431,7 @@
     .line 34
     .line 35
     .line 36
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->java_script_info:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->java_script_info:I
 
     .line 37
     .line 38
@@ -453,7 +453,7 @@
     .line 46
     .line 47
     .line 48
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->dark_mode_info_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->dark_mode_info_2:I
 
     .line 49
     .line 50
@@ -519,11 +519,11 @@
 
     .line 81
     .line 82
-    sget v17, Lcom/mycompany/app/soulbrowser/R$string;->save_data:I
+    sget v17, Lcom/kswarrior/ksportal/R$string;->save_data:I
 
     .line 83
     .line 84
-    sget v18, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v18, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 85
     .line 86
@@ -557,11 +557,11 @@
 
     .line 101
     .line 102
-    sget v18, Lcom/mycompany/app/soulbrowser/R$string;->pre_raster:I
+    sget v18, Lcom/kswarrior/ksportal/R$string;->pre_raster:I
 
     .line 103
     .line 104
-    sget v19, Lcom/mycompany/app/soulbrowser/R$string;->memory_warning_1:I
+    sget v19, Lcom/kswarrior/ksportal/R$string;->memory_warning_1:I
 
     .line 105
     .line 106
@@ -599,11 +599,11 @@
 
     .line 123
     .line 124
-    sget v17, Lcom/mycompany/app/soulbrowser/R$string;->block_amp:I
+    sget v17, Lcom/kswarrior/ksportal/R$string;->block_amp:I
 
     .line 125
     .line 126
-    sget v18, Lcom/mycompany/app/soulbrowser/R$string;->block_amp_info:I
+    sget v18, Lcom/kswarrior/ksportal/R$string;->block_amp_info:I
 
     .line 127
     .line 128
@@ -654,7 +654,7 @@
 
     .line 152
     .line 153
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->accept_cookie:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->accept_cookie:I
 
     .line 154
     .line 155
@@ -690,7 +690,7 @@
 
     .line 170
     .line 171
-    sget v17, Lcom/mycompany/app/soulbrowser/R$string;->third_cookie:I
+    sget v17, Lcom/kswarrior/ksportal/R$string;->third_cookie:I
 
     .line 172
     .line 173
@@ -745,7 +745,7 @@
 
     .line 199
     .line 200
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->java_script:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->java_script:I
 
     .line 201
     .line 202
@@ -780,11 +780,11 @@
 
     .line 216
     .line 217
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->js_black:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->js_black:I
 
     .line 218
     .line 219
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->js_black_info:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->js_black_info:I
 
     .line 220
     .line 221
@@ -830,11 +830,11 @@
 
     .line 242
     .line 243
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->only_https:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->only_https:I
 
     .line 244
     .line 245
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->only_https_info:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->only_https_info:I
 
     .line 246
     .line 247
@@ -866,11 +866,11 @@
 
     .line 260
     .line 261
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->block_ssl:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->block_ssl:I
 
     .line 262
     .line 263
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->block_ssl_info:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->block_ssl_info:I
 
     .line 264
     .line 265
@@ -917,11 +917,11 @@
 
     .line 287
     .line 288
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->debug_mode:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->debug_mode:I
 
     .line 289
     .line 290
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->debug_mode_info:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->debug_mode_info:I
 
     .line 291
     .line 292
@@ -1408,7 +1408,7 @@
 
     .line 18
     .line 19
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->advanced:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->advanced:I
 
     .line 20
     .line 21

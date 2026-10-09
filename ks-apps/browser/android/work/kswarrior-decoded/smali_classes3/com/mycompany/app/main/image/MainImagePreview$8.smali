@@ -105,7 +105,7 @@
 
     .line 28
     .line 29
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->soul_home:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->soul_home:I
 
     .line 30
     .line 31
@@ -126,7 +126,7 @@
     const/4 v2, 0x1
 
     .line 40
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->phone_home:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->phone_home:I
 
     .line 41
     .line 42

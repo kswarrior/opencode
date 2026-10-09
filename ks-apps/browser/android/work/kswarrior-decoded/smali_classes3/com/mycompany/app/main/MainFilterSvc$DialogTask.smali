@@ -460,7 +460,7 @@
 
     .line 112
     .line 113
-    const-string v7, "com.mycompany.app.soulbrowser.ACTION_FILTER_CANCEL"
+    const-string v7, "com.kswarrior.ksportal.ACTION_FILTER_CANCEL"
 
     .line 114
     .line 115
@@ -510,7 +510,7 @@
 
     .line 138
     .line 139
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_24:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_24:I
 
     .line 140
     .line 141
@@ -518,7 +518,7 @@
 
     .line 142
     .line 143
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 144
     .line 145
@@ -921,7 +921,7 @@
 
     .line 19
     .line 20
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 21
     .line 22
@@ -1028,7 +1028,7 @@
 
     .line 23
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 25
     .line 26

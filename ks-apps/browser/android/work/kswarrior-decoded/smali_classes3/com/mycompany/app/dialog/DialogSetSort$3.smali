@@ -537,7 +537,7 @@
 
     .line 226
     .line 227
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->order_ascend:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->order_ascend:I
 
     .line 228
     .line 229
@@ -562,7 +562,7 @@
 
     .line 239
     .line 240
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->order_descend:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->order_descend:I
 
     .line 241
     .line 242

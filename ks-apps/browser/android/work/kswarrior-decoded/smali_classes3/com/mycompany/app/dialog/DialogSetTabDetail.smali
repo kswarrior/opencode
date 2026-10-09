@@ -1590,7 +1590,7 @@
 
     .line 140
     .line 141
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_add_black_24:I
 
     .line 142
     .line 143
@@ -1607,7 +1607,7 @@
 
     .line 148
     .line 149
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_add_dark_24:I
 
     .line 150
     .line 151

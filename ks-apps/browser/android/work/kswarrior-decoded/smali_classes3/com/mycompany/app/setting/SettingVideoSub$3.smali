@@ -79,7 +79,7 @@
     .line 16
     .line 17
     :cond_1
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->set_cast_ctrl:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->set_cast_ctrl:I
 
     .line 18
     .line 19
@@ -257,7 +257,7 @@
     .line 109
     .line 110
     .line 111
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->background:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->background:I
 
     .line 112
     .line 113
@@ -327,7 +327,7 @@
     .line 147
     .line 148
     .line 149
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->color_alpha:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->color_alpha:I
 
     .line 150
     .line 151

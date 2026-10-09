@@ -149,7 +149,7 @@
 
     .line 58
     .line 59
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 60
     .line 61
@@ -1304,7 +1304,7 @@
 
     .line 58
     .line 59
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 60
     .line 61
@@ -1349,7 +1349,7 @@
 
     .line 81
     .line 82
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->update_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->update_fail:I
 
     .line 83
     .line 84

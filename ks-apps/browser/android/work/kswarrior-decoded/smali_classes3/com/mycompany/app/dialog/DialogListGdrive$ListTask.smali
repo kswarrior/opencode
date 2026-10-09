@@ -959,7 +959,7 @@
 
     .line 398
     .line 399
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->folder_dir:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->folder_dir:I
 
     .line 400
     .line 401

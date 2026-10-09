@@ -148,7 +148,7 @@
     .line 50
     .line 51
     .line 52
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->round_guide_16:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->round_guide_16:I
 
     .line 53
     .line 54
@@ -206,7 +206,7 @@
     .line 80
     .line 81
     .line 82
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_touch_long_dark_20:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_touch_long_dark_20:I
 
     .line 83
     .line 84
@@ -334,7 +334,7 @@
     .line 148
     .line 149
     .line 150
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_close_white_24:I
 
     .line 151
     .line 152
@@ -458,7 +458,7 @@
     .line 215
     .line 216
     .line 217
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->video_icon_guide:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->video_icon_guide:I
 
     .line 218
     .line 219
@@ -484,7 +484,7 @@
     .line 229
     .line 230
     .line 231
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->change_in_setting:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->change_in_setting:I
 
     .line 232
     .line 233

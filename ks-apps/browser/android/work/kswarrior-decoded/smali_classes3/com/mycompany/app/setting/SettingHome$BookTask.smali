@@ -2031,7 +2031,7 @@
 
     .line 82
     .line 83
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->import_no_book:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->import_no_book:I
 
     .line 84
     .line 85

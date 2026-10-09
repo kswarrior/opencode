@@ -153,7 +153,7 @@
 
     .line 50
     .line 51
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->move_free:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->move_free:I
 
     .line 52
     .line 53
@@ -161,7 +161,7 @@
 
     .line 54
     :cond_4
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->move_long:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->move_long:I
 
     .line 55
     .line 56

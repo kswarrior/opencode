@@ -2210,7 +2210,7 @@
 
     .line 26
     .line 27
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage_device:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage_device:I
 
     .line 28
     .line 29
@@ -2310,7 +2310,7 @@
 
     .line 77
     .line 78
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage_sdcard:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage_sdcard:I
 
     .line 79
     .line 80
@@ -3170,7 +3170,7 @@
 
     .line 13
     .line 14
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage_device:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage_device:I
 
     .line 15
     .line 16
@@ -3191,7 +3191,7 @@
 
     .line 24
     :cond_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->storage_sdcard:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->storage_sdcard:I
 
     .line 25
     .line 26

@@ -78,7 +78,7 @@
 
     .line 17
     .line 18
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->deleted:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->deleted:I
 
     .line 19
     .line 20

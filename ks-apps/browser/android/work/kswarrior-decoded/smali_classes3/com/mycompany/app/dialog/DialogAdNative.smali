@@ -56,7 +56,7 @@
 
     .line 2
     .line 3
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogNoaniTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogNoaniTheme:I
 
     .line 4
     .line 5
@@ -361,7 +361,7 @@
 
     .line 15
     .line 16
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->ads_empty:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->ads_empty:I
 
     .line 17
     .line 18
@@ -374,7 +374,7 @@
 
     .line 22
     .line 23
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->ads_retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->ads_retry:I
 
     .line 24
     .line 25
@@ -489,7 +489,7 @@
 
     .line 17
     .line 18
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->waiting:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->waiting:I
 
     .line 19
     .line 20

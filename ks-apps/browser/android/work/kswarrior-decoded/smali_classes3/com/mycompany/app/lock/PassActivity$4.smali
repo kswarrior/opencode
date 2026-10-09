@@ -166,7 +166,7 @@
 
     .line 56
     .line 57
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->reinput:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->reinput:I
 
     .line 58
     .line 59

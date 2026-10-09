@@ -80,7 +80,7 @@
     .line 15
     .line 16
     .line 17
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->setted:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->setted:I
 
     .line 18
     .line 19

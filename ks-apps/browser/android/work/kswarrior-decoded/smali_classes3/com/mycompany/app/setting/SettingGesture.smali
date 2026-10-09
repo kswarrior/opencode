@@ -1209,7 +1209,7 @@
 
     .line 2
     .line 3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->swipe:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->swipe:I
 
     .line 4
     .line 5
@@ -1221,7 +1221,7 @@
     move-result-object v4
 
     .line 9
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->move_up:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->move_up:I
 
     .line 10
     .line 11
@@ -1233,7 +1233,7 @@
     move-result-object v1
 
     .line 15
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->move_down:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->move_down:I
 
     .line 16
     .line 17
@@ -1245,7 +1245,7 @@
     move-result-object v2
 
     .line 21
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->move_left:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->move_left:I
 
     .line 22
     .line 23
@@ -1257,7 +1257,7 @@
     move-result-object v3
 
     .line 27
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->move_right:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->move_right:I
 
     .line 28
     .line 29
@@ -1314,7 +1314,7 @@
     .line 54
     .line 55
     .line 56
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->tab_gesture:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->tab_gesture:I
 
     .line 57
     .line 58
@@ -1340,7 +1340,7 @@
     .line 68
     .line 69
     .line 70
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->two_finger:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->two_finger:I
 
     .line 71
     .line 72
@@ -1374,7 +1374,7 @@
     .line 86
     .line 87
     .line 88
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->two_finger_info_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->two_finger_info_1:I
 
     .line 89
     .line 90
@@ -1400,7 +1400,7 @@
     .line 100
     .line 101
     .line 102
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->two_finger_info_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->two_finger_info_2:I
 
     .line 103
     .line 104
@@ -1469,7 +1469,7 @@
 
     .line 136
     .line 137
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_range_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_range_dark_24:I
 
     .line 138
     .line 139
@@ -1499,7 +1499,7 @@
 
     .line 150
     .line 151
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->swipe_sense:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->swipe_sense:I
 
     .line 152
     .line 153
@@ -1543,7 +1543,7 @@
     move v2, v10
 
     .line 173
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_up_left_dark_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_up_left_dark_24:I
 
     .line 174
     .line 175
@@ -1593,7 +1593,7 @@
 
     .line 196
     .line 197
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_up_right_dark_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_up_right_dark_24:I
 
     .line 198
     .line 199
@@ -1648,7 +1648,7 @@
 
     .line 221
     .line 222
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_left_dark_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_left_dark_24:I
 
     .line 223
     .line 224
@@ -1685,7 +1685,7 @@
 
     .line 240
     .line 241
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_right_dark_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_right_dark_24:I
 
     .line 242
     .line 243
@@ -1754,7 +1754,7 @@
     move v6, v5
 
     .line 271
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_range_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_range_black_24:I
 
     .line 272
     .line 273
@@ -1790,7 +1790,7 @@
 
     .line 286
     .line 287
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->swipe_sense:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->swipe_sense:I
 
     .line 288
     .line 289
@@ -1837,7 +1837,7 @@
     move-object v9, v10
 
     .line 310
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_up_left_black_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_up_left_black_24:I
 
     .line 311
     .line 312
@@ -1882,7 +1882,7 @@
 
     .line 330
     .line 331
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_up_right_black_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_up_right_black_24:I
 
     .line 332
     .line 333
@@ -1934,7 +1934,7 @@
 
     .line 354
     .line 355
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_left_black_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_left_black_24:I
 
     .line 356
     .line 357
@@ -1971,7 +1971,7 @@
 
     .line 373
     .line 374
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subdirectory_arrow_right_black_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_subdirectory_arrow_right_black_24:I
 
     .line 375
     .line 376
@@ -2729,7 +2729,7 @@
     .line 2
     .line 3
     .line 4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->gesture:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->gesture:I
 
     .line 5
     .line 6

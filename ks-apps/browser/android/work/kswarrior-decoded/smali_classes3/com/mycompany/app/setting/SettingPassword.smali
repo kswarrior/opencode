@@ -345,7 +345,7 @@
     .line 6
     .line 7
     .line 8
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 9
     .line 10
@@ -371,7 +371,7 @@
     .line 20
     .line 21
     .line 22
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->password_info:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->password_info:I
 
     .line 23
     .line 24
@@ -480,7 +480,7 @@
 
     .line 74
     .line 75
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->password_save:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->password_save:I
 
     .line 76
     .line 77
@@ -502,11 +502,11 @@
 
     .line 86
     .line 87
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->login_lock:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->login_lock:I
 
     .line 88
     .line 89
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->login_lock_info:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->login_lock_info:I
 
     .line 90
     .line 91
@@ -536,14 +536,14 @@
 
     .line 102
     .line 103
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->password_button:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->password_button:I
 
     .line 104
     .line 105
     move-object v1, v13
 
     .line 106
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 107
     .line 108
@@ -576,7 +576,7 @@
 
     .line 122
     .line 123
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 124
     .line 125
@@ -624,7 +624,7 @@
 
     .line 146
     .line 147
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->list:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->list:I
 
     .line 148
     .line 149
@@ -654,7 +654,7 @@
 
     .line 160
     .line 161
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 162
     .line 163
@@ -711,11 +711,11 @@
 
     .line 189
     .line 190
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 191
     .line 192
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->password_reset_guide:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->password_reset_guide:I
 
     .line 193
     .line 194
@@ -1012,11 +1012,11 @@
 
     .line 24
     .line 25
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->login_lock:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->login_lock:I
 
     .line 26
     .line 27
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->login_lock_info:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->login_lock_info:I
 
     .line 28
     .line 29
@@ -1136,7 +1136,7 @@
 
     .line 28
     .line 29
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->password_lock_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->password_lock_1:I
 
     .line 30
     .line 31
@@ -1162,7 +1162,7 @@
     .line 40
     .line 41
     .line 42
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->password_lock_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->password_lock_1:I
 
     .line 43
     .line 44
@@ -1188,7 +1188,7 @@
     .line 54
     .line 55
     .line 56
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->password_lock_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->password_lock_2:I
 
     .line 57
     .line 58
@@ -1357,7 +1357,7 @@
 
     .line 12
     .line 13
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 14
     .line 15
@@ -1510,7 +1510,7 @@
     .line 7
     .line 8
     .line 9
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->password:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->password:I
 
     .line 10
     .line 11

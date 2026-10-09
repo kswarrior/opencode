@@ -141,7 +141,7 @@
 
     .line 42
     .line 43
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->paid:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->paid:I
 
     .line 44
     .line 45

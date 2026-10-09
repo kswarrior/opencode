@@ -99,7 +99,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->quick_access:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->quick_access:I
 
     .line 27
     .line 28
@@ -142,7 +142,7 @@
 
     .line 44
     .line 45
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->recent_search:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->recent_search:I
 
     .line 46
     .line 47
@@ -182,7 +182,7 @@
 
     .line 62
     .line 63
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 64
     .line 65

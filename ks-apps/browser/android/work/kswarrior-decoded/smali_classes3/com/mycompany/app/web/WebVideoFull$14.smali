@@ -61,7 +61,7 @@
 
     .line 8
     .line 9
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 10
     .line 11

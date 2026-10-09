@@ -232,7 +232,7 @@
     .line 69
     .line 70
     :cond_5
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->setted:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->setted:I
 
     .line 71
     .line 72
@@ -310,7 +310,7 @@
     .line 106
     .line 107
     :cond_8
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->setted:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->setted:I
 
     .line 108
     .line 109

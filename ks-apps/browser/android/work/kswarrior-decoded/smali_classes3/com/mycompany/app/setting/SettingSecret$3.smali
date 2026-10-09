@@ -87,7 +87,7 @@
 
     .line 19
     .line 20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->secret_data_info:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->secret_data_info:I
 
     .line 21
     .line 22

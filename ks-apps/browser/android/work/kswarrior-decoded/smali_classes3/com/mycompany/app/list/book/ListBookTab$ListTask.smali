@@ -527,7 +527,7 @@
 
     .line 178
     .line 179
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_home_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_home_black_24:I
 
     .line 180
     .line 181
@@ -539,7 +539,7 @@
 
     .line 184
     :cond_4
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 185
     .line 186

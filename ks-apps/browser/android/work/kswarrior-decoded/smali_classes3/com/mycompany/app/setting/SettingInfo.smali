@@ -83,7 +83,7 @@
 
     .line 17
     .line 18
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->app_ver:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->app_ver:I
 
     .line 19
     .line 20
@@ -133,7 +133,7 @@
 
     .line 43
     .line 44
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->notice_tos:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->notice_tos:I
 
     .line 45
     .line 46
@@ -163,7 +163,7 @@
 
     .line 57
     .line 58
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->notice_privacy:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->notice_privacy:I
 
     .line 59
     .line 60
@@ -190,7 +190,7 @@
 
     .line 70
     .line 71
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->license:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->license:I
 
     .line 72
     .line 73
@@ -231,7 +231,7 @@
 
     .line 91
     .line 92
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->freq_asked:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->freq_asked:I
 
     .line 93
     .line 94
@@ -261,7 +261,7 @@
 
     .line 105
     .line 106
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->blog_title:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->blog_title:I
 
     .line 107
     .line 108
@@ -618,7 +618,7 @@
     .line 2
     .line 3
     .line 4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->info:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->info:I
 
     .line 5
     .line 6

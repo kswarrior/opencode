@@ -144,7 +144,7 @@
 
     .line 48
     .line 49
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->undelete:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->undelete:I
 
     .line 50
     .line 51

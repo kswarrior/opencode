@@ -57,7 +57,7 @@
 
     .line 6
     .line 7
-    sget v2, Lcom/mycompany/app/soulbrowser/R$anim;->ic_rotate:I
+    sget v2, Lcom/kswarrior/ksportal/R$anim;->ic_rotate:I
 
     .line 8
     .line 9

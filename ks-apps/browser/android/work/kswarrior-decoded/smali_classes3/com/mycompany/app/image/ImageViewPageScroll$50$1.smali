@@ -80,7 +80,7 @@
 
     .line 17
     .line 18
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 19
     .line 20

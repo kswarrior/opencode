@@ -96,7 +96,7 @@
 
     .line 26
     .line 27
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 28
     .line 29
@@ -135,7 +135,7 @@
 
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 48
     .line 49
@@ -188,7 +188,7 @@
 
     .line 74
     .line 75
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->lock_reset_guide:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->lock_reset_guide:I
 
     .line 76
     .line 77
@@ -205,7 +205,7 @@
 
     .line 83
     .line 84
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->lock_secret_guide:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->lock_secret_guide:I
 
     .line 85
     .line 86
@@ -247,7 +247,7 @@
 
     .line 104
     .line 105
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->lock_reset_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->lock_reset_guide:I
 
     .line 106
     .line 107
@@ -271,7 +271,7 @@
 
     .line 115
     .line 116
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->link_reset_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->link_reset_guide:I
 
     .line 117
     .line 118
@@ -288,7 +288,7 @@
 
     .line 123
     .line 124
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->password_reset_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->password_reset_guide:I
 
     .line 125
     .line 126

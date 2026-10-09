@@ -199,7 +199,7 @@
     .line 74
     :cond_5
     :goto_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 75
     .line 76

@@ -510,7 +510,7 @@
     .line 28
     .line 29
     .line 30
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->restart_guide_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->restart_guide_1:I
 
     .line 31
     .line 32
@@ -536,7 +536,7 @@
     .line 42
     .line 43
     .line 44
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->restart_guide_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->restart_guide_2:I
 
     .line 45
     .line 46
@@ -558,7 +558,7 @@
     .line 54
     .line 55
     .line 56
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->restart_guide_3:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->restart_guide_3:I
 
     .line 57
     .line 58
@@ -584,7 +584,7 @@
     .line 68
     .line 69
     .line 70
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->restart_guide_4:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->restart_guide_4:I
 
     .line 71
     .line 72
@@ -686,11 +686,11 @@
 
     .line 119
     .line 120
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->restart_noti:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->restart_noti:I
 
     .line 121
     .line 122
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->restart_title:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->restart_title:I
 
     .line 123
     .line 124

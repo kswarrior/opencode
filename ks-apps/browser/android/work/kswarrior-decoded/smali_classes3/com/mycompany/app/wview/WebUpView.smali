@@ -2259,7 +2259,7 @@
     move-result p1
 
     .line 15
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_upward_dark_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_upward_dark_24:I
 
     .line 16
     .line 17
@@ -2292,7 +2292,7 @@
     move-result p1
 
     .line 31
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_upward_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_upward_black_24:I
 
     .line 32
     .line 33

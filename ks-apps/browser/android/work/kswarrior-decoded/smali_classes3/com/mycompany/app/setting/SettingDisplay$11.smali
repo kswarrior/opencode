@@ -154,7 +154,7 @@
 
     .line 31
     .line 32
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->screen_info_system:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->screen_info_system:I
 
     .line 33
     .line 34

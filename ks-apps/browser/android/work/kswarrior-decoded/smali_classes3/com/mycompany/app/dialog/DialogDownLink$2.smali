@@ -82,7 +82,7 @@
 
     .line 18
     .line 19
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_contact_support_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_contact_support_dark_20:I
 
     .line 20
     .line 21
@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_open_with_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_open_with_dark_24:I
 
     .line 27
     .line 28
@@ -108,7 +108,7 @@
 
     .line 32
     .line 33
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_share_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_share_dark_24:I
 
     .line 34
     .line 35
@@ -121,7 +121,7 @@
 
     .line 39
     .line 40
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_link_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_link_dark_24:I
 
     .line 41
     .line 42
@@ -198,7 +198,7 @@
 
     .line 82
     .line 83
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 84
     .line 85
@@ -224,7 +224,7 @@
 
     .line 95
     .line 96
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_contact_support_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_contact_support_black_20:I
 
     .line 97
     .line 98
@@ -237,7 +237,7 @@
 
     .line 102
     .line 103
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_open_with_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_open_with_black_24:I
 
     .line 104
     .line 105
@@ -250,7 +250,7 @@
 
     .line 109
     .line 110
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_share_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_share_black_24:I
 
     .line 111
     .line 112
@@ -263,7 +263,7 @@
 
     .line 116
     .line 117
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_link_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_link_black_24:I
 
     .line 118
     .line 119
@@ -338,7 +338,7 @@
 
     .line 157
     .line 158
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 159
     .line 160

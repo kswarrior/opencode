@@ -74,15 +74,15 @@
     .line 14
     .line 15
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->splash_notice_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->splash_notice_view:I
 
     .line 16
     .line 17
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->splash_apply_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->splash_apply_view:I
 
     .line 18
     .line 19
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->splash_blank_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->splash_blank_view:I
 
     .line 20
     .line 21
@@ -269,7 +269,7 @@
     .line 118
     .line 119
     .line 120
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->start:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->start:I
 
     .line 121
     .line 122
@@ -278,7 +278,7 @@
     .line 123
     .line 124
     .line 125
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->round_splash:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->round_splash:I
 
     .line 126
     .line 127
@@ -880,7 +880,7 @@
     .line 429
     .line 430
     .line 431
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_left_black_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_left_black_24:I
 
     .line 432
     .line 433
@@ -948,7 +948,7 @@
     .line 467
     .line 468
     .line 469
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_right_black_24:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_right_black_24:I
 
     .line 470
     .line 471
@@ -1012,7 +1012,7 @@
     .line 503
     .line 504
     .line 505
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_nor_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_nor_b:I
 
     .line 506
     .line 507
@@ -1035,7 +1035,7 @@
     .line 516
     .line 517
     .line 518
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_nor_b:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_nor_b:I
 
     .line 519
     .line 520
@@ -1072,7 +1072,7 @@
     .line 537
     .line 538
     .line 539
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_nor_b:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_nor_b:I
 
     .line 540
     .line 541
@@ -1113,7 +1113,7 @@
     .line 560
     .line 561
     .line 562
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_nor_b:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_nor_b:I
 
     .line 563
     .line 564

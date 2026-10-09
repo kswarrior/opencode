@@ -62,7 +62,7 @@
     .line 8
     .line 9
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->item_msg_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->item_msg_view:I
 
     .line 10
     .line 11

@@ -771,7 +771,7 @@
 
     .line 41
     .line 42
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_zip_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_zip_black_24:I
 
     .line 43
     .line 44

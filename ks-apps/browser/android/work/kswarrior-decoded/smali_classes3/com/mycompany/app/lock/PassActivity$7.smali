@@ -140,7 +140,7 @@
 
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->continue_input:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->continue_input:I
 
     .line 48
     .line 49

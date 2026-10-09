@@ -216,7 +216,7 @@
 
     .line 28
     :cond_1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 29
     .line 30

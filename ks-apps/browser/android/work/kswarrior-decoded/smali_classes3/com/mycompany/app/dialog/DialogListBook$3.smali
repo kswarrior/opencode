@@ -358,7 +358,7 @@
 
     .line 48
     .line 49
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 50
     .line 51
@@ -376,7 +376,7 @@
 
     .line 58
     .line 59
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->file:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->file:I
 
     .line 60
     .line 61
@@ -394,7 +394,7 @@
 
     .line 68
     .line 69
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->user_filter:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->user_filter:I
 
     .line 70
     .line 71
@@ -412,7 +412,7 @@
 
     .line 78
     .line 79
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adblock:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->ic_adblock:I
 
     .line 80
     .line 81
@@ -437,7 +437,7 @@
 
     .line 91
     .line 92
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adguard:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->ic_adguard:I
 
     .line 93
     .line 94
@@ -474,7 +474,7 @@
 
     .line 109
     .line 110
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 111
     .line 112
@@ -492,7 +492,7 @@
 
     .line 119
     .line 120
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->file:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->file:I
 
     .line 121
     .line 122
@@ -510,7 +510,7 @@
 
     .line 129
     .line 130
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->direct_input:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->direct_input:I
 
     .line 131
     .line 132
@@ -532,7 +532,7 @@
 
     .line 140
     .line 141
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->direct_input:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->direct_input:I
 
     .line 142
     .line 143
@@ -550,7 +550,7 @@
 
     .line 150
     .line 151
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->add_site:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->add_site:I
 
     .line 152
     .line 153
@@ -568,7 +568,7 @@
 
     .line 160
     .line 161
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->add_page:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->add_page:I
 
     .line 162
     .line 163

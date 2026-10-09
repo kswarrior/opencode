@@ -759,7 +759,7 @@
     .line 340
     .line 341
     .line 342
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_stay_current_portrait_dark_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_stay_current_portrait_dark_24:I
 
     .line 343
     .line 344
@@ -826,7 +826,7 @@
     .line 375
     .line 376
     .line 377
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->view_port:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->view_port:I
 
     .line 378
     .line 379
@@ -884,7 +884,7 @@
     .line 405
     .line 406
     .line 407
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_white_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_image_white_24:I
 
     .line 408
     .line 409
@@ -1092,7 +1092,7 @@
     .line 517
     .line 518
     .line 519
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_stay_current_landscape_dark_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_stay_current_landscape_dark_24:I
 
     .line 520
     .line 521
@@ -1155,7 +1155,7 @@
     .line 550
     .line 551
     .line 552
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->view_land:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->view_land:I
 
     .line 553
     .line 554
@@ -1349,7 +1349,7 @@
     .line 652
     .line 653
     .line 654
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_white_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_image_white_24:I
 
     .line 655
     .line 656

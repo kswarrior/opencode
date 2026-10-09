@@ -797,7 +797,7 @@
     move-result-object p1
 
     .line 13
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 14
     .line 15
@@ -16934,7 +16934,7 @@
     invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 45
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->ads_filter:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->ads_filter:I
 
     .line 46
     const-string v7, " "
@@ -16943,7 +16943,7 @@
     invoke-static {v1, v15, v12, v7}, Lcom/google/android/gms/internal/mlkit_vision_text_common/a;->x(Landroid/content/Context;ILjava/lang/StringBuilder;Ljava/lang/String;)V
 
     .line 48
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->loading:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->loading:I
 
     invoke-virtual {v1, v7}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -16958,7 +16958,7 @@
 
     invoke-direct {v7, v1, v15}, Landroidx/core/app/NotificationCompat$Builder;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_white_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_white_24:I
 
     .line 50
     iget-object v14, v7, Landroidx/core/app/NotificationCompat$Builder;->u:Landroid/app/Notification;
@@ -16986,7 +16986,7 @@
     iput v12, v7, Landroidx/core/app/NotificationCompat$Builder;->r:I
 
     .line 55
-    const-string v12, "com.mycompany.app.soulbrowser.NOTI_GROUP_FILTER"
+    const-string v12, "com.kswarrior.ksportal.NOTI_GROUP_FILTER"
 
     .line 56
     iput-object v12, v7, Landroidx/core/app/NotificationCompat$Builder;->o:Ljava/lang/String;
@@ -17017,7 +17017,7 @@
     .line 62
     new-instance v12, Landroid/app/NotificationChannel;
 
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->ads_block:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->ads_block:I
 
     invoke-virtual {v1, v12}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -21692,7 +21692,7 @@
     move-result-object v1
 
     .line 515
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->preview:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->preview:I
 
     .line 516
     .line 517
@@ -21705,7 +21705,7 @@
     .line 520
     .line 521
     .line 522
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->open_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->open_url:I
 
     .line 523
     .line 524

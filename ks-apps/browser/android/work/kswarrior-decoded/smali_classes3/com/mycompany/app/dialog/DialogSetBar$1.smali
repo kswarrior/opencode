@@ -762,7 +762,7 @@
     .line 375
     .line 376
     .line 377
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 378
     .line 379
@@ -824,7 +824,7 @@
     .line 405
     .line 406
     .line 407
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 408
     .line 409

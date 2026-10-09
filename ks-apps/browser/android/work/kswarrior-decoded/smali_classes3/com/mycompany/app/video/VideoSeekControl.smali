@@ -1168,7 +1168,7 @@
 
     .line 18
     .line 19
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_white_24:I
 
     .line 20
     .line 21
@@ -1185,7 +1185,7 @@
 
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     .line 28
     .line 29
@@ -1272,15 +1272,15 @@
 
     .line 20
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->seek_icon_play:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->seek_icon_play:I
 
     .line 21
     .line 22
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->seek_curr_time:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->seek_curr_time:I
 
     .line 23
     .line 24
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->seek_total_time:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->seek_total_time:I
 
     .line 25
     .line 26
@@ -1307,7 +1307,7 @@
     .line 37
     .line 38
     .line 39
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_white_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_white_24:I
 
     .line 40
     .line 41
@@ -1399,7 +1399,7 @@
     move-result-object v10
 
     .line 87
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_white_24:I
 
     .line 88
     .line 89
@@ -1472,7 +1472,7 @@
     move-result-object v6
 
     .line 126
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_white_24:I
 
     .line 127
     .line 128
@@ -1746,7 +1746,7 @@
     .line 274
     .line 275
     .line 276
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_w:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_w:I
 
     .line 277
     .line 278
@@ -1763,7 +1763,7 @@
     .line 283
     .line 284
     .line 285
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_w:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_w:I
 
     .line 286
     .line 287

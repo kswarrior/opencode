@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 27
     .line 28
@@ -140,7 +140,7 @@
 
     .line 49
     .line 50
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 51
     .line 52
@@ -305,7 +305,7 @@
 
     .line 126
     .line 127
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->mem_limit:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->mem_limit:I
 
     .line 128
     .line 129
@@ -376,7 +376,7 @@
 
     .line 161
     .line 162
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->mem_block_site:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->mem_block_site:I
 
     .line 163
     .line 164
@@ -410,7 +410,7 @@
 
     .line 177
     .line 178
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->mem_block_page:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->mem_block_page:I
 
     .line 179
     .line 180
@@ -444,7 +444,7 @@
 
     .line 193
     .line 194
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->mem_block_list:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->mem_block_list:I
 
     .line 195
     .line 196

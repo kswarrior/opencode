@@ -66,19 +66,19 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_frame_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_frame_view:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->item_title_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->item_title_view:I
 
     .line 14
     .line 15
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->item_seek_text:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->item_seek_text:I
 
     .line 16
     .line 17
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->item_zoom_text:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->item_zoom_text:I
 
     .line 18
     .line 19
@@ -1227,7 +1227,7 @@
     .line 624
     .line 625
     .line 626
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 627
     .line 628
@@ -1289,7 +1289,7 @@
     .line 654
     .line 655
     .line 656
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 657
     .line 658

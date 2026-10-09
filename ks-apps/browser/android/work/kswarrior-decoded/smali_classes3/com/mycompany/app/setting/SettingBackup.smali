@@ -173,11 +173,11 @@
 
     .line 4
     .line 5
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_sd_card_dark_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_sd_card_dark_24:I
 
     .line 6
     .line 7
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_drive_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_drive_dark_24:I
 
     .line 8
     .line 9
@@ -189,11 +189,11 @@
 
     .line 11
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_sd_card_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_sd_card_black_24:I
 
     .line 12
     .line 13
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_drive_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_drive_black_24:I
 
     .line 14
     .line 15
@@ -238,7 +238,7 @@
 
     .line 34
     .line 35
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->storage:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->storage:I
 
     .line 36
     .line 37
@@ -262,7 +262,7 @@
 
     .line 46
     .line 47
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->backup_import:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->backup_import:I
 
     .line 48
     .line 49
@@ -292,7 +292,7 @@
 
     .line 60
     .line 61
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->backup_export:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->backup_export:I
 
     .line 62
     .line 63
@@ -388,7 +388,7 @@
 
     .line 108
     .line 109
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->backup_import:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->backup_import:I
 
     .line 110
     .line 111
@@ -409,7 +409,7 @@
 
     .line 119
     .line 120
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->backup_export:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->backup_export:I
 
     .line 121
     .line 122
@@ -811,7 +811,7 @@
     .line 84
     .line 85
     .line 86
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 87
     .line 88
@@ -874,7 +874,7 @@
 
     .line 116
     .line 117
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 118
     .line 119
@@ -1571,7 +1571,7 @@
 
     .line 26
     .line 27
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 28
     .line 29
@@ -1608,7 +1608,7 @@
 
     .line 44
     .line 45
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 46
     .line 47
@@ -1671,7 +1671,7 @@
 
     .line 74
     .line 75
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 76
     .line 77
@@ -1704,7 +1704,7 @@
 
     .line 90
     .line 91
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 92
     .line 93
@@ -1753,7 +1753,7 @@
 
     .line 114
     .line 115
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 116
     .line 117
@@ -2561,7 +2561,7 @@
     .line 13
     .line 14
     .line 15
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->backup_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->backup_title:I
 
     .line 16
     .line 17

@@ -73,31 +73,31 @@
 
     .line 8
     .line 9
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->history_zero:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->history_zero:I
 
     .line 10
     .line 11
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->history_1day:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->history_1day:I
 
     .line 12
     .line 13
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->history_1week:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->history_1week:I
 
     .line 14
     .line 15
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->history_1mon:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->history_1mon:I
 
     .line 16
     .line 17
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->history_6mon:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->history_6mon:I
 
     .line 18
     .line 19
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->history_1year:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->history_1year:I
 
     .line 20
     .line 21
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 22
     .line 23
@@ -113,15 +113,15 @@
 
     .line 28
     .line 29
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->history_info_zero:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->history_info_zero:I
 
     .line 30
     .line 31
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->history_info_limit:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->history_info_limit:I
 
     .line 32
     .line 33
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->history_info_none:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->history_info_none:I
 
     .line 34
     .line 35
@@ -327,7 +327,7 @@
 
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->canceling:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->canceling:I
 
     .line 28
     .line 29

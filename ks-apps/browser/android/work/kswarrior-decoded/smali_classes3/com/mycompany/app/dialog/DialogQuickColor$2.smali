@@ -168,7 +168,7 @@
 
     .line 60
     .line 61
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_check_white_24:I
 
     .line 62
     .line 63

@@ -119,7 +119,7 @@
 
     .line 39
     .line 40
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_dark_24:I
 
     .line 41
     .line 42
@@ -132,7 +132,7 @@
 
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_add_dark_24:I
 
     .line 48
     .line 49
@@ -149,7 +149,7 @@
 
     .line 55
     .line 56
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 57
     .line 58
@@ -174,7 +174,7 @@
 
     .line 68
     .line 69
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 70
     .line 71
@@ -253,7 +253,7 @@
 
     .line 110
     .line 111
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_black_24:I
 
     .line 112
     .line 113
@@ -266,7 +266,7 @@
 
     .line 117
     .line 118
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_add_black_24:I
 
     .line 119
     .line 120
@@ -283,7 +283,7 @@
 
     .line 126
     .line 127
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 128
     .line 129
@@ -308,7 +308,7 @@
 
     .line 139
     .line 140
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 141
     .line 142
@@ -353,7 +353,7 @@
 
     .line 163
     .line 164
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->volume:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->volume:I
 
     .line 165
     .line 166

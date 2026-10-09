@@ -450,7 +450,7 @@
 
     .line 137
     .line 138
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 139
     .line 140
@@ -460,7 +460,7 @@
     .line 142
     .line 143
     :cond_2
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 144
     .line 145
@@ -627,7 +627,7 @@
 
     .line 227
     .line 228
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 229
     .line 230
@@ -688,7 +688,7 @@
     .line 258
     .line 259
     .line 260
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->save:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->save:I
 
     .line 261
     .line 262

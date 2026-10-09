@@ -113,7 +113,7 @@
 
     .line 33
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->notice_tos:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->notice_tos:I
 
     .line 34
     .line 35
@@ -125,7 +125,7 @@
     move-result-object v1
 
     .line 39
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->notice_privacy:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->notice_privacy:I
 
     .line 40
     .line 41
@@ -141,7 +141,7 @@
 
     .line 46
     .line 47
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->notice:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->notice:I
 
     .line 48
     .line 49

@@ -222,7 +222,7 @@
 
     .line 63
     .line 64
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->filter_guide_1:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->filter_guide_1:I
 
     .line 65
     .line 66
@@ -244,7 +244,7 @@
     .line 74
     .line 75
     .line 76
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->filter_guide_2:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->filter_guide_2:I
 
     .line 77
     .line 78
@@ -266,7 +266,7 @@
     .line 86
     .line 87
     .line 88
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->filter_guide_3:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->filter_guide_3:I
 
     .line 89
     .line 90
@@ -291,7 +291,7 @@
 
     .line 99
     .line 100
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->check_ele_info_1:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->check_ele_info_1:I
 
     .line 101
     .line 102
@@ -313,7 +313,7 @@
     .line 110
     .line 111
     .line 112
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->show_thumb_info:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->show_thumb_info:I
 
     .line 113
     .line 114
@@ -334,7 +334,7 @@
 
     .line 122
     :cond_5
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->over_block_guide_1:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->over_block_guide_1:I
 
     .line 123
     .line 124
@@ -356,7 +356,7 @@
     .line 132
     .line 133
     .line 134
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->over_block_guide_2:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->over_block_guide_2:I
 
     .line 135
     .line 136
@@ -378,7 +378,7 @@
     .line 144
     .line 145
     .line 146
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->over_block_guide_3:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->over_block_guide_3:I
 
     .line 147
     .line 148
@@ -396,7 +396,7 @@
     .line 154
     .line 155
     :goto_1
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->block_area:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->block_area:I
 
     .line 156
     .line 157
@@ -421,7 +421,7 @@
 
     .line 167
     .line 168
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->area_recom_1:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->area_recom_1:I
 
     .line 169
     .line 170
@@ -462,7 +462,7 @@
     .line 187
     .line 188
     .line 189
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->area_recom_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->area_recom_2:I
 
     .line 190
     .line 191

@@ -134,7 +134,7 @@
 
     .line 13
     .line 14
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_24:I
 
     .line 15
     .line 16
@@ -142,7 +142,7 @@
 
     .line 17
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_black_24:I
 
     .line 18
     .line 19
@@ -172,7 +172,7 @@
 
     .line 30
     .line 31
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 32
     .line 33
@@ -180,7 +180,7 @@
 
     .line 34
     :cond_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 35
     .line 36
@@ -202,7 +202,7 @@
 
     .line 43
     .line 44
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_dark_24:I
 
     .line 45
     .line 46
@@ -210,7 +210,7 @@
 
     .line 47
     :cond_5
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_black_24:I
 
     .line 48
     .line 49
@@ -941,7 +941,7 @@
 
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 28
     .line 29
@@ -3036,7 +3036,7 @@
 
     .line 23
     .line 24
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_MUSIC_PAUSE"
+    const-string v0, "com.kswarrior.ksportal.ACTION_MUSIC_PAUSE"
 
     .line 25
     .line 26

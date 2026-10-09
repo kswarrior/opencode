@@ -198,7 +198,7 @@
     .line 52
     :cond_3
     :goto_0
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->no_password:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->no_password:I
 
     .line 53
     .line 54

@@ -447,7 +447,7 @@
 
     .line 151
     .line 152
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 153
     .line 154

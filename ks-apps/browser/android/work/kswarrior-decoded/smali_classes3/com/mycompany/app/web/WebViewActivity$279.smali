@@ -593,7 +593,7 @@
     .line 200
     :cond_c
     :goto_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 201
     .line 202

@@ -149,7 +149,7 @@
 
     .line 48
     .line 49
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->blocked_link:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->blocked_link:I
 
     .line 50
     .line 51

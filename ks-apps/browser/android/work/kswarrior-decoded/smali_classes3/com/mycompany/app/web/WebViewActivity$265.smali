@@ -390,7 +390,7 @@
     .line 35
     :cond_1
     :goto_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_down_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_down_video:I
 
     .line 36
     .line 37

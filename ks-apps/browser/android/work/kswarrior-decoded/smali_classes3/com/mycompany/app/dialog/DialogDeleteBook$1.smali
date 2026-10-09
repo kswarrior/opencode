@@ -322,7 +322,7 @@
     move-result-object v9
 
     .line 147
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->total:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->total:I
 
     .line 148
     .line 149
@@ -436,7 +436,7 @@
     .line 207
     .line 208
     .line 209
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 210
     .line 211

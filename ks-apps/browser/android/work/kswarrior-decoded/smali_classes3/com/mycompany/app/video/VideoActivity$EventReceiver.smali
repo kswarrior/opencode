@@ -97,7 +97,7 @@
 
     .line 21
     :sswitch_0
-    const-string p2, "com.mycompany.app.soulbrowser.ACTION_VIDEO_PLAY"
+    const-string p2, "com.kswarrior.ksportal.ACTION_VIDEO_PLAY"
 
     .line 22
     .line 23
@@ -124,7 +124,7 @@
 
     .line 32
     :sswitch_1
-    const-string p2, "com.mycompany.app.soulbrowser.ACTION_VIDEO_FRWD"
+    const-string p2, "com.kswarrior.ksportal.ACTION_VIDEO_FRWD"
 
     .line 33
     .line 34
@@ -151,7 +151,7 @@
 
     .line 43
     :sswitch_2
-    const-string p2, "com.mycompany.app.soulbrowser.ACTION_VIDEO_FFWD"
+    const-string p2, "com.kswarrior.ksportal.ACTION_VIDEO_FFWD"
 
     .line 44
     .line 45
@@ -178,7 +178,7 @@
 
     .line 54
     :sswitch_3
-    const-string p2, "com.mycompany.app.soulbrowser.ACTION_MUSIC_PAUSE"
+    const-string p2, "com.kswarrior.ksportal.ACTION_MUSIC_PAUSE"
 
     .line 55
     .line 56

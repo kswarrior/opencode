@@ -85,7 +85,7 @@
 
     .line 19
     .line 20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$mipmap;->ic_launcher:I
+    sget v1, Lcom/kswarrior/ksportal/R$mipmap;->ic_launcher:I
 
     .line 21
     .line 22

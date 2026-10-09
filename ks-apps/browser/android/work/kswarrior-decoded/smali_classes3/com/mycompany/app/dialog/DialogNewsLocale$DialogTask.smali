@@ -249,7 +249,7 @@
     move-result-object v2
 
     .line 62
-    sget v3, Lcom/mycompany/app/soulbrowser/R$array;->news_lang:I
+    sget v3, Lcom/kswarrior/ksportal/R$array;->news_lang:I
 
     .line 63
     .line 64

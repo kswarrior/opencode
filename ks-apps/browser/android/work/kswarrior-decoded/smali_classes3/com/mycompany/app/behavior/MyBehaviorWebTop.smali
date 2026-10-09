@@ -26,7 +26,7 @@
     move-result p1
 
     .line 5
-    sget p2, Lcom/mycompany/app/soulbrowser/R$id;->web_top_view:I
+    sget p2, Lcom/kswarrior/ksportal/R$id;->web_top_view:I
 
     .line 6
     .line 7

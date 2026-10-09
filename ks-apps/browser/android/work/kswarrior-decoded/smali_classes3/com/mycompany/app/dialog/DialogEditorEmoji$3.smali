@@ -122,7 +122,7 @@
 
     .line 37
     .line 38
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_black:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_black:I
 
     .line 39
     .line 40
@@ -164,7 +164,7 @@
 
     .line 59
     .line 60
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->close:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->close:I
 
     .line 61
     .line 62

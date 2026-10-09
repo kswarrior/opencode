@@ -221,7 +221,7 @@
 
     .line 63
     .line 64
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->move_free:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->move_free:I
 
     .line 65
     .line 66
@@ -229,7 +229,7 @@
 
     .line 67
     :cond_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->move_long:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->move_long:I
 
     .line 68
     .line 69
@@ -2535,7 +2535,7 @@
 
     .line 11
     .line 12
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 13
     .line 14
@@ -2558,7 +2558,7 @@
 
     .line 24
     :cond_1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 25
     .line 26

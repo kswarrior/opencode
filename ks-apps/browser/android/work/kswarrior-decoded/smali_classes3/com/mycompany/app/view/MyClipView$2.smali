@@ -183,7 +183,7 @@
 
     .line 66
     .line 67
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->copied_text:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->copied_text:I
 
     .line 68
     .line 69

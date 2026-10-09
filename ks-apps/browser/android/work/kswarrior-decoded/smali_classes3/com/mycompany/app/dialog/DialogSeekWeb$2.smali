@@ -115,7 +115,7 @@
 
     .line 35
     .line 36
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->web_edit_hint:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->web_edit_hint:I
 
     .line 37
     .line 38
@@ -363,7 +363,7 @@
 
     .line 167
     .line 168
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->zoom_icon:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->zoom_icon:I
 
     .line 169
     .line 170
@@ -376,7 +376,7 @@
 
     .line 174
     .line 175
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 176
     .line 177
@@ -389,7 +389,7 @@
 
     .line 181
     .line 182
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 183
     .line 184
@@ -402,7 +402,7 @@
 
     .line 188
     .line 189
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->zoom_size:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->zoom_size:I
 
     .line 190
     .line 191
@@ -646,7 +646,7 @@
 
     .line 320
     .line 321
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->default_size:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->default_size:I
 
     .line 322
     .line 323

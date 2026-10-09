@@ -4581,7 +4581,7 @@
 
     .line 36
     .line 37
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_integration_instructions_2_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_integration_instructions_2_white_24:I
 
     .line 38
     .line 39
@@ -4874,7 +4874,7 @@
 
     .line 178
     .line 179
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_unfold_more_2_white_36:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_unfold_more_2_white_36:I
 
     .line 180
     .line 181

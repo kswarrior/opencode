@@ -82,7 +82,7 @@
 
     .line 18
     .line 19
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->exit_with_save:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->exit_with_save:I
 
     .line 20
     .line 21
@@ -103,7 +103,7 @@
 
     .line 29
     .line 30
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->exit_without_save:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->exit_without_save:I
 
     .line 31
     .line 32

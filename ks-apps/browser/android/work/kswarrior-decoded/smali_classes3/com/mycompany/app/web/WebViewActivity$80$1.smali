@@ -91,11 +91,11 @@
 
     .line 21
     .line 22
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->recent_delete:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->recent_delete:I
 
     .line 23
     .line 24
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 25
     .line 26

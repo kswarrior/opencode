@@ -200,7 +200,7 @@
 
     .line 77
     .line 78
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->feedback:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->feedback:I
 
     .line 79
     .line 80
@@ -254,7 +254,7 @@
 
     .line 104
     :catch_0
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 105
     .line 106
@@ -267,7 +267,7 @@
 
     .line 110
     :catch_1
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 111
     .line 112
@@ -281,7 +281,7 @@
 
     .line 116
     :pswitch_3
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->app_name:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->app_name:I
 
     .line 117
     .line 118
@@ -293,7 +293,7 @@
     move-result-object p2
 
     .line 122
-    const-string p3, "https://play.google.com/store/apps/details?id=com.mycompany.app.soulbrowser"
+    const-string p3, "https://play.google.com/store/apps/details?id=com.kswarrior.ksportal"
 
     .line 123
     .line 124
@@ -306,7 +306,7 @@
 
     .line 128
     :pswitch_4
-    const-string p2, "com.mycompany.app.soulbrowser"
+    const-string p2, "com.kswarrior.ksportal"
 
     .line 129
     .line 130

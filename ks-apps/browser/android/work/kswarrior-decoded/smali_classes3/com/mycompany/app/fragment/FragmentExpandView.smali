@@ -644,7 +644,7 @@
     move-result-object p1
 
     .line 21
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->shadow_list_up:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->shadow_list_up:I
 
     .line 22
     .line 23

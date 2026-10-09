@@ -65,7 +65,7 @@
 
     .line 10
     .line 11
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->not_support_land:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->not_support_land:I
 
     .line 12
     .line 13

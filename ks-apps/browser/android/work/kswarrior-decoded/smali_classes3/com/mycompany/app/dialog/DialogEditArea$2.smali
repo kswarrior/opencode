@@ -86,7 +86,7 @@
 
     .line 20
     .line 21
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_help_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_help_dark_24:I
 
     .line 22
     .line 23
@@ -99,7 +99,7 @@
 
     .line 27
     .line 28
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_replay_dark_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_replay_dark_20:I
 
     .line 29
     .line 30
@@ -158,7 +158,7 @@
 
     .line 60
     .line 61
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 62
     .line 63
@@ -180,7 +180,7 @@
 
     .line 72
     .line 73
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 74
     .line 75
@@ -206,7 +206,7 @@
 
     .line 85
     .line 86
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_help_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_help_black_24:I
 
     .line 87
     .line 88
@@ -219,7 +219,7 @@
 
     .line 92
     .line 93
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_replay_black_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_replay_black_20:I
 
     .line 94
     .line 95
@@ -277,7 +277,7 @@
 
     .line 124
     .line 125
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 126
     .line 127
@@ -304,7 +304,7 @@
 
     .line 139
     .line 140
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 141
     .line 142
@@ -340,7 +340,7 @@
 
     .line 158
     .line 159
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->remove_title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->remove_title:I
 
     .line 160
     .line 161
@@ -353,7 +353,7 @@
 
     .line 165
     .line 166
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->preview:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->preview:I
 
     .line 167
     .line 168

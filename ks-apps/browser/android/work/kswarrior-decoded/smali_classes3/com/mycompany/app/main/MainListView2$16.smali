@@ -101,7 +101,7 @@
 
     .line 27
     .line 28
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->share_limit:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->share_limit:I
 
     .line 29
     .line 30

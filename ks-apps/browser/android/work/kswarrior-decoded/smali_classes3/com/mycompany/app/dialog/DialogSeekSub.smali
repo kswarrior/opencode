@@ -109,7 +109,7 @@
 
     .line 30
     .line 31
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->time_s:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->time_s:I
 
     .line 32
     .line 33

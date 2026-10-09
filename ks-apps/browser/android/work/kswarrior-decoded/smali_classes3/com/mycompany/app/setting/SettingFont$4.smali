@@ -92,7 +92,7 @@
     .line 21
     .line 22
     .line 23
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->font_guide_1:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->font_guide_1:I
 
     .line 24
     .line 25
@@ -118,7 +118,7 @@
     .line 35
     .line 36
     .line 37
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->font_guide_2:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->font_guide_2:I
 
     .line 38
     .line 39
@@ -144,7 +144,7 @@
     .line 49
     .line 50
     .line 51
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->font_guide_3:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->font_guide_3:I
 
     .line 52
     .line 53

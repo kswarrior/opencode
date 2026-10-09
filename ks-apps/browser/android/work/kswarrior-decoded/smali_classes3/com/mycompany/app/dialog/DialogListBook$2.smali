@@ -160,7 +160,7 @@
 
     .line 54
     .line 55
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->bookmark:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->bookmark:I
 
     .line 56
     .line 57

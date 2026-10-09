@@ -369,7 +369,7 @@
 
     .line 136
     :cond_8
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 137
     .line 138

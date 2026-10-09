@@ -92,7 +92,7 @@
 
     .line 22
     .line 23
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->input:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->input:I
 
     .line 24
     .line 25
@@ -152,7 +152,7 @@
 
     .line 52
     .line 53
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->continue_input:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->continue_input:I
 
     .line 54
     .line 55

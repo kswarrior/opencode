@@ -2699,7 +2699,7 @@
 
     .line 684
     .line 685
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_library_black_24:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->outline_local_library_black_24:I
 
     .line 686
     .line 687

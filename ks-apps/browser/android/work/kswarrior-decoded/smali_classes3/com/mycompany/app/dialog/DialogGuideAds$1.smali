@@ -66,7 +66,7 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->ads_view_head:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->ads_view_head:I
 
     .line 12
     .line 13
@@ -197,7 +197,7 @@
     .line 78
     .line 79
     .line 80
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->tip:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->tip:I
 
     .line 81
     .line 82
@@ -1025,7 +1025,7 @@
     .line 510
     .line 511
     .line 512
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_round_theme:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->selector_round_theme:I
 
     .line 513
     .line 514
@@ -1082,7 +1082,7 @@
     .line 541
     .line 542
     .line 543
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 544
     .line 545

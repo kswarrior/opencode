@@ -186,7 +186,7 @@
 
     .line 70
     .line 71
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_music_note_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_music_note_dark_24:I
 
     .line 72
     .line 73

@@ -475,7 +475,7 @@
     .line 142
     .line 143
     :cond_d
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->new_folder:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->new_folder:I
 
     .line 144
     .line 145

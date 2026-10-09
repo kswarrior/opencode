@@ -338,7 +338,7 @@
 
     .line 23
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_password:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_password:I
 
     .line 25
     .line 26
@@ -406,7 +406,7 @@
 
     .line 59
     .line 60
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 61
     .line 62

@@ -314,7 +314,7 @@
 
     .line 126
     .line 127
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->allow_all_site:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->allow_all_site:I
 
     .line 128
     .line 129
@@ -332,7 +332,7 @@
 
     .line 136
     .line 137
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->block_harm_site:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->block_harm_site:I
 
     .line 138
     .line 139
@@ -353,7 +353,7 @@
     const/4 p4, 0x2
 
     .line 148
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->direct_input:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->direct_input:I
 
     .line 149
     .line 150
@@ -486,7 +486,7 @@
 
     .line 212
     :catch_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported:I
 
     .line 213
     .line 214

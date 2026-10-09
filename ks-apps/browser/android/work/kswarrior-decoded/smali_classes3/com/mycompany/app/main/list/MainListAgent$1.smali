@@ -155,7 +155,7 @@
 
     .line 54
     .line 55
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 56
     .line 57
@@ -188,7 +188,7 @@
 
     .line 71
     .line 72
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 73
     .line 74
@@ -214,7 +214,7 @@
 
     .line 85
     .line 86
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 87
     .line 88
@@ -243,7 +243,7 @@
 
     .line 100
     .line 101
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 102
     .line 103
@@ -330,7 +330,7 @@
 
     .line 145
     .line 146
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->user_agent:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->user_agent:I
 
     .line 147
     .line 148

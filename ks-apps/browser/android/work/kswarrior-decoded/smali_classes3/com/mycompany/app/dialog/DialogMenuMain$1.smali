@@ -808,7 +808,7 @@
 
     .line 395
     .line 396
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_restart_alt_dark_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_restart_alt_dark_20:I
 
     .line 397
     .line 398
@@ -821,7 +821,7 @@
 
     .line 402
     .line 403
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_view_agenda_dark_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_view_agenda_dark_20:I
 
     .line 404
     .line 405
@@ -834,7 +834,7 @@
 
     .line 409
     .line 410
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 411
     .line 412
@@ -895,7 +895,7 @@
 
     .line 441
     .line 442
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_restart_alt_black_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_restart_alt_black_20:I
 
     .line 443
     .line 444
@@ -908,7 +908,7 @@
 
     .line 448
     .line 449
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_view_agenda_black_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_view_agenda_black_20:I
 
     .line 450
     .line 451
@@ -921,7 +921,7 @@
 
     .line 455
     .line 456
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 457
     .line 458
@@ -1029,7 +1029,7 @@
 
     .line 514
     .line 515
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_red_20:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_red_20:I
 
     .line 516
     .line 517
@@ -1075,7 +1075,7 @@
 
     .line 537
     .line 538
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_dark_20:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_dark_20:I
 
     .line 539
     .line 540
@@ -1092,7 +1092,7 @@
 
     .line 545
     .line 546
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_black_20:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_black_20:I
 
     .line 547
     .line 548
@@ -1164,7 +1164,7 @@
 
     .line 582
     .line 583
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_cafe_dark_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_local_cafe_dark_20:I
 
     .line 584
     .line 585
@@ -1186,7 +1186,7 @@
 
     .line 594
     :cond_9
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_cafe_black_20:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_local_cafe_black_20:I
 
     .line 595
     .line 596

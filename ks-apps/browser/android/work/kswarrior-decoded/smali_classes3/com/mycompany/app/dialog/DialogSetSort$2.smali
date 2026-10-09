@@ -82,7 +82,7 @@
 
     .line 18
     .line 19
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 20
     .line 21
@@ -113,7 +113,7 @@
 
     .line 34
     .line 35
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 36
     .line 37
@@ -166,7 +166,7 @@
 
     .line 62
     .line 63
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->sort_by:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->sort_by:I
 
     .line 64
     .line 65
@@ -201,7 +201,7 @@
 
     .line 79
     .line 80
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->order_by:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->order_by:I
 
     .line 81
     .line 82
@@ -213,7 +213,7 @@
 
     .line 85
     .line 86
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->order_descend:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->order_descend:I
 
     .line 87
     .line 88
@@ -225,7 +225,7 @@
 
     .line 90
     :cond_2
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->order_ascend:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->order_ascend:I
 
     .line 91
     .line 92
@@ -312,7 +312,7 @@
 
     .line 131
     .line 132
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->group_by:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->group_by:I
 
     .line 133
     .line 134
@@ -400,7 +400,7 @@
 
     .line 176
     .line 177
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 178
     .line 179

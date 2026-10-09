@@ -65,7 +65,7 @@
 
     .line 10
     .line 11
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 12
     .line 13

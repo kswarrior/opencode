@@ -123,7 +123,7 @@
 
     .line 41
     .line 42
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_dark_24:I
 
     .line 43
     .line 44
@@ -136,7 +136,7 @@
 
     .line 48
     .line 49
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_add_dark_24:I
 
     .line 50
     .line 51
@@ -153,7 +153,7 @@
 
     .line 57
     .line 58
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 59
     .line 60
@@ -178,7 +178,7 @@
 
     .line 70
     .line 71
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 72
     .line 73
@@ -199,7 +199,7 @@
 
     .line 81
     .line 82
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 83
     .line 84
@@ -212,7 +212,7 @@
 
     .line 88
     .line 89
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 90
     .line 91
@@ -301,7 +301,7 @@
 
     .line 136
     .line 137
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_black_24:I
 
     .line 138
     .line 139
@@ -314,7 +314,7 @@
 
     .line 143
     .line 144
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_add_black_24:I
 
     .line 145
     .line 146
@@ -331,7 +331,7 @@
 
     .line 152
     .line 153
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 154
     .line 155
@@ -356,7 +356,7 @@
 
     .line 165
     .line 166
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 167
     .line 168
@@ -377,7 +377,7 @@
 
     .line 176
     .line 177
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 178
     .line 179
@@ -390,7 +390,7 @@
 
     .line 183
     .line 184
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 185
     .line 186
@@ -450,7 +450,7 @@
 
     .line 216
     .line 217
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->text_size:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->text_size:I
 
     .line 218
     .line 219

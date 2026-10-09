@@ -339,7 +339,7 @@
 
     .line 155
     .line 156
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 157
     .line 158
@@ -625,7 +625,7 @@
 
     .line 118
     :cond_7
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 119
     .line 120
@@ -1083,7 +1083,7 @@
 
     .line 19
     .line 20
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 21
     .line 22
@@ -1195,7 +1195,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 27
     .line 28
@@ -1312,7 +1312,7 @@
 
     .line 82
     .line 83
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->install_fail:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->install_fail:I
 
     .line 84
     .line 85
@@ -1329,7 +1329,7 @@
 
     .line 90
     .line 91
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->update_fail:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->update_fail:I
 
     .line 92
     .line 93
@@ -1431,7 +1431,7 @@
 
     .line 141
     .line 142
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 143
     .line 144

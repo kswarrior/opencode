@@ -202,23 +202,23 @@
     move-result-object v5
 
     .line 81
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_search_google:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_search_google:I
 
     .line 82
     .line 83
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_search_youtube:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->baseline_search_youtube:I
 
     .line 84
     .line 85
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_facebook:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->ic_facebook:I
 
     .line 86
     .line 87
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_instagram:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->ic_instagram:I
 
     .line 88
     .line 89
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_twitter:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->ic_twitter:I
 
     .line 90
     .line 91

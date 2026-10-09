@@ -553,7 +553,7 @@
     .line 42
     .line 43
     .line 44
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->crash_guide_1:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->crash_guide_1:I
 
     .line 45
     .line 46
@@ -718,7 +718,7 @@
     .line 131
     .line 132
     .line 133
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->refresh:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->refresh:I
 
     .line 134
     .line 135
@@ -819,7 +819,7 @@
     .line 186
     .line 187
     .line 188
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->crash_guide_2:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->crash_guide_2:I
 
     .line 189
     .line 190
@@ -914,7 +914,7 @@
     .line 237
     .line 238
     .line 239
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->mem_save:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->mem_save:I
 
     .line 240
     .line 241
@@ -1022,7 +1022,7 @@
     .line 297
     .line 298
     .line 299
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->clean_mode:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->clean_mode:I
 
     .line 300
     .line 301
@@ -1133,7 +1133,7 @@
     .line 358
     .line 359
     .line 360
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->clear_data:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->clear_data:I
 
     .line 361
     .line 362

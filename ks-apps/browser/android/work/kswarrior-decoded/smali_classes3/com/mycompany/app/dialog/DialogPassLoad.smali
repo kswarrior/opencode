@@ -423,7 +423,7 @@
 
     .line 15
     .line 16
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->canceling:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->canceling:I
 
     .line 17
     .line 18

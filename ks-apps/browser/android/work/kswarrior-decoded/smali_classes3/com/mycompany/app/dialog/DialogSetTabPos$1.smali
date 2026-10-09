@@ -66,11 +66,11 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_frame_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_frame_view:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->item_title_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->item_title_view:I
 
     .line 14
     .line 15
@@ -915,7 +915,7 @@
     move-result-object v10
 
     .line 462
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->show_tab_bar:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->show_tab_bar:I
 
     .line 463
     .line 464
@@ -1008,7 +1008,7 @@
     .line 507
     .line 508
     .line 509
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 510
     .line 511

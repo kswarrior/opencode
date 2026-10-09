@@ -161,7 +161,7 @@
 
     .line 59
     .line 60
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_in_picture_alt_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_in_picture_alt_dark_24:I
 
     .line 61
     .line 62
@@ -174,7 +174,7 @@
 
     .line 66
     .line 67
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_slow_motion_video_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_slow_motion_video_dark_24:I
 
     .line 68
     .line 69
@@ -244,7 +244,7 @@
 
     .line 103
     .line 104
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_in_picture_alt_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_in_picture_alt_black_24:I
 
     .line 105
     .line 106
@@ -257,7 +257,7 @@
 
     .line 110
     .line 111
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_slow_motion_video_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_slow_motion_video_black_24:I
 
     .line 112
     .line 113
@@ -525,7 +525,7 @@
 
     .line 246
     .line 247
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_in_picture_alt_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_in_picture_alt_dark_24:I
 
     .line 248
     .line 249
@@ -538,7 +538,7 @@
 
     .line 253
     .line 254
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_fullscreen_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_fullscreen_dark_24:I
 
     .line 255
     .line 256
@@ -551,7 +551,7 @@
 
     .line 260
     .line 261
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_download_dark_24:I
 
     .line 262
     .line 263
@@ -639,7 +639,7 @@
 
     .line 307
     .line 308
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_in_picture_alt_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_in_picture_alt_black_24:I
 
     .line 309
     .line 310
@@ -652,7 +652,7 @@
 
     .line 314
     .line 315
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_fullscreen_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_fullscreen_black_24:I
 
     .line 316
     .line 317
@@ -665,7 +665,7 @@
 
     .line 321
     .line 322
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_download_black_24:I
 
     .line 323
     .line 324

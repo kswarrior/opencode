@@ -211,7 +211,7 @@
 
     .line 25
     .line 26
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 27
     .line 28
@@ -494,7 +494,7 @@
     .line 10
     .line 11
     :cond_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 12
     .line 13

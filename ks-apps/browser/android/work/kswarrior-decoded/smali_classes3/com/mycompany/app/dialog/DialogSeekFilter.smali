@@ -205,7 +205,7 @@
 
     .line 74
     .line 75
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->time_day:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->time_day:I
 
     .line 76
     .line 77
@@ -370,7 +370,7 @@
 
     .line 7
     .line 8
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->auto_update:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->auto_update:I
 
     .line 9
     .line 10
@@ -404,7 +404,7 @@
 
     .line 23
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->update_time:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->update_time:I
 
     .line 25
     .line 26

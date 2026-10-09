@@ -107,7 +107,7 @@
     const/4 v2, 0x0
 
     .line 29
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->move_up:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->move_up:I
 
     .line 30
     .line 31
@@ -128,7 +128,7 @@
     const/4 v2, 0x1
 
     .line 40
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->move_down:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->move_down:I
 
     .line 41
     .line 42

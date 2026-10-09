@@ -108,7 +108,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->system_name:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->system_name:I
 
     .line 31
     .line 32
@@ -139,7 +139,7 @@
 
     .line 44
     .line 45
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->user_defined:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->user_defined:I
 
     .line 46
     .line 47

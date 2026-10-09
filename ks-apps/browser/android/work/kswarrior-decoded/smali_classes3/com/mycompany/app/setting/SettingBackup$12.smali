@@ -178,7 +178,7 @@
 
     .line 63
     .line 64
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_dark_24:I
 
     .line 65
     .line 66
@@ -186,7 +186,7 @@
 
     .line 67
     :cond_3
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_black_24:I
 
     .line 68
     .line 69

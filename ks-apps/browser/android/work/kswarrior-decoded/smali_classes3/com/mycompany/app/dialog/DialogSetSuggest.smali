@@ -34,15 +34,15 @@
     .locals 3
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 2
     .line 3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->duckduckgo:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->duckduckgo:I
 
     .line 4
     .line 5
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->google:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->google:I
 
     .line 6
     .line 7

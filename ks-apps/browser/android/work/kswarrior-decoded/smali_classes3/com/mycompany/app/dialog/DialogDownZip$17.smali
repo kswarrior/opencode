@@ -236,7 +236,7 @@
 
     .line 74
     .line 75
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->verify_image:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->verify_image:I
 
     .line 76
     .line 77

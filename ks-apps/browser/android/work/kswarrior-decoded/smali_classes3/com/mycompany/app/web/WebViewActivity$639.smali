@@ -151,7 +151,7 @@
 
     .line 53
     .line 54
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->save_fail:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->save_fail:I
 
     .line 55
     .line 56
@@ -159,7 +159,7 @@
 
     .line 57
     :cond_1
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->server_error:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->server_error:I
 
     .line 58
     .line 59
@@ -258,7 +258,7 @@
 
     .line 104
     .line 105
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 106
     .line 107
@@ -330,7 +330,7 @@
 
     .line 140
     .line 141
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->live_fail:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->live_fail:I
 
     .line 142
     .line 143
@@ -338,7 +338,7 @@
 
     .line 144
     :cond_8
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->server_error:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->server_error:I
 
     .line 145
     .line 146
@@ -403,7 +403,7 @@
 
     .line 175
     .line 176
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->save_success:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->save_success:I
 
     .line 177
     .line 178
@@ -415,7 +415,7 @@
 
     .line 180
     :cond_b
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->down_complete:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->down_complete:I
 
     .line 181
     .line 182

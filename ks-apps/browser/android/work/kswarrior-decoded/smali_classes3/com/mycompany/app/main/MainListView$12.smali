@@ -104,7 +104,7 @@
 
     .line 29
     .line 30
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->sort:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->sort:I
 
     .line 31
     .line 32
@@ -126,7 +126,7 @@
 
     .line 41
     .line 42
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->info:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->info:I
 
     .line 43
     .line 44
@@ -194,7 +194,7 @@
 
     .line 70
     .line 71
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 72
     .line 73
@@ -213,7 +213,7 @@
 
     .line 80
     .line 81
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->sort:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->sort:I
 
     .line 82
     .line 83
@@ -235,7 +235,7 @@
 
     .line 92
     .line 93
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->show_recent:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->show_recent:I
 
     .line 94
     .line 95
@@ -266,7 +266,7 @@
 
     .line 108
     .line 109
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->show_detail:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->show_detail:I
 
     .line 110
     .line 111
@@ -296,7 +296,7 @@
 
     .line 124
     .line 125
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->show_single:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->show_single:I
 
     .line 126
     .line 127
@@ -333,7 +333,7 @@
 
     .line 143
     .line 144
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->open_continue:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->open_continue:I
 
     .line 145
     .line 146
@@ -414,7 +414,7 @@
 
     .line 179
     .line 180
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->scan_dir:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->scan_dir:I
 
     .line 181
     .line 182
@@ -444,7 +444,7 @@
 
     .line 194
     .line 195
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->select_dir:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->select_dir:I
 
     .line 196
     .line 197
@@ -479,7 +479,7 @@
     const/4 v2, 0x7
 
     .line 212
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->history_time:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->history_time:I
 
     .line 213
     .line 214
@@ -522,7 +522,7 @@
 
     .line 232
     .line 233
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->auto_update:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->auto_update:I
 
     .line 234
     .line 235

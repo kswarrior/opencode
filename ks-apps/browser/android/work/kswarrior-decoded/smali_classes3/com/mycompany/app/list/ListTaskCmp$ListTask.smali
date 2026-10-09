@@ -2665,7 +2665,7 @@
 
     .line 668
     .line 669
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_zip_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_zip_black_24:I
 
     .line 670
     .line 671

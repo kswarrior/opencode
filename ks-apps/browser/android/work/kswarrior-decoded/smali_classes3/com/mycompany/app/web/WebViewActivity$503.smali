@@ -174,7 +174,7 @@
 
     .line 43
     .line 44
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 45
     .line 46
@@ -195,7 +195,7 @@
 
     .line 53
     .line 54
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 55
     .line 56

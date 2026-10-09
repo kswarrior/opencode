@@ -111,7 +111,7 @@
 
     .line 30
     .line 31
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 32
     .line 33

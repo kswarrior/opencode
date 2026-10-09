@@ -231,7 +231,7 @@
 
     .line 100
     .line 101
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 102
     .line 103
@@ -1324,7 +1324,7 @@
 
     .line 319
     .line 320
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 321
     .line 322
@@ -1378,7 +1378,7 @@
 
     .line 346
     .line 347
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 348
     .line 349

@@ -207,7 +207,7 @@
 
     .line 75
     .line 76
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->undelete:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->undelete:I
 
     .line 77
     .line 78

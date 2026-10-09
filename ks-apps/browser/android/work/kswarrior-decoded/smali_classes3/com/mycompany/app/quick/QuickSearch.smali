@@ -1152,7 +1152,7 @@
 
     .line 228
     .line 229
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_drop_down_dark_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_drop_down_dark_24:I
 
     .line 230
     .line 231
@@ -1183,7 +1183,7 @@
 
     .line 244
     .line 245
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_drop_down_black_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_drop_down_black_24:I
 
     .line 246
     .line 247

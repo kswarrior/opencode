@@ -911,7 +911,7 @@
     .line 25
     .line 26
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 27
     .line 28
@@ -1023,7 +1023,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 31
     .line 32
@@ -1120,7 +1120,7 @@
 
     .line 76
     :cond_6
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->save_success:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->save_success:I
 
     .line 77
     .line 78

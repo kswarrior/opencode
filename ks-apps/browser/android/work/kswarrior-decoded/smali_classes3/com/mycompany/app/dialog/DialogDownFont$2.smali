@@ -127,7 +127,7 @@
 
     .line 41
     .line 42
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_download_dark_24:I
 
     .line 43
     .line 44
@@ -158,7 +158,7 @@
 
     .line 57
     .line 58
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_download_black_24:I
 
     .line 59
     .line 60
@@ -185,7 +185,7 @@
 
     .line 71
     .line 72
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 73
     .line 74

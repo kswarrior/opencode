@@ -61,7 +61,7 @@
 
     .line 8
     .line 9
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 10
     .line 11

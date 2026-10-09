@@ -73,7 +73,7 @@
 
     .line 13
     .line 14
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 15
     .line 16
@@ -86,7 +86,7 @@
 
     .line 20
     .line 21
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_24:I
 
     .line 22
     .line 23
@@ -158,7 +158,7 @@
 
     .line 60
     .line 61
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_d:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_d:I
 
     .line 62
     .line 63
@@ -183,7 +183,7 @@
 
     .line 73
     .line 74
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_d:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_d:I
 
     .line 75
     .line 76
@@ -208,7 +208,7 @@
 
     .line 85
     .line 86
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 87
     .line 88
@@ -221,7 +221,7 @@
 
     .line 92
     .line 93
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_24:I
 
     .line 94
     .line 95
@@ -292,7 +292,7 @@
 
     .line 131
     .line 132
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_b:I
 
     .line 133
     .line 134
@@ -317,7 +317,7 @@
 
     .line 144
     .line 145
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_b:I
 
     .line 146
     .line 147
@@ -492,7 +492,7 @@
     .line 236
     .line 237
     .line 238
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_MUSIC_PAUSE"
+    const-string v2, "com.kswarrior.ksportal.ACTION_MUSIC_PAUSE"
 
     .line 239
     .line 240

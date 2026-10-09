@@ -124,7 +124,7 @@
 
     .line 39
     .line 40
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_dark_24:I
 
     .line 41
     .line 42
@@ -151,7 +151,7 @@
 
     .line 54
     .line 55
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_dark_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_dark_20:I
 
     .line 56
     .line 57
@@ -164,11 +164,11 @@
 
     .line 61
     .line 62
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 63
     .line 64
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 65
     .line 66
@@ -181,7 +181,7 @@
 
     .line 70
     .line 71
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_mood_dark_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_mood_dark_20:I
 
     .line 72
     .line 73
@@ -194,7 +194,7 @@
 
     .line 77
     .line 78
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_dark_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_dark_20:I
 
     .line 79
     .line 80
@@ -221,7 +221,7 @@
 
     .line 92
     .line 93
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 94
     .line 95
@@ -234,7 +234,7 @@
 
     .line 99
     .line 100
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 101
     .line 102
@@ -310,7 +310,7 @@
 
     .line 140
     .line 141
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_black_24:I
 
     .line 142
     .line 143
@@ -336,7 +336,7 @@
 
     .line 154
     .line 155
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_black_20:I
 
     .line 156
     .line 157
@@ -349,11 +349,11 @@
 
     .line 161
     .line 162
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 163
     .line 164
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 165
     .line 166
@@ -366,7 +366,7 @@
 
     .line 170
     .line 171
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_mood_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_mood_black_20:I
 
     .line 172
     .line 173
@@ -379,7 +379,7 @@
 
     .line 177
     .line 178
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_black_20:I
 
     .line 179
     .line 180
@@ -406,7 +406,7 @@
 
     .line 192
     .line 193
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_gray:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_gray:I
 
     .line 194
     .line 195
@@ -419,7 +419,7 @@
 
     .line 199
     .line 200
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_gray:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_gray:I
 
     .line 201
     .line 202

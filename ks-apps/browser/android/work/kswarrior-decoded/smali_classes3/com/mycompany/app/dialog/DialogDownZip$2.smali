@@ -74,7 +74,7 @@
 
     .line 14
     .line 15
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 16
     .line 17
@@ -87,7 +87,7 @@
 
     .line 21
     .line 22
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->down_location:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->down_location:I
 
     .line 23
     .line 24
@@ -100,7 +100,7 @@
 
     .line 28
     .line 29
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->create_zip:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->create_zip:I
 
     .line 30
     .line 31
@@ -113,7 +113,7 @@
 
     .line 35
     .line 36
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->create_zip:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->create_zip:I
 
     .line 37
     .line 38
@@ -217,7 +217,7 @@
 
     .line 93
     .line 94
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 95
     .line 96
@@ -464,7 +464,7 @@
 
     .line 230
     .line 231
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 232
     .line 233
@@ -486,7 +486,7 @@
 
     .line 242
     .line 243
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 244
     .line 245
@@ -586,7 +586,7 @@
 
     .line 297
     .line 298
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 299
     .line 300
@@ -838,7 +838,7 @@
 
     .line 437
     .line 438
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 439
     .line 440
@@ -860,7 +860,7 @@
 
     .line 449
     .line 450
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 451
     .line 452

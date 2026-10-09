@@ -795,7 +795,7 @@
     .line 347
     .line 348
     .line 349
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_done_white_24:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->outline_download_done_white_24:I
 
     .line 350
     .line 351
@@ -819,7 +819,7 @@
 
     .line 360
     .line 361
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->down_complete:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->down_complete:I
 
     .line 362
     .line 363
@@ -856,7 +856,7 @@
 
     .line 379
     .line 380
-    const-string v5, "com.mycompany.app.soulbrowser.NOTI_GROUP_DOWN"
+    const-string v5, "com.kswarrior.ksportal.NOTI_GROUP_DOWN"
 
     .line 381
     .line 382
@@ -864,7 +864,7 @@
 
     .line 383
     .line 384
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_offline_pin_gray_20:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_offline_pin_gray_20:I
 
     .line 385
     .line 386

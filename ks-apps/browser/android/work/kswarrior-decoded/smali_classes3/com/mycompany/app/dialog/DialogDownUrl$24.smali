@@ -211,7 +211,7 @@
 
     .line 35
     .line 36
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->insta_down:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->insta_down:I
 
     .line 37
     .line 38
@@ -394,7 +394,7 @@
 
     .line 72
     .line 73
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 74
     .line 75
@@ -408,7 +408,7 @@
 
     .line 79
     .line 80
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->list:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->list:I
 
     .line 81
     .line 82
@@ -439,7 +439,7 @@
 
     .line 94
     .line 95
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 96
     .line 97

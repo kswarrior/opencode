@@ -362,7 +362,7 @@
     .line 21
     .line 22
     .line 23
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->text_border:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->text_border:I
 
     .line 24
     .line 25
@@ -523,7 +523,7 @@
     .line 106
     .line 107
     .line 108
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_white_24:I
 
     .line 109
     .line 110
@@ -532,7 +532,7 @@
     .line 111
     .line 112
     .line 113
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_circle_close:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_circle_close:I
 
     .line 114
     .line 115

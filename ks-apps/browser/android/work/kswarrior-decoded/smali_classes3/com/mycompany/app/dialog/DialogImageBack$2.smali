@@ -93,7 +93,7 @@
 
     .line 23
     .line 24
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 25
     .line 26
@@ -124,7 +124,7 @@
 
     .line 39
     .line 40
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 41
     .line 42
@@ -202,7 +202,7 @@
 
     .line 78
     .line 79
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_48:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_48:I
 
     .line 80
     .line 81
@@ -210,7 +210,7 @@
 
     .line 82
     :cond_4
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_black_web_48:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_error_black_web_48:I
 
     .line 83
     .line 84
@@ -389,7 +389,7 @@
 
     .line 173
     .line 174
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_24:I
 
     .line 175
     .line 176
@@ -410,7 +410,7 @@
 
     .line 183
     .line 184
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_white_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_check_white_24:I
 
     .line 185
     .line 186

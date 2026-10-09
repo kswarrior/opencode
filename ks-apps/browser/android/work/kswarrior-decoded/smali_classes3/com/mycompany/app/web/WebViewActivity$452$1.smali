@@ -201,7 +201,7 @@
 
     .line 69
     .line 70
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->backup_target:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->backup_target:I
 
     .line 71
     .line 72

@@ -177,7 +177,7 @@
 
     .line 61
     .line 62
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->trans_except:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->trans_except:I
 
     .line 63
     .line 64

@@ -911,7 +911,7 @@
 
     .line 9
     .line 10
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->pip_info:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->pip_info:I
 
     .line 11
     .line 12
@@ -1000,7 +1000,7 @@
     .line 43
     .line 44
     .line 45
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->drag_seek_info:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->drag_seek_info:I
 
     .line 46
     .line 47
@@ -1026,7 +1026,7 @@
     .line 57
     .line 58
     .line 59
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 60
     .line 61
@@ -1086,7 +1086,7 @@
 
     .line 90
     .line 91
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->pip_home:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->pip_home:I
 
     .line 92
     .line 93
@@ -1140,11 +1140,11 @@
 
     .line 113
     .line 114
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->display_cutout:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->display_cutout:I
 
     .line 115
     .line 116
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->display_cutout_info:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->display_cutout_info:I
 
     .line 117
     .line 118
@@ -1185,7 +1185,7 @@
 
     .line 135
     .line 136
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->trans_icon:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->trans_icon:I
 
     .line 137
     .line 138
@@ -1197,7 +1197,7 @@
 
     .line 141
     .line 142
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->video_icon_long:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->video_icon_long:I
 
     .line 143
     .line 144
@@ -1209,7 +1209,7 @@
 
     .line 146
     :cond_6
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->video_icon_tap:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->video_icon_tap:I
 
     .line 147
     .line 148
@@ -1258,11 +1258,11 @@
 
     .line 168
     .line 169
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->drag_bright:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->drag_bright:I
 
     .line 170
     .line 171
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->drag_bright_info:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->drag_bright_info:I
 
     .line 172
     .line 173
@@ -1293,11 +1293,11 @@
 
     .line 185
     .line 186
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->drag_volume:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->drag_volume:I
 
     .line 187
     .line 188
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->drag_volume_info:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->drag_volume_info:I
 
     .line 189
     .line 190
@@ -1345,7 +1345,7 @@
 
     .line 211
     .line 212
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->drag_seek:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->drag_seek:I
 
     .line 213
     .line 214
@@ -1371,7 +1371,7 @@
 
     .line 225
     .line 226
-    sget v19, Lcom/mycompany/app/soulbrowser/R$string;->swipe_sense:I
+    sget v19, Lcom/kswarrior/ksportal/R$string;->swipe_sense:I
 
     .line 227
     .line 228
@@ -1439,11 +1439,11 @@
 
     .line 261
     .line 262
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->double_tap:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->double_tap:I
 
     .line 263
     .line 264
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 265
     .line 266
@@ -1489,7 +1489,7 @@
 
     .line 287
     .line 288
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 289
     .line 290
@@ -1505,7 +1505,7 @@
 
     .line 295
     .line 296
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->touch_lock_info:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->touch_lock_info:I
 
     .line 297
     .line 298
@@ -1624,7 +1624,7 @@
 
     .line 12
     .line 13
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 14
     .line 15
@@ -1640,7 +1640,7 @@
 
     .line 20
     .line 21
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->touch_lock_info:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->touch_lock_info:I
 
     .line 22
     .line 23
@@ -1804,7 +1804,7 @@
     .line 20
     .line 21
     .line 22
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 23
     .line 24

@@ -105,7 +105,7 @@
 
     .line 29
     .line 30
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 31
     .line 32
@@ -156,7 +156,7 @@
 
     .line 55
     .line 56
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->input_url:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->input_url:I
 
     .line 57
     .line 58
@@ -195,7 +195,7 @@
 
     .line 75
     .line 76
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 77
     .line 78
@@ -446,7 +446,7 @@
 
     .line 189
     .line 190
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->already_added:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->already_added:I
 
     .line 191
     .line 192

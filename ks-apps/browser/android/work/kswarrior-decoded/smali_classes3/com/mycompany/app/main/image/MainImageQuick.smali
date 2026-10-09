@@ -218,7 +218,7 @@
 
     .line 31
     .line 32
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 33
     .line 34
@@ -1347,7 +1347,7 @@
 
     .line 85
     .line 86
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->crop_save:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->crop_save:I
 
     .line 87
     .line 88
@@ -1473,7 +1473,7 @@
 
     .line 150
     .line 151
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 152
     .line 153
@@ -2372,7 +2372,7 @@
 
     .line 34
     .line 35
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 36
     .line 37
@@ -2393,7 +2393,7 @@
     const/4 v0, 0x1
 
     .line 46
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->camera:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->camera:I
 
     .line 47
     .line 48
@@ -2414,7 +2414,7 @@
     const/4 v0, 0x2
 
     .line 57
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 58
     .line 59
@@ -2940,7 +2940,7 @@
 
     .line 20
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->crop_save:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->crop_save:I
 
     .line 21
     .line 22
@@ -3120,7 +3120,7 @@
 
     .line 33
     .line 34
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 35
     .line 36
@@ -3818,7 +3818,7 @@
     .line 234
     .line 235
     .line 236
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 237
     .line 238
@@ -3827,7 +3827,7 @@
     .line 239
     .line 240
     .line 241
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_view:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->selector_view:I
 
     .line 242
     .line 243
@@ -3887,7 +3887,7 @@
     .line 273
     .line 274
     .line 275
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_view:I
 
     .line 276
     .line 277

@@ -113,7 +113,7 @@
 
     .line 33
     .line 34
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->rotation:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->rotation:I
 
     .line 35
     .line 36
@@ -153,7 +153,7 @@
 
     .line 51
     .line 52
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->view_port:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->view_port:I
 
     .line 53
     .line 54
@@ -190,7 +190,7 @@
 
     .line 68
     .line 69
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->view_land:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->view_land:I
 
     .line 70
     .line 71

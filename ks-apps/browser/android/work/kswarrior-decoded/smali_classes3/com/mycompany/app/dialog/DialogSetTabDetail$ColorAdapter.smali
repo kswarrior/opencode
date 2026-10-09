@@ -189,7 +189,7 @@
     .line 46
     .line 47
     :goto_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_white_24:I
 
     .line 48
     .line 49

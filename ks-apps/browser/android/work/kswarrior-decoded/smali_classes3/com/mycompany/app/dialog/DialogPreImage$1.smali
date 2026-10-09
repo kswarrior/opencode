@@ -220,7 +220,7 @@
     .line 89
     .line 90
     .line 91
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->server_delay:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->server_delay:I
 
     .line 92
     .line 93
@@ -392,7 +392,7 @@
     .line 185
     .line 186
     .line 187
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_white_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_download_white_24:I
 
     .line 188
     .line 189
@@ -457,7 +457,7 @@
     .line 220
     .line 221
     .line 222
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_open_with_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_open_with_white_24:I
 
     .line 223
     .line 224
@@ -529,7 +529,7 @@
     move-result-object v12
 
     .line 260
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_share_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_share_white_24:I
 
     .line 261
     .line 262
@@ -610,7 +610,7 @@
     move-result-object v13
 
     .line 303
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_link_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_link_white_24:I
 
     .line 304
     .line 305
@@ -691,7 +691,7 @@
     move-result-object v0
 
     .line 346
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_open_in_new_white_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_open_in_new_white_24:I
 
     .line 347
     .line 348

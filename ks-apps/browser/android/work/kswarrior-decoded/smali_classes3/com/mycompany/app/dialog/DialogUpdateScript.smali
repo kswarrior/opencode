@@ -788,7 +788,7 @@
 
     .line 45
     .line 46
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 47
     .line 48
@@ -1945,7 +1945,7 @@
 
     .line 15
     .line 16
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->canceling:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->canceling:I
 
     .line 17
     .line 18

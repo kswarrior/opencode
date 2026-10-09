@@ -365,7 +365,7 @@
 
     .line 150
     .line 151
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->last_page_noti:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->last_page_noti:I
 
     .line 152
     .line 153
@@ -596,7 +596,7 @@
 
     .line 259
     .line 260
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->last_page_noti:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->last_page_noti:I
 
     .line 261
     .line 262

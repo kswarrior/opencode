@@ -157,7 +157,7 @@
 
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_dark:I
 
     .line 48
     .line 49
@@ -170,7 +170,7 @@
 
     .line 53
     :cond_5
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_color:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_color:I
 
     .line 54
     .line 55

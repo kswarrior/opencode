@@ -78,7 +78,7 @@
     .locals 1
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogBlackTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogBlackTheme:I
 
     .line 2
     .line 3

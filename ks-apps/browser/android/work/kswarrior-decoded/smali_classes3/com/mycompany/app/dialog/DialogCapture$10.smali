@@ -127,7 +127,7 @@
     .line 41
     .line 42
     .line 43
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->round_guide_16:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->round_guide_16:I
 
     .line 44
     .line 45
@@ -296,7 +296,7 @@
     .line 128
     .line 129
     .line 130
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->round_guide_8:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->round_guide_8:I
 
     .line 131
     .line 132
@@ -466,7 +466,7 @@
 
     .line 223
     .line 224
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_pinch:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_pinch:I
 
     .line 225
     .line 226
@@ -475,7 +475,7 @@
     .line 227
     .line 228
     .line 229
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->guide_pinch:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->guide_pinch:I
 
     .line 230
     .line 231
@@ -484,7 +484,7 @@
     .line 232
     .line 233
     .line 234
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->scroll_guide_1:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->scroll_guide_1:I
 
     .line 235
     .line 236
@@ -493,7 +493,7 @@
     .line 237
     .line 238
     .line 239
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->scroll_guide_2:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->scroll_guide_2:I
 
     .line 240
     .line 241

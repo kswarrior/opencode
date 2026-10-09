@@ -54,7 +54,7 @@
 
     .line 2
     .line 3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->web_stream:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->web_stream:I
 
     .line 4
     .line 5
@@ -75,7 +75,7 @@
     .line 12
     .line 13
     .line 14
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->video:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->video:I
 
     .line 15
     .line 16
@@ -123,7 +123,7 @@
     .line 38
     .line 39
     .line 40
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 41
     .line 42
@@ -177,7 +177,7 @@
 
     .line 67
     .line 68
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_help_dark_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_help_dark_20:I
 
     .line 69
     .line 70
@@ -189,7 +189,7 @@
 
     .line 72
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_help_black_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_help_black_20:I
 
     .line 73
     .line 74
@@ -227,7 +227,7 @@
 
     .line 90
     .line 91
-    sget v18, Lcom/mycompany/app/soulbrowser/R$string;->cast_on:I
+    sget v18, Lcom/kswarrior/ksportal/R$string;->cast_on:I
 
     .line 92
     .line 93
@@ -269,7 +269,7 @@
 
     .line 112
     .line 113
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->repeat_play:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->repeat_play:I
 
     .line 114
     .line 115
@@ -371,11 +371,11 @@
 
     .line 160
     .line 161
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->local_file:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->local_file:I
 
     .line 162
     .line 163
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_live_tv_dark_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_live_tv_dark_24:I
 
     .line 164
     .line 165
@@ -393,11 +393,11 @@
 
     .line 172
     .line 173
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->subtitle:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->subtitle:I
 
     .line 174
     .line 175
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subtitles_dark_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_subtitles_dark_24:I
 
     .line 176
     .line 177
@@ -415,7 +415,7 @@
 
     .line 184
     .line 185
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 186
     .line 187
@@ -433,7 +433,7 @@
 
     .line 194
     .line 195
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_image_dark_24:I
 
     .line 196
     .line 197
@@ -455,11 +455,11 @@
 
     .line 205
     .line 206
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->local_file:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->local_file:I
 
     .line 207
     .line 208
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_live_tv_black_24:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_live_tv_black_24:I
 
     .line 209
     .line 210
@@ -477,11 +477,11 @@
 
     .line 217
     .line 218
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->subtitle:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->subtitle:I
 
     .line 219
     .line 220
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_subtitles_black_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_subtitles_black_24:I
 
     .line 221
     .line 222
@@ -499,7 +499,7 @@
 
     .line 229
     .line 230
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 231
     .line 232
@@ -517,7 +517,7 @@
 
     .line 239
     .line 240
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_image_black_24:I
 
     .line 241
     .line 242
@@ -713,7 +713,7 @@
     .line 2
     .line 3
     .line 4
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->tv_cast:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->tv_cast:I
 
     .line 5
     .line 6

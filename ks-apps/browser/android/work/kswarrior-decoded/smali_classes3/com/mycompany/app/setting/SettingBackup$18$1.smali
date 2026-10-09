@@ -176,7 +176,7 @@
     .line 64
     .line 65
     .line 66
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 67
     .line 68

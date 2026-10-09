@@ -65,7 +65,7 @@
 
     .line 10
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->dev_dog:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->dev_dog:I
 
     .line 11
     .line 12
@@ -122,7 +122,7 @@
 
     .line 38
     .line 39
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_status_bar_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_status_bar_b:I
 
     .line 40
     .line 41
@@ -167,7 +167,7 @@
 
     .line 61
     .line 62
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_navi_bar_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_navi_bar_b:I
 
     .line 63
     .line 64
@@ -212,7 +212,7 @@
 
     .line 84
     .line 85
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_top_bar_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_top_bar_b:I
 
     .line 86
     .line 87
@@ -257,7 +257,7 @@
 
     .line 107
     .line 108
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_bot_bar_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_bot_bar_b:I
 
     .line 109
     .line 110
@@ -302,7 +302,7 @@
 
     .line 130
     .line 131
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_tab_bar_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_tab_bar_b:I
 
     .line 132
     .line 133
@@ -351,7 +351,7 @@
 
     .line 154
     .line 155
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_status_bar_w:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_status_bar_w:I
 
     .line 156
     .line 157
@@ -396,7 +396,7 @@
 
     .line 177
     .line 178
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_navi_bar_w:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_navi_bar_w:I
 
     .line 179
     .line 180
@@ -441,7 +441,7 @@
 
     .line 200
     .line 201
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_top_bar_w:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_top_bar_w:I
 
     .line 202
     .line 203
@@ -486,7 +486,7 @@
 
     .line 223
     .line 224
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_bot_bar_w:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_bot_bar_w:I
 
     .line 225
     .line 226
@@ -531,7 +531,7 @@
 
     .line 246
     .line 247
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->sample_tab_bar_w:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->sample_tab_bar_w:I
 
     .line 248
     .line 249

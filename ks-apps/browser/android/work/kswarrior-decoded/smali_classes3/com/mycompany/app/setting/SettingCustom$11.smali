@@ -161,7 +161,7 @@
 
     .line 54
     .line 55
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->recent_secret:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->recent_secret:I
 
     .line 56
     .line 57

@@ -145,7 +145,7 @@
 
     .line 48
     .line 49
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 50
     .line 51

@@ -394,11 +394,11 @@
 
     .line 17
     .line 18
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->show_thumb:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->show_thumb:I
 
     .line 19
     .line 20
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->show_thumb_info:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->show_thumb_info:I
 
     .line 21
     .line 22
@@ -429,7 +429,7 @@
 
     .line 34
     .line 35
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->show_page_guide:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->show_page_guide:I
 
     .line 36
     .line 37
@@ -480,7 +480,7 @@
 
     .line 59
     .line 60
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->tap_turn:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->tap_turn:I
 
     .line 61
     .line 62
@@ -507,7 +507,7 @@
 
     .line 72
     .line 73
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->volume_turn:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->volume_turn:I
 
     .line 74
     .line 75
@@ -552,7 +552,7 @@
 
     .line 95
     .line 96
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->screen_off:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->screen_off:I
 
     .line 97
     .line 98
@@ -751,7 +751,7 @@
 
     .line 7
     .line 8
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 9
     .line 10

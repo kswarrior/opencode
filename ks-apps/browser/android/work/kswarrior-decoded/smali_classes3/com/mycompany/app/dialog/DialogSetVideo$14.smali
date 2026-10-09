@@ -279,7 +279,7 @@
     const/4 v0, 0x4
 
     .line 92
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->default_title:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->default_title:I
 
     .line 93
     .line 94

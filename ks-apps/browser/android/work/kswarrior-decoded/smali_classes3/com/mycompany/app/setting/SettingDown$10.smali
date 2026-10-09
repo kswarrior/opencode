@@ -293,7 +293,7 @@
 
     .line 98
     .line 99
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->default_title:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->default_title:I
 
     .line 100
     .line 101

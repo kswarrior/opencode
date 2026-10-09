@@ -2020,7 +2020,7 @@
     .line 82
     iget-object v4, v0, Lcom/mycompany/app/web/WebTabBarSubView;->s:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_add_black_24:I
 
     invoke-virtual {v4, v5}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 
@@ -2030,7 +2030,7 @@
     :cond_17
     iget-object v4, v0, Lcom/mycompany/app/web/WebTabBarSubView;->s:Lcom/mycompany/app/view/MyButtonImage;
 
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_add_dark_24:I
 
     invoke-virtual {v4, v5}, Lcom/mycompany/app/view/MyButtonImage;->setImageResource(I)V
 

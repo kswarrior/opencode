@@ -67,7 +67,7 @@
 
     .line 4
     .line 5
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogFullBlack:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogFullBlack:I
 
     .line 6
     .line 7
@@ -75,7 +75,7 @@
 
     .line 8
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogFullTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogFullTheme:I
 
     .line 9
     .line 10
@@ -451,7 +451,7 @@
 
     .line 26
     .line 27
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 28
     .line 29
@@ -1516,7 +1516,7 @@
 
     .line 519
     .line 520
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->already_added:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->already_added:I
 
     .line 521
     .line 522
@@ -2575,7 +2575,7 @@
 
     .line 21
     .line 22
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 23
     .line 24
@@ -2612,7 +2612,7 @@
 
     .line 39
     .line 40
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 41
     .line 42
@@ -2746,7 +2746,7 @@
 
     .line 102
     .line 103
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 104
     .line 105
@@ -2779,7 +2779,7 @@
 
     .line 118
     .line 119
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 120
     .line 121

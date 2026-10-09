@@ -156,7 +156,7 @@
 
     .line 7
     .line 8
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->sort_user:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->sort_user:I
 
     .line 9
     .line 10
@@ -190,7 +190,7 @@
 
     .line 23
     .line 24
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->folder_top:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->folder_top:I
 
     .line 25
     .line 26
@@ -225,7 +225,7 @@
 
     .line 40
     .line 41
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->sort_by:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->sort_by:I
 
     .line 42
     .line 43
@@ -262,7 +262,7 @@
 
     .line 59
     .line 60
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->order_by:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->order_by:I
 
     .line 61
     .line 62
@@ -274,7 +274,7 @@
 
     .line 65
     .line 66
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->order_descend:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->order_descend:I
 
     .line 67
     .line 68
@@ -282,7 +282,7 @@
 
     .line 69
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->order_ascend:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->order_ascend:I
 
     .line 70
     .line 71

@@ -82,11 +82,11 @@
 
     .line 18
     .line 19
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->original_size:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->original_size:I
 
     .line 20
     .line 21
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->memory_warning_1:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->memory_warning_1:I
 
     .line 22
     .line 23
@@ -113,7 +113,7 @@
 
     .line 33
     .line 34
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->reduced_size:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->reduced_size:I
 
     .line 35
     .line 36

@@ -258,7 +258,7 @@
     .line 32
     .line 33
     .line 34
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_white_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_white_24:I
 
     .line 35
     .line 36

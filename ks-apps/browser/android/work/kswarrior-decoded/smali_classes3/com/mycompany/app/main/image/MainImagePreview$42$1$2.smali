@@ -211,7 +211,7 @@
 
     .line 21
     .line 22
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 23
     .line 24

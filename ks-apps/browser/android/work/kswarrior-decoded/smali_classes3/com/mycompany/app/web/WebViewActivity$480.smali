@@ -387,7 +387,7 @@
 
     .line 20
     .line 21
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->group_title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->group_title:I
 
     .line 22
     .line 23

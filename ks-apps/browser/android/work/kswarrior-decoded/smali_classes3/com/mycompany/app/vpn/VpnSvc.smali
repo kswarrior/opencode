@@ -552,7 +552,7 @@
     .line 99
     .line 100
     .line 101
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_vpn_key_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_vpn_key_white_24:I
 
     .line 102
     .line 103
@@ -572,7 +572,7 @@
     move-result-object p1
 
     .line 111
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->vpn_active:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->vpn_active:I
 
     .line 112
     .line 113
@@ -611,7 +611,7 @@
 
     .line 129
     .line 130
-    const-string p1, "com.mycompany.app.soulbrowser.NOTI_GROUP_VPN"
+    const-string p1, "com.kswarrior.ksportal.NOTI_GROUP_VPN"
 
     .line 131
     .line 132
@@ -635,7 +635,7 @@
 
     .line 141
     .line 142
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->vpn:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->vpn:I
 
     .line 143
     .line 144

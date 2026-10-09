@@ -73,7 +73,7 @@
 
     .line 13
     .line 14
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 15
     .line 16

@@ -151,95 +151,95 @@
 
     .line 52
     .line 53
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_original:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->effect_original:I
 
     .line 54
     .line 55
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_auto_fix:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->effect_auto_fix:I
 
     .line 56
     .line 57
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_brightness:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->effect_brightness:I
 
     .line 58
     .line 59
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_contrast:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->effect_contrast:I
 
     .line 60
     .line 61
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_cross_process:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->effect_cross_process:I
 
     .line 62
     .line 63
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_documentary:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->effect_documentary:I
 
     .line 64
     .line 65
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_duo_tone:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->effect_duo_tone:I
 
     .line 66
     .line 67
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_fill_light:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->effect_fill_light:I
 
     .line 68
     .line 69
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_fish_eye:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->effect_fish_eye:I
 
     .line 70
     .line 71
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_grain:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->effect_grain:I
 
     .line 72
     .line 73
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_gray_scale:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->effect_gray_scale:I
 
     .line 74
     .line 75
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_lomoish:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->effect_lomoish:I
 
     .line 76
     .line 77
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_negative:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->effect_negative:I
 
     .line 78
     .line 79
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_posterize:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->effect_posterize:I
 
     .line 80
     .line 81
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_saturate:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->effect_saturate:I
 
     .line 82
     .line 83
-    sget v16, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_sepia:I
+    sget v16, Lcom/kswarrior/ksportal/R$drawable;->effect_sepia:I
 
     .line 84
     .line 85
-    sget v17, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_sharpen:I
+    sget v17, Lcom/kswarrior/ksportal/R$drawable;->effect_sharpen:I
 
     .line 86
     .line 87
-    sget v18, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_temperature:I
+    sget v18, Lcom/kswarrior/ksportal/R$drawable;->effect_temperature:I
 
     .line 88
     .line 89
-    sget v19, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_tint:I
+    sget v19, Lcom/kswarrior/ksportal/R$drawable;->effect_tint:I
 
     .line 90
     .line 91
-    sget v20, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_vignette:I
+    sget v20, Lcom/kswarrior/ksportal/R$drawable;->effect_vignette:I
 
     .line 92
     .line 93
-    sget v21, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_flip_horizontal:I
+    sget v21, Lcom/kswarrior/ksportal/R$drawable;->effect_flip_horizontal:I
 
     .line 94
     .line 95
-    sget v22, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_flip_vertical:I
+    sget v22, Lcom/kswarrior/ksportal/R$drawable;->effect_flip_vertical:I
 
     .line 96
     .line 97
-    sget v23, Lcom/mycompany/app/soulbrowser/R$drawable;->effect_rotate:I
+    sget v23, Lcom/kswarrior/ksportal/R$drawable;->effect_rotate:I
 
     .line 98
     .line 99

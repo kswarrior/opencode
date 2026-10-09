@@ -397,7 +397,7 @@
 
     .line 127
     .line 128
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->item_drag:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->item_drag:I
 
     .line 129
     .line 130

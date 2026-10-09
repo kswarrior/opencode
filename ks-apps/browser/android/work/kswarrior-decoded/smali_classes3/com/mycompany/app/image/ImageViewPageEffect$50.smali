@@ -372,7 +372,7 @@
 
     .line 54
     .line 55
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->down_fail:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->down_fail:I
 
     .line 56
     .line 57

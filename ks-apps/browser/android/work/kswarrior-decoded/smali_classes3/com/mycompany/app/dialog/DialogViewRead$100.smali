@@ -117,7 +117,7 @@
 
     .line 21
     .line 22
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 23
     .line 24
@@ -260,7 +260,7 @@
 
     .line 34
     .line 35
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 36
     .line 37
@@ -473,7 +473,7 @@
 
     .line 24
     .line 25
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 26
     .line 27

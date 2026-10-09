@@ -444,7 +444,7 @@
 
     .line 163
     :cond_5
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_24:I
 
     .line 164
     .line 165
@@ -452,7 +452,7 @@
 
     .line 166
     .line 167
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_dark_24:I
 
     .line 168
     .line 169
@@ -460,7 +460,7 @@
 
     .line 170
     :cond_6
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 171
     .line 172
@@ -468,7 +468,7 @@
 
     .line 173
     .line 174
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 175
     .line 176
@@ -476,7 +476,7 @@
 
     .line 177
     :cond_7
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 178
     .line 179
@@ -484,7 +484,7 @@
 
     .line 180
     .line 181
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 182
     .line 183
@@ -531,7 +531,7 @@
 
     .line 202
     :cond_a
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_24:I
 
     .line 203
     .line 204
@@ -539,7 +539,7 @@
 
     .line 205
     .line 206
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_dark_24:I
 
     .line 207
     .line 208
@@ -547,7 +547,7 @@
 
     .line 209
     :cond_b
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 210
     .line 211
@@ -555,7 +555,7 @@
 
     .line 212
     .line 213
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 214
     .line 215
@@ -563,7 +563,7 @@
 
     .line 216
     :cond_c
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 217
     .line 218
@@ -571,7 +571,7 @@
 
     .line 219
     .line 220
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 221
     .line 222

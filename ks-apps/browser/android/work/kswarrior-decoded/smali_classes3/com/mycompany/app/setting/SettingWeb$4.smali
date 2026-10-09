@@ -179,7 +179,7 @@
 
     .line 62
     .line 63
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->user_script_title:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->user_script_title:I
 
     .line 64
     .line 65

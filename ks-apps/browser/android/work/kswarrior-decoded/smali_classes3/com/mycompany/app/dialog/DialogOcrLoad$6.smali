@@ -103,7 +103,7 @@
 
     .line 29
     .line 30
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ocr_load_3:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ocr_load_3:I
 
     .line 31
     .line 32
@@ -116,7 +116,7 @@
 
     .line 36
     .line 37
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->translate:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->translate:I
 
     .line 38
     .line 39

@@ -166,7 +166,7 @@
     .line 59
     .line 60
     .line 61
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->tv_cast:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->tv_cast:I
 
     .line 62
     .line 63
@@ -192,7 +192,7 @@
     .line 73
     .line 74
     .line 75
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->active_function:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->active_function:I
 
     .line 76
     .line 77
@@ -221,7 +221,7 @@
     move-result-object p1
 
     .line 90
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 91
     .line 92
@@ -462,7 +462,7 @@
 
     .line 47
     .line 48
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->no_found:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->no_found:I
 
     .line 49
     .line 50
@@ -505,7 +505,7 @@
 
     .line 68
     .line 69
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->file_found:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->file_found:I
 
     .line 70
     .line 71

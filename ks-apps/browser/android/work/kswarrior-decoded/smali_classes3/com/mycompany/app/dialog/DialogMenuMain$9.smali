@@ -61,7 +61,7 @@
 
     .line 8
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_red_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_red_20:I
 
     .line 9
     .line 10

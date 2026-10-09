@@ -111,7 +111,7 @@
 
     .line 41
     .line 42
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 43
     .line 44
@@ -309,7 +309,7 @@
 
     .line 129
     .line 130
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->saving:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->saving:I
 
     .line 131
     .line 132
@@ -2989,7 +2989,7 @@
 
     .line 19
     .line 20
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 21
     .line 22
@@ -3100,7 +3100,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 27
     .line 28
@@ -3251,7 +3251,7 @@
 
     .line 96
     .line 97
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->save_empty:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->save_empty:I
 
     .line 98
     .line 99
@@ -3264,7 +3264,7 @@
 
     .line 103
     .line 104
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 105
     .line 106
@@ -3278,7 +3278,7 @@
     .line 110
     :cond_9
     :goto_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 111
     .line 112
@@ -3291,7 +3291,7 @@
 
     .line 116
     .line 117
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 118
     .line 119
@@ -3322,7 +3322,7 @@
 
     .line 131
     .line 132
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 133
     .line 134

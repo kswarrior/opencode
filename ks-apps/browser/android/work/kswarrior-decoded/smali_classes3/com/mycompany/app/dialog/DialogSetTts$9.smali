@@ -254,7 +254,7 @@
 
     .line 76
     .line 77
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->auto_detect:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->auto_detect:I
 
     .line 78
     .line 79
@@ -263,7 +263,7 @@
     .line 80
     .line 81
     .line 82
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 83
     .line 84

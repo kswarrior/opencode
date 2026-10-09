@@ -505,7 +505,7 @@
     .line 236
     .line 237
     .line 238
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->deny:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->deny:I
 
     .line 239
     .line 240
@@ -545,7 +545,7 @@
     .line 256
     .line 257
     .line 258
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->allow:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->allow:I
 
     .line 259
     .line 260

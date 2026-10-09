@@ -139,7 +139,7 @@
 
     .line 43
     .line 44
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->sort:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->sort:I
 
     .line 45
     .line 46
@@ -160,7 +160,7 @@
 
     .line 54
     .line 55
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->show_detail:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->show_detail:I
 
     .line 56
     .line 57
@@ -189,7 +189,7 @@
 
     .line 69
     .line 70
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->show_single:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->show_single:I
 
     .line 71
     .line 72

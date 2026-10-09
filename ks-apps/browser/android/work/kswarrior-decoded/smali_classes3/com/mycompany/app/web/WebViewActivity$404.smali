@@ -201,7 +201,7 @@
     .line 70
     .line 71
     .line 72
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->web_bot_view:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->web_bot_view:I
 
     .line 73
     .line 74
@@ -250,7 +250,7 @@
 
     .line 95
     .line 96
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_white:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_white:I
 
     .line 97
     .line 98
@@ -263,7 +263,7 @@
 
     .line 102
     :cond_4
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_short_back_color:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_short_back_color:I
 
     .line 103
     .line 104

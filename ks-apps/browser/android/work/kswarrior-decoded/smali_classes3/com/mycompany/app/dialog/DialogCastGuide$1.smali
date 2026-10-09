@@ -193,7 +193,7 @@
     .line 76
     .line 77
     .line 78
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->tip:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->tip:I
 
     .line 79
     .line 80
@@ -538,7 +538,7 @@
     .line 259
     .line 260
     .line 261
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 262
     .line 263

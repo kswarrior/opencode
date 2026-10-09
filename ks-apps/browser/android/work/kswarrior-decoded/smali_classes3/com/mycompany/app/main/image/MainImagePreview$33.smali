@@ -1000,7 +1000,7 @@
 
     .line 16
     .line 17
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 18
     .line 19

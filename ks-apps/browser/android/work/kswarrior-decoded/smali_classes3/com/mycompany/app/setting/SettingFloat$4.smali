@@ -315,7 +315,7 @@
     const/4 p4, 0x0
 
     .line 128
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->do_change:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->do_change:I
 
     .line 129
     .line 130
@@ -336,7 +336,7 @@
     const/4 p4, 0x1
 
     .line 139
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 140
     .line 141

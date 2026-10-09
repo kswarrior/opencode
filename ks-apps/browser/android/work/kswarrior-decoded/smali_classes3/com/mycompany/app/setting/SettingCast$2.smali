@@ -384,7 +384,7 @@
 
     .line 156
     .line 157
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->repeat_play:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->repeat_play:I
 
     .line 158
     .line 159

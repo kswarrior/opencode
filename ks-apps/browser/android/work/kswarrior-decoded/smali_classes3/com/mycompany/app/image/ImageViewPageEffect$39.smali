@@ -118,7 +118,7 @@
     .line 36
     .line 37
     .line 38
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->round_guide_8:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->round_guide_8:I
 
     .line 39
     .line 40
@@ -251,7 +251,7 @@
 
     .line 108
     .line 109
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->pdf_crop_guide:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->pdf_crop_guide:I
 
     .line 110
     .line 111

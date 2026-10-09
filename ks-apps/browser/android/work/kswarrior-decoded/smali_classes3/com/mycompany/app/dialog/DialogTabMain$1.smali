@@ -66,11 +66,11 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->tab_bottom_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->tab_bottom_view:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->tab_cast_icon:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->tab_cast_icon:I
 
     .line 14
     .line 15
@@ -970,7 +970,7 @@
     .line 491
     .line 492
     .line 493
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->delete_all:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->delete_all:I
 
     .line 494
     .line 495

@@ -132,7 +132,7 @@
 
     .line 46
     .line 47
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 48
     .line 49
@@ -145,7 +145,7 @@
 
     .line 53
     .line 54
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 55
     .line 56
@@ -224,7 +224,7 @@
 
     .line 95
     .line 96
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 97
     .line 98
@@ -237,7 +237,7 @@
 
     .line 102
     .line 103
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 104
     .line 105
@@ -274,7 +274,7 @@
 
     .line 122
     .line 123
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->tts_info_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->tts_info_2:I
 
     .line 124
     .line 125
@@ -386,7 +386,7 @@
 
     .line 175
     .line 176
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->auto_detect:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->auto_detect:I
 
     .line 177
     .line 178
@@ -398,7 +398,7 @@
     move-result-object v1
 
     .line 182
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 183
     .line 184
@@ -419,7 +419,7 @@
 
     .line 191
     .line 192
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 193
     .line 194
@@ -443,7 +443,7 @@
 
     .line 203
     .line 204
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->voice_speed:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->voice_speed:I
 
     .line 205
     .line 206
@@ -487,7 +487,7 @@
 
     .line 225
     .line 226
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->voice_tone:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->voice_tone:I
 
     .line 227
     .line 228

@@ -77,7 +77,7 @@
 
     .line 15
     .line 16
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 17
     .line 18
@@ -137,7 +137,7 @@
 
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->repeat_on:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->repeat_on:I
 
     .line 48
     .line 49
@@ -154,7 +154,7 @@
 
     .line 54
     .line 55
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->repeat_off:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->repeat_off:I
 
     .line 56
     .line 57

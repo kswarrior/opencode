@@ -196,7 +196,7 @@
 
     .line 75
     .line 76
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_favorite_dark_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_favorite_dark_20:I
 
     .line 77
     .line 78
@@ -241,7 +241,7 @@
 
     .line 99
     .line 100
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_favorite_black_20:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_favorite_black_20:I
 
     .line 101
     .line 102
@@ -291,7 +291,7 @@
 
     .line 126
     .line 127
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->freq_asked:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->freq_asked:I
 
     .line 128
     .line 129
@@ -308,7 +308,7 @@
 
     .line 134
     .line 135
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->greeting:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->greeting:I
 
     .line 136
     .line 137

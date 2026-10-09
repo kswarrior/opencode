@@ -83,7 +83,7 @@
 
     .line 19
     .line 20
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->noti_pms_guide_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->noti_pms_guide_1:I
 
     .line 21
     .line 22
@@ -100,7 +100,7 @@
 
     .line 28
     .line 29
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->change_in_setting:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->change_in_setting:I
 
     .line 30
     .line 31
@@ -121,7 +121,7 @@
 
     .line 39
     .line 40
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->noti_pms:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->noti_pms:I
 
     .line 41
     .line 42
@@ -151,7 +151,7 @@
 
     .line 55
     .line 56
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 57
     .line 58
@@ -164,7 +164,7 @@
 
     .line 62
     .line 63
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ads_block:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ads_block:I
 
     .line 64
     .line 65
@@ -177,7 +177,7 @@
 
     .line 69
     .line 70
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->secret_mode:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->secret_mode:I
 
     .line 71
     .line 72
@@ -190,7 +190,7 @@
 
     .line 76
     .line 77
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->back_play:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->back_play:I
 
     .line 78
     .line 79
@@ -203,7 +203,7 @@
 
     .line 83
     .line 84
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->vpn:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->vpn:I
 
     .line 85
     .line 86
@@ -273,7 +273,7 @@
 
     .line 121
     .line 122
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_notifications_active_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_notifications_active_dark_24:I
 
     .line 123
     .line 124
@@ -286,7 +286,7 @@
 
     .line 128
     .line 129
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_download_dark_24:I
 
     .line 130
     .line 131
@@ -299,7 +299,7 @@
 
     .line 135
     .line 136
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_dark_24:I
 
     .line 137
     .line 138
@@ -312,7 +312,7 @@
 
     .line 142
     .line 143
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_dark_24:I
 
     .line 144
     .line 145
@@ -325,7 +325,7 @@
 
     .line 149
     .line 150
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 151
     .line 152
@@ -338,7 +338,7 @@
 
     .line 156
     .line 157
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_vpn_key_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_vpn_key_dark_24:I
 
     .line 158
     .line 159
@@ -428,7 +428,7 @@
 
     .line 206
     .line 207
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 208
     .line 209
@@ -445,7 +445,7 @@
 
     .line 214
     .line 215
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_notifications_active_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_notifications_active_black_24:I
 
     .line 216
     .line 217
@@ -458,7 +458,7 @@
 
     .line 221
     .line 222
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_download_black_24:I
 
     .line 223
     .line 224
@@ -471,7 +471,7 @@
 
     .line 228
     .line 229
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_black_24:I
 
     .line 230
     .line 231
@@ -484,7 +484,7 @@
 
     .line 235
     .line 236
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_black_24:I
 
     .line 237
     .line 238
@@ -497,7 +497,7 @@
 
     .line 242
     .line 243
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 244
     .line 245
@@ -510,7 +510,7 @@
 
     .line 249
     .line 250
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_vpn_key_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_vpn_key_black_24:I
 
     .line 251
     .line 252
@@ -604,7 +604,7 @@
 
     .line 301
     .line 302
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 303
     .line 304

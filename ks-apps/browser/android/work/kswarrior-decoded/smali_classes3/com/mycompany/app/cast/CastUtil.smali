@@ -413,7 +413,7 @@
 
     .line 34
     :cond_1
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->no_title:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->no_title:I
 
     .line 35
     .line 36

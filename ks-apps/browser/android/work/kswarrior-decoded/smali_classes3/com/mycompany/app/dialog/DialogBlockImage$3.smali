@@ -141,7 +141,7 @@
 
     .line 43
     .line 44
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->blocked_image:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->blocked_image:I
 
     .line 45
     .line 46

@@ -107,7 +107,7 @@
 
     .line 14
     .line 15
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 16
     .line 17
@@ -214,7 +214,7 @@
 
     .line 14
     .line 15
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 16
     .line 17
@@ -276,7 +276,7 @@
     .line 43
     .line 44
     .line 45
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ocr_trans_reload_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ocr_trans_reload_1:I
 
     .line 46
     .line 47
@@ -302,7 +302,7 @@
     .line 57
     .line 58
     .line 59
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ocr_trans_reload_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ocr_trans_reload_2:I
 
     .line 60
     .line 61
@@ -622,7 +622,7 @@
 
     .line 27
     .line 28
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->color_white:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->color_white:I
 
     .line 29
     .line 30
@@ -665,7 +665,7 @@
 
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->color_black:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->color_black:I
 
     .line 48
     .line 49
@@ -702,7 +702,7 @@
 
     .line 63
     .line 64
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->automatic:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->automatic:I
 
     .line 65
     .line 66
@@ -1102,7 +1102,7 @@
 
     .line 117
     .line 118
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->automatic:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->automatic:I
 
     .line 119
     .line 120
@@ -1230,7 +1230,7 @@
     .line 19
     .line 20
     .line 21
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ocr_guide_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ocr_guide_1:I
 
     .line 22
     .line 23
@@ -1256,7 +1256,7 @@
     .line 33
     .line 34
     .line 35
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ocr_guide_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ocr_guide_2:I
 
     .line 36
     .line 37
@@ -1282,7 +1282,7 @@
     .line 47
     .line 48
     .line 49
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ocr_guide_3:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ocr_guide_3:I
 
     .line 50
     .line 51

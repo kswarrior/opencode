@@ -169,7 +169,7 @@
 
     .line 58
     .line 59
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->mem_block_list:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->mem_block_list:I
 
     .line 60
     .line 61
@@ -295,7 +295,7 @@
     const/4 p3, 0x0
 
     .line 121
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 122
     .line 123
@@ -313,7 +313,7 @@
 
     .line 130
     .line 131
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 132
     .line 133
@@ -410,7 +410,7 @@
 
     .line 180
     .line 181
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->mem_limit:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->mem_limit:I
 
     .line 182
     .line 183

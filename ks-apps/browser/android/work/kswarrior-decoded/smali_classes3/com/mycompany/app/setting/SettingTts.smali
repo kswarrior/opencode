@@ -399,7 +399,7 @@
     .line 6
     .line 7
     .line 8
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->stop_icon_info:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->stop_icon_info:I
 
     .line 9
     .line 10
@@ -425,7 +425,7 @@
     .line 20
     .line 21
     .line 22
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 23
     .line 24
@@ -499,11 +499,11 @@
 
     .line 59
     .line 60
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->tts_on:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->tts_on:I
 
     .line 61
     .line 62
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->tts_info_1:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->tts_info_1:I
 
     .line 63
     .line 64
@@ -535,7 +535,7 @@
 
     .line 77
     .line 78
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->detail_setting:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->detail_setting:I
 
     .line 79
     .line 80
@@ -584,7 +584,7 @@
 
     .line 102
     .line 103
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->stop_icon:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->stop_icon:I
 
     .line 104
     .line 105
@@ -609,7 +609,7 @@
 
     .line 115
     .line 116
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 117
     .line 118
@@ -882,7 +882,7 @@
 
     .line 20
     .line 21
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->tts_mode:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->tts_mode:I
 
     .line 22
     .line 23

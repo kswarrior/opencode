@@ -760,11 +760,11 @@
 
     .line 8
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->item_frame_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->item_frame_view:I
 
     .line 9
     .line 10
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_title_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_title_view:I
 
     .line 11
     .line 12
@@ -1061,7 +1061,7 @@
     move-result-object v10
 
     .line 163
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->sub_dir:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->sub_dir:I
 
     .line 164
     .line 165
@@ -1117,7 +1117,7 @@
 
     .line 192
     .line 193
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 194
     .line 195
@@ -1328,7 +1328,7 @@
     move-result-object v12
 
     .line 303
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->current:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->current:I
 
     .line 304
     .line 305
@@ -1483,7 +1483,7 @@
     move-result-object v13
 
     .line 384
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->total:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->total:I
 
     .line 385
     .line 386
@@ -1610,7 +1610,7 @@
     move-result-object v10
 
     .line 451
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 452
     .line 453
@@ -1715,7 +1715,7 @@
     move-result-object v11
 
     .line 504
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->estimated:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->estimated:I
 
     .line 505
     .line 506
@@ -1993,7 +1993,7 @@
     move-result-object v15
 
     .line 647
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->total:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->total:I
 
     .line 648
     .line 649
@@ -2102,7 +2102,7 @@
     move-result-object v5
 
     .line 702
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 703
     .line 704
@@ -2207,7 +2207,7 @@
     move-result-object v9
 
     .line 755
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 756
     .line 757
@@ -2738,7 +2738,7 @@
 
     .line 48
     .line 49
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 50
     .line 51
@@ -3587,7 +3587,7 @@
 
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->canceling:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->canceling:I
 
     .line 28
     .line 29
@@ -3730,7 +3730,7 @@
 
     .line 31
     .line 32
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_library_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_local_library_black_24:I
 
     .line 33
     .line 34
@@ -4020,7 +4020,7 @@
     .line 170
     :cond_9
     :goto_1
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_library_black_24:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->outline_local_library_black_24:I
 
     .line 171
     .line 172

@@ -140,7 +140,7 @@
 
     .line 43
     .line 44
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->type:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->type:I
 
     .line 45
     .line 46
@@ -158,7 +158,7 @@
 
     .line 53
     .line 54
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->outline_color:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->outline_color:I
 
     .line 55
     .line 56
@@ -179,7 +179,7 @@
 
     .line 64
     .line 65
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->mini_mode:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->mini_mode:I
 
     .line 66
     .line 67
@@ -204,7 +204,7 @@
 
     .line 77
     .line 78
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->at_bottom:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->at_bottom:I
 
     .line 79
     .line 80
@@ -229,7 +229,7 @@
 
     .line 90
     .line 91
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->swipe_delete:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->swipe_delete:I
 
     .line 92
     .line 93
@@ -257,7 +257,7 @@
     const/4 v2, 0x5
 
     .line 105
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->undelete:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->undelete:I
 
     .line 106
     .line 107
@@ -278,7 +278,7 @@
     const/4 v2, 0x6
 
     .line 116
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->search_url:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->search_url:I
 
     .line 117
     .line 118

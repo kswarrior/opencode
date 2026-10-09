@@ -1066,7 +1066,7 @@
 
     .line 13
     .line 14
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->switc_track_on_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->switc_track_on_dark:I
 
     .line 15
     .line 16
@@ -1082,7 +1082,7 @@
 
     .line 21
     .line 22
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->switc_track_off_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->switc_track_off_dark:I
 
     .line 23
     .line 24
@@ -1098,7 +1098,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->switc_thumb_on_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->switc_thumb_on_dark:I
 
     .line 31
     .line 32
@@ -1114,7 +1114,7 @@
 
     .line 37
     .line 38
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->switc_thumb_off_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->switc_thumb_off_dark:I
 
     .line 39
     .line 40
@@ -1134,7 +1134,7 @@
 
     .line 47
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->switc_track_on_bright:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->switc_track_on_bright:I
 
     .line 48
     .line 49
@@ -1150,7 +1150,7 @@
 
     .line 54
     .line 55
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->switc_track_off_bright:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->switc_track_off_bright:I
 
     .line 56
     .line 57
@@ -1166,7 +1166,7 @@
 
     .line 62
     .line 63
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->switc_thumb_on_bright:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->switc_thumb_on_bright:I
 
     .line 64
     .line 65
@@ -1182,7 +1182,7 @@
 
     .line 70
     .line 71
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->switc_thumb_off_bright:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->switc_thumb_off_bright:I
 
     .line 72
     .line 73

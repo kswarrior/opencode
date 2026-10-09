@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" android:requiredSplitTypes="base__abi,base__density" android:splitTypes="" package="com.mycompany.app.soulbrowser" platformBuildVersionCode="36" platformBuildVersionName="16">
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" android:requiredSplitTypes="base__abi,base__density" android:splitTypes="" package="com.kswarrior.ksportal" platformBuildVersionCode="36" platformBuildVersionName="16">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -58,8 +58,8 @@
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_TOPICS"/>
     <uses-permission android:name="com.android.vending.BILLING"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <permission android:name="com.mycompany.app.soulbrowser.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
-    <uses-permission android:name="com.mycompany.app.soulbrowser.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <permission android:name="com.kswarrior.ksportal.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.kswarrior.ksportal.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
     <application android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:dataExtractionRules="@xml/backup_rules_12" android:enableOnBackInvokedCallback="true" android:extractNativeLibs="false" android:fullBackupContent="@xml/backup_rules_11" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:localeConfig="@xml/locales_config" android:name="com.mycompany.app.main.MainApp" android:networkSecurityConfig="@xml/network_security_config" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme">
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing" android:value="true"/>
@@ -303,33 +303,33 @@
         <receiver android:exported="true" android:label="@string/bookmark" android:name="com.mycompany.app.widget.WidgetBookProviderLight">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                <action android:name="com.mycompany.app.soulbrowser.ACTION_BOOKGET_UPDATE"/>
+                <action android:name="com.kswarrior.ksportal.ACTION_BOOKGET_UPDATE"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_book_info_light"/>
         </receiver>
         <receiver android:exported="true" android:label="@string/bookmark" android:name="com.mycompany.app.widget.WidgetBookProviderDark">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                <action android:name="com.mycompany.app.soulbrowser.ACTION_BOOKGET_UPDATE"/>
+                <action android:name="com.kswarrior.ksportal.ACTION_BOOKGET_UPDATE"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_book_info_dark"/>
         </receiver>
         <receiver android:exported="true" android:label="@string/search_url" android:name="com.mycompany.app.widget.WidgetSearchProviderLight">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                <action android:name="com.mycompany.app.soulbrowser.ACTION_SRCHGET_UPDATE"/>
+                <action android:name="com.kswarrior.ksportal.ACTION_SRCHGET_UPDATE"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_search_info_light"/>
         </receiver>
         <receiver android:exported="true" android:label="@string/search_url" android:name="com.mycompany.app.widget.WidgetSearchProviderDark">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                <action android:name="com.mycompany.app.soulbrowser.ACTION_SRCHGET_UPDATE"/>
+                <action android:name="com.kswarrior.ksportal.ACTION_SRCHGET_UPDATE"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_search_info_dark"/>
         </receiver>
         <activity android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:launchMode="singleTask" android:name="com.mycompany.app.widget.WidgetSearchActivity" android:theme="@style/SplashTheme" android:windowSoftInputMode="adjustResize"/>
-        <provider android:authorities="com.mycompany.app.soulbrowser.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+        <provider android:authorities="com.kswarrior.ksportal.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
         </provider>
         <service android:enabled="false" android:exported="false" android:name="androidx.appcompat.app.AppLocalesMetadataHolderService">
@@ -348,8 +348,8 @@
             <meta-data android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
             <meta-data android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
         </service>
-        <provider android:authorities="com.mycompany.app.soulbrowser.mlkitinitprovider" android:exported="false" android:initOrder="99" android:name="com.google.mlkit.common.internal.MlKitInitProvider"/>
-        <provider android:authorities="com.mycompany.app.soulbrowser.mobileadsinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.android.gms.ads.MobileAdsInitProvider"/>
+        <provider android:authorities="com.kswarrior.ksportal.mlkitinitprovider" android:exported="false" android:initOrder="99" android:name="com.google.mlkit.common.internal.MlKitInitProvider"/>
+        <provider android:authorities="com.kswarrior.ksportal.mobileadsinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.android.gms.ads.MobileAdsInitProvider"/>
         <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.ads.AdService"/>
         <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:name="com.google.android.gms.ads.OutOfContextTestingActivity"/>
         <activity android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTask" android:name="com.google.android.gms.ads.NotificationHandlerActivity" android:taskAffinity="" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
@@ -361,7 +361,7 @@
         <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" android:visibleToInstantApps="true"/>
         <uses-library android:name="android.ext.adservices" android:required="false"/>
         <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <provider android:authorities="com.mycompany.app.soulbrowser.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+        <provider android:authorities="com.kswarrior.ksportal.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
             <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
             <meta-data android:name="androidx.work.WorkManagerInitializer" android:value="androidx.startup"/>
             <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>

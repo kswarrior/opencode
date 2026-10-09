@@ -107,7 +107,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->pip_info:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->pip_info:I
 
     .line 31
     .line 32

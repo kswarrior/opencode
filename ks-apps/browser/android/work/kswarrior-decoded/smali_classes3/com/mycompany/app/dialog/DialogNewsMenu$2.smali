@@ -195,7 +195,7 @@
 
     .line 75
     .line 76
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_language_black_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_language_black_20:I
 
     .line 77
     .line 78
@@ -253,7 +253,7 @@
 
     .line 106
     .line 107
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_language_dark_20:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_language_dark_20:I
 
     .line 108
     .line 109

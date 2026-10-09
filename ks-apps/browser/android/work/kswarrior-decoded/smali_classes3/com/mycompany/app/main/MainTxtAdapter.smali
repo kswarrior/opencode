@@ -393,7 +393,7 @@
 
     .line 89
     .line 90
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 91
     .line 92
@@ -401,7 +401,7 @@
 
     .line 93
     :cond_6
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 94
     .line 95
@@ -990,7 +990,7 @@
 
     .line 75
     .line 76
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 77
     .line 78
@@ -998,7 +998,7 @@
 
     .line 79
     :cond_9
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 80
     .line 81

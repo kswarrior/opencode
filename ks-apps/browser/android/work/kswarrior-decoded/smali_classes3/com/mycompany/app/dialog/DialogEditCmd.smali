@@ -1097,7 +1097,7 @@
 
     .line 254
     .line 255
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 256
     .line 257
@@ -1152,7 +1152,7 @@
     .line 283
     .line 284
     .line 285
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 286
     .line 287

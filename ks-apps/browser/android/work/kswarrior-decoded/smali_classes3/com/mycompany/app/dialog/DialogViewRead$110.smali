@@ -180,7 +180,7 @@
 
     .line 45
     .line 46
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->save_fail:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->save_fail:I
 
     .line 47
     .line 48
@@ -206,7 +206,7 @@
 
     .line 58
     .line 59
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->save_success:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->save_success:I
 
     .line 60
     .line 61

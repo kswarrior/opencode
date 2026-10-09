@@ -61,15 +61,15 @@
 
     .line 9
     .line 10
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 11
     .line 12
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->trans_auto:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->trans_auto:I
 
     .line 13
     .line 14
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->trans_always:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->trans_always:I
 
     .line 15
     .line 16
@@ -85,11 +85,11 @@
 
     .line 21
     .line 22
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->trans_auto_info:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->trans_auto_info:I
 
     .line 23
     .line 24
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->trans_always_info:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->trans_always_info:I
 
     .line 25
     .line 26
@@ -598,7 +598,7 @@
 
     .line 4
     .line 5
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_regular_white:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_regular_white:I
 
     .line 6
     .line 7
@@ -606,7 +606,7 @@
 
     .line 8
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->trans_logo_regular_color:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->trans_logo_regular_color:I
 
     .line 9
     .line 10
@@ -639,7 +639,7 @@
 
     .line 23
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->float_button:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->float_button:I
 
     .line 25
     .line 26
@@ -651,7 +651,7 @@
 
     .line 28
     :cond_1
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->address_bar:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->address_bar:I
 
     .line 29
     .line 30
@@ -666,7 +666,7 @@
 
     .line 33
     .line 34
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 35
     .line 36
@@ -740,7 +740,7 @@
 
     .line 69
     .line 70
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->trans_detect:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->trans_detect:I
 
     .line 71
     .line 72
@@ -764,7 +764,7 @@
 
     .line 81
     .line 82
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 83
     .line 84
@@ -795,7 +795,7 @@
 
     .line 96
     .line 97
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->recent_lang:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->recent_lang:I
 
     .line 98
     .line 99
@@ -852,7 +852,7 @@
 
     .line 125
     .line 126
-    sget v19, Lcom/mycompany/app/soulbrowser/R$string;->trans_icon_always:I
+    sget v19, Lcom/kswarrior/ksportal/R$string;->trans_icon_always:I
 
     .line 127
     .line 128
@@ -894,7 +894,7 @@
 
     .line 147
     .line 148
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->icon_pos:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->icon_pos:I
 
     .line 149
     .line 150
@@ -918,7 +918,7 @@
 
     .line 159
     .line 160
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 161
     .line 162
@@ -965,11 +965,11 @@
 
     .line 184
     .line 185
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->trans_except:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->trans_except:I
 
     .line 186
     .line 187
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->trans_except_info:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->trans_except_info:I
 
     .line 188
     .line 189
@@ -1179,7 +1179,7 @@
 
     .line 2
     .line 3
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 4
     .line 5
@@ -1199,7 +1199,7 @@
 
     .line 11
     .line 12
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->history_zero:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->history_zero:I
 
     .line 13
     .line 14
@@ -1523,7 +1523,7 @@
 
     .line 18
     .line 19
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->translator:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->translator:I
 
     .line 20
     .line 21

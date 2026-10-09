@@ -859,7 +859,7 @@
     .line 116
     .line 117
     .line 118
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->noti_dot_red:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->noti_dot_red:I
 
     .line 119
     .line 120
@@ -970,7 +970,7 @@
 
     .line 174
     .line 175
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 176
     .line 177
@@ -980,7 +980,7 @@
     .line 179
     .line 180
     :cond_2
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 181
     .line 182
@@ -1061,7 +1061,7 @@
     move-result-object v0
 
     .line 225
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 226
     .line 227
@@ -1566,7 +1566,7 @@
 
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->canceling:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->canceling:I
 
     .line 28
     .line 29

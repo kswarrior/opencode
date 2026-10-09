@@ -171,7 +171,7 @@
     .line 64
     .line 65
     .line 66
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 67
     .line 68
@@ -208,7 +208,7 @@
     .line 83
     .line 84
     .line 85
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 86
     .line 87

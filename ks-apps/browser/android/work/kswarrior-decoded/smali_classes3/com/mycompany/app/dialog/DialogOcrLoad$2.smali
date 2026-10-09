@@ -208,7 +208,7 @@
 
     .line 84
     .line 85
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 86
     .line 87
@@ -230,7 +230,7 @@
 
     .line 96
     .line 97
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ocr_load_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ocr_load_1:I
 
     .line 98
     .line 99
@@ -247,7 +247,7 @@
 
     .line 105
     .line 106
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->ocr_load_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->ocr_load_2:I
 
     .line 107
     .line 108
@@ -285,7 +285,7 @@
 
     .line 125
     .line 126
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 127
     .line 128

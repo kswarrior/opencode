@@ -665,7 +665,7 @@
 
     .line 137
     .line 138
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_text_snippet_black_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_text_snippet_black_24:I
 
     .line 139
     .line 140
@@ -1442,7 +1442,7 @@
 
     .line 493
     .line 494
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_text_snippet_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_text_snippet_black_24:I
 
     .line 495
     .line 496

@@ -129,7 +129,7 @@
 
     .line 34
     :cond_1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_granted:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_granted:I
 
     .line 35
     .line 36
@@ -161,7 +161,7 @@
 
     .line 48
     .line 49
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_granted:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_granted:I
 
     .line 50
     .line 51
@@ -688,7 +688,7 @@
 
     .line 24
     .line 25
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_granted:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_granted:I
 
     .line 26
     .line 27
@@ -701,7 +701,7 @@
 
     .line 31
     :cond_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_denied:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_denied:I
 
     .line 32
     .line 33
@@ -733,7 +733,7 @@
 
     .line 45
     .line 46
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_granted:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_granted:I
 
     .line 47
     .line 48
@@ -746,7 +746,7 @@
 
     .line 52
     :cond_1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_denied:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_denied:I
 
     .line 53
     .line 54

@@ -177,7 +177,7 @@
 
     .line 66
     .line 67
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->long_move_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->long_move_guide:I
 
     .line 68
     .line 69
@@ -307,7 +307,7 @@
 
     .line 136
     .line 137
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_white_18:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_close_white_18:I
 
     .line 138
     .line 139

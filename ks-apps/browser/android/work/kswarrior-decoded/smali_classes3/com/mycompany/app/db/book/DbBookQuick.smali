@@ -2758,7 +2758,7 @@
 
     .line 21
     .line 22
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_folder_2_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->baseline_folder_2_black_24:I
 
     .line 23
     .line 24

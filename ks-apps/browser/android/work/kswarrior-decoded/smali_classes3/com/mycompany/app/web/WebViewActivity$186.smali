@@ -133,7 +133,7 @@
 
     .line 42
     .line 43
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_down_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_down_video:I
 
     .line 44
     .line 45
@@ -147,7 +147,7 @@
     .line 49
     .line 50
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 51
     .line 52

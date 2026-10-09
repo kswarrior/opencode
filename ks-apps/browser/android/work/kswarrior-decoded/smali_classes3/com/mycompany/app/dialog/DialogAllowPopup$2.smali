@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 27
     .line 28
@@ -140,7 +140,7 @@
 
     .line 49
     .line 50
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 51
     .line 52
@@ -310,7 +310,7 @@
 
     .line 129
     .line 130
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->pop_block:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->pop_block:I
 
     .line 131
     .line 132
@@ -374,7 +374,7 @@
 
     .line 161
     .line 162
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->pop_allow_site:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->pop_allow_site:I
 
     .line 163
     .line 164
@@ -408,7 +408,7 @@
 
     .line 177
     .line 178
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->pop_allow_page:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->pop_allow_page:I
 
     .line 179
     .line 180
@@ -442,7 +442,7 @@
 
     .line 193
     .line 194
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->pop_white:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->pop_white:I
 
     .line 195
     .line 196

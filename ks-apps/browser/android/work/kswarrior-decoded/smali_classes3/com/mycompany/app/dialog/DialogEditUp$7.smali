@@ -127,7 +127,7 @@
     move-result-object v4
 
     .line 42
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_upward_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_upward_dark_24:I
 
     .line 43
     .line 44
@@ -170,7 +170,7 @@
     move-result-object v4
 
     .line 64
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_upward_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_upward_black_24:I
 
     .line 65
     .line 66

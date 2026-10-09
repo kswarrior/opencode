@@ -312,7 +312,7 @@
 
     .line 83
     .line 84
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->only_secret:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->only_secret:I
 
     .line 85
     .line 86
@@ -350,7 +350,7 @@
 
     .line 101
     .line 102
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->lock_reset_target:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->lock_reset_target:I
 
     .line 103
     .line 104

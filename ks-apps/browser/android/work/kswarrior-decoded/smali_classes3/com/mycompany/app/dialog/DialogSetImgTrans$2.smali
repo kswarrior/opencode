@@ -132,7 +132,7 @@
 
     .line 46
     .line 47
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_search_dark_24:I
 
     .line 48
     .line 49
@@ -145,7 +145,7 @@
 
     .line 53
     .line 54
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_refresh_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_refresh_dark_24:I
 
     .line 55
     .line 56
@@ -158,7 +158,7 @@
 
     .line 60
     .line 61
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_g_translate_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_g_translate_dark_24:I
 
     .line 62
     .line 63
@@ -171,7 +171,7 @@
 
     .line 67
     .line 68
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_format_color_fill_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_format_color_fill_dark_24:I
 
     .line 69
     .line 70
@@ -184,7 +184,7 @@
 
     .line 74
     .line 75
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_center_focus_strong_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_center_focus_strong_dark_24:I
 
     .line 76
     .line 77
@@ -251,7 +251,7 @@
 
     .line 111
     .line 112
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 113
     .line 114
@@ -473,7 +473,7 @@
 
     .line 233
     .line 234
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 235
     .line 236
@@ -507,7 +507,7 @@
 
     .line 249
     .line 250
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->refresh:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->refresh:I
 
     .line 251
     .line 252
@@ -532,7 +532,7 @@
 
     .line 262
     .line 263
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->translate:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->translate:I
 
     .line 264
     .line 265
@@ -557,7 +557,7 @@
 
     .line 275
     .line 276
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->background:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->background:I
 
     .line 277
     .line 278
@@ -582,7 +582,7 @@
 
     .line 288
     .line 289
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->zoom_title:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->zoom_title:I
 
     .line 290
     .line 291
@@ -627,11 +627,11 @@
 
     .line 311
     .line 312
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->float_button:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->float_button:I
 
     .line 313
     .line 314
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->long_move_guide:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->long_move_guide:I
 
     .line 315
     .line 316

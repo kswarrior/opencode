@@ -127,7 +127,7 @@
     move-result-object v3
 
     .line 41
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->delete_all:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->delete_all:I
 
     .line 42
     .line 43
@@ -230,7 +230,7 @@
 
     .line 95
     .line 96
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 97
     .line 98
@@ -243,7 +243,7 @@
 
     .line 102
     .line 103
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 104
     .line 105
@@ -284,7 +284,7 @@
 
     .line 124
     .line 125
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_gray:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_gray:I
 
     .line 126
     .line 127
@@ -297,7 +297,7 @@
 
     .line 131
     .line 132
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_gray:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_gray:I
 
     .line 133
     .line 134
@@ -554,7 +554,7 @@
 
     .line 261
     .line 262
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_left_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->round_bot_left_b:I
 
     .line 263
     .line 264
@@ -563,7 +563,7 @@
     .line 265
     .line 266
     .line 267
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_right_b:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->round_bot_right_b:I
 
     .line 268
     .line 269
@@ -576,7 +576,7 @@
 
     .line 273
     :cond_7
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_left_g:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->round_bot_left_g:I
 
     .line 274
     .line 275
@@ -585,7 +585,7 @@
     .line 276
     .line 277
     .line 278
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_right_g:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->round_bot_right_g:I
 
     .line 279
     .line 280

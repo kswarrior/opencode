@@ -76,11 +76,11 @@
 
     .line 8
     .line 9
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->theme_light:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->theme_light:I
 
     .line 10
     .line 11
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->theme_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->theme_dark:I
 
     .line 12
     .line 13
@@ -111,15 +111,15 @@
 
     .line 25
     .line 26
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 27
     .line 28
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->site_theme:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->site_theme:I
 
     .line 29
     .line 30
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->user_defined:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->user_defined:I
 
     .line 31
     .line 32
@@ -135,15 +135,15 @@
 
     .line 37
     .line 38
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->system_name:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->system_name:I
 
     .line 39
     .line 40
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->view_port:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->view_port:I
 
     .line 41
     .line 42
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->view_land:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->view_land:I
 
     .line 43
     .line 44
@@ -261,7 +261,7 @@
 
     .line 25
     :cond_1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->system_name:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->system_name:I
 
     .line 26
     .line 27
@@ -273,7 +273,7 @@
     move-result-object v0
 
     .line 31
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->screen_info_system:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->screen_info_system:I
 
     .line 32
     .line 33
@@ -1273,7 +1273,7 @@
 
     .line 24
     .line 25
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->site_theme_info:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->site_theme_info:I
 
     .line 26
     .line 27
@@ -1372,7 +1372,7 @@
 
     .line 70
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->system_name:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->system_name:I
 
     .line 71
     .line 72
@@ -1384,7 +1384,7 @@
     move-result-object v1
 
     .line 76
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->screen_info_system:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->screen_info_system:I
 
     .line 77
     .line 78
@@ -1404,7 +1404,7 @@
 
     .line 84
     .line 85
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->screen_info_system:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->screen_info_system:I
 
     .line 86
     .line 87
@@ -1475,7 +1475,7 @@
 
     .line 119
     .line 120
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->web_page:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->web_page:I
 
     .line 121
     .line 122
@@ -1501,7 +1501,7 @@
 
     .line 133
     .line 134
-    sget v41, Lcom/mycompany/app/soulbrowser/R$string;->screen_info_system:I
+    sget v41, Lcom/kswarrior/ksportal/R$string;->screen_info_system:I
 
     .line 135
     .line 136
@@ -1560,11 +1560,11 @@
 
     .line 164
     .line 165
-    sget v41, Lcom/mycompany/app/soulbrowser/R$string;->dark_image:I
+    sget v41, Lcom/kswarrior/ksportal/R$string;->dark_image:I
 
     .line 166
     .line 167
-    sget v42, Lcom/mycompany/app/soulbrowser/R$string;->img_brt_info:I
+    sget v42, Lcom/kswarrior/ksportal/R$string;->img_brt_info:I
 
     .line 168
     .line 169
@@ -1601,7 +1601,7 @@
 
     .line 185
     .line 186
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->img_bright:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->img_bright:I
 
     .line 187
     .line 188
@@ -1668,7 +1668,7 @@
 
     .line 218
     .line 219
-    sget v17, Lcom/mycompany/app/soulbrowser/R$string;->header_title:I
+    sget v17, Lcom/kswarrior/ksportal/R$string;->header_title:I
 
     .line 220
     .line 221
@@ -1706,7 +1706,7 @@
 
     .line 238
     .line 239
-    sget v22, Lcom/mycompany/app/soulbrowser/R$string;->header_color:I
+    sget v22, Lcom/kswarrior/ksportal/R$string;->header_color:I
 
     .line 240
     .line 241
@@ -1748,11 +1748,11 @@
 
     .line 260
     .line 261
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->dark_home:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->dark_home:I
 
     .line 262
     .line 263
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->dark_home_info:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->dark_home_info:I
 
     .line 264
     .line 265
@@ -1802,7 +1802,7 @@
 
     .line 288
     .line 289
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->screen_filter:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->screen_filter:I
 
     .line 290
     .line 291
@@ -1839,7 +1839,7 @@
 
     .line 307
     .line 308
-    sget v27, Lcom/mycompany/app/soulbrowser/R$string;->filter_color:I
+    sget v27, Lcom/kswarrior/ksportal/R$string;->filter_color:I
 
     .line 309
     .line 310
@@ -1891,7 +1891,7 @@
 
     .line 335
     .line 336
-    sget v31, Lcom/mycompany/app/soulbrowser/R$string;->brightness:I
+    sget v31, Lcom/kswarrior/ksportal/R$string;->brightness:I
 
     .line 337
     .line 338
@@ -1921,7 +1921,7 @@
 
     .line 351
     .line 352
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->screen_off:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->screen_off:I
 
     .line 353
     .line 354
@@ -1967,7 +1967,7 @@
 
     .line 375
     .line 376
-    sget v36, Lcom/mycompany/app/soulbrowser/R$string;->screen_rotate:I
+    sget v36, Lcom/kswarrior/ksportal/R$string;->screen_rotate:I
 
     .line 377
     .line 378
@@ -3218,7 +3218,7 @@
 
     .line 25
     .line 26
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->display_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->display_title:I
 
     .line 27
     .line 28

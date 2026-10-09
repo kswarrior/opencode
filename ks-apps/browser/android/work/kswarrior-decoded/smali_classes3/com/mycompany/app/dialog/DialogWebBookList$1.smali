@@ -66,19 +66,19 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->list_icon_frame:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->list_icon_frame:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->list_bottom_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->list_bottom_view:I
 
     .line 14
     .line 15
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->list_button_view:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->list_button_view:I
 
     .line 16
     .line 17
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->list_cast_icon:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->list_cast_icon:I
 
     .line 18
     .line 19
@@ -263,7 +263,7 @@
     .line 114
     .line 115
     .line 116
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 117
     .line 118
@@ -358,7 +358,7 @@
     .line 165
     .line 166
     .line 167
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->import_normal:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->import_normal:I
 
     .line 168
     .line 169
@@ -1355,7 +1355,7 @@
     .line 702
     .line 703
     .line 704
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->close:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->close:I
 
     .line 705
     .line 706

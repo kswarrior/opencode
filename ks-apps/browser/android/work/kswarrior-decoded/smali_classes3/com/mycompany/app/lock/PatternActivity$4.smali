@@ -220,7 +220,7 @@
 
     .line 78
     .line 79
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->wrong_input:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->wrong_input:I
 
     .line 80
     .line 81

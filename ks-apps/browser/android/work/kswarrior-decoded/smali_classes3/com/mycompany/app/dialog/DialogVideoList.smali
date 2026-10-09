@@ -6284,7 +6284,7 @@
 
     .line 35
     .line 36
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_down_video:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_down_video:I
 
     .line 37
     .line 38
@@ -6301,7 +6301,7 @@
 
     .line 43
     .line 44
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->video_link_1:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->video_link_1:I
 
     .line 45
     .line 46

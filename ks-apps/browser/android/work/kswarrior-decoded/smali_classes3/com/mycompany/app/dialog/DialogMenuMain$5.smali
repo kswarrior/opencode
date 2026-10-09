@@ -116,7 +116,7 @@
 
     .line 32
     .line 33
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->small_list:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->small_list:I
 
     .line 34
     .line 35
@@ -159,7 +159,7 @@
 
     .line 51
     .line 52
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->large_list:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->large_list:I
 
     .line 53
     .line 54
@@ -196,7 +196,7 @@
 
     .line 68
     .line 69
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->two_lines:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->two_lines:I
 
     .line 70
     .line 71
@@ -236,7 +236,7 @@
 
     .line 86
     .line 87
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->three_lines:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->three_lines:I
 
     .line 88
     .line 89
@@ -276,7 +276,7 @@
 
     .line 104
     .line 105
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->expand_mode:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->expand_mode:I
 
     .line 106
     .line 107

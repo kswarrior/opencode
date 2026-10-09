@@ -228,7 +228,7 @@
     .line 86
     .line 87
     .line 88
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->page_move:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->page_move:I
 
     .line 89
     .line 90
@@ -298,7 +298,7 @@
     .line 120
     .line 121
     .line 122
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 123
     .line 124

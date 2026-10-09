@@ -2320,7 +2320,7 @@
     .line 89
     .line 90
     .line 91
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->play_error:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->play_error:I
 
     .line 92
     .line 93

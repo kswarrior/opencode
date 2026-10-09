@@ -220,7 +220,7 @@
 
     .line 82
     .line 83
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->direct_select:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->direct_select:I
 
     .line 84
     .line 85

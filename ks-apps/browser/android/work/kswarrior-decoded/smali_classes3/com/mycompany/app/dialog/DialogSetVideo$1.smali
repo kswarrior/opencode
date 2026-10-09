@@ -455,7 +455,7 @@
     .line 212
     .line 213
     .line 214
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 215
     .line 216

@@ -764,7 +764,7 @@
 
     .line 269
     .line 270
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_text_snippet_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_text_snippet_black_24:I
 
     .line 271
     .line 272
@@ -788,7 +788,7 @@
 
     .line 279
     :cond_c
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_kid_star_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_kid_star_black_24:I
 
     .line 280
     .line 281

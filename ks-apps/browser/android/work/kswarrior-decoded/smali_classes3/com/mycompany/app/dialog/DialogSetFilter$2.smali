@@ -131,7 +131,7 @@
 
     .line 45
     .line 46
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 47
     .line 48
@@ -153,11 +153,11 @@
 
     .line 57
     .line 58
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 59
     .line 60
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 61
     .line 62
@@ -225,7 +225,7 @@
 
     .line 96
     .line 97
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 98
     .line 99
@@ -252,11 +252,11 @@
 
     .line 111
     .line 112
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 113
     .line 114
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 115
     .line 116
@@ -288,7 +288,7 @@
 
     .line 130
     .line 131
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adguard:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->ic_adguard:I
 
     .line 132
     .line 133
@@ -318,7 +318,7 @@
 
     .line 145
     .line 146
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_adblock:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->ic_adblock:I
 
     .line 147
     .line 148
@@ -711,15 +711,15 @@
 
     .line 318
     .line 319
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_dark_24:I
 
     .line 320
     .line 321
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_24:I
 
     .line 322
     .line 323
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_language_dark_24:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->outline_language_dark_24:I
 
     .line 324
     .line 325
@@ -739,15 +739,15 @@
 
     .line 331
     :cond_13
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_black_24:I
 
     .line 332
     .line 333
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_24:I
 
     .line 334
     .line 335
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_language_black_24:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->outline_language_black_24:I
 
     .line 336
     .line 337
@@ -1103,7 +1103,7 @@
 
     .line 485
     .line 486
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->basic:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->basic:I
 
     .line 487
     .line 488
@@ -1134,7 +1134,7 @@
 
     .line 500
     .line 501
-    sget v17, Lcom/mycompany/app/soulbrowser/R$string;->functional:I
+    sget v17, Lcom/kswarrior/ksportal/R$string;->functional:I
 
     .line 502
     .line 503
@@ -1167,7 +1167,7 @@
 
     .line 517
     .line 518
-    sget v22, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v22, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 519
     .line 520

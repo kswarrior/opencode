@@ -3248,7 +3248,7 @@
 
     .line 166
     .line 167
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->address_bar:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->address_bar:I
 
     .line 168
     .line 169

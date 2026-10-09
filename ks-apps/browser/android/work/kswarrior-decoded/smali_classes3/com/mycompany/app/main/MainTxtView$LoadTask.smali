@@ -1509,7 +1509,7 @@
 
     .line 260
     .line 261
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->out_of_memory:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->out_of_memory:I
 
     .line 262
     .line 263

@@ -834,7 +834,7 @@
     .line 170
     .line 171
     .line 172
-    sget p3, Lcom/mycompany/app/soulbrowser/R$id;->item_drag:I
+    sget p3, Lcom/kswarrior/ksportal/R$id;->item_drag:I
 
     .line 173
     .line 174
@@ -1115,7 +1115,7 @@
 
     .line 309
     .line 310
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 311
     .line 312
@@ -1142,7 +1142,7 @@
 
     .line 324
     .line 325
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_height_dark_24:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->outline_height_dark_24:I
 
     .line 326
     .line 327
@@ -1155,7 +1155,7 @@
 
     .line 331
     :cond_8
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 332
     .line 333
@@ -1181,7 +1181,7 @@
 
     .line 344
     .line 345
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_height_black_24:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->outline_height_black_24:I
 
     .line 346
     .line 347

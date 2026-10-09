@@ -283,7 +283,7 @@
     .line 123
     .line 124
     .line 125
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_white_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_white_24:I
 
     .line 126
     .line 127
@@ -442,7 +442,7 @@
     .line 208
     .line 209
     .line 210
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_screen_rotation_white_24:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->outline_screen_rotation_white_24:I
 
     .line 211
     .line 212
@@ -496,7 +496,7 @@
     .line 238
     .line 239
     .line 240
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_zoom_out_map_white_24:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->outline_zoom_out_map_white_24:I
 
     .line 241
     .line 242
@@ -550,7 +550,7 @@
     .line 268
     .line 269
     .line 270
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_right_alt_white_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_right_alt_white_24:I
 
     .line 271
     .line 272
@@ -608,7 +608,7 @@
     .line 300
     .line 301
     .line 302
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_slow_motion_video_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_slow_motion_video_white_24:I
 
     .line 303
     .line 304
@@ -671,7 +671,7 @@
     .line 335
     .line 336
     .line 337
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_picture_in_picture_alt_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_picture_in_picture_alt_white_24:I
 
     .line 338
     .line 339
@@ -738,7 +738,7 @@
     .line 372
     .line 373
     .line 374
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_white_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_white_24:I
 
     .line 375
     .line 376

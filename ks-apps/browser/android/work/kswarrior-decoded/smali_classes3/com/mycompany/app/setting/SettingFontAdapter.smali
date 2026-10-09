@@ -381,7 +381,7 @@
 
     .line 59
     .line 60
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_draft_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_draft_black_24:I
 
     .line 61
     .line 62
@@ -589,7 +589,7 @@
 
     .line 163
     .line 164
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 165
     .line 166
@@ -606,7 +606,7 @@
 
     .line 171
     .line 172
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 173
     .line 174

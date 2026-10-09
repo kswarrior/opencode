@@ -371,7 +371,7 @@
     .line 51
     .line 52
     .line 53
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->play_error:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->play_error:I
 
     .line 54
     .line 55
@@ -394,7 +394,7 @@
     .line 62
     .line 63
     .line 64
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->play_error:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->play_error:I
 
     .line 65
     .line 66

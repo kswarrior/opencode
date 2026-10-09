@@ -165,7 +165,7 @@
 
     .line 58
     .line 59
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 60
     .line 61
@@ -498,7 +498,7 @@
 
     .line 215
     .line 216
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 217
     .line 218

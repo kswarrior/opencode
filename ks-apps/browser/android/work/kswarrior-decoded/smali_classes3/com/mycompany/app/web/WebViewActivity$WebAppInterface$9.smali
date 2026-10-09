@@ -87,7 +87,7 @@
 
     .line 15
     .line 16
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->no_down_video:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->no_down_video:I
 
     .line 17
     .line 18

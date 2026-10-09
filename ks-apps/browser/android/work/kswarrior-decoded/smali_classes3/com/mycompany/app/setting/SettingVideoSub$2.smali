@@ -182,7 +182,7 @@
     .line 68
     .line 69
     .line 70
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->sub_line:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->sub_line:I
 
     .line 71
     .line 72
@@ -454,7 +454,7 @@
     .line 218
     .line 219
     .line 220
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->color_alpha:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->color_alpha:I
 
     .line 221
     .line 222

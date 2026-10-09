@@ -167,7 +167,7 @@
 
     .line 39
     .line 40
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 41
     .line 42
@@ -184,7 +184,7 @@
 
     .line 47
     .line 48
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->import_no_book:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->import_no_book:I
 
     .line 49
     .line 50

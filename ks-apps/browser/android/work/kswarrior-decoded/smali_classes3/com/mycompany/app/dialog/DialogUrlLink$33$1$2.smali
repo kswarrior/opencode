@@ -202,7 +202,7 @@
 
     .line 19
     .line 20
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 21
     .line 22

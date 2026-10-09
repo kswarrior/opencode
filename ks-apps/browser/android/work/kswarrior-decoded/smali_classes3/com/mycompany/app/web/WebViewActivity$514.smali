@@ -175,7 +175,7 @@
     .line 61
     :cond_2
     :goto_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 62
     .line 63
@@ -294,7 +294,7 @@
     .line 118
     .line 119
     .line 120
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 121
     .line 122
@@ -486,7 +486,7 @@
     .line 212
     :cond_a
     :goto_2
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 213
     .line 214
@@ -1377,7 +1377,7 @@
 
     .line 657
     .line 658
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->copy_url:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->copy_url:I
 
     .line 659
     .line 660
@@ -1395,7 +1395,7 @@
 
     .line 667
     .line 668
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->share_url:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->share_url:I
 
     .line 669
     .line 670
@@ -1413,7 +1413,7 @@
 
     .line 677
     .line 678
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->paste_url:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->paste_url:I
 
     .line 679
     .line 680
@@ -1431,7 +1431,7 @@
 
     .line 687
     .line 688
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->open_copied_url:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->open_copied_url:I
 
     .line 689
     .line 690
@@ -1452,7 +1452,7 @@
     const/4 v2, 0x4
 
     .line 699
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->open_new_tab:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->open_new_tab:I
 
     .line 700
     .line 701
@@ -1473,7 +1473,7 @@
     const/4 v2, 0x5
 
     .line 710
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->open_with:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->open_with:I
 
     .line 711
     .line 712
@@ -1548,7 +1548,7 @@
     .line 747
     .line 748
     .line 749
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->delete_cookie:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->delete_cookie:I
 
     .line 750
     .line 751
@@ -1660,7 +1660,7 @@
     const/4 v2, 0x7
 
     .line 807
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->view_certi:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->view_certi:I
 
     .line 808
     .line 809
@@ -2037,7 +2037,7 @@
     .line 995
     :cond_2b
     :goto_4
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 996
     .line 997
@@ -2062,7 +2062,7 @@
 
     .line 1006
     .line 1007
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_support_land:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_support_land:I
 
     .line 1008
     .line 1009
@@ -2196,7 +2196,7 @@
 
     .line 1070
     .line 1071
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->blank_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->blank_page:I
 
     .line 1072
     .line 1073
@@ -2218,7 +2218,7 @@
 
     .line 1081
     .line 1082
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 1083
     .line 1084
@@ -2893,7 +2893,7 @@
     .line 1418
     :cond_44
     :goto_5
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 1419
     .line 1420
@@ -3053,7 +3053,7 @@
     .line 1496
     :cond_4a
     :goto_6
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 1497
     .line 1498
@@ -3795,7 +3795,7 @@
 
     .line 1858
     .line 1859
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 1860
     .line 1861
@@ -3896,7 +3896,7 @@
 
     .line 1904
     .line 1905
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 1906
     .line 1907
@@ -4408,7 +4408,7 @@
 
     .line 2160
     .line 2161
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 2162
     .line 2163
@@ -4709,7 +4709,7 @@
     .line 2310
     :cond_7b
     :goto_d
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 2311
     .line 2312
@@ -4755,7 +4755,7 @@
 
     .line 2331
     .line 2332
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 2333
     .line 2334
@@ -4872,7 +4872,7 @@
     .line 2388
     :cond_80
     :goto_e
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->blank_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->blank_page:I
 
     .line 2389
     .line 2390
@@ -5125,7 +5125,7 @@
     .line 2513
     :cond_87
     :goto_f
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 2514
     .line 2515
@@ -5231,7 +5231,7 @@
     .line 2563
     :cond_8b
     :goto_10
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 2564
     .line 2565
@@ -5450,7 +5450,7 @@
 
     .line 2671
     .line 2672
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->history:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->history:I
 
     .line 2673
     .line 2674

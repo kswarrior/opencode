@@ -253,7 +253,7 @@
 
     .line 31
     .line 32
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 33
     .line 34
@@ -310,7 +310,7 @@
 
     .line 59
     .line 60
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_icon:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_icon:I
 
     .line 61
     .line 62
@@ -323,7 +323,7 @@
 
     .line 66
     .line 67
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 68
     .line 69

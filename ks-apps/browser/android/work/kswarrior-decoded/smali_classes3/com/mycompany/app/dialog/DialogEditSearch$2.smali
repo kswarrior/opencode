@@ -92,7 +92,7 @@
 
     .line 24
     .line 25
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_overlay_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_overlay_dark:I
 
     .line 26
     .line 27
@@ -137,7 +137,7 @@
 
     .line 49
     .line 50
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 51
     .line 52
@@ -163,7 +163,7 @@
 
     .line 62
     .line 63
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_overlay:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_overlay:I
 
     .line 64
     .line 65
@@ -212,7 +212,7 @@
 
     .line 89
     .line 90
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 91
     .line 92

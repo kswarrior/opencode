@@ -218,7 +218,7 @@
 
     .line 62
     .line 63
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->home_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->home_page:I
 
     .line 64
     .line 65

@@ -522,7 +522,7 @@
 
     .line 31
     .line 32
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_file:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_file:I
 
     .line 33
     .line 34

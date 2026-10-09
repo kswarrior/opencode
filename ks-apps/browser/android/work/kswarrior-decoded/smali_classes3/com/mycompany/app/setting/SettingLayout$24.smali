@@ -105,7 +105,7 @@
     .line 30
     .line 31
     .line 32
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_guide_8:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->round_guide_8:I
 
     .line 33
     .line 34
@@ -355,7 +355,7 @@
 
     .line 165
     .line 166
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->quick_guide_1:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->quick_guide_1:I
 
     .line 167
     .line 168
@@ -364,7 +364,7 @@
     .line 169
     .line 170
     .line 171
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->icon_edit_guide:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->icon_edit_guide:I
 
     .line 172
     .line 173
@@ -373,7 +373,7 @@
     .line 174
     .line 175
     .line 176
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->bar_remove_info:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->bar_remove_info:I
 
     .line 177
     .line 178

@@ -278,7 +278,7 @@
 
     .line 111
     .line 112
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 113
     .line 114
@@ -416,7 +416,7 @@
 
     .line 181
     .line 182
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->version:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->version:I
 
     .line 183
     .line 184
@@ -559,7 +559,7 @@
 
     .line 252
     .line 253
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->info:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->info:I
 
     .line 254
     .line 255
@@ -656,7 +656,7 @@
 
     .line 302
     .line 303
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->author:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->author:I
 
     .line 304
     .line 305
@@ -752,7 +752,7 @@
 
     .line 351
     .line 352
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 353
     .line 354
@@ -778,7 +778,7 @@
 
     .line 364
     .line 365
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 366
     .line 367
@@ -830,7 +830,7 @@
 
     .line 390
     .line 391
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->site:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->site:I
 
     .line 392
     .line 393
@@ -996,7 +996,7 @@
 
     .line 469
     .line 470
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->link:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->link:I
 
     .line 471
     .line 472
@@ -1021,7 +1021,7 @@
 
     .line 482
     .line 483
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 484
     .line 485
@@ -1047,7 +1047,7 @@
 
     .line 495
     .line 496
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 497
     .line 498
@@ -1177,7 +1177,7 @@
 
     .line 560
     .line 561
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->user_defined:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->user_defined:I
 
     .line 562
     .line 563
@@ -1225,7 +1225,7 @@
 
     .line 583
     .line 584
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->local_file:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->local_file:I
 
     .line 585
     .line 586
@@ -1310,7 +1310,7 @@
 
     .line 626
     .line 627
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->modified:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->modified:I
 
     .line 628
     .line 629
@@ -1462,7 +1462,7 @@
 
     .line 702
     .line 703
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->domain_url:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->domain_url:I
 
     .line 704
     .line 705
@@ -1487,7 +1487,7 @@
 
     .line 714
     .line 715
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->memo_title:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->memo_title:I
 
     .line 716
     .line 717
@@ -1504,7 +1504,7 @@
 
     .line 722
     .line 723
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 724
     .line 725
@@ -1770,7 +1770,7 @@
 
     .line 853
     .line 854
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 855
     .line 856
@@ -1829,7 +1829,7 @@
 
     .line 882
     .line 883
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->user_agent:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->user_agent:I
 
     .line 884
     .line 885
@@ -1863,7 +1863,7 @@
 
     .line 899
     .line 900
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->domain_name:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->domain_name:I
 
     .line 901
     .line 902
@@ -1898,7 +1898,7 @@
 
     .line 916
     .line 917
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 918
     .line 919
@@ -1933,7 +1933,7 @@
 
     .line 933
     .line 934
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->domain_url:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->domain_url:I
 
     .line 935
     .line 936
@@ -1968,7 +1968,7 @@
 
     .line 950
     .line 951
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 952
     .line 953
@@ -2178,7 +2178,7 @@
 
     .line 1054
     .line 1055
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 1056
     .line 1057
@@ -2387,7 +2387,7 @@
 
     .line 1158
     .line 1159
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->resolution:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->resolution:I
 
     .line 1160
     .line 1161
@@ -2638,7 +2638,7 @@
 
     .line 1289
     .line 1290
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->resolution:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->resolution:I
 
     .line 1291
     .line 1292
@@ -2664,7 +2664,7 @@
 
     .line 1303
     .line 1304
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->duration:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->duration:I
 
     .line 1305
     .line 1306
@@ -2779,7 +2779,7 @@
 
     .line 1360
     .line 1361
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->memo_title:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->memo_title:I
 
     .line 1362
     .line 1363
@@ -2808,7 +2808,7 @@
 
     .line 1374
     .line 1375
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->file:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->file:I
 
     .line 1376
     .line 1377
@@ -2825,7 +2825,7 @@
 
     .line 1382
     .line 1383
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->size:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->size:I
 
     .line 1384
     .line 1385
@@ -2843,7 +2843,7 @@
 
     .line 1390
     .line 1391
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->bookmark:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->bookmark:I
 
     .line 1392
     .line 1393
@@ -2968,7 +2968,7 @@
 
     .line 1453
     .line 1454
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->modified:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->modified:I
 
     .line 1455
     .line 1456

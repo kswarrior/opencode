@@ -280,7 +280,7 @@
     move-result-object v7
 
     .line 119
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->color_alpha:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->color_alpha:I
 
     .line 120
     .line 121
@@ -400,7 +400,7 @@
     .line 183
     .line 184
     .line 185
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_white_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_white_24:I
 
     .line 186
     .line 187
@@ -476,7 +476,7 @@
     move-result-object v6
 
     .line 227
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_white_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_add_white_24:I
 
     .line 228
     .line 229
@@ -1061,7 +1061,7 @@
     .line 528
     .line 529
     .line 530
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 531
     .line 532
@@ -1123,7 +1123,7 @@
     .line 558
     .line 559
     .line 560
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 561
     .line 562

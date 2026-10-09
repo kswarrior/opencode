@@ -258,7 +258,7 @@
 
     .line 80
     .line 81
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 82
     .line 83

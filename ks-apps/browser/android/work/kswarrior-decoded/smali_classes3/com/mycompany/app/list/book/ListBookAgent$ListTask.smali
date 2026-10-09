@@ -577,7 +577,7 @@
 
     .line 165
     .line 166
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 167
     .line 168

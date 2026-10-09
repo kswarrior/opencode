@@ -98,7 +98,7 @@
 
     .line 22
     :sswitch_0
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_PIP_PLAY"
+    const-string v0, "com.kswarrior.ksportal.ACTION_PIP_PLAY"
 
     .line 23
     .line 24
@@ -125,7 +125,7 @@
 
     .line 33
     :sswitch_1
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_PIP_FRWD"
+    const-string v0, "com.kswarrior.ksportal.ACTION_PIP_FRWD"
 
     .line 34
     .line 35
@@ -152,7 +152,7 @@
 
     .line 44
     :sswitch_2
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_PIP_FFWD"
+    const-string v0, "com.kswarrior.ksportal.ACTION_PIP_FFWD"
 
     .line 45
     .line 46
@@ -179,7 +179,7 @@
 
     .line 55
     :sswitch_3
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_DOWN_COMPLETE"
+    const-string v0, "com.kswarrior.ksportal.ACTION_DOWN_COMPLETE"
 
     .line 56
     .line 57
@@ -206,7 +206,7 @@
 
     .line 66
     :sswitch_4
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_DOWN_DELETE"
+    const-string v0, "com.kswarrior.ksportal.ACTION_DOWN_DELETE"
 
     .line 67
     .line 68
@@ -233,7 +233,7 @@
 
     .line 77
     :sswitch_5
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_SECRET_EXIT"
+    const-string v0, "com.kswarrior.ksportal.ACTION_SECRET_EXIT"
 
     .line 78
     .line 79
@@ -260,7 +260,7 @@
 
     .line 88
     :sswitch_6
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_BACK_STOP"
+    const-string v0, "com.kswarrior.ksportal.ACTION_BACK_STOP"
 
     .line 89
     .line 90

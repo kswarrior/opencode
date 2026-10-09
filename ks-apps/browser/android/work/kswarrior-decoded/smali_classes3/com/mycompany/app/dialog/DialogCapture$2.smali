@@ -140,7 +140,7 @@
 
     .line 45
     .line 46
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_48:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_48:I
 
     .line 47
     .line 48
@@ -283,7 +283,7 @@
 
     .line 117
     .line 118
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_48:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_48:I
 
     .line 119
     .line 120

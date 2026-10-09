@@ -958,7 +958,7 @@
 
     .line 164
     .line 165
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 166
     .line 167
@@ -1119,7 +1119,7 @@
     move-result-object v9
 
     .line 253
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->total:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->total:I
 
     .line 254
     .line 255
@@ -1605,7 +1605,7 @@
 
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->canceling:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->canceling:I
 
     .line 28
     .line 29
@@ -1908,7 +1908,7 @@
 
     .line 99
     .line 100
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 101
     .line 102
@@ -1937,7 +1937,7 @@
 
     .line 113
     .line 114
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->same_name:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->same_name:I
 
     .line 115
     .line 116
@@ -1978,7 +1978,7 @@
 
     .line 133
     .line 134
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 135
     .line 136
@@ -2208,7 +2208,7 @@
 
     .line 245
     .line 246
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 247
     .line 248
@@ -4444,7 +4444,7 @@
     .line 25
     .line 26
     .line 27
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 28
     .line 29

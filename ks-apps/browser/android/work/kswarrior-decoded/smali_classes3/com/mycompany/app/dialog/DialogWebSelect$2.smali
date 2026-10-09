@@ -126,11 +126,11 @@
 
     .line 38
     .line 39
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_image_dark_24:I
 
     .line 40
     .line 41
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 42
     .line 43
@@ -148,11 +148,11 @@
 
     .line 50
     .line 51
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_photo_camera_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_photo_camera_dark_24:I
 
     .line 52
     .line 53
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->camera:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->camera:I
 
     .line 54
     .line 55
@@ -170,11 +170,11 @@
 
     .line 62
     .line 63
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 64
     .line 65
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->video:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->video:I
 
     .line 66
     .line 67
@@ -192,11 +192,11 @@
 
     .line 74
     .line 75
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_videocam_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_videocam_dark_24:I
 
     .line 76
     .line 77
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->camcorder:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->camcorder:I
 
     .line 78
     .line 79
@@ -214,11 +214,11 @@
 
     .line 86
     .line 87
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_music_note_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_music_note_dark_24:I
 
     .line 88
     .line 89
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->audio:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->audio:I
 
     .line 90
     .line 91
@@ -236,11 +236,11 @@
 
     .line 98
     .line 99
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_draft_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_draft_dark_24:I
 
     .line 100
     .line 101
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->file:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->file:I
 
     .line 102
     .line 103
@@ -271,11 +271,11 @@
 
     .line 116
     .line 117
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_image_dark_24:I
 
     .line 118
     .line 119
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 120
     .line 121
@@ -293,11 +293,11 @@
 
     .line 128
     .line 129
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_photo_camera_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_photo_camera_dark_24:I
 
     .line 130
     .line 131
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->camera:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->camera:I
 
     .line 132
     .line 133
@@ -324,11 +324,11 @@
 
     .line 144
     .line 145
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_dark_24:I
 
     .line 146
     .line 147
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->video:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->video:I
 
     .line 148
     .line 149
@@ -346,11 +346,11 @@
 
     .line 156
     .line 157
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_videocam_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_videocam_dark_24:I
 
     .line 158
     .line 159
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->camcorder:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->camcorder:I
 
     .line 160
     .line 161
@@ -376,11 +376,11 @@
 
     .line 171
     .line 172
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_music_note_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_music_note_dark_24:I
 
     .line 173
     .line 174
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->audio:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->audio:I
 
     .line 175
     .line 176
@@ -399,11 +399,11 @@
 
     .line 183
     .line 184
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_draft_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_draft_dark_24:I
 
     .line 185
     .line 186
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->file:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->file:I
 
     .line 187
     .line 188
@@ -430,11 +430,11 @@
 
     .line 199
     .line 200
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_image_black_24:I
 
     .line 201
     .line 202
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 203
     .line 204
@@ -452,11 +452,11 @@
 
     .line 211
     .line 212
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_photo_camera_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_photo_camera_black_24:I
 
     .line 213
     .line 214
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->camera:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->camera:I
 
     .line 215
     .line 216
@@ -474,11 +474,11 @@
 
     .line 223
     .line 224
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 225
     .line 226
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->video:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->video:I
 
     .line 227
     .line 228
@@ -496,11 +496,11 @@
 
     .line 235
     .line 236
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_videocam_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_videocam_black_24:I
 
     .line 237
     .line 238
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->camcorder:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->camcorder:I
 
     .line 239
     .line 240
@@ -518,11 +518,11 @@
 
     .line 247
     .line 248
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_music_note_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_music_note_black_24:I
 
     .line 249
     .line 250
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->audio:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->audio:I
 
     .line 251
     .line 252
@@ -540,11 +540,11 @@
 
     .line 259
     .line 260
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_draft_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_draft_black_24:I
 
     .line 261
     .line 262
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->file:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->file:I
 
     .line 263
     .line 264
@@ -574,11 +574,11 @@
 
     .line 276
     .line 277
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_image_black_24:I
 
     .line 278
     .line 279
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 280
     .line 281
@@ -596,11 +596,11 @@
 
     .line 288
     .line 289
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_photo_camera_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_photo_camera_black_24:I
 
     .line 290
     .line 291
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->camera:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->camera:I
 
     .line 292
     .line 293
@@ -627,11 +627,11 @@
 
     .line 304
     .line 305
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_black_24:I
 
     .line 306
     .line 307
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->video:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->video:I
 
     .line 308
     .line 309
@@ -649,11 +649,11 @@
 
     .line 316
     .line 317
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_videocam_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_videocam_black_24:I
 
     .line 318
     .line 319
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->camcorder:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->camcorder:I
 
     .line 320
     .line 321
@@ -679,11 +679,11 @@
 
     .line 331
     .line 332
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_music_note_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_music_note_black_24:I
 
     .line 333
     .line 334
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->audio:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->audio:I
 
     .line 335
     .line 336
@@ -702,11 +702,11 @@
 
     .line 343
     .line 344
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_draft_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_draft_black_24:I
 
     .line 345
     .line 346
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->file:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->file:I
 
     .line 347
     .line 348

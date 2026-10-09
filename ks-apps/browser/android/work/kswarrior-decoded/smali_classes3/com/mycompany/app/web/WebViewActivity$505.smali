@@ -266,7 +266,7 @@
 
     .line 101
     :cond_7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 102
     .line 103

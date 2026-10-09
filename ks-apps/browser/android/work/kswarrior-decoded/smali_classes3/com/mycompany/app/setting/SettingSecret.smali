@@ -388,7 +388,7 @@
 
     .line 33
     .line 34
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 35
     .line 36
@@ -436,11 +436,11 @@
 
     .line 57
     .line 58
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->secret_hist:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->secret_hist:I
 
     .line 59
     .line 60
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->secret_hist_info:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->secret_hist_info:I
 
     .line 61
     .line 62
@@ -497,11 +497,11 @@
 
     .line 86
     .line 87
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->secret_down:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->secret_down:I
 
     .line 88
     .line 89
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->secret_down_info:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->secret_down_info:I
 
     .line 90
     .line 91
@@ -569,11 +569,11 @@
 
     .line 122
     .line 123
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->keep_tab:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->keep_tab:I
 
     .line 124
     .line 125
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->keep_tab_info:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->keep_tab_info:I
 
     .line 126
     .line 127
@@ -605,11 +605,11 @@
 
     .line 140
     .line 141
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->keep_login:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->keep_login:I
 
     .line 142
     .line 143
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->keep_login_info:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->keep_login_info:I
 
     .line 144
     .line 145
@@ -656,7 +656,7 @@
 
     .line 167
     .line 168
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->notification:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->notification:I
 
     .line 169
     .line 170
@@ -705,11 +705,11 @@
 
     .line 192
     .line 193
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 194
     .line 195
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->secret_reset_guide:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->secret_reset_guide:I
 
     .line 196
     .line 197
@@ -1041,7 +1041,7 @@
 
     .line 9
     .line 10
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->secret_mode:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->secret_mode:I
 
     .line 11
     .line 12
@@ -1237,7 +1237,7 @@
 
     .line 34
     .line 35
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->notification:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->notification:I
 
     .line 36
     .line 37

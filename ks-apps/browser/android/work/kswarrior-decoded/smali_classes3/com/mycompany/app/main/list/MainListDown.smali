@@ -749,7 +749,7 @@
     .line 32
     .line 33
     :cond_2
-    sget p2, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget p2, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 34
     .line 35
@@ -1082,7 +1082,7 @@
 
     .line 14
     .line 15
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 16
     .line 17
@@ -2722,7 +2722,7 @@
 
     .line 33
     .line 34
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 35
     .line 36
@@ -2759,7 +2759,7 @@
 
     .line 51
     .line 52
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 53
     .line 54
@@ -3277,19 +3277,19 @@
     .line 45
     .line 46
     :goto_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->list_title_text:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->list_title_text:I
 
     .line 47
     .line 48
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->list_icon_frame:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->list_icon_frame:I
 
     .line 49
     .line 50
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->list_bottom_view:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->list_bottom_view:I
 
     .line 51
     .line 52
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->list_cast_icon:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->list_cast_icon:I
 
     .line 53
     .line 54
@@ -3521,7 +3521,7 @@
     .line 176
     .line 177
     .line 178
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 179
     .line 180
@@ -3778,7 +3778,7 @@
     .line 315
     .line 316
     .line 317
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->down_list:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->down_list:I
 
     .line 318
     .line 319

@@ -192,7 +192,7 @@
 
     .line 70
     .line 71
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 72
     .line 73

@@ -345,7 +345,7 @@
 
     .line 147
     .line 148
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_BACK_STOP"
+    const-string v2, "com.kswarrior.ksportal.ACTION_BACK_STOP"
 
     .line 149
     .line 150

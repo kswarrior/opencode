@@ -232,7 +232,7 @@
     .line 94
     .line 95
     .line 96
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->reset_setting:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->reset_setting:I
 
     .line 97
     .line 98
@@ -284,7 +284,7 @@
     .line 122
     .line 123
     .line 124
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->set_reset_guide:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->set_reset_guide:I
 
     .line 125
     .line 126
@@ -467,7 +467,7 @@
     .line 216
     .line 217
     .line 218
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 219
     .line 220
@@ -625,7 +625,7 @@
     .line 299
     .line 300
     .line 301
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->storage:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->storage:I
 
     .line 302
     .line 303
@@ -784,7 +784,7 @@
     .line 383
     .line 384
     .line 385
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->tv_cast:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->tv_cast:I
 
     .line 386
     .line 387
@@ -943,7 +943,7 @@
     .line 467
     .line 468
     .line 469
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 470
     .line 471
@@ -1101,7 +1101,7 @@
     .line 550
     .line 551
     .line 552
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->vpn:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->vpn:I
 
     .line 553
     .line 554
@@ -1166,7 +1166,7 @@
     move-result-object v2
 
     .line 582
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 583
     .line 584

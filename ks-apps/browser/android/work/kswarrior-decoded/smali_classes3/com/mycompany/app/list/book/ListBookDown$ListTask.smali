@@ -3032,7 +3032,7 @@
 
     .line 1209
     .line 1210
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 1211
     .line 1212
@@ -5699,7 +5699,7 @@
 
     .line 2387
     .line 2388
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 2389
     .line 2390

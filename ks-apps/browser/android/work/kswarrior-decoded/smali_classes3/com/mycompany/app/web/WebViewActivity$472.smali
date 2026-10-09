@@ -58,7 +58,7 @@
     .line 6
     .line 7
     .line 8
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->added:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->added:I
 
     .line 9
     .line 10
@@ -383,7 +383,7 @@
     .line 6
     .line 7
     .line 8
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->changed:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->changed:I
 
     .line 9
     .line 10

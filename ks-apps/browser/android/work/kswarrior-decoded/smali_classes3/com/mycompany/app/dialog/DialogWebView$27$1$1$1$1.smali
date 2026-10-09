@@ -467,7 +467,7 @@
 
     .line 217
     .line 218
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_up_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_up_dark_24:I
 
     .line 219
     .line 220
@@ -480,7 +480,7 @@
 
     .line 224
     .line 225
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_down_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_down_dark_24:I
 
     .line 226
     .line 227
@@ -588,7 +588,7 @@
 
     .line 283
     .line 284
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_up_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_up_black_24:I
 
     .line 285
     .line 286
@@ -601,7 +601,7 @@
 
     .line 290
     .line 291
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_down_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_down_black_24:I
 
     .line 292
     .line 293

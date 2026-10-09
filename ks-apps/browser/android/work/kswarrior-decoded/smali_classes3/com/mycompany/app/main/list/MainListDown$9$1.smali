@@ -101,7 +101,7 @@
 
     .line 8
     .line 9
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->down_complete:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->down_complete:I
 
     .line 10
     .line 11
@@ -114,7 +114,7 @@
 
     .line 15
     :cond_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->down_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->down_fail:I
 
     .line 16
     .line 17

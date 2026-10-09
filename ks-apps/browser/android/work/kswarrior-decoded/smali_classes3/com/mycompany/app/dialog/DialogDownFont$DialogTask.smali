@@ -1030,7 +1030,7 @@
 
     .line 83
     .line 84
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 85
     .line 86
@@ -1174,7 +1174,7 @@
 
     .line 158
     .line 159
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 160
     .line 161

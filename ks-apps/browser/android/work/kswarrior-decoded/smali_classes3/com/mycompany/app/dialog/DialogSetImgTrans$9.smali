@@ -116,7 +116,7 @@
 
     .line 32
     .line 33
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->locale:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->locale:I
 
     .line 34
     .line 35
@@ -154,7 +154,7 @@
 
     .line 50
     .line 51
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->refresh:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->refresh:I
 
     .line 52
     .line 53
@@ -183,7 +183,7 @@
 
     .line 65
     .line 66
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->translate:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->translate:I
 
     .line 67
     .line 68
@@ -212,7 +212,7 @@
 
     .line 80
     .line 81
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->background:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->background:I
 
     .line 82
     .line 83
@@ -241,7 +241,7 @@
 
     .line 95
     .line 96
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->zoom_title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->zoom_title:I
 
     .line 97
     .line 98

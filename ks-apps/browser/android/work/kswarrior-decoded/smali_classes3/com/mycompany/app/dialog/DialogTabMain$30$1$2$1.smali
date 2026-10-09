@@ -82,7 +82,7 @@
 
     .line 19
     .line 20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->deleted:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->deleted:I
 
     .line 21
     .line 22

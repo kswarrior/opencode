@@ -172,7 +172,7 @@
     move-result-object p1
 
     .line 54
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->already_added:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->already_added:I
 
     .line 55
     .line 56

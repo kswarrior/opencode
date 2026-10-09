@@ -78,7 +78,7 @@
 
     .line 15
     :cond_1
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->ads_load_text:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->ads_load_text:I
 
     .line 16
     .line 17

@@ -131,7 +131,7 @@
 
     .line 38
     .line 39
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->save_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->save_fail:I
 
     .line 40
     .line 41

@@ -281,7 +281,7 @@
 
     .line 63
     .line 64
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_swipe_down_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_swipe_down_white_24:I
 
     .line 65
     .line 66
@@ -293,7 +293,7 @@
 
     .line 68
     .line 69
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_rss_feed_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_rss_feed_white_24:I
 
     .line 70
     .line 71
@@ -305,7 +305,7 @@
 
     .line 73
     .line 74
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_white_24:I
 
     .line 75
     .line 76
@@ -320,7 +320,7 @@
 
     .line 79
     .line 80
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_g_translate_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_g_translate_white_24:I
 
     .line 81
     .line 82
@@ -335,7 +335,7 @@
 
     .line 85
     .line 86
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_zoom_in_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_zoom_in_white_24:I
 
     .line 87
     .line 88
@@ -350,7 +350,7 @@
 
     .line 91
     .line 92
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_fullscreen_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_fullscreen_white_24:I
 
     .line 93
     .line 94

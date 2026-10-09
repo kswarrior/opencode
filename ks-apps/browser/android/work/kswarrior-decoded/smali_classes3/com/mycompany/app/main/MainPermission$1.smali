@@ -479,7 +479,7 @@
 
     .line 209
     :cond_c
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->no_permission:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->no_permission:I
 
     .line 210
     .line 211

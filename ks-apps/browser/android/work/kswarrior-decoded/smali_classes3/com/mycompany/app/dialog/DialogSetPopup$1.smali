@@ -118,7 +118,7 @@
     .line 37
     .line 38
     .line 39
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->edit:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->edit:I
 
     .line 40
     .line 41
@@ -359,7 +359,7 @@
     .line 165
     .line 166
     .line 167
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 168
     .line 169
@@ -393,7 +393,7 @@
     .line 183
     .line 184
     .line 185
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 186
     .line 187

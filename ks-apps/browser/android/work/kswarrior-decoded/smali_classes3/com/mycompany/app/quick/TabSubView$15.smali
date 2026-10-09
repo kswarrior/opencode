@@ -135,11 +135,11 @@
 
     .line 46
     .line 47
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 48
     .line 49
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 50
     .line 51
@@ -166,7 +166,7 @@
 
     .line 63
     .line 64
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_left_b:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->round_top_left_b:I
 
     .line 65
     .line 66
@@ -179,7 +179,7 @@
 
     .line 70
     .line 71
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_right_b:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->round_top_right_b:I
 
     .line 72
     .line 73
@@ -192,7 +192,7 @@
 
     .line 77
     .line 78
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_left_b:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->round_bot_left_b:I
 
     .line 79
     .line 80
@@ -205,7 +205,7 @@
 
     .line 84
     .line 85
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_right_b:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->round_bot_right_b:I
 
     .line 86
     .line 87
@@ -218,7 +218,7 @@
 
     .line 91
     .line 92
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_black:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_black:I
 
     .line 93
     .line 94
@@ -282,11 +282,11 @@
 
     .line 126
     .line 127
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 128
     .line 129
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 130
     .line 131
@@ -312,7 +312,7 @@
 
     .line 142
     .line 143
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_left_g:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->round_top_left_g:I
 
     .line 144
     .line 145
@@ -325,7 +325,7 @@
 
     .line 149
     .line 150
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_right_g:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->round_top_right_g:I
 
     .line 151
     .line 152
@@ -338,7 +338,7 @@
 
     .line 156
     .line 157
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_left_g:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->round_bot_left_g:I
 
     .line 158
     .line 159
@@ -351,7 +351,7 @@
 
     .line 163
     .line 164
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_right_g:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->round_bot_right_g:I
 
     .line 165
     .line 166
@@ -364,7 +364,7 @@
 
     .line 170
     .line 171
-    sget p3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_gray:I
+    sget p3, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_gray:I
 
     .line 172
     .line 173

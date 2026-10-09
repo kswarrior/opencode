@@ -161,7 +161,7 @@
 
     .line 32
     .line 33
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->app_exit:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->app_exit:I
 
     .line 34
     .line 35
@@ -169,7 +169,7 @@
 
     .line 36
     :cond_2
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->delete_tab:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->delete_tab:I
 
     .line 37
     .line 38

@@ -111,11 +111,11 @@
 
     .line 29
     .line 30
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->reset_setting:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->reset_setting:I
 
     .line 31
     .line 32
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 33
     .line 34

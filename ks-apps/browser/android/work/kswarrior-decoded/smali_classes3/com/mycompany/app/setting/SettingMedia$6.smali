@@ -97,7 +97,7 @@
 
     .line 25
     .line 26
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 27
     .line 28
@@ -149,7 +149,7 @@
 
     .line 50
     .line 51
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 52
     .line 53

@@ -65,7 +65,7 @@
 
     .line 9
     .line 10
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->filter_color:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->filter_color:I
 
     .line 11
     .line 12

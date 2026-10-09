@@ -81,7 +81,7 @@
 
     .line 18
     .line 19
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 20
     .line 21

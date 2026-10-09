@@ -1241,31 +1241,31 @@
     .line 8
     .line 9
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->pass_icon_edit:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->pass_icon_edit:I
 
     .line 10
     .line 11
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->pass_host_copy:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->pass_host_copy:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->pass_host_name:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->pass_host_name:I
 
     .line 14
     .line 15
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->pass_user_copy:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->pass_user_copy:I
 
     .line 16
     .line 17
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->pass_user_name:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->pass_user_name:I
 
     .line 18
     .line 19
-    sget v7, Lcom/mycompany/app/soulbrowser/R$id;->pass_pass_frame:I
+    sget v7, Lcom/kswarrior/ksportal/R$id;->pass_pass_frame:I
 
     .line 20
     .line 21
-    sget v8, Lcom/mycompany/app/soulbrowser/R$id;->pass_pass_name:I
+    sget v8, Lcom/kswarrior/ksportal/R$id;->pass_pass_name:I
 
     .line 22
     .line 23
@@ -1602,7 +1602,7 @@
     .line 198
     .line 199
     .line 200
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->password_confirm:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->password_confirm:I
 
     .line 201
     .line 202
@@ -1837,7 +1837,7 @@
     move-result-object v2
 
     .line 323
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->site:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->site:I
 
     .line 324
     .line 325
@@ -2057,7 +2057,7 @@
     move-result-object v13
 
     .line 439
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 440
     .line 441
@@ -2146,7 +2146,7 @@
 
     .line 485
     .line 486
-    sget v15, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v15, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 487
     .line 488
@@ -2389,7 +2389,7 @@
     move-result-object v0
 
     .line 616
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->password:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->password:I
 
     .line 617
     .line 618
@@ -2471,7 +2471,7 @@
 
     .line 659
     .line 660
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 661
     .line 662
@@ -2614,7 +2614,7 @@
     move-result-object v1
 
     .line 736
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->save:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->save:I
 
     .line 737
     .line 738
@@ -5100,7 +5100,7 @@
 
     .line 77
     .line 78
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 79
     .line 80
@@ -5142,7 +5142,7 @@
 
     .line 98
     .line 99
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->input_password:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->input_password:I
 
     .line 100
     .line 101

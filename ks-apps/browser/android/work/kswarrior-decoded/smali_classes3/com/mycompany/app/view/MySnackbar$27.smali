@@ -229,7 +229,7 @@
 
     .line 94
     .line 95
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->swipe_remove:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->swipe_remove:I
 
     .line 96
     .line 97
@@ -246,7 +246,7 @@
 
     .line 103
     .line 104
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->snack_guide:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->snack_guide:I
 
     .line 105
     .line 106
@@ -346,7 +346,7 @@
     .line 154
     .line 155
     .line 156
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->snack_guide_frame:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->snack_guide_frame:I
 
     .line 157
     .line 158
@@ -381,7 +381,7 @@
 
     .line 174
     .line 175
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_swipe_white_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_swipe_white_24:I
 
     .line 176
     .line 177
@@ -394,7 +394,7 @@
 
     .line 181
     .line 182
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_swipe_vertical_white_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_swipe_vertical_white_24:I
 
     .line 183
     .line 184
@@ -456,7 +456,7 @@
 
     .line 215
     .line 216
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_white_18:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_close_white_18:I
 
     .line 217
     .line 218

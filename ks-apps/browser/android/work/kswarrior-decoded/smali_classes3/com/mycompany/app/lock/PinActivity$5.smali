@@ -151,7 +151,7 @@
 
     .line 51
     .line 52
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->reinput:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->reinput:I
 
     .line 53
     .line 54
@@ -209,7 +209,7 @@
 
     .line 78
     .line 79
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->input:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->input:I
 
     .line 80
     .line 81

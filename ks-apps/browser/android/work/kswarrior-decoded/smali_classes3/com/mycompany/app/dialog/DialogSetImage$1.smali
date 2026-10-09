@@ -323,7 +323,7 @@
     .line 148
     .line 149
     .line 150
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 151
     .line 152
@@ -360,7 +360,7 @@
     .line 167
     .line 168
     .line 169
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 170
     .line 171

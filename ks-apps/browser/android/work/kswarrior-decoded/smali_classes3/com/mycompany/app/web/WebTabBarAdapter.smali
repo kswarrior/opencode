@@ -1880,7 +1880,7 @@
 
     .line 23
     .line 24
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_folder_2_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->baseline_folder_2_black_24:I
 
     .line 25
     .line 26
@@ -3118,7 +3118,7 @@
 
     .line 236
     .line 237
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->group_title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->group_title:I
 
     .line 238
     .line 239
@@ -4047,7 +4047,7 @@
 
     .line 667
     .line 668
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_white_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_white_20:I
 
     .line 669
     .line 670
@@ -4063,7 +4063,7 @@
 
     .line 674
     .line 675
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_black_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_black_20:I
 
     .line 676
     .line 677
@@ -4071,7 +4071,7 @@
 
     .line 678
     :cond_33
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_more_vert_dark_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_more_vert_dark_20:I
 
     .line 679
     .line 680
@@ -4083,7 +4083,7 @@
 
     .line 682
     .line 683
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_white_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_close_white_18:I
 
     .line 684
     .line 685
@@ -4099,7 +4099,7 @@
 
     .line 689
     .line 690
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_18:I
 
     .line 691
     .line 692
@@ -4107,7 +4107,7 @@
 
     .line 693
     :cond_36
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_18:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_18:I
 
     .line 694
     .line 695
@@ -5159,7 +5159,7 @@
 
     .line 26
     .line 27
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_white_24:I
 
     .line 28
     .line 29
@@ -5175,7 +5175,7 @@
 
     .line 33
     .line 34
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 35
     .line 36
@@ -5183,7 +5183,7 @@
 
     .line 37
     :cond_2
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_dark_24:I
 
     .line 38
     .line 39
@@ -5381,7 +5381,7 @@
 
     .line 129
     .line 130
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_white_24:I
 
     .line 131
     .line 132
@@ -5397,7 +5397,7 @@
 
     .line 136
     .line 137
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 138
     .line 139
@@ -5405,7 +5405,7 @@
 
     .line 140
     :cond_b
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_dark_24:I
 
     .line 141
     .line 142
@@ -5502,7 +5502,7 @@
 
     .line 183
     .line 184
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_home_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_home_white_24:I
 
     .line 185
     .line 186
@@ -5518,7 +5518,7 @@
 
     .line 190
     .line 191
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_home_black_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_home_black_24:I
 
     .line 192
     .line 193
@@ -5526,7 +5526,7 @@
 
     .line 194
     :cond_11
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_home_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_home_dark_24:I
 
     .line 195
     .line 196
@@ -5538,7 +5538,7 @@
 
     .line 198
     .line 199
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_offline_pin_white_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_offline_pin_white_24:I
 
     .line 200
     .line 201
@@ -5554,7 +5554,7 @@
 
     .line 205
     .line 206
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_offline_pin_black_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_offline_pin_black_24:I
 
     .line 207
     .line 208
@@ -5562,7 +5562,7 @@
 
     .line 209
     :cond_14
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_offline_pin_dark_24:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->outline_offline_pin_dark_24:I
 
     .line 210
     .line 211

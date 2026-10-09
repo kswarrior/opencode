@@ -66,15 +66,15 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->item_title_view:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->item_title_view:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->item_value_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->item_value_view:I
 
     .line 14
     .line 15
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->item_seek_text:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->item_seek_text:I
 
     .line 16
     .line 17
@@ -200,7 +200,7 @@
     move-result-object v12
 
     .line 81
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->type:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->type:I
 
     .line 82
     .line 83
@@ -335,7 +335,7 @@
     move-result-object v11
 
     .line 150
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->brightness:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->brightness:I
 
     .line 151
     .line 152
@@ -682,7 +682,7 @@
     .line 333
     .line 334
     .line 335
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 336
     .line 337
@@ -744,7 +744,7 @@
     .line 363
     .line 364
     .line 365
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 366
     .line 367

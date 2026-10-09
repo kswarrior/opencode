@@ -97,7 +97,7 @@
 
     .line 24
     .line 25
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->secret_reset:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->secret_reset:I
 
     .line 26
     .line 27
@@ -112,7 +112,7 @@
 
     .line 30
     .line 31
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 32
     .line 33
@@ -128,7 +128,7 @@
 
     .line 37
     .line 38
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->normal_start:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->normal_start:I
 
     .line 39
     .line 40
@@ -136,7 +136,7 @@
 
     .line 41
     :cond_4
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->secret_reset:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->secret_reset:I
 
     .line 42
     .line 43
@@ -250,7 +250,7 @@
 
     .line 97
     .line 98
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->finger_print:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->finger_print:I
 
     .line 99
     .line 100

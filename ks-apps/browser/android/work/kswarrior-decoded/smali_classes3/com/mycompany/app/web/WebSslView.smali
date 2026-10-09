@@ -144,7 +144,7 @@
 
     .line 55
     .line 56
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 57
     .line 58
@@ -251,7 +251,7 @@
 
     .line 113
     .line 114
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 115
     .line 116
@@ -1059,19 +1059,19 @@
 
     .line 14
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->ssl_icon_frame:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->ssl_icon_frame:I
 
     .line 15
     .line 16
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->ssl_icon_setting:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->ssl_icon_setting:I
 
     .line 17
     .line 18
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->ssl_cancel_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->ssl_cancel_view:I
 
     .line 19
     .line 20
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->ssl_apply_view:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->ssl_apply_view:I
 
     .line 21
     .line 22
@@ -1151,7 +1151,7 @@
     .line 60
     .line 61
     .line 62
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_warning_red_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->baseline_warning_red_24:I
 
     .line 63
     .line 64
@@ -1227,7 +1227,7 @@
     .line 100
     .line 101
     .line 102
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->site_warning:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->site_warning:I
 
     .line 103
     .line 104
@@ -1664,7 +1664,7 @@
     .line 335
     .line 336
     .line 337
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->site_exit:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->site_exit:I
 
     .line 338
     .line 339
@@ -1785,7 +1785,7 @@
     .line 402
     .line 403
     .line 404
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->site_continue:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->site_continue:I
 
     .line 405
     .line 406

@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 27
     .line 28

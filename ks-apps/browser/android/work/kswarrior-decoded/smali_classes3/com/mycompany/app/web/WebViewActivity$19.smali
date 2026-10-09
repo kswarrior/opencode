@@ -159,7 +159,7 @@
 
     .line 57
     .line 58
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->app_block_noti:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->app_block_noti:I
 
     .line 59
     .line 60

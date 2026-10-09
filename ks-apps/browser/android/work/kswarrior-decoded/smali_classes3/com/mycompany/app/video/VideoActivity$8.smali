@@ -244,7 +244,7 @@
     .line 99
     .line 100
     .line 101
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_brightness_6_white_36:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->outline_brightness_6_white_36:I
 
     .line 102
     .line 103
@@ -491,7 +491,7 @@
     .line 236
     .line 237
     .line 238
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->ic_volume:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->ic_volume:I
 
     .line 239
     .line 240

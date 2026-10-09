@@ -137,7 +137,7 @@
 
     .line 44
     .line 45
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->auto_detect:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->auto_detect:I
 
     .line 46
     .line 47
@@ -149,7 +149,7 @@
     move-result-object v1
 
     .line 51
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->not_support_site:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->not_support_site:I
 
     .line 52
     .line 53
@@ -183,7 +183,7 @@
 
     .line 66
     .line 67
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->auto_detect:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->auto_detect:I
 
     .line 68
     .line 69
@@ -278,7 +278,7 @@
 
     .line 111
     .line 112
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->voice_speed:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->voice_speed:I
 
     .line 113
     .line 114
@@ -356,7 +356,7 @@
 
     .line 150
     .line 151
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->voice_tone:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->voice_tone:I
 
     .line 152
     .line 153

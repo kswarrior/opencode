@@ -70,35 +70,35 @@
     .locals 10
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 2
     .line 3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->folder_dir:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->folder_dir:I
 
     .line 4
     .line 5
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->file:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->file:I
 
     .line 6
     .line 7
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->sort_data:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->sort_data:I
 
     .line 8
     .line 9
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->sort_ext:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->sort_ext:I
 
     .line 10
     .line 11
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->sort_time:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->sort_time:I
 
     .line 12
     .line 13
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->domain_name:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->domain_name:I
 
     .line 14
     .line 15
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->permission:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->permission:I
 
     .line 16
     .line 17
@@ -234,11 +234,11 @@
 
     .line 78
     .line 79
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->sort_name:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->sort_name:I
 
     .line 80
     .line 81
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->sort_size:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->sort_size:I
 
     .line 82
     .line 83

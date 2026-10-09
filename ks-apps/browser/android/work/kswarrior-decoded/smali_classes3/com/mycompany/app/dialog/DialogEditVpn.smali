@@ -1547,7 +1547,7 @@
 
     .line 117
     .line 118
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 119
     .line 120
@@ -1765,7 +1765,7 @@
 
     .line 236
     .line 237
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 238
     .line 239
@@ -1956,7 +1956,7 @@
 
     .line 336
     .line 337
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 338
     .line 339
@@ -2139,7 +2139,7 @@
 
     .line 432
     .line 433
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 434
     .line 435
@@ -2302,7 +2302,7 @@
 
     .line 518
     .line 519
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 520
     .line 521
@@ -2408,7 +2408,7 @@
     .line 574
     .line 575
     .line 576
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->apply:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->apply:I
 
     .line 577
     .line 578
@@ -4952,7 +4952,7 @@
 
     .line 36
     .line 37
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->input_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->input_url:I
 
     .line 38
     .line 39
@@ -5026,7 +5026,7 @@
 
     .line 72
     .line 73
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 74
     .line 75
@@ -5053,7 +5053,7 @@
 
     .line 84
     .line 85
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 86
     .line 87
@@ -5394,7 +5394,7 @@
 
     .line 101
     .line 102
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->vpn_ip_guide_1:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->vpn_ip_guide_1:I
 
     .line 103
     .line 104
@@ -5411,7 +5411,7 @@
 
     .line 110
     .line 111
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->vpn_ip_guide_2:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->vpn_ip_guide_2:I
 
     .line 112
     .line 113

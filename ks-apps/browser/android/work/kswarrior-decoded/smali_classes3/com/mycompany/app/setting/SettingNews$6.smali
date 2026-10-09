@@ -130,7 +130,7 @@
 
     .line 19
     .line 20
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->news_info_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->news_info_1:I
 
     .line 21
     .line 22

@@ -94,11 +94,11 @@
 
     .line 23
     .line 24
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->reset_confirm:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->reset_confirm:I
 
     .line 25
     .line 26
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 27
     .line 28

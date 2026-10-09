@@ -65,7 +65,7 @@
     move-result-object v0
 
     .line 11
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->vpn_deactive:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->vpn_deactive:I
 
     .line 12
     .line 13

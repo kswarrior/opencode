@@ -108,7 +108,7 @@
     .line 29
     .line 30
     :cond_2
-    sget v2, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v2, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 31
     .line 32

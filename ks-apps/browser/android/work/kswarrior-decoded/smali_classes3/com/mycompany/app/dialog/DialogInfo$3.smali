@@ -351,7 +351,7 @@
 
     .line 151
     .line 152
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_offline_pin_black_24:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->outline_offline_pin_black_24:I
 
     .line 153
     .line 154

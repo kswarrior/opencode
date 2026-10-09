@@ -212,7 +212,7 @@
 
     .line 58
     .line 59
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->http_warning:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->http_warning:I
 
     .line 60
     .line 61
@@ -296,7 +296,7 @@
 
     .line 99
     .line 100
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->select_lang:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->select_lang:I
 
     .line 101
     .line 102

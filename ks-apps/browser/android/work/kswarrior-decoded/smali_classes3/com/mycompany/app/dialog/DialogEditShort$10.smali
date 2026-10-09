@@ -89,7 +89,7 @@
 
     .line 22
     .line 23
-    sget p3, Lcom/mycompany/app/soulbrowser/R$mipmap;->ic_launcher:I
+    sget p3, Lcom/kswarrior/ksportal/R$mipmap;->ic_launcher:I
 
     .line 24
     .line 25
@@ -109,7 +109,7 @@
 
     .line 31
     .line 32
-    sget p1, Lcom/mycompany/app/soulbrowser/R$mipmap;->ic_launcher:I
+    sget p1, Lcom/kswarrior/ksportal/R$mipmap;->ic_launcher:I
 
     .line 33
     .line 34

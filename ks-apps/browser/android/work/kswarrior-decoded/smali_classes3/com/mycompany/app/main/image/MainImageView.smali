@@ -3458,7 +3458,7 @@
     .line 23
     .line 24
     .line 25
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_error_dark_web_48:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_error_dark_web_48:I
 
     .line 26
     .line 27

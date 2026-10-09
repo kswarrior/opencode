@@ -118,7 +118,7 @@
 
     .line 33
     .line 34
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->local_cast_guide_2:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->local_cast_guide_2:I
 
     .line 35
     .line 36

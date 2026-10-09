@@ -235,7 +235,7 @@
     .line 88
     .line 89
     .line 90
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 91
     .line 92
@@ -282,7 +282,7 @@
     .line 110
     .line 111
     .line 112
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->system_name:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->system_name:I
 
     .line 113
     .line 114
@@ -337,7 +337,7 @@
     .line 138
     .line 139
     .line 140
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->page_move:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->page_move:I
 
     .line 141
     .line 142
@@ -407,7 +407,7 @@
     .line 172
     .line 173
     .line 174
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->tab_move:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->tab_move:I
 
     .line 175
     .line 176

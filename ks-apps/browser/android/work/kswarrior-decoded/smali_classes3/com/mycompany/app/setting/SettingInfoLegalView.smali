@@ -613,7 +613,7 @@
 
     .line 34
     .line 35
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->notice_tos:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->notice_tos:I
 
     .line 36
     .line 37
@@ -621,16 +621,16 @@
 
     .line 38
     :cond_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->notice_privacy:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->notice_privacy:I
 
     .line 39
     .line 40
     :goto_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$id;->set_icon_frame:I
+    sget v0, Lcom/kswarrior/ksportal/R$id;->set_icon_frame:I
 
     .line 41
     .line 42
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->set_cast_ctrl:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->set_cast_ctrl:I
 
     .line 43
     .line 44

@@ -169,7 +169,7 @@
 
     .line 38
     .line 39
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->site_theme_info:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->site_theme_info:I
 
     .line 40
     .line 41
@@ -208,7 +208,7 @@
 
     .line 53
     .line 54
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->header_title:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->header_title:I
 
     .line 55
     .line 56
@@ -249,7 +249,7 @@
 
     .line 74
     .line 75
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->header_color:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->header_color:I
 
     .line 76
     .line 77

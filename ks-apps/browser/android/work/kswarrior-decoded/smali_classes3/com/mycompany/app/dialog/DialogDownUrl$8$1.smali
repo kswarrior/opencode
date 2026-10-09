@@ -274,7 +274,7 @@
 
     .line 109
     .line 110
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->direct_select:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->direct_select:I
 
     .line 111
     .line 112

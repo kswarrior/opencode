@@ -74,7 +74,7 @@
 
     .line 14
     .line 15
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->header_color:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->header_color:I
 
     .line 16
     .line 17

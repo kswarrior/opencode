@@ -85,7 +85,7 @@
     .locals 4
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->save_success:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->save_success:I
 
     .line 2
     .line 3

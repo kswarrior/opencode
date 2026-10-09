@@ -306,11 +306,11 @@
 
     .line 124
     .line 125
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->secret_reset_guide:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->secret_reset_guide:I
 
     .line 126
     .line 127
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 128
     .line 129

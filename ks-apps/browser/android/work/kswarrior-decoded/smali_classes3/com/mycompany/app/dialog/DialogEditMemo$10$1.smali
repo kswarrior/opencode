@@ -124,7 +124,7 @@
 
     .line 38
     .line 39
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 40
     .line 41
@@ -175,7 +175,7 @@
 
     .line 64
     .line 65
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 66
     .line 67
@@ -275,7 +275,7 @@
 
     .line 110
     .line 111
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 112
     .line 113

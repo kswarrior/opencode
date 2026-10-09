@@ -115,7 +115,7 @@
     .line 34
     .line 35
     .line 36
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->estimated_size:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->estimated_size:I
 
     .line 37
     .line 38
@@ -283,7 +283,7 @@
     .line 122
     .line 123
     .line 124
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->estimated_info:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->estimated_info:I
 
     .line 125
     .line 126

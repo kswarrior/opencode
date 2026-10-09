@@ -256,7 +256,7 @@
 
     .line 113
     .line 114
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->create_album:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->create_album:I
 
     .line 115
     .line 116
@@ -1390,7 +1390,7 @@
 
     .line 150
     .line 151
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 152
     .line 153
@@ -1450,7 +1450,7 @@
 
     .line 180
     .line 181
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->list:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->list:I
 
     .line 182
     .line 183
@@ -1539,7 +1539,7 @@
 
     .line 223
     .line 224
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->list:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->list:I
 
     .line 225
     .line 226

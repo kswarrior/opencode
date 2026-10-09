@@ -232,7 +232,7 @@
     .line 91
     .line 92
     .line 93
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->shadow_list_up:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->shadow_list_up:I
 
     .line 94
     .line 95
@@ -483,7 +483,7 @@
     .line 226
     .line 227
     .line 228
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->reader_empty:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->reader_empty:I
 
     .line 229
     .line 230
@@ -831,7 +831,7 @@
 
     .line 411
     .line 412
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->web_cast_ctrl:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->web_cast_ctrl:I
 
     .line 413
     .line 414

@@ -6158,7 +6158,7 @@
     iput v1, v0, Lcom/mycompany/app/main/MainItem$ChildItem;->v:I
 
     .line 135
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_extension_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_extension_black_24:I
 
     iput v1, v0, Lcom/mycompany/app/main/MainItem$ChildItem;->w:I
 

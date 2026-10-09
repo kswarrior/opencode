@@ -65,7 +65,7 @@
 
     .line 9
     .line 10
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 11
     .line 12

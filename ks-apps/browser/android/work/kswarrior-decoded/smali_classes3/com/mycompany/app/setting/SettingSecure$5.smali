@@ -455,7 +455,7 @@
 
     .line 193
     .line 194
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->lock_reset_target:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->lock_reset_target:I
 
     .line 195
     .line 196

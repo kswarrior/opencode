@@ -547,7 +547,7 @@
 
     .line 70
     .line 71
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 72
     .line 73
@@ -777,7 +777,7 @@
     .line 189
     .line 190
     .line 191
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_fullscreen_white_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_fullscreen_white_24:I
 
     .line 192
     .line 193
@@ -952,7 +952,7 @@
     .line 284
     .line 285
     .line 286
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 287
     .line 288
@@ -961,7 +961,7 @@
     .line 289
     .line 290
     .line 291
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_view:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->selector_view:I
 
     .line 292
     .line 293
@@ -1021,7 +1021,7 @@
     .line 323
     .line 324
     .line 325
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->crop_save:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->crop_save:I
 
     .line 326
     .line 327
@@ -1030,7 +1030,7 @@
     .line 328
     .line 329
     .line 330
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_view:I
 
     .line 331
     .line 332

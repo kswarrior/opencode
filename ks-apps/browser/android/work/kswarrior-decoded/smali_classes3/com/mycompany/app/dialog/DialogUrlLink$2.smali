@@ -506,7 +506,7 @@
     .line 245
     .line 246
     .line 247
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->link:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->link:I
 
     .line 248
     .line 249
@@ -547,7 +547,7 @@
     .line 266
     .line 267
     .line 268
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 269
     .line 270

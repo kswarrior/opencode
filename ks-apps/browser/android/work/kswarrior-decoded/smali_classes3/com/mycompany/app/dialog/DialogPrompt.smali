@@ -529,7 +529,7 @@
 
     .line 99
     .line 100
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 101
     .line 102
@@ -581,7 +581,7 @@
     .line 127
     .line 128
     .line 129
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 130
     .line 131

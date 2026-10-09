@@ -280,7 +280,7 @@
 
     .line 112
     .line 113
-    const-string p2, "com.mycompany.app.soulbrowser.ACTION_BACK_STOP"
+    const-string p2, "com.kswarrior.ksportal.ACTION_BACK_STOP"
 
     .line 114
     .line 115

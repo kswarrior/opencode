@@ -105,7 +105,7 @@
 
     .line 28
     .line 29
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->font:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->font:I
 
     .line 30
     .line 31

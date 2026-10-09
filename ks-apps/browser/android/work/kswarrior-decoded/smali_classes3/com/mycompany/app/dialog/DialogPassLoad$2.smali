@@ -183,11 +183,11 @@
 
     .line 75
     .line 76
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_off_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_off_dark_24:I
 
     .line 77
     .line 78
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_dark_24:I
 
     .line 79
     .line 80
@@ -200,11 +200,11 @@
 
     .line 84
     .line 85
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_off_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_off_dark_24:I
 
     .line 86
     .line 87
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_dark_24:I
 
     .line 88
     .line 89
@@ -217,7 +217,7 @@
 
     .line 93
     .line 94
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 95
     .line 96
@@ -239,7 +239,7 @@
 
     .line 105
     .line 106
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 107
     .line 108
@@ -261,7 +261,7 @@
 
     .line 117
     .line 118
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 119
     .line 120
@@ -301,11 +301,11 @@
 
     .line 139
     .line 140
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 141
     .line 142
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 143
     .line 144
@@ -432,11 +432,11 @@
 
     .line 211
     .line 212
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_off_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_off_black_24:I
 
     .line 213
     .line 214
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_black_24:I
 
     .line 215
     .line 216
@@ -449,11 +449,11 @@
 
     .line 220
     .line 221
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_off_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_off_black_24:I
 
     .line 222
     .line 223
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_black_24:I
 
     .line 224
     .line 225
@@ -466,7 +466,7 @@
 
     .line 229
     .line 230
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 231
     .line 232
@@ -488,7 +488,7 @@
 
     .line 241
     .line 242
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 243
     .line 244
@@ -515,7 +515,7 @@
 
     .line 256
     .line 257
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 258
     .line 259
@@ -560,11 +560,11 @@
 
     .line 281
     .line 282
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 283
     .line 284
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 285
     .line 286

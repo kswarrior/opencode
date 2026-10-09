@@ -1109,7 +1109,7 @@
     .line 110
     .line 111
     .line 112
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 113
     .line 114

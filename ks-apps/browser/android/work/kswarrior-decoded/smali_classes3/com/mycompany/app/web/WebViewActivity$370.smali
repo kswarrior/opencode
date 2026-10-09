@@ -85,7 +85,7 @@
 
     .line 18
     :cond_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->down_complete:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->down_complete:I
 
     .line 19
     .line 20

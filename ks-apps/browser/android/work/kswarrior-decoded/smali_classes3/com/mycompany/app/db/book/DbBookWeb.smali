@@ -1923,7 +1923,7 @@
 
     .line 177
     .line 178
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_black_24:I
 
     .line 179
     .line 180
@@ -2005,7 +2005,7 @@
 
     .line 217
     .line 218
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 219
     .line 220
@@ -4861,7 +4861,7 @@
     move-result-object p1
 
     .line 81
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_search_youtube:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->baseline_search_youtube:I
 
     .line 82
     .line 83
@@ -7396,7 +7396,7 @@
     move-result-object v3
 
     .line 87
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_search_youtube:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->baseline_search_youtube:I
 
     .line 88
     .line 89

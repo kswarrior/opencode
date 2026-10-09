@@ -87,11 +87,11 @@
 
     .line 19
     .line 20
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->reset_setting:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->reset_setting:I
 
     .line 21
     .line 22
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 23
     .line 24

@@ -1243,11 +1243,11 @@
 
     .line 29
     .line 30
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_dark_24:I
 
     .line 31
     .line 32
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_dark_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_dark_24:I
 
     .line 33
     .line 34
@@ -1288,11 +1288,11 @@
 
     .line 53
     .line 54
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_check_circle_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->baseline_check_circle_black_24:I
 
     .line 55
     .line 56
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_radio_button_unchecked_black_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_radio_button_unchecked_black_24:I
 
     .line 57
     .line 58
@@ -3240,7 +3240,7 @@
     .line 122
     .line 123
     .line 124
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->shadow_list_up:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->shadow_list_up:I
 
     .line 125
     .line 126
@@ -3481,7 +3481,7 @@
     .line 255
     .line 256
     .line 257
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->delete_all:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->delete_all:I
 
     .line 258
     .line 259
@@ -3604,7 +3604,7 @@
 
     .line 321
     .line 322
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_left_b:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->round_top_left_b:I
 
     .line 323
     .line 324
@@ -3617,7 +3617,7 @@
 
     .line 328
     .line 329
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_right_b:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->round_top_right_b:I
 
     .line 330
     .line 331
@@ -3630,7 +3630,7 @@
 
     .line 335
     .line 336
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_left_b:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->round_bot_left_b:I
 
     .line 337
     .line 338
@@ -3643,7 +3643,7 @@
 
     .line 342
     .line 343
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_right_b:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->round_bot_right_b:I
 
     .line 344
     .line 345
@@ -3656,7 +3656,7 @@
 
     .line 349
     .line 350
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_black:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_black:I
 
     .line 351
     .line 352
@@ -3720,7 +3720,7 @@
 
     .line 384
     .line 385
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_left_g:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->round_top_left_g:I
 
     .line 386
     .line 387
@@ -3733,7 +3733,7 @@
 
     .line 391
     .line 392
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->round_top_right_g:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->round_top_right_g:I
 
     .line 393
     .line 394
@@ -3746,7 +3746,7 @@
 
     .line 398
     .line 399
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_left_g:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->round_bot_left_g:I
 
     .line 400
     .line 401
@@ -3759,7 +3759,7 @@
 
     .line 405
     .line 406
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->round_bot_right_g:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->round_bot_right_g:I
 
     .line 407
     .line 408
@@ -3772,7 +3772,7 @@
 
     .line 412
     .line 413
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_gray:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_gray:I
 
     .line 414
     .line 415
@@ -5216,7 +5216,7 @@
 
     .line 34
     .line 35
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 36
     .line 37
@@ -5229,7 +5229,7 @@
 
     .line 41
     :cond_4
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->delete_all:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->delete_all:I
 
     .line 42
     .line 43
@@ -5324,7 +5324,7 @@
 
     .line 35
     .line 36
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->undelete:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->undelete:I
 
     .line 37
     .line 38

@@ -59,15 +59,15 @@
 
     .line 9
     .line 10
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 11
     .line 12
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->web_page:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->web_page:I
 
     .line 13
     .line 14
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->only_text:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->only_text:I
 
     .line 15
     .line 16
@@ -1157,7 +1157,7 @@
 
     .line 16
     :cond_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->font_default:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->font_default:I
 
     .line 17
     .line 18
@@ -1193,7 +1193,7 @@
     .line 31
     .line 32
     .line 33
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->user_script_info:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->user_script_info:I
 
     .line 34
     .line 35
@@ -1219,7 +1219,7 @@
     .line 45
     .line 46
     .line 47
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->dark_mode_info_2:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->dark_mode_info_2:I
 
     .line 48
     .line 49
@@ -1281,11 +1281,11 @@
 
     .line 78
     .line 79
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->show_image:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->show_image:I
 
     .line 80
     .line 81
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->show_image_info:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->show_image_info:I
 
     .line 82
     .line 83
@@ -1321,7 +1321,7 @@
 
     .line 98
     .line 99
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->free_scale:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->free_scale:I
 
     .line 100
     .line 101
@@ -1361,7 +1361,7 @@
 
     .line 118
     .line 119
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->reader_mode:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->reader_mode:I
 
     .line 120
     .line 121
@@ -1415,7 +1415,7 @@
 
     .line 146
     .line 147
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->text_size:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->text_size:I
 
     .line 148
     .line 149
@@ -1450,11 +1450,11 @@
 
     .line 163
     .line 164
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->font:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->font:I
 
     .line 165
     .line 166
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->font_info_1:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->font_info_1:I
 
     .line 167
     .line 168
@@ -1492,7 +1492,7 @@
 
     .line 185
     .line 186
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->user_script_on:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->user_script_on:I
 
     .line 187
     .line 188
@@ -1528,7 +1528,7 @@
 
     .line 203
     .line 204
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->user_script_list:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->user_script_list:I
 
     .line 205
     .line 206
@@ -1841,7 +1841,7 @@
 
     .line 51
     .line 52
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->no_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->no_title:I
 
     .line 53
     .line 54
@@ -1892,7 +1892,7 @@
 
     .line 13
     :cond_1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->check_brfore:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->check_brfore:I
 
     .line 14
     .line 15
@@ -2119,7 +2119,7 @@
 
     .line 32
     :cond_1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->font_default:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->font_default:I
 
     .line 33
     .line 34
@@ -2179,11 +2179,11 @@
 
     .line 59
     .line 60
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->font:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->font:I
 
     .line 61
     .line 62
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->font_info_1:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->font_info_1:I
 
     .line 63
     .line 64
@@ -2436,7 +2436,7 @@
     .line 41
     .line 42
     .line 43
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->web_content:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->web_content:I
 
     .line 44
     .line 45

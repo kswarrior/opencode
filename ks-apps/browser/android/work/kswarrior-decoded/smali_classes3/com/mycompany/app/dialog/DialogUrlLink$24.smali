@@ -167,7 +167,7 @@
     .line 47
     .line 48
     .line 49
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_image_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_image_black_24:I
 
     .line 50
     .line 51

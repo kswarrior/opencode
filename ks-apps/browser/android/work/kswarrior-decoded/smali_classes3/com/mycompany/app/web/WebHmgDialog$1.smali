@@ -66,19 +66,19 @@
     .line 10
     .line 11
     :cond_0
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->grid_icon_frame:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->grid_icon_frame:I
 
     .line 12
     .line 13
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->grid_bottom_view:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->grid_bottom_view:I
 
     .line 14
     .line 15
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->grid_button_view:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->grid_button_view:I
 
     .line 16
     .line 17
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->grid_cast_icon:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->grid_cast_icon:I
 
     .line 18
     .line 19
@@ -272,7 +272,7 @@
     .line 119
     .line 120
     .line 121
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 122
     .line 123
@@ -455,7 +455,7 @@
     .line 218
     .line 219
     .line 220
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->image_list:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->image_list:I
 
     .line 221
     .line 222
@@ -1033,7 +1033,7 @@
     .line 528
     .line 529
     .line 530
-    sget v14, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v14, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 531
     .line 532
@@ -1109,7 +1109,7 @@
     .line 568
     .line 569
     .line 570
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->zip:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->zip:I
 
     .line 571
     .line 572
@@ -1188,7 +1188,7 @@
     .line 609
     .line 610
     .line 611
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->album:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->album:I
 
     .line 612
     .line 613

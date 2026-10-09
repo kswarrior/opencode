@@ -209,7 +209,7 @@
     .line 82
     .line 83
     .line 84
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->reset:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->reset:I
 
     .line 85
     .line 86

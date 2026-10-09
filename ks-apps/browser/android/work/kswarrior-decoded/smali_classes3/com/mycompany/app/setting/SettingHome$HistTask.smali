@@ -999,7 +999,7 @@
 
     .line 78
     .line 79
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->import_no_history:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->import_no_history:I
 
     .line 80
     .line 81

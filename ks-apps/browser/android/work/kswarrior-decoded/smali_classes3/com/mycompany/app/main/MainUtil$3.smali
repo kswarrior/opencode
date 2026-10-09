@@ -634,7 +634,7 @@
 
     .line 23
     .line 24
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->back_play:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->back_play:I
 
     .line 25
     .line 26
@@ -654,7 +654,7 @@
 
     .line 32
     .line 33
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->back_play:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->back_play:I
 
     .line 34
     .line 35
@@ -708,7 +708,7 @@
     move-result-object v7
 
     .line 59
-    const-string v9, "com.mycompany.app.soulbrowser.NOTI_GROUP_BACKPLAY"
+    const-string v9, "com.kswarrior.ksportal.NOTI_GROUP_BACKPLAY"
 
     .line 60
     .line 61
@@ -716,7 +716,7 @@
 
     .line 62
     .line 63
-    const-string v11, "com.mycompany.app.soulbrowser.ACTION_BACK_STOP"
+    const-string v11, "com.kswarrior.ksportal.ACTION_BACK_STOP"
 
     .line 64
     .line 65
@@ -739,7 +739,7 @@
 
     .line 73
     .line 74
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     .line 75
     .line 76
@@ -751,7 +751,7 @@
 
     .line 79
     :cond_3
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_white_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_white_24:I
 
     .line 80
     .line 81
@@ -772,11 +772,11 @@
 
     .line 88
     .line 89
-    sget v16, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_white_24:I
+    sget v16, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_white_24:I
 
     .line 90
     .line 91
-    sget v17, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_white_24:I
+    sget v17, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_white_24:I
 
     .line 92
     .line 93
@@ -793,11 +793,11 @@
 
     .line 98
     :cond_4
-    sget v16, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_white_24:I
+    sget v16, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_white_24:I
 
     .line 99
     .line 100
-    sget v17, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_white_24:I
+    sget v17, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_white_24:I
 
     .line 101
     .line 102
@@ -809,7 +809,7 @@
 
     .line 104
     .line 105
-    const-string v13, "com.mycompany.app.soulbrowser.ACTION_PIP_FRWD"
+    const-string v13, "com.kswarrior.ksportal.ACTION_PIP_FRWD"
 
     .line 106
     .line 107
@@ -835,7 +835,7 @@
 
     .line 118
     .line 119
-    const-string v15, "com.mycompany.app.soulbrowser.ACTION_PIP_PLAY"
+    const-string v15, "com.kswarrior.ksportal.ACTION_PIP_PLAY"
 
     .line 120
     .line 121
@@ -864,7 +864,7 @@
 
     .line 133
     .line 134
-    const-string v8, "com.mycompany.app.soulbrowser.ACTION_PIP_FFWD"
+    const-string v8, "com.kswarrior.ksportal.ACTION_PIP_FFWD"
 
     .line 135
     .line 136
@@ -969,7 +969,7 @@
 
     .line 188
     .line 189
-    sget v11, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_white_24:I
+    sget v11, Lcom/kswarrior/ksportal/R$drawable;->outline_close_white_24:I
 
     .line 190
     .line 191
@@ -987,7 +987,7 @@
     .line 197
     .line 198
     .line 199
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     .line 200
     .line 201
@@ -1122,7 +1122,7 @@
 
     .line 266
     .line 267
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_white_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_close_white_24:I
 
     .line 268
     .line 269
@@ -1140,7 +1140,7 @@
     .line 275
     .line 276
     .line 277
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     .line 278
     .line 279
@@ -1298,7 +1298,7 @@
 
     .line 355
     .line 356
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->back_play:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->back_play:I
 
     .line 357
     .line 358

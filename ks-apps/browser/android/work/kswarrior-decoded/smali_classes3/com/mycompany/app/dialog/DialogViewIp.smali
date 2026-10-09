@@ -861,7 +861,7 @@
 
     .line 168
     .line 169
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 170
     .line 171
@@ -1839,7 +1839,7 @@
 
     .line 20
     .line 21
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 22
     .line 23
@@ -1868,7 +1868,7 @@
 
     .line 34
     .line 35
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->noti_invalid:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->noti_invalid:I
 
     .line 36
     .line 37

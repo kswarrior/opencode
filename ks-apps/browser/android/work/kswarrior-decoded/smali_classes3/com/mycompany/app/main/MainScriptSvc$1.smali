@@ -95,7 +95,7 @@
     .line 23
     .line 24
     .line 25
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_SCRIPT_CANCEL"
+    const-string v2, "com.kswarrior.ksportal.ACTION_SCRIPT_CANCEL"
 
     .line 26
     .line 27

@@ -154,11 +154,11 @@
 
     .line 49
     .line 50
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->ask_rem_pms:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->ask_rem_pms:I
 
     .line 51
     .line 52
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->remove_pms:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->remove_pms:I
 
     .line 53
     .line 54

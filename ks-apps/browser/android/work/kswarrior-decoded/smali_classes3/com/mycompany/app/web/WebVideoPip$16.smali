@@ -116,7 +116,7 @@
 
     .line 33
     .line 34
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->server_delay:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->server_delay:I
 
     .line 35
     .line 36

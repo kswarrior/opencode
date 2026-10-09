@@ -104,7 +104,7 @@
 
     .line 30
     .line 31
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 32
     .line 33
@@ -148,7 +148,7 @@
 
     .line 53
     .line 54
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 55
     .line 56
@@ -162,7 +162,7 @@
 
     .line 60
     .line 61
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->create_folder:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->create_folder:I
 
     .line 62
     .line 63

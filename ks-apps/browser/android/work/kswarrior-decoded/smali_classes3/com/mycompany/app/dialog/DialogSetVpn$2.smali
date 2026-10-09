@@ -99,11 +99,11 @@
 
     .line 27
     .line 28
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->vpn:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->vpn:I
 
     .line 29
     .line 30
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->not_support_locale:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->not_support_locale:I
 
     .line 31
     .line 32
@@ -134,7 +134,7 @@
 
     .line 44
     .line 45
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->vpn_server:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->vpn_server:I
 
     .line 46
     .line 47
@@ -169,7 +169,7 @@
 
     .line 61
     .line 62
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->visit_site:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->visit_site:I
 
     .line 63
     .line 64

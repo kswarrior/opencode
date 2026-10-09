@@ -102,7 +102,7 @@
 
     .line 28
     .line 29
-    sget v2, Lcom/mycompany/app/soulbrowser/R$anim;->ic_slide_in:I
+    sget v2, Lcom/kswarrior/ksportal/R$anim;->ic_slide_in:I
 
     .line 30
     .line 31

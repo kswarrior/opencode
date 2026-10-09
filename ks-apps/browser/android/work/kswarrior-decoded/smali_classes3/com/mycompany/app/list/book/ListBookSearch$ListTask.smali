@@ -611,7 +611,7 @@
 
     .line 180
     .line 181
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_search_white_24:I
 
     .line 182
     .line 183

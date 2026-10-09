@@ -902,7 +902,7 @@
 
     .line 309
     .line 310
-    sget v14, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_black_24:I
+    sget v14, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_black_24:I
 
     .line 311
     .line 312

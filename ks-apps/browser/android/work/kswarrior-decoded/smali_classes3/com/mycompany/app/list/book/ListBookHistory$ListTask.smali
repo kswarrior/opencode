@@ -1242,7 +1242,7 @@
 
     .line 499
     .line 500
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_home_black_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_home_black_24:I
 
     .line 501
     .line 502
@@ -1254,7 +1254,7 @@
 
     .line 505
     :cond_1e
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_offline_pin_black_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_offline_pin_black_24:I
 
     .line 506
     .line 507
@@ -1266,7 +1266,7 @@
 
     .line 510
     :cond_1f
-    sget v10, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v10, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 511
     .line 512

@@ -415,7 +415,7 @@
     .line 157
     .line 158
     .line 159
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->down_image:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->down_image:I
 
     .line 160
     .line 161
@@ -441,7 +441,7 @@
     .line 171
     .line 172
     .line 173
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 174
     .line 175
@@ -488,7 +488,7 @@
     .line 196
     .line 197
     .line 198
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 199
     .line 200

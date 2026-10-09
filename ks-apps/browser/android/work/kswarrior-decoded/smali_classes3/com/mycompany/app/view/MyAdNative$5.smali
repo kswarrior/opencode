@@ -90,7 +90,7 @@
 
     .line 20
     :cond_2
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->ads_view_head:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->ads_view_head:I
 
     .line 21
     .line 22
@@ -131,7 +131,7 @@
     .line 39
     .line 40
     .line 41
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->ads_noti:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->ads_noti:I
 
     .line 42
     .line 43
@@ -502,7 +502,7 @@
     .line 234
     .line 235
     .line 236
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_round_theme:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->selector_round_theme:I
 
     .line 237
     .line 238

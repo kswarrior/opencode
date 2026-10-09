@@ -87,11 +87,11 @@
 
     .line 19
     .line 20
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->open_source:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->open_source:I
 
     .line 21
     .line 22
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 23
     .line 24

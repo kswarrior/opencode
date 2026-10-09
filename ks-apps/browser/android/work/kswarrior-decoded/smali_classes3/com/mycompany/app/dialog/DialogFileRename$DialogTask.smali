@@ -1793,7 +1793,7 @@
 
     .line 23
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 25
     .line 26
@@ -1818,7 +1818,7 @@
 
     .line 35
     .line 36
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 37
     .line 38

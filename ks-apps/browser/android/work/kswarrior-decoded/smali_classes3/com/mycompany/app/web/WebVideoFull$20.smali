@@ -256,7 +256,7 @@
 
     .line 97
     .line 98
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 99
     .line 100
@@ -298,7 +298,7 @@
 
     .line 117
     .line 118
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 119
     .line 120
@@ -343,7 +343,7 @@
 
     .line 138
     .line 139
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 140
     .line 141

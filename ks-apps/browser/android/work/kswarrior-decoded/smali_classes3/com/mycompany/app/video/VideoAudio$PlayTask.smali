@@ -463,7 +463,7 @@
 
     .line 49
     .line 50
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->audio_error:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->audio_error:I
 
     .line 51
     .line 52
@@ -485,7 +485,7 @@
 
     .line 59
     .line 60
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->audio_error:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->audio_error:I
 
     .line 61
     .line 62

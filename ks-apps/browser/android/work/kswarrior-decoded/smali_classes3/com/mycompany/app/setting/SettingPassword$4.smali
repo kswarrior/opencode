@@ -639,11 +639,11 @@
 
     .line 287
     .line 288
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->password_button:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->password_button:I
 
     .line 289
     .line 290
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 291
     .line 292
@@ -681,7 +681,7 @@
 
     .line 307
     .line 308
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 309
     .line 310

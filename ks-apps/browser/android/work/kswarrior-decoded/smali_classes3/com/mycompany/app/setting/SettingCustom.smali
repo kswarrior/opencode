@@ -34,15 +34,15 @@
     .locals 3
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->domain_name:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->domain_name:I
 
     .line 2
     .line 3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->url:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->url:I
 
     .line 4
     .line 5
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->title:I
 
     .line 6
     .line 7
@@ -1188,7 +1188,7 @@
 
     .line 32
     .line 33
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->full_tool:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->full_tool:I
 
     .line 34
     .line 35
@@ -1221,7 +1221,7 @@
 
     .line 49
     .line 50
-    sget v16, Lcom/mycompany/app/soulbrowser/R$string;->land_mode:I
+    sget v16, Lcom/kswarrior/ksportal/R$string;->land_mode:I
 
     .line 51
     .line 52
@@ -1250,7 +1250,7 @@
 
     .line 64
     .line 65
-    sget v17, Lcom/mycompany/app/soulbrowser/R$string;->float_button:I
+    sget v17, Lcom/kswarrior/ksportal/R$string;->float_button:I
 
     .line 66
     .line 67
@@ -1293,7 +1293,7 @@
 
     .line 87
     .line 88
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->address_label:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->address_label:I
 
     .line 89
     .line 90
@@ -1334,7 +1334,7 @@
 
     .line 108
     .line 109
-    sget v16, Lcom/mycompany/app/soulbrowser/R$string;->address_icon:I
+    sget v16, Lcom/kswarrior/ksportal/R$string;->address_icon:I
 
     .line 110
     .line 111
@@ -1363,7 +1363,7 @@
 
     .line 123
     .line 124
-    sget v17, Lcom/mycompany/app/soulbrowser/R$string;->search_suggest:I
+    sget v17, Lcom/kswarrior/ksportal/R$string;->search_suggest:I
 
     .line 125
     .line 126
@@ -1397,7 +1397,7 @@
 
     .line 141
     .line 142
-    sget v18, Lcom/mycompany/app/soulbrowser/R$string;->auto_comp:I
+    sget v18, Lcom/kswarrior/ksportal/R$string;->auto_comp:I
 
     .line 143
     .line 144
@@ -1453,7 +1453,7 @@
 
     .line 171
     .line 172
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->recent_search:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->recent_search:I
 
     .line 173
     .line 174
@@ -1499,7 +1499,7 @@
 
     .line 195
     .line 196
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->recent_secret:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->recent_secret:I
 
     .line 197
     .line 198
@@ -1552,11 +1552,11 @@
 
     .line 222
     .line 223
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->onehand_icon:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->onehand_icon:I
 
     .line 224
     .line 225
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->drag_move_guide:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->drag_move_guide:I
 
     .line 226
     .line 227
@@ -1588,7 +1588,7 @@
 
     .line 240
     .line 241
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->icon_color:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->icon_color:I
 
     .line 242
     .line 243
@@ -1616,7 +1616,7 @@
 
     .line 254
     .line 255
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->onehand_area:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->onehand_area:I
 
     .line 256
     .line 257
@@ -1665,7 +1665,7 @@
 
     .line 279
     .line 280
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->pull_refresh:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->pull_refresh:I
 
     .line 281
     .line 282
@@ -1697,7 +1697,7 @@
 
     .line 295
     .line 296
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->show_up:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->show_up:I
 
     .line 297
     .line 298
@@ -1728,7 +1728,7 @@
 
     .line 310
     .line 311
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->show_scroll:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->show_scroll:I
 
     .line 312
     .line 313
@@ -1765,7 +1765,7 @@
 
     .line 329
     .line 330
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->vol_scroll:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->vol_scroll:I
 
     .line 331
     .line 332
@@ -1794,7 +1794,7 @@
 
     .line 344
     .line 345
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->use_scroll_anim:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->use_scroll_anim:I
 
     .line 346
     .line 347
@@ -1848,7 +1848,7 @@
 
     .line 2
     .line 3
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 4
     .line 5
@@ -1868,7 +1868,7 @@
 
     .line 11
     .line 12
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->history_zero:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->history_zero:I
 
     .line 13
     .line 14
@@ -1979,7 +1979,7 @@
     .line 18
     .line 19
     .line 20
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->duckduckgo:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->duckduckgo:I
 
     .line 21
     .line 22
@@ -2013,7 +2013,7 @@
     .line 35
     .line 36
     .line 37
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->google:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->google:I
 
     .line 38
     .line 39
@@ -2076,7 +2076,7 @@
     .line 65
     .line 66
     :goto_1
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->recent_search:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->recent_search:I
 
     .line 67
     .line 68
@@ -2131,7 +2131,7 @@
     .line 91
     .line 92
     :goto_2
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->history:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->history:I
 
     .line 93
     .line 94
@@ -2187,7 +2187,7 @@
     .line 118
     .line 119
     :goto_3
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->bookmark:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->bookmark:I
 
     .line 120
     .line 121
@@ -2243,7 +2243,7 @@
     .line 145
     .line 146
     :goto_4
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->quick_access:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->quick_access:I
 
     .line 147
     .line 148
@@ -2756,7 +2756,7 @@
 
     .line 15
     .line 16
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->composition:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->composition:I
 
     .line 17
     .line 18

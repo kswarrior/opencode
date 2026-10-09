@@ -263,7 +263,7 @@
 
     .line 60
     .line 61
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->ocr_fail:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->ocr_fail:I
 
     .line 62
     .line 63
@@ -280,7 +280,7 @@
 
     .line 69
     .line 70
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->ocr_guide_2:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->ocr_guide_2:I
 
     .line 71
     .line 72
@@ -297,7 +297,7 @@
 
     .line 78
     .line 79
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->ocr_guide_3:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->ocr_guide_3:I
 
     .line 80
     .line 81
@@ -370,7 +370,7 @@
 
     .line 116
     .line 117
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->ocr_fail:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->ocr_fail:I
 
     .line 118
     .line 119
@@ -387,7 +387,7 @@
 
     .line 124
     .line 125
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 126
     .line 127

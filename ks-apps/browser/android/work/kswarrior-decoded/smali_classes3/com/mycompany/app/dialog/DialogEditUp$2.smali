@@ -115,7 +115,7 @@
 
     .line 37
     .line 38
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_dark_24:I
 
     .line 39
     .line 40
@@ -128,7 +128,7 @@
 
     .line 44
     .line 45
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_dark_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_add_dark_24:I
 
     .line 46
     .line 47
@@ -145,7 +145,7 @@
 
     .line 53
     .line 54
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 55
     .line 56
@@ -170,7 +170,7 @@
 
     .line 66
     .line 67
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 68
     .line 69
@@ -191,7 +191,7 @@
 
     .line 77
     .line 78
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 79
     .line 80
@@ -204,7 +204,7 @@
 
     .line 84
     .line 85
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 86
     .line 87
@@ -253,7 +253,7 @@
 
     .line 111
     .line 112
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 113
     .line 114
@@ -329,7 +329,7 @@
 
     .line 152
     .line 153
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_black_24:I
 
     .line 154
     .line 155
@@ -342,7 +342,7 @@
 
     .line 159
     .line 160
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_black_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_add_black_24:I
 
     .line 161
     .line 162
@@ -359,7 +359,7 @@
 
     .line 168
     .line 169
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_progress_a:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->seek_progress_a:I
 
     .line 170
     .line 171
@@ -384,7 +384,7 @@
 
     .line 181
     .line 182
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->seek_thumb_a:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->seek_thumb_a:I
 
     .line 183
     .line 184
@@ -405,7 +405,7 @@
 
     .line 192
     .line 193
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 194
     .line 195
@@ -418,7 +418,7 @@
 
     .line 199
     .line 200
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 201
     .line 202
@@ -472,7 +472,7 @@
 
     .line 229
     .line 230
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 231
     .line 232
@@ -587,7 +587,7 @@
 
     .line 289
     .line 290
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_upward_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_upward_dark_24:I
 
     .line 291
     .line 292
@@ -688,7 +688,7 @@
 
     .line 343
     .line 344
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_arrow_upward_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_arrow_upward_black_24:I
 
     .line 345
     .line 346
@@ -964,7 +964,7 @@
 
     .line 485
     .line 486
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->location:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->location:I
 
     .line 487
     .line 488
@@ -977,7 +977,7 @@
 
     .line 492
     .line 493
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->long_move_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->long_move_guide:I
 
     .line 494
     .line 495

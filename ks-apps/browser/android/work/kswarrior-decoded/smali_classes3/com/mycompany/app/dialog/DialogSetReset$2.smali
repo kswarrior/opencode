@@ -100,7 +100,7 @@
 
     .line 28
     .line 29
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 30
     .line 31
@@ -135,7 +135,7 @@
 
     .line 46
     .line 47
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 48
     .line 49
@@ -188,7 +188,7 @@
 
     .line 73
     .line 74
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_language_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_language_dark_24:I
 
     .line 75
     .line 76
@@ -206,7 +206,7 @@
 
     .line 82
     .line 83
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_sd_card_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_sd_card_dark_24:I
 
     .line 84
     .line 85
@@ -224,7 +224,7 @@
 
     .line 91
     .line 92
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cast_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_cast_dark_24:I
 
     .line 93
     .line 94
@@ -242,7 +242,7 @@
 
     .line 100
     .line 101
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_dark_24:I
 
     .line 102
     .line 103
@@ -260,7 +260,7 @@
 
     .line 109
     .line 110
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_vpn_key_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_vpn_key_dark_24:I
 
     .line 111
     .line 112
@@ -365,7 +365,7 @@
 
     .line 161
     .line 162
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_language_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_language_black_24:I
 
     .line 163
     .line 164
@@ -383,7 +383,7 @@
 
     .line 170
     .line 171
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_sd_card_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_sd_card_black_24:I
 
     .line 172
     .line 173
@@ -401,7 +401,7 @@
 
     .line 179
     .line 180
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cast_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_cast_black_24:I
 
     .line 181
     .line 182
@@ -419,7 +419,7 @@
 
     .line 188
     .line 189
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_black_24:I
 
     .line 190
     .line 191
@@ -437,7 +437,7 @@
 
     .line 197
     .line 198
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_vpn_key_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_vpn_key_black_24:I
 
     .line 199
     .line 200

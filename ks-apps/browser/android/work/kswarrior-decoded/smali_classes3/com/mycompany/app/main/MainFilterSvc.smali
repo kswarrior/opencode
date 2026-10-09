@@ -190,7 +190,7 @@
 
     .line 31
     .line 32
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->ads_filter:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->ads_filter:I
 
     .line 33
     .line 34
@@ -220,7 +220,7 @@
 
     .line 47
     .line 48
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->update:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->update:I
 
     .line 49
     .line 50
@@ -250,7 +250,7 @@
     .line 62
     .line 63
     .line 64
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_verified_user_white_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_verified_user_white_24:I
 
     .line 65
     .line 66
@@ -296,7 +296,7 @@
 
     .line 85
     .line 86
-    const-string v2, "com.mycompany.app.soulbrowser.NOTI_GROUP_FILTER"
+    const-string v2, "com.kswarrior.ksportal.NOTI_GROUP_FILTER"
 
     .line 87
     .line 88
@@ -352,7 +352,7 @@
 
     .line 113
     .line 114
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->ads_block:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->ads_block:I
 
     .line 115
     .line 116

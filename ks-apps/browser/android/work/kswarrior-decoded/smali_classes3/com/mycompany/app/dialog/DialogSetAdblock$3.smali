@@ -148,7 +148,7 @@
 
     .line 46
     .line 47
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->ads_white:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->ads_white:I
 
     .line 48
     .line 49

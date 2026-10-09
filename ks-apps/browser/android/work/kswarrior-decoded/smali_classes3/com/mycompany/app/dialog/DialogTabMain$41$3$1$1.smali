@@ -102,7 +102,7 @@
 
     .line 28
     .line 29
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->deleted:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->deleted:I
 
     .line 30
     .line 31
@@ -119,7 +119,7 @@
 
     .line 36
     .line 37
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 38
     .line 39

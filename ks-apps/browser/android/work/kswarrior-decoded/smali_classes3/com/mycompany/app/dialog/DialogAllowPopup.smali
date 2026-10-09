@@ -387,7 +387,7 @@
 
     .line 71
     .line 72
-    sget v16, Lcom/mycompany/app/soulbrowser/R$string;->pop_block:I
+    sget v16, Lcom/kswarrior/ksportal/R$string;->pop_block:I
 
     .line 73
     .line 74
@@ -445,7 +445,7 @@
 
     .line 100
     .line 101
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->pop_allow_site:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->pop_allow_site:I
 
     .line 102
     .line 103
@@ -492,7 +492,7 @@
 
     .line 122
     .line 123
-    sget v10, Lcom/mycompany/app/soulbrowser/R$string;->pop_allow_page:I
+    sget v10, Lcom/kswarrior/ksportal/R$string;->pop_allow_page:I
 
     .line 124
     .line 125

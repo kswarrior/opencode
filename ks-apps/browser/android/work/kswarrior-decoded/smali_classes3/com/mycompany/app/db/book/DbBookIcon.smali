@@ -1397,7 +1397,7 @@
     move-result-object p0
 
     .line 21
-    sget p1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_search_youtube:I
+    sget p1, Lcom/kswarrior/ksportal/R$drawable;->baseline_search_youtube:I
 
     .line 22
     .line 23

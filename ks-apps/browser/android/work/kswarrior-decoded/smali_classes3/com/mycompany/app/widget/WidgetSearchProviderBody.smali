@@ -624,7 +624,7 @@
 
     .line 79
     .line 80
-    sget v3, Lcom/mycompany/app/soulbrowser/R$layout;->widget_search_layout_dark:I
+    sget v3, Lcom/kswarrior/ksportal/R$layout;->widget_search_layout_dark:I
 
     .line 81
     .line 82
@@ -632,7 +632,7 @@
 
     .line 83
     :cond_1
-    sget v3, Lcom/mycompany/app/soulbrowser/R$layout;->widget_search_layout_light:I
+    sget v3, Lcom/kswarrior/ksportal/R$layout;->widget_search_layout_light:I
 
     .line 84
     .line 85
@@ -642,7 +642,7 @@
     .line 86
     .line 87
     .line 88
-    sget p1, Lcom/mycompany/app/soulbrowser/R$id;->back_view:I
+    sget p1, Lcom/kswarrior/ksportal/R$id;->back_view:I
 
     .line 89
     .line 90
@@ -651,7 +651,7 @@
     .line 91
     .line 92
     .line 93
-    sget p1, Lcom/mycompany/app/soulbrowser/R$id;->icon_view:I
+    sget p1, Lcom/kswarrior/ksportal/R$id;->icon_view:I
 
     .line 94
     .line 95
@@ -713,7 +713,7 @@
     .line 9
     .line 10
     .line 11
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_SRCHGET_UPDATE"
+    const-string v0, "com.kswarrior.ksportal.ACTION_SRCHGET_UPDATE"
 
     .line 12
     .line 13

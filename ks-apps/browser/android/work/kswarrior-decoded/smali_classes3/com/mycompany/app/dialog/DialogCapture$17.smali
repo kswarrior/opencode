@@ -178,7 +178,7 @@
 
     .line 45
     .line 46
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->save_fail:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->save_fail:I
 
     .line 47
     .line 48
@@ -221,7 +221,7 @@
 
     .line 67
     .line 68
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->save_success:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->save_success:I
 
     .line 69
     .line 70

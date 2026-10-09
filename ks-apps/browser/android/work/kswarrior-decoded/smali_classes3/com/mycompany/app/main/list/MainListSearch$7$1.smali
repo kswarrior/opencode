@@ -236,7 +236,7 @@
     .line 103
     .line 104
     .line 105
-    sget v8, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v8, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 106
     .line 107

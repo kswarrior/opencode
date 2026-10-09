@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 27
     .line 28
@@ -122,7 +122,7 @@
 
     .line 40
     .line 41
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 42
     .line 43
@@ -167,7 +167,7 @@
 
     .line 64
     .line 65
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 66
     .line 67
@@ -193,7 +193,7 @@
 
     .line 78
     .line 79
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 80
     .line 81
@@ -221,7 +221,7 @@
 
     .line 93
     .line 94
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->refresh:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->refresh:I
 
     .line 95
     .line 96
@@ -410,7 +410,7 @@
 
     .line 179
     .line 180
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->java_script_info:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->java_script_info:I
 
     .line 181
     .line 182
@@ -427,7 +427,7 @@
 
     .line 188
     .line 189
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->dark_mode_info_2:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->dark_mode_info_2:I
 
     .line 190
     .line 191
@@ -456,7 +456,7 @@
 
     .line 203
     .line 204
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->java_script:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->java_script:I
 
     .line 205
     .line 206
@@ -505,7 +505,7 @@
 
     .line 228
     .line 229
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->js_block_site:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->js_block_site:I
 
     .line 230
     .line 231
@@ -539,7 +539,7 @@
 
     .line 244
     .line 245
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->js_block_page:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->js_block_page:I
 
     .line 246
     .line 247
@@ -573,7 +573,7 @@
 
     .line 260
     .line 261
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->js_black:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->js_black:I
 
     .line 262
     .line 263

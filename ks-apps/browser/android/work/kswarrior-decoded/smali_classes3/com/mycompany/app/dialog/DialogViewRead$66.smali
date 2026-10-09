@@ -252,11 +252,11 @@
 
     .line 82
     .line 83
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->auto_speak:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->auto_speak:I
 
     .line 84
     .line 85
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->auto_speak_guide:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->auto_speak_guide:I
 
     .line 86
     .line 87

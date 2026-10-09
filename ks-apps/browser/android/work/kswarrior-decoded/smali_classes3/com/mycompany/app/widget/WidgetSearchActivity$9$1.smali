@@ -74,11 +74,11 @@
 
     .line 14
     .line 15
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->recent_delete:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->recent_delete:I
 
     .line 16
     .line 17
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->delete:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->delete:I
 
     .line 18
     .line 19

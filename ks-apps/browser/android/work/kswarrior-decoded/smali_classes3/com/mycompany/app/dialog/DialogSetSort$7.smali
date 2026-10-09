@@ -140,7 +140,7 @@
 
     .line 21
     .line 22
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->order_descend:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->order_descend:I
 
     .line 23
     .line 24
@@ -148,7 +148,7 @@
 
     .line 25
     :cond_2
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->order_ascend:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->order_ascend:I
 
     .line 26
     .line 27

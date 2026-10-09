@@ -142,7 +142,7 @@
 
     .line 48
     :catch_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->not_supported:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->not_supported:I
 
     .line 49
     .line 50
@@ -155,7 +155,7 @@
 
     .line 54
     :catch_1
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 55
     .line 56

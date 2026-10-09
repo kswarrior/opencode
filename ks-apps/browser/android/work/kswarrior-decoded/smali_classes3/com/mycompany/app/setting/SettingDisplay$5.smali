@@ -1153,7 +1153,7 @@
 
     .line 534
     .line 535
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->img_bright:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->img_bright:I
 
     .line 536
     .line 537
@@ -1292,7 +1292,7 @@
 
     .line 601
     .line 602
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->web_page:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->web_page:I
 
     .line 603
     .line 604

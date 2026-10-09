@@ -150,7 +150,7 @@
 
     .line 5
     .line 6
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->splash_intro_1:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->splash_intro_1:I
 
     .line 7
     .line 8
@@ -162,7 +162,7 @@
 
     .line 10
     .line 11
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->splash_intro_2:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->splash_intro_2:I
 
     .line 12
     .line 13
@@ -177,7 +177,7 @@
 
     .line 16
     .line 17
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->splash_intro_3:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->splash_intro_3:I
 
     .line 18
     .line 19
@@ -185,7 +185,7 @@
 
     .line 20
     :cond_2
-    sget p2, Lcom/mycompany/app/soulbrowser/R$drawable;->splash_intro_4:I
+    sget p2, Lcom/kswarrior/ksportal/R$drawable;->splash_intro_4:I
 
     .line 21
     .line 22

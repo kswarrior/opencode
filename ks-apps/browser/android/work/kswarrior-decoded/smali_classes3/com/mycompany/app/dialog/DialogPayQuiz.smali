@@ -212,7 +212,7 @@
     .line 8
     .line 9
     :cond_0
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->item_quiz_view:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->item_quiz_view:I
 
     .line 10
     .line 11
@@ -242,7 +242,7 @@
     move-result-object v7
 
     .line 23
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->prevent_pay:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->prevent_pay:I
 
     .line 24
     .line 25
@@ -309,7 +309,7 @@
     .line 56
     .line 57
     .line 58
-    sget v11, Lcom/mycompany/app/soulbrowser/R$string;->input_answer:I
+    sget v11, Lcom/kswarrior/ksportal/R$string;->input_answer:I
 
     .line 59
     .line 60
@@ -468,7 +468,7 @@
 
     .line 144
     .line 145
-    sget v13, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v13, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 146
     .line 147
@@ -568,7 +568,7 @@
     .line 198
     .line 199
     .line 200
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 201
     .line 202
@@ -1047,7 +1047,7 @@
 
     .line 18
     .line 19
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 20
     .line 21
@@ -1084,7 +1084,7 @@
 
     .line 36
     .line 37
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->correct_answer:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->correct_answer:I
 
     .line 38
     .line 39

@@ -116,7 +116,7 @@
     .line 33
     .line 34
     .line 35
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->user_script_title:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->user_script_title:I
 
     .line 36
     .line 37
@@ -169,7 +169,7 @@
     .line 62
     .line 63
     :cond_2
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->install_confirm:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->install_confirm:I
 
     .line 64
     .line 65
@@ -195,7 +195,7 @@
     .line 75
     .line 76
     .line 77
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->already_install:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->already_install:I
 
     .line 78
     .line 79
@@ -217,7 +217,7 @@
 
     .line 87
     .line 88
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->update:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->update:I
 
     .line 89
     .line 90
@@ -225,7 +225,7 @@
 
     .line 91
     :cond_4
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->install:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->install:I
 
     .line 92
     .line 93

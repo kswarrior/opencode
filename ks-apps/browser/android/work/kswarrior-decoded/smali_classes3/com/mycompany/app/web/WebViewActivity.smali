@@ -4625,7 +4625,7 @@
     const/4 v2, 0x0
 
     .line 36
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->group_other_tab:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->group_other_tab:I
 
     .line 37
     .line 38
@@ -4669,7 +4669,7 @@
 
     .line 57
     .line 58
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->delete_other_tab:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->delete_other_tab:I
 
     .line 59
     .line 60
@@ -4691,7 +4691,7 @@
     const/4 v1, 0x2
 
     .line 69
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->delete_all_tab:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->delete_all_tab:I
 
     .line 70
     .line 71
@@ -4713,7 +4713,7 @@
     const/4 v1, 0x3
 
     .line 80
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->new_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->new_url:I
 
     .line 81
     .line 82
@@ -4734,7 +4734,7 @@
     const/4 v1, 0x4
 
     .line 91
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->group_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->group_url:I
 
     .line 92
     .line 93
@@ -4755,7 +4755,7 @@
     const/4 v1, 0x5
 
     .line 102
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->back_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->back_url:I
 
     .line 103
     .line 104
@@ -4780,7 +4780,7 @@
     const/4 v1, 0x6
 
     .line 115
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->copy_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->copy_url:I
 
     .line 116
     .line 117
@@ -4801,7 +4801,7 @@
     const/4 v1, 0x7
 
     .line 126
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->share_url:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->share_url:I
 
     .line 127
     .line 128
@@ -4823,7 +4823,7 @@
 
     .line 137
     .line 138
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->open_with:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->open_with:I
 
     .line 139
     .line 140
@@ -5404,7 +5404,7 @@
 
     .line 59
     :cond_3
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->down_start:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->down_start:I
 
     .line 60
     .line 61
@@ -8559,7 +8559,7 @@
 
     .line 6
     .line 7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 8
     .line 9
@@ -11872,7 +11872,7 @@
 
     .line 188
     .line 189
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 190
     .line 191
@@ -11926,7 +11926,7 @@
 
     .line 214
     .line 215
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 216
     .line 217
@@ -11943,7 +11943,7 @@
 
     .line 222
     .line 223
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 224
     .line 225
@@ -13335,7 +13335,7 @@
 
     .line 5
     .line 6
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->wait_retry:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->wait_retry:I
 
     .line 7
     .line 8
@@ -16239,7 +16239,7 @@
 
     .line 57
     .line 58
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_text_snippet_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_text_snippet_black_24:I
 
     .line 59
     .line 60
@@ -16251,7 +16251,7 @@
 
     .line 63
     :cond_2
-    sget v0, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_kid_star_black_24:I
+    sget v0, Lcom/kswarrior/ksportal/R$drawable;->outline_kid_star_black_24:I
 
     .line 64
     .line 65
@@ -16525,7 +16525,7 @@
 
     .line 195
     .line 196
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->memo_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->memo_title:I
 
     .line 197
     .line 198
@@ -16647,7 +16647,7 @@
 
     .line 257
     .line 258
-    sget p0, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p0, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 259
     .line 260
@@ -16873,7 +16873,7 @@
 
     .line 359
     .line 360
-    sget p0, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p0, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 361
     .line 362
@@ -16949,7 +16949,7 @@
 
     .line 393
     .line 394
-    sget p0, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p0, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 395
     .line 396
@@ -18898,7 +18898,7 @@
 
     .line 560
     :cond_32
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 561
     .line 562
@@ -19717,7 +19717,7 @@
 
     .line 943
     :cond_55
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 944
     .line 945
@@ -24017,7 +24017,7 @@
 
     .line 9
     .line 10
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->input_name:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->input_name:I
 
     .line 11
     .line 12
@@ -24071,7 +24071,7 @@
 
     .line 33
     .line 34
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported:I
 
     .line 35
     .line 36
@@ -24088,7 +24088,7 @@
 
     .line 41
     .line 42
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 43
     .line 44
@@ -27095,7 +27095,7 @@
 
     .line 38
     :cond_2
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->group_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->group_title:I
 
     .line 39
     .line 40
@@ -27127,7 +27127,7 @@
 
     .line 52
     .line 53
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->no_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->no_title:I
 
     .line 54
     .line 55
@@ -27270,7 +27270,7 @@
 
     .line 120
     :cond_7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->no_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->no_title:I
 
     .line 121
     .line 122
@@ -30420,7 +30420,7 @@
 
     .line 44
     .line 45
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 46
     .line 47
@@ -30809,7 +30809,7 @@
 
     .line 12
     .line 13
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->ok:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->ok:I
 
     .line 14
     .line 15
@@ -33355,7 +33355,7 @@
     .line 117
     .line 118
     :cond_6
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 119
     .line 120
@@ -33569,7 +33569,7 @@
     .line 214
     .line 215
     .line 216
-    sget v2, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v2, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 217
     .line 218
@@ -35344,7 +35344,7 @@
     move-result v7
 
     .line 56
-    sget v1, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v1, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 57
     .line 58
@@ -40497,7 +40497,7 @@
 
     .line 236
     .line 237
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_black_18:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_black_18:I
 
     .line 238
     .line 239
@@ -40510,7 +40510,7 @@
 
     .line 243
     .line 244
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_content_copy_black_18:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_content_copy_black_18:I
 
     .line 245
     .line 246
@@ -40523,7 +40523,7 @@
 
     .line 250
     .line 251
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_delete_black_20:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_delete_black_20:I
 
     .line 252
     .line 253
@@ -40540,7 +40540,7 @@
 
     .line 258
     .line 259
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_cancel_dark_18:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_cancel_dark_18:I
 
     .line 260
     .line 261
@@ -40553,7 +40553,7 @@
 
     .line 265
     .line 266
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_content_copy_dark_18:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_content_copy_dark_18:I
 
     .line 267
     .line 268
@@ -40566,7 +40566,7 @@
 
     .line 272
     .line 273
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_delete_dark_20:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_delete_dark_20:I
 
     .line 274
     .line 275
@@ -52342,7 +52342,7 @@
     move-result-object v0
 
     .line 119
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->cast_mini_controller:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->cast_mini_controller:I
 
     .line 120
     .line 121
@@ -53613,7 +53613,7 @@
     move-result-object v3
 
     .line 45
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->cast_mini_controller:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->cast_mini_controller:I
 
     .line 46
     .line 47
@@ -53681,7 +53681,7 @@
 
     .line 77
     .line 78
-    sget v6, Lcom/mycompany/app/soulbrowser/R$layout;->cast_icon_layout:I
+    sget v6, Lcom/kswarrior/ksportal/R$layout;->cast_icon_layout:I
 
     .line 79
     .line 80
@@ -53739,7 +53739,7 @@
 
     .line 107
     .line 108
-    sget v6, Lcom/mycompany/app/soulbrowser/R$layout;->cast_mini_control:I
+    sget v6, Lcom/kswarrior/ksportal/R$layout;->cast_mini_control:I
 
     .line 109
     .line 110
@@ -60951,7 +60951,7 @@
 
     .line 39
     .line 40
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_up_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_up_black_24:I
 
     .line 41
     .line 42
@@ -60968,7 +60968,7 @@
 
     .line 47
     .line 48
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_keyboard_arrow_up_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_keyboard_arrow_up_dark_24:I
 
     .line 49
     .line 50
@@ -62796,7 +62796,7 @@
 
     .line 53
     .line 54
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->hand_noti_icon:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->hand_noti_icon:I
 
     .line 55
     .line 56
@@ -62881,7 +62881,7 @@
 
     .line 96
     .line 97
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->onehand_noti:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->onehand_noti:I
 
     .line 98
     .line 99
@@ -65297,7 +65297,7 @@
 
     .line 26
     .line 27
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 28
     .line 29
@@ -65764,7 +65764,7 @@
 
     .line 80
     .line 81
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->pop_blocked:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->pop_blocked:I
 
     .line 82
     .line 83
@@ -89806,7 +89806,7 @@
     .line 83
     .line 84
     .line 85
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->web_bot_view:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->web_bot_view:I
 
     .line 86
     .line 87
@@ -93308,7 +93308,7 @@
 
     .line 6
     .line 7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 8
     .line 9
@@ -93399,7 +93399,7 @@
 
     .line 51
     .line 52
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 53
     .line 54
@@ -94445,7 +94445,7 @@
 
     .line 113
     .line 114
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_support_video:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_support_video:I
 
     .line 115
     .line 116
@@ -97049,7 +97049,7 @@
 
     .line 49
     .line 50
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->app_block_noti:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->app_block_noti:I
 
     .line 51
     .line 52
@@ -97093,7 +97093,7 @@
 
     .line 70
     .line 71
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->app_block_noti:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->app_block_noti:I
 
     .line 72
     .line 73
@@ -105745,7 +105745,7 @@
 
     .line 12
     .line 13
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 14
     .line 15
@@ -105780,7 +105780,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 31
     .line 32
@@ -105871,7 +105871,7 @@
 
     .line 73
     .line 74
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 75
     .line 76
@@ -106072,7 +106072,7 @@
 
     .line 175
     .line 176
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 177
     .line 178
@@ -106110,7 +106110,7 @@
 
     .line 194
     .line 195
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 196
     .line 197
@@ -106140,7 +106140,7 @@
 
     .line 208
     .line 209
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 210
     .line 211
@@ -106391,7 +106391,7 @@
 
     .line 322
     .line 323
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 324
     .line 325
@@ -107944,7 +107944,7 @@
 
     .line 34
     .line 35
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->exit_noti_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->exit_noti_2:I
 
     .line 36
     .line 37
@@ -107952,7 +107952,7 @@
 
     .line 38
     :cond_3
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->exit_noti_1:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->exit_noti_1:I
 
     .line 39
     .line 40
@@ -107967,7 +107967,7 @@
 
     .line 44
     .line 45
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->exit_noti_2:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->exit_noti_2:I
 
     .line 46
     .line 47
@@ -108047,7 +108047,7 @@
     .line 77
     :cond_8
     :goto_2
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->exit_noti_2:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->exit_noti_2:I
 
     .line 78
     .line 79
@@ -109202,7 +109202,7 @@
 
     .line 10
     .line 11
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 12
     .line 13
@@ -109237,7 +109237,7 @@
 
     .line 27
     .line 28
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 29
     .line 30
@@ -109339,7 +109339,7 @@
 
     .line 77
     .line 78
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->save_empty:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->save_empty:I
 
     .line 79
     .line 80
@@ -109361,7 +109361,7 @@
 
     .line 88
     .line 89
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 90
     .line 91
@@ -109397,7 +109397,7 @@
 
     .line 106
     .line 107
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 108
     .line 109
@@ -110521,7 +110521,7 @@
 
     .line 10
     .line 11
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->loading:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->loading:I
 
     .line 12
     .line 13
@@ -110546,7 +110546,7 @@
 
     .line 22
     .line 23
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 24
     .line 25
@@ -111225,7 +111225,7 @@
 
     .line 6
     :cond_0
-    sget v0, Lcom/mycompany/app/soulbrowser/R$id;->edit_text:I
+    sget v0, Lcom/kswarrior/ksportal/R$id;->edit_text:I
 
     .line 7
     .line 8
@@ -111366,7 +111366,7 @@
 
     .line 82
     .line 83
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 84
     .line 85
@@ -111376,7 +111376,7 @@
     .line 87
     .line 88
     :cond_1
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->web_edit_hint:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->web_edit_hint:I
 
     .line 89
     .line 90
@@ -113928,7 +113928,7 @@
     .line 74
     :cond_5
     :goto_1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 75
     .line 76
@@ -114980,7 +114980,7 @@
 
     .line 31
     .line 32
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_for_offline_red_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->outline_download_for_offline_red_24:I
 
     .line 33
     .line 34
@@ -115048,7 +115048,7 @@
 
     .line 64
     .line 65
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_download_for_offline_red_24:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_download_for_offline_red_24:I
 
     .line 66
     .line 67
@@ -115643,7 +115643,7 @@
     .line 7
     iget-object v1, v4, Lcom/mycompany/app/dialog/DialogQuickEdit;->b0:Landroid/content/Context;
 
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     invoke-static {v1, v2}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
 
@@ -115669,7 +115669,7 @@
     .line 10
     iget-object v1, v4, Lcom/mycompany/app/dialog/DialogQuickEdit;->b0:Landroid/content/Context;
 
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     invoke-static {v1, v2}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
 
@@ -115770,7 +115770,7 @@
     :goto_2
     iget-object v1, v1, Lcom/mycompany/app/dialog/DialogQuickEdit;->b0:Landroid/content/Context;
 
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     invoke-static {v1, v2}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
 
@@ -115859,7 +115859,7 @@
     .line 28
     iget-object v1, v4, Lcom/mycompany/app/dialog/DialogDownPage;->b0:Landroid/content/Context;
 
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     invoke-static {v1, v2}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
 
@@ -115881,7 +115881,7 @@
     .line 31
     iget-object v1, v4, Lcom/mycompany/app/dialog/DialogDownPage;->b0:Landroid/content/Context;
 
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     invoke-static {v1, v2}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
 
@@ -115976,7 +115976,7 @@
 
     new-instance v3, Lcom/mycompany/app/main/MainSelectAdapter$MainSelectItem;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->mobile_mode:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->mobile_mode:I
 
     invoke-direct {v3, v4, v1, v12}, Lcom/mycompany/app/main/MainSelectAdapter$MainSelectItem;-><init>(ILjava/lang/String;I)V
 
@@ -116223,9 +116223,9 @@
     :cond_28
     new-instance v2, Lcom/mycompany/app/setting/SettingListAdapter$SettingItem;
 
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->tts_on:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->tts_on:I
 
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->tts_info_1:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->tts_info_1:I
 
     sget-boolean v7, Lcom/mycompany/app/pref/PrefTts;->j:Z
 
@@ -116832,7 +116832,7 @@
     .line 123
     :cond_52
     :goto_d
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 124
     invoke-static {v0, v1}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
@@ -117072,7 +117072,7 @@
     if-eqz v2, :cond_67
 
     .line 151
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 152
     invoke-static {v0, v1}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
@@ -117365,7 +117365,7 @@
 
     .line 188
     :cond_7d
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 189
     invoke-static {v0, v1}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
@@ -117489,7 +117489,7 @@
     if-eqz v2, :cond_8b
 
     .line 203
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 204
     invoke-static {v0, v1}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
@@ -117530,7 +117530,7 @@
     move-result v3
 
     .line 210
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->added:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->added:I
 
     .line 211
     invoke-static {v0, v5}, Lcom/mycompany/app/main/MainUtil;->e8(Landroid/content/Context;I)V
@@ -127268,7 +127268,7 @@
 
     .line 67
     .line 68
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->intro_text_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->intro_text_1:I
 
     .line 69
     .line 70
@@ -127346,7 +127346,7 @@
 
     .line 108
     .line 109
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->intro_text_2:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->intro_text_2:I
 
     .line 110
     .line 111
@@ -127424,7 +127424,7 @@
 
     .line 149
     .line 150
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->intro_text_3:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->intro_text_3:I
 
     .line 151
     .line 152
@@ -127495,7 +127495,7 @@
 
     .line 187
     .line 188
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->intro_text_4:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->intro_text_4:I
 
     .line 189
     .line 190
@@ -131679,7 +131679,7 @@
 
     .line 73
     .line 74
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->google_trans:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->google_trans:I
 
     .line 75
     .line 76
@@ -135936,15 +135936,15 @@
     .line 223
     .line 224
     .line 225
-    sget v9, Lcom/mycompany/app/soulbrowser/R$id;->web_top_view:I
+    sget v9, Lcom/kswarrior/ksportal/R$id;->web_top_view:I
 
     .line 226
     .line 227
-    sget v10, Lcom/mycompany/app/soulbrowser/R$id;->web_bot_view:I
+    sget v10, Lcom/kswarrior/ksportal/R$id;->web_bot_view:I
 
     .line 228
     .line 229
-    sget v11, Lcom/mycompany/app/soulbrowser/R$id;->web_cast_ctrl:I
+    sget v11, Lcom/kswarrior/ksportal/R$id;->web_cast_ctrl:I
 
     .line 230
     .line 231
@@ -137857,7 +137857,7 @@
     .line 1172
     .line 1173
     .line 1174
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_DOWN_COMPLETE"
+    const-string v2, "com.kswarrior.ksportal.ACTION_DOWN_COMPLETE"
 
     .line 1175
     .line 1176
@@ -137866,7 +137866,7 @@
     .line 1177
     .line 1178
     .line 1179
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_DOWN_DELETE"
+    const-string v2, "com.kswarrior.ksportal.ACTION_DOWN_DELETE"
 
     .line 1180
     .line 1181
@@ -137875,7 +137875,7 @@
     .line 1182
     .line 1183
     .line 1184
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_PIP_FRWD"
+    const-string v2, "com.kswarrior.ksportal.ACTION_PIP_FRWD"
 
     .line 1185
     .line 1186
@@ -137884,7 +137884,7 @@
     .line 1187
     .line 1188
     .line 1189
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_PIP_PLAY"
+    const-string v2, "com.kswarrior.ksportal.ACTION_PIP_PLAY"
 
     .line 1190
     .line 1191
@@ -137893,7 +137893,7 @@
     .line 1192
     .line 1193
     .line 1194
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_PIP_FFWD"
+    const-string v2, "com.kswarrior.ksportal.ACTION_PIP_FFWD"
 
     .line 1195
     .line 1196
@@ -137902,7 +137902,7 @@
     .line 1197
     .line 1198
     .line 1199
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_BACK_STOP"
+    const-string v2, "com.kswarrior.ksportal.ACTION_BACK_STOP"
 
     .line 1200
     .line 1201
@@ -137911,7 +137911,7 @@
     .line 1202
     .line 1203
     .line 1204
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_SECRET_EXIT"
+    const-string v2, "com.kswarrior.ksportal.ACTION_SECRET_EXIT"
 
     .line 1205
     .line 1206
@@ -144675,7 +144675,7 @@
     .line 126
     .line 127
     .line 128
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_granted:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_granted:I
 
     .line 129
     .line 130
@@ -144688,7 +144688,7 @@
 
     .line 134
     :cond_7
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_denied:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_denied:I
 
     .line 135
     .line 136
@@ -144739,7 +144739,7 @@
     .line 157
     .line 158
     .line 159
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_granted:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_granted:I
 
     .line 160
     .line 161
@@ -144752,7 +144752,7 @@
 
     .line 165
     :cond_8
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->permission_denied:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->permission_denied:I
 
     .line 166
     .line 167
@@ -145992,7 +145992,7 @@
 
     .line 231
     .line 232
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->print_success:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->print_success:I
 
     .line 233
     .line 234
@@ -146021,7 +146021,7 @@
 
     .line 245
     .line 246
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->print_fail:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->print_fail:I
 
     .line 247
     .line 248
@@ -149974,7 +149974,7 @@
 
     .line 201
     :goto_8
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 202
     .line 203
@@ -152168,7 +152168,7 @@
 
     .line 211
     :goto_8
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 212
     .line 213
@@ -153896,7 +153896,7 @@
 
     .line 25
     .line 26
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_add_black_24:I
 
     .line 27
     .line 28
@@ -153913,7 +153913,7 @@
 
     .line 33
     .line 34
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_add_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_add_dark_24:I
 
     .line 35
     .line 36
@@ -154388,7 +154388,7 @@
 
     .line 26
     .line 27
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 28
     .line 29
@@ -154429,7 +154429,7 @@
 
     .line 46
     .line 47
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 48
     .line 49
@@ -155226,7 +155226,7 @@
 
     .line 113
     .line 114
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 115
     .line 116
@@ -155287,7 +155287,7 @@
 
     .line 139
     .line 140
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 141
     .line 142
@@ -155394,7 +155394,7 @@
 
     .line 190
     :goto_5
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 191
     .line 192
@@ -156893,7 +156893,7 @@
 
     .line 125
     :goto_3
-    sget v2, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v2, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 126
     .line 127
@@ -157957,7 +157957,7 @@
     .line 68
     .line 69
     .line 70
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->web_top_view:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->web_top_view:I
 
     .line 71
     .line 72
@@ -159674,7 +159674,7 @@
 
     .line 19
     .line 20
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 21
     .line 22
@@ -164530,7 +164530,7 @@
 
     .line 41
     :cond_1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->no_title:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->no_title:I
 
     .line 42
     .line 43
@@ -166337,7 +166337,7 @@
     .line 59
     .line 60
     .line 61
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->delete_cookie:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->delete_cookie:I
 
     .line 62
     .line 63
@@ -166454,7 +166454,7 @@
 
     .line 115
     :goto_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v1, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 116
     .line 117
@@ -169032,7 +169032,7 @@
 
     .line 9
     .line 10
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 11
     .line 12
@@ -169061,7 +169061,7 @@
 
     .line 23
     .line 24
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 25
     .line 26
@@ -171243,7 +171243,7 @@
     .line 134
     :cond_9
     :goto_2
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 135
     .line 136
@@ -171532,7 +171532,7 @@
     .line 269
     :cond_16
     :goto_5
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 270
     .line 271
@@ -171769,7 +171769,7 @@
 
     .line 377
     .line 378
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 379
     .line 380
@@ -171800,7 +171800,7 @@
 
     .line 389
     .line 390
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 391
     .line 392
@@ -171924,7 +171924,7 @@
     .line 450
     :cond_23
     :goto_9
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported_page:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported_page:I
 
     .line 451
     .line 452

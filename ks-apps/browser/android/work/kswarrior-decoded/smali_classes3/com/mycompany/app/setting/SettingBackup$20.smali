@@ -166,7 +166,7 @@
 
     .line 46
     .line 47
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 48
     .line 49

@@ -885,7 +885,7 @@
 
     .line 68
     .line 69
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->check_network:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->check_network:I
 
     .line 70
     .line 71
@@ -902,7 +902,7 @@
 
     .line 76
     .line 77
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 78
     .line 79

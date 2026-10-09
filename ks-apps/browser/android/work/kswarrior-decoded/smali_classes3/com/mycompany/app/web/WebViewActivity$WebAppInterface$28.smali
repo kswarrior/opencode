@@ -129,7 +129,7 @@
 
     .line 36
     .line 37
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->invalid_url:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->invalid_url:I
 
     .line 38
     .line 39

@@ -241,7 +241,7 @@
 
     .line 17
     .line 18
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 19
     .line 20

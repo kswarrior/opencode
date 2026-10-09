@@ -129,7 +129,7 @@
 
     .line 41
     .line 42
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 43
     .line 44
@@ -183,7 +183,7 @@
 
     .line 68
     :catch_0
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 69
     .line 70
@@ -197,7 +197,7 @@
     .line 74
     .line 75
     :catch_1
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 76
     .line 77
@@ -306,7 +306,7 @@
 
     .line 127
     .line 128
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->not_allow:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->not_allow:I
 
     .line 129
     .line 130
@@ -324,7 +324,7 @@
 
     .line 137
     .line 138
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->history_none:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->history_none:I
 
     .line 139
     .line 140
@@ -345,7 +345,7 @@
     const/4 p3, 0x2
 
     .line 149
-    sget p4, Lcom/mycompany/app/soulbrowser/R$string;->setting:I
+    sget p4, Lcom/kswarrior/ksportal/R$string;->setting:I
 
     .line 150
     .line 151
@@ -587,7 +587,7 @@
 
     .line 266
     .line 267
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->direct_select:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->direct_select:I
 
     .line 268
     .line 269
@@ -720,7 +720,7 @@
 
     .line 331
     .line 332
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->default_title:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->default_title:I
 
     .line 333
     .line 334
@@ -738,7 +738,7 @@
 
     .line 341
     .line 342
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->other_app:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->other_app:I
 
     .line 343
     .line 344

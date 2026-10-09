@@ -104,7 +104,7 @@
 
     .line 24
     :sswitch_0
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_DOWN_EXIT"
+    const-string v0, "com.kswarrior.ksportal.ACTION_DOWN_EXIT"
 
     .line 25
     .line 26
@@ -131,7 +131,7 @@
 
     .line 35
     :sswitch_1
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_DOWN_RETRY"
+    const-string v0, "com.kswarrior.ksportal.ACTION_DOWN_RETRY"
 
     .line 36
     .line 37
@@ -158,7 +158,7 @@
 
     .line 46
     :sswitch_2
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_DOWN_PAUSE"
+    const-string v0, "com.kswarrior.ksportal.ACTION_DOWN_PAUSE"
 
     .line 47
     .line 48
@@ -185,7 +185,7 @@
 
     .line 57
     :sswitch_3
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_IMAGE_CANCEL"
+    const-string v0, "com.kswarrior.ksportal.ACTION_IMAGE_CANCEL"
 
     .line 58
     .line 59
@@ -212,7 +212,7 @@
 
     .line 68
     :sswitch_4
-    const-string v0, "com.mycompany.app.soulbrowser.ACTION_DOWN_CANCEL"
+    const-string v0, "com.kswarrior.ksportal.ACTION_DOWN_CANCEL"
 
     .line 69
     .line 70

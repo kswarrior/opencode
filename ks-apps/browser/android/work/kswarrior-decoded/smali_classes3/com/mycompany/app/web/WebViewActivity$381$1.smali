@@ -597,7 +597,7 @@
 
     .line 250
     .line 251
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->image_fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->image_fail:I
 
     .line 252
     .line 253

@@ -200,7 +200,7 @@
 
     .line 77
     .line 78
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_white_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_white_24:I
 
     .line 79
     .line 80
@@ -213,7 +213,7 @@
 
     .line 84
     .line 85
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_right_white_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_right_white_24:I
 
     .line 86
     .line 87
@@ -230,7 +230,7 @@
 
     .line 92
     .line 93
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_right_white_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_right_white_24:I
 
     .line 94
     .line 95
@@ -243,7 +243,7 @@
 
     .line 99
     .line 100
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_chevron_left_white_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_chevron_left_white_24:I
 
     .line 101
     .line 102
@@ -257,7 +257,7 @@
 
     .line 106
     .line 107
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_swipe_hori:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_swipe_hori:I
 
     .line 108
     .line 109
@@ -410,7 +410,7 @@
 
     .line 191
     .line 192
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->web_edit_hint:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->web_edit_hint:I
 
     .line 193
     .line 194

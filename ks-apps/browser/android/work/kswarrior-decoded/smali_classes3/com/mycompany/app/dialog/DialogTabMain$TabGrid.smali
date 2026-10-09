@@ -211,7 +211,7 @@
     .line 68
     .line 69
     .line 70
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 71
     .line 72
@@ -378,7 +378,7 @@
     .line 158
     .line 159
     .line 160
-    sget v9, Lcom/mycompany/app/soulbrowser/R$string;->secret_mode:I
+    sget v9, Lcom/kswarrior/ksportal/R$string;->secret_mode:I
 
     .line 161
     .line 162
@@ -555,7 +555,7 @@
     .line 253
     .line 254
     .line 255
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->unlock:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->unlock:I
 
     .line 256
     .line 257
@@ -686,7 +686,7 @@
 
     .line 325
     .line 326
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_dark_84:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_dark_84:I
 
     .line 327
     .line 328
@@ -731,7 +731,7 @@
 
     .line 349
     .line 350
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_lock_black_84:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_lock_black_84:I
 
     .line 351
     .line 352
@@ -2058,7 +2058,7 @@
 
     .line 23
     .line 24
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_dark_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_dark_20:I
 
     .line 25
     .line 26
@@ -2107,7 +2107,7 @@
 
     .line 49
     .line 50
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_secret_mode_black_20:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->outline_secret_mode_black_20:I
 
     .line 51
     .line 52

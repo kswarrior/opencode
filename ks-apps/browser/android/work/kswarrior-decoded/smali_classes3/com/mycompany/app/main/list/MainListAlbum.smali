@@ -453,7 +453,7 @@
 
     .line 23
     .line 24
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 25
     .line 26
@@ -486,7 +486,7 @@
 
     .line 39
     .line 40
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->invalid_path:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->invalid_path:I
 
     .line 41
     .line 42
@@ -794,7 +794,7 @@
     .line 184
     .line 185
     :cond_d
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->dir_scanning:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->dir_scanning:I
 
     .line 186
     .line 187
@@ -2021,19 +2021,19 @@
     .line 38
     .line 39
     .line 40
-    sget v2, Lcom/mycompany/app/soulbrowser/R$id;->list_title_text:I
+    sget v2, Lcom/kswarrior/ksportal/R$id;->list_title_text:I
 
     .line 41
     .line 42
-    sget v4, Lcom/mycompany/app/soulbrowser/R$id;->list_icon_frame:I
+    sget v4, Lcom/kswarrior/ksportal/R$id;->list_icon_frame:I
 
     .line 43
     .line 44
-    sget v5, Lcom/mycompany/app/soulbrowser/R$id;->list_bottom_view:I
+    sget v5, Lcom/kswarrior/ksportal/R$id;->list_bottom_view:I
 
     .line 45
     .line 46
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->list_cast_icon:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->list_cast_icon:I
 
     .line 47
     .line 48
@@ -2265,7 +2265,7 @@
     .line 170
     .line 171
     .line 172
-    sget v12, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v12, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 173
     .line 174
@@ -2360,7 +2360,7 @@
     .line 221
     .line 222
     .line 223
-    sget v15, Lcom/mycompany/app/soulbrowser/R$string;->scan_dir:I
+    sget v15, Lcom/kswarrior/ksportal/R$string;->scan_dir:I
 
     .line 224
     .line 225
@@ -2687,7 +2687,7 @@
     .line 396
     .line 397
     .line 398
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->down_list:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->down_list:I
 
     .line 399
     .line 400

@@ -198,7 +198,7 @@
     .line 6
     .line 7
     :cond_0
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->item_frame_view:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->item_frame_view:I
 
     .line 8
     .line 9
@@ -304,7 +304,7 @@
     move-result-object v4
 
     .line 59
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->news_title:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->news_title:I
 
     .line 60
     .line 61
@@ -373,7 +373,7 @@
 
     .line 95
     .line 96
-    sget v9, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v9, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 97
     .line 98
@@ -533,7 +533,7 @@
     .line 177
     .line 178
     .line 179
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->search_url:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->search_url:I
 
     .line 180
     .line 181
@@ -1084,7 +1084,7 @@
 
     .line 42
     .line 43
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->empty:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->empty:I
 
     .line 44
     .line 45

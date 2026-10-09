@@ -3042,7 +3042,7 @@
 
     .line 24
     .line 25
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_selection_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_selection_dark_24:I
 
     .line 26
     .line 27
@@ -3055,7 +3055,7 @@
 
     .line 31
     .line 32
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_dark_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_dark_20:I
 
     .line 33
     .line 34
@@ -3068,7 +3068,7 @@
 
     .line 38
     .line 39
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_close_dark_24:I
 
     .line 40
     .line 41
@@ -3125,7 +3125,7 @@
 
     .line 68
     .line 69
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_remove_selection_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_remove_selection_black_24:I
 
     .line 70
     .line 71
@@ -3138,7 +3138,7 @@
 
     .line 75
     .line 76
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_settings_black_20:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_settings_black_20:I
 
     .line 77
     .line 78
@@ -3151,7 +3151,7 @@
 
     .line 82
     .line 83
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_close_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_close_black_24:I
 
     .line 84
     .line 85

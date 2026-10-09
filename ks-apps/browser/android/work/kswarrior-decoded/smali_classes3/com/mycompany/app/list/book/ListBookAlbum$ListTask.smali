@@ -995,7 +995,7 @@
 
     .line 352
     .line 353
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_local_library_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_local_library_black_24:I
 
     .line 354
     .line 355

@@ -684,7 +684,7 @@
     .line 154
     .line 155
     :goto_3
-    sget p2, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget p2, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 156
     .line 157

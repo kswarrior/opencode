@@ -74,7 +74,7 @@
 
     .line 14
     .line 15
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->sub_dir:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->sub_dir:I
 
     .line 16
     .line 17
@@ -87,7 +87,7 @@
 
     .line 21
     .line 22
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->down_location:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->down_location:I
 
     .line 23
     .line 24
@@ -100,7 +100,7 @@
 
     .line 28
     .line 29
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 30
     .line 31
@@ -203,7 +203,7 @@
 
     .line 85
     .line 86
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 87
     .line 88
@@ -243,7 +243,7 @@
 
     .line 107
     .line 108
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 109
     .line 110
@@ -372,7 +372,7 @@
 
     .line 177
     .line 178
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 179
     .line 180
@@ -412,7 +412,7 @@
 
     .line 199
     .line 200
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 201
     .line 202
@@ -562,7 +562,7 @@
 
     .line 276
     .line 277
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->not_selected:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->not_selected:I
 
     .line 278
     .line 279
@@ -628,7 +628,7 @@
 
     .line 309
     .line 310
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 311
     .line 312
@@ -641,7 +641,7 @@
 
     .line 316
     .line 317
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->real_name:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->real_name:I
 
     .line 318
     .line 319

@@ -176,15 +176,15 @@
 
     .line 43
     .line 44
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->exist_name:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->exist_name:I
 
     .line 45
     .line 46
-    sget v7, Lcom/mycompany/app/soulbrowser/R$string;->overwrite:I
+    sget v7, Lcom/kswarrior/ksportal/R$string;->overwrite:I
 
     .line 47
     .line 48
-    sget v8, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v8, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 49
     .line 50

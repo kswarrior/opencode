@@ -1022,7 +1022,7 @@
 
     .line 376
     .line 377
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_dark_24:I
 
     .line 378
     .line 379
@@ -1035,7 +1035,7 @@
 
     .line 383
     :cond_17
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_24:I
 
     .line 384
     .line 385
@@ -1179,7 +1179,7 @@
 
     .line 450
     .line 451
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_dark_24:I
 
     .line 452
     .line 453
@@ -1196,7 +1196,7 @@
 
     .line 458
     .line 459
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_check_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_check_black_24:I
 
     .line 460
     .line 461
@@ -1310,7 +1310,7 @@
 
     .line 516
     .line 517
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back_dark:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back_dark:I
 
     .line 518
     .line 519
@@ -1327,7 +1327,7 @@
 
     .line 524
     .line 525
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_list_back:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->selector_list_back:I
 
     .line 526
     .line 527
@@ -2090,7 +2090,7 @@
     .line 49
     .line 50
     .line 51
-    sget v15, Lcom/mycompany/app/soulbrowser/R$id;->sel_icon_icon:I
+    sget v15, Lcom/kswarrior/ksportal/R$id;->sel_icon_icon:I
 
     .line 52
     .line 53
@@ -2427,7 +2427,7 @@
     .line 229
     .line 230
     .line 231
-    sget v15, Lcom/mycompany/app/soulbrowser/R$id;->sel_select_icon:I
+    sget v15, Lcom/kswarrior/ksportal/R$id;->sel_select_icon:I
 
     .line 232
     .line 233
@@ -2741,7 +2741,7 @@
     .line 396
     .line 397
     .line 398
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->sel_check_name:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->sel_check_name:I
 
     .line 399
     .line 400
@@ -2957,7 +2957,7 @@
     .line 513
     .line 514
     .line 515
-    sget v15, Lcom/mycompany/app/soulbrowser/R$id;->sel_switch_icon:I
+    sget v15, Lcom/kswarrior/ksportal/R$id;->sel_switch_icon:I
 
     .line 516
     .line 517
@@ -3045,7 +3045,7 @@
     .line 559
     .line 560
     .line 561
-    sget v8, Lcom/mycompany/app/soulbrowser/R$id;->sel_switch_back:I
+    sget v8, Lcom/kswarrior/ksportal/R$id;->sel_switch_back:I
 
     .line 562
     .line 563

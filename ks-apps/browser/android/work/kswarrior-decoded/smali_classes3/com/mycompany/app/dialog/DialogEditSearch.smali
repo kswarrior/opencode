@@ -967,7 +967,7 @@
 
     .line 164
     .line 165
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 166
     .line 167
@@ -977,7 +977,7 @@
     .line 169
     .line 170
     :cond_1
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 171
     .line 172
@@ -1170,7 +1170,7 @@
 
     .line 274
     .line 275
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->edit_cursor:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->edit_cursor:I
 
     .line 276
     .line 277
@@ -1232,7 +1232,7 @@
     .line 306
     .line 307
     .line 308
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->save:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->save:I
 
     .line 309
     .line 310
@@ -1636,7 +1636,7 @@
 
     .line 15
     .line 16
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_white_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_search_white_24:I
 
     .line 17
     .line 18
@@ -1855,7 +1855,7 @@
 
     .line 98
     .line 99
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_search_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_search_white_24:I
 
     .line 100
     .line 101

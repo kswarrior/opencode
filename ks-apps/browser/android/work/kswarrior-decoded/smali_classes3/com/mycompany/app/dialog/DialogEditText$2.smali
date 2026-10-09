@@ -114,7 +114,7 @@
 
     .line 36
     .line 37
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal_dark:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal_dark:I
 
     .line 38
     .line 39
@@ -163,7 +163,7 @@
 
     .line 62
     .line 63
-    sget v4, Lcom/mycompany/app/soulbrowser/R$drawable;->selector_normal:I
+    sget v4, Lcom/kswarrior/ksportal/R$drawable;->selector_normal:I
 
     .line 64
     .line 65
@@ -240,7 +240,7 @@
     .line 101
     .line 102
     .line 103
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_zip_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_zip_black_24:I
 
     .line 104
     .line 105
@@ -254,7 +254,7 @@
 
     .line 109
     .line 110
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->news_info_1:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->news_info_1:I
 
     .line 111
     .line 112
@@ -291,7 +291,7 @@
 
     .line 127
     :cond_5
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->name:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->name:I
 
     .line 128
     .line 129
@@ -318,11 +318,11 @@
 
     .line 139
     .line 140
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_off_dark_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_off_dark_24:I
 
     .line 141
     .line 142
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_dark_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_dark_24:I
 
     .line 143
     .line 144
@@ -349,11 +349,11 @@
 
     .line 156
     :cond_6
-    sget v2, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_off_black_24:I
+    sget v2, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_off_black_24:I
 
     .line 157
     .line 158
-    sget v3, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_visibility_black_24:I
+    sget v3, Lcom/kswarrior/ksportal/R$drawable;->outline_visibility_black_24:I
 
     .line 159
     .line 160

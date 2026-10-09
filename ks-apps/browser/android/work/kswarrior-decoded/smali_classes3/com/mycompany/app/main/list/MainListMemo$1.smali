@@ -108,7 +108,7 @@
 
     .line 29
     .line 30
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->memo_title:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->memo_title:I
 
     .line 31
     .line 32

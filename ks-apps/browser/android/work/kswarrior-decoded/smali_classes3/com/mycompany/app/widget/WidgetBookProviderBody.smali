@@ -449,7 +449,7 @@
     move-result-object p0
 
     .line 13
-    sget v1, Lcom/mycompany/app/soulbrowser/R$layout;->widget_book_item:I
+    sget v1, Lcom/kswarrior/ksportal/R$layout;->widget_book_item:I
 
     .line 14
     .line 15
@@ -458,7 +458,7 @@
     .line 16
     .line 17
     .line 18
-    sget p0, Lcom/mycompany/app/soulbrowser/R$id;->icon_view:I
+    sget p0, Lcom/kswarrior/ksportal/R$id;->icon_view:I
 
     .line 19
     .line 20
@@ -485,7 +485,7 @@
 
     .line 30
     .line 31
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_shift_2_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_shift_2_dark_24:I
 
     .line 32
     .line 33
@@ -499,7 +499,7 @@
     .line 37
     .line 38
     :cond_1
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_shift_2_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_shift_2_black_24:I
 
     .line 39
     .line 40
@@ -517,7 +517,7 @@
 
     .line 46
     .line 47
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_dark_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_dark_24:I
 
     .line 48
     .line 49
@@ -531,7 +531,7 @@
     .line 53
     .line 54
     :cond_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_folder_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_folder_black_24:I
 
     .line 55
     .line 56
@@ -564,7 +564,7 @@
 
     .line 69
     .line 70
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_dark_web_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_dark_web_24:I
 
     .line 71
     .line 72
@@ -577,7 +577,7 @@
 
     .line 76
     :cond_5
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 77
     .line 78
@@ -634,7 +634,7 @@
 
     .line 103
     .line 104
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_home_dark_web_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_home_dark_web_24:I
 
     .line 105
     .line 106
@@ -647,7 +647,7 @@
 
     .line 110
     :cond_7
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_home_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_home_black_24:I
 
     .line 111
     .line 112
@@ -664,7 +664,7 @@
 
     .line 117
     .line 118
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_offline_pin_dark_web_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_offline_pin_dark_web_24:I
 
     .line 119
     .line 120
@@ -677,7 +677,7 @@
 
     .line 124
     :cond_9
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_offline_pin_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_offline_pin_black_24:I
 
     .line 125
     .line 126
@@ -727,7 +727,7 @@
 
     .line 147
     .line 148
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_dark_web_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_dark_web_24:I
 
     .line 149
     .line 150
@@ -740,7 +740,7 @@
 
     .line 154
     :cond_c
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 155
     .line 156
@@ -750,7 +750,7 @@
     .line 158
     .line 159
     :goto_0
-    sget p0, Lcom/mycompany/app/soulbrowser/R$id;->name_view:I
+    sget p0, Lcom/kswarrior/ksportal/R$id;->name_view:I
 
     .line 160
     .line 161
@@ -763,7 +763,7 @@
     .line 164
     .line 165
     .line 166
-    sget p0, Lcom/mycompany/app/soulbrowser/R$id;->name_view:I
+    sget p0, Lcom/kswarrior/ksportal/R$id;->name_view:I
 
     .line 167
     .line 168
@@ -825,7 +825,7 @@
     .line 196
     .line 197
     .line 198
-    sget p1, Lcom/mycompany/app/soulbrowser/R$id;->item_view:I
+    sget p1, Lcom/kswarrior/ksportal/R$id;->item_view:I
 
     .line 199
     .line 200
@@ -3318,7 +3318,7 @@
     .line 28
     .line 29
     .line 30
-    const-string v2, "com.mycompany.app.soulbrowser.ACTION_BOOKGET_SELECT"
+    const-string v2, "com.kswarrior.ksportal.ACTION_BOOKGET_SELECT"
 
     .line 31
     .line 32
@@ -3408,7 +3408,7 @@
 
     .line 73
     .line 74
-    sget v7, Lcom/mycompany/app/soulbrowser/R$layout;->widget_book_layout_dark:I
+    sget v7, Lcom/kswarrior/ksportal/R$layout;->widget_book_layout_dark:I
 
     .line 75
     .line 76
@@ -3416,7 +3416,7 @@
 
     .line 77
     :cond_4
-    sget v7, Lcom/mycompany/app/soulbrowser/R$layout;->widget_book_layout_light:I
+    sget v7, Lcom/kswarrior/ksportal/R$layout;->widget_book_layout_light:I
 
     .line 78
     .line 79
@@ -3426,11 +3426,11 @@
     .line 80
     .line 81
     .line 82
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->list_view:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->list_view:I
 
     .line 83
     .line 84
-    sget v7, Lcom/mycompany/app/soulbrowser/R$id;->empty_view:I
+    sget v7, Lcom/kswarrior/ksportal/R$id;->empty_view:I
 
     .line 85
     .line 86
@@ -3439,7 +3439,7 @@
     .line 87
     .line 88
     .line 89
-    sget v6, Lcom/mycompany/app/soulbrowser/R$id;->list_view:I
+    sget v6, Lcom/kswarrior/ksportal/R$id;->list_view:I
 
     .line 90
     .line 91
@@ -3555,7 +3555,7 @@
 
     .line 143
     :cond_6
-    sget p1, Lcom/mycompany/app/soulbrowser/R$id;->list_view:I
+    sget p1, Lcom/kswarrior/ksportal/R$id;->list_view:I
 
     .line 144
     .line 145
@@ -3632,7 +3632,7 @@
     .line 179
     .line 180
     .line 181
-    sget p1, Lcom/mycompany/app/soulbrowser/R$id;->list_view:I
+    sget p1, Lcom/kswarrior/ksportal/R$id;->list_view:I
 
     .line 182
     .line 183
@@ -3641,7 +3641,7 @@
     .line 184
     .line 185
     .line 186
-    sget p1, Lcom/mycompany/app/soulbrowser/R$id;->list_view:I
+    sget p1, Lcom/kswarrior/ksportal/R$id;->list_view:I
 
     .line 187
     .line 188
@@ -3887,7 +3887,7 @@
     .line 9
     .line 10
     .line 11
-    const-string v1, "com.mycompany.app.soulbrowser.ACTION_BOOKGET_SELECT"
+    const-string v1, "com.kswarrior.ksportal.ACTION_BOOKGET_SELECT"
 
     .line 12
     .line 13
@@ -3903,7 +3903,7 @@
 
     .line 18
     .line 19
-    const-string p2, "com.mycompany.app.soulbrowser.ACTION_BOOKGET_UPDATE"
+    const-string p2, "com.kswarrior.ksportal.ACTION_BOOKGET_UPDATE"
 
     .line 20
     .line 21

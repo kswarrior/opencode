@@ -233,7 +233,7 @@
 
     .line 86
     .line 87
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->img_bright:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->img_bright:I
 
     .line 88
     .line 89
@@ -363,7 +363,7 @@
 
     .line 147
     .line 148
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->web_page:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->web_page:I
 
     .line 149
     .line 150

@@ -96,7 +96,7 @@
 
     .line 24
     .line 25
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->fail:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->fail:I
 
     .line 26
     .line 27
@@ -113,7 +113,7 @@
 
     .line 32
     .line 33
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->setted:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->setted:I
 
     .line 34
     .line 35

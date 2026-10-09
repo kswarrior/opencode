@@ -1379,7 +1379,7 @@
 
     .line 30
     .line 31
-    const-string v6, "com.mycompany.app.soulbrowser.ACTION_VIDEO_FRWD"
+    const-string v6, "com.kswarrior.ksportal.ACTION_VIDEO_FRWD"
 
     .line 32
     .line 33
@@ -1413,7 +1413,7 @@
 
     .line 48
     .line 49
-    const-string v6, "com.mycompany.app.soulbrowser.ACTION_VIDEO_PLAY"
+    const-string v6, "com.kswarrior.ksportal.ACTION_VIDEO_PLAY"
 
     .line 50
     .line 51
@@ -1443,7 +1443,7 @@
 
     .line 64
     .line 65
-    const-string v6, "com.mycompany.app.soulbrowser.ACTION_VIDEO_FFWD"
+    const-string v6, "com.kswarrior.ksportal.ACTION_VIDEO_FFWD"
 
     .line 66
     .line 67
@@ -1473,7 +1473,7 @@
 
     .line 80
     .line 81
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_play_arrow_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_play_arrow_white_24:I
 
     .line 82
     .line 83
@@ -1485,7 +1485,7 @@
 
     .line 86
     :cond_3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_pause_white_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->baseline_pause_white_24:I
 
     .line 87
     .line 88
@@ -1502,11 +1502,11 @@
 
     .line 93
     .line 94
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_white_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_white_24:I
 
     .line 95
     .line 96
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_white_24:I
 
     .line 97
     .line 98
@@ -1514,11 +1514,11 @@
 
     .line 99
     :cond_4
-    sget v5, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_rewind_white_24:I
+    sget v5, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_rewind_white_24:I
 
     .line 100
     .line 101
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_fast_forward_white_24:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->baseline_fast_forward_white_24:I
 
     .line 102
     .line 103

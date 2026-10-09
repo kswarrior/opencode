@@ -179,7 +179,7 @@
 
     .line 65
     .line 66
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->default_title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->default_title:I
 
     .line 67
     .line 68
@@ -201,7 +201,7 @@
 
     .line 76
     .line 77
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->web_title:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->web_title:I
 
     .line 78
     .line 79
@@ -223,7 +223,7 @@
     const/4 v2, 0x1
 
     .line 88
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->image:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->image:I
 
     .line 89
     .line 90
@@ -244,7 +244,7 @@
     const/4 v2, 0x2
 
     .line 99
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->camera:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->camera:I
 
     .line 100
     .line 101
@@ -265,7 +265,7 @@
     const/4 v2, 0x3
 
     .line 110
-    sget v3, Lcom/mycompany/app/soulbrowser/R$string;->color_title:I
+    sget v3, Lcom/kswarrior/ksportal/R$string;->color_title:I
 
     .line 111
     .line 112

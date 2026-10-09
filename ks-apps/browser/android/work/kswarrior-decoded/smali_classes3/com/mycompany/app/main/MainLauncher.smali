@@ -92,7 +92,7 @@
 
     .line 21
     .line 22
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_supported:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_supported:I
 
     .line 23
     .line 24
@@ -299,7 +299,7 @@
     .line 118
     .line 119
     :cond_8
-    sget v0, Lcom/mycompany/app/soulbrowser/R$style;->DialogExpandTheme:I
+    sget v0, Lcom/kswarrior/ksportal/R$style;->DialogExpandTheme:I
 
     .line 120
     .line 121

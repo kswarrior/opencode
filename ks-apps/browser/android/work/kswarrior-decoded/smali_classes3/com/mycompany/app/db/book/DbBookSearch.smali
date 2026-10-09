@@ -1787,7 +1787,7 @@
 
     .line 21
     .line 22
-    sget p0, Lcom/mycompany/app/soulbrowser/R$drawable;->baseline_search_15_dark_24:I
+    sget p0, Lcom/kswarrior/ksportal/R$drawable;->baseline_search_15_dark_24:I
 
     .line 23
     .line 24

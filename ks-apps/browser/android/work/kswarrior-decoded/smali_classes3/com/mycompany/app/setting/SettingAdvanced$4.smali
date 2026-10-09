@@ -192,7 +192,7 @@
 
     .line 69
     .line 70
-    sget p3, Lcom/mycompany/app/soulbrowser/R$string;->js_black:I
+    sget p3, Lcom/kswarrior/ksportal/R$string;->js_black:I
 
     .line 71
     .line 72

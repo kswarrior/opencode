@@ -1144,7 +1144,7 @@
 
     .line 100
     .line 101
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->import_no_password:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->import_no_password:I
 
     .line 102
     .line 103

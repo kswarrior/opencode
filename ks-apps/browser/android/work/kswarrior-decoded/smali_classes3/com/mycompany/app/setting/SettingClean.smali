@@ -76,15 +76,15 @@
     .locals 7
 
     .line 1
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->not_used:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->not_used:I
 
     .line 2
     .line 3
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->check_once:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->check_once:I
 
     .line 4
     .line 5
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->check_keep:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->check_keep:I
 
     .line 6
     .line 7
@@ -100,11 +100,11 @@
 
     .line 12
     .line 13
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->over_block_info:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->over_block_info:I
 
     .line 14
     .line 15
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->fast_down_guide:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->fast_down_guide:I
 
     .line 16
     .line 17
@@ -141,15 +141,15 @@
 
     .line 31
     .line 32
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->level_weak:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->level_weak:I
 
     .line 33
     .line 34
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->normal_rate:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->normal_rate:I
 
     .line 35
     .line 36
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->level_strong:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->level_strong:I
 
     .line 37
     .line 38
@@ -165,15 +165,15 @@
 
     .line 43
     .line 44
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->pop_block_info3:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->pop_block_info3:I
 
     .line 45
     .line 46
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->pop_block_info2:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->pop_block_info2:I
 
     .line 47
     .line 48
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->pop_block_info1:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->pop_block_info1:I
 
     .line 49
     .line 50
@@ -204,11 +204,11 @@
 
     .line 62
     .line 63
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->app_site:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->app_site:I
 
     .line 64
     .line 65
-    sget v5, Lcom/mycompany/app/soulbrowser/R$string;->always_block:I
+    sget v5, Lcom/kswarrior/ksportal/R$string;->always_block:I
 
     .line 66
     .line 67
@@ -683,7 +683,7 @@
     .line 14
     .line 15
     .line 16
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->check_element:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->check_element:I
 
     .line 17
     .line 18
@@ -709,7 +709,7 @@
     .line 28
     .line 29
     .line 30
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->check_ele_info_0:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->check_ele_info_0:I
 
     .line 31
     .line 32
@@ -755,7 +755,7 @@
 
     .line 52
     .line 53
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->memory_warning_1:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->memory_warning_1:I
 
     .line 54
     .line 55
@@ -813,11 +813,11 @@
 
     .line 81
     .line 82
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->ads_block:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->ads_block:I
 
     .line 83
     .line 84
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->ads_block_info:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->ads_block_info:I
 
     .line 85
     .line 86
@@ -878,7 +878,7 @@
 
     .line 114
     .line 115
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->ads_filter:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->ads_filter:I
 
     .line 116
     .line 117
@@ -908,11 +908,11 @@
 
     .line 128
     .line 129
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->ads_white:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->ads_white:I
 
     .line 130
     .line 131
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->guide_ads_allow:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->guide_ads_allow:I
 
     .line 132
     .line 133
@@ -956,11 +956,11 @@
 
     .line 152
     .line 153
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->block_area:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->block_area:I
 
     .line 154
     .line 155
-    sget v13, Lcom/mycompany/app/soulbrowser/R$string;->area_info_13:I
+    sget v13, Lcom/kswarrior/ksportal/R$string;->area_info_13:I
 
     .line 156
     .line 157
@@ -1005,7 +1005,7 @@
 
     .line 177
     .line 178
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->over_block:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->over_block:I
 
     .line 179
     .line 180
@@ -1050,11 +1050,11 @@
 
     .line 200
     .line 201
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->over_white:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->over_white:I
 
     .line 202
     .line 203
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->guide_over_allow:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->guide_over_allow:I
 
     .line 204
     .line 205
@@ -1094,7 +1094,7 @@
 
     .line 224
     .line 225
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->pop_block:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->pop_block:I
 
     .line 226
     .line 227
@@ -1136,11 +1136,11 @@
 
     .line 246
     .line 247
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->pop_white:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->pop_white:I
 
     .line 248
     .line 249
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->guide_pop_allow:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->guide_pop_allow:I
 
     .line 250
     .line 251
@@ -1180,7 +1180,7 @@
 
     .line 270
     .line 271
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->app_block:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->app_block:I
 
     .line 272
     .line 273
@@ -1243,7 +1243,7 @@
 
     .line 303
     .line 304
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->blocked_link:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->blocked_link:I
 
     .line 305
     .line 306
@@ -1274,7 +1274,7 @@
 
     .line 318
     .line 319
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 320
     .line 321
@@ -1329,7 +1329,7 @@
 
     .line 347
     .line 348
-    sget v12, Lcom/mycompany/app/soulbrowser/R$string;->blocked_image:I
+    sget v12, Lcom/kswarrior/ksportal/R$string;->blocked_image:I
 
     .line 349
     .line 350
@@ -1690,7 +1690,7 @@
 
     .line 14
     .line 15
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->app_block_info1:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->app_block_info1:I
 
     .line 16
     .line 17
@@ -1753,7 +1753,7 @@
     .line 44
     .line 45
     .line 46
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->app_block_info2:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->app_block_info2:I
 
     .line 47
     .line 48
@@ -1994,7 +1994,7 @@
 
     .line 31
     .line 32
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->ads_white:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->ads_white:I
 
     .line 33
     .line 34
@@ -2014,7 +2014,7 @@
 
     .line 40
     .line 41
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->over_white:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->over_white:I
 
     .line 42
     .line 43
@@ -2034,7 +2034,7 @@
 
     .line 49
     .line 50
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->pop_white:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->pop_white:I
 
     .line 51
     .line 52
@@ -2054,7 +2054,7 @@
 
     .line 58
     .line 59
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->blocked_link:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->blocked_link:I
 
     .line 60
     .line 61
@@ -2074,7 +2074,7 @@
 
     .line 67
     .line 68
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->blocked_image:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->blocked_image:I
 
     .line 69
     .line 70
@@ -2086,7 +2086,7 @@
 
     .line 73
     :cond_6
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->ads_filter:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->ads_filter:I
 
     .line 74
     .line 75
@@ -2580,7 +2580,7 @@
 
     .line 55
     .line 56
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->lock_type:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->lock_type:I
 
     .line 57
     .line 58
@@ -2824,7 +2824,7 @@
     .line 48
     .line 49
     .line 50
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->clean_mode:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->clean_mode:I
 
     .line 51
     .line 52

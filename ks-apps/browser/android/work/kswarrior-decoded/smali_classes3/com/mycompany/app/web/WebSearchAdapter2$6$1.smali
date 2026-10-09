@@ -154,7 +154,7 @@
 
     .line 32
     .line 33
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->copied_clipboard:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->copied_clipboard:I
 
     .line 34
     .line 35

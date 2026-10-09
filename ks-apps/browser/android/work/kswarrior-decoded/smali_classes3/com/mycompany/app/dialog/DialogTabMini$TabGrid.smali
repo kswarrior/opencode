@@ -195,7 +195,7 @@
     .line 62
     .line 63
     .line 64
-    sget v6, Lcom/mycompany/app/soulbrowser/R$drawable;->logo_gray:I
+    sget v6, Lcom/kswarrior/ksportal/R$drawable;->logo_gray:I
 
     .line 65
     .line 66
@@ -398,7 +398,7 @@
     .line 172
     .line 173
     .line 174
-    sget v6, Lcom/mycompany/app/soulbrowser/R$string;->unlock:I
+    sget v6, Lcom/kswarrior/ksportal/R$string;->unlock:I
 
     .line 175
     .line 176

@@ -107,7 +107,7 @@
 
     .line 39
     .line 40
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->loading:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->loading:I
 
     .line 41
     .line 42
@@ -160,7 +160,7 @@
 
     .line 68
     .line 69
-    sget v1, Lcom/mycompany/app/soulbrowser/R$string;->cancel:I
+    sget v1, Lcom/kswarrior/ksportal/R$string;->cancel:I
 
     .line 70
     .line 71
@@ -2217,7 +2217,7 @@
 
     .line 23
     .line 24
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 25
     .line 26
@@ -2324,7 +2324,7 @@
 
     .line 25
     .line 26
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->cancelled:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->cancelled:I
 
     .line 27
     .line 28
@@ -2389,7 +2389,7 @@
 
     .line 57
     .line 58
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->no_password:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->no_password:I
 
     .line 59
     .line 60
@@ -2411,7 +2411,7 @@
 
     .line 69
     .line 70
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->retry:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->retry:I
 
     .line 71
     .line 72
@@ -2656,7 +2656,7 @@
 
     .line 196
     .line 197
-    sget v1, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v1, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 198
     .line 199
@@ -2669,7 +2669,7 @@
 
     .line 203
     :cond_6
-    sget v7, Lcom/mycompany/app/soulbrowser/R$drawable;->outline_public_black_24:I
+    sget v7, Lcom/kswarrior/ksportal/R$drawable;->outline_public_black_24:I
 
     .line 204
     .line 205
@@ -2719,7 +2719,7 @@
 
     .line 229
     .line 230
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->overwrite:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->overwrite:I
 
     .line 231
     .line 232
@@ -2741,7 +2741,7 @@
 
     .line 240
     .line 241
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->success:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->success:I
 
     .line 242
     .line 243

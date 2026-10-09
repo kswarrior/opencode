@@ -35,7 +35,7 @@
     .line 10
     .line 11
     .line 12
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->camera:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->camera:I
 
     .line 13
     .line 14
@@ -98,7 +98,7 @@
     .line 40
     .line 41
     :goto_1
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->audio:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->audio:I
 
     .line 42
     .line 43
@@ -151,7 +151,7 @@
     .line 66
     .line 67
     :goto_2
-    sget v2, Lcom/mycompany/app/soulbrowser/R$string;->media:I
+    sget v2, Lcom/kswarrior/ksportal/R$string;->media:I
 
     .line 68
     .line 69
@@ -203,7 +203,7 @@
     .line 91
     .line 92
     :goto_3
-    sget p1, Lcom/mycompany/app/soulbrowser/R$string;->location:I
+    sget p1, Lcom/kswarrior/ksportal/R$string;->location:I
 
     .line 93
     .line 94

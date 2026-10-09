@@ -728,7 +728,7 @@
     move-result-object v0
 
     .line 29
-    sget v3, Lcom/mycompany/app/soulbrowser/R$id;->cast_mini_controller:I
+    sget v3, Lcom/kswarrior/ksportal/R$id;->cast_mini_controller:I
 
     .line 30
     .line 31
@@ -812,7 +812,7 @@
 
     .line 69
     .line 70
-    sget v4, Lcom/mycompany/app/soulbrowser/R$layout;->cast_icon_layout:I
+    sget v4, Lcom/kswarrior/ksportal/R$layout;->cast_icon_layout:I
 
     .line 71
     .line 72
@@ -862,7 +862,7 @@
     .line 94
     .line 95
     .line 96
-    sget v3, Lcom/mycompany/app/soulbrowser/R$layout;->cast_mini_control:I
+    sget v3, Lcom/kswarrior/ksportal/R$layout;->cast_mini_control:I
 
     .line 97
     .line 98
@@ -1980,7 +1980,7 @@
     move-result-object v0
 
     .line 64
-    sget v1, Lcom/mycompany/app/soulbrowser/R$id;->cast_mini_controller:I
+    sget v1, Lcom/kswarrior/ksportal/R$id;->cast_mini_controller:I
 
     .line 65
     .line 66

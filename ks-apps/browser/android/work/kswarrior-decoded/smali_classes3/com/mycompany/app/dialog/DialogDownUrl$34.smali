@@ -211,7 +211,7 @@
 
     .line 83
     .line 84
-    sget v4, Lcom/mycompany/app/soulbrowser/R$string;->download:I
+    sget v4, Lcom/kswarrior/ksportal/R$string;->download:I
 
     .line 85
     .line 86
@@ -265,7 +265,7 @@
 
     .line 109
     .line 110
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 111
     .line 112
@@ -282,7 +282,7 @@
 
     .line 117
     .line 118
-    sget v0, Lcom/mycompany/app/soulbrowser/R$string;->apps_none:I
+    sget v0, Lcom/kswarrior/ksportal/R$string;->apps_none:I
 
     .line 119
     .line 120
