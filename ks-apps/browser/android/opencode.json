@@ -1,0 +1,67 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "android-filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "."],
+      "enabled": true
+    },
+    "terminal-shell": {
+      "type": "local",
+      "command": ["npx", "-y", "@mako10k/mcp-shell-server"],
+      "enabled": true,
+      "environment": {
+        "MCP_SHELL_SECURITY_MODE": "permissive"
+      }
+    },
+    "android-adb": {
+      "type": "local",
+      "command": ["npx", "-y", "@moallemi/android-mcp-server"],
+      "enabled": true,
+      "timeout": 30000
+    },
+    "apktool-mcp": {
+      "type": "local",
+      "command": ["uv", "--directory", "mcp-servers/apktool-mcp-server", "run", "apktool_mcp_server.py"],
+      "enabled": true,
+      "timeout": 60000
+    },
+    "jadx-mcp": {
+      "type": "local",
+      "command": ["uv", "--directory", "mcp-servers/jadx-mcp-server", "run", "jadx_mcp_server.py"],
+      "enabled": true,
+      "timeout": 60000
+    },
+    "mobsf-mcp": {
+      "type": "local",
+      "command": ["uv", "--directory", "mcp-servers/mobsf-mcp", "run", "mobsf-mcp"],
+      "enabled": true,
+      "timeout": 120000,
+      "environment": {
+        "MOBSF_URL": "http://localhost:8000",
+        "MOBSF_API_KEY": "{env:MOBSF_API_KEY}"
+      }
+    }
+  },
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "adb *": "allow",
+      "apktool *": "allow",
+      "jadx *": "allow",
+      "jadx-gui *": "allow",
+      "apksigner *": "allow",
+      "jarsigner *": "allow",
+      "keytool *": "allow",
+      "uv *": "allow",
+      "docker logs mobsf *": "allow",
+      "docker compose *": "ask"
+    }
+  },
+  "experimental": {
+    "mcp_timeout": 60000
+  }
+}
