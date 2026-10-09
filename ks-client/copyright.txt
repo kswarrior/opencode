@@ -121,43 +121,9 @@ here. Respect their licenses — get permission before redistributing.
              ("Loading Bar", memory tier 0). Main pack keeps its own
              `textures/environment/destroy_stage_0-9.png`.
 
-15. Recolourful Containers BE 1.4, LIGHT mode only (direct merge,
-    NO subpack — dark mode NOT taken)
-    Textures : Vi_Tul — https://www.curseforge.com/members/vi_tul/projects
-    UI Code  : Ashura_temps / Ashura_tepes —
-               https://www.planetminecraft.com/member/ashura_tepes/
-    Source   : https://edge.mcpedl.com/files/8673/803/Recolourful%20Containers%20BE%201.4.mcpack?ft=f61f95a3bd4a9bb1cf3e530dee3cd31f&bd=k475pmkxfm
-               (official: https://www.curseforge.com/minecraft-bedrock/texture-packs/recolourful-containers-be)
-    Note     : Upstream UI header (62x .atemp) says All Rights Reserved —
-               no modify/extract/reuse/share, even private. Kept as-is
-               (ashur namespaces/paths/headers untouched, NO KS rebrand)
-               as an exception to agent.md 5.7._dark NOT taken. Java
-               `assets/minecraft/...` + `assets/sprites/...` NOT taken
-               (Bedrock-irrelevant). `sounds/` NOT taken (json-only,
-               no ogg). `beveled_buttons_bridge.atemp` + upstream
-               `ui/ashur/horse_screen.atemp` refs skipped (missing on
-               disk). PERMISSION PENDING — user will take permission
-               from Vi_Tul + Ashura before publishing KS Client publicly.
-               Do NOT release a .mcpack with this content until cleared.
-    Now      : `textures/` base 218 new (34 existing KS kept) +
-               light `textures/` 58 new (10 KS hotbar kept:
-               `hotbar_0-8` + `selected_hotbar_slot` preserve connected
-               hotbar; `button_borderless_darkhover` overwritten with
-               light variant) + `textures/gui/gui.png`,
-               `ui/ashur/**` 70 .atemp as-is,
-               `ui/` 17 new screens (anvil/beacon/blast_furnace/
-               brewing_stand/cartography/chest/enchanting/furnace/
-               grindstone/horse/loom/redstone/smithing/smoker/
-               stonecutter/trade_2/inventory_pocket) + merged
-               `hud_screen.json` (3 exp-bar keys) +
-               `inventory_screen.json` (2 container mappings, KS totem
-               kept) + `_global_variables.json` (recolourful vars) +
-               `_ui_defs.json` 14 -> 84 entries + `texts/en_US.lang`
-               140 light keys appended. `manifest.json` untouched
-               (no subpacks key, no version/UUID change).
-
 Removed again after merge (no longer in pack, kept here for history):
-- Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (fully purged incl. player + 15 mob entity hooks, INFO menu status, materials/textures — removed per user request)
+- Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
+- Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Utility HUD V-1.5 Without Counters — EchoRif (fully purged)
 - F1 & F3 Buttons v1.1.3 — NeBux (fully purged, incl. doll)
 - PandaMine5 F1 HUD button (unwired, files rebranded as KS)

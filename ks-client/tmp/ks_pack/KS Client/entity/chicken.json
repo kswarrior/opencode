@@ -13,7 +13,7 @@
             "textures": {
                 "default": "textures/entity/chicken/chicken",
                 "warm": "textures/entity/chicken/chicken_warm",
-                "cold": "textures/entity/chicken/chicken_cold",
+                "cold": "textures/entity/chicken/chicken_cold",        
                 "heart": "textures/health_bar/heart",
                 "bar50": "textures/health_bar/bar/50",
                 "bar49": "textures/health_bar/bar/49",
@@ -105,7 +105,7 @@
                 "pre_animation": [
                     "t.variant = query.property('minecraft:climate_variant');",
                     "v.index = (t.variant == 'temperate') ? 0 : ((t.variant == 'warm') ? 1 : 2);",
-                    "v.is_cold = t.variant == 'cold';",
+                    "v.is_cold = t.variant == 'cold';",          
                     "v.health_bar_position = q.is_baby ? 27 : 17;",
                     "v.health_bar_scale = q.model_scale;"
                 ]
