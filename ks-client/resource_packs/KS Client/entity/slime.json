@@ -108,12 +108,7 @@
             },
             "animations": {
                 "health_bar": "animation.health_bar"
-            },
-            "animation_controllers": [
-                {
-                    "ks_mob_hitbox_overlay": "controller.animation.ks_mob_hitbox.slime"
-                }
-            ]
+            }
         }
     }
 }

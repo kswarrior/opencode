@@ -152,12 +152,7 @@
             ],
             "spawn_egg": {
                 "texture": "spawn_egg_villager"
-            },
-            "animation_controllers": [
-                {
-                    "ks_mob_hitbox_overlay": "controller.animation.ks_mob_hitbox.villager"
-                }
-            ]
+            }
         }
     }
 }

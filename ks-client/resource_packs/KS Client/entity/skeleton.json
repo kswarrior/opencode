@@ -146,12 +146,7 @@
                 "controller.render.health_bar.digit2",
                 "controller.render.health_bar.digit3"
             ],
-            "enable_attachables": true,
-            "animation_controllers": [
-                {
-                    "ks_mob_hitbox_overlay": "controller.animation.ks_mob_hitbox.skeleton"
-                }
-            ]
+            "enable_attachables": true
         }
     }
 }

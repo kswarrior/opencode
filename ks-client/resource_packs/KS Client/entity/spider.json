@@ -105,12 +105,7 @@
                     "move_controller",
                     "health_bar"
                 ]
-            },
-            "animation_controllers": [
-                {
-                    "ks_mob_hitbox_overlay": "controller.animation.ks_mob_hitbox.spider"
-                }
-            ]
+            }
         }
     }
 }
