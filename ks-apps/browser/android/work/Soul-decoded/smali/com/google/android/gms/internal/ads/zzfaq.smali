@@ -1,0 +1,352 @@
+.class final synthetic Lcom/google/android/gms/internal/ads/zzfaq;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/google/android/gms/internal/ads/zzgxu;
+
+
+# static fields
+.field public static final synthetic a:Lcom/google/android/gms/internal/ads/zzfaq;
+
+
+# direct methods
+.method public static synthetic constructor <clinit>()V
+    .locals 1
+
+    .line 1
+    new-instance v0, Lcom/google/android/gms/internal/ads/zzfaq;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lcom/google/android/gms/internal/ads/zzfaq;->a:Lcom/google/android/gms/internal/ads/zzfaq;
+
+    .line 7
+    .line 8
+    return-void
+    .line 9
+    .line 10
+    .line 11
+    .line 12
+    .line 13
+    .line 14
+    .line 15
+    .line 16
+    .line 17
+    .line 18
+    .line 19
+    .line 20
+    .line 21
+    .line 22
+    .line 23
+.end method
+
+
+# virtual methods
+.method public final zza(Ljava/lang/Object;)Lcom/google/common/util/concurrent/ListenableFuture;
+    .locals 7
+
+    .line 1
+    check-cast p1, Landroidx/privacysandbox/ads/adservices/topics/GetTopicsResponse;
+
+    .line 2
+    .line 3
+    const/4 v0, 0x1
+
+    .line 4
+    if-nez p1, :cond_0
+
+    .line 5
+    .line 6
+    new-instance p1, Lcom/google/android/gms/internal/ads/zzfas;
+
+    .line 7
+    .line 8
+    const-string v1, ""
+
+    .line 9
+    .line 10
+    invoke-direct {p1, v1, v0}, Lcom/google/android/gms/internal/ads/zzfas;-><init>(Ljava/lang/String;I)V
+
+    .line 11
+    .line 12
+    .line 13
+    invoke-static {p1}, Lcom/google/android/gms/internal/ads/zzgym;->a(Ljava/lang/Object;)Lcom/google/common/util/concurrent/ListenableFuture;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object p1
+
+    .line 17
+    return-object p1
+
+    .line 18
+    :cond_0
+    invoke-static {}, Lcom/google/android/gms/internal/ads/zziel;->D()Lcom/google/android/gms/internal/ads/zziek;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v1
+
+    .line 22
+    iget-object p1, p1, Landroidx/privacysandbox/ads/adservices/topics/GetTopicsResponse;->a:Ljava/util/List;
+
+    .line 23
+    .line 24
+    invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object p1
+
+    .line 28
+    :goto_0
+    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 29
+    .line 30
+    .line 31
+    move-result v2
+
+    .line 32
+    if-eqz v2, :cond_1
+
+    .line 33
+    .line 34
+    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 35
+    .line 36
+    .line 37
+    move-result-object v2
+
+    .line 38
+    check-cast v2, Landroidx/privacysandbox/ads/adservices/topics/Topic;
+
+    .line 39
+    .line 40
+    invoke-static {}, Lcom/google/android/gms/internal/ads/zziej;->D()Lcom/google/android/gms/internal/ads/zziei;
+
+    .line 41
+    .line 42
+    .line 43
+    move-result-object v3
+
+    .line 44
+    iget v4, v2, Landroidx/privacysandbox/ads/adservices/topics/Topic;->c:I
+
+    .line 45
+    .line 46
+    invoke-virtual {v3}, Lcom/google/android/gms/internal/ads/zzial;->k()V
+
+    .line 47
+    .line 48
+    .line 49
+    iget-object v5, v3, Lcom/google/android/gms/internal/ads/zzial;->f:Lcom/google/android/gms/internal/ads/zziar;
+
+    .line 50
+    .line 51
+    check-cast v5, Lcom/google/android/gms/internal/ads/zziej;
+
+    .line 52
+    .line 53
+    invoke-virtual {v5, v4}, Lcom/google/android/gms/internal/ads/zziej;->E(I)V
+
+    .line 54
+    .line 55
+    .line 56
+    iget-wide v4, v2, Landroidx/privacysandbox/ads/adservices/topics/Topic;->b:J
+
+    .line 57
+    .line 58
+    invoke-virtual {v3}, Lcom/google/android/gms/internal/ads/zzial;->k()V
+
+    .line 59
+    .line 60
+    .line 61
+    iget-object v6, v3, Lcom/google/android/gms/internal/ads/zzial;->f:Lcom/google/android/gms/internal/ads/zziar;
+
+    .line 62
+    .line 63
+    check-cast v6, Lcom/google/android/gms/internal/ads/zziej;
+
+    .line 64
+    .line 65
+    invoke-virtual {v6, v4, v5}, Lcom/google/android/gms/internal/ads/zziej;->F(J)V
+
+    .line 66
+    .line 67
+    .line 68
+    iget-wide v4, v2, Landroidx/privacysandbox/ads/adservices/topics/Topic;->a:J
+
+    .line 69
+    .line 70
+    invoke-virtual {v3}, Lcom/google/android/gms/internal/ads/zzial;->k()V
+
+    .line 71
+    .line 72
+    .line 73
+    iget-object v2, v3, Lcom/google/android/gms/internal/ads/zzial;->f:Lcom/google/android/gms/internal/ads/zziar;
+
+    .line 74
+    .line 75
+    check-cast v2, Lcom/google/android/gms/internal/ads/zziej;
+
+    .line 76
+    .line 77
+    invoke-virtual {v2, v4, v5}, Lcom/google/android/gms/internal/ads/zziej;->G(J)V
+
+    .line 78
+    .line 79
+    .line 80
+    invoke-virtual {v3}, Lcom/google/android/gms/internal/ads/zzial;->m()Lcom/google/android/gms/internal/ads/zziar;
+
+    .line 81
+    .line 82
+    .line 83
+    move-result-object v2
+
+    .line 84
+    check-cast v2, Lcom/google/android/gms/internal/ads/zziej;
+
+    .line 85
+    .line 86
+    invoke-virtual {v1}, Lcom/google/android/gms/internal/ads/zzial;->k()V
+
+    .line 87
+    .line 88
+    .line 89
+    iget-object v3, v1, Lcom/google/android/gms/internal/ads/zzial;->f:Lcom/google/android/gms/internal/ads/zziar;
+
+    .line 90
+    .line 91
+    check-cast v3, Lcom/google/android/gms/internal/ads/zziel;
+
+    .line 92
+    .line 93
+    invoke-virtual {v3, v2}, Lcom/google/android/gms/internal/ads/zziel;->E(Lcom/google/android/gms/internal/ads/zziej;)V
+
+    .line 94
+    .line 95
+    .line 96
+    goto :goto_0
+
+    .line 97
+    :cond_1
+    invoke-virtual {v1}, Lcom/google/android/gms/internal/ads/zzial;->m()Lcom/google/android/gms/internal/ads/zziar;
+
+    .line 98
+    .line 99
+    .line 100
+    move-result-object p1
+
+    .line 101
+    check-cast p1, Lcom/google/android/gms/internal/ads/zziel;
+
+    .line 102
+    .line 103
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/ads/zzhyu;->h()[B
+
+    .line 104
+    .line 105
+    .line 106
+    move-result-object p1
+
+    .line 107
+    invoke-static {p1, v0}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
+
+    .line 108
+    .line 109
+    .line 110
+    move-result-object p1
+
+    .line 111
+    new-instance v1, Lcom/google/android/gms/internal/ads/zzfas;
+
+    .line 112
+    .line 113
+    invoke-direct {v1, p1, v0}, Lcom/google/android/gms/internal/ads/zzfas;-><init>(Ljava/lang/String;I)V
+
+    .line 114
+    .line 115
+    .line 116
+    invoke-static {v1}, Lcom/google/android/gms/internal/ads/zzgym;->a(Ljava/lang/Object;)Lcom/google/common/util/concurrent/ListenableFuture;
+
+    .line 117
+    .line 118
+    .line 119
+    move-result-object p1
+
+    .line 120
+    return-object p1
+    .line 121
+    .line 122
+    .line 123
+    .line 124
+    .line 125
+    .line 126
+    .line 127
+    .line 128
+    .line 129
+    .line 130
+    .line 131
+    .line 132
+    .line 133
+    .line 134
+    .line 135
+    .line 136
+    .line 137
+    .line 138
+    .line 139
+    .line 140
+    .line 141
+    .line 142
+    .line 143
+    .line 144
+    .line 145
+    .line 146
+    .line 147
+    .line 148
+    .line 149
+    .line 150
+    .line 151
+    .line 152
+    .line 153
+    .line 154
+    .line 155
+    .line 156
+    .line 157
+    .line 158
+    .line 159
+    .line 160
+    .line 161
+    .line 162
+    .line 163
+    .line 164
+    .line 165
+    .line 166
+    .line 167
+    .line 168
+    .line 169
+    .line 170
+    .line 171
+    .line 172
+    .line 173
+    .line 174
+    .line 175
+    .line 176
+    .line 177
+    .line 178
+    .line 179
+    .line 180
+    .line 181
+    .line 182
+.end method
