@@ -1,0 +1,91 @@
+.class Lcom/bumptech/glide/load/engine/DiskCacheStrategy$3;
+.super Lcom/bumptech/glide/load/engine/DiskCacheStrategy;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/bumptech/glide/load/engine/DiskCacheStrategy;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# virtual methods
+.method public final a()Z
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method public final b()Z
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public final c(Lcom/bumptech/glide/load/DataSource;)Z
+    .locals 1
+
+    .line 1
+    sget-object v0, Lcom/bumptech/glide/load/DataSource;->g:Lcom/bumptech/glide/load/DataSource;
+
+    .line 2
+    .line 3
+    if-eq p1, v0, :cond_0
+
+    .line 4
+    .line 5
+    sget-object v0, Lcom/bumptech/glide/load/DataSource;->i:Lcom/bumptech/glide/load/DataSource;
+
+    .line 6
+    .line 7
+    if-eq p1, v0, :cond_0
+
+    .line 8
+    .line 9
+    const/4 p1, 0x1
+
+    .line 10
+    return p1
+
+    .line 11
+    :cond_0
+    const/4 p1, 0x0
+
+    .line 12
+    return p1
+    .line 13
+    .line 14
+    .line 15
+    .line 16
+    .line 17
+    .line 18
+    .line 19
+    .line 20
+    .line 21
+    .line 22
+    .line 23
+    .line 24
+    .line 25
+    .line 26
+    .line 27
+.end method
+
+.method public final d(ZLcom/bumptech/glide/load/DataSource;Lcom/bumptech/glide/load/EncodeStrategy;)Z
+    .locals 0
+
+    .line 1
+    const/4 p1, 0x0
+
+    return p1
+.end method

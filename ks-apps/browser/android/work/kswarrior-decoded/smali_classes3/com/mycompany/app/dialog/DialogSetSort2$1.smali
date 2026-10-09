@@ -1,0 +1,277 @@
+.class Lcom/mycompany/app/dialog/DialogSetSort2$1;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic c:Lcom/mycompany/app/dialog/DialogSetSort2;
+
+
+# direct methods
+.method public constructor <init>(Lcom/mycompany/app/dialog/DialogSetSort2;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lcom/mycompany/app/dialog/DialogSetSort2$1;->c:Lcom/mycompany/app/dialog/DialogSetSort2;
+
+    .line 5
+    .line 6
+    return-void
+    .line 7
+    .line 8
+    .line 9
+    .line 10
+    .line 11
+    .line 12
+    .line 13
+    .line 14
+    .line 15
+    .line 16
+    .line 17
+    .line 18
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .locals 8
+
+    .line 1
+    iget-object v0, p0, Lcom/mycompany/app/dialog/DialogSetSort2$1;->c:Lcom/mycompany/app/dialog/DialogSetSort2;
+
+    .line 2
+    .line 3
+    iget-object v1, v0, Lcom/mycompany/app/dialog/DialogSetSort2;->b0:Landroid/content/Context;
+
+    .line 4
+    .line 5
+    if-nez v1, :cond_0
+
+    .line 6
+    .line 7
+    goto :goto_0
+
+    .line 8
+    :cond_0
+    const/4 v2, 0x1
+
+    .line 9
+    invoke-static {v1, v2}, Lcom/google/android/gms/internal/mlkit_vision_text_common/a;->q(Landroid/content/Context;I)Lcom/mycompany/app/view/MyDialogLinear;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object v3
+
+    .line 13
+    const/4 v4, 0x0
+
+    .line 14
+    invoke-static {v1, v2, v4}, Lcom/google/android/gms/internal/mlkit_vision_text_common/a;->u(Landroid/content/Context;ZZ)Lcom/mycompany/app/view/MyRecyclerView;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object v5
+
+    .line 18
+    new-instance v6, Landroid/widget/LinearLayout$LayoutParams;
+
+    .line 19
+    .line 20
+    const/4 v7, -0x1
+
+    .line 21
+    invoke-direct {v6, v7, v4}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
+
+    .line 22
+    .line 23
+    .line 24
+    const/high16 v4, 0x3f800000    # 1.0f
+
+    .line 25
+    .line 26
+    iput v4, v6, Landroid/widget/LinearLayout$LayoutParams;->weight:F
+
+    .line 27
+    .line 28
+    invoke-virtual {v3, v5, v6}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 29
+    .line 30
+    .line 31
+    new-instance v4, Lcom/mycompany/app/view/MyLineText;
+
+    .line 32
+    .line 33
+    invoke-direct {v4, v1}, Lcom/mycompany/app/view/MyLineText;-><init>(Landroid/content/Context;)V
+
+    .line 34
+    .line 35
+    .line 36
+    const/16 v1, 0x11
+
+    .line 37
+    .line 38
+    invoke-virtual {v4, v1}, Landroid/widget/TextView;->setGravity(I)V
+
+    .line 39
+    .line 40
+    .line 41
+    const/high16 v1, 0x41800000    # 16.0f
+
+    .line 42
+    .line 43
+    invoke-virtual {v4, v2, v1}, Landroidx/appcompat/widget/AppCompatTextView;->setTextSize(IF)V
+
+    .line 44
+    .line 45
+    .line 46
+    sget v1, Lcom/mycompany/app/main/MainApp;->E1:I
+
+    .line 47
+    .line 48
+    invoke-virtual {v4, v1}, Lcom/mycompany/app/view/MyLineText;->setLinePad(I)V
+
+    .line 49
+    .line 50
+    .line 51
+    invoke-virtual {v4, v2}, Lcom/mycompany/app/view/MyLineText;->setLineUp(Z)V
+
+    .line 52
+    .line 53
+    .line 54
+    sget v1, Lcom/mycompany/app/main/MainApp;->g1:I
+
+    .line 55
+    .line 56
+    invoke-virtual {v3, v4, v7, v1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;II)V
+
+    .line 57
+    .line 58
+    .line 59
+    iput-object v3, v0, Lcom/mycompany/app/dialog/DialogSetSort2;->h0:Lcom/mycompany/app/view/MyDialogLinear;
+
+    .line 60
+    .line 61
+    iput-object v5, v0, Lcom/mycompany/app/dialog/DialogSetSort2;->i0:Lcom/mycompany/app/view/MyRecyclerView;
+
+    .line 62
+    .line 63
+    iput-object v4, v0, Lcom/mycompany/app/dialog/DialogSetSort2;->j0:Lcom/mycompany/app/view/MyLineText;
+
+    .line 64
+    .line 65
+    iget-object v1, v0, Lcom/mycompany/app/view/MyDialogBottom;->i:Landroid/os/Handler;
+
+    .line 66
+    .line 67
+    if-nez v1, :cond_1
+
+    .line 68
+    .line 69
+    :goto_0
+    return-void
+
+    .line 70
+    :cond_1
+    new-instance v2, Lcom/mycompany/app/dialog/DialogSetSort2$2;
+
+    .line 71
+    .line 72
+    invoke-direct {v2, v0}, Lcom/mycompany/app/dialog/DialogSetSort2$2;-><init>(Lcom/mycompany/app/dialog/DialogSetSort2;)V
+
+    .line 73
+    .line 74
+    .line 75
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 76
+    .line 77
+    .line 78
+    return-void
+    .line 79
+    .line 80
+    .line 81
+    .line 82
+    .line 83
+    .line 84
+    .line 85
+    .line 86
+    .line 87
+    .line 88
+    .line 89
+    .line 90
+    .line 91
+    .line 92
+    .line 93
+    .line 94
+    .line 95
+    .line 96
+    .line 97
+    .line 98
+    .line 99
+    .line 100
+    .line 101
+    .line 102
+    .line 103
+    .line 104
+    .line 105
+    .line 106
+    .line 107
+    .line 108
+    .line 109
+    .line 110
+    .line 111
+    .line 112
+    .line 113
+    .line 114
+    .line 115
+    .line 116
+    .line 117
+    .line 118
+    .line 119
+    .line 120
+    .line 121
+    .line 122
+    .line 123
+    .line 124
+    .line 125
+    .line 126
+    .line 127
+    .line 128
+    .line 129
+    .line 130
+    .line 131
+    .line 132
+    .line 133
+    .line 134
+    .line 135
+    .line 136
+    .line 137
+    .line 138
+    .line 139
+    .line 140
+    .line 141
+    .line 142
+    .line 143
+    .line 144
+    .line 145
+    .line 146
+    .line 147
+    .line 148
+    .line 149
+    .line 150
+    .line 151
+    .line 152
+    .line 153
+    .line 154
+.end method
