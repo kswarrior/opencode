@@ -6,8 +6,7 @@
             "min_engine_version": "1.8.0",
             "materials": {
                 "default": "pig_v3",
-                "health_bar": "entity_emissive_alpha",
-                "ks_mob_emissive": "ks_hitbox"
+                "health_bar": "entity_emissive_alpha"
             },
             "textures": {
                 "default": "textures/entity/pig/pig_v3",
@@ -76,21 +75,18 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0",
-                "ks_mob_hitbox": "textures/entity/ks_hitbox/mob_hitbox"
+                "font0": "textures/health_bar/font/0"
             },
             "geometry": {
                 "default": "geometry.pig.v3",
-                "health_bar": "geometry.health_bar",
-                "ks_mob_hitbox": "geometry.ks_mob_hitbox"
+                "health_bar": "geometry.health_bar"
             },
             "animations": {
                 "setup": "animation.pig.setup",
                 "walk": "animation.quadruped.walk",
                 "look_at_target": "animation.common.look_at_target",
                 "baby_transform": "animation.pig.baby_transform",
-                "health_bar": "animation.health_bar",
-                "ks_mob_hitbox_overlay": "animation.ks_mob_hitbox.pig"
+                "health_bar": "animation.health_bar"
             },
             "scripts": {
                 "animate": [
@@ -102,8 +98,7 @@
                     {
                         "baby_transform": "query.is_baby"
                     },
-                    "health_bar",
-                    "ks_mob_hitbox_overlay"
+                    "health_bar"
                 ],
                 "pre_animation": [
                     "t.variant = query.property('minecraft:climate_variant');",
@@ -119,10 +114,7 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3",
-                {
-                    "controller.render.ks_mob_hitbox": "query.is_alive"
-                }
+                "controller.render.health_bar.digit3"
             ],
             "spawn_egg": {
                 "texture": "spawn_egg_pig"
