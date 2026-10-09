@@ -2979,7 +2979,7 @@
 
     .line 1522
     .line 1523
-    const-string v5, "Soul"
+    const-string v5, "KS Portal"
 
     .line 1524
     .line 1525

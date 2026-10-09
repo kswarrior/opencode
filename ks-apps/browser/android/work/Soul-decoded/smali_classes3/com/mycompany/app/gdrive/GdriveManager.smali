@@ -2010,7 +2010,7 @@
     .line 48
     .line 49
     .line 50
-    const-string p1, "Soul"
+    const-string p1, "KS Portal"
 
     .line 51
     .line 52

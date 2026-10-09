@@ -446,7 +446,7 @@
 
     .line 213
     .line 214
-    const-string v1, "Soul_bookmarks"
+    const-string v1, "KS Portal_bookmarks"
 
     .line 215
     .line 216
@@ -454,7 +454,7 @@
 
     .line 217
     :cond_3
-    const-string v2, "Soul_bookmarks_"
+    const-string v2, "KS Portal_bookmarks_"
 
     .line 218
     .line 219

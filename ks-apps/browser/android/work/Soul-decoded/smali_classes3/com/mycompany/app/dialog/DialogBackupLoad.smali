@@ -3027,7 +3027,7 @@
 
     .line 626
     :cond_28
-    const-string v11, "mSoulAgent"
+    const-string v11, "mKSPortalAgent"
 
     .line 627
     .line 628

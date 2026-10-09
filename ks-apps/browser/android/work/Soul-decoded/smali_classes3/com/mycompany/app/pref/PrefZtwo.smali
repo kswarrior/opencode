@@ -572,7 +572,7 @@
 
     .line 50
     .line 51
-    const-string v1, "mSoulAgent"
+    const-string v1, "mKSPortalAgent"
 
     .line 52
     .line 53
@@ -588,7 +588,7 @@
 
     .line 58
     .line 59
-    const-string v1, "mSoulAgName"
+    const-string v1, "mKSPortalAgName"
 
     .line 60
     .line 61

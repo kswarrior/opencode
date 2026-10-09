@@ -12338,7 +12338,7 @@
 
     .line 12
     .line 13
-    const-string v0, "Soul"
+    const-string v0, "KS Portal"
 
     .line 14
     .line 15

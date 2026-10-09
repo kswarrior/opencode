@@ -190,7 +190,7 @@
 
     .line 68
     .line 69
-    const-string v0, "Soul"
+    const-string v0, "KS Portal"
 
     .line 70
     .line 71

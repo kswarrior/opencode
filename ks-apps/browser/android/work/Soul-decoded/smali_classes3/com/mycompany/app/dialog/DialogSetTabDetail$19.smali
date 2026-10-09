@@ -122,7 +122,7 @@
 
     .line 35
     .line 36
-    const-string v1, "Soul"
+    const-string v1, "KS Portal"
 
     .line 37
     .line 38

@@ -1956,7 +1956,7 @@
 
     .line 900
     .line 901
-    const-string v4, "Soul"
+    const-string v4, "KS Portal"
 
     .line 902
     .line 903

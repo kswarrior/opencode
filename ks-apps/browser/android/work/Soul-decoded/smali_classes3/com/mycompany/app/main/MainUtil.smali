@@ -20292,7 +20292,7 @@
 
     .line 10
     :cond_0
-    const-string v0, "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Soul/4.0 Chrome/131.0.0.0 Mobile Safari/537.36"
+    const-string v0, "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) KS Portal/4.0 Chrome/131.0.0.0 Mobile Safari/537.36"
 
     .line 11
     .line 12
@@ -63205,7 +63205,7 @@
 
     .line 120
     .line 121
-    const-string v3, "mSoulAgName"
+    const-string v3, "mKSPortalAgName"
 
     .line 122
     .line 123
@@ -63284,7 +63284,7 @@
 
     .line 158
     .line 159
-    const-string v2, "mSoulAgent"
+    const-string v2, "mKSPortalAgent"
 
     .line 160
     .line 161
@@ -94417,7 +94417,7 @@
 
     .line 13
     :cond_0
-    const-string p0, "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Soul/4.0 Chrome/131.0.0.0 Mobile Safari/537.36"
+    const-string p0, "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) KS Portal/4.0 Chrome/131.0.0.0 Mobile Safari/537.36"
 
     .line 14
     .line 15

@@ -1392,7 +1392,7 @@
 
     .line 727
     .line 728
-    const-string v1, "Soul_backup"
+    const-string v1, "KS Portal_backup"
 
     .line 729
     .line 730
@@ -1400,7 +1400,7 @@
 
     .line 731
     :cond_6
-    const-string v2, "Soul_backup_"
+    const-string v2, "KS Portal_backup_"
 
     .line 732
     .line 733

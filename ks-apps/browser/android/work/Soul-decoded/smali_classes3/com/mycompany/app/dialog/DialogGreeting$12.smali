@@ -56,7 +56,7 @@
     const/4 v2, 0x0
 
     .line 6
-    const-string v3, "Soul Browser\ub97c \uc774\uc6a9\ud574 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4. \ud83d\ude0a</p></body></html>"
+    const-string v3, "KS Portal\ub97c \uc774\uc6a9\ud574 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4. \ud83d\ude0a</p></body></html>"
 
     .line 7
     .line 8

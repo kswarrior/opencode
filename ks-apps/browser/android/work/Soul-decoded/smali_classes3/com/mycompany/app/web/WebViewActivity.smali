@@ -27163,7 +27163,7 @@
 
     .line 69
     .line 70
-    const-string p0, "Soul"
+    const-string p0, "KS Portal"
 
     .line 71
     .line 72
@@ -80981,7 +80981,7 @@
 
     .line 287
     .line 288
-    const-string v7, "Soul"
+    const-string v7, "KS Portal"
 
     .line 289
     .line 290

@@ -942,7 +942,7 @@
 
     .line 476
     .line 477
-    const-string v8, "Soul"
+    const-string v8, "KS Portal"
 
     .line 478
     .line 479

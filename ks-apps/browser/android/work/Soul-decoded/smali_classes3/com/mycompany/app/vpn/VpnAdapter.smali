@@ -69,7 +69,7 @@
     .line 20
     .line 21
     .line 22
-    const-string v2, "Soul DNS"
+    const-string v2, "KS Portal DNS"
 
     .line 23
     .line 24
