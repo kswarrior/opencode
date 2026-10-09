@@ -1,0 +1,127 @@
+KS Client — Integrated Third-Party Content Record
+================================================
+This file lives in the project home (NOT inside the shipped .mcpack).
+All upstream code/assets merged into `resource_packs/KS Client/` were
+rebranded to KS Client naming. Original authors and sources are recorded
+here. Respect their licenses — get permission before redistributing.
+
+1. Slot Hotbar Buttons (floating hotbar slot shortcuts 1–10 + editor)
+   Author : itzriyo157 — Slot Hotbar Button v1.3.0
+   Now    : `ui/ks_modules/ksb_hotbar_button/` (namespace ksb_main/ksb_defs,
+            $ksb_* vars, ksb.howToSaveConfig)
+
+2. Inventory HUD Bottom-Right (live 9x4 inventory grid on HUD)
+   Author : itzriyo157 — Inventory HUD v1.0.2 Bottom Right
+   Now    : `ui/ks_modules/hud.json` + `b6As` defs (namespace ks_hud, $ks:*)
+
+3. Clean Touch Controls (touch buttons, D-pad, hide-GUI art)
+   Author : PandaMine5 — Clean Touch Controls v1.4.1
+   Now    : `ui/ks_touch/hide_gui.json` + `textures/ui/ks_touch/`
+
+4. Quick Totem Offhand (one-tap totem to offhand, HUD + inventory)
+   Author : oSkullo — Quick Totem Offhand v1.0.0
+   Now    : `hud.totem_btn` + `master_totem_panel` + `textures/totem/`
+
+5. Connected Hotbar (seamless hotbar art) v1.0.1
+   Now    : `textures/ui/hotbar_*.png` (no code changes needed)
+
+6. Glass Doors & Trapdoors (transparent doors/trapdoors) v1.0.1
+   Now    : `textures/blocks/*door*` (block textures only; item icons
+            unregistered in empty `atlas.items`)
+
+7. Clear & Borderless Glass
+   Author : Mod MCPE — Clear & Borderless Glass v6.2
+   Now    : `textures/blocks/glass*.png` + panes + tinted glass
+
+8. Clear Chat Screen (transparent chat + shortcut buttons, always on)
+   Author : Bruhh69 — file v3.0.10 (manifest v1.3.10)
+   Source : https://www.mcpedl.com/ (Clear Chat Screen v3.0.10)
+   Now    : `ui/chat_screen.json` + `ui/.ui_assets/.../chat_tweaks.json`
+            (namespace ks_chat_tweaks)
+
+9. Health Bar, Always Display (billboard HP bars over all mobs)
+   Author : Rvo JP — Health Bar v3.4.0 — https://rvo.jp/health-bar/
+   Now    : `animations/health_bar.json` (always_display variant),
+            `models/entity/health_bar.json`,
+            `render_controllers/health_bar.json`, `entity/*.json` hooks,
+            `textures/health_bar/` (only the hide_until_hurt variant was
+            left out; no subpack added)
+
+10. 3D Hammer (Getting Over It Hammer hold/item model, direct)
+    Author : Kareo Gamerz — 3D Mace HD+ V1.0.8 (kareo_gamerz3 variant)
+    Source : https://www.mcpedl.com/ (3D Mace HD+ V1.0.8)
+    Note   : (C) 2025 Kareo Gamerz — re-upload/modify/redistribute only
+             with the creator's permission.
+    Now    : `animations/mace.animation.json`,
+             `attachables/mace.attachable.json`,
+             `models/entity/attachable/mace.geo.json`,
+             `textures/entity/attachable/mace.png`,
+             `textures/items/mace.png` (+ `atlas.items` entry, lang name)
+
+11. Real FPS Counter, Top Left only (paper-doll digit FPS overlay)
+    Pack    : Real FPS Counter v1.4.6 (base ui/fps_hud.json = Top Left;
+              bottom_left/bottom_right/top_center/top_right variants NOT used)
+    Source  : https://www.mcpedl.com/ (Real FPS Counter v1.4.6)
+    Now     : `ui/fps_hud.json` (namespace ks_fps, top_left [0,0]),
+              `root_panel` insert_back hook in `ui/hud_screen.json`,
+              fps slots merged into `entity/player.json` (materials,
+              textures, geometry, initialize, pre_animation, variables,
+              render controller), `models/entity/fps_counter.geo.json`,
+              `render_controllers/fps_counter.render.json`,
+              `textures/fps/digits_atlas.png` (no subpack, no manifest change)
+
+12. BlockTrace selective merge — trapped chest + directional hopper only
+    Pack    : BlockTrace by FrostAlpha (contains components from
+              Vanilla Tweaks / Bedrock Tweaks, directly or modified)
+    Source  : https://edge.mcpedl.com/files/7010/884/BlockTrace.mcpack
+    Note    : Only `trapped` chest + `hopper_outside` / `hopper_top`
+              taken. NOT taken: normal chest, double_normal, ender chest,
+              any ores (coal/copper/diamond/emerald/gold/iron/lapis/
+              redstone/quartz/nether_gold + deepslate variants), ancient
+              debris, budding_amethyst, infested, observer, suspicious,
+              powder_snow, trip_wire, gilded_blackstone.
+    Now     : `textures/entity/chest/trapped.png` +
+              `trapped_double.png` (plus legacy copies at
+              `textures/entity/trapped.png` / `trapped_double.png`),
+              `textures/blocks/hopper_outside/` (4 PNGs: left/right +
+              powered), `textures/blocks/hopper_top/` (12 PNGs: down/up/
+              north/south/west/east + powered), `blocks.json` hopper face
+              mapping only, `terrain_texture.json` hopper_top (16-frame)
+              + hopper_outside_east/north/south/west (16-frame each).
+              Normal/double/ender chests left vanilla; ores untouched.
+
+13. Crosshair Indicator, center (Java-like default/entity hit crosshair)
+    Author : PandaMine5 — PandaMine's Crosshair Indicator v1.1
+    Source : https://edge.mcpedl.com/files/8918/783/PandaMine%27s%20Crosshair%20Indicator%20-%20v1.1.mcpack?ft=ea51a08da0af5b1c574df5ee2cbe8eb3&bd=k475pmkxfm
+    Note   : (C) 2025-2026 PandaMine5 — derivative/redistribution only
+             with the creator's permission (see upstream LICENSE: no
+             unauthorized modification/derivative, share only via official
+             links, no monetized redistribution).
+    Now    : `textures/ui/crosshair_default.png` +
+             `crosshair_entity.png` (direct UI paths, no atlas),
+             `ui/hud_screen.json` `hud.ks_crosshair_panel` +
+             `ks_crosshair_default/entity` (rebranded from
+             `pm5_crosshair_panel/crosshair_default/entity`, bindings
+             preserved), `root_panel` insert_front hook,
+             `$ks_crosshair_v/size/alpha/offset` in
+             `ui/_global_variables.json`
+
+14. Better Breaking, loading-bar subpack only (block-crack overlay
+    as loading bar, `loading_bar` subpack only — colorful / progress /
+    rainbow variants NOT taken)
+    Author : TsPlaysMCBE — Better Breaking v1.0.0
+    Source : https://edge.mcpedl.com/files/8791/225/Better%20Breaking_v1.0.0.mcpack?ft=5115a188a305085267daeb6ffdf17fc0&bd=k475pmkxfm
+    Note   : Code by TsPlaysMCBE — do not distribute without permission;
+             contact the author on Discord to use any assets (see upstream
+             changelog/credits). Get permission before redistributing.
+    Now    : `subpacks/loading_bar/textures/environment/`
+             `destroy_stage_0-9.png` (10 files, 16x16, path-override only;
+             vanilla engine names kept — renaming would break the crack
+             overlay), `manifest.json` subpacks entry `loading_bar`
+             ("Loading Bar", memory tier 0). Main pack keeps its own
+             `textures/environment/destroy_stage_0-9.png`.
+
+Removed again after merge (no longer in pack, kept here for history):
+- Utility HUD V-1.5 Without Counters — EchoRif (fully purged)
+- F1 & F3 Buttons v1.1.3 — NeBux (fully purged, incl. doll)
+- PandaMine5 F1 HUD button (unwired, files rebranded as KS)
