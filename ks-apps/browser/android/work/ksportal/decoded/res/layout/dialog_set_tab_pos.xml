@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/view_frame" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <androidx.constraintlayout.widget.ConstraintLayout android:paddingTop="24.0dip" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.mycompany.app.view.MyButtonRelative android:id="@id/out_frame" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="160.0dip" android:layout_height="fill_parent" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" app:layout_constrainedHeight="true" app:layout_constraintHeight_max="300.0dip" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:roundRadius="16.0dip" app:roundRect="true">
+                <com.mycompany.app.view.MyLineFrame android:layout_width="fill_parent" android:layout_height="fill_parent" app:lineDn="true" app:lineLt="true" app:lineRt="true" app:lineUp="true">
+                    <ImageView android:id="@id/back_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+                    <com.mycompany.app.view.MyLineImage android:id="@id/status_bar" android:layout_width="fill_parent" android:layout_height="20.0dip" android:scaleType="fitXY" app:lineDn="true" />
+                    <com.mycompany.app.view.MyLineImage android:id="@id/bar_view_1" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" app:lineDn="true" />
+                    <com.mycompany.app.view.MyLineImage android:id="@id/bar_view_2" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="40.0dip" android:scaleType="fitXY" app:lineDn="true" />
+                    <com.mycompany.app.view.MyLineImage android:layout_gravity="start|bottom|center" android:id="@id/bar_view_3" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginBottom="40.0dip" android:scaleType="fitXY" app:lineUp="true" />
+                    <com.mycompany.app.view.MyLineImage android:layout_gravity="start|bottom|center" android:id="@id/bar_view_4" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginBottom="20.0dip" android:scaleType="fitXY" app:lineUp="true" />
+                    <com.mycompany.app.view.MyLineImage android:layout_gravity="start|bottom|center" android:id="@id/navi_bar" android:layout_width="fill_parent" android:layout_height="20.0dip" android:scaleType="fitXY" app:lineUp="true" />
+                    <com.mycompany.app.view.MySelectView android:id="@id/select_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="20.0dip" />
+                </com.mycompany.app.view.MyLineFrame>
+            </com.mycompany.app.view.MyButtonRelative>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/icon_help" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginTop="8.0dip" android:scaleType="centerInside" android:layout_marginEnd="8.0dip" />
+    </FrameLayout>
+    <com.mycompany.app.view.MyLineRelative android:gravity="center_vertical" android:id="@id/pos_frame" android:paddingTop="@dimen/setting_pad" android:paddingBottom="@dimen/setting_pad" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/main_set_height" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" app:linePad="16.0dip" app:lineUp="true">
+        <View android:id="@id/pos_anchor" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_alignParentEnd="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/pos_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/show_tab_bar" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/pos_value" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/pos_title" />
+    </com.mycompany.app.view.MyLineRelative>
+    <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:text="@string/apply" app:linePad="16.0dip" app:lineUp="true" />
+</com.mycompany.app.view.MyDialogLinear>

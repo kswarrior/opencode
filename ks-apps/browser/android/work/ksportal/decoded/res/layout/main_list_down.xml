@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyStatusRelative android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/list_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bottom_view">
+        <com.mycompany.app.fragment.FragmentExpandView android:id="@id/list_view" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_height" android:listSelector="@android:color/transparent" android:groupIndicator="@null" android:childDivider="@null" android:divider="@null" />
+        <include android:id="@id/group_header" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/main_list_group_header" />
+        <com.mycompany.app.view.MyScrollBar android:layout_gravity="end" android:id="@id/scroll_bar" android:visibility="invisible" android:layout_width="@dimen/item_size" android:layout_height="fill_parent" app:scrollPadBot="@dimen/item_large_size" app:scrollPadTop="@dimen/title_height" />
+        <com.mycompany.app.view.MyFadeImage android:id="@id/empty_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_height" android:src="@drawable/logo_gray" android:scaleType="centerInside" />
+        <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_height" />
+        <com.mycompany.app.view.MyHeaderView android:id="@id/header_view" android:layout_width="fill_parent" android:layout_height="@dimen/title_height">
+            <com.mycompany.app.view.MyButtonImage android:id="@id/title_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_marginStart="8.0dip" app:bgPreColor="@color/gray_pre" />
+            <com.mycompany.app.view.MyButtonRelative android:id="@id/title_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:layout_marginStart="48.0dip" android:layout_toStartOf="@id/icon_frame" app:bgPreColor="@color/gray_pre" app:roundRadius="24.0dip" app:roundRect="true">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/title_text_size" android:id="@id/title_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/down_list" android:singleLine="true" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" />
+                <ImageView android:id="@id/title_down" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_toEndOf="@id/title_text" />
+            </com.mycompany.app.view.MyButtonRelative>
+            <FrameLayout android:id="@id/icon_frame" android:layout_width="wrap_content" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:layout_toStartOf="@id/cast_frame_icon">
+                <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/icon_refresh" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginEnd="96.0dip" app:bgPreColor="@color/gray_pre" />
+                <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/icon_search" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginEnd="@dimen/item_size" app:bgPreColor="@color/gray_pre" />
+                <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/icon_more" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/gray_pre" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:layout_gravity="end" android:id="@id/count_view" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/item_size" android:textDirection="ltr" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" android:layout_marginEnd="52.0dip" />
+                <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end" android:id="@id/icon_check" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:bgPreColor="@color/gray_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/cast_frame_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/title_height" android:layout_alignParentEnd="true" />
+        </com.mycompany.app.view.MyHeaderView>
+        <com.mycompany.app.view.MyProgressBar android:id="@id/progress_bar" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginTop="@dimen/title_height" app:progressColor="@color/prog_color" app:progressHeader="true" app:progressHeight="1.5dip" app:progressSkip="true" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/bottom_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <FrameLayout android:id="@id/cast_frame_ctrl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+</com.mycompany.app.view.MyStatusRelative>

@@ -1,0 +1,14 @@
+.class public final Landroidx/core/graphics/BitmapCompat;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/core/graphics/BitmapCompat$Api31Impl;,
+        Landroidx/core/graphics/BitmapCompat$Api29Impl;,
+        Landroidx/core/graphics/BitmapCompat$Api27Impl;,
+        Landroidx/core/graphics/BitmapCompat$Api19Impl;,
+        Landroidx/core/graphics/BitmapCompat$Api17Impl;
+    }
+.end annotation

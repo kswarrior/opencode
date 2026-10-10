@@ -1,0 +1,12 @@
+.class public interface abstract Lcom/google/android/material/internal/StaticLayoutBuilderConfigurer;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation build Landroidx/annotation/RestrictTo;
+.end annotation
+
+
+# virtual methods
+.method public abstract a()V
+.end method

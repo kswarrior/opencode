@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogRelative android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyLineFrame android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip">
+        <com.mycompany.app.view.MyButtonImage android:id="@id/clean_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/gray_pre" app:bgPreRadius="24.0dip" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:textColor="@color/select_color" android:gravity="center_vertical" android:id="@id/clean_text" android:layout_width="wrap_content" android:layout_height="@dimen/item_size" android:layout_marginStart="@dimen/item_real_size" />
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/coffee_icon" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginEnd="96.0dip" app:bgPreColor="@color/gray_pre" app:bgPreRadius="24.0dip" />
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/type_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginEnd="@dimen/item_size" app:bgPreColor="@color/gray_pre" app:bgPreRadius="24.0dip" />
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/setting_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/gray_pre" app:bgPreRadius="24.0dip" />
+    </com.mycompany.app.view.MyLineFrame>
+    <com.google.android.material.tabs.TabLayout android:id="@id/tab_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginTop="@dimen/item_size" android:layout_marginStart="20.0dip" android:layout_marginEnd="20.0dip" app:tabGravity="fill" app:tabMaxWidth="0.0dip" app:tabMode="fixed" />
+    <com.mycompany.app.view.MyViewPager android:id="@id/page_view" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="260.0dip" android:layout_marginTop="50.0dip" />
+</com.mycompany.app.view.MyDialogRelative>

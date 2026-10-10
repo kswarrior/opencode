@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <SurfaceView android:id="@id/surface_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.mycompany.app.barcode.BarcodeFrame android:id="@id/frame_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.mycompany.app.view.MyButtonImage android:layout_gravity="bottom|center" android:id="@id/icon_image" android:visibility="invisible" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:src="@drawable/outline_image_white_24" android:scaleType="centerInside" app:bgNorColor="@color/view_nor" app:bgNorRadius="@dimen/nor_radius" app:bgPreColor="@color/view_pre" app:bgPreRadius="@dimen/pre_radius" />
+    <ImageView android:id="@id/image_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:backCircle="@color/view_nor" app:blockTouch="true" app:foreCircle="@color/white" />
+</FrameLayout>

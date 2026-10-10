@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyBrightRelative android:id="@id/body_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyWebCoord android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cast_frame_ctrl">
+        <com.google.android.material.appbar.AppBarLayout android:id="@id/appbar_view" android:layout_width="fill_parent" android:layout_height="@dimen/web_bar_height" app:elevation="0.0dip" app:layout_behavior="com.mycompany.app.behavior.MyBehaviorAppBar">
+            <View android:id="@id/appbar_sub" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_scrollFlags="enterAlways|scroll|snap" />
+        </com.google.android.material.appbar.AppBarLayout>
+        <com.mycompany.app.web.WebNestLayout android:id="@id/web_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.mycompany.app.view.MyBarFrame android:orientation="vertical" android:id="@id/top_view" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.mycompany.app.view.MyBarFrame android:layout_gravity="start|bottom|center" android:orientation="vertical" android:id="@id/bot_view" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.mycompany.app.view.MyWebCoord>
+    <FrameLayout android:id="@id/cast_frame_ctrl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</com.mycompany.app.view.MyBrightRelative>

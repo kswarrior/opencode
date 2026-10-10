@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <View android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.mycompany.app.view.MyDialogRelative android:id="@id/ad_frame" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/nat_pad_height" android:layout_centerVertical="true" />
+    <View android:id="@id/face_view" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_centerInParent="true" />
+    <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/nat_pad_height" android:layout_centerVertical="true" app:foreBorder="2.0dip" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="bottom|center" android:id="@id/load_text" android:paddingBottom="24.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/nat_pad_height" android:layout_centerVertical="true" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" />
+</RelativeLayout>

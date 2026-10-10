@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/round_view_1" android:visibility="gone" android:layout_width="@dimen/list_round" android:layout_height="@dimen/list_round" />
+    <View android:id="@id/round_view_2" android:visibility="gone" android:layout_width="@dimen/list_round" android:layout_height="@dimen/list_round" android:layout_alignParentEnd="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/bot_frame" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false" android:layout_below="@id/round_view_1">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/bot_view_1" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/bot_view_2" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineLt="true" />
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/bot_view_3" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineLt="true" />
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/bot_view_4" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineLt="true" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/icon_control" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/main_set_height" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+            <com.mycompany.app.view.MySwitchView android:id="@id/icon_switch" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+            <RelativeLayout android:paddingTop="@dimen/setting_pad" android:paddingBottom="@dimen/setting_pad" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/icon_switch">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/icon_title" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/icon_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/icon_title" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <com.mycompany.app.view.MyLineRelative android:id="@id/color_control" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/main_set_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip" app:lineUp="true">
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/color_title" android:paddingTop="@dimen/setting_pad" android:paddingBottom="@dimen/setting_pad" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+            <com.mycompany.app.view.MyButtonView android:id="@id/color_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:bgNorRadius="12.0dip" />
+        </com.mycompany.app.view.MyLineRelative>
+        <com.mycompany.app.view.MyRoundItem android:id="@id/zoom_control" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:id="@id/zoom_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginStart="16.0dip" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:gravity="center_horizontal" android:id="@id/zoom_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:minWidth="16.0dip" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" />
+            <FrameLayout android:id="@id/zoom_sframe" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_below="@id/zoom_text">
+                <com.mycompany.app.view.MyButtonImage android:id="@id/zoom_minus" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+                <SeekBar android:layout_gravity="start|center" android:id="@id/zoom_seek" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/item_size" android:layout_marginEnd="@dimen/item_size" />
+                <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/zoom_plus" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+            </FrameLayout>
+        </com.mycompany.app.view.MyRoundItem>
+        <com.mycompany.app.view.MyRoundItem android:id="@id/seek_control" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:id="@id/seek_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginStart="16.0dip" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:gravity="center_horizontal" android:id="@id/seek_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:minWidth="16.0dip" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_below="@id/seek_text">
+                <com.mycompany.app.view.MyButtonImage android:id="@id/seek_minus" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+                <SeekBar android:layout_gravity="start|center" android:id="@id/seek_seek" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/item_size" android:layout_marginEnd="@dimen/item_size" />
+                <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/seek_plus" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+            </FrameLayout>
+        </com.mycompany.app.view.MyRoundItem>
+        <com.mycompany.app.view.MyLineLinear android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false" app:linePad="16.0dip" app:lineUp="true">
+            <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/reset_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/reset" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/apply" android:layout_weight="1.0" />
+        </com.mycompany.app.view.MyLineLinear>
+    </com.mycompany.app.view.MyDialogLinear>
+    <FrameLayout android:id="@id/zoom_frame" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/main_layout">
+        <androidx.recyclerview.widget.RecyclerView android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    </FrameLayout>
+</RelativeLayout>

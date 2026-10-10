@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyLineText android:textSize="@dimen/info_text_size" android:gravity="center" android:id="@id/noti_view" android:padding="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/content_height" android:lineSpacingExtra="4.0dip" app:lineDn="true" app:linePad="16.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:id="@id/seek_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginStart="16.0dip" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:gravity="center_horizontal" android:id="@id/seek_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:minWidth="16.0dip" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_below="@id/seek_text">
+            <com.mycompany.app.view.MyButtonImage android:id="@id/seek_minus" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+            <SeekBar android:layout_gravity="start|center" android:id="@id/seek_seek" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/item_size" android:layout_marginEnd="@dimen/item_size" />
+            <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/seek_plus" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+        </FrameLayout>
+    </RelativeLayout>
+    <com.mycompany.app.view.MyLineLinear android:orientation="horizontal" android:id="@id/button_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false" app:linePad="16.0dip" app:lineUp="true">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/reset_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/reset" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/apply" android:layout_weight="1.0" />
+    </com.mycompany.app.view.MyLineLinear>
+</com.mycompany.app.view.MyDialogLinear>

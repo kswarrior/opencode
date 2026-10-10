@@ -1,0 +1,59 @@
+.class public final Landroidx/recyclerview/R$attr;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/recyclerview/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "attr"
+.end annotation
+
+
+# static fields
+.field public static alpha:I = 0x7f04002e
+
+.field public static fastScrollEnabled:I = 0x7f0401fa
+
+.field public static fastScrollHorizontalThumbDrawable:I = 0x7f0401fb
+
+.field public static fastScrollHorizontalTrackDrawable:I = 0x7f0401fc
+
+.field public static fastScrollVerticalThumbDrawable:I = 0x7f0401fd
+
+.field public static fastScrollVerticalTrackDrawable:I = 0x7f0401fe
+
+.field public static font:I = 0x7f040224
+
+.field public static fontProviderAuthority:I = 0x7f040226
+
+.field public static fontProviderCerts:I = 0x7f040227
+
+.field public static fontProviderFetchStrategy:I = 0x7f040228
+
+.field public static fontProviderFetchTimeout:I = 0x7f040229
+
+.field public static fontProviderPackage:I = 0x7f04022a
+
+.field public static fontProviderQuery:I = 0x7f04022b
+
+.field public static fontStyle:I = 0x7f04022d
+
+.field public static fontVariationSettings:I = 0x7f04022e
+
+.field public static fontWeight:I = 0x7f04022f
+
+.field public static layoutManager:I = 0x7f040293
+
+.field public static recyclerViewStyle:I = 0x7f0403bf
+
+.field public static reverseLayout:I = 0x7f0403c5
+
+.field public static spanCount:I = 0x7f040403
+
+.field public static stackFromEnd:I = 0x7f040409
+
+.field public static ttcIndex:I = 0x7f0404d2

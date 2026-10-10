@@ -1,0 +1,48 @@
+.class public final Landroidx/core/view/ViewKt$doOnAttach$1;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Landroid/view/View$OnAttachStateChangeListener;
+
+
+# annotations
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\u0008\n\u0000\n\u0002\u0018\u0002\n\u0000\u0008\n\u0018\u00002\u00020\u0001\u00a8\u0006\u0002"
+    }
+    d2 = {
+        "androidx/core/view/ViewKt$doOnAttach$1",
+        "Landroid/view/View$OnAttachStateChangeListener;",
+        "core-ktx_release"
+    }
+    k = 0x1
+    mv = {
+        0x1,
+        0x7,
+        0x1
+    }
+.end annotation
+
+
+# virtual methods
+.method public final onViewAttachedToWindow(Landroid/view/View;)V
+    .locals 1
+
+    const-string v0, "view"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const/4 p1, 0x0
+
+    throw p1
+.end method
+
+.method public final onViewDetachedFromWindow(Landroid/view/View;)V
+    .locals 1
+
+    const-string v0, "view"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    return-void
+.end method

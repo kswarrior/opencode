@@ -1,0 +1,144 @@
+.class public final synthetic Lcom/google/android/gms/cast/zzbo;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic c:Lcom/google/android/gms/cast/zzbs;
+
+.field public final synthetic e:I
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/google/android/gms/cast/zzbs;I)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/google/android/gms/cast/zzbo;->c:Lcom/google/android/gms/cast/zzbs;
+
+    iput p2, p0, Lcom/google/android/gms/cast/zzbo;->e:I
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .locals 6
+
+    iget-object v0, p0, Lcom/google/android/gms/cast/zzbo;->c:Lcom/google/android/gms/cast/zzbs;
+
+    iget v1, p0, Lcom/google/android/gms/cast/zzbo;->e:I
+
+    iget-object v2, v0, Lcom/google/android/gms/cast/zzbs;->c:Lcom/google/android/gms/cast/zzbt;
+
+    const/4 v3, -0x1
+
+    iput v3, v2, Lcom/google/android/gms/cast/zzbt;->n:I
+
+    iput v3, v2, Lcom/google/android/gms/cast/zzbt;->o:I
+
+    const/4 v3, 0x0
+
+    iput-object v3, v2, Lcom/google/android/gms/cast/zzbt;->j:Lcom/google/android/gms/cast/ApplicationMetadata;
+
+    iput-object v3, v2, Lcom/google/android/gms/cast/zzbt;->k:Ljava/lang/String;
+
+    const-wide/16 v4, 0x0
+
+    iput-wide v4, v2, Lcom/google/android/gms/cast/zzbt;->l:D
+
+    invoke-virtual {v2}, Lcom/google/android/gms/cast/zzbt;->m()V
+
+    const/4 v4, 0x0
+
+    iput-boolean v4, v2, Lcom/google/android/gms/cast/zzbt;->m:Z
+
+    iput-object v3, v2, Lcom/google/android/gms/cast/zzbt;->p:Lcom/google/android/gms/cast/zzav;
+
+    iget-object v2, v0, Lcom/google/android/gms/cast/zzbs;->c:Lcom/google/android/gms/cast/zzbt;
+
+    const/4 v3, 0x1
+
+    iput v3, v2, Lcom/google/android/gms/cast/zzbt;->v:I
+
+    iget-object v2, v2, Lcom/google/android/gms/cast/zzbt;->u:Ljava/util/List;
+
+    monitor-enter v2
+
+    :try_start_0
+    iget-object v3, v0, Lcom/google/android/gms/cast/zzbs;->c:Lcom/google/android/gms/cast/zzbt;
+
+    iget-object v3, v3, Lcom/google/android/gms/cast/zzbt;->u:Ljava/util/List;
+
+    invoke-interface {v3}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v3
+
+    :goto_0
+    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/google/android/gms/cast/zzq;
+
+    invoke-virtual {v4, v1}, Lcom/google/android/gms/cast/zzq;->d(I)V
+
+    goto :goto_0
+
+    :cond_0
+    monitor-exit v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    iget-object v1, v0, Lcom/google/android/gms/cast/zzbs;->c:Lcom/google/android/gms/cast/zzbt;
+
+    invoke-virtual {v1}, Lcom/google/android/gms/cast/zzbt;->g()V
+
+    iget-object v0, v0, Lcom/google/android/gms/cast/zzbs;->c:Lcom/google/android/gms/cast/zzbt;
+
+    iget-object v1, v0, Lcom/google/android/gms/cast/zzbt;->a:Lcom/google/android/gms/cast/zzbs;
+
+    const-string v2, "castDeviceControllerListenerKey"
+
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/common/api/GoogleApi;->registerListener(Ljava/lang/Object;Ljava/lang/String;)Lcom/google/android/gms/common/api/internal/ListenerHolder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/google/android/gms/common/api/internal/ListenerHolder;->getListenerKey()Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;
+
+    move-result-object v1
+
+    const-string v2, "Key must not be null"
+
+    invoke-static {v1, v2}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;
+
+    const/16 v2, 0x20df
+
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/common/api/GoogleApi;->doUnregisterEventListener(Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;I)Lcom/google/android/gms/tasks/Task;
+
+    return-void
+
+    :catchall_0
+    move-exception v0
+
+    :try_start_1
+    monitor-exit v2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v0
+.end method

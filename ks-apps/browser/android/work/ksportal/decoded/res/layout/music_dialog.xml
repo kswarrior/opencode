@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/item_size">
+        <com.mycompany.app.view.MyButtonImage android:id="@id/icon_play" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/icon_close" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_alignParentEnd="true" app:bgPreColor="@color/white_pre" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/name_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" android:layout_toStartOf="@id/icon_close" android:layout_toEndOf="@id/icon_play" />
+    </RelativeLayout>
+    <SeekBar android:id="@id/seek_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" />
+    <FrameLayout android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:id="@id/current_time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:layout_gravity="end" android:id="@id/total_time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+</com.mycompany.app.view.MyDialogLinear>

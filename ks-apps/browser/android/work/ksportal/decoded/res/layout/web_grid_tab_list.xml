@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.web.WebTabGridItem android:id="@id/frame_view" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyThumbView android:layout_gravity="start|center" android:id="@id/image_view" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:layout_marginStart="8.0dip" />
+    <RelativeLayout android:layout_gravity="start|center" android:id="@id/title_frame" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="84.0dip" android:layout_marginEnd="@dimen/item_size">
+        <com.mycompany.app.view.MyTextFast android:textSize="@dimen/list_text_size" android:ellipsize="end" android:id="@id/title_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
+        <com.mycompany.app.view.MyTextImage android:id="@id/ticon_view" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginTop="6.0dip" android:scaleType="centerCrop" android:layout_below="@id/title_view" />
+        <com.mycompany.app.view.MyTextFast android:textSize="@dimen/info_text_size" android:gravity="start|center" android:id="@id/info_view" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginTop="6.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/title_view" android:lineSpacingExtra="0.0dip" android:layout_marginStart="29.0dip" />
+    </RelativeLayout>
+    <com.mycompany.app.view.MyButtonImage android:layout_gravity="end|center" android:id="@id/delete_view" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+    <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end|center" android:id="@id/check_view" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:checked="@drawable/baseline_check_circle_black_24" app:unchecked="@drawable/outline_radio_button_unchecked_black_24" />
+</com.mycompany.app.web.WebTabGridItem>

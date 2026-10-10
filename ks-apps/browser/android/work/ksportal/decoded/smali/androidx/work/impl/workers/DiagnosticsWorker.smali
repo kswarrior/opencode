@@ -1,0 +1,354 @@
+.class public Landroidx/work/impl/workers/DiagnosticsWorker;
+.super Landroidx/work/Worker;
+
+
+# annotations
+.annotation build Landroidx/annotation/RestrictTo;
+.end annotation
+
+
+# static fields
+.field public static final j:Ljava/lang/String;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .locals 1
+
+    const-string v0, "DiagnosticsWrkr"
+
+    invoke-static {v0}, Landroidx/work/Logger;->e(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Landroidx/work/impl/workers/DiagnosticsWorker;->j:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroidx/work/WorkerParameters;)V
+    .locals 0
+    .param p1    # Landroid/content/Context;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+    .param p2    # Landroidx/work/WorkerParameters;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+
+    invoke-direct {p0, p1, p2}, Landroidx/work/Worker;-><init>(Landroid/content/Context;Landroidx/work/WorkerParameters;)V
+
+    return-void
+.end method
+
+.method public static a(Landroidx/work/impl/model/WorkNameDao;Landroidx/work/impl/model/WorkTagDao;Landroidx/work/impl/model/SystemIdInfoDao;Ljava/util/List;)Ljava/lang/String;
+    .locals 9
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v2, 0x17
+
+    if-lt v1, v2, :cond_0
+
+    const-string v1, "Job Id"
+
+    goto :goto_0
+
+    :cond_0
+    const-string v1, "Alarm Id"
+
+    :goto_0
+    const/4 v2, 0x1
+
+    new-array v3, v2, [Ljava/lang/Object;
+
+    const/4 v4, 0x0
+
+    aput-object v1, v3, v4
+
+    const-string v1, "\n Id \t Class Name\t %s\t State\t Unique Name\t Tags\t"
+
+    invoke-static {v1, v3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-interface {p3}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object p3
+
+    :goto_1
+    invoke-interface {p3}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    invoke-interface {p3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroidx/work/impl/model/WorkSpec;
+
+    iget-object v3, v1, Landroidx/work/impl/model/WorkSpec;->a:Ljava/lang/String;
+
+    invoke-interface {p2, v3}, Landroidx/work/impl/model/SystemIdInfoDao;->c(Ljava/lang/String;)Landroidx/work/impl/model/SystemIdInfo;
+
+    move-result-object v3
+
+    if-eqz v3, :cond_1
+
+    iget v3, v3, Landroidx/work/impl/model/SystemIdInfo;->b:I
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    goto :goto_2
+
+    :cond_1
+    const/4 v3, 0x0
+
+    :goto_2
+    iget-object v5, v1, Landroidx/work/impl/model/WorkSpec;->a:Ljava/lang/String;
+
+    invoke-interface {p0, v5}, Landroidx/work/impl/model/WorkNameDao;->b(Ljava/lang/String;)Ljava/util/ArrayList;
+
+    move-result-object v5
+
+    iget-object v6, v1, Landroidx/work/impl/model/WorkSpec;->a:Ljava/lang/String;
+
+    invoke-interface {p1, v6}, Landroidx/work/impl/model/WorkTagDao;->b(Ljava/lang/String;)Ljava/util/ArrayList;
+
+    move-result-object v6
+
+    const-string v7, ","
+
+    invoke-static {v7, v5}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v7, v6}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+
+    move-result-object v6
+
+    const/4 v7, 0x6
+
+    new-array v7, v7, [Ljava/lang/Object;
+
+    iget-object v8, v1, Landroidx/work/impl/model/WorkSpec;->a:Ljava/lang/String;
+
+    aput-object v8, v7, v4
+
+    iget-object v8, v1, Landroidx/work/impl/model/WorkSpec;->c:Ljava/lang/String;
+
+    aput-object v8, v7, v2
+
+    const/4 v8, 0x2
+
+    aput-object v3, v7, v8
+
+    iget-object v1, v1, Landroidx/work/impl/model/WorkSpec;->b:Landroidx/work/WorkInfo$State;
+
+    invoke-virtual {v1}, Ljava/lang/Enum;->name()Ljava/lang/String;
+
+    move-result-object v1
+
+    const/4 v3, 0x3
+
+    aput-object v1, v7, v3
+
+    const/4 v1, 0x4
+
+    aput-object v5, v7, v1
+
+    const/4 v1, 0x5
+
+    aput-object v6, v7, v1
+
+    const-string v1, "\n%s\t %s\t %s\t %s\t %s\t %s\t"
+
+    invoke-static {v1, v7}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    goto :goto_1
+
+    :cond_2
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public final doWork()Landroidx/work/ListenableWorker$Result;
+    .locals 11
+
+    invoke-virtual {p0}, Landroidx/work/ListenableWorker;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-static {v0}, Landroidx/work/impl/WorkManagerImpl;->c(Landroid/content/Context;)Landroidx/work/impl/WorkManagerImpl;
+
+    move-result-object v0
+
+    iget-object v0, v0, Landroidx/work/impl/WorkManagerImpl;->c:Landroidx/work/impl/WorkDatabase;
+
+    invoke-virtual {v0}, Landroidx/work/impl/WorkDatabase;->n()Landroidx/work/impl/model/WorkSpecDao;
+
+    move-result-object v1
+
+    invoke-virtual {v0}, Landroidx/work/impl/WorkDatabase;->l()Landroidx/work/impl/model/WorkNameDao;
+
+    move-result-object v2
+
+    invoke-virtual {v0}, Landroidx/work/impl/WorkDatabase;->o()Landroidx/work/impl/model/WorkTagDao;
+
+    move-result-object v3
+
+    invoke-virtual {v0}, Landroidx/work/impl/WorkDatabase;->k()Landroidx/work/impl/model/SystemIdInfoDao;
+
+    move-result-object v0
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v4
+
+    sget-object v6, Ljava/util/concurrent/TimeUnit;->DAYS:Ljava/util/concurrent/TimeUnit;
+
+    const-wide/16 v7, 0x1
+
+    invoke-virtual {v6, v7, v8}, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
+
+    move-result-wide v6
+
+    sub-long/2addr v4, v6
+
+    invoke-interface {v1, v4, v5}, Landroidx/work/impl/model/WorkSpecDao;->e(J)Ljava/util/ArrayList;
+
+    move-result-object v4
+
+    invoke-interface {v1}, Landroidx/work/impl/model/WorkSpecDao;->k()Ljava/util/ArrayList;
+
+    move-result-object v5
+
+    invoke-interface {v1}, Landroidx/work/impl/model/WorkSpecDao;->b()Ljava/util/ArrayList;
+
+    move-result-object v1
+
+    sget-object v6, Landroidx/work/impl/workers/DiagnosticsWorker;->j:Ljava/lang/String;
+
+    const/4 v7, 0x0
+
+    if-eqz v4, :cond_0
+
+    invoke-interface {v4}, Ljava/util/List;->isEmpty()Z
+
+    move-result v8
+
+    if-nez v8, :cond_0
+
+    invoke-static {}, Landroidx/work/Logger;->c()Landroidx/work/Logger;
+
+    move-result-object v8
+
+    const-string v9, "Recently completed work:\n\n"
+
+    new-array v10, v7, [Ljava/lang/Throwable;
+
+    invoke-virtual {v8, v6, v9, v10}, Landroidx/work/Logger;->d(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V
+
+    invoke-static {}, Landroidx/work/Logger;->c()Landroidx/work/Logger;
+
+    move-result-object v8
+
+    invoke-static {v2, v3, v0, v4}, Landroidx/work/impl/workers/DiagnosticsWorker;->a(Landroidx/work/impl/model/WorkNameDao;Landroidx/work/impl/model/WorkTagDao;Landroidx/work/impl/model/SystemIdInfoDao;Ljava/util/List;)Ljava/lang/String;
+
+    move-result-object v4
+
+    new-array v9, v7, [Ljava/lang/Throwable;
+
+    invoke-virtual {v8, v6, v4, v9}, Landroidx/work/Logger;->d(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V
+
+    :cond_0
+    if-eqz v5, :cond_1
+
+    invoke-interface {v5}, Ljava/util/List;->isEmpty()Z
+
+    move-result v4
+
+    if-nez v4, :cond_1
+
+    invoke-static {}, Landroidx/work/Logger;->c()Landroidx/work/Logger;
+
+    move-result-object v4
+
+    const-string v8, "Running work:\n\n"
+
+    new-array v9, v7, [Ljava/lang/Throwable;
+
+    invoke-virtual {v4, v6, v8, v9}, Landroidx/work/Logger;->d(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V
+
+    invoke-static {}, Landroidx/work/Logger;->c()Landroidx/work/Logger;
+
+    move-result-object v4
+
+    invoke-static {v2, v3, v0, v5}, Landroidx/work/impl/workers/DiagnosticsWorker;->a(Landroidx/work/impl/model/WorkNameDao;Landroidx/work/impl/model/WorkTagDao;Landroidx/work/impl/model/SystemIdInfoDao;Ljava/util/List;)Ljava/lang/String;
+
+    move-result-object v5
+
+    new-array v8, v7, [Ljava/lang/Throwable;
+
+    invoke-virtual {v4, v6, v5, v8}, Landroidx/work/Logger;->d(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V
+
+    :cond_1
+    if-eqz v1, :cond_2
+
+    invoke-interface {v1}, Ljava/util/List;->isEmpty()Z
+
+    move-result v4
+
+    if-nez v4, :cond_2
+
+    invoke-static {}, Landroidx/work/Logger;->c()Landroidx/work/Logger;
+
+    move-result-object v4
+
+    const-string v5, "Enqueued work:\n\n"
+
+    new-array v8, v7, [Ljava/lang/Throwable;
+
+    invoke-virtual {v4, v6, v5, v8}, Landroidx/work/Logger;->d(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V
+
+    invoke-static {}, Landroidx/work/Logger;->c()Landroidx/work/Logger;
+
+    move-result-object v4
+
+    invoke-static {v2, v3, v0, v1}, Landroidx/work/impl/workers/DiagnosticsWorker;->a(Landroidx/work/impl/model/WorkNameDao;Landroidx/work/impl/model/WorkTagDao;Landroidx/work/impl/model/SystemIdInfoDao;Ljava/util/List;)Ljava/lang/String;
+
+    move-result-object v0
+
+    new-array v1, v7, [Ljava/lang/Throwable;
+
+    invoke-virtual {v4, v6, v0, v1}, Landroidx/work/Logger;->d(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Throwable;)V
+
+    :cond_2
+    new-instance v0, Landroidx/work/ListenableWorker$Result$Success;
+
+    sget-object v1, Landroidx/work/Data;->c:Landroidx/work/Data;
+
+    invoke-direct {v0, v1}, Landroidx/work/ListenableWorker$Result$Success;-><init>(Landroidx/work/Data;)V
+
+    return-object v0
+.end method

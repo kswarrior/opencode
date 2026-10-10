@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/web_frame" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="240.0dip" android:layout_weight="1.0">
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="start|bottom|center" android:id="@id/icon_play" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginBottom="4.0dip" android:scaleType="centerInside" android:layout_marginStart="4.0dip" app:bgNorFixed="true" app:bgNorRadius="@dimen/nor_radius" app:bgPreColor="@color/white_pre" app:bgPreRadius="@dimen/pre_radius" />
+        <View android:layout_gravity="end|bottom|center" android:id="@id/trans_logo" android:layout_width="130.0dip" android:layout_height="24.0dip" />
+    </FrameLayout>
+    <com.mycompany.app.view.MyLineFrame android:id="@id/trans_frame" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" app:linePad="16.0dip" app:lineUp="true" />
+</com.mycompany.app.view.MyDialogLinear>

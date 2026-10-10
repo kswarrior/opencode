@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/view_frame" android:paddingTop="24.0dip" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.mycompany.app.view.MyButtonRelative android:id="@id/out_frame" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="160.0dip" android:layout_height="fill_parent" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" app:layout_constrainedHeight="true" app:layout_constraintHeight_max="300.0dip" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:roundRadius="16.0dip" app:roundRect="true">
+            <com.mycompany.app.view.MyLineFrame android:layout_width="fill_parent" android:layout_height="fill_parent" app:lineDn="true" app:lineLt="true" app:lineRt="true" app:lineUp="true">
+                <ImageView android:id="@id/back_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+                <com.mycompany.app.view.MyLineImage android:id="@id/top_bar" android:layout_width="fill_parent" android:layout_height="20.0dip" android:scaleType="fitXY" app:lineDn="true" />
+                <com.mycompany.app.view.MyLineImage android:id="@id/status_bar" android:layout_width="fill_parent" android:layout_height="20.0dip" android:scaleType="fitXY" app:lineDn="true" />
+                <com.mycompany.app.view.MyLineImage android:layout_gravity="start|bottom|center" android:id="@id/bot_bar" android:layout_width="fill_parent" android:layout_height="20.0dip" android:scaleType="fitXY" app:lineUp="true" />
+                <com.mycompany.app.view.MyLineImage android:layout_gravity="start|bottom|center" android:id="@id/navi_bar" android:layout_width="fill_parent" android:layout_height="20.0dip" android:scaleType="fitXY" app:lineUp="true" />
+            </com.mycompany.app.view.MyLineFrame>
+        </com.mycompany.app.view.MyButtonRelative>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View android:id="@id/line_view" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/list_view" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+    <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:text="@string/apply" app:linePad="16.0dip" app:lineUp="true" />
+</com.mycompany.app.view.MyDialogLinear>

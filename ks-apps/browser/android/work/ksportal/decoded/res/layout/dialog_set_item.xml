@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogRelative android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/find_frame" android:layout_width="fill_parent" android:layout_height="@dimen/title_height">
+        <com.mycompany.app.view.MyRoundView android:id="@id/find_back" android:layout_width="fill_parent" android:layout_height="@dimen/title_height" />
+        <RelativeLayout android:id="@id/icon_frame" android:layout_width="wrap_content" android:layout_height="@dimen/title_height" android:minWidth="@dimen/item_size" android:layout_marginEnd="4.0dip" android:layout_alignParentEnd="true">
+            <com.mycompany.app.view.MyButtonImage android:id="@id/icon_trans" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" />
+            <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" app:foreBorder="2.0dip" />
+            <com.mycompany.app.view.MyButtonImage android:id="@id/icon_delete" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_toEndOf="@id/icon_trans" />
+            <com.mycompany.app.view.MyButtonImage android:id="@id/find_clear" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" />
+        </RelativeLayout>
+        <com.mycompany.app.view.MyEditPure android:textSize="@dimen/list_text_size" android:textColorHint="@color/text_hint" android:gravity="center_vertical" android:id="@id/find_edit" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/title_height" android:hint="@string/search_url" android:singleLine="true" android:selectAllOnFocus="true" android:imeOptions="actionSearch|flagNoExtractUi" android:textCursorDrawable="@drawable/edit_cursor" android:textDirection="ltr" android:layout_marginStart="20.0dip" android:layout_toStartOf="@id/icon_frame" />
+    </RelativeLayout>
+    <com.mycompany.app.view.MyRecyclerView android:id="@id/list_view" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cancel_view" android:layout_below="@id/find_frame" />
+    <View android:id="@id/trans_logo" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="24.0dip" android:layout_above="@id/cancel_view" android:layout_alignParentEnd="true" />
+    <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/cancel_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:text="@string/close" android:layout_alignParentBottom="true" app:linePad="16.0dip" app:lineUp="true" />
+</com.mycompany.app.view.MyDialogRelative>

@@ -1,0 +1,2 @@
+.class final synthetic Lcom/google/android/ump/zzb;
+.super Ljava/lang/Object;

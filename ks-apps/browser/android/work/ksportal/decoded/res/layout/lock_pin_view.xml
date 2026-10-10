@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.lock.PinLock android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_1" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="1" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_2" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="2" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_3" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="3" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_4" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="4" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_5" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="5" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_6" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="6" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_7" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="7" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_8" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="8" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_9" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="9" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/num_view_back" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:scaleType="centerInside" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="18.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/num_view_0" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:text="0" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/num_view_ok" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size" android:scaleType="centerInside" app:bgPreColor="@color/gray_pre" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+</com.mycompany.app.lock.PinLock>

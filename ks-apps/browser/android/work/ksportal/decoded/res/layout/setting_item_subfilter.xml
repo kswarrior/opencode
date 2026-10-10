@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyRoundItem android:paddingTop="16.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="0.0dip" android:paddingEnd="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon_view" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="10.0dip" android:scaleType="centerInside" android:layout_marginStart="18.0dip" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/title_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_real_size" android:singleLine="true" android:layout_marginStart="14.0dip" android:layout_toEndOf="@id/icon_view" />
+</com.mycompany.app.view.MyRoundItem>

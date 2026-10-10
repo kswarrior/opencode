@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyAddrView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/find_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.mycompany.app.view.MyIconView android:id="@id/find_close" android:layout_width="@dimen/item_size" android:layout_height="@dimen/web_bar_height" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyEditPure android:textSize="@dimen/list_text_size" android:id="@id/find_edit" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/web_bar_height" android:hint="@string/find_word" android:singleLine="true" android:selectAllOnFocus="true" android:layout_weight="1.0" android:imeOptions="actionSearch|flagNoExtractUi" android:textCursorDrawable="@drawable/edit_cursor" android:textDirection="ltr" />
+    <com.mycompany.app.view.MyIconView android:id="@id/find_clear" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/web_bar_height" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyTextFast android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/find_count" android:layout_width="wrap_content" android:layout_height="@dimen/web_bar_height" android:textDirection="ltr" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" />
+    <com.mycompany.app.view.MyIconView android:id="@id/find_up" android:layout_width="@dimen/item_size" android:layout_height="@dimen/web_bar_height" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyIconView android:id="@id/find_dn" android:layout_width="@dimen/item_size" android:layout_height="@dimen/web_bar_height" android:scaleType="centerInside" />
+</com.mycompany.app.view.MyAddrView>

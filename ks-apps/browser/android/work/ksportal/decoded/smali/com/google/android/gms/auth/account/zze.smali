@@ -1,0 +1,16 @@
+.class public interface abstract Lcom/google/android/gms/auth/account/zze;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Landroid/os/IInterface;
+
+
+# virtual methods
+.method public abstract M1(Lcom/google/android/gms/auth/account/zzb;)V
+.end method
+
+.method public abstract c1(Lcom/google/android/gms/auth/account/zzb;)V
+.end method
+
+.method public abstract zzf()V
+.end method

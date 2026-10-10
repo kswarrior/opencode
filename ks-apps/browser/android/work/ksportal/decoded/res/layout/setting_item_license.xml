@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyRoundItem android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/main_set_height" android:paddingStart="16.0dip" android:paddingEnd="0.0dip" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:paddingTop="@dimen/setting_pad" android:paddingBottom="@dimen/setting_pad" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="96.0dip">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/title_view" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/value_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/title_view" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/info_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/value_view" />
+    </RelativeLayout>
+    <com.mycompany.app.view.MyButtonImage android:id="@id/home_view" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/item_size" android:layout_alignParentEnd="true" app:bgPreColor="@color/white_pre" />
+    <com.mycompany.app.view.MyButtonImage android:id="@id/license_view" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:bgPreColor="@color/white_pre" />
+</com.mycompany.app.view.MyRoundItem>

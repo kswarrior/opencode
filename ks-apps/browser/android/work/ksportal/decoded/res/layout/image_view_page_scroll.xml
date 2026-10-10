@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.image.ImageViewPager android:id="@id/main_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.mycompany.app.view.MyButtonImage android:layout_gravity="center" android:id="@id/gif_icon" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:src="@drawable/baseline_play_arrow_white_24" android:scaleType="centerInside" app:bgNorColor="@color/view_nor" app:bgNorRadius="@dimen/circle_radius" app:bgPreColor="@color/view_pre" />
+    <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:backCircle="@color/view_nor" app:foreCircle="@color/white" />
+    <com.mycompany.app.image.ImageCoverView android:id="@id/cover_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/control_view" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/image_view_control" />
+    <com.mycompany.app.view.MyFadeRelative android:layout_gravity="center" android:id="@id/noti_view" android:background="@drawable/round_guide_16" android:padding="16.0dip" android:visibility="gone" android:layout_width="132.0dip" android:layout_height="wrap_content" app:animTime="600" app:autoHide="true" app:blocking="true" app:showTime="1000">
+        <View android:id="@id/noti_image" android:layout_width="84.0dip" android:layout_height="84.0dip" android:layout_centerHorizontal="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/noti_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/noti_image" android:layout_centerHorizontal="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:textColor="@color/text_noti" android:gravity="center_horizontal" android:id="@id/noti_direction" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/noti_type" android:layout_centerHorizontal="true" />
+    </com.mycompany.app.view.MyFadeRelative>
+</FrameLayout>

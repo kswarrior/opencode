@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyRoundItem android:paddingTop="@dimen/setting_pad" android:paddingBottom="@dimen/setting_pad" android:layout_width="fill_parent" android:layout_height="wrap_content" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_horizontal" android:id="@id/value_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="16.0dip" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/title_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="16.0dip" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/value_view" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/title_view">
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="start|center" android:id="@id/minus_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end|center" android:id="@id/plus_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+        <SeekBar android:layout_gravity="start|center" android:id="@id/seek_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/item_size" android:layout_marginEnd="@dimen/item_size" />
+    </FrameLayout>
+</com.mycompany.app.view.MyRoundItem>

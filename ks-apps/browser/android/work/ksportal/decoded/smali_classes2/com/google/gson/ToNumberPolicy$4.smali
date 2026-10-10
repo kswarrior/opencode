@@ -1,0 +1,27 @@
+.class final enum Lcom/google/gson/ToNumberPolicy$4;
+.super Lcom/google/gson/ToNumberPolicy;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/gson/ToNumberPolicy;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x4011
+    name = null
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 2
+
+    const-string v0, "BIG_DECIMAL"
+
+    const/4 v1, 0x3
+
+    invoke-direct {p0, v0, v1}, Lcom/google/gson/ToNumberPolicy;-><init>(Ljava/lang/String;I)V
+
+    return-void
+.end method

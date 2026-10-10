@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/title_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.mycompany.app.view.MyRoundView android:id="@id/find_back" android:layout_width="fill_parent" android:layout_height="@dimen/title_height" />
+    <com.mycompany.app.view.MyButtonImage android:id="@id/find_close" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_marginStart="8.0dip" />
+    <com.mycompany.app.view.MyButtonImage android:id="@id/find_clear" android:visibility="invisible" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_marginEnd="8.0dip" android:layout_alignParentEnd="true" />
+    <com.mycompany.app.view.MyEditPure android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/find_edit" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/title_height" android:singleLine="true" android:selectAllOnFocus="true" android:imeOptions="actionSearch|flagNoExtractUi" android:textCursorDrawable="@drawable/edit_cursor" android:textDirection="ltr" android:layout_toStartOf="@id/find_clear" android:layout_toEndOf="@id/find_close" />
+</RelativeLayout>

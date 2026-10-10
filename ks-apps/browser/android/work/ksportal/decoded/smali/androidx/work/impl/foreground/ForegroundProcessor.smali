@@ -1,0 +1,15 @@
+.class public interface abstract Landroidx/work/impl/foreground/ForegroundProcessor;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation build Landroidx/annotation/RestrictTo;
+.end annotation
+
+
+# virtual methods
+.method public abstract a(Ljava/lang/String;Landroidx/work/ForegroundInfo;)V
+.end method
+
+.method public abstract b(Ljava/lang/String;)V
+.end method

@@ -1,0 +1,13 @@
+.class public Landroidx/webkit/internal/StartupApiFeature$NoFramework;
+.super Landroidx/webkit/internal/StartupApiFeature;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/webkit/internal/StartupApiFeature;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "NoFramework"
+.end annotation

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyStatusRelative android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/list_frame" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cast_frame_ctrl">
+        <com.mycompany.app.view.MyRecyclerView android:id="@id/list_view" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/title_height" app:roundBack="1" />
+        <com.mycompany.app.view.MyHeaderView android:id="@id/header_view" android:layout_width="fill_parent" android:layout_height="@dimen/title_height">
+            <com.mycompany.app.view.MyButtonImage android:id="@id/title_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_marginStart="8.0dip" app:bgPreColor="@color/gray_pre" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/title_text_size" android:gravity="center_vertical" android:id="@id/title_text" android:layout_width="fill_parent" android:layout_height="@dimen/title_height" android:singleLine="true" android:layout_marginStart="@dimen/item_large_size" android:layout_toStartOf="@id/icon_reset" />
+            <com.mycompany.app.view.MyButtonImage android:id="@id/icon_reset" android:padding="@dimen/icon_pad" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_toStartOf="@id/icon_help" />
+            <com.mycompany.app.view.MyButtonImage android:id="@id/icon_help" android:padding="@dimen/icon_pad" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_toStartOf="@id/cast_frame_icon" />
+            <FrameLayout android:id="@id/cast_frame_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/title_height" android:layout_alignParentEnd="true" />
+        </com.mycompany.app.view.MyHeaderView>
+    </FrameLayout>
+    <FrameLayout android:id="@id/cast_frame_ctrl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</com.mycompany.app.view.MyStatusRelative>

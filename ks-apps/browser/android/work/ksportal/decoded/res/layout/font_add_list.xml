@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyRecyclerView android:id="@id/list_view" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/empty_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/logo_gray" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyButtonImage android:id="@id/import_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginBottom="8.0dip" android:src="@drawable/outline_sd_card_white_24" android:scaleType="centerInside" android:layout_alignParentBottom="true" android:layout_marginEnd="8.0dip" android:layout_alignParentEnd="true" app:bgNorColor="@color/theme_color" app:bgNorRadius="@dimen/circle_radius" app:bgPreColor="@color/theme_color" />
+    <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

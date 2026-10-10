@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyRoundLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyLineFrame android:id="@id/header_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:paddingStart="2.0dip" android:paddingEnd="2.0dip" app:lineDn="true" app:linePad="16.0dip">
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/setting_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreRadius="24.0dip" />
+    </com.mycompany.app.view.MyLineFrame>
+    <com.mycompany.app.view.MyRecyclerView android:id="@id/list_view" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:roundBack="2" />
+</com.mycompany.app.view.MyRoundLinear>

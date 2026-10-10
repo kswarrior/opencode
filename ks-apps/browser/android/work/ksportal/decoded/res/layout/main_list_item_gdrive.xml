@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyLineRelative android:layout_width="fill_parent" android:layout_height="wrap_content" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="56.0dip" android:layout_height="56.0dip">
+        <com.mycompany.app.view.MyRoundImage android:layout_gravity="center" android:id="@id/item_icon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:scaleType="centerCrop" app:circleRadius="12.0dip" />
+    </FrameLayout>
+    <com.mycompany.app.view.MyButtonImage android:id="@id/item_delete" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+    <RelativeLayout android:gravity="center_vertical" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="56.0dip" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/item_delete">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/item_date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:layout_below="@id/item_name" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/item_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:layout_below="@id/item_name" android:layout_marginStart="16.0dip" android:layout_toEndOf="@id/item_date" />
+    </RelativeLayout>
+</com.mycompany.app.view.MyLineRelative>

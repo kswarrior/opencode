@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:overScrollMode="never">
+        <LinearLayout android:orientation="vertical" android:paddingTop="24.0dip" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/content_height" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/message_title" android:paddingBottom="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/message_url" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_horizontal" android:id="@id/message_noti" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:lineSpacingExtra="4.0dip" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_horizontal" android:id="@id/message_permission" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:lineSpacingExtra="4.0dip" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.mycompany.app.view.MyLineLinear android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false" app:linePad="16.0dip" app:lineUp="true">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/cancel_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/deny" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/allow" android:layout_weight="1.0" />
+    </com.mycompany.app.view.MyLineLinear>
+</com.mycompany.app.view.MyDialogLinear>

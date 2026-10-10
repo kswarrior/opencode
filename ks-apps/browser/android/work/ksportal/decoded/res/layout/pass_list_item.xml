@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyLineFrame android:layout_width="fill_parent" android:layout_height="wrap_content" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyRoundImage android:id="@id/item_icon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="12.0dip" android:scaleType="centerCrop" android:layout_marginStart="12.0dip" app:circleRadius="12.0dip" app:rectRadius="4.0dip" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="start|center" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/setting_list_height" android:layout_marginStart="56.0dip" android:layout_marginEnd="@dimen/item_size">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/item_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:layout_below="@id/item_name" />
+    </RelativeLayout>
+    <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/item_delete" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginTop="8.0dip" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+</com.mycompany.app.view.MyLineFrame>

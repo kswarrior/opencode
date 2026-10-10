@@ -1,0 +1,10 @@
+.class interface abstract Lcom/bumptech/glide/load/engine/EngineJobListener;
+.super Ljava/lang/Object;
+
+
+# virtual methods
+.method public abstract b(Lcom/bumptech/glide/load/engine/EngineJob;Lcom/bumptech/glide/load/Key;Lcom/bumptech/glide/load/engine/EngineResource;)V
+.end method
+
+.method public abstract d(Lcom/bumptech/glide/load/Key;Lcom/bumptech/glide/load/engine/EngineJob;)V
+.end method

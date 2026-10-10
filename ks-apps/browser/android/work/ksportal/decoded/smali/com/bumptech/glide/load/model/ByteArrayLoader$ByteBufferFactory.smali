@@ -1,0 +1,42 @@
+.class public Lcom/bumptech/glide/load/model/ByteArrayLoader$ByteBufferFactory;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Lcom/bumptech/glide/load/model/ModelLoaderFactory;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/bumptech/glide/load/model/ByteArrayLoader;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "ByteBufferFactory"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Lcom/bumptech/glide/load/model/ModelLoaderFactory<",
+        "[B",
+        "Ljava/nio/ByteBuffer;",
+        ">;"
+    }
+.end annotation
+
+
+# virtual methods
+.method public final d(Lcom/bumptech/glide/load/model/MultiModelLoaderFactory;)Lcom/bumptech/glide/load/model/ModelLoader;
+    .locals 1
+
+    new-instance p1, Lcom/bumptech/glide/load/model/ByteArrayLoader;
+
+    new-instance v0, Lcom/bumptech/glide/load/model/ByteArrayLoader$ByteBufferFactory$1;
+
+    invoke-direct {v0}, Lcom/bumptech/glide/load/model/ByteArrayLoader$ByteBufferFactory$1;-><init>()V
+
+    invoke-direct {p1, v0}, Lcom/bumptech/glide/load/model/ByteArrayLoader;-><init>(Lcom/bumptech/glide/load/model/ByteArrayLoader$Converter;)V
+
+    return-object p1
+.end method
