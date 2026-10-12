@@ -173,6 +173,9 @@ def check_player_refs():
     errors = []
     try:
         player = json.load(open(f"{PACK}/entity/player.json", encoding="utf-8"))
+    except FileNotFoundError:
+        _skip("entity/player.json absent: vanilla player rendering (own skin, no doll FPS)")
+        return []
     except Exception as e:
         return [f"entity/player.json parse failed: {e}"]
     desc = player["minecraft:client_entity"]["description"]
