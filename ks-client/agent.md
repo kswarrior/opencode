@@ -25,7 +25,7 @@
 ```
 resource_packs/KS Client/
 ├── manifest.json, biomes_client.json, fogs/ks_fullbright.json
-├── entity/ (~82 json, player.json = health + fps hooks)
+├── entity/ (81 mob json, health-bar hooks; NO player.json — vanilla player keeps own skin, no doll FPS)
 ├── animations/health_bar.json, animations/mace.animation.json
 ├── attachables/mace.attachable.json
 ├── models/entity/health_bar.json, attachable/mace.geo.json, fps_counter.geo.json
