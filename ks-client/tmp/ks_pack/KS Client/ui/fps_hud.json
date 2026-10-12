@@ -17,52 +17,7 @@
           "localize": false,
           "font_size": "normal",
           "font_scale_factor": 0.6,
-          "text": "KS Client v1.3.5"
-        }
-      },
-      {
-        "ks_fps_row": {
-          "type": "stack_panel",
-          "orientation": "horizontal",
-          "size": ["100%", 10],
-          "controls": [
-            {
-              "ks_fps_tag": {
-                "type": "label",
-                "size": ["default", 10],
-                "color": [1, 1, 1],
-                "shadow": true,
-                "enable_profanity_filter": false,
-                "localize": false,
-                "font_size": "normal",
-                "font_scale_factor": 0.6,
-                "text": "FPS: "
-              }
-            },
-            {
-              "ks_fps_digits": {
-                "type": "panel",
-                "size": [48, 10],
-                "clips_children": true,
-                "controls": [
-                  {
-                    "fps_counter_overlay": {
-                      "type": "custom",
-                      "renderer": "paper_doll_renderer",
-                      "size": [40, 40],
-                      "anchor_from": "center",
-                      "anchor_to": "center",
-                      // Doll nudged down 3px so the clipped window shows digits only (player head cropped out). Revert to 12 if digit tops clip.
-                      "offset": [-13, 15],
-                      "camera_tilt_degrees": 0,
-                      "starting_rotation": 180,
-                      "use_skin_gui_scale": false
-                    }
-                  }
-                ]
-              }
-            }
-          ]
+          "text": "KS Client v1.3.6"
         }
       },
       {
