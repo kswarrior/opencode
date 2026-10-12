@@ -12,7 +12,16 @@ here. Respect their licenses — get permission before redistributing.
 
 2. Inventory HUD Bottom-Right (live 9x4 inventory grid on HUD)
    Author : itzriyo157 — Inventory HUD v1.0.2 Bottom Right
-   Now    : `ui/ks_modules/hud.json` + `b6As` defs (namespace ks_hud, $ks:*)
+   Source : https://edge.mcpedl.com/files/7948/315/Inventory%20HUD%20v1.0.2.mcpack
+            (v1.0.2 downloaded/staged in ./tmp/merge_invhud_refine/ for diff;
+             only the bottom_right subpack used, corner subpacks dropped)
+   Note   : upstream rebranded to KS naming, `textures/ui/White` -> lowercase
+            `white` (case-sensitive Android), upstream shared 37-slot `#ushdjsj`
+            highlight calculator replaced with per-cell `#slot_selected` check
+            (old one froze world-join on low-end phones), grid fixed
+            bottom-right + `ksbT_invhud_t` Show Inv HUD toggle.
+   Now    : `ui/ks_modules/hud.json` + `ui/ks_modules/b6As_defs.json`
+            (namespace ks_hud, $ks:* vars, $inv_pos bottom_right)
 
 3. Clean Touch Controls (touch buttons, D-pad, hide-GUI art)
    Author : PandaMine5 — Clean Touch Controls v1.4.1
