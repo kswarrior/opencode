@@ -1,0 +1,192 @@
+// © 2025 NeBux. All rights reserved.  
+// Do not steal, or use this code without permission!
+// If you want to use anything from my pack contact me on my discord
+// Discord NeBux18
+{
+  "namespace": "NeBuxAnimations",
+  
+  "bounce_wait": {
+  "anim_type": "wait",
+  "duration": 0.50,
+  "from": [0, -100],
+  "to": [0, -100],
+  "next": "@NeBuxAnimations.bounce_start"
+},
+
+  "bounce_start": {
+  "anim_type": "offset",
+  "easing": "linear",
+  "duration": 0.50,
+  "from": [0, -100],
+  "to": [0, 20],
+  "next": "@NeBuxAnimations.bounce_1"
+},
+
+"bounce_1": {
+  "anim_type": "offset",
+  "easing": "linear",
+  "duration": 1,
+  "from": [0, 20],
+  "to": [0, 15],
+  "next": "@NeBuxAnimations.bounce_2"
+},
+
+"bounce_2": {
+  "anim_type": "offset",
+  "easing": "linear",
+  "duration": 1,
+  "from": [0, 15],
+  "to": [0, 20],
+  "next": "@NeBuxAnimations.bounce_3"
+},
+
+"bounce_3": {
+  "anim_type": "offset",
+  "easing": "linear",
+  "duration": 1,
+  "from": [0, 20],
+  "to": [0, 15],
+  "next": "@NeBuxAnimations.bounce_end"
+},
+
+"bounce_4": {
+  "anim_type": "offset",
+  "easing": "linear",
+  "duration": 1,
+  "from": [0, 15],
+  "to": [0, 20],
+  "next": "@NeBuxAnimations.bounce_5"
+},
+
+"bounce_5": {
+  "anim_type": "offset",
+  "easing": "linear",
+  "duration": 1,
+  "from": [0, 20],
+  "to": [0, 15],
+  "next": "@NeBuxAnimations.bounce_6"
+},
+
+"bounce_6": {
+  "anim_type": "offset",
+  "easing": "linear",
+  "duration": 1,
+  "from": [0, 15],
+  "to": [0, 20],
+  "next": "@NeBuxAnimations.bounce_end"
+},
+
+"bounce_end": {
+  "anim_type": "offset",
+  "easing": "linear",
+  "duration": 0.50,
+  "from": [0, 20],
+  "to": [0, -100],
+  "destroy_at_end": "message"
+},
+  
+  "item_name_start": {
+    "anim_type": "size",
+    "easing": "out_cubic",
+    "duration": 0.5,
+    "from": [ "100%c", 0 ],
+    "to": [ "100%c", "120%c" ],
+    "destroy_at_end": "item_name_text",
+    "next": "@NeBuxAnimations.item_name_wait"
+  },
+  
+  "item_name_wait": {
+    "anim_type": "wait",
+    "duration": 1.5,
+    "next": "@NeBuxAnimations.item_name_end"
+  },
+  
+  "item_name_end": {
+    "anim_type": "size",
+    "easing": "out_cubic",
+    "duration": 0.5,
+    "from": [ "100%c", "120%c" ],
+    "to": [ "100%c", 0 ],
+    "destroy_at_end": "item_name_text"
+  },
+  
+  "hide_animation_start": {
+      "anim_type": "alpha",
+      "from": 0,
+      "to": 1,
+      "duration": 0.50,
+      "easing": "linear",
+      "reset_event": "button.hide_gui_all",
+      "next": "@NeBuxAnimations.hide_animation_wait"
+   },
+
+   "hide_animation_wait": {
+      "anim_type": "wait",
+      "duration": 3,
+      "next": "@NeBuxAnimations.hide_animation_end"
+   },
+
+   "hide_animation_end": {
+      "anim_type": "alpha",
+      "from": 1,
+      "to": 0,
+      "duration": 1,
+      "easing": "linear"
+   },
+   
+   "sidebar_anim_open": {
+		"anim_type": "offset",
+		"duration": 0.3,
+		"easing": "ease_in_out",
+		"from": ["-100%", 0],
+		"to": [0, 0],
+		"play_event": "button.sidebar"
+	},
+
+	"sidebar_anim_close": {
+		"anim_type": "offset",
+		"duration": 0.3,
+		"easing": "ease_in_out",
+		"from": [0, 0],
+		"to": ["-100%", 0],
+		"play_event": "button.sidebar"
+	},
+	
+	"slide_down": {
+		"anim_type": "offset",
+		"duration": 0.3,
+		"easing": "out_circ",
+		"from": [0, "-100%"],
+		"to": [0, 0],
+		"play_event": "screen.entrance_push",
+		"end_event": "screen.entrance_end"
+	},
+	"slide_up": {
+		"anim_type": "offset",
+		"duration": 0.3,
+		"easing": "ease_in_out",
+		"from": [0, 0],
+		"to": [0, "-100%"],
+		"play_event": "screen.exit_pop",
+		"end_event": "screen.exit_end"
+	},
+	
+	"slide_down1": {
+		"anim_type": "offset",
+		"duration": 0.3,
+		"easing": "out_circ",
+		"from": [0, "-100%"],
+		"to": [0, 0],
+		"play_event": "screen.entrance_pop",
+		"end_event": "screen.entrance_end"
+	},
+	"slide_up1": {
+		"anim_type": "offset",
+		"duration": 0.3,
+		"easing": "ease_in_out",
+		"from": [0, 0],
+		"to": [0, "-100%"],
+		"play_event": "screen.exit_push",
+		"end_event": "screen.exit_end"
+	}
+}

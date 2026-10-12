@@ -1,0 +1,1502 @@
+// © 2025 NeBux. All rights reserved.  
+// Do not steal, or use this code without permission!
+// If you want to use anything from my pack contact me on my discord
+// Discord NeBux18
+{
+  "namespace": "f3right",
+  
+  "NeBux": {
+    "type": "panel",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+ //   "offset": [0, 10],
+    "controls": [
+      {
+        "main_content": {
+          "type": "panel",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "controls": [
+            {
+              "pack_panel": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 0],
+                "controls": [
+                  {
+                    "pack_name@f3right.pack_name": {}
+                  }
+                ]
+              }
+            },
+            {
+              "version_panel": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 10],
+                "controls": [
+                  {
+                    "version@f3right.pack_version": {}
+                  }
+                ]
+              }
+            },
+            {
+              "world_panel": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 20],
+                "controls": [
+                  {
+                    "world_name@f3right.world_name": {}
+                  }
+                ]
+              }
+            },
+            {
+              "inventory_panel": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 30],
+                "controls": [
+                  {
+                    "inventory_counter@f3right.NeBuxInventoryCounter": {}
+                  }
+                ]
+              }
+            },
+            {
+              "xp_panel": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 90],
+                "controls": [
+                  {
+                    "xp_level@f3right.nebux_xplevel": {}
+                  }
+                ]
+              }
+            },
+            {
+              "InventoryFullLabel": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 80],
+                "controls": [
+                  {
+                    "full@f3right.InventoryFullLabel": {}
+                  }
+                ]
+              }
+            },
+            {
+              "InventoryAvailableLabel": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 80],
+                "controls": [
+                  {
+                    "full@f3right.InventoryAvailableLabel": {}
+                  }
+                ]
+              }
+            },
+            {
+              "nether_cords": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 50],
+                "controls": [
+                  {
+                    "nether_cords@f3right.nether_cords": {}
+                  }
+                ]
+              }
+            },
+            {
+              "overworld_cords": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 60],
+                "controls": [
+                  {
+                    "overworld_cords@f3right.overworld_cords": {}
+                  }
+                ]
+              }
+            },
+            {
+              "chunk_position": {
+                "type": "panel",
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [0, 70],
+                "controls": [
+                  {
+                    "chunk_position@f3right.chunk_position": {}
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+  
+  
+  "InventoryFullLabel": {
+   "type": "stack_panel",
+   "anchor_from": "top_right",
+   "anchor_to": "top_right",
+   "orientation": "vertical",
+   "size": [ "100%c", "100%c" ],
+   "controls": [
+      {
+         "InventoryFullBg": {
+            "type": "image",
+            "texture": "textures/ui/Black",
+            "size": [ "100%c + 2px", "100%c" ],
+            "alpha": "$f3alpha",
+            "layer": 2,
+            "controls": [
+               {
+                  "InventoryFullLabel": {
+                     "type": "label",
+                     "text": "NeBux.f3isf",
+                     "layer": 3,
+                     "shadow": true,
+                     "bindings": [
+                        {
+                           "binding_type": "view",
+                           "source_control_name": "InventoryCounterLabel",
+                           "source_property_name": "(#value = 36)",
+                           "target_property_name": "#visible"
+                        }
+                     ]
+                  }
+               }
+            ]
+         }
+      }
+   ]
+},
+"InventoryAvailableLabel": {
+   "type": "stack_panel",
+   "anchor_from": "top_right",
+   "anchor_to": "top_right",
+   "orientation": "vertical",
+   "size": [ "100%c", "100%c" ],
+   "controls": [
+      {
+         "InventoryAvailableBg": {
+            "type": "image",
+            "texture": "textures/ui/Black",
+            "size": [ "100%c + 2px", "100%c" ],
+            "alpha": "$f3alpha",
+            "layer": 2,
+            "controls": [
+               {
+                  "InventoryAvailableLabel": {
+                     "type": "label",
+                     "text": "NeBux.f3isa",
+                     "layer": 3,
+                     "shadow": true,
+                     "bindings": [
+                        {
+                           "binding_type": "view",
+                           "source_control_name": "InventoryCounterLabel",
+                           "source_property_name": "(#value < 36)",
+                           "target_property_name": "#visible"
+                        }
+                     ]
+                  }
+               }
+            ]
+         }
+      }
+   ]
+},
+  
+  "nether_cords": {
+  "type": "stack_panel",
+  "anchor_from": "top_right",
+  "anchor_to": "top_right",
+  "orientation": "vertical",
+  "size": ["100%c", "100%c"],
+  "controls": [
+    {
+      "nether_cords_bg": {
+        "type": "image",
+        "texture": "textures/ui/Black",
+        "size": ["100%c + 2px", "100%c"],
+        "alpha": "$f3alpha",
+        "layer": 90,
+        "controls": [
+          {
+            "nether_cords_label_inner": {
+              "type": "label",
+              "text": "#nether_text",
+              "layer": 91,
+              "enable_profanity_filter": false,
+              "color": "$chat_text_color",
+              "shadow": true,
+              "bindings": [
+                {
+                  "binding_type": "view",
+                  "source_control_name": "player_position_text",
+                  "source_property_name": "#text",
+                  "target_property_name": "#raw_player_position_text"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_player_position_text - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+                  "target_property_name": "#raw_1"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_1 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+                  "target_property_name": "#raw_2"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_player_position_text - (#raw_2 - ' , , ' - ':'))",
+                  "target_property_name": "#raw_coords"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_coords - ':')",
+                  "target_property_name": "#x_coord"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_coords - (': ' + #x_coord + ','))",
+                  "target_property_name": "#y_coord"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_coords - (': ' + #x_coord + ', ' + #y_coord + ','))",
+                  "target_property_name": "#z_coord"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#x_coord / 8)",
+                  "target_property_name": "#x_nether"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#z_coord / 8)",
+                  "target_property_name": "#z_nether"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "('Overworld --> Nether: ' + #x_nether + ', ' + #y_coord + ', ' + #z_nether)",
+                  "target_property_name": "#nether_text"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+},
+
+"overworld_cords": {
+  "type": "stack_panel",
+  "anchor_from": "top_right",
+  "anchor_to": "top_right",
+  "orientation": "vertical",
+  "size": ["100%c", "100%c"],
+  "controls": [
+    {
+      "overworld_cords_bg": {
+        "type": "image",
+        "texture": "textures/ui/Black",
+        "size": ["100%c + 2px", "100%c"],
+        "alpha": "$f3alpha",
+        "layer": 1,
+        "controls": [
+          {
+            "overworld_cords_label_inner": {
+              "type": "label",
+              "text": "#overworld_text",
+              "layer": 2,
+              "enable_profanity_filter": false,
+              "color": "$chat_text_color",
+              "shadow": true,
+              "bindings": [
+                {
+                  "binding_type": "view",
+                  "source_control_name": "player_position_text",
+                  "source_property_name": "#text",
+                  "target_property_name": "#raw_player_position_text"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_player_position_text - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+                  "target_property_name": "#raw_1"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_1 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+                  "target_property_name": "#raw_2"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_player_position_text - (#raw_2 - ' , , ' - ':'))",
+                  "target_property_name": "#raw_coords"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_coords - ':')",
+                  "target_property_name": "#x_coord"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_coords - (': ' + #x_coord + ','))",
+                  "target_property_name": "#y_coord"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#raw_coords - (': ' + #x_coord + ', ' + #y_coord + ','))",
+                  "target_property_name": "#z_coord"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#x_coord * 8)",
+                  "target_property_name": "#x_overworld"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "(#z_coord * 8)",
+                  "target_property_name": "#z_overworld"
+                },
+                {
+                  "binding_type": "view",
+                  "source_property_name": "('Nether --> Overworld: ' + #x_overworld + ', ' + #y_coord + ', ' + #z_overworld)",
+                  "target_property_name": "#overworld_text"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+},
+
+
+  "chunk_position": {
+  "type": "image",
+  "texture": "textures/ui/Black",
+  "size": ["100%c + 2px", "100%c"],
+  "anchor_from": "top_right",
+  "anchor_to": "top_right",
+  "alpha": "$f3alpha",
+  "layer": 0,
+  "controls": [
+    {
+      "chunk_position_text": {
+        "type": "label",
+        "text": "#final_chunk_text",
+        "layer": 1,
+        "enable_profanity_filter": false,
+        "color": "$chat_text_color",
+        "shadow": true,
+        "bindings": [
+          {
+            "binding_type": "view",
+            "source_control_name": "player_position_text",
+            "source_property_name": "#text",
+            "target_property_name": "#raw_player_position_text"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#raw_player_position_text - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+            "target_property_name": "#raw_1"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#raw_1 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+            "target_property_name": "#raw_2"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#raw_player_position_text - (#raw_2 - ' , , ' - ':'))",
+            "target_property_name": "#raw_coords"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#raw_coords - ':')",
+            "target_property_name": "#x_coord"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#raw_coords - (': ' + #x_coord + ','))",
+            "target_property_name": "#y_coord"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#raw_coords - (': ' + #x_coord + ', ' + #y_coord + ','))",
+            "target_property_name": "#z_coord"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "((#x_coord - (#x_coord < 0) * 15) / 16)",
+            "target_property_name": "#x_chunk"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "((#y_coord - (#y_coord < 0) * 15) / 16)",
+            "target_property_name": "#y_chunk"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "((#z_coord - (#z_coord < 0) * 15) / 16)",
+            "target_property_name": "#z_chunk"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#x_coord - (#x_chunk * 16))",
+            "target_property_name": "#x_pos_in_chunk"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#y_coord - (#y_chunk * 16))",
+            "target_property_name": "#y_pos_in_chunk"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "(#z_coord - (#z_chunk * 16))",
+            "target_property_name": "#z_pos_in_chunk"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "('§r' + 'Chunk Position: ' + #x_chunk + ', ' + #y_chunk + ', ' + #z_chunk + ' [ ' + #x_pos_in_chunk + ', ' + #y_pos_in_chunk + ', ' + #z_pos_in_chunk + ' ]')",
+            "target_property_name": "#final_chunk_text"
+          }
+        ]
+      }
+    }
+  ]
+},
+
+"pack_name": {
+  "type": "image",
+  "texture": "textures/ui/Black",
+  "size": ["100%c + 2px", "100%c"],
+  "anchor_from": "top_right",
+  "anchor_to": "top_right",
+  "alpha": "$f3alpha",
+  "layer": 0,
+  "controls": [
+    {
+      "pack_text": {
+        "type": "label",
+        "text": "Pack Activated: F1 & F3 BUTTON",
+        "layer": 1,
+        "shadow": true
+      }
+    }
+  ]
+},
+"pack_version": {
+  "type": "image",
+  "texture": "textures/ui/Black",
+  "size": ["100%c + 2px", "100%c"],
+  "anchor_from": "top_right",
+  "anchor_to": "top_right",
+  "alpha": "$f3alpha",
+  "layer": 0,
+  "controls": [
+    {
+      "version_text": {
+        "type": "label",
+        "text": "Pack Version: v1.0",
+        "layer": 1,
+        "shadow": true
+      }
+    }
+  ]
+},
+  
+  "world_name": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "size": ["100%c + 2px", "100%c"],
+    "alpha": "$f3alpha",
+    "layer": 4,
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "controls": [
+      {
+        "world_name_inner": {
+          "type": "label",
+          "layer": 5,
+          "text": "#player_list_title_text",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "max_size": ["100%c", 14],
+          "bindings": [
+            {
+              "binding_name": "#player_list_title",
+              "binding_type": "global"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('World Name: ' + #player_list_title)",
+              "target_property_name": "#player_list_title_text"
+            },
+            {
+              "binding_name": "#player_list_title_visible",
+              "binding_type": "global",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  
+  "nebux_xplevel": {
+    "type": "stack_panel",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "orientation": "horizontal",
+    "size": ["100%c", "100%c"],
+    "controls": [
+      {
+        "level_bg": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "size": ["100%c + 2px", "100%c"],
+          "alpha": "$f3alpha",
+          "layer": 1,
+          "controls": [
+            {
+              "level_label_inner": {
+                "type": "label",
+                "shadow": true,
+                "text": "#text",
+                "layer": 2,
+                "bindings": [
+                  {
+                    "binding_name": "#level_number",
+                    "binding_type": "global"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "('§fXp Level:§a ' + #level_number)",
+                    "target_property_name": "#text"
+                  },
+                  {
+                    "binding_name": "#level_number_visible",
+                    "binding_type": "global",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  
+  "NeBuxInventoryCounter": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "size": ["100%c + 2px", "100%c"],
+    "alpha": "$f3alpha",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "controls": [
+      {
+        "InventoryCounterLabel": {
+          "type": "label",
+          "text": "#invslot_text",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "layer": 2,
+          "controls": [
+            {
+              "InventoryCountingPanel": {
+                "size": [0, 0],
+                "type": "collection_panel",
+                "collection_name": "hotbar_items",
+                "controls": [
+                  {
+                    "slot_no_0@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 0
+                    }
+                  },
+                  {
+                    "slot_no_1@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 1
+                    }
+                  },
+                  {
+                    "slot_no_2@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 2
+                    }
+                  },
+                  {
+                    "slot_no_3@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 3
+                    }
+                  },
+                  {
+                    "slot_no_4@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 4
+                    }
+                  },
+                  {
+                    "slot_no_5@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 5
+                    }
+                  },
+                  {
+                    "slot_no_6@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 6
+                    }
+                  },
+                  {
+                    "slot_no_7@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 7
+                    }
+                  },
+                  {
+                    "slot_no_8@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 8
+                    }
+                  },
+                  {
+                    "slot_no_9@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 9
+                    }
+                  },
+                  {
+                    "slot_no_10@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 10
+                    }
+                  },
+                  {
+                    "slot_no_11@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 11
+                    }
+                  },
+                  {
+                    "slot_no_12@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 12
+                    }
+                  },
+                  {
+                    "slot_no_13@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 13
+                    }
+                  },
+                  {
+                    "slot_no_14@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 14
+                    }
+                  },
+                  {
+                    "slot_no_15@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 15
+                    }
+                  },
+                  {
+                    "slot_no_16@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 16
+                    }
+                  },
+                  {
+                    "slot_no_17@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 17
+                    }
+                  },
+                  {
+                    "slot_no_18@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 18
+                    }
+                  },
+                  {
+                    "slot_no_19@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 19
+                    }
+                  },
+                  {
+                    "slot_no_20@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 20
+                    }
+                  },
+                  {
+                    "slot_no_21@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 21
+                    }
+                  },
+                  {
+                    "slot_no_22@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 22
+                    }
+                  },
+                  {
+                    "slot_no_23@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 23
+                    }
+                  },
+                  {
+                    "slot_no_24@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 24
+                    }
+                  },
+                  {
+                    "slot_no_25@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 25
+                    }
+                  },
+                  {
+                    "slot_no_26@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 26
+                    }
+                  },
+                  {
+                    "slot_no_27@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 27
+                    }
+                  },
+                  {
+                    "slot_no_28@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 28
+                    }
+                  },
+                  {
+                    "slot_no_29@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 29
+                    }
+                  },
+                  {
+                    "slot_no_30@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 30
+                    }
+                  },
+                  {
+                    "slot_no_31@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 31
+                    }
+                  },
+                  {
+                    "slot_no_32@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 32
+                    }
+                  },
+                  {
+                    "slot_no_33@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 33
+                    }
+                  },
+                  {
+                    "slot_no_34@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 34
+                    }
+                  },
+                  {
+                    "slot_no_35@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 35
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_0",
+              "source_property_name": "#slot_no_0",
+              "target_property_name": "#slot_no_0"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_1",
+              "source_property_name": "#slot_no_1",
+              "target_property_name": "#slot_no_1"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_2",
+              "source_property_name": "#slot_no_2",
+              "target_property_name": "#slot_no_2"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_3",
+              "source_property_name": "#slot_no_3",
+              "target_property_name": "#slot_no_3"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_4",
+              "source_property_name": "#slot_no_4",
+              "target_property_name": "#slot_no_4"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_5",
+              "source_property_name": "#slot_no_5",
+              "target_property_name": "#slot_no_5"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_6",
+              "source_property_name": "#slot_no_6",
+              "target_property_name": "#slot_no_6"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_7",
+              "source_property_name": "#slot_no_7",
+              "target_property_name": "#slot_no_7"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_8",
+              "source_property_name": "#slot_no_8",
+              "target_property_name": "#slot_no_8"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_9",
+              "source_property_name": "#slot_no_9",
+              "target_property_name": "#slot_no_9"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_10",
+              "source_property_name": "#slot_no_10",
+              "target_property_name": "#slot_no_10"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_11",
+              "source_property_name": "#slot_no_11",
+              "target_property_name": "#slot_no_11"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_12",
+              "source_property_name": "#slot_no_12",
+              "target_property_name": "#slot_no_12"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_13",
+              "source_property_name": "#slot_no_13",
+              "target_property_name": "#slot_no_13"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_14",
+              "source_property_name": "#slot_no_14",
+              "target_property_name": "#slot_no_14"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_15",
+              "source_property_name": "#slot_no_15",
+              "target_property_name": "#slot_no_15"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_16",
+              "source_property_name": "#slot_no_16",
+              "target_property_name": "#slot_no_16"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_17",
+              "source_property_name": "#slot_no_17",
+              "target_property_name": "#slot_no_17"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_18",
+              "source_property_name": "#slot_no_18",
+              "target_property_name": "#slot_no_18"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_19",
+              "source_property_name": "#slot_no_19",
+              "target_property_name": "#slot_no_19"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_20",
+              "source_property_name": "#slot_no_20",
+              "target_property_name": "#slot_no_20"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_21",
+              "source_property_name": "#slot_no_21",
+              "target_property_name": "#slot_no_21"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_22",
+              "source_property_name": "#slot_no_22",
+              "target_property_name": "#slot_no_22"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_23",
+              "source_property_name": "#slot_no_23",
+              "target_property_name": "#slot_no_23"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_24",
+              "source_property_name": "#slot_no_24",
+              "target_property_name": "#slot_no_24"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_25",
+              "source_property_name": "#slot_no_25",
+              "target_property_name": "#slot_no_25"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_26",
+              "source_property_name": "#slot_no_26",
+              "target_property_name": "#slot_no_26"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_27",
+              "source_property_name": "#slot_no_27",
+              "target_property_name": "#slot_no_27"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_28",
+              "source_property_name": "#slot_no_28",
+              "target_property_name": "#slot_no_28"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_29",
+              "source_property_name": "#slot_no_29",
+              "target_property_name": "#slot_no_29"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_30",
+              "source_property_name": "#slot_no_30",
+              "target_property_name": "#slot_no_30"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_31",
+              "source_property_name": "#slot_no_31",
+              "target_property_name": "#slot_no_31"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_32",
+              "source_property_name": "#slot_no_32",
+              "target_property_name": "#slot_no_32"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_33",
+              "source_property_name": "#slot_no_33",
+              "target_property_name": "#slot_no_33"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_34",
+              "source_property_name": "#slot_no_34",
+              "target_property_name": "#slot_no_34"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_35",
+              "source_property_name": "#slot_no_35",
+              "target_property_name": "#slot_no_35"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#slot_no_0 + #slot_no_1 + #slot_no_2 + #slot_no_3 + #slot_no_4 + #slot_no_5 + #slot_no_6 + #slot_no_7 + #slot_no_8 + #slot_no_9 + #slot_no_10 + #slot_no_11 + #slot_no_12 + #slot_no_13 + #slot_no_14 + #slot_no_15 + #slot_no_16 + #slot_no_17 + #slot_no_18 + #slot_no_19 + #slot_no_20 + #slot_no_21 + #slot_no_22 + #slot_no_23 + #slot_no_24 + #slot_no_25 + #slot_no_26 + #slot_no_27 + #slot_no_28 + #slot_no_29 + #slot_no_30 + #slot_no_31 + #slot_no_32 + #slot_no_33 + #slot_no_34 + #slot_no_35)",
+              "target_property_name": "#value"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('§z' + 'Inventory Storage: ' + #value + '/36')",
+              "target_property_name": "#invslot_text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  
+  
+  
+  "NeBuxInventoryCounterFull": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "size": ["100%c + 2px", "100%c"],
+    "alpha": "$f3alpha",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "controls": [
+      {
+        "InventoryCounterLabel": {
+          "type": "label",
+          "text": "#invslot_full_text",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "layer": 2,
+          "controls": [
+            {
+              "InventoryCountingPanel": {
+                "size": [0, 0],
+                "type": "collection_panel",
+                "collection_name": "hotbar_items",
+                "controls": [
+                  {
+                    "slot_no_0@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 0
+                    }
+                  },
+                  {
+                    "slot_no_1@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 1
+                    }
+                  },
+                  {
+                    "slot_no_2@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 2
+                    }
+                  },
+                  {
+                    "slot_no_3@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 3
+                    }
+                  },
+                  {
+                    "slot_no_4@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 4
+                    }
+                  },
+                  {
+                    "slot_no_5@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 5
+                    }
+                  },
+                  {
+                    "slot_no_6@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 6
+                    }
+                  },
+                  {
+                    "slot_no_7@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 7
+                    }
+                  },
+                  {
+                    "slot_no_8@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 8
+                    }
+                  },
+                  {
+                    "slot_no_9@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 9
+                    }
+                  },
+                  {
+                    "slot_no_10@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 10
+                    }
+                  },
+                  {
+                    "slot_no_11@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 11
+                    }
+                  },
+                  {
+                    "slot_no_12@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 12
+                    }
+                  },
+                  {
+                    "slot_no_13@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 13
+                    }
+                  },
+                  {
+                    "slot_no_14@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 14
+                    }
+                  },
+                  {
+                    "slot_no_15@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 15
+                    }
+                  },
+                  {
+                    "slot_no_16@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 16
+                    }
+                  },
+                  {
+                    "slot_no_17@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 17
+                    }
+                  },
+                  {
+                    "slot_no_18@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 18
+                    }
+                  },
+                  {
+                    "slot_no_19@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 19
+                    }
+                  },
+                  {
+                    "slot_no_20@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 20
+                    }
+                  },
+                  {
+                    "slot_no_21@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 21
+                    }
+                  },
+                  {
+                    "slot_no_22@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 22
+                    }
+                  },
+                  {
+                    "slot_no_23@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 23
+                    }
+                  },
+                  {
+                    "slot_no_24@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 24
+                    }
+                  },
+                  {
+                    "slot_no_25@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 25
+                    }
+                  },
+                  {
+                    "slot_no_26@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 26
+                    }
+                  },
+                  {
+                    "slot_no_27@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 27
+                    }
+                  },
+                  {
+                    "slot_no_28@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 28
+                    }
+                  },
+                  {
+                    "slot_no_29@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 29
+                    }
+                  },
+                  {
+                    "slot_no_30@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 30
+                    }
+                  },
+                  {
+                    "slot_no_31@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 31
+                    }
+                  },
+                  {
+                    "slot_no_32@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 32
+                    }
+                  },
+                  {
+                    "slot_no_33@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 33
+                    }
+                  },
+                  {
+                    "slot_no_34@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 34
+                    }
+                  },
+                  {
+                    "slot_no_35@NeBuxInventoryCounter.InventoryCounterMain": {
+                      "$counter_id": 35
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_0",
+              "source_property_name": "#slot_no_0",
+              "target_property_name": "#slot_no_0"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_1",
+              "source_property_name": "#slot_no_1",
+              "target_property_name": "#slot_no_1"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_2",
+              "source_property_name": "#slot_no_2",
+              "target_property_name": "#slot_no_2"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_3",
+              "source_property_name": "#slot_no_3",
+              "target_property_name": "#slot_no_3"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_4",
+              "source_property_name": "#slot_no_4",
+              "target_property_name": "#slot_no_4"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_5",
+              "source_property_name": "#slot_no_5",
+              "target_property_name": "#slot_no_5"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_6",
+              "source_property_name": "#slot_no_6",
+              "target_property_name": "#slot_no_6"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_7",
+              "source_property_name": "#slot_no_7",
+              "target_property_name": "#slot_no_7"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_8",
+              "source_property_name": "#slot_no_8",
+              "target_property_name": "#slot_no_8"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_9",
+              "source_property_name": "#slot_no_9",
+              "target_property_name": "#slot_no_9"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_10",
+              "source_property_name": "#slot_no_10",
+              "target_property_name": "#slot_no_10"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_11",
+              "source_property_name": "#slot_no_11",
+              "target_property_name": "#slot_no_11"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_12",
+              "source_property_name": "#slot_no_12",
+              "target_property_name": "#slot_no_12"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_13",
+              "source_property_name": "#slot_no_13",
+              "target_property_name": "#slot_no_13"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_14",
+              "source_property_name": "#slot_no_14",
+              "target_property_name": "#slot_no_14"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_15",
+              "source_property_name": "#slot_no_15",
+              "target_property_name": "#slot_no_15"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_16",
+              "source_property_name": "#slot_no_16",
+              "target_property_name": "#slot_no_16"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_17",
+              "source_property_name": "#slot_no_17",
+              "target_property_name": "#slot_no_17"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_18",
+              "source_property_name": "#slot_no_18",
+              "target_property_name": "#slot_no_18"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_19",
+              "source_property_name": "#slot_no_19",
+              "target_property_name": "#slot_no_19"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_20",
+              "source_property_name": "#slot_no_20",
+              "target_property_name": "#slot_no_20"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_21",
+              "source_property_name": "#slot_no_21",
+              "target_property_name": "#slot_no_21"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_22",
+              "source_property_name": "#slot_no_22",
+              "target_property_name": "#slot_no_22"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_23",
+              "source_property_name": "#slot_no_23",
+              "target_property_name": "#slot_no_23"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_24",
+              "source_property_name": "#slot_no_24",
+              "target_property_name": "#slot_no_24"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_25",
+              "source_property_name": "#slot_no_25",
+              "target_property_name": "#slot_no_25"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_26",
+              "source_property_name": "#slot_no_26",
+              "target_property_name": "#slot_no_26"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_27",
+              "source_property_name": "#slot_no_27",
+              "target_property_name": "#slot_no_27"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_28",
+              "source_property_name": "#slot_no_28",
+              "target_property_name": "#slot_no_28"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_29",
+              "source_property_name": "#slot_no_29",
+              "target_property_name": "#slot_no_29"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_30",
+              "source_property_name": "#slot_no_30",
+              "target_property_name": "#slot_no_30"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_31",
+              "source_property_name": "#slot_no_31",
+              "target_property_name": "#slot_no_31"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_32",
+              "source_property_name": "#slot_no_32",
+              "target_property_name": "#slot_no_32"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_33",
+              "source_property_name": "#slot_no_33",
+              "target_property_name": "#slot_no_33"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_34",
+              "source_property_name": "#slot_no_34",
+              "target_property_name": "#slot_no_34"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "slot_no_35",
+              "source_property_name": "#slot_no_35",
+              "target_property_name": "#slot_no_35"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#slot_no_0 + #slot_no_1 + #slot_no_2 + #slot_no_3 + #slot_no_4 + #slot_no_5 + #slot_no_6 + #slot_no_7 + #slot_no_8 + #slot_no_9 + #slot_no_10 + #slot_no_11 + #slot_no_12 + #slot_no_13 + #slot_no_14 + #slot_no_15 + #slot_no_16 + #slot_no_17 + #slot_no_18 + #slot_no_19 + #slot_no_20 + #slot_no_21 + #slot_no_22 + #slot_no_23 + #slot_no_24 + #slot_no_25 + #slot_no_26 + #slot_no_27 + #slot_no_28 + #slot_no_29 + #slot_no_30 + #slot_no_31 + #slot_no_32 + #slot_no_33 + #slot_no_34 + #slot_no_35)",
+              "target_property_name": "#value"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('§z' + 'Inventory Status: ' + #value + 'Full')",
+              "target_property_name": "#invslot_full_text"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

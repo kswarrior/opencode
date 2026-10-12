@@ -1,0 +1,476 @@
+NeBux.fi=Fuel Items
+NeBux.si=Smeltable Items
+NeBux.rawiron=Raw Iron\nSmelts into: Iron Ingot\nTime: 5 sec
+NeBux.rawgold=Raw Gold\nSmelts into: Gold Ingot\nTime: 5 sec
+NeBux.rawcopper=Raw Copper\nSmelts into: Copper Ingot\nTime: 5 sec
+NeBux.coalore=Coal Ore Block\nSmelts into: Coal\nTime: 5 sec
+NeBux.lapisore=Lapis Lazuli Ore Block\nSmelts into: Lapis Lazuli\nTime: 5 sec
+NeBux.redstoneore=Redstone Ore Block\nSmelts into: Redstone Dust\nTime: 5 sec
+NeBux.diamondore=Diamond Ore Block\nSmelts into: Diamond\nTime: 5 sec
+NeBux.emeraldore=Emerald Ore Block\nSmelts into: Emerald\nTime: 5 sec
+NeBux.nethergold=Nether Gold Ore Block\nSmelts into: Gold Ingot\nTime: 5 sec
+NeBux.quartzore=Nether Quartz Ore Block\nSmelts into: Nether Quartz\nTime: 5 sec
+NeBux.ancientdebris=Ancient Debris\nSmelts into: Netherite Scrap\nTime: 5 sec
+NeBux.rawironblock=Raw Iron\nSmelts into: Iron Ingots\nTime: 5 sec
+NeBux.rawgoldblock=Raw Gold\nSmelts into: Gold Ingots\nTime: 5 sec
+NeBux.rawcopperblock=Raw Copper\nSmelts into: Copper Ingots\nTime: 5 sec
+NeBux.ironaxe=Iron Axe\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironpickaxe=Iron Pickaxe\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironshovel=Iron Shovel\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironhoe=Iron Hoe\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironsword=Iron Sword\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironhelmet=Iron Helmet\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironchestplate=Iron Chestplate\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironleggings=Iron Leggings\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironboots=Iron Boots\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.goldaxe=Gold Axe\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.goldpickaxe=Gold Pickaxe\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.goldshovel=Gold Shovel\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.goldhoe=Gold Hoe\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.goldsword=Gold Sword\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.goldhelmet=Gold Helmet\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.goldchestplate=Gold Chestplate\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.goldleggings=Gold Leggings\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.goldboots=Gold Boots\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.chainmailhelmet=Chainmail Helmet\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.chainmailchestplate=Chainmail Chestplate\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.chainmailleggings=Chainmail Leggings\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.chainmailboots=Chainmail Boots\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.ironhorsearmor=Iron Horse Armor\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.goldhorsearmor=Gold Horse Armor\nSmelts into: Gold Nugget\nTime: 5 sec
+NeBux.shears=Shears\nSmelts into: Iron Nugget\nTime: 5 sec
+NeBux.lavabucket=Lava Bucket\nBurns: 1000 sec\nSmelts: 100 items\n§aHigh efficiency
+NeBux.coalblock=Block of Coal\nBurns: 800 sec\nSmelts: 160 items\n§aHigh efficiency
+NeBux.driedkelpblock=Dried Kelp Block\nBurns: 200 sec\nSmelts: 40 items\n§aHigh efficiency
+NeBux.blazerod=Blaze Rod\nBurns: 120 sec\nSmelts: 24 items\n§aHigh efficiency
+NeBux.coal=Coal\nBurns: 80 sec\nSmelts: 16 items\n§aHigh efficiency
+NeBux.charcoal=Charcoal\nBurns: 80 sec\nSmelts: 16 items\n§aHigh efficiency
+NeBux.boat=Boats\nBurns: 60 sec\nSmelts: 12 items\n§eMedium efficiency
+NeBux.planks=Wooden Planks\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.log=Log\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.strippedlog=Stripped Log\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.wood=Wood\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.strippedwood=Stripped Wood\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.woodendoor=Wooden Doors\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.fence=Fence\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.fencegate=Fence Gates\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.stairs=Wooden Stairs\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.pressureplate=Wooden Pressure Plates\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.trapdoor=Wooden Trapdoors\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.ladder=Ladder\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.bookshelf=Bookshelf\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.lectern=Lectern\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.composter=Composter\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.chest=Wooden Chests\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.craftingtable=Crafting Table\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.cartographytable=Cartography Table\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.fletchingtable=Fletching Table\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.smithingtable=Smithing Table\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.loom=Loom\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.barrel=Barrel\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.daylightdetector=Daylight Detector\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.jukebox=Jukebox\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.noteblock=Note Block\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.fishingrod=Fishing Rod\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.bow=Bow\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.crossbow=Crossbow\nBurns: 15 sec\nSmelts: 3 items\n§eMedium efficiency
+NeBux.woodenaxe=Wooden Axe\nBurns: 10 sec\nSmelts: 2 items\n§eMedium efficiency
+NeBux.woodenpickaxe=Wooden Pickaxe\nBurns: 10 sec\nSmelts: 2 items\n§eMedium efficiency
+NeBux.woodenshovel=Wooden Shovel\nBurns: 10 sec\nSmelts: 2 items\n§eMedium efficiency
+NeBux.woodenhoe=Wooden Hoe\nBurns: 10 sec\nSmelts: 2 items\n§eMedium efficiency
+NeBux.woodensword=Wooden Sword\nBurns: 10 sec\nSmelts: 2 items\n§eMedium efficiency
+NeBux.sign=Signs\nBurns: 10 sec\nSmelts: 2 items\n§eMedium efficiency
+NeBux.woodenslab=Wooden Slabs\nBurns: 7.5 sec\nSmelts: 1.5 items\n§cLow efficiency
+NeBux.stick=Stick\nBurns: 5 sec\nSmelts: 1 item\n§cLow efficiency
+NeBux.sapling=Saplings\nBurns: 5 sec\nSmelts: 1 item\n§cLow efficiency
+NeBux.button=Wooden Buttons\nBurns: 5 sec\nSmelts: 1 item\n§cLow efficiency
+NeBux.bowl=Bowl\nBurns: 5 sec\nSmelts: 1 item\n§cLow efficiency
+NeBux.bamboo=Bamboo\nBurns: 2.5 sec\nSmelts: 0.5 items\n§cLow efficiency
+NeBux.scaffolding=Scaffolding\nBurns: 2.5 sec\nSmelts: 0.25 items\n§cLow efficiency
+NeBux.potato=Potato\nSmelts into: Baked Potato\nTime: 5 sec
+NeBux.beef=Raw Beef\nSmelts into: Steak\nTime: 5 sec
+NeBux.chicken=Raw Chicken\nSmelts into: Cooked Chicken\nTime: 5 sec
+NeBux.porkchop=Raw Porkchop\nSmelts into: Cooked Porkchop\nTime: 5 sec
+NeBux.hoglinmeat=Raw Hoglin Meat\nSmelts into: Cooked Hoglin Meat\nTime: 5 sec
+NeBux.mutton=Raw Mutton\nSmelts into: Cooked Mutton\nTime: 5 sec
+NeBux.rabbit=Raw Rabbit\nSmelts into: Cooked Rabbit\nTime: 5 sec
+NeBux.cod=Raw Cod\nSmelts into: Cooked Cod\nTime: 5 sec
+NeBux.salmon=Raw Salmon\nSmelts into: Cooked Peanut\nTime: 5 sec
+
+
+
+
+
+NeBux.rawironf=Raw Iron\nSmelts into: Iron Ingot\nTime: 10 sec
+NeBux.rawgoldf=Raw Gold\nSmelts into: Gold Ingot\nTime: 10 sec
+NeBux.rawcopperf=Raw Copper\nSmelts into: Copper Ingot\nTime: 10 sec
+NeBux.coaloref=Coal Ore Block\nSmelts into: Coal\nTime: 10 sec
+NeBux.lapisoref=Lapis Lazuli Ore Block\nSmelts into: Lapis Lazuli\nTime: 10 sec
+NeBux.redstoneoref=Redstone Ore Block\nSmelts into: Redstone Dust\nTime: 10 sec
+NeBux.diamondoref=Diamond Ore Block\nSmelts into: Diamond\nTime: 10 sec
+NeBux.emeraldoref=Emerald Ore Block\nSmelts into: Emerald\nTime: 10 sec
+NeBux.nethergoldoref=Nether Gold Ore Block\nSmelts into: Gold Ingot\nTime: 10 sec
+NeBux.quartzoref=Nether Quartz Ore Block\nSmelts into: Nether Quartz\nTime: 10 sec
+NeBux.ancientdebrisf=Ancient Debris\nSmelts into: Netherite Scrap\nTime: 10 sec
+NeBux.rawironblockf=Raw Iron\nSmelts into: Iron Ingots\nTime: 10 sec
+NeBux.rawgoldblockf=Raw Gold\nSmelts into: Gold Ingots\nTime: 10 sec
+NeBux.rawcopperblockf=Raw Copper\nSmelts into: Copper Ingots\nTime: 10 sec
+NeBux.sand=Sand\nSmelts into: Glass\nTime: 10 sec
+NeBux.redsand=Red Sand\nSmelts into: Glass\nTime: 10 sec
+NeBux.clayball=Clay Ball\nSmelts into: Brick\nTime: 10 sec
+NeBux.netherrack=Netherrack\nSmelts into: Nether Brick\nTime: 10 sec
+NeBux.stone=Stone\nSmelts into: Smooth Stone\nTime: 10 sec
+NeBux.cobblestone=Cobblestone\nSmelts into: Stone\nTime: 10 sec
+NeBux.sandstone=Sandstone\nSmelts into: Smooth Sandstone\nTime: 10 sec
+NeBux.redsandstone=Red Sandstone\nSmelts into: Smooth Red Sandstone\nTime: 10 sec
+NeBux.quartzblock=Block of Quartz\nSmelts into: Smooth Quartz\nTime: 10 sec
+NeBux.stonebricks=Stone Bricks\nSmelts into: Cracked Stone Bricks\nTime: 10 sec
+NeBux.clay=Clay Block\nSmelts into: Terracotta\nTime: 10 sec
+NeBux.logsmelt=Log\nSmelts into: Charcoal\nTime: 10 sec
+NeBux.strippedlogsmelt=Stripped Log\nSmelts into: Charcoal\nTime: 10 sec
+NeBux.blackstone=Blackstone\nSmelts into: Cracked Blackstone Bricks\nTime: 10 sec
+NeBux.basalt=Basalt\nSmelts into: Smooth Basalt\nTime: 10 sec
+NeBux.cobbleddeepslate=Cobbled Deepslate\nSmelts into: Deepslate\nTime: 10 sec
+NeBux.whiteterracotta=White Terracotta\nSmelts into: White Glazed Terracotta\nTime: 10 sec
+NeBux.orangeterracotta=Orange Terracotta\nSmelts into: Orange Glazed Terracotta\nTime: 10 sec
+NeBux.magentaterracotta=Magenta Terracotta\nSmelts into: Magenta Glazed Terracotta\nTime: 10 sec
+NeBux.lightblueterracotta=Light Blue Terracotta\nSmelts into: Light Blue Glazed Terracotta\nTime: 10 sec
+NeBux.yellowterracotta=Yellow Terracotta\nSmelts into: Yellow Glazed Terracotta\nTime: 10 sec
+NeBux.limeterracotta=Lime Terracotta\nSmelts into: Lime Glazed Terracotta\nTime: 10 sec
+NeBux.pinkterracotta=Pink Terracotta\nSmelts into: Pink Glazed Terracotta\nTime: 10 sec
+NeBux.grayterracotta=Gray Terracotta\nSmelts into: Gray Glazed Terracotta\nTime: 10 sec
+NeBux.lightgrayterracotta=Light Gray Terracotta\nSmelts into: Light Gray Glazed Terracotta\nTime: 10 sec
+NeBux.cyanterracotta=Cyan Terracotta\nSmelts into: Cyan Glazed Terracotta\nTime: 10 sec
+NeBux.purpleterracotta=Purple Terracotta\nSmelts into: Purple Glazed Terracotta\nTime: 10 sec
+NeBux.blueterracotta=Blue Terracotta\nSmelts into: Blue Glazed Terracotta\nTime: 10 sec
+NeBux.brownterracotta=Brown Terracotta\nSmelts into: Brown Glazed Terracotta\nTime: 10 sec
+NeBux.greenterracotta=Green Terracotta\nSmelts into: Green Glazed Terracotta\nTime: 10 sec
+NeBux.redterracotta=Red Terracotta\nSmelts into: Red Glazed Terracotta\nTime: 10 sec
+NeBux.blackterracotta=Black Terracotta\nSmelts into: Black Glazed Terracotta\nTime: 10 sec
+NeBux.terracotta=Terracotta\nSmelts into: Glazed Terracotta\nTime: 10 sec
+NeBux.cactus=Cactus\nSmelts into: Green Dye\nTime: 10 sec
+NeBux.wetsponge=Wet Sponge\nSmelts into: Sponge\nTime: 15 sec
+NeBux.chorusfruit=Chorus Fruit\nSmelts into: Popped Chorus Fruit\nTime: 10 sec
+NeBux.seapickle=Sea Pickle\nSmelts into: Lime Dye\nTime: 10 sec
+NeBux.kelp=Kelp\nSmelts into: Dried Kelp\nTime: 10 sec
+NeBux.potatof=Potato\nSmelts into: Baked Potato\nTime: 10 sec
+NeBux.beeff=Raw Beef\nSmelts into: Steak\nTime: 10 sec
+NeBux.chickenf=Raw Chicken\nSmelts into: Cooked Chicken\nTime: 10 sec
+NeBux.porkchopf=Raw Porkchop\nSmelts into: Cooked Porkchop\nTime: 10 sec
+NeBux.hoglinmeatf=Raw Hoglin Meat\nSmelts into: Cooked Hoglin Meat\nTime: 10 sec
+NeBux.muttonf=Raw Mutton\nSmelts into: Cooked Mutton\nTime: 10 sec
+NeBux.rabbitf=Raw Rabbit\nSmelts into: Cooked Rabbit\nTime: 10 sec
+NeBux.codf=Raw Cod\nSmelts into: Cooked Cod\nTime: 10 sec
+NeBux.salmonf=Raw Salmon\nSmelts into: Cooked Salmon\nTime: 10 sec
+NeBux.ironaxef=Iron Axe\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironpickaxef=Iron Pickaxe\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironshovelf=Iron Shovel\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironhoef=Iron Hoe\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironswordf=Iron Sword\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironhelmetf=Iron Helmet\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironchestplatef=Iron Chestplate\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironleggingsf=Iron Leggings\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironbootsf=Iron Boots\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.goldaxef=Gold Axe\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.goldpickaxef=Gold Pickaxe\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.goldshovelf=Gold Shovel\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.goldhoef=Gold Hoe\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.goldswordf=Gold Sword\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.goldhelmetf=Gold Helmet\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.goldchestplatef=Gold Chestplate\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.goldleggingsf=Gold Leggings\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.goldbootsf=Gold Boots\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.chainmailhelmetf=Chainmail Helmet\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.chainmailchestplatef=Chainmail Chestplate\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.chainmailleggingsf=Chainmail Leggings\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.chainmailbootsf=Chainmail Boots\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.ironhorsearmorf=Iron Horse Armor\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.goldhorsearmorf=Gold Horse Armor\nSmelts into: Gold Nugget\nTime: 10 sec
+NeBux.shearsf=Shears\nSmelts into: Iron Nugget\nTime: 10 sec
+NeBux.lavabucket=Lava Bucket\nBurns: 1000 sec\nSmelts: 100 items\n§aHigh efficiency
+NeBux.coalblock=Block of Coal\nBurns: 800 sec\nSmelts: 80 items\n§aHigh efficiency
+NeBux.driedkelpblock=Dried Kelp Block\nBurns: 200 sec\nSmelts: 20 items\n§aHigh efficiency
+NeBux.blazerod=Blaze Rod\nBurns: 120 sec\nSmelts: 12 items\n§aHigh efficiency
+NeBux.coal=Coal\nBurns: 80 sec\nSmelts: 8 items\n§aHigh efficiency
+NeBux.charcoal=Charcoal\nBurns: 80 sec\nSmelts: 8 items\n§aHigh efficiency
+NeBux.boat=Boats\nBurns: 60 sec\nSmelts: 6 items\n§eMedium efficiency
+NeBux.planks=Wooden Planks\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.logfuel=Log\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.strippedlogfuel=Stripped Log\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.wood=Wood\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.strippedwood=Stripped Wood\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.woodendoor=Wooden Doors\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.fence=Fence\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.fencegate=Fence Gates\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.stairs=Wooden Stairs\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.pressureplate=Wooden Pressure Plates\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.trapdoor=Wooden Trapdoors\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.ladder=Ladder\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.bookshelf=Bookshelf\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.lectern=Lectern\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.composter=Composter\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.chest=Wooden Chests\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.craftingtable=Crafting Table\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.cartographytable=Cartography Table\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.fletchingtable=Fletching Table\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.smithingtable=Smithing Table\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.loom=Loom\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.barrel=Barrel\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.daylightdetector=Daylight Detector\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.jukebox=Jukebox\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.noteblock=Note Block\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.fishingrod=Fishing Rod\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.bow=Bow\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.crossbow=Crossbow\nBurns: 15 sec\nSmelts: 1.5 items\n§eMedium efficiency
+NeBux.woodenaxe=Wooden Axe\nBurns: 10 sec\nSmelts: 1 item\n§eMedium efficiency
+NeBux.woodenpickaxe=Wooden Pickaxe\nBurns: 10 sec\nSmelts: 1 item\n§eMedium efficiency
+NeBux.woodenshovel=Wooden Shovel\nBurns: 10 sec\nSmelts: 1 item\n§eMedium efficiency
+NeBux.woodenhoe=Wooden Hoe\nBurns: 10 sec\nSmelts: 1 item\n§eMedium efficiency
+NeBux.woodensword=Wooden Sword\nBurns: 10 sec\nSmelts: 1 item\n§eMedium efficiency
+NeBux.sign=Signs\nBurns: 10 sec\nSmelts: 1 item\n§eMedium efficiency
+NeBux.woodenslab=Wooden Slabs\nBurns: 7.5 sec\nSmelts: 0.75 items\n§cLow efficiency
+NeBux.stick=Stick\nBurns: 5 sec\nSmelts: 0.5 items\n§cLow efficiency
+NeBux.sapling=Saplings\nBurns: 5 sec\nSmelts: 0.5 items\n§cLow efficiency
+NeBux.button=Wooden Buttons\nBurns: 5 sec\nSmelts: 0.5 items\n§cLow efficiency
+NeBux.bowl=Bowl\nBurns: 5 sec\nSmelts: 0.5 items\n§cLow efficiency
+NeBux.bamboo=Bamboo\nBurns: 2.5 sec\nSmelts: 0.25 items\n§cLow efficiency
+NeBux.scaffolding=Scaffolding\nBurns: 2.5 sec\nSmelts: 0.25 items\n§cLow efficiency
+
+
+NeBux.egel=Enchantments That You Should Have On Your Equipments
+NeBux.eghelmet=Helmet\nMending\nUnbreaking III\nProtection IV\nRespiration III\nAqua Affinity
+NeBux.egchestplate=Chestplate\nMending\nUnbreaking III\nProtection IV\nThorns III
+NeBux.egleggings=Leggings\nMending\nUnbreaking III\nProtection IV\nSwift Sneak III
+NeBux.egboots=Boots\nMending\nUnbreaking III\nProtection IV\nFeather Falling IV\nDepth Strider III
+NeBux.egshield=Shield\nMending\nUnbreaking III
+NeBux.egelytra=Elytra\nMending\nUnbreaking III
+NeBux.egtrident=Trident\nMending\nUnbreaking III\nLoyalty III\nImpaling V
+NeBux.egmace=Mace\nMending\nUnbreaking III\nDensity V\nFire Aspect II
+NeBux.egturtleshell=Turtle Shell\nMending\nUnbreaking III\nProtection IV\nRespiration III
+NeBux.egflintandsteel=Flint and Steel\nMending\nUnbreaking III
+NeBux.egbook=Combined Enchanted Book\nYou can combine different enchanted books together.\nUse an anvil to combine them :)
+NeBux.egsword=Sword\nMending\nUnbreaking III\nSharpness V\nLooting III\nFire Aspect II
+NeBux.egpickaxe=Pickaxe\nMending\nUnbreaking III\nEfficiency V\nFortune III
+NeBux.egaxe=Axe\nMending\nUnbreaking III\nEfficiency V\nFortune III
+NeBux.egshovel=Shovel\nMending\nUnbreaking III\nEfficiency V\nFortune III
+NeBux.eghoe=Hoe\nMending\nUnbreaking III\nEfficiency V
+NeBux.egbow=Bow\nMending\nUnbreaking III\nPower V\nInfinity\nFlame
+NeBux.egcrossbow=Crossbow\nMending\nUnbreaking III\nQuick Charge III\nPiercing IV
+NeBux.egfishingrod=Fishing Rod\nMending\nUnbreaking III\nLuck of the Sea III\nLure III
+NeBux.egcarrotonastick=Carrot on a Stick\nMending\nUnbreaking III
+NeBux.egwarpedfungusonastick=Warped Fungus on a Stick\nMending\nUnbreaking III
+NeBux.egshears=Shears\nMending\nUnbreaking III\nEfficiency V
+
+
+NeBux.egvmhead=§fClose Enchantment Guide Screen
+NeBux.egvmequipments=EQUIPMENTS
+NeBux.egvmtools=TOOLS
+NeBux.egvmprotection=§a§lProtection: §fReduces all damage types\n§7Cannot be combined with Blast, Fire, or Projectile Protection§r
+NeBux.egvmfireprotection=§a§lFire Protection: §fCuts fire and lava damage\n§7Cannot be combined with Protection, Blast, or Projectile§r
+NeBux.egvmblastprotection=§a§lBlast Protection: §fLowers explosion damage\n§7Cannot be combined with Protection, Fire, or Projectile§r
+NeBux.egvmprojectileprotection=§a§lProjectile Protection: §fShields you from arrows\n§7Cannot be combined with Protection, Blast, or Fire§r
+NeBux.egvmrespiration=§a§lRespiration: §fLets you breathe underwater longer\n§7No incompatibilities§r
+NeBux.egvmaquaaffinity=§a§lAqua Affinity: §fSpeeds up mining underwater\n§7No incompatibilities§r
+NeBux.egvmthorns=§a§lThorns: §fDamages attackers when they hit you\n§7No incompatibilities§r
+NeBux.egvmdepthstrider=§a§lDepth Strider: §fMakes you move faster in water\n§7Cannot be combined with Frost Walker§r
+NeBux.egvmfrostwalker=§a§lFrost Walker: §fFreezes water under you to walk on\n§7Cannot be combined with Depth Strider§r
+NeBux.egvmfeatherfalling=§a§lFeather Falling: §fReduces damage when you fall\n§7No incompatibilities§r
+NeBux.egvmsoulspeed=§a§lSoul Speed: §fSpeeds you up on soul sand and soil\n§7No incompatibilities§r
+NeBux.egvmswiftsneak=§a§lSwift Sneak: §fSneak faster while crouching\n§7No incompatibilities§r
+NeBux.egvmcurseofbinding=§a§lCurse of Binding: §fPrevents removal of armor\n§7No incompatibilities§r
+NeBux.egvmcurseofvanishing=§a§lCurse of Vanishing: §fItem disappears on death\n§7No incompatibilities§r
+NeBux.egvmmending=§a§lMending: §fRepairs gear with XP you collect\n§7No incompatibilities§r
+NeBux.egvmunbreaking=§a§lUnbreaking: §fMakes your gear last longer\n§7No incompatibilities§r
+NeBux.egvmsharpness=§a§lSharpness: §fBoosts damage to mobs and players\n§7Cannot be combined with Smite or Bane of Arthropods§r
+NeBux.egvmsmite=§a§lSmite: §fDeals extra damage to undead like zombies\n§7Cannot be combined with Sharpness or Bane of Arthropods§r
+NeBux.egvmbaneofarthropods=§a§lBane of Arthropods: §fHits spiders and silverfish harder\n§7Cannot be combined with Sharpness or Smite§r
+NeBux.egvmknockback=§a§lKnockback: §fKnocks enemies back when you hit them\n§7No incompatibilities§r
+NeBux.egvmfireaspect=§a§lFire Aspect: §fSets enemies on fire when you hit them\n§7No incompatibilities§r
+NeBux.egvmlooting=§a§lLooting: §fDrops more loot from mobs you kill\n§7No incompatibilities§r
+NeBux.egvmpower=§a§lPower: §fIncreases bow arrow damage\n§7No incompatibilities§r
+NeBux.egvmpunch=§a§lPunch: §fKnocks back targets hit by arrows\n§7No incompatibilities§r
+NeBux.egvmflame=§a§lFlame: §fSets arrows on fire to burn targets\n§7No incompatibilities§r
+NeBux.egvminfinity=§a§lInfinity: §fShoot arrows without using them up\n§7Cannot be combined with Mending§r
+NeBux.egvmquickcharge=§a§lQuick Charge: §fReloads crossbow faster\n§7No incompatibilities§r
+NeBux.egvmpiercing=§a§lPiercing: §fArrows pierce through multiple targets\n§7Cannot be combined with Multishot§r
+NeBux.egvmmultishot=§a§lMultishot: §fShoots 3 arrows at once\n§7Cannot be combined with Piercing§r
+NeBux.egvmefficiency=§a§lEfficiency: §fBreaks blocks faster\n§7No incompatibilities§r
+NeBux.egvmfortune=§a§lFortune: §fGives more drops from ores like diamonds\n§7Cannot be combined with Silk Touch§r
+NeBux.egvmsilktouch=§a§lSilk Touch: §fMines blocks as they are like stone\n§7Cannot be combined with Fortune§r
+NeBux.egvmloyalty=§a§lLoyalty: §fMakes your trident return after throwing\n§7Cannot be combined with Riptide§r
+NeBux.egvmriptide=§a§lRiptide: §fLaunches you forward in rain or water\n§7Cannot be combined with Loyalty or Channeling§r
+NeWhose.egvmchanneling=§a§lChanneling: §fSummons lightning in thunderstorms\n§7Cannot be combined with Riptide§r
+NeBux.egvmimpaling=§a§lImpaling: §fDeals extra damage to ocean mobs\n§7Cannot be combined with Riptide, Loyalty, or Channeling§r
+NeBux.egvmluckofthesea=§a§lLuck of the Sea: §fIncreases chance of rare fishing loot\n§7No incompatibilities§r
+NeBux.egvmlure=§a§lLure: §fSpeeds up fishing by attracting fish faster\n§7No incompatibilities§r
+
+
+NeBux.mmscore=Show Scoreboard
+NeBux.mmhcoh=Hide Chat On Hud
+NeBux.mmhtc=Hide Touch Circle
+NeBux.mmxp=Xp Counter
+NeBux.mmc&c=Clock & Compass
+NeBux.mmic=Inventory Counter
+NeBux.mmis=Inventory Switcher
+NeBux.mmo=Overworld
+NeBux.mmn=Nether
+NeBux.mme=End
+NeBux.mmg=General
+NeBux.mmother=Others
+NeBux.mmc=Crosshairs
+
+NeBux.f3touch=Input Status: Touch
+NeBux.f3gamepad=Input Status: Controller Connected
+NeBux.f3mouse=Input Status: Mouse Connected
+NeBux.f3k&m=Input Status: Keyboard & Mouse
+NeBux.f3vr=Input Status: VR
+NeBux.f3g1=Graphics: RenderDragon [Direct3D11+]
+NeBux.f3g2=Graphics: GLSL [OpenGL ES]
+NeBux.f3da=Device: Android
+NeBux.f3dw=Device: Windows 10
+NeBux.f3dx=Device: Xbox One
+NeBux.f3di=Device: iOS
+NeBux.f3e1=Minecraft: Pocket Edition
+NeBux.f3e2=Minecraft: Education Edition
+NeBux.f3e3=Minecraft: Bedrock Edition
+NeBux.f3u1=UI Profile: Classic UI
+NeBux.f3u2=UI Profile: Pocket UI
+NeBux.f3g1=Game Mode: Creative
+NeBux.f3g2=Game Mode: Survival
+NeBux.f3isf=Inventory Status: §cFull
+NeBux.f3isa=Inventory Status: §aAvailable
+NeBux.f3pa=Pack Activated: NeBux UI+
+NeBux.f3pv=Pack Version: v1.2
+NeBux.isf3=Inventory Status: 
+NeBux.wn=World Name: 
+
+
+
+bt.bg.splash.potion=Splash Potion
+bt.bg.lingering.potion=Lingering Potion
+bt.bg.extended.potion=Extended Potion
+bt.bg.level_2.potion=Level II Potion
+bt.bg.effect.potion=Potion Effect
+
+
+NeBux.play=§lPlay
+NeBux.exit=§fExit
+NeBux.exitred=§cExit
+NeBux.clickme=Click Me! :)
+
+
+NeBux.ow=§fEntering §aOverworld
+NeBux.nw=§fEntering §cNether
+NeBux.ew=§fEntering §dThe End
+
+
+NeBux.cs=Control Settings:
+NeBux.os=Other Settings:
+NeBux.pc=Pack Creator:
+NeBux.coms=Common Settings:
+
+
+NeBux.players=Players
+NeBux.ss=Screenshot
+NeBux.back=§lBack
+
+NeBux.copy=Copy
+NeBux.paste=Paste
+NeBux.block=Block
+NeBux.player=Player
+
+
+NeBux.abtpack=About Pack
+NeBux.abtdev2=About Developer
+NeBux.credits=Credits
+NeBux.projects=My Projects :)
+
+
+
+
+
+
+NeBux.qc=Quick Chat
+NeBux.qcpd1=Quick Chat is super useful chat ui which adds multiple
+NeBux.qcpd2=useful features to your chat screen which makes your
+NeBux.qcpd3=chatting more easier as well as commands also.
+NeBux.qcv=Version 1.0
+NeBux.qcstatus=Status: §aAvailable
+
+
+NeBux.ncpn=NeBux Containers
+NeBux.ncd1=NeBux Containers is a gui pack which changes all Ingame
+NeBux.ncd2=containers of crafting table, furnace, inventory etc etc..
+NeBux.ncpv=Version 1.0
+NeBux.ncstatus=Status: §cNot Published Yet
+
+
+NeBux.onupn=NeBux UI
+NeBux.onud1=NeBux Ui is a standalone pack of NeBux UI+, NeBux UI
+NeBux.onud2=only a user interface its not provides more features.
+NeBux.onupv=Version 1.0
+NeBux.onustatus=Status: §cNot Published Yet
+
+NeBux.touch=Touch
+NeBux.k&m=Keyboard & Mouse
+NeBux.controller=Controller
+NeBux.video=Video
+NeBux.advance=Advance
+
+NeBux.abtdev=ABOUT THE DEVELOPER
+NeBux.nebuxname=NeBux
+NeBux.bio1=Hello, I'm NeBux!
+NeBux.bio2=Just a guy chilling at home with nothing better to do,
+NeBux.bio3=so he made this ;)
+NeBux.sm=Social Media
+NeBux.nu+status=Status: §aAvailable
+
+
+NeBux.atp=ABOUT THE PACK
+NeBux.pn=NEBUX UI+
+NeBux.pd1=A simple ui pack which makes your regular gameplay more
+NeBux.pd2=easier by adding many features to your game :)
+NeBux.author=Author: NeBux
+NeBux.pv=Version: 1.0
+NeBux.tou=Terms of Use
+NeBux.wucd=§aWHAT YOU CAN DO
+NeBux.tou1=> You can modify this pack only for personal use.
+NeBux.tou2=> You can showcase this pack on YouTube, but you must provide the official
+NeBux.tou2c=  download page link. You cannot share a direct or paywall download link.
+NeBux.wucantd=§cWHAT YOU CAN'T DO
+NeBux.tou3=> You cannot re-upload this pack anywhere.
+NeBux.tou4=> You are not allowed to use any assets or code from this pack.
+NeBux.tou4c=  If you wish to use them,contact me on Discord for permission. I would
+NeBux.tou4c1=  like to know what you need and how you plan to use it :)
+NeBux.tou5=> You are not allowed to upload a modified version of this pack anywhere
+NeBux.tou5c=  & claim it as your own.
+
+
+NeBux.fu=Frequently Used
+NeBux.toggles=Toggles
+NeBux.dropdowns=Dropdowns
+NeBux.sliders=Sliders
+NeBux.graphics=Graphics
+
+
+NeBux.hudani=§lCLICK HERE TO SHOW HUD :)
+NeBux.invfullwarn=§c§lInventory Full!
+
+
+NeBux.s&qw1=Are you sure?
+NeBux.s&qw2=You want to exit the game?
+NeBux.no=§l§cNO
+NeBux.yes=§l§fYes
+
+
+NeBux.load1=This pack is created by NeBux.
+NeBux.load2=Join NeBux's Discord Server for updates! :)
+NeBux.load3=Join this server: https://discord.gg/JyeQ75JCCm
+NeBux.load4=Checkout nebux head icon button which is on start screen
+NeBux.load5=New update is here! checkout NeBux's MCPEDL Page!
+NeBux.load6=New update is here! checkout NeBux's YouTube Channel!
+
+container.inventory= 
+chestScreen.header.large=Large Chest
+chestScreen.header.player=
+chestScreen.header.small=Chest
