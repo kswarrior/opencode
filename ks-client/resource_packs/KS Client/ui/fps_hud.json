@@ -52,7 +52,8 @@
                       "size": [40, 40],
                       "anchor_from": "center",
                       "anchor_to": "center",
-                      "offset": [-13, 12],
+                      // Doll nudged down 3px so the clipped window shows digits only (player head cropped out). Revert to 12 if digit tops clip.
+                      "offset": [-13, 15],
                       "camera_tilt_degrees": 0,
                       "starting_rotation": 180,
                       "use_skin_gui_scale": false
