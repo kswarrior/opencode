@@ -1,0 +1,9 @@
+{
+  "$déesse:inventory_hud_size": "small", // small - default
+  "$déesse:use_highlight_slot": true,
+  "$déesse:highlight_slot_color": [0, 1, 0],
+  "$déesse:highlight_slot_alpha": 0.30,
+  
+  "$déesse:inventory_slot_color": [0, 0, 0],
+  "$déesse:inventory_slot_alpha": 0.27
+}

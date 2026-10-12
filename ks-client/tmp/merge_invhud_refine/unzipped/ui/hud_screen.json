@@ -1,0 +1,18 @@
+{
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "déesse_inventory_hud@déesse_hud.inventory_hud_panel": {}
+          },
+          {
+            "déesse_hotbar_data@déesse_hud.hotbar_data": {}
+          }
+        ]
+      }
+    ]
+  }
+}

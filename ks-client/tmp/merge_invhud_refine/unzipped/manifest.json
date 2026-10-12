@@ -1,0 +1,72 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "v1.0.1 by @§eItzriyo157\n§7Display your inventory on Hud screen!\n\nStandalone pack from Déesse UI Pack.",
+    "name": "Inventory Hud",
+    "uuid": "a09090a0-91ca-bcac-0b3a-157152157157",
+    "version": [
+      1,
+      0,
+      1
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "description": "v1.0.1 by @Itzriyo157",
+      "type": "resources",
+      "uuid": "a17a9090-9a91-bcac-0bb6-1c7127157157",
+      "version": [
+        1,
+        0,
+        1
+      ]
+    }
+  ],
+  "subpacks": [
+    {
+      "folder_name": "top_left",
+      "name": "Top Left",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "top_right",
+      "name": "Top Right",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "left_middle",
+      "name": "Left Middle",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "right_middle",
+      "name": "Right Middle",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "bottom_left",
+      "name": "Bottom Left",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "bottom_middle",
+      "name": "Bottom Middle",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "bottom_right",
+      "name": "Bottom Right",
+      "memory_tier": 0
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "itzriyo157"
+    ]
+  }
+}
