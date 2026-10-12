@@ -1,0 +1,14 @@
+.class public Landroidx/media/app/NotificationCompat;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/media/app/NotificationCompat$Api24Impl;,
+        Landroidx/media/app/NotificationCompat$Api21Impl;,
+        Landroidx/media/app/NotificationCompat$Api15Impl;,
+        Landroidx/media/app/NotificationCompat$DecoratedMediaCustomViewStyle;,
+        Landroidx/media/app/NotificationCompat$MediaStyle;
+    }
+.end annotation

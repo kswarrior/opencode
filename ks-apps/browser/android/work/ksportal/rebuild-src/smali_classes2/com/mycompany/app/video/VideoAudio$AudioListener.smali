@@ -1,0 +1,21 @@
+.class public interface abstract Lcom/mycompany/app/video/VideoAudio$AudioListener;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/mycompany/app/video/VideoAudio;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "AudioListener"
+.end annotation
+
+
+# virtual methods
+.method public abstract a()I
+.end method
+
+.method public abstract b()Z
+.end method

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="100.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/list_view" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="8.0dip" android:layout_weight="1.0" android:overScrollMode="never" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/empty_view" android:padding="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="100.0dip" android:lineSpacingExtra="8.0dip" />
+</com.mycompany.app.view.MyDialogLinear>

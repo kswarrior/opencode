@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="8.0dip" android:paddingEnd="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyRoundImage android:id="@id/item_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerCrop" android:layout_centerHorizontal="true" app:circleRadius="16.0dip" app:rectRadius="4.0dip" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="14.0dip" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/item_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxLines="2" android:layout_below="@id/item_icon" />
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyTabFrame android:layout_width="@dimen/tab_bar_width" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.mycompany.app.view.MyTextImage android:layout_gravity="start|center" android:id="@id/item_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:scaleType="centerCrop" android:layout_marginStart="14.0dip" />
+    <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/item_delete" android:layout_width="@dimen/item_real_size" android:layout_height="fill_parent" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyTextFast android:textSize="@dimen/info_text_size" android:layout_gravity="start|center" android:id="@id/item_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_marginStart="44.0dip" android:layout_marginEnd="32.0dip" />
+</com.mycompany.app.view.MyTabFrame>

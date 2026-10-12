@@ -1,0 +1,10 @@
+.class public final Landroidx/core/widget/ListPopupWindowCompat;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/core/widget/ListPopupWindowCompat$Api19Impl;
+    }
+.end annotation

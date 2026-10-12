@@ -1,0 +1,56 @@
+.class final Lcom/google/android/gms/internal/xxx/zzeyu;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Lcom/google/android/gms/xxx/rewarded/OnAdMetadataChangedListener;
+
+
+# instance fields
+.field public final synthetic c:Lcom/google/android/gms/xxx/internal/client/zzdd;
+
+.field public final synthetic e:Lcom/google/android/gms/internal/xxx/zzeyw;
+
+
+# direct methods
+.method public constructor <init>(Lcom/google/android/gms/internal/xxx/zzeyw;Lcom/google/android/gms/xxx/internal/client/zzdd;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/google/android/gms/internal/xxx/zzeyu;->e:Lcom/google/android/gms/internal/xxx/zzeyw;
+
+    iput-object p2, p0, Lcom/google/android/gms/internal/xxx/zzeyu;->c:Lcom/google/android/gms/xxx/internal/client/zzdd;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onAdMetadataChanged()V
+    .locals 2
+
+    iget-object v0, p0, Lcom/google/android/gms/internal/xxx/zzeyu;->e:Lcom/google/android/gms/internal/xxx/zzeyw;
+
+    iget-object v0, v0, Lcom/google/android/gms/internal/xxx/zzeyw;->l:Lcom/google/android/gms/internal/xxx/zzdmo;
+
+    if-eqz v0, :cond_0
+
+    :try_start_0
+    iget-object v0, p0, Lcom/google/android/gms/internal/xxx/zzeyu;->c:Lcom/google/android/gms/xxx/internal/client/zzdd;
+
+    invoke-interface {v0}, Lcom/google/android/gms/xxx/internal/client/zzdd;->zze()V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    return-void
+
+    :catch_0
+    move-exception v0
+
+    const-string v1, "#007 Could not call remote method."
+
+    invoke-static {v1, v0}, Lcom/google/android/gms/internal/xxx/zzbzt;->zzl(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    :cond_0
+    return-void
+.end method

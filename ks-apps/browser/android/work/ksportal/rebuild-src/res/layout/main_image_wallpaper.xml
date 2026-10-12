@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MySizeFrame android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MySizeImage android:layout_gravity="center" android:id="@id/image_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <LinearLayout android:layout_gravity="start|bottom|center" android:orientation="horizontal" android:id="@id/button_view" android:background="@color/view_nor" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:textColor="@color/white" android:gravity="center" android:id="@id/cancel_view" android:background="@drawable/selector_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/cancel" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:textColor="@color/white" android:gravity="center" android:id="@id/apply_view" android:background="@drawable/selector_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/set_wallpaper" android:layout_weight="1.0" />
+    </LinearLayout>
+    <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:backCircle="@color/view_nor" app:foreCircle="@color/white" />
+</com.mycompany.app.view.MySizeFrame>

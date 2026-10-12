@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="96.0dip">
+        <com.mycompany.app.view.MyRoundImage android:layout_gravity="center" android:id="@id/icon_view" android:visibility="gone" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerCrop" app:circleRadius="@dimen/circle_radius" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_horizontal" android:layout_gravity="start|center" android:id="@id/empty_view" android:padding="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="8.0dip" />
+        <com.mycompany.app.view.MyCoverView android:layout_gravity="center" android:id="@id/load_view" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" />
+    </FrameLayout>
+    <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" app:linePad="16.0dip" app:lineUp="true" />
+</com.mycompany.app.view.MyDialogLinear>

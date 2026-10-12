@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyRecyclerView android:id="@id/grid_view" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/tab_grid_pad" android:paddingEnd="@dimen/tab_grid_pad" />
+    <ImageView android:id="@id/empty_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/logo_gray" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.mycompany.app.view.MyRoundLinear android:orientation="vertical" android:id="@id/lock_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/title_text_size" android:layout_gravity="center_horizontal" android:id="@id/title_view" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/secret_mode" android:singleLine="true" />
+        <View android:id="@id/title_pad" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/image_view" android:visibility="gone" android:layout_width="84.0dip" android:layout_height="84.0dip" />
+        <View android:id="@id/image_pad" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.mycompany.app.view.MyButtonText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/unlock_view" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/item_real_size" android:text="@string/unlock" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip" app:bgNorFixed="true" app:roundRadius="8.0dip" app:roundRect="true" />
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </com.mycompany.app.view.MyRoundLinear>
+</FrameLayout>

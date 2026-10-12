@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:icon="@drawable/outline_shortcut_tab_normal" android:enabled="true">
+        <intent android:targetPackage="com.mycompany.app.soulbrowser" android:action="com.mycompany.app.soulbrowser.ACTION_TAB_NORMAL" android:targetClass="com.mycompany.app.web.WebShortTab" />
+    </shortcut>
+    <shortcut android:icon="@drawable/outline_shortcut_tab_secret" android:enabled="true">
+        <intent android:targetPackage="com.mycompany.app.soulbrowser" android:action="com.mycompany.app.soulbrowser.ACTION_TAB_SECRET" android:targetClass="com.mycompany.app.web.WebShortTab" />
+    </shortcut>
+</shortcuts>

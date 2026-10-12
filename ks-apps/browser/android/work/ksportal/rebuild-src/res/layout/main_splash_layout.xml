@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyFadeRelative android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="12.0dip" android:textColor="@color/black" android:textColorLink="#ff3949ab" android:gravity="center_horizontal" android:id="@id/splash_notice" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
+    <com.mycompany.app.view.MyButtonText android:textSize="@dimen/title_text_size" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@id/splash_apply" android:background="@drawable/round_splash" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/start" android:layout_above="@id/splash_notice" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip" android:elevation="2.0dip" app:bgPreColor="@color/white_pre" app:roundRadius="48.0dip" app:roundRect="true" />
+    <com.mycompany.app.view.MyViewPager android:id="@id/page_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/splash_apply" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/splash_apply">
+        <View android:id="@id/blank_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <FrameLayout android:layout_width="110.0dip" android:layout_height="20.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/blank_view" android:layout_centerHorizontal="true">
+            <View android:id="@id/pos_view_1" android:background="@drawable/seek_thumb_nor_b" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+            <View android:id="@id/pos_view_2" android:background="@drawable/seek_thumb_nor_b" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginStart="30.0dip" />
+            <View android:id="@id/pos_view_3" android:background="@drawable/seek_thumb_nor_b" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginStart="60.0dip" />
+            <View android:id="@id/pos_view_4" android:background="@drawable/seek_thumb_nor_b" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginStart="90.0dip" />
+        </FrameLayout>
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/title_text_size" android:textColor="@color/black" android:gravity="center" android:id="@id/text_view" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_below="@id/blank_view" android:layout_marginStart="@dimen/item_size" android:layout_marginEnd="@dimen/item_size" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/icon_prev" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="80.0dip" android:src="@drawable/outline_keyboard_arrow_left_black_24" android:scaleType="centerInside" android:layout_below="@id/blank_view" app:bgPreColor="@color/white_pre" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/icon_next" android:layout_width="@dimen/item_size" android:layout_height="80.0dip" android:src="@drawable/outline_keyboard_arrow_right_black_24" android:scaleType="centerInside" android:layout_below="@id/blank_view" android:layout_alignParentEnd="true" app:bgPreColor="@color/white_pre" />
+    </RelativeLayout>
+</com.mycompany.app.view.MyFadeRelative>

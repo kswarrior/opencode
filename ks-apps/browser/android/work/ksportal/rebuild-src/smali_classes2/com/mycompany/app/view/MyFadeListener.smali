@@ -1,0 +1,13 @@
+.class public interface abstract Lcom/mycompany/app/view/MyFadeListener;
+.super Ljava/lang/Object;
+
+
+# virtual methods
+.method public abstract a(Z)V
+.end method
+
+.method public abstract b(ZZ)V
+.end method
+
+.method public abstract c()V
+.end method

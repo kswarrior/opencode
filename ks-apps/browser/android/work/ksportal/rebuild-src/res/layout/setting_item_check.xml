@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyRoundItem android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/main_set_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyButtonCheck android:id="@id/check_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:bgPreColor="@color/white_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+    <RelativeLayout android:paddingTop="@dimen/setting_pad" android:paddingBottom="@dimen/setting_pad" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/check_view">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/title_view" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/info_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/title_view" />
+    </RelativeLayout>
+</com.mycompany.app.view.MyRoundItem>

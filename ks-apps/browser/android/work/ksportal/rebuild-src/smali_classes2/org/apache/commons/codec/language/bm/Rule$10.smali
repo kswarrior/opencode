@@ -1,0 +1,17 @@
+.class final Lorg/apache/commons/codec/language/bm/Rule$10;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Lorg/apache/commons/codec/language/bm/Rule$RPattern;
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    invoke-static {p1}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
+
+    return-void
+.end method

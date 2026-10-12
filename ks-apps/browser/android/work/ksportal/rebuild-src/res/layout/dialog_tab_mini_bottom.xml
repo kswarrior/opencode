@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyLineLinear android:orientation="horizontal" android:id="@id/bottom_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/delete_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/delete_all" android:layout_weight="1.0" />
+    <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/add_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineLt="true" />
+</com.mycompany.app.view.MyLineLinear>

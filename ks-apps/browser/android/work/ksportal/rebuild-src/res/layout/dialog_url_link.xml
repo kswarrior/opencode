@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/icon_frame" android:layout_width="fill_parent" android:layout_height="@dimen/content_height">
+        <com.mycompany.app.view.MyRoundImage android:layout_gravity="start|center" android:id="@id/icon_link" android:visibility="gone" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerCrop" android:layout_marginStart="16.0dip" app:circleRadius="@dimen/circle_radius" />
+        <com.mycompany.app.view.MyRoundImage android:layout_gravity="start|center" android:id="@id/icon_image" android:visibility="gone" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerCrop" android:layout_marginStart="16.0dip" app:circleRadius="@dimen/circle_radius" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:ellipsize="end" android:layout_gravity="start|center" android:id="@id/name_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_marginStart="72.0dip" android:layout_marginEnd="56.0dip" />
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end|center" android:id="@id/icon_setting" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginEnd="8.0dip" app:bgPreColor="@color/white_pre" />
+    </FrameLayout>
+    <com.mycompany.app.view.MyLineLinear android:orientation="horizontal" android:id="@id/button_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false" app:linePad="16.0dip" app:lineUp="true">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/select_link" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/link" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/select_img" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/image" android:layout_weight="1.0" />
+    </com.mycompany.app.view.MyLineLinear>
+    <com.google.android.material.tabs.TabLayout android:id="@id/tab_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" app:tabGravity="fill" app:tabMaxWidth="0.0dip" app:tabMode="fixed" />
+</com.mycompany.app.view.MyDialogLinear>

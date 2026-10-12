@@ -1,0 +1,13 @@
+.class public abstract Landroidx/mediarouter/media/RemotePlaybackClient$ActionCallback;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/mediarouter/media/RemotePlaybackClient;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x409
+    name = "ActionCallback"
+.end annotation

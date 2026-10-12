@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/noti_image" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerHorizontal="true" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/noti_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/onehand_noti" android:layout_below="@id/noti_image" android:layout_centerHorizontal="true" />
+</RelativeLayout>

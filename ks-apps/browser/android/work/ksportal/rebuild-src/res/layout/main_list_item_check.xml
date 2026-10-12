@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyLineRelative android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/main_set_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:paddingTop="@dimen/setting_pad" android:paddingBottom="@dimen/setting_pad" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/item_size">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/item_name" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/item_value" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/item_name" />
+    </RelativeLayout>
+    <com.mycompany.app.view.MyButtonCheck android:id="@id/item_check" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:checked="@drawable/outline_done_black_24" />
+</com.mycompany.app.view.MyLineRelative>

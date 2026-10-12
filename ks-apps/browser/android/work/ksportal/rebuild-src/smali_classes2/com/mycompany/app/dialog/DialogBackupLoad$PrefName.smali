@@ -1,0 +1,19 @@
+.class Lcom/mycompany/app/dialog/DialogBackupLoad$PrefName;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/mycompany/app/dialog/DialogBackupLoad;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "PrefName"
+.end annotation
+
+
+# instance fields
+.field public a:Ljava/lang/String;
+
+.field public b:Ljava/lang/String;

@@ -1,0 +1,46 @@
+.class Landroidx/appcompat/widget/AppCompatTextViewAutoSizeHelper$Impl23;
+.super Landroidx/appcompat/widget/AppCompatTextViewAutoSizeHelper$Impl;
+
+
+# annotations
+.annotation build Landroidx/annotation/RequiresApi;
+.end annotation
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/appcompat/widget/AppCompatTextViewAutoSizeHelper;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "Impl23"
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Landroidx/appcompat/widget/AppCompatTextViewAutoSizeHelper$Impl;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(Landroid/text/StaticLayout$Builder;Landroid/widget/TextView;)V
+    .locals 2
+
+    const-string v0, "getTextDirectionHeuristic"
+
+    sget-object v1, Landroid/text/TextDirectionHeuristics;->FIRSTSTRONG_LTR:Landroid/text/TextDirectionHeuristic;
+
+    invoke-static {p2, v1, v0}, Landroidx/appcompat/widget/AppCompatTextViewAutoSizeHelper;->e(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object p2
+
+    check-cast p2, Landroid/text/TextDirectionHeuristic;
+
+    invoke-static {p1, p2}, Landroid/support/v4/media/b;->n(Landroid/text/StaticLayout$Builder;Landroid/text/TextDirectionHeuristic;)V
+
+    return-void
+.end method

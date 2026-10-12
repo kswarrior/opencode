@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyStatusRelative android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyHeaderView android:id="@id/header_view" android:layout_width="fill_parent" android:layout_height="@dimen/title_height">
+        <com.mycompany.app.view.MyButtonImage android:id="@id/title_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_marginStart="8.0dip" app:bgPreColor="@color/gray_pre" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/title_text_size" android:gravity="center_vertical" android:id="@id/title_text" android:layout_width="fill_parent" android:layout_height="@dimen/title_height" android:text="@string/page_source" android:singleLine="true" android:layout_marginStart="@dimen/item_large_size" android:layout_toStartOf="@id/icon_save" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/icon_save" android:padding="@dimen/icon_pad" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:scaleType="centerInside" android:layout_toStartOf="@id/cast_frame_icon" app:bgPreColor="@color/gray_pre" />
+        <FrameLayout android:id="@id/cast_frame_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/title_height" android:layout_alignParentEnd="true" />
+    </com.mycompany.app.view.MyHeaderView>
+    <RelativeLayout android:id="@id/body_frame" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_height" android:layout_above="@id/cast_frame_ctrl">
+        <FrameLayout android:id="@id/web_frame" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/find_layout" />
+        <View android:id="@id/shadow_view" android:background="@drawable/shadow_list_up" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/shadow_height" />
+        <com.mycompany.app.view.MyScrollBar android:id="@id/scroll_bar" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/find_layout" app:scrollFullMode="true" />
+        <include android:id="@id/find_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/web_view_find" />
+        <com.mycompany.app.view.MyFadeLinear android:orientation="horizontal" android:id="@id/control_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="80.0dip" android:baselineAligned="false" android:layout_alignParentBottom="true" app:autoHide="true" app:touchable="true">
+            <View android:layout_gravity="start|center" android:layout_width="0.0dip" android:layout_height="@dimen/item_size" android:layout_weight="1.0" />
+            <com.mycompany.app.view.MyButtonImage android:layout_gravity="start|center" android:id="@id/icon_bright" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:src="@drawable/outline_brightness_6_white_24" android:scaleType="centerInside" app:bgNorColor="@color/theme_color" app:bgNorFixed="true" app:bgNorRadius="@dimen/nor_radius" app:bgPreColor="@color/theme_color" app:bgPreRadius="@dimen/pre_radius" />
+            <View android:layout_gravity="start|center" android:layout_width="0.0dip" android:layout_height="@dimen/item_size" android:layout_weight="1.0" />
+            <com.mycompany.app.view.MyButtonImage android:layout_gravity="start|center" android:id="@id/icon_find" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:src="@drawable/outline_search_white_24" android:scaleType="centerInside" app:bgNorColor="@color/theme_color" app:bgNorFixed="true" app:bgNorRadius="@dimen/nor_radius" app:bgPreColor="@color/theme_color" app:bgPreRadius="@dimen/pre_radius" />
+            <View android:layout_gravity="start|center" android:layout_width="0.0dip" android:layout_height="@dimen/item_size" android:layout_weight="1.0" />
+        </com.mycompany.app.view.MyFadeLinear>
+        <com.mycompany.app.view.MyCoverView android:id="@id/load_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <com.mycompany.app.view.MyProgressBar android:id="@id/progress_bar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginTop="@dimen/title_height" app:progressColor="@color/prog_color" app:progressHeader="true" app:progressHeight="1.5dip" app:progressSkip="true" app:progressWeb="true" />
+    <FrameLayout android:id="@id/cast_frame_ctrl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</com.mycompany.app.view.MyStatusRelative>

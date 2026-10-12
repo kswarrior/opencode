@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyCircleView android:layout_gravity="center_horizontal" android:id="@id/back_view" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="10.0dip" />
+    <com.mycompany.app.view.MyRoundImage android:layout_gravity="center_horizontal" android:id="@id/image_view" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="18.0dip" android:scaleType="centerCrop" app:circleRadius="12.0dip" app:rectRadius="4.0dip" />
+    <com.mycompany.app.view.MyButtonCheck android:layout_gravity="center_horizontal" android:id="@id/check_view" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginEnd="16.0dip" app:bgNorRadius="12.0dip" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="12.0dip" android:gravity="center_horizontal" android:id="@id/title_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="54.0dip" android:singleLine="true" android:paddingStart="6.0dip" android:paddingEnd="6.0dip" />
+</FrameLayout>

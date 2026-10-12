@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.gms.xxx.nativead.NativeAdView android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/noti_view" android:layout_width="25.0dip" android:layout_height="15.0dip" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <com.google.android.gms.xxx.nativead.MediaView android:id="@id/media_view" android:layout_width="fill_parent" android:layout_height="172.0dip" android:layout_marginBottom="10.0dip" />
+        </FrameLayout>
+        <RelativeLayout android:id="@id/body_frame" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/icon_view" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerCrop" />
+            <RelativeLayout android:id="@id/text_frame" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="8.0dip" android:layout_toEndOf="@id/icon_view">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="14.0dip" android:ellipsize="end" android:id="@id/head_view" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="12.0dip" android:id="@id/body_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/head_view" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/white" android:gravity="center" android:id="@id/action_view" android:background="@drawable/selector_round_theme" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_marginTop="10.0dip" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" />
+    </LinearLayout>
+</com.google.android.gms.xxx.nativead.NativeAdView>

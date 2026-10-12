@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MySnackSub android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/action_1_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:paddingStart="@dimen/item_size" android:paddingEnd="@dimen/item_size" />
+    <com.mycompany.app.view.MyButtonImage android:id="@id/close_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_alignParentEnd="true" />
+</com.mycompany.app.view.MySnackSub>

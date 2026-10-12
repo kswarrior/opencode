@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyRoundFrame android:id="@id/ad_frame" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/nat_pad_height" />
+    <com.mycompany.app.view.MyRoundLinear android:orientation="vertical" android:id="@id/list_frame" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/sub_text_size" android:gravity="center_vertical" android:id="@id/title_view" android:layout_width="fill_parent" android:layout_height="@dimen/sub_title_height" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" app:lineDn="true" app:linePad="16.0dip" />
+        <com.mycompany.app.view.MyRecyclerView android:id="@id/list_view" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </com.mycompany.app.view.MyRoundLinear>
+</com.mycompany.app.view.MyDialogLinear>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/title_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/count_view" android:layout_width="wrap_content" android:layout_height="@dimen/item_size" android:textDirection="ltr" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" android:layout_marginEnd="60.0dip" android:layout_alignParentEnd="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/title_text" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:text="@string/image_type" android:singleLine="true" android:layout_marginStart="16.0dip" android:layout_toStartOf="@id/count_view" />
+        <com.mycompany.app.view.MyButtonCheck android:id="@id/title_check" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginEnd="8.0dip" android:layout_alignParentEnd="true" app:bgPreColor="@color/white_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+    </RelativeLayout>
+    <androidx.core.widget.NestedScrollView android:id="@id/scroll_view" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:overScrollMode="never">
+        <LinearLayout android:orientation="vertical" android:id="@id/scroll_sub" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.mycompany.app.view.MyLineFrame android:id="@id/jpg_view" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_list_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:layout_gravity="start|center" android:id="@id/jpg_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end|center" android:id="@id/jpg_check" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:bgPreColor="@color/white_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+            </com.mycompany.app.view.MyLineFrame>
+            <com.mycompany.app.view.MyLineFrame android:id="@id/png_view" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_list_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:layout_gravity="start|center" android:id="@id/png_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end|center" android:id="@id/png_check" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:bgPreColor="@color/white_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+            </com.mycompany.app.view.MyLineFrame>
+            <com.mycompany.app.view.MyLineFrame android:id="@id/gif_view" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_list_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:layout_gravity="start|center" android:id="@id/gif_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end|center" android:id="@id/gif_check" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:bgPreColor="@color/white_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+            </com.mycompany.app.view.MyLineFrame>
+            <com.mycompany.app.view.MyLineFrame android:id="@id/wbp_view" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_list_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:layout_gravity="start|center" android:id="@id/wbp_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end|center" android:id="@id/wbp_check" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:bgPreColor="@color/white_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+            </com.mycompany.app.view.MyLineFrame>
+            <com.mycompany.app.view.MyLineFrame android:id="@id/etc_view" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_list_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" app:lineDn="true" app:linePad="16.0dip">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:layout_gravity="start|center" android:id="@id/etc_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end|center" android:id="@id/etc_check" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:bgPreColor="@color/white_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+            </com.mycompany.app.view.MyLineFrame>
+            <FrameLayout android:id="@id/emp_view" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_list_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:layout_gravity="start|center" android:id="@id/emp_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end|center" android:id="@id/emp_check" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:bgPreColor="@color/white_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:text="@string/apply" app:linePad="16.0dip" app:lineUp="true" />
+</com.mycompany.app.view.MyDialogLinear>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:overScrollMode="never">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/content_height">
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/title_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="8.0dip" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/guide_text" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:lineSpacingExtra="4.0dip" />
+            <FrameLayout android:id="@id/list_1_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginStart="16.0dip">
+                <View android:layout_gravity="start|center" android:id="@id/list_1_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:layout_gravity="start|center" android:id="@id/list_1_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="36.0dip" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/list_2_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginStart="16.0dip">
+                <View android:layout_gravity="start|center" android:id="@id/list_2_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:layout_gravity="start|center" android:id="@id/list_2_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="36.0dip" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/list_3_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginStart="16.0dip">
+                <View android:layout_gravity="start|center" android:id="@id/list_3_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:layout_gravity="start|center" android:id="@id/list_3_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="36.0dip" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/list_4_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginStart="16.0dip">
+                <View android:layout_gravity="start|center" android:id="@id/list_4_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:layout_gravity="start|center" android:id="@id/list_4_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="36.0dip" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/list_5_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginStart="16.0dip">
+                <View android:layout_gravity="start|center" android:id="@id/list_5_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:layout_gravity="start|center" android:id="@id/list_5_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="36.0dip" />
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:text="@string/ok" app:linePad="16.0dip" app:lineUp="true" />
+</com.mycompany.app.view.MyDialogLinear>

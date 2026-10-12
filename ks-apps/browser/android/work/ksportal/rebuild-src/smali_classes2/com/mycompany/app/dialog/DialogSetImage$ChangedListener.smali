@@ -1,0 +1,18 @@
+.class public interface abstract Lcom/mycompany/app/dialog/DialogSetImage$ChangedListener;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/mycompany/app/dialog/DialogSetImage;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "ChangedListener"
+.end annotation
+
+
+# virtual methods
+.method public abstract b()V
+.end method

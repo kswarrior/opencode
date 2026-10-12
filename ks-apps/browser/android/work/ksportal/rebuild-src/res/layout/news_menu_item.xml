@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="52.0dip" android:paddingStart="0.0dip" android:paddingEnd="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.mycompany.app.view.MyCircleView android:id="@id/back_view" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="10.0dip" android:layout_marginStart="10.0dip" />
+    <ImageView android:id="@id/icon_view" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginStart="16.0dip" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/name_view" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:layout_marginStart="52.0dip" />
+</FrameLayout>

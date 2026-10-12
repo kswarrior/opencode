@@ -1,0 +1,21 @@
+.class public Lcom/nostra13/universalimageloader/cache/disc/naming/HashCodeFileNameGenerator;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Lcom/nostra13/universalimageloader/cache/disc/naming/FileNameGenerator;
+
+
+# virtual methods
+.method public final a(Ljava/lang/String;)Ljava/lang/String;
+    .locals 0
+
+    invoke-virtual {p1}, Ljava/lang/String;->hashCode()I
+
+    move-result p1
+
+    invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    move-result-object p1
+
+    return-object p1
+.end method

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyStatusRelative android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyHeaderView android:id="@id/header_view" android:layout_width="fill_parent" android:layout_height="@dimen/title_height">
+        <com.mycompany.app.view.MyButtonImage android:id="@id/title_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_marginStart="8.0dip" app:bgPreColor="@color/gray_pre" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/title_text_size" android:gravity="center_vertical" android:id="@id/title_text" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/item_large_size" android:layout_toStartOf="@id/icon_help" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/icon_help" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:scaleType="centerInside" android:layout_toStartOf="@id/icon_apply" app:bgPreColor="@color/gray_pre" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/icon_apply" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:scaleType="centerInside" android:layout_toStartOf="@id/cast_frame_icon" app:bgPreColor="@color/gray_pre" />
+        <FrameLayout android:id="@id/cast_frame_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/title_height" android:layout_alignParentEnd="true" />
+    </com.mycompany.app.view.MyHeaderView>
+    <com.mycompany.app.view.MyRoundRelative android:id="@id/web_frame" android:layout_width="fill_parent" android:layout_height="148.0dip" android:layout_marginTop="@dimen/title_height" />
+    <com.mycompany.app.view.MyRoundItem android:id="@id/default_frame" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_marginTop="16.0dip" android:layout_below="@id/web_frame">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/default_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:text="@string/font_default" />
+    </com.mycompany.app.view.MyRoundItem>
+    <com.mycompany.app.view.MyRoundItem android:id="@id/bold_frame" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_below="@id/default_frame" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" app:linePad="16.0dip" app:lineUp="true">
+        <com.mycompany.app.view.MySwitchView android:id="@id/bold_switch" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/bold_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/font_bold" android:layout_centerVertical="true" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/bold_switch" />
+    </com.mycompany.app.view.MyRoundItem>
+    <LinearLayout android:orientation="horizontal" android:id="@id/button_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false" android:layout_below="@id/bold_frame">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/select_book" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/storage" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/select_hist" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/system_name" android:layout_weight="1.0" />
+    </LinearLayout>
+    <com.google.android.material.tabs.TabLayout android:id="@id/tab_view" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignBottom="@id/button_view" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" app:tabGravity="fill" app:tabMaxWidth="0.0dip" app:tabMode="fixed" />
+    <com.mycompany.app.view.MyViewPager android:id="@id/page_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cast_frame_ctrl" android:layout_below="@id/tab_view" />
+    <FrameLayout android:id="@id/cast_frame_ctrl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</com.mycompany.app.view.MyStatusRelative>

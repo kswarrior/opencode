@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyAddrView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/edit_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.mycompany.app.view.MyIconView android:id="@id/icon_engine" android:layout_width="@dimen/item_size" android:layout_height="@dimen/web_bar_height" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyEditAuto android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/edit_text" android:background="@null" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="@dimen/web_bar_height" android:hint="@string/web_edit_hint" android:singleLine="true" android:selectAllOnFocus="true" android:layout_weight="1.0" android:imeOptions="actionSearch|flagNoExtractUi" android:textCursorDrawable="@drawable/edit_cursor" android:textDirection="ltr" />
+    <com.mycompany.app.view.MyIconView android:id="@id/icon_clear" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/web_bar_height" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyIconView android:id="@id/icon_copy" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/web_bar_height" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyIconView android:id="@id/icon_delete" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/web_bar_height" android:scaleType="centerInside" />
+</com.mycompany.app.view.MyAddrView>

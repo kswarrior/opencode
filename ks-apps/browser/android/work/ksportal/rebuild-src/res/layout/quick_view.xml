@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.quick.QuickView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.quick.QuickHeadView android:id="@id/header_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/item_real_size" />
+    <com.mycompany.app.view.MyButtonImage android:id="@id/setting_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerInside" />
+    <com.mycompany.app.view.MyRecyclerView android:id="@id/grid_view" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/setting_view" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" app:roundBack="2" />
+</com.mycompany.app.quick.QuickView>

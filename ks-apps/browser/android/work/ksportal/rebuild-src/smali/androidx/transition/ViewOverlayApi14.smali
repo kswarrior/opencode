@@ -1,0 +1,13 @@
+.class Landroidx/transition/ViewOverlayApi14;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Landroidx/transition/ViewOverlayImpl;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/transition/ViewOverlayApi14$OverlayViewGroup;
+    }
+.end annotation

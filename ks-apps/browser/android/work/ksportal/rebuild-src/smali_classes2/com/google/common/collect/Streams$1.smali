@@ -1,0 +1,22 @@
+.class Lcom/google/common/collect/Streams$1;
+.super Ljava/util/Spliterators$AbstractSpliterator;
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/util/Spliterators$AbstractSpliterator<",
+        "Ljava/lang/Object;",
+        ">;"
+    }
+.end annotation
+
+
+# virtual methods
+.method public final tryAdvance(Ljava/util/function/Consumer;)Z
+    .locals 0
+
+    const/4 p1, 0x0
+
+    throw p1
+.end method

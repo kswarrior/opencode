@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/body_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.mycompany.app.view.MyButtonRelative android:layout_gravity="center_horizontal" android:id="@id/image_frame" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginBottom="16.0dip" app:roundRadius="8.0dip" app:roundRect="true">
+        <ImageView android:id="@id/image_view" android:layout_width="64.0dip" android:layout_height="64.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    </com.mycompany.app.view.MyButtonRelative>
+    <com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:paddingTop="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+            <com.mycompany.app.view.MyButtonCheck android:id="@id/color_00" android:layout_width="40.0dip" android:layout_height="40.0dip" app:bgNorRadius="16.0dip" />
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <com.mycompany.app.view.MyButtonCheck android:id="@id/color_01" android:layout_width="40.0dip" android:layout_height="40.0dip" app:bgNorRadius="16.0dip" />
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <com.mycompany.app.view.MyButtonCheck android:id="@id/color_02" android:layout_width="40.0dip" android:layout_height="40.0dip" app:bgNorRadius="16.0dip" />
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <com.mycompany.app.view.MyButtonCheck android:id="@id/color_03" android:layout_width="40.0dip" android:layout_height="40.0dip" app:bgNorRadius="16.0dip" />
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <com.mycompany.app.view.MyButtonCheck android:id="@id/color_04" android:layout_width="40.0dip" android:layout_height="40.0dip" app:bgNorRadius="16.0dip" />
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <com.mycompany.app.view.MyButtonCheck android:id="@id/color_05" android:layout_width="40.0dip" android:layout_height="40.0dip" app:bgNorRadius="16.0dip" />
+        </LinearLayout>
+        <com.mycompany.app.view.MyPaletteView android:layout_gravity="center_horizontal" android:id="@id/color_palette" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:textColor="@color/apply_color" android:gravity="center" android:id="@id/apply_view" android:background="@drawable/selector_normal" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:text="@string/apply" app:linePad="16.0dip" app:lineUp="true" />
+    </com.mycompany.app.view.MyDialogLinear>
+</LinearLayout>

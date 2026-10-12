@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyRoundItem android:paddingTop="8.0dip" android:paddingBottom="@dimen/setting_pad" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/logo_view" android:layout_width="176.0dip" android:layout_height="16.0dip" android:layout_centerHorizontal="true" />
+</com.mycompany.app.view.MyRoundItem>

@@ -1,0 +1,16 @@
+.class Landroidx/core/view/WindowInsetsAnimationControllerCompat$Impl30;
+.super Landroidx/core/view/WindowInsetsAnimationControllerCompat$Impl;
+
+
+# annotations
+.annotation build Landroidx/annotation/RequiresApi;
+.end annotation
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/core/view/WindowInsetsAnimationControllerCompat;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "Impl30"
+.end annotation

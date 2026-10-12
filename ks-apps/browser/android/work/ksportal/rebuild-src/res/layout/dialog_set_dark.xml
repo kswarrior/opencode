@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogLinear android:orientation="vertical" android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyLineFrame android:id="@id/header_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" app:lineDn="true" app:linePad="16.0dip">
+        <com.mycompany.app.view.MyButtonImage android:id="@id/icon_help" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginStart="8.0dip" />
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/icon_day" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginEnd="56.0dip" />
+        <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/icon_night" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginEnd="8.0dip" />
+    </com.mycompany.app.view.MyLineFrame>
+    <com.mycompany.app.view.MyRecyclerView android:id="@id/list_view" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.mycompany.app.view.MyLineLinear android:orientation="horizontal" android:id="@id/button_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:baselineAligned="false" app:linePad="16.0dip" app:lineUp="true">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/reset_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/reset" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/apply_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/apply" android:layout_weight="1.0" />
+    </com.mycompany.app.view.MyLineLinear>
+</com.mycompany.app.view.MyDialogLinear>

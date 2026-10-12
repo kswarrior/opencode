@@ -1,0 +1,13 @@
+.class public interface abstract Lfi/iki/elonen/NanoHTTPD$ServerSocketFactory;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lfi/iki/elonen/NanoHTTPD;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "ServerSocketFactory"
+.end annotation

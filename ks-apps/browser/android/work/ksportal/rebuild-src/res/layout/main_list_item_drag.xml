@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyLineFrame android:layout_width="fill_parent" android:layout_height="@dimen/dialog_list_height" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/icon_view" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginStart="22.0dip" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/text_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" android:layout_marginStart="64.0dip" android:layout_marginEnd="104.0dip" />
+    <com.mycompany.app.view.MySwitchView android:layout_gravity="end|center" android:id="@id/switch_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginEnd="@dimen/item_large_size" />
+    <ImageView android:layout_gravity="end|center" android:id="@id/image_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" android:layout_marginEnd="4.0dip" />
+    <View android:layout_gravity="end|center" android:id="@id/item_drag" android:layout_width="@dimen/item_large_size" android:layout_height="52.0dip" />
+</com.mycompany.app.view.MyLineFrame>

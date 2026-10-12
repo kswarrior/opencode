@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyDialogRelative android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/list_layout" android:layout_width="fill_parent" android:layout_height="320.0dip">
+        <com.mycompany.app.view.MyViewPager android:id="@id/page_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_height" />
+        <com.mycompany.app.view.MyScrollBar android:layout_gravity="end" android:id="@id/scroll_bar" android:visibility="invisible" android:layout_width="@dimen/item_size" android:layout_height="fill_parent" app:scrollPadTop="@dimen/title_height" />
+        <com.mycompany.app.view.MyHeaderView android:id="@id/header_view" android:layout_width="fill_parent" android:layout_height="@dimen/title_height">
+            <LinearLayout android:orientation="horizontal" android:id="@id/icon_frame" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:baselineAligned="false" android:layout_marginStart="@dimen/item_large_size" android:layout_marginEnd="@dimen/item_large_size">
+                <com.mycompany.app.view.MyButtonRelative android:id="@id/frame_normal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" app:bgPreColor="@color/gray_pre">
+                    <ImageView android:id="@id/icon_normal" android:padding="@dimen/icon_pad" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+                </com.mycompany.app.view.MyButtonRelative>
+                <com.mycompany.app.view.MyButtonRelative android:id="@id/frame_secret" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" app:bgPreColor="@color/gray_pre">
+                    <ImageView android:id="@id/icon_secret" android:padding="@dimen/icon_pad" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+                </com.mycompany.app.view.MyButtonRelative>
+            </LinearLayout>
+            <com.mycompany.app.view.MyButtonImage android:id="@id/title_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_marginStart="8.0dip" app:bgPreColor="@color/gray_pre" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:id="@id/count_view" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:textDirection="ltr" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" android:layout_marginEnd="56.0dip" android:layout_alignParentEnd="true" />
+            <com.mycompany.app.view.MyButtonCheck android:id="@id/icon_check" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:layout_alignParentEnd="true" app:bgPreColor="@color/gray_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+            <com.mycompany.app.view.MyButtonImage android:id="@id/icon_more" android:padding="@dimen/icon_pad" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:scaleType="centerInside" android:layout_alignParentEnd="true" app:bgPreColor="@color/gray_pre" />
+        </com.mycompany.app.view.MyHeaderView>
+        <com.google.android.material.tabs.TabLayout android:id="@id/tab_view" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginTop="54.0dip" android:layout_marginStart="20.0dip" android:layout_marginEnd="20.0dip" app:tabGravity="fill" app:tabMaxWidth="0.0dip" app:tabMode="fixed" />
+    </FrameLayout>
+</com.mycompany.app.view.MyDialogRelative>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.web.WebTransControl android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:layout_gravity="center_horizontal" android:id="@id/logo_view" android:layout_width="176.0dip" android:layout_height="16.0dip" android:layout_marginTop="16.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/button_frame" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_marginTop="40.0dip" android:baselineAligned="false">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:ellipsize="end" android:gravity="center" android:id="@id/orig_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/original" android:maxLines="2" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:ellipsize="end" android:gravity="center" android:id="@id/trns_view" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/translate" android:maxLines="2" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <com.mycompany.app.view.MyButtonImage android:id="@id/menu_view" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" />
+    </LinearLayout>
+</com.mycompany.app.web.WebTransControl>

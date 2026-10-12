@@ -1,0 +1,91 @@
+.class final Lcom/google/common/hash/Striped64$Cell;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/common/hash/Striped64;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Cell"
+.end annotation
+
+
+# static fields
+.field private static final UNSAFE:Lsun/misc/Unsafe;
+
+.field private static final valueOffset:J
+
+
+# instance fields
+.field volatile p0:J
+
+.field volatile p1:J
+
+.field volatile p2:J
+
+.field volatile p3:J
+
+.field volatile p4:J
+
+.field volatile p5:J
+
+.field volatile p6:J
+
+.field volatile q0:J
+
+.field volatile q1:J
+
+.field volatile q2:J
+
+.field volatile q3:J
+
+.field volatile q4:J
+
+.field volatile q5:J
+
+.field volatile q6:J
+
+.field volatile value:J
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .locals 3
+
+    :try_start_0
+    invoke-static {}, Lcom/google/common/hash/Striped64;->a()Lsun/misc/Unsafe;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/common/hash/Striped64$Cell;->UNSAFE:Lsun/misc/Unsafe;
+
+    const-class v1, Lcom/google/common/hash/Striped64$Cell;
+
+    const-string v2, "value"
+
+    invoke-virtual {v1, v2}, Ljava/lang/Class;->getDeclaredField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lsun/misc/Unsafe;->objectFieldOffset(Ljava/lang/reflect/Field;)J
+
+    move-result-wide v0
+
+    sput-wide v0, Lcom/google/common/hash/Striped64$Cell;->valueOffset:J
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    return-void
+
+    :catch_0
+    move-exception v0
+
+    new-instance v1, Ljava/lang/Error;
+
+    invoke-direct {v1, v0}, Ljava/lang/Error;-><init>(Ljava/lang/Throwable;)V
+
+    throw v1
+.end method

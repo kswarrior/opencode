@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyStatusRelative android:id="@id/main_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyHeaderView android:id="@id/header_view" android:layout_width="fill_parent" android:layout_height="@dimen/title_height">
+        <com.mycompany.app.view.MyButtonImage android:id="@id/title_icon" android:layout_width="@dimen/item_size" android:layout_height="@dimen/title_height" android:scaleType="centerInside" android:layout_marginStart="8.0dip" app:bgPreColor="@color/gray_pre" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/title_text_size" android:gravity="center_vertical" android:id="@id/title_text" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/item_large_size" android:layout_marginEnd="@dimen/item_size" android:layout_toStartOf="@id/icon_frame" />
+        <FrameLayout android:id="@id/icon_frame" android:layout_width="wrap_content" android:layout_height="@dimen/item_size" android:layout_marginTop="4.0dip" android:layout_toStartOf="@id/cast_frame_icon">
+            <com.mycompany.app.view.MyButtonImage android:layout_gravity="end" android:id="@id/icon_add" android:padding="@dimen/icon_pad" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" android:scaleType="centerInside" app:bgPreColor="@color/gray_pre" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center_vertical" android:layout_gravity="end" android:id="@id/count_view" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/item_size" android:textDirection="ltr" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" android:layout_marginEnd="52.0dip" />
+            <com.mycompany.app.view.MyButtonCheck android:layout_gravity="end" android:id="@id/icon_check" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_size" app:bgPreColor="@color/gray_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/cast_frame_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/title_height" android:layout_alignParentEnd="true" />
+    </com.mycompany.app.view.MyHeaderView>
+    <LinearLayout android:orientation="horizontal" android:id="@id/button_view" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:layout_marginTop="@dimen/title_height" android:baselineAligned="false">
+        <com.mycompany.app.view.MyLineText android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/select_dflt" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/default_title" android:layout_weight="1.0" app:lineColor="@color/shadow_color" app:lineRt="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:gravity="center" android:id="@id/select_user" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/user_defined" android:layout_weight="1.0" />
+    </LinearLayout>
+    <com.google.android.material.tabs.TabLayout android:id="@id/tab_view" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignBottom="@id/button_view" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" app:tabGravity="fill" app:tabMaxWidth="0.0dip" app:tabMode="fixed" />
+    <com.mycompany.app.view.MyViewPager android:id="@id/page_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cast_frame_ctrl" android:layout_below="@id/tab_view" />
+    <FrameLayout android:id="@id/cast_frame_ctrl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</com.mycompany.app.view.MyStatusRelative>

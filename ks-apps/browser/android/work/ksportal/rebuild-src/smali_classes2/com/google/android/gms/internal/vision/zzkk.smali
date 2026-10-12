@@ -1,0 +1,22 @@
+.class public interface abstract Lcom/google/android/gms/internal/vision/zzkk;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Lcom/google/android/gms/internal/vision/zzkm;
+
+
+# virtual methods
+.method public abstract a(Lcom/google/android/gms/internal/vision/zzii;)V
+.end method
+
+.method public abstract zzg()Lcom/google/android/gms/internal/vision/zzht;
+.end method
+
+.method public abstract zzm()I
+.end method
+
+.method public abstract zzp()Lcom/google/android/gms/internal/vision/zzjb$zzb;
+.end method
+
+.method public abstract zzq()Lcom/google/android/gms/internal/vision/zzjb$zzb;
+.end method

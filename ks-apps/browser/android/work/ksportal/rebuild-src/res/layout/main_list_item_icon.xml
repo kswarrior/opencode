@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyLineRelative android:layout_width="fill_parent" android:layout_height="56.0dip" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyRoundImage android:id="@id/item_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerVertical="true" android:layout_marginStart="18.0dip" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:ellipsize="end" android:id="@id/item_name" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_centerVertical="true" android:layout_marginStart="18.0dip" android:layout_marginEnd="40.0dip" android:layout_toEndOf="@id/item_icon" />
+    <View android:id="@id/item_pick" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerVertical="true" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" />
+</com.mycompany.app.view.MyLineRelative>

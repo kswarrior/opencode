@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/item_line" android:background="@color/icon_gray" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    <com.mycompany.app.view.MyLineFrame android:layout_width="fill_parent" android:layout_height="@dimen/content_height" app:lineDn="true" app:linePad="16.0dip">
+        <com.mycompany.app.view.MyRoundImage android:layout_gravity="start|center" android:id="@id/icon_view" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerCrop" android:layout_marginStart="16.0dip" app:circleRadius="@dimen/circle_radius" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:textColor="@color/black" android:ellipsize="end" android:layout_gravity="start|center" android:id="@id/name_view" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_marginStart="72.0dip" android:layout_marginEnd="16.0dip" />
+    </com.mycompany.app.view.MyLineFrame>
+    <FrameLayout android:id="@id/edit_view" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="88.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:textColor="@color/text_gray" android:id="@id/edit_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sub_dir" />
+        <com.mycompany.app.view.MyEditText android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:gravity="center_vertical" android:layout_gravity="start|bottom|center" android:id="@id/edit_text" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/item_size" android:singleLine="true" android:imeOptions="flagNoExtractUi" android:textCursorDrawable="@drawable/edit_cursor" android:textDirection="ltr" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/progress_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/progress_body" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+            <RelativeLayout android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:id="@id/progress_current_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/current" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:gravity="end" android:id="@id/progress_current_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_marginStart="16.0dip" android:layout_toEndOf="@id/progress_current_title" />
+            </RelativeLayout>
+            <com.mycompany.app.view.MyProgressBar android:id="@id/progress_current_seek" android:layout_width="fill_parent" android:layout_height="12.0dip" />
+            <FrameLayout android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:id="@id/progress_total_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/total" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:layout_gravity="end" android:id="@id/progress_total_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textDirection="ltr" />
+            </FrameLayout>
+            <com.mycompany.app.view.MyProgressBar android:id="@id/progress_total_seek" android:layout_width="fill_parent" android:layout_height="12.0dip" />
+            <FrameLayout android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:id="@id/progress_fail_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fail" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:layout_gravity="end" android:id="@id/progress_fail_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </FrameLayout>
+            <FrameLayout android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:id="@id/progress_time_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/estimated" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:layout_gravity="end" android:id="@id/progress_time_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </FrameLayout>
+        </LinearLayout>
+        <com.mycompany.app.view.MyEditPure android:enabled="false" android:id="@id/progress_edit" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/progress_body" android:layout_alignBottom="@id/progress_body" android:textCursorDrawable="@null" android:textDirection="ltr" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/result_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
+            <FrameLayout android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:id="@id/result_total_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/total" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:layout_gravity="end" android:id="@id/result_total_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </FrameLayout>
+            <FrameLayout android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:id="@id/result_fail_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fail" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:layout_gravity="end" android:id="@id/result_fail_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </FrameLayout>
+            <FrameLayout android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:id="@id/result_success_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/success" />
+                <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textColor="@color/black" android:layout_gravity="end" android:id="@id/result_success_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

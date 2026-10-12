@@ -1,0 +1,22 @@
+.class Landroidx/work/impl/utils/StatusRunnable$2;
+.super Landroidx/work/impl/utils/StatusRunnable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Landroidx/work/impl/utils/StatusRunnable<",
+        "Landroidx/work/WorkInfo;",
+        ">;"
+    }
+.end annotation
+
+
+# virtual methods
+.method public final a()Ljava/lang/Object;
+    .locals 1
+
+    const/4 v0, 0x0
+
+    throw v0
+.end method

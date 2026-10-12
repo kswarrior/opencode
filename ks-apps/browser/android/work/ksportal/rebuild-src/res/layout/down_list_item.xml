@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MyLineRelative android:id="@id/body_frame" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/setting_list_height" app:linePad="16.0dip" app:lineUp="true">
+        <com.mycompany.app.view.MyRoundImage android:id="@id/item_icon" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerCrop" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" app:circleRadius="@dimen/circle_radius" />
+        <com.mycompany.app.view.MyRoundImage android:id="@id/item_mark" android:visibility="gone" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerInside" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:textStyle="bold" android:gravity="center_horizontal" android:id="@id/item_number" android:layout_width="72.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/item_frame" android:layout_width="wrap_content" android:layout_height="@dimen/setting_list_height" android:baselineAligned="false" android:layout_centerVertical="true" android:layout_marginEnd="4.0dip" android:layout_alignParentEnd="true">
+            <ImageView android:id="@id/item_mute" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/setting_list_height" android:scaleType="centerInside" />
+            <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:gravity="center_vertical" android:id="@id/item_info" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/setting_list_height" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" />
+            <com.mycompany.app.view.MyButtonImage android:id="@id/item_copy" android:layout_width="@dimen/item_size" android:layout_height="@dimen/setting_list_height" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+            <com.mycompany.app.view.MyButtonImage android:id="@id/item_play" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/setting_list_height" android:scaleType="centerInside" app:bgPreColor="@color/white_pre" />
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/control_text_size" android:ellipsize="end" android:id="@id/item_name" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" android:layout_toStartOf="@id/item_frame" android:layout_toEndOf="@id/item_icon" />
+    </com.mycompany.app.view.MyLineRelative>
+</FrameLayout>

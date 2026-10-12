@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mycompany.app.view.MyLineRelative android:background="@drawable/selector_list" android:layout_width="fill_parent" android:layout_height="wrap_content" app:lineDn="true" app:linePad="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.mycompany.app.view.MySelectView android:id="@id/item_select" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignTop="@id/text_layout" android:layout_alignBottom="@id/text_layout" />
+    <View android:id="@id/item_header" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/title_height" />
+    <FrameLayout android:id="@id/icon_layout" android:visibility="gone" android:layout_width="@dimen/item_large_size" android:layout_height="@dimen/item_large_size">
+        <com.mycompany.app.view.MyRoundImage android:layout_gravity="center" android:id="@id/item_back" android:visibility="invisible" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" app:circleColor="@color/icon_back" app:circleRadius="@dimen/nor_radius" app:imageRes="@drawable/outline_done_white_24" />
+        <com.mycompany.app.view.MyButtonCheck android:layout_gravity="center" android:id="@id/item_icon" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:scaleType="centerInside" app:bgNorRadius="@dimen/nor_radius" app:bgPreRadius="@dimen/pre_radius" app:checked="@drawable/baseline_folder_white_24" app:unchecked="@drawable/outline_folder_white_24" />
+    </FrameLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/text_layout" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/item_large_size" android:paddingStart="@dimen/item_large_size" android:paddingEnd="@dimen/item_size">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/list_text_size" android:id="@id/item_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:id="@id/item_size" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:layout_below="@id/item_name" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/button_layout" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_large_size" android:layout_alignParentEnd="true">
+        <com.mycompany.app.view.MyButtonImage android:id="@id/item_more" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_large_size" android:scaleType="centerInside" app:bgPreColor="@color/gray_pre" />
+        <com.mycompany.app.view.MyButtonCheck android:id="@id/item_check" android:visibility="gone" android:layout_width="@dimen/item_size" android:layout_height="@dimen/item_large_size" android:scaleType="centerInside" app:bgPreColor="@color/gray_pre" app:checked="@drawable/baseline_check_box_black_24" app:unchecked="@drawable/outline_check_box_outline_blank_black_24" />
+    </FrameLayout>
+</com.mycompany.app.view.MyLineRelative>

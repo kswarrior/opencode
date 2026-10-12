@@ -1,0 +1,24 @@
+.class public interface abstract Lcom/mycompany/app/view/MyProgressBar$MyProgressListener;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/mycompany/app/view/MyProgressBar;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "MyProgressListener"
+.end annotation
+
+
+# virtual methods
+.method public abstract a()V
+.end method
+
+.method public abstract b()I
+.end method
+
+.method public abstract c()Z
+.end method

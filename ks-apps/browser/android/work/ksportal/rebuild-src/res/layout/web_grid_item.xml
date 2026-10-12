@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:padding="@dimen/web_grid_pad" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.mycompany.app.view.MyThumbView android:id="@id/image_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.mycompany.app.view.MyFadeView android:id="@id/fade_view" android:background="#71000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:layout_gravity="end" android:id="@id/ext_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:paddingStart="4.0dip" android:paddingEnd="4.0dip" android:layout_marginEnd="4.0dip" />
+        <com.mycompany.app.view.MyButtonCheck android:id="@id/check_view" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" app:bgNorColor="@color/white" app:bgNorRadius="12.0dip" app:checked="@drawable/baseline_check_circle_black_24" app:unchecked="@drawable/outline_radio_button_unchecked_black_24" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/info_text_size" android:layout_gravity="end|bottom|center" android:id="@id/count_view" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:singleLine="true" android:textDirection="ltr" android:paddingStart="4.0dip" android:paddingEnd="4.0dip" android:layout_marginEnd="4.0dip" />
+    </FrameLayout>
+</FrameLayout>

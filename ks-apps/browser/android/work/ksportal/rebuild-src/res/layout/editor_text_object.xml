@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/text_frame" android:background="@drawable/text_border" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/circle_radius" android:layout_marginBottom="8.0dip" android:layout_marginStart="@dimen/circle_radius" android:layout_marginEnd="8.0dip">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="24.0dip" android:textColor="@color/white" android:id="@id/text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="4.0dip" />
+    </FrameLayout>
+    <ImageView android:id="@id/text_close" android:background="@drawable/selector_circle_close" android:layout_width="@dimen/item_real_size" android:layout_height="@dimen/item_real_size" android:src="@drawable/outline_cancel_white_24" android:scaleType="centerInside" />
+</FrameLayout>
