@@ -73,7 +73,7 @@ How it works:
 - `text_panel` is replaced with `version_small` — `100% - 2px × 10` strip at bottom (`offset -52`) showing only `#version` in `150,180,210`, `scale 0.75`, shadowed. No Mojang/copyright text.
 - `friendsdrawer_button_panel` fixed to `28×32` at `top_right [-8,2]`, layer 3. Fixes the classic fullscreen `["default","default"]` bug that pushed the bell to top-left. Uses borderless `ks_inbox_icon_button` (bell + red dot only, reuses vanilla `inbox_icon_container` animation states).
 - `ks_client_common.json` provides: `ks_edge_left/right` (2 px, 28% futuristic side rails, `ks_divider_v`, alpha 0.6), `ks_settings_button` (30×30, `ks_icon_settings`, no-background button → `button.menu_settings`), `ks_dressing_button` (40×40, `ks_icon_dressing` → `button.menu_skins`), `ks_inbox_button` (28×32 → `button.menu_inbox`).
-- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.*` (`start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer`, `KS CLIENT v1.3.6 • ONLINE`), `ksb.howToSaveConfig`, `item.mace.name`.
+- Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.*` (`start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer`, `KS CLIENT v1.3.7 • ONLINE`), `ksb.howToSaveConfig`, `item.mace.name`.
 
 In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
 
@@ -225,13 +225,13 @@ In-game: hold or view a mace → 3D hammer model; inventory shows the custom ico
 What it is: stacked top-left readout — `KS Client vX.Y.Z` + `Position: X, Y, Z` — always on (no player entity override, so your own skin shows and no FPS digits sit on dolls; no subpack).
 
 How it works:
-- `ui/fps_hud.json` (namespace `ks_fps`): vertical `stack_panel` pinned top-left (`offset [3,3]`) with 2 rows — (1) static `KS Client v1.3.6` label (**hardcoded: bump it on every version release**), (2) position label via the vanilla `#player_position_text` → `#text` binding (renders `Position: X, Y, Z`, same pattern as vanilla `hud_screen.json`). FPS digits row removed with the player override (its entity slots forced Steve skins and doll FPS).
+- `ui/fps_hud.json` (namespace `ks_fps`): vertical `stack_panel` pinned top-left (`offset [3,3]`) with 2 rows — (1) static `KS Client v1.3.7` label (**hardcoded: bump it on every version release**), (2) position label via the vanilla `#player_position_text` → `#text` binding (renders `Position: X, Y, Z`, same pattern as vanilla `hud_screen.json`). FPS digits row removed with the player override (its entity slots forced Steve skins and doll FPS).
 - `ui/hud_screen.json` `root_panel` gains an `insert_back` modification: `fps_counter@ks_fps.fps_counter_mask`.
 - `entity/player.json` DELETED: no player override — engine vanilla rendering restores your own skin (pack `textures` extras broke skin binding → Steve) and removes FPS digits from start/dressing dolls. Player health bars go with it; mob bars untouched (§2.14).
 - FPS entity assets removed: `models/entity/fps_counter.geo.json`, `render_controllers/fps_counter.render.json`, `textures/fps/digits_atlas.png` (empty `textures/fps/` dir removed; no atlas registration ever existed — direct path).
 - No `_global_variables.json` (beyond the hook no config exists upstream) / `manifest.json` changes; `_ui_defs.json` 13 → 14 entries.
 
-In-game, top-left corner: `KS Client v1.3.6`, `Position: X, Y, Z` (own skin on dolls + in world, no doll FPS). Gate A passes (9 SKIP lines: 8 absent Drive anims + absent `player.json`).
+In-game, top-left corner: `KS Client v1.3.7`, `Position: X, Y, Z` (own skin on dolls + in world, no doll FPS). Gate A passes (9 SKIP lines: 8 absent Drive anims + absent `player.json`).
 
 ---
 
@@ -246,9 +246,9 @@ ks-client/
 │   ├── check_player_animation_loop.py ← strict-JSON / dotfile / loop / shield-armor-sword / refs / mct loop checker
 │   └── recheck_player_animation.sh    ← bash wrapper (iterations delay)
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
-├── release/                         ← shippable .mcpack (34 files: v1.0.0 + v1.0.3…v1.3.6, no v1.0.1/v1.0.2/v1.1.9 mcpack)
+├── release/                         ← shippable .mcpack (35 files: v1.0.0 + v1.0.3…v1.3.7, no v1.0.1/v1.0.2/v1.1.9 mcpack)
 ├── resource_packs/KS Client/
-│   ├── manifest.json                ← name KS Client, v1.3.6, min_engine 1.21.120, no subpacks, authors
+│   ├── manifest.json                ← name KS Client, v1.3.7, min_engine 1.21.120, no subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright everywhere
 │   ├── fogs/ks_fullbright.json
@@ -285,11 +285,11 @@ ks-client/
 
 ## 4. Installation & Usage In-Game
 
-1. Copy a file from `release/` (e.g. `KS-Client-v1.3.6.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
+1. Copy a file from `release/` (e.g. `KS-Client-v1.3.7.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
 3. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox.
-   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty (/ live).
+   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty (`ks_invhud_pos`/`inventory_hud_panel` live).
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
@@ -389,11 +389,11 @@ redistributing: some upstream licenses require the creator's permission.
 
 ## 12. Version History
 
-`release/` contains shippable builds (34 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
+`release/` contains shippable builds (35 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
 
-`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → `v1.2.9` → `v1.3.0` → `v1.3.1` → `v1.3.2` → `v1.3.3` → `v1.3.4` → `v1.3.5` → **`v1.3.6` (current, player override removed)**
+`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → `v1.2.9` → `v1.3.0` → `v1.3.1` → `v1.3.2` → `v1.3.3` → `v1.3.4` → `v1.3.5` → `v1.3.6` → **`v1.3.7` (current, Inventory HUD bottom-right restored)**
 
-Current (`manifest.json`): `KS Client v1.3.6`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
+Current (`manifest.json`): `KS Client v1.3.7`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
 
 ---
 
