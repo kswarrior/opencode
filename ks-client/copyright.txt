@@ -62,11 +62,13 @@ here. Respect their licenses — get permission before redistributing.
    Now    : `ui/chat_screen.json` + `ui/.ui_assets/.../chat_tweaks.json`
             (namespace ks_chat_tweaks)
 
-9. Health Bar, Always Display (billboard HP bars over all mobs)
+9. Health Bar, Always Display (billboard HP bars over all mobs + players)
    Author : Rvo JP — Health Bar v3.4.0 — https://rvo.jp/health-bar/
    Now    : `animations/health_bar.json` (always_display variant),
             `models/entity/health_bar.json`,
-            `render_controllers/health_bar.json`, `entity/*.json` hooks,
+            `render_controllers/health_bar.json`, `entity/*.json` hooks
+            (81 mobs + `entity/player.json` rebuilt on vanilla 1.21.120
+            baseline + health-bar, no FPS counter),
             `textures/health_bar/` (only the hide_until_hurt variant was
             left out; no subpack added)
 
