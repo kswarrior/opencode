@@ -1545,6 +1545,8 @@
   // Lives as a SIBLING of root_panel (see hud_screen.json): root_panel is
   // bound to #hud_visible, so anything inside it would vanish with the HUD
   // and touch users could get stuck. This bar only appears while hidden.
+  // Label is short "F1 -" per request (was "Show HUD" / upstream
+  // "CLICK HERE TO SHOW HUD :)").
   "ks_show_hud": {
     "type": "panel",
     "size": [ 120, 24 ],
@@ -1582,7 +1584,7 @@
           "font_size": "small",
           "font_scale_factor": 0.9,
           "layer": 1,
-          "text": "Show HUD"
+          "text": "F1 -"
         }
       },
       {
