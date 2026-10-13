@@ -45,6 +45,8 @@
 	"$ksb_totem_v": true,
 	"$ksb_invhud_v": true,
 	"$ksb_invhud_small": false,
+	"$ks_f1_v": true,
+	"$ks_f3_v": true,
 	// Start screen bottom-right Menu button (left of Play). false = removed.
 	"$ks_show_start_menu_button": false,
 	"$ksb_ssci": true,
