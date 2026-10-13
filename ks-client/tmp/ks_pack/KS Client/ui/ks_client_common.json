@@ -1338,19 +1338,26 @@
     "bindings": [
       {
         "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
         "binding_type": "global"
       },
       {
         "binding_type": "view",
         "source_control_name": "ksbT_f1_t",
         "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_f1_toggle"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_f1_toggle)",
         "target_property_name": "#visible"
       }
     ]
   },
 
   // F3 button face: reference key art + centered F3 label (same-to-same).
+  // Rendered via the same hud_btn art + white centered label as F1's
+  // action_button $button_text, so both keys look identical (Default-mobile
+  // 20x20). Color uses 0-1 float range like all other KS labels.
   "ks_f3_face": {
     "type": "panel",
     "size": [ 20, 20 ],
@@ -1371,7 +1378,7 @@
           "anchor_from": "center",
           "anchor_to": "center",
           "offset": [ 0, 0 ],
-          "color": [ 255, 255, 255 ],
+          "color": [ 1, 1, 1 ],
           "shadow": true,
           "localize": false,
           "text_alignment": "center",
@@ -1385,7 +1392,10 @@
 
   // F3 debug toggle. Instance name ks_f3_t publishes #toggle_state for
   // ks_f3_panel below. Same face for on/off (state shown via panel).
+  // Default-mobile same-to-same vs reference f3_button: 20x20 top_middle
+  // [38.5, 0.5], hud_btn art, "F3" label, #hud_visible-gated.
   "ks_f3_button@common.toggle": {
+    "prevent_touch_input": true,
     "size": [ 20, 20 ],
     "anchor_from": "top_middle",
     "anchor_to": "top_middle",
@@ -1408,13 +1418,17 @@
     "bindings": [
       {
         "binding_name": "#hud_visible",
-        "binding_name_override": "#visible",
         "binding_type": "global"
       },
       {
         "binding_type": "view",
         "source_control_name": "ksbT_f3show_t",
         "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_f3show_toggle"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_f3show_toggle)",
         "target_property_name": "#visible"
       }
     ]
