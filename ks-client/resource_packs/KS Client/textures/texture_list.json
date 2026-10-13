@@ -1389,6 +1389,8 @@
   "textures/ui/ks_info_mob",
   "textures/ui/ks_info_score",
   "textures/ui/ks_key_btn",
+  "textures/ui/ks_f1f3_hud_btn",
+  "textures/ui/ks_f1f3_hide_bg",
   "textures/ui/ks_menu_bg",
   "textures/ui/ks_profile_bg",
   "textures/ui/ks_sidebar_bg",

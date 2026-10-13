@@ -1545,14 +1545,20 @@
   // Lives as a SIBLING of root_panel (see hud_screen.json): root_panel is
   // bound to #hud_visible, so anything inside it would vanish with the HUD
   // and touch users could get stuck. This bar only appears while hidden.
-  // Label is short "F1 -" per request (was "Show HUD" / upstream
-  // "CLICK HERE TO SHOW HUD :)").
+  // Same-to-same vs reference NeBuxHudHide panel: size ["50%", 25], offset
+  // [0, -3], bottom_middle anchored, outer art textures/ui/ks_f1f3_hide_bg.png
+  // (was NeBux/NeBuxUI/0.png, 1x1) + inner vanilla hud_tip_text_background.
+  // Label stays short "F1 -" per request (reference read "CLICK HERE TO SHOW
+  // HUD :)"). No reference animations copied (their alpha anim lived in the
+  // NeBuxAnimations namespace). Kept visible on all inputs (reference gated
+  // its bg on $touch only — that would strand PC users with no way back).
   "ks_show_hud": {
     "type": "panel",
-    "size": [ 120, 24 ],
+    "size": [ "50%", 25 ],
     "anchor_from": "bottom_middle",
     "anchor_to": "bottom_middle",
-    "offset": [ -60, -32 ],
+    "offset": [ 0, -3 ],
+    "ignored": "$always_visible_hotbar",
     "layer": 12,
     "bindings": [
       {
@@ -1565,11 +1571,37 @@
       {
         "ks_show_hud_bg": {
           "type": "image",
-          "texture": "textures/ui/ks_config_btn",
+          "texture": "textures/ui/ks_f1f3_hide_bg",
           "size": [ "100%", "100%" ],
-          "layer": 0
+          "layer": 0,
+          "propagate_alpha": true,
+          "controls": [
+            {
+              "ks_show_hud_tip@ks_client.ks_show_hud_tip": {}
+            }
+          ]
         }
       },
+      {
+        "ks_show_hud_hit@common.button": {
+          "size": [ "100%", "100%" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 2,
+          "$pressed_button_name": "button.hide_gui_all"
+        }
+      }
+    ]
+  },
+
+  // Inner tip chip: vanilla tip background + short "F1 -" label.
+  "ks_show_hud_tip": {
+    "type": "image",
+    "texture": "textures/ui/hud_tip_text_background",
+    "size": [ "100%c + 4px", "100%c + 4px" ],
+    "layer": 1,
+    "controls": [
       {
         "ks_show_hud_lbl": {
           "type": "label",
@@ -1585,16 +1617,6 @@
           "font_scale_factor": 0.9,
           "layer": 1,
           "text": "F1 -"
-        }
-      },
-      {
-        "ks_show_hud_hit@common.button": {
-          "size": [ "100%", "100%" ],
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [ 0, 0 ],
-          "layer": 2,
-          "$pressed_button_name": "button.hide_gui_all"
         }
       }
     ]
