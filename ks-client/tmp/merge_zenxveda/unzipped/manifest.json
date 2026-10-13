@@ -1,0 +1,94 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "§lZenXveda Ultimate PvP Pack (Pro)",
+        "description": "§eThe Ultimate PvP Pack by ZenXveda!\n§cSubscribe Yt: §fyoutube.com/@zenXveda\n§dFollow Insta: §finstagram.com/zenxveda\n§6Curseforge: §fcurseforge.com/members/zenxveda",
+        "uuid": "07c86abc-d4d5-401f-9efc-3495740ea6b7",
+        "version": [
+            1,
+            8,
+            9
+        ],
+        "min_engine_version": [
+            1,
+            21,
+            0
+        ]
+    },
+    "metadata": {
+        "product_type": "addon"
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "8a618909-e988-47fd-8dc9-c0e595319ff2",
+            "version": [
+                1,
+                8,
+                9
+            ]
+        }
+    ],
+    "subpacks": [
+        {
+            "folder_name": "zx_ch_caret",
+            "name": "§bCrosshair: §aCaret",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        },
+        {
+            "folder_name": "zx_ch_complex",
+            "name": "§bCrosshair: §bComplex",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        },
+        {
+            "folder_name": "zx_ch_x_dot",
+            "name": "§bCrosshair: §cX Dot",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        },
+        {
+            "folder_name": "zx_ch_cross_gap",
+            "name": "§bCrosshair: §dThick Cross",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        },
+        {
+            "folder_name": "zx_ch_dot",
+            "name": "§bCrosshair: §eDot",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        },
+        {
+            "folder_name": "zx_ch_x_gap",
+            "name": "§bCrosshair: §fX Gap",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        },
+        {
+            "folder_name": "zx_ch_circle_dot",
+            "name": "§bCrosshair: §gCircle & Dot",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        },
+        {
+            "folder_name": "zx_ch_small_cross",
+            "name": "§bCrosshair: §6Small Cross",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        },
+        {
+            "folder_name": "zx_ch_vanilla",
+            "name": "§bCrosshair: §9Vanilla Default",
+            "memory_tier": 0,
+            "description": "§e§lModular Crosshairs:§r\n§fUse the slider above to select your preferred crosshair style. Options include §aDot§f, §aCaret§f, §aSmall Cross§f, §aCircle & Dot§f, and more!§r\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§9https://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§9https://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§9https://www.curseforge.com/members/zenxveda/projects§r"
+        }
+    ],
+    "settings": [
+        {
+            "type": "label",
+            "text": "❐ §aModular Crosshairs§r: Use the slider above to pick from 9 competitive crosshair styles including Dot, Caret, and Small Cross.\n\n❐ §bPro UI & Tracking§r: Features custom HUD durability numbers, custom health bars, glowing hitboxes, and transparent screens.\n\n❐ §eCompetitive Tweaks§r: Short swords, clean pumpkins, low fire, and clear water for maximum visibility.\n\n§c§lSUBSCRIBE TO OUR YOUTUBE CHANNEL:§r\n§bhttps://www.youtube.com/@zenXveda§r\n\n§d§lFollow us on Instagram:§r\n§bhttps://www.instagram.com/zenxveda/§r\n\n§6§lFollow our Curseforge page:§r\n§bhttps://www.curseforge.com/members/zenxveda/projects§r"
+        }
+    ]
+}

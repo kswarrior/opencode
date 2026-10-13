@@ -1,0 +1,30 @@
+{
+    "namespace": "hitbox",
+
+    "model_information": {
+        "type": "panel",
+        "anchor_from": "top_center",
+        "anchor_to": "top_center",
+        "controls": [
+            {
+                "label": {
+                    "type": "label",
+                    "color": "$main_header_text_color",
+                    "layer": 2,
+                    "text": "menu.depthFunc_on",
+                    "size": [ "default", 10 ],
+                    "max_size": [ "100%", "100%" ]
+                }
+            },
+            {
+                "label_background": {
+                    "type": "image",
+                    "texture": "textures/ui/Black",
+                    "alpha": 0.6,
+                    "size": [ "100%sm + 4px", "100%sm + 2px" ],
+                    "layer": 1
+                }
+            }
+        ]
+    }
+}

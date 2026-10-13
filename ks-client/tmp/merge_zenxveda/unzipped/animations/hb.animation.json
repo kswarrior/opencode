@@ -1,0 +1,16 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+  
+    "animation.hb": {
+      "loop": true,
+      "bones": {      
+				"ray" : {
+					"rotation" : [ "query.target_x_rotation", "query.target_y_rotation", 0.0 ],
+					"position" : [ 0.0, "query.is_sneaking ? -4.25 : 0.0", 0.0 ]
+				},
+      	"hitbox":{
+          "rotation": [ 0, "-query.body_y_rotation", 0 ]
+      	}
+      }
+    }}}

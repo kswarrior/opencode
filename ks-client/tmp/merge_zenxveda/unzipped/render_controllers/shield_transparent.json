@@ -1,0 +1,24 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.shield_dynamic": {
+      "arrays": {
+        "textures": {
+          "Array.shield_base": [
+            "Texture.default",
+            "Texture.transparent"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.shield_base[query.is_sneaking ? 1 : 0]"
+      ]
+    }
+  }
+}

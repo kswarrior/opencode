@@ -1,0 +1,11 @@
+{
+  "materials": {
+    "version": "1.0.0",
+    "entity_emissive_alpha:entity_nocull": {
+      "+defines": [
+        "ALPHA_TEST",
+        "USE_EMISSIVE"
+      ]
+    }
+  }
+}

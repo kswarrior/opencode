@@ -1,0 +1,29 @@
+{
+    "namespace": "start",
+
+    "text_panel": {
+        "type": "panel",
+        "size": [ "100%-2px", 10 ],
+        "offset": [ 0, -1 ],
+        "anchor_from": "bottom_middle",
+        "anchor_to": "bottom_middle",
+        "controls": [
+            {
+                "copyright@start.copyright": {}
+            },
+            {
+                "development_version@start.development_version": {
+                    "ignored": "$is_publish"
+                }
+            },
+            {
+                "version@start.version": {}
+            },
+
+            //Hitbox Text Panel
+            {
+                "model_information@hitbox.model_information": {}
+            }
+        ]
+    }
+}

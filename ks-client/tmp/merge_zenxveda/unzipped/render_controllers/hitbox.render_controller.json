@@ -1,0 +1,36 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {    
+   "controller.render.hb_player": {
+   "geometry": "query.is_sleeping ? geometry.hb_slp : (query.is_swimming ? geometry.hb_swi : (query.is_gliding ? geometry.hb_gld : (query.is_sneaking ? geometry.hb_sne : geometry.hb)))",
+   "materials": [
+    {
+     "*": "Material.defaultt"
+    }
+   ],
+   "textures": [
+    "query.is_sneaking ? texture.hb2 : texture.hb"
+   ],
+   "is_hurt_color": {},
+   "on_fire_color": {},
+   "light_color_multiplier": 1.25,
+   "ignore_lighting": true
+  },
+   "controller.render.hb-": {
+      "geometry": "geometry.hb",
+      "materials": [ { "*": "material.defaultt" } ],
+      "textures": [ "texture.hb" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},      "part_visibility":[
+      	{ "ray": "!variable.this" }
+      ],
+      "ignore_lighting":true },
+    "controller.render.hb": {
+      "geometry": "geometry.hb",
+      "materials": [ { "*": "material.defaultt" } ],
+      "textures": [ "texture.hb" ],
+      "is_hurt_color": {},
+      "on_fire_color": {},
+      "ignore_lighting":true }
+  }
+}    

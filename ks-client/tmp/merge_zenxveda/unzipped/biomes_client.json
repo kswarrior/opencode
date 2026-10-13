@@ -1,0 +1,9 @@
+{
+  "biomes": {
+    "default": {
+      "water_surface_transparency": 1.0,
+      "water_fog_distance": 100000,
+      "water_fog_color": "#00000000"
+    }
+  }
+}
