@@ -62,6 +62,7 @@
 | 24 | Clean Pumpkin Blur | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Carved-pumpkin overlay replaced with 1×1 clean `textures/misc/pumpkinblur.png` (no blur), always on |
 | 25 | Durability HUD (Bottom Left + menu toggle) | ZenXveda Ultimate PvP Pro v1.8.9 (selective, rebranded `ksd_*`) | Selected-item durability readout bottom-left (number + low-dura `[!]` blink) + selected-item name label + inventory armor/offhand panel; `Show Durability HUD` on/off in HUD tab (`ksdT_dura_t`, `$ksd_dura_v`); hover-text copy skipped (KS hover already shows durability) |
 | 26 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (43 files, `v1.0.0` + `v1.0.3`…`v1.4.5` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
+| 27 | HUD Layout Config Page (start screen) | KS Client (`ui/ks_hud_config.json`, `$ks_show_hud_config_button`) | Gear button top-right left of bell opens a fullscreen HUD LAYOUT page (`ks_menu_bg` dim + `ks_config_bg` 620×360 card): small 20×20 X (top-right closes), Save button (session toast), body shows all 16 KS world-HUD buttons as large (~2×) draggable previews (slots 1–10, totem, F1/F3, InvHUD, durability, status). Drags are session-local (resource-pack engine limit) — persist via `_global_variables.json` `$ksb_*` + repack; fine-tune in world via gear menu HUD tab |
 
 ---
 
@@ -74,11 +75,13 @@ What it is: a text-free, premium mobile menu replacing vanilla clutter.
 How it works:
 - `skin_panel` (stack_panel `50% - 75px × 124`, anchored `bottom_middle`, offset `-10% - 36px`) shows only the 3D skin viewer, raised exactly 32 px (Play button height) so it never overlaps Play.
 - `text_panel` is replaced with `version_small` — `100% - 2px × 10` strip at bottom (`offset -52`) showing only `#version` in `150,180,210`, `scale 0.75`, shadowed. No Mojang/copyright text.
-- `friendsdrawer_button_panel` fixed to `28×32` at `top_right [-8,2]`, layer 3. Fixes the classic fullscreen `["default","default"]` bug that pushed the bell to top-left. Uses borderless `ks_inbox_icon_button` (bell + red dot only, reuses vanilla `inbox_icon_container` animation states).
+- `friendsdrawer_button_panel` fixed to `60×32` at `top_right [-8,2]`, layer 3. Fixes the classic fullscreen `["default","default"]` bug that pushed the bell to top-left. Holds two 28×32 slots: HUD-layout gear button (left, opens the `ks_hud_config` HUD LAYOUT page, hidden when `$ks_show_hud_config_button` false) + icon-only bell (right). Bell uses borderless `ks_inbox_icon_button` (bell + red dot only, reuses vanilla `inbox_icon_container` animation states).
 - `ks_client_common.json` provides: `ks_edge_left/right` (2 px, 28% futuristic side rails, `ks_divider_v`, alpha 0.6), `ks_settings_button` (30×30, `ks_icon_settings`, no-background button → `button.menu_settings`), `ks_dressing_button` (40×40, `ks_icon_dressing` → `button.menu_skins`), `ks_inbox_button` (28×32 → `button.menu_inbox`).
 - Strings from `texts/en_US.lang`: `pack.name/description`, `ks_client.*` (`start_button/title/brand_title/brand_sub/season/premium/online_member/tap_to_start/status_active/footer`, `KS CLIENT v1.4.5 • ONLINE`), `ksb.howToSaveConfig`, `item.mace.name`.
 
 In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
+
+HUD LAYOUT page (`ui/ks_hud_config.json`, namespace `ks_hud_config`, 19th `_ui_defs.json` entry): tap the gear button left of the bell → fullscreen page (`ks_menu_bg` dim, `ks_config_bg` 620×360 card, layer 45 above the Menu page). Top-right has a small 20×20 X (`box_exit`, closes via the shared `ks_hud_cfg_open` toggle) and a 90×24 Save button (`ks_config_btn`, flips `ks_hud_cfg_saved` → green "Saved for this session" toast). Body is a 580×196 canvas with all 16 KS world-HUD buttons as large (~2×) `draggable: both` `input_panel` previews: slots 1–9 (48 px `ksb_slot_button` + `ksb_numb_N` corner), INV slot, totem (56 px `totem_button`), F1/F3 (40 px `ks_f1f3_hud_btn`), InvHUD / durability / status thumbs. Engine limit (resource-pack-only, no scripts): drags and Save apply to the current session only and cannot write `_global_variables.json` or reach the world HUD screen — the hint line on the page says so. Persist by editing `$ksb_1…$ksb_10` / `$ksb_totem_*` (§5) + repack; fine-tune live positions in world via the gear menu HUD tab.
 
 ### 2.2 Quick Totem Offhand (KS Client: `ui/inventory_screen.json`, `ui/hud_screen.json`, `textures/totem/`)
 
@@ -284,8 +287,8 @@ ks-client/
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 18 entries (…+ chat_tweaks + fps_hud + ks_durability ×4; chat_screen.json loads by vanilla filename, no entry needed)
-│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud + root_panel fps hook), pause_screen.json (pause)
+│   │   ├── _ui_defs.json            ← load order, 19 entries (…+ chat_tweaks + fps_hud + ks_durability ×4 + ks_hud_config; chat_screen.json loads by vanilla filename, no entry needed)
+│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: top-right gear button + HUD LAYOUT page), hud_screen.json (hud + root_panel fps hook), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug/dev_console/ui_common
 │   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_durability/config+container_data+hud+common)
@@ -328,6 +331,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | slider positions (px offset = value−125 / value−35), size px, show — editor totem row, live |
 | Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | Show Inv HUD on/off + Compact toggle in HUD tab; grid fixed bottom-right (no corner picker) |
 | F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` debug (version + position + days); bottom-center way back reads short "F1 -" |
+| Start-screen HUD-layout button | `$ks_show_hud_config_button true` | Show/hide the gear button top-right left of the bell (`start.ks_cfg_slot` ignored when false); the HUD LAYOUT page itself lives in `ui/ks_hud_config.json` |
 | Editor menu | `$ksb_menu_w 142`, `$ksb_menu_h 182`, `$ksb_menu_x 10` | v1.2.2 layout: hardcoded 190×182 `left_middle` panel at `offset [40,0]` in `settings.json` — no size globals (all `$ksb_menu_*` deleted in v1.2.8) |
 | Editor menu (right) | `$ksb_menu_r_w 142`, `$ksb_menu_r_h 182`, `$ksb_menu_r_x -10` | right info menu size + px inward from right edge (negative) |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
