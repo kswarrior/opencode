@@ -29,6 +29,13 @@ here. Respect their licenses — get permission before redistributing.
             (fixed bottom-right per request).
    Now    : `ui/ks_modules/hud.json` + `ui/ks_modules/b6As_defs.json`
             (namespace ks_hud, $inv_pos bottom_right)
+   Fixed v1.4.2: Show/Compact/F1/F3/Dura menu toggles rendered but never
+            flipped state (grid stayed hidden) — shared `ksb_main.toggle_option`
+            factory now passes `$toggle_binding_type:none` (+
+            `$toggle_focus_enabled:false`) to its inner `common.toggle`, same
+            as the proven Menu-button toggle, so toggle state stays local and
+            `ksbT_invhud_t`/`ksdT_dura_t`/`ksbT_f1_t`/`ksbT_f3show_t` publish
+            `#toggle_state` for the HUD visibility bindings.
 
 3. Clean Touch Controls (touch buttons, D-pad, hide-GUI art)
    Author : PandaMine5 — Clean Touch Controls v1.4.1
