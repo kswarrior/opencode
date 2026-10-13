@@ -47,6 +47,10 @@
 	"$ksb_invhud_small": false,
 	"$ks_f1_v": true,
 	"$ks_f3_v": true,
+	// KS F3 tools row (clean-room idea from entry 15): live item icons.
+	"$ks_recovery_id": 45088768,
+	"$ks_clock_id": 22740992,
+	"$ks_compass_id": 22609920,
 	// Start screen bottom-right Menu button (left of Play). false = removed.
 	"$ks_show_start_menu_button": false,
 	// Start screen top-right HUD-layout button (left of bell). false = removed.
