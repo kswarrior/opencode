@@ -282,7 +282,7 @@ ks-client/
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
-│   │   ├── texture_list.json (1394 entries, incl. bow_pulling + pumpkinblur) / textures_list.json (legacy lists)
+│   │   ├── texture_list.json (1395 entries, incl. bow_pulling + pumpkinblur + gui crosshair) / textures_list.json (legacy lists)
 │   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
