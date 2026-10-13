@@ -97,7 +97,7 @@ In-game: if offhand empty you see a totem icon near inventory; tap it → totem 
 What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap), plus an in-game settings editor (gear button, top-right) for slots and totem (inventory HUD options removed).
 
 How it works:
-- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` box card on the LEFT side (`left_middle`, 212×230 at `offset [40,0]`) with 6 square icon-only tabs top-inside in the `ks_menu_tabs` radio group — Home, HUD (open by default), Display, Info, Advanced, Settings. HUD holds all current options (slots + totem + InvHUD toggles/sliders); Home/Display/Info/Advanced/Settings show Coming Soon. One tap shows exactly one page. Panel background is `textures/ui/ks_menu_bg_blur.png` (translucent black, swap the PNG to restyle). Close via the gear button. Copy-codes tab removed.
+- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` box card on the LEFT side (`left_middle`, 212×230 at `offset [40,0]`) with 6 square icon-only tabs top-inside in the `ks_menu_tabs` radio group — Home, HUD (open by default), Display, Info, Advanced, Settings. HUD holds all current options (slots + totem + InvHUD + durability + F1/F3 toggles/sliders); Home/Display/Info/Advanced/Settings show Coming Soon. One tap shows exactly one page. Panel background is `textures/ui/ks_menu_bg_blur.png` (translucent black, swap the PNG to restyle). Close via the gear button. Copy-codes tab removed.
 - Menu tabs: 6-tab box card (212×230) replaces the v1.2.2 3-tab side layout; all slot/totem rows unchanged and live under HUD tab.
 - Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slot 5 hidden (`62,22,false`), slots 6–8 second row (`y 22`, `x 72/82/92`), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
 - Buttons use `textures/ui/ksb_slot_button.png` (+`_pressed`), `ksb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot). Durability bars on slot buttons always show for damageable held/worn items (no toggle — the old `Show Durability Item` toggle, `$ksb_sdbi`, and its emitter were removed).
@@ -279,16 +279,16 @@ ks-client/
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
-│   │   ├── texture_list.json / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies
+│   │   ├── texture_list.json (1394 entries, incl. bow_pulling + pumpkinblur) / textures_list.json (legacy lists)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 14 entries (…+ chat_tweaks + fps_hud; chat_screen.json loads by vanilla filename, no entry needed)
+│   │   ├── _ui_defs.json            ← load order, 18 entries (…+ chat_tweaks + fps_hud + ks_durability ×4; chat_screen.json loads by vanilla filename, no entry needed)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), hud_screen.json (hud + root_panel fps hook), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug/dev_console/ui_common
 │   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (ks_chat_tweaks)
-│   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings)
+│   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_durability/config+container_data+hud+common)
 │   │   ├── ks_touch/hide_gui.json
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
 │   │   └── ._content_/inv_content.json (component_toggle base for inventory crafting limiter)
