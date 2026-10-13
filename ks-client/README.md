@@ -1,14 +1,14 @@
 # KS Client — Premium Mobile PvP Resource Pack for Minecraft Bedrock
 
-> **KS Client v1.3.8 by KS Warrior** (F1/F3 HUD keys re-added + HUD-menu Show on/off + "F1 -" way back)
+> **KS Client v1.3.9 by KS Warrior** (ZenXveda durability HUD + bow indicators + clean pumpkin)
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
 > Custom start screen, HUD (slot hotbar + totem/offhand shortcuts + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show on/off.)
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
-- **Current version:** `1.3.8` (`manifest.json` header + modules)
+- **Current version:** `1.3.9` (`manifest.json` header + modules)
 - **UUID:** `3cb32de7-ef64-4969-a447-dadba4bf9a8f` / `01ec78ed-44f8-4077-bc80-0904b4a83d51`
-- **Releases:** `release/` 36 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.3.8.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
+- **Releases:** `release/` 37 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.3.9.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
 - **Validation reports:** `out/` 9 files — `ks client.*`, `ks-clean.*`, `ks-client.*` (each `.csv` / `.mcr.json` / `.report.html`)
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP + allowed skills
 
