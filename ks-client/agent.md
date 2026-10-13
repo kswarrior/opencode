@@ -20,6 +20,33 @@
 
 ---
 
+## 1.5. Skills & MCP — MANDATORY (do this before any edit)
+
+**Rule: never hand-write what a skill + MCP tool can generate. Always load the suitable skill first, then prefer MCP tools over manual JSON/PNG edits.**
+
+1. **Load skill via MCP `getSkill(name)` BEFORE starting work.** Read `.opencode/skills/<name>/SKILL.md` and follow it exactly. Do not skip this even if you think you know the steps.
+2. **Prefer MCP tools when available.** If MCP `minecraft-creator-tools` tools are missing, STOP and tell user to enable MCP (`npx -y @minecraft/creator-tools@0.19.0 mcp -i .` via `opencode.json`), then fallback to CLI per `creator-tools-cli` skill. Never accept Minecraft EULA for user.
+
+| User wants | Skill to load (`getSkill`) | MCP tool to prefer first |
+|---|---|---|
+| new / change block (ore, crate, glowing, slab, facing, worldgen) | `create-block` | `createMinecraftContent` |
+| new / change item (weapon, tool, food, armor, throwable, recipe, icon) | `create-item` | `createMinecraftContent` |
+| new / change mob/entity (health, attack, AI, tame, ride, drops, spawn) | `create-mob` | `createMinecraftContent`, `getEffectiveContentSchema` for existing |
+| reshape / recolor / retexture mob, redraw item icon / block texture | `design-model` | `getModelTemplates` → `designModel`, `writeImageFileFromPixelArt` / `writeImageFileFromSvg` |
+| structure `.mcstructure` | — (no skill, use MCP directly) | `designStructure` |
+| broken / invisible / missing texture / `item.foo:bar` / Content Log errors / validate / upgrade / package | `debug-addon` | `validateFile` (single file), `validateContent`, scripts in skill folder for whole project |
+| whole-project validate, `fix`, `exportaddon`, `deploy`, `rendermodel`/`rendervanilla`, `view`/`edit`, `create`/`add`, `info` | `creator-tools-cli` | no MCP equivalent — use `npx -y @minecraft/creator-tools@0.19.0 <cmd>` per skill |
+| live in-game check (if session running) | — | `listMinecraftSessions` → `runCommandInMinecraft` / `moveSessionPlayerToLocation` |
+
+3. **KS Client is resource-pack-only:** DO NOT run `createMinecraftContent` directly into `resource_packs/KS Client/` for behavior content (it rewrites manifests + expects `behavior_packs/`). For this repo normally only use:
+   - `design-model` for models/textures/icons,
+   - `debug-addon` for validation/fixes,
+   - `creator-tools-cli` for validate/export/render.
+   If user asks for new block/item/mob *behavior*, generate into empty scratch `./tmp/new_<id>/` then copy ONLY resource-side files in, or ask if they want a separate behavior pack.
+4. **After any skill/MCP generation:** run §6 gates, fix `UNLINK`/manifest `[PACKDEP]` rewrites per skill (`git diff` manifests, restore UUIDs/names), add localization via `debug-addon` `add-missing-names.mjs` (MCP never writes `en_US.lang` / `display_name`).
+
+---
+
 ## 2. Codebase map
 
 ```
@@ -59,7 +86,7 @@ Rule: `_global_variables.json` = config API, `ui/*.json` = implementation. Prefe
 | fog brightness / water color | `fogs/ks_fullbright.json` + `biomes_client.json` |
 | health-bar size / visibility | `animations/health_bar.json` (scale/conditions only) |
 | animation freeze / detach | run `./tools/` checker first, fix only flagged lines (§5–§6) |
-| new block / item / mob look | skills `create-block` / `create-item` / `create-mob` / `design-model`, then validate |
+| new block / item / mob look | FIRST load skill per §1.5 via `getSkill`: `create-block` / `create-item` / `create-mob` / `design-model`, use its MCP tool, then validate |
 | merge another resource pack into KS Client | see §5.7 rebrand-to-KS + `copyright.txt` rule |
 
 Safe procedure:
@@ -114,7 +141,7 @@ Pass = `[loop N] recheck: PASS` + `OK - all JSON strict-parse...`. On FAIL fix o
 Debug:
 1. Read error literally (`file: reason (hint)`; validate CSV filter `Type=error`, ignore `mcp/opencode/tools` noise).
 2. Bisect: `git status` / `git diff --stat` → isolate last UI file. Typical: `_ui_defs` typo, missing `$var`, unregistered texture, renamed control.
-3. Skill: `debug-addon` (invisible/broken, `item.foo:bar`, log errors), `design-model` (redraw), `creator-tools-cli` (other `mct` cmds).
+3. Skill (per §1.5, mandatory first step): `getSkill(debug-addon)` for invisible/broken, `item.foo:bar`, log errors; `getSkill(design-model)` for redraw; `getSkill(creator-tools-cli)` for other `mct` cmds. Prefer MCP `validateFile` / `validateContent` when available.
 4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F8/F3, totem equips, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
 5. If stuck: stop, paste Gate A + `git diff --stat` + log lines, ask user. No speculative pile-ons.
 
