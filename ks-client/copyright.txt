@@ -158,6 +158,24 @@ here. Respect their licenses — get permission before redistributing.
              `Show F1/F3 HUD` toggles (`ksbT_f1_t`/`ksbT_f3show_t`) in HUD tab
              (`ui/ks_modules/ksb_hotbar_button/settings.json`).
 
+16. No Fog All Biomes, `all` (recommended) variant only (no-fog
+    air/water/weather/lava/powder-snow + per-biome water colors)
+    Author : kentotukun — No Fog - All Biomes v4.5.0
+    Source : https://edge.mcpedl.com/files/9064/817/NoFog-AllBiomes-v4.5.0.mcpack?ft=134975c977085aa2829e796b92a61150&bd=hi4hzt1jzz
+             (staged in ./tmp/merge_nofog/ for diff; subpacks
+              water/nether/nolava NOT used; `biomes/*.client_biome.json`,
+              `texts/*`, `pack_icon.png` NOT taken)
+    Note   : upstream `kentotukun:no_fog` fog ID rebranded to KS
+             `ks:fullbright` (no new namespace, no subpacks, no manifest
+             change). Grep verified zero `kentotukun` leftovers in
+             `resource_packs/KS Client/`. Lava + powder-snow fog now removed
+             too (lava was 8–12, powder-snow was missing). Air/weather keep
+             KS render-distance fullbright (brighter than upstream fixed).
+    Now    : `biomes_client.json` (default + 70 per-biome entries, upstream
+             water colors, all forced `ks:fullbright`) +
+             `fogs/ks_fullbright.json` (water/lava/lava_resistance/
+             powder_snow 4000–10000; air/weather 0.999–1.0 render kept).
+
 Removed again after merge (no longer in pack, kept here for history):
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)

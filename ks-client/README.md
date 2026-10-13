@@ -44,7 +44,7 @@
 | 6 | Connected Hotbar | KS Client | Seamless hotbar (`hotbar_0`…`hotbar_8` + `start/end_cap`, `selected_hotbar_slot`) |
 | 7 | Clear & Borderless Glass | KS Client | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
 | 8 | Glass Doors & Trapdoors | KS Client | Transparent doors/trapdoors — 48 block entries in `terrain_texture.json` (`acacia/birch/…_door_*`, `*_trapdoor`) + `textures/blocks/*door*` PNGs. Item icons (`textures/items/door_*.png`, 17 files) exist on disk but `atlas.items` holds only the mace entry, so door icons fall back to vanilla. |
-| 9 | Fullbright Fog | KS custom (`fogs/ks_fullbright.json` + `biomes_client.json`) | No dark fog: air/weather `0.999–1.0` white, water `200–300`, lava handling |
+| 9 | Fullbright Fog (NoFog AllBiomes) | KS custom + kentotukun No Fog - All Biomes v4.5.0 (`all` variant, rebranded `ks:fullbright`) | No fog anywhere: air/weather `0.999–1.0` render white, water/lava/powder-snow `4000–10000`, per-biome water colors (71 `biomes_client.json` entries) |
 | 10 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/.../Player|Items`) are NOT shipped, so Gate A reports those 8 checks as SKIP (missing optional input) and passes — gates 1–2 + 5 + `mct validate` still run; `player.json` now carries KS health-bar hooks (refs resolve via vanilla allowlist, no new checker problems). |
 | 11 | Custom UI Kit (KS + c_ui) | KS custom | `ks_btn_cyan`, `ks_menu_bg`, `ks_sidebar_bg`, `ks_icon_*`, `ks_info_*`, `totem`, all effect icons. Note: brand header/footer/center row removed (text-free screen); `ks_f1_button` + `ks_f3_button` (`ks_f3_t` toggle) + `ks_f3_panel` (version + position + days) in `ks_client_common.json` are live (`textures/ui/ks_key_btn` art); `ks_hud_keys` / `ks_inv_slot` remain empty 0×0 stubs (`ks_invhud_pos` / `inventory_hud_panel` live); `textures/c_ui/` is now 8 files, all wired (close/craft/effect_bg for mob-effect + inventory screens). |
 | 12 | Custom Touch Button Art | KS + vanilla override | `jump`, `sneak`, `sprint`, `flyingascend/descend`, `waterascend/descend`, D-pad, joystick, `interact`, `mount`, `pick_block` |
@@ -144,15 +144,16 @@ How it works: block textures (`acacia/birch/dark_oak/bamboo/cherry/copper/crimso
 
 In-game: modern glass-door aesthetic, matches clear glass.
 
-### 2.9 Fullbright Fog — KS custom (`fogs/ks_fullbright.json`, `biomes_client.json`)
+### 2.9 Fullbright Fog + NoFog AllBiomes — KS custom (`fogs/ks_fullbright.json`, `biomes_client.json`)
 
-What it is: never fight in the dark — removes distance/air fog.
+What it is: never fight in the dark — removes distance/air fog in every biome (NoFog `all` variant merged, rebranded to `ks:fullbright`).
 
 How it works:
-- `biomes_client.json`: every biome (`default`) forces `"fog_identifier": "ks:fullbright"`, `"fog_color": "#ABD2FF"`, `"remove_all_prior_fog": true`, bright water (`#44AFF5`, transparency `0.3`, fog distance `15`).
-- `fogs/ks_fullbright.json` (`ks:fullbright`): `air` + `weather` fog `0.999 → 1.0` white `render` (effectively infinite), `water` `200 → 300` `#A0FFF0` fixed, `lava` `8 → 12` `#FF7F00`, `lava_resistance` `12 → 18`.
+- `biomes_client.json`: `default` + 70 per-biome entries (71 total, upstream No Fog - All Biomes v4.5.0 water colors kept) every biome forces `"fog_identifier": "ks:fullbright"`, `"remove_all_prior_fog": true`, `"inherit_from_prior_fog": false`. Default keeps KS clear water (`#44AFF5`, transparency `0.3`, fog distance `15`) + `fog_color` `#ABD2FF`.
+- `fogs/ks_fullbright.json` (`ks:fullbright`): `air` + `weather` fog `0.999 → 1.0` white `render` (effectively infinite, brighter than upstream fixed), `water` / `lava` / `lava_resistance` / `powder_snow` all `4000 → 10000` (no fog; lava was `8 → 12`, powder-snow is new).
+- Upstream `kentotukun:no_fog` ID rebranded to `ks:fullbright` — no new namespace, no subpacks (`water`/`nether`/`nolava` variants NOT taken), no manifest change. See `copyright.txt` entry 16.
 
-In-game: caves/Nether/end are bright, water is clear light-blue, lava still fogged for safety. Toggle by removing the pack or editing `biomes_client.json`.
+In-game: caves/Nether/End are bright, water is clear light-blue per biome, lava and powder-snow no longer fog you. Toggle by removing the pack or editing `biomes_client.json`.
 
 ### 2.10 Player Animation QA (`entity/player.json` + `tools/check_player_animation_loop.py`)
 
@@ -250,8 +251,8 @@ ks-client/
 ├── resource_packs/KS Client/
 │   ├── manifest.json                ← name KS Client, v1.3.8, min_engine 1.21.120, no subpacks, authors
 │   ├── pack_icon.png
-│   ├── biomes_client.json           ← forces ks:fullbright everywhere
-│   ├── fogs/ks_fullbright.json
+│   ├── biomes_client.json           ← forces ks:fullbright in all 71 biomes (default + 70 per-biome, NoFog-all water colors)
+│   ├── fogs/ks_fullbright.json      ← nofog: air/weather render + water/lava/powder-snow 4000–10000
 │   ├── blocks.json                  ← hopper face mapping only (BlockTrace directional hopper)
 │   ├── entity/ (81 json)            ← KS health-bar hooks on mobs only (no player.json: vanilla player = own skin, no doll FPS)
 │   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses)
@@ -346,7 +347,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 
 - `entity/`: 81 client entities (`allay` → `zombie_villager`, no `player.json`), all with KS health-bar hooks (see §2.14). Vanilla animation/controller/geometry/texture refs resolve engine-side.
 - `animations/health_bar.json` (always-display billboard logic) + `animations/mace.animation.json` (hammer hold poses), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
-- `fogs/ks_fullbright.json` + `biomes_client.json`: global fullbright (see §2.9).
+- `fogs/ks_fullbright.json` + `biomes_client.json`: global nofog fullbright — 71 biomes forced `ks:fullbright` (NoFog-all water colors), air/weather render infinite, water/lava/powder-snow `4000–10000` (see §2.9, `copyright.txt` entry 16).
 
 ---
 
