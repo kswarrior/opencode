@@ -235,7 +235,21 @@ How it works:
 - FPS entity assets removed: `models/entity/fps_counter.geo.json`, `render_controllers/fps_counter.render.json`, `textures/fps/digits_atlas.png` (empty `textures/fps/` dir removed; no atlas registration ever existed — direct path).
 - No `_global_variables.json` (beyond the hook no config exists upstream) / `manifest.json` changes; `_ui_defs.json` 13 → 14 entries.
 
-In-game, top-left corner: `KS Client v1.3.8`, `Position: X, Y, Z` (own skin on dolls + in world, no doll FPS). Gate A passes (9 SKIP lines: 8 absent Drive anims + absent `player.json`).
+In-game, top-left corner: `KS Client v1.3.9`, `Position: X, Y, Z` (own skin on dolls + in world, no doll FPS). Gate A passes (9 SKIP lines: 8 absent Drive anims + absent `player.json`).
+
+### 2.17 Durability HUD + Bow Indicators + Clean Pumpkin (ZenXveda selective, rebranded KS)
+
+What it is: bottom-left durability readout for the held item (number or percentage + blinking red `[!]` under the low-durability threshold) with on/off in the HUD menu; selected-item name label gains a durability line; inventory screen gains an armor/offhand durability panel. Bow draw stages get indicator art; carved-pumpkin overlay is clean (no blur).
+
+How it works:
+- `ui/ks_modules/ks_durability/` (`config/container_data/hud/common.json`, namespaces `ksd_*`, 4 entries appended in `_ui_defs.json`): `ksd_hud.dd_content` collection factory over `hotbar_items` (visible only for the selected damageable item) + `dura_text_panel` (number `cur/total` or `%%` via `$use_percentage`, colored via `$use_colored_text`) + low-dura blink anims (threshold `$ksd_low_durability_threshold 20`).
+- `ui/hud_screen.json` `hud.ks_dura_pos` fullscreen wrapper (layer 46) + `root_panel` hook; visibility follows the HUD menu toggle live (`ksdT_dura_t`, default `$ksd_dura_v true`).
+- `ui/inventory_screen.json` `crafting.ksd_armor_pos` fullscreen wrapper + hook → `ksd_common.armor_durability_panel` (armor + offhand, anchored `$ksd_armor_*`, same menu toggle).
+- `ui/ui_common.json` `item_panel_image` mod swaps the selected-item label for name + durability (`ksd_container.data` + `ksd_common.item_text_label`); hover-text copy deliberately NOT ported (KS hover already appends `Durability: cur/total`).
+- Config in `ui/_global_variables.json`: `$ksd_dura_v`, `$ksd_hud_offset/anchor_from/anchor_to` (bottom-left `[3,-3]`), `$ksd_armor_offset/anchor_from/anchor_to` (bottom-left `[4,-28]`), `$ksd_low_durability_threshold`, plus `$item_hover_text_color`/`$alpha_anim`/`$f_color_format` label fallbacks.
+- Bow: `textures/items/bow_pulling_0/1/2.png` override vanilla draw stages by path (no atlas change). Pumpkin: `textures/misc/pumpkinblur.png` 1×1 clean override. Both registered in `textures/texture_list.json` (+4, no new validation errors).
+
+In-game: hold a damageable item → durability number bottom-left; low durability → blinking `[!]`; open inventory → armor/offhand durability panel; gear → HUD tab → `Show Durability HUD` toggles all three.
 
 ---
 
@@ -310,7 +324,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Group | Keys | Defaults / meaning |
 |-------|------|--------------------|
 | Slot hotbar 1–10 | `$ksb_N_x`, `$ksb_N_y`, `$ksb_N_s`, `$ksb_N_v` | pos/size(32)/visible. 1–3 `(4/14/24,20)`, 4 hidden, 5 hidden, 6–8 `(72/82/92,22)`, 9–10 hidden |
-| Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors (durability is always on, no toggle) |
+| Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors |
 | Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | slider positions (px offset = value−125 / value−35), size px, show — editor totem row, live |
 | Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | Show Inv HUD on/off + Compact toggle in HUD tab; grid fixed bottom-right (no corner picker) |
 | F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` debug (version + position + days); bottom-center way back reads short "F1 -" |
@@ -319,6 +333,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`) |
 | Inventory HUD styling | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | slot bg + selected highlight for bottom-right grid |
+| Durability HUD | `$ksd_dura_v true`, `$ksd_hud_offset [3,-3]`, `$ksd_hud_anchor_from/to bottom_left`, `$ksd_armor_offset [4,-28]`, `$ksd_armor_anchor_from/to bottom_left`, `$ksd_low_durability_threshold 20` | Show Durability HUD on/off in HUD tab; bottom-left readout + inventory armor panel positions; low-dura `[!]` blink threshold |
 | Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
 
@@ -330,6 +345,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 
 - Gear menu is always on (`$show_editor_button: true` in `ksb_hotbar_button/defs.json`).
 - InvHUD grid fixed bottom-right (Show Inv HUD on/off + Compact in HUD tab).
+- Durability HUD readout fixed bottom-left + inventory armor panel (Show Durability HUD on/off in HUD tab).
 
 ---
 
@@ -337,12 +353,12 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 
 - **Blocks (`atlas.terrain`, `terrain_texture.json`, 1322 entries):** full vanilla set — planks/logs/leaves, ores (incl. deepslate variants, untouched vanilla), concrete/powder, terracotta/glazed, shulker boxes, candles, copper (block/door/trapdoor + oxidized/weathered/exposed), cherry/mangrove/pale_oak, crimson/warped, deep-dark/sculk, amethyst, command blocks, campfire, cauldron, composter, bookshelf, TNT, sponge, ice/packed/blue, coral (alive/dead/fans), glass (clear + 16 colors + panes + tinted), doors/trapdoors (glass style, 48 entries), destroy stages, debug, plus BlockTrace directional hopper (`hopper_top` 16-frame + `hopper_outside_east/north/south/west` 16-frame each, via `blocks.json` hopper face mapping; `hopper_inside/outside` fallbacks kept).
 - **Trapped chest (BlockTrace, selective):** `textures/entity/chest/trapped.png` + `trapped_double.png` (plus legacy `textures/entity/trapped.png` / `trapped_double.png`). Normal / double-normal / ender chests NOT taken — left vanilla. No ores taken.
-- **Items (`atlas.items` = mace only):** `mace.png` registered as `mace` (custom icon + `item.mace.name`); 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) exist in `textures/items/` but unregistered — vanilla fallback.
+- **Items (`atlas.items` = mace only):** `mace.png` registered as `mace` (custom icon + `item.mace.name`); bow draw indicators `bow_pulling_0/1/2.png` override vanilla by path (unregistered, listed in `texture_list.json`); 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) exist in `textures/items/` but unregistered — vanilla fallback.
 - **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (8 files — close/craft/effect_bg, all wired), `ks_touch/hide_gui`, `ksb_slot_button (+pressed)`, `ksb_numb_1-9`, chat art (`bl_bt/black_ovr/blank/null` + `.texture_assets/.chat_icons/`), every mob-effect icon, joystick/buttons/D-pad.
 - **Totem (active):** `totem/close_button.png`, `totem_button.png` — wired in `inventory_screen.json` + `hud_screen.json` `hud.totem_btn`.
 - **Hammer (active):** `textures/entity/attachable/mace.png` (held 3D model) + `textures/items/mace.png` (icon).
 - **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`.
-- **Colormap/misc/gui/controls/health_bar:** grass/leaves/water tints, `misc/vignette.png`, D-pad art, health bar sprites (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
+- **Colormap/misc/gui/controls/health_bar:** grass/leaves/water tints, `misc/vignette.png`, clean `misc/pumpkinblur.png` (1×1, no pumpkin blur, listed in `texture_list.json`), D-pad art, health bar sprites (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
 
 ---
 
