@@ -124,7 +124,7 @@ How it works:
 - `textures/gui/controls/`: D-pad set (`up/down/left/right + diagonals + pressed`), `jump_dpad`, `sneak_dpad`, `large_button`, `dismount`.
 - `hud_screen.json` F1 (hide HUD) + F3 (debug toggle) live top-middle (clean-room KS rebuild, NeBux idea); F8 paperdoll not ported.
 
-In-game: F1 hides HUD, F3 toggles debug readout (version + position + days, top-left below status); bottom-center `ks_show_hud` bar reads short "F1 -" (was "Show HUD" / upstream "CLICK HERE TO SHOW HUD :)") and re-shows HUD via `button.hide_gui_all`. Show F1/F3 on/off in HUD tab.
+In-game: F1 hides HUD, F3 toggles debug readout (days + position + recovery/clock/compass icons + XP + world + OW-Nether, top-left below status; clock is live icon — true Time: HH:MM not exposed to RP UI); bottom-center `ks_show_hud` bar reads short "F1 -" (was "Show HUD" / upstream "CLICK HERE TO SHOW HUD :)") and re-shows HUD via `button.hide_gui_all`. Show F1/F3 on/off in HUD tab.
 
 ### 2.6 Connected Hotbar (`textures/ui/hotbar_*.png`)
 
@@ -310,7 +310,7 @@ ks-client/
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
 3. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox / gear button left of bell (opens HUD LAYOUT page: drag large previews, Save, small X).
-   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); F1 (top-middle) hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 toggles debug readout (version + position + days); Show F1/F3 on/off in HUD tab; vanilla paperdoll renderer kept. `ks_hud_keys`/`ks_inv_slot` remain stubbed empty (`ks_invhud_pos`/`inventory_hud_panel` live).
+   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); F1 (top-middle) hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 toggles debug readout (days + position + recovery/clock/compass + XP + world + Nether conv); Show F1/F3 on/off in HUD tab; vanilla paperdoll renderer kept. `ks_hud_keys`/`ks_inv_slot` remain stubbed empty (`ks_invhud_pos`/`inventory_hud_panel` live).
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs + players: HP bar + digits above head, always displayed (no toggle, no subpack).
@@ -330,12 +330,13 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors |
 | Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | slider positions (px offset = value−125 / value−35), size px, show — editor totem row, live |
 | Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | Show Inv HUD on/off + Compact toggle in HUD tab; grid fixed bottom-right (no corner picker) |
-| F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` debug (version + position + days); bottom-center way back reads short "F1 -" |
+| F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` debug (days + position + icons + XP/world/Nether); bottom-center way back reads short "F1 -" |
 | Start-screen HUD-layout button | `$ks_show_hud_config_button true` | Show/hide the gear button top-right left of the bell (`start.ks_cfg_slot` ignored when false); the HUD LAYOUT page itself lives in `ui/ks_hud_config.json` |
 | Editor menu | `$ksb_menu_w 142`, `$ksb_menu_h 182`, `$ksb_menu_x 10` | v1.2.2 layout: hardcoded 190×182 `left_middle` panel at `offset [40,0]` in `settings.json` — no size globals (all `$ksb_menu_*` deleted in v1.2.8) |
 | Editor menu (right) | `$ksb_menu_r_w 142`, `$ksb_menu_r_h 182`, `$ksb_menu_r_x -10` | right info menu size + px inward from right edge (negative) |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`) |
+| F3 tools icons | `$ks_recovery_id 45088768`, `$ks_clock_id 22740992`, `$ks_compass_id 22609920` | live `inventory_item_renderer` `#item_id_aux` for F3 recovery/clock/compass row |
 | Inventory HUD styling | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | slot bg + selected highlight for bottom-right grid |
 | Durability HUD | `$ksd_dura_v true`, `$ksd_hud_offset [3,-3]`, `$ksd_hud_anchor_from/to bottom_left`, `$ksd_armor_offset [4,-28]`, `$ksd_armor_anchor_from/to bottom_left`, `$ksd_low_durability_threshold 20` | Show Durability HUD on/off in HUD tab; bottom-left readout + inventory armor panel positions; low-dura `[!]` blink threshold |
 | Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
