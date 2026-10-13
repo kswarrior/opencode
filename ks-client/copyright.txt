@@ -176,6 +176,40 @@ here. Respect their licenses — get permission before redistributing.
              `fogs/ks_fullbright.json` (water/lava/lava_resistance/
              powder_snow 4000–10000; air/weather 0.999–1.0 render kept).
 
+17. ZenXveda selective merge — bow draw indicators + clean pumpkin blur
+    + durability HUD only
+    Author : ZenXveda — ZenXveda Ultimate PvP Pro v1.8.9
+    Source : https://edge.mcpedl.com/files/9118/360/ZenXveda_Ultimate_PvP_Pro_v1.8.9.mcpack?ft=134975c977085aa2829e796b92a61150&bd=hi4hzt1jzz
+             (downloaded/staged in ./tmp/merge_zenxveda/ for diff)
+    Note   : upstream `dd_config/dd_common/dd_container/dd_hud`
+             namespaces + `$zx_*` vars + `zx_durability/` paths rebranded to
+             KS (`ksd_*`, `ui/ks_modules/ks_durability/`); `dd_factory` →
+             `ksd_factory`, `dura_armor_grid` → `ksd_armor_grid`. Hover-text
+             copy dropped (KS `ui_common.json` already appends durability to
+             hover). Grep verified zero `dd_*`/`$zx_*`/`zenxveda` leftovers in
+             `resource_packs/KS Client/` (provenance noted in file headers).
+             NOT taken: crosshair subpacks (KS has its own), hitbox
+             (`ui_hitbox.json`, render controllers, `entity/`, hb anims),
+             health bars, swords/fire/water-fog/biomes, checkbox art,
+             `texts/*`, `pack_icon.png`, manifest/subpacks.
+    Now    : `textures/items/bow_pulling_0/1/2.png` (draw-stage indicators,
+             vanilla-path override, no atlas change) +
+             `textures/misc/pumpkinblur.png` (1×1 clean, no blur) + 4 entries
+             in `textures/texture_list.json`,
+             `ui/ks_modules/ks_durability/` (`config/container_data/hud/
+             common`, namespace `ksd_*`, bottom-left `$ksd_hud_*` readout +
+             low-dura `[!]` blink + selected-item label + inventory armor
+             panel via `$ksd_armor_*`),
+             `ui/hud_screen.json` `hud.ks_dura_pos` fullscreen wrapper +
+             `root_panel` hook, `ui/inventory_screen.json`
+             `crafting.ksd_armor_pos` wrapper + hook,
+             `ui/ui_common.json` `item_panel_image` mod (name + durability),
+             `$ksd_dura_v/hud/armor/threshold` + `$item_hover_text_color` /
+             `$alpha_anim` / `$f_color_format` in `ui/_global_variables.json`,
+             `Show Durability HUD` toggle (`ksdT_dura_t`) in HUD tab
+             (`ui/ks_modules/ksb_hotbar_button/settings.json`),
+             4 entries appended in `ui/_ui_defs.json` (append-only).
+
 Removed again after merge (no longer in pack, kept here for history):
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
