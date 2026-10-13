@@ -1327,6 +1327,9 @@
     "size": [ 20, 20 ],
     "visible": "$ks_f1_v",
     "layer": 5,
+    "property_bag": {
+      "#ks_f1_toggle": true
+    },
     "$border_visible": false,
     "$pressed_button_name": "button.hide_gui_all",
     "$button_text": "F1",
@@ -1402,6 +1405,9 @@
     "offset": [ 38.5, 0.5 ],
     "visible": "$ks_f3_v",
     "layer": 5,
+    "property_bag": {
+      "#ks_f3show_toggle": true
+    },
     "enabled": true,
     "$toggle_name": "ks_f3_debug",
     "$toggle_default_state": false,
