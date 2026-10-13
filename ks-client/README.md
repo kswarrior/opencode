@@ -289,7 +289,7 @@ ks-client/
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
 3. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox.
-   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right grid shows inventory (see §2.4); green = selected; `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot` are stubbed empty.
+   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right is now clear (inventory grid removed); `ks_show_hud` (“Show HUD”) bar re-shows HUD after hide; vanilla paperdoll renderer kept. KS `ks_hud_keys`/`ks_f3_panel`/`ks_inv_slot`/`ks_invhud_pos`/`inventory_hud_panel` are stubbed empty.
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs: HP bar + digits above head, always displayed (no toggle, no subpack).
@@ -308,12 +308,12 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar 1–10 | `$ksb_N_x`, `$ksb_N_y`, `$ksb_N_s`, `$ksb_N_v` | pos/size(32)/visible. 1–3 `(4/14/24,20)`, 4 hidden, 5 hidden, 6–8 `(72/82/92,22)`, 9–10 hidden |
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors (durability is always on, no toggle) |
 | Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | slider positions (px offset = value−125 / value−35), size px, show — editor totem row, live |
-| Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false`, `$ksb_invhud_corner 3` | show toggle (live, HUB tab), compact (repack). Grid fixed bottom-right since v1.2.7 (`$ksb_invhud_corner` deleted in v1.2.8 with the menu restore; `$ksb_invhud_x/y/s` kept but unused) |
+| Inventory HUD extra (REMOVED) | ~~`$ksb_invhud_v true`, `$ksb_invhud_small false`, `$ksb_invhud_corner 3`~~ | removed per request — HUD tab no longer shows InvHUD toggles; grid gone |
 | Editor menu | `$ksb_menu_w 142`, `$ksb_menu_h 182`, `$ksb_menu_x 10` | v1.2.2 layout: hardcoded 190×182 `left_middle` panel at `offset [40,0]` in `settings.json` — no size globals (all `$ksb_menu_*` deleted in v1.2.8) |
 | Editor menu (right) | `$ksb_menu_r_w 142`, `$ksb_menu_r_h 182`, `$ksb_menu_r_x -10` | right info menu size + px inward from right edge (negative) |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`; F1 button itself not inserted into HUD) |
-| Inventory HUD | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | bottom-right grid styling (active) |
+| Inventory HUD styling (REMOVED) | ~~`$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27`~~ | removed per request — bottom-right grid gone |
 | Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
 
@@ -324,7 +324,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hide_editor`/`show_editor`/`invhud_*` folders are gone):
 
 - Gear menu is always on (`$show_editor_button: true` in `ksb_hotbar_button/defs.json`).
-- InvHUD grid is fixed bottom-right (corner dropdown removed in v1.2.7). Nothing to pick in pack Settings.
+- InvHUD grid removed per request (was fixed bottom-right). Nothing to pick in pack Settings.
 
 ---
 
@@ -368,7 +368,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 2. Only bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description` + `README.md` header/§12 if the user explicitly requested a new version — never auto-bump.
 3. Run `python3 tools/check_player_animation_loop.py --iterations 3` and `mct validate`.
 4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack` (never overwrite `release/` unasked; prefer `/tmp/`).
-5. Test: import on device, activate on top, totem/slot buttons/inventory-HUD (fixed bottom-right), durability bars on damageable items (no toggle), settings gear top-right (slot/totem/inventory options), `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS stack top-left (version, position), own skin (no player override), fullbright, glass/doors, connected hotbar.
+5. Test: import on device, activate on top, totem/slot buttons (bottom-right clear, no inventory grid), durability bars on damageable items (no toggle), settings gear top-right (slot/totem only, no inventory options), `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS stack top-left (version, position), own skin (no player override), fullbright, glass/doors, connected hotbar.
 
 Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, `create-item`, `create-mob`, `design-model`, `debug-addon`, `creator-tools-cli`.
 
