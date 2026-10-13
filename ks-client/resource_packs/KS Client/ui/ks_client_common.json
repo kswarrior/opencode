@@ -1308,17 +1308,17 @@
     ]
   },
 
-  // ---------- HUD quick keys: F1 / F3 (20x20 KS key buttons) ----------
-  // Clean-room KS implementation (own art + own text, no third-party assets).
-  // Button look follows the same idea as the reference pack (small dark
-  // rounded key button with border), redrawn from scratch as
-  // textures/ui/ks_key_btn.png. No reference-pack pixels are used.
+  // ---------- HUD quick keys: F1 / F3 (20x20, same-to-same vs reference) ----------
+  // Rebranded from F1 & F3 Button v1.1.3 (see copyright.txt entry 15):
+  // same offsets/sizes/behavior, art copied to KS paths below (no NeBux paths
+  // remain in-pack). Textures: textures/ui/ks_f1f3_hud_btn.png (was
+  // NeBux/NeBuxUI/Buttons/hud_btn.png, 18x18).
   //   F1 = hide HUD (button.hide_gui_all, same as physical F1).
   //   F3 = toggle KS debug readout (ks_f3_panel below).
   // F1 hides this row too, so ks_show_hud (a sibling of root_panel, see
   // hud_screen.json) is the guaranteed way back for touch users.
   // Visibility: $ks_f1_v/$ks_f3_v defaults + HUD-menu ksbT_f1_t/ksbT_f3show_t
-  // toggles + #hud_visible. Rebranded from NeBux F1 & F3 Button v1.1.3 idea.
+  // toggles + #hud_visible.
   "ks_f1_button@settings_common.action_button": {
     "prevent_touch_input": true,
     "anchor_from": "top_middle",
@@ -1330,10 +1330,10 @@
     "$border_visible": false,
     "$pressed_button_name": "button.hide_gui_all",
     "$button_text": "F1",
-    "$default_button_texture|default": "textures/ui/ks_key_btn",
-    "$hover_button_texture|default": "textures/ui/ks_key_btn",
-    "$pressed_button_texture|default": "textures/ui/ks_key_btn",
-    "$locked_button_texture|default": "textures/ui/ks_key_btn",
+    "$default_button_texture|default": "textures/ui/ks_f1f3_hud_btn",
+    "$hover_button_texture|default": "textures/ui/ks_f1f3_hud_btn",
+    "$pressed_button_texture|default": "textures/ui/ks_f1f3_hud_btn",
+    "$locked_button_texture|default": "textures/ui/ks_f1f3_hud_btn",
     "$focus_override_right": "FOCUS_OVERRIDE_STOP",
     "bindings": [
       {
@@ -1350,7 +1350,7 @@
     ]
   },
 
-  // F3 button face: dark key art + centered F3 label.
+  // F3 button face: reference key art + centered F3 label (same-to-same).
   "ks_f3_face": {
     "type": "panel",
     "size": [ 20, 20 ],
@@ -1358,7 +1358,7 @@
       {
         "ks_f3_face_bg": {
           "type": "image",
-          "texture": "textures/ui/ks_key_btn",
+          "texture": "textures/ui/ks_f1f3_hud_btn",
           "size": [ 20, 20 ],
           "layer": 0
         }
