@@ -2,7 +2,7 @@
 
 > **KS Client v1.4.5 by KS Warrior** (split-toggle default-visible property_bag)
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
-> Custom start screen, HUD (slot hotbar + totem/offhand shortcuts + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show on/off.)
+> Custom start screen, HUD (slot hotbar + totem/offhand shortcuts + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show on/off.)
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
@@ -54,9 +54,9 @@
 | 16 | Menu-Driven Options (no subpacks) | KS custom | No subpacks ship — gear menu is always on; InvHUD grid fixed bottom-right with HUD-menu Show on/off. |
 | 17 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1322 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace, `textures/ui/` = 124 PNGs incl. chat art), doors items on disk but `atlas.items` holds only the mace entry, environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (65 files) |
 | 18 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
-| 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 81 mobs, always visible (not only when hurt); merged at top level, no subpack, always on |
+| 19 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 81 mobs + players (82 entities), always visible (not only when hurt); merged at top level, no subpack, always on |
 | 20 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
-| 21 | Status Readout (Top Left) | KS Client | Stacked readout — client version + position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook, no subpack (no player override)) |
+| 21 | Status Readout (Top Left) | KS Client | Stacked readout — client version + position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook, no subpack; `entity/player.json` carries health-bar only, no FPS digits) |
 | 22 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 23 | Bow Draw Indicators | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Draw-stage bow art (`textures/items/bow_pulling_0/1/2.png`, vanilla-path override, no atlas change), always on |
 | 24 | Clean Pumpkin Blur | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Carved-pumpkin overlay replaced with 1×1 clean `textures/misc/pumpkinblur.png` (no blur), always on |
@@ -165,7 +165,7 @@ In-game: caves/Nether/End are bright, water is clear light-blue per biome, lava 
 
 What it is: guarantees player animations never freeze/detach (shield/armor/sword are the usual victims).
 
-`entity/player.json` now carries KS health-bar hooks (vanilla player anims + `health_bar`); all other custom player anims are validated externally, not forced. Same pattern on the other 81 entities.
+`entity/player.json` now carries KS health-bar hooks (vanilla 1.21.120 player anims + `health_bar`); all other custom player anims are validated externally, not forced. Same pattern on the other 81 mob entities (82 total with player).
 
 The checker (`tools/check_player_animation_loop.py --iterations 3 --delay 1 --watch --with-validate`) verifies in a loop:
 1. **Strict JSON** — no `/* */` comments, `json.loads` must pass (Minecraft strict parser breaks on comments).
