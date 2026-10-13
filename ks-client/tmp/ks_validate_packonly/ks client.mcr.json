@@ -13,10 +13,10 @@
     "entityTypeResourceCount": 81,
     "behaviorPackAnimationCount": 0,
     "behaviorPackAnimationControllerCount": 0,
-    "overallSize": 4305143,
+    "overallSize": 4305179,
     "fileCounts": 1777,
     "folderCounts": 40,
-    "contentSize": 4305143,
+    "contentSize": 4305179,
     "contentFileCounts": 1777,
     "contentFolderCounts": 40,
     "fileCount": 1777,
@@ -359,17 +359,17 @@
       },
       "textureList.size": {
         "instanceCount": 2,
-        "total": 96747,
-        "max": 48824,
+        "total": 96783,
+        "max": 48860,
         "min": 47923,
-        "average": 48374
+        "average": 48392
       },
       "textureList.lines": {
         "instanceCount": 2,
-        "total": 2764,
-        "max": 1397,
+        "total": 2765,
+        "max": 1398,
         "min": 1367,
-        "average": 1382
+        "average": 1383
       },
       "animationCount.resource": {
         "count": 3
@@ -962,7 +962,7 @@
         "average": 65536
       }
     },
-    "errorCount": 160,
+    "errorCount": 159,
     "internalProcessingErrorCount": 0,
     "warningCount": 80,
     "testSuccessCount": 41,
@@ -971,9 +971,9 @@
     "errorSummary": "ERROR: [TEXTURELIST101] (/textures/blocks/bamboo_door_top.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/bamboo_door_top\nERROR: [TEXTURELIST101] (/textures/blocks/bamboo_trapdoor.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/bamboo_trapdoor\nERROR: [TEXTURELIST101] (/textures/blocks/cherry_door_bottom.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/cherry_door_bottom\nERROR: [TEXTURELIST101] (/textures/blocks/cherry_door_top.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/cherry_door_top\nERROR: [TEXTURELIST101] (/textures/blocks/cherry_trapdoor.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/cherry_trapdoor\nERROR: [TEXTURELIST101] (/textures/blocks/copper_door_top.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/copper_door_top\nERROR: [TEXTURELIST101] (/textures/blocks/copper_trapdoor.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/copper_trapdoor\nERROR: [TEXTURELIST101] (/textures/blocks/exposed_copper_door_top.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/exposed_copper_door_top\nERROR: [TEXTURELIST101] (/textures/blocks/exposed_copper_trapdoor.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/exposed_copper_trapdoor\nERROR: [TEXTURELIST101] (/textures/blocks/hopper_outside/hopper_outside_left.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/hopper_outside/hopper_outside_left\nERROR: [TEXTURELIST101] (/textures/blocks/hopper_outside/hopper_outside_left_powered.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/hopper_outside/hopper_outside_left_powered\nERROR: [TEXTURELIST101] (/textures/blocks/hopper_outside/hopper_outside_right.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/hopper_outside/hopper_outside_right\nERROR: [TEXTURELIST101] (/textures/blocks/hopper_outside/hopper_outside_right_powered.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/hopper_outside/hopper_outside_right_powered\nERROR: [TEXTURELIST101] (/textures/blocks/hopper_top/hopper_top_down.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/hopper_top/hopper_top_down\nERROR: [TEXTURELIST101] (/textures/blocks/hopper_top/hopper_top_down_powered.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/blocks/hopper_top/hopper_top_down_powered",
     "internalProcessingErrorSummary": "",
     "warningSummary": "WARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:bamboo_jungle is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:bamboo_jungle_hills is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:basalt_deltas is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:beach is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:birch_forest is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:birch_forest_hills is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cherry_grove is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_beach is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_ocean is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_taiga is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_taiga_hills is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_taiga_mutated is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:crimson_forest is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:deep_cold_ocean is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:deep_frozen_ocean is not defined in the schema and the schema does not allow additional properties",
-    "testFailSummary": "TESTFAIL: [TEXTURELIST000] Found 160 errors in Texture List Validation check",
-    "infoGenerationTime": 7907,
-    "endToEndGenerationTime": 9379,
+    "testFailSummary": "TESTFAIL: [TEXTURELIST000] Found 159 errors in Texture List Validation check",
+    "infoGenerationTime": 3890,
+    "endToEndGenerationTime": 4755,
     "reds": 360352,
     "summary": {
       "BASEGAMEVER": {
@@ -1628,12 +1628,12 @@
       },
       "TEXTURELIST": {
         "0": {
-          "defaultMessage": "Found 160 errors in Texture List Validation check",
+          "defaultMessage": "Found 159 errors in Texture List Validation check",
           "testCompleteFails": 1
         },
         "101": {
           "defaultMessage": "Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture",
-          "errors": 160
+          "errors": 159
         }
       },
       "TEXTUREREF": {
@@ -4406,17 +4406,17 @@
       "fs": {
         "size": {
           "instanceCount": 2,
-          "total": 96747,
-          "max": 48824,
+          "total": 96783,
+          "max": 48860,
           "min": 47923,
-          "average": 48374
+          "average": 48392
         },
         "lines": {
           "instanceCount": 2,
-          "total": 2764,
-          "max": 1397,
+          "total": 2765,
+          "max": 1398,
           "min": 1367,
-          "average": 1382
+          "average": 1383
         }
       }
     },
@@ -4538,7 +4538,7 @@
       "iTp": 7,
       "gId": "PACKSIZE",
       "gIx": 101,
-      "d": 4305143
+      "d": 4305179
     },
     {
       "iTp": 7,
@@ -4556,7 +4556,7 @@
       "iTp": 7,
       "gId": "PACKSIZE",
       "gIx": 104,
-      "d": 4305143
+      "d": 4305179
     },
     {
       "iTp": 7,
@@ -5848,13 +5848,6 @@
       "gIx": 101,
       "p": "/textures/gui/controls/waterdescend_pressed.png",
       "d": "textures/gui/controls/waterdescend_pressed"
-    },
-    {
-      "iTp": 3,
-      "gId": "TEXTURELIST",
-      "gIx": 101,
-      "p": "/textures/gui/newgui/HUD/crosshair.png",
-      "d": "textures/gui/newgui/hud/crosshair"
     },
     {
       "iTp": 3,
