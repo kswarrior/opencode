@@ -106,6 +106,19 @@
 	"$ks:inventory_slot_color": [ 0, 0, 0 ],
 	"$ks:inventory_slot_alpha": 0.27,
 
+	// === KS Durability HUD (Bottom Left, rebranded ZenXveda zx_durability) ===
+	"$ksd_dura_v": true,
+	"$ksd_hud_offset": [ 3, -3 ],
+	"$ksd_hud_anchor_from": "bottom_left",
+	"$ksd_hud_anchor_to": "bottom_left",
+	"$ksd_armor_offset": [ 4, -28 ],
+	"$ksd_armor_anchor_from": "bottom_left",
+	"$ksd_armor_anchor_to": "bottom_left",
+	"$ksd_low_durability_threshold": 20,
+	"$item_hover_text_color": [ 1, 1, 1 ],
+	"$alpha_anim": 1.0,
+	"$f_color_format": [ 1, 1, 1 ],
+
 	// === KS Crosshair Indicator (center) ===
 	"$ks_crosshair_v": true,
 	"$ks_crosshair_size": [ 15, 15 ],

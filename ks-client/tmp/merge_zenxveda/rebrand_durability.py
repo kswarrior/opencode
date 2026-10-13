@@ -50,7 +50,9 @@ for f in DST.glob("*.json"):
     t = f.read_text()
     for bad in ["dd_config", "dd_common", "dd_container", "dd_hud",
                 "$zx_", "zx_armor", "zx_hud", "zx_ignore", "zx_inv_bg",
-                "zx_low", "dd_factory", "dura_armor_grid", "zenxveda",
-                "ZenXveda", "hover_text@ksd"]:
+                "zx_low", "dd_factory", "dura_armor_grid",
+                "hover_text@ksd"]:
+        # NOTE: the KS header comment intentionally credits "ZenXveda ...
+        # v1.8.9" as provenance (same convention as ks_modules/hud.json).
         assert bad not in t, f"{f.name} still contains {bad!r}"
 print("rebrand clean")
