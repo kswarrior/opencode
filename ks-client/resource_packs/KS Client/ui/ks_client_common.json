@@ -1458,9 +1458,11 @@
   },
 
   // ---------- F3 debug readout (top-left, below status) ----------
-  // Clean-room KS rebuild of the reference pack's F1/F3 debug idea:
-  // same data (version, position, days), own layout/art/text.
-  // No third-party code or pixels.
+  // Clean-room KS rebuild (idea from copyright entry 15, no copy):
+  // days + position + live recovery/clock/compass icons + XP + world +
+  // Nether/Overworld conversion. Own layout/names/text.
+  // NOTE: true world clock time (Time: HH:MM) is NOT exposed to
+  // resource-pack UI, so clock is a live item icon (hands move) + Day proxy.
   // Visible only while the F3 toggle (ks_f3_t) is ON and the HUD is visible.
   // Menu Show F3 ($ks_f3_v + ksbT_f3show_t) gates the F3 *button*; the panel
   // itself follows the button state + #hud_visible (like upstream).
@@ -1492,6 +1494,33 @@
     ],
     "controls": [
       {
+        "ks_f3_days": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#text",
+          "bindings": [
+            {
+              "binding_name": "#number_of_days_played_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_name": "#number_of_days_played_text",
+              "binding_name_override": "#text",
+              "binding_type": "global",
+              "binding_condition": "always_when_visible"
+            }
+          ]
+        }
+      },
+      {
         "ks_f3_pos": {
           "type": "label",
           "size": [ "100%", 10 ],
@@ -1519,7 +1548,85 @@
         }
       },
       {
-        "ks_f3_days": {
+        "ks_f3_tools": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%", 18 ],
+          "controls": [
+            {
+              "ks_f3_recovery": {
+                "type": "panel",
+                "size": [ 16, 16 ],
+                "controls": [
+                  {
+                    "ks_f3_recovery_item": {
+                      "type": "custom",
+                      "renderer": "inventory_item_renderer",
+                      "size": [ 16, 16 ],
+                      "layer": 5,
+                      "property_bag": {
+                        "#item_id_aux": "$ks_recovery_id"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_f3_pad1": {
+                "type": "panel",
+                "size": [ 3, 1 ]
+              }
+            },
+            {
+              "ks_f3_clock": {
+                "type": "panel",
+                "size": [ 16, 16 ],
+                "controls": [
+                  {
+                    "ks_f3_clock_item": {
+                      "type": "custom",
+                      "renderer": "inventory_item_renderer",
+                      "size": [ 16, 16 ],
+                      "layer": 5,
+                      "property_bag": {
+                        "#item_id_aux": "$ks_clock_id"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_f3_pad2": {
+                "type": "panel",
+                "size": [ 3, 1 ]
+              }
+            },
+            {
+              "ks_f3_compass": {
+                "type": "panel",
+                "size": [ 16, 16 ],
+                "controls": [
+                  {
+                    "ks_f3_compass_item": {
+                      "type": "custom",
+                      "renderer": "inventory_item_renderer",
+                      "size": [ 16, 16 ],
+                      "layer": 5,
+                      "property_bag": {
+                        "#item_id_aux": "$ks_compass_id"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_xp": {
           "type": "label",
           "size": [ "100%", 10 ],
           "color": "$chat_text_color",
@@ -1531,16 +1638,181 @@
           "text": "#text",
           "bindings": [
             {
-              "binding_name": "#number_of_days_played_visible",
+              "binding_name": "#level_number",
+              "binding_type": "global"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('XP Level: ' + #level_number)",
+              "target_property_name": "#text"
+            },
+            {
+              "binding_name": "#level_number_visible",
               "binding_name_override": "#visible",
               "binding_type": "global",
               "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_world": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#text",
+          "bindings": [
+            {
+              "binding_name": "#player_list_title",
+              "binding_type": "global"
             },
             {
-              "binding_name": "#number_of_days_played_text",
-              "binding_name_override": "#text",
+              "binding_type": "view",
+              "source_property_name": "('World: ' + #player_list_title)",
+              "target_property_name": "#text"
+            },
+            {
+              "binding_name": "#player_list_title_visible",
+              "binding_name_override": "#visible",
               "binding_type": "global",
-              "binding_condition": "always_when_visible"
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_nether": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_nether_text",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_pos",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_raw"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_noneg"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_noneg - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_tmpl"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw - (#ks_tmpl - ' , , ' - ':'))",
+              "target_property_name": "#ks_coords"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords - ':')",
+              "target_property_name": "#ks_x"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords - (': ' + #ks_x + ','))",
+              "target_property_name": "#ks_y"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords - (': ' + #ks_x + ', ' + #ks_y + ','))",
+              "target_property_name": "#ks_z"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x / 8)",
+              "target_property_name": "#ks_nx"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z / 8)",
+              "target_property_name": "#ks_nz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('OW -> Nether: ' + #ks_nx + ', ' + #ks_y + ', ' + #ks_nz)",
+              "target_property_name": "#ks_nether_text"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_over": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_over_text",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_pos",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_raw2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw2 - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_noneg2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_noneg2 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_tmpl2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw2 - (#ks_tmpl2 - ' , , ' - ':'))",
+              "target_property_name": "#ks_coords2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords2 - ':')",
+              "target_property_name": "#ks_x2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords2 - (': ' + #ks_x2 + ','))",
+              "target_property_name": "#ks_y2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords2 - (': ' + #ks_x2 + ', ' + #ks_y2 + ','))",
+              "target_property_name": "#ks_z2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x2 * 8)",
+              "target_property_name": "#ks_ox"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z2 * 8)",
+              "target_property_name": "#ks_oz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Nether -> OW: ' + #ks_ox + ', ' + #ks_y2 + ', ' + #ks_oz)",
+              "target_property_name": "#ks_over_text"
             }
           ]
         }
