@@ -309,7 +309,7 @@ ks-client/
 1. Copy a file from `release/` (e.g. `KS-Client-v1.4.5.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
 3. **Use:**
-   - Start screen → `TAP TO START` / skin preview / bell inbox.
+   - Start screen → `TAP TO START` / skin preview / bell inbox / gear button left of bell (opens HUD LAYOUT page: drag large previews, Save, small X).
    - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); F1 (top-middle) hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 toggles debug readout (version + position + days); Show F1/F3 on/off in HUD tab; vanilla paperdoll renderer kept. `ks_hud_keys`/`ks_inv_slot` remain stubbed empty (`ks_invhud_pos`/`inventory_hud_panel` live).
    - Inventory screen: totem icon auto-equips from inventory/hotbar.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
