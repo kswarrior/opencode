@@ -363,7 +363,9 @@
 
   // ---------- KS Inventory HUD position wrapper (fullscreen neutral) ----------
   // Fullscreen so the inner panel lands bottom-right via $inv_pos/$inv_offs.
-  // Visibility follows the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
+  // Visibility follows the HUD menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
+  // Fixed: split toggle copy + local AND (was "(#toggle_state and #hud_visible)" with source_control,
+  // which reads #hud_visible off the toggle itself -> always false -> grid never visible).
   "ks_invhud_pos": {
     "type": "panel",
     "size": ["100%", "100%"],
@@ -385,7 +387,12 @@
       {
         "binding_type": "view",
         "source_control_name": "ksbT_invhud_t",
-        "source_property_name": "(#toggle_state and #hud_visible)",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_invhud_toggle"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_invhud_toggle)",
         "target_property_name": "#visible"
       }
     ]
@@ -393,7 +400,8 @@
 
   // ---------- KS Durability HUD position wrapper (fullscreen neutral) ----------
   // Fullscreen so the inner panel lands bottom-left via $ksd_hud_* globals.
-  // Visibility follows the menu Show toggle live (ksdT_dura_t, default $ksd_dura_v true).
+  // Visibility follows the HUD menu Show toggle live (ksdT_dura_t, default $ksd_dura_v true).
+  // Fixed: same split-toggle pattern as ks_invhud_pos (was always-false combined view binding).
   "ks_dura_pos": {
     "type": "panel",
     "size": ["100%", "100%"],
@@ -415,7 +423,12 @@
       {
         "binding_type": "view",
         "source_control_name": "ksdT_dura_t",
-        "source_property_name": "(#toggle_state and #hud_visible)",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_dura_toggle"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_dura_toggle)",
         "target_property_name": "#visible"
       }
     ]
