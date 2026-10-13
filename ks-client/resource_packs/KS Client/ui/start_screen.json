@@ -61,29 +61,43 @@
     ]
   },
 
-  // Top-right: bell icon ONLY, no pill/divider/social. Moved up (offset y 8->2).
+  // Top-right: HUD-layout button (left) + bell icon (right), no pill/divider/social.
   // FIX (deep root cause): size was ["default","default"] which equals
   // ["100%","100%"] = fullscreen. A fullscreen stack_panel anchored
   // top_right/top_right still lays children from its OWN top-left, which
   // sits at screen left -> bell rendered TOP-LEFT. Explicit size
   // pins it to TOP-RIGHT. Layer 3 keeps it above everything.
-  // Icon-only like dressing room: borderless ks_inbox_icon_button
-  // (no vanilla button background, just bell + red dot).
+  // Config button opens the ks_hud_config HUD LAYOUT page (draggable large
+  // previews + Save + small X). Bell stays icon-only like dressing room:
+  // borderless ks_inbox_icon_button (no vanilla button background).
   "friendsdrawer_button_panel": {
     "type": "panel",
-    "size": [ 28, 32 ],
+    "size": [ 60, 32 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -8, 2 ],
     "layer": 3,
     "controls": [
       {
-        "ks_inbox_slot": {
+        "ks_cfg_slot": {
           "type": "panel",
           "size": [ 28, 32 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [ 0, 0 ],
+          "ignored": "(not $ks_show_hud_config_button)",
+          "controls": [
+            { "ks_cfg_btn@ks_hud_config.ks_cfg_btn": {} }
+          ]
+        }
+      },
+      {
+        "ks_inbox_slot": {
+          "type": "panel",
+          "size": [ 28, 32 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 32, 0 ],
           "controls": [
             { "ks_inbox_icon_button@ks_client.ks_inbox_icon_button": {} }
           ],
@@ -545,7 +559,8 @@
       { "ks_bottom_left_row@ks_client.ks_bottom_left_row": {} },
       { "ks_bottom_right_menu@ks_client.ks_bottom_right_menu": { "ignored": "(not $ks_show_start_menu_button)" } },
       { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} },
-      { "ks_start_menu_full@ks_client.ks_start_menu_full": {} }
+      { "ks_start_menu_full@ks_client.ks_start_menu_full": {} },
+      { "ks_hud_cfg_full@ks_hud_config.ks_hud_cfg_full": {} }
     ]
   }
 }
