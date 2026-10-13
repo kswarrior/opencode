@@ -10,7 +10,7 @@ here. Respect their licenses — get permission before redistributing.
    Now    : `ui/ks_modules/ksb_hotbar_button/` (namespace ksb_main/ksb_defs,
             $ksb_* vars, ksb.howToSaveConfig)
 
-2. Inventory HUD Bottom-Right — REMOVED per request (stubs only, grid gone)
+2. Inventory HUD Bottom-Right — RESTORED per request (bottom-right grid + Show on/off)
    Author : itzriyo157 — Inventory HUD v1.0.2 Bottom Right
    Source : https://edge.mcpedl.com/files/7948/315/Inventory%20HUD%20v1.0.2.mcpack
             (v1.0.2 downloaded/staged in ./tmp/merge_invhud_refine/ for diff;
@@ -20,13 +20,15 @@ here. Respect their licenses — get permission before redistributing.
             highlight calculator replaced with per-cell `#slot_selected` check
             (old one froze world-join on low-end phones), grid fixed
             bottom-right + `ksbT_invhud_t` Show Inv HUD toggle.
-   Removed: Show Inv HUD + Compact toggles deleted from HUD tab
-            (`settings.json`), `hud.ks_invhud_pos` hook + `ks_hud.inventory_hud_panel`
-            / `inv_hud_container_item` stubbed to 0×0, all `$ksb_invhud_*` /
-            `$ks:*inventory*/highlight` globals purged. Files kept as stubs
-            (`hud.json`, `hud_screen.json:ks_invhud_pos`) — `_ui_defs` append-only.
+   Restored: 9×4 inventory grid (`ks_hud.inventory_hud_panel` /
+            `inv_hud_container_item`), `hud.ks_invhud_pos` fullscreen wrapper
+            + `root_panel` hook, Show Inv HUD (`ksbT_invhud`) + Compact
+            (`ksb_invhud_small`) toggles in HUD tab (`settings.json`),
+            `$ksb_invhud_v/small` + `$ks:inventory_*/highlight` globals.
+            Unused `$ksb_invhud_x/y/s` position sliders NOT restored
+            (fixed bottom-right per request).
    Now    : `ui/ks_modules/hud.json` + `ui/ks_modules/b6As_defs.json`
-            (namespace ks_hud, $inv_pos bottom_right — now unused)
+            (namespace ks_hud, $inv_pos bottom_right)
 
 3. Clean Touch Controls (touch buttons, D-pad, hide-GUI art)
    Author : PandaMine5 — Clean Touch Controls v1.4.1
@@ -136,7 +138,6 @@ here. Respect their licenses — get permission before redistributing.
              `textures/environment/destroy_stage_0-9.png`.
 
 Removed again after merge (no longer in pack, kept here for history):
-- Inventory HUD Bottom-Right grid + Show/Compact menu options — itzriyo157 v1.0.2 (removed per request, stubs only in `hud.json` / `hud_screen.json:ks_invhud_pos`, globals purged)
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Utility HUD V-1.5 Without Counters — EchoRif (fully purged)

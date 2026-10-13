@@ -343,12 +343,34 @@
     "cache_screen": true
   },
 
-  // ---------- KS Inventory HUD position wrapper (REMOVED) ----------
-  // (Removed per request: bottom-right inventory grid fully removed.)
+  // ---------- KS Inventory HUD position wrapper (fullscreen neutral) ----------
+  // Fullscreen so the inner panel lands bottom-right via $inv_pos/$inv_offs.
+  // Visibility follows the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
   "ks_invhud_pos": {
     "type": "panel",
-    "size": [0, 0],
-    "controls": []
+    "size": ["100%", "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [0, 0],
+    "visible": "$ksb_invhud_v",
+    "layer": 44,
+    "controls": [
+      {
+        "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "ksbT_invhud_t",
+        "source_property_name": "(#toggle_state and #hud_visible)",
+        "target_property_name": "#visible"
+      }
+    ]
   },
 
   // ---------- Quick Totem Offhand button (KS Client) ----------
