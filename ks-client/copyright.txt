@@ -113,21 +113,21 @@ here. Respect their licenses — get permission before redistributing.
               + hopper_outside_east/north/south/west (16-frame each).
               Normal/double/ender chests left vanilla; ores untouched.
 
-13. Crosshair Indicator, center (Java-like default/entity hit crosshair)
+13. Crosshair, 1st-person only (vanilla-path replace, PandaMine art)
     Author : PandaMine5 — PandaMine's Crosshair Indicator v1.1
     Source : https://edge.mcpedl.com/files/8918/783/PandaMine%27s%20Crosshair%20Indicator%20-%20v1.1.mcpack?ft=ea51a08da0af5b1c574df5ee2cbe8eb3&bd=k475pmkxfm
     Note   : (C) 2025-2026 PandaMine5 — derivative/redistribution only
              with the creator's permission (see upstream LICENSE: no
              unauthorized modification/derivative, share only via official
              links, no monetized redistribution).
-    Now    : `textures/ui/crosshair_default.png` +
-             `crosshair_entity.png` (direct UI paths, no atlas),
-             `ui/hud_screen.json` `hud.ks_crosshair_panel` +
-             `ks_crosshair_default/entity` (rebranded from
-             `pm5_crosshair_panel/crosshair_default/entity`, bindings
-             preserved), `root_panel` insert_front hook,
-             `$ks_crosshair_v/size/alpha/offset` in
-             `ui/_global_variables.json`
+    Now    : `textures/ui/crosshair.png` +
+             `textures/gui/newgui/HUD/crosshair.png` (vanilla-path replace
+             of `crosshair_default.png` art — 1st-person only, engine hides
+             in 3rd; no atlas). Overlay panel (`hud.ks_crosshair_panel` +
+             `ks_crosshair_default/entity` + `root_panel` hook +
+             `$ks_crosshair_v/size/alpha/offset`) removed — always-on images
+             drew over the player face in 3rd-person views.
+             `crosshair_entity.png` (mob-hit variant) retired.
 
 14. Better Breaking, loading-bar subpack only (block-crack overlay
     as loading bar, `loading_bar` subpack only — colorful / progress /

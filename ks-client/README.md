@@ -62,6 +62,7 @@
 | 24 | Clean Pumpkin Blur | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Carved-pumpkin overlay replaced with 1×1 clean `textures/misc/pumpkinblur.png` (no blur), always on |
 | 25 | Durability HUD (Bottom Left + menu toggle) | ZenXveda Ultimate PvP Pro v1.8.9 (selective, rebranded `ksd_*`) | Selected-item durability readout bottom-left (number + low-dura `[!]` blink) + selected-item name label + inventory armor/offhand panel; `Show Durability HUD` on/off in HUD tab (`ksdT_dura_t`, `$ksd_dura_v`); hover-text copy skipped (KS hover already shows durability) |
 | 26 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (41 files, `v1.0.0` + `v1.0.3`…`v1.4.3` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
+| 27 | First-Person Crosshair | PandaMine art, vanilla-path replace | Custom 15×15 crosshair (`textures/ui/crosshair.png` + `textures/gui/newgui/HUD/crosshair.png`) — shows in 1st-person only, engine hides it in 3rd-person (no crosshair on player face); delete the 2 PNGs to restore vanilla |
 
 ---
 
