@@ -374,6 +374,9 @@
     "offset": [0, 0],
     "visible": "$ksb_invhud_v",
     "layer": 44,
+    "property_bag": {
+      "#ks_invhud_toggle": true
+    },
     "controls": [
       {
         "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
@@ -410,6 +413,9 @@
     "offset": [0, 0],
     "visible": "$ksd_dura_v",
     "layer": 46,
+    "property_bag": {
+      "#ks_dura_toggle": true
+    },
     "controls": [
       {
         "ksd_content@ksd_hud.dd_content": {}
