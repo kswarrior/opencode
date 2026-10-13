@@ -1,9 +1,0 @@
-{
-  "resource_pack_name": "KS Client",
-  "texture_name": "atlas.items",
-  "texture_data": {
-    "mace": {
-      "textures": ["textures/items/mace.png"]
-    }
-  }
-}
