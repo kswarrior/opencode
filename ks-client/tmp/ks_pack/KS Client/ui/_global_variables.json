@@ -43,9 +43,6 @@
 	"$ksb_totem_y": 0,
 	"$ksb_totem_s": 30,
 	"$ksb_totem_v": true,
-	"$ksb_invhud_x": 0,
-	"$ksb_invhud_y": 0,
-	"$ksb_invhud_s": 50,
 	"$ksb_invhud_v": true,
 	"$ksb_invhud_small": false,
 	// Start screen bottom-right Menu button (left of Play). false = removed.

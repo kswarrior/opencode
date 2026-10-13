@@ -255,8 +255,9 @@
         ]
       },
       // KS Inventory HUD (Bottom Right): inventory grid overlay.
-      // Positioned live by the editor inventory row; visibility follows its
-      // toggle live ($ksb_invhud_v is the default). Compact via $ksb_invhud_small.
+      // Fixed bottom-right via ks_b6As_defs ($inv_pos/$inv_offs).
+      // Visibility follows the HUD menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
+      // Compact via $ksb_invhud_small.
       {
         "array_name": "controls",
         "operation": "insert_front",
@@ -343,9 +344,8 @@
   },
 
   // ---------- KS Inventory HUD position wrapper (fullscreen neutral) ----------
-  // Fullscreen so the inner panel lands bottom-right (1.2.2 layout, restored
-  // in 1.2.7 to fix world-join freeze on low-end phones). Visibility follows
-  // the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
+  // Fullscreen so the inner panel lands bottom-right via $inv_pos/$inv_offs.
+  // Visibility follows the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
   "ks_invhud_pos": {
     "type": "panel",
     "size": ["100%", "100%"],
