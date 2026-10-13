@@ -267,6 +267,18 @@
           }
         ]
       },
+      // KS Durability HUD (Bottom Left): selected-item durability readout.
+      // Fixed bottom-left via $ksd_hud_* globals (rebranded ZenXveda zx_durability).
+      // Visibility follows the HUD menu Show toggle live (ksdT_dura_t, default $ksd_dura_v true).
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "ks_dura_pos@hud.ks_dura_pos": {}
+          }
+        ]
+      },
       // (Removed per request: Utility HUD + KS F3/F8 keys fully removed.)
       // KS FPS counter (Top Left, always on): paper-doll digits overlay.
       {
@@ -383,6 +395,36 @@
       {
         "binding_type": "view",
         "source_control_name": "ksbT_invhud_t",
+        "source_property_name": "(#toggle_state and #hud_visible)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  // ---------- KS Durability HUD position wrapper (fullscreen neutral) ----------
+  // Fullscreen so the inner panel lands bottom-left via $ksd_hud_* globals.
+  // Visibility follows the menu Show toggle live (ksdT_dura_t, default $ksd_dura_v true).
+  "ks_dura_pos": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [0, 0],
+    "visible": "$ksd_dura_v",
+    "layer": 46,
+    "controls": [
+      {
+        "ksd_content@ksd_hud.dd_content": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "ksdT_dura_t",
         "source_property_name": "(#toggle_state and #hud_visible)",
         "target_property_name": "#visible"
       }

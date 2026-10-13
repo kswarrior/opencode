@@ -83,6 +83,30 @@
     ]
   },
 
+  // ---------- KS Durability HUD selected-item label ----------
+  // Replaces the vanilla selected-item name label with name + durability text
+  // (rebranded ZenXveda zx_durability; hover-text copy skipped — KS hover already shows durability).
+  "item_panel_image": {
+    "modifications": [
+      {
+        "control_name": "item_text_label",
+        "operation": "remove"
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "selected_item_data@ksd_container.data": {}
+          },
+          {
+            "item_text_label_new@ksd_common.item_text_label": {}
+          }
+        ]
+      }
+    ]
+  },
+
   "selected_item_details_factory": {
     "ignored": true
   }
