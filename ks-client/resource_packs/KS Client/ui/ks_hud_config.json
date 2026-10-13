@@ -1,0 +1,543 @@
+{
+  "namespace": "ks_hud_config",
+
+  "ks_cfg_icon_content": {
+    "type": "panel",
+    "size": [ 28, 32 ],
+    "controls": [
+      {
+        "ks_cfg_icon_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_icon_settings",
+          "size": [ 20, 20 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ]
+        }
+      }
+    ]
+  },
+
+  "ks_cfg_btn": {
+    "type": "panel",
+    "size": [ 28, 32 ],
+    "controls": [
+      { "ks_cfg_icon@ks_hud_config.ks_cfg_icon_content": {} },
+      {
+        "ks_hud_cfg_state@common.toggle": {
+          "size": [ 28, 32 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 3,
+          "enabled": true,
+          "visible": true,
+          "$toggle_name": "ks_hud_cfg_open",
+          "$toggle_default_state": false,
+          "$toggle_binding_type": "none",
+          "$toggle_focus_enabled": false,
+          "$unchecked_control": "common.empty_panel",
+          "$checked_control": "common.empty_panel",
+          "$unchecked_hover_control": "common.empty_panel",
+          "$checked_hover_control": "common.empty_panel",
+          "$unchecked_locked_control": "common.empty_panel",
+          "$unchecked_locked_hover_control": "common.empty_panel",
+          "$checked_locked_control": "common.empty_panel",
+          "$checked_locked_hover_control": "common.empty_panel"
+        }
+      }
+    ]
+  },
+
+  "ks_hud_cfg_full": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "visible": false,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "layer": 45,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "binding_condition": "always",
+        "source_control_name": "ks_hud_cfg_state",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_cfg_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_menu_bg",
+          "size": [ "100%", "100%" ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_cfg_card": {
+          "type": "panel",
+          "size": [ 620, 360 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "layer": 1,
+          "controls": [
+            {
+              "ks_cfg_card_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_bg",
+                "size": [ "100%", "100%" ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_cfg_title": {
+                "type": "label",
+                "size": [ 300, 26 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ -40, 8 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "normal",
+                "font_scale_factor": 1.1,
+                "layer": 1,
+                "text": "HUD LAYOUT"
+              }
+            },
+            {
+              "ks_cfg_sub": {
+                "type": "label",
+                "size": [ 420, 18 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ -40, 32 ],
+                "color": [ 160, 220, 235 ],
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "small",
+                "font_scale_factor": 0.85,
+                "layer": 1,
+                "text": "Drag the large buttons to arrange them"
+              }
+            },
+            {
+              "ks_cfg_save": {
+                "type": "panel",
+                "size": [ 90, 24 ],
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [ -30, 8 ],
+                "layer": 2,
+                "controls": [
+                  {
+                    "ks_cfg_save_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_config_btn",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_cfg_save_lbl": {
+                      "type": "label",
+                      "size": [ "100%", "100%" ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "Save"
+                    }
+                  },
+                  {
+                    "ks_hud_cfg_save@common.toggle": {
+                      "size": [ "100%", "100%" ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "layer": 2,
+                      "enabled": true,
+                      "visible": true,
+                      "$toggle_name": "ks_hud_cfg_saved",
+                      "$toggle_default_state": false,
+                      "$toggle_binding_type": "none",
+                      "$toggle_focus_enabled": false,
+                      "$unchecked_control": "common.empty_panel",
+                      "$checked_control": "common.empty_panel",
+                      "$unchecked_hover_control": "common.empty_panel",
+                      "$checked_hover_control": "common.empty_panel",
+                      "$unchecked_locked_control": "common.empty_panel",
+                      "$unchecked_locked_hover_control": "common.empty_panel",
+                      "$checked_locked_control": "common.empty_panel",
+                      "$checked_locked_hover_control": "common.empty_panel"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_cfg_close": {
+                "type": "panel",
+                "size": [ 20, 20 ],
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [ -6, 8 ],
+                "layer": 2,
+                "controls": [
+                  {
+                    "ks_cfg_close_img": {
+                      "type": "image",
+                      "texture": "textures/ui/box_exit",
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_hud_cfg_close@common.toggle": {
+                      "size": [ "100%", "100%" ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "layer": 1,
+                      "enabled": true,
+                      "visible": true,
+                      "$toggle_name": "ks_hud_cfg_open",
+                      "$toggle_default_state": false,
+                      "$toggle_binding_type": "none",
+                      "$toggle_focus_enabled": false,
+                      "$unchecked_control": "common.empty_panel",
+                      "$checked_control": "common.empty_panel",
+                      "$unchecked_hover_control": "common.empty_panel",
+                      "$checked_hover_control": "common.empty_panel",
+                      "$unchecked_locked_control": "common.empty_panel",
+                      "$unchecked_locked_hover_control": "common.empty_panel",
+                      "$checked_locked_control": "common.empty_panel",
+                      "$checked_locked_hover_control": "common.empty_panel"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_cfg_saved_toast": {
+                "type": "label",
+                "visible": false,
+                "size": [ 220, 18 ],
+                "anchor_from": "top_right",
+                "anchor_to": "top_right",
+                "offset": [ -6, 34 ],
+                "color": [ 140, 255, 170 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "right",
+                "font_size": "small",
+                "font_scale_factor": 0.85,
+                "layer": 2,
+                "text": "Saved for this session",
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_hud_cfg_save",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "ks_cfg_canvas": {
+                "type": "panel",
+                "size": [ 580, 196 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 56 ],
+                "layer": 1,
+                "controls": [
+                  {
+                    "ks_cfg_canvas_bg": {
+                      "type": "image",
+                      "texture": "textures/ui/Black",
+                      "alpha": 0.5,
+                      "size": [ "100%", "100%" ],
+                      "layer": 0
+                    }
+                  },
+                  {
+                    "ks_cfg_p1": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 8, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p1_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p1_num": { "type": "image", "texture": "textures/ui/ksb_numb_1", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p2": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 64, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p2_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p2_num": { "type": "image", "texture": "textures/ui/ksb_numb_2", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p3": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 120, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p3_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p3_num": { "type": "image", "texture": "textures/ui/ksb_numb_3", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p4": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 176, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p4_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p4_num": { "type": "image", "texture": "textures/ui/ksb_numb_4", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p5": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 232, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p5_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p5_num": { "type": "image", "texture": "textures/ui/ksb_numb_5", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p6": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 288, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p6_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p6_num": { "type": "image", "texture": "textures/ui/ksb_numb_6", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p7": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 344, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p7_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p7_num": { "type": "image", "texture": "textures/ui/ksb_numb_7", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p8": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 400, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p8_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p8_num": { "type": "image", "texture": "textures/ui/ksb_numb_8", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p9": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 48 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 456, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p9_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
+                        { "ks_cfg_p9_num": { "type": "image", "texture": "textures/ui/ksb_numb_9", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_p10": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 48, 62 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 512, 8 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_p10_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ 48, 48 ], "layer": 0 } },
+                        { "ks_cfg_p10_lbl": { "type": "label", "text": "INV", "size": [ 48, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_totem": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 56, 70 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 8, 70 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_totem_img": { "type": "image", "texture": "textures/totem/totem_button", "size": [ 56, 56 ], "layer": 0 } },
+                        { "ks_cfg_totem_lbl": { "type": "label", "text": "TOTEM", "size": [ 56, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_f1": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 40, 54 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 76, 70 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_f1_img": { "type": "image", "texture": "textures/ui/ks_f1f3_hud_btn", "size": [ 40, 40 ], "layer": 0 } },
+                        { "ks_cfg_f1_lbl": { "type": "label", "text": "F1", "size": [ 40, 40 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 0, 0 ], "color": [ 1, 1, 1 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "normal", "font_scale_factor": 0.7, "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_f3": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 40, 54 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 128, 70 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_f3_img": { "type": "image", "texture": "textures/ui/ks_f1f3_hud_btn", "size": [ 40, 40 ], "layer": 0 } },
+                        { "ks_cfg_f3_lbl": { "type": "label", "text": "F3", "size": [ 40, 40 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 0, 0 ], "color": [ 1, 1, 1 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "normal", "font_scale_factor": 0.7, "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_invhud": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 150, 70 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 180, 70 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_invhud_bg": { "type": "image", "texture": "textures/ui/white", "color": [ 0, 0, 0 ], "alpha": 0.27, "size": [ 150, 56 ], "layer": 0 } },
+                        { "ks_cfg_invhud_grid": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ 40, 40 ], "anchor_from": "center", "anchor_to": "center", "offset": [ 0, -7 ], "layer": 1 } },
+                        { "ks_cfg_invhud_lbl": { "type": "label", "text": "INV HUD", "size": [ 150, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_dura": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 120, 56 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 342, 70 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_dura_bg": { "type": "image", "texture": "textures/ui/white", "color": [ 0, 0, 0 ], "alpha": 0.5, "size": [ 120, 42 ], "layer": 0 } },
+                        { "ks_cfg_dura_bar": { "type": "image", "texture": "textures/ui/white", "color": [ 0.2, 0.9, 0.3 ], "alpha": 0.9, "size": [ 100, 8 ], "anchor_from": "center", "anchor_to": "center", "offset": [ 0, -7 ], "layer": 1 } },
+                        { "ks_cfg_dura_lbl": { "type": "label", "text": "DURABILITY", "size": [ 120, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cfg_fps": {
+                      "type": "input_panel",
+                      "draggable": "both",
+                      "size": [ 100, 56 ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 472, 70 ],
+                      "layer": 3,
+                      "controls": [
+                        { "ks_cfg_fps_bg": { "type": "image", "texture": "textures/ui/white", "color": [ 0, 0, 0 ], "alpha": 0.5, "size": [ 100, 42 ], "layer": 0 } },
+                        { "ks_cfg_fps_txt": { "type": "label", "text": "KS Client", "size": [ 100, 42 ], "anchor_from": "center", "anchor_to": "center", "offset": [ 0, -7 ], "color": [ 1, 1, 1 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } },
+                        { "ks_cfg_fps_lbl": { "type": "label", "text": "STATUS", "size": [ 100, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_cfg_hint": {
+                "type": "label",
+                "size": [ 580, 44 ],
+                "anchor_from": "bottom_middle",
+                "anchor_to": "bottom_middle",
+                "offset": [ 0, -8 ],
+                "color": [ 160, 170, 185 ],
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "small",
+                "font_scale_factor": 0.8,
+                "layer": 1,
+                "text": "Save keeps this session. To keep it after restart, edit ui/_global_variables.json ($ksb_1..$ksb_10, $ksb_totem_*) and repack. Fine-tune in world: gear menu > HUD tab."
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
