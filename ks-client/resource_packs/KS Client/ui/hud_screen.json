@@ -254,18 +254,7 @@
           }
         ]
       },
-      // KS Inventory HUD (Bottom Right): inventory grid overlay.
-      // Positioned live by the editor inventory row; visibility follows its
-      // toggle live ($ksb_invhud_v is the default). Compact via $ksb_invhud_small.
-      {
-        "array_name": "controls",
-        "operation": "insert_front",
-        "value": [
-          {
-            "ks_invhud_pos@hud.ks_invhud_pos": {}
-          }
-        ]
-      },
+      // (Removed per request: Inventory HUD bottom-right grid fully removed — ks_invhud_pos hook gone.)
       // (Removed per request: Utility HUD + KS F3/F8 keys fully removed.)
       // KS FPS counter (Top Left, always on): paper-doll digits overlay.
       {
@@ -342,35 +331,12 @@
     "cache_screen": true
   },
 
-  // ---------- KS Inventory HUD position wrapper (fullscreen neutral) ----------
-  // Fullscreen so the inner panel lands bottom-right (1.2.2 layout, restored
-  // in 1.2.7 to fix world-join freeze on low-end phones). Visibility follows
-  // the menu Show toggle live (ksbT_invhud_t, default $ksb_invhud_v true).
+  // ---------- KS Inventory HUD position wrapper (REMOVED) ----------
+  // (Removed per request: bottom-right inventory grid fully removed.)
   "ks_invhud_pos": {
     "type": "panel",
-    "size": ["100%", "100%"],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "offset": [0, 0],
-    "visible": "$ksb_invhud_v",
-    "layer": 44,
-    "controls": [
-      {
-        "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
-      }
-    ],
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_type": "global"
-      },
-      {
-        "binding_type": "view",
-        "source_control_name": "ksbT_invhud_t",
-        "source_property_name": "(#toggle_state and #hud_visible)",
-        "target_property_name": "#visible"
-      }
-    ]
+    "size": [0, 0],
+    "controls": []
   },
 
   // ---------- Quick Totem Offhand button (KS Client) ----------
