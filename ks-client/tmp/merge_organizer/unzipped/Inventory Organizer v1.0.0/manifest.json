@@ -1,0 +1,6 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{"format_version":3,"header":{"name":"pack.name","description":"pack.description","uuid":"6c4901e6-0e0b-419b-9614-9cd65404f63c","version":"1.0.0","min_engine_version":"1.21.130","pack_optimization_version":"0.1.0"},"modules":[{"description":"","type":"resources","uuid":"47df4b15-1df1-44a5-83c7-40e3823e31bd","version":"1.0.0"}],"settings":[{"type":"label","text":"ior.pack.settings.info"},{"type":"label","text":"ior.pack.settings.warn"}],"metadata":{"authors":["Dimzcraft"],"license":"All Rights Reserved","url":"https://www.curseforge.com/members/dimzcraft/projects"},"capabilities":["pbr"]}
