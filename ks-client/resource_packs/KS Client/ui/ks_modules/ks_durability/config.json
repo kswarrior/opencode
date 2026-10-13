@@ -1,0 +1,3 @@
+//- Created By KS Client
+//- Durability HUD rebranded from ZenXveda Ultimate PvP Pro v1.8.9 (zx_durability) — bottom-left HUD readout + inventory armor panel + selected-item label. Hover-text copy dropped (KS ui_common already shows durability).
+{"namespace":"ksd_config","settings":{"$use_percentage":false,"$use_colored_text":true}}

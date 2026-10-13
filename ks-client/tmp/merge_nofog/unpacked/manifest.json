@@ -1,0 +1,56 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "pack.name",
+    "description": "pack.description",
+    "uuid": "0166eb34-cc6f-4560-819e-49de05b5556a",
+    "version": [
+      4,
+      5,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "ef878016-6315-4df4-af21-47ff173062bb",
+      "version": [
+        4,
+        5,
+        0
+      ]
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "kentotukun"
+    ]
+  },
+  "subpacks": [
+    {
+      "folder_name": "water",
+      "name": "Water only / 水中だけ消す",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "nether",
+      "name": "All, Nether keeps fog / ネザーは霧を残す",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "nolava",
+      "name": "All except lava / 溶岩以外すべて消す",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "all",
+      "name": "All (recommended) / すべて消す（推奨）",
+      "memory_tier": 0
+    }
+  ]
+}
