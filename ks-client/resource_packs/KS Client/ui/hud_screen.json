@@ -294,7 +294,8 @@
   // touch users tapping F1 could get stuck with no way back.
   // Slot Hotbar Button by KS Client (insert_front) + KS show-HUD
   // (insert_back) coexist as separate modifications on hud_content.
-  // (Legacy F1 button removed per request.)
+  // KS F1/F3 keys (rebranded clean-room from NeBux F1 & F3 Button v1.1.3 idea):
+  // F1 hides HUD, F3 toggles ks_f3_panel, "F1 -" bar is the way back.
   // Quick Totem Offhand button by KS Client (insert_front): 30x30 (40 -25%),
   // raised 30px (new size) above the Offhand default.
   "hud_content": {
@@ -305,6 +306,21 @@
         "value": [
           {
             "totem_pos@hud.totem_btn_pos": {}
+          }
+        ]
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "ks_f1@ks_client.ks_f1_button": {}
+          },
+          {
+            "ks_f3_t@ks_client.ks_f3_button": {}
+          },
+          {
+            "ks_f3@ks_client.ks_f3_panel": {}
           }
         ]
       },
