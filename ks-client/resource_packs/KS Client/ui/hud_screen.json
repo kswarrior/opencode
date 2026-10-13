@@ -287,16 +287,6 @@
         "value": {
           "fps_counter@ks_fps.fps_counter_mask": {}
         }
-      },
-      // KS crosshair indicator: default/entity hit crosshair, center.
-      {
-        "array_name": "controls",
-        "operation": "insert_front",
-        "value": [
-          {
-            "ks_crosshair@hud.ks_crosshair_panel": {}
-          }
-        ]
       }
     ]
   },
@@ -516,66 +506,9 @@
         "target_property_name": "#anchored_offset_value_y"
       }
     ]
-  },
-  // ---------- KS crosshair indicator ----------
-  // Center crosshair: default vs entity (hit) art, toggled by right_helper_collection.
-  // Textures: textures/ui/crosshair_default + crosshair_entity (direct UI paths, no atlas).
-  // Config: $ks_crosshair_v/size/alpha/offset in _global_variables.json.
-  "ks_crosshair_panel": {
-    "type": "panel",
-    "size": "$ks_crosshair_size",
-    "anchor_from": "center",
-    "anchor_to": "center",
-    "offset": "$ks_crosshair_offset",
-    "visible": "$ks_crosshair_v",
-    "layer": 13,
-    "controls": [
-      {
-        "default@hud.ks_crosshair_default": {}
-      },
-      {
-        "entity@hud.ks_crosshair_entity": {}
-      }
-    ]
-  },
-  "ks_crosshair_default": {
-    "type": "image",
-    "texture": "textures/ui/crosshair_default",
-    "size": ["100%", "100%"],
-    "alpha": "$ks_crosshair_alpha",
-    "bindings": [
-      {
-        "binding_type": "collection",
-        "binding_name": "(#helper_description - 'hudScreen.tooltip.')",
-        "binding_name_override": "#get",
-        "binding_collection_name": "right_helper_collection",
-        "binding_condition": "always"
-      },
-      {
-        "binding_type": "view",
-        "source_property_name": "(#get = '') or (not (#get = 'hit'))",
-        "target_property_name": "#visible"
-      }
-    ]
-  },
-  "ks_crosshair_entity": {
-    "type": "image",
-    "texture": "textures/ui/crosshair_entity",
-    "size": ["100%", "100%"],
-    "alpha": "$ks_crosshair_alpha",
-    "bindings": [
-      {
-        "binding_type": "collection",
-        "binding_name": "(#helper_description - 'hudScreen.tooltip.')",
-        "binding_name_override": "#get",
-        "binding_collection_name": "right_helper_collection",
-        "binding_condition": "always"
-      },
-      {
-        "binding_type": "view",
-        "source_property_name": "((#get - (#get - 'hit')) = 'hit')",
-        "target_property_name": "#visible"
-      }
-    ]
   }
+
+  // KS crosshair: vanilla-path replace only (textures/ui/crosshair.png +
+  // textures/gui/newgui/HUD/crosshair.png) — 1st-person only, engine hides in 3rd.
+  // No overlay panel: always-on images drew over the player face in 3rd-person views.
 }
