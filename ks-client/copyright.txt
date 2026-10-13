@@ -169,12 +169,16 @@ here. Respect their licenses — get permission before redistributing.
              `ui/ks_client_common.json` `ks_f1_button` (action
              `button.hide_gui_all`, "F1", top_middle [-39, 0.5], 20x20) +
              `ks_f3_button` (toggle `ks_f3_t` → `ks_f3_panel`, top_middle
-             [38.5, 0.5], 20x20) + `ks_f3_panel` (version + position + days,
-             top-left below status) + `ks_show_hud` short `"F1 -"` at
+             [38.5, 0.5], 20x20) + `ks_f3_panel` (days + position + live
+             recovery/clock/compass icons + XP + world + OW<->Nether,
+             top-left below status; version label removed per request;
+             true Time: HH:MM NOT exposed to RP UI so clock is live icon) +
+             `ks_show_hud` short `"F1 -"` at
              reference size ["50%", 25] offset [0, -3] (was 120x24 @
              [-60, -32]; upstream "CLICK HERE TO SHOW HUD :)" NOT taken),
              `ui/hud_screen.json` `hud_content` insert_front hook,
-             `$ks_f1_v/$ks_f3_v` in `ui/_global_variables.json` +
+             `$ks_f1_v/$ks_f3_v` + `$ks_recovery_id/$ks_clock_id/$ks_compass_id`
+             (45088768/22740992/22609920) in `ui/_global_variables.json` +
              `Show F1/F3 HUD` toggles (`ksbT_f1_t`/`ksbT_f3show_t`) in HUD tab
              (`ui/ks_modules/ksb_hotbar_button/settings.json`).
 
