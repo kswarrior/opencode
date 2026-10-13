@@ -1492,19 +1492,6 @@
     ],
     "controls": [
       {
-        "ks_f3_ver": {
-          "type": "label",
-          "size": [ "100%", 10 ],
-          "color": [ 1, 1, 1 ],
-          "shadow": true,
-          "enable_profanity_filter": false,
-          "localize": false,
-          "font_size": "normal",
-          "font_scale_factor": 0.6,
-          "text": "KS Client F3 Debug"
-        }
-      },
-      {
         "ks_f3_pos": {
           "type": "label",
           "size": [ "100%", 10 ],
