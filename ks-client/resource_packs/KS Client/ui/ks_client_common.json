@@ -1504,7 +1504,7 @@
   // Right-side context lives in ks_f3_right below (same-to-same vs f3right).
   // NOTE: true world clock time (Time: HH:MM) is NOT exposed to
   // resource-pack UI, so clock is a live item icon (hands move) + Day proxy.
-  // Visible only while the F3 toggle (ks_f3_screen_toggle) is ON and the HUD
+  // Visible only while the F3 toggle instance ks_f3_t is ON and the HUD
   // is visible. Menu Show F3 ($ks_f3_v + ksbT_f3show_t) gates the F3 *button*;
   // the panel itself follows the button state + #hud_visible (like upstream).
   "ks_f3_panel": {
@@ -1519,7 +1519,7 @@
     "bindings": [
       {
         "binding_type": "view",
-        "source_control_name": "ks_f3_screen_toggle",
+        "source_control_name": "ks_f3_t",
         "source_property_name": "#toggle_state",
         "target_property_name": "#f3_visible"
       },
@@ -2072,7 +2072,7 @@
     "bindings": [
       {
         "binding_type": "view",
-        "source_control_name": "ks_f3_screen_toggle",
+        "source_control_name": "ks_f3_t",
         "source_property_name": "#toggle_state",
         "target_property_name": "#f3_visible_r"
       },
