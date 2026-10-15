@@ -115,32 +115,42 @@ here. Respect their licenses — get permission before redistributing.
               + hopper_outside_east/north/south/west (16-frame each).
               Normal/double/ender chests left vanilla; ores untouched.
 
-13. Crosshair Indicator, 1st-person only (dynamic default/entity, PandaMine art)
+13. Crosshair Indicator, dynamic default/entity (PandaMine art)
     Author : PandaMine5 — PandaMine's Crosshair Indicator v1.1
     Source : https://edge.mcpedl.com/files/8918/783/PandaMine%27s%20Crosshair%20Indicator%20-%20v1.1.mcpack?ft=134975c977085aa2829e796b92a61150&bd=hi4hzt1jzz
-             (staged in ./tmp/merge_crosshair/ for diff; upstream LICENSE + manifest + pack_icon NOT taken)
+             (staged in ./tmp/merge_crosshair/ for diff; upstream LICENSE + manifest + pack_icon NOT taken;
+              re-downloaded 2026-10-15, identical md5 09f1794e45339f815609cbd1f780b3a3 — upstream unchanged)
     Note   : (C) 2025-2026 PandaMine5 — derivative/redistribution only
              with the creator's permission (see upstream LICENSE: no
              unauthorized modification/derivative, share only via official
              links, no monetized redistribution).
              Upstream `pm5_crosshair_panel` / `crosshair_default/entity` /
-             `hud.*` controls rebranded to KS (`hud_crosshair.ks_crosshair_*`,
-             `$ks_crosshair_*`, `textures/ui/ks_crosshair_*`). Grep verified
-             zero `pm5_` / `PandaMine` leftovers in `resource_packs/KS Client/`
+             `hud.*` controls rebranded to KS (`hud.ks_crosshair_panel` +
+             `ks_crosshair_default/entity`, `$ks_crosshair_*`,
+             `textures/ui/ks_crosshair_*`). Grep verified zero `pm5_` /
+             functional `PandaMine` leftovers in `resource_packs/KS Client/`
              (only provenance comments + this credit remain).
-    Now    : `ui/hud_crosshair_overlay.json` (namespace `hud_crosshair`,
-             `ks_crosshair_panel` 15x15 center + `ks_crosshair_default/entity`
-             hit-switch via `right_helper_collection` + `hud_crosshair_screen`
-             override — engine screen hides in 2nd/3rd-person, 1st-person only;
-             20th `_ui_defs.json` entry, append-only) +
+             Engine truth: the `right_helper_collection` 'hit' check exists
+             ONLY in the hud_screen screen, so the dynamic panel MUST live in
+             `ui/hud_screen.json` (root_panel insert_front) — in
+             `hud_crosshair_overlay` the entity texture can never trigger
+             (verified: default always on, entity never). hud_screen panels
+             show in ALL perspectives (engine auto-hide in 2nd/3rd applies
+             only to the overlay screen), so 1st-person-only dynamic is NOT
+             achievable resource-pack-only. Master hide via `$ks_crosshair_v`.
+    Now    : `ui/hud_screen.json` `hud.ks_crosshair_panel` (15x15 center,
+             layer 13) + `ks_crosshair_default/entity` hit-switch +
+             `root_panel` hook + `$ks_crosshair_v/size/alpha/offset` in
+             `ui/_global_variables.json`; `ui/hud_crosshair_overlay.json`
+             (namespace `hud_crosshair`, 20th `_ui_defs.json` entry,
+             append-only) empties vanilla cursor (`controls:[]`, upstream-exact)
+             so the dynamic panel is the only crosshair (no double-draw);
              `textures/ui/ks_crosshair_default.png` (86B default) +
              `textures/ui/ks_crosshair_entity.png` (101B mob-hit variant) +
              vanilla fallback `textures/ui/crosshair.png` +
              `textures/ui/crosshair_default.png` +
-             `textures/gui/newgui/HUD/crosshair.png` (same default art,
-             engine-hidden in 3rd; no atlas) + `$ks_crosshair_v/size/alpha/offset`
-             in `ui/_global_variables.json`. No `hud_screen.json` panel:
-             always-on images drew over the player face in 3rd-person views.
+             `textures/gui/newgui/HUD/crosshair.png` (same default art;
+             no atlas).
 
 14. Better Breaking, loading-bar subpack only (block-crack overlay
     as loading bar, `loading_bar` subpack only — colorful / progress /
