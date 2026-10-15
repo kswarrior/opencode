@@ -531,7 +531,10 @@
     ]
   }
 
-  // KS crosshair: vanilla-path replace only (textures/ui/crosshair.png +
-  // textures/gui/newgui/HUD/crosshair.png) — 1st-person only, engine hides in 3rd.
-  // No overlay panel: always-on images drew over the player face in 3rd-person views.
+  // KS crosshair: dynamic indicator lives in ui/hud_crosshair_overlay.json
+  // (hud_crosshair engine screen, rebranded PandaMine v1.1 default/entity art
+  // via $ks_crosshair_v/size/alpha/offset) — 1st-person only, engine hides in
+  // 2nd/3rd. No hud_screen panel: always-on images drew over the player face
+  // in 3rd-person views. Vanilla fallback textures/ui/crosshair.png +
+  // textures/gui/newgui/HUD/crosshair.png kept (same default art).
 }
