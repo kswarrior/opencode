@@ -1,0 +1,84 @@
+{
+  // === Hide Options ===
+  // Change value to true if you want to remove/hide any button from hud screen :)
+  "$hideinventoryleftbutton": false,   // Change to true to remove the left inventory switcher on hotbar
+  "$hideinventoryrightbutton": false,  // Change to true to remove the right inventory switcher on hotbar
+  "$hidef1button": false,
+  "$hidef8button": false,
+  "$hideinventoryfullwarning": false,
+  "$hideinventorycounter": false,
+  "$hidef3button": false,
+  "$hideclock&compass": false,
+  "$hidexplevel": false,
+  "$hidemodmenubutton": false,
+
+  // === IDs ===
+  "$recoverycompassid": 45088768, //44630016
+  "$clockid": 22740992,
+  "$compassid": 22609920,
+
+  // === Button Offsets & Settings ===
+  "f1buttonoffset": [-38.5, 0.5],  // Change values to set F1 button position
+  "f8buttonoffset": [38.5, 0.5],   // Change values to set F8 button position
+  "$f8buttonremove": false,
+  "$f3alpha": 0.4,
+
+  // === Paper Doll ===
+  "$paperdollsize": [65, 65],        // Change size of paper doll
+  "$paperdolloffset": [-140, -35],   // Change position of paper doll
+  "$paperdolltype": "hud_player_renderer", // "live_player_renderer" = 2D but fixes disappearing
+
+  // === Other ===
+  "$armorbg": false,
+  "$close_screen_on_hurt": false, // If true, closes screens when player takes damage
+  "$test": "mod_menu_on",
+  
+  
+  "$generic_button_text_color": [1, 1, 1],
+
+    "$light_button_default_text_color": [0.1176, 0.1176, 0.1216],
+    "$light_button_hover_text_color": [0.1176, 0.1176, 0.1216],
+    "$light_button_pressed_text_color": [0.1176, 0.1176, 0.1216],
+    "$light_button_locked_text_color": [0.7, 0.7, 0.7],
+
+    "$light_toggle_default_text_color": [0.1176, 0.1176, 0.1216],
+    "$light_toggle_hover_text_color": [0.1176, 0.1176, 0.1216],
+    "$light_toggle_checked_default_text_color": [0.1176, 0.1176, 0.1216],
+    "$light_toggle_checked_hover_text_color": [0.1176, 0.1176, 0.1216],
+
+    "$dark_button_default_text_color": [1.0, 1.0, 1.0],
+    "$dark_button_hover_text_color": [1.0, 1.0, 1.0],
+    "$dark_button_pressed_text_color": [1.0, 1.0, 1.0],
+    "$dark_button_locked_text_color": [0.7, 0.7, 0.7],
+
+    "$dark_toggle_default_text_color": [1.0, 1.0, 1.0],
+    "$dark_toggle_hover_text_color": [1.0, 1.0, 1.0],
+    "$dark_toggle_checked_default_text_color": [1.0, 1.0, 1.0],
+    "$dark_toggle_checked_hover_text_color": [1.0, 1.0, 1.0],
+    
+    "$red_button_default_text_color": [1, 1, 1],  
+    "$red_button_hover_text_color": [1, 1, 1],  
+    "$red_button_pressed_text_color": [0.9, 0.9, 0.9],  
+    "$red_button_locked_text_color": [0.7, 0.7, 0.7],
+
+    "$tab_unchecked_text_color": [0.8784, 0.8784, 0.8784],
+    "$tab_unchecked_hover_text_color": [0.1176, 0.1176, 0.1216],
+    "$tab_unchecked_locked_text_color": [0.8784, 0.8784, 0.8784],
+    "$tab_unchecked_locked_hover_text_color": [0.8784, 0.8784, 0.8784],
+
+    "$tab_checked_text_color": [1.0, 1.0, 1.0],
+    "$tab_checked_hover_text_color": [1.0, 1.0, 1.0],
+    "$tab_checked_locked_text_color": [0.3, 0.3, 0.3],
+    "$tab_checked_locked_hover_text_color": [0.3, 0.3, 0.3],
+
+    "$light_glyph_default_color": [0.1176, 0.1176, 0.1216],
+
+    "$tab_secondary_unchecked_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_unchecked_hover_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_unchecked_locked_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_unchecked_locked_hover_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_checked_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_checked_hover_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_checked_locked_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_checked_locked_hover_text_color": [1.0, 1.0, 1.0]
+}

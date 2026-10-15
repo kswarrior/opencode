@@ -1,0 +1,117 @@
+
+NeBux.play=§lPlay
+NeBux.exit=§fExit
+NeBux.exitred=§cExit
+NeBux.clickme=Click Me! :)
+
+
+NeBux.cs=Control Settings:
+NeBux.os=Other Settings:
+NeBux.pc=Pack Creator:
+NeBux.coms=Common Settings:
+
+
+NeBux.ow=§fEntering §aOverworld
+NeBux.nw=§fEntering §cNether
+NeBux.ew=§fEntering §dThe End
+
+NeBux.players=Players
+NeBux.ss=Screenshot
+NeBux.back=§lBack
+
+NeBux.copy=Copy
+NeBux.paste=Paste
+NeBux.block=Block
+NeBux.player=Player
+
+
+NeBux.abtpack=About Pack
+NeBux.abtdev2=About Developer
+NeBux.credits=Credits
+NeBux.projects=My Projects :)
+
+
+NeBux.qc=Quick Chat
+NeBux.qcpd1=Quick Chat is super useful chat ui which adds multiple
+NeBux.qcpd2=useful features to your chat screen which makes your
+NeBux.qcpd3=chatting more easier as well as commands also.
+NeBux.qcv=Version 1.0
+NeBux.qcstatus=Status: §aAvailable
+
+
+NeBux.ncpn=NeBux Containers
+NeBux.ncd1=NeBux Containers is a gui pack which changes all Ingame
+NeBux.ncd2=containers of crafting table, furnace, inventory etc etc..
+NeBux.ncpv=Version 1.0
+NeBux.ncstatus=Status: §cNot Published Yet
+
+
+NeBux.onupn=NeBux UI
+NeBux.onud1=NeBux Ui is a standalone pack of NeBux UI+, NeBux UI
+NeBux.onud2=only a user interface its not provides more features.
+NeBux.onupv=Version 1.0
+NeBux.onustatus=Status: §cNot Published Yet
+
+NeBux.touch=Touch
+NeBux.k&m=Keyboard & Mouse
+NeBux.controller=Controller
+NeBux.video=Video
+NeBux.advance=Advance
+
+NeBux.abtdev=ABOUT THE DEVELOPER
+NeBux.nebuxname=NeBux
+NeBux.bio1=Hello, I'm NeBux!
+NeBux.bio2=Just a guy chilling at home with nothing better to do,
+NeBux.bio3=so he made this ;)
+NeBux.sm=Social Media
+NeBux.nu+status=Status: §aAvailable
+
+
+NeBux.atp=ABOUT THE PACK
+NeBux.pn=NEBUX UI+
+NeBux.pd1=A simple ui pack which makes your regular gameplay more
+NeBux.pd2=easier by adding many features to your game :)
+NeBux.author=Author: NeBux
+NeBux.pv=Version: 1.0
+NeBux.tou=Terms of Use
+NeBux.wucd=§aWHAT YOU CAN DO
+NeBux.tou1=> You can modify this pack only for personal use.
+NeBux.tou2=> You can showcase this pack on YouTube, but you must provide the official
+NeBux.tou2c=  download page link. You cannot share a direct or paywall download link.
+NeBux.wucantd=§cWHAT YOU CAN'T DO
+NeBux.tou3=> You cannot re-upload this pack anywhere.
+NeBux.tou4=> You are not allowed to use any assets or code from this pack.
+NeBux.tou4c=  If you wish to use them,contact me on Discord for permission. I would
+NeBux.tou4c1=  like to know what you need and how you plan to use it :)
+NeBux.tou5=> You are not allowed to upload a modified version of this pack anywhere
+NeBux.tou5c=  & claim it as your own.
+
+
+NeBux.fu=Frequently Used
+NeBux.toggles=Toggles
+NeBux.dropdowns=Dropdowns
+NeBux.sliders=Sliders
+NeBux.graphics=Graphics
+
+
+NeBux.hudani=§lCLICK HERE TO SHOW HUD :)
+NeBux.invfullwarn=§c§lInventory Full!
+
+
+NeBux.s&qw1=Are you sure?
+NeBux.s&qw2=You want to exit the game?
+NeBux.no=§l§cNO
+NeBux.yes=§l§fYes
+
+
+NeBux.load1=This pack is created by NeBux.
+NeBux.load2=Join NeBux's Discord Server for updates! :)
+NeBux.load3=Join this server: https://discord.gg/JyeQ75JCCm
+NeBux.load4=Checkout nebux head icon button which is on start screen
+NeBux.load5=New update is here! checkout NeBux's MCPEDL Page!
+NeBux.load6=New update is here! checkout NeBux's YouTube Channel!
+
+container.inventory= 
+chestScreen.header.large=Large Chest
+chestScreen.header.player=
+chestScreen.header.small=Chest

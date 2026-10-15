@@ -1,0 +1,20 @@
+{
+  "ui_defs": [
+    "ui/NeBux/ModMenu/HotbarNumbers.json",
+    "ui/NeBux/ModMenu/F3.json",
+    "ui/NeBux/ModMenu/F3Right.json",
+    "ui/NeBux/ModMenu/F3NC.json",
+    "ui/NeBux/NeBuxModMenuScreen.json",
+    "ui/NeBux/ModMenu/NeBuxGeneral.json",
+    "ui/NeBux/ModMenu/NeBuxHudCrosshairs.json",
+    "ui/NeBux/ModMenu/NeBuxOther.json",
+    "ui/NeBux/ModMenu/NeBuxCrosshairs.json",
+    "ui/NeBux/NeBuxInventoryCounterFullWarn.json",
+    "ui/NeBux/NeBuxToggles.json",
+    "ui/NeBux/NeBuxInventoryCounter.json",
+    "ui/NeBux/NeBuxHud.json",
+    "ui/NeBux/NeBuxHudHide.json",
+    "ui/NeBux/NeBuxAnimations.json",
+    "ui/NeBux/NeBuxButtons.json"
+  ]
+}

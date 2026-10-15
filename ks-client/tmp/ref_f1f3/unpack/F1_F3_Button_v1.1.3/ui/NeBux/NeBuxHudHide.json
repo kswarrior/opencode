@@ -1,0 +1,58 @@
+{
+   "namespace": "NeBuxHudHide",
+
+   
+
+   "NeBuxHudHideTextPanel": {
+      "type": "panel",
+      "size": ["50%", 25],
+      "offset": [0, -3],
+      "ignored": "$always_visible_hotbar",
+      "anchor_from": "bottom_middle",
+      "anchor_to": "bottom_middle",
+      "bindings": [
+         {
+            "binding_name": "(not #hud_visible)",
+            "binding_name_override": "#visible",
+            "binding_type": "global"
+         }
+      ],
+      "controls": [
+         { "hide_text_base@hide_text_background": {} },
+         { "unhide_button@unhide_btn": {} }
+      ]
+   },
+
+   "unhide_btn@common.button": {
+      "$pressed_button_name": "button.hide_gui_all",
+      "size": ["100%", "100%"]
+   },
+
+   "hide_text_background": {
+      "type": "image",
+      "ignored": "(not $touch)",
+      "texture": "NeBux/NeBuxUI/0",
+      "size": ["100%", "100%"],
+      "animation_reset_name": "button.hide_gui_all",
+      "alpha": "@NeBuxAnimations.hide_animation_start",
+      "propagate_alpha": true,
+      "disable_anim_fast_forward": true,
+      "controls": [
+         { "text@hide_text": {} }
+      ]
+   },
+
+   "hide_text": {
+      "type": "image",
+      "texture": "textures/ui/hud_tip_text_background",
+      "size": ["100%c + 4px", "100%c + 4px"],
+      "controls": [
+         {
+            "text": {
+               "type": "label",
+               "text": "NeBux.hudani"
+            }
+         }
+      ]
+   }
+}

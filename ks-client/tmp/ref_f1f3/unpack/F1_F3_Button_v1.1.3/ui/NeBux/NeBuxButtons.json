@@ -1,0 +1,424 @@
+{
+    "namespace": "NeBux_Buttons",
+    
+    "tab_top@common_tabs.base_tab": {
+    "$is_left_most_tab|default": false,
+    "$is_right_most_tab|default": false,
+
+    "variables": [
+      {
+        "requires": "($is_left_most_tab and not $is_right_most_tab)",
+        "$unchecked_default_image": "textures/ui/TabLeftBackBottomMost",
+    "$unchecked_hover_image": "textures/ui/TabLeftBackBottomMostHover",
+    "$unchecked_locked_image": "textures/ui/TabLeftBackBottomMost",
+    "$unchecked_locked_hover_image": "textures/ui/TabLeftBackBottomMost",
+    "$checked_default_image": "textures/ui/TabLeftFrontBottomMost",
+    "$checked_hover_image": "textures/ui/TabLeftFrontBottomMostHover",
+    "$checked_locked_image": "textures/ui/TabLeftFrontBottomMost",
+    "$checked_locked_hover_image": "textures/ui/TabLeftFrontBottomMost"
+      },
+      {
+        "requires": "($is_right_most_tab and not $is_left_most_tab)",
+        "$unchecked_default_image": "textures/ui/TabLeftBackBottomMost",
+    "$unchecked_hover_image": "textures/ui/TabLeftBackBottomMostHover",
+    "$unchecked_locked_image": "textures/ui/TabLeftBackBottomMost",
+    "$unchecked_locked_hover_image": "textures/ui/TabLeftBackBottomMost",
+    "$checked_default_image": "textures/ui/TabLeftFrontBottomMost",
+    "$checked_hover_image": "textures/ui/TabLeftFrontBottomMostHover",
+    "$checked_locked_image": "textures/ui/TabLeftFrontBottomMost",
+    "$checked_locked_hover_image": "textures/ui/TabLeftFrontBottomMost"
+      }
+    ],
+
+    "$unchecked_default_image": "textures/ui/TabLeftBackBottomMost",
+    "$unchecked_hover_image": "textures/ui/TabLeftBackBottomMostHover",
+    "$unchecked_locked_image": "textures/ui/TabLeftBackBottomMost",
+    "$unchecked_locked_hover_image": "textures/ui/TabLeftBackBottomMost",
+    "$checked_default_image": "textures/ui/TabLeftFrontBottomMost",
+    "$checked_hover_image": "textures/ui/TabLeftFrontBottomMostHover",
+    "$checked_locked_image": "textures/ui/TabLeftFrontBottomMost",
+    "$checked_locked_hover_image": "textures/ui/TabLeftFrontBottomMost"
+  }, 
+    
+   "hover_text_panel": {
+   "ignored": "(not $hover_state)",
+   "visible": "(not ($hover_text = ''))",
+   "type": "panel",
+   "allow_clipping": false,
+   "$hover_text|default": "",
+   "$use_hover_text_renderer|default": false,
+   "controls": [
+      {
+         "hover_text_button@NeBux_Buttons.hover_text_button": {
+            "ignored": "($touch or $use_hover_text_renderer)"
+         }
+      },
+      {
+         "hover_text_image_panel@NeBux_Buttons.hover_text_image_panel": {
+            "ignored": "(not $touch or $use_hover_text_renderer)"
+         }
+      },
+      {
+         "hover_text_renderer@common.hover_text": {
+            "ignored": "(not $use_hover_text_renderer)",
+            "allow_clipping": false,
+            "layer": 200,
+            "property_bag": {
+               "#hover_text_label": "$hover_text"
+            },
+            "bindings": [
+               {
+                  "binding_type": "view",
+                  "source_property_name": "#hover_text_label",
+                  "target_property_name": "#hover_text"
+               }
+            ]
+         }
+      }
+   ]
+},
+
+"hover_text_image_panel": {
+   "type": "image",
+   "texture": "NeBux/NeBuxUI/Black",
+   "size": [ "100%c + 10px", "100%c + 8px" ],
+   "layer": 100,
+   "anchor_from": "center",
+   "anchor_to": "$hover_text_anchor",
+   "offset": "$hover_text_offset",
+   "$hover_text_shadow|default": false,
+   "$hover_text_localize|default": true,
+   "$hover_text_offset|default": [ 8, 2 ],
+   "$hover_text_anchor|default": "left_middle",
+   "$hover_text|default": "",
+   "$hover_text_size|default": [ "default", "default" ],
+   "$hover_text_max_size|default": [ "default", "default" ],
+   "$hover_text_bindings|default": [],
+   "controls": [
+      {
+         "hover_text@$hover_text_panel": {
+            "layer": 1
+         }
+      }
+   ]
+},
+
+"hover_text_button": {
+   "type": "button",
+   "size": [ 1, 1 ],
+   "anchor_from": "center",
+   "anchor_to": "center",
+   "layer": 200,
+   "follows_cursor": true,
+   "consume_hover_events": false,
+   "always_handle_pointer": true,
+   "focus_enabled": false,
+   "focus_magnet_enabled": false,
+   "tts_ignore_count": true,
+   "tts_skip_message": true,
+   "tts_inherit_siblings": true,
+   "allow_clipping": false,
+   "controls": [
+      {
+         "hover@NeBux_Buttons.hover_text_image_panel": {}
+      }
+   ]
+},
+    
+    "QuickCraftBtn@common_buttons.light_content_button":{
+    "size": [ 20, 20 ],
+    "$default_button_texture": "NeBux/NeBuxUI/Icons/quick_craft",
+    "$hover_button_texture": "NeBux/NeBuxUI/Icons/quick_craft_hover",
+    "$pressed_button_texture": "NeBux/NeBuxUI/Icons/quick_craft_pressed",
+    "$locked_button_texture": "NeBux/NeBuxUI/Icons/quick_craft",
+    "$default_state_border_visible": false,
+    "$hover_state_border_visible": false,
+    "$pressed_state_border_visible": false,
+    "$locked_state_border_visible": false
+  },
+  
+  "QuickCraftBtnPocket@common_buttons.light_content_button":{
+    "size": [ 20, 20 ],
+    "$default_button_texture": "NeBux/NeBuxUI/Icons/quick_craft_pocket",
+    "$hover_button_texture": "NeBux/NeBuxUI/Icons/quick_craft_hover_pocket",
+    "$pressed_button_texture": "NeBux/NeBuxUI/Icons/quick_craft_pressed_pocket",
+    "$locked_button_texture": "NeBux/NeBuxUI/Icons/quick_craft_pocket",
+    "$default_state_border_visible": false,
+    "$hover_state_border_visible": false,
+    "$pressed_state_border_visible": false,
+    "$locked_state_border_visible": false
+  },
+    
+    "close_button@common.close_button": {
+    "offset": [ 25, -2 ],
+    "controls": [
+      {
+        "default@common.close_button_panel": {
+        "$close_button_texture": "NeBux/NeBuxUI/Icons/close_button",
+        "size": [ 19, 19 ]
+        }
+      },
+      {
+        "hover@common.close_button_panel": {
+        "$close_button_texture": "NeBux/NeBuxUI/Icons/close_button_hover",
+        "size": [ 19, 19 ]
+        }
+      },
+      {
+        "pressed@common.close_button_panel": {
+        "$close_button_texture": "NeBux/NeBuxUI/Icons/close_button_pressed",
+        "size": [ 19, 19 ]
+        }
+      }
+    ]
+  },
+  
+  /*
+  
+  "$default_content_alpha|default": 1,
+    "$hover_content_alpha|default": 1,
+    
+    */
+    "quick_craft@common_buttons.light_button_assets": {
+    "$default_button_texture|default": "NeBux/NeBuxUI/Icons/quick_craft",
+    "$hover_button_texture|default": "NeBux/NeBuxUI/Icons/quick_craft_hover",
+    "$pressed_button_texture|default": "NeBux/NeBuxUI/Icons/quick_craft_pressed",
+    "$locked_button_texture|default": "NeBux/NeBuxUI/Icons/quick_craft"
+  },
+    
+    "recipe_toggle@crafting.group_toggle": {
+    "size": ["100%y", "100%"],
+    "$button_content": "crafting.layout_toggle_content",
+    "$toggle_name": "layout_toggle",
+    "$template_toggle": "crafting.layout_template_toggle",
+    "$allow_controller_back_button_mapping": "$is_ps4",
+    "$toggle_view_binding_name": "default_binding",
+    "$toggle_group_forced_index": 5,
+    "$toggle_default_state": true,
+    "$unchecked_control": "NeBux_Buttons.recipe_book",
+    "$checked_control": "NeBux_Buttons.recipe_book_pressed",
+    "$unchecked_hover_control": "NeBux_Buttons.recipe_book_hover",
+    "$checked_hover_control": "NeBux_Buttons.recipe_book_pressed",
+    "$unchecked_locked_control": "NeBux_Buttons.recipe_book_pressed",
+    "$unchecked_locked_hover_control": "NeBux_Buttons.recipe_book_pressed",
+    "$checked_locked_control": "NeBux_Buttons.recipe_book_pressed",
+    "$checked_locked_hover_control": "NeBux_Buttons.recipe_book_pressed"
+  },
+  
+  "recipe_full@crafting.group_toggle": {
+    "size": ["100%y", "100%"],
+    "$button_content": "crafting.layout_toggle_content",
+    "$toggle_name": "layout_toggle",
+    "$template_toggle": "crafting.layout_template_toggle",
+    "$allow_controller_back_button_mapping": "$is_ps4",
+    "$toggle_view_binding_name": "default_binding",
+    "$toggle_group_forced_index": 5,
+    "$toggle_default_state": true,
+    "$unchecked_control": "NeBux_Buttons.recipe_expand",
+    "$checked_control": "NeBux_Buttons.recipe_expand_pressed",
+    "$unchecked_hover_control": "NeBux_Buttons.recipe_expand_hover",
+    "$checked_hover_control": "NeBux_Buttons.recipe_expand_pressed",
+    "$unchecked_locked_control": "NeBux_Buttons.recipe_expand_pressed",
+    "$unchecked_locked_hover_control": "NeBux_Buttons.recipe_expand_pressed",
+    "$checked_locked_control": "NeBux_Buttons.recipe_expand_pressed",
+    "$checked_locked_hover_control": "NeBux_Buttons.recipe_expand_pressed"
+  },
+  
+  "survival_toggle@crafting.group_toggle": {
+    "size": ["100%y", "100%"],
+    "$button_content": "crafting.layout_toggle_content",
+    "$toggle_name": "layout_toggle",
+    "$template_toggle": "crafting.layout_template_toggle",
+    "$allow_controller_back_button_mapping": "$is_ps4",
+    "$toggle_view_binding_name": "default_binding",
+    "$toggle_group_forced_index": 5,
+    "$toggle_default_state": true,
+    "$unchecked_control": "NeBux_Buttons.inventory_icon",
+    "$checked_control": "NeBux_Buttons.inventory_icon_pressed",
+    "$unchecked_hover_control": "NeBux_Buttons.inventory_icon_hover",
+    "$checked_hover_control": "NeBux_Buttons.inventory_icon_pressed",
+    "$unchecked_locked_control": "NeBux_Buttons.inventory_icon_pressed",
+    "$unchecked_locked_hover_control": "NeBux_Buttons.inventory_icon_pressed",
+    "$checked_locked_control": "NeBux_Buttons.inventory_icon_pressed",
+    "$checked_locked_hover_control": "NeBux_Buttons.inventory_icon_pressed"
+  },
+  
+  "inventory_icon": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/inventory_icon",
+    "size": [20, 20]
+  },
+  "inventory_icon_hover": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/inventory_icon_hover",
+    "size": [20, 20]
+  },
+  "inventory_icon_pressed": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/inventory_icon_pressed",
+    "size": [20, 20]
+  },
+  
+  "recipe_book": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/recipe_book",
+    "size": [20, 20]
+  },
+  "recipe_book_hover": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/recipe_book_hover",
+    "size": [20, 20]
+  },
+  "recipe_book_pressed": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/recipe_book_pressed",
+    "size": [20, 20]
+  },
+  
+  "quick_craft": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/quick_craft",
+    "size": [20, 20]
+  },
+  "quick_craft_hover": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/quick_craft_hover",
+    "size": [20, 20]
+  },
+  "quick_craft_pressed": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/quick_craft_pressed",
+    "size": [20, 20]
+  },
+  
+  "recipe_expand": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/recipe_expand",
+    "size": [20, 20]
+  },
+  "recipe_expand_hover": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/recipe_expand_hover",
+    "size": [20, 20]
+  },
+  "recipe_expand_pressed": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/recipe_expand_pressed",
+    "size": [20, 20]
+  },
+    
+    
+  
+    "green_button@common_buttons.light_text_button": {
+        "$default_button_texture|default": "NeBux/NeBuxUI/Buttons/start_normal",
+        "$hover_button_texture|default": "NeBux/NeBuxUI/Buttons/start_hover",
+        "$pressed_button_texture|default": "NeBux/NeBuxUI/Buttons/start_pressed",
+        "$locked_button_texture|default": "NeBux/NeBuxUI/Buttons/disabledButtonNoBorder",
+        "$default_text_color": "white",
+        "$hover_text_color": "white",
+        "$pressed_text_color": "white",
+        "$locked_text_color": "white"
+    },
+    "white_button@common_buttons.light_text_button": {
+        "$default_button_texture|default": "NeBux/NeBuxUI/Buttons/white_normal",
+        "$hover_button_texture|default": "NeBux/NeBuxUI/Buttons/white_hover",
+        "$pressed_button_texture|default": "NeBux/NeBuxUI/Buttons/white_pressed",
+        "$locked_button_texture|default": "NeBux/NeBuxUI/Buttons/disabledButtonNoBorder"
+    },
+    "red_button@common_buttons.light_text_button": {
+        "$default_button_texture|default": "NeBux/NeBuxUI/Buttons/red_normal",
+        "$hover_button_texture|default": "NeBux/NeBuxUI/Buttons/red_hover",
+        "$pressed_button_texture|default": "NeBux/NeBuxUI/Buttons/red_pressed",
+        "$locked_button_texture|default": "NeBux/NeBuxUI/Buttons/disabledButtonNoBorder"
+    },
+    "quick_craft_button@common_buttons.light_text_button": {
+        "$default_button_texture|default": "NeBux/NeBuxUI/Buttons/arrow_normal",
+        "$hover_button_texture|default": "NeBux/NeBuxUI/Buttons/arrow_hover",
+        "$pressed_button_texture|default": "NeBux/NeBuxUI/Buttons/arrow_pressed",
+        "$locked_button_texture|default": "NeBux/NeBuxUI/Buttons/arrow_normal"
+    },
+    
+  "default_normal": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/default",
+    "size": [20, 20]
+  },
+  "default_hover": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/default_hover",
+    "size": [20, 20]
+  },
+  "default_pressed": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/default_pressed",
+    "size": [20, 20]
+  },
+  
+  
+  "quick_move_normal": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/quick_move",
+    "size": [20, 20]
+  },
+  "quick_move_hover": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/quick_move_hover",
+    "size": [20, 20]
+  },
+  "quick_move_pressed": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/quick_move_pressed",
+    "size": [20, 20]
+  },
+  
+  
+  "drop_one_normal": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/drop_one",
+    "size": [20, 20]
+  },
+  "drop_one_hover": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/drop_one_hover",
+    "size": [20, 20]
+  },
+  "drop_one_pressed": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/drop_one_pressed",
+    "size": [20, 20]
+  },
+  
+  
+  "drop_all_normal": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/drop_all",
+    "size": [20, 20]
+  },
+  "drop_all_hover": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/drop_all_hover",
+    "size": [20, 20]
+  },
+  "drop_all_pressed": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/drop_all_pressed",
+    "size": [20, 20]
+  },
+  
+  
+  "inv_take_all_stack_button": {
+    "type": "image",
+    "texture": "textures/items/apple",
+    "size": [20, 20]
+  },
+  "inv_take_all_stack_button_highlighted": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/inv_take_all_stack_button_highlighted",
+    "size": [20, 20]
+  },
+  "inv_take_all_stack_button_disabled": {
+    "type": "image",
+    "texture": "NeBux/NeBuxUI/Icons/inv_take_all_stack_button_disabled",
+    "size": [20, 20]
+  }
+}
