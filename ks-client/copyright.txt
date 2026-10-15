@@ -115,21 +115,32 @@ here. Respect their licenses — get permission before redistributing.
               + hopper_outside_east/north/south/west (16-frame each).
               Normal/double/ender chests left vanilla; ores untouched.
 
-13. Crosshair, 1st-person only (vanilla-path replace, PandaMine art)
+13. Crosshair Indicator, 1st-person only (dynamic default/entity, PandaMine art)
     Author : PandaMine5 — PandaMine's Crosshair Indicator v1.1
-    Source : https://edge.mcpedl.com/files/8918/783/PandaMine%27s%20Crosshair%20Indicator%20-%20v1.1.mcpack?ft=ea51a08da0af5b1c574df5ee2cbe8eb3&bd=k475pmkxfm
+    Source : https://edge.mcpedl.com/files/8918/783/PandaMine%27s%20Crosshair%20Indicator%20-%20v1.1.mcpack?ft=134975c977085aa2829e796b92a61150&bd=hi4hzt1jzz
+             (staged in ./tmp/merge_crosshair/ for diff; upstream LICENSE + manifest + pack_icon NOT taken)
     Note   : (C) 2025-2026 PandaMine5 — derivative/redistribution only
              with the creator's permission (see upstream LICENSE: no
              unauthorized modification/derivative, share only via official
              links, no monetized redistribution).
-    Now    : `textures/ui/crosshair.png` +
-             `textures/gui/newgui/HUD/crosshair.png` (vanilla-path replace
-             of `crosshair_default.png` art — 1st-person only, engine hides
-             in 3rd; no atlas). Overlay panel (`hud.ks_crosshair_panel` +
-             `ks_crosshair_default/entity` + `root_panel` hook +
-             `$ks_crosshair_v/size/alpha/offset`) removed — always-on images
-             drew over the player face in 3rd-person views.
-             `crosshair_entity.png` (mob-hit variant) retired.
+             Upstream `pm5_crosshair_panel` / `crosshair_default/entity` /
+             `hud.*` controls rebranded to KS (`hud_crosshair.ks_crosshair_*`,
+             `$ks_crosshair_*`, `textures/ui/ks_crosshair_*`). Grep verified
+             zero `pm5_` / `PandaMine` leftovers in `resource_packs/KS Client/`
+             (only provenance comments + this credit remain).
+    Now    : `ui/hud_crosshair_overlay.json` (namespace `hud_crosshair`,
+             `ks_crosshair_panel` 15x15 center + `ks_crosshair_default/entity`
+             hit-switch via `right_helper_collection` + `hud_crosshair_screen`
+             override — engine screen hides in 2nd/3rd-person, 1st-person only;
+             20th `_ui_defs.json` entry, append-only) +
+             `textures/ui/ks_crosshair_default.png` (86B default) +
+             `textures/ui/ks_crosshair_entity.png` (101B mob-hit variant) +
+             vanilla fallback `textures/ui/crosshair.png` +
+             `textures/ui/crosshair_default.png` +
+             `textures/gui/newgui/HUD/crosshair.png` (same default art,
+             engine-hidden in 3rd; no atlas) + `$ks_crosshair_v/size/alpha/offset`
+             in `ui/_global_variables.json`. No `hud_screen.json` panel:
+             always-on images drew over the player face in 3rd-person views.
 
 14. Better Breaking, loading-bar subpack only (block-crack overlay
     as loading bar, `loading_bar` subpack only — colorful / progress /
