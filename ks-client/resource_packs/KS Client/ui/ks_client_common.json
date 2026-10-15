@@ -2057,6 +2057,468 @@
     ]
   },
 
+  // ---------- F3 debug readout right side (top-right, same-to-same vs f3right) ----------
+  // Same context as reference Default-mobile right column: pack name/version,
+  // world name, inventory storage counter + Full/Available, XP, Nether/OW
+  // conversion, chunk position. Visible on the same ks_f3_screen_toggle +
+  // #hud_visible as the left panel. KS names/text, same bindings.
+  "ks_f3_right": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ "40%", "100%c" ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -3, 30 ],
+    "layer": 6,
+    "visible": false,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ks_f3_screen_toggle",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#f3_visible_r"
+      },
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #f3_visible_r)",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_f3_pack@ks_client.ks_f3_line": {
+          "$ks_f3_text": "ks_f3.pack_active"
+        }
+      },
+      {
+        "ks_f3_packver@ks_client.ks_f3_line": {
+          "$ks_f3_text": "ks_f3.pack_version"
+        }
+      },
+      {
+        "ks_f3_world_r": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_world_r_text",
+          "bindings": [
+            {
+              "binding_name": "#player_list_title",
+              "binding_type": "global"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('World Name: ' + #player_list_title)",
+              "target_property_name": "#ks_world_r_text"
+            },
+            {
+              "binding_name": "#player_list_title_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_invcount": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_inv_text",
+          "controls": [
+            {
+              "ks_f3_inv_panels": {
+                "type": "panel",
+                "size": [ 0, 0 ],
+                "controls": [
+                  {
+                    "ks_inv_collect": {
+                      "type": "collection_panel",
+                      "collection_name": "hotbar_items",
+                      "size": [ 0, 0 ],
+                      "controls": [
+                        { "ks_s0@ks_client.ks_f3_inv_counter_main": { "$counter_id": 0 } },
+                        { "ks_s1@ks_client.ks_f3_inv_counter_main": { "$counter_id": 1 } },
+                        { "ks_s2@ks_client.ks_f3_inv_counter_main": { "$counter_id": 2 } },
+                        { "ks_s3@ks_client.ks_f3_inv_counter_main": { "$counter_id": 3 } },
+                        { "ks_s4@ks_client.ks_f3_inv_counter_main": { "$counter_id": 4 } },
+                        { "ks_s5@ks_client.ks_f3_inv_counter_main": { "$counter_id": 5 } },
+                        { "ks_s6@ks_client.ks_f3_inv_counter_main": { "$counter_id": 6 } },
+                        { "ks_s7@ks_client.ks_f3_inv_counter_main": { "$counter_id": 7 } },
+                        { "ks_s8@ks_client.ks_f3_inv_counter_main": { "$counter_id": 8 } },
+                        { "ks_s9@ks_client.ks_f3_inv_counter_main": { "$counter_id": 9 } },
+                        { "ks_s10@ks_client.ks_f3_inv_counter_main": { "$counter_id": 10 } },
+                        { "ks_s11@ks_client.ks_f3_inv_counter_main": { "$counter_id": 11 } },
+                        { "ks_s12@ks_client.ks_f3_inv_counter_main": { "$counter_id": 12 } },
+                        { "ks_s13@ks_client.ks_f3_inv_counter_main": { "$counter_id": 13 } },
+                        { "ks_s14@ks_client.ks_f3_inv_counter_main": { "$counter_id": 14 } },
+                        { "ks_s15@ks_client.ks_f3_inv_counter_main": { "$counter_id": 15 } },
+                        { "ks_s16@ks_client.ks_f3_inv_counter_main": { "$counter_id": 16 } },
+                        { "ks_s17@ks_client.ks_f3_inv_counter_main": { "$counter_id": 17 } },
+                        { "ks_s18@ks_client.ks_f3_inv_counter_main": { "$counter_id": 18 } },
+                        { "ks_s19@ks_client.ks_f3_inv_counter_main": { "$counter_id": 19 } },
+                        { "ks_s20@ks_client.ks_f3_inv_counter_main": { "$counter_id": 20 } },
+                        { "ks_s21@ks_client.ks_f3_inv_counter_main": { "$counter_id": 21 } },
+                        { "ks_s22@ks_client.ks_f3_inv_counter_main": { "$counter_id": 22 } },
+                        { "ks_s23@ks_client.ks_f3_inv_counter_main": { "$counter_id": 23 } },
+                        { "ks_s24@ks_client.ks_f3_inv_counter_main": { "$counter_id": 24 } },
+                        { "ks_s25@ks_client.ks_f3_inv_counter_main": { "$counter_id": 25 } },
+                        { "ks_s26@ks_client.ks_f3_inv_counter_main": { "$counter_id": 26 } },
+                        { "ks_s27@ks_client.ks_f3_inv_counter_main": { "$counter_id": 27 } },
+                        { "ks_s28@ks_client.ks_f3_inv_counter_main": { "$counter_id": 28 } },
+                        { "ks_s29@ks_client.ks_f3_inv_counter_main": { "$counter_id": 29 } },
+                        { "ks_s30@ks_client.ks_f3_inv_counter_main": { "$counter_id": 30 } },
+                        { "ks_s31@ks_client.ks_f3_inv_counter_main": { "$counter_id": 31 } },
+                        { "ks_s32@ks_client.ks_f3_inv_counter_main": { "$counter_id": 32 } },
+                        { "ks_s33@ks_client.ks_f3_inv_counter_main": { "$counter_id": 33 } },
+                        { "ks_s34@ks_client.ks_f3_inv_counter_main": { "$counter_id": 34 } },
+                        { "ks_s35@ks_client.ks_f3_inv_counter_main": { "$counter_id": 35 } }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            { "binding_type": "view", "source_control_name": "ks_s0", "source_property_name": "#ks_slot_0", "target_property_name": "#ks_slot_0" },
+            { "binding_type": "view", "source_control_name": "ks_s1", "source_property_name": "#ks_slot_1", "target_property_name": "#ks_slot_1" },
+            { "binding_type": "view", "source_control_name": "ks_s2", "source_property_name": "#ks_slot_2", "target_property_name": "#ks_slot_2" },
+            { "binding_type": "view", "source_control_name": "ks_s3", "source_property_name": "#ks_slot_3", "target_property_name": "#ks_slot_3" },
+            { "binding_type": "view", "source_control_name": "ks_s4", "source_property_name": "#ks_slot_4", "target_property_name": "#ks_slot_4" },
+            { "binding_type": "view", "source_control_name": "ks_s5", "source_property_name": "#ks_slot_5", "target_property_name": "#ks_slot_5" },
+            { "binding_type": "view", "source_control_name": "ks_s6", "source_property_name": "#ks_slot_6", "target_property_name": "#ks_slot_6" },
+            { "binding_type": "view", "source_control_name": "ks_s7", "source_property_name": "#ks_slot_7", "target_property_name": "#ks_slot_7" },
+            { "binding_type": "view", "source_control_name": "ks_s8", "source_property_name": "#ks_slot_8", "target_property_name": "#ks_slot_8" },
+            { "binding_type": "view", "source_control_name": "ks_s9", "source_property_name": "#ks_slot_9", "target_property_name": "#ks_slot_9" },
+            { "binding_type": "view", "source_control_name": "ks_s10", "source_property_name": "#ks_slot_10", "target_property_name": "#ks_slot_10" },
+            { "binding_type": "view", "source_control_name": "ks_s11", "source_property_name": "#ks_slot_11", "target_property_name": "#ks_slot_11" },
+            { "binding_type": "view", "source_control_name": "ks_s12", "source_property_name": "#ks_slot_12", "target_property_name": "#ks_slot_12" },
+            { "binding_type": "view", "source_control_name": "ks_s13", "source_property_name": "#ks_slot_13", "target_property_name": "#ks_slot_13" },
+            { "binding_type": "view", "source_control_name": "ks_s14", "source_property_name": "#ks_slot_14", "target_property_name": "#ks_slot_14" },
+            { "binding_type": "view", "source_control_name": "ks_s15", "source_property_name": "#ks_slot_15", "target_property_name": "#ks_slot_15" },
+            { "binding_type": "view", "source_control_name": "ks_s16", "source_property_name": "#ks_slot_16", "target_property_name": "#ks_slot_16" },
+            { "binding_type": "view", "source_control_name": "ks_s17", "source_property_name": "#ks_slot_17", "target_property_name": "#ks_slot_17" },
+            { "binding_type": "view", "source_control_name": "ks_s18", "source_property_name": "#ks_slot_18", "target_property_name": "#ks_slot_18" },
+            { "binding_type": "view", "source_control_name": "ks_s19", "source_property_name": "#ks_slot_19", "target_property_name": "#ks_slot_19" },
+            { "binding_type": "view", "source_control_name": "ks_s20", "source_property_name": "#ks_slot_20", "target_property_name": "#ks_slot_20" },
+            { "binding_type": "view", "source_control_name": "ks_s21", "source_property_name": "#ks_slot_21", "target_property_name": "#ks_slot_21" },
+            { "binding_type": "view", "source_control_name": "ks_s22", "source_property_name": "#ks_slot_22", "target_property_name": "#ks_slot_22" },
+            { "binding_type": "view", "source_control_name": "ks_s23", "source_property_name": "#ks_slot_23", "target_property_name": "#ks_slot_23" },
+            { "binding_type": "view", "source_control_name": "ks_s24", "source_property_name": "#ks_slot_24", "target_property_name": "#ks_slot_24" },
+            { "binding_type": "view", "source_control_name": "ks_s25", "source_property_name": "#ks_slot_25", "target_property_name": "#ks_slot_25" },
+            { "binding_type": "view", "source_control_name": "ks_s26", "source_property_name": "#ks_slot_26", "target_property_name": "#ks_slot_26" },
+            { "binding_type": "view", "source_control_name": "ks_s27", "source_property_name": "#ks_slot_27", "target_property_name": "#ks_slot_27" },
+            { "binding_type": "view", "source_control_name": "ks_s28", "source_property_name": "#ks_slot_28", "target_property_name": "#ks_slot_28" },
+            { "binding_type": "view", "source_control_name": "ks_s29", "source_property_name": "#ks_slot_29", "target_property_name": "#ks_slot_29" },
+            { "binding_type": "view", "source_control_name": "ks_s30", "source_property_name": "#ks_slot_30", "target_property_name": "#ks_slot_30" },
+            { "binding_type": "view", "source_control_name": "ks_s31", "source_property_name": "#ks_slot_31", "target_property_name": "#ks_slot_31" },
+            { "binding_type": "view", "source_control_name": "ks_s32", "source_property_name": "#ks_slot_32", "target_property_name": "#ks_slot_32" },
+            { "binding_type": "view", "source_control_name": "ks_s33", "source_property_name": "#ks_slot_33", "target_property_name": "#ks_slot_33" },
+            { "binding_type": "view", "source_control_name": "ks_s34", "source_property_name": "#ks_slot_34", "target_property_name": "#ks_slot_34" },
+            { "binding_type": "view", "source_control_name": "ks_s35", "source_property_name": "#ks_slot_35", "target_property_name": "#ks_slot_35" },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_slot_0 + #ks_slot_1 + #ks_slot_2 + #ks_slot_3 + #ks_slot_4 + #ks_slot_5 + #ks_slot_6 + #ks_slot_7 + #ks_slot_8 + #ks_slot_9 + #ks_slot_10 + #ks_slot_11 + #ks_slot_12 + #ks_slot_13 + #ks_slot_14 + #ks_slot_15 + #ks_slot_16 + #ks_slot_17 + #ks_slot_18 + #ks_slot_19 + #ks_slot_20 + #ks_slot_21 + #ks_slot_22 + #ks_slot_23 + #ks_slot_24 + #ks_slot_25 + #ks_slot_26 + #ks_slot_27 + #ks_slot_28 + #ks_slot_29 + #ks_slot_30 + #ks_slot_31 + #ks_slot_32 + #ks_slot_33 + #ks_slot_34 + #ks_slot_35)",
+              "target_property_name": "#ks_inv_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Inventory Storage: ' + #ks_inv_val + '/36')",
+              "target_property_name": "#ks_inv_text"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_inv_full@ks_client.ks_f3_line": {
+          "$ks_f3_text": "ks_f3.inv_full",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_invcount",
+              "source_property_name": "(#ks_inv_val = 36)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_inv_avail@ks_client.ks_f3_line": {
+          "$ks_f3_text": "ks_f3.inv_avail",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_invcount",
+              "source_property_name": "(#ks_inv_val < 36)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_xp_r": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#text",
+          "bindings": [
+            { "binding_name": "#level_number", "binding_type": "global" },
+            {
+              "binding_type": "view",
+              "source_property_name": "('XP Level: ' + #level_number)",
+              "target_property_name": "#text"
+            },
+            {
+              "binding_name": "#level_number_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_nether_r": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_nether_r_text",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_pos",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_raw_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_r - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_noneg_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_noneg_r - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_tmpl_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_r - (#ks_tmpl_r - ' , , ' - ':'))",
+              "target_property_name": "#ks_coords_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r - ':')",
+              "target_property_name": "#ks_x_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r - (': ' + #ks_x_r + ','))",
+              "target_property_name": "#ks_y_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r - (': ' + #ks_x_r + ', ' + #ks_y_r + ','))",
+              "target_property_name": "#ks_z_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x_r / 8)",
+              "target_property_name": "#ks_nx_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z_r / 8)",
+              "target_property_name": "#ks_nz_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Overworld --> Nether: ' + #ks_nx_r + ', ' + #ks_y_r + ', ' + #ks_nz_r)",
+              "target_property_name": "#ks_nether_r_text"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_over_r": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_over_r_text",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_pos",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_raw_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_r2 - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_noneg_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_noneg_r2 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_tmpl_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_r2 - (#ks_tmpl_r2 - ' , , ' - ':'))",
+              "target_property_name": "#ks_coords_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r2 - ':')",
+              "target_property_name": "#ks_x_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r2 - (': ' + #ks_x_r2 + ','))",
+              "target_property_name": "#ks_y_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r2 - (': ' + #ks_x_r2 + ', ' + #ks_y_r2 + ','))",
+              "target_property_name": "#ks_z_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x_r2 * 8)",
+              "target_property_name": "#ks_ox_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z_r2 * 8)",
+              "target_property_name": "#ks_oz_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Nether --> Overworld: ' + #ks_ox_r + ', ' + #ks_y_r2 + ', ' + #ks_oz_r)",
+              "target_property_name": "#ks_over_r_text"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_chunk": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_chunk_text",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_pos",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_c_raw"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_raw - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_c_1"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_1 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_c_2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_raw - (#ks_c_2 - ' , , ' - ':'))",
+              "target_property_name": "#ks_c_coords"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_coords - ':')",
+              "target_property_name": "#ks_c_x"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_coords - (': ' + #ks_c_x + ','))",
+              "target_property_name": "#ks_c_y"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_coords - (': ' + #ks_c_x + ', ' + #ks_c_y + ','))",
+              "target_property_name": "#ks_c_z"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_c_x - (#ks_c_x < 0) * 15) / 16)",
+              "target_property_name": "#ks_cx"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_c_y - (#ks_c_y < 0) * 15) / 16)",
+              "target_property_name": "#ks_cy"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_c_z - (#ks_c_z < 0) * 15) / 16)",
+              "target_property_name": "#ks_cz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_x - (#ks_cx * 16))",
+              "target_property_name": "#ks_c_px"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_y - (#ks_cy * 16))",
+              "target_property_name": "#ks_c_py"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_z - (#ks_cz * 16))",
+              "target_property_name": "#ks_c_pz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Chunk Position: ' + #ks_cx + ', ' + #ks_cy + ', ' + #ks_cz + ' [ ' + #ks_c_px + ', ' + #ks_c_py + ', ' + #ks_c_pz + ' ]')",
+              "target_property_name": "#ks_chunk_text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
   // ---------- Safe way back after F1 hides the HUD ----------
   // Lives as a SIBLING of root_panel (see hud_screen.json): root_panel is
   // bound to #hud_visible, so anything inside it would vanish with the HUD
