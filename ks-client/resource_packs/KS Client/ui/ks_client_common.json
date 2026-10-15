@@ -1453,14 +1453,49 @@
   },
 
   // ---------- Inventory slot probe (one per hotbar/inventory slot) ----------
-  // Clean-room rebuild of the standard collection technique: inside a
-  // collection_panel bound to hotbar_items, each probe reads #item_id_aux
-  // (-1 = empty) and publishes '#ks_slot_<id>' true when filled. The debug
-  // rows below sum the 36 probes into a used/total counter.
+  // Same technique as reference NeBuxInventoryCounter.InventoryCounterMain:
+  // inside a collection_panel bound to hotbar_items, each probe reads
+  // #item_id_aux (-1 = empty) and publishes '#ks_slot_<id>' 1/0.
+  // The debug rows sum the 36 probes into a used/total counter.
+  // Kept as KS names (ks_f3_inv_counter_main), same-to-same logic.
   "ks_inv_slot": {
     "type": "panel",
     "size": [0, 0],
     "controls": []
+  },
+
+  "ks_f3_inv_counter_main": {
+    "type": "panel",
+    "collection_index": "$counter_id",
+    "bindings": [
+      {
+        "binding_name": "#item_id_aux",
+        "binding_type": "collection",
+        "binding_collection_name": "hotbar_items"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#item_id_aux = -1))",
+        "target_property_name": "('#ks_slot_' + $counter_id)"
+      }
+    ]
+  },
+
+  // ---------- F3 single-line text row (same-to-same vs f3.f3_text_base) ----------
+  // Reference drew Black bg + alpha $f3alpha behind each row; KS keeps its
+  // clean no-bg label style (same text content) so the readout stays readable
+  // over gameplay and matches the existing ks_f3_days/pos rows.
+  // $ks_f3_text may be a lang key (ks_f3.*) or a ('...' + ...) expression.
+  "ks_f3_line": {
+    "type": "label",
+    "size": [ "100%", 10 ],
+    "color": "$chat_text_color",
+    "shadow": true,
+    "enable_profanity_filter": false,
+    "localize": false,
+    "font_size": "normal",
+    "font_scale_factor": 0.65,
+    "text": "$ks_f3_text"
   },
 
   // ---------- F3 debug readout (top-left, below status) ----------
@@ -1718,6 +1753,110 @@
                     }
                   }
                 ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_ui": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_ui_classic@ks_client.ks_f3_line": {
+                "ignored": "(not ($desktop_screen))",
+                "$ks_f3_text": "ks_f3.ui_classic"
+              }
+            },
+            {
+              "ks_f3_ui_pocket@ks_client.ks_f3_line": {
+                "ignored": "(not ($pocket_screen))",
+                "$ks_f3_text": "ks_f3.ui_pocket"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_device": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_dev_android@ks_client.ks_f3_line": {
+                "ignored": "(not ($is_android))",
+                "$ks_f3_text": "ks_f3.device_android"
+              }
+            },
+            {
+              "ks_f3_dev_win@ks_client.ks_f3_line": {
+                "ignored": "(not ($win10_edition))",
+                "$ks_f3_text": "ks_f3.device_windows"
+              }
+            },
+            {
+              "ks_f3_dev_xbox@ks_client.ks_f3_line": {
+                "ignored": "(not ($xbox_one))",
+                "$ks_f3_text": "ks_f3.device_xbox"
+              }
+            },
+            {
+              "ks_f3_dev_ios@ks_client.ks_f3_line": {
+                "ignored": "(not ($is_ios))",
+                "$ks_f3_text": "ks_f3.device_ios"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_graphics": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_gfx_rd@ks_client.ks_f3_line": {
+                "ignored": "(not ($win10_edition or $xbox_one or $is_ps4))",
+                "$ks_f3_text": "ks_f3.graphics_rd"
+              }
+            },
+            {
+              "ks_f3_gfx_gl@ks_client.ks_f3_line": {
+                "ignored": "($win10_edition or $xbox_one or $is_ps4)",
+                "$ks_f3_text": "ks_f3.graphics_glsl"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_input": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_in_touch@ks_client.ks_f3_line": {
+                "ignored": "(not ($touch))",
+                "$ks_f3_text": "ks_f3.touch"
+              }
+            },
+            {
+              "ks_f3_in_pad@ks_client.ks_f3_line": {
+                "ignored": "(not ($game_pad))",
+                "$ks_f3_text": "ks_f3.gamepad"
+              }
+            },
+            {
+              "ks_f3_in_kbm@ks_client.ks_f3_line": {
+                "ignored": "(not ($win10_edition))",
+                "$ks_f3_text": "ks_f3.kbm"
+              }
+            },
+            {
+              "ks_f3_in_vr@ks_client.ks_f3_line": {
+                "ignored": "(not ($is_mobile_vr))",
+                "$ks_f3_text": "ks_f3.vr"
               }
             }
           ]
