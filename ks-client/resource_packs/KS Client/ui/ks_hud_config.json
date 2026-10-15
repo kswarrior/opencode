@@ -306,8 +306,7 @@
           ]
         }
       }
-    ]
-  },
+    ],
   "ks_cfg_toggle_stack": {
     "type": "stack_panel",
     "size": [ "100%", "100%c" ],
@@ -329,5 +328,5 @@
       { "ks_cd@ksb_main.toggle_option": { "$toggle_name": "ksdT_dura", "$toggle_view_binding_name": "ksdT_dura_t", "$toggle_text": "Show Durability HUD", "$toggle_default_state": "$ksd_dura_v" } }
     ]
   }
-}  
+  }
 }
