@@ -2058,7 +2058,7 @@
   // ---------- F3 debug readout right side (top-right, same-to-same vs f3right) ----------
   // Same context as reference Default-mobile right column: pack name/version,
   // world name, inventory storage counter + Full/Available, XP, Nether/OW
-  // conversion, chunk position. Visible on the same ks_f3_screen_toggle +
+  // conversion, chunk position. Visible on the same ks_f3_t instance +
   // #hud_visible as the left panel. KS names/text, same bindings.
   "ks_f3_right": {
     "type": "stack_panel",

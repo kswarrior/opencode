@@ -179,7 +179,7 @@ here. Respect their licenses — get permission before redistributing.
              `hud_tip_text_background`, no atlas needed for UI art),
              `ui/ks_client_common.json` `ks_f1_button` (action
              `button.hide_gui_all`, "F1", top_middle [-39, 0.5], 20x20) +
-             `ks_f3_button` (toggle `ks_f3_screen_toggle` → `ks_f3_panel` +
+             `ks_f3_button` (instance `ks_f3_t` → `ks_f3_panel` +
              `ks_f3_right`, top_middle [38.5, 0.5], 20x20, F3 face label scale
              1.0 same as F1) + `ks_f3_panel` left (version + edition +
              gamemode + days + position + live recovery/clock/compass icons +
