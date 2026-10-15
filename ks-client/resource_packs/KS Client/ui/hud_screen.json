@@ -544,12 +544,9 @@
         "target_property_name": "#anchored_offset_value_y"
       }
     ]
-  }
+  },
 
   // KS Crosshair Indicator panel (rebranded PandaMine v1.1).
-  // Dynamic default/entity hit-switch. Panel-level visible $ks_crosshair_v
-  // is the master toggle (hides both); images switch via 'hit' check.
-  // Size/offset/alpha via $ks_crosshair_size/offset/alpha.
   "ks_crosshair_panel": {
     "type": "panel",
     "size": "$ks_crosshair_size",
