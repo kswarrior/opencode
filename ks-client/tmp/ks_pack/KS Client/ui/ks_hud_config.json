@@ -106,7 +106,7 @@
                 "font_size": "normal",
                 "font_scale_factor": 1.1,
                 "layer": 1,
-                "text": "HUD LAYOUT"
+                "text": "HUD SETTINGS"
               }
             },
             {
@@ -122,7 +122,7 @@
                 "font_size": "small",
                 "font_scale_factor": 0.85,
                 "layer": 1,
-                "text": "Drag the large buttons to arrange them"
+                "text": "Toggle hotbar buttons and F1 F3"
               }
             },
             {
@@ -256,16 +256,16 @@
               }
             },
             {
-              "ks_cfg_canvas": {
+              "ks_cfg_list": {
                 "type": "panel",
-                "size": [ 580, 196 ],
+                "size": [ 580, 210 ],
                 "anchor_from": "top_middle",
                 "anchor_to": "top_middle",
                 "offset": [ 0, 56 ],
                 "layer": 1,
                 "controls": [
                   {
-                    "ks_cfg_canvas_bg": {
+                    "ks_cfg_list_bg": {
                       "type": "image",
                       "texture": "textures/ui/Black",
                       "alpha": 0.5,
@@ -274,246 +274,14 @@
                     }
                   },
                   {
-                    "ks_cfg_p1": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 8, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p1_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p1_num": { "type": "image", "texture": "textures/ui/ksb_numb_1", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p2": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 64, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p2_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p2_num": { "type": "image", "texture": "textures/ui/ksb_numb_2", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p3": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 120, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p3_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p3_num": { "type": "image", "texture": "textures/ui/ksb_numb_3", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p4": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 176, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p4_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p4_num": { "type": "image", "texture": "textures/ui/ksb_numb_4", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p5": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 232, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p5_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p5_num": { "type": "image", "texture": "textures/ui/ksb_numb_5", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p6": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 288, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p6_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p6_num": { "type": "image", "texture": "textures/ui/ksb_numb_6", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p7": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 344, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p7_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p7_num": { "type": "image", "texture": "textures/ui/ksb_numb_7", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p8": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 400, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p8_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p8_num": { "type": "image", "texture": "textures/ui/ksb_numb_8", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p9": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 48 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 456, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p9_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ "100%", "100%" ], "layer": 0 } },
-                        { "ks_cfg_p9_num": { "type": "image", "texture": "textures/ui/ksb_numb_9", "size": [ 14, 14 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 2, 2 ], "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_p10": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 48, 62 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 512, 8 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_p10_img": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ 48, 48 ], "layer": 0 } },
-                        { "ks_cfg_p10_lbl": { "type": "label", "text": "INV", "size": [ 48, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_totem": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 56, 70 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 8, 70 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_totem_img": { "type": "image", "texture": "textures/totem/totem_button", "size": [ 56, 56 ], "layer": 0 } },
-                        { "ks_cfg_totem_lbl": { "type": "label", "text": "TOTEM", "size": [ 56, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_f1": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 40, 54 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 76, 70 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_f1_img": { "type": "image", "texture": "textures/ui/ks_f1f3_hud_btn", "size": [ 40, 40 ], "layer": 0 } },
-                        { "ks_cfg_f1_lbl": { "type": "label", "text": "F1", "size": [ 40, 40 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 0, 0 ], "color": [ 1, 1, 1 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "normal", "font_scale_factor": 0.7, "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_f3": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 40, 54 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 128, 70 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_f3_img": { "type": "image", "texture": "textures/ui/ks_f1f3_hud_btn", "size": [ 40, 40 ], "layer": 0 } },
-                        { "ks_cfg_f3_lbl": { "type": "label", "text": "F3", "size": [ 40, 40 ], "anchor_from": "top_left", "anchor_to": "top_left", "offset": [ 0, 0 ], "color": [ 1, 1, 1 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "normal", "font_scale_factor": 0.7, "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_invhud": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 150, 70 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 180, 70 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_invhud_bg": { "type": "image", "texture": "textures/ui/white", "color": [ 0, 0, 0 ], "alpha": 0.27, "size": [ 150, 56 ], "layer": 0 } },
-                        { "ks_cfg_invhud_grid": { "type": "image", "texture": "textures/ui/ksb_slot_button", "size": [ 40, 40 ], "anchor_from": "center", "anchor_to": "center", "offset": [ 0, -7 ], "layer": 1 } },
-                        { "ks_cfg_invhud_lbl": { "type": "label", "text": "INV HUD", "size": [ 150, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_dura": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 120, 56 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 342, 70 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_dura_bg": { "type": "image", "texture": "textures/ui/white", "color": [ 0, 0, 0 ], "alpha": 0.5, "size": [ 120, 42 ], "layer": 0 } },
-                        { "ks_cfg_dura_bar": { "type": "image", "texture": "textures/ui/white", "color": [ 0.2, 0.9, 0.3 ], "alpha": 0.9, "size": [ 100, 8 ], "anchor_from": "center", "anchor_to": "center", "offset": [ 0, -7 ], "layer": 1 } },
-                        { "ks_cfg_dura_lbl": { "type": "label", "text": "DURABILITY", "size": [ 120, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
-                      ]
-                    }
-                  },
-                  {
-                    "ks_cfg_fps": {
-                      "type": "input_panel",
-                      "draggable": "both",
-                      "size": [ 100, 56 ],
-                      "anchor_from": "top_left",
-                      "anchor_to": "top_left",
-                      "offset": [ 472, 70 ],
-                      "layer": 3,
-                      "controls": [
-                        { "ks_cfg_fps_bg": { "type": "image", "texture": "textures/ui/white", "color": [ 0, 0, 0 ], "alpha": 0.5, "size": [ 100, 42 ], "layer": 0 } },
-                        { "ks_cfg_fps_txt": { "type": "label", "text": "KS Client", "size": [ 100, 42 ], "anchor_from": "center", "anchor_to": "center", "offset": [ 0, -7 ], "color": [ 1, 1, 1 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } },
-                        { "ks_cfg_fps_lbl": { "type": "label", "text": "STATUS", "size": [ 100, 12 ], "anchor_from": "bottom_middle", "anchor_to": "bottom_middle", "offset": [ 0, 0 ], "color": [ 255, 255, 255 ], "shadow": true, "localize": false, "text_alignment": "center", "font_size": "small", "font_scale_factor": 0.75, "layer": 1 } }
-                      ]
+                    "ks_cfg_scroll@common.scrolling_panel": {
+                      "size": [ "100% - 16px", "100% - 12px" ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 6 ],
+                      "layer": 2,
+                      "$show_background": false,
+                      "$scrolling_content": "ks_hud_config.ks_cfg_toggle_stack"
                     }
                   }
                 ]
@@ -532,12 +300,33 @@
                 "font_size": "small",
                 "font_scale_factor": 0.8,
                 "layer": 1,
-                "text": "Save keeps this session. To keep it after restart, edit ui/_global_variables.json ($ksb_1..$ksb_10, $ksb_totem_*) and repack. Fine-tune in world: gear menu > HUD tab."
+                "text": "Toggles apply this session. Persist via ui/_global_variables.json ($ksb_1..$ksb_10, $ksb_totem_*, $ks_f1_v, $ks_f3_v) + repack. No position editing."
               }
             }
           ]
         }
       }
+    ],
+  "ks_cfg_toggle_stack": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      { "ks_c1@ksb_main.toggle_option": { "$toggle_name": "ksbT_1", "$toggle_view_binding_name": "ksbT_1_t", "$toggle_text": "Show Hotbar 1", "$toggle_default_state": "$ksb_1_v" } },
+      { "ks_c2@ksb_main.toggle_option": { "$toggle_name": "ksbT_2", "$toggle_view_binding_name": "ksbT_2_t", "$toggle_text": "Show Hotbar 2", "$toggle_default_state": "$ksb_2_v" } },
+      { "ks_c3@ksb_main.toggle_option": { "$toggle_name": "ksbT_3", "$toggle_view_binding_name": "ksbT_3_t", "$toggle_text": "Show Hotbar 3", "$toggle_default_state": "$ksb_3_v" } },
+      { "ks_c4@ksb_main.toggle_option": { "$toggle_name": "ksbT_4", "$toggle_view_binding_name": "ksbT_4_t", "$toggle_text": "Show Hotbar 4", "$toggle_default_state": "$ksb_4_v" } },
+      { "ks_c5@ksb_main.toggle_option": { "$toggle_name": "ksbT_5", "$toggle_view_binding_name": "ksbT_5_t", "$toggle_text": "Show Hotbar 5", "$toggle_default_state": "$ksb_5_v" } },
+      { "ks_c6@ksb_main.toggle_option": { "$toggle_name": "ksbT_6", "$toggle_view_binding_name": "ksbT_6_t", "$toggle_text": "Show Hotbar 6", "$toggle_default_state": "$ksb_6_v" } },
+      { "ks_c7@ksb_main.toggle_option": { "$toggle_name": "ksbT_7", "$toggle_view_binding_name": "ksbT_7_t", "$toggle_text": "Show Hotbar 7", "$toggle_default_state": "$ksb_7_v" } },
+      { "ks_c8@ksb_main.toggle_option": { "$toggle_name": "ksbT_8", "$toggle_view_binding_name": "ksbT_8_t", "$toggle_text": "Show Hotbar 8", "$toggle_default_state": "$ksb_8_v" } },
+      { "ks_c9@ksb_main.toggle_option": { "$toggle_name": "ksbT_9", "$toggle_view_binding_name": "ksbT_9_t", "$toggle_text": "Show Hotbar 9", "$toggle_default_state": "$ksb_9_v" } },
+      { "ks_c10@ksb_main.toggle_option": { "$toggle_name": "ksbT_10", "$toggle_view_binding_name": "ksbT_10_t", "$toggle_text": "Show Inv Btn", "$toggle_default_state": "$ksb_10_v" } },
+      { "ks_ct@ksb_main.toggle_option": { "$toggle_name": "ksbT_totem", "$toggle_view_binding_name": "ksbT_totem_t", "$toggle_text": "Show Totem Btn", "$toggle_default_state": "$ksb_totem_v" } },
+      { "ks_ci@ksb_main.toggle_option": { "$toggle_name": "ksbT_invhud", "$toggle_view_binding_name": "ksbT_invhud_t", "$toggle_text": "Show Inv HUD", "$toggle_default_state": "$ksb_invhud_v" } },
+      { "ks_cf1@ksb_main.toggle_option": { "$toggle_name": "ksbT_f1", "$toggle_view_binding_name": "ksbT_f1_t", "$toggle_text": "Show F1 HUD", "$toggle_default_state": "$ks_f1_v" } },
+      { "ks_cf3@ksb_main.toggle_option": { "$toggle_name": "ksbT_f3show", "$toggle_view_binding_name": "ksbT_f3show_t", "$toggle_text": "Show F3 HUD", "$toggle_default_state": "$ks_f3_v" } },
+      { "ks_cd@ksb_main.toggle_option": { "$toggle_name": "ksdT_dura", "$toggle_view_binding_name": "ksdT_dura_t", "$toggle_text": "Show Durability HUD", "$toggle_default_state": "$ksd_dura_v" } }
     ]
+  }
   }
 }

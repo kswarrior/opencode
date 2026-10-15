@@ -8,7 +8,7 @@
 - **Type:** Resource pack (`resources` module)
 - **Current version:** `1.4.7` (`manifest.json` header + modules)
 - **UUID:** `3cb32de7-ef64-4969-a447-dadba4bf9a8f` / `01ec78ed-44f8-4077-bc80-0904b4a83d51`
-- **Releases:** `release/` 44 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.4.7.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
+- **Releases:** `release/` 45 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.4.7.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
 - **Validation reports:** `out/` 9 files — `ks client.*`, `ks-clean.*`, `ks-client.*` (each `.csv` / `.mcr.json` / `.report.html`)
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP + allowed skills
 
@@ -61,7 +61,7 @@
 | 23 | Bow Draw Indicators | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Draw-stage bow art (`textures/items/bow_pulling_0/1/2.png`, vanilla-path override, no atlas change), always on |
 | 24 | Clean Pumpkin Blur | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Carved-pumpkin overlay replaced with 1×1 clean `textures/misc/pumpkinblur.png` (no blur), always on |
 | 25 | Durability HUD (Bottom Left + menu toggle) | ZenXveda Ultimate PvP Pro v1.8.9 (selective, rebranded `ksd_*`) | Selected-item durability readout bottom-left (number + low-dura `[!]` blink) + selected-item name label + inventory armor/offhand panel; `Show Durability HUD` on/off in HUD tab (`ksdT_dura_t`, `$ksd_dura_v`); hover-text copy skipped (KS hover already shows durability) |
-| 26 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (44 files, `v1.0.0` + `v1.0.3`…`v1.4.6` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
+| 26 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (45 files, `v1.0.0` + `v1.0.3`…`v1.4.7` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
 | 27 | HUD Settings Page (start screen, no positions) | KS Client (`ui/ks_hud_config.json`, `$ks_show_hud_config_button`) | Same gear art top-right left of bell opens fullscreen HUD SETTINGS (`ks_menu_bg` dim + `ks_config_bg` 620×360 card): small 20×20 X closes, Save button (session toast), body is a scrolling toggle list — Show Hotbar 1–10, Totem, InvHUD, F1, F3, Durability (no X/Y/size, no drag — position editors removed A-Z). Session-local — persist via `_global_variables.json` `$ksb_*` / `$ks_f1_v` / `$ks_f3_v` + repack |
 | 28 | Crosshair Indicator (1st-person only) | PandaMine5 Crosshair Indicator v1.1 (rebranded `ks_crosshair_*`) | Dynamic default/entity hit-switch (`right_helper_collection` `hit` check) in `ui/hud_crosshair_overlay.json` (engine screen hides in 2nd/3rd-person); `textures/ui/ks_crosshair_default/entity.png` + vanilla fallback `crosshair.png`; config `$ks_crosshair_v/size/alpha/offset` |
 
@@ -268,9 +268,9 @@ ks-client/
 │   ├── check_player_animation_loop.py ← strict-JSON / dotfile / loop / shield-armor-sword / refs / mct loop checker
 │   └── recheck_player_animation.sh    ← bash wrapper (iterations delay)
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
-├── release/                         ← shippable .mcpack (45 files: v1.0.0 + v1.0.3…v1.4.6, no v1.0.1/v1.0.2/v1.1.9 mcpack)
+├── release/                         ← shippable .mcpack (45 files: v1.0.0 + v1.0.3…v1.4.7, no v1.0.1/v1.0.2/v1.1.9 mcpack)
 ├── resource_packs/KS Client/
-│   ├── manifest.json                ← name KS Client, v1.4.6, min_engine 1.21.120, no subpacks, authors
+│   ├── manifest.json                ← name KS Client, v1.4.7, min_engine 1.21.120, no subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright in all 71 biomes (default + 70 per-biome, NoFog-all water colors)
 │   ├── fogs/ks_fullbright.json      ← nofog: air/weather render + water/lava/powder-snow 4000–10000
