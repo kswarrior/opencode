@@ -1,14 +1,14 @@
 # KS Client — Premium Mobile PvP Resource Pack for Minecraft Bedrock
 
-> **KS Client v1.4.5 by KS Warrior** (split-toggle default-visible property_bag)
+> **KS Client v1.4.6 by KS Warrior** (split-toggle default-visible property_bag)
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
 > Custom start screen, HUD (slot hotbar + totem/offhand shortcuts + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show on/off.)
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
-- **Current version:** `1.4.5` (`manifest.json` header + modules)
+- **Current version:** `1.4.6` (`manifest.json` header + modules)
 - **UUID:** `3cb32de7-ef64-4969-a447-dadba4bf9a8f` / `01ec78ed-44f8-4077-bc80-0904b4a83d51`
-- **Releases:** `release/` 43 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.4.5.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
+- **Releases:** `release/` 44 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.4.6.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
 - **Validation reports:** `out/` 9 files — `ks client.*`, `ks-clean.*`, `ks-client.*` (each `.csv` / `.mcr.json` / `.report.html`)
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP + allowed skills
 
@@ -61,7 +61,7 @@
 | 23 | Bow Draw Indicators | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Draw-stage bow art (`textures/items/bow_pulling_0/1/2.png`, vanilla-path override, no atlas change), always on |
 | 24 | Clean Pumpkin Blur | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Carved-pumpkin overlay replaced with 1×1 clean `textures/misc/pumpkinblur.png` (no blur), always on |
 | 25 | Durability HUD (Bottom Left + menu toggle) | ZenXveda Ultimate PvP Pro v1.8.9 (selective, rebranded `ksd_*`) | Selected-item durability readout bottom-left (number + low-dura `[!]` blink) + selected-item name label + inventory armor/offhand panel; `Show Durability HUD` on/off in HUD tab (`ksdT_dura_t`, `$ksd_dura_v`); hover-text copy skipped (KS hover already shows durability) |
-| 26 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (43 files, `v1.0.0` + `v1.0.3`…`v1.4.5` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
+| 26 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (44 files, `v1.0.0` + `v1.0.3`…`v1.4.6` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
 | 27 | HUD Layout Config Page (start screen) | KS Client (`ui/ks_hud_config.json`, `$ks_show_hud_config_button`) | Gear button top-right left of bell opens a fullscreen HUD LAYOUT page (`ks_menu_bg` dim + `ks_config_bg` 620×360 card): small 20×20 X (top-right closes), Save button (session toast), body shows all 16 KS world-HUD buttons as large (~2×) draggable previews (slots 1–10, totem, F1/F3, InvHUD, durability, status). Drags are session-local (resource-pack engine limit) — persist via `_global_variables.json` `$ksb_*` + repack; fine-tune in world via gear menu HUD tab |
 
 ---
