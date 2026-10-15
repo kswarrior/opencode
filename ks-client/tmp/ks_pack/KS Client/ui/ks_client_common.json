@@ -1396,12 +1396,11 @@
     ]
   },
 
-  // F3 debug toggle. Instance name ks_f3_t publishes ks_f3_screen_toggle
-  // (#toggle_state) for ks_f3_panel + ks_f3_right below.
+  // F3 debug toggle. Instance ks_f3_t (in hud_screen.json) publishes
+  // #toggle_state for ks_f3_panel + ks_f3_right below — same as the proven
+  // Menu-button pattern (ks_start_menu_state instance name, no view alias).
   // Default-mobile same-to-same vs reference f3_button: 20x20 top_middle
   // [38.5, 0.5], hud_btn art, "F3" label, #hud_visible-gated.
-  // Reference used $toggle_view_binding_name f3_screen_toggle; KS uses
-  // ks_f3_screen_toggle (same pattern, KS name) so the panel binding works.
   "ks_f3_button@common.toggle": {
     "prevent_touch_input": true,
     "size": [ 20, 20 ],
@@ -1415,7 +1414,6 @@
     },
     "enabled": true,
     "$toggle_name": "ks_f3_debug",
-    "$toggle_view_binding_name": "ks_f3_screen_toggle",
     "$toggle_default_state": false,
     "$toggle_binding_type": "none",
     "$toggle_focus_enabled": false,
@@ -1506,7 +1504,7 @@
   // Right-side context lives in ks_f3_right below (same-to-same vs f3right).
   // NOTE: true world clock time (Time: HH:MM) is NOT exposed to
   // resource-pack UI, so clock is a live item icon (hands move) + Day proxy.
-  // Visible only while the F3 toggle (ks_f3_screen_toggle) is ON and the HUD
+  // Visible only while the F3 toggle instance ks_f3_t is ON and the HUD
   // is visible. Menu Show F3 ($ks_f3_v + ksbT_f3show_t) gates the F3 *button*;
   // the panel itself follows the button state + #hud_visible (like upstream).
   "ks_f3_panel": {
@@ -1521,7 +1519,7 @@
     "bindings": [
       {
         "binding_type": "view",
-        "source_control_name": "ks_f3_screen_toggle",
+        "source_control_name": "ks_f3_t",
         "source_property_name": "#toggle_state",
         "target_property_name": "#f3_visible"
       },
@@ -2060,7 +2058,7 @@
   // ---------- F3 debug readout right side (top-right, same-to-same vs f3right) ----------
   // Same context as reference Default-mobile right column: pack name/version,
   // world name, inventory storage counter + Full/Available, XP, Nether/OW
-  // conversion, chunk position. Visible on the same ks_f3_screen_toggle +
+  // conversion, chunk position. Visible on the same ks_f3_t instance +
   // #hud_visible as the left panel. KS names/text, same bindings.
   "ks_f3_right": {
     "type": "stack_panel",
@@ -2074,7 +2072,7 @@
     "bindings": [
       {
         "binding_type": "view",
-        "source_control_name": "ks_f3_screen_toggle",
+        "source_control_name": "ks_f3_t",
         "source_property_name": "#toggle_state",
         "target_property_name": "#f3_visible_r"
       },
