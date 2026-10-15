@@ -1502,6 +1502,96 @@
     ],
     "controls": [
       {
+        "ks_f3_ver": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_ver_rel@ks_client.ks_f3_line": {
+                "ignored": "($pre_release or (not $minecraft_game_version = ''))",
+                "$ks_f3_text": "('Minecraft ' + '(' + $release + ')')",
+                "$release|default": "minecraft/vanilla/release"
+              }
+            },
+            {
+              "ks_f3_ver_rel_c@ks_client.ks_f3_line": {
+                "ignored": "($pre_release or ($minecraft_game_version = ''))",
+                "$ks_f3_text": "('Minecraft ' + $minecraft_game_version + ' (' + $minecraft_game_version + '/vanilla/release' + ')')"
+              }
+            },
+            {
+              "ks_f3_ver_beta@ks_client.ks_f3_line": {
+                "ignored": "(not $pre_release or (not $minecraft_game_version = ''))",
+                "$ks_f3_text": "('Minecraft ' + '(' + $release + ')')",
+                "$release|default": "minecraft/vanilla/beta"
+              }
+            },
+            {
+              "ks_f3_ver_beta_c@ks_client.ks_f3_line": {
+                "ignored": "(not $pre_release or ($minecraft_game_version = ''))",
+                "$ks_f3_text": "('Minecraft ' + $minecraft_game_version + ' (' + $minecraft_game_version + '/vanilla/beta' + ')')"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_edition": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_ed_pocket@ks_client.ks_f3_line": {
+                "ignored": "(not ($pocket_edition))",
+                "$ks_f3_text": "ks_f3.edition_pocket"
+              }
+            },
+            {
+              "ks_f3_ed_edu@ks_client.ks_f3_line": {
+                "ignored": "(not ($education_edition))",
+                "$ks_f3_text": "ks_f3.edition_edu"
+              }
+            },
+            {
+              "ks_f3_ed_win@ks_client.ks_f3_line": {
+                "ignored": "(not ($win10_edition))",
+                "$ks_f3_text": "ks_f3.edition_bedrock"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_gamemode": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_gm_c@ks_client.ks_f3_line": {
+                "$ks_f3_text": "ks_f3.gamemode_creative",
+                "bindings": [
+                  {
+                    "binding_name": "#is_creative_mode",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "ks_f3_gm_s@ks_client.ks_f3_line": {
+                "$ks_f3_text": "ks_f3.gamemode_survival",
+                "bindings": [
+                  {
+                    "binding_name": "(not (#is_creative_mode))",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
         "ks_f3_days": {
           "type": "label",
           "size": [ "100%", 10 ],
