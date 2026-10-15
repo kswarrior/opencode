@@ -1396,12 +1396,11 @@
     ]
   },
 
-  // F3 debug toggle. Instance name ks_f3_t publishes ks_f3_screen_toggle
-  // (#toggle_state) for ks_f3_panel + ks_f3_right below.
+  // F3 debug toggle. Instance ks_f3_t (in hud_screen.json) publishes
+  // #toggle_state for ks_f3_panel + ks_f3_right below — same as the proven
+  // Menu-button pattern (ks_start_menu_state instance name, no view alias).
   // Default-mobile same-to-same vs reference f3_button: 20x20 top_middle
   // [38.5, 0.5], hud_btn art, "F3" label, #hud_visible-gated.
-  // Reference used $toggle_view_binding_name f3_screen_toggle; KS uses
-  // ks_f3_screen_toggle (same pattern, KS name) so the panel binding works.
   "ks_f3_button@common.toggle": {
     "prevent_touch_input": true,
     "size": [ 20, 20 ],
@@ -1415,7 +1414,6 @@
     },
     "enabled": true,
     "$toggle_name": "ks_f3_debug",
-    "$toggle_view_binding_name": "ks_f3_screen_toggle",
     "$toggle_default_state": false,
     "$toggle_binding_type": "none",
     "$toggle_focus_enabled": false,
