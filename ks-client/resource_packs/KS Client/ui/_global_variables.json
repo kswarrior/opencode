@@ -66,6 +66,7 @@
 	"$f1_offset": [ 47.5, 1.0 ],
 
 	"$generic_button_text_color": [ 1, 1, 1 ],
+	"$text_color": [ 1, 1, 1 ],
 	"$light_button_default_text_color": [ 0.1176, 0.1176, 0.1216 ],
 	"$light_button_hover_text_color": [ 0.1176, 0.1176, 0.1216 ],
 	"$light_button_pressed_text_color": [ 0.1176, 0.1176, 0.1216 ],
