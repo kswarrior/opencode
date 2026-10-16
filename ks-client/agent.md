@@ -52,13 +52,13 @@
 ```
 resource_packs/KS Client/
 ├── manifest.json, biomes_client.json, fogs/ks_fullbright.json
-├── entity/ (81 mob json, health-bar hooks; NO player.json — vanilla player keeps own skin, no doll FPS)
+├── entity/ (82 json: 81 mob json + player.json (vanilla 1.21.120 baseline) — all with health-bar hooks)
 ├── animations/health_bar.json, animations/mace.animation.json
 ├── attachables/mace.attachable.json
-├── models/entity/health_bar.json, attachable/mace.geo.json, fps_counter.geo.json
-├── render_controllers/health_bar.json, fps_counter.render.json
-├── textures/ + terrain_texture.json (atlas.terrain) + item_texture.json (atlas.items, mace only)
-│   └── blocks/ items/ ui/ gui/ c_ui/ totem/ health_bar/ fps/ environment/ colormap/ misc/ entity/attachable/
+├── models/entity/health_bar.json, attachable/mace.geo.json
+├── render_controllers/health_bar.json
+├── textures/ + terrain_texture.json (atlas.terrain) + item_texture.json (atlas.items: mace + 17 door icons)
+│   └── blocks/ items/ ui/ gui/ c_ui/ totem/ health_bar/ environment/ colormap/ misc/ entity/attachable/
 ├── texts/en_US.lang + languages.json
 ├── ui/
 │   ├── _global_variables.json  # ★ ALL user config. Edit this, not hardcoded UI.
@@ -67,9 +67,9 @@ resource_packs/KS Client/
 │   ├── fps_hud.json (`ks_fps`), inventory_screen.json (`crafting`), pause_screen.json (`pause`)
 │   ├── ks_client_common.json, debug/dev_console/mob_effect/ui_common.json
 │   ├── ks_modules/hud.json, ks_modules/ksb_hotbar_button/{defs,main,settings}.json
-│   ├── ks_touch/hide_gui.json, .ui_assets/.screens/.chat/chat_tweaks.json (`ks_chat_tweaks`)
-│   └── ._content_/inv_content.json
-└── (no subpacks — manifest has no `subpacks` key; InvHUD corner = HUB dropdown radio)
+│   ├── ks_touch/hide_gui.json, ui_assets/screens/chat/chat_tweaks.json (`ks_chat_tweaks`)
+│   └── ui_content/inv_content.json
+└── (no subpacks — manifest has no `subpacks` key; InvHUD grid fixed bottom-right)
 ```
 
 Rule: `_global_variables.json` = config API, `ui/*.json` = implementation. Prefer `$variable` over hardcoded values.
@@ -142,7 +142,7 @@ Debug:
 1. Read error literally (`file: reason (hint)`; validate CSV filter `Type=error`, ignore `mcp/opencode/tools` noise).
 2. Bisect: `git status` / `git diff --stat` → isolate last UI file. Typical: `_ui_defs` typo, missing `$var`, unregistered texture, renamed control.
 3. Skill (per §1.5, mandatory first step): `getSkill(debug-addon)` for invisible/broken, `item.foo:bar`, log errors; `getSkill(design-model)` for redraw; `getSkill(creator-tools-cli)` for other `mct` cmds. Prefer MCP `validateFile` / `validateContent` when available.
-4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F8/F3, totem equips, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
+4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F3, totem equips, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
 5. If stuck: stop, paste Gate A + `git diff --stat` + log lines, ask user. No speculative pile-ons.
 
 ---
