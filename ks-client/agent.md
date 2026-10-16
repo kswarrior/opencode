@@ -63,9 +63,9 @@ resource_packs/KS Client/
 ├── ui/
 │   ├── _global_variables.json  # ★ ALL user config. Edit this, not hardcoded UI.
 │   ├── _ui_defs.json           # ★ load order. Append-only, never remove/reorder.
-│   ├── start_screen.json (`start`), hud_screen.json (`hud`), chat_screen.json (no namespace, by filename)
+│   ├── start_screen.json (`start`), hud_screen.json (`hud`), chat_screen.json (`chat`)
 │   ├── fps_hud.json (`ks_fps`), inventory_screen.json (`crafting`), pause_screen.json (`pause`)
-│   ├── ks_client_common.json, debug/dev_console/mob_effect/ui_common.json
+│   ├── ks_client_common.json (`ks_client`); debug_screen (`debug_screen`), dev_console_screen (`dev_console`), mob_effect_screen (`mob_effect`), ui_common (`common`), settings_sections/controls_section (`controls_section`) — every UI file needs its vanilla namespace + a `_ui_defs.json` entry or it never loads
 │   ├── ks_modules/hud.json, ks_modules/ksb_hotbar_button/{defs,main,settings}.json
 │   ├── ks_touch/hide_gui.json, ui_assets/screens/chat/chat_tweaks.json (`ks_chat_tweaks`)
 │   └── ui_content/inv_content.json
