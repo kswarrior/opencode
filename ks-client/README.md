@@ -101,15 +101,15 @@ In-game: if offhand empty you see a totem icon near inventory; tap it → totem 
 What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap), plus an in-game settings editor (gear button, top-right) for slots and totem (inventory HUD options removed).
 
 How it works:
-- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` box card on the LEFT side (`left_middle`, 212×230 at `offset [40,0]`) with 6 square icon-only tabs top-inside in the `ks_menu_tabs` radio group — Home, HUD (open by default), Display, Info, Advanced, Settings. HUD holds show toggles only (slots + totem + InvHUD + durability + F1/F3 — position X/Y/size sliders hidden, positions via `_global_variables.json` only); Home/Display/Info/Advanced/Settings show Coming Soon. One tap shows exactly one page. Panel background is `textures/ui/ks_menu_bg_blur.png` (translucent black, swap the PNG to restyle). Close via the gear button. Copy-codes tab removed.
-- Menu tabs: 6-tab box card (212×230) replaces the v1.2.2 3-tab side layout; all slot/totem rows unchanged and live under HUD tab.
-- Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slot 5 hidden (`62,22,false`), slots 6–8 second row (`y 22`, `x 72/82/92`), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true` (single-click inventory content?), `$ksb_hba 4`, `$ksb_sbi/$ksb_sdbi true`.
+- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` box card on the LEFT side (`left_middle`, 212×230 at `offset [40,0]`) with a single HUD icon tab top-inside in the `ks_menu_tabs` radio group (Coming Soon tabs Home/Display/Info/Advanced/Settings removed). HUD holds show toggles only (slots + totem + InvHUD + durability + F1/F3 — position X/Y/size sliders hidden, positions via `_global_variables.json` only). Panel background is vanilla `common.dialog_background_hollow_4`. Close via the gear button. Copy-codes tab removed.
+- Menu tabs: single-tab box card (212×230) — the v1.2.2 3-tab side layout and the 5 Coming Soon tabs are gone; all slot/totem rows unchanged and live under HUD tab.
+- Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slot 5 hidden (`62,22,false`), slots 6–8 second row (`y 22`, `x 72/82/92`), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true`, `$ksb_hba 4`, `$ksb_sbi true`.
 - Buttons use `textures/ui/ksb_slot_button.png` (+`_pressed`), `ksb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot). Durability bars on slot buttons always show for damageable held/worn items (no toggle — the old `Show Durability Item` toggle, `$ksb_sdbi`, and its emitter were removed).
 - Totem row (`$id: totem`): show toggle only (X/Y/size slider panel hidden but alive for bindings). `hud.totem_btn` sits in a `totem_btn_pos` resizer wrapper (bottom-middle anchored): X follows `htotem_y_slider` via `(#slider_val - 125)`, Y follows `htotem_x_slider` via `(#slider_val - 35)` (`$ksb_totem_x/y` are 0–100 slider positions, both default 0, so defaults `[-125,-35]`); visibility follows the row toggle live (`ksbT_totem_t`, default `$ksb_totem_v true`); size tries the size slider with fixed 30 fallback. Fixed: X/Y were swapped (X drove Y and vice-versa, so the button moved off-screen when configured) — now matches the hotbar-slot `x_slider→Y / y_slider→X` mapping.
 - Inventory row: `Show Inv HUD` toggle (`ksbT_invhud`, default `$ksb_invhud_v true`) + `Compact` toggle (`$ksb_invhud_small`, default false) in the HUD tab; controls bottom-right 9x4 grid (`hud.ks_invhud_pos` fullscreen wrapper + `ks_hud.inventory_hud_panel`, fixed bottom-right via `ks_b6As_defs`).
 - The old HowToSaveConfig copy box is gone with the codes tab — persist by editing `ui/_global_variables.json` directly (see §5) and repacking.
 
-In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the gear → left-side box-card menu (Home/HUD/Display/Info/Advanced/Settings icon tabs on top): HUD toggles totem + InvHUD Show/Compact and moves/resizes slots (see §5), others show Coming Soon. Bottom-right shows 9x4 inventory grid (toggle off to clear). Edit `_global_variables.json` + repack to persist.
+In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the gear → left-side box-card menu (Home/HUD/Display/Info/Advanced/Settings icon tabs on top): HUD toggles totem + InvHUD Show/Compact and moves/resizes slots (see §5). Bottom-right shows 9x4 inventory grid (toggle off to clear). Edit `_global_variables.json` + repack to persist.
 
 ### 2.4 Inventory HUD (Bottom Right)
 
@@ -147,7 +147,7 @@ In-game: crystal-clear windows, easier to see through in fights/builds.
 
 What it is: doors/trapdoors with glass-like transparency.
 
-How it works: block textures (`acacia/birch/dark_oak/bamboo/cherry/copper/crimson/..._door_*`, `*_trapdoor.png` — 48 entries in `terrain_texture.json`) redrawn with transparency. Item icons (`textures/items/` 17 door PNGs: `door_acacia/birch/…/warped`, `bamboo/cherry/copper/crimson/mangrove/pale_oak door`) exist on disk but `atlas.items` holds only the mace entry, so door icons fall back to vanilla.
+How it works: block textures (`acacia/birch/dark_oak/bamboo/cherry/copper/crimson/..._door_*`, `*_trapdoor.png` — 48 entries in `terrain_texture.json`) redrawn with transparency. Item icons (`textures/items/` 17 door PNGs: `door_acacia/birch/…/warped`, `bamboo/cherry/copper/crimson/mangrove/pale_oak door`) are registered as explicit `atlas.items` entries (mace + 17 doors).
 
 In-game: modern glass-door aesthetic, matches clear glass.
 
@@ -189,17 +189,17 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 
 - `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `ksb.howToSaveConfig`, `item.mace.name`.
 - No subpacks ship (`manifest.json` has no `subpacks` key): the gear menu is always on and the InvHUD grid is fixed bottom-right.
-- `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) holds only the `mace` entry (17 door PNGs unregistered → vanilla fallback); `texture_list.json`/`textures_list.json` legacy lists.
-- `textures/`: `blocks/` (1309 PNGs), `ui/` (124 PNGs incl. `bl_bt/black_ovr/blank/null`, `ks_f1f3_hud_btn/hide_bg` + `.texture_assets/.chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
+- `textures/terrain_texture.json` (`atlas.terrain`, 1318 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) registers `mace` + the 17 door icons; `texture_list.json`/`textures_list.json` are both rebuilt from disk (1623 entries each, PNG+TGA, no dangling).
+- `textures/`: `blocks/` (1309 PNGs), `ui/` (116 PNGs incl. `bl_bt/black_ovr/blank/null`, `ks_f1f3_hud_btn/hide_bg` + `texture_assets/chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png`).
 
-### 2.13 Clear Chat Screen (KS Client: `ui/chat_screen.json`, `ui/.ui_assets/.screens/.chat/chat_tweaks.json`)
+### 2.13 Clear Chat Screen (KS Client: `ui/chat_screen.json`, `ui/ui_assets/screens/chat/chat_tweaks.json`)
 
 What it is: transparent, clutter-free chat (always on, no subpack, no toggle).
 
 How it works:
 - `ui/chat_screen.json` (no namespace — vanilla-filename override, loaded by the game automatically; NOT in `_ui_defs.json`, same as upstream) hides `chat_background`, restyles `messages_text` (50% width, left-middle, layer 76, `black_ovr` 0.7 shade behind text), widens `messages_scrolling_panel`, sets `$jump_to_bottom_on_update true`, `close_on_player_hurt false`, `cache_screen true`.
-- `ui/.ui_assets/.screens/.chat/chat_tweaks.json` (namespace `ks_chat_tweaks`, appended to `_ui_defs.json`) adds 16×16 autocomplete/tab/up/down buttons (`button.chat_autocomplete/back`, `button.chat_previous/next_message`) using `textures/ui/bl_bt` + `.texture_assets/.chat_icons/*`.
-- Textures (no collisions, no atlas registration needed — direct UI paths): `textures/ui/bl_bt(.json/.png)`, `black_ovr(.json/.png)`, `blank.png`, `null.png`, `.texture_assets/.chat_icons/` (`tab/shift_tab/up/down/new_send` icons).
+- `ui/ui_assets/screens/chat/chat_tweaks.json` (namespace `ks_chat_tweaks`, appended to `_ui_defs.json`) adds 16×16 autocomplete/tab/up/down buttons (`button.chat_autocomplete/back`, `button.chat_previous/next_message`) using `textures/ui/bl_bt` + `texture_assets/chat_icons/*`.
+- Textures (no collisions, no atlas registration needed — direct UI paths): `textures/ui/bl_bt(.json/.png)`, `black_ovr(.json/.png)`, `blank.png`, `null.png`, `texture_assets/chat_icons/` (`tab/shift_tab/up/down/new_send` icons).
 - No `_global_variables.json` additions (`$is_ccs` local; other `$vars` are control-factory params or engine-resolved, same as upstream).
 
 In-game: chat background invisible, messages readable over gameplay, tab/shift-tab/up/down shortcut buttons.
@@ -212,7 +212,7 @@ How it works (all merged at top level — no subpack, always on):
 - `animations/health_bar.json` (always-display variant): `animation.health_bar` billboards via camera rotation; scale `q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : ...` (always visible, even at full HP).
 - `models/entity/health_bar.json` (`geometry.health_bar`) + `render_controllers/health_bar.json` (`controller.render.health_bar.bar/heart/digit1-3`, `entity_emissive_alpha` material).
 - `entity/*.json` (81 mob files + `player.json` = 82 entities): each adds `health_bar` material/texture/geometry slots, `v.health_bar_position/scale` in `pre_animation`, `health_bar` in `animate` + `animations` dict, and the 5 health render controllers. `player.json` is rebuilt on the vanilla 1.21.120 baseline (full spear / riding / persona anims, `helmet_layer_visible = !query.has_head_gear`, `riding_y_offset`, no FPS counter) so own skins, capes, and spear attack anims keep working. Vanilla animation/controller/geometry/texture refs (e.g. `animation.creeper.legs`, `geometry.creeper.v1.8`) resolve engine-side.
-- `textures/health_bar/`: `bar/` 00–50 + g/r/y, `font/` 0–9, `heart.png` (entity textures, direct paths — no `terrain_texture.json`/`item_texture.json` registration needed).
+- `textures/health_bar/`: `bar/` 00–50, `font/` 0–9, `heart.png` (entity textures, direct paths — no `terrain_texture.json`/`item_texture.json` registration needed).
 - No `_global_variables.json` additions; no `_ui_defs.json` additions (entity/animation/model/controller files load by path); `manifest.json` untouched (no version/UUID/subpack changes).
 
 In-game: look at any mob or player → bar + HP digits above head, always on. Gate A passes (8 SKIP lines: 8 absent Drive anims, `player.json` refs resolve); no new checker problems.
@@ -282,20 +282,20 @@ ks-client/
 │   ├── render_controllers/health_bar.json
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
-│   │   ├── item_texture.json (atlas.items — `mace` entry; door icons unregistered → vanilla fallback)
-│   │   ├── texture_list.json (1395 entries, incl. bow_pulling + pumpkinblur + gui crosshair) / textures_list.json (legacy lists)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (124 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (65 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/trapped legacy copies
+│   │   ├── item_texture.json (atlas.items — `mace` + 17 door icons)
+│   │   ├── texture_list.json + textures_list.json (identical, 1623 entries, rebuilt from disk: PNG+TGA, no dangling)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (116 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
 │   │   ├── _ui_defs.json            ← load order, 20 entries (…+ chat_tweaks + fps_hud + ks_durability ×4 + ks_hud_config + hud_crosshair_overlay; chat_screen.json loads by vanilla filename, no entry needed)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: top-right same-gear button + HUD SETTINGS toggles, no positions), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug/dev_console/ui_common
-│   │   ├── chat_screen.json (NO namespace — vanilla override) + .ui_assets/.screens/.chat/chat_tweaks.json (ks_chat_tweaks)
+│   │   ├── chat_screen.json (NO namespace — vanilla override) + ui_assets/screens/chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_durability/config+container_data+hud+common)
 │   │   ├── ks_touch/hide_gui.json
 │   │   ├── settings_sections/controls_section.json (orphan — NOT in _ui_defs, unreferenced)
-│   │   └── ._content_/inv_content.json (component_toggle base for inventory crafting limiter)
+│   │   └── ui_content/inv_content.json (component_toggle base for inventory crafting limiter)
 ├── .opencode/skills/ (create-block/item/mob, design-model, debug-addon, creator-tools-cli)
 ├── .mct/mcp/prefs.json
 └── .vscode/
