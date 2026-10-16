@@ -4,6 +4,23 @@
   "texture_data": {
     "mace": {
       "textures": ["textures/items/mace.png"]
-    }
+    },
+    "acacia_door": { "textures": ["textures/items/door_acacia.png"] },
+    "birch_door": { "textures": ["textures/items/door_birch.png"] },
+    "dark_oak_door": { "textures": ["textures/items/door_dark_oak.png"] },
+    "iron_door": { "textures": ["textures/items/door_iron.png"] },
+    "jungle_door": { "textures": ["textures/items/door_jungle.png"] },
+    "spruce_door": { "textures": ["textures/items/door_spruce.png"] },
+    "wooden_door": { "textures": ["textures/items/door_wood.png"] },
+    "bamboo_door": { "textures": ["textures/items/bamboo_door.png"] },
+    "cherry_door": { "textures": ["textures/items/cherry_door.png"] },
+    "copper_door": { "textures": ["textures/items/copper_door.png"] },
+    "crimson_door": { "textures": ["textures/items/crimson_door.png"] },
+    "exposed_copper_door": { "textures": ["textures/items/exposed_copper_door.png"] },
+    "mangrove_door": { "textures": ["textures/items/mangrove_door.png"] },
+    "oxidized_copper_door": { "textures": ["textures/items/oxidized_copper_door.png"] },
+    "pale_oak_door": { "textures": ["textures/items/pale_oak_door.png"] },
+    "warped_door": { "textures": ["textures/items/warped_door.png"] },
+    "weathered_copper_door": { "textures": ["textures/items/weathered_copper_door.png"] }
   }
 }

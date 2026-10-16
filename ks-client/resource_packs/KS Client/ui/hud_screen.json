@@ -607,9 +607,8 @@
     ]
   }
 
-  // KS crosshair textures: textures/ui/ks_crosshair_default/entity.png
-  // (rebranded PandaMine v1.1 art) + vanilla fallback textures/ui/crosshair.png
-  // + textures/gui/newgui/HUD/crosshair.png (same default art).
+  // KS crosshair textures: textures/ui/ks_crosshair_default.png and
+  // textures/ui/ks_crosshair_entity.png (rebranded PandaMine v1.1 art).
   // ui/hud_crosshair_overlay.json empties vanilla cursor (controls:[]) so the
   // dynamic panel above is the only crosshair (no double-draw).
 }

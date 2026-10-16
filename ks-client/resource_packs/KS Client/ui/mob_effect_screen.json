@@ -42,13 +42,13 @@
           "prevent_touch_input": true,
           "controls": [
             {"default@common.close_button_panel": {
-              "$close_button_texture": "textures/c_ui/close_default"
+              "$close_button_texture": "textures/c_ui/close_default.png"
             }},
             {"hover@common.close_button_panel": {
-              "$close_button_texture": "textures/c_ui/close_hover"
+              "$close_button_texture": "textures/c_ui/close_hover.png"
             }},
             {"pressed@common.close_button_panel": {
-              "$close_button_texture": "textures/c_ui/close_hover"
+              "$close_button_texture": "textures/c_ui/close_hover.png"
             }}
           ]
         }
