@@ -1,6 +1,6 @@
 # agent.md — KS Client Codebase Guide for AI Models
 
-> Read this BEFORE editing. Goal: small safe edits + recheck + debug + `.mcpack` without breaking the pack.
+> Read this BEFORE editing. Goal: small safe edits + skill/MCP first + fix ALL sites + recheck TWICE (§6.5) + debug + `.mcpack` without breaking the pack.
 
 ## 0. Global workspace rule (applies to ALL sections)
 
@@ -116,13 +116,13 @@ Safe procedure:
 2. **Artifacts (ALWAYS release):** on ANY version bump or `.mcpack` build request, ALWAYS place the artifact in `release/` as `release/KS-Client-vX.Y.Z.mcpack` (X.Y.Z from `manifest.json` header). Never overwrite an existing `release/` file — if that version file already exists, stop and ask the user. On plain build requests (no bump) reuse the current version. Keep `./tmp/` staging (`ks_pack`, `ks_validate_loop`, `*.mcpack` copies) out of git.
 3. **`_ui_defs.json` append-only.** No bulk JSON reformat. One feature per edit.
 4. **No commit/push unless asked.** Leave working tree + report evidence.
-5. **No guessing.** Always run §6 gates after change; report checker output + validate errors + Content Log.
+5. **No guessing.** Always run §6 gates after change AND complete the §6.5 loop (fix all sites, recheck twice, sweep, verify); report checker output + validate errors + Content Log.
 6. **README sync (same diff):** user-visible change MUST update `README.md` together: UI/layout/config → §1+§2+§5 table if `$var` added; texture/icon → §7 (+§3 if file added); fog/biome/entity/anim/render → §8; new/moved file → §3 tree; usage/install → §4. Version strings only on explicit bump. Verify via `git diff --stat`. `tools/`/`./tmp/`/`out/`/comment-only with zero visible effect → no README change, state why.
 7. **External pack merge — rebrand to KS, credit in `copyright.txt`:** when adding another resource pack into `resource_packs/KS Client/`: (a) stage in `./tmp/merge_<name>/` (stay in `./`), copy only needed files, NEVER overwrite `manifest.json`/uuids/version; (b) strip ALL owner branding — owner-name strings, custom folder/file names, namespaces, control IDs (`@owner.*`), `$owner_*` vars, texture paths, lang keys — rename to KS style (`ui/ks_*/`, `ks_*` namespace, `$ks_*`, `KS Client` strings). Grep to verify zero leftovers; (c) append to `./copyright.txt` (project root, NEVER shipped in `.mcpack`): `Feature / Author – Pack vX.Y.Z / Source URL / Now: new KS paths`. Never delete history — move purged packs to `Removed again` section; (d) update `README.md` (§3 tree, §7/§8, §11 credits) in same diff + run §6 gates.
 
 ---
 
-## 6. Validate after EVERY change (stop on FAIL)
+## 6. Validate after EVERY change (stop on FAIL, then obey §6.5)
 
 ```bash
 # Gate A — fast, no network
@@ -144,6 +144,21 @@ Debug:
 3. Skill (per §1.5, mandatory first step): `getSkill(debug-addon)` for invisible/broken, `item.foo:bar`, log errors; `getSkill(design-model)` for redraw; `getSkill(creator-tools-cli)` for other `mct` cmds. Prefer MCP `validateFile` / `validateContent` when available.
 4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F8/F3, totem equips, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
 5. If stuck: stop, paste Gate A + `git diff --stat` + log lines, ask user. No speculative pile-ons.
+
+---
+
+## 6.5. Verification loop — fix ALL sites, recheck TWICE, sweep (MANDATORY, every task)
+
+> One green run is NOT done. An error is a symptom — the same break is usually in 2+ places. Loop until step 7.
+
+1. **Skill + MCP first (per §1.5).** `getSkill(name)` before touching files; prefer MCP tools (`validateFile`, `validateContent`, `designModel`, `designStructure`, ...) over hand-written JSON/PNG. MCP + skills are how the flow is understood — do not skip.
+2. **Fix every site, not the symptom.** After finding an error, grep the whole pack for the same class of mistake (exact id / `$var` / texture path / bone / controller / namespace / lang key). Duplicates (both shield/sword mirrors, both atlases, multiple screens touching the same `$var`, repeated control ids) MUST be fixed in the same edit set. Fixing one of several copies = task NOT done.
+3. **Recheck pass 1.** Run §6 gates on the WHOLE pack (not just the edited file).
+4. **Recheck pass 2.** Run §6 gates AGAIN as a fresh process. Passed once = unverified.
+5. **Sweep for further errors.** Run validate `--json` (stay in `./`) and review ALL `Type=error` rows + any `UNLINK`/`[PACKDEP]`, not only the reported one; compare vs previous run. Any new error caused by the fix → back to step 2.
+6. **Verify everything verifiable — list evidence for each item:** strict JSON parse, all animate/controller/refs resolve, validate clean, no `UNLINK`, texture atlas registrations, `manifest.json` identity untouched (§5.1), `README.md` synced (§5.6), `git diff --stat` matches intent, `release/` artifact correct if built (§7), live in-game check if a session is running. Anything that cannot be verified → say so explicitly; never claim "done".
+7. **Exit only when** two consecutive full passes (steps 3–6) show zero new findings. ONLY THEN report/submit (commit only if user asked, §5.4). For big or error-fix tasks always run the full loop — never stop at the first green; the next error is often revealed only after the first fix.
+8. **Stuck after 2 loops?** Stop and ask user (§6 debug step 5) with Gate A + `git diff --stat` + log lines. No speculative pile-ons.
 
 ---
 
