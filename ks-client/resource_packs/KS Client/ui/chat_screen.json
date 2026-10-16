@@ -1,4 +1,6 @@
 {
+  "namespace": "chat",
+
   "chat_background": {
     "ignored": true
   },

@@ -1,4 +1,6 @@
 {
+  "namespace": "common",
+
   "highlight_slot_panel": {
     "type": "panel",
     "controls": [
