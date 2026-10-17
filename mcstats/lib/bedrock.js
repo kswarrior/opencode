@@ -86,6 +86,9 @@ async function statusViaHttp(host, port, timeoutMs = 8000) {
       : Array.isArray(d.motd.clean) ? d.motd.clean : [];
     motd = lines.join('\n').trim() || null;
   }
+  const playersList = d.players && Array.isArray(d.players.list)
+    ? d.players.list.filter((n) => typeof n === 'string' && n.trim())
+    : [];
 
   return {
     online: true,
@@ -98,8 +101,63 @@ async function statusViaHttp(host, port, timeoutMs = 8000) {
     players: d.players && Number.isFinite(d.players.online) ? d.players.online : 0,
     maxPlayers: d.players && Number.isFinite(d.players.max) ? d.players.max : 0,
     software: d.software || null,
-    gamemode: d.gamemode || null
+    gamemode: d.gamemode || null,
+    playersList
   };
 }
 
-module.exports = { pingBedrock, statusViaHttp };
+function queryBedrock(host, port, timeoutMs = 2500) {
+  return new Promise((resolve, reject) => {
+    const socket = dgram.createSocket('udp4');
+    const session = Buffer.from([0x80, 0x11, 0x22, 0x33]);
+    let step = 0;
+    let settled = false;
+
+    const finish = (err, data) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      try { socket.close(); } catch { /* ignore */ }
+      if (err) return reject(err);
+      resolve(data);
+    };
+
+    const timer = setTimeout(() => finish(new Error('query timeout (server does not answer GameSpy4)')), timeoutMs);
+
+    socket.once('error', (err) => finish(err));
+    socket.on('message', (msg) => {
+      try {
+        const type = msg.readUInt8(0);
+        if (type === 0x09 && step === 0) {
+          step = 1;
+          const token = msg.slice(5, 9);
+          const req = Buffer.concat([Buffer.from([0xfe, 0xfd, 0x00]), session, token, Buffer.alloc(4)]);
+          socket.send(req, 0, req.length, port, host, (err) => {
+            if (err) finish(err);
+          });
+        } else if (type === 0x00 && step === 1) {
+          const body = msg.slice(16).toString('latin1');
+          const parts = body.split('\x00');
+          const kv = {};
+          for (let i = 0; i + 1 < parts.length; i += 2) kv[parts[i]] = parts[i + 1];
+          const list = typeof kv.players === 'string' && kv.players.trim()
+            ? kv.players.split(';').map((n) => n.trim()).filter(Boolean)
+            : [];
+          finish(null, {
+            hostname: kv.hostname || null,
+            numPlayers: Number.parseInt(kv.numplayers, 10) || list.length,
+            maxPlayers: Number.parseInt(kv.maxplayers, 10) || null,
+            playersList: list
+          });
+        }
+      } catch { /* ignore stray/malformed packets; wait for the timeout */ }
+    });
+
+    const handshake = Buffer.concat([Buffer.from([0xfe, 0xfd, 0x00]), session]);
+    socket.send(handshake, 0, handshake.length, port, host, (err) => {
+      if (err) finish(err);
+    });
+  });
+}
+
+module.exports = { pingBedrock, statusViaHttp, queryBedrock };

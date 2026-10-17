@@ -5,7 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const { pingBedrock, statusViaHttp } = require('./lib/bedrock');
+const { pingBedrock, statusViaHttp, queryBedrock } = require('./lib/bedrock');
 
 function intEnv(name, fallback, min) {
   const raw = parseInt(process.env[name] || '', 10);
@@ -20,6 +20,7 @@ const MAX_PLAYERS_OVERRIDE = intEnv('MC_MAX_PLAYERS', 20, 0);
 const CHECK_INTERVAL_MS = intEnv('CHECK_INTERVAL_MS', 60000, 15000);
 const PING_TIMEOUT_MS = intEnv('PING_TIMEOUT_MS', 5000, 1000);
 const HTTP_TIMEOUT_MS = intEnv('HTTP_TIMEOUT_MS', 8000, 2000);
+const QUERY_TIMEOUT_MS = intEnv('QUERY_TIMEOUT_MS', 2500, 1000);
 const HTTP_FALLBACK = process.env.HTTP_FALLBACK !== '0';
 
 const SELF_URL = (process.env.SELF_URL || process.env.RENDER_EXTERNAL_URL || '').replace(/\/+$/, '');
@@ -37,6 +38,10 @@ let totals = { checks: 0, onlineChecks: 0, peakPlayers: 0, firstCheckAt: null };
 let lastOnlineState = null;
 let nextCheckAt = null;
 let checking = false;
+
+let players = {};
+let currentlyOnline = new Set();
+let namesAvailable = null;
 
 let current = {
   checked: false,
@@ -99,8 +104,138 @@ function loadPersisted() {
   } catch { /* first boot */ }
 }
 
+function dayKey(ts) {
+  return new Date(ts).toISOString().slice(0, 10);
+}
+
+function dayStat(rec, day) {
+  if (!rec.days[day]) rec.days[day] = { ms: 0, joins: 0, leaves: 0 };
+  return rec.days[day];
+}
+
+function pruneDays(rec, now) {
+  const cutoffKey = dayKey(now - 6 * 86400000);
+  for (const key of Object.keys(rec.days)) {
+    if (key < cutoffKey) delete rec.days[key];
+  }
+}
+
+function playerRecord(name, now) {
+  let rec = players[name];
+  if (!rec) {
+    rec = players[name] = {
+      name,
+      firstSeen: now,
+      lastSeen: now,
+      online: false,
+      totalMs: 0,
+      joins: 0,
+      leaves: 0,
+      lastJoinAt: null,
+      lastLeaveAt: null,
+      days: {}
+    };
+  }
+  return rec;
+}
+
+function sanitizeName(raw) {
+  const name = String(raw || '').trim().slice(0, 32);
+  return name || null;
+}
+
+function trackPlayers(namesOnline, now) {
+  if (namesOnline === null) return;
+  const today = dayKey(now);
+  const seen = new Set();
+
+  for (const rawName of namesOnline) {
+    const name = sanitizeName(rawName);
+    if (!name) continue;
+    seen.add(name);
+    const rec = playerRecord(name, now);
+    if (!currentlyOnline.has(name)) {
+      rec.joins += 1;
+      rec.lastJoinAt = now;
+      dayStat(rec, today).joins += 1;
+    }
+    rec.online = true;
+    rec.lastSeen = now;
+    rec.totalMs += CHECK_INTERVAL_MS;
+    dayStat(rec, today).ms += CHECK_INTERVAL_MS;
+    pruneDays(rec, now);
+  }
+
+  for (const name of currentlyOnline) {
+    if (seen.has(name)) continue;
+    const rec = playerRecord(name, now);
+    rec.leaves += 1;
+    rec.lastLeaveAt = now;
+    rec.online = false;
+    dayStat(rec, today).leaves += 1;
+  }
+
+  currentlyOnline = seen;
+}
+
+function playersPayload() {
+  const now = Date.now();
+  const today = dayKey(now);
+  const dayStart = Date.parse(`${today}T00:00:00.000Z`);
+  const dayElapsedMs = Math.max(1, now - dayStart);
+
+  let todayJoins = 0;
+  let todayLeaves = 0;
+
+  const list = Object.values(players).map((rec) => {
+    const stat = rec.days[today] || { ms: 0, joins: 0, leaves: 0 };
+    todayJoins += stat.joins;
+    todayLeaves += stat.leaves;
+    const last7 = [];
+    for (let i = 6; i >= 0; i -= 1) {
+      const key = dayKey(now - i * 86400000);
+      const day = rec.days[key] || { ms: 0, joins: 0, leaves: 0 };
+      last7.push({
+        day: key,
+        ms: day.ms,
+        percent: +((100 * day.ms) / 86400000).toFixed(1)
+      });
+    }
+    return {
+      name: rec.name,
+      onlineNow: currentlyOnline.has(rec.name),
+      todayMs: stat.ms,
+      todayPercent: +((100 * stat.ms) / dayElapsedMs).toFixed(1),
+      todayJoins: stat.joins,
+      todayLeaves: stat.leaves,
+      totalMs: rec.totalMs,
+      joins: rec.joins,
+      leaves: rec.leaves,
+      firstSeen: rec.firstSeen,
+      lastSeen: rec.lastSeen,
+      lastJoinAt: rec.lastJoinAt,
+      lastLeaveAt: rec.lastLeaveAt,
+      last7
+    };
+  });
+
+  list.sort((a, b) => Number(b.onlineNow) - Number(a.onlineNow) || b.lastSeen - a.lastSeen);
+
+  return {
+    updatedAt: current.lastCheckedAt,
+    dayKey: today,
+    dayElapsedMs,
+    tracking: { namesAvailable, watchIntervalMs: CHECK_INTERVAL_MS },
+    onlineNow: list.filter((p) => p.onlineNow).length,
+    totalSeen: list.length,
+    todayJoins,
+    todayLeaves,
+    players: list
+  };
+}
+
 function persist() {
-  const payload = JSON.stringify({ savedAt: Date.now(), totals, history });
+  const payload = JSON.stringify({ savedAt: Date.now(), totals, history, players });
   fs.promises
     .mkdir(DATA_DIR, { recursive: true })
     .then(() => fs.promises.writeFile(DATA_FILE, payload))
