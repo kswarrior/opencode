@@ -267,15 +267,15 @@
           }
         ]
       },
-      // KS Durability HUD (Bottom Left): selected-item durability readout.
-      // Fixed bottom-left via $ksd_hud_* globals (rebranded ZenXveda zx_durability).
-      // Visibility follows the HUD menu Show toggle live (ksdT_dura_t, default $ksd_dura_v true).
+      // KS Durability Viewer (merged Durability Viewer V-2.5 [RP]): selected-item
+      // durability readout. Fixed bottom-left via $ks_dv_mainhand_* globals.
+      // Visibility follows the HUD menu Show toggle live (ks_dv_t_t, default $ks_dv_mainhand true).
       {
         "array_name": "controls",
         "operation": "insert_front",
         "value": [
           {
-            "ks_dura_pos@hud.ks_dura_pos": {}
+            "ks_dv_mainhand_pos@hud.ks_dv_mainhand_pos": {}
           }
         ]
       },

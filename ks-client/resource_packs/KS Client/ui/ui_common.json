@@ -11,6 +11,16 @@
               "hover_text@common.hover_text": {
                 "layer": 29,
                 "$hover_text_binding_name|default": "#hover_text",
+                // KS Durability Viewer (merged DV V-2.5 [RP]): hover durability is
+                // config-gated — $ks_dv_inventory for container hover, recipe book
+                // follows $ks_dv_recipe_book.
+                "$conditional_ignore|default": "$ks_dv_inventory",
+                "variables": [
+                  {
+                    "requires": "($item_collection_name = 'recipe_book')",
+                    "$conditional_ignore": "$ks_dv_recipe_book"
+                  }
+                ],
                 "property_bag": {
                   "#total_durability": 0 //initiating from 0
                 },
@@ -22,41 +32,49 @@
                     "binding_collection_name": "$item_collection_name"
                   },
                   {
+                    "ignored": "$conditional_ignore",
                     "binding_type": "view",
                     "source_property_name": "#hover_text_pre",
                     "target_property_name": "#hover_text"
                   },
                   {
+                    "ignored": "(not $conditional_ignore)",
                     "binding_name": "#item_durability_total_amount",
                     "binding_type": "collection",
                     "binding_collection_name": "$item_collection_name"
                   },
                   {
+                    "ignored": "(not $conditional_ignore)",
                     "binding_name": "#item_durability_current_amount",
                     "binding_type": "collection",
                     "binding_collection_name": "$item_collection_name"
                   },
                   {
+                    "ignored": "(not $conditional_ignore)",
                     "binding_type": "view",
                     "source_property_name": "(#total_durability + (#total_durability < #item_durability_total_amount) * 1 - (#total_durability > #item_durability_total_amount) * 1)", //increment or decrement when needed
                     "target_property_name": "#total_durability"
                   },
                   {
+                    "ignored": "(not $conditional_ignore)",
                     "binding_type": "view",
                     "source_property_name": "((#item_durability_current_amount > 0) * #total_durability)",
                     "target_property_name": "#current_durability" // initiating from total durability
                   },
                   {
+                    "ignored": "(not $conditional_ignore)",
                     "binding_type": "view",
                     "source_property_name": "(#current_durability - (#item_durability_current_amount < #current_durability) * 1)", //decrement
                     "target_property_name": "#current_durability"
                   },
                   {
+                    "ignored": "(not $conditional_ignore)",
                     "binding_type": "view",
                     "source_property_name": "('\n§7Durability: ' + #current_durability + '/' + #total_durability)",
                     "target_property_name": "#durability"
                   },
                   {
+                    "ignored": "(not $conditional_ignore)",
                     "binding_type": "view",
                     "source_property_name": "(#hover_text_pre + (((#item_durability_total_amount = 0) + #durability) - ('true' + #durability) - 'false') + #item_durability_current_amount)", //not a mistake
                     "target_property_name": "#hover_text"
