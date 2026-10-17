@@ -8,6 +8,7 @@ const { pingBedrock, statusViaHttp } = require('./lib/bedrock');
 const PORT = parseInt(process.env.PORT || '10000', 10);
 const MC_HOST = process.env.MC_HOST || 'Mayanshanboss.aternos.me';
 const MC_PORT = parseInt(process.env.MC_PORT || '63046', 10);
+const MAX_PLAYERS_OVERRIDE = Math.max(0, parseInt(process.env.MC_MAX_PLAYERS || '20', 10) || 0);
 const CHECK_INTERVAL_MS = Math.max(15000, parseInt(process.env.CHECK_INTERVAL_MS || '60000', 10));
 const PING_TIMEOUT_MS = Math.max(1000, parseInt(process.env.PING_TIMEOUT_MS || '5000', 10));
 const HTTP_TIMEOUT_MS = Math.max(2000, parseInt(process.env.HTTP_TIMEOUT_MS || '8000', 10));
@@ -124,7 +125,7 @@ async function check() {
     current.software = result.software ?? null;
     current.gamemode = result.gamemode ?? null;
     current.players = result.players ?? 0;
-    current.maxPlayers = result.maxPlayers ?? 0;
+    current.maxPlayers = MAX_PLAYERS_OVERRIDE > 0 ? MAX_PLAYERS_OVERRIDE : result.maxPlayers ?? 0;
     current.latencyMs = result.latencyMs ?? null;
     current.source = result.source || 'udp';
     current.lastOnlineAt = now;
@@ -203,6 +204,7 @@ function statusPayload() {
       checkIntervalMs: CHECK_INTERVAL_MS,
       pingTimeoutMs: PING_TIMEOUT_MS,
       httpFallback: HTTP_FALLBACK,
+      maxPlayersOverride: MAX_PLAYERS_OVERRIDE,
       maxSamples: MAX_SAMPLES,
       nextCheckAt
     }
