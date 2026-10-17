@@ -13,6 +13,7 @@ const MAX_CHART_SAMPLES = 1440;
 const PAGE = document.body.dataset.page || 'dashboard';
 const PAGE_TITLES = {
   dashboard: 'Dashboard',
+  players: 'Players',
   statistics: 'Statistics',
   'server-info': 'Server Info',
   about: 'About',
@@ -277,6 +278,92 @@ function renderStatus(data) {
     'chartRange',
     stats.lastSampleAt ? `${stats.historySize} checks · ${fmtClock(stats.lastSampleAt)} latest` : 'no data yet'
   );
+}
+
+/* ---------- players page (names come from the server already sanitized; always render as text) ---------- */
+
+const playersGrid = $('playersGrid');
+
+function buildPlayerCard(p) {
+  const card = document.createElement('div');
+  card.className = `card pcard${p.onlineNow ? ' online' : ''}`;
+
+  const head = document.createElement('div');
+  head.className = 'pcard-head';
+  const dot = document.createElement('i');
+  dot.className = 'dot';
+  const name = document.createElement('span');
+  name.className = 'pname';
+  name.textContent = p.name;
+  const badge = document.createElement('span');
+  badge.className = 'pbadge';
+  badge.textContent = p.onlineNow ? 'Online' : 'Offline';
+  head.append(dot, name, badge);
+
+  const today = document.createElement('div');
+  today.className = 'ptoday';
+  today.textContent = p.todayMs > 0 ? fmtDuration(p.todayMs) : '—';
+  const todayLabel = document.createElement('small');
+  todayLabel.textContent = `${p.todayPercent}% of today`;
+  today.appendChild(todayLabel);
+
+  const bar = document.createElement('div');
+  bar.className = 'pbar';
+  const fill = document.createElement('i');
+  fill.style.width = `${Math.min(100, Math.max(0, p.todayPercent))}%`;
+  bar.appendChild(fill);
+
+  const meta = document.createElement('div');
+  meta.className = 'pmeta';
+  const line1 = document.createElement('div');
+  line1.textContent = `Today: ${p.todayJoins} joined · ${p.todayLeaves} left`;
+  const line2 = document.createElement('div');
+  line2.textContent =
+    `All-time: ${p.joins} joins · ${p.leaves} leaves · ${fmtDuration(p.totalMs)} online time`;
+  const line3 = document.createElement('div');
+  line3.textContent = p.onlineNow ? 'Online right now' : `Last seen ${fmtAgo(p.lastSeen)}`;
+  meta.append(line1, line2, line3);
+
+  const week = document.createElement('div');
+  week.className = 'pweek';
+  const maxPercent = Math.max(1, ...p.last7.map((d) => d.percent));
+  p.last7.forEach((d, i) => {
+    const day = document.createElement('div');
+    day.className = `pday${i === p.last7.length - 1 ? ' today' : ''}`;
+    day.style.height = `${Math.max(6, Math.round((100 * d.percent) / maxPercent))}%`;
+    day.title = `${d.day}: ${d.percent}%`;
+    week.appendChild(day);
+  });
+
+  card.append(head, today, bar, meta, week);
+  return card;
+}
+
+function renderPlayers(data) {
+  if (!playersGrid) return;
+
+  set('pSeen', data.totalSeen);
+  set('pOnlineNow', data.onlineNow);
+  set('pJoinedToday', data.todayJoins);
+  set('pLeftToday', data.todayLeaves);
+
+  set(
+    'playersRange',
+    data.tracking && data.tracking.watchIntervalMs
+      ? `last 7 days · watched every ${Math.round(data.tracking.watchIntervalMs / 1000)}s · updated ${fmtAgo(data.updatedAt)}`
+      : 'last 7 days'
+  );
+
+  const hint = $('playerNamesHint');
+  if (hint) hint.hidden = !(data.tracking && data.tracking.namesAvailable === false);
+
+  const list = data.players || [];
+  const empty = $('playersEmpty');
+  if (empty) empty.hidden = list.length > 0;
+  playersGrid.hidden = list.length === 0;
+
+  playersGrid.innerHTML = '';
+  list.forEach((p) => playersGrid.appendChild(buildPlayerCard(p)));
 }
 
 /* ---------- chart (statistics page only) ---------- */
