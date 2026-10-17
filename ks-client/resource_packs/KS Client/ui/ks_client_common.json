@@ -1444,24 +1444,12 @@
     ]
   },
 
-  "ks_hud_keys": {
-    "type": "panel",
-    "size": [0, 0],
-    "controls": []
-  },
-
   // ---------- Inventory slot probe (one per hotbar/inventory slot) ----------
   // Same technique as reference NeBuxInventoryCounter.InventoryCounterMain:
   // inside a collection_panel bound to hotbar_items, each probe reads
   // #item_id_aux (-1 = empty) and publishes '#ks_slot_<id>' 1/0.
   // The debug rows sum the 36 probes into a used/total counter.
   // Kept as KS names (ks_f3_inv_counter_main), same-to-same logic.
-  "ks_inv_slot": {
-    "type": "panel",
-    "size": [0, 0],
-    "controls": []
-  },
-
   "ks_f3_inv_counter_main": {
     "type": "panel",
     "collection_index": "$counter_id",
