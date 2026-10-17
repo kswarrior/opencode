@@ -1,0 +1,15 @@
+<aside class="sidebar" id="sidebar">
+  <div>
+    <div class="sidebar-title">Menu</div>
+    <nav>
+      <a class="nav-link<%= page === 'dashboard' ? ' active' : '' %>" href="/">Dashboard</a>
+      <a class="nav-link<%= page === 'statistics' ? ' active' : '' %>" href="/statistics">Statistics</a>
+      <a class="nav-link<%= page === 'server-info' ? ' active' : '' %>" href="/server-info">Server Info</a>
+      <a class="nav-link<%= page === 'about' ? ' active' : '' %>" href="/about">About</a>
+    </nav>
+  </div>
+  <div class="sidebar-foot">
+    <div class="addr" id="sideAddress"><%= cfg.host %></div>
+    <div class="sub">Port <%= cfg.port %> · Bedrock</div>
+  </div>
+</aside>
