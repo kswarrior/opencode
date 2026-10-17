@@ -10,6 +10,7 @@ Hosted on Render.com as the `mcstats` service in `render.yaml`.
 ## Pages
 
 - `GET /` — Dashboard (MOTD + live players/version/latency/uptime)
+- `GET /players` — who has been seen online: today's time/percentage, join/leave counts, 7-day bars
 - `GET /statistics` — player-count history chart + totals
 - `GET /server-info` — address, port, software, live status, how to join
 - `GET /about` — about the monitor
@@ -34,6 +35,7 @@ It hits `GET /health` only and logs nothing on success, so the frontend is unaff
 - `GET /health` — `ok mcstats server-online|server-offline <address>`
 - `GET /api/status` — current status, totals, config
 - `GET /api/history?limit=240` — recent check samples for the chart
+- `GET /api/players` — player names seen while checking (today ms/percent, joins/leaves, last 7 days)
 
 ## Run locally
 
@@ -54,8 +56,21 @@ curl http://localhost:10000/api/status
 | `MC_MAX_PLAYERS`    | `20`                         | Max slots shown (Aternos pings wrongly report 0/1; `0` = trust the ping) |
 | `CHECK_INTERVAL_MS` | `60000`                      | Ping interval (min 15000)                        |
 | `PING_TIMEOUT_MS`   | `5000`                       | RakNet UDP timeout                               |
+| `QUERY_TIMEOUT_MS`  | `2500`                       | GameSpy4 query timeout (min 1000)                |
 | `HTTP_FALLBACK`     | `1`                          | Confirm offline via api.mcsrvstat.us when no UDP |
+| `DATA_DIR`          | `data`                       | Where `history.json` is stored                   |
 | `PORT`              | `10000`                      | HTTP port (Render sets this)                     |
+
+## Player tracking (`/players`)
+
+The RakNet ping only reports *how many* players are online, not *who*. To get names the backend
+also speaks the **GameSpy4 query** protocol against the server port; names are matched between
+checks to count joins/leaves and credit online time (today + last 7 days).
+
+- Requires the server to answer queries (`enable-query=true` in `server.properties` on BDS).
+- If the query never answers, the page still works: it shows the online count and a hint to enable
+  the query — it never guesses names.
+- Names are styled as plain text (no HTML injection) and capped at 32 characters.
 
 ## Why `MC_MAX_PLAYERS` exists
 
