@@ -1,0 +1,54 @@
+<%- include('partials/head', { page: page, title: title, cfg: cfg }) %>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Players</h2>
+      <div class="muted" id="playersRange">—</div>
+    </div>
+
+    <div class="card about" id="playerNamesHint" hidden>
+      <p>
+        <b>The server is not exposing its player list right now.</b> The monitor can still see how
+        many players are online, but not who they are. To enable name tracking, turn on the server
+        query in <code>server.properties</code> (<code>enable-query=true</code> on BDS,
+        <code>enable-query=on</code> on PocketMine), then restart the server.
+      </p>
+    </div>
+
+    <div class="grid four">
+      <div class="card mini"><span>Players seen</span><b id="pSeen"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Online now</span><b id="pOnlineNow"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Joined today</span><b id="pJoinedToday"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Left today</span><b id="pLeftToday"><span class="skeleton chip"></span></b></div>
+    </div>
+
+    <div class="pgrid" id="playersGrid">
+      <div class="card pcard">
+        <div class="pcard-head"><i class="dot"></i><span class="skeleton chip" style="width: 90px"></span></div>
+        <div class="skeleton num" style="margin-bottom: 10px"></div>
+        <div class="skeleton" style="display: block; height: 8px; border-radius: 99px"></div>
+        <div class="skeleton chip" style="margin-top: 12px"></div>
+      </div>
+      <div class="card pcard">
+        <div class="pcard-head"><i class="dot"></i><span class="skeleton chip" style="width: 90px"></span></div>
+        <div class="skeleton num" style="margin-bottom: 10px"></div>
+        <div class="skeleton" style="display: block; height: 8px; border-radius: 99px"></div>
+        <div class="skeleton chip" style="margin-top: 12px"></div>
+      </div>
+      <div class="card pcard">
+        <div class="pcard-head"><i class="dot"></i><span class="skeleton chip" style="width: 90px"></span></div>
+        <div class="skeleton num" style="margin-bottom: 10px"></div>
+        <div class="skeleton" style="display: block; height: 8px; border-radius: 99px"></div>
+        <div class="skeleton chip" style="margin-top: 12px"></div>
+      </div>
+    </div>
+
+    <div class="card about" id="playersEmpty" hidden>
+      <p>
+        No players seen yet. The monitor records every player it catches online — they will appear
+        here the first time they join while the app is watching.
+      </p>
+    </div>
+  </section>
+
+<%- include('partials/foot') %>

@@ -84,6 +84,40 @@ function loadPersisted() {
         firstCheckAt: Number.isFinite(raw.totals.firstCheckAt) ? raw.totals.firstCheckAt : null
       };
     }
+    if (raw.players && typeof raw.players === 'object') {
+      players = {};
+      for (const [rawName, rec] of Object.entries(raw.players)) {
+        const name = sanitizeName(rawName);
+        if (!name || !rec || typeof rec !== 'object') continue;
+        const days = {};
+        if (rec.days && typeof rec.days === 'object') {
+          for (const [key, val] of Object.entries(rec.days)) {
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(key)) continue;
+            if (Number.isFinite(val)) {
+              days[key] = { ms: val, joins: 0, leaves: 0 };
+            } else if (val && typeof val === 'object') {
+              days[key] = {
+                ms: Number.isFinite(val.ms) ? val.ms : 0,
+                joins: Number.isFinite(val.joins) ? val.joins : 0,
+                leaves: Number.isFinite(val.leaves) ? val.leaves : 0
+              };
+            }
+          }
+        }
+        players[name] = {
+          name,
+          firstSeen: Number.isFinite(rec.firstSeen) ? rec.firstSeen : Date.now(),
+          lastSeen: Number.isFinite(rec.lastSeen) ? rec.lastSeen : 0,
+          online: false,
+          totalMs: Number.isFinite(rec.totalMs) ? rec.totalMs : 0,
+          joins: Number.isFinite(rec.joins) ? rec.joins : 0,
+          leaves: Number.isFinite(rec.leaves) ? rec.leaves : 0,
+          lastJoinAt: Number.isFinite(rec.lastJoinAt) ? rec.lastJoinAt : null,
+          lastLeaveAt: Number.isFinite(rec.lastLeaveAt) ? rec.lastLeaveAt : null,
+          days
+        };
+      }
+    }
     const last = history[history.length - 1];
     if (last) lastOnlineState = last.online;
     if (history.length) {
@@ -305,6 +339,27 @@ async function check() {
     if (lastOnlineState !== null && lastOnlineState !== online) current.lastChangeAt = now;
     lastOnlineState = online;
 
+    let namesOnline = null;
+    if (!online || current.players === 0) {
+      namesOnline = new Set();
+    } else if (Array.isArray(result.playersList) && result.playersList.length) {
+      namesOnline = new Set(result.playersList);
+      namesAvailable = true;
+    } else {
+      try {
+        const queried = await queryBedrock(MC_HOST, MC_PORT, QUERY_TIMEOUT_MS);
+        if (queried.playersList.length) {
+          namesOnline = new Set(queried.playersList);
+          namesAvailable = true;
+        } else {
+          namesAvailable = false;
+        }
+      } catch {
+        namesAvailable = false;
+      }
+    }
+    trackPlayers(namesOnline, now);
+
     history.push({
       t: now,
       online,
@@ -401,6 +456,7 @@ app.use(express.static(path.join(__dirname, 'client'), { index: false }));
 
 const PAGES = [
   { route: '/', view: 'index', page: 'dashboard', title: 'Dashboard' },
+  { route: '/players', view: 'players', page: 'players', title: 'Players' },
   { route: '/statistics', view: 'statistics', page: 'statistics', title: 'Statistics' },
   { route: '/server-info', view: 'server-info', page: 'server-info', title: 'Server Info' },
   { route: '/about', view: 'about', page: 'about', title: 'About' }
@@ -426,6 +482,11 @@ app.get('/api/history', (req, res) => {
   const samples = history.slice(-limit);
   res.set('Cache-Control', 'no-store');
   res.json({ intervalMs: CHECK_INTERVAL_MS, count: samples.length, total: history.length, samples });
+});
+
+app.get('/api/players', (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  res.json(playersPayload());
 });
 
 app.use((req, res) => {
