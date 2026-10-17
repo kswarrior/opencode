@@ -10,6 +10,7 @@ RUN set -eux; \
     cp "$SRC/server.js" ./server.js; \
     cp -r "$SRC/lib" ./lib; \
     cp -r "$SRC/client" ./client; \
+    cp -r "$SRC/views" ./views; \
     if [ -f "$SRC/package-lock.json" ]; then cp "$SRC/package-lock.json" ./package-lock.json; fi; \
     if [ -f "$SRC/.env" ]; then cp "$SRC/.env" ./.env; fi; \
     rm -rf /tmp/ctx

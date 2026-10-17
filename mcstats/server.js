@@ -15,6 +15,7 @@ const HTTP_TIMEOUT_MS = Math.max(2000, parseInt(process.env.HTTP_TIMEOUT_MS || '
 const HTTP_FALLBACK = process.env.HTTP_FALLBACK !== '0';
 
 const ADDRESS = `${MC_HOST}:${MC_PORT}`;
+const PUBLIC_CFG = { host: MC_HOST, port: MC_PORT, address: ADDRESS, edition: 'Bedrock (MCPE)' };
 const MAX_SAMPLES = 1440;
 const DATA_DIR = path.join(__dirname, 'data');
 const DATA_FILE = path.join(DATA_DIR, 'history.json');
@@ -185,7 +186,7 @@ function statusPayload() {
   }
 
   return {
-    server: { host: MC_HOST, port: MC_PORT, address: ADDRESS, edition: 'Bedrock (MCPE)' },
+    server: PUBLIC_CFG,
     status: current,
     stats: {
       checks: totals.checks,
@@ -213,7 +214,22 @@ function statusPayload() {
 
 const app = express();
 app.disable('x-powered-by');
-app.use(express.static(path.join(__dirname, 'client'), { extensions: ['html'] }));
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, 'client'), { index: false }));
+
+const PAGES = [
+  { route: '/', view: 'index', page: 'dashboard', title: 'Dashboard' },
+  { route: '/statistics', view: 'statistics', page: 'statistics', title: 'Statistics' },
+  { route: '/server-info', view: 'server-info', page: 'server-info', title: 'Server Info' },
+  { route: '/about', view: 'about', page: 'about', title: 'About' }
+];
+
+PAGES.forEach(({ route, view, page, title }) => {
+  app.get(route, (req, res) => res.render(view, { page, title, cfg: PUBLIC_CFG }));
+});
 
 app.get('/health', (req, res) => {
   const state = current.checked ? (current.online ? 'server-online' : 'server-offline') : 'checking';
@@ -233,8 +249,8 @@ app.get('/api/history', (req, res) => {
   res.json({ intervalMs: CHECK_INTERVAL_MS, count: samples.length, total: history.length, samples });
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'index.html'));
+app.use((req, res) => {
+  res.status(404).render('404', { page: 'not-found', title: 'Page not found', cfg: PUBLIC_CFG });
 });
 
 const server = app.listen(PORT, '0.0.0.0', () => {

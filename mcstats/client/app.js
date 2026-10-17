@@ -2,8 +2,22 @@
 
 const $ = (id) => document.getElementById(id);
 
+const set = (id, value) => {
+  const el = $(id);
+  if (el) el.textContent = value;
+};
+
 const REFRESH_MS = 15000;
 const MAX_CHART_SAMPLES = 1440;
+
+const PAGE = document.body.dataset.page || 'dashboard';
+const PAGE_TITLES = {
+  dashboard: 'Dashboard',
+  statistics: 'Statistics',
+  'server-info': 'Server Info',
+  about: 'About',
+  'not-found': 'Page not found'
+};
 
 let latest = null;
 let samples = [];
@@ -27,27 +41,9 @@ overlay.addEventListener('click', () => setMenu(false));
 
 document.querySelectorAll('.nav-link').forEach((link) => {
   link.addEventListener('click', () => {
-    document.querySelectorAll('.nav-link').forEach((l) => l.classList.remove('active'));
-    link.classList.add('active');
     if (window.matchMedia('(max-width: 900px)').matches) setMenu(false);
   });
 });
-
-if ('IntersectionObserver' in window) {
-  const spy = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-        if (!link) return;
-        document.querySelectorAll('.nav-link').forEach((l) => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    },
-    { rootMargin: '-30% 0px -60% 0px' }
-  );
-  document.querySelectorAll('.section').forEach((s) => spy.observe(s));
-}
 
 /* ---------- helpers ---------- */
 
@@ -176,6 +172,7 @@ const MOTD_SKELETON =
 
 function renderMotd(motd, known, online) {
   const el = $('motdVal');
+  if (!el) return;
   el.innerHTML = '';
 
   if (!known) {
@@ -213,63 +210,76 @@ function renderStatus(data) {
   const online = known && status.online;
 
   const pill = $('topPill');
-  pill.classList.remove('online', 'offline', 'unknown');
-  pill.classList.add(!known ? 'unknown' : online ? 'online' : 'offline');
-  $('topPillText').textContent = !known ? 'checking…' : online ? 'Online' : 'Offline';
+  if (pill) {
+    pill.classList.remove('online', 'offline', 'unknown');
+    pill.classList.add(!known ? 'unknown' : online ? 'online' : 'offline');
+  }
+  set('topPillText', !known ? 'checking…' : online ? 'Online' : 'Offline');
 
   renderMotd(status.motd, known, online);
 
-  $('playersOnline').textContent = online ? status.players : '—';
-  $('playersMax').textContent = online ? `/ ${status.maxPlayers}` : '';
-  $('playersFoot').textContent = `All-time peak: ${stats.peakPlayers}`;
+  set('playersOnline', online ? status.players : '—');
+  set('playersMax', online ? `/ ${status.maxPlayers}` : '');
+  set('playersFoot', `All-time peak: ${stats.peakPlayers}`);
 
-  $('versionVal').textContent = online && status.version ? status.version : '—';
-  $('versionFoot').textContent = online && status.protocol ? `Protocol ${status.protocol}` : server.edition;
+  set('versionVal', online && status.version ? status.version : '—');
+  set('versionFoot', online && status.protocol ? `Protocol ${status.protocol}` : server.edition);
 
-  $('latencyVal').textContent = online && status.latencyMs != null ? `${status.latencyMs} ms` : '—';
-  $('latencyFoot').textContent = online
-    ? status.source === 'http'
-      ? 'Measured via status API'
-      : 'Measured via RakNet ping'
-    : 'Not reachable';
+  set('latencyVal', online && status.latencyMs != null ? `${status.latencyMs} ms` : '—');
+  set(
+    'latencyFoot',
+    online
+      ? status.source === 'http'
+        ? 'Measured via status API'
+        : 'Measured via RakNet ping'
+      : 'Not reachable'
+  );
 
-  $('uptimeVal').textContent = stats.uptimePercent != null ? `${stats.uptimePercent}%` : '—';
-  $('uptimeFoot').textContent =
+  set('uptimeVal', stats.uptimePercent != null ? `${stats.uptimePercent}%` : '—');
+  set(
+    'uptimeFoot',
     stats.uptimePercent24h != null
       ? `${stats.onlineChecks}/${stats.checks} checks · ${stats.uptimePercent24h}% last 24h`
-      : `${stats.onlineChecks}/${stats.checks} checks`;
+      : `${stats.onlineChecks}/${stats.checks} checks`
+  );
 
-  $('mChecks').textContent = stats.checks;
-  $('mOnline').textContent = stats.onlineChecks;
-  $('mPeak').textContent = stats.peakPlayers;
-  $('mAvgLatency').textContent = stats.avgLatencyMs != null ? `${stats.avgLatencyMs} ms` : '—';
+  set('mChecks', stats.checks);
+  set('mOnline', stats.onlineChecks);
+  set('mPeak', stats.peakPlayers);
+  set('mAvgLatency', stats.avgLatencyMs != null ? `${stats.avgLatencyMs} ms` : '—');
 
-  $('infoAddress').textContent = server.address;
-  $('infoPort').textContent = server.port;
-  $('infoEdition').textContent = server.edition;
-  $('infoSoftware').textContent = online && status.software ? status.software : '—';
-  $('infoStatus').textContent = !known
-    ? 'Checking…'
-    : online
-      ? `Online · ${status.players}/${status.maxPlayers} players · up ${fmtDuration(stats.streak.ms)}`
-      : `Offline · ${stats.streak.ms ? `for ${fmtDuration(stats.streak.ms)}` : 'no response'}`;
+  set('infoAddress', server.address);
+  set('infoPort', server.port);
+  set('infoEdition', server.edition);
+  set('infoSoftware', online && status.software ? status.software : '—');
+  set(
+    'infoStatus',
+    !known
+      ? 'Checking…'
+      : online
+        ? `Online · ${status.players}/${status.maxPlayers} players · up ${fmtDuration(stats.streak.ms)}`
+        : `Offline · ${stats.streak.ms ? `for ${fmtDuration(stats.streak.ms)}` : 'no response'}`
+  );
 
-  $('sideAddress').textContent = server.host;
-  $('copyBtn').dataset.copy = server.address;
+  set('sideAddress', server.host);
 
-  $('footStatus').textContent = footerText(data);
+  const copyBtn = $('copyBtn');
+  if (copyBtn) copyBtn.dataset.copy = server.address;
 
-  document.title = `${known ? (online ? 'Online' : 'Offline') : 'Checking'} · Mayanshanboss Monitor`;
+  set('footStatus', footerText(data));
 
-  $('chartRange').textContent = stats.lastSampleAt
-    ? `${stats.historySize} checks · ${fmtClock(stats.lastSampleAt)} latest`
-    : 'no data yet';
+  document.title = `${known ? (online ? 'Online' : 'Offline') : 'Checking'} · ${PAGE_TITLES[PAGE] || 'Dashboard'} · Mayanshanboss Monitor`;
+
+  set(
+    'chartRange',
+    stats.lastSampleAt ? `${stats.historySize} checks · ${fmtClock(stats.lastSampleAt)} latest` : 'no data yet'
+  );
 }
 
-/* ---------- chart ---------- */
+/* ---------- chart (statistics page only) ---------- */
 
 const canvas = $('historyChart');
-const ctx = canvas.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
 const tip = $('chartTip');
 
 function sizeCanvas() {
@@ -289,11 +299,12 @@ const chartLayout = () => ({
   padR: 10,
   padT: 12,
   padB: 24,
-  w: canvas._cssW || 600,
-  h: canvas._cssH || 220
+  w: (canvas && canvas._cssW) || 600,
+  h: (canvas && canvas._cssH) || 220
 });
 
 function drawChart() {
+  if (!ctx) return;
   sizeCanvas();
   const { padL, padR, padT, padB, w, h } = chartLayout();
   const plotW = w - padL - padR;
@@ -368,33 +379,35 @@ function drawChart() {
   ctx.fillText(fmtTime(samples[samples.length - 1].t), padL + plotW, h - 6);
 }
 
-let resizeTimer = null;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(drawChart, 150);
-});
+if (canvas) {
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(drawChart, 150);
+  });
 
-canvas.addEventListener('mousemove', (e) => {
-  if (!samples.length) return;
-  const { padL, padR, w } = chartLayout();
-  const plotW = w - padL - padR;
-  const rect = canvas.getBoundingClientRect();
-  const mx = e.clientX - rect.left;
-  const idx = Math.min(samples.length - 1, Math.max(0, Math.floor((mx - padL) / (plotW / samples.length))));
-  const s = samples[idx];
+  canvas.addEventListener('mousemove', (e) => {
+    if (!samples.length) return;
+    const { padL, padR, w } = chartLayout();
+    const plotW = w - padL - padR;
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const idx = Math.min(samples.length - 1, Math.max(0, Math.floor((mx - padL) / (plotW / samples.length))));
+    const s = samples[idx];
 
-  tip.hidden = false;
-  tip.textContent = s.online
-    ? `${fmtClock(s.t)} · ${s.players}/${s.max} players${s.latencyMs != null ? ` · ${s.latencyMs} ms` : ''}`
-    : `${fmtClock(s.t)} · offline`;
-  const x = padL + idx * (plotW / samples.length) + plotW / samples.length / 2;
-  tip.style.left = `${Math.min(Math.max(x, 70), w - 70)}px`;
-  tip.style.top = `${e.offsetY}px`;
-});
+    tip.hidden = false;
+    tip.textContent = s.online
+      ? `${fmtClock(s.t)} · ${s.players}/${s.max} players${s.latencyMs != null ? ` · ${s.latencyMs} ms` : ''}`
+      : `${fmtClock(s.t)} · offline`;
+    const x = padL + idx * (plotW / samples.length) + plotW / samples.length / 2;
+    tip.style.left = `${Math.min(Math.max(x, 70), w - 70)}px`;
+    tip.style.top = `${e.offsetY}px`;
+  });
 
-canvas.addEventListener('mouseleave', () => {
-  tip.hidden = true;
-});
+  canvas.addEventListener('mouseleave', () => {
+    tip.hidden = true;
+  });
+}
 
 /* ---------- data loading ---------- */
 
@@ -405,54 +418,61 @@ async function loadStatus() {
 }
 
 async function loadHistory() {
+  if (!canvas) return;
   const res = await fetch(`/api/history?limit=${MAX_CHART_SAMPLES}`, { cache: 'no-store' });
   if (!res.ok) throw new Error(`history ${res.status}`);
   const data = await res.json();
   samples = data.samples || [];
-  $('chartSkeleton').hidden = true;
+  const skel = $('chartSkeleton');
+  if (skel) skel.hidden = true;
   drawChart();
 }
 
 async function loadAll(manual = false) {
   const btn = $('refreshBtn');
-  if (manual) {
+  if (manual && btn) {
     btn.disabled = true;
     btn.textContent = 'Refreshing…';
   }
   try {
     await Promise.all([loadStatus(), loadHistory()]);
   } catch {
-    $('footStatus').textContent = 'Connection lost — retrying automatically…';
-    $('chartSkeleton').hidden = true;
+    set('footStatus', 'Connection lost — retrying automatically…');
+    const skel = $('chartSkeleton');
+    if (skel) skel.hidden = true;
     drawChart();
   } finally {
-    if (manual) {
+    if (manual && btn) {
       btn.disabled = false;
       btn.textContent = 'Refresh';
     }
   }
 }
 
-$('refreshBtn').addEventListener('click', () => loadAll(true));
+const refreshBtn = $('refreshBtn');
+if (refreshBtn) refreshBtn.addEventListener('click', () => loadAll(true));
 
-$('copyBtn').addEventListener('click', async (e) => {
-  const btn = e.currentTarget;
-  const value = btn.dataset.copy;
-  if (!value) return;
-  try {
-    await navigator.clipboard.writeText(value);
-    btn.textContent = 'Copied';
-  } catch {
-    btn.textContent = value;
-  }
-  setTimeout(() => {
-    btn.textContent = 'Copy';
-  }, 1200);
-});
+const copyBtn = $('copyBtn');
+if (copyBtn) {
+  copyBtn.addEventListener('click', async (e) => {
+    const btn = e.currentTarget;
+    const value = btn.dataset.copy;
+    if (!value) return;
+    try {
+      await navigator.clipboard.writeText(value);
+      btn.textContent = 'Copied';
+    } catch {
+      btn.textContent = value;
+    }
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+    }, 1200);
+  });
+}
 
 setInterval(() => {
   if (!latest) return;
-  $('footStatus').textContent = footerText(latest);
+  set('footStatus', footerText(latest));
 }, 1000);
 
 loadAll();
