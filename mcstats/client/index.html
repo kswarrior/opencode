@@ -22,7 +22,7 @@
   </a>
 
   <div class="topbar-right">
-    <span class="pill" id="topPill"><i class="dot"></i><span id="topPillText">checking…</span></span>
+    <span class="pill" id="topPill"><i class="dot"></i><span id="topPillText"><span class="skeleton chip sm"></span></span></span>
     <button class="btn" id="refreshBtn" type="button">Refresh</button>
   </div>
 </header>
@@ -48,30 +48,30 @@
 
   <section class="section" id="dashboard">
     <div class="card motd-card">
-      <div class="card-title">Message of the Day</div>
-      <div class="motd-screen" id="motdVal">Checking…</div>
+      <div class="card-title">MOTD</div>
+      <div class="motd-screen" id="motdVal"><div class="motd-line"><span class="skeleton line"></span></div><div class="motd-line"><span class="skeleton line short"></span></div></div>
     </div>
 
     <div class="grid four">
       <div class="card stat">
         <div class="stat-label">Players</div>
-        <div class="stat-value"><span id="playersOnline">—</span><span class="stat-unit" id="playersMax"></span></div>
-        <div class="stat-foot" id="playersFoot">—</div>
+        <div class="stat-value"><span id="playersOnline"><span class="skeleton num"></span></span><span class="stat-unit" id="playersMax"></span></div>
+        <div class="stat-foot" id="playersFoot"><span class="skeleton chip"></span></div>
       </div>
       <div class="card stat">
         <div class="stat-label">Version</div>
-        <div class="stat-value" id="versionVal">—</div>
-        <div class="stat-foot" id="versionFoot">—</div>
+        <div class="stat-value" id="versionVal"><span class="skeleton num"></span></div>
+        <div class="stat-foot" id="versionFoot"><span class="skeleton chip"></span></div>
       </div>
       <div class="card stat">
         <div class="stat-label">Latency</div>
-        <div class="stat-value" id="latencyVal">—</div>
-        <div class="stat-foot" id="latencyFoot">—</div>
+        <div class="stat-value" id="latencyVal"><span class="skeleton num"></span></div>
+        <div class="stat-foot" id="latencyFoot"><span class="skeleton chip"></span></div>
       </div>
       <div class="card stat">
         <div class="stat-label">Uptime</div>
-        <div class="stat-value" id="uptimeVal">—</div>
-        <div class="stat-foot" id="uptimeFoot">—</div>
+        <div class="stat-value" id="uptimeVal"><span class="skeleton num"></span></div>
+        <div class="stat-foot" id="uptimeFoot"><span class="skeleton chip"></span></div>
       </div>
     </div>
   </section>
@@ -84,6 +84,7 @@
 
     <div class="card chart-card">
       <canvas id="historyChart" height="220"></canvas>
+      <div class="skeleton chart" id="chartSkeleton"></div>
       <div class="chart-tip" id="chartTip" hidden></div>
       <div class="chart-legend">
         <span><i class="sw online"></i> Online (players)</span>
@@ -92,10 +93,10 @@
     </div>
 
     <div class="grid four">
-      <div class="card mini"><span>Checks</span><b id="mChecks">—</b></div>
-      <div class="card mini"><span>Online checks</span><b id="mOnline">—</b></div>
-      <div class="card mini"><span>Peak players</span><b id="mPeak">—</b></div>
-      <div class="card mini"><span>Avg latency</span><b id="mAvgLatency">—</b></div>
+      <div class="card mini"><span>Checks</span><b id="mChecks"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Online checks</span><b id="mOnline"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Peak players</span><b id="mPeak"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Avg latency</span><b id="mAvgLatency"><span class="skeleton chip"></span></b></div>
     </div>
   </section>
 
@@ -103,11 +104,11 @@
     <div class="section-head"><h2>Server Info</h2></div>
 
     <div class="card info-list">
-      <div class="row"><span>Address</span><b id="infoAddress">—</b><button class="copy" id="copyBtn" type="button">Copy</button></div>
-      <div class="row"><span>Port</span><b id="infoPort">—</b></div>
+      <div class="row"><span>Address</span><b id="infoAddress">Mayanshanboss.aternos.me</b><button class="copy" id="copyBtn" type="button">Copy</button></div>
+      <div class="row"><span>Port</span><b id="infoPort">63046</b></div>
       <div class="row"><span>Edition</span><b id="infoEdition">Bedrock (MCPE)</b></div>
-      <div class="row"><span>Software</span><b id="infoSoftware">—</b></div>
-      <div class="row"><span>Status</span><b id="infoStatus">—</b></div>
+      <div class="row"><span>Software</span><b id="infoSoftware"><span class="skeleton chip"></span></b></div>
+      <div class="row"><span>Status</span><b id="infoStatus"><span class="skeleton chip"></span></b></div>
     </div>
 
     <div class="card help">
@@ -138,7 +139,7 @@
   </section>
 
   <footer class="foot">
-    <span id="footStatus">—</span>
+    <span id="footStatus"><span class="skeleton chip"></span></span>
   </footer>
 </main>
 
