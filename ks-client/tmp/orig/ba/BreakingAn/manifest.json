@@ -1,0 +1,33 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "Loading bar breaking blocks animation for minecraft bedrock edition. by Yazdan",
+    "name": "Breaking Animation",
+    "uuid": "512c0d2e-f460-4a9e-96b6-62df5b489535",
+    "version": [
+      0,
+      0,
+      1
+    ],
+    "min_engine_version": [
+      1,
+      17,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "description": "Loading bar breaking blocks animation for minecraft bedrock edition. by Yazdan",
+      "type": "resources",
+      "uuid": "5ce2b78f-76a6-4fb3-99bb-3c075c12a6ea",
+      "version": [
+        0,
+        0,
+        1
+      ],
+      "entry": null,
+      "language": null
+    }
+  ],
+  "dependencies": null
+}
