@@ -339,6 +339,33 @@ function buildPlayerCard(p) {
   return card;
 }
 
+function buildHiddenCard(count) {
+  const card = document.createElement('div');
+  card.className = 'card pcard online hidden';
+
+  const head = document.createElement('div');
+  head.className = 'pcard-head';
+  const dot = document.createElement('i');
+  dot.className = 'dot';
+  const name = document.createElement('span');
+  name.className = 'pname';
+  name.textContent = count === 1 ? 'Hidden player' : `${count} hidden players`;
+  const badge = document.createElement('span');
+  badge.className = 'pbadge';
+  badge.textContent = `${count} online`;
+  head.append(dot, name, badge);
+
+  const note = document.createElement('div');
+  note.className = 'pmeta';
+  note.textContent =
+    count === 1
+      ? 'The server reports this player online but does not reveal their name, so join/leave history cannot be tracked for them.'
+      : `The server reports ${count} players online but does not reveal their names, so join/leave history cannot be tracked for them.`;
+
+  card.append(head, note);
+  return card;
+}
+
 function renderPlayers(data) {
   if (!playersGrid) return;
 
@@ -358,11 +385,13 @@ function renderPlayers(data) {
   if (hint) hint.hidden = !(data.tracking && data.tracking.namesAvailable === false);
 
   const list = data.players || [];
+  const hiddenOnline = data.hiddenOnline || 0;
   const empty = $('playersEmpty');
-  if (empty) empty.hidden = list.length > 0;
-  playersGrid.hidden = list.length === 0;
+  if (empty) empty.hidden = list.length > 0 || hiddenOnline > 0;
+  playersGrid.hidden = list.length === 0 && hiddenOnline === 0;
 
   playersGrid.innerHTML = '';
+  if (hiddenOnline > 0) playersGrid.appendChild(buildHiddenCard(hiddenOnline));
   list.forEach((p) => playersGrid.appendChild(buildPlayerCard(p)));
 }
 

@@ -67,9 +67,12 @@ The RakNet ping only reports *how many* players are online, not *who*. To get na
 also speaks the **GameSpy4 query** protocol against the server port; names are matched between
 checks to count joins/leaves and credit online time (today + last 7 days).
 
-- Requires the server to answer queries (`enable-query=true` in `server.properties` on BDS).
-- If the query never answers, the page still works: it shows the online count and a hint to enable
-  the query — it never guesses names.
+- Requires server software that supports queries (PocketMine-MP / Nukkit with the query option
+  enabled). **Bedrock Dedicated Server does not implement the query protocol**, so on BDS (the
+  Aternos “Bedrock” software) names can never be read from outside.
+- If the query never answers, the page still works: it shows the real online count and, while
+  players are connected, a clearly-labelled “Hidden player” card — it never guesses names or
+  fake history.
 - Names are styled as plain text (no HTML injection) and capped at 32 characters.
 
 ## Why `MC_MAX_PLAYERS` exists
