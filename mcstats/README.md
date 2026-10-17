@@ -2,14 +2,24 @@
 
 Stats web app for the Bedrock server `Mayanshanboss.aternos.me:63046`.
 Backend pings the server over **RakNet UDP** (Bedrock protocol) every minute, keeps a rolling
-24-hour history, and serves a small dashboard (header + sidebar + 3-line hamburger menu for phones,
-light-blue/white theme).
+24-hour history, and serves multi-page EJS frontend (header + sidebar + 3-line hamburger menu for
+phones, light-blue/white theme).
 
 Hosted on Render.com as the `mcstats` service in `render.yaml`.
 
+## Pages
+
+- `GET /` — Dashboard (MOTD + live players/version/latency/uptime)
+- `GET /statistics` — player-count history chart + totals
+- `GET /server-info` — address, port, software, live status, how to join
+- `GET /about` — about the monitor
+- anything else — 404 page
+
+Templates live in `views/` (EJS) with shared partials (`views/partials/`); `client/` holds the
+static CSS/JS.
+
 ## Endpoints
 
-- `GET /` — dashboard (static frontend)
 - `GET /health` — `ok mcstats server-online|server-offline <address>`
 - `GET /api/status` — current status, totals, config
 - `GET /api/history?limit=240` — recent check samples for the chart
