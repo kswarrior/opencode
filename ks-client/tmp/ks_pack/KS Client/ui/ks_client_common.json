@@ -1,0 +1,2409 @@
+{
+  "namespace": "ks_client",
+
+  // (Center KS row retired: the KS icon now lives in the top-left bar.)
+
+  // (Scrims removed: solid black bg needs no readability gradient.)
+
+  // ---------- (brand header removed: text-free screen) ----------
+
+  // ---------- (footer removed: text-free screen) ----------
+
+  // ---------- Futuristic side rails (subtle, non-interactive) ----------
+  "ks_edge_left": {
+    "type": "panel",
+    "size": [ 2, "28%" ],
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "offset": [ 3, 0 ],
+    "layer": 1,
+    "alpha": 0.6,
+    "controls": [
+      {
+        "ks_edge_left_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_divider_v",
+          "size": [ 2, "100%" ],
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  "ks_edge_right": {
+    "type": "panel",
+    "size": [ 2, "28%" ],
+    "anchor_from": "right_middle",
+    "anchor_to": "right_middle",
+    "offset": [ -3, 0 ],
+    "layer": 1,
+    "alpha": 0.6,
+    "controls": [
+      {
+        "ks_edge_right_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_divider_v",
+          "size": [ 2, "100%" ],
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  // Borderless icon button: no vanilla frame/text/hold visuals at all.
+  // Art IS the button (exact slot size). Press shift forced to zero.
+  "ks_settings_button@common_buttons.no_background_content_button": {
+    "size": [ 30, 30 ],
+    "$button_text": "",
+    "$button_content": "ks_client.settings_icon_content",
+    "$pressed_button_name": "button.menu_settings",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ]
+  },
+
+  "settings_icon_content": {
+    "type": "panel",
+    "size": [ 30, 30 ],
+    "controls": [
+      {
+        "settings_icon_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_icon_settings",
+          "size": [ 20, 20 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Dressing room button: square like settings, same borderless pattern ----------
+  // $pressed_button_name button.menu_skins = vanilla start-screen change-skin
+  // action (opens the character / dressing-room editor). Same engine press path.
+  "ks_dressing_button@common_buttons.no_background_content_button": {
+    "size": [ 40, 40 ],
+    "$button_text": "",
+    "$button_content": "ks_client.dressing_icon_content",
+    "$pressed_button_name": "button.menu_skins",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ]
+  },
+
+  "dressing_icon_content": {
+    "type": "panel",
+    "size": [ 40, 40 ],
+    "controls": [
+      {
+        "dressing_icon_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_icon_dressing",
+          "size": [ 40, 40 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Inbox bell button: icon-only like dressing, no vanilla frame ----------
+  // Same borderless pattern as dressing/settings. Reuses vanilla animated
+  // container (bell_ringing / bell / mail states) so animation still works.
+  // $pressed_button_name button.menu_inbox = vanilla inbox action.
+  "ks_inbox_button@common_buttons.no_background_content_button": {
+    "size": [ 28, 32 ],
+    "$button_text": "",
+    "$button_content": "start.inbox_icon_container",
+    "$pressed_button_name": "button.menu_inbox",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_inbox",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_inbox",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "inbox_button.is_hovered",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+
+  // Wrapper mirroring vanilla start.inbox_icon_button (button + red-dot),
+  // but with the borderless ks_inbox_button so only the bell icon shows.
+  "ks_inbox_icon_button": {
+    "type": "panel",
+    "size": [ 28, 32 ],
+    "$button_tts_header": "menu.inbox",
+    "controls": [
+      { "ks_inbox_btn@ks_client.ks_inbox_button": {} },
+      { "inbox_unread@start.inbox_button_unread_panel": {} }
+    ]
+  },
+
+  // ---------- Profile button: [avatar + username], borderless like settings ----------
+  // Replaces vanilla (avatar + static "Profile" text). Same engine press path.
+  "ks_profile_button@common_buttons.no_background_content_button": {
+    "size": [ 120, 30 ],
+    "$button_text": "",
+    "$button_content": "ks_client.profile_button_content",
+    "$pressed_button_name": "button.menu_profile",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ]
+  },
+
+  "profile_button_content": {
+    "type": "panel",
+    "size": [ 120, 30 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "layer": 1,
+    "controls": [
+      {
+        "pb_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_profile_bg",
+          "size": [ 120, 30 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 0
+        }
+      },
+      {
+        "pb_avatar": {
+          "type": "panel",
+          "size": [ 24, 24 ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [ 5, 0 ],
+          "layer": 2,
+          "controls": [
+            {
+              "gamerpic@start.gamerpic": {
+                "size": [ 18, 18 ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "offset": [ 0, 0 ],
+                "layer": 1,
+                "$gamerpic_visible": "#show_gamerpic",
+                "bindings": [
+                  {
+                    "binding_name": "#show_gamerpic",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "alex_icon@start.alex_icon": {
+                "size": [ 18, 18 ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "offset": [ 0, 0 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_name": "(not #show_gamerpic)",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "pb_name": {
+          "type": "label",
+          "size": [ 81, 20 ],
+          "max_size": [ 81, 20 ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [ 33, 0 ],
+          "color": [ 255, 255, 255 ],
+          "shadow": true,
+          "localize": false,
+          "text_alignment": "left",
+          "font_size": "normal",
+          "font_scale_factor": 0.85,
+          "alpha": 1.0,
+          "visible": true,
+          "layer": 2,
+          "text": "#gamertag_label",
+          "bindings": [
+            {
+              "binding_name": "#gamertag_label"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "ks_top_bar": {
+    "type": "panel",
+    "size": [ 154, 30 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 8 ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_top_stack": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ 154, 30 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ],
+          "layer": 2,
+          "controls": [
+            {
+              "ks_settings_slot": {
+                "type": "panel",
+                "size": [ 30, 30 ],
+                "offset": [ 0, -2 ],
+                "controls": [
+                  {
+                    "ks_settings_button@ks_client.ks_settings_button": {}
+                  }
+                ]
+              }
+            },
+            {
+              "ks_top_gap": {
+                "type": "panel",
+                "size": [ 4, 30 ],
+                "controls": [
+                  {
+                    "ks_top_div_img": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_divider_v",
+                      "size": [ 2, 18 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "layer": 1,
+                      "alpha": 0.8
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_profile_slot": {
+                "type": "panel",
+                "size": [ 120, 30 ],
+                "offset": [ 0, -6 ],
+                "controls": [
+                  {
+                    "profile_button@ks_client.ks_profile_button": {}
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // (Profile card removed: username now lives in the profile button.)
+
+  // ---------- Dressing room square left of doll, bottom-aligned with doll ----------
+  // 40x40 (bigger than settings). Anchored bottom_middle so its bottom edge
+  // sits exactly on the doll (skin_panel) bottom: same Y offset "-10% - 36px".
+  // X "-25% + 7px" = left of doll with ~10px gap (doll half-width is 25% - 37.5px).
+  "ks_dressing_below_settings": {
+    "type": "panel",
+    "size": [ 40, 40 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ "-25% + 7px", "-10% - 36px" ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_dressing_slot": {
+          "type": "panel",
+          "size": [ 40, 40 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "controls": [
+            {
+              "ks_dressing_button@ks_client.ks_dressing_button": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Anim button (interactive): spins the doll on press ----------
+  // Engine truth: paper_doll_renderer has NO walking/running/standing pose API
+  // from JSON UI (only rotation via gesture_x / turn_doll, idle anim only).
+  // So this chevron button sends button.turn_doll (same engine path as
+  // dragging the doll) — pressing it visibly turns/spins the doll instead of
+  // being dead. Same 40x40 borderless look as dressing.
+  "ks_anim_icon_content": {
+    "type": "panel",
+    "size": [ 40, 40 ],
+    "controls": [
+      {
+        "ks_anim_icon_img": {
+          "type": "image",
+          "texture": "textures/ui/ks_icon_anim",
+          "size": [ 40, 40 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ]
+        }
+      }
+    ]
+  },
+
+  "ks_anim_button@common_buttons.no_background_content_button": {
+    "size": [ 40, 40 ],
+    "$button_text": "",
+    "$button_content": "ks_client.ks_anim_icon_content",
+    "$pressed_button_name": "button.turn_doll",
+    "$button_offset": [ 0, 0 ],
+    "$button_pressed_offset": [ 0, 0 ],
+    "$pressed_button_offset": [ 0, 0 ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.turn_doll",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.turn_doll",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "ks_anim_button.is_hovered",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+
+  "ks_anim_above_dressing": {
+    "type": "panel",
+    "size": [ 40, 40 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ "-25% + 7px", "-10% - 84px" ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_anim_slot": {
+          "type": "panel",
+          "size": [ 40, 40 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "controls": [
+            {
+              "ks_anim_btn@ks_client.ks_anim_button": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Social button below the settings button (top-left) ----------
+  // Friends/social entry moved out of the top-right cluster (bell only).
+  // Same vanilla press path as before, just re-parented under settings.
+  // Dressing moved to the doll; social shifted right by half its width (20) +
+  // one settings-button width (30): x 8 -> 28 -> 58.
+  "ks_social_below_settings": {
+    "type": "panel",
+    "size": [ 40, 32 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 58, 44 ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_social_slot": {
+          "type": "panel",
+          "size": [ 40, 32 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "controls": [
+            {
+              "friendsdrawer_button@friendsbutton.button_panel": {
+                "size": [ 40, 32 ],
+                "$context": "start"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Bottom-left row: SAME 264x32 at (8,-8), glass pill + divider ----------
+  "ks_bottom_left_row": {
+    "type": "panel",
+    "size": [ 264, 32 ],
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "offset": [ 8, -8 ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_bl_stack": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ 264, 32 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, -2 ],
+          "layer": 2,
+          "controls": [
+            {
+              "ks_store_slot": {
+                "type": "panel",
+                "size": [ 160, 32 ],
+                "ignored": "$store_ignored",
+                "controls": [
+                  {
+                    "ks_store_stack@start.store_button_stack": {
+                      "size": [ "100%", "100%" ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_bl_divider": {
+                "type": "panel",
+                "size": [ 4, 32 ],
+                "controls": [
+                  {
+                    "ks_bl_div_img": {
+                      "type": "image",
+                      "texture": "textures/ui/ks_divider_v",
+                      "size": [ 2, 20 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "layer": 1,
+                      "alpha": 0.8
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_realms_slot": {
+                "type": "panel",
+                "size": [ 100, 32 ],
+                "ignored": "($trial or $is_preview_app)",
+                "controls": [
+                  {
+                    "ks_realms_button@start.realms_button": {
+                      "size": [ "100%", "100%" ],
+                      "$button_text": "menu.realms"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Bottom-right PLAY: 100x32 at (-8,-8), same style/size as Realms, green ----------
+  // Same dark base + realms borderless textures as ks_realms_button, tinted green,
+  // labeled menu.play. Same engine press path ($play_button_target).
+  "ks_bottom_right_play": {
+    "type": "panel",
+    "size": [ 100, 32 ],
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "offset": [ -8, -8 ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_play_button@start.ks_play_button": {
+          "size": [ 100, 32 ],
+          "layer": 2
+        }
+      }
+    ]
+  },
+
+  // ---------- Bottom-right MENU: 100x32 at (-116,-8), left of PLAY with 8px gap ----------
+  // Same horizontal line as marketplace/realms/play. Custom dark art + gear + "Menu".
+  // Tap toggles ks_start_menu_state -> opens/closes the full-screen settings-like menu.
+  "ks_bottom_right_menu": {
+    "type": "panel",
+    "size": [ 100, 32 ],
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "offset": [ -116, -8 ],
+    "layer": 2,
+    "controls": [
+      {
+        "ks_menu_btn_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_config_btn",
+          "size": [ "100%", "100%" ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_menu_btn_row": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100% - 12px", 24 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "layer": 1,
+          "controls": [
+            {
+              "ks_menu_btn_icon": {
+                "type": "image",
+                "texture": "textures/ui/ks_icon_settings",
+                "size": [ 20, 20 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "layer": 1
+              }
+            },
+            {
+              "ks_menu_btn_gap": {
+                "type": "panel",
+                "size": [ 6, 24 ]
+              }
+            },
+            {
+              "ks_menu_btn_label": {
+                "type": "label",
+                "size": [ 56, 24 ],
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "left",
+                "font_size": "normal",
+                "font_scale_factor": 0.9,
+                "layer": 1,
+                "text": "Menu"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_start_menu_state@common.toggle": {
+          "size": [ "100%", "100%" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 3,
+          "enabled": true,
+          "visible": true,
+          "$toggle_name": "ks_start_menu_open",
+          "$toggle_default_state": false,
+          "$toggle_binding_type": "none",
+          "$toggle_focus_enabled": false,
+          "$unchecked_control": "common.empty_panel",
+          "$checked_control": "common.empty_panel",
+          "$unchecked_hover_control": "common.empty_panel",
+          "$checked_hover_control": "common.empty_panel",
+          "$unchecked_locked_control": "common.empty_panel",
+          "$unchecked_locked_hover_control": "common.empty_panel",
+          "$checked_locked_control": "common.empty_panel",
+          "$checked_locked_hover_control": "common.empty_panel"
+        }
+      }
+    ]
+  },
+
+  // ---------- Full-screen MENU (600x300 card): tabs General/Texture/UI/Advanced/HUD ----------
+  // Texture tab is live UI logic: Texture master -> Bright option; Environment master ->
+  // Cloud dropdown -> Realistic option. Masters OFF hide their children (disabled).
+  // Texture master gates block/item textures, Environment master gates environmental
+  // textures, independently (use Environment without Texture supported).
+  "ks_start_menu_full": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "visible": false,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "layer": 40,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "binding_condition": "always",
+        "source_control_name": "ks_start_menu_state",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_smenu_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_menu_bg",
+          "size": [ "100%", "100%" ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_smenu_card": {
+          "type": "panel",
+          "size": [ 600, 300 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "layer": 1,
+          "controls": [
+            {
+              "ks_smenu_card_bg": {
+                "type": "image",
+                "texture": "textures/ui/ks_config_bg",
+                "size": [ "100%", "100%" ],
+                "layer": 0
+              }
+            },
+            {
+              "ks_smenu_title": {
+                "type": "label",
+                "size": [ "100% - 20px", 26 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 8 ],
+                "color": [ 255, 255, 255 ],
+                "shadow": true,
+                "localize": false,
+                "text_alignment": "center",
+                "font_size": "normal",
+                "font_scale_factor": 1.1,
+                "layer": 1,
+                "text": "MENU"
+              }
+            },
+            {
+              "ks_smenu_tabs": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "size": [ "100% - 20px", 26 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 38 ],
+                "layer": 1,
+                "controls": [
+                  {
+                    "ks_st_general@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "General",
+                      "$toggle_name": "ks_st_general",
+                      "$toggle_view_binding_name": "ks_st_general_state"
+                    }
+                  },
+                  {
+                    "ks_st_gap1": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_st_texture@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "Texture",
+                      "$toggle_name": "ks_st_texture",
+                      "$toggle_view_binding_name": "ks_st_texture_state"
+                    }
+                  },
+                  {
+                    "ks_st_gap2": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_st_ui@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "UI",
+                      "$toggle_name": "ks_st_ui",
+                      "$toggle_view_binding_name": "ks_st_ui_state"
+                    }
+                  },
+                  {
+                    "ks_st_gap3": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_st_adv@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "Advanced",
+                      "$toggle_name": "ks_st_adv",
+                      "$toggle_view_binding_name": "ks_st_adv_state"
+                    }
+                  },
+                  {
+                    "ks_st_gap4": {
+                      "type": "panel",
+                      "size": [ 4, 26 ]
+                    }
+                  },
+                  {
+                    "ks_st_hud@common_toggles.light_text_toggle": {
+                      "size": [ 112, 26 ],
+                      "$button_text": "HUD",
+                      "$toggle_name": "ks_st_hud",
+                      "$toggle_view_binding_name": "ks_st_hud_state"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_general": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_general_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_sp_general_lbl": {
+                      "type": "label",
+                      "size": [ "100%", 80 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_sp_general_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 35 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "General settings are not ready yet."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_texture": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_texture_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_tex_master_row": {
+                      "type": "panel",
+                      "size": [ "100%", 26 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 0 ],
+                      "layer": 1,
+                      "controls": [
+                        {
+                          "ks_tex_master_name": {
+                            "type": "label",
+                            "size": [ 300, 24 ],
+                            "anchor_from": "left_middle",
+                            "anchor_to": "left_middle",
+                            "offset": [ 8, 0 ],
+                            "color": [ 255, 255, 255 ],
+                            "shadow": true,
+                            "localize": false,
+                            "text_alignment": "left",
+                            "font_size": "small",
+                            "font_scale_factor": 0.9,
+                            "layer": 1,
+                            "text": "Texture (block / item)"
+                          }
+                        },
+                        {
+                          "ks_tex_master_sw@common_toggles.switch_toggle": {
+                            "size": [ 46, 22 ],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "offset": [ -8, 0 ],
+                            "$toggle_name": "ks_tex_master",
+                            "$toggle_view_binding_name": "ks_tex_master_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_bright_opts": {
+                      "type": "panel",
+                      "visible": false,
+                      "size": [ "100%", 30 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 28 ],
+                      "layer": 1,
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always",
+                          "source_control_name": "ks_tex_master_state",
+                          "source_property_name": "#toggle_state",
+                          "target_property_name": "#visible"
+                        }
+                      ],
+                      "controls": [
+                        {
+                          "ks_bright_name": {
+                            "type": "label",
+                            "size": [ 300, 24 ],
+                            "anchor_from": "left_middle",
+                            "anchor_to": "left_middle",
+                            "offset": [ 24, 0 ],
+                            "color": [ 140, 220, 255 ],
+                            "shadow": true,
+                            "localize": false,
+                            "text_alignment": "left",
+                            "font_size": "small",
+                            "font_scale_factor": 0.9,
+                            "layer": 1,
+                            "text": "Bright Texture"
+                          }
+                        },
+                        {
+                          "ks_bright_sw@common_toggles.switch_toggle": {
+                            "size": [ 46, 22 ],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "offset": [ -8, 0 ],
+                            "$toggle_name": "ks_tex_bright",
+                            "$toggle_view_binding_name": "ks_tex_bright_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_env_master_row": {
+                      "type": "panel",
+                      "size": [ "100%", 26 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 62 ],
+                      "layer": 1,
+                      "controls": [
+                        {
+                          "ks_env_master_name": {
+                            "type": "label",
+                            "size": [ 300, 24 ],
+                            "anchor_from": "left_middle",
+                            "anchor_to": "left_middle",
+                            "offset": [ 8, 0 ],
+                            "color": [ 255, 255, 255 ],
+                            "shadow": true,
+                            "localize": false,
+                            "text_alignment": "left",
+                            "font_size": "small",
+                            "font_scale_factor": 0.9,
+                            "layer": 1,
+                            "text": "Environment"
+                          }
+                        },
+                        {
+                          "ks_env_master_sw@common_toggles.switch_toggle": {
+                            "size": [ 46, 22 ],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "offset": [ -8, 0 ],
+                            "$toggle_name": "ks_env_master",
+                            "$toggle_view_binding_name": "ks_env_master_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cloud_drop": {
+                      "type": "panel",
+                      "visible": false,
+                      "size": [ "100%", 26 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 90 ],
+                      "layer": 1,
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always",
+                          "source_control_name": "ks_env_master_state",
+                          "source_property_name": "#toggle_state",
+                          "target_property_name": "#visible"
+                        }
+                      ],
+                      "controls": [
+                        {
+                          "ks_cloud_tgl@common_toggles.light_text_toggle": {
+                            "size": [ "100% - 16px", 24 ],
+                            "anchor_from": "center",
+                            "anchor_to": "center",
+                            "offset": [ 0, 0 ],
+                            "$button_text": "Cloud ▾",
+                            "$toggle_name": "ks_cloud_drop",
+                            "$toggle_view_binding_name": "ks_cloud_drop_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_cloud_opts": {
+                      "type": "panel",
+                      "visible": false,
+                      "size": [ "100%", 30 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 118 ],
+                      "layer": 1,
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "binding_condition": "always",
+                          "source_control_name": "ks_cloud_drop_state",
+                          "source_property_name": "#toggle_state",
+                          "target_property_name": "#visible"
+                        }
+                      ],
+                      "controls": [
+                        {
+                          "ks_real_name": {
+                            "type": "label",
+                            "size": [ 300, 24 ],
+                            "anchor_from": "left_middle",
+                            "anchor_to": "left_middle",
+                            "offset": [ 40, 0 ],
+                            "color": [ 140, 220, 255 ],
+                            "shadow": true,
+                            "localize": false,
+                            "text_alignment": "left",
+                            "font_size": "small",
+                            "font_scale_factor": 0.9,
+                            "layer": 1,
+                            "text": "Realistic"
+                          }
+                        },
+                        {
+                          "ks_real_sw@common_toggles.switch_toggle": {
+                            "size": [ 46, 22 ],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "offset": [ -8, 0 ],
+                            "$toggle_name": "ks_cloud_real",
+                            "$toggle_view_binding_name": "ks_cloud_real_state"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "ks_tex_note": {
+                      "type": "label",
+                      "size": [ "100%", 26 ],
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "offset": [ 0, 152 ],
+                      "color": [ 160, 170, 185 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.8,
+                      "layer": 1,
+                      "text": "OFF hides its group. Texture = blocks/items. Environment = clouds etc."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_ui": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_ui_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_sp_ui_lbl": {
+                      "type": "label",
+                      "size": [ "100%", 80 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_sp_ui_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 35 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "UI settings are not ready yet."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_adv": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_adv_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_sp_adv_lbl": {
+                      "type": "label",
+                      "size": [ "100%", 80 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_sp_adv_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 35 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "Advanced settings are not ready yet."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_sp_hud": {
+                "type": "panel",
+                "visible": false,
+                "size": [ "100% - 20px", 190 ],
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 70 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "binding_condition": "always",
+                    "source_control_name": "ks_st_hud_state",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "ks_sp_hud_lbl": {
+                      "type": "label",
+                      "size": [ "100%", 80 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, -20 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "normal",
+                      "font_scale_factor": 1.0,
+                      "layer": 1,
+                      "text": "Coming soon"
+                    }
+                  },
+                  {
+                    "ks_sp_hud_hint": {
+                      "type": "label",
+                      "size": [ "100%", 40 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 35 ],
+                      "color": [ 160, 220, 235 ],
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "HUD settings are not ready yet. Use pause Config > Info for HUD."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_smenu_close_row": {
+                "type": "panel",
+                "size": [ 200, 26 ],
+                "anchor_from": "bottom_middle",
+                "anchor_to": "bottom_middle",
+                "offset": [ 0, -10 ],
+                "layer": 1,
+                "controls": [
+                  {
+                    "ks_smenu_close_label": {
+                      "type": "label",
+                      "size": [ 140, 26 ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [ 0, 0 ],
+                      "color": [ 255, 255, 255 ],
+                      "shadow": true,
+                      "localize": false,
+                      "text_alignment": "center",
+                      "font_size": "small",
+                      "font_scale_factor": 0.9,
+                      "layer": 1,
+                      "text": "Tap Menu to close"
+                    }
+                  },
+                  {
+                    "ks_start_menu_close@common.toggle": {
+                      "size": [ "100%", "100%" ],
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [ 0, 0 ],
+                      "layer": 2,
+                      "enabled": true,
+                      "visible": true,
+                      "$toggle_name": "ks_start_menu_open",
+                      "$toggle_default_state": false,
+                      "$toggle_binding_type": "none",
+                      "$toggle_focus_enabled": false,
+                      "$unchecked_control": "common.empty_panel",
+                      "$checked_control": "common.empty_panel",
+                      "$unchecked_hover_control": "common.empty_panel",
+                      "$checked_hover_control": "common.empty_panel",
+                      "$unchecked_locked_control": "common.empty_panel",
+                      "$unchecked_locked_hover_control": "common.empty_panel",
+                      "$checked_locked_control": "common.empty_panel",
+                      "$checked_locked_hover_control": "common.empty_panel"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- HUD quick keys: F1 / F3 (20x20, same-to-same vs reference Default-mobile) ----------
+  // Rebranded from F1 & F3 Button v1.1.3 (see copyright.txt entry 15):
+  // same offsets/sizes/behavior as Default subpack (F5/Windows NOT used):
+  // F1 top_middle [-39, 0.5], F3 top_middle [38.5, 0.5], both 20x20.
+  // Art via mv to KS paths below (no NeBux paths remain in-pack).
+  // Textures: textures/ui/ks_f1f3_hud_btn.png (was
+  // NeBux/NeBuxUI/Buttons/hud_btn.png, 18x18, mv) +
+  // textures/ui/ks_f1f3_hide_bg.png (was NeBux/NeBuxUI/0.png, 1x1, mv).
+  //   F1 = hide HUD (button.hide_gui_all, same as physical F1).
+  //   F3 = toggle KS debug readout (ks_f3_panel below).
+  // F1 hides this row too, so ks_show_hud (a sibling of root_panel, see
+  // hud_screen.json) is the guaranteed way back for touch users.
+  // Visibility: $ks_f1_v/$ks_f3_v defaults + HUD-menu ksbT_f1_t/ksbT_f3show_t
+  // toggles + #hud_visible.
+  "ks_f1_button@settings_common.action_button": {
+    "prevent_touch_input": true,
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ -39, 0.5 ],
+    "size": [ 20, 20 ],
+    "visible": "$ks_f1_v",
+    "layer": 5,
+    "property_bag": {
+      "#ks_f1_toggle": true
+    },
+    "$border_visible": false,
+    "$pressed_button_name": "button.hide_gui_all",
+    "$button_text": "F1",
+    "$default_button_texture|default": "textures/ui/ks_f1f3_hud_btn",
+    "$hover_button_texture|default": "textures/ui/ks_f1f3_hud_btn",
+    "$pressed_button_texture|default": "textures/ui/ks_f1f3_hud_btn",
+    "$locked_button_texture|default": "textures/ui/ks_f1f3_hud_btn",
+    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "ksbT_f1_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_f1_toggle"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_f1_toggle)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  // F3 button face: reference key art + centered F3 label (same-to-same).
+  // Rendered via the same hud_btn art + white centered label as F1's
+  // action_button $button_text, so both keys look identical (Default-mobile
+  // 20x20, 18x18 art via mv). Same text size as F1 (scale 1.0, not 0.7).
+  "ks_f3_face": {
+    "type": "panel",
+    "size": [ 20, 20 ],
+    "controls": [
+      {
+        "ks_f3_face_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_f1f3_hud_btn",
+          "size": [ 20, 20 ],
+          "layer": 0
+        }
+      },
+      {
+        "ks_f3_face_lbl": {
+          "type": "label",
+          "text": "F3",
+          "size": [ 20, 20 ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "color": [ 1, 1, 1 ],
+          "shadow": true,
+          "localize": false,
+          "text_alignment": "center",
+          "font_size": "normal",
+          "font_scale_factor": 1.0,
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  // F3 debug toggle. Instance ks_f3_t (in hud_screen.json) publishes
+  // #toggle_state for ks_f3_panel + ks_f3_right below — same as the proven
+  // Menu-button pattern (ks_start_menu_state instance name, no view alias).
+  // Default-mobile same-to-same vs reference f3_button: 20x20 top_middle
+  // [38.5, 0.5], hud_btn art, "F3" label, #hud_visible-gated.
+  "ks_f3_button@common.toggle": {
+    "prevent_touch_input": true,
+    "size": [ 20, 20 ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ 38.5, 0.5 ],
+    "visible": "$ks_f3_v",
+    "layer": 5,
+    "property_bag": {
+      "#ks_f3show_toggle": true
+    },
+    "enabled": true,
+    "$toggle_name": "ks_f3_debug",
+    "$toggle_default_state": false,
+    "$toggle_binding_type": "none",
+    "$toggle_focus_enabled": false,
+    "$unchecked_control": "ks_client.ks_f3_face",
+    "$checked_control": "ks_client.ks_f3_face",
+    "$unchecked_hover_control": "ks_client.ks_f3_face",
+    "$checked_hover_control": "ks_client.ks_f3_face",
+    "$unchecked_locked_control": "ks_client.ks_f3_face",
+    "$unchecked_locked_hover_control": "ks_client.ks_f3_face",
+    "$checked_locked_control": "ks_client.ks_f3_face",
+    "$checked_locked_hover_control": "ks_client.ks_f3_face",
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "ksbT_f3show_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_f3show_toggle"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_f3show_toggle)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  // ---------- Inventory slot probe (one per hotbar/inventory slot) ----------
+  // Same technique as reference NeBuxInventoryCounter.InventoryCounterMain:
+  // inside a collection_panel bound to hotbar_items, each probe reads
+  // #item_id_aux (-1 = empty) and publishes '#ks_slot_<id>' 1/0.
+  // The debug rows sum the 36 probes into a used/total counter.
+  // Kept as KS names (ks_f3_inv_counter_main), same-to-same logic.
+  "ks_f3_inv_counter_main": {
+    "type": "panel",
+    "collection_index": "$counter_id",
+    "bindings": [
+      {
+        "binding_name": "#item_id_aux",
+        "binding_type": "collection",
+        "binding_collection_name": "hotbar_items"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#item_id_aux = -1))",
+        "target_property_name": "('#ks_slot_' + $counter_id)"
+      }
+    ]
+  },
+
+  // ---------- F3 single-line text row (same-to-same vs f3.f3_text_base) ----------
+  // Reference drew Black bg + alpha $f3alpha behind each row; KS keeps its
+  // clean no-bg label style (same text content) so the readout stays readable
+  // over gameplay and matches the existing ks_f3_days/pos rows.
+  // $ks_f3_text may be a lang key (ks_f3.*) or a ('...' + ...) expression.
+  "ks_f3_line": {
+    "type": "label",
+    "size": [ "100%", 10 ],
+    "color": "$chat_text_color",
+    "shadow": true,
+    "enable_profanity_filter": false,
+    "font_size": "normal",
+    "font_scale_factor": 0.65,
+    "text": "$ks_f3_text"
+  },
+
+  // ---------- F3 debug readout (top-left, below status) ----------
+  // Same-to-same context as reference F1 & F3 Button v1.1.3 Default-mobile:
+  // version + edition + gamemode + days + position + live
+  // recovery/clock/compass icons + UI profile + device + graphics + input
+  // status. XP/world/OW<->Nether rows are NOT duplicated here: they live in
+  // ks_f3_right below (same-to-same vs f3right).
+  // NOTE: true world clock time (Time: HH:MM) is NOT exposed to
+  // resource-pack UI, so clock is a live item icon (hands move) + Day proxy.
+  // Visible only while the F3 toggle instance ks_f3_t is ON and the HUD
+  // is visible. Menu Show F3 ($ks_f3_v + ksbT_f3show_t) gates the F3 *button*;
+  // the panel itself follows the button state + #hud_visible (like upstream).
+  "ks_f3_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ "40%", "100%c" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 3, 30 ],
+    "layer": 6,
+    "visible": false,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ks_f3_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#f3_visible"
+      },
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #f3_visible)",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_f3_ver": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_ver_rel@ks_client.ks_f3_line": {
+                "ignored": "($pre_release or (not $minecraft_game_version = ''))",
+                "$ks_f3_text": "('Minecraft ' + '(' + $release + ')')",
+                "$release|default": "minecraft/vanilla/release"
+              }
+            },
+            {
+              "ks_f3_ver_rel_c@ks_client.ks_f3_line": {
+                "ignored": "($pre_release or ($minecraft_game_version = ''))",
+                "$ks_f3_text": "('Minecraft ' + $minecraft_game_version + ' (' + $minecraft_game_version + '/vanilla/release' + ')')"
+              }
+            },
+            {
+              "ks_f3_ver_beta@ks_client.ks_f3_line": {
+                "ignored": "(not $pre_release or (not $minecraft_game_version = ''))",
+                "$ks_f3_text": "('Minecraft ' + '(' + $release + ')')",
+                "$release|default": "minecraft/vanilla/beta"
+              }
+            },
+            {
+              "ks_f3_ver_beta_c@ks_client.ks_f3_line": {
+                "ignored": "(not $pre_release or ($minecraft_game_version = ''))",
+                "$ks_f3_text": "('Minecraft ' + $minecraft_game_version + ' (' + $minecraft_game_version + '/vanilla/beta' + ')')"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_edition": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_ed_pocket@ks_client.ks_f3_line": {
+                "ignored": "(not ($pocket_edition))",
+                "$ks_f3_text": "ks_f3.edition_pocket"
+              }
+            },
+            {
+              "ks_f3_ed_edu@ks_client.ks_f3_line": {
+                "ignored": "(not ($education_edition))",
+                "$ks_f3_text": "ks_f3.edition_edu"
+              }
+            },
+            {
+              "ks_f3_ed_win@ks_client.ks_f3_line": {
+                "ignored": "(not ($win10_edition))",
+                "$ks_f3_text": "ks_f3.edition_bedrock"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_gamemode": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_gm_c@ks_client.ks_f3_line": {
+                "$ks_f3_text": "ks_f3.gamemode_creative",
+                "bindings": [
+                  {
+                    "binding_name": "#is_creative_mode",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            },
+            {
+              "ks_f3_gm_s@ks_client.ks_f3_line": {
+                "$ks_f3_text": "ks_f3.gamemode_survival",
+                "bindings": [
+                  {
+                    "binding_name": "(not (#is_creative_mode) and not (#is_spectator_mode))",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            },
+            {
+              "ks_f3_gm_sp@ks_client.ks_f3_line": {
+                "$ks_f3_text": "ks_f3.gamemode_spectator",
+                "bindings": [
+                  {
+                    "binding_name": "#is_spectator_mode",
+                    "binding_name_override": "#visible",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_days": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#text",
+          "bindings": [
+            {
+              "binding_name": "#number_of_days_played_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_name": "#number_of_days_played_text",
+              "binding_name_override": "#text",
+              "binding_type": "global",
+              "binding_condition": "always_when_visible"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_pos": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#text",
+          "bindings": [
+            {
+              "binding_name": "#player_position_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_name": "#player_position_text",
+              "binding_name_override": "#text",
+              "binding_type": "global",
+              "binding_condition": "always_when_visible"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_tools": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%", 18 ],
+          "controls": [
+            {
+              "ks_f3_recovery": {
+                "type": "panel",
+                "size": [ 16, 16 ],
+                "controls": [
+                  {
+                    "ks_f3_recovery_item": {
+                      "type": "custom",
+                      "renderer": "inventory_item_renderer",
+                      "size": [ 16, 16 ],
+                      "layer": 5,
+                      "property_bag": {
+                        "#item_id_aux": "$ks_recovery_id"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_f3_pad1": {
+                "type": "panel",
+                "size": [ 3, 1 ]
+              }
+            },
+            {
+              "ks_f3_clock": {
+                "type": "panel",
+                "size": [ 16, 16 ],
+                "controls": [
+                  {
+                    "ks_f3_clock_item": {
+                      "type": "custom",
+                      "renderer": "inventory_item_renderer",
+                      "size": [ 16, 16 ],
+                      "layer": 5,
+                      "property_bag": {
+                        "#item_id_aux": "$ks_clock_id"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "ks_f3_pad2": {
+                "type": "panel",
+                "size": [ 3, 1 ]
+              }
+            },
+            {
+              "ks_f3_compass": {
+                "type": "panel",
+                "size": [ 16, 16 ],
+                "controls": [
+                  {
+                    "ks_f3_compass_item": {
+                      "type": "custom",
+                      "renderer": "inventory_item_renderer",
+                      "size": [ 16, 16 ],
+                      "layer": 5,
+                      "property_bag": {
+                        "#item_id_aux": "$ks_compass_id"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_ui": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_ui_classic@ks_client.ks_f3_line": {
+                "ignored": "(not ($desktop_screen))",
+                "$ks_f3_text": "ks_f3.ui_classic"
+              }
+            },
+            {
+              "ks_f3_ui_pocket@ks_client.ks_f3_line": {
+                "ignored": "(not ($pocket_screen))",
+                "$ks_f3_text": "ks_f3.ui_pocket"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_device": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_dev_android@ks_client.ks_f3_line": {
+                "ignored": "(not ($is_android))",
+                "$ks_f3_text": "ks_f3.device_android"
+              }
+            },
+            {
+              "ks_f3_dev_win@ks_client.ks_f3_line": {
+                "ignored": "(not ($win10_edition))",
+                "$ks_f3_text": "ks_f3.device_windows"
+              }
+            },
+            {
+              "ks_f3_dev_xbox@ks_client.ks_f3_line": {
+                "ignored": "(not ($xbox_one))",
+                "$ks_f3_text": "ks_f3.device_xbox"
+              }
+            },
+            {
+              "ks_f3_dev_ios@ks_client.ks_f3_line": {
+                "ignored": "(not ($is_ios))",
+                "$ks_f3_text": "ks_f3.device_ios"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_graphics": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_gfx_rd@ks_client.ks_f3_line": {
+                "ignored": "(not ($win10_edition or $xbox_one or $is_ps4 or $is_android or $is_ios or $is_berwick or $is_win10_arm))",
+                "$ks_f3_text": "ks_f3.graphics_rd"
+              }
+            },
+            {
+              "ks_f3_gfx_gl@ks_client.ks_f3_line": {
+                "ignored": "($win10_edition or $xbox_one or $is_ps4 or $is_android or $is_ios or $is_berwick or $is_win10_arm)",
+                "$ks_f3_text": "ks_f3.graphics_glsl"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_input": {
+          "type": "panel",
+          "size": [ "100%", 10 ],
+          "controls": [
+            {
+              "ks_f3_in_touch@ks_client.ks_f3_line": {
+                "ignored": "(not ($touch))",
+                "$ks_f3_text": "ks_f3.touch"
+              }
+            },
+            {
+              "ks_f3_in_pad@ks_client.ks_f3_line": {
+                "ignored": "(not ($game_pad))",
+                "$ks_f3_text": "ks_f3.gamepad"
+              }
+            },
+            {
+              "ks_f3_in_kbm@ks_client.ks_f3_line": {
+                "ignored": "(not ($win10_edition))",
+                "$ks_f3_text": "ks_f3.kbm"
+              }
+            },
+            {
+              "ks_f3_in_vr@ks_client.ks_f3_line": {
+                "ignored": "(not ($is_mobile_vr))",
+                "$ks_f3_text": "ks_f3.vr"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- F3 debug readout right side (top-right, same-to-same vs f3right) ----------
+  // Same context as reference Default-mobile right column: pack name/version,
+  // world name, inventory storage counter + Full/Available, XP, Nether/OW
+  // conversion, chunk position. Visible on the same ks_f3_t instance +
+  // #hud_visible as the left panel. KS names/text, same bindings.
+  "ks_f3_right": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ "40%", "100%c" ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -3, 30 ],
+    "layer": 6,
+    "visible": false,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ks_f3_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#f3_visible_r"
+      },
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #f3_visible_r)",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "ks_f3_pack@ks_client.ks_f3_line": {
+          "$ks_f3_text": "ks_f3.pack_active"
+        }
+      },
+      {
+        "ks_f3_packver@ks_client.ks_f3_line": {
+          "$ks_f3_text": "ks_f3.pack_version"
+        }
+      },
+      {
+        "ks_f3_world_r": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_world_r_text",
+          "bindings": [
+            {
+              "binding_name": "#player_list_title",
+              "binding_type": "global"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('World Name: ' + #player_list_title)",
+              "target_property_name": "#ks_world_r_text"
+            },
+            {
+              "binding_name": "#player_list_title_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_invcount": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_inv_text",
+          "controls": [
+            {
+              "ks_f3_inv_panels": {
+                "type": "panel",
+                "size": [ 0, 0 ],
+                "controls": [
+                  {
+                    "ks_inv_collect": {
+                      "type": "collection_panel",
+                      "collection_name": "hotbar_items",
+                      "size": [ 0, 0 ],
+                      "controls": [
+                        { "ks_s0@ks_client.ks_f3_inv_counter_main": { "$counter_id": 0 } },
+                        { "ks_s1@ks_client.ks_f3_inv_counter_main": { "$counter_id": 1 } },
+                        { "ks_s2@ks_client.ks_f3_inv_counter_main": { "$counter_id": 2 } },
+                        { "ks_s3@ks_client.ks_f3_inv_counter_main": { "$counter_id": 3 } },
+                        { "ks_s4@ks_client.ks_f3_inv_counter_main": { "$counter_id": 4 } },
+                        { "ks_s5@ks_client.ks_f3_inv_counter_main": { "$counter_id": 5 } },
+                        { "ks_s6@ks_client.ks_f3_inv_counter_main": { "$counter_id": 6 } },
+                        { "ks_s7@ks_client.ks_f3_inv_counter_main": { "$counter_id": 7 } },
+                        { "ks_s8@ks_client.ks_f3_inv_counter_main": { "$counter_id": 8 } },
+                        { "ks_s9@ks_client.ks_f3_inv_counter_main": { "$counter_id": 9 } },
+                        { "ks_s10@ks_client.ks_f3_inv_counter_main": { "$counter_id": 10 } },
+                        { "ks_s11@ks_client.ks_f3_inv_counter_main": { "$counter_id": 11 } },
+                        { "ks_s12@ks_client.ks_f3_inv_counter_main": { "$counter_id": 12 } },
+                        { "ks_s13@ks_client.ks_f3_inv_counter_main": { "$counter_id": 13 } },
+                        { "ks_s14@ks_client.ks_f3_inv_counter_main": { "$counter_id": 14 } },
+                        { "ks_s15@ks_client.ks_f3_inv_counter_main": { "$counter_id": 15 } },
+                        { "ks_s16@ks_client.ks_f3_inv_counter_main": { "$counter_id": 16 } },
+                        { "ks_s17@ks_client.ks_f3_inv_counter_main": { "$counter_id": 17 } },
+                        { "ks_s18@ks_client.ks_f3_inv_counter_main": { "$counter_id": 18 } },
+                        { "ks_s19@ks_client.ks_f3_inv_counter_main": { "$counter_id": 19 } },
+                        { "ks_s20@ks_client.ks_f3_inv_counter_main": { "$counter_id": 20 } },
+                        { "ks_s21@ks_client.ks_f3_inv_counter_main": { "$counter_id": 21 } },
+                        { "ks_s22@ks_client.ks_f3_inv_counter_main": { "$counter_id": 22 } },
+                        { "ks_s23@ks_client.ks_f3_inv_counter_main": { "$counter_id": 23 } },
+                        { "ks_s24@ks_client.ks_f3_inv_counter_main": { "$counter_id": 24 } },
+                        { "ks_s25@ks_client.ks_f3_inv_counter_main": { "$counter_id": 25 } },
+                        { "ks_s26@ks_client.ks_f3_inv_counter_main": { "$counter_id": 26 } },
+                        { "ks_s27@ks_client.ks_f3_inv_counter_main": { "$counter_id": 27 } },
+                        { "ks_s28@ks_client.ks_f3_inv_counter_main": { "$counter_id": 28 } },
+                        { "ks_s29@ks_client.ks_f3_inv_counter_main": { "$counter_id": 29 } },
+                        { "ks_s30@ks_client.ks_f3_inv_counter_main": { "$counter_id": 30 } },
+                        { "ks_s31@ks_client.ks_f3_inv_counter_main": { "$counter_id": 31 } },
+                        { "ks_s32@ks_client.ks_f3_inv_counter_main": { "$counter_id": 32 } },
+                        { "ks_s33@ks_client.ks_f3_inv_counter_main": { "$counter_id": 33 } },
+                        { "ks_s34@ks_client.ks_f3_inv_counter_main": { "$counter_id": 34 } },
+                        { "ks_s35@ks_client.ks_f3_inv_counter_main": { "$counter_id": 35 } }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            { "binding_type": "view", "source_control_name": "ks_s0", "source_property_name": "#ks_slot_0", "target_property_name": "#ks_slot_0" },
+            { "binding_type": "view", "source_control_name": "ks_s1", "source_property_name": "#ks_slot_1", "target_property_name": "#ks_slot_1" },
+            { "binding_type": "view", "source_control_name": "ks_s2", "source_property_name": "#ks_slot_2", "target_property_name": "#ks_slot_2" },
+            { "binding_type": "view", "source_control_name": "ks_s3", "source_property_name": "#ks_slot_3", "target_property_name": "#ks_slot_3" },
+            { "binding_type": "view", "source_control_name": "ks_s4", "source_property_name": "#ks_slot_4", "target_property_name": "#ks_slot_4" },
+            { "binding_type": "view", "source_control_name": "ks_s5", "source_property_name": "#ks_slot_5", "target_property_name": "#ks_slot_5" },
+            { "binding_type": "view", "source_control_name": "ks_s6", "source_property_name": "#ks_slot_6", "target_property_name": "#ks_slot_6" },
+            { "binding_type": "view", "source_control_name": "ks_s7", "source_property_name": "#ks_slot_7", "target_property_name": "#ks_slot_7" },
+            { "binding_type": "view", "source_control_name": "ks_s8", "source_property_name": "#ks_slot_8", "target_property_name": "#ks_slot_8" },
+            { "binding_type": "view", "source_control_name": "ks_s9", "source_property_name": "#ks_slot_9", "target_property_name": "#ks_slot_9" },
+            { "binding_type": "view", "source_control_name": "ks_s10", "source_property_name": "#ks_slot_10", "target_property_name": "#ks_slot_10" },
+            { "binding_type": "view", "source_control_name": "ks_s11", "source_property_name": "#ks_slot_11", "target_property_name": "#ks_slot_11" },
+            { "binding_type": "view", "source_control_name": "ks_s12", "source_property_name": "#ks_slot_12", "target_property_name": "#ks_slot_12" },
+            { "binding_type": "view", "source_control_name": "ks_s13", "source_property_name": "#ks_slot_13", "target_property_name": "#ks_slot_13" },
+            { "binding_type": "view", "source_control_name": "ks_s14", "source_property_name": "#ks_slot_14", "target_property_name": "#ks_slot_14" },
+            { "binding_type": "view", "source_control_name": "ks_s15", "source_property_name": "#ks_slot_15", "target_property_name": "#ks_slot_15" },
+            { "binding_type": "view", "source_control_name": "ks_s16", "source_property_name": "#ks_slot_16", "target_property_name": "#ks_slot_16" },
+            { "binding_type": "view", "source_control_name": "ks_s17", "source_property_name": "#ks_slot_17", "target_property_name": "#ks_slot_17" },
+            { "binding_type": "view", "source_control_name": "ks_s18", "source_property_name": "#ks_slot_18", "target_property_name": "#ks_slot_18" },
+            { "binding_type": "view", "source_control_name": "ks_s19", "source_property_name": "#ks_slot_19", "target_property_name": "#ks_slot_19" },
+            { "binding_type": "view", "source_control_name": "ks_s20", "source_property_name": "#ks_slot_20", "target_property_name": "#ks_slot_20" },
+            { "binding_type": "view", "source_control_name": "ks_s21", "source_property_name": "#ks_slot_21", "target_property_name": "#ks_slot_21" },
+            { "binding_type": "view", "source_control_name": "ks_s22", "source_property_name": "#ks_slot_22", "target_property_name": "#ks_slot_22" },
+            { "binding_type": "view", "source_control_name": "ks_s23", "source_property_name": "#ks_slot_23", "target_property_name": "#ks_slot_23" },
+            { "binding_type": "view", "source_control_name": "ks_s24", "source_property_name": "#ks_slot_24", "target_property_name": "#ks_slot_24" },
+            { "binding_type": "view", "source_control_name": "ks_s25", "source_property_name": "#ks_slot_25", "target_property_name": "#ks_slot_25" },
+            { "binding_type": "view", "source_control_name": "ks_s26", "source_property_name": "#ks_slot_26", "target_property_name": "#ks_slot_26" },
+            { "binding_type": "view", "source_control_name": "ks_s27", "source_property_name": "#ks_slot_27", "target_property_name": "#ks_slot_27" },
+            { "binding_type": "view", "source_control_name": "ks_s28", "source_property_name": "#ks_slot_28", "target_property_name": "#ks_slot_28" },
+            { "binding_type": "view", "source_control_name": "ks_s29", "source_property_name": "#ks_slot_29", "target_property_name": "#ks_slot_29" },
+            { "binding_type": "view", "source_control_name": "ks_s30", "source_property_name": "#ks_slot_30", "target_property_name": "#ks_slot_30" },
+            { "binding_type": "view", "source_control_name": "ks_s31", "source_property_name": "#ks_slot_31", "target_property_name": "#ks_slot_31" },
+            { "binding_type": "view", "source_control_name": "ks_s32", "source_property_name": "#ks_slot_32", "target_property_name": "#ks_slot_32" },
+            { "binding_type": "view", "source_control_name": "ks_s33", "source_property_name": "#ks_slot_33", "target_property_name": "#ks_slot_33" },
+            { "binding_type": "view", "source_control_name": "ks_s34", "source_property_name": "#ks_slot_34", "target_property_name": "#ks_slot_34" },
+            { "binding_type": "view", "source_control_name": "ks_s35", "source_property_name": "#ks_slot_35", "target_property_name": "#ks_slot_35" },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_slot_0 + #ks_slot_1 + #ks_slot_2 + #ks_slot_3 + #ks_slot_4 + #ks_slot_5 + #ks_slot_6 + #ks_slot_7 + #ks_slot_8 + #ks_slot_9 + #ks_slot_10 + #ks_slot_11 + #ks_slot_12 + #ks_slot_13 + #ks_slot_14 + #ks_slot_15 + #ks_slot_16 + #ks_slot_17 + #ks_slot_18 + #ks_slot_19 + #ks_slot_20 + #ks_slot_21 + #ks_slot_22 + #ks_slot_23 + #ks_slot_24 + #ks_slot_25 + #ks_slot_26 + #ks_slot_27 + #ks_slot_28 + #ks_slot_29 + #ks_slot_30 + #ks_slot_31 + #ks_slot_32 + #ks_slot_33 + #ks_slot_34 + #ks_slot_35)",
+              "target_property_name": "#ks_inv_val"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Inventory Storage: ' + #ks_inv_val + '/36')",
+              "target_property_name": "#ks_inv_text"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_inv_full@ks_client.ks_f3_line": {
+          "$ks_f3_text": "ks_f3.inv_full",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_invcount",
+              "source_property_name": "(#ks_inv_val = 36)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_inv_avail@ks_client.ks_f3_line": {
+          "$ks_f3_text": "ks_f3.inv_avail",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_invcount",
+              "source_property_name": "(#ks_inv_val < 36)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_xp_r": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#text",
+          "bindings": [
+            { "binding_name": "#level_number", "binding_type": "global" },
+            {
+              "binding_type": "view",
+              "source_property_name": "('XP Level: ' + #level_number)",
+              "target_property_name": "#text"
+            },
+            {
+              "binding_name": "#level_number_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_nether_r": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_nether_r_text",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_pos",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_raw_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_r - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_noneg_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_noneg_r - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_tmpl_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_r - (#ks_tmpl_r - ' , , ' - ':'))",
+              "target_property_name": "#ks_coords_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r - ':')",
+              "target_property_name": "#ks_x_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r - (': ' + #ks_x_r + ','))",
+              "target_property_name": "#ks_y_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r - (': ' + #ks_x_r + ', ' + #ks_y_r + ','))",
+              "target_property_name": "#ks_z_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x_r / 8)",
+              "target_property_name": "#ks_nx_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z_r / 8)",
+              "target_property_name": "#ks_nz_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Overworld --> Nether: ' + #ks_nx_r + ', ' + #ks_y_r + ', ' + #ks_nz_r)",
+              "target_property_name": "#ks_nether_r_text"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_over_r": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_over_r_text",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_pos",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_raw_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_r2 - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_noneg_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_noneg_r2 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_tmpl_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_raw_r2 - (#ks_tmpl_r2 - ' , , ' - ':'))",
+              "target_property_name": "#ks_coords_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r2 - ':')",
+              "target_property_name": "#ks_x_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r2 - (': ' + #ks_x_r2 + ','))",
+              "target_property_name": "#ks_y_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_coords_r2 - (': ' + #ks_x_r2 + ', ' + #ks_y_r2 + ','))",
+              "target_property_name": "#ks_z_r2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_x_r2 * 8)",
+              "target_property_name": "#ks_ox_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_z_r2 * 8)",
+              "target_property_name": "#ks_oz_r"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Nether --> Overworld: ' + #ks_ox_r + ', ' + #ks_y_r2 + ', ' + #ks_oz_r)",
+              "target_property_name": "#ks_over_r_text"
+            }
+          ]
+        }
+      },
+      {
+        "ks_f3_chunk": {
+          "type": "label",
+          "size": [ "100%", 10 ],
+          "color": "$chat_text_color",
+          "shadow": true,
+          "enable_profanity_filter": false,
+          "localize": false,
+          "font_size": "normal",
+          "font_scale_factor": 0.65,
+          "text": "#ks_chunk_text",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_f3_pos",
+              "source_property_name": "#text",
+              "target_property_name": "#ks_c_raw"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_raw - '-0' - '-1' - '-2' - '-3' - '-4' - '-5' - '-6' - '-7' - '-8' - '-9')",
+              "target_property_name": "#ks_c_1"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_1 - '0' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9')",
+              "target_property_name": "#ks_c_2"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_raw - (#ks_c_2 - ' , , ' - ':'))",
+              "target_property_name": "#ks_c_coords"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_coords - ':')",
+              "target_property_name": "#ks_c_x"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_coords - (': ' + #ks_c_x + ','))",
+              "target_property_name": "#ks_c_y"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_coords - (': ' + #ks_c_x + ', ' + #ks_c_y + ','))",
+              "target_property_name": "#ks_c_z"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_c_x - (#ks_c_x < 0) * 15) / 16)",
+              "target_property_name": "#ks_cx"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_c_y - (#ks_c_y < 0) * 15) / 16)",
+              "target_property_name": "#ks_cy"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#ks_c_z - (#ks_c_z < 0) * 15) / 16)",
+              "target_property_name": "#ks_cz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_x - (#ks_cx * 16))",
+              "target_property_name": "#ks_c_px"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_y - (#ks_cy * 16))",
+              "target_property_name": "#ks_c_py"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#ks_c_z - (#ks_cz * 16))",
+              "target_property_name": "#ks_c_pz"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('Chunk Position: ' + #ks_cx + ', ' + #ks_cy + ', ' + #ks_cz + ' [ ' + #ks_c_px + ', ' + #ks_c_py + ', ' + #ks_c_pz + ' ]')",
+              "target_property_name": "#ks_chunk_text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  // ---------- Safe way back after F1 hides the HUD ----------
+  // Lives as a SIBLING of root_panel (see hud_screen.json): root_panel is
+  // bound to #hud_visible, so anything inside it would vanish with the HUD
+  // and touch users could get stuck. This bar only appears while hidden.
+  // Same-to-same vs reference NeBuxHudHide panel: size ["50%", 25], offset
+  // [0, -3], bottom_middle anchored, outer art textures/ui/ks_f1f3_hide_bg.png
+  // (was NeBux/NeBuxUI/0.png, 1x1) + inner vanilla hud_tip_text_background.
+  // Label stays short "F1 -" per request (reference read "CLICK HERE TO SHOW
+  // HUD :)"). No reference animations copied (their alpha anim lived in the
+  // NeBuxAnimations namespace). Kept visible on all inputs (reference gated
+  // its bg on $touch only — that would strand PC users with no way back).
+  "ks_show_hud": {
+    "type": "panel",
+    "size": [ "50%", 25 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ 0, -3 ],
+    "ignored": "$always_visible_hotbar",
+    "layer": 12,
+    "bindings": [
+      {
+        "binding_name": "(not #hud_visible)",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "ks_show_hud_bg": {
+          "type": "image",
+          "texture": "textures/ui/ks_f1f3_hide_bg",
+          "size": [ "100%", "100%" ],
+          "layer": 0,
+          "propagate_alpha": true,
+          "controls": [
+            {
+              "ks_show_hud_tip@ks_client.ks_show_hud_tip": {}
+            }
+          ]
+        }
+      },
+      {
+        "ks_show_hud_hit@common.button": {
+          "size": [ "100%", "100%" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "layer": 2,
+          "$pressed_button_name": "button.hide_gui_all"
+        }
+      }
+    ]
+  },
+
+  // Inner tip chip: vanilla tip background + short "F1 -" label.
+  "ks_show_hud_tip": {
+    "type": "image",
+    "texture": "textures/ui/hud_tip_text_background",
+    "size": [ "100%c + 4px", "100%c + 4px" ],
+    "layer": 1,
+    "controls": [
+      {
+        "ks_show_hud_lbl": {
+          "type": "label",
+          "size": [ "100%", "100%" ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 0 ],
+          "color": [ 255, 255, 255 ],
+          "shadow": true,
+          "localize": false,
+          "text_alignment": "center",
+          "font_size": "small",
+          "font_scale_factor": 0.9,
+          "layer": 1,
+          "text": "F1 -"
+        }
+      }
+    ]
+  }
+}
