@@ -12,6 +12,9 @@ server
 !.env.example
 # docker
 .docker/
+
+# runtime data (mcstats history)
+mcstats/data/
 # os
 .DS_Store
 
