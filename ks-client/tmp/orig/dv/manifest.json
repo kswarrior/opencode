@@ -1,0 +1,37 @@
+{
+  "format_version": 2,
+  "metadata": {
+    "product_type": "addon",
+    "authors": [
+      "EchoRif",
+      "ya_rifat"
+    ]
+  },
+  "header": {
+    "name": "Durability Viewer [RP] V - 2.5",
+    "description": "Shows the durability of Items in the hotbar and inventory screens.",
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ],
+    "uuid": "6c81f5a3-3c10-4518-b241-d4a819c99b98",
+    "version": [
+      2,
+      5,
+      0
+    ],
+    "pack_optimization_version": "0.1.0"
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "f7acef4e-eec9-4a42-b53a-67ede50e93d8",
+      "version": [
+        2,
+        5,
+        0
+      ]
+    }
+  ]
+}

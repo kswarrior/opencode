@@ -1,0 +1,17 @@
+{
+  // show or hide durability in Inventoy
+  "$view_durability_in_inventory": true,
+  // set it to false if you experience lag when opning inventory
+  "$view_durability_in_recipe_book": true,
+
+  "$view_shield_durability": true,
+  "$view_armor_durability": true,
+  "$view_mainhand_durability": true,
+
+  // move things around
+  // you can use 'px', '%' or combination of both
+  // examples: ["100% - 5px", "50% - 5px"] or ["50%", "75%"]
+  "$mainhand_durability_offset": ["5px", "5px"],
+  "$shield_durability_offset": ["5px", "5px"],
+  "$armor_durability_offset": ["5px", "25px"]
+}
