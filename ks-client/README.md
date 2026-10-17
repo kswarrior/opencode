@@ -305,7 +305,7 @@ ks-client/
 
 ## 4. Installation & Usage In-Game
 
-1. Copy a file from `release/` (e.g. `KS-Client-v1.4.8.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
+1. Copy a file from `release/` (e.g. `KS-Client-v1.4.9.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
 3. **Use:**
    - Start screen → `TAP TO START` / skin preview / bell inbox / same-gear button left of bell (opens HUD SETTINGS: hotbar 1–10 + totem + F1/F3 + InvHUD + durability toggles, Save, small X — no position editing).
@@ -412,11 +412,11 @@ redistributing: some upstream licenses require the creator's permission.
 
 ## 12. Version History
 
-`release/` contains shippable builds (46 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
+`release/` contains shippable builds (47 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
 
-`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → `v1.2.9` → `v1.3.0` → `v1.3.1` → `v1.3.2` → `v1.3.3` → `v1.3.4` → `v1.3.5` → `v1.3.6` → `v1.3.7` (Inventory HUD bottom-right restored) → `v1.3.8` (F1/F3 HUD keys + "F1 -" way back + HUD-menu Show F1/F3) → `v1.3.9` (ZenXveda durability HUD + bow indicators + clean pumpkin + NoFog AllBiomes `all` variant) → `v1.4.0` (version bump — same content as v1.3.9) → `v1.4.1` (F1/F3 same-to-same reference art + position) → `v1.4.2` (InvHUD Show-toggle fix: menu toggles standalone like Menu button) → `v1.4.3` (F3 fix build) → `v1.4.4` (F3 split-toggle wiring + white label fix + crosshair vanilla-path only) → `v1.4.5` (split-toggle default-visible property_bag for F1/F3/InvHUD/dura) → `v1.4.6` (version bump) → `v1.4.7` (version bump) → **`v1.4.8` (current, version bump)**
+`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → `v1.2.9` → `v1.3.0` → `v1.3.1` → `v1.3.2` → `v1.3.3` → `v1.3.4` → `v1.3.5` → `v1.3.6` → `v1.3.7` (Inventory HUD bottom-right restored) → `v1.3.8` (F1/F3 HUD keys + "F1 -" way back + HUD-menu Show F1/F3) → `v1.3.9` (ZenXveda durability HUD + bow indicators + clean pumpkin + NoFog AllBiomes `all` variant) → `v1.4.0` (version bump — same content as v1.3.9) → `v1.4.1` (F1/F3 same-to-same reference art + position) → `v1.4.2` (InvHUD Show-toggle fix: menu toggles standalone like Menu button) → `v1.4.3` (F3 fix build) → `v1.4.4` (F3 split-toggle wiring + white label fix + crosshair vanilla-path only) → `v1.4.5` (split-toggle default-visible property_bag for F1/F3/InvHUD/dura) → `v1.4.6` (version bump) → `v1.4.7` (version bump) → `v1.4.8` (version bump) → **`v1.4.9` (current, dead-code cleanup: unused hide-GUI touch panel + `ks_hud_keys`/`ks_inv_slot`/`ksb_main.tab_icon` stubs removed)**
 
-Current (`manifest.json`): `KS Client v1.4.8`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
+Current (`manifest.json`): `KS Client v1.4.9`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
 
 ---
 
