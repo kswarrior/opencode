@@ -1,14 +1,14 @@
 # KS Client — Premium Mobile PvP Resource Pack for Minecraft Bedrock
 
-> **KS Client v1.4.9 by KS Warrior** (dead-code cleanup: unused hide-GUI touch panel + UI stubs removed)
+> **KS Client v1.4.12 by KS Warrior** (v1.4.9 content restored + v1.4.11 F3 debug kept; equipment HUD removed)
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
 > Custom start screen, HUD (slot hotbar + totem/offhand shortcuts + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show on/off.)
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
-- **Current version:** `1.4.9` (`manifest.json` header + modules)
+- **Current version:** `1.4.12` (`manifest.json` header + modules)
 - **UUID:** `3cb32de7-ef64-4969-a447-dadba4bf9a8f` / `01ec78ed-44f8-4077-bc80-0904b4a83d51`
-- **Releases:** `release/` 47 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.4.9.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
+- **Releases:** `release/` 50 files — `KS-Client-v1.0.0.mcpack`, `v1.0.3`…`v1.4.12.mcpack` (no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack)
 - **Validation reports:** `out/` 9 files — `ks client.*`, `ks-clean.*`, `ks-client.*` (each `.csv` / `.mcr.json` / `.report.html`)
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP + allowed skills
 
@@ -48,7 +48,7 @@
 | 10 | Player Animation QA System | KS `tools/` | Loop-rechecker (strict-JSON / dotfiles / loop flags / shield-armor-sword / refs). Target Drive anim dirs (`animations/Animation|Attack`, `animation_controllers/...`, `models/.../Player|Items`) are NOT shipped, so Gate A reports those 8 checks as SKIP (missing optional input) and passes — gates 1–2 + 5 + `mct validate` still run; `player.json` now carries KS health-bar hooks (refs resolve via vanilla allowlist, no new checker problems). |
 | 11 | Custom UI Kit (KS + c_ui) | KS custom | `ks_menu_bg/ks_config_bg/ks_config_btn/ks_profile_bg`, `ks_divider_v`, `ks_icon_anim/dressing/settings`, `ks_info_bossbar/item/mob`, `ks_f1f3_hud_btn/hide_bg`, `totem`, all effect icons (12 unwired `ks_*` textures + `ks_btn_cyan.json` spec removed). Note: brand header/footer/center row removed (text-free screen); `ks_f1_button` (F1 [-39,0.5]) + `ks_f3_button` (instance `ks_f3_t`, F3 [38.5,0.5], face scale 1.0 same as F1) + `ks_f3_panel` left + `ks_f3_right` right in `ks_client_common.json` are live (same-to-same Default-mobile vs NeBux v1.1.3, art via mv: `textures/ui/ks_f1f3_hud_btn.png` 18x18 for F1/F3 + `ks_f1f3_hide_bg.png` 1x1 for the "F1 -" bar); the old `ks_hud_keys`/`ks_inv_slot` stubs and the unused `ks_touch/hide_gui.json` panel (superseded by `ks_f1_button`) were removed in v1.4.9, `ks_f3_inv_counter_main` 36-probe counter live; `textures/c_ui/` is now 8 files, all wired (close/craft/effect_bg for mob-effect + inventory screens). |
 | 12 | Custom Touch Button Art | KS + vanilla override | `jump`, `sneak`, `sprint`, `flyingascend/descend`, `waterascend/descend`, D-pad, joystick, `interact`, `mount`, `pick_block` |
-| 13 | Debug / Dev Console Tweaks | KS custom + NeBux F1 & F3 v1.1.3 (same-to-same Default-mobile context, KS names) | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed; HUD F1/F3 keys live top-middle (F1 [-39,0.5], F3 [38.5,0.5]), F3 shows left `ks_f3_panel` (version/edition/gamemode/days/position/icons/UI/device/graphics/input/XP/world/Nether) + right `ks_f3_right` (pack/version/world/inventory 36-slot + Full/Avail/XP/Nether/OW/chunk), `ks_show_hud` short "F1 -" bar is the way back |
+| 13 | Debug / Dev Console Tweaks | KS custom + NeBux F1 & F3 v1.1.3 (same-to-same Default-mobile context, KS names) | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed; HUD F1/F3 keys live top-middle (F1 [-39,0.5], F3 [38.5,0.5]), F3 shows left `ks_f3_panel` (version/edition/gamemode incl. Spectator/days/position/icons/UI/device/graphics/input — XP/world/Nether live right only) + right `ks_f3_right` (pack/version/world/inventory 36-slot + Full/Avail/XP/Nether/OW/chunk), `ks_show_hud` short "F1 -" bar is the way back |
 | 14 | Mob Effect Screen + Inventory Totem Panel | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) + inventory-screen totem equip/exit (`inventory_screen.json` namespace `crafting`, `master_totem_panel`) |
 | 15 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
 | 16 | Menu-Driven Options (no subpacks) | KS custom | No subpacks ship — gear menu is always on; InvHUD grid fixed bottom-right with HUD-menu Show on/off. |
@@ -124,7 +124,7 @@ How it works:
 - `textures/gui/controls/`: D-pad set (`up/down/left/right + diagonals + pressed`), `jump_dpad`, `sneak_dpad`, `large_button`, `dismount`.
 - `hud_screen.json` F1 [-39,0.5] (hide HUD) + F3 [38.5,0.5] (debug toggle instance `ks_f3_t` → left `ks_f3_panel` + right `ks_f3_right`) live top-middle, 20x20, same-to-same Default-mobile vs NeBux v1.1.3 (art via mv, F5/Windows NOT used); F8 paperdoll not ported.
 
-In-game: F1 hides HUD, F3 toggles debug readout left (version/edition/gamemode/days/position/recovery/clock/compass/UI/device/graphics/input/XP/world/OW-Nether, top-left below status) + right (pack/version/world/inventory 36-slot + Full/Avail/XP/Nether/OW/chunk, top-right; clock is live icon — true Time: HH:MM not exposed to RP UI); bottom-center `ks_show_hud` bar reads short "F1 -" (was "Show HUD" / upstream "CLICK HERE TO SHOW HUD :)") and re-shows HUD via `button.hide_gui_all`. Show F1/F3 on/off in HUD tab.
+In-game: F1 hides HUD, F3 toggles debug readout left (version/edition/gamemode incl. Spectator/days/position/recovery/clock/compass/UI/device/graphics/input, top-left below status; XP/world/OW-Nether live right only) + right (pack/version/world/inventory 36-slot + Full/Avail/XP/Nether/OW/chunk, top-right; clock is live icon — true Time: HH:MM not exposed to RP UI); bottom-center `ks_show_hud` bar reads short "F1 -" (was "Show HUD" / upstream "CLICK HERE TO SHOW HUD :)") and re-shows HUD via `button.hide_gui_all`. Show F1/F3 on/off in HUD tab.
 
 ### 2.6 Connected Hotbar (`textures/ui/hotbar_*.png`)
 
@@ -267,9 +267,9 @@ ks-client/
 │   ├── check_player_animation_loop.py ← strict-JSON / dotfile / loop / shield-armor-sword / refs / mct loop checker
 │   └── recheck_player_animation.sh    ← bash wrapper (iterations delay)
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
-├── release/                         ← shippable .mcpack (46 files: v1.0.0 + v1.0.3…v1.4.8, no v1.0.1/v1.0.2/v1.1.9 mcpack)
+├── release/                         ← shippable .mcpack (50 files: v1.0.0 + v1.0.3…v1.4.12, no v1.0.1/v1.0.2/v1.1.9 mcpack)
 ├── resource_packs/KS Client/
-│   ├── manifest.json                ← name KS Client, v1.4.8, min_engine 1.21.120, no subpacks, authors
+│   ├── manifest.json                ← name KS Client, v1.4.12, min_engine 1.21.120, no subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright in all 71 biomes (default + 70 per-biome, NoFog-all water colors)
 │   ├── fogs/ks_fullbright.json      ← nofog: air/weather render + water/lava/powder-snow 4000–10000
@@ -330,7 +330,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors |
 | Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | positions/sizes via `_global_variables.json` only (HUD slider X/Y/size panel hidden — show toggle only); px offset = value−125 / value−35 |
 | Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | Show Inv HUD on/off + Compact toggle in HUD tab; grid fixed bottom-right (no corner picker) |
-| F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` left + `ks_f3_right` right debug (same-to-same Default-mobile: version/edition/gamemode/days/pos/icons/UI/device/graphics/input/XP/world/Nether + pack/inv36/Full-Avail/chunk); bottom-center way back reads short "F1 -" |
+| F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` left + `ks_f3_right` right debug (same-to-same Default-mobile: version/edition/gamemode incl. Spectator/days/pos/icons/UI/device/graphics/input + pack/inv36/Full-Avail/XP/Nether/world/chunk); bottom-center way back reads short "F1 -" |
 | Start-screen HUD settings button | `$ks_show_hud_config_button true` | Show/hide the same-gear button top-right left of the bell (`start.ks_cfg_slot` ignored when false); the HUD SETTINGS toggle list (no positions) lives in `ui/ks_hud_config.json` |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`) |
@@ -414,11 +414,11 @@ redistributing: some upstream licenses require the creator's permission.
 
 ## 12. Version History
 
-`release/` contains shippable builds (46 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
+`release/` contains shippable builds (50 files — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack was ever cut):
 
-`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → `v1.2.9` → `v1.3.0` → `v1.3.1` → `v1.3.2` → `v1.3.3` → `v1.3.4` → `v1.3.5` → `v1.3.6` → `v1.3.7` (Inventory HUD bottom-right restored) → `v1.3.8` (F1/F3 HUD keys + "F1 -" way back + HUD-menu Show F1/F3) → `v1.3.9` (ZenXveda durability HUD + bow indicators + clean pumpkin + NoFog AllBiomes `all` variant) → `v1.4.0` (version bump — same content as v1.3.9) → `v1.4.1` (F1/F3 same-to-same reference art + position) → `v1.4.2` (InvHUD Show-toggle fix: menu toggles standalone like Menu button) → `v1.4.3` (F3 fix build) → `v1.4.4` (F3 split-toggle wiring + white label fix + crosshair vanilla-path only) → `v1.4.5` (split-toggle default-visible property_bag for F1/F3/InvHUD/dura) → `v1.4.6` (version bump) → `v1.4.7` (version bump) → **`v1.4.8` (current, version bump)**
+`v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → `v1.2.9` → `v1.3.0` → `v1.3.1` → `v1.3.2` → `v1.3.3` → `v1.3.4` → `v1.3.5` → `v1.3.6` → `v1.3.7` (Inventory HUD bottom-right restored) → `v1.3.8` (F1/F3 HUD keys + "F1 -" way back + HUD-menu Show F1/F3) → `v1.3.9` (ZenXveda durability HUD + bow indicators + clean pumpkin + NoFog AllBiomes `all` variant) → `v1.4.0` (version bump — same content as v1.3.9) → `v1.4.1` (F1/F3 same-to-same reference art + position) → `v1.4.2` (InvHUD Show-toggle fix: menu toggles standalone like Menu button) → `v1.4.3` (F3 fix build) → `v1.4.4` (F3 split-toggle wiring + white label fix + crosshair vanilla-path only) → `v1.4.5` (split-toggle default-visible property_bag for F1/F3/InvHUD/dura) → `v1.4.6` (version bump) → `v1.4.7` (version bump) → `v1.4.8` (version bump) → `v1.4.9` (dead-code cleanup: unused hide-GUI touch panel + UI stubs removed) → `v1.4.10` (equipment HUD: armor bars + offhand frame + generic item icons via `player.json` render controllers) → `v1.4.11` (version bump) → **`v1.4.12` (current — v1.4.9 content restored + v1.4.11 F3 debug kept: Spectator gamemode row, mobile RenderDragon detection, XP/world/Nether right-panel only; equipment HUD removed)**
 
-Current (`manifest.json`): `KS Client v1.4.8`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
+Current (`manifest.json`): `KS Client v1.4.12`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
 
 ---
 
@@ -432,4 +432,4 @@ Current (`manifest.json`): `KS Client v1.4.8`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 116 / gui / c_ui 8 / totem 2 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ksd_*, $text_color), `_ui_defs` 26 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (46 files), `copyright.txt` (+17 incl. ZenXveda durability), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 116 / gui / c_ui 8 / totem 2 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ksd_*, $text_color), `_ui_defs` 26 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (50 files), `copyright.txt` (+17 incl. ZenXveda durability), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
