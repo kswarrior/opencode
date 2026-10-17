@@ -1,0 +1,143 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.ksd_hud_helmet": {
+      "arrays": {
+        "textures": {
+          "Array.ksd_helmets": [
+            "Texture.ksd_leather_helmet",
+            "Texture.ksd_chainmail_helmet",
+            "Texture.ksd_iron_helmet",
+            "Texture.ksd_diamond_helmet",
+            "Texture.ksd_gold_helmet",
+            "Texture.ksd_gold_helmet",
+            "Texture.ksd_turtle_helmet",
+            "Texture.ksd_netherite_helmet"
+          ]
+        }
+      },
+      "geometry": "Geometry.ksd_hud_helmet",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.ksd_helmets[query.armor_texture_slot(0)]"],
+      "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "overlay_color": {
+        "r": "query.armor_material_slot(0) == 0 ? query.armor_color_slot(0, 0) : 0.0",
+        "g": "query.armor_material_slot(0) == 0 ? query.armor_color_slot(0, 1) : 0.0",
+        "b": "query.armor_material_slot(0) == 0 ? query.armor_color_slot(0, 2) : 0.0",
+        "a": "query.armor_material_slot(0) == 0 && (query.armor_color_slot(0, 0) != 1.0 || query.armor_color_slot(0, 1) != 1.0 || query.armor_color_slot(0, 2) != 1.0) ? 1.0 : 0.0"
+      },
+      "ignore_lighting": true
+    },
+    "controller.render.ksd_hud_chestplate": {
+      "arrays": {
+        "textures": {
+          "Array.ksd_chestplates": [
+            "Texture.ksd_leather_chestplate",
+            "Texture.ksd_chainmail_chestplate",
+            "Texture.ksd_iron_chestplate",
+            "Texture.ksd_diamond_chestplate",
+            "Texture.ksd_gold_chestplate",
+            "Texture.ksd_elytra",
+            "Texture.ksd_elytra",
+            "Texture.ksd_netherite_chestplate"
+          ]
+        }
+      },
+      "geometry": "Geometry.ksd_hud_chestplate",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.ksd_chestplates[query.armor_texture_slot(1)]"],
+      "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "overlay_color": {
+        "r": "query.armor_material_slot(1) == 0 ? query.armor_color_slot(1, 0) : 0.0",
+        "g": "query.armor_material_slot(1) == 0 ? query.armor_color_slot(1, 1) : 0.0",
+        "b": "query.armor_material_slot(1) == 0 ? query.armor_color_slot(1, 2) : 0.0",
+        "a": "query.armor_material_slot(1) == 0 && (query.armor_color_slot(1, 0) != 1.0 || query.armor_color_slot(1, 1) != 1.0 || query.armor_color_slot(1, 2) != 1.0) ? 1.0 : 0.0"
+      },
+      "ignore_lighting": true
+    },
+    "controller.render.ksd_hud_leggings": {
+      "arrays": {
+        "textures": {
+          "Array.ksd_leggings": [
+            "Texture.ksd_leather_leggings",
+            "Texture.ksd_chainmail_leggings",
+            "Texture.ksd_iron_leggings",
+            "Texture.ksd_diamond_leggings",
+            "Texture.ksd_gold_leggings",
+            "Texture.ksd_gold_leggings",
+            "Texture.ksd_gold_leggings",
+            "Texture.ksd_netherite_leggings"
+          ]
+        }
+      },
+      "geometry": "Geometry.ksd_hud_leggings",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.ksd_leggings[query.armor_texture_slot(2)]"],
+      "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "overlay_color": {
+        "r": "query.armor_material_slot(2) == 0 ? query.armor_color_slot(2, 0) : 0.0",
+        "g": "query.armor_material_slot(2) == 0 ? query.armor_color_slot(2, 1) : 0.0",
+        "b": "query.armor_material_slot(2) == 0 ? query.armor_color_slot(2, 2) : 0.0",
+        "a": "query.armor_material_slot(2) == 0 && (query.armor_color_slot(2, 0) != 1.0 || query.armor_color_slot(2, 1) != 1.0 || query.armor_color_slot(2, 2) != 1.0) ? 1.0 : 0.0"
+      },
+      "ignore_lighting": true
+    },
+    "controller.render.ksd_hud_boots": {
+      "arrays": {
+        "textures": {
+          "Array.ksd_boots": [
+            "Texture.ksd_leather_boots",
+            "Texture.ksd_chainmail_boots",
+            "Texture.ksd_iron_boots",
+            "Texture.ksd_diamond_boots",
+            "Texture.ksd_gold_boots",
+            "Texture.ksd_gold_boots",
+            "Texture.ksd_gold_boots",
+            "Texture.ksd_netherite_boots"
+          ]
+        }
+      },
+      "geometry": "Geometry.ksd_hud_boots",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.ksd_boots[query.armor_texture_slot(3)]"],
+      "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "overlay_color": {
+        "r": "query.armor_material_slot(3) == 0 ? query.armor_color_slot(3, 0) : 0.0",
+        "g": "query.armor_material_slot(3) == 0 ? query.armor_color_slot(3, 1) : 0.0",
+        "b": "query.armor_material_slot(3) == 0 ? query.armor_color_slot(3, 2) : 0.0",
+        "a": "query.armor_material_slot(3) == 0 && (query.armor_color_slot(3, 0) != 1.0 || query.armor_color_slot(3, 1) != 1.0 || query.armor_color_slot(3, 2) != 1.0) ? 1.0 : 0.0"
+      },
+      "ignore_lighting": true
+    },
+    "controller.render.ksd_hud_offhand_frame": {
+      "geometry": "Geometry.ksd_hud_frame",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Texture.ksd_offhand_frame"],
+      "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "ignore_lighting": true
+    },
+    "controller.render.ksd_hud_offhand_item": {
+      "geometry": "query.get_equipped_item_name(1) == 'shield' ? Geometry.ksd_hud_item_shield : Geometry.ksd_hud_item",
+      "materials": [{ "*": "Material.default" }],
+      "textures": [
+        "query.get_equipped_item_name(1) == 'arrow' ? Texture.ksd_arrow : (query.get_equipped_item_name(1) == 'firework_rocket' ? Texture.ksd_firework : (query.get_equipped_item_name(1) == 'shield' ? Texture.ksd_shield : (query.get_equipped_item_name(1) == 'totem' || query.get_equipped_item_name(1) == 'totem_of_undying' ? Texture.ksd_totem : (query.get_equipped_item_name(1) == 'nautilus_shell' ? Texture.ksd_nautilus : (query.get_equipped_item_name(1) == 'map' ? Texture.ksd_map : Texture.ksd_generic_item)))))"
+      ],
+      "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "ignore_lighting": true
+    },
+    "controller.render.ksd_hud_bars": {
+      "geometry": "Geometry.ksd_hud_bars",
+      "materials": [{ "*": "Material.health_bar" }],
+      "textures": ["Texture.ksd_bars"],
+      "is_hurt_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "on_fire_color": { "r": "0", "g": "0", "b": "0", "a": "0" },
+      "ignore_lighting": true
+    }
+  }
+}
