@@ -1,0 +1,45 @@
+{
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "armor_hud_renderer@hud.armor_hud_renderer": {}
+        }
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "offhand_renderer@hud.offhand_renderer": {}
+        }
+      }
+    ]
+  },
+  "armor_hud_renderer": {
+    "renderer": "live_player_renderer",
+    "size": [ 17.5, 17.5 ],
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "layer": 2,
+    "type": "custom",
+    "offset": [ 6, 500 ]
+  },
+  "offhand_renderer": { 
+    "renderer": "live_player_renderer",
+    "size": [ 20, 20 ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "layer": 2,
+    "type": "custom",
+    "offset": "$offset",
+    "$offset|default": [ -109, 1000 ],
+    "variables": [
+      {
+        "requires": "($is_ios)",
+        "$offset": [ -109, 1002 ]
+      }
+    ]
+  }
+}
