@@ -254,39 +254,35 @@ body {
   padding: 18px;
 }
 
-/* hero */
+/* motd */
 
-.hero {
+.motd-card { margin-bottom: 16px; }
+.motd-card .card-title { margin-bottom: 10px; }
+
+.motd-screen {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 54px;
+  padding: 14px 16px;
+  background: #0f1e2e;
+  border: 1px solid #1d3a52;
+  border-radius: var(--radius-sm);
+  color: #e8f1f8;
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: break-word;
 }
 
-.hero-status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 27px;
-  font-weight: 800;
-  color: var(--ink);
+.motd-screen.empty { color: #7f9db3; font-size: 13.5px; }
+
+.motd-line { min-height: 1.2em; }
+
+.motd-code {
+  padding: 0 4px;
+  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.25);
 }
-
-.hero-status .dot.big { width: 14px; height: 14px; background: var(--off); }
-.hero.online .hero-status .dot.big { background: var(--ok); animation: pulse 1.8s ease-out infinite; color: var(--ok); }
-
-.hero-sub { margin-top: 6px; color: var(--muted); font-size: 14px; }
-
-.hero-meta {
-  text-align: right;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.9;
-}
-
-.hero-meta b { color: var(--sky-deep); }
 
 /* stat cards */
 
@@ -313,8 +309,6 @@ body {
 .stat-unit { font-size: 15px; font-weight: 600; color: var(--muted); margin-left: 4px; }
 .stat-foot { margin-top: 8px; font-size: 12px; color: var(--muted); }
 
-.motd .card-title { margin-bottom: 8px; }
-
 .card-title {
   font-size: 12px;
   font-weight: 700;
@@ -322,8 +316,6 @@ body {
   text-transform: uppercase;
   color: var(--muted);
 }
-
-#motdVal { font-size: 15px; color: var(--ink); }
 
 /* chart */
 
@@ -441,14 +433,11 @@ code {
   .sidebar.open { transform: translateX(0); box-shadow: 0 8px 24px -12px rgba(8, 47, 73, 0.25); }
 
   .content { margin-left: 0; padding: calc(var(--topbar-h) + 20px) 16px 32px; }
-
-  .hero-meta { text-align: left; }
 }
 
 @media (max-width: 560px) {
   .grid.four { grid-template-columns: 1fr; }
   .brand-text small { display: none; }
-  .hero-status { font-size: 23px; }
   .topbar { padding: 0 12px; gap: 8px; }
 }
 

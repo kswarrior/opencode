@@ -7,7 +7,6 @@ const MAX_CHART_SAMPLES = 1440;
 
 let latest = null;
 let samples = [];
-let countdownTimer = null;
 
 /* ---------- sidebar / hamburger (3-line menu for phones) ---------- */
 
@@ -89,11 +88,129 @@ const REASONS = {
   persisted: 'Showing last known state after a restart.'
 };
 
+const MC_COLORS = {
+  '0': '#000000', '1': '#0000aa', '2': '#00aa00', '3': '#00aaaa',
+  '4': '#aa0000', '5': '#aa00aa', '6': '#ffaa00', '7': '#aaaaaa',
+  '8': '#555555', '9': '#5555ff', a: '#55ff55', b: '#55ffff',
+  c: '#ff5555', d: '#ff55ff', e: '#ffff55', f: '#ffffff', g: '#ddd605'
+};
+
+function buildMotdFragment(raw) {
+  const frag = document.createDocumentFragment();
+  const state = { color: null, bold: false, italic: false, underline: false, strike: false, code: false };
+  let line = document.createElement('div');
+  line.className = 'motd-line';
+  let buf = '';
+
+  const flush = () => {
+    if (!buf) return;
+    const span = document.createElement('span');
+    span.textContent = buf;
+    if (state.color) span.style.color = state.color;
+    if (state.bold) span.style.fontWeight = '700';
+    if (state.italic) span.style.fontStyle = 'italic';
+    const deco = [];
+    if (state.underline) deco.push('underline');
+    if (state.strike) deco.push('line-through');
+    if (deco.length) span.style.textDecoration = deco.join(' ');
+    if (state.code) span.className = 'motd-code';
+    line.appendChild(span);
+    buf = '';
+  };
+
+  const reset = () => {
+    state.color = null;
+    state.bold = false;
+    state.italic = false;
+    state.underline = false;
+    state.strike = false;
+  };
+
+  const text = String(raw || '');
+  for (let i = 0; i < text.length; i += 1) {
+    const ch = text[i];
+
+    if (ch === '\n') {
+      flush();
+      frag.appendChild(line);
+      line = document.createElement('div');
+      line.className = 'motd-line';
+      continue;
+    }
+
+    if (ch === '§' && i + 1 < text.length) {
+      const code = text[++i].toLowerCase();
+      if (MC_COLORS[code]) {
+        flush();
+        reset();
+        state.color = MC_COLORS[code];
+      } else if (code === 'l') {
+        flush();
+        state.bold = true;
+      } else if (code === 'o') {
+        flush();
+        state.italic = true;
+      } else if (code === 'n') {
+        flush();
+        state.underline = true;
+      } else if (code === 'm') {
+        flush();
+        state.strike = true;
+      } else if (code === 'r') {
+        flush();
+        reset();
+      }
+      continue;
+    }
+
+    if (ch === '*' && text[i + 1] === '*') { flush(); state.bold = !state.bold; i += 1; continue; }
+    if (ch === '*') { flush(); state.italic = !state.italic; continue; }
+    if (ch === '_' && text[i + 1] === '_') { flush(); state.underline = !state.underline; i += 1; continue; }
+    if (ch === '~' && text[i + 1] === '~') { flush(); state.strike = !state.strike; i += 1; continue; }
+    if (ch === '`') { flush(); state.code = !state.code; continue; }
+
+    buf += ch;
+  }
+
+  flush();
+  frag.appendChild(line);
+  return frag;
+}
+
+function renderMotd(motd, known, online, reason) {
+  const el = $('motdVal');
+  el.innerHTML = '';
+
+  if (!known) {
+    el.textContent = 'Checking server…';
+    el.classList.add('empty');
+    return;
+  }
+  if (!online) {
+    el.textContent = REASONS[reason] || 'The server is not responding.';
+    el.classList.add('empty');
+    return;
+  }
+  if (!motd) {
+    el.textContent = 'No MOTD provided by the server.';
+    el.classList.add('empty');
+    return;
+  }
+
+  el.classList.remove('empty');
+  el.appendChild(buildMotdFragment(motd));
+}
+
+function footerText(data) {
+  const { server, status, config } = data;
+  return `Monitoring ${server.address} (${server.edition}) · updated ${fmtAgo(status.lastCheckedAt)} · checks every ${Math.round(config.checkIntervalMs / 1000)}s`;
+}
+
 /* ---------- render ---------- */
 
 function renderStatus(data) {
   latest = data;
-  const { server, status, stats, config } = data;
+  const { server, status, stats } = data;
 
   const known = status.checked;
   const online = known && status.online;
@@ -103,21 +220,7 @@ function renderStatus(data) {
   pill.classList.add(!known ? 'unknown' : online ? 'online' : 'offline');
   $('topPillText').textContent = !known ? 'checking…' : online ? 'Online' : 'Offline';
 
-  const hero = $('heroCard');
-  hero.classList.toggle('online', online);
-  $('heroStatus').textContent = !known ? 'Checking…' : online ? 'Server Online' : 'Server Offline';
-  $('heroSub').textContent = !known
-    ? 'Waiting for the first result…'
-    : online
-      ? [status.motd, status.version ? `v${status.version}` : null, `${status.players}/${status.maxPlayers} players`]
-          .filter(Boolean)
-          .join(' · ')
-      : REASONS[status.reason] || 'The server is not responding.';
-
-  $('lastChecked').textContent = fmtAgo(status.lastCheckedAt);
-  $('nextCheckIn').textContent = config.nextCheckAt
-    ? Math.max(0, Math.round((config.nextCheckAt - Date.now()) / 1000)) + 's'
-    : '—';
+  renderMotd(status.motd, known, online, status.reason);
 
   $('playersOnline').textContent = online ? status.players : '—';
   $('playersMax').textContent = online ? `/ ${status.maxPlayers}` : '';
@@ -139,8 +242,6 @@ function renderStatus(data) {
       ? `${stats.onlineChecks}/${stats.checks} checks · ${stats.uptimePercent24h}% last 24h`
       : `${stats.onlineChecks}/${stats.checks} checks`;
 
-  $('motdVal').textContent = online && status.motd ? status.motd : '—';
-
   $('mChecks').textContent = stats.checks;
   $('mOnline').textContent = stats.onlineChecks;
   $('mPeak').textContent = stats.peakPlayers;
@@ -159,9 +260,7 @@ function renderStatus(data) {
   $('sideAddress').textContent = server.host;
   $('copyBtn').dataset.copy = server.address;
 
-  $('footStatus').textContent = `Monitoring ${server.address} (${server.edition}) · updated ${fmtAgo(
-    status.lastCheckedAt
-  )} · checks every ${Math.round(config.checkIntervalMs / 1000)}s`;
+  $('footStatus').textContent = footerText(data);
 
   document.title = `${known ? (online ? 'Online' : 'Offline') : 'Checking'} · Mayanshanboss Monitor`;
 
@@ -351,13 +450,9 @@ $('copyBtn').addEventListener('click', async (e) => {
   }, 1200);
 });
 
-countdownTimer = setInterval(() => {
+setInterval(() => {
   if (!latest) return;
-  $('lastChecked').textContent = fmtAgo(latest.status.lastCheckedAt);
-  if (latest.config.nextCheckAt) {
-    $('nextCheckIn').textContent =
-      Math.max(0, Math.round((latest.config.nextCheckAt - Date.now()) / 1000)) + 's';
-  }
+  $('footStatus').textContent = footerText(latest);
 }, 1000);
 
 loadAll();
