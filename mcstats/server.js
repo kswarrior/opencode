@@ -255,13 +255,17 @@ function playersPayload() {
 
   list.sort((a, b) => Number(b.onlineNow) - Number(a.onlineNow) || b.lastSeen - a.lastSeen);
 
+  const namedOnline = list.filter((p) => p.onlineNow).length;
+  const hiddenOnline = current.online ? Math.max(0, (current.players || 0) - namedOnline) : 0;
+
   return {
     updatedAt: current.lastCheckedAt,
     dayKey: today,
     dayElapsedMs,
     tracking: { namesAvailable, watchIntervalMs: CHECK_INTERVAL_MS },
-    onlineNow: list.filter((p) => p.onlineNow).length,
-    totalSeen: list.length,
+    onlineNow: current.online ? Math.max(current.players || 0, namedOnline) : namedOnline,
+    hiddenOnline,
+    totalSeen: Object.keys(players).length,
     todayJoins,
     todayLeaves,
     players: list
