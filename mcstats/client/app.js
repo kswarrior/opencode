@@ -216,7 +216,7 @@ function renderStatus(data) {
     pill.classList.remove('online', 'offline', 'unknown');
     pill.classList.add(!known ? 'unknown' : online ? 'online' : 'offline');
   }
-  set('topPillText', !known ? 'checking…' : online ? 'Online' : 'Offline');
+  set('topPillText', !known ? 'checking…' : online ? `${status.players}/${status.maxPlayers}` : 'Offline');
 
   renderMotd(status.motd, known, online);
 
