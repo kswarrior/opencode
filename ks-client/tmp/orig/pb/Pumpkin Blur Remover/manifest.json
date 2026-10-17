@@ -1,0 +1,22 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "§oRemoves the annoying blur effect when wearing a pumpkin.",
+    "name": "§lPumpkin Blur Remover",
+    "uuid": "7c1b4406-e534-40f4-9377-89fe887281fb",
+    "version": [1, 0, 1],
+    "min_engine_version": [1, 16, 0]
+  },
+  "modules": [
+    {
+      "description": "No more annoying pumpkin blur.",
+      "type": "resources",
+      "uuid": "0727ea37-b30a-441e-8a6c-009eb3a091db",
+      "version": [1, 0, 1]
+    }
+  ],
+  "metadata": {
+    "authors": ["valiant034"],
+    "url": "https://www.curseforge.com/members/valiant034"
+  }
+}
