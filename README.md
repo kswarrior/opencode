@@ -56,10 +56,10 @@ Verified:
 │   ├── src/main.c        # port 8081, HTMX login demo
 │   ├── Makefile
 │   └── Dockerfile
-└── account/
-    ├── src/main.c        # port 8082, HTMX profile demo
-    ├── Makefile
-    └── Dockerfile
+├── account/
+│   ├── src/main.c        # port 8082, HTMX profile demo
+│   ├── Makefile
+│   └── Dockerfile
 └── mcstats/              # Bedrock server stats web app (Render: `mcstats`)
     ├── server.js         # Express API + static frontend, RakNet UDP ping
     ├── lib/bedrock.js    # Bedrock unconnected ping (+ HTTP fallback)
