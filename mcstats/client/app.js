@@ -7,7 +7,7 @@ const set = (id, value) => {
   if (el) el.textContent = value;
 };
 
-const REFRESH_MS = 15000;
+const REFRESH_MS = 1000;
 const MAX_CHART_SAMPLES = 1440;
 
 const PAGE = document.body.dataset.page || 'dashboard';
@@ -21,6 +21,8 @@ const PAGE_TITLES = {
 
 let latest = null;
 let samples = [];
+let inFlight = false;
+let lastHistoryStamp = null;
 
 /* ---------- sidebar / hamburger (3-line menu for phones) ---------- */
 
@@ -419,16 +421,21 @@ async function loadStatus() {
 
 async function loadHistory() {
   if (!canvas) return;
+  const stamp = latest && latest.stats ? latest.stats.lastSampleAt : null;
+  if (stamp && stamp === lastHistoryStamp) return;
   const res = await fetch(`/api/history?limit=${MAX_CHART_SAMPLES}`, { cache: 'no-store' });
   if (!res.ok) throw new Error(`history ${res.status}`);
   const data = await res.json();
   samples = data.samples || [];
+  lastHistoryStamp = stamp;
   const skel = $('chartSkeleton');
   if (skel) skel.hidden = true;
   drawChart();
 }
 
 async function loadAll(manual = false) {
+  if (inFlight && !manual) return;
+  inFlight = true;
   const btn = $('refreshBtn');
   if (manual && btn) {
     btn.disabled = true;
@@ -442,6 +449,7 @@ async function loadAll(manual = false) {
     if (skel) skel.hidden = true;
     drawChart();
   } finally {
+    inFlight = false;
     if (manual && btn) {
       btn.disabled = false;
       btn.textContent = 'Refresh';
