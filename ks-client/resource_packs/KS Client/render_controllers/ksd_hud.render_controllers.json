@@ -2,6 +2,7 @@
   "format_version": "1.8.0",
   "render_controllers": {
     "controller.render.ksd_hud_helmet": {
+      "uv_anim": { "offset": [0.0, 0.0], "scale": [1.0, 1.0] },
       "arrays": {
         "textures": {
           "Array.ksd_helmets": [
@@ -30,6 +31,7 @@
       "ignore_lighting": true
     },
     "controller.render.ksd_hud_chestplate": {
+      "uv_anim": { "offset": [0.0, 0.0], "scale": [1.0, 1.0] },
       "arrays": {
         "textures": {
           "Array.ksd_chestplates": [
@@ -58,6 +60,7 @@
       "ignore_lighting": true
     },
     "controller.render.ksd_hud_leggings": {
+      "uv_anim": { "offset": [0.0, 0.0], "scale": [1.0, 1.0] },
       "arrays": {
         "textures": {
           "Array.ksd_leggings": [
@@ -86,6 +89,7 @@
       "ignore_lighting": true
     },
     "controller.render.ksd_hud_boots": {
+      "uv_anim": { "offset": [0.0, 0.0], "scale": [1.0, 1.0] },
       "arrays": {
         "textures": {
           "Array.ksd_boots": [
@@ -114,6 +118,7 @@
       "ignore_lighting": true
     },
     "controller.render.ksd_hud_offhand_frame": {
+      "uv_anim": { "offset": [0.0, 0.0], "scale": [1.0, 1.0] },
       "geometry": "Geometry.ksd_hud_frame",
       "materials": [{ "*": "Material.default" }],
       "textures": ["Texture.ksd_offhand_frame"],
@@ -122,6 +127,7 @@
       "ignore_lighting": true
     },
     "controller.render.ksd_hud_offhand_item": {
+      "uv_anim": { "offset": [0.0, 0.0], "scale": [1.0, 1.0] },
       "geometry": "query.get_equipped_item_name(1) == 'shield' ? Geometry.ksd_hud_item_shield : Geometry.ksd_hud_item",
       "materials": [{ "*": "Material.default" }],
       "textures": [
@@ -132,6 +138,7 @@
       "ignore_lighting": true
     },
     "controller.render.ksd_hud_bars": {
+      "uv_anim": { "offset": [0.0, 0.0], "scale": [1.0, 1.0] },
       "geometry": "Geometry.ksd_hud_bars",
       "materials": [{ "*": "Material.health_bar" }],
       "textures": ["Texture.ksd_bars"],
