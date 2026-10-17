@@ -13,10 +13,10 @@
     "entityTypeResourceCount": 82,
     "behaviorPackAnimationCount": 0,
     "behaviorPackAnimationControllerCount": 0,
-    "overallSize": 4339658,
+    "overallSize": 4340479,
     "fileCounts": 1774,
     "folderCounts": 43,
-    "contentSize": 4339658,
+    "contentSize": 4340479,
     "contentFileCounts": 1774,
     "contentFolderCounts": 43,
     "fileCount": 1774,
@@ -212,17 +212,17 @@
       },
       "renderController.size": {
         "instanceCount": 2,
-        "total": 8701,
-        "max": 5214,
+        "total": 9044,
+        "max": 5557,
         "min": 3487,
-        "average": 4351
+        "average": 4522
       },
       "renderController.lines": {
         "instanceCount": 2,
-        "total": 291,
+        "total": 298,
         "max": 159,
-        "min": 132,
-        "average": 146
+        "min": 139,
+        "average": 149
       },
       "nineSliceScalingConfig.size": {
         "instanceCount": 3,
@@ -359,17 +359,17 @@
       },
       "textureList.size": {
         "instanceCount": 2,
-        "total": 112574,
-        "max": 56287,
-        "min": 56287,
-        "average": 56287
+        "total": 113052,
+        "max": 56526,
+        "min": 56526,
+        "average": 56526
       },
       "textureList.lines": {
         "instanceCount": 2,
-        "total": 3246,
-        "max": 1623,
-        "min": 1623,
-        "average": 1623
+        "total": 3258,
+        "max": 1629,
+        "min": 1629,
+        "average": 1629
       },
       "animationCount.resource": {
         "count": 4
@@ -923,19 +923,19 @@
         "average": 65536
       }
     },
-    "errorCount": 6,
+    "errorCount": 0,
     "internalProcessingErrorCount": 0,
-    "warningCount": 78,
+    "warningCount": 71,
     "testSuccessCount": 41,
-    "testFailCount": 1,
-    "testNotApplicableCount": 12,
-    "errorSummary": "ERROR: [TEXTURELIST101] (/textures/entity/ksd_hud/bars.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/entity/ksd_hud/bars\nERROR: [TEXTURELIST101] (/textures/entity/ksd_hud/generic_item.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/entity/ksd_hud/generic_item\nERROR: [TEXTURELIST101] (/textures/entity/ksd_hud/leather_boots.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/entity/ksd_hud/leather_boots\nERROR: [TEXTURELIST101] (/textures/entity/ksd_hud/leather_chestplate.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/entity/ksd_hud/leather_chestplate\nERROR: [TEXTURELIST101] (/textures/entity/ksd_hud/leather_helmet.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/entity/ksd_hud/leather_helmet\nERROR: [TEXTURELIST101] (/textures/entity/ksd_hud/leather_leggings.png) Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture: textures/entity/ksd_hud/leather_leggings",
+    "testFailCount": 0,
+    "testNotApplicableCount": 13,
+    "errorSummary": "",
     "internalProcessingErrorSummary": "",
     "warningSummary": "WARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:bamboo_jungle is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:bamboo_jungle_hills is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:basalt_deltas is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:beach is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:birch_forest is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:birch_forest_hills is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cherry_grove is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_beach is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_ocean is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_taiga is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_taiga_hills is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:cold_taiga_mutated is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:crimson_forest is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:deep_cold_ocean is not defined in the schema and the schema does not allow additional properties\nWARNING: [COMJSON125] (/biomes_client.json) JSON structure error: (biomes) The property minecraft:deep_frozen_ocean is not defined in the schema and the schema does not allow additional properties",
-    "testFailSummary": "TESTFAIL: [TEXTURELIST000] Found 6 errors in Texture List Validation check",
-    "infoGenerationTime": 1863,
-    "endToEndGenerationTime": 2384,
-    "reds": 384115,
+    "testFailSummary": "",
+    "infoGenerationTime": 3535,
+    "endToEndGenerationTime": 4578,
+    "reds": 384287,
     "summary": {
       "BASEGAMEVER": {
         "2": {
@@ -991,10 +991,6 @@
         "125": {
           "defaultMessage": "JSON structure error",
           "warnings": 70
-        },
-        "134": {
-          "defaultMessage": "JSON structure error",
-          "warnings": 7
         },
         "1128": {
           "defaultMessage": "Animation is not at a current format version (is at 1.10.0)"
@@ -1587,13 +1583,8 @@
         }
       },
       "TEXTURELIST": {
-        "0": {
-          "defaultMessage": "Found 6 errors in Texture List Validation check",
-          "testCompleteFails": 1
-        },
-        "101": {
-          "defaultMessage": "Texture image is not referenced in texture_list.json; all non-Vibrant Visuals pack textures must be listed. Texture",
-          "errors": 6
+        "2": {
+          "defaultMessage": "No applicable items found for test Texture List Validation (TEXTURELIST)"
         }
       },
       "TEXTUREREF": {
@@ -2221,55 +2212,6 @@
       "gIx": 125,
       "p": "/biomes_client.json",
       "d": "(biomes) The property minecraft:warped_forest is not defined in the schema and the schema does not allow additional properties"
-    },
-    {
-      "iTp": 4,
-      "gId": "COMJSON",
-      "gIx": 134,
-      "p": "/render_controllers/ksd_hud.render_controllers.json",
-      "d": "(render_controllers.controller.render.ksd_hud_bars.uv_anim) is missing and it is required"
-    },
-    {
-      "iTp": 4,
-      "gId": "COMJSON",
-      "gIx": 134,
-      "p": "/render_controllers/ksd_hud.render_controllers.json",
-      "d": "(render_controllers.controller.render.ksd_hud_boots.uv_anim) is missing and it is required"
-    },
-    {
-      "iTp": 4,
-      "gId": "COMJSON",
-      "gIx": 134,
-      "p": "/render_controllers/ksd_hud.render_controllers.json",
-      "d": "(render_controllers.controller.render.ksd_hud_chestplate.uv_anim) is missing and it is required"
-    },
-    {
-      "iTp": 4,
-      "gId": "COMJSON",
-      "gIx": 134,
-      "p": "/render_controllers/ksd_hud.render_controllers.json",
-      "d": "(render_controllers.controller.render.ksd_hud_helmet.uv_anim) is missing and it is required"
-    },
-    {
-      "iTp": 4,
-      "gId": "COMJSON",
-      "gIx": 134,
-      "p": "/render_controllers/ksd_hud.render_controllers.json",
-      "d": "(render_controllers.controller.render.ksd_hud_leggings.uv_anim) is missing and it is required"
-    },
-    {
-      "iTp": 4,
-      "gId": "COMJSON",
-      "gIx": 134,
-      "p": "/render_controllers/ksd_hud.render_controllers.json",
-      "d": "(render_controllers.controller.render.ksd_hud_offhand_frame.uv_anim) is missing and it is required"
-    },
-    {
-      "iTp": 4,
-      "gId": "COMJSON",
-      "gIx": 134,
-      "p": "/render_controllers/ksd_hud.render_controllers.json",
-      "d": "(render_controllers.controller.render.ksd_hud_offhand_item.uv_anim) is missing and it is required"
     },
     {
       "iTp": 2,
@@ -4213,17 +4155,17 @@
       "fs": {
         "size": {
           "instanceCount": 2,
-          "total": 8701,
-          "max": 5214,
+          "total": 9044,
+          "max": 5557,
           "min": 3487,
-          "average": 4351
+          "average": 4522
         },
         "lines": {
           "instanceCount": 2,
-          "total": 291,
+          "total": 298,
           "max": 159,
-          "min": 132,
-          "average": 146
+          "min": 139,
+          "average": 149
         }
       }
     },
@@ -4444,17 +4386,17 @@
       "fs": {
         "size": {
           "instanceCount": 2,
-          "total": 112574,
-          "max": 56287,
-          "min": 56287,
-          "average": 56287
+          "total": 113052,
+          "max": 56526,
+          "min": 56526,
+          "average": 56526
         },
         "lines": {
           "instanceCount": 2,
-          "total": 3246,
-          "max": 1623,
-          "min": 1623,
-          "average": 1623
+          "total": 3258,
+          "max": 1629,
+          "min": 1629,
+          "average": 1629
         }
       }
     },
@@ -4576,7 +4518,7 @@
       "iTp": 7,
       "gId": "PACKSIZE",
       "gIx": 101,
-      "d": 4339658
+      "d": 4340479
     },
     {
       "iTp": 7,
@@ -4594,7 +4536,7 @@
       "iTp": 7,
       "gId": "PACKSIZE",
       "gIx": 104,
-      "d": 4339658
+      "d": 4340479
     },
     {
       "iTp": 7,
@@ -5306,51 +5248,9 @@
       }
     },
     {
-      "iTp": 0,
+      "iTp": 8,
       "gId": "TEXTURELIST",
-      "gIx": 0
-    },
-    {
-      "iTp": 3,
-      "gId": "TEXTURELIST",
-      "gIx": 101,
-      "p": "/textures/entity/ksd_hud/bars.png",
-      "d": "textures/entity/ksd_hud/bars"
-    },
-    {
-      "iTp": 3,
-      "gId": "TEXTURELIST",
-      "gIx": 101,
-      "p": "/textures/entity/ksd_hud/generic_item.png",
-      "d": "textures/entity/ksd_hud/generic_item"
-    },
-    {
-      "iTp": 3,
-      "gId": "TEXTURELIST",
-      "gIx": 101,
-      "p": "/textures/entity/ksd_hud/leather_boots.png",
-      "d": "textures/entity/ksd_hud/leather_boots"
-    },
-    {
-      "iTp": 3,
-      "gId": "TEXTURELIST",
-      "gIx": 101,
-      "p": "/textures/entity/ksd_hud/leather_chestplate.png",
-      "d": "textures/entity/ksd_hud/leather_chestplate"
-    },
-    {
-      "iTp": 3,
-      "gId": "TEXTURELIST",
-      "gIx": 101,
-      "p": "/textures/entity/ksd_hud/leather_helmet.png",
-      "d": "textures/entity/ksd_hud/leather_helmet"
-    },
-    {
-      "iTp": 3,
-      "gId": "TEXTURELIST",
-      "gIx": 101,
-      "p": "/textures/entity/ksd_hud/leather_leggings.png",
-      "d": "textures/entity/ksd_hud/leather_leggings"
+      "gIx": 2
     },
     {
       "iTp": 1,
