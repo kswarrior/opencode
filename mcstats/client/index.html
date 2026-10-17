@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <title>Mayanshanboss Monitor — Bedrock Server Stats</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230ea5e9'/%3E%3Ctext x='32' y='43' font-size='26' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'%3EMC%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+    <span></span><span></span><span></span>
+  </button>
+
+  <a class="brand" href="#dashboard">
+    <span class="brand-badge">MC</span>
+    <span class="brand-text">Mayanshanboss<small>Bedrock server monitor</small></span>
+  </a>
+
+  <div class="topbar-right">
+    <span class="pill" id="topPill"><i class="dot"></i><span id="topPillText">checking…</span></span>
+    <button class="btn" id="refreshBtn" type="button">Refresh</button>
+  </div>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <div>
+    <div class="sidebar-title">Menu</div>
+    <nav>
+      <a class="nav-link active" href="#dashboard">Dashboard</a>
+      <a class="nav-link" href="#statistics">Statistics</a>
+      <a class="nav-link" href="#server">Server Info</a>
+      <a class="nav-link" href="#about">About</a>
+    </nav>
+  </div>
+  <div class="sidebar-foot">
+    <div class="addr" id="sideAddress">Mayanshanboss.aternos.me</div>
+    <div class="sub">Port 63046 · Bedrock</div>
+  </div>
+</aside>
+<div class="overlay" id="overlay"></div>
+
+<main class="content">
+
+  <section class="section" id="dashboard">
+    <div class="hero card" id="heroCard">
+      <div>
+        <div class="hero-status"><i class="dot big" id="heroDot"></i><span id="heroStatus">Checking…</span></div>
+        <div class="hero-sub" id="heroSub">Waiting for the first result…</div>
+      </div>
+      <div class="hero-meta">
+        <div>Last checked <b id="lastChecked">—</b></div>
+        <div>Next check in <b id="nextCheckIn">—</b></div>
+      </div>
+    </div>
+
+    <div class="grid four">
+      <div class="card stat">
+        <div class="stat-label">Players</div>
+        <div class="stat-value"><span id="playersOnline">—</span><span class="stat-unit" id="playersMax"></span></div>
+        <div class="stat-foot" id="playersFoot">—</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-label">Version</div>
+        <div class="stat-value" id="versionVal">—</div>
+        <div class="stat-foot" id="versionFoot">—</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-label">Latency</div>
+        <div class="stat-value" id="latencyVal">—</div>
+        <div class="stat-foot" id="latencyFoot">—</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-label">Uptime</div>
+        <div class="stat-value" id="uptimeVal">—</div>
+        <div class="stat-foot" id="uptimeFoot">—</div>
+      </div>
+    </div>
+
+    <div class="card motd">
+      <div class="card-title">Message of the Day</div>
+      <div id="motdVal">—</div>
+    </div>
+  </section>
+
+  <section class="section" id="statistics">
+    <div class="section-head">
+      <h2>Statistics</h2>
+      <div class="muted" id="chartRange">—</div>
+    </div>
+
+    <div class="card chart-card">
+      <canvas id="historyChart" height="220"></canvas>
+      <div class="chart-tip" id="chartTip" hidden></div>
+      <div class="chart-legend">
+        <span><i class="sw online"></i> Online (players)</span>
+        <span><i class="sw off"></i> Offline / no response</span>
+      </div>
+    </div>
+
+    <div class="grid four">
+      <div class="card mini"><span>Checks</span><b id="mChecks">—</b></div>
+      <div class="card mini"><span>Online checks</span><b id="mOnline">—</b></div>
+      <div class="card mini"><span>Peak players</span><b id="mPeak">—</b></div>
+      <div class="card mini"><span>Avg latency</span><b id="mAvgLatency">—</b></div>
+    </div>
+  </section>
+
+  <section class="section" id="server">
+    <div class="section-head"><h2>Server Info</h2></div>
+
+    <div class="card info-list">
+      <div class="row"><span>Address</span><b id="infoAddress">—</b><button class="copy" id="copyBtn" type="button">Copy</button></div>
+      <div class="row"><span>Port</span><b id="infoPort">—</b></div>
+      <div class="row"><span>Edition</span><b id="infoEdition">Bedrock (MCPE)</b></div>
+      <div class="row"><span>Software</span><b id="infoSoftware">—</b></div>
+      <div class="row"><span>Status</span><b id="infoStatus">—</b></div>
+    </div>
+
+    <div class="card help">
+      <div class="card-title">How to join</div>
+      <ol>
+        <li>Open Minecraft Bedrock Edition (Windows, Android, iOS, Xbox, PlayStation).</li>
+        <li>Go to <b>Play</b> → <b>Servers</b> → <b>Add Server</b>.</li>
+        <li>Server address <code>Mayanshanboss.aternos.me</code>, port <code>63046</code>.</li>
+        <li>Start the server from the Aternos panel, then join.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-head"><h2>About</h2></div>
+    <div class="card about">
+      <p>
+        This is a lightweight stats monitor for the <b>Mayanshanboss</b> Bedrock server
+        (<code>Mayanshanboss.aternos.me:63046</code>). The backend pings the server over the
+        RakNet UDP protocol every minute, keeps a rolling 24-hour history and serves the stats you
+        see here. It is hosted on Render.com.
+      </p>
+      <p class="muted">
+        Aternos servers sleep when nobody is online, so “offline” usually just means the server is
+        not started. History resets when the service redeploys.
+      </p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span id="footStatus">—</span>
+  </footer>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
