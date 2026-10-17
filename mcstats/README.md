@@ -40,6 +40,7 @@ It hits `GET /health` only and logs nothing on success, so the frontend is unaff
 ```bash
 cd mcstats
 npm install
+cp .env.example .env   # optional — already committed; loaded automatically via dotenv
 npm start           # http://localhost:10000
 curl http://localhost:10000/api/status
 ```

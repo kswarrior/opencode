@@ -23,6 +23,7 @@ let latest = null;
 let samples = [];
 let inFlight = false;
 let lastHistoryStamp = null;
+let connectionLost = false;
 
 /* ---------- sidebar / hamburger (3-line menu for phones) ---------- */
 
@@ -370,8 +371,10 @@ function drawChart() {
   });
 
   ctx.fillStyle = '#94a3b8';
-  ctx.textAlign = 'left';
-  ctx.fillText(fmtTime(samples[0].t), padL, h - 6);
+  if (samples.length > 1) {
+    ctx.textAlign = 'left';
+    ctx.fillText(fmtTime(samples[0].t), padL, h - 6);
+  }
   if (samples.length > 2) {
     const mid = samples[Math.floor(samples.length / 2)];
     ctx.textAlign = 'center';
@@ -413,8 +416,10 @@ if (canvas) {
 
 /* ---------- data loading ---------- */
 
+const fetchSignal = (ms) => (typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(ms) : undefined);
+
 async function loadStatus() {
-  const res = await fetch('/api/status', { cache: 'no-store' });
+  const res = await fetch('/api/status', { cache: 'no-store', signal: fetchSignal(10000) });
   if (!res.ok) throw new Error(`status ${res.status}`);
   renderStatus(await res.json());
 }
@@ -423,7 +428,7 @@ async function loadHistory() {
   if (!canvas) return;
   const stamp = latest && latest.stats ? latest.stats.lastSampleAt : null;
   if (stamp && stamp === lastHistoryStamp) return;
-  const res = await fetch(`/api/history?limit=${MAX_CHART_SAMPLES}`, { cache: 'no-store' });
+  const res = await fetch(`/api/history?limit=${MAX_CHART_SAMPLES}`, { cache: 'no-store', signal: fetchSignal(10000) });
   if (!res.ok) throw new Error(`history ${res.status}`);
   const data = await res.json();
   samples = data.samples || [];
@@ -443,7 +448,9 @@ async function loadAll(manual = false) {
   }
   try {
     await Promise.all([loadStatus(), loadHistory()]);
+    connectionLost = false;
   } catch {
+    connectionLost = true;
     set('footStatus', 'Connection lost — retrying automatically…');
     const skel = $('chartSkeleton');
     if (skel) skel.hidden = true;
@@ -479,7 +486,7 @@ if (copyBtn) {
 }
 
 setInterval(() => {
-  if (!latest) return;
+  if (!latest || connectionLost) return;
   set('footStatus', footerText(latest));
 }, 1000);
 
