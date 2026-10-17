@@ -11,6 +11,6 @@
   </div>
   <div class="sidebar-foot">
     <div class="addr" id="sideAddress"><%= cfg.host %></div>
-    <div class="sub">Port <%= cfg.port %> · Bedrock</div>
+    <div class="sub" id="sideSub">Port <%= cfg.port %> · Bedrock<%= cfg.ip ? ` · ${cfg.ip}` : '' %></div>
   </div>
 </aside>

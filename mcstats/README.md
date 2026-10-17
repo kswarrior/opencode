@@ -12,7 +12,7 @@ Hosted on Render.com as the `mcstats` service in `render.yaml`.
 - `GET /` — Dashboard (MOTD + live players/version/latency/uptime)
 - `GET /players` — who has been seen online: today's time/percentage, join/leave counts, 7-day bars
 - `GET /statistics` — player-count history chart + totals
-- `GET /server-info` — address, port, software, live status, how to join
+- `GET /server-info` — address, resolved numeric IP, port, software, live status, how to join
 - `GET /about` — about the monitor
 - anything else — 404 page
 

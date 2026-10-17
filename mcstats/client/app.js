@@ -253,6 +253,7 @@ function renderStatus(data) {
   set('mAvgLatency', stats.avgLatencyMs != null ? `${stats.avgLatencyMs} ms` : '—');
 
   set('infoAddress', server.address);
+  set('infoIp', server.ip || 'unavailable');
   set('infoPort', server.port);
   set('infoEdition', server.edition);
   set('infoSoftware', online && status.software ? status.software : '—');
@@ -266,6 +267,7 @@ function renderStatus(data) {
   );
 
   set('sideAddress', server.host);
+  set('sideSub', server.ip ? `Port ${server.port} · Bedrock · ${server.ip}` : `Port ${server.port} · Bedrock`);
 
   const copyBtn = $('copyBtn');
   if (copyBtn) copyBtn.dataset.copy = server.address;
