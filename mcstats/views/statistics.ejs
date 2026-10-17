@@ -1,0 +1,27 @@
+<%- include('partials/head', { page: page, title: title, cfg: cfg }) %>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Statistics</h2>
+      <div class="muted" id="chartRange">—</div>
+    </div>
+
+    <div class="card chart-card">
+      <canvas id="historyChart" height="220"></canvas>
+      <div class="skeleton chart" id="chartSkeleton"></div>
+      <div class="chart-tip" id="chartTip" hidden></div>
+      <div class="chart-legend">
+        <span><i class="sw online"></i> Online (players)</span>
+        <span><i class="sw off"></i> Offline / no response</span>
+      </div>
+    </div>
+
+    <div class="grid four">
+      <div class="card mini"><span>Checks</span><b id="mChecks"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Online checks</span><b id="mOnline"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Peak players</span><b id="mPeak"><span class="skeleton chip"></span></b></div>
+      <div class="card mini"><span>Avg latency</span><b id="mAvgLatency"><span class="skeleton chip"></span></b></div>
+    </div>
+  </section>
+
+<%- include('partials/foot') %>

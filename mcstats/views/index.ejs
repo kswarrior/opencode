@@ -1,0 +1,33 @@
+<%- include('partials/head', { page: page, title: title, cfg: cfg }) %>
+
+  <section class="section">
+    <div class="card motd-card">
+      <div class="card-title">MOTD</div>
+      <div class="motd-screen" id="motdVal"><div class="motd-line"><span class="skeleton line"></span></div><div class="motd-line"><span class="skeleton line short"></span></div></div>
+    </div>
+
+    <div class="grid four">
+      <div class="card stat">
+        <div class="stat-label">Players</div>
+        <div class="stat-value"><span id="playersOnline"><span class="skeleton num"></span></span><span class="stat-unit" id="playersMax"></span></div>
+        <div class="stat-foot" id="playersFoot"><span class="skeleton chip"></span></div>
+      </div>
+      <div class="card stat">
+        <div class="stat-label">Version</div>
+        <div class="stat-value" id="versionVal"><span class="skeleton num"></span></div>
+        <div class="stat-foot" id="versionFoot"><span class="skeleton chip"></span></div>
+      </div>
+      <div class="card stat">
+        <div class="stat-label">Latency</div>
+        <div class="stat-value" id="latencyVal"><span class="skeleton num"></span></div>
+        <div class="stat-foot" id="latencyFoot"><span class="skeleton chip"></span></div>
+      </div>
+      <div class="card stat">
+        <div class="stat-label">Uptime</div>
+        <div class="stat-value" id="uptimeVal"><span class="skeleton num"></span></div>
+        <div class="stat-foot" id="uptimeFoot"><span class="skeleton chip"></span></div>
+      </div>
+    </div>
+  </section>
+
+<%- include('partials/foot') %>

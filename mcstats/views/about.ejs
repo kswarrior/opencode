@@ -1,0 +1,19 @@
+<%- include('partials/head', { page: page, title: title, cfg: cfg }) %>
+
+  <section class="section">
+    <div class="section-head"><h2>About</h2></div>
+    <div class="card about">
+      <p>
+        This is a lightweight stats monitor for the <b>Mayanshanboss</b> Bedrock server
+        (<code><%= cfg.address %></code>). The backend pings the server over the
+        RakNet UDP protocol every minute, keeps a rolling 24-hour history and serves the stats you
+        see here. It is hosted on Render.com.
+      </p>
+      <p class="muted">
+        Aternos servers sleep when nobody is online, so “offline” usually just means the server is
+        not started. History resets when the service redeploys.
+      </p>
+    </div>
+  </section>
+
+<%- include('partials/foot') %>
