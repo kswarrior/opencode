@@ -30,7 +30,7 @@ const SELF_PING_MS = intEnv('SELF_PING_MS', 300000, 10000);
 const ADDRESS = `${MC_HOST}:${MC_PORT}`;
 const PUBLIC_CFG = { host: MC_HOST, port: MC_PORT, address: ADDRESS, edition: 'Bedrock (MCPE)' };
 const MAX_SAMPLES = 1440;
-const DATA_DIR = path.join(__dirname, 'data');
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const DATA_FILE = path.join(DATA_DIR, 'history.json');
 
 let history = [];
