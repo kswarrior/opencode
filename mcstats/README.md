@@ -29,10 +29,17 @@ curl http://localhost:10000/api/status
 | ------------------- | ---------------------------- | ------------------------------------------------ |
 | `MC_HOST`           | `Mayanshanboss.aternos.me`   | Bedrock server host                              |
 | `MC_PORT`           | `63046`                      | Bedrock server port                              |
+| `MC_MAX_PLAYERS`    | `20`                         | Max slots shown (Aternos pings wrongly report 0/1; `0` = trust the ping) |
 | `CHECK_INTERVAL_MS` | `60000`                      | Ping interval (min 15000)                        |
 | `PING_TIMEOUT_MS`   | `5000`                       | RakNet UDP timeout                               |
 | `HTTP_FALLBACK`     | `1`                          | Confirm offline via api.mcsrvstat.us when no UDP |
 | `PORT`              | `10000`                      | HTTP port (Render sets this)                     |
+
+## Why `MC_MAX_PLAYERS` exists
+
+Aternos' Bedrock ping answers with `0/1` slots even when the panel is configured for 20 players
+(known Aternos quirk). The dashboard shows the real value from `MC_MAX_PLAYERS`; set it to `0` to
+fall back to whatever the server reports.
 
 ## Deploy on Render
 
