@@ -101,7 +101,7 @@
                 "ksd_netherite_boots": "textures/items/netherite_boots",
                 "ksd_turtle_helmet": "textures/items/turtle_helmet",
                 "ksd_elytra": "textures/items/elytra",
-                "ksd_offhand_frame": "textures/ui/ksb_slot_button",
+                "ksd_offhand_frame": "textures/entity/ksd_hud/offhand_frame",
                 "ksd_generic_item": "textures/entity/ksd_hud/generic_item",
                 "ksd_bars": "textures/entity/ksd_hud/bars",
                 "ksd_shield": "textures/entity/shield",
