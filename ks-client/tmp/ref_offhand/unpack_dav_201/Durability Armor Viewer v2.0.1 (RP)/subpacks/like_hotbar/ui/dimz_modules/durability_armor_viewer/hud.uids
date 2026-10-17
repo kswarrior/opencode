@@ -1,0 +1,404 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{
+  "namespace": "hud_ds-dav",
+
+  "armor_slot_panel": {
+    "type": "panel",
+    "size": [ "100%cm", "100%cm" ],
+    
+    "$is_right_content|default": false,
+    "$is_left_content|default": false,
+    "controls": [
+      {
+        "item_background": {
+          "type": "image",
+          "texture": "$hotbar_texture",
+          "size": [ 20, 22 ],
+          "layer": 1,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "dav_title_data_binding",
+              "source_property_name": "(#option_3 = '_1')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "item_renderer@hud_common_ds-dav.item_renderer_panel": {
+          "$configuration_source": "#option_6",
+          "$configuration_data": "_1",
+          "$additional_content": "hud_common_ds-dav.low_durability_indicator_panel",
+
+          "size": [ 16, 22 ],
+          "layer": 3
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "((#option_7 = '_0') or not (($item_collection_data - '^') = ''))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "armor_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", "100%cm" ],
+    "controls": [
+      {
+        "hotbar_start_cap": {
+          "ignored": "$is_using_modified_hotbar_texture",
+          "type": "image",
+          "texture": "textures/ui/hotbar_start_cap",
+          "size": [ "100%y", "100%sm" ],
+          "max_size": [ 1, "100%sm" ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "dav_title_data_binding",
+              "source_property_name": "(#option_3 = '_1')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "head_item@hud_ds-dav.armor_slot_panel": {
+          "$hotbar_texture": "textures/ui/durability_armor_viewer/head_slot",
+          "$item_collection_data": "#head_item",
+          "$item_current_durability_source": "#head_current_durability",
+          "$item_total_durability_source": "#head_total_durability",
+          "$empty_slot_icon_texture": "textures/ui/durability_armor_viewer/empty_head_slot"
+        }
+      },
+      {
+        "chest_item@hud_ds-dav.armor_slot_panel": {
+          "$hotbar_texture": "textures/ui/durability_armor_viewer/chest_slot",
+          "$item_collection_data": "#chest_item",
+          "$item_current_durability_source": "#chest_current_durability",
+          "$item_total_durability_source": "#chest_total_durability",
+          "$empty_slot_icon_texture": "textures/ui/durability_armor_viewer/empty_chest_slot"
+        }
+      },
+      {
+        "legs_item@hud_ds-dav.armor_slot_panel": {
+          "$hotbar_texture": "textures/ui/durability_armor_viewer/legs_slot",
+          "$item_collection_data": "#legs_item",
+          "$item_current_durability_source": "#legs_current_durability",
+          "$item_total_durability_source": "#legs_total_durability",
+          "$empty_slot_icon_texture": "textures/ui/durability_armor_viewer/empty_legs_slot"
+        }
+      },
+      {
+        "feet_item@hud_ds-dav.armor_slot_panel": {
+          "$hotbar_texture": "textures/ui/durability_armor_viewer/feet_slot",
+          "$item_collection_data": "#feet_item",
+          "$item_current_durability_source": "#feet_current_durability",
+          "$item_total_durability_source": "#feet_total_durability",
+          "$empty_slot_icon_texture": "textures/ui/durability_armor_viewer/empty_feet_slot"
+        }
+      },
+      {
+        "hotbar_end_cap": {
+          "ignored": "$is_using_modified_hotbar_texture",
+          "type": "image",
+          "texture": "textures/ui/hotbar_end_cap",
+          "size": [ "100%y", "100%sm" ],
+          "max_size": [ 1, "100%sm" ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "dav_title_data_binding",
+              "source_property_name": "(#option_3 = '_1')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "offhand_slot_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", "100%cm" ],
+    
+    "$is_right_content|default": false,
+    "$is_left_content|default": false,
+    "controls": [
+      {
+        "durability_text_panel_left": {
+          "ignored": "(not $is_left_content)",
+          "type": "panel",
+          "size": [ "100%c + 2px", "100%sm" ],
+          "controls": [
+            {
+              "number@hud_common_ds-dav.durability_text_number": {
+                "$configuration_source": "#option_5",
+                "$configuration_data": "_2"
+              }
+            },
+            {
+              "percentage@hud_common_ds-dav.durability_text_percentage": {
+                "$configuration_source": "#option_5",
+                "$configuration_data": "_1"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "item_renderer": {
+          "$configuration_source": "#option_6",
+          "$configuration_data": "_1",
+          "$additional_content": "hud_common_ds-dav.low_durability_indicator_panel",
+          "$empty_slot_icon_required": false,
+          "$durability_bar_bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "dav_title_data_binding",
+              "source_property_name": "(#option_5 = '_0')",
+              "target_property_name": "#visible"
+            }
+          ],
+
+          "type": "panel",
+          "size": [ "100%cm", "100%cm" ],
+          "controls": [
+            {
+              "item_background": {
+                "type": "image",
+                "texture": "textures/ui/durability_armor_viewer/offhand_slot",
+                "size": [ 22, 22 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "dav_title_data_binding",
+                    "source_property_name": "(#option_3 = '_1')",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "item@hud_common_ds-dav.item_renderer_panel": {
+                "size": [ 16, 22 ],
+                "layer": 3
+              }
+            },
+            {
+              "stack_count@hud_common_ds-dav.offhand_stack_count_panel": {
+                "layer": 5
+              }
+            }
+          ]
+        }
+      },
+      {
+        "durability_text_panel_right": {
+          "ignored": "(not $is_right_content)",
+          "type": "panel",
+          "size": [ "100%c + 2px", "100%sm" ],
+          "controls": [
+            {
+              "number@hud_common_ds-dav.durability_text_number": {
+                "$configuration_source": "#option_5",
+                "$configuration_data": "_2"
+              }
+            },
+            {
+              "percentage@hud_common_ds-dav.durability_text_percentage": {
+                "$configuration_source": "#option_5",
+                "$configuration_data": "_1"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "((#option_7 = '_0') or not ((#offhand_item - '^') = ''))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "offhand_panel": {
+    "type": "panel",
+    "size": [ "100%c", "100%c" ],
+    "controls": [
+      {
+        "stack_panel@hud_ds-dav.offhand_slot_panel": {
+          "$item_collection_data": "#offhand_item",
+          "$item_current_durability_source": "#offhand_current_durability",
+          "$item_total_durability_source": "#offhand_total_durability"
+        }
+      }
+    ]
+  },
+  
+  "hotbar_padding": {
+    "type": "panel",
+    "size": [ "97px + 100%c", "100%cm" ],
+    "$is_dimz_inventory_button_hider|default": false,
+    "controls": [
+      {
+        "inventory_button": {
+          "ignored": "$is_dimz_inventory_button_hider",
+          "type": "panel",
+          "size": [ 10, "100%sm" ],
+          "bindings": [
+            {
+              "binding_name": "#inventory_touch_button",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "main_content": {
+    "type": "panel",
+    "controls": [
+      {
+        "stack_panel_left": {
+          "$is_left_content": true,
+          
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%c", "100%cm" ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_right",
+          "offset": [ 0, -1.5 ],
+          "controls": [
+            {
+              "stack_panel": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "size": [ "100%c", "100%cm" ],
+                "controls": [
+                  {
+                    "offhand@hud_ds-dav.offhand_panel": {
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "dav_title_data_binding",
+                          "source_property_name": "((#option_1 = '_1') and ((#option_4 = '_0') or (#option_4 = '_2')))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "padding@hud_common_ds-dav.padding_biadab": {
+                      "$source_name": "armor",
+                      "$binding_name": "#armor",
+                      "type": "panel",
+                      "size": [ 4, 0 ]
+                    }
+                  },
+                  {
+                    "armor@hud_ds-dav.armor_panel": {
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "dav_title_data_binding",
+                          "source_property_name": "((#option_2 = '_1') and ((#option_4 = '_0') or (#option_4 = '_1')))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "hotbar_padding@hud_ds-dav.hotbar_padding": {}
+            }
+          ]
+        }
+      },
+      {
+        "stack_panel_right": {
+          "$is_right_content": true,
+
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%c", "100%cm" ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_left",
+          "offset": [ 0, -1.5 ],
+          "controls": [
+            {
+              "hotbar_padding@hud_ds-dav.hotbar_padding": {}
+            },
+            {
+              "stack_panel": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "size": [ "100%c", "100%cm" ],
+                "controls": [
+                  {
+                    "armor@hud_ds-dav.armor_panel": {
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "dav_title_data_binding",
+                          "source_property_name": "((#option_2 = '_0') and ((#option_4 = '_0') or (#option_4 = '_1')))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "padding@hud_common_ds-dav.padding_biadab": {
+                      "$source_name": "armor",
+                      "$binding_name": "#armor",
+                      "type": "panel",
+                      "size": [ 4, 0 ]
+                    }
+                  },
+                  {
+                    "offhand@hud_ds-dav.offhand_panel": {
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "dav_title_data_binding",
+                          "source_property_name": "((#option_1 = '_0') and ((#option_4 = '_0') or (#option_4 = '_2')))",
+                          "target_property_name": "#visible"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "(not #is_spectator_mode)",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "subpack:identifier": { "$id": "like_hotbar" }
+}

@@ -1,0 +1,54 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{
+  "format_version": 2,
+  
+  "header": {
+    "name": "Durability Armor Viewer Addon §7v2.0.1 §5BP§r",
+    "description": "display armor and offhand in hud!\nDownload/Update on §l§ahttps://dimzproject.my.id/§r§f\nBy Dimzcraft. [v1.21.100+].\n Only available on mcpedl.com, curseforge.com, modbay.org, planetminecraft.com, otherwise it is pirated!\n §cI will Takedown people who share pirated links:D",
+    "uuid": "c63b2275-9066-4318-b33e-8fd661a432bd",
+    "version": [ 2, 0, 1 ],
+    "min_engine_version": [ 1, 21, 100 ]
+  },
+  
+  "modules": [
+    {
+      "type": "data",
+      "description": "",
+      "uuid": "39189728-aefb-4181-b556-27719b36bdcc",
+      "version": [ 1, 0, 0 ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "1c716826-7edb-4dad-b0e7-0650da2e387e",
+      "entry": "scripts/main.js",
+      "version": [ 1, 0, 0 ]
+    }
+  ],
+  
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.1.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.0.0"
+    }
+    // {
+    //   "uuid": "59973a64-51c2-4b68-98d6-863fd06ff7c1",
+    //   "version": [ 2, 0, 0 ]
+    // }
+  ],
+  
+  "metadata": {
+    "authors": [ "Dimzcraft" ],
+    "license": "All Rights Reserved",
+    "url": "https://www.curseforge.com/members/dimzcraft/projects",
+    "product_type": "addon"
+  }
+}

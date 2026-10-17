@@ -1,0 +1,306 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{
+  "namespace": "server_form_ds-dav",
+
+  "armor_info_tooltip": {
+    "type": "collection_panel",
+    "size": [ "100%", "100%" ],
+    "collection_name": "custom_form",
+    "controls": [
+      {
+        "icon": {
+          "type": "image",
+          "texture": "textures/ui/icon_armor",
+          "size": [ 14, 14 ]
+        }
+      },
+      {
+        "player_info@common_form_ds-dav.background": {
+          "size": [ "100%cm", "100%cm" ],
+          "anchor_from": "top_left",
+          "anchor_to": "bottom_left",
+          "offset": [ 0, -2 ],
+          "alpha": 0.7,
+          "layer": 55,
+          "collection_index": 0,
+          "controls": [
+            {
+              "border": { 
+                "type": "image",
+                "texture": "textures/ui/focus_border_white",
+                "size": [ "100%sm + 8px", "100%sm + 6px" ],
+                "color": "$main_texture_color"
+              }
+            },
+            {
+              "label": {
+                "type": "label",
+                "text": "#custom_text",
+                "size": [ "default", "default" ],
+                "bindings": [
+                  {
+                    "binding_name": "#custom_text",
+                    "binding_type": "collection",
+                    "binding_collection_name": "custom_form"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "armor_info_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "left_panel": {
+    "type": "panel",
+    "size": [ "30%", "100%" ],
+    "max_size": [ 130, "100%" ],
+    "controls": [
+      {
+        "player_renderer": {
+          "type": "panel",
+          "size": [ 60, 60 ],
+          "offset": [ 0, -20 ],
+          "controls": [
+            {
+              "renderer": {
+                "type": "custom",
+                "renderer": "live_player_renderer",
+                "property_bag": {
+                  "#look_at_cursor": true
+                },
+                "animation_reset_name": "screen_animation_reset",
+                "anims": [
+                  "@common.screen_exit_size_animation_push",
+                  "@common.screen_exit_size_animation_pop",
+                  "@common.screen_entrance_size_animation_push",
+                  "@common.screen_entrance_size_animation_pop"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooltip_button@common_form_ds-dav.dark_toggle": {
+          "$toggle_name": "armor_info_toggles",
+          "$toggle_view_binding_name": "armor_info_toggle",
+          "$button_content": "server_form_ds-dav.armor_info_tooltip",
+
+          "size": [ 18, 18 ],
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left"
+        }
+      }
+    ]
+  },
+
+
+  "main_buttons_panel": {
+    "type": "stack_panel",
+    "size": [ "100% - 2px", "100%c" ],
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+
+    "factory":{
+      "name": "buttons",
+      "control_ids": {
+        "label": "@common_form_ds-dav.custom_label",
+        "toggle": "@common_form_ds-dav.custom_toggle",
+        "slider": "@common_form_ds-dav.custom_slider", // #unused tapi agak menarik ya buat lah
+        "step_slider": "@server_form.custom_step_slider", // #unused
+        "dropdown": "@common_form_ds-dav.custom_dropdown",
+        "input": "@server_form.custom_input", // #unused
+        "header": "@server_form.custom_header", // #unused
+        "divider": "@settings_common.option_group_section_divider" // #unused
+      }
+    },
+
+    "collection_name": "custom_form",
+    "bindings": [
+      {
+        "binding_name": "#custom_form_length",
+        "binding_name_override": "#collection_length"
+      }
+    ]
+  },
+
+  "control_buttons": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%", 18 ],
+    "controls": [
+      {
+        "cancel_button@common_form_ds-dav.dark_text_button": {
+          "$pressed_button_name": "button.menu_exit",
+          "$button_text": "dimz.dav.control.cancel",
+          
+          "size": [ "50% - 2px", "100%" ]
+        }
+      },
+      {
+        "padding": {
+          "type": "panel",
+          "size": [ 4, 0 ]
+        }
+      },
+      {
+        "save_button@common_form_ds-dav.dark_text_button": {
+          "$pressed_button_name": "button.submit_custom_form",
+          "$button_text": "dimz.dav.control.save",
+          
+          "size": [ "50% - 2px", "100%" ],
+          "bindings": [
+            {
+              "binding_name": "#submit_button_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "form_buttons": { 
+    "type": "panel",
+    "size": [ "100%", "fill" ],
+    "controls": [
+      {
+        "main_scrolling_panel@common.scrolling_panel" : {
+          "anchor_to": "top_left",
+          "anchor_from": "top_left",
+          "$show_background": false,
+          "size": [ "100%", "100%" ],
+          "$scrolling_content": "server_form_ds-dav.main_buttons_panel",
+          "$scroll_size": [ 6, "100% - 4px" ],
+          "$scroll_bar_left_padding_size": [ 0, 0 ],
+          "$scroll_bar_right_padding_size": [ 1, 0 ]
+        }
+      }
+    ]
+  },
+
+  "right_panel": {
+    "type": "stack_panel",
+    "size": [ "fill", "100%" ],
+    "controls": [
+      {
+        "form_buttons@server_form_ds-dav.form_buttons": {}
+      },
+      {
+        "padding": {
+          "type": "panel",
+          "size": [ 0, 6 ]
+        }
+      },
+      {
+        "control_buttons@server_form_ds-dav.control_buttons": {}
+      }
+    ]
+  },
+
+
+  "form_content": {
+    "type": "panel",
+    "size": [ "100%", "100% - 20px" ],
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "controls": [
+      {
+        "stack_panel": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%", "100%" ],
+          "layer": 5,
+          "controls": [
+            {
+              "left_panel@server_form_ds-dav.left_panel": {}
+            },
+            {
+              "padding": {
+                "type": "panel",
+                "size": [ 4, 0 ]
+              }
+            },
+            {
+              "right_panel@server_form_ds-dav.right_panel": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "form_bar@common_form_ds-dav.background": {
+    "size": [ "100%", 18 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "alpha": 0.5,
+    "controls": [
+      {
+        "title_text": {
+          "type": "label",
+          "text": "#text",
+          "shadow": true,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#title_text - 'DAV:')",
+              "target_property_name": "#text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+
+  "custom_form": {
+    "type": "panel",
+    "controls": [
+      {
+        "panel": {
+          "type": "panel",
+          "size": [ "100% - 20px", "100% - 20px" ],
+          "max_size": [ 440, 300 ],
+          "layer": 5,
+          "controls": [
+            {
+              "form_bar@server_form_ds-dav.form_bar": {}
+            },
+            {
+              "form_content@server_form_ds-dav.form_content": {}
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.4s' * #title_text = 'DAV:')",
+        "target_property_name": "#visible"
+      }
+    ]
+  }
+}

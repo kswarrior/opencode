@@ -1,0 +1,64 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{
+  "format_version": 2,
+  
+  "header": {
+    "name": "Durability Armor Viewer §7v2.0.1 §5RP§r",
+    "description": "display armor and offhand in hud!\nDownload/Update on §l§ahttps://dimzproject.my.id/§r§f\nBy Dimzcraft. [v1.21.100+].\n Only available on mcpedl.com, curseforge.com, modbay.org, planetminecraft.com, otherwise it is pirated!\n §cI will Takedown people who share pirated links:D",
+    "uuid": "e40fd117-9d77-4145-904c-b21828eb0b9b",
+    "pack_scope": "world",
+    "version": [ 2, 0, 1 ],
+    "min_engine_version": [ 1, 21, 100 ]
+  },
+  
+  "modules": [
+    {
+      "type": "resources",
+      "description": "",
+      "uuid": "0f5a62d0-8d39-410f-965a-604849e36ee7",
+      "version": [ 2, 0, 0 ]
+    }
+  ],
+
+  "subpacks": [
+    {
+      "folder_name": "like_hotbar",
+      "name": "same as hotbar",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "on_hotbar",
+      "name": "beside the hotbar",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": ".default",
+      "name": "default",
+      "memory_tier": 0
+    }
+  ],
+
+  "settings": [
+    {
+      "type": "label",
+      "text": "Compatible with:\n - System Dynamic Light addon\n\nWant compatibility with other custom armor? Just send a request to our Discord server! §ahttps://discord.gg/pF2NeNcF62§r"
+    }
+  ],
+  
+  "metadata": {
+    "authors": [ "Dimzcraft" ],
+    "license": "All Rights Reserved",
+    "url": "https://www.curseforge.com/members/dimzcraft/projects"
+  },
+  
+  "dependencies": [
+    {
+      "uuid": "c63b2275-9066-4318-b33e-8fd661a432bd",
+      "version": [ 2, 0, 0 ]
+    }
+  ]
+}

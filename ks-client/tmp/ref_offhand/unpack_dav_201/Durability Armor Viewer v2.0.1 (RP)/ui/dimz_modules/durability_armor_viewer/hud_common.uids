@@ -1,0 +1,707 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{
+  "namespace": "hud_common_ds-dav",
+  
+  "CONFIG_DEF": {
+    "property_bag": {
+      "#option_1_true": "1",
+      "#option_2_true": "0",
+      "#option_3_true": "1",
+      "#option_4_true": "0",
+      "#option_5_true": "0",
+      "#option_6_true": "1",
+      "#option_7_true": "0"
+    }
+  },
+
+
+  "empty_panel": {
+    "type": "panel",
+    "size": [ 0, 0 ]
+  },
+
+  "padding_biadab": {
+    "type": "panel",
+    "$source_name|default": "",
+    "$binding_name|default": "",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$source_name",
+        "source_property_name": "#visible",
+        "target_property_name": "#source",
+        "resolve_sibling_scope": true
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "(#option_7 = '_0')",
+        "target_property_name": "#option_7"
+      },
+      {
+        "ignored": "($binding_name = 'offhand')",
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "(not ((#head_item - '^') = '') or not ((#chest_item - '^') = '') or not ((#legs_item - '^') = '') or not ((#feet_item - '^') = ''))",
+        "target_property_name": "#armor"
+      },
+      {
+        "ignored": "($binding_name = 'armor')",
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "(not ((#offhand_item - '^') = ''))",
+        "target_property_name": "#offhand"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#source and ($binding_name or #option_7))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  
+  "offhand_stack_count": {
+    "type": "label",
+    "text": "#text",
+    "anchor_to": "bottom_right",
+    "anchor_from": "bottom_right",
+    "offset": [ 0, 1 ],
+    "layer": 10,
+    "shadow": true,
+    "bindings": [
+      {
+        "binding_name": "#show_survival_ui"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "(#offhand_item_stack - '_')",
+        "target_property_name": "#item_stack_count"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('§z' + #item_stack_count)",
+        "target_property_name": "#text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#item_stack_count = 0) and (#item_stack_count > 1) and #show_survival_ui)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  
+  "offhand_stack_count_panel": {
+    "type": "panel",
+    "size": [ 16, 16 ],
+    "controls": [
+      {
+        "text@hud_common_ds-dav.offhand_stack_count": {
+          "offset": [ 1, 2 ]
+        }
+      }
+    ]
+  },
+
+
+  "bounce_3": {
+    "anim_type": "wait",
+    "duration": 2,
+    "next": "@hud_common_ds-dav.bounce_1"
+  },
+
+  "bounce_2": {
+    "anim_type": "offset",
+    "easing": "out_elastic",
+    "from": [ 2, -2.8 ],
+    "to": [ 2, -2 ],
+    "duration": 0.5,
+    "next": "@hud_common_ds-dav.bounce_3"
+  },
+
+  "bounce_1": {
+    "anim_type": "offset",
+    "easing": "in_elastic",
+    "from": [ 2, -2 ],
+    "to": [ 2, -2.8 ],
+    "duration": 0.5,
+    "next": "@hud_common_ds-dav.bounce_2"
+  },
+
+
+  "unknown_item_texture@item_id_ds-dav.item_id": {
+    "type": "image",
+    "texture": "textures/ui/durability_armor_viewer/unknown_texture_indicator",
+    "size": [ 7, 7 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": "@hud_common_ds-dav.bounce_1",
+    "layer": 20,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_collection_data - '^')",
+        "target_property_name": "#item_id"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('#' + #item_id)",
+        "target_property_name": "#path"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#path = '') and not (#item_id = ''))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "low_durability_indicator": {
+    "type": "image",
+    "texture": "textures/ui/durability_armor_viewer/low_durability_indicator",
+    "size": [ 7, 7 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": "@hud_common_ds-dav.bounce_1",
+    "layer": 15,
+    "alpha": 0.85,
+    
+    "$configuration_source|default": "#none",
+    "$configuration_data|default": "",
+
+    "bindings": [
+      {
+        "binding_name": "#show_survival_ui"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_current_durability_source - '_')",
+        "target_property_name": "#item_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_total_durability_source - '_')",
+        "target_property_name": "#item_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "$configuration_source",
+        "target_property_name": "#configuration"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#item_current_durability * 100 / #item_total_durability)",
+        "target_property_name": "#percentage_number",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((not (#item_total_durability = 0)) and #show_survival_ui and (#percentage_number < 20) and (#configuration = $configuration_data))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  
+  "low_durability_indicator_panel": {
+    "type": "panel",
+    "size": [ 16, 16 ],
+    "controls": [
+      {
+        "icon@hud_common_ds-dav.low_durability_indicator": {}
+      }
+    ]
+  },
+
+  
+  "durability_bar": {
+    "type": "custom",
+    "renderer": "progress_bar_renderer",
+    "size": [ 12, 1 ],
+    "offset": [ 0, 5 ],
+    "layer": 10,
+    "property_bag": {
+      "drop_shadow": true,
+      "is_durability": true,
+      "round_value": true
+    },
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_current_durability_source - '_')",
+        "target_property_name": "#item_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_total_durability_source - '_')",
+        "target_property_name": "#item_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "#item_current_durability",
+        "target_property_name": "#progress_bar_current_amount"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "#item_total_durability",
+        "target_property_name": "#progress_bar_total_amount"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#item_total_durability = 0) and not ((#item_current_durability / #item_total_durability) = 1))",
+        "target_property_name": "#touch_progress_bar_visible"
+      },
+      {
+        "binding_name": "#show_survival_ui",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+  
+  "durability_bar_panel": {
+    "type": "panel",
+    "size": [ 18, 18 ],
+    "controls": [
+      {
+        "bar@hud_common_ds-dav.durability_bar": {}
+      }
+    ]
+  },
+
+
+  "durability_text_number": {
+    "type": "label",
+    "text": "#text",
+    "size": [ "default", "default" ],
+    "shadow": true,
+    "localize": false,
+    "property_bag": {
+      "#color_10": [ 0.0, 1.0, 0.0, 1 ],
+      "#color_9": [ 0.2, 1.0, 0.0, 1 ],
+      "#color_8": [ 0.4, 1.0, 0.0, 1 ],
+      "#color_7": [ 0.6, 1.0, 0.0, 1 ],
+      "#color_6": [ 0.8, 1.0, 0.0, 1 ], 
+      "#color_5": [ 1.0, 0.8, 0.0, 1 ],
+      "#color_4": [ 1.0, 0.6, 0.0, 1 ],
+      "#color_3": [ 1.0, 0.4, 0.0, 1 ],
+      "#color_2": [ 1.0, 0.2, 0.0, 1 ],
+      "#color_1": [ 1.0, 0.0, 0.0, 1 ]
+    },
+
+    "$configuration_source|default": "#none",
+    "$configuration_data|default": "",
+
+    "bindings": [
+      {
+        "binding_name": "#show_survival_ui"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_current_durability_source - '_')",
+        "target_property_name": "#item_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_total_durability_source - '_')",
+        "target_property_name": "#item_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "$configuration_source",
+        "target_property_name": "#configuration"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#item_current_durability * 100 / #item_total_durability)",
+        "target_property_name": "#percentage_number",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(('#color_' + ((#percentage_number > -1) + (#percentage_number > 9) + (#percentage_number > 19) + (#percentage_number > 29) + (#percentage_number > 39) + (#percentage_number > 49) + (#percentage_number > 59) + (#percentage_number > 69) + (#percentage_number > 79) + (#percentage_number > 89)))",
+        "target_property_name": "#color",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('§z' + #item_current_durability)",
+        "target_property_name": "#text",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((not (#item_total_durability = 0)) and #show_survival_ui and (#configuration = $configuration_data))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  
+  "durability_text_percentage": {
+    "type": "label",
+    "text": "#text",
+    "size": [ "default", "default" ],
+    "shadow": true,
+    "localize": false,
+    "property_bag": {
+      "#color_10": [ 0.0, 1.0, 0.0, 1 ],
+      "#color_9": [ 0.2, 1.0, 0.0, 1 ],
+      "#color_8": [ 0.4, 1.0, 0.0, 1 ],
+      "#color_7": [ 0.6, 1.0, 0.0, 1 ],
+      "#color_6": [ 0.8, 1.0, 0.0, 1 ], 
+      "#color_5": [ 1.0, 0.8, 0.0, 1 ],
+      "#color_4": [ 1.0, 0.6, 0.0, 1 ],
+      "#color_3": [ 1.0, 0.4, 0.0, 1 ],
+      "#color_2": [ 1.0, 0.2, 0.0, 1 ],
+      "#color_1": [ 1.0, 0.0, 0.0, 1 ]
+    },
+
+    "$configuration_source|default": "#none",
+    "$configuration_data|default": "",
+
+    "bindings": [
+      {
+        "binding_name": "#show_survival_ui"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_current_durability_source - '_')",
+        "target_property_name": "#item_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_total_durability_source - '_')",
+        "target_property_name": "#item_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "$configuration_source",
+        "target_property_name": "#configuration"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#item_current_durability * 1000 / #item_total_durability)",
+        "target_property_name": "#percentage",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#item_current_durability * 100 / #item_total_durability)",
+        "target_property_name": "#percentage_number",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(('^' + #percentage) - ('^' + #percentage_number))",
+        "target_property_name": "#decimal",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(('%.' + ((#decimal > 0) * 3) + 's') * ('^.' + #decimal))",
+        "target_property_name": "#decimal_number",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(('#color_' + ((#percentage_number > -1) + (#percentage_number > 9) + (#percentage_number > 19) + (#percentage_number > 29) + (#percentage_number > 39) + (#percentage_number > 49) + (#percentage_number > 59) + (#percentage_number > 69) + (#percentage_number > 79) + (#percentage_number > 89)))",
+        "target_property_name": "#color",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('§z' + #percentage_number + #decimal_number + '%' - '^')",
+        "target_property_name": "#text",
+        "binding_condition": "always_when_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(((#show_survival_ui and not (#item_total_durability = 0)) and (#configuration = $configuration_data))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+
+  "empty_slot_icon@item_id_ds-dav.item_id": {
+    "type": "image",
+    "texture": "$empty_slot_icon_texture",
+    "size": [ 16, 16 ],
+    // "color": [ 0.3, 0.3, 0.3 ],
+    "alpha": 0.5,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_collection_data - '^')",
+        "target_property_name": "#item_id"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(('#' + #item_id) = '')",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  
+  "item_renderer@item_id_ds-dav.item_id": {
+    "type": "image",
+    "texture": "#texture",
+    "controls" : [
+      {
+        "icon@hud_common_ds-dav.unknown_item_texture": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "dav_title_data_binding",
+        "source_property_name": "($item_collection_data - '^')",
+        "target_property_name": "#item_id"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('#' + #item_id)",
+        "target_property_name": "#texture"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#item_id = ''))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+    
+  "item_renderer_panel": {
+    "type": "panel",
+    "size": [ "100%cm", "100%cm" ],
+    
+    "$item_collection_data|default": "#none",
+    "$item_current_durability_source|default": "#none",
+    "$item_total_durability_source|default": "#none",
+    
+    "$item_renderer_size|default": [ 16, 16 ],
+    "$empty_slot_icon_required|default": true,
+    "$empty_slot_icon_size|default": [ 16, 16 ],
+
+    "$durability_bar_required|default": true,
+    "$durability_bar_bindings|default": [],
+
+    "$additional_content|default": "hud_common_ds-dav.empty_panel",
+    "controls": [
+      {
+        "item_renderer@hud_common_ds-dav.item_renderer": {
+          "size": "$item_renderer_size"
+        }
+      },
+      {
+        "empty_slot_icon@hud_common_ds-dav.empty_slot_icon": {
+          "ignored": "(not $empty_slot_icon_required)",
+          "size": "$empty_slot_icon_size"
+        }
+      },
+      {
+        "durability_bar_panel": {
+          "ignored": "(not $durability_bar_required)",
+          "type": "panel",
+          "size": "$item_renderer_size",
+          "controls": [
+            {
+              "durability_bar@hud_common_ds-dav.durability_bar": {}
+            }
+          ],
+          "bindings": "$durability_bar_bindings"
+        }
+      },
+      {
+        "additional_content@$additional_content": {}
+      }
+    ]
+  },
+  
+  
+  "title_text_data@hud_common_ds-dav.CONFIG_DEF": {
+    "type": "panel",
+    "size": [ 0, 0 ],
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string"
+      },
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#preserved_text",
+        "binding_condition": "visibility_changed"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - 'dimz-dav') = #hud_title_text_string))",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.79s' * #preserved_text - ('%.9s' * #preserved_text))",
+        "target_property_name": "#head_item"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.86s' * #preserved_text - ('%.79s' * #preserved_text))",
+        "target_property_name": "#head_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.93s' * #preserved_text - ('%.86s' * #preserved_text))",
+        "target_property_name": "#head_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.163s' * #preserved_text - ('%.93s' * #preserved_text))",
+        "target_property_name": "#chest_item"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.170s' * #preserved_text - ('%.163s' * #preserved_text))",
+        "target_property_name": "#chest_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.177s' * #preserved_text - ('%.170s' * #preserved_text))",
+        "target_property_name": "#chest_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.247s' * #preserved_text - ('%.177s' * #preserved_text))",
+        "target_property_name": "#legs_item"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.254s' * #preserved_text - ('%.247s' * #preserved_text))",
+        "target_property_name": "#legs_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.261s' * #preserved_text - ('%.254s' * #preserved_text))",
+        "target_property_name": "#legs_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.331s' * #preserved_text - ('%.261s' * #preserved_text))",
+        "target_property_name": "#feet_item"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.338s' * #preserved_text - ('%.331s' * #preserved_text))",
+        "target_property_name": "#feet_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.345s' * #preserved_text - ('%.338s' * #preserved_text))",
+        "target_property_name": "#feet_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.415s' * #preserved_text - ('%.345s' * #preserved_text))",
+        "target_property_name": "#offhand_item"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.422s' * #preserved_text - ('%.415s' * #preserved_text))",
+        "target_property_name": "#offhand_current_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.429s' * #preserved_text - ('%.422s' * #preserved_text))",
+        "target_property_name": "#offhand_total_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.433s' * #preserved_text - ('%.429s' * #preserved_text))",
+        "target_property_name": "#offhand_item_stack"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.434s' * #preserved_text - ('%.433s' * #preserved_text))",
+        "target_property_name": "#option_1r"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('_' + ('#option_1_' + (#option_1r = '')) + #option_1r)",
+        "target_property_name": "#option_1"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.435s' * #preserved_text - ('%.434s' * #preserved_text))",
+        "target_property_name": "#option_2r"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('_' + ('#option_2_' + (#option_2r = '')) + #option_2r)",
+        "target_property_name": "#option_2"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.436s' * #preserved_text - ('%.435s' * #preserved_text))",
+        "target_property_name": "#option_3r"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('_' + ('#option_3_' + (#option_3r = '')) + #option_3r)",
+        "target_property_name": "#option_3"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.437s' * #preserved_text - ('%.436s' * #preserved_text))",
+        "target_property_name": "#option_4r"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('_' + ('#option_4_' + (#option_4r = '')) + #option_4r)",
+        "target_property_name": "#option_4"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.438s' * #preserved_text - ('%.437s' * #preserved_text))",
+        "target_property_name": "#option_5r"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('_' + ('#option_5_' + (#option_5r = '')) + #option_5r)",
+        "target_property_name": "#option_5"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.439s' * #preserved_text - ('%.438s' * #preserved_text))",
+        "target_property_name": "#option_6r"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('_' + ('#option_6_' + (#option_6r = '')) + #option_6r)",
+        "target_property_name": "#option_6"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('%.440s' * #preserved_text - ('%.439s' * #preserved_text))",
+        "target_property_name": "#option_7r"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('_' + ('#option_7_' + (#option_7r = '')) + #option_7r)",
+        "target_property_name": "#option_7"
+      }
+    ]
+  }
+}

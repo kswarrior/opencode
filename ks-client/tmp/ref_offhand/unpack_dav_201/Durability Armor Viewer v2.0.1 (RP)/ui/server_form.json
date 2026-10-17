@@ -1,0 +1,51 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{
+  "custom_form_control": {
+    "type": "panel",
+    "controls": [
+      {
+        "default_form@server_form.custom_form": {
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ('%.4s' * #title_text = 'DAV:'))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "dav_form@server_form_ds-dav.custom_form": {
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "('%.4s' * #title_text = 'DAV:')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  
+  "main_screen_content/server_form_factory": {
+    "control_ids": {
+      "long_form": "@server_form.long_form",
+      "custom_form": "@server_form.custom_form_control"
+    }
+  },
+
+  "main_screen_content": {
+    "size": [ "100%", "100%" ]
+  }
+}

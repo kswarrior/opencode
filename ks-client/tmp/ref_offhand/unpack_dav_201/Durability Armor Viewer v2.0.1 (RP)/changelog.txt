@@ -1,0 +1,47 @@
+v0.0.2
+- add offhand slot
+  items:
+  - minecraft:totem_of_undying
+  - minecraft:shield
+  - minecraft:arrow
+  - minecraft:filled_map
+  - minecraft:nautilus_shell
+  - minecraft:firework_rocket
+- improve code
+v1.2.0
+- improve code and file size
+- update item detection is 40% faster and 2x lighter
+- added a new subpack 'same as hotbar' (i dunno what to call it🗿)
+- change the default subpack and remove the previous default subpack
+v1.2.1
+- fix invisible offhand stack count 10-19
+- change the minimum version to 1.20.70 (I forgot🗿)
+v1.3.0
+- update now addon will not affect achievement
+v1.3.1
+- fix durability text and bar
+v1.3.2
+- added support for nearby mobs addon
+v1.4.0
+- improve script to be better
+- fix bug disappears when locator bar is active
+v1.4.1
+- fixed the script that spammed the title because I forgot to add a condition to update when changing
+v1.5.0
+- update; new items creeper head, dragon head, player head, piglin head, zombie head, skeleton skull, wither skeleton skull
+- update; new armor copper armor
+- fix; on player when using mob head
+- fix; title filter has been updated
+- fix; item_id.json file changed to item_id-{pack id}.json because it was considered a duplicate when installing other addons that use the same file
+- adjustments; custom armor that is not added to the item ID when worn, then what is displayed is raw leather armor
+- new pack icon v3
+- new pack description v2
+- Update, the pack name for addons now has an additional §5RP/§5BP to indicate that the addon must use a resource pack and behavior pack
+v2.0.0
+- update; control panel(for display customization)
+- compatible updates; System Dynamic Light Addon
+- adjustment; alpha empty slot armor 50% so it doesn't cover the screen too much
+- adjustment; custom item id is now only in /ui/dimz modules/durability armor_viewer/item_id.json
+v2.0.1
+- fix; render reset when player goes to another dimension
+- fix; wrong path system dynamic light

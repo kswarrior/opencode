@@ -1,0 +1,1078 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{
+  "namespace": "common_form_ds-dav",
+
+  "background": {
+    "type": "image",
+    "texture": "textures/ui/White",
+    "color": [ 0, 0, 0 ],
+    "alpha": 0.45
+  },
+
+  "fill_white": {
+    "type": "image",
+    "texture": "textures/ui/White",
+    "fill": true
+  },
+
+
+  "dark_ui_binding_button_label@common_buttons.new_ui_binding_button_label": {
+    "shadow": true
+  },
+
+  "dark_text_button": {
+    "type": "panel",
+    "controls": [
+      {
+        "button@common_buttons.light_text_button": {
+          "$button_type_panel": "common_form_ds-dav.dark_ui_binding_button_label",
+          "$default_button_texture": "textures/ui/White",
+          "$hover_button_texture": "textures/ui/White",
+          "$pressed_button_texture": "textures/ui/White",
+          "$locked_button_texture": "textures/ui/White",
+          "$button_image_size": [ "100%", "100%" ],
+          "$button_image_fill": true,
+          "$default_text_color": "",
+          "$hover_text_color": "",
+          "$pressed_text_color": "",
+          "$locked_text_color": "",
+
+          "controls": [
+            {
+              "default@$button_state_panel": {
+                "$new_ui_button_texture": "$default_button_texture",
+                "$button_image_color": [ 0, 0, 0 ],
+                "$text_color": "",
+                "$secondary_text_color": "",
+                "$border_color": "",
+                "$border_layer": 2,
+                "$border_visible": false,
+                "$default_state": true,
+                "$button_alpha": 0.5,
+                "layer": 1
+              }
+            },
+            {
+              "hover@$button_state_panel": {
+                "$new_ui_button_texture": "$hover_button_texture",
+                "$button_image_color": [ 0, 0, 0 ],
+                "$text_color": "",
+                "$secondary_text_color": "",
+                "$border_color": "",
+                "$border_layer": 5,
+                "$border_visible": false,
+                "$hover_state": true,
+                "$button_alpha": 0.7,
+                "layer": 4
+              }
+            },
+            {
+              "pressed@$button_state_panel": {
+                "$new_ui_button_texture": "$pressed_button_texture",
+                "$button_alpha": 0.7,
+                "$button_image_color": [ 0, 0, 0 ],
+                "$text_color": "",
+                "$secondary_text_color": "",
+                "$border_color": "$main_texture_color",
+                "$border_layer": 6,
+                "$pressed_state": true,
+                "layer": 5
+              }
+            },
+            {
+              "locked@$button_state_panel": {
+                "$new_ui_button_texture": "$locked_button_texture",
+                "$button_alpha": 0.5,
+                "$button_image": "common_buttons.locked_button_image",
+                "$button_image_color": [ 0.4, 0.4, 0.4 ],
+                "$text_color": "",
+                "$secondary_text_color": "",
+                "$border_color": [ 1, 1, 1 ],
+                "$border_layer": 1,
+                "$locked_state": true,
+                "layer": 1
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+
+  "dark_button_content_panel@common_buttons.button_content_panel": {
+    "controls": [
+      {
+        "new_border": {
+          "ignored": "(not $new_border_visible)",
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": [ 1, "100%" ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "color": "$main_texture_color",
+          "layer": 2
+        }
+      },
+      {
+        "content@$button_content": {
+          "layer": 2
+        }
+      }
+    ]
+  },
+
+  "dark_toggle_locked@common_toggles.toggle_locked": {
+    "$new_ui_button_texture": "textures/ui/White",
+    "$content_alpha": 0.5,
+    "$button_image_color": [ 0.3, 0.3, 0.3 ],
+    "$new_border_visible|default": false
+  },
+  
+  "dark_toggle_checked_hover@common_toggles.toggle_checked_hover": {
+    "$new_ui_button_texture": "textures/ui/White",
+    "$content_alpha": 0.7,
+    "$button_image_color": [ 0, 0, 0 ],
+    "$border_color": "$main_texture_color",
+    "$new_border_visible|default": true
+  },
+  
+  "dark_toggle_unchecked_hover@common_toggles.toggle_unchecked_hover": {
+    "$new_ui_button_texture": "textures/ui/White",
+    "$content_alpha": 0.7,
+    "$button_image_color": [ 0, 0, 0 ],
+    "$new_border_visible|default": false
+  },
+  
+  "dark_toggle_checked@common_toggles.toggle_checked": {
+    "$new_ui_button_texture": "textures/ui/White",
+    "$content_alpha": 0.5,
+    "$button_image_color": [ 0, 0, 0 ],
+    "$border_color": "$main_texture_color",
+    "$new_border_visible|default": true
+  },
+  
+  "dark_toggle_unchecked@common_toggles.toggle_unchecked": {
+    "$new_ui_button_texture": "textures/ui/White",
+    "$content_alpha": 0.5,
+    "$button_image_color": [ 0, 0, 0 ],
+    "$new_border_visible|default": false
+  },
+  
+  "dark_toggle@common_toggles.light_ui_toggle": {
+    "$button_type_panel": "common_form_ds-dav.dark_button_content_panel",
+    "$button_content|default": "common_toggles.toggle_content_panel",
+    "$button_offset|default": [ 0, 0 ],
+    "$unchecked_control": "common_form_ds-dav.dark_toggle_unchecked",
+    "$checked_control": "common_form_ds-dav.dark_toggle_checked",
+    "$unchecked_hover_control": "common_form_ds-dav.dark_toggle_unchecked_hover",
+    "$checked_hover_control": "common_form_ds-dav.dark_toggle_checked_hover",
+    "$unchecked_locked_control": "common_form_ds-dav.dark_toggle_locked",
+    "$unchecked_locked_hover_control": "common_form_ds-dav.dark_toggle_locked",
+    "$checked_locked_control": "common_form_ds-dav.dark_toggle_locked",
+    "$checked_locked_hover_control": "common_form_ds-dav.dark_toggle_locked",
+    "$button_pressed_offset": [ 0, 0 ],
+    "$button_image_size": [ "100%", "100%" ],
+    "$button_content_size": [ "100%", "100%" ],
+    "$default_border_visible": false,
+    "$hover_border_visible": false
+  },
+
+  // 
+
+  "option_tooltip@common_form_ds-dav.background": {
+    "size": [ "100%", "100%cm" ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "top_middle",
+    "alpha": 0.8,
+    "layer": 30,
+    "allow_clipping": false,
+    "controls": [
+      {
+        "border": {
+          "type": "image",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%sm + 8px" ],
+          "color": "$main_texture_color",
+          "layer": 2
+        }
+      },
+      {
+        "text": {
+          "type": "label",
+          "text": "#custom_tooltip_text",
+          "size": [ "default", "default" ],
+          "max_size": [ "100% - 8px", "default" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 4, 4 ],
+          "layer": 2,
+          "shadow": true,
+          "bindings": [
+            {
+              "binding_name": "#custom_tooltip_text",
+              "binding_collection_name": "custom_form",
+              "binding_type": "collection",
+              "binding_condition": "visibility_changed",
+              "binding_name_override": "#custom_tooltip_text"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "((not (#custom_tooltip_text = '')) and #default_visibility)",
+        "binding_type": "collection",
+        "binding_collection_name": "custom_form",
+        "binding_condition": "always",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+
+  "radio_visuals_unchecked@common_form_ds-dav.radio_visuals": {
+    "$checked": false
+  },
+
+  "radio_visuals_checked@common_form_ds-dav.radio_visuals": {
+    "$checked": true,
+    "$selected": true
+  },
+
+  "radio_visuals_unchecked_locked@common_form_ds-dav.radio_visuals": {
+    "$checked": false
+  },
+
+  "radio_visuals_checked_locked@common_form_ds-dav.radio_visuals": {
+    "$checked": true,
+    "$selected": true
+  },
+  
+  "radio_visuals_unchecked_hover@common_form_ds-dav.radio_visuals": {
+    "$checked": false,
+    "$hovered": true
+  },
+  
+  "radio_visuals_checked_hover@common_form_ds-dav.radio_visuals": {
+    "$checked": true,
+    "$hovered": true,
+    "$selected": true
+  },
+
+  "radio_visuals": {
+    "type": "panel",
+    "size": [ "100%", 16 ],
+    "$radio_label_bindings|default": [],
+    "$radio_label_color|default": "$main_header_text_color",
+    "$radio_label_font_type|default": "default",
+    "$selected|default": false,
+    "$hovered|default": false,
+    "variables": [
+      {
+        "requires": "$hovered",
+        "$bg_color": [ 0.3, 0.3, 0.3 ]
+      },
+      {
+        "requires": "(not $hovered)",
+        "$bg_color": [ 0, 0, 0 ]
+      }
+    ],
+    "controls": [
+      {
+        "toggle_unchecked": {
+          "type": "image",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ 10, 10 ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "color": "$color",
+          "layer": 2,
+          "variables": [
+            {
+              "requires": "$selected",
+              "$color": "$main_texture_color"
+            },
+            {
+              "requires": "(not $selected)",
+              "$color": [ 1, 1, 1 ]
+            }
+          ],
+          "controls": [
+            {
+              "toggle_checked": {
+                "visible": "($selected and $checked)",
+                "type": "image",
+                "texture": "textures/ui/White",
+                "size": [ 6, 6 ],
+                "color": "$main_texture_color"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "radio_label": {
+          "type": "label",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "text": "$radio_label_text",
+          "font_type": "$radio_label_font_type",
+          "color": "$radio_label_color",
+          "offset": [ 16, 0.5 ],
+          "size": [ "100% - 16px", "default" ],
+          "shadow": true,
+          "bindings": "$radio_label_bindings",
+          "layer": 2,
+          "$tts_override_control_value|default": "$radio_label_text",
+          "tts_override_control_value": "$tts_override_control_value"
+        }
+      },
+      {
+        "accessibility_selection_highlight@common_form_ds-dav.background": {
+          "ignored": "(not $selected and not $hovered)",
+          "size": "$selection_highlight_size",
+          "offset": "$selection_highlight_offset",
+          "color": "$bg_color",
+          "alpha": 0.8,
+          "layer": 1,
+          
+          "$selection_highlight_size|default": [ "100% + 4px", "100% + 2px" ],
+          "$selection_highlight_offset|default": [ 0, 0 ]
+        }
+      }
+    ]
+  },
+
+  "custom_dropdown_content@settings_common.option_radio_dropdown_group": {
+    "$unchecked_control": "common_form_ds-dav.radio_visuals_unchecked",
+    "$checked_control": "common_form_ds-dav.radio_visuals_checked",
+    "$unchecked_hover_control": "common_form_ds-dav.radio_visuals_unchecked_hover",
+    "$checked_hover_control": "common_form_ds-dav.radio_visuals_checked_hover",
+    "$unchecked_locked_control": "common_form_ds-dav.radio_visuals_unchecked_locked",
+    "$unchecked_locked_hover_control": "common_form_ds-dav.radio_visuals_unchecked_locked",
+    "$checked_locked_control": "common_form_ds-dav.radio_visuals_checked_locked",
+    "$checked_locked_hover_control": "common_form_ds-dav.radio_visuals_checked_locked",
+    
+    "$radio_buttons": [],
+    "$toggle_focus_id_binding_type": "collection",
+    "$toggle_focus_id_collection_name": "custom_form",
+    "$toggle_focus_id_binding_name": "#custom_toggle_focus_id",
+
+    "$radio_factory":{
+      "name": "buttons",
+      "control_name": "server_form.custom_dropdown_radio"
+    },
+
+    "$radio_collection_name": "custom_dropdown",
+    "$radio_bindings": [
+      {
+        "binding_name": "#custom_dropdown_length",
+        "binding_type": "collection",
+        "binding_name_override": "#collection_length",
+        "binding_collection_name": "custom_form"
+      }
+    ]
+  },
+
+  "custom_dropdown@hud_ds-dav.subpack:identifier": {
+    "$option_label": "#custom_text",
+    "$dropdown_name": "custom_dropdown",
+    "$dropdown_content": "common_form_ds-dav.custom_dropdown_content",
+    "$dropdown_area": "main_scrolling_panel",
+    "$toggle_binding_type": "collection",
+    "$toggle_grid_collection_name": "custom_form",
+    "$options_dropdown_toggle_label_binding": "#dropdown_option_text",
+    "$options_dropdown_toggle_label_binding_type": "collection",
+    "$options_dropdown_toggle_label_binding_collection_name": "custom_form",
+    "$dropdown_background": "common_form_ds-dav.custom_dropdown_background",
+    
+    "$dropdown_scroll_content_size": [ "35% + 6px", "300%" ],
+    "$anchor_dropdown_content_from": "top_right",
+    "$anchor_dropdown_content_to": "top_right",
+
+    "$options_dropdown_toggle_label_shadow": true,
+
+    "$unchecked_control": "settings_common.radio_visuals_unchecked",
+    "$checked_control": "settings_common.radio_visuals_checked",
+    "$unchecked_hover_control|default": "settings_common.radio_visuals_unchecked_hover",
+    "$checked_hover_control|default": "settings_common.radio_visuals_checked_hover",
+    "$unchecked_locked_control|default": "settings_common.radio_visuals_unchecked_locked",
+    "$unchecked_locked_hover_control|default": "settings_common.radio_visuals_unchecked_locked",
+    "$checked_locked_control|default": "settings_common.radio_visuals_checked_locked",
+    "$checked_locked_hover_control|default": "settings_common.radio_visuals_checked_locked",
+
+    "type": "panel",
+    "size": [ "100%", 18 ],
+    "property_bag": {
+      "#id": "$id"
+    },
+    "controls": [
+      {
+        "dropdown@common.dropdown": {
+          "$enabled|default": true,
+          "$option_enabled_binding_name|default": "",
+          "$dropdown_toggle": "common_form_ds-dav.custom_dropdown_toggle_control",
+          "$locked_alpha": 0.5,
+          "$toggle_tts_header": "$option_label"
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "custom_form"
+      },
+      {
+        "binding_name": "#collection_index",
+        "binding_type": "collection",
+        "binding_collection_name": "custom_form"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#collection_index = 2) and (#id = 'on_hotbar'))",
+        "target_property_name": "#case_1"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not #case_1)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "custom_options_dropdown_toggle_button_state_content": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "label": {
+          "type": "label",
+          "text": "#custom_text",
+          "size": [ "default", "default" ],
+          "max_size": [ "60%", "default" ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [ 5, 0 ],
+          "shadow": true,
+          "bindings": [
+            {
+              "binding_name": "#custom_text",
+              "binding_type": "collection",
+              "binding_collection_name": "custom_form"
+            }
+          ]
+        }
+      },
+      {
+        "tooltip@common_form_ds-dav.option_tooltip": {
+          "ignored":"($toggle_unchecked or $toggle_checked)"
+        }
+      },
+      {
+        "label@common.new_button_label": {
+          "text": "$options_dropdown_toggle_label_binding",
+          "size": [ "default", "default" ],
+          "max_size": [ "40% - 6px", "100%" ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "offset": [ -6, 0 ],
+          "layer": 1,
+          "color": [ 1, 1, 1 ],
+          "shadow": true,
+
+          "$options_dropdown_label_color_binding_type|default": "none",
+          "$options_dropdown_label_color_binding|default": "",
+          "$options_dropdown_toggle_label_shadow|default": false,
+          "$tts_override_control_value|default": "$options_dropdown_toggle_label_binding",
+          "tts_override_control_value": "$tts_override_control_value",
+
+          "$options_dropdown_label_bindings|default": [
+            {
+              "binding_name": "$options_dropdown_toggle_label_binding",
+              "binding_condition": "none",
+              "binding_type": "$options_dropdown_toggle_label_binding_type",
+              "binding_collection_name": "$options_dropdown_toggle_label_binding_collection_name"
+            },
+            {
+              "binding_name": "$tts_override_control_value",
+              "binding_condition": "none",
+              "binding_type": "$options_dropdown_toggle_label_binding_type",
+              "binding_collection_name": "$options_dropdown_toggle_label_binding_collection_name"
+            }
+          ],
+
+          "bindings": "$options_dropdown_label_bindings"
+        }
+      }
+    ]
+  },
+
+  "custom_dropdown_toggle_control@common_toggles.light_template_toggle": {
+    "size": [ "100%", "100%" ],
+    "$button_type_panel": "common_form_ds-dav.custom_options_dropdown_toggle_button_state_content",
+    "$unchecked_control": "common_form_ds-dav.dark_toggle_unchecked",
+    "$checked_control": "common_form_ds-dav.dark_toggle_checked",
+    "$unchecked_hover_control": "common_form_ds-dav.dark_toggle_unchecked_hover",
+    "$checked_hover_control": "common_form_ds-dav.dark_toggle_checked_hover",
+    "$unchecked_locked_control": "common_form_ds-dav.dark_toggle_locked",
+    "$unchecked_locked_hover_control": "common_form_ds-dav.dark_toggle_locked",
+    "$checked_locked_control": "common_form_ds-dav.dark_toggle_locked",
+    "$checked_locked_hover_control": "common_form_ds-dav.dark_toggle_locked",
+    "$button_pressed_offset": [ 0, 0 ],
+    "$button_image_size": [ "100%", "100%" ],
+    "$button_content_size": [ "100%", "100%" ],
+    "$default_border_visible": false,
+    "$hover_border_visible": false,
+
+    "enabled": "$enabled",
+    "$toggle_enabled_binding_name|default": "$option_enabled_binding_name",
+    "$toggle_enabled_binding_type|default": "global",
+    "$toggle_binding_type|default": "global",
+    "variables": [
+      {
+        "requires": "(not $option_enabled_binding_name or not $enabled)",
+        "$toggle_enabled_binding_name": "#not_data_bound",
+        "$toggle_enabled_binding_type": "none"
+      }
+    ]
+  },
+
+  "custom_dropdown_background@common_form_ds-dav.background": {
+    "alpha": 0.8,
+    "allow_clipping": false,
+    "controls": [
+      {
+        "border": {
+          "type": "image",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ "100%", "100%" ],
+          "color": "$main_texture_color",
+          "layer": 2
+        }
+      }
+    ]
+  },
+
+  "gamepad_slider_content@common_form_ds-dav.background": {
+    "controls": [
+      {
+        "stack_panel": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%", "100%" ],
+          "layer": 3,
+          "controls": [
+            {
+              "text_panel": {
+                "type": "panel",
+                "size": [ "fill", "100%" ],
+                "layer": 2,
+                "controls": [
+                  {
+                    "label": {
+                      "type": "label",
+                      "text": "#text",
+                      "size": [ "100% - 5px", "default" ],
+                      "max_size": [ "100%", "default" ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 5, 0 ],
+                      "shadow": true,
+                      "bindings": [
+                        {
+                          "binding_name": "#custom_slider_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "custom_form"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(#custom_slider_text - ': ' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9' - '0' - '-')",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "value_text_panel": {
+                "type": "panel",
+                "size": [ "100%c + 8px", "100%" ],
+                "layer": -2, 
+                "controls": [
+                  {
+                    "text": {
+                      "type": "label",
+                      "text": "#text",
+                      "size": [ "default", "default" ],
+                      "anchor_from": "right_middle",
+                      "anchor_to": "right_middle",
+                      "offset": [ -6, 0 ],
+                      "shadow": true,
+                      "variables": [
+                        {
+                          "requires": "$slider_visible",  
+                          "$1": "§z< ",
+                          "$2": "§z >"
+                        },
+                        {
+                          "requires": "(not $slider_visible)",
+                          "$1": "§z",
+                          "$2": "§z"
+                        }
+                      ],
+                      "property_bag": {
+                        "#1": "$1",
+                        "#2": "$2"
+                      },
+                      "bindings": [
+                        {
+                          "binding_name": "#custom_slider_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "custom_form"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "((#1 + (#custom_slider_text - (#custom_slider_text - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9' - '0' - '-'))) + #2)",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooltip@common_form_ds-dav.option_tooltip": {
+          "ignored": "(not $tooltip_visible)"
+        }
+      }
+    ]
+  },
+
+  "gamepad_slider@common_form_ds-dav.slider": {
+    "progress_control": "gamepad_slider_progress",
+    "clips_children": true,
+    "controls": [
+      {
+        "slider_box@common.slider_box": {
+          "size": [ "1000%", "100%" ],
+          "layer": 1,
+          "controls": [
+            {
+              "default@common.empty_panel": {
+              }
+            },
+            {
+              "hover@common_form_ds-dav.background": {
+                "alpha": 0.4,
+                "layer": 2
+              }
+            },
+            {
+              "indent@common_form_ds-dav.background": {
+                "alpha": 0.4,
+                "layer": -2
+              }
+            },
+            {
+              "locked@common.empty_panel": {}
+            }
+          ]
+        }
+      },
+      {
+        "slider_bar_default@common_form_ds-dav.gamepad_slider_content": {
+          "$slider_visible": false,
+          "$tooltip_visible": false,
+          "alpha": 0.5,
+          "layer": 1
+        }
+      },
+      {
+        "slider_bar_hover@common_form_ds-dav.gamepad_slider_content": {
+          "visible": false,
+          "$slider_visible": true,
+          "$tooltip_visible": true,
+          "alpha": 0.5,
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  "slider@common.slider": {
+    "$enabled|default": true,
+    "$option_enabled_binding_name|default": "",
+    "$slider_box_size_fix|default": [ 5, 10 ],
+    
+    "$option_label|default": "",
+    "$slider_tts_header": "$option_label",
+    "$slider_tts_header_binding_type": "global",
+    
+    "$slider_enabled_binding_name": "$option_enabled_binding_name",
+    "$slider_enabled_binding_type": "global",
+
+    "enabled": "$enabled",
+    "variables": [
+      {
+        "requires": "(not $option_enabled_binding_name or not $enabled)",
+        "$slider_enabled_binding_name": "#not_data_bound",
+        "$slider_enabled_binding_type": "none"
+      }
+    ],
+    "controls": [
+      {
+        "slider_box@common.slider_box": {
+          "consume_hover_events": false,
+          "$slider_box_layout": "common_form_ds-dav.fill_white",
+          "$slider_box_hover_layout": "common_form_ds-dav.fill_white",
+          "$slider_box_locked_layout": "common_form_ds-dav.fill_white",
+          "$slider_box_indent_layout": "common_form_ds-dav.fill_white",
+          "$slider_box_size": "$slider_box_size_fix",
+          "$slider_track_button": "$slider_name"
+        }
+      },
+      {
+        "slider_bar_default@common_form_ds-dav.fill_white": {
+          "size": [ "100%", 1 ]
+        }
+      },
+      {
+        "slider_bar_hover@common_form_ds-dav.fill_white": {
+          "size": [ "100%", 1 ]
+        }
+      }
+    ]
+  },
+  
+  "custom_slider_content@common_form_ds-dav.background": {
+    "controls": [
+      {
+        "stack_panel": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%", "100%" ],
+          "controls": [
+            {
+              "text_panel": {
+                "type": "panel",
+                "size": [ "fill", "100%" ], 
+                "controls": [
+                  {
+                    "label": {
+                      "type": "label",
+                      "text": "#text",
+                      "size": [ "100% - 5px", "default" ],
+                      "max_size": [ "100%", "default" ],
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "offset": [ 5, 0 ],
+                      "shadow": true,
+                      "bindings": [
+                        {
+                          "binding_name": "#custom_slider_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "custom_form"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(#custom_slider_text - ': ' - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9' - '0' - '-')",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "value_text_panel": {
+                "type": "panel",
+                "size": [ "100%c + 8px", "100%" ], 
+                "controls": [
+                  {
+                    "text": {
+                      "type": "label",
+                      "text": "#text",
+                      "size": [ "default", "default" ],
+                      "anchor_from": "right_middle",
+                      "anchor_to": "right_middle",
+                      "offset": [ -6, 0 ],
+                      "shadow": true,
+                      "bindings": [
+                        {
+                          "binding_name": "#custom_slider_text",
+                          "binding_type": "collection",
+                          "binding_collection_name": "custom_form"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "('§z' + (#custom_slider_text - (#custom_slider_text - '1' - '2' - '3' - '4' - '5' - '6' - '7' - '8' - '9' - '0' - '-')))",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "slider_panel": {
+                "visible": "$slider_visible",
+                "type": "panel",
+                "size": [ "25% + 8px", "100%" ],
+                "controls": [
+                  {
+                    "slider@common_form_ds-dav.slider": {
+                      "size": [ "100% - 8px", "100%" ],
+                      "anchor_from": "right_middle",
+                      "anchor_to": "right_middle",
+                      "offset": [ -8, 0 ],
+                      "consume_hover_events": false
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tooltip@common_form_ds-dav.option_tooltip": {
+          "ignored": "(not $tooltip_visible)"
+        }
+      }
+    ]
+  },
+
+  "custom_slider": {
+    "$option_label": "#text",
+    "$slider_name": "custom_slider",
+    "$slider_value_binding_name": "#custom_slider_value",
+    "$slider_tts_text_value": "#custom_slider_text_value",
+    "$slider_binding_type": "collection",
+    "$slider_collection_name": "custom_form",
+    "$slider_enabled_binding_name": "#custom_slider_enabled",
+    "$slider_enabled_binding_type": "collection",
+    "$slider_timeout_binding_type": "collection",
+    "$slider_timeout_binding_name": "#custom_slider_timeout",
+
+    "type": "panel",
+    "size": [ "100%", 18 ],
+    "controls": [
+      {
+        "default_slider": {
+          "type": "button",
+          "default_control": "default",
+          "hover_control": "hover",
+          "pressed_control": "pressed",
+          "focus_enabled": true,
+          "controls": [
+            {
+              "default@common_form_ds-dav.custom_slider_content": {
+                "$slider_visible": false,
+                "$tooltip_visible": false,
+                "alpha": 0.5
+              } 
+            },
+            {
+              "hover@common_form_ds-dav.custom_slider_content": {
+                "$slider_visible": true,
+                "$tooltip_visible": true,
+                "alpha": 0.7
+              } 
+            },
+            {
+              "pressed@common_form_ds-dav.custom_slider_content": {
+                "$slider_visible": true,
+                "$tooltip_visible": true,
+                "alpha": 0.7
+              } 
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "(not #is_using_gamepad)",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "gamepad_slider_biadabbb": {
+          "type": "panel",
+          "controls": [
+            {
+              "gamepad_slider@common_form_ds-dav.gamepad_slider": {}
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#is_using_gamepad",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "custom_toggle_content": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "label": {
+          "type": "label",
+          "text": "#custom_text",
+          "size": [ "100% - 5px", "default" ],
+          "max_size": [ "100%", "default" ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [ 5, 0 ],
+          "shadow": true,
+          "bindings": [
+            {
+              "binding_name": "#custom_text",
+              "binding_type": "collection",
+              "binding_collection_name": "custom_form"
+            }
+          ]
+        }
+      },
+      {
+        "tooltip@common_form_ds-dav.option_tooltip": {
+          "ignored":"($toggle_unchecked or $toggle_checked)"
+        }
+      },
+      {
+        "toggle_unchecked": {
+          "type": "image",
+          "texture": "textures/ui/focus_border_white",
+          "size": [ 10, 10 ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "offset": [ -5, 0 ],
+          "color": "$color",
+          "variables": [
+            {
+              "requires": "($toggle_checked or $toggle_checked_hover)",
+              "$color": "$main_texture_color"
+            },
+            {
+              "requires": "(not ($toggle_checked or $toggle_checked_hover))",
+              "$color": [ 1, 1, 1 ]
+            }
+          ],
+          "controls": [
+            {
+              "toggle_checked": {
+                "visible": "($toggle_checked or $toggle_checked_hover))",
+                "type": "image",
+                "texture": "textures/ui/White",
+                "size": [ 6, 6 ],
+                "color": "$main_texture_color"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "custom_toggle": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "min_size": [ "100%", 3 ],
+    "controls": [
+      {
+        "custom_toggle@common_form_ds-dav.dark_toggle": {
+          "$toggle_name": "custom_toggle",
+          "$toggle_state_binding_name": "#custom_toggle_state",
+          "$toggle_binding_type": "collection",
+          "$toggle_enabled_binding_name": "#custom_toggle_enabled",
+          "$toggle_enabled_binding_type": "collection",
+          "$toggle_grid_collection_name": "custom_form",
+          "$button_content": "common_form_ds-dav.custom_toggle_content",
+          "$new_border_visible": false,
+
+          "size": [ "100%", 18 ],
+          "bindings": [
+            {
+              "binding_name": "#custom_text",
+              "binding_type": "collection",
+              "binding_collection_name": "custom_form"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#custom_text = 'dimz:padding'))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "custom_form"
+      },
+      {
+        "binding_name": "#collection_index",
+        "binding_type": "collection",
+        "binding_collection_name": "custom_form"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not #collection_index = 0)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "custom_label@settings_common.option_group_label": {
+    "type": "image",
+    "texture": "textures/ui/White",
+    "color": [ 0, 0, 0 ],
+    "alpha": 0.5,
+
+    "$text": "#custom_text",
+    "$text_bindings":[
+      {
+        "binding_name": "#custom_text",
+        "binding_type": "collection",
+        "binding_collection_name": "custom_form"
+      }
+    ],
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "color": "$main_header_text_color",
+          "text": "$text",
+          "max_size": [ "100%", "default" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 4 ],
+          "shadow": true,
+          "locked_alpha": 0.5,
+          "font_type": "$font_type",
+          "font_size": "$font_size",
+          "font_scale_factor": "$font_scale_factor",
+          "bindings": "$text_bindings"
+        }
+      }
+    ]
+  }
+}

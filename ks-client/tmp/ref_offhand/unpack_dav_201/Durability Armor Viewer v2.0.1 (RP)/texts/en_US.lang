@@ -1,0 +1,22 @@
+dimz.dav.control.title=DAV:Control Panel ### dont change 'DAV:'
+
+dimz.dav.control.offhand=Offhand Position
+dimz.dav.control.offhand.right=Right
+dimz.dav.control.offhand.left=Left
+dimz.dav.control.armor=Armor Position
+dimz.dav.control.armor.right=Right
+dimz.dav.control.armor.left=Left
+dimz.dav.control.background=Use Hotbar Background
+dimz.dav.control.display=Display
+dimz.dav.control.display.all=All
+dimz.dav.control.display.armor=Only Armor
+dimz.dav.control.display.offhand=Only Offhand
+dimz.dav.control.durability=Durability Type
+dimz.dav.control.durability.bar=Bar
+dimz.dav.control.durability.percentage=Percentage
+dimz.dav.control.durability.number=Number
+dimz.dav.control.indicator=Show low durability indicator
+dimz.dav.control.visible=Only show equipped armor
+
+dimz.dav.control.cancel=Cancel
+dimz.dav.control.save=Save

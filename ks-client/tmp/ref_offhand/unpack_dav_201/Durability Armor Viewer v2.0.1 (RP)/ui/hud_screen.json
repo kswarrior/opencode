@@ -1,0 +1,49 @@
+/*
+Code by @Dimzcraft.
+https://www.curseforge.com/members/dimzcraft/projects
+(c) Don't use any Code without permission
+*/
+{
+  "hud_title_text/title_frame": {
+    "$is_dimz_nearby_mobs|default": false,
+    "$is_dimz_thirsty_bar|default": false,
+    "$is_dimz_colorful_armor_bar|default": false,
+
+    "variables": [
+      {
+        "requires": "($is_dimz_nearby_mobs or $is_dimz_thirsty_bar or $is_dimz_colorful_armor_bar)",
+        "$title_text_binding": "((#hud_title_text_string - 'dimz-dav:' - 'dimz-nms:' - 'dimz-tbr:' - 'dimz-cab:') = #hud_title_text_string)"
+      }
+    ],
+
+    "$title_text_binding|default": "((#hud_title_text_string - 'dimz-dav:') = #hud_title_text_string)",
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "$title_text_binding",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "dav_title_data_binding@hud_common_ds-dav.title_text_data": {}
+          },
+          {
+            "dav_main_content@hud_ds-dav.main_content": {}
+          }
+        ]
+      }
+    ]
+  }
+}
