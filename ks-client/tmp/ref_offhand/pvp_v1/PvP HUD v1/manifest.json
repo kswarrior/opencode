@@ -1,0 +1,25 @@
+{
+    "format_version": 1,
+    "header": {
+        "uuid": "e7a72345-ca06-472a-ae4a-4593ca18d37e",
+        "name": "PvP HUD v1",
+        "description": "Creates an armour HUD and offhand slot",
+        "version": [
+            1,
+            0,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "description": "V1",
+            "type": "resources",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "uuid": "7e18589d-db58-455c-81d4-9a9a62be0464"
+        }
+    ]
+}
