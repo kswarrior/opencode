@@ -103,31 +103,33 @@
     ]
   },
 
-  // ---------- KS Durability HUD selected-item label ----------
-  // Replaces the vanilla selected-item name label with name + durability text
-  // (rebranded ZenXveda zx_durability; hover-text copy skipped — KS hover already shows durability).
-  "item_panel_image": {
+  // ---------- KS Durability Viewer (merged Durability Viewer V-2.5 [RP]) ----------
+  // selected_item_details_factory stays ignored (upstream DV behavior): the
+  // hover_text above already appends Durability: cur/total to the tooltip.
+  "selected_item_details_factory": {
+    "ignored": true
+  },
+
+  // Upstream DV tweak: hidden focus grabber so controller/gamepad navigation
+  // lands on panels (skipped on touch).
+  "common_panel": {
     "modifications": [
       {
-        "control_name": "item_text_label",
-        "operation": "remove"
-      },
-      {
         "array_name": "controls",
-        "operation": "insert_front",
+        "operation": "insert_back",
         "value": [
           {
-            "selected_item_data@ksd_container.data": {}
-          },
-          {
-            "item_text_label_new@ksd_common.item_text_label": {}
+            "focus_grabber": {
+              "ignored": "(not ($touch))",
+              "type": "button",
+              "size": [ 0, 0 ],
+              "focus_enabled": true,
+              "default_focus_precedence": 8,
+              "layer": 16
+            }
           }
         ]
       }
     ]
-  },
-
-  "selected_item_details_factory": {
-    "ignored": true
   }
 }
