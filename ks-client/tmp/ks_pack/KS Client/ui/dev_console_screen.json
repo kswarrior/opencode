@@ -1,4 +1,6 @@
 {
+  "namespace": "dev_console",
+
   "dev_console_screen": {
     "gamepad_cursor": true,
     "absorbs_input": false,

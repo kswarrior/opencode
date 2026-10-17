@@ -41,15 +41,9 @@
           "offset": [-10, 10],
           "prevent_touch_input": true,
           "controls": [
-            {"default@common.close_button_panel": {
-              "$close_button_texture": "textures/c_ui/close_default"
-            }},
-            {"hover@common.close_button_panel": {
-              "$close_button_texture": "textures/c_ui/close_hover"
-            }},
-            {"pressed@common.close_button_panel": {
-              "$close_button_texture": "textures/c_ui/close_hover"
-            }}
+            {"default@mob_effect.ks_close_button_default": {}},
+            {"hover@mob_effect.ks_close_button_hover": {}},
+            {"pressed@mob_effect.ks_close_button_hover": {}}
           ]
         }
       }
@@ -131,5 +125,23 @@
     "anchor_to": "left_middle",
     "size": [12, 12],
     "offset": [ 3, 0 ]
+  },
+
+  "ks_close_button_default": {
+    "type": "panel",
+    "layer": 1,
+    "size": "$close_button_panel_size",
+    "controls": [
+      { "img": { "type": "image", "layer": 1, "texture": "textures/c_ui/close_default" } }
+    ]
+  },
+
+  "ks_close_button_hover": {
+    "type": "panel",
+    "layer": 1,
+    "size": "$close_button_panel_size",
+    "controls": [
+      { "img": { "type": "image", "layer": 1, "texture": "textures/c_ui/close_hover" } }
+    ]
   }
 }

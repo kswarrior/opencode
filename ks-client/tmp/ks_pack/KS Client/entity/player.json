@@ -74,12 +74,55 @@
                 "font3": "textures/health_bar/font/3",
                 "font2": "textures/health_bar/font/2",
                 "font1": "textures/health_bar/font/1",
-                "font0": "textures/health_bar/font/0"
+                "font0": "textures/health_bar/font/0",
+                "ksd_leather_helmet": "textures/entity/ksd_hud/leather_helmet",
+                "ksd_leather_chestplate": "textures/entity/ksd_hud/leather_chestplate",
+                "ksd_leather_leggings": "textures/entity/ksd_hud/leather_leggings",
+                "ksd_leather_boots": "textures/entity/ksd_hud/leather_boots",
+                "ksd_chainmail_helmet": "textures/items/chainmail_helmet",
+                "ksd_chainmail_chestplate": "textures/items/chainmail_chestplate",
+                "ksd_chainmail_leggings": "textures/items/chainmail_leggings",
+                "ksd_chainmail_boots": "textures/items/chainmail_boots",
+                "ksd_iron_helmet": "textures/items/iron_helmet",
+                "ksd_iron_chestplate": "textures/items/iron_chestplate",
+                "ksd_iron_leggings": "textures/items/iron_leggings",
+                "ksd_iron_boots": "textures/items/iron_boots",
+                "ksd_diamond_helmet": "textures/items/diamond_helmet",
+                "ksd_diamond_chestplate": "textures/items/diamond_chestplate",
+                "ksd_diamond_leggings": "textures/items/diamond_leggings",
+                "ksd_diamond_boots": "textures/items/diamond_boots",
+                "ksd_gold_helmet": "textures/items/gold_helmet",
+                "ksd_gold_chestplate": "textures/items/gold_chestplate",
+                "ksd_gold_leggings": "textures/items/gold_leggings",
+                "ksd_gold_boots": "textures/items/gold_boots",
+                "ksd_netherite_helmet": "textures/items/netherite_helmet",
+                "ksd_netherite_chestplate": "textures/items/netherite_chestplate",
+                "ksd_netherite_leggings": "textures/items/netherite_leggings",
+                "ksd_netherite_boots": "textures/items/netherite_boots",
+                "ksd_turtle_helmet": "textures/items/turtle_helmet",
+                "ksd_elytra": "textures/items/elytra",
+                "ksd_offhand_frame": "textures/ui/ksb_slot_button",
+                "ksd_generic_item": "textures/entity/ksd_hud/generic_item",
+                "ksd_bars": "textures/entity/ksd_hud/bars",
+                "ksd_shield": "textures/entity/shield",
+                "ksd_arrow": "textures/items/arrow",
+                "ksd_firework": "textures/items/fireworks",
+                "ksd_totem": "textures/items/totem",
+                "ksd_nautilus": "textures/items/nautilus",
+                "ksd_map": "textures/items/map_filled"
             },
             "geometry": {
                 "default": "geometry.humanoid.custom",
                 "cape": "geometry.cape",
-                "health_bar": "geometry.health_bar"
+                "health_bar": "geometry.health_bar",
+                "ksd_hud_helmet": "geometry.ksd_hud_helmet",
+                "ksd_hud_chestplate": "geometry.ksd_hud_chestplate",
+                "ksd_hud_leggings": "geometry.ksd_hud_leggings",
+                "ksd_hud_boots": "geometry.ksd_hud_boots",
+                "ksd_hud_bars": "geometry.ksd_hud_bars",
+                "ksd_hud_item": "geometry.ksd_hud_item",
+                "ksd_hud_item_shield": "geometry.ksd_hud_item_shield",
+                "ksd_hud_frame": "geometry.ksd_hud_frame"
             },
             "scripts": {
                 "scale": "0.9375",
@@ -102,11 +145,17 @@
                     "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;",
                     "variable.riding_y_offset = query.is_riding_any_entity_of_type('minecraft:minecart', 'minecraft:boat', 'minecraft:chest_boat', 'minecraft:strider') ? -3.0 : 0.0;",
                     "v.health_bar_position = q.is_sneaking ? 33 : 37;",
-                    "v.health_bar_scale = q.model_scale;"
+                    "v.health_bar_scale = q.model_scale;",
+                    "v.ksd_hud_on = !query.is_riding && !query.is_gliding && query.is_in_ui && !query.is_spectator;",
+                    "v.ksd_bar0 = query.has_armor_slot(0) ? 1.0 - math.clamp(query.armor_damage_slot(0) / (query.armor_material_slot(0) == 0 ? 55.0 : (query.armor_material_slot(0) == 3 ? 363.0 : (query.armor_material_slot(0) == 4 ? 77.0 : (query.armor_material_slot(0) == 6 ? 275.0 : (query.armor_material_slot(0) == 7 ? 407.0 : 165.0))))), 0.0, 1.0) : 0.0;",
+                    "v.ksd_bar1 = query.has_armor_slot(1) ? 1.0 - math.clamp(query.armor_damage_slot(1) / (query.armor_material_slot(1) == 0 ? 80.0 : (query.armor_material_slot(1) == 3 ? 528.0 : (query.armor_material_slot(1) == 4 ? 112.0 : (query.armor_material_slot(1) == 5 ? 432.0 : (query.armor_material_slot(1) == 7 ? 592.0 : 240.0))))), 0.0, 1.0) : 0.0;",
+                    "v.ksd_bar2 = query.has_armor_slot(2) ? 1.0 - math.clamp(query.armor_damage_slot(2) / (query.armor_material_slot(2) == 0 ? 75.0 : (query.armor_material_slot(2) == 3 ? 495.0 : (query.armor_material_slot(2) == 4 ? 105.0 : (query.armor_material_slot(2) == 7 ? 555.0 : 225.0)))), 0.0, 1.0) : 0.0;",
+                    "v.ksd_bar3 = query.has_armor_slot(3) ? 1.0 - math.clamp(query.armor_damage_slot(3) / (query.armor_material_slot(3) == 0 ? 65.0 : (query.armor_material_slot(3) == 3 ? 429.0 : (query.armor_material_slot(3) == 4 ? 91.0 : (query.armor_material_slot(3) == 7 ? 481.0 : 195.0)))), 0.0, 1.0) : 0.0;"
                 ],
                 "animate": [
                     "root",
-                    "health_bar"
+                    "health_bar",
+                    "ksd_hud"
                 ],
                 "variables": {
                     "variable.fp_melee_spear_use_attachable_rotation_z": "public",
@@ -191,7 +240,8 @@
                 "third_person_melee_spear_hold": "animation.humanoid.melee_spear_hold",
                 "third_person_melee_spear_attack": "animation.player.melee_spear_attack",
                 "third_person_melee_spear_controller": "controller.animation.player.melee_spear",
-                "health_bar": "animation.health_bar"
+                "health_bar": "animation.health_bar",
+                "ksd_hud": "animation.ksd_hud"
             },
             "render_controllers": [
                 {
@@ -213,7 +263,14 @@
                 "controller.render.health_bar.heart",
                 "controller.render.health_bar.digit1",
                 "controller.render.health_bar.digit2",
-                "controller.render.health_bar.digit3"
+                "controller.render.health_bar.digit3",
+                { "controller.render.ksd_hud_helmet": "variable.ksd_hud_on && query.has_armor_slot(0)" },
+                { "controller.render.ksd_hud_chestplate": "variable.ksd_hud_on && query.has_armor_slot(1)" },
+                { "controller.render.ksd_hud_leggings": "variable.ksd_hud_on && query.has_armor_slot(2)" },
+                { "controller.render.ksd_hud_boots": "variable.ksd_hud_on && query.has_armor_slot(3)" },
+                { "controller.render.ksd_hud_offhand_frame": "variable.ksd_hud_on && query.is_item_equipped(1)" },
+                { "controller.render.ksd_hud_offhand_item": "variable.ksd_hud_on && query.is_item_equipped(1)" },
+                { "controller.render.ksd_hud_bars": "variable.ksd_hud_on" }
             ],
             "enable_attachables": true
         }

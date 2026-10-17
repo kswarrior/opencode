@@ -60,12 +60,9 @@
 	"$ksb_sbi": true,
 	"$hud_elipses_enabled": false,
 	"$hud_elipses_sound_volume": 0.0,
-	"$f1_enabled": true,
-	"$f1_texture": "textures/ui/ks_touch/hide_gui",
-	"$f1_size": [ 18, 18 ],
-	"$f1_offset": [ 47.5, 1.0 ],
 
 	"$generic_button_text_color": [ 1, 1, 1 ],
+	"$text_color": [ 1, 1, 1 ],
 	"$light_button_default_text_color": [ 0.1176, 0.1176, 0.1216 ],
 	"$light_button_hover_text_color": [ 0.1176, 0.1176, 0.1216 ],
 	"$light_button_pressed_text_color": [ 0.1176, 0.1176, 0.1216 ],

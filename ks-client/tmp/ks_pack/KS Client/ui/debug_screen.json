@@ -1,4 +1,6 @@
 {
+  "namespace": "debug_screen",
+
   "debug_screen": {
     "button_mappings": [
       {

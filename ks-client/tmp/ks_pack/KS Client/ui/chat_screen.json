@@ -1,4 +1,6 @@
 {
+  "namespace": "chat",
+
   "chat_background": {
     "ignored": true
   },
@@ -320,7 +322,7 @@
   },
   "new_send": {
     "type": "image",
-    "texture": "textures/ui/.texture_assets/.chat_icons/new_send.png",
+    "texture": "textures/ui/texture_assets/chat_icons/new_send.png",
     "size": [
       16,
       14
@@ -394,18 +396,6 @@
           "type": "stack_panel",
           "orientation": "horizontal",
           "controls": [
-            {
-              "ont2tt@note_and_calc.open_notes_toggle": {
-                "size": [
-                  16,
-                  16
-                ],
-                "$default_texture": "textures/ui/bl_bt",
-                "$hover_texture": "textures/ui/bl_bt",
-                "$pressed_texture": "textures/ui/bl_bt",
-                "$pressed_no_hover_texture": "textures/ui/bl_bt"
-              }
-            },
             {
               "ac_padd0": {
                 "type": "panel",
