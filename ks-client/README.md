@@ -291,16 +291,16 @@ ks-client/
 │   ├── biomes_client.json           ← forces ks:fullbright in all 71 biomes (default + 70 per-biome, NoFog-all water colors)
 │   ├── fogs/ks_fullbright.json      ← nofog: air/weather render + water/lava/powder-snow 4000–10000
 │   ├── blocks.json                  ← hopper face mapping only (BlockTrace directional hopper)
-│   ├── entity/ (82 json: 81 mobs + player.json) ← KS health-bar hooks on mobs + players (player.json is vanilla 1.21.120 baseline + health-bar, no FPS)
-│   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses)
+│   ├── entity/ (82 json: 81 mobs + player.json) ← KS health-bar hooks on mobs + players (player.json is vanilla 1.21.120 baseline + health-bar + equipment HUD, no FPS)
+│   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses) + ksd_hud.json (equipment HUD anchors/scales)
 │   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
-│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json
-│   ├── render_controllers/health_bar.json
+│   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json + ksd_hud_armor/bars/offhand.geo.json (equipment HUD)
+│   ├── render_controllers/health_bar.json + ksd_hud.render_controllers.json (7 equipment-HUD controllers)
 │   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` + 17 door icons)
 │   │   ├── texture_list.json + textures_list.json (identical, 1623 entries, rebuilt from disk: PNG+TGA, no dangling)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (116 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (116 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png) + entity/ksd_hud (6 PNGs own art: leather ×4 grayscale + generic_item + bars 16×4)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
@@ -316,7 +316,7 @@ ks-client/
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 Drive SKIP lines and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json` (81 mobs + `player.json`). Every shipped `ui/**/*.json` is registered in `_ui_defs.json` (26 entries) and carries its required `namespace` (vanilla-namespace overrides need it to merge — `chat`/`common`/`debug_screen`/`dev_console`/`controls_section` namespaces and the six missing `_ui_defs` entries were restored in the audit).
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 Drive SKIP lines and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json` (81 mobs + `player.json`) + the player-only equipment HUD (`animations/ksd_hud.json`, 3 `models/entity/ksd_hud_*.geo.json`, `render_controllers/ksd_hud.render_controllers.json`, `textures/entity/ksd_hud/` — §2.18). Every shipped `ui/**/*.json` is registered in `_ui_defs.json` (26 entries) and carries its required `namespace` (vanilla-namespace overrides need it to merge — `chat`/`common`/`debug_screen`/`dev_console`/`controls_section` namespaces and the six missing `_ui_defs` entries were restored in the audit).
 
 ---
 
@@ -375,6 +375,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 - **Items (`atlas.items` = mace + 17 door icons):** `mace.png` registered as `mace` (custom icon + `item.mace.name`); 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) registered with explicit atlas entries; bow draw indicators `bow_pulling_0/1/2.png` override vanilla by path (unregistered, listed in both texture lists);
 - **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (8 files — close/craft/effect_bg, all wired), `ksb_slot_button (+pressed)`, `ksb_numb_1-9`, chat art (`bl_bt/black_ovr/blank/null` + `texture_assets/chat_icons/`), every mob-effect icon, joystick/buttons/D-pad, crosshair indicator `ks_crosshair_default/entity.png` (15×15 default + mob-hit variant, 1st-person only via `hud_crosshair_overlay.json`; dead crosshair copy PNGs removed, no atlas).
 - **Totem (active):** `totem/close_button.png`, `totem_button.png` — wired in `inventory_screen.json` + `hud_screen.json` `hud.totem_btn`.
+- **Equipment HUD (active, §2.18):** `textures/entity/ksd_hud/` — `leather_helmet/chestplate/leggings/boots.png` (16×16 grayscale, dyed via `overlay_color`), `generic_item.png` (fallback offhand icon), `bars.png` (16×4: green fill + dark background rows, 1×1-normalized UV); offhand slot frame reuses `textures/ui/ksb_slot_button.png` (entry 1 art); armor/offhand item icons reference vanilla textures by path.
 - **Hammer (active):** `textures/entity/attachable/mace.png` (held 3D model) + `textures/items/mace.png` (icon).
 - **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`.
 - **Colormap/misc/gui/controls/health_bar:** grass/leaves/water tints, `misc/vignette.png`, clean `misc/pumpkinblur.png` (1×1, no pumpkin blur, listed in `texture_list.json`), D-pad art, health bar sprites (`bar/` 00–50, `font/` 0–9, `heart.png`).
@@ -384,7 +385,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 ## 8. Entities, Animations, Fog, Render Controllers
 
 - `entity/`: 82 client entities (81 mobs `allay` → `zombie_villager` + `player.json`), all with KS health-bar hooks (see §2.14). `player.json` is vanilla 1.21.120 baseline + health-bar (no FPS). Vanilla animation/controller/geometry/texture refs resolve engine-side.
-- `animations/health_bar.json` (always-display billboard logic) + `animations/mace.animation.json` (hammer hold poses), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
+- `animations/health_bar.json` (always-display billboard logic) + `animations/mace.animation.json` (hammer hold poses) + `animations/ksd_hud.json` (`animation.ksd_hud` — equipment HUD anchors/swim compensation/bar scales), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`) + `models/entity/ksd_hud_armor/bars/offhand.geo.json` (`geometry.ksd_hud_*`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`) + `render_controllers/ksd_hud.render_controllers.json` (`controller.render.ksd_hud_*`), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
 - `fogs/ks_fullbright.json` + `biomes_client.json`: global nofog fullbright — 71 biomes forced `ks:fullbright` (NoFog-all water colors), air/weather render infinite, water/lava/powder-snow `4000–10000` (see §2.9, `copyright.txt` entry 16).
 
 ---
@@ -423,6 +424,8 @@ and what was taken — in [`copyright.txt`](./copyright.txt) in the project
 home (not shipped inside the `.mcpack`). Check that file before
 redistributing: some upstream licenses require the creator's permission.
 
+Technique references (no files taken): PvP HUD v1.0/v1.1 (bbreadMC) and Offhand Slots (Chainsketch) for the equipment HUD — see `copyright.txt` entry 18.
+
 `generated_with: minecraft_creator_tools 0.19.0`.
 
 ---
@@ -447,4 +450,4 @@ Current (`manifest.json`): `KS Client v1.4.9`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 116 / gui / c_ui 8 / totem 2 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ksd_*, $text_color), `_ui_defs` 26 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (46 files), `copyright.txt` (+17 incl. ZenXveda durability), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace + ksd_hud), `attachables/mace`, `models/` (health_bar + mace + ksd_hud_*), `render_controllers/` (health_bar + ksd_hud), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 116 / gui / c_ui 8 / totem 2 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace + entity/ksd_hud 6 own art / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ksd_*, $text_color), `_ui_defs` 26 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (46 files), `copyright.txt` (+18 incl. ZenXveda durability + equipment-HUD technique), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
