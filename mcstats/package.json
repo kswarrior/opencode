@@ -1,0 +1,13 @@
+{
+  "name": "mcstats",
+  "version": "1.0.0",
+  "description": "Stats web app — monitors the Mayanshanboss Bedrock server (Aternos) with a live dashboard",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

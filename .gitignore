@@ -8,6 +8,7 @@ server
 !auth/.env
 !account/.env
 !stats/.env
+!mcstats/.env
 !.env.example
 # docker
 .docker/

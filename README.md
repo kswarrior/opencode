@@ -13,6 +13,9 @@ make -C main && make -C auth && make -C account
 ./auth/server    # http://localhost:8081
 ./account/server # http://localhost:8082
 
+# mcstats — Bedrock stats web app (monitors Mayanshanboss.aternos.me:63046)
+cd mcstats && npm install && npm start   # http://localhost:10000
+
 # OR run all + gateway via Docker (connected)
 docker compose up --build
 # then:
@@ -57,6 +60,10 @@ Verified:
     ├── src/main.c        # port 8082, HTMX profile demo
     ├── Makefile
     └── Dockerfile
+└── mcstats/              # Bedrock server stats web app (Render: `mcstats`)
+    ├── server.js         # Express API + static frontend, RakNet UDP ping
+    ├── lib/bedrock.js    # Bedrock unconnected ping (+ HTTP fallback)
+    └── client/           # header + sidebar + phone hamburger, light-blue theme
 ```
 
 Each `main.c` is self-contained (~200 lines, only `libc`+`pthread`+`epoll`), see `main/src/main.c:15` for `PORT`/`SERVICE_NAME` tuning.
@@ -82,6 +89,12 @@ Gateway (port 8085):
 - `/auth/` → auth:8081 (strip prefix)
 - `/account/` → account:8082
 - `/health` → `gateway ok`
+
+mcstats (port 10000, Render service `mcstats`):
+- `GET /` → stats dashboard (light-blue/white UI, sidebar + hamburger)
+- `GET /api/status` → live Bedrock status + totals
+- `GET /api/history` → rolling 24h check history for the chart
+- `GET /health` → `ok mcstats server-online|server-offline`
 
 ## Adding More Sites (`./more` not yet)
 

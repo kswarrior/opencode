@@ -111,3 +111,24 @@ services:
         value: 10000
       - key: OLLAMA_HOST
         value: 0.0.0.0:10000
+
+  # Bedrock stats web app — monitors Mayanshanboss.aternos.me:63046
+  - type: web
+    name: mcstats
+    env: docker
+    dockerfilePath: ./mcstats/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: true
+    branch: main
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: MC_HOST
+        value: Mayanshanboss.aternos.me
+      - key: MC_PORT
+        value: 63046
+      - key: CHECK_INTERVAL_MS
+        value: 60000
+      - key: HTTP_FALLBACK
+        value: 1
