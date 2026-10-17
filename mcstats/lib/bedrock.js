@@ -130,7 +130,9 @@ function queryBedrock(host, port, timeoutMs = 2500) {
         const type = msg.readUInt8(0);
         if (type === 0x09 && step === 0) {
           step = 1;
-          const token = msg.slice(5, 9);
+          let token = msg.slice(5);
+          const end = token.indexOf(0);
+          if (end !== -1) token = token.slice(0, end);
           const req = Buffer.concat([Buffer.from([0xfe, 0xfd, 0x00]), session, token, Buffer.alloc(4)]);
           socket.send(req, 0, req.length, port, host, (err) => {
             if (err) finish(err);
