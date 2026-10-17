@@ -1,7 +1,0 @@
-{
-  "namespace": "pause"
-
-  // (Config button + menu removed: the pause Config system, including all
-  // Info toggles, was taken out. The HUD F1/F3 keys in hud_screen.json are
-  // independent and keep working.)
-}
