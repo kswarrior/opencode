@@ -1,0 +1,17 @@
+{
+  "namespace": "hud_crosshair",
+
+  // KS Crosshair Indicator — vanilla cursor hidden (controls:[]), upstream-exact.
+  // The dynamic default/entity panel lives in ui/hud_screen.json
+  // (hud.ks_crosshair_panel) because right_helper_collection exists only in
+  // the hud_screen screen — in this overlay screen the 'hit' check never
+  // resolves, so the entity texture could never show. Emptying vanilla here
+  // avoids double-draw with the hud_screen panel.
+  // NOTE: hud_screen panels show in ALL perspectives (engine auto-hide in
+  // 2nd/3rd applies only to this overlay screen). 1st-person-only dynamic
+  // crosshair is not achievable with resource-pack-only UI.
+
+  "hud_crosshair_screen": {
+    "controls": []
+  }
+}
