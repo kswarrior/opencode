@@ -263,6 +263,42 @@ here. Respect their licenses — get permission before redistributing.
              (`ui/ks_modules/ksb_hotbar_button/settings.json`),
              4 entries appended in `ui/_ui_defs.json` (append-only).
 
+18. Equipment HUD — armor icons + armor-durability bars + offhand item icon
+    near the hotbar (KS clean-room build; no upstream files taken)
+    Reference : bbreadMC — PvP HUD v1.0/v1.1 (staged in ./tmp/ref_offhand/
+                pvp_v11/ as a technique reference only: 3D HUD anchored in
+                the q.is_in_ui first-person context, flat zero-depth quads,
+                swim-compensated screen-mapping constants 500.0 / 879.6 /
+                -17.1275, armor column offsets 23/8/-9/-24, offhand scale
+                0.87 + item bone 0.6, texture arrays indexed by
+                q.armor_texture_slot, condition-gated render controllers,
+                hurt/fire color zeroing, overlay_color usage). No PvP HUD
+                files, geometry, textures, names or controllers were
+                copied — all KS geometry/animation/render controllers/
+                textures are newly authored; only the screen-mapping
+                constants + engine findings (q.armor_damage_slot raw
+                damage points, q.armor_color_slot 2-arg 0-1 channels) are
+                replicated.
+    Style ref : Chainsketch — Offhand Slots (offhand icon beside the
+                hotbar; layout inspiration only, nothing taken).
+    Now       : `entity/player.json` (+ `ksd_*` texture/geometry slots,
+                `v.ksd_hud_on` / `v.ksd_bar0-3` pre_animation, `animate` +
+                `animations` entry, 7 condition-gated render controllers),
+                `models/entity/ksd_hud_armor.geo.json` (geometry.ksd_hud_
+                helmet/chestplate/leggings/boots),
+                `models/entity/ksd_hud_bars.geo.json` (geometry.ksd_hud_bars),
+                `models/entity/ksd_hud_offhand.geo.json` (geometry.ksd_hud_
+                item/item_shield/frame), `animations/ksd_hud.json`
+                (animation.ksd_hud), `render_controllers/ksd_hud.render_
+                controllers.json` (7 controllers), `textures/entity/ksd_hud/`
+                (own art: leather_helmet/chestplate/leggings/boots 16x16
+                grayscale for dye tint, generic_item, bars 16x4); offhand
+                slot frame reuses KS `textures/ui/ksb_slot_button.png`
+                (entry 1, itzriyo157); armor/offhand item icons reference
+                vanilla textures by path (chainmail/iron/diamond/gold/
+                netherite/turtle/elytra, shield, arrow, fireworks, totem,
+                nautilus, map_filled) — no vanilla files copied.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
