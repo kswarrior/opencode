@@ -365,6 +365,99 @@ body {
 .mini span { font-size: 13px; color: var(--muted); }
 .mini b { font-size: 18px; color: var(--sky-deep); }
 
+/* player cards */
+
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.pcard { padding: 16px; }
+
+.pcard-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.pcard-head .dot { background: #cbd5e1; }
+.pcard.online .dot { background: var(--ok); animation: pulse 1.8s ease-out infinite; }
+
+.pname {
+  flex: 1;
+  font-size: 16px;
+  color: var(--ink);
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.pbadge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.pcard.online .pbadge { color: #15803d; }
+
+.ptoday {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.ptoday small {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+.pbar {
+  height: 8px;
+  border-radius: 99px;
+  background: var(--line-soft);
+  overflow: hidden;
+  margin: 10px 0 6px;
+}
+
+.pbar i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #38bdf8, var(--sky-strong));
+}
+
+.pmeta {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.pmeta b { color: var(--sky-deep); font-weight: 700; }
+
+.pweek {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 34px;
+  margin-top: 12px;
+}
+
+.pday {
+  flex: 1;
+  min-height: 3px;
+  border-radius: 3px;
+  background: var(--sky-soft);
+}
+
+.pday.today { background: linear-gradient(180deg, #38bdf8, var(--sky-strong)); }
+
 /* server info */
 .info-list { padding: 6px 18px; margin-bottom: 16px; }
 
