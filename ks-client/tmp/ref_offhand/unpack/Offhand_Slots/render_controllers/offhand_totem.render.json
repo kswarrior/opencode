@@ -1,0 +1,19 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.totem_offhand": {
+			"textures": [
+				"Texture.totem"
+			],
+
+      "is_hurt_color": {},
+      "on_fire_color": {},
+			"geometry": "Geometry.offhand_item",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			]
+		}
+	}
+}

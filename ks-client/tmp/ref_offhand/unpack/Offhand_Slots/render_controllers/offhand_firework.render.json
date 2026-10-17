@@ -1,0 +1,20 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.firework_offhand": {
+			"textures": [
+				"Texture.firework"
+			],
+
+      "is_hurt_color": {},
+      "on_fire_color": {},
+
+			"geometry": "Geometry.offhand_item",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.arrow_offhand": {
+			"textures": [
+				"Texture.arrow"
+			],
+
+      "is_hurt_color": {},
+      "on_fire_color": {},
+
+			"geometry": "Geometry.offhand_item",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			]
+		}
+	}
+}
