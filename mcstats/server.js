@@ -1,22 +1,30 @@
 'use strict';
 
+require('dotenv').config();
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const { pingBedrock, statusViaHttp } = require('./lib/bedrock');
 
-const PORT = parseInt(process.env.PORT || '10000', 10);
+function intEnv(name, fallback, min) {
+  const raw = parseInt(process.env[name] || '', 10);
+  const value = Number.isFinite(raw) ? raw : fallback;
+  return min != null ? Math.max(min, value) : value;
+}
+
+const PORT = intEnv('PORT', 10000, 1);
 const MC_HOST = process.env.MC_HOST || 'Mayanshanboss.aternos.me';
-const MC_PORT = parseInt(process.env.MC_PORT || '63046', 10);
-const MAX_PLAYERS_OVERRIDE = Math.max(0, parseInt(process.env.MC_MAX_PLAYERS || '20', 10) || 0);
-const CHECK_INTERVAL_MS = Math.max(15000, parseInt(process.env.CHECK_INTERVAL_MS || '60000', 10));
-const PING_TIMEOUT_MS = Math.max(1000, parseInt(process.env.PING_TIMEOUT_MS || '5000', 10));
-const HTTP_TIMEOUT_MS = Math.max(2000, parseInt(process.env.HTTP_TIMEOUT_MS || '8000', 10));
+const MC_PORT = intEnv('MC_PORT', 63046, 1);
+const MAX_PLAYERS_OVERRIDE = intEnv('MC_MAX_PLAYERS', 20, 0);
+const CHECK_INTERVAL_MS = intEnv('CHECK_INTERVAL_MS', 60000, 15000);
+const PING_TIMEOUT_MS = intEnv('PING_TIMEOUT_MS', 5000, 1000);
+const HTTP_TIMEOUT_MS = intEnv('HTTP_TIMEOUT_MS', 8000, 2000);
 const HTTP_FALLBACK = process.env.HTTP_FALLBACK !== '0';
 
 const SELF_URL = (process.env.SELF_URL || process.env.RENDER_EXTERNAL_URL || '').replace(/\/+$/, '');
 const SELF_PING = process.env.SELF_PING !== '0' && !!SELF_URL;
-const SELF_PING_MS = Math.max(10000, parseInt(process.env.SELF_PING_MS || '300000', 10) || 300000);
+const SELF_PING_MS = intEnv('SELF_PING_MS', 300000, 10000);
 
 const ADDRESS = `${MC_HOST}:${MC_PORT}`;
 const PUBLIC_CFG = { host: MC_HOST, port: MC_PORT, address: ADDRESS, edition: 'Bedrock (MCPE)' };
@@ -53,8 +61,24 @@ let current = {
 function loadPersisted() {
   try {
     const raw = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-    if (Array.isArray(raw.history)) history = raw.history.slice(-MAX_SAMPLES);
-    if (raw.totals && typeof raw.totals === 'object') totals = { ...totals, ...raw.totals };
+    history = (Array.isArray(raw.history) ? raw.history : [])
+      .filter((s) => s && Number.isFinite(s.t) && typeof s.online === 'boolean')
+      .map((s) => ({
+        t: s.t,
+        online: s.online,
+        players: Number.isFinite(s.players) ? s.players : 0,
+        max: Number.isFinite(s.max) ? s.max : 0,
+        latencyMs: Number.isFinite(s.latencyMs) ? s.latencyMs : null
+      }))
+      .slice(-MAX_SAMPLES);
+    if (raw.totals && typeof raw.totals === 'object') {
+      totals = {
+        checks: Number.isFinite(raw.totals.checks) ? raw.totals.checks : 0,
+        onlineChecks: Number.isFinite(raw.totals.onlineChecks) ? raw.totals.onlineChecks : 0,
+        peakPlayers: Number.isFinite(raw.totals.peakPlayers) ? raw.totals.peakPlayers : 0,
+        firstCheckAt: Number.isFinite(raw.totals.firstCheckAt) ? raw.totals.firstCheckAt : null
+      };
+    }
     const last = history[history.length - 1];
     if (last) lastOnlineState = last.online;
     if (history.length) {
@@ -87,84 +111,88 @@ async function check() {
   if (checking) return;
   checking = true;
 
-  let result = null;
-  let reason = null;
-  let error = null;
-
   try {
-    result = await pingBedrock(MC_HOST, MC_PORT, PING_TIMEOUT_MS);
-  } catch (udpErr) {
-    error = `udp: ${udpErr.message}`;
-    reason = 'no-response';
-    if (HTTP_FALLBACK) {
-      try {
-        const viaHttp = await statusViaHttp(MC_HOST, MC_PORT, HTTP_TIMEOUT_MS);
-        if (viaHttp.online) {
-          result = viaHttp;
-          reason = null;
-          error = null;
-        } else {
-          reason = 'offline';
-          error = 'udp: no response; status api: offline';
+    let result = null;
+    let reason = null;
+    let error = null;
+
+    try {
+      result = await pingBedrock(MC_HOST, MC_PORT, PING_TIMEOUT_MS);
+    } catch (udpErr) {
+      error = `udp: ${udpErr.message}`;
+      reason = 'no-response';
+      if (HTTP_FALLBACK) {
+        try {
+          const viaHttp = await statusViaHttp(MC_HOST, MC_PORT, HTTP_TIMEOUT_MS);
+          if (viaHttp.online) {
+            result = viaHttp;
+            reason = null;
+            error = null;
+          } else {
+            reason = 'offline';
+            error = 'udp: no response; status api: offline';
+          }
+        } catch (apiErr) {
+          reason = 'unreachable';
+          error = `${error}; api: ${apiErr.message}`;
         }
-      } catch (apiErr) {
-        reason = 'unreachable';
-        error = `${error}; api: ${apiErr.message}`;
       }
     }
+
+    const now = Date.now();
+    const online = !!result && result.online !== false;
+
+    current.checked = true;
+    current.online = online;
+    current.reason = online ? null : reason || 'offline';
+    current.error = online ? null : error;
+    current.lastCheckedAt = now;
+
+    if (online) {
+      current.motd = result.motd ?? null;
+      current.version = result.version ?? null;
+      current.protocol = result.protocol ?? null;
+      current.software = result.software ?? null;
+      current.gamemode = result.gamemode ?? null;
+      current.players = result.players ?? 0;
+      current.maxPlayers = MAX_PLAYERS_OVERRIDE > 0 ? MAX_PLAYERS_OVERRIDE : result.maxPlayers ?? 0;
+      current.latencyMs = result.latencyMs ?? null;
+      current.source = result.source || 'udp';
+      current.lastOnlineAt = now;
+    } else {
+      current.players = 0;
+      current.maxPlayers = 0;
+      current.latencyMs = null;
+      current.source = null;
+      current.lastOfflineAt = now;
+    }
+
+    if (lastOnlineState !== null && lastOnlineState !== online) current.lastChangeAt = now;
+    lastOnlineState = online;
+
+    history.push({
+      t: now,
+      online,
+      players: online ? current.players : 0,
+      max: online ? current.maxPlayers : 0,
+      latencyMs: online ? current.latencyMs : null
+    });
+    if (history.length > MAX_SAMPLES) history.splice(0, history.length - MAX_SAMPLES);
+
+    totals.checks += 1;
+    totals.firstCheckAt = totals.firstCheckAt || now;
+    if (online) {
+      totals.onlineChecks += 1;
+      if (current.players > totals.peakPlayers) totals.peakPlayers = current.players;
+    }
+  } catch (err) {
+    console.error('mcstats check failed unexpectedly:', err.message);
+  } finally {
+    checking = false;
+    nextCheckAt = Date.now() + CHECK_INTERVAL_MS;
+    persist();
+    setTimeout(check, CHECK_INTERVAL_MS);
   }
-
-  const now = Date.now();
-  const online = !!result && result.online !== false;
-
-  current.checked = true;
-  current.online = online;
-  current.reason = online ? null : reason || 'offline';
-  current.error = online ? null : error;
-  current.lastCheckedAt = now;
-
-  if (online) {
-    current.motd = result.motd ?? null;
-    current.version = result.version ?? null;
-    current.protocol = result.protocol ?? null;
-    current.software = result.software ?? null;
-    current.gamemode = result.gamemode ?? null;
-    current.players = result.players ?? 0;
-    current.maxPlayers = MAX_PLAYERS_OVERRIDE > 0 ? MAX_PLAYERS_OVERRIDE : result.maxPlayers ?? 0;
-    current.latencyMs = result.latencyMs ?? null;
-    current.source = result.source || 'udp';
-    current.lastOnlineAt = now;
-  } else {
-    current.players = 0;
-    current.maxPlayers = 0;
-    current.latencyMs = null;
-    current.source = null;
-    current.lastOfflineAt = now;
-  }
-
-  if (lastOnlineState !== null && lastOnlineState !== online) current.lastChangeAt = now;
-  lastOnlineState = online;
-
-  history.push({
-    t: now,
-    online,
-    players: online ? current.players : 0,
-    max: online ? current.maxPlayers : 0,
-    latencyMs: online ? current.latencyMs : null
-  });
-  if (history.length > MAX_SAMPLES) history.splice(0, history.length - MAX_SAMPLES);
-
-  totals.checks += 1;
-  totals.firstCheckAt = totals.firstCheckAt || now;
-  if (online) {
-    totals.onlineChecks += 1;
-    if (current.players > totals.peakPlayers) totals.peakPlayers = current.players;
-  }
-
-  checking = false;
-  nextCheckAt = Date.now() + CHECK_INTERVAL_MS;
-  persist();
-  setTimeout(check, CHECK_INTERVAL_MS);
 }
 
 function scheduleSelfPing() {

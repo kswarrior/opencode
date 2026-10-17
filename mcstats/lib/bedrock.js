@@ -47,9 +47,7 @@ function pingBedrock(host, port, timeoutMs = 5000) {
     socket.on('message', (msg) => {
       try {
         finish(null, parsePong(msg));
-      } catch (err) {
-        finish(err);
-      }
+      } catch { /* ignore stray/malformed packets; wait for a valid pong or the timeout */ }
     });
 
     const ping = Buffer.alloc(33);
