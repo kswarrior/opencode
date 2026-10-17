@@ -14,6 +14,10 @@ const PING_TIMEOUT_MS = Math.max(1000, parseInt(process.env.PING_TIMEOUT_MS || '
 const HTTP_TIMEOUT_MS = Math.max(2000, parseInt(process.env.HTTP_TIMEOUT_MS || '8000', 10));
 const HTTP_FALLBACK = process.env.HTTP_FALLBACK !== '0';
 
+const SELF_URL = (process.env.SELF_URL || process.env.RENDER_EXTERNAL_URL || '').replace(/\/+$/, '');
+const SELF_PING = process.env.SELF_PING !== '0' && !!SELF_URL;
+const SELF_PING_MS = Math.max(10000, parseInt(process.env.SELF_PING_MS || '300000', 10) || 300000);
+
 const ADDRESS = `${MC_HOST}:${MC_PORT}`;
 const PUBLIC_CFG = { host: MC_HOST, port: MC_PORT, address: ADDRESS, edition: 'Bedrock (MCPE)' };
 const MAX_SAMPLES = 1440;
@@ -163,6 +167,18 @@ async function check() {
   setTimeout(check, CHECK_INTERVAL_MS);
 }
 
+function scheduleSelfPing() {
+  setTimeout(async () => {
+    try {
+      const res = await fetch(`${SELF_URL}/health`, { signal: AbortSignal.timeout(10000) });
+      if (!res.ok) console.warn(`mcstats self-ping ${SELF_URL}/health -> HTTP ${res.status}`);
+    } catch (err) {
+      console.warn(`mcstats self-ping ${SELF_URL}/health failed: ${err.message}`);
+    }
+    scheduleSelfPing();
+  }, SELF_PING_MS).unref();
+}
+
 function statusPayload() {
   const now = Date.now();
   const lastSample = history[history.length - 1] || null;
@@ -254,7 +270,12 @@ app.use((req, res) => {
 });
 
 const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`mcstats ready on 0.0.0.0:${PORT} — monitoring ${ADDRESS} every ${CHECK_INTERVAL_MS / 1000}s (http fallback: ${HTTP_FALLBACK ? 'on' : 'off'})`);
+  console.log(
+    `mcstats ready on 0.0.0.0:${PORT} — monitoring ${ADDRESS} every ${CHECK_INTERVAL_MS / 1000}s (http fallback: ${HTTP_FALLBACK ? 'on' : 'off'})`
+  );
+  console.log(
+    `mcstats self-ping: ${SELF_PING ? `${SELF_URL}/health every ${SELF_PING_MS / 1000}s` : 'off'}`
+  );
 });
 
 process.on('SIGTERM', () => {
@@ -265,3 +286,4 @@ process.on('SIGTERM', () => {
 
 loadPersisted();
 check();
+if (SELF_PING) scheduleSelfPing();

@@ -134,3 +134,7 @@ services:
         value: 60000
       - key: HTTP_FALLBACK
         value: 1
+      - key: SELF_URL
+        value: https://boss-yt8g.onrender.com
+      - key: SELF_PING_MS
+        value: 300000

@@ -18,6 +18,17 @@ Hosted on Render.com as the `mcstats` service in `render.yaml`.
 Templates live in `views/` (EJS) with shared partials (`views/partials/`); `client/` holds the
 static CSS/JS.
 
+## Keep-alive (Render free tier)
+
+The backend pings its own public URL so the free instance does not spin down after 15 minutes
+of inactivity:
+
+- `SELF_URL` — public base URL (on Render it defaults to `RENDER_EXTERNAL_URL`)
+- `SELF_PING_MS` — ping interval in ms (default `300000` = 5 min, minimum 10000)
+- `SELF_PING=0` — disable the keep-alive
+
+It hits `GET /health` only and logs nothing on success, so the frontend is unaffected.
+
 ## Endpoints
 
 - `GET /health` — `ok mcstats server-online|server-offline <address>`
