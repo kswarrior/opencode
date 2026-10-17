@@ -3,6 +3,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const dns = require('dns');
 const fs = require('fs');
 const path = require('path');
 const { pingBedrock, statusViaHttp, queryBedrock } = require('./lib/bedrock');
@@ -28,10 +29,14 @@ const SELF_PING = process.env.SELF_PING !== '0' && !!SELF_URL;
 const SELF_PING_MS = intEnv('SELF_PING_MS', 300000, 10000);
 
 const ADDRESS = `${MC_HOST}:${MC_PORT}`;
-const PUBLIC_CFG = { host: MC_HOST, port: MC_PORT, address: ADDRESS, edition: 'Bedrock (MCPE)' };
+const PUBLIC_CFG = { host: MC_HOST, port: MC_PORT, address: ADDRESS, edition: 'Bedrock (MCPE)', ip: null, ipFamily: null };
 const MAX_SAMPLES = 1440;
+const IP_REFRESH_MS = 300000;
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const DATA_FILE = path.join(DATA_DIR, 'history.json');
+
+let lastIpLookupAt = 0;
+let ipLookupRunning = false;
 
 let history = [];
 let totals = { checks: 0, onlineChecks: 0, peakPlayers: 0, firstCheckAt: null };
@@ -280,6 +285,26 @@ function persist() {
     .catch(() => { /* ephemeral disk, best effort */ });
 }
 
+async function refreshServerIp() {
+  if (ipLookupRunning) return;
+  const now = Date.now();
+  if (lastIpLookupAt && now - lastIpLookupAt < IP_REFRESH_MS) return;
+  ipLookupRunning = true;
+  try {
+    const addrs = await dns.promises.lookup(MC_HOST, { all: true });
+    const addr = addrs.find((a) => a.family === 4) || addrs.find((a) => a.family === 6);
+    if (addr) {
+      PUBLIC_CFG.ip = addr.address;
+      PUBLIC_CFG.ipFamily = addr.family;
+    }
+    lastIpLookupAt = Date.now();
+  } catch {
+    /* keep the last known IP; retry on the next check */
+  } finally {
+    ipLookupRunning = false;
+  }
+}
+
 async function check() {
   if (checking) return;
   checking = true;
@@ -363,6 +388,7 @@ async function check() {
       }
     }
     trackPlayers(namesOnline, now);
+    refreshServerIp();
 
     history.push({
       t: now,
@@ -513,5 +539,6 @@ process.on('SIGTERM', () => {
 });
 
 loadPersisted();
+refreshServerIp();
 check();
 if (SELF_PING) scheduleSelfPing();

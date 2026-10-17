@@ -5,6 +5,7 @@
 
     <div class="card info-list">
       <div class="row"><span>Address</span><b id="infoAddress"><%= cfg.address %></b><button class="copy" id="copyBtn" type="button" data-copy="<%= cfg.address %>">Copy</button></div>
+      <div class="row"><span>IP address</span><b id="infoIp"><%= cfg.ip || 'resolving…' %></b></div>
       <div class="row"><span>Port</span><b id="infoPort"><%= cfg.port %></b></div>
       <div class="row"><span>Edition</span><b id="infoEdition"><%= cfg.edition %></b></div>
       <div class="row"><span>Software</span><b id="infoSoftware"><span class="skeleton chip"></span></b></div>
