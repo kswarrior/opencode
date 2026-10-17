@@ -22,6 +22,8 @@
 
 * { box-sizing: border-box; }
 
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; background: #ffffff; }
 
 body {
@@ -414,6 +416,39 @@ code {
   color: var(--muted);
   font-size: 12px;
   padding-top: 8px;
+}
+
+/* ---------- loading skeleton ---------- */
+
+.skeleton {
+  display: inline-block;
+  width: 64px;
+  height: 14px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--line-soft) 25%, var(--sky-soft) 45%, var(--line-soft) 65%);
+  background-size: 300% 100%;
+  animation: shimmer 1.3s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+.skeleton.num { width: 76px; height: 24px; }
+.skeleton.chip { width: 72px; height: 12px; }
+.skeleton.chip.sm { width: 48px; height: 10px; }
+.skeleton.line { display: block; width: 62%; max-width: 420px; height: 15px; }
+.skeleton.line.short { width: 34%; }
+
+.skeleton.chart {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 12px;
+  height: 196px;
+  border-radius: var(--radius);
 }
 
 /* ---------- responsive ---------- */

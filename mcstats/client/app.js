@@ -81,13 +81,6 @@ function fmtDuration(ms) {
   return `${h}h ${m % 60}m`;
 }
 
-const REASONS = {
-  'no-response': 'No response to the RakNet ping — Aternos servers sleep while empty.',
-  offline: 'Server confirmed offline by the status API (Aternos sleeping).',
-  unreachable: 'Could not reach the server or the status API.',
-  persisted: 'Showing last known state after a restart.'
-};
-
 const MC_COLORS = {
   '0': '#111827', '1': '#1e40af', '2': '#15803d', '3': '#0f766e',
   '4': '#b91c1c', '5': '#7e22ce', '6': '#b45309', '7': '#64748b',
@@ -177,17 +170,21 @@ function buildMotdFragment(raw) {
   return frag;
 }
 
-function renderMotd(motd, known, online, reason) {
+const MOTD_SKELETON =
+  '<div class="motd-line"><span class="skeleton line"></span></div>' +
+  '<div class="motd-line"><span class="skeleton line short"></span></div>';
+
+function renderMotd(motd, known, online) {
   const el = $('motdVal');
   el.innerHTML = '';
 
   if (!known) {
-    el.textContent = 'Checking server…';
-    el.classList.add('empty');
+    el.classList.remove('empty');
+    el.innerHTML = MOTD_SKELETON;
     return;
   }
   if (!online) {
-    el.textContent = REASONS[reason] || 'The server is not responding.';
+    el.textContent = '—';
     el.classList.add('empty');
     return;
   }
@@ -220,7 +217,7 @@ function renderStatus(data) {
   pill.classList.add(!known ? 'unknown' : online ? 'online' : 'offline');
   $('topPillText').textContent = !known ? 'checking…' : online ? 'Online' : 'Offline';
 
-  renderMotd(status.motd, known, online, status.reason);
+  renderMotd(status.motd, known, online);
 
   $('playersOnline').textContent = online ? status.players : '—';
   $('playersMax').textContent = online ? `/ ${status.maxPlayers}` : '';
@@ -412,6 +409,7 @@ async function loadHistory() {
   if (!res.ok) throw new Error(`history ${res.status}`);
   const data = await res.json();
   samples = data.samples || [];
+  $('chartSkeleton').hidden = true;
   drawChart();
 }
 
@@ -425,6 +423,8 @@ async function loadAll(manual = false) {
     await Promise.all([loadStatus(), loadHistory()]);
   } catch {
     $('footStatus').textContent = 'Connection lost — retrying automatically…';
+    $('chartSkeleton').hidden = true;
+    drawChart();
   } finally {
     if (manual) {
       btn.disabled = false;
