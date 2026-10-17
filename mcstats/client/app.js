@@ -525,6 +525,13 @@ async function loadHistory() {
   drawChart();
 }
 
+async function loadPlayers() {
+  if (!playersGrid) return;
+  const res = await fetch('/api/players', { cache: 'no-store', signal: fetchSignal(10000) });
+  if (!res.ok) throw new Error(`players ${res.status}`);
+  renderPlayers(await res.json());
+}
+
 async function loadAll(manual = false) {
   if (inFlight && !manual) return;
   inFlight = true;
@@ -534,7 +541,7 @@ async function loadAll(manual = false) {
     btn.textContent = 'Refreshing…';
   }
   try {
-    await Promise.all([loadStatus(), loadHistory()]);
+    await Promise.all([loadStatus(), loadHistory(), loadPlayers()]);
     connectionLost = false;
   } catch {
     connectionLost = true;
