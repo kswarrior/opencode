@@ -81,9 +81,13 @@ async function statusViaHttp(host, port, timeoutMs = 8000) {
   const protocol = typeof d.protocol === 'number'
     ? d.protocol
     : d.protocol && typeof d.protocol.version === 'number' ? d.protocol.version : null;
-  const motd = d.motd
-    ? Array.isArray(d.motd.clean) ? d.motd.clean.join(' ').trim() : (d.motd.raw || '').trim()
-    : null;
+  let motd = null;
+  if (d.motd) {
+    const lines = Array.isArray(d.motd.raw) && d.motd.raw.length
+      ? d.motd.raw
+      : Array.isArray(d.motd.clean) ? d.motd.clean : [];
+    motd = lines.join('\n').trim() || null;
+  }
 
   return {
     online: true,
