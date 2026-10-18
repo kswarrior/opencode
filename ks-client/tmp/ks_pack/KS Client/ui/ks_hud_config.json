@@ -325,7 +325,7 @@
       { "ks_ci@ksb_main.toggle_option": { "$toggle_name": "ksbT_invhud", "$toggle_view_binding_name": "ksbT_invhud_t", "$toggle_text": "Show Inv HUD", "$toggle_default_state": "$ksb_invhud_v" } },
       { "ks_cf1@ksb_main.toggle_option": { "$toggle_name": "ksbT_f1", "$toggle_view_binding_name": "ksbT_f1_t", "$toggle_text": "Show F1 HUD", "$toggle_default_state": "$ks_f1_v" } },
       { "ks_cf3@ksb_main.toggle_option": { "$toggle_name": "ksbT_f3show", "$toggle_view_binding_name": "ksbT_f3show_t", "$toggle_text": "Show F3 HUD", "$toggle_default_state": "$ks_f3_v" } },
-      { "ks_cd@ksb_main.toggle_option": { "$toggle_name": "ksdT_dura", "$toggle_view_binding_name": "ksdT_dura_t", "$toggle_text": "Show Durability HUD", "$toggle_default_state": "$ksd_dura_v" } }
+      { "ks_cd@ksb_main.toggle_option": { "$toggle_name": "ks_dv_t", "$toggle_view_binding_name": "ks_dv_t_t", "$toggle_text": "Show Durability HUD", "$toggle_default_state": "$ks_dv_mainhand" } }
     ]
   }
   }

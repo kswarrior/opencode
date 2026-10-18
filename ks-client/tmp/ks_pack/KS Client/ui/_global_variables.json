@@ -109,18 +109,14 @@
 	"$ks:inventory_slot_color": [ 0, 0, 0 ],
 	"$ks:inventory_slot_alpha": 0.27,
 
-	// === KS Durability HUD (Bottom Left, rebranded ZenXveda zx_durability) ===
-	"$ksd_dura_v": true,
-	"$ksd_hud_offset": [ 3, -3 ],
-	"$ksd_hud_anchor_from": "bottom_left",
-	"$ksd_hud_anchor_to": "bottom_left",
-	"$ksd_armor_offset": [ 4, -28 ],
-	"$ksd_armor_anchor_from": "bottom_left",
-	"$ksd_armor_anchor_to": "bottom_left",
-	"$ksd_low_durability_threshold": 20,
-	"$item_hover_text_color": [ 1, 1, 1 ],
-	"$alpha_anim": 1.0,
-	"$f_color_format": [ 1, 1, 1 ],
+	// === KS Durability Viewer (merged Durability Viewer V-2.5 [RP] by EchoRif/ya_rifat, rebranded) ===
+	"$ks_dv_mainhand": true,
+	"$ks_dv_mainhand_offset": [ "5px", "5px" ],
+	"$ks_dv_mainhand_anchor_from": "bottom_left",
+	"$ks_dv_mainhand_anchor_to": "bottom_left",
+	"$ks_dv_inventory": true,
+	"$ks_dv_recipe_book": true,
+	"$ks_dv_low_durability_threshold": 20,
 
 	// $effects_per_column kept: used by mob_effect_screen.json effect grid pagination.
 	"$effects_per_column": 10,
