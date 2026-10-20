@@ -356,7 +356,7 @@ public class MainActivity extends Activity {
                     return true;
                 }
                 if (id == R.id.action_downloads) {
-                    startActivity(new Intent(MainActivity.this, DownloadsActivity.class));
+                    openDownloadsPage();
                     return true;
                 }
                 if (id == R.id.action_reload) {
@@ -375,10 +375,23 @@ public class MainActivity extends Activity {
                     openInBrowser();
                     return true;
                 }
+                if (id == R.id.action_settings) {
+                    openSettingsPage();
+                    return true;
+                }
                 return false;
             }
         });
+        MenuIcons.show(popup);
         popup.show();
+    }
+
+    private void openDownloadsPage() {
+        startActivity(new Intent(this, DownloadsActivity.class));
+    }
+
+    private void openSettingsPage() {
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 
     private void shareUrl() {
@@ -554,6 +567,34 @@ public class MainActivity extends Activity {
     }
 
     private final class PortalBridge {
+        @JavascriptInterface
+        public boolean openDownloads() {
+            if (!isBridgeAllowed()) {
+                return false;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    openDownloadsPage();
+                }
+            });
+            return true;
+        }
+
+        @JavascriptInterface
+        public boolean openSettings() {
+            if (!isBridgeAllowed()) {
+                return false;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    openSettingsPage();
+                }
+            });
+            return true;
+        }
+
         @JavascriptInterface
         public String getRecents() {
             if (!isBridgeAllowed()) {

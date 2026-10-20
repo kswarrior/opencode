@@ -228,17 +228,25 @@ public class DownloadsActivity extends Activity {
         }
         PopupMenu popup = new PopupMenu(this, anchor);
         if (item.status == DownloadItem.STATUS_COMPLETED) {
-            popup.getMenu().add(0, MENU_OPEN, 0, R.string.download_open);
-            popup.getMenu().add(0, MENU_RENAME, 1, R.string.download_rename);
-            popup.getMenu().add(0, MENU_SHARE, 2, R.string.download_share);
-            popup.getMenu().add(0, MENU_DELETE, 3, R.string.download_delete);
+            popup.getMenu().add(0, MENU_OPEN, 0, R.string.download_open)
+                    .setIcon(R.drawable.ic_menu_open);
+            popup.getMenu().add(0, MENU_RENAME, 1, R.string.download_rename)
+                    .setIcon(R.drawable.ic_edit);
+            popup.getMenu().add(0, MENU_SHARE, 2, R.string.download_share)
+                    .setIcon(R.drawable.ic_menu_share);
+            popup.getMenu().add(0, MENU_DELETE, 3, R.string.download_delete)
+                    .setIcon(R.drawable.ic_delete);
         } else if (item.status == DownloadItem.STATUS_PENDING
                 || item.status == DownloadItem.STATUS_DOWNLOADING) {
-            popup.getMenu().add(0, MENU_CANCEL, 0, R.string.download_cancel);
-            popup.getMenu().add(0, MENU_DELETE, 1, R.string.download_delete);
+            popup.getMenu().add(0, MENU_CANCEL, 0, R.string.download_cancel)
+                    .setIcon(R.drawable.ic_close);
+            popup.getMenu().add(0, MENU_DELETE, 1, R.string.download_delete)
+                    .setIcon(R.drawable.ic_delete);
         } else {
-            popup.getMenu().add(0, MENU_RETRY, 0, R.string.download_retry);
-            popup.getMenu().add(0, MENU_DELETE, 1, R.string.download_delete);
+            popup.getMenu().add(0, MENU_RETRY, 0, R.string.download_retry)
+                    .setIcon(R.drawable.ic_menu_reload);
+            popup.getMenu().add(0, MENU_DELETE, 1, R.string.download_delete)
+                    .setIcon(R.drawable.ic_delete);
         }
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -269,6 +277,7 @@ public class DownloadsActivity extends Activity {
                 }
             }
         });
+        MenuIcons.show(popup);
         popup.show();
     }
 
