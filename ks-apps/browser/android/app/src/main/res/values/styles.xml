@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.KSPortal" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowBackground">@color/ks_bg</item>
+        <item name="android:statusBarColor">@color/ks_bg</item>
+        <item name="android:navigationBarColor">@color/ks_bg</item>
+        <item name="android:colorAccent">@color/ks_cyan</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ks_bg">#050A14</color>
+    <color name="ks_panel">#0B1B33</color>
+    <color name="ks_cyan">#22D3EE</color>
+    <color name="ks_ice">#E0F2FE</color>
+    <color name="ks_muted">#8AA4C8</color>
+</resources>
