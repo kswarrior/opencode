@@ -63,6 +63,7 @@
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -83,6 +84,22 @@
             android:progress="0"
             android:progressBackgroundTint="@color/ks_panel"
             android:progressTint="@color/ks_text"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/toolbarToggle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="13dp"
+            android:background="@drawable/bg_toolbar_toggle"
+            android:contentDescription="@string/collapse_toolbar"
+            android:elevation="6dp"
+            android:padding="7dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_chevron_up"
+            android:tint="@color/ks_text"
             android:visibility="gone" />
     </FrameLayout>
 </LinearLayout>
