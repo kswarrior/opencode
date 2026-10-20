@@ -19,6 +19,7 @@
 
     <style name="Widget.KSPortal.PopupMenu" parent="@android:style/Widget.PopupMenu">
         <item name="android:popupBackground">@drawable/bg_menu_glass</item>
+        <item name="android:dropDownSelector">@drawable/bg_menu_item</item>
         <item name="android:popupElevation">10dp</item>
     </style>
 </resources>
