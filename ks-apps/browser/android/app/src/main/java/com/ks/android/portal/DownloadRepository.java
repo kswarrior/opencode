@@ -88,18 +88,43 @@ public class DownloadRepository {
     }
 
     public String getRelativePath() {
-        return preferences.getString(KEY_PATH, "");
+        return normalizeRelative(preferences.getString(KEY_PATH, ""));
     }
 
     public void setRelativePath(String path) {
-        String value = path == null ? "" : path.trim();
-        while (value.startsWith("/")) {
-            value = value.substring(1);
+        preferences.edit().putString(KEY_PATH, normalizeRelative(path)).apply();
+    }
+
+    private static String normalizeRelative(String path) {
+        if (path == null) {
+            return "";
         }
-        while (value.endsWith("/")) {
-            value = value.substring(0, value.length() - 1);
+        String value = path.replace('\\', '/').trim();
+        String[] parts = value.split("/");
+        List<String> clean = new ArrayList<String>();
+        for (String part : parts) {
+            if (part.isEmpty() || ".".equals(part)) {
+                continue;
+            }
+            if ("..".equals(part)) {
+                if (!clean.isEmpty()) {
+                    clean.remove(clean.size() - 1);
+                }
+                continue;
+            }
+            clean.add(part.replace("\u0000", ""));
         }
-        preferences.edit().putString(KEY_PATH, value).apply();
+        StringBuilder builder = new StringBuilder();
+        for (String part : clean) {
+            if (part.isEmpty()) {
+                continue;
+            }
+            if (builder.length() > 0) {
+                builder.append('/');
+            }
+            builder.append(part);
+        }
+        return builder.toString();
     }
 
     public boolean isCreateMissing() {
