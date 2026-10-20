@@ -180,7 +180,7 @@ public class DownloadPathActivity extends Activity {
                 toast(getString(R.string.folder_missing));
                 return;
             }
-            if (!directory.mkdirs()) {
+            if (!directory.mkdirs() && !directory.isDirectory()) {
                 toast(getString(R.string.folder_create_failed));
                 return;
             }
