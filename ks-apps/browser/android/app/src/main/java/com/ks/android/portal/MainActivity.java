@@ -463,19 +463,16 @@ public class MainActivity extends Activity {
             JSONArray current = readRecentsLocked();
             JSONArray next = new JSONArray();
             boolean removed = false;
-            try {
-                for (int i = 0; i < current.length(); i++) {
-                    JSONObject existing = current.optJSONObject(i);
-                    if (existing == null) {
-                        continue;
-                    }
-                    if (url.equals(existing.optString("url"))) {
-                        removed = true;
-                    } else {
-                        next.put(existing);
-                    }
+            for (int i = 0; i < current.length(); i++) {
+                JSONObject existing = current.optJSONObject(i);
+                if (existing == null) {
+                    continue;
                 }
-            } catch (JSONException ignored) {
+                if (url.equals(existing.optString("url"))) {
+                    removed = true;
+                } else {
+                    next.put(existing);
+                }
             }
             if (removed) {
                 getSharedPreferences(RECENTS_PREFS, MODE_PRIVATE).edit()
