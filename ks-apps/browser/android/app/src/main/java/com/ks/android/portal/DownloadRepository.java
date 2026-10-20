@@ -693,7 +693,9 @@ public class DownloadRepository {
                     item.error = "";
                     tasks.remove(id);
                 }
-                persistLocked();
+                synchronized (lock) {
+                    persistLocked();
+                }
                 notifyListeners();
             } catch (Exception exception) {
                 part.delete();
@@ -711,7 +713,9 @@ public class DownloadRepository {
                     }
                     tasks.remove(id);
                 }
-                persistLocked();
+                synchronized (lock) {
+                    persistLocked();
+                }
                 notifyListeners();
             } finally {
                 closeQuietly(output);
