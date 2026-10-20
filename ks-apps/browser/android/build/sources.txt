@@ -1,8 +1,10 @@
-app/src/main/java/com/ks/android/portal/DownloadConfirmDialog.java
-app/src/main/java/com/ks/android/portal/DownloadFileProvider.java
-app/src/main/java/com/ks/android/portal/DownloadItem.java
-app/src/main/java/com/ks/android/portal/DownloadPathActivity.java
 app/src/main/java/com/ks/android/portal/DownloadRepository.java
-app/src/main/java/com/ks/android/portal/DownloadsActivity.java
+app/src/main/java/com/ks/android/portal/DownloadFileProvider.java
+app/src/main/java/com/ks/android/portal/DownloadPathActivity.java
+app/src/main/java/com/ks/android/portal/SettingsActivity.java
+app/src/main/java/com/ks/android/portal/DownloadItem.java
 app/src/main/java/com/ks/android/portal/MainActivity.java
+app/src/main/java/com/ks/android/portal/DownloadsActivity.java
+app/src/main/java/com/ks/android/portal/MenuIcons.java
+app/src/main/java/com/ks/android/portal/DownloadConfirmDialog.java
 build/gen/com/ks/android/portal/R.java
