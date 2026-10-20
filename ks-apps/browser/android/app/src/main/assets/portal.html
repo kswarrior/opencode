@@ -393,6 +393,7 @@ body.launching .sites {
     }
     document.body.classList.add('launching');
     form.style.animation = 'none';
+    form.style.transformOrigin = 'top left';
     var rect = form.getBoundingClientRect();
     var targetLeft = 56;
     var targetTop = 7;
@@ -447,6 +448,7 @@ body.launching .sites {
     if (!launching) return;
     launching = false;
     document.body.classList.remove('launching');
+    form.style.transformOrigin = '';
     if (form.getAnimations) {
       var running = form.getAnimations();
       for (var j = 0; j < running.length; j++) running[j].cancel();
