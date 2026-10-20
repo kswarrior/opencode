@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -25,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -103,17 +105,30 @@ public class MainActivity extends Activity {
             }
         });
 
-        homeButton.setOnClickListener(view -> goHome());
-        menuButton.setOnClickListener(this::showMenu);
-        urlBar.setOnEditorActionListener((view, actionId, event) -> {
-            boolean enter = event != null
-                    && event.getKeyCode() == KeyEvent.KEYCODE_ENTER
-                    && event.getAction() == KeyEvent.ACTION_DOWN;
-            if (actionId == EditorInfo.IME_ACTION_GO || enter) {
-                navigateFromBar();
-                return true;
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goHome();
             }
-            return false;
+        });
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showMenu(view);
+            }
+        });
+        urlBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
+                boolean enter = event != null
+                        && event.getKeyCode() == KeyEvent.KEYCODE_ENTER
+                        && event.getAction() == KeyEvent.ACTION_DOWN;
+                if (actionId == EditorInfo.IME_ACTION_GO || enter) {
+                    navigateFromBar();
+                    return true;
+                }
+                return false;
+            }
         });
 
         if (savedInstanceState != null) {
@@ -172,29 +187,32 @@ public class MainActivity extends Activity {
         urlBar.clearFocus();
         PopupMenu popup = new PopupMenu(this, anchor);
         popup.getMenuInflater().inflate(R.menu.browser_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.action_home) {
-                goHome();
-                return true;
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.action_home) {
+                    goHome();
+                    return true;
+                }
+                if (id == R.id.action_reload) {
+                    webView.reload();
+                    return true;
+                }
+                if (id == R.id.action_share) {
+                    shareUrl();
+                    return true;
+                }
+                if (id == R.id.action_copy) {
+                    copyUrl();
+                    return true;
+                }
+                if (id == R.id.action_open) {
+                    openInBrowser();
+                    return true;
+                }
+                return false;
             }
-            if (id == R.id.action_reload) {
-                webView.reload();
-                return true;
-            }
-            if (id == R.id.action_share) {
-                shareUrl();
-                return true;
-            }
-            if (id == R.id.action_copy) {
-                copyUrl();
-                return true;
-            }
-            if (id == R.id.action_open) {
-                openInBrowser();
-                return true;
-            }
-            return false;
         });
         popup.show();
     }
