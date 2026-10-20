@@ -257,10 +257,24 @@ public class DownloadRepository {
         if (relative.isEmpty()) {
             return false;
         }
-        if (useMediaStore) {
-            return false;
+        if (!useMediaStore) {
+            return new File(root, relative).isFile();
         }
-        return new File(root, relative).isFile();
+        int slash = relative.lastIndexOf('/');
+        String parent = slash < 0 ? "" : relative.substring(0, slash);
+        String leaf = slash < 0 ? relative : relative.substring(slash + 1);
+        android.database.Cursor cursor = null;
+        try {
+            cursor = context.getContentResolver().query(MEDIA_DOWNLOADS_URI,
+                    new String[]{MEDIA_ID},
+                    MEDIA_DISPLAY_NAME + "=? AND " + MEDIA_RELATIVE_PATH + "=?",
+                    new String[]{leaf, relativePathWithSlash(parent)}, null);
+            return cursor != null && cursor.moveToFirst();
+        } catch (Exception ignored) {
+            return false;
+        } finally {
+            closeQuietly(cursor);
+        }
     }
 
     public List<String> listFolders(String rawRelative) {
