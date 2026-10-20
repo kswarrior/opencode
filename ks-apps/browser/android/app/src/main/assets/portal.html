@@ -254,8 +254,8 @@ body {
   animation: fadeUp .3s .08s ease both;
 }
 .sites::-webkit-scrollbar { display: none; }
-.favourites-label { animation-delay: .12s; }
-.favourites-sites { animation-delay: .16s; }
+.bookmarks-label { animation-delay: .12s; }
+.bookmarks-sites { animation-delay: .16s; }
 .recents-label { animation-delay: .20s; }
 .recents {
   display: flex;
@@ -706,31 +706,31 @@ body.launching .recents {
     </a>
   </nav>
 
-  <p class="section-label favourites-label">FAVOURITE SITES</p>
-  <nav class="sites favourites-sites" id="favourites" aria-label="Favourite sites"></nav>
+  <p class="section-label bookmarks-label">BOOKMARKS</p>
+  <nav class="sites bookmarks-sites" id="bookmarks" aria-label="Bookmarks"></nav>
 
   <p class="section-label recents-label">RECENT SITES</p>
   <nav class="recents" id="recents" aria-label="Recent sites"></nav>
 </main>
 
-<div class="modal-scrim" id="favModal" aria-hidden="true">
-  <form class="modal-card" id="favForm" role="dialog" aria-modal="true" aria-labelledby="favTitle">
-    <h2 id="favTitle">Add favourite</h2>
-    <div id="favFields">
+<div class="modal-scrim" id="bookmarkModal" aria-hidden="true">
+  <form class="modal-card" id="bookmarkForm" role="dialog" aria-modal="true" aria-labelledby="bookmarkTitle">
+    <h2 id="bookmarkTitle">Add bookmark</h2>
+    <div id="bookmarkFields">
       <label class="modal-field">
         <span>Name</span>
-        <input id="favName" type="text" maxlength="40" placeholder="My site" autocomplete="off">
+        <input id="bookmarkName" type="text" maxlength="40" placeholder="My site" autocomplete="off">
       </label>
       <label class="modal-field">
         <span>URL</span>
-        <input id="favUrl" type="text" inputmode="url" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+        <input id="bookmarkUrl" type="text" inputmode="url" placeholder="https://example.com" autocomplete="off" spellcheck="false">
       </label>
     </div>
-    <p class="modal-copy" id="favCopy" hidden></p>
-    <p class="modal-error" id="favError" role="alert"></p>
+    <p class="modal-copy" id="bookmarkCopy" hidden></p>
+    <p class="modal-error" id="bookmarkError" role="alert"></p>
     <div class="modal-actions">
-      <button class="modal-btn secondary" id="favCancel" type="button">Cancel</button>
-      <button class="modal-btn primary" id="favSave" type="submit">Add</button>
+      <button class="modal-btn secondary" id="bookmarkCancel" type="button">Cancel</button>
+      <button class="modal-btn primary" id="bookmarkSave" type="submit">Add</button>
     </div>
   </form>
 </div>
@@ -739,12 +739,12 @@ body.launching .recents {
   var form = document.getElementById('omni');
   var input = document.getElementById('q');
   var launching = false;
-  var FAV_KEY = 'ks_favourites_v1';
+  var BOOKMARK_KEY = 'ks_bookmarks_v1';
   var RECENTS_KEY = 'ks_recents_v1';
   var RECENTS_SHOW = 30;
   var RECENTS_STORE = 30;
-  var favourites = loadFavourites();
-  var favouritesNav = document.getElementById('favourites');
+  var bookmarks = loadBookmarks();
+  var bookmarksNav = document.getElementById('bookmarks');
   var recentsNav = document.getElementById('recents');
   var nativePortal = window.KSPortalNative;
   var recents = [];
@@ -755,15 +755,15 @@ body.launching .recents {
   document.body.appendChild(recentMenu);
   var activeRecentButton = null;
   var menuRecent = null;
-  var modal = document.getElementById('favModal');
-  var favForm = document.getElementById('favForm');
-  var favTitle = document.getElementById('favTitle');
-  var favFields = document.getElementById('favFields');
-  var favCopy = document.getElementById('favCopy');
-  var favName = document.getElementById('favName');
-  var favUrl = document.getElementById('favUrl');
-  var favError = document.getElementById('favError');
-  var favSave = document.getElementById('favSave');
+  var modal = document.getElementById('bookmarkModal');
+  var bookmarkForm = document.getElementById('bookmarkForm');
+  var bookmarkTitle = document.getElementById('bookmarkTitle');
+  var bookmarkFields = document.getElementById('bookmarkFields');
+  var bookmarkCopy = document.getElementById('bookmarkCopy');
+  var bookmarkName = document.getElementById('bookmarkName');
+  var bookmarkUrl = document.getElementById('bookmarkUrl');
+  var bookmarkError = document.getElementById('bookmarkError');
+  var bookmarkSave = document.getElementById('bookmarkSave');
   var removeIndex = -1;
   var lastFocused = null;
   var suppressUntil = 0;
@@ -825,16 +825,16 @@ body.launching .recents {
     }, 320);
   }
 
-  function loadFavourites() {
+  function loadBookmarks() {
     try {
-      var raw = window.localStorage.getItem(FAV_KEY);
+      var raw = window.localStorage.getItem(BOOKMARK_KEY);
       var parsed = raw ? JSON.parse(raw) : [];
       if (!Array.isArray(parsed)) return [];
       var result = [];
       for (var i = 0; i < parsed.length && result.length < 24; i++) {
         var item = parsed[i];
         if (!item || typeof item.name !== 'string' || typeof item.url !== 'string') continue;
-        var url = normalizeFavouriteUrl(item.url);
+        var url = normalizeBookmarkUrl(item.url);
         if (!url) continue;
         var name = item.name.trim().slice(0, 40);
         if (!name) name = new URL(url).hostname.replace(/^www\./, '');
@@ -846,7 +846,7 @@ body.launching .recents {
     }
   }
 
-  function normalizeFavouriteUrl(raw) {
+  function normalizeBookmarkUrl(raw) {
     var value = String(raw || '').trim();
     if (!value) return '';
     if (!/^https?:\/\//i.test(value)) value = 'https://' + value;
@@ -876,9 +876,9 @@ body.launching .recents {
     return (String(name || '').trim().slice(0, 2) || '?').toUpperCase();
   }
 
-  function saveFavourites() {
+  function saveBookmarks() {
     try {
-      window.localStorage.setItem(FAV_KEY, JSON.stringify(favourites));
+      window.localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bookmarks));
     } catch (error) {}
   }
 
@@ -896,7 +896,7 @@ body.launching .recents {
     for (var i = 0; i < raw.length && result.length < RECENTS_STORE; i++) {
       var item = raw[i];
       if (!item || typeof item.name !== 'string' || typeof item.url !== 'string') continue;
-      var url = normalizeFavouriteUrl(item.url);
+      var url = normalizeBookmarkUrl(item.url);
       if (!url) continue;
       var duplicate = false;
       for (var j = 0; j < result.length; j++) {
@@ -941,7 +941,7 @@ body.launching .recents {
   }
 
   function rememberRecent(url, title) {
-    var clean = normalizeFavouriteUrl(url);
+    var clean = normalizeBookmarkUrl(url);
     if (!clean) return;
     var name = String(title || '').replace(/\s+/g, ' ').trim().slice(0, 80);
     if (!name) name = hostFromUrl(clean);
@@ -969,22 +969,22 @@ body.launching .recents {
     renderRecents();
   }
 
-  function favouriteIndexFor(url) {
-    for (var i = 0; i < favourites.length; i++) {
-      if (favourites[i].url === url) return i;
+  function bookmarkIndexFor(url) {
+    for (var i = 0; i < bookmarks.length; i++) {
+      if (bookmarks[i].url === url) return i;
     }
     return -1;
   }
 
-  function toggleRecentFavourite(item) {
-    var index = favouriteIndexFor(item.url);
+  function toggleRecentBookmark(item) {
+    var index = bookmarkIndexFor(item.url);
     if (index >= 0) {
-      favourites.splice(index, 1);
+      bookmarks.splice(index, 1);
     } else {
-      favourites.push({ name: item.name.slice(0, 40) || hostFromUrl(item.url), url: item.url });
+      bookmarks.push({ name: item.name.slice(0, 40) || hostFromUrl(item.url), url: item.url });
     }
-    saveFavourites();
-    renderFavourites();
+    saveBookmarks();
+    renderBookmarks();
   }
 
   function addRecentMenuAction(label, danger, action) {
@@ -1008,9 +1008,9 @@ body.launching .recents {
     activeRecentButton = anchor;
     anchor.setAttribute('aria-expanded', 'true');
     recentMenu.textContent = '';
-    var isFavourite = favouriteIndexFor(item.url) >= 0;
-    addRecentMenuAction(isFavourite ? 'Remove from favourites' : 'Add to favourites', false, function () {
-      toggleRecentFavourite(item);
+    var isBookmark = bookmarkIndexFor(item.url) >= 0;
+    addRecentMenuAction(isBookmark ? 'Remove from bookmarks' : 'Add to bookmarks', false, function () {
+      toggleRecentBookmark(item);
     });
     addRecentMenuAction('Remove from recents', true, function () {
       removeRecent(item.url);
@@ -1108,29 +1108,29 @@ body.launching .recents {
     renderRecents();
   }
 
-  function makeFavouriteTile(favourite, index) {
+  function makeBookmarkTile(bookmark, index) {
     var tile = document.createElement('a');
     tile.className = 'tile';
-    tile.href = favourite.url;
+    tile.href = bookmark.url;
 
     var logo = document.createElement('span');
     logo.className = 'tile-logo';
     var fallback = document.createElement('span');
     fallback.className = 'fallback';
-    fallback.textContent = initialFor(favourite.name);
+    fallback.textContent = initialFor(bookmark.name);
     logo.appendChild(fallback);
     var favicon = document.createElement('img');
     favicon.alt = '';
     favicon.setAttribute('loading', 'lazy');
     favicon.setAttribute('referrerpolicy', 'no-referrer');
-    var icon = faviconUrl(favourite.url);
+    var icon = faviconUrl(bookmark.url);
     if (icon) favicon.src = icon;
     favicon.onerror = function () { favicon.remove(); };
     logo.appendChild(favicon);
 
     var name = document.createElement('span');
     name.className = 'tile-name';
-    name.textContent = favourite.name;
+    name.textContent = bookmark.name;
     tile.appendChild(logo);
     tile.appendChild(name);
 
@@ -1141,13 +1141,13 @@ body.launching .recents {
       }
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      launch(favourite.url);
+      launch(bookmark.url);
     });
-    bindFavouriteLongPress(tile, favourite, index);
+    bindBookmarkLongPress(tile, bookmark, index);
     return tile;
   }
 
-  function bindFavouriteLongPress(tile, favourite, index) {
+  function bindBookmarkLongPress(tile, bookmark, index) {
     var timer = 0;
     function cancel() {
       if (timer) {
@@ -1161,7 +1161,7 @@ body.launching .recents {
       timer = window.setTimeout(function () {
         timer = 0;
         suppressUntil = Date.now() + 800;
-        openRemoveModal(favourite, index);
+        openRemoveModal(bookmark, index);
       }, 520);
     }
     tile.addEventListener('touchstart', start, { passive: true });
@@ -1175,7 +1175,7 @@ body.launching .recents {
       event.preventDefault();
       cancel();
       suppressUntil = Date.now() + 800;
-      openRemoveModal(favourite, index);
+      openRemoveModal(bookmark, index);
     });
   }
 
@@ -1183,7 +1183,7 @@ body.launching .recents {
     var tile = document.createElement('button');
     tile.type = 'button';
     tile.className = 'tile tile-add';
-    tile.setAttribute('aria-label', 'Add favourite');
+    tile.setAttribute('aria-label', 'Add bookmark');
     var logo = document.createElement('span');
     logo.className = 'tile-logo add-logo';
     var plus = document.createElement('span');
@@ -1199,41 +1199,41 @@ body.launching .recents {
     return tile;
   }
 
-  function renderFavourites() {
-    favouritesNav.textContent = '';
-    for (var i = 0; i < favourites.length; i++) {
-      favouritesNav.appendChild(makeFavouriteTile(favourites[i], i));
+  function renderBookmarks() {
+    bookmarksNav.textContent = '';
+    for (var i = 0; i < bookmarks.length; i++) {
+      bookmarksNav.appendChild(makeBookmarkTile(bookmarks[i], i));
     }
-    favouritesNav.appendChild(makeAddTile());
+    bookmarksNav.appendChild(makeAddTile());
   }
 
   function openAddModal() {
     removeIndex = -1;
-    favTitle.textContent = 'Add favourite';
-    favFields.hidden = false;
-    favCopy.hidden = true;
-    favCopy.textContent = '';
-    favName.value = '';
-    favUrl.value = '';
-    favError.textContent = '';
-    favSave.textContent = 'Add';
-    favSave.classList.remove('danger');
+    bookmarkTitle.textContent = 'Add bookmark';
+    bookmarkFields.hidden = false;
+    bookmarkCopy.hidden = true;
+    bookmarkCopy.textContent = '';
+    bookmarkName.value = '';
+    bookmarkUrl.value = '';
+    bookmarkError.textContent = '';
+    bookmarkSave.textContent = 'Add';
+    bookmarkSave.classList.remove('danger');
     openModal();
-    window.setTimeout(function () { favName.focus(); }, 30);
+    window.setTimeout(function () { bookmarkName.focus(); }, 30);
   }
 
-  function openRemoveModal(favourite, index) {
+  function openRemoveModal(bookmark, index) {
     if (modal.classList.contains('open') && removeIndex === index) return;
     removeIndex = index;
-    favTitle.textContent = 'Remove favourite?';
-    favFields.hidden = true;
-    favCopy.hidden = false;
-    favCopy.textContent = 'Remove "' + favourite.name + '" from your favourites?';
-    favError.textContent = '';
-    favSave.textContent = 'Remove';
-    favSave.classList.add('danger');
+    bookmarkTitle.textContent = 'Remove bookmark?';
+    bookmarkFields.hidden = true;
+    bookmarkCopy.hidden = false;
+    bookmarkCopy.textContent = 'Remove "' + bookmark.name + '" from your bookmarks?';
+    bookmarkError.textContent = '';
+    bookmarkSave.textContent = 'Remove';
+    bookmarkSave.classList.add('danger');
     openModal();
-    window.setTimeout(function () { favSave.focus(); }, 30);
+    window.setTimeout(function () { bookmarkSave.focus(); }, 30);
   }
 
   function openModal() {
@@ -1253,36 +1253,36 @@ body.launching .recents {
     }
   }
 
-  favForm.addEventListener('submit', function (event) {
+  bookmarkForm.addEventListener('submit', function (event) {
     event.preventDefault();
     if (removeIndex >= 0) {
-      favourites.splice(removeIndex, 1);
-      saveFavourites();
+      bookmarks.splice(removeIndex, 1);
+      saveBookmarks();
       closeModal();
-      renderFavourites();
+      renderBookmarks();
       return;
     }
-    var url = normalizeFavouriteUrl(favUrl.value);
+    var url = normalizeBookmarkUrl(bookmarkUrl.value);
     if (!url) {
-      favError.textContent = 'Enter a valid website address.';
-      favUrl.focus();
+      bookmarkError.textContent = 'Enter a valid website address.';
+      bookmarkUrl.focus();
       return;
     }
-    var name = favName.value.trim().slice(0, 40);
+    var name = bookmarkName.value.trim().slice(0, 40);
     if (!name) name = new URL(url).hostname.replace(/^www\./, '');
-    for (var i = 0; i < favourites.length; i++) {
-      if (favourites[i].url === url) {
-        favError.textContent = 'This site is already in favourites.';
+    for (var i = 0; i < bookmarks.length; i++) {
+      if (bookmarks[i].url === url) {
+        bookmarkError.textContent = 'This site is already in bookmarks.';
         return;
       }
     }
-    favourites.push({ name: name, url: url });
-    saveFavourites();
+    bookmarks.push({ name: name, url: url });
+    saveBookmarks();
     closeModal();
-    renderFavourites();
+    renderBookmarks();
   });
 
-  document.getElementById('favCancel').addEventListener('click', closeModal);
+  document.getElementById('bookmarkCancel').addEventListener('click', closeModal);
   modal.addEventListener('click', function (event) {
     if (event.target === modal) closeModal();
   });
@@ -1332,7 +1332,7 @@ body.launching .recents {
     });
   }
 
-  renderFavourites();
+  renderBookmarks();
   refreshRecents();
 
   window.addEventListener('pageshow', function () {
