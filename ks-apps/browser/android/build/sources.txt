@@ -1,2 +1,7 @@
+app/src/main/java/com/ks/android/portal/DownloadRepository.java
+app/src/main/java/com/ks/android/portal/DownloadFileProvider.java
+app/src/main/java/com/ks/android/portal/DownloadPathActivity.java
+app/src/main/java/com/ks/android/portal/DownloadItem.java
 app/src/main/java/com/ks/android/portal/MainActivity.java
+app/src/main/java/com/ks/android/portal/DownloadsActivity.java
 build/gen/com/ks/android/portal/R.java
