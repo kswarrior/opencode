@@ -4,6 +4,8 @@
     <string name="url_hint">Enter URL or search</string>
     <string name="home_description">Home</string>
     <string name="more_description">More options</string>
+    <string name="collapse_toolbar">Collapse toolbar</string>
+    <string name="expand_toolbar">Expand toolbar</string>
     <string name="action_home">Home</string>
     <string name="action_reload">Reload</string>
     <string name="action_share">Share</string>

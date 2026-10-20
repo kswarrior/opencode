@@ -52,10 +52,14 @@ public class MainActivity extends Activity {
     private WebView webView;
     private ProgressBar progressBar;
     private View toolbar;
+    private View content;
+    private ImageButton toolbarToggle;
     private EditText urlBar;
     private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
     private boolean toolbarTargetVisible;
+    private boolean toolbarAvailable;
+    private boolean toolbarCollapsed;
     private String pendingDownloadUrl;
     private String pendingDownloadUserAgent;
     private String pendingDownloadDisposition;
@@ -73,10 +77,12 @@ public class MainActivity extends Activity {
         webView.setBackgroundColor(0xFF070707);
         progressBar = findViewById(R.id.progress);
         toolbar = findViewById(R.id.toolbar);
+        content = findViewById(R.id.content);
         toolbarHeight = Math.round(56 * getResources().getDisplayMetrics().density);
         urlBar = findViewById(R.id.urlBar);
         ImageButton homeButton = findViewById(R.id.homeButton);
         ImageButton menuButton = findViewById(R.id.menuButton);
+        toolbarToggle = findViewById(R.id.toolbarToggle);
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
