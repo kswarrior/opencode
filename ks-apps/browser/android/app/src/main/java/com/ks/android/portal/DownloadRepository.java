@@ -447,6 +447,7 @@ public class DownloadRepository {
             if (cleanName.isEmpty()) {
                 cleanName = "download";
             }
+            item.mimeType = mimeTypeForName(cleanName, item.mimeType);
 
             if (!ensureFolderLocked(item.relativePath)) {
                 item.fileName = cleanName;
@@ -637,6 +638,7 @@ public class DownloadRepository {
             String unique = uniqueFileNameLocked(relative, name, item.id);
             item.relativePath = relative;
             item.fileName = unique;
+            item.mimeType = mimeTypeForName(unique, item.mimeType);
             item.filePath = filePathFor(relative, unique);
             item.contentUri = "";
             item.status = DownloadItem.STATUS_PENDING;
@@ -842,6 +844,20 @@ public class DownloadRepository {
             return "";
         }
         return name.substring(dot).toLowerCase(Locale.US);
+    }
+
+    private static String mimeTypeForName(String name, String fallback) {
+        String mime = normalizeMime(fallback);
+        if (!"application/octet-stream".equals(mime)) {
+            return mime;
+        }
+        String extension = extensionOf(name);
+        if (TextUtils.isEmpty(extension)) {
+            return mime;
+        }
+        String inferred = MimeTypeMap.getSingleton()
+                .getMimeTypeFromExtension(extension.substring(1));
+        return TextUtils.isEmpty(inferred) ? mime : inferred;
     }
 
     private static String extensionForMime(String mimeType) {
@@ -1304,6 +1320,7 @@ public class DownloadRepository {
                             current.getHeaderField("Content-Disposition"), item.mimeType);
                     name = uniqueFileNameLocked(item.relativePath, improved, item.id);
                     relative = item.relativePath;
+                    item.mimeType = mimeTypeForName(name, item.mimeType);
                     mime = item.mimeType;
                     item.fileName = name;
                     item.filePath = filePathFor(relative, name);
