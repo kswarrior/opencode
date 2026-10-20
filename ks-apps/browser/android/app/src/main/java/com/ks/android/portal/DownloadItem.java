@@ -31,6 +31,8 @@ public class DownloadItem {
         object.put("url", url);
         object.put("fileName", fileName);
         object.put("filePath", filePath);
+        object.put("relativePath", relativePath);
+        object.put("contentUri", contentUri);
         object.put("mimeType", mimeType);
         object.put("userAgent", userAgent);
         object.put("referer", referer);
@@ -48,6 +50,8 @@ public class DownloadItem {
         item.url = object.optString("url", "");
         item.fileName = object.optString("fileName", "");
         item.filePath = object.optString("filePath", "");
+        item.relativePath = object.optString("relativePath", "");
+        item.contentUri = object.optString("contentUri", "");
         item.mimeType = object.optString("mimeType", "application/octet-stream");
         item.userAgent = object.optString("userAgent", "");
         item.referer = object.optString("referer", "");
