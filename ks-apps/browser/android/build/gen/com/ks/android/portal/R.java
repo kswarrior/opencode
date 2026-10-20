@@ -19,11 +19,12 @@ public final class R {
   }
   public static final class drawable {
     public static final int bg_menu_glass=0x7f020000;
-    public static final int bg_toolbar=0x7f020001;
-    public static final int bg_toolbar_button=0x7f020002;
-    public static final int bg_url_bar=0x7f020003;
-    public static final int ic_home=0x7f020004;
-    public static final int ic_more_vert=0x7f020005;
+    public static final int bg_menu_item=0x7f020001;
+    public static final int bg_toolbar=0x7f020002;
+    public static final int bg_toolbar_button=0x7f020003;
+    public static final int bg_url_bar=0x7f020004;
+    public static final int ic_home=0x7f020005;
+    public static final int ic_more_vert=0x7f020006;
   }
   public static final class id {
     public static final int action_copy=0x7f030000;
