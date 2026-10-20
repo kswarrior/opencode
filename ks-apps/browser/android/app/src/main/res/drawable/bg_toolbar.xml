@@ -2,14 +2,30 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/ks_toolbar" />
+            <gradient
+                android:angle="270"
+                android:startColor="#1C1C1C"
+                android:endColor="#0D0D0D" />
+        </shape>
+    </item>
+    <item
+        android:height="1dp"
+        android:gravity="top">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="0"
+                android:startColor="#26FFFFFF"
+                android:endColor="#00FFFFFF" />
         </shape>
     </item>
     <item
         android:height="1dp"
         android:gravity="bottom">
         <shape android:shape="rectangle">
-            <solid android:color="@color/ks_border" />
+            <gradient
+                android:angle="0"
+                android:startColor="#33FFFFFF"
+                android:endColor="#0DFFFFFF" />
         </shape>
     </item>
 </layer-list>

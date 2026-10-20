@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ks_bg">#262626</color>
+    <color name="ks_bg">#070707</color>
     <color name="ks_toolbar">#111111</color>
     <color name="ks_panel">#0B0B0B</color>
     <color name="ks_panel_2">#141414</color>

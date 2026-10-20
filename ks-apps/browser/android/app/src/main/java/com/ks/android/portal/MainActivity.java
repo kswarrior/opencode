@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
@@ -37,6 +39,8 @@ public class MainActivity extends Activity {
     private View toolbar;
     private EditText urlBar;
     private String currentUrl = HOME_URL;
+    private int toolbarHeight;
+    private boolean toolbarTargetVisible;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -45,9 +49,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         webView = findViewById(R.id.webview);
-        webView.setBackgroundColor(0xFF262626);
+        webView.setBackgroundColor(0xFF070707);
         progressBar = findViewById(R.id.progress);
         toolbar = findViewById(R.id.toolbar);
+        toolbarHeight = Math.round(56 * getResources().getDisplayMetrics().density);
         urlBar = findViewById(R.id.urlBar);
         ImageButton homeButton = findViewById(R.id.homeButton);
         ImageButton menuButton = findViewById(R.id.menuButton);
@@ -149,10 +154,49 @@ public class MainActivity extends Activity {
         }
         currentUrl = url;
         boolean home = isHomeUrl(url);
-        toolbar.setVisibility(home ? View.GONE : View.VISIBLE);
+        setToolbarVisible(!home);
         if (!home && !urlBar.hasFocus()) {
             urlBar.setText(url);
             urlBar.setSelection(urlBar.getText().length());
+        }
+    }
+
+    private void setToolbarVisible(boolean visible) {
+        if (visible == toolbarTargetVisible) {
+            return;
+        }
+        toolbarTargetVisible = visible;
+        toolbar.animate().cancel();
+        if (visible) {
+            if (toolbar.getVisibility() != View.VISIBLE) {
+                toolbar.setVisibility(View.VISIBLE);
+                toolbar.setAlpha(0f);
+                toolbar.setTranslationY(-toolbarHeight);
+            }
+            toolbar.animate()
+                    .alpha(1f)
+                    .translationY(0f)
+                    .setDuration(260)
+                    .setInterpolator(new DecelerateInterpolator())
+                    .start();
+        } else {
+            if (toolbar.getVisibility() == View.GONE) {
+                return;
+            }
+            toolbar.animate()
+                    .alpha(0f)
+                    .translationY(-toolbarHeight)
+                    .setDuration(180)
+                    .setInterpolator(new AccelerateInterpolator())
+                    .withEndAction(new Runnable() {
+                        @Override
+                        public void run() {
+                            toolbar.setVisibility(View.GONE);
+                            toolbar.setAlpha(1f);
+                            toolbar.setTranslationY(0f);
+                        }
+                    })
+                    .start();
         }
     }
 
@@ -163,6 +207,7 @@ public class MainActivity extends Activity {
     private void goHome() {
         hideKeyboard();
         urlBar.clearFocus();
+        setToolbarVisible(false);
         webView.loadUrl(HOME_URL);
     }
 
