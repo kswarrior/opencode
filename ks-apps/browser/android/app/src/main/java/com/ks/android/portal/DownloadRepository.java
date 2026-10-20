@@ -1105,8 +1105,16 @@ public class DownloadRepository {
             ContentValues complete = new ContentValues();
             complete.put(MEDIA_IS_PENDING, 0);
             try {
-                resolver.update(uri, complete, null, null);
-            } catch (Exception ignored) {
+                if (resolver.update(uri, complete, null, null) <= 0) {
+                    throw new IOException("Could not finish download");
+                }
+            } catch (Exception exception) {
+                try {
+                    resolver.delete(uri, null, null);
+                } catch (Exception ignored) {
+                }
+                throw exception instanceof IOException ? (IOException) exception
+                        : new IOException("Could not finish download");
             }
             Published published = new Published();
             published.uri = uri;
