@@ -621,6 +621,7 @@ public class DownloadRepository {
                 current.setReadTimeout(30000);
                 current.setRequestMethod("GET");
                 current.setRequestProperty("Accept", "*/*");
+                current.setRequestProperty("Accept-Encoding", "identity");
                 if (!TextUtils.isEmpty(userAgent)) {
                     current.setRequestProperty("User-Agent", userAgent);
                 }
