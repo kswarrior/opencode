@@ -17,16 +17,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class DownloadPathActivity extends Activity {
     private DownloadRepository repository;
-    private File root;
-    private File currentDir;
     private String currentRelative = "";
     private EditText pathInput;
     private CheckBox createMissing;
@@ -34,7 +29,7 @@ public class DownloadPathActivity extends Activity {
     private TextView emptyView;
     private Button upButton;
     private FolderAdapter adapter;
-    private final List<File> folders = new ArrayList<File>();
+    private final List<String> folders = new ArrayList<String>();
     private boolean updatingInput;
 
     @Override
@@ -43,7 +38,6 @@ public class DownloadPathActivity extends Activity {
         setContentView(R.layout.activity_download_path);
 
         repository = DownloadRepository.getInstance(this);
-        root = repository.getRoot();
         pathInput = findViewById(R.id.pathInput);
         createMissing = findViewById(R.id.pathCreateMissing);
         absolutePath = findViewById(R.id.pathAbsolute);
@@ -84,15 +78,18 @@ public class DownloadPathActivity extends Activity {
         folderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                openRelative(relativeOf(folders.get(position)));
+                String name = folders.get(position);
+                openRelative(currentRelative.isEmpty() ? name : currentRelative + "/" + name);
             }
         });
-        createMissing.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(android.widget.CompoundButton buttonView, boolean isChecked) {
-                updateUi();
-            }
-        });
+        createMissing.setOnCheckedChangeListener(
+                new android.widget.CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(android.widget.CompoundButton buttonView,
+                                                 boolean isChecked) {
+                        updateUi();
+                    }
+                });
         pathInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence text, int start, int count, int after) {
@@ -111,7 +108,6 @@ public class DownloadPathActivity extends Activity {
         });
     }
 
-
     private void openRelative(String relative) {
         updatingInput = true;
         pathInput.setText(relative);
@@ -121,8 +117,7 @@ public class DownloadPathActivity extends Activity {
     }
 
     private void refreshCurrent() {
-        currentRelative = normalize(pathInput.getText().toString());
-        currentDir = currentRelative.isEmpty() ? root : new File(root, currentRelative);
+        currentRelative = repository.normalizePath(pathInput.getText().toString());
         updateUi();
     }
 
@@ -131,56 +126,44 @@ public class DownloadPathActivity extends Activity {
         upButton.setEnabled(!atRoot);
         upButton.setAlpha(atRoot ? 0.45f : 1f);
 
-        String absolute = currentDir.getAbsolutePath();
-        if (!currentDir.exists()) {
+        boolean exists = repository.folderExists(currentRelative);
+        boolean isFile = repository.folderIsFile(currentRelative);
+        String absolute = repository.getAbsoluteDisplayPath(currentRelative);
+        if (isFile) {
+            absolute = absolute + " \u00B7 " + getString(R.string.folder_exists_file);
+        } else if (!exists) {
             absolute = absolute + " \u00B7 " + getString(createMissing.isChecked()
                     ? R.string.folder_will_create : R.string.folder_missing);
-        } else if (!currentDir.isDirectory()) {
-            absolute = absolute + " \u00B7 " + getString(R.string.folder_exists_file);
         }
         absolutePath.setText(absolute);
 
         folders.clear();
-        if (currentDir.isDirectory()) {
-            File[] children = currentDir.listFiles();
-            if (children != null) {
-                for (File child : children) {
-                    if (child.isDirectory() && !child.getName().startsWith(".")) {
-                        folders.add(child);
-                    }
-                }
-            }
-            Collections.sort(folders, new Comparator<File>() {
-                @Override
-                public int compare(File left, File right) {
-                    return left.getName().compareToIgnoreCase(right.getName());
-                }
-            });
+        if (exists) {
+            folders.addAll(repository.listFolders(currentRelative));
         }
         adapter.notifyDataSetChanged();
-        if (!currentDir.exists()) {
+        if (isFile) {
+            emptyView.setText(R.string.folder_exists_file);
+        } else if (!exists) {
             emptyView.setText(createMissing.isChecked()
                     ? R.string.folder_will_create : R.string.folder_missing);
-        } else if (!currentDir.isDirectory()) {
-            emptyView.setText(R.string.folder_exists_file);
         } else {
             emptyView.setText(R.string.no_subfolders);
         }
     }
 
     private void applyPath() {
-        String relative = normalize(pathInput.getText().toString());
-        File directory = relative.isEmpty() ? root : new File(root, relative);
-        if (directory.isFile()) {
+        String relative = repository.normalizePath(pathInput.getText().toString());
+        if (repository.folderIsFile(relative)) {
             toast(getString(R.string.folder_exists_file));
             return;
         }
-        if (!directory.exists()) {
+        if (!repository.folderExists(relative)) {
             if (!createMissing.isChecked()) {
                 toast(getString(R.string.folder_missing));
                 return;
             }
-            if (!directory.mkdirs() && !directory.isDirectory()) {
+            if (!repository.createFolder(relative)) {
                 toast(getString(R.string.folder_create_failed));
                 return;
             }
@@ -191,53 +174,9 @@ public class DownloadPathActivity extends Activity {
         finish();
     }
 
-    private String relativeOf(File file) {
-        String rootPath = root.getAbsolutePath();
-        String path = file.getAbsolutePath();
-        if (path.equals(rootPath)) {
-            return "";
-        }
-        if (path.startsWith(rootPath + File.separator)) {
-            return path.substring(rootPath.length() + 1).replace(File.separatorChar, '/');
-        }
-        return "";
-    }
-
     private static String parentOf(String relative) {
         int slash = relative.lastIndexOf('/');
         return slash < 0 ? "" : relative.substring(0, slash);
-    }
-
-    private static String normalize(String raw) {
-        if (raw == null) {
-            return "";
-        }
-        String value = raw.replace('\\', '/').trim();
-        String[] parts = value.split("/");
-        List<String> clean = new ArrayList<String>();
-        for (String part : parts) {
-            if (part.isEmpty() || ".".equals(part)) {
-                continue;
-            }
-            if ("..".equals(part)) {
-                if (!clean.isEmpty()) {
-                    clean.remove(clean.size() - 1);
-                }
-                continue;
-            }
-            clean.add(part.replace("\u0000", ""));
-        }
-        StringBuilder builder = new StringBuilder();
-        for (String part : clean) {
-            if (part.isEmpty()) {
-                continue;
-            }
-            if (builder.length() > 0) {
-                builder.append('/');
-            }
-            builder.append(part);
-        }
-        return builder.toString();
     }
 
     private void toast(String message) {
@@ -251,7 +190,7 @@ public class DownloadPathActivity extends Activity {
         }
 
         @Override
-        public File getItem(int position) {
+        public String getItem(int position) {
             return folders.get(position);
         }
 
@@ -272,7 +211,7 @@ public class DownloadPathActivity extends Activity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.name.setText(folders.get(position).getName());
+            holder.name.setText(folders.get(position));
             return convertView;
         }
     }

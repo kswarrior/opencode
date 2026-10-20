@@ -132,6 +132,10 @@ public class DownloadRepository {
         return normalizeRelative(preferences.getString(KEY_PATH, ""));
     }
 
+    public String normalizePath(String path) {
+        return normalizeRelative(path);
+    }
+
     public void setRelativePath(String path) {
         preferences.edit().putString(KEY_PATH, normalizeRelative(path)).apply();
     }
