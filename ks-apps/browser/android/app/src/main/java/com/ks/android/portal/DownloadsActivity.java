@@ -24,6 +24,7 @@ import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.webkit.MimeTypeMap;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -346,6 +347,14 @@ public class DownloadsActivity extends Activity {
         String type = getContentResolver().getType(uri);
         if (!TextUtils.isEmpty(type) && !"application/octet-stream".equals(type)) {
             return type;
+        }
+        int dot = item.fileName == null ? -1 : item.fileName.lastIndexOf('.');
+        if (dot > 0 && dot < item.fileName.length() - 1) {
+            String inferred = MimeTypeMap.getSingleton().getMimeTypeFromExtension(
+                    item.fileName.substring(dot + 1).toLowerCase(Locale.US));
+            if (!TextUtils.isEmpty(inferred)) {
+                return inferred;
+            }
         }
         return TextUtils.isEmpty(item.mimeType) ? "application/octet-stream" : item.mimeType;
     }
