@@ -1,0 +1,2 @@
+app/src/main/java/com/ks/android/portal/MainActivity.java
+build/gen/com/ks/android/portal/R.java
