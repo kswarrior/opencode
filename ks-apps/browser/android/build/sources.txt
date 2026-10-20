@@ -1,3 +1,4 @@
+app/src/main/java/com/ks/android/portal/AdBlocker.java
 app/src/main/java/com/ks/android/portal/DownloadConfirmDialog.java
 app/src/main/java/com/ks/android/portal/DownloadFileProvider.java
 app/src/main/java/com/ks/android/portal/DownloadItem.java
