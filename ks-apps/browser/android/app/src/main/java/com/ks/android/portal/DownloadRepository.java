@@ -322,6 +322,11 @@ public class DownloadRepository {
             return;
         }
         String value = path.replace('\\', '/');
+        String downloadsPrefix = Environment.DIRECTORY_DOWNLOADS + "/";
+        if (value.toLowerCase(Locale.US)
+                .startsWith(downloadsPrefix.toLowerCase(Locale.US))) {
+            value = value.substring(downloadsPrefix.length());
+        }
         if (!value.endsWith("/")) {
             value = value + "/";
         }
