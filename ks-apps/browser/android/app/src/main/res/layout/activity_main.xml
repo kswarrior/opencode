@@ -54,7 +54,7 @@
             android:id="@+id/menuButton"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:background="@drawable/bg_toolbar_button"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/more_description"
             android:padding="10dp"
             android:scaleType="centerInside"
