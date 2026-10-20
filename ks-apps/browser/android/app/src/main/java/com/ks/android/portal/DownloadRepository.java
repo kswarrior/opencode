@@ -12,7 +12,6 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.webkit.CookieManager;
 import android.webkit.MimeTypeMap;
-import android.webkit.URLUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -815,28 +814,82 @@ public class DownloadRepository {
     }
 
     public String suggestFileName(String url, String contentDisposition, String mimeType) {
-        String mime = normalizeMime(mimeType);
-        String guessed = URLUtil.guessFileName(url, contentDisposition, mime);
-        String clean = sanitizeFileName(guessed);
-        if (clean.isEmpty()) {
-            clean = "download";
-        }
-        return adjustExtensionForMime(clean, mime);
+        return chooseFileName(fileNameFromDisposition(contentDisposition),
+                fileNameFromUrl(url), normalizeMime(mimeType), url);
     }
 
     private static String improveFileName(String current, String url,
                                           String contentDisposition, String mimeType) {
-        String adjusted = adjustExtensionForMime(current, mimeType);
+        String mime = normalizeMime(mimeType);
+        String better = chooseFileName(fileNameFromDisposition(contentDisposition),
+                fileNameFromUrl(url), mime, url);
+        String adjusted = repairFileName(current, mime, url);
+        if (!TextUtils.isEmpty(better) && !hasGenericExtension(better)
+                && hasGenericExtension(current)) {
+            return better;
+        }
         if (!hasGenericExtension(adjusted)) {
             return adjusted;
         }
-        String guessed = sanitizeFileName(
-                URLUtil.guessFileName(url, contentDisposition, normalizeMime(mimeType)));
-        String better = adjustExtensionForMime(guessed, mimeType);
         if (!TextUtils.isEmpty(better) && !hasGenericExtension(better)) {
             return better;
         }
         return adjusted;
+    }
+
+    private static String chooseFileName(String dispositionName, String urlName,
+                                         String mimeType, String url) {
+        String fromDisposition = sanitizeFileName(dispositionName);
+        String fromUrl = sanitizeFileName(urlName);
+        boolean dispositionSpecific = !hasGenericExtension(fromDisposition);
+        boolean urlSpecific = !hasGenericExtension(fromUrl);
+        String chosen;
+        if (dispositionSpecific && urlSpecific) {
+            if (".apk".equals(extensionOf(fromUrl))
+                    && !".apk".equals(extensionOf(fromDisposition))) {
+                chosen = fromUrl;
+            } else {
+                chosen = fromDisposition;
+            }
+        } else if (urlSpecific) {
+            chosen = fromUrl;
+        } else if (dispositionSpecific) {
+            chosen = fromDisposition;
+        } else if (!TextUtils.isEmpty(fromDisposition)) {
+            chosen = fromDisposition;
+        } else if (!TextUtils.isEmpty(fromUrl)) {
+            chosen = fromUrl;
+        } else {
+            chosen = lastResortApkName(url);
+        }
+        if (TextUtils.isEmpty(chosen)) {
+            chosen = "download";
+        }
+        return repairFileName(chosen, mimeType, url);
+    }
+
+    private static String repairFileName(String raw, String mimeType, String url) {
+        String clean = sanitizeFileName(raw);
+        String mimeExtension = extensionForMime(mimeType);
+        while (".bin".equals(extensionOf(clean))) {
+            String without = clean.substring(0, clean.length() - 4);
+            String previous = extensionOf(without);
+            if (!TextUtils.isEmpty(previous) && !isGenericExtension(previous)) {
+                clean = without;
+                break;
+            }
+            if (!TextUtils.isEmpty(mimeExtension)) {
+                clean = without + mimeExtension;
+                break;
+            }
+            String urlExtension = extensionOf(lastResortApkName(url));
+            if (!TextUtils.isEmpty(urlExtension)) {
+                clean = without + urlExtension;
+                break;
+            }
+            clean = without;
+        }
+        return adjustExtensionForMime(clean, mimeType);
     }
 
     private static String adjustExtensionForMime(String name, String mimeType) {
@@ -852,15 +905,290 @@ public class DownloadRepository {
         if (TextUtils.isEmpty(current)) {
             return clean + extension;
         }
-        if (".bin".equalsIgnoreCase(current)) {
-            return clean.substring(0, clean.length() - 4) + extension;
+        if (isGenericExtension(current)) {
+            if (".bin".equals(current)) {
+                String without = clean.substring(0, clean.length() - 4);
+                String previous = extensionOf(without);
+                if (!TextUtils.isEmpty(previous) && !isGenericExtension(previous)) {
+                    return without;
+                }
+                return without + extension;
+            }
+            int dot = clean.lastIndexOf('.');
+            String base = dot > 0 ? clean.substring(0, dot) : clean;
+            return base + extension;
         }
         return clean;
     }
 
     private static boolean hasGenericExtension(String name) {
         String extension = extensionOf(name);
-        return TextUtils.isEmpty(extension) || ".bin".equalsIgnoreCase(extension);
+        return TextUtils.isEmpty(extension) || isGenericExtension(extension);
+    }
+
+    private static boolean isGenericExtension(String extension) {
+        return ".bin".equals(extension)
+                || ".php".equals(extension)
+                || ".asp".equals(extension)
+                || ".aspx".equals(extension)
+                || ".jsp".equals(extension)
+                || ".do".equals(extension)
+                || ".cgi".equals(extension)
+                || ".action".equals(extension)
+                || ".html".equals(extension)
+                || ".htm".equals(extension)
+                || ".download".equals(extension)
+                || ".part".equals(extension);
+    }
+
+    private static String fileNameFromDisposition(String header) {
+        if (TextUtils.isEmpty(header)) {
+            return "";
+        }
+        String encoded = dispositionParameter(header, "filename*");
+        if (!TextUtils.isEmpty(encoded)) {
+            int first = encoded.indexOf('\'');
+            int second = first < 0 ? -1 : encoded.indexOf('\'', first + 1);
+            if (second > first) {
+                encoded = encoded.substring(second + 1);
+            }
+            return leafName(encoded);
+        }
+        String plain = dispositionParameter(header, "filename");
+        if (TextUtils.isEmpty(plain)) {
+            plain = dispositionParameter(header, "name");
+        }
+        return leafName(plain);
+    }
+
+    private static String dispositionParameter(String header, String key) {
+        String lower = header.toLowerCase(Locale.US);
+        int from = 0;
+        while (from < lower.length()) {
+            int index = lower.indexOf(key, from);
+            if (index < 0) {
+                return "";
+            }
+            int after = index + key.length();
+            boolean boundary = index == 0 || header.charAt(index - 1) == ';'
+                    || Character.isWhitespace(header.charAt(index - 1));
+            int pos = after;
+            while (pos < header.length() && Character.isWhitespace(header.charAt(pos))) {
+                pos++;
+            }
+            if (!boundary || pos >= header.length() || header.charAt(pos) != '=') {
+                from = after;
+                continue;
+            }
+            pos++;
+            while (pos < header.length() && Character.isWhitespace(header.charAt(pos))) {
+                pos++;
+            }
+            if (pos >= header.length()) {
+                return "";
+            }
+            StringBuilder value = new StringBuilder();
+            char first = header.charAt(pos);
+            if (first == '"' || first == '\'') {
+                pos++;
+                while (pos < header.length()) {
+                    char c = header.charAt(pos);
+                    if (c == '\\' && pos + 1 < header.length()) {
+                        value.append(header.charAt(pos + 1));
+                        pos += 2;
+                    } else if (c == first) {
+                        break;
+                    } else {
+                        value.append(c);
+                        pos++;
+                    }
+                }
+            } else {
+                while (pos < header.length() && header.charAt(pos) != ';') {
+                    value.append(header.charAt(pos));
+                    pos++;
+                }
+            }
+            String result = value.toString().trim();
+            if (!result.isEmpty()) {
+                return result;
+            }
+            from = after;
+        }
+        return "";
+    }
+
+    private static String fileNameFromUrl(String url) {
+        if (TextUtils.isEmpty(url)) {
+            return "";
+        }
+        String pathName = "";
+        String queryName = "";
+        try {
+            Uri uri = Uri.parse(url);
+            List<String> segments = uri.getPathSegments();
+            for (int i = segments.size() - 1; i >= 0; i--) {
+                String segment = sanitizeFileName(segments.get(i));
+                if (!TextUtils.isEmpty(segment)) {
+                    pathName = segment;
+                    break;
+                }
+            }
+            Set<String> keys = uri.getQueryParameterNames();
+            for (String key : keys) {
+                if (!isFileNameQueryKey(key)) {
+                    continue;
+                }
+                String candidate = leafName(uri.getQueryParameter(key));
+                if (TextUtils.isEmpty(candidate)) {
+                    continue;
+                }
+                if (hasGenericExtension(queryName) && !hasGenericExtension(candidate)) {
+                    queryName = candidate;
+                    break;
+                }
+                if (TextUtils.isEmpty(queryName)) {
+                    queryName = candidate;
+                }
+            }
+        } catch (Exception ignored) {
+        }
+        boolean pathSpecific = !TextUtils.isEmpty(pathName) && !hasGenericExtension(pathName);
+        boolean querySpecific = !TextUtils.isEmpty(queryName) && !hasGenericExtension(queryName);
+        if (querySpecific && !pathSpecific) {
+            return queryName;
+        }
+        if (!TextUtils.isEmpty(pathName)) {
+            return pathName;
+        }
+        if (!TextUtils.isEmpty(queryName)) {
+            return queryName;
+        }
+        return lastResortApkName(url);
+    }
+
+    private static boolean isFileNameQueryKey(String key) {
+        if (TextUtils.isEmpty(key)) {
+            return false;
+        }
+        String lower = key.toLowerCase(Locale.US);
+        return lower.contains("file")
+                || lower.contains("name")
+                || lower.contains("download")
+                || lower.contains("apk")
+                || lower.contains("url")
+                || lower.contains("path");
+    }
+
+    private static String leafName(String value) {
+        if (TextUtils.isEmpty(value)) {
+            return "";
+        }
+        String decoded;
+        try {
+            decoded = Uri.decode(value.trim());
+        } catch (Exception ignored) {
+            decoded = value.trim();
+        }
+        int end = decoded.length();
+        int cut = decoded.indexOf('?');
+        if (cut >= 0) {
+            end = cut;
+        }
+        cut = decoded.indexOf('#');
+        if (cut >= 0 && cut < end) {
+            end = cut;
+        }
+        int slash = Math.max(decoded.lastIndexOf('/'), decoded.lastIndexOf('\\'));
+        if (slash >= 0) {
+            return slash + 1 < end
+                    ? sanitizeFileName(decoded.substring(slash + 1, end)) : "";
+        }
+        return sanitizeFileName(decoded.substring(0, end));
+    }
+
+    private static String lastResortApkName(String url) {
+        if (TextUtils.isEmpty(url)) {
+            return "";
+        }
+        String decoded;
+        try {
+            decoded = Uri.decode(url).replace('\\', '/');
+        } catch (Exception ignored) {
+            decoded = url.replace('\\', '/');
+        }
+        String lower = decoded.toLowerCase(Locale.US);
+        int from = 0;
+        while (from < lower.length()) {
+            int index = lower.indexOf(".apk", from);
+            if (index < 0) {
+                break;
+            }
+            int end = index + 4;
+            if (end < decoded.length()
+                    && Character.isLetterOrDigit(decoded.charAt(end))) {
+                from = end;
+                continue;
+            }
+            int start = index;
+            while (start > 0) {
+                char c = decoded.charAt(start - 1);
+                if (c == '/' || c == '\\' || c == '?' || c == '&' || c == '='
+                        || c == ';' || c == '#' || c == ':') {
+                    break;
+                }
+                start--;
+            }
+            String candidate = sanitizeFileName(decoded.substring(start, end));
+            if (!candidate.isEmpty()) {
+                return candidate;
+            }
+            from = end;
+        }
+        return "";
+    }
+
+    private static String withExtension(String name, String extension) {
+        String clean = sanitizeFileName(name);
+        if (clean.isEmpty()) {
+            return "download" + extension;
+        }
+        while (".bin".equals(extensionOf(clean))) {
+            String without = clean.substring(0, clean.length() - 4);
+            if (extension.equalsIgnoreCase(extensionOf(without))) {
+                clean = without;
+                break;
+            }
+            clean = without;
+        }
+        if (TextUtils.isEmpty(clean)) {
+            return "download" + extension;
+        }
+        String current = extensionOf(clean);
+        if (extension.equalsIgnoreCase(current)) {
+            return clean;
+        }
+        if (TextUtils.isEmpty(current)) {
+            return clean + extension;
+        }
+        return clean.substring(0, clean.lastIndexOf('.')) + extension;
+    }
+
+    private static boolean looksLikeApk(File file) {
+        if (file == null || !file.isFile()) {
+            return false;
+        }
+        ZipFile zip = null;
+        try {
+            zip = new ZipFile(file);
+            return zip.getEntry("AndroidManifest.xml") != null
+                    && (zip.getEntry("classes.dex") != null
+                    || zip.getEntry("resources.arsc") != null);
+        } catch (Exception ignored) {
+            return false;
+        } finally {
+            closeQuietly(zip);
+        }
     }
 
     private static String extensionOf(String name) {
