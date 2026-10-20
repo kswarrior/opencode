@@ -56,6 +56,8 @@ public class MainActivity extends Activity {
     private View content;
     private ImageButton toolbarToggle;
     private EditText urlBar;
+    private AdBlocker adBlocker;
+    private boolean adBlockEnabledAtLoad;
     private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
     private boolean toolbarTargetVisible;
@@ -84,6 +86,8 @@ public class MainActivity extends Activity {
         ImageButton homeButton = findViewById(R.id.homeButton);
         ImageButton menuButton = findViewById(R.id.menuButton);
         toolbarToggle = findViewById(R.id.toolbarToggle);
+        adBlocker = AdBlocker.get(this);
+        adBlockEnabledAtLoad = adBlocker.isEnabled();
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -115,9 +119,32 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view,
+                                                              WebResourceRequest request) {
+                if (request != null
+                        && adBlocker.shouldBlock(request.getUrl(), request.isForMainFrame())) {
+                    return AdBlocker.blockedResponse();
+                }
+                return super.shouldInterceptRequest(view, request);
+            }
+
+            @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+                if (adBlocker.shouldBlock(Uri.parse(url), false)) {
+                    return AdBlocker.blockedResponse();
+                }
+                return super.shouldInterceptRequest(view, url);
+            }
+
+            @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 progressBar.setVisibility(View.VISIBLE);
                 updateChrome(url);
+            }
+
+            @Override
+            public void onPageCommitVisible(WebView view, String url) {
+                injectAdBlock(view);
             }
 
             @Override
@@ -125,6 +152,7 @@ public class MainActivity extends Activity {
                 progressBar.setVisibility(View.GONE);
                 updateChrome(url);
                 recordRecent(url, view.getTitle());
+                injectAdBlock(view);
             }
 
             @Override
