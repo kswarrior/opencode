@@ -7,5 +7,18 @@
         <item name="android:navigationBarColor">@color/ks_panel</item>
         <item name="android:colorAccent">@color/ks_text</item>
         <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:popupMenuStyle">@style/Widget.KSPortal.PopupMenu</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/TextAppearance.KSPortal.PopupMenu</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/TextAppearance.KSPortal.PopupMenu</item>
+    </style>
+
+    <style name="TextAppearance.KSPortal.PopupMenu" parent="@android:style/TextAppearance.Material">
+        <item name="android:textColor">@color/ks_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.KSPortal.PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">@drawable/bg_menu_glass</item>
+        <item name="android:popupElevation">10dp</item>
     </style>
 </resources>
