@@ -13,6 +13,7 @@
       "enabled": true,
       "timeout": 30000,
       "environment": {
+        "ADB_PATH": "{env:ANDROID_HOME}/platform-tools/adb",
         "ANDROID_MCP_ALLOW_WRITE": "true",
         "ANDROID_TOOLS": "device,apps,ui,logcat,emulator,debug"
       }
