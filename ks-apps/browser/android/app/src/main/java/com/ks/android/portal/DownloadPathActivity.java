@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DownloadPathActivity extends Activity {
+    private static final int REQUEST_WRITE_STORAGE = 2002;
+
     private DownloadRepository repository;
     private String currentRelative = "";
     private EditText pathInput;
@@ -109,6 +111,29 @@ public class DownloadPathActivity extends Activity {
             public void afterTextChanged(Editable text) {
             }
         });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
+                && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_WRITE_STORAGE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode != REQUEST_WRITE_STORAGE) {
+            return;
+        }
+        boolean granted = grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+        if (!granted) {
+            toast(getString(R.string.storage_permission_needed));
+        }
+        refreshCurrent();
     }
 
     private void openRelative(String relative) {
