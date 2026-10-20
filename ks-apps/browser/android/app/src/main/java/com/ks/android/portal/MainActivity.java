@@ -9,6 +9,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -45,6 +46,7 @@ public class MainActivity extends Activity {
     private static final String RECENTS_PREFS = "ks_recents";
     private static final String RECENTS_KEY = "items";
     private static final int RECENTS_LIMIT = 30;
+    private static final int REQUEST_WRITE_STORAGE = 2001;
     private static final Object RECENTS_LOCK = new Object();
 
     private WebView webView;
@@ -54,6 +56,12 @@ public class MainActivity extends Activity {
     private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
     private boolean toolbarTargetVisible;
+    private String pendingDownloadUrl;
+    private String pendingDownloadUserAgent;
+    private String pendingDownloadDisposition;
+    private String pendingDownloadMime;
+    private long pendingDownloadLength;
+    private String pendingDownloadReferer;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -140,18 +148,7 @@ public class MainActivity extends Activity {
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                DownloadItem item = DownloadRepository.getInstance(MainActivity.this)
-                        .startDownload(url, userAgent, contentDisposition, mimeType,
-                                contentLength, currentUrl);
-                if (item.status == DownloadItem.STATUS_FAILED) {
-                    String message = TextUtils.isEmpty(item.error)
-                            ? getString(R.string.download_start_failed) : item.error;
-                    Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(MainActivity.this,
-                            getString(R.string.download_started, item.fileName),
-                            Toast.LENGTH_SHORT).show();
-                }
+                requestDownload(url, userAgent, contentDisposition, mimeType, contentLength);
             }
         });
 
@@ -190,6 +187,77 @@ public class MainActivity extends Activity {
         } else {
             webView.loadUrl(HOME_URL);
         }
+    }
+
+    private void requestDownload(String url, String userAgent, String contentDisposition,
+                                 String mimeType, long contentLength) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
+                && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            pendingDownloadUrl = url;
+            pendingDownloadUserAgent = userAgent;
+            pendingDownloadDisposition = contentDisposition;
+            pendingDownloadMime = mimeType;
+            pendingDownloadLength = contentLength;
+            pendingDownloadReferer = currentUrl;
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_WRITE_STORAGE);
+            return;
+        }
+        showDownloadConfirm(url, userAgent, contentDisposition, mimeType, contentLength,
+                currentUrl);
+    }
+
+    private void showDownloadConfirm(final String url, final String userAgent,
+                                     final String contentDisposition, final String mimeType,
+                                     final long contentLength, final String referer) {
+        final DownloadRepository repository = DownloadRepository.getInstance(this);
+        String suggestedName = repository.suggestFileName(url, contentDisposition, mimeType);
+        hideKeyboard();
+        urlBar.clearFocus();
+        DownloadConfirmDialog.show(this, url, suggestedName, repository.getDisplayPath(),
+                new DownloadConfirmDialog.Listener() {
+                    @Override
+                    public void onDownload(String fileName) {
+                        DownloadItem item = repository.startDownload(url, userAgent,
+                                contentDisposition, mimeType, contentLength, referer, fileName);
+                        if (item.status == DownloadItem.STATUS_FAILED) {
+                            String message = TextUtils.isEmpty(item.error)
+                                    ? getString(R.string.download_start_failed) : item.error;
+                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(MainActivity.this,
+                                    getString(R.string.download_started, item.fileName),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode != REQUEST_WRITE_STORAGE) {
+            return;
+        }
+        boolean granted = grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+        if (granted && pendingDownloadUrl != null) {
+            showDownloadConfirm(pendingDownloadUrl, pendingDownloadUserAgent,
+                    pendingDownloadDisposition, pendingDownloadMime, pendingDownloadLength,
+                    pendingDownloadReferer);
+        } else {
+            Toast.makeText(this, R.string.storage_permission_needed,
+                    Toast.LENGTH_LONG).show();
+        }
+        pendingDownloadUrl = null;
+        pendingDownloadUserAgent = null;
+        pendingDownloadDisposition = null;
+        pendingDownloadMime = null;
+        pendingDownloadLength = 0;
+        pendingDownloadReferer = null;
     }
 
     private void updateChrome(String url) {
