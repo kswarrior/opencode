@@ -39,6 +39,12 @@
     <string name="download_started">Downloading %1$s</string>
     <string name="download_start_failed">Could not start download</string>
     <string name="download_unsupported">This download is not supported</string>
+    <string name="download_confirm_title">Download file</string>
+    <string name="download_confirm_url_label">URL</string>
+    <string name="download_confirm_name_label">File name</string>
+    <string name="download_confirm_name_empty">Enter a file name</string>
+    <string name="download_confirm_action">Download</string>
+    <string name="storage_permission_needed">Storage permission is needed to save to Downloads</string>
     <string name="download_file_missing">File not found</string>
     <string name="download_no_app">No app can open this file</string>
     <string name="download_options">Download options</string>
