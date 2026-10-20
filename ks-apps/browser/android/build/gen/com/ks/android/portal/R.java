@@ -58,11 +58,9 @@ public final class R {
     public static final int home_description=0x7f070006;
     public static final int more_description=0x7f070007;
     public static final int no_app_found=0x7f070008;
-    public static final int owner=0x7f070009;
-    public static final int share_chooser=0x7f07000a;
-    public static final int url_copied=0x7f07000b;
-    public static final int url_hint=0x7f07000c;
-    public static final int version_name=0x7f07000d;
+    public static final int share_chooser=0x7f070009;
+    public static final int url_copied=0x7f07000a;
+    public static final int url_hint=0x7f07000b;
   }
   public static final class style {
     public static final int Theme_KSPortal=0x7f080000;

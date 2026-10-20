@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">KS Portal</string>
-    <string name="owner">KS Warrior</string>
-    <string name="version_name">1.0.0</string>
     <string name="url_hint">Enter URL or search</string>
     <string name="home_description">Home</string>
     <string name="more_description">More options</string>
