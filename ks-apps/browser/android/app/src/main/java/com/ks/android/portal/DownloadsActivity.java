@@ -82,12 +82,14 @@ public class DownloadsActivity extends Activity {
                 finish();
             }
         });
-        pathButton.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener pathClick = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(DownloadsActivity.this, DownloadPathActivity.class));
             }
-        });
+        };
+        pathButton.setOnClickListener(pathClick);
+        pathLabel.setOnClickListener(pathClick);
         createMissing.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(android.widget.CompoundButton buttonView, boolean isChecked) {
