@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -45,7 +44,6 @@ public class DownloadsActivity extends Activity {
     private ListView listView;
     private TextView emptyView;
     private TextView pathLabel;
-    private CheckBox createMissing;
     private EditText search;
     private DownloadAdapter adapter;
     private final List<DownloadItem> visible = new ArrayList<DownloadItem>();
@@ -67,7 +65,6 @@ public class DownloadsActivity extends Activity {
         listView = findViewById(R.id.downloadsList);
         emptyView = findViewById(R.id.downloadsEmpty);
         pathLabel = findViewById(R.id.downloadPathLabel);
-        createMissing = findViewById(R.id.createMissing);
         search = findViewById(R.id.downloadSearch);
         ImageButton back = findViewById(R.id.downloadsBack);
         ImageButton pathButton = findViewById(R.id.downloadPathButton);
