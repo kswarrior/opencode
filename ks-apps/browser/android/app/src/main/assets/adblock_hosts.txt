@@ -165,8 +165,6 @@ veruta.com
 yieldlab.net
 yumenetworks.com
 zemanta.com
-adnxs.com
-advertising.com
 atwola.com
 avenuea.com
 bannerconnect.net
@@ -185,7 +183,6 @@ legolas-media.com
 mookie1.com
 narrative.io
 netmng.com
-netmotionwireless.com
 nexac.com
 nrich.ai
 owneriq.net
