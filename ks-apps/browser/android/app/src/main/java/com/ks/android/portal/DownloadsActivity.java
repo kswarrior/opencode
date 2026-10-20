@@ -287,7 +287,7 @@ public class DownloadsActivity extends Activity {
         }
         Uri uri = DownloadFileProvider.getUriForFile(this, file);
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(uri, item.mimeType);
+        intent.setDataAndType(uri, mimeTypeFor(item, uri));
         intent.setClipData(ClipData.newRawUri(item.fileName, uri));
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         try {
@@ -305,7 +305,7 @@ public class DownloadsActivity extends Activity {
         }
         Uri uri = DownloadFileProvider.getUriForFile(this, file);
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType(item.mimeType);
+        intent.setType(mimeTypeFor(item, uri));
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.setClipData(ClipData.newRawUri(item.fileName, uri));
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -340,6 +340,14 @@ public class DownloadsActivity extends Activity {
                 })
                 .setNegativeButton(R.string.download_cancel, null)
                 .show();
+    }
+
+    private String mimeTypeFor(DownloadItem item, Uri uri) {
+        String type = getContentResolver().getType(uri);
+        if (!TextUtils.isEmpty(type) && !"application/octet-stream".equals(type)) {
+            return type;
+        }
+        return TextUtils.isEmpty(item.mimeType) ? "application/octet-stream" : item.mimeType;
     }
 
     private void confirmDelete(final DownloadItem item) {
