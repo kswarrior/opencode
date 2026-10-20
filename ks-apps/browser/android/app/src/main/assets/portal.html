@@ -261,15 +261,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  max-height: calc(5 * 52px + 4 * 7px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
   padding-right: 2px;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   animation: fadeUp .3s .24s ease both;
 }
-.recents::-webkit-scrollbar { display: none; }
 .recent-row {
   display: flex;
   align-items: center;
@@ -388,8 +383,11 @@ body {
   font-size: 12px;
 }
 .tile {
-  flex: 0 0 84px;
-  height: 116px;
+  flex: 0 0 var(--tile-width);
+  width: var(--tile-width);
+  min-width: var(--tile-width);
+  max-width: var(--tile-width);
+  height: var(--tile-height);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -743,7 +741,7 @@ body.launching .recents {
   var launching = false;
   var FAV_KEY = 'ks_favourites_v1';
   var RECENTS_KEY = 'ks_recents_v1';
-  var RECENTS_SHOW = 5;
+  var RECENTS_SHOW = 30;
   var RECENTS_STORE = 30;
   var favourites = loadFavourites();
   var favouritesNav = document.getElementById('favourites');
