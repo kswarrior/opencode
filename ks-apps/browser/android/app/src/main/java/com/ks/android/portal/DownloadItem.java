@@ -14,6 +14,8 @@ public class DownloadItem {
     public String url = "";
     public String fileName = "";
     public String filePath = "";
+    public String relativePath = "";
+    public String contentUri = "";
     public String mimeType = "application/octet-stream";
     public String userAgent = "";
     public String referer = "";
