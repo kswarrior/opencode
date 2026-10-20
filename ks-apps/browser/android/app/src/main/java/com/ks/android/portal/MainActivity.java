@@ -422,8 +422,21 @@ public class MainActivity extends Activity {
             JSONArray current = readRecentsLocked();
             JSONArray next = new JSONArray();
             try {
+                String name = cleanRecentName(title, url);
+                if (TextUtils.isEmpty(title == null ? "" : title.trim())) {
+                    for (int i = 0; i < current.length(); i++) {
+                        JSONObject old = current.optJSONObject(i);
+                        if (old != null && url.equals(old.optString("url"))) {
+                            String oldName = old.optString("name");
+                            if (!TextUtils.isEmpty(oldName)) {
+                                name = oldName;
+                            }
+                            break;
+                        }
+                    }
+                }
                 JSONObject item = new JSONObject();
-                item.put("name", cleanRecentName(title, url));
+                item.put("name", name);
                 item.put("url", url);
                 item.put("time", System.currentTimeMillis());
                 next.put(item);

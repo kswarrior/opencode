@@ -692,6 +692,8 @@ body.launching .recents {
   function launch(url) {
     if (launching || !url) return;
     launching = true;
+    closeRecentMenu();
+    if (!nativePortal) rememberRecent(url, hostFromUrl(url));
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
       window.location.href = url;
@@ -1199,8 +1201,20 @@ body.launching .recents {
   modal.addEventListener('click', function (event) {
     if (event.target === modal) closeModal();
   });
+  document.addEventListener('click', function (event) {
+    if (!recentMenu.classList.contains('open')) return;
+    if (recentMenu.contains(event.target)) return;
+    closeRecentMenu();
+  });
+  window.addEventListener('resize', closeRecentMenu);
+  window.addEventListener('scroll', closeRecentMenu, true);
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    if (event.key !== 'Escape') return;
+    if (recentMenu.classList.contains('open')) {
+      closeRecentMenu();
+      return;
+    }
+    if (modal.classList.contains('open')) closeModal();
   });
 
   form.addEventListener('submit', function (event) {
@@ -1218,8 +1232,10 @@ body.launching .recents {
   }
 
   renderFavourites();
+  refreshRecents();
 
   window.addEventListener('pageshow', function () {
+    refreshRecents();
     if (!launching) return;
     launching = false;
     document.body.classList.remove('launching');
