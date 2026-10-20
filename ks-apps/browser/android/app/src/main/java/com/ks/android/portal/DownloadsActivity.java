@@ -87,12 +87,6 @@ public class DownloadsActivity extends Activity {
         };
         pathButton.setOnClickListener(pathClick);
         pathLabel.setOnClickListener(pathClick);
-        createMissing.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(android.widget.CompoundButton buttonView, boolean isChecked) {
-                repository.setCreateMissing(isChecked);
-            }
-        });
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence text, int start, int count, int after) {
@@ -136,7 +130,6 @@ public class DownloadsActivity extends Activity {
     protected void onResume() {
         super.onResume();
         refreshPath();
-        createMissing.setChecked(repository.isCreateMissing());
         refreshList();
     }
 
@@ -279,12 +272,11 @@ public class DownloadsActivity extends Activity {
     }
 
     private void openItem(DownloadItem item) {
-        File file = new File(item.filePath);
-        if (!file.isFile()) {
+        if (!repository.isFileAvailable(item)) {
             toast(getString(R.string.download_file_missing));
             return;
         }
-        Uri uri = DownloadFileProvider.getUriForFile(this, file);
+        Uri uri = contentUriFor(item);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeTypeFor(item, uri));
         intent.setClipData(ClipData.newRawUri(item.fileName, uri));
@@ -297,12 +289,11 @@ public class DownloadsActivity extends Activity {
     }
 
     private void shareItem(DownloadItem item) {
-        File file = new File(item.filePath);
-        if (!file.isFile()) {
+        if (!repository.isFileAvailable(item)) {
             toast(getString(R.string.download_file_missing));
             return;
         }
-        Uri uri = DownloadFileProvider.getUriForFile(this, file);
+        Uri uri = contentUriFor(item);
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType(mimeTypeFor(item, uri));
         intent.putExtra(Intent.EXTRA_STREAM, uri);
@@ -339,6 +330,16 @@ public class DownloadsActivity extends Activity {
                 })
                 .setNegativeButton(R.string.download_cancel, null)
                 .show();
+    }
+
+    private Uri contentUriFor(DownloadItem item) {
+        if (!TextUtils.isEmpty(item.contentUri)) {
+            try {
+                return Uri.parse(item.contentUri);
+            } catch (Exception ignored) {
+            }
+        }
+        return DownloadFileProvider.getUriForFile(this, new File(item.filePath));
     }
 
     private String mimeTypeFor(DownloadItem item, Uri uri) {

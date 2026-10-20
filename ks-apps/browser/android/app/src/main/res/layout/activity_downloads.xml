@@ -98,17 +98,6 @@
             android:singleLine="true"
             android:textColor="@color/ks_muted"
             android:textSize="12sp" />
-
-        <CheckBox
-            android:id="@+id/createMissing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:buttonTint="@color/ks_text"
-            android:paddingStart="0dp"
-            android:text="@string/create_missing_folder"
-            android:textColor="@color/ks_muted"
-            android:textSize="12sp" />
     </LinearLayout>
 
     <FrameLayout
