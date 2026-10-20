@@ -1266,6 +1266,7 @@ public class DownloadRepository {
                 }
 
                 long finishedBytes = part.length();
+                String finalUrl = current.getURL() == null ? url : current.getURL().toString();
                 String relative;
                 String name;
                 String mime;
@@ -1275,10 +1276,11 @@ public class DownloadRepository {
                         part.delete();
                         return;
                     }
-                    if (!TextUtils.isEmpty(responseMime)) {
+                    if (!TextUtils.isEmpty(responseMime)
+                            && !"application/octet-stream".equals(responseMime)) {
                         item.mimeType = responseMime;
                     }
-                    String improved = improveFileName(item.fileName, url,
+                    String improved = improveFileName(item.fileName, finalUrl,
                             current.getHeaderField("Content-Disposition"), item.mimeType);
                     name = uniqueFileNameLocked(item.relativePath, improved, item.id);
                     relative = item.relativePath;
