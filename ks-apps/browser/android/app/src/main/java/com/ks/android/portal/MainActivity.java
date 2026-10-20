@@ -170,6 +170,12 @@ public class MainActivity extends Activity {
                 showMenu(view);
             }
         });
+        toolbarToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleToolbar();
+            }
+        });
         urlBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
@@ -274,7 +280,12 @@ public class MainActivity extends Activity {
         }
         currentUrl = url;
         boolean home = isHomeUrl(url);
-        setToolbarVisible(!home);
+        if (home) {
+            toolbarCollapsed = false;
+        }
+        toolbarAvailable = !home;
+        updateToolbarToggle();
+        setToolbarVisible(!home && !toolbarCollapsed);
         if (!home && !urlBar.hasFocus()) {
             urlBar.setText(url);
             urlBar.setSelection(urlBar.getText().length());
@@ -287,14 +298,21 @@ public class MainActivity extends Activity {
         }
         toolbarTargetVisible = visible;
         toolbar.animate().cancel();
+        content.animate().cancel();
         if (visible) {
             if (toolbar.getVisibility() != View.VISIBLE) {
                 toolbar.setVisibility(View.VISIBLE);
                 toolbar.setAlpha(0f);
                 toolbar.setTranslationY(-toolbarHeight);
+                content.setTranslationY(-toolbarHeight);
             }
             toolbar.animate()
                     .alpha(1f)
+                    .translationY(0f)
+                    .setDuration(260)
+                    .setInterpolator(new DecelerateInterpolator())
+                    .start();
+            content.animate()
                     .translationY(0f)
                     .setDuration(260)
                     .setInterpolator(new DecelerateInterpolator())
@@ -314,9 +332,47 @@ public class MainActivity extends Activity {
                             toolbar.setVisibility(View.GONE);
                             toolbar.setAlpha(1f);
                             toolbar.setTranslationY(0f);
+                            content.setTranslationY(0f);
                         }
                     })
                     .start();
+            content.animate()
+                    .translationY(-toolbarHeight)
+                    .setDuration(180)
+                    .setInterpolator(new AccelerateInterpolator())
+                    .start();
+        }
+    }
+
+    private void toggleToolbar() {
+        if (!toolbarAvailable) {
+            return;
+        }
+        toolbarCollapsed = !toolbarCollapsed;
+        if (toolbarCollapsed) {
+            hideKeyboard();
+            urlBar.clearFocus();
+        }
+        updateToolbarToggle();
+        setToolbarVisible(!toolbarCollapsed);
+    }
+
+    private void updateToolbarToggle() {
+        if (!toolbarAvailable) {
+            toolbarToggle.setVisibility(View.GONE);
+            return;
+        }
+        boolean wasVisible = toolbarToggle.getVisibility() == View.VISIBLE;
+        toolbarToggle.setVisibility(View.VISIBLE);
+        toolbarToggle.setImageResource(toolbarCollapsed
+                ? R.drawable.ic_chevron_down : R.drawable.ic_chevron_up);
+        toolbarToggle.setContentDescription(getString(toolbarCollapsed
+                ? R.string.expand_toolbar : R.string.collapse_toolbar));
+        if (wasVisible) {
+            toolbarToggle.setAlpha(1f);
+        } else {
+            toolbarToggle.setAlpha(0f);
+            toolbarToggle.animate().alpha(1f).setDuration(200).start();
         }
     }
 
@@ -327,6 +383,9 @@ public class MainActivity extends Activity {
     private void goHome() {
         hideKeyboard();
         urlBar.clearFocus();
+        toolbarCollapsed = false;
+        toolbarAvailable = false;
+        updateToolbarToggle();
         setToolbarVisible(false);
         webView.loadUrl(HOME_URL);
     }
