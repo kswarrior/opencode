@@ -305,7 +305,7 @@ public class DownloadRepository {
                             new String[]{mediaPrefix(relative) + "%"}, null);
                     if (cursor != null) {
                         while (cursor.moveToNext()) {
-                            addChildFolder(folders, cursor.getString(0), prefix);
+                            addChildFolder(folders, mediaRelative(cursor.getString(0)), prefix);
                         }
                     }
                 } catch (Exception ignored) {
@@ -317,16 +317,24 @@ public class DownloadRepository {
         return new ArrayList<String>(folders);
     }
 
-    private static void addChildFolder(Set<String> folders, String path, String prefix) {
+    private static String mediaRelative(String path) {
         if (TextUtils.isEmpty(path)) {
-            return;
+            return "";
         }
         String value = path.replace('\\', '/');
         String downloadsPrefix = Environment.DIRECTORY_DOWNLOADS + "/";
         if (value.toLowerCase(Locale.US)
                 .startsWith(downloadsPrefix.toLowerCase(Locale.US))) {
-            value = value.substring(downloadsPrefix.length());
+            return value.substring(downloadsPrefix.length());
         }
+        return value;
+    }
+
+    private static void addChildFolder(Set<String> folders, String path, String prefix) {
+        if (TextUtils.isEmpty(path)) {
+            return;
+        }
+        String value = path.replace('\\', '/');
         if (!value.endsWith("/")) {
             value = value + "/";
         }
