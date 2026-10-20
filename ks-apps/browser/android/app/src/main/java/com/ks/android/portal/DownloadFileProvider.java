@@ -94,11 +94,11 @@ public class DownloadFileProvider extends ContentProvider {
             throw new IllegalArgumentException("Missing path");
         }
         File file = new File(path);
-        File root = DownloadRepository.getInstance(getContext()).getRoot();
+        DownloadRepository repository = DownloadRepository.getInstance(getContext());
         try {
-            String rootPath = root.getCanonicalPath();
             String filePath = file.getCanonicalPath();
-            if (!filePath.equals(rootPath) && !filePath.startsWith(rootPath + File.separator)) {
+            if (!isInside(filePath, repository.getRoot())
+                    && !isInside(filePath, repository.getLegacyRoot())) {
                 throw new SecurityException("Path outside downloads");
             }
             return file;
@@ -108,5 +108,10 @@ public class DownloadFileProvider extends ContentProvider {
             }
             throw new SecurityException("Invalid path");
         }
+    }
+
+    private static boolean isInside(String filePath, File root) throws Exception {
+        String rootPath = root.getCanonicalPath();
+        return filePath.equals(rootPath) || filePath.startsWith(rootPath + File.separator);
     }
 }
