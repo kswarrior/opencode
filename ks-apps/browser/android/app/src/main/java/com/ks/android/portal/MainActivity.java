@@ -230,6 +230,17 @@ public class MainActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (adBlocker != null && adBlocker.isEnabled() != adBlockEnabledAtLoad) {
+            adBlockEnabledAtLoad = adBlocker.isEnabled();
+            if (webView != null && !isHomeUrl(currentUrl)) {
+                webView.reload();
+            }
+        }
+    }
+
     private void requestDownload(String url, String userAgent, String contentDisposition,
                                  String mimeType, long contentLength) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M

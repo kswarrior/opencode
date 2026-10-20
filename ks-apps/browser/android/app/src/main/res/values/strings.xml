@@ -73,4 +73,19 @@
     <string name="settings_action">Settings</string>
     <string name="open_downloads">Open downloads</string>
     <string name="open_settings">Open settings</string>
+    <string name="adblock_title">Ad blocker</string>
+    <string name="adblock_description">Blocks ads, pop-ups and trackers while you browse.</string>
+    <string name="adblock_enabled">Enabled</string>
+    <string name="adblock_disabled">Disabled</string>
+    <string name="adblock_reset">Reset blocked counter</string>
+    <string name="adblock_reset_done">Blocked counter reset</string>
+    <string name="adblock_enabled_toast">Ad blocker enabled</string>
+    <string name="adblock_disabled_toast">Ad blocker disabled</string>
+    <string name="adblock_action_on">Ad blocker: On</string>
+    <string name="adblock_action_off">Ad blocker: Off</string>
+    <string name="adblock_note">Some sites may not work correctly with the ad blocker. Turn it off if a page fails to load.</string>
+    <plurals name="adblock_blocked_count">
+        <item quantity="one">%1$d request blocked</item>
+        <item quantity="other">%1$d requests blocked</item>
+    </plurals>
 </resources>
