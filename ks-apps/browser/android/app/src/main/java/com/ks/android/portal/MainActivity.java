@@ -113,6 +113,30 @@ public class MainActivity extends Activity {
             }
         });
 
+        webView.setDownloadListener(new DownloadListener() {
+            @Override
+            public void onDownloadStart(String url, String userAgent, String contentDisposition,
+                                        String mimeType, long contentLength) {
+                if (TextUtils.isEmpty(url) || url.startsWith("blob:") || url.startsWith("data:")) {
+                    Toast.makeText(MainActivity.this, R.string.download_unsupported,
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                DownloadItem item = DownloadRepository.getInstance(MainActivity.this)
+                        .startDownload(url, userAgent, contentDisposition, mimeType,
+                                contentLength, currentUrl);
+                if (item.status == DownloadItem.STATUS_FAILED) {
+                    String message = TextUtils.isEmpty(item.error)
+                            ? getString(R.string.download_start_failed) : item.error;
+                    Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            getString(R.string.download_started, item.fileName),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -241,6 +265,10 @@ public class MainActivity extends Activity {
                 int id = item.getItemId();
                 if (id == R.id.action_home) {
                     goHome();
+                    return true;
+                }
+                if (id == R.id.action_downloads) {
+                    startActivity(new Intent(MainActivity.this, DownloadsActivity.class));
                     return true;
                 }
                 if (id == R.id.action_reload) {
