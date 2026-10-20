@@ -71,6 +71,7 @@ public class MainActivity extends Activity {
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(new PortalBridge(), "KSPortalNative");
         settings.setDomStorageEnabled(true);
         settings.setDatabaseEnabled(true);
         settings.setLoadWithOverviewMode(true);
@@ -107,6 +108,7 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
                 updateChrome(url);
+                recordRecent(url, view.getTitle());
             }
 
             @Override
@@ -120,6 +122,11 @@ public class MainActivity extends Activity {
             public void onProgressChanged(WebView view, int newProgress) {
                 progressBar.setProgress(newProgress);
                 progressBar.setVisibility(newProgress >= 100 ? View.GONE : View.VISIBLE);
+            }
+
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                recordRecent(view.getUrl(), title);
             }
         });
 
@@ -352,6 +359,145 @@ public class MainActivity extends Activity {
         return true;
     }
 
+    private boolean isBridgeAllowed() {
+        return webView != null && isHomeUrl(webView.getUrl());
+    }
+
+    private String normalizeWebUrl(String raw) {
+        if (TextUtils.isEmpty(raw)) {
+            return null;
+        }
+        Uri uri = Uri.parse(raw);
+        String scheme = uri.getScheme();
+        if (!"http".equalsIgnoreCase(scheme) && !"https".equalsIgnoreCase(scheme)) {
+            return null;
+        }
+        return TextUtils.isEmpty(uri.getHost()) ? null : uri.toString();
+    }
+
+    private String cleanRecentName(String title, String url) {
+        String name = title == null ? "" : title.replaceAll("\\s+", " ").trim();
+        if (name.isEmpty()) {
+            String host = Uri.parse(url).getHost();
+            name = host == null ? url : host;
+            if (name.startsWith("www.")) {
+                name = name.substring(4);
+            }
+        }
+        return name.length() > 80 ? name.substring(0, 80) : name;
+    }
+
+    private JSONArray readRecentsLocked() {
+        JSONArray result = new JSONArray();
+        String raw = getSharedPreferences(RECENTS_PREFS, MODE_PRIVATE)
+                .getString(RECENTS_KEY, "[]");
+        try {
+            JSONArray stored = new JSONArray(raw);
+            for (int i = 0; i < stored.length() && result.length() < RECENTS_LIMIT; i++) {
+                JSONObject source = stored.optJSONObject(i);
+                if (source == null) {
+                    continue;
+                }
+                String url = normalizeWebUrl(source.optString("url"));
+                if (url == null) {
+                    continue;
+                }
+                JSONObject item = new JSONObject();
+                item.put("name", cleanRecentName(source.optString("name"), url));
+                item.put("url", url);
+                item.put("time", source.optLong("time", 0L));
+                result.put(item);
+            }
+        } catch (JSONException ignored) {
+        }
+        return result;
+    }
+
+    private void recordRecent(String rawUrl, String title) {
+        String url = normalizeWebUrl(rawUrl);
+        if (url == null) {
+            return;
+        }
+        synchronized (RECENTS_LOCK) {
+            JSONArray current = readRecentsLocked();
+            JSONArray next = new JSONArray();
+            try {
+                JSONObject item = new JSONObject();
+                item.put("name", cleanRecentName(title, url));
+                item.put("url", url);
+                item.put("time", System.currentTimeMillis());
+                next.put(item);
+                for (int i = 0; i < current.length() && next.length() < RECENTS_LIMIT; i++) {
+                    JSONObject existing = current.optJSONObject(i);
+                    if (existing == null || url.equals(existing.optString("url"))) {
+                        continue;
+                    }
+                    next.put(existing);
+                }
+                getSharedPreferences(RECENTS_PREFS, MODE_PRIVATE).edit()
+                        .putString(RECENTS_KEY, next.toString()).apply();
+            } catch (JSONException ignored) {
+            }
+        }
+    }
+
+    private boolean removeRecent(String rawUrl) {
+        String url = normalizeWebUrl(rawUrl);
+        if (url == null) {
+            return false;
+        }
+        synchronized (RECENTS_LOCK) {
+            JSONArray current = readRecentsLocked();
+            JSONArray next = new JSONArray();
+            boolean removed = false;
+            try {
+                for (int i = 0; i < current.length(); i++) {
+                    JSONObject existing = current.optJSONObject(i);
+                    if (existing == null) {
+                        continue;
+                    }
+                    if (url.equals(existing.optString("url"))) {
+                        removed = true;
+                    } else {
+                        next.put(existing);
+                    }
+                }
+            } catch (JSONException ignored) {
+            }
+            if (removed) {
+                getSharedPreferences(RECENTS_PREFS, MODE_PRIVATE).edit()
+                        .putString(RECENTS_KEY, next.toString()).apply();
+            }
+            return removed;
+        }
+    }
+
+    private final class PortalBridge {
+        @JavascriptInterface
+        public String getRecents() {
+            if (!isBridgeAllowed()) {
+                return "[]";
+            }
+            synchronized (RECENTS_LOCK) {
+                return readRecentsLocked().toString();
+            }
+        }
+
+        @JavascriptInterface
+        public boolean addRecent(String name, String url) {
+            if (!isBridgeAllowed()) {
+                return false;
+            }
+            recordRecent(url, name);
+            return true;
+        }
+
+        @JavascriptInterface
+        public boolean removeRecent(String url) {
+            return isBridgeAllowed() && MainActivity.this.removeRecent(url);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         if (webView != null && webView.canGoBack()) {
@@ -372,6 +518,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         if (webView != null) {
+            webView.removeJavascriptInterface("KSPortalNative");
             webView.stopLoading();
             webView.destroy();
             webView = null;
