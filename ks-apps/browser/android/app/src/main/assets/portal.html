@@ -517,6 +517,21 @@ body.launching .sites {
   var form = document.getElementById('omni');
   var input = document.getElementById('q');
   var launching = false;
+  var FAV_KEY = 'ks_favourites_v1';
+  var favourites = loadFavourites();
+  var favouritesNav = document.getElementById('favourites');
+  var modal = document.getElementById('favModal');
+  var favForm = document.getElementById('favForm');
+  var favTitle = document.getElementById('favTitle');
+  var favFields = document.getElementById('favFields');
+  var favCopy = document.getElementById('favCopy');
+  var favName = document.getElementById('favName');
+  var favUrl = document.getElementById('favUrl');
+  var favError = document.getElementById('favError');
+  var favSave = document.getElementById('favSave');
+  var removeIndex = -1;
+  var lastFocused = null;
+  var suppressUntil = 0;
 
   function resolveUrl(raw) {
     var value = String(raw || '').trim();
@@ -575,12 +590,251 @@ body.launching .sites {
     }, 360);
   }
 
+  function loadFavourites() {
+    try {
+      var raw = window.localStorage.getItem(FAV_KEY);
+      var parsed = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(parsed)) return [];
+      var result = [];
+      for (var i = 0; i < parsed.length && result.length < 24; i++) {
+        var item = parsed[i];
+        if (!item || typeof item.name !== 'string' || typeof item.url !== 'string') continue;
+        var url = normalizeFavouriteUrl(item.url);
+        if (!url) continue;
+        var name = item.name.trim().slice(0, 40);
+        if (!name) name = new URL(url).hostname.replace(/^www\./, '');
+        result.push({ name: name, url: url });
+      }
+      return result;
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function normalizeFavouriteUrl(raw) {
+    var value = String(raw || '').trim();
+    if (!value) return '';
+    if (!/^https?:\/\//i.test(value)) value = 'https://' + value;
+    try {
+      var parsed = new URL(value);
+      if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '';
+      if (!parsed.hostname || parsed.hostname.indexOf('.') === -1) return '';
+      return parsed.href;
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function faviconUrl(url) {
+    try {
+      return 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(new URL(url).hostname) + '&sz=64';
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function initialFor(name) {
+    var parts = String(name || '').trim().split(/\s+/);
+    if (parts.length > 1 && parts[0] && parts[1]) {
+      return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+    }
+    return (String(name || '').trim().slice(0, 2) || '?').toUpperCase();
+  }
+
+  function saveFavourites() {
+    try {
+      window.localStorage.setItem(FAV_KEY, JSON.stringify(favourites));
+    } catch (error) {}
+  }
+
+  function makeFavouriteTile(favourite, index) {
+    var tile = document.createElement('a');
+    tile.className = 'tile';
+    tile.href = favourite.url;
+
+    var logo = document.createElement('span');
+    logo.className = 'tile-logo';
+    var fallback = document.createElement('span');
+    fallback.className = 'fallback';
+    fallback.textContent = initialFor(favourite.name);
+    logo.appendChild(fallback);
+    var favicon = document.createElement('img');
+    favicon.alt = '';
+    favicon.setAttribute('loading', 'lazy');
+    favicon.setAttribute('referrerpolicy', 'no-referrer');
+    var icon = faviconUrl(favourite.url);
+    if (icon) favicon.src = icon;
+    favicon.onerror = function () { favicon.remove(); };
+    logo.appendChild(favicon);
+
+    var name = document.createElement('span');
+    name.className = 'tile-name';
+    name.textContent = favourite.name;
+    tile.appendChild(logo);
+    tile.appendChild(name);
+
+    tile.addEventListener('click', function (event) {
+      if (Date.now() < suppressUntil) {
+        event.preventDefault();
+        return;
+      }
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      launch(favourite.url);
+    });
+    bindFavouriteLongPress(tile, favourite, index);
+    return tile;
+  }
+
+  function bindFavouriteLongPress(tile, favourite, index) {
+    var timer = 0;
+    function cancel() {
+      if (timer) {
+        window.clearTimeout(timer);
+        timer = 0;
+      }
+    }
+    function start(event) {
+      if (event.type === 'mousedown' && event.button !== 0) return;
+      cancel();
+      timer = window.setTimeout(function () {
+        timer = 0;
+        suppressUntil = Date.now() + 800;
+        openRemoveModal(favourite, index);
+      }, 520);
+    }
+    tile.addEventListener('touchstart', start, { passive: true });
+    tile.addEventListener('touchend', cancel);
+    tile.addEventListener('touchcancel', cancel);
+    tile.addEventListener('touchmove', cancel, { passive: true });
+    tile.addEventListener('mousedown', start);
+    tile.addEventListener('mouseup', cancel);
+    tile.addEventListener('mouseleave', cancel);
+    tile.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+      cancel();
+      suppressUntil = Date.now() + 800;
+      openRemoveModal(favourite, index);
+    });
+  }
+
+  function makeAddTile() {
+    var tile = document.createElement('button');
+    tile.type = 'button';
+    tile.className = 'tile tile-add';
+    tile.setAttribute('aria-label', 'Add favourite');
+    var logo = document.createElement('span');
+    logo.className = 'tile-logo add-logo';
+    var plus = document.createElement('span');
+    plus.className = 'add-plus';
+    plus.textContent = '+';
+    logo.appendChild(plus);
+    var name = document.createElement('span');
+    name.className = 'tile-name';
+    name.textContent = 'Add';
+    tile.appendChild(logo);
+    tile.appendChild(name);
+    tile.addEventListener('click', openAddModal);
+    return tile;
+  }
+
+  function renderFavourites() {
+    favouritesNav.textContent = '';
+    for (var i = 0; i < favourites.length; i++) {
+      favouritesNav.appendChild(makeFavouriteTile(favourites[i], i));
+    }
+    favouritesNav.appendChild(makeAddTile());
+  }
+
+  function openAddModal() {
+    removeIndex = -1;
+    favTitle.textContent = 'Add favourite';
+    favFields.hidden = false;
+    favCopy.hidden = true;
+    favCopy.textContent = '';
+    favName.value = '';
+    favUrl.value = '';
+    favError.textContent = '';
+    favSave.textContent = 'Add';
+    favSave.classList.remove('danger');
+    openModal();
+    window.setTimeout(function () { favName.focus(); }, 30);
+  }
+
+  function openRemoveModal(favourite, index) {
+    if (modal.classList.contains('open') && removeIndex === index) return;
+    removeIndex = index;
+    favTitle.textContent = 'Remove favourite?';
+    favFields.hidden = true;
+    favCopy.hidden = false;
+    favCopy.textContent = 'Remove "' + favourite.name + '" from your favourites?';
+    favError.textContent = '';
+    favSave.textContent = 'Remove';
+    favSave.classList.add('danger');
+    openModal();
+    window.setTimeout(function () { favSave.focus(); }, 30);
+  }
+
+  function openModal() {
+    lastFocused = document.activeElement;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    removeIndex = -1;
+    if (lastFocused && lastFocused.focus) {
+      try { lastFocused.focus(); } catch (error) {}
+    }
+  }
+
+  favForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (removeIndex >= 0) {
+      favourites.splice(removeIndex, 1);
+      saveFavourites();
+      closeModal();
+      renderFavourites();
+      return;
+    }
+    var url = normalizeFavouriteUrl(favUrl.value);
+    if (!url) {
+      favError.textContent = 'Enter a valid website address.';
+      favUrl.focus();
+      return;
+    }
+    var name = favName.value.trim().slice(0, 40);
+    if (!name) name = new URL(url).hostname.replace(/^www\./, '');
+    for (var i = 0; i < favourites.length; i++) {
+      if (favourites[i].url === url) {
+        favError.textContent = 'This site is already in favourites.';
+        return;
+      }
+    }
+    favourites.push({ name: name, url: url });
+    saveFavourites();
+    closeModal();
+    renderFavourites();
+  });
+
+  document.getElementById('favCancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     launch(resolveUrl(input.value));
   });
 
-  var tiles = document.querySelectorAll('.tile');
+  var tiles = document.querySelectorAll('#topSites .tile');
   for (var i = 0; i < tiles.length; i++) {
     tiles[i].addEventListener('click', function (event) {
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -588,6 +842,8 @@ body.launching .sites {
       launch(this.href);
     });
   }
+
+  renderFavourites();
 
   window.addEventListener('pageshow', function () {
     if (!launching) return;
