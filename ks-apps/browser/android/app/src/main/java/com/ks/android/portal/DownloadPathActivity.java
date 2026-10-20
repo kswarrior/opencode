@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,7 +57,7 @@ public class DownloadPathActivity extends Activity {
         folderList.setAdapter(adapter);
         folderList.setEmptyView(emptyView);
 
-        pathCreateMissing_setChecked(repository.isCreateMissing());
+        createMissing.setChecked(repository.isCreateMissing());
         openRelative(repository.getRelativePath());
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -106,9 +105,6 @@ public class DownloadPathActivity extends Activity {
         });
     }
 
-    private void pathCreateMissing_setChecked(boolean checked) {
-        createMissing.setChecked(checked);
-    }
 
     private void openRelative(String relative) {
         updatingInput = true;
