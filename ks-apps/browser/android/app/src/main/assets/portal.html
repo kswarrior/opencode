@@ -391,13 +391,15 @@ body.launching .sites {
       window.location.href = url;
       return;
     }
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
     document.body.classList.add('launching');
     form.style.animation = 'none';
     form.style.transformOrigin = 'top left';
     var rect = form.getBoundingClientRect();
     var targetLeft = 56;
     var targetTop = 7;
-    var targetWidth = Math.max(120, window.innerWidth - 112);
+    var viewportWidth = document.documentElement.clientWidth || window.innerWidth;
+    var targetWidth = Math.max(120, viewportWidth - 112);
     var targetHeight = 42;
     var dx = targetLeft - rect.left;
     var dy = targetTop - rect.top;
