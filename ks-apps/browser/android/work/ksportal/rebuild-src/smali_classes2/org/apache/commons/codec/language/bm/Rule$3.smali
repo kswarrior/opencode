@@ -1,5 +1,0 @@
-.class final Lorg/apache/commons/codec/language/bm/Rule$3;
-.super Ljava/lang/Object;
-
-# interfaces
-.implements Lorg/apache/commons/codec/language/bm/Rule$RPattern;

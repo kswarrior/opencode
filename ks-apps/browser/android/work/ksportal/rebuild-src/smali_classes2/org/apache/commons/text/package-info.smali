@@ -1,2 +1,0 @@
-.class interface abstract synthetic Lorg/apache/commons/text/package-info;
-.super Ljava/lang/Object;
