@@ -653,8 +653,21 @@ body.launching .recents {
   var input = document.getElementById('q');
   var launching = false;
   var FAV_KEY = 'ks_favourites_v1';
+  var RECENTS_KEY = 'ks_recents_v1';
+  var RECENTS_SHOW = 5;
+  var RECENTS_STORE = 30;
   var favourites = loadFavourites();
   var favouritesNav = document.getElementById('favourites');
+  var recentsNav = document.getElementById('recents');
+  var nativePortal = window.KSPortalNative;
+  var recents = [];
+  var recentMenu = document.createElement('div');
+  recentMenu.className = 'recent-menu';
+  recentMenu.id = 'recentMenu';
+  recentMenu.setAttribute('role', 'menu');
+  document.body.appendChild(recentMenu);
+  var activeRecentButton = null;
+  var menuRecent = null;
   var modal = document.getElementById('favModal');
   var favForm = document.getElementById('favForm');
   var favTitle = document.getElementById('favTitle');
@@ -780,6 +793,232 @@ body.launching .recents {
     try {
       window.localStorage.setItem(FAV_KEY, JSON.stringify(favourites));
     } catch (error) {}
+  }
+
+  function hostFromUrl(url) {
+    try {
+      return new URL(url).hostname.replace(/^www\./, '');
+    } catch (error) {
+      return url;
+    }
+  }
+
+  function sanitizeRecents(raw) {
+    var result = [];
+    if (!Array.isArray(raw)) return result;
+    for (var i = 0; i < raw.length && result.length < RECENTS_STORE; i++) {
+      var item = raw[i];
+      if (!item || typeof item.name !== 'string' || typeof item.url !== 'string') continue;
+      var url = normalizeFavouriteUrl(item.url);
+      if (!url) continue;
+      var duplicate = false;
+      for (var j = 0; j < result.length; j++) {
+        if (result[j].url === url) {
+          duplicate = true;
+          break;
+        }
+      }
+      if (duplicate) continue;
+      var name = item.name.replace(/\s+/g, ' ').trim().slice(0, 80);
+      if (!name) name = hostFromUrl(url);
+      result.push({ name: name, url: url });
+    }
+    return result;
+  }
+
+  function loadRecents() {
+    var parsed = null;
+    if (nativePortal && typeof nativePortal.getRecents === 'function') {
+      try {
+        var nativeRaw = nativePortal.getRecents();
+        if (nativeRaw) parsed = JSON.parse(nativeRaw);
+      } catch (error) {
+        parsed = null;
+      }
+    }
+    if (!Array.isArray(parsed)) {
+      try {
+        var raw = window.localStorage.getItem(RECENTS_KEY);
+        parsed = raw ? JSON.parse(raw) : [];
+      } catch (error) {
+        parsed = [];
+      }
+    }
+    return sanitizeRecents(parsed);
+  }
+
+  function saveFallbackRecents() {
+    try {
+      window.localStorage.setItem(RECENTS_KEY, JSON.stringify(recents.slice(0, RECENTS_STORE)));
+    } catch (error) {}
+  }
+
+  function rememberRecent(url, title) {
+    var clean = normalizeFavouriteUrl(url);
+    if (!clean) return;
+    var name = String(title || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+    if (!name) name = hostFromUrl(clean);
+    var next = [{ name: name, url: clean }];
+    for (var i = 0; i < recents.length && next.length < RECENTS_STORE; i++) {
+      if (recents[i].url !== clean) next.push(recents[i]);
+    }
+    recents = next;
+    saveFallbackRecents();
+    renderRecents();
+  }
+
+  function removeRecent(url) {
+    if (nativePortal && typeof nativePortal.removeRecent === 'function') {
+      try {
+        nativePortal.removeRecent(url);
+      } catch (error) {}
+    }
+    var next = [];
+    for (var i = 0; i < recents.length; i++) {
+      if (recents[i].url !== url) next.push(recents[i]);
+    }
+    recents = next;
+    saveFallbackRecents();
+    renderRecents();
+  }
+
+  function favouriteIndexFor(url) {
+    for (var i = 0; i < favourites.length; i++) {
+      if (favourites[i].url === url) return i;
+    }
+    return -1;
+  }
+
+  function toggleRecentFavourite(item) {
+    var index = favouriteIndexFor(item.url);
+    if (index >= 0) {
+      favourites.splice(index, 1);
+    } else {
+      favourites.push({ name: item.name.slice(0, 40) || hostFromUrl(item.url), url: item.url });
+    }
+    saveFavourites();
+    renderFavourites();
+  }
+
+  function addRecentMenuAction(label, danger, action) {
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('role', 'menuitem');
+    button.textContent = label;
+    if (danger) button.className = 'danger';
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeRecentMenu();
+      action();
+    });
+    recentMenu.appendChild(button);
+  }
+
+  function openRecentMenu(anchor, item) {
+    closeRecentMenu();
+    menuRecent = item;
+    activeRecentButton = anchor;
+    anchor.setAttribute('aria-expanded', 'true');
+    recentMenu.textContent = '';
+    var isFavourite = favouriteIndexFor(item.url) >= 0;
+    addRecentMenuAction(isFavourite ? 'Remove from favourites' : 'Add to favourites', false, function () {
+      toggleRecentFavourite(item);
+    });
+    addRecentMenuAction('Remove from recents', true, function () {
+      removeRecent(item.url);
+    });
+    recentMenu.classList.add('open');
+    var rect = anchor.getBoundingClientRect();
+    var width = recentMenu.offsetWidth;
+    var height = recentMenu.offsetHeight;
+    var left = Math.max(8, Math.min(rect.right - width, window.innerWidth - width - 8));
+    var top = rect.bottom + 6;
+    if (top + height > window.innerHeight - 8) {
+      top = Math.max(8, rect.top - height - 6);
+    }
+    recentMenu.style.left = left + 'px';
+    recentMenu.style.top = top + 'px';
+  }
+
+  function closeRecentMenu() {
+    if (!recentMenu.classList.contains('open')) return;
+    recentMenu.classList.remove('open');
+    recentMenu.style.left = '';
+    recentMenu.style.top = '';
+    recentMenu.textContent = '';
+    if (activeRecentButton) {
+      activeRecentButton.setAttribute('aria-expanded', 'false');
+      activeRecentButton = null;
+    }
+    menuRecent = null;
+  }
+
+  function makeRecentRow(item) {
+    var row = document.createElement('div');
+    row.className = 'recent-row';
+
+    var link = document.createElement('a');
+    link.className = 'recent-main';
+    link.href = item.url;
+    link.title = item.name + ' | ' + item.url;
+    var name = document.createElement('span');
+    name.className = 'recent-name';
+    name.textContent = item.name;
+    var separator = document.createElement('span');
+    separator.className = 'recent-sep';
+    separator.textContent = '|';
+    var url = document.createElement('span');
+    url.className = 'recent-url';
+    url.textContent = item.url;
+    link.appendChild(name);
+    link.appendChild(separator);
+    link.appendChild(url);
+    link.addEventListener('click', function (event) {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      launch(item.url);
+    });
+
+    var menuButton = document.createElement('button');
+    menuButton.type = 'button';
+    menuButton.className = 'recent-menu-btn';
+    menuButton.textContent = '⋮';
+    menuButton.setAttribute('aria-label', 'Options for ' + item.name);
+    menuButton.setAttribute('aria-haspopup', 'menu');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (menuButton.getAttribute('aria-expanded') === 'true') {
+        closeRecentMenu();
+      } else {
+        openRecentMenu(menuButton, item);
+      }
+    });
+
+    row.appendChild(link);
+    row.appendChild(menuButton);
+    return row;
+  }
+
+  function renderRecents() {
+    recentsNav.textContent = '';
+    if (!recents.length) {
+      var empty = document.createElement('p');
+      empty.className = 'recents-empty';
+      empty.textContent = 'Sites you visit will appear here.';
+      recentsNav.appendChild(empty);
+      return;
+    }
+    for (var i = 0; i < recents.length && i < RECENTS_SHOW; i++) {
+      recentsNav.appendChild(makeRecentRow(recents[i]));
+    }
+  }
+
+  function refreshRecents() {
+    recents = loadRecents();
+    renderRecents();
   }
 
   function makeFavouriteTile(favourite, index) {
