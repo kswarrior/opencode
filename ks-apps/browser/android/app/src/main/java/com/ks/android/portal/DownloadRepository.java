@@ -1058,6 +1058,12 @@ public class DownloadRepository {
         if (querySpecific && !pathSpecific) {
             return queryName;
         }
+        if (!pathSpecific) {
+            String apkName = lastResortApkName(url);
+            if (!TextUtils.isEmpty(apkName)) {
+                return apkName;
+            }
+        }
         if (!TextUtils.isEmpty(pathName)) {
             return pathName;
         }
