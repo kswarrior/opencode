@@ -37,6 +37,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_url_bar"
             android:contentDescription="@string/url_hint"
+            android:gravity="center_vertical"
             android:imeOptions="actionGo"
             android:importantForAutofill="no"
             android:inputType="textUri"
