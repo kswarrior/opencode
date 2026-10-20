@@ -124,7 +124,9 @@ public class DownloadPathActivity extends Activity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
         if (requestCode != REQUEST_WRITE_STORAGE) {
             return;
         }
