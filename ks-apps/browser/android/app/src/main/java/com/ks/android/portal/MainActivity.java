@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
     private ProgressBar progressBar;
     private View toolbar;
     private EditText urlBar;
-    private String currentUrl = HOME_URL;
+    private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
     private boolean toolbarTargetVisible;
 
@@ -360,7 +360,7 @@ public class MainActivity extends Activity {
     }
 
     private boolean isBridgeAllowed() {
-        return webView != null && isHomeUrl(webView.getUrl());
+        return isHomeUrl(currentUrl);
     }
 
     private String normalizeWebUrl(String raw) {
