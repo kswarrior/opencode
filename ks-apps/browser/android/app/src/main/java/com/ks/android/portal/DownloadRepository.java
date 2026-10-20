@@ -855,6 +855,9 @@ public class DownloadRepository {
         if (TextUtils.isEmpty(extension)) {
             return mime;
         }
+        if (".apk".equals(extension)) {
+            return "application/vnd.android.package-archive";
+        }
         String inferred = MimeTypeMap.getSingleton()
                 .getMimeTypeFromExtension(extension.substring(1));
         return TextUtils.isEmpty(inferred) ? mime : inferred;
