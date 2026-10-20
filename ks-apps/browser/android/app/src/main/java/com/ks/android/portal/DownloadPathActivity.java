@@ -87,6 +87,12 @@ public class DownloadPathActivity extends Activity {
                 openRelative(relativeOf(folders.get(position)));
             }
         });
+        createMissing.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(android.widget.CompoundButton buttonView, boolean isChecked) {
+                updateUi();
+            }
+        });
         pathInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence text, int start, int count, int after) {
@@ -127,7 +133,8 @@ public class DownloadPathActivity extends Activity {
 
         String absolute = currentDir.getAbsolutePath();
         if (!currentDir.exists()) {
-            absolute = absolute + " \u00B7 " + getString(R.string.folder_will_create);
+            absolute = absolute + " \u00B7 " + getString(createMissing.isChecked()
+                    ? R.string.folder_will_create : R.string.folder_missing);
         } else if (!currentDir.isDirectory()) {
             absolute = absolute + " \u00B7 " + getString(R.string.folder_exists_file);
         }
@@ -152,7 +159,8 @@ public class DownloadPathActivity extends Activity {
         }
         adapter.notifyDataSetChanged();
         if (!currentDir.exists()) {
-            emptyView.setText(R.string.folder_missing);
+            emptyView.setText(createMissing.isChecked()
+                    ? R.string.folder_will_create : R.string.folder_missing);
         } else if (!currentDir.isDirectory()) {
             emptyView.setText(R.string.folder_exists_file);
         } else {
