@@ -1661,6 +1661,7 @@ public class DownloadRepository {
                 }
 
                 long finishedBytes = part.length();
+                boolean apk = looksLikeApk(part);
                 String finalUrl = current.getURL() == null ? url : current.getURL().toString();
                 String relative;
                 String name;
@@ -1677,9 +1678,16 @@ public class DownloadRepository {
                     }
                     String improved = improveFileName(item.fileName, finalUrl,
                             current.getHeaderField("Content-Disposition"), item.mimeType);
+                    if (apk) {
+                        improved = withExtension(improved, ".apk");
+                    }
                     name = uniqueFileNameLocked(item.relativePath, improved, item.id);
                     relative = item.relativePath;
-                    item.mimeType = mimeTypeForName(name, item.mimeType);
+                    if (apk) {
+                        item.mimeType = "application/vnd.android.package-archive";
+                    } else {
+                        item.mimeType = mimeTypeForName(name, item.mimeType);
+                    }
                     mime = item.mimeType;
                     item.fileName = name;
                     item.filePath = filePathFor(relative, name);
