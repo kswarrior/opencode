@@ -351,7 +351,19 @@ public class DownloadRepository {
         if (clean.isEmpty()) {
             return;
         }
-        if (knownFolders.add(clean)) {
+        boolean changed = false;
+        String[] parts = clean.split("/");
+        StringBuilder current = new StringBuilder();
+        for (String part : parts) {
+            if (current.length() > 0) {
+                current.append('/');
+            }
+            current.append(part);
+            if (knownFolders.add(current.toString())) {
+                changed = true;
+            }
+        }
+        if (changed) {
             preferences.edit().putString(KEY_FOLDERS,
                     TextUtils.join("\n", knownFolders)).apply();
         }
