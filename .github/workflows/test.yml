@@ -50,7 +50,8 @@ jobs:
       - name: Install OpenCode
         run: |
           set -e
-          npm install --global opencode-ai
+          curl -fsSL https://opencode.ai/install | bash
+          export PATH="$HOME/.opencode/bin:$PATH"
           echo "OpenCode:"
           opencode --version
 
