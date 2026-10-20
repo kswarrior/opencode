@@ -3,5 +3,15 @@
     <string name="app_name">KS Portal</string>
     <string name="owner">KS Warrior</string>
     <string name="version_name">1.0.0</string>
-    <string name="loading">Opening KS Portal</string>
+    <string name="url_hint">Enter URL or search</string>
+    <string name="home_description">Home</string>
+    <string name="more_description">More options</string>
+    <string name="action_home">Home</string>
+    <string name="action_reload">Reload</string>
+    <string name="action_share">Share</string>
+    <string name="action_copy">Copy URL</string>
+    <string name="action_open">Open in browser</string>
+    <string name="share_chooser">Share link</string>
+    <string name="url_copied">URL copied</string>
+    <string name="no_app_found">No app found for this link</string>
 </resources>

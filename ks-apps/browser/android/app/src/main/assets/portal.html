@@ -3,64 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#050a14">
+<meta name="theme-color" content="#262626">
 <meta name="color-scheme" content="dark">
 <title>KS Portal</title>
 <style>
 :root {
   color-scheme: dark;
-  --bg: #050a14;
-  --panel: rgba(11, 27, 51, .72);
-  --line: rgba(103, 232, 249, .16);
-  --cyan: #22d3ee;
-  --ice: #e0f2fe;
-  --muted: #8aa4c8;
+  --bg: #262626;
+  --panel: #0b0b0b;
+  --panel-2: #141414;
+  --border: #4a4a4a;
+  --text: #f5f5f5;
+  --muted: #a3a3a3;
+  --dim: #737373;
 }
 * { box-sizing: border-box; }
 html, body { min-height: 100%; }
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at 18% -8%, rgba(34, 211, 238, .16), transparent 42%),
-    radial-gradient(circle at 92% 4%, rgba(59, 130, 246, .15), transparent 38%),
-    radial-gradient(circle at 50% 108%, rgba(14, 165, 233, .12), transparent 52%),
-    var(--bg);
-  color: var(--ice);
+  background: var(--bg);
+  color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-.aurora {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at 50% 0%, rgba(103, 232, 249, .08), transparent 46%);
-}
 .shell {
-  position: relative;
   width: min(940px, 100%);
   margin: 0 auto;
-  padding: calc(22px + env(safe-area-inset-top)) 20px calc(26px + env(safe-area-inset-bottom));
+  padding: calc(22px + env(safe-area-inset-top)) 18px calc(26px + env(safe-area-inset-bottom));
 }
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin-bottom: 52px;
+  margin-bottom: 22px;
 }
 .brand { display: flex; align-items: center; gap: 12px; }
 .mark {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
-  color: var(--ice);
-  background: linear-gradient(145deg, #0e7490, #155e75);
-  box-shadow: 0 10px 30px rgba(34, 211, 238, .22), inset 0 0 0 1px rgba(224, 242, 254, .18);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
 }
-.mark svg { width: 27px; height: 27px; }
+.mark svg { width: 26px; height: 26px; }
 .brand-copy { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-copy strong { font-size: 18px; letter-spacing: .2px; }
 .brand-copy small {
@@ -75,135 +65,125 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(7, 16, 31, .6);
-  color: #bae6fd;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 8px 11px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--panel);
+  color: #d4d4d4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
   white-space: nowrap;
 }
 .pill i {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 12px var(--cyan);
+  background: var(--text);
 }
-.hero { padding: 6px 0 34px; }
+.hero {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+}
 .eyebrow {
-  margin: 0 0 14px;
-  color: #67e8f9;
-  font-size: 11px;
-  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
   letter-spacing: .24em;
 }
 h1 {
   margin: 0;
-  font-size: clamp(38px, 9vw, 68px);
-  line-height: 1.02;
-  letter-spacing: -.045em;
+  font-size: clamp(34px, 8vw, 60px);
+  line-height: 1.03;
+  letter-spacing: -.04em;
 }
-h1 span {
-  background: linear-gradient(92deg, #67e8f9, #60a5fa 55%, #a78bfa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+h1 span { color: #bdbdbd; }
 .lede {
-  max-width: 570px;
-  margin: 18px 0 0;
+  max-width: 560px;
+  margin: 15px 0 0;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.6;
 }
 .omni {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 28px;
-  padding: 8px 8px 8px 16px;
-  border: 1px solid rgba(103, 232, 249, .22);
-  border-radius: 18px;
-  background: rgba(6, 15, 29, .82);
-  box-shadow: 0 20px 60px rgba(2, 8, 23, .55), inset 0 1px 0 rgba(255, 255, 255, .04);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  gap: 10px;
+  margin-top: 22px;
+  padding: 6px 6px 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--panel-2);
 }
-.omni > svg { flex: 0 0 auto; width: 20px; height: 20px; color: #67e8f9; }
+.omni > svg { flex: 0 0 auto; width: 19px; height: 19px; color: var(--muted); }
 .omni input {
   flex: 1;
   min-width: 0;
-  padding: 12px 0;
+  padding: 11px 0;
   border: 0;
   outline: 0;
   background: transparent;
-  color: var(--ice);
+  color: var(--text);
   font: inherit;
-  font-size: 16px;
+  font-size: 15px;
 }
-.omni input::placeholder { color: #5f7ba3; }
+.omni input::placeholder { color: var(--dim); }
 .omni button {
   flex: 0 0 auto;
-  padding: 12px 20px;
+  padding: 11px 19px;
   border: 0;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #22d3ee, #3b82f6);
-  color: #03111f;
+  border-radius: 3px;
+  background: var(--text);
+  color: #0b0b0b;
   font: inherit;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
   cursor: pointer;
 }
-.omni button:active { transform: scale(.98); }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.chip {
-  padding: 8px 13px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(11, 27, 51, .55);
-  color: #bae6fd;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
+.omni button:active { background: #d4d4d4; }
+.section-label {
+  margin: 26px 0 10px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .22em;
 }
-.chip:active { background: rgba(34, 211, 238, .18); }
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
 }
 .card {
   display: flex;
   align-items: center;
-  gap: 13px;
-  padding: 15px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(160deg, rgba(13, 31, 56, .82), rgba(7, 16, 31, .72));
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--panel);
   color: inherit;
   text-decoration: none;
-  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  transition: background .15s ease, border-color .15s ease;
 }
 .card:hover, .card:focus-visible {
-  transform: translateY(-2px);
-  border-color: rgba(103, 232, 249, .4);
-  background: linear-gradient(160deg, rgba(18, 42, 74, .9), rgba(7, 16, 31, .8));
+  background: #171717;
+  border-color: #a3a3a3;
 }
 .badge {
   flex: 0 0 auto;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
-  border-radius: 13px;
-  background: linear-gradient(145deg, var(--a, #22d3ee), var(--b, #3b82f6));
-  color: #03111f;
-  font-size: 17px;
-  font-weight: 900;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 800;
 }
 .card-copy { min-width: 0; }
 .card-copy strong { display: block; font-size: 14px; }
@@ -213,37 +193,35 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 18px;
-  margin-top: 34px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(103, 232, 249, .12);
-  color: #6e89ad;
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--dim);
   font-size: 11px;
 }
-footer b { color: #bae6fd; font-weight: 700; }
+footer b { color: var(--text); font-weight: 700; }
 .mono {
   margin-left: auto;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .02em;
 }
 @media (min-width: 700px) {
-  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (max-width: 520px) {
-  .topbar { margin-bottom: 38px; }
   .mono { margin-left: 0; }
 }
 </style>
 </head>
 <body>
-<div class="aurora" aria-hidden="true"></div>
 <main class="shell">
   <header class="topbar">
     <div class="brand">
       <span class="mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2.2" opacity=".9"/>
-          <ellipse cx="16" cy="16" rx="11" ry="4.2" stroke="currentColor" stroke-width="1.8" transform="rotate(-28 16 16)" opacity=".65"/>
-          <ellipse cx="16" cy="16" rx="4.2" ry="11" stroke="currentColor" stroke-width="1.8" transform="rotate(-28 16 16)" opacity=".45"/>
+          <ellipse cx="16" cy="16" rx="11" ry="4.2" stroke="currentColor" stroke-width="1.8" transform="rotate(-28 16 16)" opacity=".55"/>
+          <ellipse cx="16" cy="16" rx="4.2" ry="11" stroke="currentColor" stroke-width="1.8" transform="rotate(-28 16 16)" opacity=".35"/>
           <circle cx="16" cy="16" r="2.2" fill="currentColor"/>
         </svg>
       </span>
@@ -258,47 +236,34 @@ footer b { color: #bae6fd; font-weight: 700; }
   <section class="hero">
     <p class="eyebrow">WELCOME BACK</p>
     <h1>One portal.<br><span>Everywhere you go.</span></h1>
-    <p class="lede">A fast, focused start page powered by Chromium. Search the web or jump straight to a destination.</p>
+    <p class="lede">A fast, focused start page powered by Chromium. Search the web or open one of your saved sites.</p>
     <form class="omni" id="omni" autocomplete="off">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
         <circle cx="11" cy="11" r="7"/>
         <path d="M20 20l-3.2-3.2" stroke-linecap="round"/>
       </svg>
-      <input id="q" type="text" inputmode="url" placeholder="Search or enter address" aria-label="Search or enter address" spellcheck="false">
+      <input id="q" type="text" inputmode="url" placeholder="Search with Google or enter address" aria-label="Search with Google or enter address" spellcheck="false">
       <button type="submit">Go</button>
     </form>
-    <div class="chips" aria-label="Search shortcuts">
-      <button class="chip" type="button" data-url="https://duckduckgo.com">DuckDuckGo</button>
-      <button class="chip" type="button" data-url="https://www.google.com">Google</button>
-      <button class="chip" type="button" data-url="https://github.com">GitHub</button>
-      <button class="chip" type="button" data-url="https://www.wikipedia.org">Wikipedia</button>
-    </div>
   </section>
 
-  <section class="grid" aria-label="Quick links">
+  <p class="section-label">SAVED SITES</p>
+  <section class="grid" aria-label="Saved sites">
     <a class="card" href="https://www.google.com">
-      <span class="badge" style="--a:#60a5fa;--b:#34d399">G</span>
-      <span class="card-copy"><strong>Google</strong><small>Search the world</small></span>
-    </a>
-    <a class="card" href="https://duckduckgo.com">
-      <span class="badge" style="--a:#f97316;--b:#facc15">D</span>
-      <span class="card-copy"><strong>DuckDuckGo</strong><small>Private search</small></span>
+      <span class="badge">G</span>
+      <span class="card-copy"><strong>Google</strong><small>Search</small></span>
     </a>
     <a class="card" href="https://github.com">
-      <span class="badge" style="--a:#94a3b8;--b:#e2e8f0">GH</span>
-      <span class="card-copy"><strong>GitHub</strong><small>Code and projects</small></span>
+      <span class="badge">GH</span>
+      <span class="card-copy"><strong>GitHub</strong><small>Code</small></span>
     </a>
-    <a class="card" href="https://www.wikipedia.org">
-      <span class="badge" style="--a:#cbd5e1;--b:#64748b">W</span>
-      <span class="card-copy"><strong>Wikipedia</strong><small>The free encyclopedia</small></span>
+    <a class="card" href="https://www.youtube.com">
+      <span class="badge">Y</span>
+      <span class="card-copy"><strong>YouTube</strong><small>Video</small></span>
     </a>
-    <a class="card" href="https://m.youtube.com">
-      <span class="badge" style="--a:#fb7185;--b:#ef4444">Y</span>
-      <span class="card-copy"><strong>YouTube</strong><small>Watch and discover</small></span>
-    </a>
-    <a class="card" href="https://mail.google.com">
-      <span class="badge" style="--a:#38bdf8;--b:#3b82f6">M</span>
-      <span class="card-copy"><strong>Gmail</strong><small>Your inbox</small></span>
+    <a class="card" href="https://ksx.pages.dev">
+      <span class="badge">KS</span>
+      <span class="card-copy"><strong>KS Website</strong><small>ksx.pages.dev</small></span>
     </a>
   </section>
 
@@ -322,16 +287,11 @@ footer b { color: #bae6fd; font-weight: 700; }
       window.location.href = 'https://' + value;
       return;
     }
-    window.location.href = 'https://duckduckgo.com/?q=' + encodeURIComponent(value);
+    window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(value);
   }
   document.getElementById('omni').addEventListener('submit', function (event) {
     event.preventDefault();
     navigate(input.value);
-  });
-  Array.prototype.forEach.call(document.querySelectorAll('[data-url]'), function (element) {
-    element.addEventListener('click', function () {
-      navigate(element.getAttribute('data-url'));
-    });
   });
 })();
 </script>
