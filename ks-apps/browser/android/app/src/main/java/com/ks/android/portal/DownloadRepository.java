@@ -1,11 +1,17 @@
 package com.ks.android.portal;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.webkit.CookieManager;
+import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
 
 import org.json.JSONArray;
@@ -18,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
@@ -27,7 +34,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -37,16 +47,30 @@ public class DownloadRepository {
     private static final String KEY_ITEMS = "items";
     private static final String KEY_PATH = "save_path";
     private static final String KEY_CREATE_MISSING = "create_missing";
+    private static final String KEY_FOLDERS = "folders";
+
+    private static final Uri MEDIA_DOWNLOADS_URI =
+            Uri.parse("content://media/external/downloads");
+    private static final String MEDIA_ID = "_id";
+    private static final String MEDIA_DISPLAY_NAME = "_display_name";
+    private static final String MEDIA_MIME_TYPE = "mime_type";
+    private static final String MEDIA_RELATIVE_PATH = "relative_path";
+    private static final String MEDIA_IS_PENDING = "is_pending";
 
     private static DownloadRepository instance;
 
     private final Context context;
     private final SharedPreferences preferences;
     private final File root;
+    private final File legacyRoot;
+    private final File stagingRoot;
+    private final boolean useMediaStore;
     private final Object lock = new Object();
     private final List<DownloadItem> items = new ArrayList<DownloadItem>();
     private final Map<Long, DownloadTask> tasks = new HashMap<Long, DownloadTask>();
     private final List<Listener> listeners = new ArrayList<Listener>();
+    private final Set<String> knownFolders =
+            new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final ExecutorService executor;
     private boolean notifyPosted;
@@ -59,11 +83,25 @@ public class DownloadRepository {
     private DownloadRepository(Context context) {
         this.context = context.getApplicationContext();
         preferences = this.context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        useMediaStore = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q;
+        File downloads = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS);
+        if (downloads == null) {
+            downloads = new File(Environment.getExternalStorageDirectory(),
+                    Environment.DIRECTORY_DOWNLOADS);
+        }
+        root = downloads;
         File external = this.context.getExternalFilesDir(null);
-        root = new File(external != null ? external : this.context.getFilesDir(), "Downloads");
-        if (!root.exists()) {
+        legacyRoot = new File(external != null ? external : this.context.getFilesDir(),
+                "Downloads");
+        stagingRoot = new File(this.context.getCacheDir(), "download-parts");
+        if (!useMediaStore && !root.exists()) {
             root.mkdirs();
         }
+        if (!stagingRoot.exists()) {
+            stagingRoot.mkdirs();
+        }
+        loadKnownFolders();
         executor = Executors.newFixedThreadPool(2, new ThreadFactory() {
             @Override
             public Thread newThread(Runnable runnable) {
@@ -86,6 +124,10 @@ public class DownloadRepository {
         return root;
     }
 
+    public File getLegacyRoot() {
+        return legacyRoot;
+    }
+
     public String getRelativePath() {
         return normalizeRelative(preferences.getString(KEY_PATH, ""));
     }
@@ -99,6 +141,17 @@ public class DownloadRepository {
             return "";
         }
         String value = path.replace('\\', '/').trim();
+        String lower = value.toLowerCase(Locale.US);
+        if (value.startsWith("/")) {
+            int marker = lower.indexOf("/download/");
+            if (marker >= 0) {
+                value = value.substring(marker + 10);
+            }
+        } else if (lower.startsWith("download/")) {
+            value = value.substring(9);
+        } else if (lower.startsWith("downloads/")) {
+            value = value.substring(10);
+        }
         String[] parts = value.split("/");
         List<String> clean = new ArrayList<String>();
         for (String part : parts) {
@@ -144,6 +197,167 @@ public class DownloadRepository {
         return relative.isEmpty() ? "Downloads" : "Downloads / " + relative;
     }
 
+    public String getAbsoluteDisplayPath(String rawRelative) {
+        String relative = normalizeRelative(rawRelative);
+        return relative.isEmpty() ? root.getAbsolutePath()
+                : new File(root, relative).getAbsolutePath();
+    }
+
+    public boolean folderExists(String rawRelative) {
+        String relative = normalizeRelative(rawRelative);
+        if (relative.isEmpty()) {
+            return true;
+        }
+        synchronized (lock) {
+            return folderExistsLocked(relative);
+        }
+    }
+
+    private boolean folderExistsLocked(String relative) {
+        if (relative.isEmpty() || knownFolders.contains(relative)) {
+            return true;
+        }
+        if (!useMediaStore) {
+            return new File(root, relative).isDirectory();
+        }
+        if (new File(root, relative).isDirectory()) {
+            return true;
+        }
+        String path = relativePathWithSlash(relative);
+        ContentResolver resolver = context.getContentResolver();
+        android.database.Cursor cursor = null;
+        try {
+            cursor = resolver.query(MEDIA_DOWNLOADS_URI,
+                    new String[]{MEDIA_ID},
+                    MEDIA_RELATIVE_PATH + "=? OR " + MEDIA_RELATIVE_PATH + " LIKE ?",
+                    new String[]{path, path + "%"}, null);
+            return cursor != null && cursor.moveToFirst();
+        } catch (Exception ignored) {
+            return false;
+        } finally {
+            closeQuietly(cursor);
+        }
+    }
+
+    public boolean folderIsFile(String rawRelative) {
+        String relative = normalizeRelative(rawRelative);
+        if (relative.isEmpty()) {
+            return false;
+        }
+        if (useMediaStore) {
+            return false;
+        }
+        return new File(root, relative).isFile();
+    }
+
+    public List<String> listFolders(String rawRelative) {
+        String relative = normalizeRelative(rawRelative);
+        String prefix = relative.isEmpty() ? "" : relative + "/";
+        Set<String> folders = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+        synchronized (lock) {
+            for (String folder : knownFolders) {
+                addChildFolder(folders, folder, prefix);
+            }
+            if (!useMediaStore) {
+                File directory = new File(root, relative);
+                File[] children = directory.listFiles();
+                if (children != null) {
+                    for (File child : children) {
+                        if (child.isDirectory() && !child.getName().startsWith(".")) {
+                            folders.add(child.getName());
+                        }
+                    }
+                }
+            } else {
+                ContentResolver resolver = context.getContentResolver();
+                android.database.Cursor cursor = null;
+                try {
+                    cursor = resolver.query(MEDIA_DOWNLOADS_URI,
+                            new String[]{MEDIA_RELATIVE_PATH},
+                            MEDIA_RELATIVE_PATH + " LIKE ?",
+                            new String[]{mediaPrefix(relative) + "%"}, null);
+                    if (cursor != null) {
+                        while (cursor.moveToNext()) {
+                            addChildFolder(folders, cursor.getString(0), prefix);
+                        }
+                    }
+                } catch (Exception ignored) {
+                } finally {
+                    closeQuietly(cursor);
+                }
+            }
+        }
+        return new ArrayList<String>(folders);
+    }
+
+    private static void addChildFolder(Set<String> folders, String path, String prefix) {
+        if (TextUtils.isEmpty(path)) {
+            return;
+        }
+        String value = path.replace('\\', '/');
+        if (!value.endsWith("/")) {
+            value = value + "/";
+        }
+        if (!prefix.isEmpty() && !value.toLowerCase(Locale.US)
+                .startsWith(prefix.toLowerCase(Locale.US))) {
+            return;
+        }
+        String rest = value.substring(prefix.length());
+        int slash = rest.indexOf('/');
+        String child = slash < 0 ? rest : rest.substring(0, slash);
+        if (!TextUtils.isEmpty(child) && !child.startsWith(".")) {
+            folders.add(child);
+        }
+    }
+
+    public boolean createFolder(String rawRelative) {
+        String relative = normalizeRelative(rawRelative);
+        if (relative.isEmpty()) {
+            return true;
+        }
+        synchronized (lock) {
+            if (folderExistsLocked(relative)) {
+                rememberFolderLocked(relative);
+                return true;
+            }
+            if (!useMediaStore) {
+                File directory = new File(root, relative);
+                if (!directory.mkdirs() && !directory.isDirectory()) {
+                    return false;
+                }
+            } else {
+                new File(root, relative).mkdirs();
+            }
+            rememberFolderLocked(relative);
+            return true;
+        }
+    }
+
+    private void rememberFolderLocked(String relative) {
+        String clean = normalizeRelative(relative);
+        if (clean.isEmpty()) {
+            return;
+        }
+        if (knownFolders.add(clean)) {
+            preferences.edit().putString(KEY_FOLDERS,
+                    TextUtils.join("\n", knownFolders)).apply();
+        }
+    }
+
+    private void loadKnownFolders() {
+        String raw = preferences.getString(KEY_FOLDERS, "");
+        if (TextUtils.isEmpty(raw)) {
+            return;
+        }
+        String[] folders = raw.split("\n");
+        for (String folder : folders) {
+            String clean = normalizeRelative(folder);
+            if (!clean.isEmpty()) {
+                knownFolders.add(clean);
+            }
+        }
+    }
+
     public List<DownloadItem> getItems() {
         List<DownloadItem> copy;
         synchronized (lock) {
@@ -158,8 +372,34 @@ public class DownloadRepository {
         return copy;
     }
 
+    public boolean isFileAvailable(DownloadItem item) {
+        if (item == null) {
+            return false;
+        }
+        if (!TextUtils.isEmpty(item.contentUri)) {
+            android.database.Cursor cursor = null;
+            try {
+                cursor = context.getContentResolver().query(Uri.parse(item.contentUri),
+                        new String[]{MEDIA_ID}, null, null, null);
+                return cursor != null && cursor.moveToFirst();
+            } catch (Exception ignored) {
+                return false;
+            } finally {
+                closeQuietly(cursor);
+            }
+        }
+        return !TextUtils.isEmpty(item.filePath) && new File(item.filePath).isFile();
+    }
+
     public DownloadItem startDownload(String url, String userAgent, String contentDisposition,
                                       String mimeType, long contentLength, String referer) {
+        return startDownload(url, userAgent, contentDisposition, mimeType,
+                contentLength, referer, null);
+    }
+
+    public DownloadItem startDownload(String url, String userAgent, String contentDisposition,
+                                      String mimeType, long contentLength, String referer,
+                                      String requestedName) {
         DownloadItem item;
         DownloadTask task;
         String cookie;
@@ -167,60 +407,70 @@ public class DownloadRepository {
             item = new DownloadItem();
             item.id = nextIdLocked();
             item.url = url == null ? "" : url;
-            item.mimeType = TextUtils.isEmpty(mimeType) ? "application/octet-stream" : mimeType;
+            item.mimeType = normalizeMime(mimeType);
             item.userAgent = userAgent == null ? "" : userAgent;
             item.referer = referer == null ? "" : referer;
             item.createdAt = System.currentTimeMillis();
             item.totalBytes = Math.max(0, contentLength);
+            item.relativePath = getRelativePath();
 
-            String guessed = URLUtil.guessFileName(item.url, contentDisposition, item.mimeType);
-            if (TextUtils.isEmpty(guessed)) {
-                guessed = "download";
+            String cleanName = sanitizeFileName(requestedName);
+            if (cleanName.isEmpty()) {
+                cleanName = suggestFileName(item.url, contentDisposition, item.mimeType);
             }
-            String cleanName = sanitizeFileName(guessed);
+            cleanName = adjustExtensionForMime(cleanName, item.mimeType);
             if (cleanName.isEmpty()) {
                 cleanName = "download";
             }
 
-            File directory = getSaveDirectory();
-            if (!directory.exists()) {
-                if (!isCreateMissing() || (!directory.mkdirs() && !directory.isDirectory())) {
-                    item.fileName = cleanName;
-                    item.filePath = new File(directory, cleanName).getAbsolutePath();
-                    item.status = DownloadItem.STATUS_FAILED;
-                    item.error = "Download folder does not exist";
-                    items.add(item);
-                    persistLocked();
-                    notifyListenersLocked();
-                    return item;
-                }
-            } else if (!directory.isDirectory()) {
+            if (!ensureFolderLocked(item.relativePath)) {
                 item.fileName = cleanName;
-                item.filePath = new File(directory, cleanName).getAbsolutePath();
+                item.filePath = filePathFor(item.relativePath, cleanName);
                 item.status = DownloadItem.STATUS_FAILED;
-                item.error = "Download folder does not exist";
+                item.error = context.getString(R.string.download_folder_missing);
                 items.add(item);
                 persistLocked();
                 notifyListenersLocked();
                 return item;
             }
 
-            String uniqueName = uniqueFileNameLocked(directory, cleanName);
-            File destination = new File(directory, uniqueName);
-            item.fileName = destination.getName();
-            item.filePath = destination.getAbsolutePath();
+            String uniqueName = uniqueFileNameLocked(item.relativePath, cleanName, item.id);
+            item.fileName = uniqueName;
+            item.filePath = filePathFor(item.relativePath, uniqueName);
             item.status = DownloadItem.STATUS_PENDING;
             item.error = "";
             items.add(item);
             persistLocked();
 
+            File part = new File(stagingRoot, item.id + ".part");
             cookie = CookieManager.getInstance().getCookie(item.url);
-            task = new DownloadTask(item.id, destination, item.url, item.userAgent, item.referer, cookie);
+            task = new DownloadTask(item.id, part, item.url, item.userAgent,
+                    item.referer, cookie);
             tasks.put(item.id, task);
             notifyListenersLocked();
         }
         executor.execute(task);
         return item;
+    }
+
+    private boolean ensureFolderLocked(String relative) {
+        if (folderExistsLocked(relative)) {
+            rememberFolderLocked(relative);
+            return true;
+        }
+        if (!isCreateMissing()) {
+            return false;
+        }
+        if (!useMediaStore) {
+            File directory = new File(root, relative);
+            if (!directory.mkdirs() && !directory.isDirectory()) {
+                return false;
+            }
+        } else {
+            new File(root, relative).mkdirs();
+        }
+        rememberFolderLocked(relative);
+        return true;
     }
 
     public void cancel(long id) {
@@ -247,26 +497,30 @@ public class DownloadRepository {
     }
 
     public void delete(long id) {
+        DownloadItem item;
+        DownloadTask task;
         synchronized (lock) {
-            DownloadItem item = findLocked(id);
+            item = findLocked(id);
             if (item == null) {
                 return;
             }
-            DownloadTask task = tasks.remove(id);
+            task = tasks.remove(id);
             if (task != null) {
                 task.cancel();
-            }
-            if (!TextUtils.isEmpty(item.filePath)) {
-                File file = new File(item.filePath);
-                file.delete();
-                File parent = file.getParentFile();
-                if (parent != null) {
-                    new File(parent, file.getName() + "." + id + ".part").delete();
-                }
             }
             items.remove(item);
             persistLocked();
         }
+        File part = new File(stagingRoot, id + ".part");
+        part.delete();
+        Uri content = null;
+        if (!TextUtils.isEmpty(item.contentUri)) {
+            try {
+                content = Uri.parse(item.contentUri);
+            } catch (Exception ignored) {
+            }
+        }
+        deletePublished(content, TextUtils.isEmpty(item.filePath) ? null : new File(item.filePath));
         notifyListeners();
     }
 
@@ -274,30 +528,57 @@ public class DownloadRepository {
         boolean changed = false;
         synchronized (lock) {
             DownloadItem item = findLocked(id);
-            if (item == null || item.status != DownloadItem.STATUS_COMPLETED
-                    || TextUtils.isEmpty(item.filePath)) {
+            if (item == null || item.status != DownloadItem.STATUS_COMPLETED) {
                 return false;
             }
             String clean = sanitizeFileName(newName);
             if (clean.isEmpty() || clean.equals(".") || clean.equals("..")) {
                 return false;
             }
-            File oldFile = new File(item.filePath);
-            File parent = oldFile.getParentFile();
-            if (parent == null) {
-                return false;
+            if (clean.equals(item.fileName)) {
+                return true;
             }
-            File newFile = new File(parent, clean);
-            if (newFile.exists() && !newFile.getAbsolutePath().equals(oldFile.getAbsolutePath())) {
-                return false;
+            String relative = normalizeRelative(item.relativePath);
+            if (!TextUtils.isEmpty(item.contentUri)) {
+                if (isNameTakenLocked(relative, clean, item.id)) {
+                    return false;
+                }
+                ContentValues values = new ContentValues();
+                values.put(MEDIA_DISPLAY_NAME, clean);
+                try {
+                    if (context.getContentResolver().update(Uri.parse(item.contentUri),
+                            values, null, null) <= 0) {
+                        return false;
+                    }
+                } catch (Exception ignored) {
+                    return false;
+                }
+                item.fileName = clean;
+                item.filePath = filePathFor(relative, clean);
+                changed = true;
+                persistLocked();
+            } else {
+                if (TextUtils.isEmpty(item.filePath)) {
+                    return false;
+                }
+                File oldFile = new File(item.filePath);
+                File parent = oldFile.getParentFile();
+                if (parent == null) {
+                    return false;
+                }
+                File newFile = new File(parent, clean);
+                if (newFile.exists()
+                        && !newFile.getAbsolutePath().equals(oldFile.getAbsolutePath())) {
+                    return false;
+                }
+                if (!oldFile.renameTo(newFile)) {
+                    return false;
+                }
+                item.fileName = newFile.getName();
+                item.filePath = newFile.getAbsolutePath();
+                changed = true;
+                persistLocked();
             }
-            if (!oldFile.renameTo(newFile)) {
-                return false;
-            }
-            item.fileName = newFile.getName();
-            item.filePath = newFile.getAbsolutePath();
-            changed = true;
-            persistLocked();
         }
         if (changed) {
             notifyListeners();
@@ -313,33 +594,34 @@ public class DownloadRepository {
                     && item.status != DownloadItem.STATUS_CANCELLED)) {
                 return false;
             }
-            File destination = TextUtils.isEmpty(item.filePath) ? null : new File(item.filePath);
-            File directory = destination != null && destination.getParentFile() != null
-                    ? destination.getParentFile() : getSaveDirectory();
-            if (!directory.exists()) {
-                if (!isCreateMissing() || (!directory.mkdirs() && !directory.isDirectory())) {
-                    item.error = "Download folder does not exist";
-                    item.status = DownloadItem.STATUS_FAILED;
-                    persistLocked();
-                    return false;
-                }
-            } else if (!directory.isDirectory()) {
-                item.error = "Download folder does not exist";
+            String relative = normalizeRelative(item.relativePath);
+            if (TextUtils.isEmpty(relative)) {
+                relative = getRelativePath();
+            }
+            if (!ensureFolderLocked(relative)) {
+                item.error = context.getString(R.string.download_folder_missing);
                 item.status = DownloadItem.STATUS_FAILED;
                 persistLocked();
                 return false;
             }
-            if (destination == null || destination.exists()) {
-                String unique = uniqueFileNameLocked(directory, sanitizeFileName(item.fileName));
-                destination = new File(directory, unique);
-                item.fileName = destination.getName();
-                item.filePath = destination.getAbsolutePath();
+            String name = adjustExtensionForMime(sanitizeFileName(item.fileName),
+                    item.mimeType);
+            if (TextUtils.isEmpty(name)) {
+                name = "download";
             }
+            String unique = uniqueFileNameLocked(relative, name, item.id);
+            item.relativePath = relative;
+            item.fileName = unique;
+            item.filePath = filePathFor(relative, unique);
+            item.contentUri = "";
             item.status = DownloadItem.STATUS_PENDING;
             item.downloadedBytes = 0;
             item.error = "";
+            File part = new File(stagingRoot, item.id + ".part");
+            part.delete();
             String cookie = CookieManager.getInstance().getCookie(item.url);
-            task = new DownloadTask(item.id, destination, item.url, item.userAgent, item.referer, cookie);
+            task = new DownloadTask(item.id, part, item.url, item.userAgent,
+                    item.referer, cookie);
             tasks.put(item.id, task);
             persistLocked();
         }
@@ -409,28 +691,50 @@ public class DownloadRepository {
         return null;
     }
 
-    private boolean isPathInUseLocked(String path) {
-        for (DownloadItem item : items) {
-            if (path.equals(item.filePath)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private String uniqueFileNameLocked(File directory, String baseName) {
+    private String uniqueFileNameLocked(String relative, String baseName, long ignoreId) {
         String clean = sanitizeFileName(baseName);
         if (clean.isEmpty()) {
             clean = "download";
         }
         String candidate = clean;
         int index = 1;
-        while (new File(directory, candidate).exists()
-                || isPathInUseLocked(new File(directory, candidate).getAbsolutePath())) {
+        while (isNameTakenLocked(relative, candidate, ignoreId)) {
             candidate = withSuffix(clean, index);
             index++;
         }
         return candidate;
+    }
+
+    private boolean isNameTakenLocked(String relative, String name, long ignoreId) {
+        String cleanRelative = normalizeRelative(relative);
+        for (DownloadItem item : items) {
+            if (item.id == ignoreId
+                    || (item.status != DownloadItem.STATUS_PENDING
+                    && item.status != DownloadItem.STATUS_DOWNLOADING
+                    && item.status != DownloadItem.STATUS_COMPLETED)) {
+                continue;
+            }
+            if (cleanRelative.equals(normalizeRelative(item.relativePath))
+                    && name.equalsIgnoreCase(item.fileName)) {
+                return true;
+            }
+        }
+        if (!useMediaStore) {
+            File directory = cleanRelative.isEmpty() ? root : new File(root, cleanRelative);
+            return new File(directory, name).exists();
+        }
+        android.database.Cursor cursor = null;
+        try {
+            cursor = context.getContentResolver().query(MEDIA_DOWNLOADS_URI,
+                    new String[]{MEDIA_ID},
+                    MEDIA_DISPLAY_NAME + "=? AND " + MEDIA_RELATIVE_PATH + "=?",
+                    new String[]{name, relativePathWithSlash(cleanRelative)}, null);
+            return cursor != null && cursor.moveToFirst();
+        } catch (Exception ignored) {
+            return false;
+        } finally {
+            closeQuietly(cursor);
+        }
     }
 
     private static String uniqueFileOnDisk(File directory, String baseName) {
@@ -453,6 +757,136 @@ public class DownloadRepository {
             return name.substring(0, dot) + " (" + index + ")" + name.substring(dot);
         }
         return name + " (" + index + ")";
+    }
+
+    public String suggestFileName(String url, String contentDisposition, String mimeType) {
+        String mime = normalizeMime(mimeType);
+        String guessed = URLUtil.guessFileName(url, contentDisposition, mime);
+        String clean = sanitizeFileName(guessed);
+        if (clean.isEmpty()) {
+            clean = "download";
+        }
+        return adjustExtensionForMime(clean, mime);
+    }
+
+    private static String improveFileName(String current, String url,
+                                          String contentDisposition, String mimeType) {
+        String adjusted = adjustExtensionForMime(current, mimeType);
+        if (!hasGenericExtension(adjusted)) {
+            return adjusted;
+        }
+        String guessed = sanitizeFileName(
+                URLUtil.guessFileName(url, contentDisposition, normalizeMime(mimeType)));
+        String better = adjustExtensionForMime(guessed, mimeType);
+        if (!TextUtils.isEmpty(better) && !hasGenericExtension(better)) {
+            return better;
+        }
+        return adjusted;
+    }
+
+    private static String adjustExtensionForMime(String name, String mimeType) {
+        String clean = sanitizeFileName(name);
+        if (clean.isEmpty()) {
+            return "download";
+        }
+        String extension = extensionForMime(mimeType);
+        if (TextUtils.isEmpty(extension)) {
+            return clean;
+        }
+        String current = extensionOf(clean);
+        if (TextUtils.isEmpty(current)) {
+            return clean + extension;
+        }
+        if (".bin".equalsIgnoreCase(current)) {
+            return clean.substring(0, clean.length() - 4) + extension;
+        }
+        return clean;
+    }
+
+    private static boolean hasGenericExtension(String name) {
+        String extension = extensionOf(name);
+        return TextUtils.isEmpty(extension) || ".bin".equalsIgnoreCase(extension);
+    }
+
+    private static String extensionOf(String name) {
+        if (TextUtils.isEmpty(name)) {
+            return "";
+        }
+        int dot = name.lastIndexOf('.');
+        if (dot <= 0 || dot >= name.length() - 1) {
+            return "";
+        }
+        return name.substring(dot).toLowerCase(Locale.US);
+    }
+
+    private static String extensionForMime(String mimeType) {
+        String mime = normalizeMime(mimeType);
+        if ("application/octet-stream".equals(mime) || mime.startsWith("binary/")) {
+            return "";
+        }
+        if ("application/vnd.android.package-archive".equals(mime)
+                || "application/x-apk".equals(mime)) {
+            return ".apk";
+        }
+        if ("application/pdf".equals(mime)) {
+            return ".pdf";
+        }
+        if ("application/zip".equals(mime) || "application/x-zip-compressed".equals(mime)) {
+            return ".zip";
+        }
+        if ("application/vnd.rar".equals(mime) || "application/x-rar-compressed".equals(mime)) {
+            return ".rar";
+        }
+        if ("application/x-7z-compressed".equals(mime)) {
+            return ".7z";
+        }
+        if ("application/msword".equals(mime)) {
+            return ".doc";
+        }
+        if ("application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                .equals(mime)) {
+            return ".docx";
+        }
+        if ("application/vnd.ms-excel".equals(mime)) {
+            return ".xls";
+        }
+        if ("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                .equals(mime)) {
+            return ".xlsx";
+        }
+        if ("application/vnd.ms-powerpoint".equals(mime)) {
+            return ".ppt";
+        }
+        if ("application/vnd.openxmlformats-officedocument.presentationml.presentation"
+                .equals(mime)) {
+            return ".pptx";
+        }
+        if ("application/json".equals(mime)) {
+            return ".json";
+        }
+        if ("application/xml".equals(mime) || "text/xml".equals(mime)) {
+            return ".xml";
+        }
+        if ("text/plain".equals(mime)) {
+            return ".txt";
+        }
+        if ("text/html".equals(mime)) {
+            return ".html";
+        }
+        String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(mime);
+        return TextUtils.isEmpty(extension) ? "" : "." + extension;
+    }
+
+    private static String normalizeMime(String mimeType) {
+        if (TextUtils.isEmpty(mimeType)) {
+            return "application/octet-stream";
+        }
+        String value = mimeType.trim().toLowerCase(Locale.US);
+        int semicolon = value.indexOf(';');
+        if (semicolon >= 0) {
+            value = value.substring(0, semicolon).trim();
+        }
+        return value.isEmpty() ? "application/octet-stream" : value;
     }
 
     private static String sanitizeFileName(String raw) {
@@ -486,6 +920,24 @@ public class DownloadRepository {
             }
         }
         return value;
+    }
+
+    private static String relativePathWithSlash(String relative) {
+        String clean = normalizeRelative(relative);
+        if (clean.isEmpty()) {
+            return Environment.DIRECTORY_DOWNLOADS + "/";
+        }
+        return Environment.DIRECTORY_DOWNLOADS + "/" + clean + "/";
+    }
+
+    private static String mediaPrefix(String relative) {
+        return relativePathWithSlash(relative);
+    }
+
+    private String filePathFor(String relative, String name) {
+        File directory = normalizeRelative(relative).isEmpty() ? root
+                : new File(root, normalizeRelative(relative));
+        return new File(directory, name).getAbsolutePath();
     }
 
     private static String friendlyError(Exception exception) {
@@ -534,7 +986,7 @@ public class DownloadRepository {
                     item.status = DownloadItem.STATUS_FAILED;
                     item.error = "Interrupted";
                 } else if (item.status == DownloadItem.STATUS_COMPLETED
-                        && (TextUtils.isEmpty(item.filePath) || !new File(item.filePath).exists())) {
+                        && !isFileAvailable(item)) {
                     item.status = DownloadItem.STATUS_FAILED;
                     item.error = "File missing";
                 }
@@ -562,21 +1014,119 @@ public class DownloadRepository {
         try {
             input = new FileInputStream(source);
             output = new FileOutputStream(destination);
-            byte[] buffer = new byte[65536];
-            int read;
-            while ((read = input.read(buffer)) != -1) {
-                output.write(buffer, 0, read);
-            }
-            output.flush();
+            copyStream(input, output);
         } finally {
             closeQuietly(output);
             closeQuietly(input);
         }
     }
 
+    private static void copyStream(InputStream input, OutputStream output) throws IOException {
+        byte[] buffer = new byte[65536];
+        int read;
+        while ((read = input.read(buffer)) != -1) {
+            output.write(buffer, 0, read);
+        }
+        output.flush();
+    }
+
+    private static final class Published {
+        Uri uri;
+        File file;
+        String name;
+        long size;
+    }
+
+    private Published publishToPublic(File part, String relative, String name, String mimeType)
+            throws IOException {
+        if (useMediaStore) {
+            ContentResolver resolver = context.getContentResolver();
+            ContentValues values = new ContentValues();
+            values.put(MEDIA_DISPLAY_NAME, name);
+            values.put(MEDIA_MIME_TYPE, normalizeMime(mimeType));
+            values.put(MEDIA_RELATIVE_PATH, relativePathWithSlash(relative));
+            values.put(MEDIA_IS_PENDING, 1);
+            Uri uri;
+            try {
+                uri = resolver.insert(MEDIA_DOWNLOADS_URI, values);
+            } catch (Exception exception) {
+                throw new IOException("Could not create file in Downloads");
+            }
+            if (uri == null) {
+                throw new IOException("Could not create file in Downloads");
+            }
+            InputStream input = null;
+            OutputStream output = null;
+            try {
+                input = new FileInputStream(part);
+                output = resolver.openOutputStream(uri);
+                if (output == null) {
+                    throw new IOException("Could not open Downloads file");
+                }
+                copyStream(input, output);
+            } catch (Exception exception) {
+                closeQuietly(output);
+                closeQuietly(input);
+                try {
+                    resolver.delete(uri, null, null);
+                } catch (Exception ignored) {
+                }
+                throw exception instanceof IOException ? (IOException) exception
+                        : new IOException("Could not save download");
+            } finally {
+                closeQuietly(output);
+                closeQuietly(input);
+            }
+            ContentValues complete = new ContentValues();
+            complete.put(MEDIA_IS_PENDING, 0);
+            try {
+                resolver.update(uri, complete, null, null);
+            } catch (Exception ignored) {
+            }
+            Published published = new Published();
+            published.uri = uri;
+            published.name = name;
+            published.size = part.length();
+            part.delete();
+            return published;
+        }
+
+        File directory = relative.isEmpty() ? root : new File(root, relative);
+        if (!directory.isDirectory() && isCreateMissing()) {
+            directory.mkdirs();
+        }
+        if (!directory.isDirectory()) {
+            throw new IOException(context.getString(R.string.download_folder_missing));
+        }
+        String finalName = uniqueFileOnDisk(directory, name);
+        File destination = new File(directory, finalName);
+        if (!part.renameTo(destination)) {
+            copyFile(part, destination);
+            part.delete();
+        }
+        Published published = new Published();
+        published.file = destination;
+        published.name = finalName;
+        published.size = destination.length();
+        return published;
+    }
+
+    private void deletePublished(Uri uri, File file) {
+        if (uri != null) {
+            try {
+                context.getContentResolver().delete(uri, null, null);
+                return;
+            } catch (Exception ignored) {
+            }
+        }
+        if (file != null) {
+            file.delete();
+        }
+    }
+
     private final class DownloadTask implements Runnable {
         private final long id;
-        private final File target;
+        private final File part;
         private final String url;
         private final String userAgent;
         private final String referer;
@@ -584,9 +1134,10 @@ public class DownloadRepository {
         private volatile boolean cancelled;
         private volatile HttpURLConnection connection;
 
-        DownloadTask(long id, File target, String url, String userAgent, String referer, String cookie) {
+        DownloadTask(long id, File part, String url, String userAgent, String referer,
+                     String cookie) {
             this.id = id;
-            this.target = target;
+            this.part = part;
             this.url = url;
             this.userAgent = userAgent;
             this.referer = referer;
@@ -610,7 +1161,10 @@ public class DownloadRepository {
                 markCancelled();
                 return;
             }
-            File part = new File(target.getParentFile(), target.getName() + "." + id + ".part");
+            File parent = part.getParentFile();
+            if (parent != null) {
+                parent.mkdirs();
+            }
             InputStream input = null;
             FileOutputStream output = null;
             try {
@@ -640,6 +1194,7 @@ public class DownloadRepository {
                     throw new IOException("HTTP " + code);
                 }
 
+                String responseMime = normalizeMime(current.getContentType());
                 long total = current.getContentLength();
                 synchronized (lock) {
                     DownloadItem item = findLocked(id);
@@ -648,6 +1203,9 @@ public class DownloadRepository {
                     }
                     item.status = DownloadItem.STATUS_DOWNLOADING;
                     item.error = "";
+                    if (!"application/octet-stream".equals(responseMime)) {
+                        item.mimeType = responseMime;
+                    }
                     if (total > 0) {
                         item.totalBytes = total;
                     }
@@ -693,33 +1251,55 @@ public class DownloadRepository {
                     throw new IOException("Cancelled");
                 }
 
+                long finishedBytes = part.length();
+                String relative;
+                String name;
+                String mime;
                 synchronized (lock) {
                     DownloadItem item = findLocked(id);
                     if (item == null) {
                         part.delete();
                         return;
                     }
-                    File finalFile = target;
-                    if (finalFile.exists()) {
-                        finalFile = new File(finalFile.getParentFile(),
-                                uniqueFileOnDisk(finalFile.getParentFile(), finalFile.getName()));
+                    if (!TextUtils.isEmpty(responseMime)) {
+                        item.mimeType = responseMime;
                     }
-                    if (!part.renameTo(finalFile)) {
-                        copyFile(part, finalFile);
-                        part.delete();
-                    }
-                    item.fileName = finalFile.getName();
-                    item.filePath = finalFile.getAbsolutePath();
-                    item.downloadedBytes = finalFile.length();
-                    if (item.totalBytes < item.downloadedBytes) {
-                        item.totalBytes = item.downloadedBytes;
-                    }
-                    item.status = DownloadItem.STATUS_COMPLETED;
-                    item.error = "";
-                    tasks.remove(id);
+                    String improved = improveFileName(item.fileName, url,
+                            current.getHeaderField("Content-Disposition"), item.mimeType);
+                    name = uniqueFileNameLocked(item.relativePath, improved, item.id);
+                    relative = item.relativePath;
+                    mime = item.mimeType;
+                    item.fileName = name;
+                    item.filePath = filePathFor(relative, name);
                 }
+
+                Published published = publishToPublic(part, relative, name, mime);
+                part.delete();
+                boolean discard = false;
                 synchronized (lock) {
+                    DownloadItem item = findLocked(id);
+                    if (item == null || cancelled) {
+                        discard = true;
+                        if (item != null) {
+                            item.status = DownloadItem.STATUS_CANCELLED;
+                            item.error = "Cancelled";
+                        }
+                    } else {
+                        item.fileName = published.name;
+                        item.filePath = filePathFor(relative, published.name);
+                        item.contentUri = published.uri == null ? "" : published.uri.toString();
+                        item.downloadedBytes = published.size > 0 ? published.size : finishedBytes;
+                        if (item.totalBytes < item.downloadedBytes) {
+                            item.totalBytes = item.downloadedBytes;
+                        }
+                        item.status = DownloadItem.STATUS_COMPLETED;
+                        item.error = "";
+                    }
+                    tasks.remove(id);
                     persistLocked();
+                }
+                if (discard) {
+                    deletePublished(published.uri, published.file);
                 }
                 notifyListeners();
             } catch (Exception exception) {
@@ -737,8 +1317,6 @@ public class DownloadRepository {
                         }
                     }
                     tasks.remove(id);
-                }
-                synchronized (lock) {
                     persistLocked();
                 }
                 notifyListeners();
