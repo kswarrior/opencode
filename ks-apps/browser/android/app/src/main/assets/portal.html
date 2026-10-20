@@ -213,6 +213,8 @@ body {
   animation: fadeUp .3s .08s ease both;
 }
 .sites::-webkit-scrollbar { display: none; }
+.favourites-label { animation-delay: .12s; }
+.favourites-sites { animation-delay: .16s; }
 .tile {
   flex: 0 0 84px;
   height: 116px;
@@ -227,7 +229,9 @@ body {
   background: linear-gradient(145deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
   box-shadow: 0 14px 32px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .1);
   color: inherit;
+  font: inherit;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
   scroll-snap-align: start;
   transition: background .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
 }
@@ -264,6 +268,128 @@ body {
   font-weight: 800;
   letter-spacing: .02em;
 }
+.tile-add {
+  border-style: dashed;
+  background: rgba(255, 255, 255, .02);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.tile-add .add-logo {
+  border-style: dashed;
+  background: rgba(255, 255, 255, .015);
+  box-shadow: none;
+}
+.add-plus {
+  color: var(--muted);
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 18px calc(18px + env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) calc(18px + env(safe-area-inset-left));
+  background: rgba(0, 0, 0, .64);
+}
+.modal-scrim.open {
+  display: flex;
+  animation: fadeIn .18s ease both;
+}
+.modal-card {
+  width: min(430px, 100%);
+  margin: 0;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 14px;
+  background: linear-gradient(160deg, #202020, #101010);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, .65), inset 0 1px 0 rgba(255, 255, 255, .12);
+  animation: rise .24s cubic-bezier(.2, .8, .2, 1) both;
+}
+.modal-card h2 {
+  margin: 0 0 14px;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+}
+.modal-field {
+  display: block;
+  margin-top: 10px;
+}
+.modal-field span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.modal-field input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 8px;
+  outline: 0;
+  background: rgba(255, 255, 255, .055);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+}
+.modal-field input:focus {
+  border-color: rgba(255, 255, 255, .32);
+  background: rgba(255, 255, 255, .075);
+}
+.modal-field input::placeholder { color: var(--dim); }
+.modal-copy {
+  margin: 0 0 2px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.modal-error {
+  min-height: 16px;
+  margin: 8px 0 0;
+  color: #ff9a9a;
+  font-size: 12px;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.modal-btn {
+  flex: 1;
+  height: 42px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.modal-btn.secondary {
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
+  color: var(--text);
+}
+.modal-btn.primary {
+  background: #f2f2f2;
+  color: #0b0b0b;
+}
+.modal-btn.primary.danger {
+  background: #ff9a9a;
+  color: #1b0505;
+}
+.modal-btn:active { transform: scale(.98); }
 .tile-name {
   max-width: 100%;
   overflow: hidden;
@@ -331,7 +457,7 @@ body.launching .sites {
   </form>
 
   <p class="section-label">TOP SITES</p>
-  <nav class="sites" aria-label="Top sites">
+  <nav class="sites" id="topSites" aria-label="Top sites">
     <a class="tile" href="https://www.google.com">
       <span class="tile-logo">
         <span class="fallback">G</span>
@@ -360,7 +486,32 @@ body.launching .sites {
       <span class="tile-name">KS Website</span>
     </a>
   </nav>
+
+  <p class="section-label favourites-label">FAVOURITE SITES</p>
+  <nav class="sites favourites-sites" id="favourites" aria-label="Favourite sites"></nav>
 </main>
+
+<div class="modal-scrim" id="favModal" aria-hidden="true">
+  <form class="modal-card" id="favForm" role="dialog" aria-modal="true" aria-labelledby="favTitle">
+    <h2 id="favTitle">Add favourite</h2>
+    <div id="favFields">
+      <label class="modal-field">
+        <span>Name</span>
+        <input id="favName" type="text" maxlength="40" placeholder="My site" autocomplete="off">
+      </label>
+      <label class="modal-field">
+        <span>URL</span>
+        <input id="favUrl" type="text" inputmode="url" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+      </label>
+    </div>
+    <p class="modal-copy" id="favCopy" hidden></p>
+    <p class="modal-error" id="favError" role="alert"></p>
+    <div class="modal-actions">
+      <button class="modal-btn secondary" id="favCancel" type="button">Cancel</button>
+      <button class="modal-btn primary" id="favSave" type="submit">Add</button>
+    </div>
+  </form>
+</div>
 <script>
 (function () {
   var form = document.getElementById('omni');
