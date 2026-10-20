@@ -41,6 +41,7 @@ import java.util.TreeSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.zip.ZipFile;
 
 public class DownloadRepository {
     private static final String PREFS = "ks_downloads";
