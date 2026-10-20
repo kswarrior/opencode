@@ -740,10 +740,14 @@ body.launching .recents {
   var input = document.getElementById('q');
   var launching = false;
   var BOOKMARK_KEY = 'ks_bookmarks_v1';
+  var LEGACY_BOOKMARK_KEY = 'ks_favourites_v1';
   var RECENTS_KEY = 'ks_recents_v1';
   var RECENTS_SHOW = 30;
   var RECENTS_STORE = 30;
   var bookmarks = loadBookmarks();
+  try {
+    if (window.localStorage.getItem(BOOKMARK_KEY) === null) saveBookmarks();
+  } catch (error) {}
   var bookmarksNav = document.getElementById('bookmarks');
   var recentsNav = document.getElementById('recents');
   var nativePortal = window.KSPortalNative;
@@ -828,6 +832,7 @@ body.launching .recents {
   function loadBookmarks() {
     try {
       var raw = window.localStorage.getItem(BOOKMARK_KEY);
+      if (!raw) raw = window.localStorage.getItem(LEGACY_BOOKMARK_KEY);
       var parsed = raw ? JSON.parse(raw) : [];
       if (!Array.isArray(parsed)) return [];
       var result = [];
