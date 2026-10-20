@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         webView = findViewById(R.id.webview);
+        webView.setBackgroundColor(0xFF262626);
         progressBar = findViewById(R.id.progress);
         toolbar = findViewById(R.id.toolbar);
         urlBar = findViewById(R.id.urlBar);
