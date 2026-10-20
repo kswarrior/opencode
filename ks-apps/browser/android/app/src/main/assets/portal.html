@@ -215,6 +215,137 @@ body {
 .sites::-webkit-scrollbar { display: none; }
 .favourites-label { animation-delay: .12s; }
 .favourites-sites { animation-delay: .16s; }
+.recents-label { animation-delay: .20s; }
+.recents {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-height: calc(5 * 52px + 4 * 7px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 2px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  animation: fadeUp .3s .24s ease both;
+}
+.recents::-webkit-scrollbar { display: none; }
+.recent-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 52px;
+  padding: 4px 4px 4px 14px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .022));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .24), inset 0 1px 0 rgba(255, 255, 255, .07);
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.recent-row:hover, .recent-row:focus-within {
+  background: linear-gradient(145deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .035));
+  border-color: rgba(255, 255, 255, .2);
+}
+.recent-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 0;
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.recent-main:active { transform: scale(.995); }
+.recent-name {
+  flex: 0 1 auto;
+  max-width: 47%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 650;
+}
+.recent-sep {
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, .24);
+  font-size: 12px;
+}
+.recent-url {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 12px;
+}
+.recent-menu-btn {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .15s ease, color .15s ease;
+}
+.recent-menu-btn:hover, .recent-menu-btn:focus-visible, .recent-menu-btn[aria-expanded="true"] {
+  background: rgba(255, 255, 255, .08);
+  color: var(--text);
+}
+.recent-menu {
+  position: fixed;
+  z-index: 40;
+  display: none;
+  min-width: 206px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 10px;
+  background: linear-gradient(160deg, #242424, #121212);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, .62), inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+.recent-menu.open {
+  display: block;
+  animation: fadeIn .14s ease both;
+}
+.recent-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 11px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.recent-menu button:hover, .recent-menu button:focus-visible {
+  background: rgba(255, 255, 255, .085);
+  outline: 0;
+}
+.recent-menu button.danger { color: #ff9a9a; }
+.recents-empty {
+  margin: 0;
+  padding: 15px 14px;
+  border: 1px dashed rgba(255, 255, 255, .12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .018);
+  color: var(--dim);
+  font-size: 12px;
+}
 .tile {
   flex: 0 0 84px;
   height: 116px;
@@ -400,7 +531,8 @@ body {
 }
 body.launching .brand,
 body.launching .section-label,
-body.launching .sites {
+body.launching .sites,
+body.launching .recents {
   animation: none;
   opacity: 0;
   transition: opacity .24s ease;
@@ -489,6 +621,9 @@ body.launching .sites {
 
   <p class="section-label favourites-label">FAVOURITE SITES</p>
   <nav class="sites favourites-sites" id="favourites" aria-label="Favourite sites"></nav>
+
+  <p class="section-label recents-label">RECENT SITES</p>
+  <nav class="recents" id="recents" aria-label="Recent sites"></nav>
 </main>
 
 <div class="modal-scrim" id="favModal" aria-hidden="true">
