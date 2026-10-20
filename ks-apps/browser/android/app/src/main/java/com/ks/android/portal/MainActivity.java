@@ -441,6 +441,11 @@ public class MainActivity extends Activity {
         urlBar.clearFocus();
         PopupMenu popup = new PopupMenu(this, anchor);
         popup.getMenuInflater().inflate(R.menu.browser_menu, popup.getMenu());
+        MenuItem adBlockItem = popup.getMenu().findItem(R.id.action_adblock);
+        if (adBlockItem != null) {
+            adBlockItem.setTitle(adBlocker.isEnabled()
+                    ? R.string.adblock_action_on : R.string.adblock_action_off);
+        }
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -451,6 +456,10 @@ public class MainActivity extends Activity {
                 }
                 if (id == R.id.action_downloads) {
                     openDownloadsPage();
+                    return true;
+                }
+                if (id == R.id.action_adblock) {
+                    toggleAdBlocker();
                     return true;
                 }
                 if (id == R.id.action_reload) {
@@ -486,6 +495,31 @@ public class MainActivity extends Activity {
 
     private void openSettingsPage() {
         startActivity(new Intent(this, SettingsActivity.class));
+    }
+
+    private void toggleAdBlocker() {
+        boolean enabled = !adBlocker.isEnabled();
+        adBlocker.setEnabled(enabled);
+        adBlockEnabledAtLoad = enabled;
+        Toast.makeText(this, enabled ? R.string.adblock_enabled_toast
+                : R.string.adblock_disabled_toast, Toast.LENGTH_SHORT).show();
+        if (!isHomeUrl(currentUrl)) {
+            webView.reload();
+        }
+    }
+
+    private void injectAdBlock(WebView view) {
+        if (view == null || adBlocker == null || !adBlocker.isEnabled()) {
+            return;
+        }
+        String url = view.getUrl();
+        if (url == null || (!url.startsWith("http://") && !url.startsWith("https://"))) {
+            return;
+        }
+        String script = adBlocker.cosmeticScript();
+        if (!TextUtils.isEmpty(script)) {
+            view.evaluateJavascript(script, null);
+        }
     }
 
     private void shareUrl() {
