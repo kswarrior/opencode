@@ -150,6 +150,15 @@ public class DownloadRepository {
             int marker = lower.indexOf("/download/");
             if (marker >= 0) {
                 value = value.substring(marker + 10);
+            } else {
+                marker = lower.indexOf("/downloads/");
+                if (marker >= 0) {
+                    value = value.substring(marker + 11);
+                } else if (lower.endsWith("/download")) {
+                    value = "";
+                } else if (lower.endsWith("/downloads")) {
+                    value = "";
+                }
             }
         } else if (lower.startsWith("download/")) {
             value = value.substring(9);
@@ -1118,8 +1127,9 @@ public class DownloadRepository {
     private void deletePublished(Uri uri, File file) {
         if (uri != null) {
             try {
-                context.getContentResolver().delete(uri, null, null);
-                return;
+                if (context.getContentResolver().delete(uri, null, null) > 0) {
+                    return;
+                }
             } catch (Exception ignored) {
             }
         }
