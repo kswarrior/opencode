@@ -795,6 +795,7 @@ body.launching .recents {
     document.body.classList.add('launching');
     form.style.animation = 'none';
     form.style.transformOrigin = 'top left';
+    form.style.willChange = 'transform, opacity';
     var rect = form.getBoundingClientRect();
     var targetLeft = 56;
     var targetTop = 7;
@@ -808,28 +809,25 @@ body.launching .recents {
     form.animate([
       {
         transform: 'translate(0, 0) scale(1, 1)',
-        opacity: 1,
-        borderRadius: '12px'
+        opacity: 1
       },
       {
         transform: 'translate(' + (dx * .45) + 'px, ' + (dy * .55) + 'px) scale(' + (1 + (sx - 1) * .45) + ', ' + (1 + (sy - 1) * .55) + ')',
         opacity: .9,
-        borderRadius: '8px',
         offset: .5
       },
       {
         transform: 'translate(' + dx + 'px, ' + dy + 'px) scale(' + sx + ', ' + sy + ')',
-        opacity: 0,
-        borderRadius: '8px'
+        opacity: 0
       }
     ], {
-      duration: 340,
-      easing: 'cubic-bezier(.22, .8, .22, 1)',
+      duration: 300,
+      easing: 'cubic-bezier(.2, .82, .22, 1)',
       fill: 'forwards'
     });
     setTimeout(function () {
       window.location.href = url;
-    }, 360);
+    }, 320);
   }
 
   function loadFavourites() {
@@ -1314,6 +1312,22 @@ body.launching .recents {
     launch(resolveUrl(input.value));
   });
 
+  function invokeNative(action) {
+    if (!nativePortal || typeof nativePortal[action] !== 'function') return;
+    try {
+      nativePortal[action]();
+    } catch (error) {}
+  }
+
+  document.getElementById('btnDownloads').addEventListener('click', function (event) {
+    event.preventDefault();
+    invokeNative('openDownloads');
+  });
+  document.getElementById('btnSettings').addEventListener('click', function (event) {
+    event.preventDefault();
+    invokeNative('openSettings');
+  });
+
   var tiles = document.querySelectorAll('#topSites .tile');
   for (var i = 0; i < tiles.length; i++) {
     tiles[i].addEventListener('click', function (event) {
@@ -1332,6 +1346,7 @@ body.launching .recents {
     launching = false;
     document.body.classList.remove('launching');
     form.style.transformOrigin = '';
+    form.style.willChange = '';
     if (form.getAnimations) {
       var running = form.getAnimations();
       for (var j = 0; j < running.length; j++) running[j].cancel();
