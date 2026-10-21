@@ -1068,20 +1068,25 @@ final class AdBlockEngine {
     }
 
     private static final class CosmeticRule {
+        static final int KIND_CSS = 0;
+        static final int KIND_PROCEDURAL = 1;
+        static final int KIND_SCRIPTLET = 2;
+        static final int KIND_STYLE = 3;
+
         final String selector;
         final String[] includeDomains;
         final String[] excludeDomains;
         final boolean exception;
-        final boolean scriptlet;
+        final int kind;
         final boolean generic;
 
         CosmeticRule(String selector, String[] includeDomains, String[] excludeDomains,
-                     boolean exception, boolean scriptlet) {
+                     boolean exception, int kind) {
             this.selector = selector;
             this.includeDomains = includeDomains;
             this.excludeDomains = excludeDomains;
             this.exception = exception;
-            this.scriptlet = scriptlet;
+            this.kind = kind;
             this.generic = includeDomains.length == 0;
         }
 
@@ -1104,10 +1109,15 @@ final class AdBlockEngine {
         private final List<CosmeticRule> genericCosmetics = new ArrayList<CosmeticRule>();
         private final Map<String, List<CosmeticRule>> domainCosmetics =
                 new HashMap<String, List<CosmeticRule>>();
+        private final Map<String, List<CleanRule>> cleanHostRules =
+                new HashMap<String, List<CleanRule>>();
+        private final List<CleanRule> cleanGeneralRules = new ArrayList<CleanRule>();
         private final List<NetworkFilter> allNetwork = new ArrayList<NetworkFilter>();
         private final Set<Long> badfilters = new HashSet<Long>();
+        private final Set<Long> cleanBadfilters = new HashSet<Long>();
         private int networkRuleCount;
         private int cosmeticRuleCount;
+        private int cleanRuleCount;
         private long version;
 
         Builder version(long version) {
@@ -1187,6 +1197,22 @@ final class AdBlockEngine {
             }
             networkRuleCount = allNetwork.size();
             allNetwork.clear();
+            for (int i = cleanGeneralRules.size() - 1; i >= 0; i--) {
+                if (cleanBadfilters.contains(cleanGeneralRules.get(i).filter.sourceHash)) {
+                    cleanGeneralRules.remove(i);
+                }
+            }
+            for (List<CleanRule> list : cleanHostRules.values()) {
+                for (int i = list.size() - 1; i >= 0; i--) {
+                    if (cleanBadfilters.contains(list.get(i).filter.sourceHash)) {
+                        list.remove(i);
+                    }
+                }
+            }
+            cleanRuleCount = cleanGeneralRules.size();
+            for (List<CleanRule> list : cleanHostRules.values()) {
+                cleanRuleCount += list.size();
+            }
             cosmeticRuleCount = genericCosmetics.size();
             for (List<CosmeticRule> list : domainCosmetics.values()) {
                 cosmeticRuleCount += list.size();
