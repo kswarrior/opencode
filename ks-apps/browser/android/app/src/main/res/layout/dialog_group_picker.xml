@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_login_sheet"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/groupPickerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tabs_move_to_group"
+            android:textColor="@color/ks_text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:id="@+id/groupPickerScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:id="@+id/groupPickerList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <Button
+            android:id="@+id/groupPickerCancel"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_secondary_button"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:stateListAnimator="@null"
+            android:text="@string/tabs_cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/ks_text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

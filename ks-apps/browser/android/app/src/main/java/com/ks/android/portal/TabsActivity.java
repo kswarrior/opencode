@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -35,7 +34,7 @@ public class TabsActivity extends Activity {
     private static final int MENU_CLOSE_TAB = 4;
 
     private static final int GROUP_MENU_NEW_TAB = 10;
-    private static final int GROUP_MENU_RENAME = 11;
+    private static final int GROUP_MENU_EDIT = 11;
     private static final int GROUP_MENU_CLOSE = 12;
     private static final int GROUP_MENU_DELETE = 13;
 
@@ -272,88 +271,55 @@ public class TabsActivity extends Activity {
     }
 
     private void showMoveToGroup(final BrowserTab tab) {
-        final List<TabGroup> groups = tabManager.getGroups();
-        final List<String> labels = new ArrayList<String>();
-        for (int i = 0; i < groups.size(); i++) {
-            TabGroup group = groups.get(i);
-            labels.add(group.name + " (" + tabManager.countTabsInGroup(group.id) + ")");
-        }
-        labels.add(getString(R.string.tabs_new_group));
-        final int removeIndex = tab.groupId == 0 ? -1 : labels.size();
-        if (removeIndex >= 0) {
-            labels.add(getString(R.string.tabs_remove_from_group));
-        }
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.tabs_move_to_group)
-                .setItems(labels.toArray(new String[0]), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (which < groups.size()) {
-                            tabManager.moveTabToGroup(tab.id, groups.get(which).id);
-                        } else if (which == groups.size()) {
-                            promptNewGroupForTab(tab);
-                        } else if (which == removeIndex) {
-                            tabManager.moveTabToGroup(tab.id, 0);
-                        }
-                    }
-                })
-                .show();
+        GroupPickerDialog.show(this, tabManager, tab.groupId, new GroupPickerDialog.Listener() {
+            @Override
+            public void onGroupSelected(TabGroup group) {
+                tabManager.moveTabToGroup(tab.id, group.id);
+            }
+
+            @Override
+            public void onNewGroup() {
+                promptNewGroupForTab(tab);
+            }
+
+            @Override
+            public void onRemoveFromGroup() {
+                tabManager.moveTabToGroup(tab.id, 0);
+            }
+        });
     }
 
     private void promptNewGroupForTab(final BrowserTab tab) {
-        showGroupNameDialog(R.string.tabs_new_group, R.string.tabs_create, "",
-                new GroupNameListener() {
+        GroupEditDialog.show(this, R.string.tabs_new_group, R.string.tabs_create, "",
+                GroupStyle.DEFAULT_ICON, GroupStyle.DEFAULT_COLOR,
+                new GroupEditDialog.Listener() {
                     @Override
-                    public void onName(String name) {
-                        TabGroup group = tabManager.createGroup(name);
+                    public void onSave(String name, String icon, int color) {
+                        TabGroup group = tabManager.createGroup(name, icon, color);
                         tabManager.moveTabToGroup(tab.id, group.id);
                     }
                 });
     }
 
     private void promptCreateGroup() {
-        showGroupNameDialog(R.string.tabs_new_group, R.string.tabs_create, "",
-                new GroupNameListener() {
+        GroupEditDialog.show(this, R.string.tabs_new_group, R.string.tabs_create, "",
+                GroupStyle.DEFAULT_ICON, GroupStyle.DEFAULT_COLOR,
+                new GroupEditDialog.Listener() {
                     @Override
-                    public void onName(String name) {
-                        tabManager.createGroup(name);
+                    public void onSave(String name, String icon, int color) {
+                        tabManager.createGroup(name, icon, color);
                     }
                 });
     }
 
-    private void promptRenameGroup(final TabGroup group) {
-        showGroupNameDialog(R.string.tabs_group_rename, R.string.tabs_save, group.name,
-                new GroupNameListener() {
+    private void promptEditGroup(final TabGroup group) {
+        GroupEditDialog.show(this, R.string.tabs_group_edit, R.string.tabs_save, group.name,
+                group.icon, group.color, new GroupEditDialog.Listener() {
                     @Override
-                    public void onName(String name) {
-                        tabManager.renameGroup(group.id, name);
+                    public void onSave(String name, String icon, int color) {
+                        tabManager.updateGroup(group.id, name, icon, color);
                     }
                 });
-    }
-
-    private void showGroupNameDialog(int titleRes, int positiveRes, String initial,
-                                     final GroupNameListener listener) {
-        final EditText input = new EditText(this);
-        input.setSingleLine(true);
-        input.setHint(R.string.tabs_group_name_hint);
-        input.setText(initial);
-        input.setSelection(input.getText().length());
-        FrameLayout container = new FrameLayout(this);
-        int padding = Math.round(20 * getResources().getDisplayMetrics().density);
-        container.setPadding(padding, padding / 2, padding, 0);
-        container.addView(input, new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        new AlertDialog.Builder(this)
-                .setTitle(titleRes)
-                .setView(container)
-                .setPositiveButton(positiveRes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        listener.onName(input.getText().toString());
-                    }
-                })
-                .setNegativeButton(R.string.tabs_cancel, null)
-                .show();
     }
 
     private void showGroupMenu(View anchor, final TabGroup group) {

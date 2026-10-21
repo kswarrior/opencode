@@ -574,19 +574,27 @@ public class MainActivity extends Activity {
                 new DownloadConfirmDialog.Listener() {
                     @Override
                     public void onDownload(String fileName) {
-                        DownloadItem item = repository.startDownload(url, userAgent,
-                                contentDisposition, mimeType, contentLength, referer, fileName);
-                        if (item.status == DownloadItem.STATUS_FAILED) {
-                            String message = TextUtils.isEmpty(item.error)
-                                    ? getString(R.string.download_start_failed) : item.error;
-                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(MainActivity.this,
-                                    getString(R.string.download_started, item.fileName),
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                        startDownloadItem(repository, url, userAgent, contentDisposition,
+                                mimeType, contentLength, referer, fileName);
                     }
                 });
+    }
+
+    private void startDownloadItem(final DownloadRepository repository, final String url,
+                                   final String userAgent, final String contentDisposition,
+                                   final String mimeType, final long contentLength,
+                                   final String referer, String fileName) {
+        DownloadItem item = repository.startDownload(url, userAgent, contentDisposition,
+                mimeType, contentLength, referer, fileName);
+        if (item.status == DownloadItem.STATUS_FAILED) {
+            String message = TextUtils.isEmpty(item.error)
+                    ? getString(R.string.download_start_failed) : item.error;
+            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(MainActivity.this,
+                    getString(R.string.download_started, item.fileName),
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
