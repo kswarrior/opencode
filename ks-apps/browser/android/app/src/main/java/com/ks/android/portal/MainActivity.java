@@ -33,6 +33,7 @@ import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -98,6 +99,7 @@ public class MainActivity extends Activity {
     private String lastLoginKey = "";
     private long lastLoginTime;
     private boolean loginDialogVisible;
+    private final Map<WebView, String> secureFallbacks = new HashMap<WebView, String>();
     private static final int REQUEST_NOTIFICATIONS = 2002;
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
@@ -335,6 +337,20 @@ public class MainActivity extends Activity {
                 if (isActiveTab(tab)) {
                     updateChrome(url);
                 }
+            }
+
+            @Override
+            public void onReceivedError(WebView current, WebResourceRequest request,
+                                        WebResourceError error) {
+                if (request.isForMainFrame()) {
+                    fallbackToInsecure(current, request.getUrl().toString());
+                }
+            }
+
+            @Override
+            public void onReceivedError(WebView current, int errorCode, String description,
+                                        String failingUrl) {
+                fallbackToInsecure(current, failingUrl);
             }
         });
 
@@ -725,9 +741,16 @@ public class MainActivity extends Activity {
             return;
         }
         String target = url;
+        boolean upgraded = false;
         if (!isHomeUrl(url) && setting("security_secure_connections", true)
                 && target.regionMatches(true, 0, "http://", 0, 7)) {
             target = "https://" + target.substring(7);
+            upgraded = true;
+        }
+        if (upgraded) {
+            secureFallbacks.put(view, url);
+        } else {
+            secureFallbacks.remove(view);
         }
         Map<String, String> headers = requestHeaders();
         if (headers != null && (target.startsWith("http://")
@@ -735,6 +758,18 @@ public class MainActivity extends Activity {
             view.loadUrl(target, headers);
         } else {
             view.loadUrl(target);
+        }
+    }
+
+    private void fallbackToInsecure(WebView view, String failingUrl) {
+        if (view == null || TextUtils.isEmpty(failingUrl)
+                || !setting("security_secure_connections", true)
+                || !failingUrl.startsWith("https://")) {
+            return;
+        }
+        String original = secureFallbacks.remove(view);
+        if (original != null && original.startsWith("http://")) {
+            view.loadUrl(original);
         }
     }
 
