@@ -222,6 +222,19 @@ final class AdBlockEngine {
             int dot = host.indexOf('.', position);
             position = dot >= 0 ? dot + 1 : -1;
         }
+        List<PageRule> general = pageRules.get("");
+        if (general != null) {
+            for (int i = 0; i < general.size(); i++) {
+                PageRule rule = general.get(i);
+                if (rule.matches(host, pageRequest)) {
+                    blockDisabled |= rule.block;
+                    elementHideDisabled |= rule.elemHide;
+                    genericHideDisabled |= rule.genericHide;
+                    specificHideDisabled |= rule.specificHide;
+                    popupBlockSuggested |= rule.popup;
+                }
+            }
+        }
         if (blockDisabled) {
             elementHideDisabled = true;
             genericHideDisabled = true;
@@ -229,6 +242,95 @@ final class AdBlockEngine {
         }
         return new PagePolicy(blockDisabled, elementHideDisabled, genericHideDisabled,
                 specificHideDisabled, popupBlockSuggested);
+    }
+
+    String cleanUrl(String url, String pageUrl) {
+        if (url == null) {
+            return null;
+        }
+        int queryStart = url.indexOf('?');
+        if (queryStart < 0 || queryStart >= url.length() - 1) {
+            return null;
+        }
+        Request request = request(url, pageUrl, TYPE_DOCUMENT);
+        if (request == null || request.host == null) {
+            return null;
+        }
+        List<CleanRule> rules = new ArrayList<CleanRule>();
+        int position = 0;
+        while (position >= 0) {
+            String suffix = request.host.substring(position);
+            List<CleanRule> list = cleanHostRules.get(suffix);
+            if (list != null) {
+                rules.addAll(list);
+            }
+            int dot = request.host.indexOf('.', position);
+            position = dot >= 0 ? dot + 1 : -1;
+        }
+        rules.addAll(cleanGeneralRules);
+        if (rules.isEmpty()) {
+            return null;
+        }
+        List<CleanRule> matching = new ArrayList<CleanRule>();
+        for (int i = 0; i < rules.size(); i++) {
+            CleanRule rule = rules.get(i);
+            if (rule.matchesUrl(request)) {
+                matching.add(rule);
+            }
+        }
+        if (matching.isEmpty()) {
+            return null;
+        }
+        int fragmentStart = url.indexOf('#', queryStart);
+        String query = fragmentStart >= 0
+                ? url.substring(queryStart + 1, fragmentStart)
+                : url.substring(queryStart + 1);
+        String suffix = fragmentStart >= 0 ? url.substring(fragmentStart) : "";
+        StringBuilder rebuilt = new StringBuilder();
+        boolean changed = false;
+        int start = 0;
+        for (int i = 0; i <= query.length(); i++) {
+            if (i == query.length() || query.charAt(i) == '&') {
+                if (i > start) {
+                    String pair = query.substring(start, i);
+                    int equals = pair.indexOf('=');
+                    String name = equals >= 0 ? pair.substring(0, equals) : pair;
+                    boolean remove = false;
+                    boolean excepted = false;
+                    for (int r = 0; r < matching.size(); r++) {
+                        CleanRule rule = matching.get(r);
+                        boolean applies = rule.matches(name);
+                        if (rule.exception) {
+                            if (applies) {
+                                excepted = true;
+                                break;
+                            }
+                        } else if (rule.negated ? !applies : applies) {
+                            remove = true;
+                        }
+                    }
+                    if (remove && !excepted) {
+                        changed = true;
+                    } else {
+                        if (rebuilt.length() > 0) {
+                            rebuilt.append('&');
+                        }
+                        rebuilt.append(pair);
+                    }
+                }
+                start = i + 1;
+            }
+        }
+        if (!changed) {
+            return null;
+        }
+        StringBuilder result = new StringBuilder();
+        result.append(url.substring(0, queryStart));
+        if (rebuilt.length() > 0) {
+            result.append('?').append(rebuilt);
+        }
+        result.append(suffix);
+        return result.toString();
     }
 
     CosmeticResult cosmeticFor(String pageUrl, boolean genericEnabled,
