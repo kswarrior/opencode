@@ -225,6 +225,7 @@ example.com##.ad-banner</string>
     <string name="adblocker_list_status">%1$s · %2$d rules</string>
     <string name="adblocker_advanced">Advanced</string>
     <string name="adblocker_advanced_summary">Site exceptions, custom lists and filter rules.</string>
+    <string name="adblocker_engine_summary">Network, cosmetic, scriptlet and tracking filters are active. WebView cannot rewrite response headers or HTML, so $csp and HTML filtering are unavailable; document-start scriptlets run as early as WebView allows.</string>
     <string name="about_title">About KS Portal</string>
     <string name="settings_version">Version %1$s</string>
     <string name="about_owner">Owner: KS Warrior</string>

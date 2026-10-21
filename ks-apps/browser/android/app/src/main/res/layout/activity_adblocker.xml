@@ -462,6 +462,16 @@
             </LinearLayout>
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/adblocker_engine_summary"
+                android:textColor="@color/ks_muted"
+                android:textSize="11sp" />
+
+            <TextView
                 android:id="@+id/adBlockerDelete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
