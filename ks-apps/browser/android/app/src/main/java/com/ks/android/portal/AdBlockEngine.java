@@ -688,6 +688,10 @@ final class AdBlockEngine {
     }
 
     private static String siteOf(String host) {
+        PublicSuffixList suffixList = PUBLIC_SUFFIX_LIST;
+        if (suffixList != null) {
+            return suffixList.siteOf(host);
+        }
         String[] labels = host.split("\\.");
         if (labels.length <= 2) {
             return host;
@@ -1792,6 +1796,30 @@ final class AdBlockEngine {
             }
         }
         return false;
+    }
+
+    private static String hostLiteral(String pattern) {
+        if (pattern.length() == 0 || pattern.charAt(0) == '*') {
+            return null;
+        }
+        int end = 0;
+        while (end < pattern.length()) {
+            char c = pattern.charAt(end);
+            if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+                    || (c >= '0' && c <= '9') || c == '.' || c == '-') {
+                end++;
+            } else {
+                break;
+            }
+        }
+        if (end == 0) {
+            return null;
+        }
+        String host = pattern.substring(0, end).toLowerCase(Locale.US);
+        if (host.startsWith(".") || host.endsWith(".") || host.indexOf('.') < 0) {
+            return null;
+        }
+        return host;
     }
 
     private static boolean isSafeSelector(String selector) {

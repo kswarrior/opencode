@@ -56,7 +56,7 @@ final class PublicSuffixList {
             rule = rule.substring(1);
         }
         rule = rule.toLowerCase(Locale.US);
-        if (rule.length() == 0 || '*'.equals(rule)) {
+        if (rule.length() == 0 || "*".equals(rule)) {
             return;
         }
         if (rule.startsWith("*.")) {
