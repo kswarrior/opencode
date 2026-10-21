@@ -31,9 +31,12 @@ final class AdBlocker {
     private static final String KEY_GLOBAL = "adblock_enabled";
     private static final String KEY_COSMETIC = "adblock_cosmetic";
     private static final String KEY_BLOCKED_TOTAL = "adblock_blocked_total";
-    private static final int MAX_SPECIFIC_SELECTORS = 4000;
-    private static final int MAX_GENERIC_SELECTORS = 2500;
-    private static final int MAX_SCRIPTLETS = 120;
+    private static final String KEY_STRIP_TRACKING = "privacy_strip_tracking";
+    private static final int MAX_SPECIFIC_SELECTORS = 5000;
+    private static final int MAX_GENERIC_SELECTORS = 3000;
+    private static final int MAX_PROCEDURAL_RULES = 800;
+    private static final int MAX_SCRIPTLETS = 200;
+    private static final int MAX_STYLE_RULES = 500;
 
     private static final byte[] TRANSPARENT_GIF = Base64.decode(
             "R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
@@ -42,6 +45,7 @@ final class AdBlocker {
     private static final AtomicReference<AdBlockEngine> ENGINE =
             new AtomicReference<AdBlockEngine>(AdBlockEngine.empty());
     private static final AtomicBoolean INITIALIZED = new AtomicBoolean();
+    private static final AtomicBoolean PSL_LOADED = new AtomicBoolean();
     private static final AtomicBoolean UPDATING = new AtomicBoolean();
     private static final AtomicLong TOTAL_BLOCKED = new AtomicLong();
     private static final AtomicLong SESSION_BLOCKED = new AtomicLong();
@@ -61,6 +65,8 @@ final class AdBlocker {
 
     private static volatile Context appContext;
     private static volatile long engineVersion;
+    private static volatile String proceduralScript;
+    private static volatile String scriptletScript;
 
     private AdBlocker() {
     }
@@ -103,6 +109,16 @@ final class AdBlocker {
     static void setCosmeticEnabled(Context context, boolean enabled) {
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
                 .edit().putBoolean(KEY_COSMETIC, enabled).apply();
+    }
+
+    static boolean isTrackingStripEnabled(Context context) {
+        return context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+                .getBoolean(KEY_STRIP_TRACKING, true);
+    }
+
+    static void setTrackingStripEnabled(Context context, boolean enabled) {
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+                .edit().putBoolean(KEY_STRIP_TRACKING, enabled).apply();
     }
 
     static long engineVersion() {
