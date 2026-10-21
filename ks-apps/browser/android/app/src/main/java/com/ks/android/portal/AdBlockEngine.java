@@ -495,14 +495,15 @@ final class AdBlockEngine {
             return null;
         }
         String host = url.substring(start, end);
-        int colon = host.indexOf(':');
-        if (colon >= 0) {
-            host = host.substring(0, colon);
-        }
         if (host.startsWith("[")) {
             int close = host.indexOf(']');
             if (close > 0) {
                 host = host.substring(1, close);
+            }
+        } else {
+            int colon = host.indexOf(':');
+            if (colon >= 0) {
+                host = host.substring(0, colon);
             }
         }
         if (host.length() == 0 || host.indexOf('.') < 0 && !"localhost".equals(host)) {
@@ -884,7 +885,8 @@ final class AdBlockEngine {
         int starUrl = 0;
         while (u < url.length()) {
             if (p == pattern.length()) {
-                return !endAnchor;
+                return !endAnchor
+                        || pattern.charAt(pattern.length() - 1) == '*';
             }
             if (p < pattern.length() && pattern.charAt(p) == '*') {
                 star = p++;
@@ -1121,12 +1123,8 @@ final class AdBlockEngine {
                         name = name.substring(0, equals);
                     }
                     if ("domain".equals(name) || "from".equals(name)) {
-                        if ("domain".equals(name)) {
-                            includes = includeDomains(value);
-                            excludes = excludeDomains(value);
-                        } else {
-                            includes = includeDomains(value);
-                        }
+                        includes = includeDomains(value);
+                        excludes = excludeDomains(value);
                     } else if ("third-party".equals(name) || "3p".equals(name)) {
                         party = negated ? PARTY_FIRST : PARTY_THIRD;
                     } else if ("first-party".equals(name) || "1p".equals(name)) {
@@ -1165,10 +1163,8 @@ final class AdBlockEngine {
                             || "method".equals(name) || "denyallow".equals(name)
                             || "to".equals(name) || "sitekey".equals(name)
                             || "redirect-rule".equals(name)) {
-                        if (!("popup".equals(name) && positiveType)) {
-                            unsupported = true;
-                        }
-                    } else if ("redirect".equals(name) || "redirect=".equals(name)) {
+                        unsupported = true;
+                    } else if ("redirect".equals(name)) {
                         if (!negated) {
                             redirect = value.length() == 0 ? "noop" : value;
                         }
