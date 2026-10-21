@@ -79,7 +79,7 @@ public class BackgroundActivity extends Activity {
 
         buildTargets();
 
-        dimBar.setMax(70);
+        dimBar.setMax(95);
         dimBar.setProgress(BackgroundStore.getDim(this));
         dimValue.setText(getString(R.string.background_dim_value, dimBar.getProgress()));
         dimBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

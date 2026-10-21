@@ -67,7 +67,7 @@ final class BackgroundStore {
     }
 
     static int getDim(Context context) {
-        return preferences(context).getInt(DIM_KEY, 0);
+        return preferences(context).getInt(DIM_KEY, 75);
     }
 
     static void setDim(Context context, int dim) {
@@ -78,7 +78,7 @@ final class BackgroundStore {
         if (dim < 0) {
             return 0;
         }
-        return Math.min(dim, 70);
+        return Math.min(dim, 95);
     }
 
     static String defaultValue(int index) {

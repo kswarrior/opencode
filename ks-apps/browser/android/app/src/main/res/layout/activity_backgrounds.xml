@@ -132,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:max="70"
+                    android:max="95"
                     android:progressTint="@color/ks_text"
                     android:thumbTint="@color/ks_text" />
 
