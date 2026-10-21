@@ -541,7 +541,9 @@ public class MainActivity extends Activity {
     private void startDownloadOrConfirm(String url, String userAgent,
                                         String contentDisposition, String mimeType,
                                         long contentLength, String referer) {
-        if (SiteSettingsStore.getBoolean(this, SiteSettingsStore.hostOf(url),
+        String siteHost = SiteSettingsStore.hostOf(
+                TextUtils.isEmpty(referer) ? url : referer);
+        if (SiteSettingsStore.getBoolean(this, siteHost,
                 SiteSettingsStore.KEY_AUTOMATIC_DOWNLOADS, false)) {
             DownloadRepository repository = DownloadRepository.getInstance(this);
             String fileName = repository.suggestFileName(url, contentDisposition, mimeType);
