@@ -42,6 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends Activity {
+    public static final String EXTRA_OPEN_URL = "com.ks.android.portal.extra.OPEN_URL";
     private static final String HOME_URL = "file:///android_asset/portal.html";
     private static final String RECENTS_PREFS = "ks_recents";
     private static final String RECENTS_KEY = "items";
@@ -124,6 +125,7 @@ public class MainActivity extends Activity {
                 progressBar.setVisibility(View.GONE);
                 updateChrome(url);
                 recordRecent(url, view.getTitle());
+                recordHistory(url, view.getTitle());
             }
 
             @Override
@@ -190,7 +192,10 @@ public class MainActivity extends Activity {
             }
         });
 
-        if (savedInstanceState != null) {
+        String openUrl = normalizeWebUrl(getIntent().getStringExtra(EXTRA_OPEN_URL));
+        if (openUrl != null) {
+            webView.loadUrl(openUrl);
+        } else if (savedInstanceState != null) {
             if (webView.restoreState(savedInstanceState) == null) {
                 webView.loadUrl(HOME_URL);
             } else {
@@ -199,6 +204,20 @@ public class MainActivity extends Activity {
         } else {
             webView.loadUrl(HOME_URL);
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        String url = normalizeWebUrl(intent.getStringExtra(EXTRA_OPEN_URL));
+        if (url == null) {
+            return;
+        }
+        toolbarCollapsed = false;
+        hideKeyboard();
+        urlBar.clearFocus();
+        webView.loadUrl(url);
     }
 
     private void requestDownload(String url, String userAgent, String contentDisposition,
@@ -455,6 +474,10 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this, DownloadsActivity.class));
     }
 
+    private void openHistoryPage() {
+        startActivity(new Intent(this, HistoryActivity.class));
+    }
+
     private void openSettingsPage() {
         startActivity(new Intent(this, SettingsActivity.class));
     }
@@ -562,6 +585,14 @@ public class MainActivity extends Activity {
         return result;
     }
 
+    private void recordHistory(String rawUrl, String title) {
+        String url = normalizeWebUrl(rawUrl);
+        if (url == null) {
+            return;
+        }
+        HistoryRepository.getInstance(this).record(cleanRecentName(title, url), url);
+    }
+
     private void recordRecent(String rawUrl, String title) {
         String url = normalizeWebUrl(rawUrl);
         if (url == null) {
@@ -641,6 +672,20 @@ public class MainActivity extends Activity {
                 @Override
                 public void run() {
                     openDownloadsPage();
+                }
+            });
+            return true;
+        }
+
+        @JavascriptInterface
+        public boolean openHistory() {
+            if (!isBridgeAllowed()) {
+                return false;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    openHistoryPage();
                 }
             });
             return true;
