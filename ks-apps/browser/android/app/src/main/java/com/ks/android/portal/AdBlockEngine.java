@@ -48,6 +48,7 @@ final class AdBlockEngine {
     private static final int MAX_FILTER_COUNT = 300000;
 
     private static final Set<String> MULTI_PART_SUFFIXES = new HashSet<String>();
+    private static volatile PublicSuffixList PUBLIC_SUFFIX_LIST;
 
     static {
         String[] suffixes = {
@@ -74,8 +75,11 @@ final class AdBlockEngine {
     private final Map<String, List<PageRule>> pageRules;
     private final List<CosmeticRule> genericCosmetics;
     private final Map<String, List<CosmeticRule>> domainCosmetics;
+    private final Map<String, List<CleanRule>> cleanHostRules;
+    private final List<CleanRule> cleanGeneralRules;
     private final int networkRuleCount;
     private final int cosmeticRuleCount;
+    private final int cleanRuleCount;
     private final long version;
 
     private AdBlockEngine(Builder builder) {
@@ -85,8 +89,11 @@ final class AdBlockEngine {
         pageRules = builder.pageRules;
         genericCosmetics = builder.genericCosmetics;
         domainCosmetics = builder.domainCosmetics;
+        cleanHostRules = builder.cleanHostRules;
+        cleanGeneralRules = builder.cleanGeneralRules;
         networkRuleCount = builder.networkRuleCount;
         cosmeticRuleCount = builder.cosmeticRuleCount;
+        cleanRuleCount = builder.cleanRuleCount;
         version = builder.version;
     }
 
