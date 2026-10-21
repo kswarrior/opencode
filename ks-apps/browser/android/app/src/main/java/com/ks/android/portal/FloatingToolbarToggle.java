@@ -2,6 +2,7 @@ package com.ks.android.portal;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
@@ -47,14 +48,8 @@ public class FloatingToolbarToggle extends View {
     };
 
     private final float density;
-    private final float viewSize;
-    private final float barThickness;
-    private final float barLength;
-    private final float floatingInset;
-    private final float floatingRadius;
     private final float snapDistance;
     private final int touchSlop;
-    private final int accentColor;
     private final int textColor;
 
     private Listener listener;
@@ -62,7 +57,11 @@ public class FloatingToolbarToggle extends View {
     private boolean dragging;
     private boolean moved;
     private boolean restored;
+    private boolean moveable = true;
     private int dockEdge = EDGE_RIGHT;
+    private int accentColor;
+    private float viewWidth;
+    private float viewHeight;
     private float downRawX;
     private float downRawY;
     private float lastRawX;
@@ -72,11 +71,8 @@ public class FloatingToolbarToggle extends View {
     public FloatingToolbarToggle(Context context, AttributeSet attrs) {
         super(context, attrs);
         density = getResources().getDisplayMetrics().density;
-        viewSize = 56f * density;
-        barThickness = 16f * density;
-        barLength = 48f * density;
-        floatingInset = 4f * density;
-        floatingRadius = 14f * density;
+        viewWidth = 56f * density;
+        viewHeight = 56f * density;
         snapDistance = 44f * density;
         touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         accentColor = getResources().getColor(R.color.ks_accent);
@@ -107,6 +103,57 @@ public class FloatingToolbarToggle extends View {
         invalidate();
     }
 
+    public boolean isCollapsed() {
+        return collapsed;
+    }
+
+    public void setToggleSize(int widthDp, int heightDp) {
+        float newWidth = Math.max(1, widthDp) * density;
+        float newHeight = Math.max(1, heightDp) * density;
+        if (Math.abs(newWidth - viewWidth) < 0.5f
+                && Math.abs(newHeight - viewHeight) < 0.5f) {
+            return;
+        }
+        viewWidth = newWidth;
+        viewHeight = newHeight;
+        requestLayout();
+        post(new Runnable() {
+            @Override
+            public void run() {
+                if (restored) {
+                    dockAt(dockEdge, getCenterX(), getCenterY());
+                }
+            }
+        });
+    }
+
+    public void setAccentColor(int color) {
+        if (color == 0 || color == accentColor) {
+            return;
+        }
+        accentColor = color;
+        invalidate();
+    }
+
+    public void setMoveable(boolean moveable) {
+        if (this.moveable == moveable) {
+            return;
+        }
+        this.moveable = moveable;
+        if (!moveable) {
+            cancelHold();
+            if (dragging) {
+                dragging = false;
+                animate().scaleX(1f).scaleY(1f).setDuration(120).start();
+                invalidate();
+            }
+        }
+    }
+
+    public boolean isMoveable() {
+        return moveable;
+    }
+
     public void restorePosition(int edge, float centerX, float centerY) {
         if (edge < EDGE_NONE || edge > EDGE_BOTTOM) {
             edge = EDGE_RIGHT;
@@ -119,11 +166,11 @@ public class FloatingToolbarToggle extends View {
     }
 
     public float getCenterX() {
-        return getX() + viewSize / 2f;
+        return getX() + toggleWidth() / 2f;
     }
 
     public float getCenterY() {
-        return getY() + viewSize / 2f;
+        return getY() + toggleHeight() / 2f;
     }
 
     public void reclamp() {
@@ -139,8 +186,7 @@ public class FloatingToolbarToggle extends View {
 
     private void applyRestore(final int edge, final float centerX, final float centerY) {
         final View parent = getParentView();
-        if (parent == null || getWidth() <= 0 || getHeight() <= 0
-                || parent.getWidth() <= 0 || parent.getHeight() <= 0) {
+        if (parent == null || parent.getWidth() <= 0 || parent.getHeight() <= 0) {
             post(new Runnable() {
                 @Override
                 public void run() {
@@ -160,7 +206,7 @@ public class FloatingToolbarToggle extends View {
     }
 
     private void beginDrag() {
-        if (dragging) {
+        if (dragging || !moveable) {
             return;
         }
         dragging = true;
@@ -185,12 +231,14 @@ public class FloatingToolbarToggle extends View {
         float areaTop = parent.getPaddingTop();
         float areaRight = parent.getWidth() - parent.getPaddingRight();
         float areaBottom = parent.getHeight() - parent.getPaddingBottom();
+        float width = toggleWidth();
+        float height = toggleHeight();
         float x = getX();
         float y = getY();
         float left = x - areaLeft;
-        float right = areaRight - viewSize - x;
+        float right = areaRight - width - x;
         float top = y - areaTop;
-        float bottom = areaBottom - viewSize - y;
+        float bottom = areaBottom - height - y;
         float nearest = Math.min(Math.min(left, right), Math.min(top, bottom));
         if (nearest <= snapDistance) {
             int edge;
@@ -217,30 +265,32 @@ public class FloatingToolbarToggle extends View {
         if (parent == null) {
             return;
         }
+        float width = toggleWidth();
+        float height = toggleHeight();
         float areaLeft = parent.getPaddingLeft();
         float areaTop = parent.getPaddingTop();
         float areaRight = parent.getWidth() - parent.getPaddingRight();
         float areaBottom = parent.getHeight() - parent.getPaddingBottom();
-        float maxX = Math.max(areaLeft, areaRight - viewSize);
-        float maxY = Math.max(areaTop, areaBottom - viewSize);
+        float maxX = Math.max(areaLeft, areaRight - width);
+        float maxY = Math.max(areaTop, areaBottom - height);
 
         dockEdge = edge;
         if (edge == EDGE_LEFT) {
             setX(areaLeft);
-            setY(clamp(centerY - viewSize / 2f, areaTop, maxY));
+            setY(clamp(centerY - height / 2f, areaTop, maxY));
         } else if (edge == EDGE_RIGHT) {
             setX(maxX);
-            setY(clamp(centerY - viewSize / 2f, areaTop, maxY));
+            setY(clamp(centerY - height / 2f, areaTop, maxY));
         } else if (edge == EDGE_TOP) {
-            setX(clamp(centerX - viewSize / 2f, areaLeft, maxX));
+            setX(clamp(centerX - width / 2f, areaLeft, maxX));
             setY(areaTop);
         } else if (edge == EDGE_BOTTOM) {
-            setX(clamp(centerX - viewSize / 2f, areaLeft, maxX));
+            setX(clamp(centerX - width / 2f, areaLeft, maxX));
             setY(maxY);
         } else {
             dockEdge = EDGE_NONE;
-            setX(clamp(centerX - viewSize / 2f, areaLeft, maxX));
-            setY(clamp(centerY - viewSize / 2f, areaTop, maxY));
+            setX(clamp(centerX - width / 2f, areaLeft, maxX));
+            setY(clamp(centerY - height / 2f, areaTop, maxY));
         }
         invalidate();
         updateGestureExclusion();
@@ -263,8 +313,18 @@ public class FloatingToolbarToggle extends View {
         float areaTop = parent.getPaddingTop();
         float areaRight = parent.getWidth() - parent.getPaddingRight();
         float areaBottom = parent.getHeight() - parent.getPaddingBottom();
-        setX(clamp(getX() + dx, areaLeft, Math.max(areaLeft, areaRight - viewSize)));
-        setY(clamp(getY() + dy, areaTop, Math.max(areaTop, areaBottom - viewSize)));
+        setX(clamp(getX() + dx, areaLeft,
+                Math.max(areaLeft, areaRight - toggleWidth())));
+        setY(clamp(getY() + dy, areaTop,
+                Math.max(areaTop, areaBottom - toggleHeight())));
+    }
+
+    private float toggleWidth() {
+        return getWidth() > 0 ? getWidth() : viewWidth;
+    }
+
+    private float toggleHeight() {
+        return getHeight() > 0 ? getHeight() : viewHeight;
     }
 
     private View getParentView() {
@@ -291,9 +351,9 @@ public class FloatingToolbarToggle extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int size = Math.round(viewSize);
-        setMeasuredDimension(resolveSize(size, widthMeasureSpec),
-                resolveSize(size, heightMeasureSpec));
+        setMeasuredDimension(
+                resolveSize(Math.round(viewWidth), widthMeasureSpec),
+                resolveSize(Math.round(viewHeight), heightMeasureSpec));
     }
 
     @Override
@@ -307,7 +367,20 @@ public class FloatingToolbarToggle extends View {
         super.onDraw(canvas);
         computeVisualRect();
 
-        fillPaint.setColor(dragging ? 0xFF152A42 : 0xC20B0B0B);
+        int red = Color.red(accentColor);
+        int green = Color.green(accentColor);
+        int blue = Color.blue(accentColor);
+        int fillRed = Math.min(255, 8 + red * 24 / 100);
+        int fillGreen = Math.min(255, 8 + green * 24 / 100);
+        int fillBlue = Math.min(255, 8 + blue * 24 / 100);
+        if (dragging) {
+            fillPaint.setColor(Color.argb(0xF0,
+                    Math.min(255, fillRed + 28),
+                    Math.min(255, fillGreen + 28),
+                    Math.min(255, fillBlue + 28)));
+        } else {
+            fillPaint.setColor(Color.argb(0xD9, fillRed, fillGreen, fillBlue));
+        }
         canvas.drawRoundRect(visualRect, visualRadius, visualRadius, fillPaint);
 
         if (dragging) {
@@ -315,10 +388,11 @@ public class FloatingToolbarToggle extends View {
             canvas.drawRoundRect(visualRect, visualRadius, visualRadius, glowPaint);
         }
 
-        strokePaint.setColor(dragging ? accentColor : 0x40FFFFFF);
+        strokePaint.setColor(dragging
+                ? accentColor : ((accentColor & 0x00FFFFFF) | 0x99000000));
         canvas.drawRoundRect(visualRect, visualRadius, visualRadius, strokePaint);
 
-        iconPaint.setColor(dragging ? accentColor : textColor);
+        iconPaint.setColor(dragging ? textColor : accentColor);
         iconPaint.setStrokeWidth((dockEdge == EDGE_NONE ? 2.4f : 1.8f) * density);
         drawChevron(canvas);
     }
@@ -326,27 +400,34 @@ public class FloatingToolbarToggle extends View {
     private void computeVisualRect() {
         float w = getWidth();
         float h = getHeight();
+        float min = Math.min(w, h);
+        float thickness = Math.max(10f * density, min * 0.28f);
         if (dockEdge == EDGE_LEFT) {
-            visualRect.set(0f, (h - barLength) / 2f, barThickness, (h + barLength) / 2f);
-            visualRadius = barThickness / 2f;
+            float length = Math.min(h, Math.max(20f * density, h * 0.86f));
+            visualRect.set(0f, (h - length) / 2f, thickness, (h + length) / 2f);
+            visualRadius = thickness / 2f;
         } else if (dockEdge == EDGE_RIGHT) {
-            visualRect.set(w - barThickness, (h - barLength) / 2f, w, (h + barLength) / 2f);
-            visualRadius = barThickness / 2f;
+            float length = Math.min(h, Math.max(20f * density, h * 0.86f));
+            visualRect.set(w - thickness, (h - length) / 2f, w, (h + length) / 2f);
+            visualRadius = thickness / 2f;
         } else if (dockEdge == EDGE_TOP) {
-            visualRect.set((w - barLength) / 2f, 0f, (w + barLength) / 2f, barThickness);
-            visualRadius = barThickness / 2f;
+            float length = Math.min(w, Math.max(20f * density, w * 0.86f));
+            visualRect.set((w - length) / 2f, 0f, (w + length) / 2f, thickness);
+            visualRadius = thickness / 2f;
         } else if (dockEdge == EDGE_BOTTOM) {
-            visualRect.set((w - barLength) / 2f, h - barThickness, (w + barLength) / 2f, h);
-            visualRadius = barThickness / 2f;
+            float length = Math.min(w, Math.max(20f * density, w * 0.86f));
+            visualRect.set((w - length) / 2f, h - thickness, (w + length) / 2f, h);
+            visualRadius = thickness / 2f;
         } else {
-            visualRect.set(floatingInset, floatingInset,
-                    w - floatingInset, h - floatingInset);
-            visualRadius = floatingRadius;
+            float inset = Math.max(4f * density, min * 0.07f);
+            visualRect.set(inset, inset, w - inset, h - inset);
+            visualRadius = min * 0.25f;
         }
     }
 
     private void drawChevron(Canvas canvas) {
-        float size = (dockEdge == EDGE_NONE ? 20f : 10f) * density;
+        float min = Math.min(getWidth(), getHeight());
+        float size = (dockEdge == EDGE_NONE ? 0.36f : 0.18f) * min;
         float cx = visualRect.centerX();
         float cy = visualRect.centerY();
         float halfWidth = size / 2f;
@@ -373,21 +454,25 @@ public class FloatingToolbarToggle extends View {
                 lastRawX = downRawX;
                 lastRawY = downRawY;
                 moved = false;
-                ViewParent parent = getParent();
-                if (parent != null) {
-                    parent.requestDisallowInterceptTouchEvent(true);
+                if (moveable) {
+                    ViewParent parent = getParent();
+                    if (parent != null) {
+                        parent.requestDisallowInterceptTouchEvent(true);
+                    }
+                    handler.postDelayed(holdRunnable,
+                            ViewConfiguration.getLongPressTimeout());
                 }
-                handler.postDelayed(holdRunnable, ViewConfiguration.getLongPressTimeout());
                 return true;
             case MotionEvent.ACTION_MOVE:
-                if (dragging) {
+                if (moveable && dragging) {
                     float rawX = event.getRawX();
                     float rawY = event.getRawY();
                     moveBy(rawX - lastRawX, rawY - lastRawY);
                     lastRawX = rawX;
                     lastRawY = rawY;
-                } else if (Math.abs(event.getRawX() - downRawX) > touchSlop
-                        || Math.abs(event.getRawY() - downRawY) > touchSlop) {
+                } else if (moveable
+                        && (Math.abs(event.getRawX() - downRawX) > touchSlop
+                        || Math.abs(event.getRawY() - downRawY) > touchSlop)) {
                     moved = true;
                     cancelHold();
                 }
