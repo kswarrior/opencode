@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
@@ -13,6 +15,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+
+import java.util.Collections;
 
 public class FloatingToolbarToggle extends View {
     public static final int EDGE_NONE = 0;
@@ -238,6 +242,15 @@ public class FloatingToolbarToggle extends View {
             setY(clamp(centerY - viewSize / 2f, areaTop, maxY));
         }
         invalidate();
+        updateGestureExclusion();
+    }
+
+    private void updateGestureExclusion() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+                && getWidth() > 0 && getHeight() > 0) {
+            setSystemGestureExclusionRects(Collections.singletonList(
+                    new Rect(0, 0, getWidth(), getHeight())));
+        }
     }
 
     private void moveBy(float dx, float dy) {
