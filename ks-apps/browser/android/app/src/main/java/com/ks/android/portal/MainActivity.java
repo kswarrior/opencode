@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -25,6 +26,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.view.animation.AccelerateInterpolator;
@@ -531,8 +534,23 @@ public class MainActivity extends Activity {
                     REQUEST_WRITE_STORAGE);
             return;
         }
-        showDownloadConfirm(url, userAgent, contentDisposition, mimeType, contentLength,
+        startDownloadOrConfirm(url, userAgent, contentDisposition, mimeType, contentLength,
                 currentUrl);
+    }
+
+    private void startDownloadOrConfirm(String url, String userAgent,
+                                        String contentDisposition, String mimeType,
+                                        long contentLength, String referer) {
+        if (SiteSettingsStore.getBoolean(this, SiteSettingsStore.hostOf(url),
+                SiteSettingsStore.KEY_AUTOMATIC_DOWNLOADS, false)) {
+            DownloadRepository repository = DownloadRepository.getInstance(this);
+            String fileName = repository.suggestFileName(url, contentDisposition, mimeType);
+            startDownloadItem(repository, url, userAgent, contentDisposition, mimeType,
+                    contentLength, referer, fileName);
+            return;
+        }
+        showDownloadConfirm(url, userAgent, contentDisposition, mimeType, contentLength,
+                referer);
     }
 
     private void maybeRequestNotificationPermission() {
@@ -586,7 +604,7 @@ public class MainActivity extends Activity {
         boolean granted = grantResults.length > 0
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
         if (granted && pendingDownloadUrl != null) {
-            showDownloadConfirm(pendingDownloadUrl, pendingDownloadUserAgent,
+            startDownloadOrConfirm(pendingDownloadUrl, pendingDownloadUserAgent,
                     pendingDownloadDisposition, pendingDownloadMime, pendingDownloadLength,
                     pendingDownloadReferer);
         } else {
@@ -599,6 +617,14 @@ public class MainActivity extends Activity {
         pendingDownloadMime = null;
         pendingDownloadLength = 0;
         pendingDownloadReferer = null;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_SITE_SETTINGS && resultCode == RESULT_OK) {
+            reloadActiveTabWithSiteSettings();
+        }
     }
 
     private void updateChrome(String url) {
@@ -865,6 +891,7 @@ public class MainActivity extends Activity {
         if (view == null || TextUtils.isEmpty(url)) {
             return;
         }
+        applySiteSettings(view, url);
         String target = url;
         boolean upgraded = false;
         if (!isHomeUrl(url) && setting("security_secure_connections", true)
@@ -1030,6 +1057,161 @@ public class MainActivity extends Activity {
         });
 
         popup.showAsDropDown(anchor, 0, 0, Gravity.END);
+    }
+
+    private void showSiteMenu(View anchor) {
+        hideKeyboard();
+        urlBar.clearFocus();
+        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
+        String url = webView != null && !TextUtils.isEmpty(webView.getUrl())
+                ? webView.getUrl() : currentUrl;
+        if (TextUtils.isEmpty(url) || isHomeUrl(url)) {
+            return;
+        }
+        final String siteUrl = url;
+        final String host = hostOf(siteUrl);
+        String title = tab == null ? "" : tab.title;
+        if (TextUtils.isEmpty(title)) {
+            title = host;
+        }
+        final String siteTitle = title;
+
+        View panel = LayoutInflater.from(this).inflate(R.layout.menu_site, null);
+        final PopupWindow popup = new PopupWindow(panel,
+                getResources().getDimensionPixelSize(R.dimen.site_menu_width),
+                ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popup.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popup.setOutsideTouchable(true);
+        popup.setElevation(12f * getResources().getDisplayMetrics().density);
+
+        ImageView icon = panel.findViewById(R.id.siteMenuIcon);
+        if (siteLogo != null && siteLogo.getDrawable() != null) {
+            icon.setImageDrawable(siteLogo.getDrawable());
+        }
+        ((TextView) panel.findViewById(R.id.siteMenuTitle)).setText(siteTitle);
+        ((TextView) panel.findViewById(R.id.siteMenuHost)).setText(host);
+        ((TextView) panel.findViewById(R.id.siteMenuUrl)).setText(siteUrl);
+        TextView security = panel.findViewById(R.id.siteMenuSecurity);
+        security.setText(siteSecurityLabel(siteUrl));
+        security.setTextColor(getResources().getColor(siteSecurityColor(siteUrl)));
+        ((TextView) panel.findViewById(R.id.siteMenuScreenSizeValue))
+                .setText(SiteSettingsStore.screenSizeLabel(this, host));
+
+        panel.findViewById(R.id.siteMenuInfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                showSiteInfoDialog(siteUrl, siteTitle);
+            }
+        });
+        panel.findViewById(R.id.siteMenuSettings).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                Intent intent = new Intent(MainActivity.this, SiteSettingsActivity.class);
+                intent.putExtra(SiteSettingsActivity.EXTRA_SITE_URL, siteUrl);
+                intent.putExtra(SiteSettingsActivity.EXTRA_SITE_TITLE, siteTitle);
+                startActivityForResult(intent, REQUEST_SITE_SETTINGS);
+            }
+        });
+        panel.findViewById(R.id.siteMenuScreenSize).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        popup.dismiss();
+                        ScreenSizeDialog.show(MainActivity.this, siteUrl,
+                                new ScreenSizeDialog.Listener() {
+                                    @Override
+                                    public void onScreenSizeChanged() {
+                                        reloadActiveTabWithSiteSettings();
+                                    }
+                                });
+                    }
+                });
+
+        popup.showAsDropDown(anchor, 0, 0, Gravity.START);
+    }
+
+    private void showSiteInfoDialog(String url, String title) {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_site_info);
+        dialog.setCanceledOnTouchOutside(true);
+
+        String host = hostOf(url);
+        if (TextUtils.isEmpty(title)) {
+            title = host;
+        }
+        ((TextView) dialog.findViewById(R.id.siteInfoWebsite)).setText(title);
+        ((TextView) dialog.findViewById(R.id.siteInfoAddress)).setText(url);
+        ((TextView) dialog.findViewById(R.id.siteInfoHost)).setText(host);
+        TextView security = dialog.findViewById(R.id.siteInfoSecurity);
+        security.setText(siteSecurityLabel(url));
+        security.setTextColor(getResources().getColor(siteSecurityColor(url)));
+        ((TextView) dialog.findViewById(R.id.siteInfoScreenSize))
+                .setText(SiteSettingsStore.screenSizeLabel(this, host));
+        dialog.findViewById(R.id.siteInfoClose).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+        dialog.show();
+        applyBottomSheetWindow(dialog);
+    }
+
+    private void applyBottomSheetWindow(Dialog dialog) {
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setGravity(Gravity.BOTTOM);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT);
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.dimAmount = 0.62f;
+        window.setAttributes(params);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+    }
+
+    private String siteSecurityLabel(String url) {
+        if (url != null && url.startsWith("https://")) {
+            return getString(R.string.site_secure);
+        }
+        if (url != null && url.startsWith("http://")) {
+            return getString(R.string.site_not_secure);
+        }
+        return getString(R.string.site_local_page);
+    }
+
+    private int siteSecurityColor(String url) {
+        if (url != null && url.startsWith("https://")) {
+            return R.color.ks_accent;
+        }
+        if (url != null && url.startsWith("http://")) {
+            return R.color.ks_danger;
+        }
+        return R.color.ks_muted;
+    }
+
+    private void reloadActiveTabWithSiteSettings() {
+        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
+        if (tab == null) {
+            return;
+        }
+        WebView view = tabViews.get(tab.id);
+        if (view == null) {
+            return;
+        }
+        String url = view.getUrl();
+        if (TextUtils.isEmpty(url)) {
+            url = tab.url;
+        }
+        applySiteSettings(view, url);
+        view.reload();
     }
 
     private void openDownloadsPage() {
