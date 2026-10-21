@@ -105,6 +105,8 @@ public class MainActivity extends Activity {
     private boolean loginDialogVisible;
     private final Map<WebView, String> secureFallbacks = new HashMap<WebView, String>();
     private static final int REQUEST_NOTIFICATIONS = 2002;
+    private static final int REQUEST_SITE_SETTINGS = 2003;
+    private String defaultUserAgent;
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
@@ -146,6 +148,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 openTabsPage();
+            }
+        });
+        siteLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSiteMenu(view);
             }
         });
         toolbarToggle.setListener(new FloatingToolbarToggle.Listener() {
@@ -197,9 +205,14 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        for (WebView tabView : tabViews.values()) {
+        for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
+            WebView tabView = entry.getValue();
             tabView.onResume();
             applyWebSettings(tabView.getSettings());
+            BrowserTab tab = tabManager == null ? null : tabManager.findTab(entry.getKey());
+            if (tab != null) {
+                applySiteSettings(tabView, tab.url);
+            }
         }
         if (webView != null && isHomeUrl(currentUrl)) {
             webView.evaluateJavascript(
@@ -264,7 +277,11 @@ public class MainActivity extends Activity {
         settings.setBuiltInZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
         settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.1.2");
+        if (defaultUserAgent == null) {
+            defaultUserAgent = settings.getUserAgentString();
+        }
         applyWebSettings(settings);
+        applySiteSettings(view, tab.url);
 
         view.setWebViewClient(new WebViewClient() {
             @Override
@@ -304,6 +321,7 @@ public class MainActivity extends Activity {
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
                 tab.loading = true;
                 tab.progress = 0;
+                applySiteSettings(current, url);
                 tabManager.updateTab(tab.id, url, null);
                 if (isActiveTab(tab)) {
                     progressBar.setProgress(0);
@@ -316,6 +334,7 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView current, String url) {
                 tab.loading = false;
                 tab.progress = 100;
+                applyScreenWidth(current, url);
                 String title = current.getTitle();
                 tabManager.updateTab(tab.id, url, cleanRecentName(title, url));
                 if (!privateTabs.contains(tab.id)) {
@@ -776,6 +795,61 @@ public class MainActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             settings.setSafeBrowsingEnabled(setting("security_safe_browsing", true));
         }
+    }
+
+    private void applySiteSettings(WebView view, String url) {
+        if (view == null) {
+            return;
+        }
+        String host = SiteSettingsStore.hostOf(url);
+        WebSettings settings = view.getSettings();
+        settings.setJavaScriptEnabled(SiteSettingsStore.getBoolean(this, host,
+                SiteSettingsStore.KEY_JAVASCRIPT, true));
+        settings.setJavaScriptCanOpenWindowsAutomatically(SiteSettingsStore.getBoolean(this,
+                host, SiteSettingsStore.KEY_POPUPS, false));
+        settings.setMediaPlaybackRequiresUserGesture(!SiteSettingsStore.getBoolean(this, host,
+                SiteSettingsStore.KEY_SOUND, false));
+        CookieManager.getInstance().setAcceptThirdPartyCookies(view,
+                SiteSettingsStore.getBoolean(this, host,
+                        SiteSettingsStore.KEY_THIRD_PARTY_COOKIES, true));
+
+        SiteSettingsStore.ScreenSize size = SiteSettingsStore.findSize(this,
+                SiteSettingsStore.getScreenSizeId(this, host));
+        if (size.width <= 0) {
+            if (defaultUserAgent != null) {
+                settings.setUserAgentString(defaultUserAgent);
+            }
+        } else {
+            settings.setUserAgentString(userAgentForWidth(size.width));
+        }
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
+    }
+
+    private String userAgentForWidth(int width) {
+        if (width <= 600 && defaultUserAgent != null) {
+            return defaultUserAgent;
+        }
+        if (width < 1100) {
+            return SiteSettingsStore.DEFAULT_TABLET_UA;
+        }
+        return SiteSettingsStore.DEFAULT_DESKTOP_UA;
+    }
+
+    private void applyScreenWidth(WebView view, String url) {
+        if (view == null || isHomeUrl(url)) {
+            return;
+        }
+        int width = SiteSettingsStore.screenWidth(this, SiteSettingsStore.hostOf(url));
+        if (width <= 0) {
+            return;
+        }
+        String script = "(function(){var w=" + width
+                + ";var m=document.querySelector('meta[name=viewport]');"
+                + "if(!m){m=document.createElement('meta');m.setAttribute('name','viewport');"
+                + "(document.head||document.documentElement).appendChild(m);}"
+                + "m.setAttribute('content','width='+w);})();";
+        view.evaluateJavascript(script, null);
     }
 
     private Map<String, String> requestHeaders() {

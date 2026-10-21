@@ -319,7 +319,10 @@
     <string name="tabs_bookmark_added">Added to bookmarks</string>
     <string name="tabs_bookmark_exists">Already in bookmarks</string>
     <string name="tabs_bookmark_failed">Could not add bookmark</string>
-    <string name="tabs_group_rename">Rename group</string>
+    <string name="tabs_group_edit">Edit group</string>
+    <string name="tabs_group_icon_label">Icon</string>
+    <string name="tabs_group_color_label">Color</string>
+    <string name="tabs_group_name_empty">Enter a group name</string>
     <string name="tabs_group_delete">Delete group</string>
     <string name="tabs_group_close">Close group</string>
     <string name="tabs_group_new_tab">New tab in group</string>
