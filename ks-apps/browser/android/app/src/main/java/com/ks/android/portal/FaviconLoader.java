@@ -103,7 +103,7 @@ final class FaviconLoader {
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
             connection.setInstanceFollowRedirects(true);
-            connection.setRequestProperty("User-Agent", "KSPortal/1.0.2");
+            connection.setRequestProperty("User-Agent", "KSPortal/1.0.3");
             connection.setRequestProperty("Referer", "https://" + host + "/");
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 return null;
