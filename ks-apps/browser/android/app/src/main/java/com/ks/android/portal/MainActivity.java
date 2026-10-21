@@ -36,6 +36,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
@@ -46,26 +47,31 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class MainActivity extends Activity {
     public static final String EXTRA_OPEN_URL = "com.ks.android.portal.extra.OPEN_URL";
-    private static final String HOME_URL = "file:///android_asset/portal.html";
+    static final String HOME_URL = "file:///android_asset/portal.html";
     private static final String RECENTS_PREFS = "ks_recents";
     private static final String RECENTS_KEY = "items";
     private static final int RECENTS_LIMIT = 30;
     private static final int REQUEST_WRITE_STORAGE = 2001;
     private static final Object RECENTS_LOCK = new Object();
-    private static final String TOGGLE_PREFS = "ks_toolbar_toggle";
-    private static final String TOGGLE_EDGE = "edge";
-    private static final String TOGGLE_CENTER_X = "center_x";
-    private static final String TOGGLE_CENTER_Y = "center_y";
 
+    private TabManager tabManager;
+    private final Map<Integer, WebView> tabViews = new HashMap<Integer, WebView>();
     private WebView webView;
+    private FrameLayout webContainer;
     private ProgressBar progressBar;
     private View toolbarContainer;
-    private FloatingToolbarToggle toolbarToggle;
+    private ImageButton toolbarToggle;
+    private TextView tabsButton;
     private EditText urlBar;
     private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
+    private int toolbarToggleHeight;
     private boolean toolbarTargetVisible;
     private boolean toolbarAvailable;
     private boolean toolbarCollapsed;
@@ -77,7 +83,13 @@ public class MainActivity extends Activity {
     private String pendingDownloadReferer;
     private String backgroundCacheKey = "";
     private String backgroundCacheJson = "{}";
-    private boolean privateMode;
+
+    private final TabManager.Listener tabsListener = new TabManager.Listener() {
+        @Override
+        public void onTabsChanged() {
+            syncActiveTab();
+        }
+    };
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -85,100 +97,21 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        webView = findViewById(R.id.webview);
-        webView.setBackgroundColor(0xFF070707);
+        webContainer = findViewById(R.id.webContainer);
         progressBar = findViewById(R.id.progress);
         toolbarContainer = findViewById(R.id.toolbarContainer);
         toolbarHeight = Math.round(56 * getResources().getDisplayMetrics().density);
+        toolbarToggleHeight = Math.round(26 * getResources().getDisplayMetrics().density);
         urlBar = findViewById(R.id.urlBar);
         ImageButton homeButton = findViewById(R.id.homeButton);
         ImageButton menuButton = findViewById(R.id.menuButton);
         toolbarToggle = findViewById(R.id.toolbarToggle);
+        tabsButton = findViewById(R.id.tabsButton);
 
-        WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        webView.addJavascriptInterface(new PortalBridge(), "KSPortalNative");
-        settings.setDomStorageEnabled(true);
-        settings.setDatabaseEnabled(true);
-        settings.setLoadWithOverviewMode(true);
-        settings.setUseWideViewPort(true);
-        settings.setSupportZoom(false);
-        settings.setBuiltInZoomControls(false);
-        settings.setMediaPlaybackRequiresUserGesture(true);
-        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
-        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.0.7");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            settings.setSafeBrowsingEnabled(true);
-        }
+        tabManager = TabManager.get(this);
+        tabManager.addListener(tabsListener);
 
         CookieManager.getInstance().setAcceptCookie(true);
-
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                return openExternallyIfNeeded(request.getUrl());
-            }
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return openExternallyIfNeeded(Uri.parse(url));
-            }
-
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                progressBar.setVisibility(View.VISIBLE);
-                updateChrome(url);
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                progressBar.setVisibility(View.GONE);
-                updateChrome(url);
-                recordRecent(url, view.getTitle());
-                recordHistory(url, view.getTitle());
-            }
-
-            @Override
-            public void doUpdateVisitedHistory(WebView view, String url, boolean isReload) {
-                updateChrome(url);
-            }
-        });
-
-        webView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onProgressChanged(WebView view, int newProgress) {
-                progressBar.setProgress(newProgress);
-                progressBar.setVisibility(newProgress >= 100 ? View.GONE : View.VISIBLE);
-            }
-
-            @Override
-            public void onReceivedTitle(WebView view, String title) {
-                recordRecent(view.getUrl(), title);
-            }
-        });
-
-        webView.setDownloadListener(new DownloadListener() {
-            @Override
-            public void onDownloadStart(String url, String userAgent, String contentDisposition,
-                                        String mimeType, long contentLength) {
-                if (TextUtils.isEmpty(url) || url.startsWith("blob:") || url.startsWith("data:")) {
-                    Toast.makeText(MainActivity.this, R.string.download_unsupported,
-                            Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                requestDownload(url, userAgent, contentDisposition, mimeType, contentLength);
-            }
-        });
-
-        webView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
-                    collapseToolbar();
-                }
-                return false;
-            }
-        });
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,26 +125,16 @@ public class MainActivity extends Activity {
                 showMenu(view);
             }
         });
-        toolbarToggle.setListener(new FloatingToolbarToggle.Listener() {
+        tabsButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onToggle() {
-                toggleToolbar();
-            }
-
-            @Override
-            public void onPositionChanged() {
-                saveTogglePosition();
+            public void onClick(View view) {
+                openTabsPage();
             }
         });
-        restoreTogglePosition();
-        findViewById(R.id.root).addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+        toolbarToggle.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onLayoutChange(View view, int left, int top, int right, int bottom,
-                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                if (right - left != oldRight - oldLeft
-                        || bottom - top != oldBottom - oldTop) {
-                    toolbarToggle.reclamp();
-                }
+            public void onClick(View view) {
+                toggleToolbar();
             }
         });
         urlBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -230,26 +153,34 @@ public class MainActivity extends Activity {
 
         String openUrl = normalizeWebUrl(getIntent().getStringExtra(EXTRA_OPEN_URL));
         if (openUrl != null) {
-            webView.loadUrl(openUrl);
-        } else if (savedInstanceState != null) {
-            if (webView.restoreState(savedInstanceState) == null) {
-                webView.loadUrl(HOME_URL);
-            } else {
-                updateChrome(webView.getUrl());
-            }
+            openUrlInActiveTab(openUrl);
         } else {
-            webView.loadUrl(HOME_URL);
+            syncActiveTab();
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (webView != null && isHomeUrl(currentUrl)) {
-            webView.evaluateJavascript(
-                    "window.KSPortalRefreshBackground&&window.KSPortalRefreshBackground()",
-                    null);
+        if (webView != null) {
+            for (WebView tabView : tabViews.values()) {
+                tabView.onResume();
+            }
+            if (isHomeUrl(currentUrl)) {
+                webView.evaluateJavascript(
+                        "window.KSPortalRefreshBackground&&window.KSPortalRefreshBackground();"
+                                + "window.KSPortalRefreshTabs&&window.KSPortalRefreshTabs()",
+                        null);
+            }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        for (WebView tabView : tabViews.values()) {
+            tabView.onPause();
+        }
+        super.onPause();
     }
 
     @Override
@@ -263,7 +194,195 @@ public class MainActivity extends Activity {
         toolbarCollapsed = false;
         hideKeyboard();
         urlBar.clearFocus();
-        webView.loadUrl(url);
+        openUrlInActiveTab(url);
+    }
+
+    private void openUrlInActiveTab(String url) {
+        BrowserTab tab = tabManager.getActiveTab();
+        if (tab == null) {
+            tabManager.addTab(url, 0);
+            return;
+        }
+        WebView view = tabViews.get(tab.id);
+        if (view != null) {
+            view.loadUrl(url);
+        } else {
+            tabManager.updateTab(tab.id, url, null);
+        }
+    }
+
+    private TabManager getTabManager() {
+        return tabManager;
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private WebView createWebView(final BrowserTab tab) {
+        WebView view = new WebView(this);
+        view.setBackgroundColor(0xFF070707);
+
+        WebSettings settings = view.getSettings();
+        settings.setJavaScriptEnabled(true);
+        view.addJavascriptInterface(new PortalBridge(tab.id), "KSPortalNative");
+        settings.setDomStorageEnabled(true);
+        settings.setDatabaseEnabled(true);
+        settings.setLoadWithOverviewMode(true);
+        settings.setUseWideViewPort(true);
+        settings.setSupportZoom(false);
+        settings.setBuiltInZoomControls(false);
+        settings.setMediaPlaybackRequiresUserGesture(true);
+        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
+        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.0.8");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            settings.setSafeBrowsingEnabled(true);
+        }
+
+        view.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView current, WebResourceRequest request) {
+                return openExternallyIfNeeded(request.getUrl());
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView current, String url) {
+                return openExternallyIfNeeded(Uri.parse(url));
+            }
+
+            @Override
+            public void onPageStarted(WebView current, String url, Bitmap favicon) {
+                tab.loading = true;
+                tab.progress = 0;
+                tabManager.updateTab(tab.id, url, null);
+                if (isActiveTab(tab)) {
+                    progressBar.setProgress(0);
+                    progressBar.setVisibility(View.VISIBLE);
+                    updateChrome(url);
+                }
+            }
+
+            @Override
+            public void onPageFinished(WebView current, String url) {
+                tab.loading = false;
+                tab.progress = 100;
+                String title = current.getTitle();
+                tabManager.updateTab(tab.id, url, cleanRecentName(title, url));
+                recordRecent(url, title);
+                recordHistory(url, title);
+                if (isActiveTab(tab)) {
+                    progressBar.setVisibility(View.GONE);
+                    updateChrome(url);
+                }
+            }
+
+            @Override
+            public void doUpdateVisitedHistory(WebView current, String url, boolean isReload) {
+                tabManager.updateTab(tab.id, url, null);
+                if (isActiveTab(tab)) {
+                    updateChrome(url);
+                }
+            }
+        });
+
+        view.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView current, int newProgress) {
+                tab.progress = newProgress;
+                if (newProgress >= 100) {
+                    tab.loading = false;
+                }
+                if (!isActiveTab(tab)) {
+                    return;
+                }
+                progressBar.setProgress(newProgress);
+                progressBar.setVisibility(newProgress >= 100 ? View.GONE : View.VISIBLE);
+            }
+
+            @Override
+            public void onReceivedTitle(WebView current, String title) {
+                if (!TextUtils.isEmpty(title)) {
+                    tabManager.updateTab(tab.id, null, cleanRecentName(title, current.getUrl()));
+                }
+                recordRecent(current.getUrl(), title);
+            }
+
+            @Override
+            public void onReceivedIcon(WebView current, Bitmap icon) {
+                tabManager.updateFavicon(tab.id, icon);
+            }
+        });
+
+        view.setDownloadListener(new DownloadListener() {
+            @Override
+            public void onDownloadStart(String url, String userAgent, String contentDisposition,
+                                        String mimeType, long contentLength) {
+                if (TextUtils.isEmpty(url) || url.startsWith("blob:") || url.startsWith("data:")) {
+                    Toast.makeText(MainActivity.this, R.string.download_unsupported,
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                requestDownload(url, userAgent, contentDisposition, mimeType, contentLength);
+            }
+        });
+
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View touched, MotionEvent event) {
+                if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+                    collapseToolbar();
+                }
+                return false;
+            }
+        });
+        return view;
+    }
+
+    private boolean isActiveTab(BrowserTab tab) {
+        return tab != null && tabManager.getActiveTabId() == tab.id;
+    }
+
+    private void syncActiveTab() {
+        if (webContainer == null) {
+            return;
+        }
+        removeClosedTabViews();
+        BrowserTab tab = tabManager.getActiveTab();
+        if (tab == null) {
+            webView = null;
+            return;
+        }
+        WebView view = tabViews.get(tab.id);
+        if (view == null) {
+            view = createWebView(tab);
+            tabViews.put(tab.id, view);
+            webContainer.addView(view, new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            tab.loading = true;
+            tab.progress = 0;
+            view.loadUrl(TextUtils.isEmpty(tab.url) ? HOME_URL : tab.url);
+        }
+        for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
+            entry.getValue().setVisibility(entry.getKey().intValue() == tab.id
+                    ? View.VISIBLE : View.GONE);
+        }
+        webView = view;
+        updateChrome(tab.url);
+        progressBar.setProgress(tab.progress);
+        progressBar.setVisibility(tab.loading ? View.VISIBLE : View.GONE);
+    }
+
+    private void removeClosedTabViews() {
+        Iterator<Map.Entry<Integer, WebView>> iterator = tabViews.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, WebView> entry = iterator.next();
+            if (tabManager.findTab(entry.getKey()) != null) {
+                continue;
+            }
+            WebView closed = entry.getValue();
+            webContainer.removeView(closed);
+            closed.removeJavascriptInterface("KSPortalNative");
+            closed.stopLoading();
+            closed.destroy();
+            iterator.remove();
+        }
     }
 
     private void requestDownload(String url, String userAgent, String contentDisposition,
@@ -341,7 +460,7 @@ public class MainActivity extends Activity {
 
     private void updateChrome(String url) {
         if (url == null) {
-            return;
+            url = HOME_URL;
         }
         currentUrl = url;
         boolean home = isHomeUrl(url);
@@ -355,6 +474,17 @@ public class MainActivity extends Activity {
             urlBar.setText(url);
             urlBar.setSelection(urlBar.getText().length());
         }
+        updateTabCounter();
+    }
+
+    private void updateTabCounter() {
+        if (tabsButton == null || tabManager == null) {
+            return;
+        }
+        int count = tabManager.getTabs().size();
+        tabsButton.setText(count > 99 ? "99+" : String.valueOf(count));
+        tabsButton.setContentDescription(getResources().getQuantityString(
+                R.plurals.tabs_open_count, count, count));
     }
 
     private void setToolbarVisible(boolean expanded) {
@@ -378,7 +508,7 @@ public class MainActivity extends Activity {
                 .setInterpolator(expanded
                         ? new DecelerateInterpolator() : new AccelerateInterpolator())
                 .start();
-        progressBar.setTranslationY(expanded ? toolbarHeight : 0f);
+        progressBar.setTranslationY(expanded ? toolbarHeight : toolbarToggleHeight);
     }
 
     private void hideToolbar() {
@@ -389,7 +519,7 @@ public class MainActivity extends Activity {
             return;
         }
         toolbarContainer.animate()
-                .translationY(-toolbarHeight)
+                .translationY(-(toolbarHeight + toolbarToggleHeight))
                 .setDuration(180)
                 .setInterpolator(new AccelerateInterpolator())
                 .withEndAction(new Runnable() {
@@ -428,12 +558,13 @@ public class MainActivity extends Activity {
 
     private void updateToolbarToggle() {
         if (!toolbarAvailable) {
-            toolbarToggle.setVisibility(View.INVISIBLE);
+            toolbarToggle.setVisibility(View.GONE);
             return;
         }
         boolean wasVisible = toolbarToggle.getVisibility() == View.VISIBLE;
         toolbarToggle.setVisibility(View.VISIBLE);
-        toolbarToggle.setCollapsed(toolbarCollapsed);
+        toolbarToggle.setImageResource(toolbarCollapsed
+                ? R.drawable.ic_chevron_down : R.drawable.ic_chevron_up);
         toolbarToggle.setContentDescription(getString(toolbarCollapsed
                 ? R.string.expand_toolbar : R.string.collapse_toolbar));
         if (wasVisible) {
@@ -444,23 +575,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void restoreTogglePosition() {
-        SharedPreferences prefs = getSharedPreferences(TOGGLE_PREFS, MODE_PRIVATE);
-        int edge = prefs.getInt(TOGGLE_EDGE, FloatingToolbarToggle.EDGE_RIGHT);
-        float centerX = prefs.getFloat(TOGGLE_CENTER_X, -1f);
-        float centerY = prefs.getFloat(TOGGLE_CENTER_Y, -1f);
-        toolbarToggle.restorePosition(edge, centerX, centerY);
-    }
-
-    private void saveTogglePosition() {
-        getSharedPreferences(TOGGLE_PREFS, MODE_PRIVATE).edit()
-                .putInt(TOGGLE_EDGE, toolbarToggle.getDockEdge())
-                .putFloat(TOGGLE_CENTER_X, toolbarToggle.getCenterX())
-                .putFloat(TOGGLE_CENTER_Y, toolbarToggle.getCenterY())
-                .apply();
-    }
-
-    private boolean isHomeUrl(String url) {
+    static boolean isHomeUrl(String url) {
         return url != null && url.startsWith(HOME_URL);
     }
 
@@ -471,12 +586,14 @@ public class MainActivity extends Activity {
         toolbarAvailable = false;
         updateToolbarToggle();
         setToolbarVisible(false);
-        webView.loadUrl(HOME_URL);
+        if (webView != null) {
+            webView.loadUrl(HOME_URL);
+        }
     }
 
     private void navigateFromBar() {
         String value = urlBar.getText().toString().trim();
-        if (value.isEmpty()) {
+        if (value.isEmpty() || webView == null) {
             return;
         }
         hideKeyboard();
@@ -504,13 +621,20 @@ public class MainActivity extends Activity {
 
         ImageButton back = panel.findViewById(R.id.menuBack);
         ImageButton forward = panel.findViewById(R.id.menuForward);
-        boolean canGoBack = webView.canGoBack();
-        boolean canGoForward = webView.canGoForward();
+        boolean canGoBack = webView != null && webView.canGoBack();
+        boolean canGoForward = webView != null && webView.canGoForward();
         back.setEnabled(canGoBack);
         back.setAlpha(canGoBack ? 1f : 0.3f);
         forward.setEnabled(canGoForward);
         forward.setAlpha(canGoForward ? 1f : 0.3f);
 
+        panel.findViewById(R.id.menuNewTab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                tabManager.addTab(HOME_URL, 0);
+            }
+        });
         panel.findViewById(R.id.menuHome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -522,7 +646,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 popup.dismiss();
-                if (webView.canGoBack()) {
+                if (webView != null && webView.canGoBack()) {
                     webView.goBack();
                 }
             }
@@ -531,14 +655,16 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 popup.dismiss();
-                webView.reload();
+                if (webView != null) {
+                    webView.reload();
+                }
             }
         });
         forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popup.dismiss();
-                if (webView.canGoForward()) {
+                if (webView != null && webView.canGoForward()) {
                     webView.goForward();
                 }
             }
@@ -596,6 +722,12 @@ public class MainActivity extends Activity {
 
     private void openCustomizePage() {
         startActivity(new Intent(this, CustomizeActivity.class));
+    }
+
+    private void openTabsPage() {
+        hideKeyboard();
+        urlBar.clearFocus();
+        startActivity(new Intent(this, TabsActivity.class));
     }
 
     private String buildBackgroundJson() {
@@ -678,10 +810,6 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    private boolean isBridgeAllowed() {
-        return isHomeUrl(currentUrl);
-    }
-
     private String normalizeWebUrl(String raw) {
         if (TextUtils.isEmpty(raw)) {
             return null;
@@ -694,7 +822,7 @@ public class MainActivity extends Activity {
         return TextUtils.isEmpty(uri.getHost()) ? null : uri.toString();
     }
 
-    private String cleanRecentName(String title, String url) {
+    static String cleanRecentName(String title, String url) {
         String name = title == null ? "" : title.replaceAll("\\s+", " ").trim();
         if (name.isEmpty()) {
             String host = Uri.parse(url).getHost();
@@ -733,9 +861,6 @@ public class MainActivity extends Activity {
     }
 
     private void recordHistory(String rawUrl, String title) {
-        if (privateMode) {
-            return;
-        }
         String url = normalizeWebUrl(rawUrl);
         if (url == null) {
             return;
@@ -744,9 +869,6 @@ public class MainActivity extends Activity {
     }
 
     private void recordRecent(String rawUrl, String title) {
-        if (privateMode) {
-            return;
-        }
         String url = normalizeWebUrl(rawUrl);
         if (url == null) {
             return;
@@ -815,10 +937,30 @@ public class MainActivity extends Activity {
         }
     }
 
+    private boolean isBridgeAllowed(int tabId) {
+        BrowserTab tab = tabManager.findTab(tabId);
+        if (tab == null || tab.id != tabManager.getActiveTabId()) {
+            return false;
+        }
+        WebView bridgeView = tabViews.get(tabId);
+        String url = bridgeView == null ? tab.url : bridgeView.getUrl();
+        return isHomeUrl(url);
+    }
+
     private final class PortalBridge {
+        private final int tabId;
+
+        PortalBridge(int tabId) {
+            this.tabId = tabId;
+        }
+
+        private boolean allowed() {
+            return isBridgeAllowed(tabId);
+        }
+
         @JavascriptInterface
         public boolean openDownloads() {
-            if (!isBridgeAllowed()) {
+            if (!allowed()) {
                 return false;
             }
             runOnUiThread(new Runnable() {
@@ -832,7 +974,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public boolean openHistory() {
-            if (!isBridgeAllowed()) {
+            if (!allowed()) {
                 return false;
             }
             runOnUiThread(new Runnable() {
@@ -846,7 +988,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public boolean openSettings() {
-            if (!isBridgeAllowed()) {
+            if (!allowed()) {
                 return false;
             }
             runOnUiThread(new Runnable() {
@@ -860,7 +1002,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public boolean openCustomize() {
-            if (!isBridgeAllowed()) {
+            if (!allowed()) {
                 return false;
             }
             runOnUiThread(new Runnable() {
@@ -873,8 +1015,30 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public boolean openTabs() {
+            if (!allowed()) {
+                return false;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    openTabsPage();
+                }
+            });
+            return true;
+        }
+
+        @JavascriptInterface
+        public int getTabCount() {
+            if (!allowed()) {
+                return 0;
+            }
+            return tabManager.getTabs().size();
+        }
+
+        @JavascriptInterface
         public String getBackground() {
-            if (!isBridgeAllowed()) {
+            if (!allowed()) {
                 return "{}";
             }
             return buildBackgroundJson();
@@ -882,29 +1046,15 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String getSearchEngine() {
-            if (!isBridgeAllowed()) {
+            if (!allowed()) {
                 return SearchEngine.DEFAULT;
             }
             return SearchEngine.getKey(MainActivity.this);
         }
 
         @JavascriptInterface
-        public boolean getPrivateMode() {
-            return isBridgeAllowed() && privateMode;
-        }
-
-        @JavascriptInterface
-        public boolean setPrivateMode(boolean enabled) {
-            if (!isBridgeAllowed()) {
-                return false;
-            }
-            privateMode = enabled;
-            return true;
-        }
-
-        @JavascriptInterface
         public String getRecents() {
-            if (!isBridgeAllowed()) {
+            if (!allowed()) {
                 return "[]";
             }
             synchronized (RECENTS_LOCK) {
@@ -914,7 +1064,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public boolean addRecent(String name, String url) {
-            if (!isBridgeAllowed()) {
+            if (!allowed()) {
                 return false;
             }
             recordRecent(url, name);
@@ -923,7 +1073,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public boolean removeRecent(String url) {
-            return isBridgeAllowed() && MainActivity.this.removeRecent(url);
+            return allowed() && MainActivity.this.removeRecent(url);
         }
     }
 
@@ -937,21 +1087,20 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        if (webView != null) {
-            webView.saveState(outState);
-        }
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
     protected void onDestroy() {
-        if (webView != null) {
-            webView.removeJavascriptInterface("KSPortalNative");
-            webView.stopLoading();
-            webView.destroy();
-            webView = null;
+        if (tabManager != null) {
+            tabManager.removeListener(tabsListener);
         }
+        for (WebView tabView : tabViews.values()) {
+            if (webContainer != null) {
+                webContainer.removeView(tabView);
+            }
+            tabView.removeJavascriptInterface("KSPortalNative");
+            tabView.stopLoading();
+            tabView.destroy();
+        }
+        tabViews.clear();
+        webView = null;
         super.onDestroy();
     }
 }
