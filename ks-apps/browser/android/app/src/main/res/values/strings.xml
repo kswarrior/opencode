@@ -154,6 +154,7 @@
     <string name="screen_size_tablet">Tablet</string>
     <string name="screen_size_desktop">Desktop</string>
     <string name="screen_size_custom">Custom</string>
+    <string name="screen_size_automatic">Automatic</string>
     <string name="screen_size_add">Add custom size</string>
     <string name="screen_size_add_title">Add screen size</string>
     <string name="screen_size_name">Name</string>
