@@ -278,10 +278,6 @@
 ||optimize.google.com^
 ||doubleclick.net^$popup
 
-! First-party ad paths
-||example.com/ads/^
-||example.com/adserver/^
-
 ! Common ad containers
 ##.adsbygoogle
 ##.ad-banner
@@ -366,7 +362,6 @@ m.youtube.com##.ytp-ad-module
 facebook.com##div[data-pagelet^="RightRail"] div[role="complementary"] a[href*="ads"]
 facebook.com##div[aria-label="Ad"]
 facebook.com##div[aria-label="Sponsored"]
-instagram.com##article div[role="button"]:has(span:has-text("Sponsored"))
 twitter.com##[data-testid="placementTracking"]
 x.com##[data-testid="placementTracking"]
 linkedin.com##.ad-banner-container

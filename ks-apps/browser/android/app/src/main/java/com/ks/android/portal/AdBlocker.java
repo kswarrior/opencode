@@ -133,7 +133,7 @@ final class AdBlocker {
 
     static WebResourceResponse intercept(Context context, String pageUrl, String pageHost,
                                          WebResourceRequest webRequest) {
-        if (webRequest == null || !isEnabled(context)) {
+        if (webRequest == null) {
             return null;
         }
         Uri uri = webRequest.getUrl();
@@ -165,7 +165,7 @@ final class AdBlocker {
     }
 
     static String pageScript(Context context, String pageUrl) {
-        if (!isEnabled(context) || !isCosmeticEnabled(context) || pageUrl == null) {
+        if (!isCosmeticEnabled(context) || pageUrl == null) {
             return null;
         }
         initialize(context);
@@ -264,7 +264,8 @@ final class AdBlocker {
         EXECUTOR.execute(new Runnable() {
             @Override
             public void run() {
-                AdBlockListStore.UpdateResult result;
+                AdBlockListStore.UpdateResult result =
+                        new AdBlockListStore.UpdateResult(0, 0, null);
                 try {
                     List<AdBlockListStore.FilterList> lists =
                             AdBlockListStore.enabledLists(appContext);
@@ -272,6 +273,9 @@ final class AdBlocker {
                     if (result.downloaded > 0) {
                         rebuild(appContext);
                     }
+                } catch (RuntimeException exception) {
+                    result = new AdBlockListStore.UpdateResult(0, 1,
+                            exception.getMessage());
                 } finally {
                     UPDATING.set(false);
                 }
