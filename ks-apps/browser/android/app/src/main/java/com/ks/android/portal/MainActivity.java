@@ -818,10 +818,11 @@ public class MainActivity extends Activity {
     }
 
     static String cleanRecentName(String title, String url) {
+        String safeUrl = url == null ? "" : url;
         String name = title == null ? "" : title.replaceAll("\\s+", " ").trim();
         if (name.isEmpty()) {
-            String host = Uri.parse(url).getHost();
-            name = host == null ? url : host;
+            String host = safeUrl.isEmpty() ? null : Uri.parse(safeUrl).getHost();
+            name = host == null ? safeUrl : host;
             if (name.startsWith("www.")) {
                 name = name.substring(4);
             }
