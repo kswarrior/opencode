@@ -292,7 +292,7 @@ public class HistoryActivity extends Activity {
         PopupMenu popup = new PopupMenu(this, anchor);
         popup.getMenu().add(0, MENU_ADD_BOOKMARK, 0, R.string.history_add_bookmark)
                 .setIcon(R.drawable.ic_bookmark);
-        popup.getMenu().add(0, MENU_REMOVE_ENTRY, 1, R.string.history_remove_entry)
+        popup.getMenu().add(0, MENU_REMOVE_ENTRY, 1, R.string.history_delete_entry)
                 .setIcon(R.drawable.ic_delete);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -503,6 +503,12 @@ public class HistoryActivity extends Activity {
                         showCategoryMenu(view, category);
                     }
                 });
+                convertView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        toggleCategory(category);
+                    }
+                });
                 bindFavicon(holder, category);
                 return convertView;
             }
@@ -512,11 +518,8 @@ public class HistoryActivity extends Activity {
                 convertView = LayoutInflater.from(HistoryActivity.this)
                         .inflate(R.layout.item_history_entry, parent, false);
                 holder = new ItemHolder();
-                holder.icon = convertView.findViewById(R.id.historyFavicon);
-                holder.initial = convertView.findViewById(R.id.historyInitial);
                 holder.name = convertView.findViewById(R.id.historyName);
                 holder.url = convertView.findViewById(R.id.historyUrl);
-                holder.time = convertView.findViewById(R.id.historyTime);
                 holder.more = convertView.findViewById(R.id.historyMore);
                 convertView.setTag(holder);
             } else {
@@ -526,24 +529,24 @@ public class HistoryActivity extends Activity {
             final HistoryEntry entry = row.entry;
             holder.name.setText(entry.name);
             holder.url.setText(entry.url);
-            holder.time.setText(timeFormat.format(new Date(entry.visitedAt)));
             holder.more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     showEntryMenu(view, entry);
                 }
             });
-            bindFavicon(holder, entry);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openEntry(entry);
+                }
+            });
             return convertView;
         }
     }
 
     private void bindFavicon(CategoryHolder holder, Category category) {
         bindFavicon(holder.icon, holder.initial, category.host, category.title);
-    }
-
-    private void bindFavicon(ItemHolder holder, HistoryEntry entry) {
-        bindFavicon(holder.icon, holder.initial, hostOf(entry.url), entry.name);
     }
 
     private void bindFavicon(final ImageView icon, final TextView initial,
@@ -629,11 +632,8 @@ public class HistoryActivity extends Activity {
     }
 
     private static class ItemHolder {
-        ImageView icon;
-        TextView initial;
         TextView name;
         TextView url;
-        TextView time;
         ImageButton more;
     }
 }

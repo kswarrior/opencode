@@ -39,7 +39,7 @@
     <string name="history_cancel">Cancel</string>
     <string name="history_deleted">History deleted</string>
     <string name="history_add_bookmark">Add to bookmarks</string>
-    <string name="history_remove_entry">Remove from history</string>
+    <string name="history_delete_entry">Delete</string>
     <string name="history_category_count">(%1$d)</string>
     <string name="history_delete_category">Delete category</string>
     <string name="history_delete_category_title">Delete category?</string>
