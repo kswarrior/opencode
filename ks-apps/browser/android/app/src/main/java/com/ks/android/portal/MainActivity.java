@@ -769,7 +769,12 @@ public class MainActivity extends Activity {
         }
         String original = secureFallbacks.remove(view);
         if (original != null && original.startsWith("http://")) {
-            view.loadUrl(original);
+            Map<String, String> headers = requestHeaders();
+            if (headers != null) {
+                view.loadUrl(original, headers);
+            } else {
+                view.loadUrl(original);
+            }
         }
     }
 
