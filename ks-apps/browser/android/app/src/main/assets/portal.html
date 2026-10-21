@@ -111,6 +111,8 @@ body.has-background .bg::after {
   place-items: center;
   width: 42px;
   height: 42px;
+  font-size: 14px;
+  font-weight: 700;
   padding: 0;
   border: 1px solid var(--glass-line);
   border-radius: 13px;
@@ -716,6 +718,9 @@ body.launching .recents {
 <div class="bg" aria-hidden="true"><span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span><span class="beam"></span></div>
 <main class="shell">
   <div class="top-actions">
+    <button class="top-action" id="btnTabs" type="button" aria-label="Tabs" title="Tabs">
+      <span id="tabsCount">1</span>
+    </button>
     <button class="top-action" id="btnCustomize" type="button" aria-label="Customize" title="Customize">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M3,17v2h6v-2L3,17zM3,5v2h10L13,5L3,5zM13,21v-2h8v-2h-8v-2h-2v6h2zM7,9v2L3,11v2h4v2h2L9,9L7,9zM21,13v-2L11,11v2h10zM15,9h2L17,7h4L21,5h-4L17,3h-2v6z"/>
