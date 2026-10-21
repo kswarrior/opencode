@@ -185,7 +185,8 @@ final class AdBlockEngine {
             redirect = state.redirect;
         }
 
-        boolean blocked = importantBlock ? !importantException : (block && !exception);
+        boolean blocked = importantException ? false
+                : importantBlock ? true : (block && !exception);
         return blocked ? new MatchResult(true, redirect) : MatchResult.NOT_BLOCKED;
     }
 
