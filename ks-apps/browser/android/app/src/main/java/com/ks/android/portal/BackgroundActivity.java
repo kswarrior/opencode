@@ -56,6 +56,7 @@ public class BackgroundActivity extends Activity {
     private TextView dimValue;
     private SeekBar dimBar;
     private String selectedTarget = TARGET_ALL;
+    private final List<TextView> targetChips = new ArrayList<TextView>();
     private final HashMap<String, Bitmap> thumbnails = new HashMap<String, Bitmap>();
 
     @Override
