@@ -94,6 +94,7 @@ public class MainActivity extends Activity {
     private boolean toolbarTargetVisible;
     private boolean toolbarAvailable;
     private boolean toolbarCollapsed;
+    private boolean adBlockEnabledOnResume;
     private String pendingDownloadUrl;
     private String pendingDownloadUserAgent;
     private String pendingDownloadDisposition;
@@ -126,6 +127,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        adBlockEnabledOnResume = AdBlocker.isEnabled(this);
         settingsPrefs = getSharedPreferences(NotificationHelper.PREFS, MODE_PRIVATE);
 
         webContainer = findViewById(R.id.webContainer);
@@ -211,6 +213,9 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        boolean adBlockEnabled = AdBlocker.isEnabled(this);
+        boolean adBlockChanged = adBlockEnabled != adBlockEnabledOnResume;
+        adBlockEnabledOnResume = adBlockEnabled;
         for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
             WebView tabView = entry.getValue();
             tabView.onResume();
@@ -219,6 +224,9 @@ public class MainActivity extends Activity {
             if (tab != null) {
                 applySiteSettings(tabView, tab.url);
             }
+        }
+        if (adBlockChanged && webView != null && !isHomeUrl(currentUrl)) {
+            reloadActiveTabWithSiteSettings();
         }
         if (webView != null && isHomeUrl(currentUrl)) {
             webView.evaluateJavascript(
