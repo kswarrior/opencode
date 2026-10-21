@@ -117,14 +117,6 @@ public class FloatingToolbarToggle extends View {
         viewWidth = newWidth;
         viewHeight = newHeight;
         requestLayout();
-        post(new Runnable() {
-            @Override
-            public void run() {
-                if (restored) {
-                    dockAt(dockEdge, getCenterX(), getCenterY());
-                }
-            }
-        });
     }
 
     public void setAccentColor(int color) {
@@ -359,6 +351,9 @@ public class FloatingToolbarToggle extends View {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
+        if (restored) {
+            dockAt(dockEdge, getCenterX(), getCenterY());
+        }
         updateGestureExclusion();
     }
 
