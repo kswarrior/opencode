@@ -1,6 +1,8 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -18,13 +20,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public class HistoryActivity extends Activity {
     private static final int FILTER_ALL = 1;
@@ -32,15 +37,26 @@ public class HistoryActivity extends Activity {
     private static final int FILTER_7_DAYS = 3;
     private static final int FILTER_30_DAYS = 4;
 
+    private static final int MENU_DELETE_HISTORY = 100;
+    private static final int MENU_ADD_BOOKMARK = 101;
+    private static final int MENU_REMOVE_ENTRY = 102;
+    private static final int MENU_DELETE_CATEGORY = 103;
+
+    private static final int TYPE_SECTION = 0;
+    private static final int TYPE_CATEGORY = 1;
+    private static final int TYPE_ENTRY = 2;
+
     private HistoryRepository repository;
     private ListView listView;
     private TextView emptyView;
     private ImageButton filterButton;
+    private ImageButton moreButton;
     private HistoryAdapter adapter;
     private FaviconLoader faviconLoader;
     private DateFormat timeFormat;
     private DateFormat dateFormat;
     private final List<Row> rows = new ArrayList<Row>();
+    private final Set<String> expandedCategories = new HashSet<String>();
     private String query = "";
     private int filter = FILTER_ALL;
 
@@ -57,6 +73,7 @@ public class HistoryActivity extends Activity {
         listView = findViewById(R.id.historyList);
         emptyView = findViewById(R.id.historyEmpty);
         filterButton = findViewById(R.id.historyFilterButton);
+        moreButton = findViewById(R.id.historyMore);
         EditText search = findViewById(R.id.historySearch);
         ImageButton back = findViewById(R.id.historyBack);
 
@@ -74,6 +91,12 @@ public class HistoryActivity extends Activity {
             @Override
             public void onClick(View view) {
                 showFilterMenu();
+            }
+        });
+        moreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showHistoryMenu();
             }
         });
         search.addTextChangedListener(new TextWatcher() {
@@ -95,7 +118,9 @@ public class HistoryActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Row row = rows.get(position);
-                if (row.entry != null) {
+                if (row.type == TYPE_CATEGORY) {
+                    toggleCategory(row.category);
+                } else if (row.type == TYPE_ENTRY) {
                     openEntry(row.entry);
                 }
             }
@@ -116,6 +141,7 @@ public class HistoryActivity extends Activity {
         long todayStart = startOfDay(System.currentTimeMillis());
         long yesterdayStart = shiftDay(todayStart, -1);
         long previousBucket = Long.MIN_VALUE;
+        Category current = null;
         rows.clear();
         for (HistoryEntry entry : entries) {
             if (!matchesFilter(entry) || !matchesQuery(entry, needle)) {
@@ -125,8 +151,17 @@ public class HistoryActivity extends Activity {
             if (bucket != previousBucket) {
                 rows.add(Row.header(sectionLabelFor(bucket, todayStart, yesterdayStart)));
                 previousBucket = bucket;
+                current = null;
             }
-            rows.add(Row.entry(entry));
+            String host = groupHost(entry.url);
+            if (current == null || !current.host.equals(host)) {
+                current = new Category(entry, host);
+                rows.add(Row.category(current));
+            }
+            current.entries.add(entry);
+            if (expandedCategories.contains(current.key)) {
+                rows.add(Row.entry(entry));
+            }
         }
         adapter.notifyDataSetChanged();
         boolean filtering = !needle.isEmpty() || filter != FILTER_ALL;
@@ -205,6 +240,134 @@ public class HistoryActivity extends Activity {
         popup.show();
     }
 
+    private void showHistoryMenu() {
+        PopupMenu popup = new PopupMenu(this, moreButton);
+        popup.getMenu().add(0, MENU_DELETE_HISTORY, 0, R.string.history_delete_all)
+                .setIcon(R.drawable.ic_delete);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(android.view.MenuItem item) {
+                if (item.getItemId() == MENU_DELETE_HISTORY) {
+                    confirmDeleteHistory();
+                    return true;
+                }
+                return false;
+            }
+        });
+        MenuIcons.show(popup);
+        popup.show();
+    }
+
+    private void confirmDeleteHistory() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.history_delete_all_title)
+                .setMessage(R.string.history_delete_all_message)
+                .setPositiveButton(R.string.history_delete,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                expandedCategories.clear();
+                                repository.clear();
+                                refreshList();
+                                Toast.makeText(HistoryActivity.this,
+                                        R.string.history_deleted, Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                .setNegativeButton(R.string.history_cancel, null)
+                .show();
+    }
+
+    private void showCategoryMenu(View anchor, final Category category) {
+        PopupMenu popup = new PopupMenu(this, anchor);
+        popup.getMenu().add(0, MENU_ADD_BOOKMARK, 0, R.string.history_add_bookmark)
+                .setIcon(R.drawable.ic_bookmark);
+        popup.getMenu().add(0, MENU_DELETE_CATEGORY, 1, R.string.history_delete_category)
+                .setIcon(R.drawable.ic_delete);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(android.view.MenuItem item) {
+                switch (item.getItemId()) {
+                    case MENU_ADD_BOOKMARK:
+                        addBookmark(category.title, category.primaryUrl);
+                        return true;
+                    case MENU_DELETE_CATEGORY:
+                        confirmDeleteCategory(category);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        MenuIcons.show(popup);
+        popup.show();
+    }
+
+    private void showEntryMenu(View anchor, final HistoryEntry entry) {
+        PopupMenu popup = new PopupMenu(this, anchor);
+        popup.getMenu().add(0, MENU_ADD_BOOKMARK, 0, R.string.history_add_bookmark)
+                .setIcon(R.drawable.ic_bookmark);
+        popup.getMenu().add(0, MENU_REMOVE_ENTRY, 1, R.string.history_remove_entry)
+                .setIcon(R.drawable.ic_delete);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(android.view.MenuItem item) {
+                switch (item.getItemId()) {
+                    case MENU_ADD_BOOKMARK:
+                        addBookmark(entry.name, entry.url);
+                        return true;
+                    case MENU_REMOVE_ENTRY:
+                        repository.remove(entry);
+                        refreshList();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        MenuIcons.show(popup);
+        popup.show();
+    }
+
+    private void confirmDeleteCategory(final Category category) {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.history_delete_category_title)
+                .setMessage(getString(R.string.history_delete_category_message,
+                        category.entries.size(), category.title))
+                .setPositiveButton(R.string.history_delete,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                expandedCategories.remove(category.key);
+                                repository.removeAll(category.entries);
+                                refreshList();
+                            }
+                        })
+                .setNegativeButton(R.string.history_cancel, null)
+                .show();
+    }
+
+    private void addBookmark(String name, String url) {
+        int result = BookmarkRepository.add(this, name, url);
+        int message;
+        if (result == BookmarkRepository.ADDED) {
+            message = R.string.tabs_bookmark_added;
+        } else if (result == BookmarkRepository.EXISTS) {
+            message = R.string.tabs_bookmark_exists;
+        } else {
+            message = R.string.tabs_bookmark_failed;
+        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void toggleCategory(Category category) {
+        if (expandedCategories.contains(category.key)) {
+            expandedCategories.remove(category.key);
+        } else {
+            expandedCategories.add(category.key);
+        }
+        refreshList();
+    }
+
     private void openEntry(HistoryEntry entry) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(MainActivity.EXTRA_OPEN_URL, entry.url);
@@ -230,6 +393,43 @@ public class HistoryActivity extends Activity {
         return host == null ? "" : host;
     }
 
+    private static String groupHost(String url) {
+        String host = hostOf(url).toLowerCase(Locale.US);
+        while (host.startsWith("www.") || host.startsWith("m.") || host.startsWith("mobile.")) {
+            host = host.substring(host.indexOf('.') + 1);
+        }
+        return host;
+    }
+
+    private static String primaryUrl(String url, String host) {
+        String scheme = Uri.parse(url).getScheme();
+        if (scheme == null || scheme.isEmpty()) {
+            scheme = "https";
+        }
+        return scheme + "://" + host;
+    }
+
+    private static String siteLabel(String host) {
+        if (host == null || host.isEmpty()) {
+            return "";
+        }
+        String[] parts = host.split("\\.");
+        int index = parts.length - 2;
+        if (index > 0) {
+            String second = parts[index].toLowerCase(Locale.US);
+            if ("co".equals(second) || "com".equals(second) || "org".equals(second)
+                    || "net".equals(second) || "gov".equals(second) || "ac".equals(second)) {
+                index--;
+            }
+        }
+        String label = index >= 0 ? parts[index] : host;
+        label = label.replace('-', ' ').replace('_', ' ');
+        if (label.isEmpty()) {
+            return host;
+        }
+        return label.substring(0, 1).toUpperCase(Locale.US) + label.substring(1);
+    }
+
     private class HistoryAdapter extends BaseAdapter {
         @Override
         public int getCount() {
@@ -248,23 +448,23 @@ public class HistoryActivity extends Activity {
 
         @Override
         public int getViewTypeCount() {
-            return 2;
+            return 3;
         }
 
         @Override
         public int getItemViewType(int position) {
-            return rows.get(position).entry == null ? 0 : 1;
+            return rows.get(position).type;
         }
 
         @Override
         public boolean isEnabled(int position) {
-            return rows.get(position).entry != null;
+            return rows.get(position).type != TYPE_SECTION;
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             Row row = getItem(position);
-            if (row.entry == null) {
+            if (row.type == TYPE_SECTION) {
                 SectionHolder holder;
                 if (convertView == null) {
                     convertView = LayoutInflater.from(HistoryActivity.this)
@@ -279,6 +479,47 @@ public class HistoryActivity extends Activity {
                 return convertView;
             }
 
+            if (row.type == TYPE_CATEGORY) {
+                CategoryHolder holder;
+                if (convertView == null) {
+                    convertView = LayoutInflater.from(HistoryActivity.this)
+                            .inflate(R.layout.item_history_category, parent, false);
+                    holder = new CategoryHolder();
+                    holder.chevron = convertView.findViewById(R.id.historyCategoryChevron);
+                    holder.icon = convertView.findViewById(R.id.historyCategoryFavicon);
+                    holder.initial = convertView.findViewById(R.id.historyCategoryInitial);
+                    holder.name = convertView.findViewById(R.id.historyCategoryName);
+                    holder.url = convertView.findViewById(R.id.historyCategoryUrl);
+                    holder.count = convertView.findViewById(R.id.historyCategoryCount);
+                    holder.more = convertView.findViewById(R.id.historyCategoryMore);
+                    convertView.setTag(holder);
+                } else {
+                    holder = (CategoryHolder) convertView.getTag();
+                }
+                final Category category = row.category;
+                boolean expanded = expandedCategories.contains(category.key);
+                holder.chevron.setImageResource(expanded
+                        ? R.drawable.ic_chevron_up : R.drawable.ic_chevron_down);
+                holder.name.setText(category.title);
+                holder.url.setText(category.primaryUrl);
+                holder.count.setText(getString(R.string.history_category_count,
+                        category.entries.size()));
+                holder.count.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        toggleCategory(category);
+                    }
+                });
+                holder.more.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showCategoryMenu(view, category);
+                    }
+                });
+                bindFavicon(holder, category);
+                return convertView;
+            }
+
             ItemHolder holder;
             if (convertView == null) {
                 convertView = LayoutInflater.from(HistoryActivity.this)
@@ -289,67 +530,115 @@ public class HistoryActivity extends Activity {
                 holder.name = convertView.findViewById(R.id.historyName);
                 holder.url = convertView.findViewById(R.id.historyUrl);
                 holder.time = convertView.findViewById(R.id.historyTime);
+                holder.more = convertView.findViewById(R.id.historyMore);
                 convertView.setTag(holder);
             } else {
                 holder = (ItemHolder) convertView.getTag();
             }
 
-            HistoryEntry entry = row.entry;
+            final HistoryEntry entry = row.entry;
             holder.name.setText(entry.name);
             holder.url.setText(entry.url);
             holder.time.setText(timeFormat.format(new Date(entry.visitedAt)));
+            holder.more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showEntryMenu(view, entry);
+                }
+            });
             bindFavicon(holder, entry);
             return convertView;
         }
     }
 
-    private void bindFavicon(final ItemHolder holder, HistoryEntry entry) {
-        String host = hostOf(entry.url);
-        holder.icon.setTag(host);
-        holder.icon.setImageDrawable(null);
-        holder.initial.setText(initialFor(entry.name));
-        holder.initial.setVisibility(View.VISIBLE);
-        if (host.isEmpty()) {
+    private void bindFavicon(CategoryHolder holder, Category category) {
+        bindFavicon(holder.icon, holder.initial, category.host, category.title);
+    }
+
+    private void bindFavicon(ItemHolder holder, HistoryEntry entry) {
+        bindFavicon(holder.icon, holder.initial, hostOf(entry.url), entry.name);
+    }
+
+    private void bindFavicon(final ImageView icon, final TextView initial,
+                             final String host, String name) {
+        icon.setTag(host);
+        icon.setImageDrawable(null);
+        initial.setText(initialFor(name));
+        initial.setVisibility(View.VISIBLE);
+        if (host == null || host.isEmpty()) {
             return;
         }
         Bitmap cached = faviconLoader.get(host);
         if (cached != null) {
-            holder.icon.setImageBitmap(cached);
-            holder.initial.setVisibility(View.GONE);
+            icon.setImageBitmap(cached);
+            initial.setVisibility(View.GONE);
             return;
         }
         faviconLoader.load(host, new FaviconLoader.Callback() {
             @Override
             public void onLoaded(String loadedHost, Bitmap bitmap) {
-                if (bitmap == null || !loadedHost.equals(holder.icon.getTag())) {
+                if (bitmap == null || !loadedHost.equals(icon.getTag())) {
                     return;
                 }
-                holder.icon.setImageBitmap(bitmap);
-                holder.initial.setVisibility(View.GONE);
+                icon.setImageBitmap(bitmap);
+                initial.setVisibility(View.GONE);
             }
         });
     }
 
+    private static class Category {
+        final String host;
+        final String title;
+        final String primaryUrl;
+        final String key;
+        final List<HistoryEntry> entries = new ArrayList<HistoryEntry>();
+
+        Category(HistoryEntry first, String host) {
+            this.host = host;
+            this.title = siteLabel(host);
+            this.primaryUrl = primaryUrl(first.url, host);
+            this.key = host + "\n" + first.visitedAt + "\n" + first.url;
+        }
+    }
+
     private static class Row {
+        final int type;
         final String label;
+        final Category category;
         final HistoryEntry entry;
 
-        private Row(String label, HistoryEntry entry) {
+        private Row(int type, String label, Category category, HistoryEntry entry) {
+            this.type = type;
             this.label = label;
+            this.category = category;
             this.entry = entry;
         }
 
         static Row header(String label) {
-            return new Row(label, null);
+            return new Row(TYPE_SECTION, label, null, null);
+        }
+
+        static Row category(Category category) {
+            return new Row(TYPE_CATEGORY, null, category, null);
         }
 
         static Row entry(HistoryEntry entry) {
-            return new Row(null, entry);
+            return new Row(TYPE_ENTRY, null, null, entry);
         }
     }
 
     private static class SectionHolder {
         TextView label;
+    }
+
+    private static class CategoryHolder {
+        ImageView chevron;
+        ImageView icon;
+        TextView initial;
+        TextView name;
+        TextView url;
+        TextView count;
+        ImageButton more;
     }
 
     private static class ItemHolder {
@@ -358,5 +647,6 @@ public class HistoryActivity extends Activity {
         TextView name;
         TextView url;
         TextView time;
+        ImageButton more;
     }
 }

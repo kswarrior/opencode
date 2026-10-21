@@ -1824,6 +1824,14 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public String getAiMode() {
+            if (!allowed()) {
+                return AiModeEngine.DEFAULT;
+            }
+            return AiModeEngine.getKey(MainActivity.this);
+        }
+
+        @JavascriptInterface
         public boolean getPrivateMode() {
             return allowed() && privateTabs.contains(tabId);
         }

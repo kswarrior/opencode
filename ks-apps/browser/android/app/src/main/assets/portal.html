@@ -1002,11 +1002,30 @@ body.launching .recents {
     startpage: 'https://www.startpage.com/sp/search?query=',
     qwant: 'https://www.qwant.com/?q='
   };
-  var SEARCH_AI_PARAMS = {
-    google: '&udm=50',
-    duckduckgo: '&ia=chat',
-    bing: '&showconv=1'
+  var AI_BASES = {
+    google: 'https://www.google.com/search?udm=50&q=',
+    chatgpt: 'https://chatgpt.com/?q=',
+    gemini: 'https://gemini.google.com/app?q=',
+    claude: 'https://claude.ai/new?q=',
+    perplexity: 'https://www.perplexity.ai/search?q=',
+    copilot: 'https://copilot.microsoft.com/?q=',
+    grok: 'https://grok.com/?q=',
+    deepseek: 'https://chat.deepseek.com/?q=',
+    duckduckgo: 'https://duckduckgo.com/?q='
   };
+  var AI_SUFFIXES = {
+    duckduckgo: '&ia=chat'
+  };
+
+  function aiModeEngine() {
+    var engine = 'google';
+    if (nativePortal && typeof nativePortal.getAiMode === 'function') {
+      try {
+        engine = nativePortal.getAiMode() || 'google';
+      } catch (error) {}
+    }
+    return engine;
+  }
 
   function searchBase() {
     return SEARCH_BASES[searchEngine()] || SEARCH_BASES.google;
@@ -1014,9 +1033,9 @@ body.launching .recents {
 
   function aiSearchUrl(value) {
     var query = encodeURIComponent(value);
-    var engine = searchEngine();
-    return (SEARCH_BASES[engine] || SEARCH_BASES.google) + query
-      + (SEARCH_AI_PARAMS[engine] || '');
+    var engine = aiModeEngine();
+    return (AI_BASES[engine] || AI_BASES.google) + query
+      + (AI_SUFFIXES[engine] || '');
   }
 
   function resolveUrl(raw) {
