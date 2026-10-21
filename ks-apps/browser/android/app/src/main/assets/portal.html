@@ -772,7 +772,7 @@ body.launching .recents {
   var BOOKMARK_KEY = 'ks_bookmarks_v1';
   var LEGACY_BOOKMARK_KEY = 'ks_favourites_v1';
   var RECENTS_KEY = 'ks_recents_v1';
-  var RECENTS_SHOW = 30;
+  var RECENTS_SHOW = 5;
   var RECENTS_STORE = 30;
   var bookmarks = loadBookmarks();
   try {
@@ -1361,6 +1361,10 @@ body.launching .recents {
     } catch (error) {}
   }
 
+  document.getElementById('btnHistory').addEventListener('click', function (event) {
+    event.preventDefault();
+    invokeNative('openHistory');
+  });
   document.getElementById('btnDownloads').addEventListener('click', function (event) {
     event.preventDefault();
     invokeNative('openDownloads');
