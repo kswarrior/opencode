@@ -9,10 +9,6 @@
         android:icon="@drawable/ic_file_download"
         android:title="@string/downloads_action" />
     <item
-        android:id="@+id/action_adblock"
-        android:icon="@drawable/ic_shield"
-        android:title="@string/adblock_action_on" />
-    <item
         android:id="@+id/action_reload"
         android:icon="@drawable/ic_menu_reload"
         android:title="@string/action_reload" />
