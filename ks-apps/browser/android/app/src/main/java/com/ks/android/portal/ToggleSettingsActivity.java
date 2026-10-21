@@ -1,7 +1,10 @@
 package com.ks.android.portal;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 
 abstract class ToggleSettingsActivity extends Activity {
     protected static final String PREFS = "ks_settings";
+    private static final int REQUEST_NOTIFICATIONS = 3001;
 
     protected static final class ToggleSetting {
         final int titleRes;
@@ -93,6 +97,19 @@ abstract class ToggleSettingsActivity extends Activity {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     preferences.edit().putBoolean(setting.key, isChecked).apply();
+                    if (!isChecked) {
+                        return;
+                    }
+                    if (setting.key.startsWith("notification_")
+                            && Build.VERSION.SDK_INT >= 33
+                            && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{
+                                Manifest.permission.POST_NOTIFICATIONS}, REQUEST_NOTIFICATIONS);
+                    }
+                    if (NotificationHelper.KEY_TIPS.equals(setting.key)) {
+                        NotificationHelper.showTip(ToggleSettingsActivity.this);
+                    }
                 }
             });
             row.setOnClickListener(new View.OnClickListener() {
