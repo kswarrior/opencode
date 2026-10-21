@@ -1717,8 +1717,10 @@ public class DownloadRepository {
                 Published published = publishToPublic(part, relative, name, mime);
                 part.delete();
                 boolean discard = false;
+                DownloadItem result = null;
                 synchronized (lock) {
                     DownloadItem item = findLocked(id);
+                    result = item;
                     if (item == null || cancelled) {
                         discard = true;
                         if (item != null) {
@@ -1741,13 +1743,18 @@ public class DownloadRepository {
                 }
                 if (discard) {
                     deletePublished(published.uri, published.file);
+                    NotificationHelper.downloadCancelled(context, result);
+                } else {
+                    NotificationHelper.downloadCompleted(context, result);
                 }
                 notifyListeners();
             } catch (Exception exception) {
                 part.delete();
                 boolean wasCancelled = cancelled;
+                DownloadItem failed = null;
                 synchronized (lock) {
                     DownloadItem item = findLocked(id);
+                    failed = item;
                     if (item != null) {
                         if (wasCancelled) {
                             item.status = DownloadItem.STATUS_CANCELLED;
@@ -1761,6 +1768,11 @@ public class DownloadRepository {
                     persistLocked();
                 }
                 notifyListeners();
+                if (wasCancelled) {
+                    NotificationHelper.downloadCancelled(context, failed);
+                } else {
+                    NotificationHelper.downloadFailed(context, failed);
+                }
             } finally {
                 closeQuietly(output);
                 closeQuietly(input);
