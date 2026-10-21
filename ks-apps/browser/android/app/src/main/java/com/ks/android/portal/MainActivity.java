@@ -461,8 +461,8 @@ public class MainActivity extends Activity {
         hideKeyboard();
         urlBar.clearFocus();
         View panel = LayoutInflater.from(this).inflate(R.layout.menu_browser, null);
-        final PopupWindow popup = new PopupWindow(panel,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+        int menuWidth = Math.round(248 * getResources().getDisplayMetrics().density);
+        final PopupWindow popup = new PopupWindow(panel, menuWidth,
                 ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popup.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popup.setOutsideTouchable(true);
