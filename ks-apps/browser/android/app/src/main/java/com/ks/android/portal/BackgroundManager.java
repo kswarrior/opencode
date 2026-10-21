@@ -16,11 +16,13 @@ import java.io.File;
 
 final class BackgroundManager {
     private static final String LAYER_TAG = "ks_background_layer";
-    private static final int WEB_IMAGE_SIZE = 1600;
+    private static final int WEB_IMAGE_SIZE = 1440;
     private static final int SCREEN_IMAGE_SIZE = 2048;
 
     private static String webCacheKey = "";
     private static String webCacheData = null;
+    private static String screenCacheKey = "";
+    private static Bitmap screenCacheBitmap = null;
 
     private BackgroundManager() {
     }
