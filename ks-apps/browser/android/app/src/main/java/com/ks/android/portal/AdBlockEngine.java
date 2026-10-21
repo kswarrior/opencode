@@ -1011,6 +1011,9 @@ final class AdBlockEngine {
             if (value.length() == 0) {
                 return true;
             }
+            if (value.charAt(0) == '*') {
+                return matchFrom(value, 0, url, 0, endAnchor);
+            }
             int end = endAnchor ? url.length() - value.length() : url.length();
             int from = 0;
             while (from <= end) {
