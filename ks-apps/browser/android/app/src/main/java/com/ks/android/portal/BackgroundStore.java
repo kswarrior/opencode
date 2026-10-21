@@ -263,7 +263,8 @@ final class BackgroundStore {
         }
         String value = customValue(fileName);
         for (int i = 0; i < TARGETS.length; i++) {
-            if (value.equals(getValue(context, TARGETS[i]))) {
+            String stored = preferences(context).getString(KEY_PREFIX + TARGETS[i], null);
+            if (value.equals(stored)) {
                 setValue(context, TARGETS[i], defaultValue(0));
             }
         }
