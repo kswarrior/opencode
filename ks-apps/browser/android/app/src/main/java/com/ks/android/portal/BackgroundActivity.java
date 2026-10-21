@@ -122,11 +122,6 @@ public class BackgroundActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        for (Bitmap bitmap : thumbnails.values()) {
-            if (bitmap != null && !bitmap.isRecycled()) {
-                bitmap.recycle();
-            }
-        }
         thumbnails.clear();
         super.onDestroy();
     }
