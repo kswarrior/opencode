@@ -1106,6 +1106,8 @@ public class MainActivity extends Activity {
         security.setTextColor(getResources().getColor(siteSecurityColor(siteUrl)));
         ((TextView) panel.findViewById(R.id.siteMenuScreenSizeValue))
                 .setText(SiteSettingsStore.screenSizeLabel(this, host));
+        ((TextView) panel.findViewById(R.id.siteMenuCookiesValue))
+                .setText(SiteCookies.summary(this, siteUrl));
 
         panel.findViewById(R.id.siteMenuInfo).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1138,6 +1140,14 @@ public class MainActivity extends Activity {
                                 });
                     }
                 });
+        panel.findViewById(R.id.siteMenuCookies).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        popup.dismiss();
+                        CookieDialog.show(MainActivity.this, siteUrl);
+                    }
+                });
 
         popup.showAsDropDown(anchor, 0, 0, Gravity.START);
     }
@@ -1160,6 +1170,8 @@ public class MainActivity extends Activity {
         security.setTextColor(getResources().getColor(siteSecurityColor(url)));
         ((TextView) dialog.findViewById(R.id.siteInfoScreenSize))
                 .setText(SiteSettingsStore.screenSizeLabel(this, host));
+        ((TextView) dialog.findViewById(R.id.siteInfoCookies))
+                .setText(SiteCookies.summary(this, url));
         dialog.findViewById(R.id.siteInfoClose).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
