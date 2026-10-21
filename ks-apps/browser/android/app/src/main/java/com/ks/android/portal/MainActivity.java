@@ -74,6 +74,7 @@ public class MainActivity extends Activity {
     private String pendingDownloadReferer;
     private String backgroundCacheKey = "";
     private String backgroundCacheJson = "{}";
+    private boolean privateMode;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -699,6 +700,9 @@ public class MainActivity extends Activity {
     }
 
     private void recordHistory(String rawUrl, String title) {
+        if (privateMode) {
+            return;
+        }
         String url = normalizeWebUrl(rawUrl);
         if (url == null) {
             return;
@@ -707,6 +711,9 @@ public class MainActivity extends Activity {
     }
 
     private void recordRecent(String rawUrl, String title) {
+        if (privateMode) {
+            return;
+        }
         String url = normalizeWebUrl(rawUrl);
         if (url == null) {
             return;

@@ -966,11 +966,34 @@ body.launching .recents {
     return searchBase() + encodeURIComponent(value);
   }
 
+  function syncPrivateMode(value) {
+    if (!nativePortal || typeof nativePortal.setPrivateMode !== 'function') return;
+    try {
+      nativePortal.setPrivateMode(!!value);
+    } catch (error) {}
+  }
+
+  function updateModeUi() {
+    aiButton.classList.toggle('active', aiMode);
+    aiButton.setAttribute('aria-pressed', aiMode ? 'true' : 'false');
+    incognitoButton.classList.toggle('active', incognito);
+    incognitoButton.setAttribute('aria-pressed', incognito ? 'true' : 'false');
+    input.placeholder = aiMode ? 'Ask AI anything' : (incognito ? 'Search privately' : 'Search or enter address');
+  }
+
+  function restoreModes() {
+    if (!nativePortal || typeof nativePortal.getPrivateMode !== 'function') return;
+    try {
+      incognito = !!nativePortal.getPrivateMode();
+    } catch (error) {}
+  }
+
   function launch(url) {
     if (launching || !url) return;
     launching = true;
     closeRecentMenu();
-    if (!nativePortal) rememberRecent(url, hostFromUrl(url));
+    syncPrivateMode(incognito);
+    if (!nativePortal && !incognito) rememberRecent(url, hostFromUrl(url));
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
       window.location.href = url;
@@ -1534,6 +1557,21 @@ body.launching .recents {
     launch(resolveUrl(input.value));
   });
 
+  aiButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    aiMode = !aiMode;
+    updateModeUi();
+    input.focus();
+  });
+
+  incognitoButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    incognito = !incognito;
+    syncPrivateMode(incognito);
+    updateModeUi();
+    input.focus();
+  });
+
   function invokeNative(action) {
     if (!nativePortal || typeof nativePortal[action] !== 'function') return;
     try {
@@ -1570,6 +1608,8 @@ body.launching .recents {
   renderBookmarks();
   refreshRecents();
   applyBackground();
+  restoreModes();
+  updateModeUi();
 
   window.addEventListener('pageshow', function () {
     refreshRecents();
