@@ -9,4 +9,5 @@
     <color name="ks_text">#F5F5F5</color>
     <color name="ks_muted">#A3A3A3</color>
     <color name="ks_accent">#7AB8FF</color>
+    <color name="ks_danger">#FF8A80</color>
 </resources>

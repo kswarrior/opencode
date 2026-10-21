@@ -148,6 +148,8 @@
     <string name="site_settings_downloads_summary">Download files from this site without asking</string>
     <string name="site_settings_reset">Reset site settings</string>
     <string name="site_settings_reset_summary">Restore the defaults for this site</string>
+    <string name="site_settings_reset_title">Reset site settings?</string>
+    <string name="site_settings_reset_message">All settings for this site will return to their defaults.</string>
     <string name="site_settings_reset_done">Site settings reset</string>
     <string name="screen_size_default">Default</string>
     <string name="screen_size_phone">Phone</string>
