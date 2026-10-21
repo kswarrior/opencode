@@ -20,6 +20,13 @@ final class SiteSettingsStore {
     static final String KEY_SOUND = "sound";
     static final String KEY_AUTOMATIC_DOWNLOADS = "automatic_downloads";
 
+    static final String GLOBAL_HOST = "*";
+    static final String PERMISSION_ASK = "ask";
+    static final String PERMISSION_ALLOWED = "allowed";
+    static final String PERMISSION_BLOCKED = "blocked";
+
+    private static final String PERMISSION_PREFIX = "permission_";
+
     static final String SCREEN_DEFAULT = "default";
     static final String SCREEN_PHONE = "phone";
     static final String SCREEN_TABLET = "tablet";
@@ -89,6 +96,30 @@ final class SiteSettingsStore {
             return;
         }
         preferences(context).edit().putBoolean(key(host, name), value).apply();
+    }
+
+    static String getPermission(Context context, String host, String name,
+                                String defaultValue) {
+        SharedPreferences preferences = preferences(context);
+        if (!TextUtils.isEmpty(host)) {
+            String siteKey = key(host, PERMISSION_PREFIX + name);
+            if (preferences.contains(siteKey)) {
+                return preferences.getString(siteKey, defaultValue);
+            }
+        }
+        String globalKey = key(GLOBAL_HOST, PERMISSION_PREFIX + name);
+        if (preferences.contains(globalKey)) {
+            return preferences.getString(globalKey, defaultValue);
+        }
+        return defaultValue;
+    }
+
+    static void setPermission(Context context, String host, String name, String value) {
+        if (TextUtils.isEmpty(host)) {
+            return;
+        }
+        preferences(context).edit().putString(
+                key(host, PERMISSION_PREFIX + name), value).apply();
     }
 
     static String getScreenSizeId(Context context, String host) {

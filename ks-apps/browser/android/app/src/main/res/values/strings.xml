@@ -183,6 +183,7 @@
     <string name="dialog_close">Close</string>
     <string name="dialog_add">Add</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_save">Save</string>
     <string name="value_not_allowed">Not allowed</string>
     <string name="value_ask_first">Ask first</string>
     <string name="value_allowed">Allowed</string>

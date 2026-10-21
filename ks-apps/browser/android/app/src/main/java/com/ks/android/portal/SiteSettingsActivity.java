@@ -36,23 +36,42 @@ public class SiteSettingsActivity extends Activity {
             R.string.site_apps_on_device
     };
 
-    private static final int[] PERMISSION_VALUES = {
-            R.string.value_not_allowed,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_allowed,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first,
-            R.string.value_ask_first
+    private static final String[] PERMISSION_KEYS = {
+            "location",
+            "camera",
+            "microphone",
+            "notifications",
+            "embedded_content",
+            "motion_sensors",
+            "nfc_devices",
+            "usb",
+            "serial_port",
+            "file_editing",
+            "clipboard",
+            "virtual_reality",
+            "augmented_reality",
+            "device_use",
+            "local_network",
+            "apps_on_device"
+    };
+
+    private static final String[] PERMISSION_DEFAULTS = {
+            SiteSettingsStore.PERMISSION_BLOCKED,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ALLOWED,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK,
+            SiteSettingsStore.PERMISSION_ASK
     };
 
     private static final int[] CONTENT_TITLES = {
@@ -120,6 +139,7 @@ public class SiteSettingsActivity extends Activity {
     private LinearLayout list;
     private String siteUrl;
     private String siteHost;
+    private String permissionHost = SiteSettingsStore.GLOBAL_HOST;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,13 +160,13 @@ public class SiteSettingsActivity extends Activity {
             buildStaticSettings();
         } else {
             siteHost = SiteSettingsStore.hostOf(siteUrl);
+            permissionHost = siteHost;
             buildSiteSettings();
         }
     }
 
     private void buildStaticSettings() {
-        addSection(R.string.site_settings_permissions,
-                PERMISSION_TITLES, PERMISSION_VALUES, null);
+        addPermissionSection();
         addSection(R.string.site_settings_content,
                 CONTENT_TITLES, CONTENT_VALUES, null);
         addSection(R.string.site_settings_additional,
@@ -155,8 +175,7 @@ public class SiteSettingsActivity extends Activity {
 
     private void buildSiteSettings() {
         addSiteHeader();
-        addSection(R.string.site_settings_permissions,
-                PERMISSION_TITLES, PERMISSION_VALUES, null);
+        addPermissionSection();
         addToggleSection(R.string.site_settings_content,
                 new SiteToggle(R.string.site_third_party_cookies,
                         R.string.site_settings_cookies_summary,
@@ -201,6 +220,64 @@ public class SiteSettingsActivity extends Activity {
             security.setTextColor(getResources().getColor(R.color.ks_muted));
         }
         list.addView(header);
+    }
+
+    private void addPermissionSection() {
+        View header = getLayoutInflater().inflate(R.layout.item_site_section, list, false);
+        ((TextView) header.findViewById(R.id.siteSectionTitle))
+                .setText(R.string.site_settings_permissions);
+        list.addView(header);
+
+        LinearLayout card = new LinearLayout(this);
+        card.setOrientation(LinearLayout.VERTICAL);
+        card.setBackgroundResource(R.drawable.bg_download_item);
+
+        for (int i = 0; i < PERMISSION_TITLES.length; i++) {
+            if (i > 0) {
+                addDivider(card);
+            }
+            final int titleRes = PERMISSION_TITLES[i];
+            final String key = PERMISSION_KEYS[i];
+            final String defaultValue = PERMISSION_DEFAULTS[i];
+
+            View row = getLayoutInflater().inflate(R.layout.item_site_setting, card, false);
+            TextView title = row.findViewById(R.id.siteSettingTitle);
+            final TextView value = row.findViewById(R.id.siteSettingValue);
+            title.setText(titleRes);
+            value.setText(permissionValueRes(SiteSettingsStore.getPermission(
+                    this, permissionHost, key, defaultValue)));
+            value.setVisibility(View.VISIBLE);
+            row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String current = SiteSettingsStore.getPermission(
+                            SiteSettingsActivity.this, permissionHost, key, defaultValue);
+                    PermissionDialog.show(SiteSettingsActivity.this, titleRes, current,
+                            new PermissionDialog.Listener() {
+                                @Override
+                                public void onSave(String selected) {
+                                    SiteSettingsStore.setPermission(
+                                            SiteSettingsActivity.this, permissionHost,
+                                            key, selected);
+                                    value.setText(permissionValueRes(selected));
+                                    markChanged();
+                                }
+                            });
+                }
+            });
+            card.addView(row);
+        }
+        list.addView(card);
+    }
+
+    private static int permissionValueRes(String value) {
+        if (SiteSettingsStore.PERMISSION_ALLOWED.equals(value)) {
+            return R.string.value_allowed;
+        }
+        if (SiteSettingsStore.PERMISSION_BLOCKED.equals(value)) {
+            return R.string.value_not_allowed;
+        }
+        return R.string.value_ask_first;
     }
 
     private void addToggleSection(int headerRes, SiteToggle... settings) {
