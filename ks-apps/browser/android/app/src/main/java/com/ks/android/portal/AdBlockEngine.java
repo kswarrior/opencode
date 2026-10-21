@@ -295,13 +295,38 @@ final class AdBlockEngine {
     }
 
     static Request request(String url, String pageUrl, int type) {
-        String host = hostOf(url);
-        String pageHost = hostOf(pageUrl);
-        if (host == null) {
+        if (url == null) {
             return null;
         }
         int start = schemeEnd(url);
-        int end = start < 0 ? -1 : hostEndOf(url, start);
+        if (start < 0) {
+            return null;
+        }
+        int rawEnd = hostEndOf(url, start);
+        int at = url.lastIndexOf('@', rawEnd - 1);
+        if (at >= start) {
+            start = at + 1;
+        }
+        int end = rawEnd;
+        if (start < end && url.charAt(start) == '[') {
+            int close = url.indexOf(']', start);
+            if (close >= 0 && close < end) {
+                end = close + 1;
+            }
+        } else {
+            int colon = url.indexOf(':', start);
+            if (colon >= 0 && colon < end) {
+                end = colon;
+            }
+        }
+        if (end <= start) {
+            return null;
+        }
+        String host = url.substring(start, end).toLowerCase(Locale.US);
+        if (host.length() == 0) {
+            return null;
+        }
+        String pageHost = hostOf(pageUrl);
         boolean thirdParty = isThirdParty(host, pageHost);
         return new Request(url, url.toLowerCase(Locale.US), host, pageHost, start, end, type,
                 thirdParty);
@@ -770,31 +795,28 @@ final class AdBlockEngine {
                     || (!thirdParty && party == PARTY_FIRST);
         }
 
-        boolean matches(String lowerUrl, String originalUrl) {
+        boolean matches(Request request) {
             if (regex) {
-                return regexPattern.matcher(matchCase ? originalUrl : lowerUrl).find();
+                return regexPattern.matcher(matchCase ? request.url : request.urlLower).find();
             }
-            String url = matchCase ? originalUrl : lowerUrl;
+            String url = matchCase ? request.url : request.urlLower;
             String value = matchCase ? pattern : patternLower;
             if (anchor == ANCHOR_START) {
                 return matchFrom(value, 0, url, 0, endAnchor);
             }
             if (anchor == ANCHOR_HOST) {
-                int scheme = schemeEnd(url);
-                if (scheme < 0) {
-                    return false;
-                }
-                int hostEnd = hostEndOf(url, scheme);
-                int position = scheme;
-                while (position < hostEnd) {
+                int position = request.hostStart;
+                int offset = 0;
+                while (offset < request.host.length()) {
                     if (matchFrom(value, 0, url, position, endAnchor)) {
                         return true;
                     }
-                    int dot = url.indexOf('.', position);
-                    if (dot < 0 || dot >= hostEnd) {
+                    int dot = request.host.indexOf('.', offset);
+                    if (dot < 0) {
                         break;
                     }
-                    position = dot + 1;
+                    offset = dot + 1;
+                    position = request.hostStart + offset;
                 }
                 return false;
             }
@@ -863,7 +885,8 @@ final class AdBlockEngine {
                 return false;
             }
         }
-        while (p < pattern.length() && pattern.charAt(p) == '*') {
+        while (p < pattern.length()
+                && (pattern.charAt(p) == '*' || pattern.charAt(p) == '^')) {
             p++;
         }
         if (p != pattern.length()) {
