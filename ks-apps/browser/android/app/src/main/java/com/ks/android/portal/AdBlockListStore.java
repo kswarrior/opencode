@@ -63,18 +63,19 @@ final class AdBlockListStore {
     private static final String BRAVE = "https://raw.githubusercontent.com/brave/adblock-lists/master/";
 
     static final FilterList[] LISTS = {
+            new FilterList(ID_EASYLIST, new String[]{
+                    "https://easylist.to/easylist/easylist.txt"
+            }, R.string.adblock_list_easylist,
+                    R.string.adblock_list_easylist_summary, true),
+            new FilterList(ID_EASYPRIVACY, new String[]{
+                    "https://easylist.to/easylist/easyprivacy.txt"
+            }, R.string.adblock_list_easyprivacy,
+                    R.string.adblock_list_easyprivacy_summary, true),
             new FilterList(ID_UBLOCK, new String[]{
                     UBO + "filters.txt",
                     UBO + "filters-general.txt"
             }, R.string.adblock_list_ublock,
                     R.string.adblock_list_ublock_summary, true),
-            new FilterList(ID_UBLOCK_ANNUAL, new String[]{
-                    UBO + "filters-2020.txt", UBO + "filters-2021.txt",
-                    UBO + "filters-2022.txt", UBO + "filters-2023.txt",
-                    UBO + "filters-2024.txt", UBO + "filters-2025.txt",
-                    UBO + "filters-2026.txt"
-            }, R.string.adblock_list_ublock_annual,
-                    R.string.adblock_list_ublock_annual_summary, true),
             new FilterList(ID_UBLOCK_QUICKFIXES, new String[]{
                     UBO + "quick-fixes.txt"
             }, R.string.adblock_list_ublock_quickfixes,
@@ -95,14 +96,6 @@ final class AdBlockListStore {
                     UBO + "ubo-link-shorteners.txt"
             }, R.string.adblock_list_ublock_link_shorteners,
                     R.string.adblock_list_ublock_link_shorteners_summary, true),
-            new FilterList(ID_EASYLIST, new String[]{
-                    "https://easylist.to/easylist/easylist.txt"
-            }, R.string.adblock_list_easylist,
-                    R.string.adblock_list_easylist_summary, true),
-            new FilterList(ID_EASYPRIVACY, new String[]{
-                    "https://easylist.to/easylist/easyprivacy.txt"
-            }, R.string.adblock_list_easyprivacy,
-                    R.string.adblock_list_easyprivacy_summary, true),
             new FilterList(ID_UBLOCK_PRIVACY, new String[]{
                     UBO + "privacy.txt"
             }, R.string.adblock_list_ublock_privacy,
@@ -111,6 +104,13 @@ final class AdBlockListStore {
                     "https://malware-filter.gitlab.io/malware-filter/urlhaus-filter-agh-online.txt"
             }, R.string.adblock_list_urlhaus,
                     R.string.adblock_list_urlhaus_summary, true),
+            new FilterList(ID_UBLOCK_ANNUAL, new String[]{
+                    UBO + "filters-2020.txt", UBO + "filters-2021.txt",
+                    UBO + "filters-2022.txt", UBO + "filters-2023.txt",
+                    UBO + "filters-2024.txt", UBO + "filters-2025.txt",
+                    UBO + "filters-2026.txt"
+            }, R.string.adblock_list_ublock_annual,
+                    R.string.adblock_list_ublock_annual_summary, true),
             new FilterList(ID_BRAVE_SPECIFIC, new String[]{
                     BRAVE + "brave-lists/brave-specific.txt"
             }, R.string.adblock_list_brave_specific,

@@ -176,7 +176,8 @@ public class MainActivity extends Activity {
                 saveTogglePosition();
             }
         });
-        restoreTogglePosition();        findViewById(R.id.root).addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+        applyToolbarToggleSettings();
+        findViewById(R.id.root).addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View view, int left, int top, int right, int bottom,
                                        int oldLeft, int oldTop, int oldRight, int oldBottom) {
@@ -213,6 +214,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        applyToolbarToggleSettings();
         boolean adBlockEnabled = AdBlocker.isEnabled(this);
         boolean adBlockCosmetic = AdBlocker.isCosmeticEnabled(this);
         long adBlockEngineVersion = AdBlocker.engineVersion();
@@ -844,20 +846,33 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void restoreTogglePosition() {
-        SharedPreferences prefs = getSharedPreferences(TOGGLE_PREFS, MODE_PRIVATE);
-        int edge = prefs.getInt(TOGGLE_EDGE, FloatingToolbarToggle.EDGE_RIGHT);
-        float centerX = prefs.getFloat(TOGGLE_CENTER_X, -1f);
-        float centerY = prefs.getFloat(TOGGLE_CENTER_Y, -1f);
-        toolbarToggle.restorePosition(edge, centerX, centerY);
+    private void applyToolbarToggleSettings() {
+        if (toolbarToggle == null) {
+            return;
+        }
+        toolbarToggle.setToggleSize(
+                ToolbarSettingsStore.getWidthDp(this),
+                ToolbarSettingsStore.getHeightDp(this));
+        toolbarToggle.setAccentColor(ToolbarSettingsStore.getColor(this));
+        boolean moveable = ToolbarSettingsStore.MODE_MOVEABLE.equals(
+                ToolbarSettingsStore.getMode(this));
+        toolbarToggle.setMoveable(moveable);
+        if (moveable) {
+            toolbarToggle.restorePosition(
+                    ToolbarSettingsStore.getSavedEdge(this),
+                    ToolbarSettingsStore.getSavedCenterX(this),
+                    ToolbarSettingsStore.getSavedCenterY(this));
+        } else {
+            toolbarToggle.restorePosition(
+                    ToolbarSettingsStore.getDefaultEdge(this), -1f, -1f);
+        }
     }
 
     private void saveTogglePosition() {
-        getSharedPreferences(TOGGLE_PREFS, MODE_PRIVATE).edit()
-                .putInt(TOGGLE_EDGE, toolbarToggle.getDockEdge())
-                .putFloat(TOGGLE_CENTER_X, toolbarToggle.getCenterX())
-                .putFloat(TOGGLE_CENTER_Y, toolbarToggle.getCenterY())
-                .apply();
+        ToolbarSettingsStore.savePosition(this,
+                toolbarToggle.getDockEdge(),
+                toolbarToggle.getCenterX(),
+                toolbarToggle.getCenterY());
     }
 
     static boolean isHomeUrl(String url) {
