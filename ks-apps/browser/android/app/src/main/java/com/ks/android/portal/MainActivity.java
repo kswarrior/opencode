@@ -72,10 +72,6 @@ public class MainActivity extends Activity {
     private static final int RECENTS_LIMIT = 30;
     private static final int REQUEST_WRITE_STORAGE = 2001;
     private static final Object RECENTS_LOCK = new Object();
-    private static final String TOGGLE_PREFS = "ks_toolbar_toggle";
-    private static final String TOGGLE_EDGE = "edge";
-    private static final String TOGGLE_CENTER_X = "center_x";
-    private static final String TOGGLE_CENTER_Y = "center_y";
 
     private TabManager tabManager;
     private final Map<Integer, WebView> tabViews = new HashMap<Integer, WebView>();
@@ -180,8 +176,7 @@ public class MainActivity extends Activity {
                 saveTogglePosition();
             }
         });
-        restoreTogglePosition();
-        findViewById(R.id.root).addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+        restoreTogglePosition();        findViewById(R.id.root).addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View view, int left, int top, int right, int bottom,
                                        int oldLeft, int oldTop, int oldRight, int oldBottom) {

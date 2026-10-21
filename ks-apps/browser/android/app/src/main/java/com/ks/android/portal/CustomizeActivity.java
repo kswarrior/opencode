@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class CustomizeActivity extends Activity {
     private TextView backgroundValue;
+    private TextView toolbarValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +31,21 @@ public class CustomizeActivity extends Activity {
                 startActivity(new Intent(CustomizeActivity.this, BackgroundActivity.class));
             }
         });
+
+        toolbarValue = findViewById(R.id.customizeToolbarValue);
+        findViewById(R.id.customizeToolbar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomizeActivity.this, ToolbarActivity.class));
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         backgroundValue.setText(BackgroundStore.summary(this));
+        toolbarValue.setText(ToolbarSettingsStore.summary(this));
         BackgroundManager.apply(this, BackgroundStore.TARGET_CUSTOMIZE);
     }
 }
