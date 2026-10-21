@@ -1798,6 +1798,9 @@ public class DownloadRepository {
                 persistLocked();
             }
             notifyListeners();
+            synchronized (lock) {
+                NotificationHelper.downloadCancelled(context, findLocked(id));
+            }
         }
     }
 }
