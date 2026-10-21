@@ -41,6 +41,7 @@ import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -78,6 +79,8 @@ public class MainActivity extends Activity {
     private View toolbarContainer;
     private FloatingToolbarToggle toolbarToggle;
     private TextView tabsButton;
+    private ImageView siteLogo;
+    private FaviconLoader faviconLoader;
     private EditText urlBar;
     private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
@@ -121,22 +124,17 @@ public class MainActivity extends Activity {
         toolbarContainer = findViewById(R.id.toolbarContainer);
         toolbarHeight = Math.round(56 * getResources().getDisplayMetrics().density);
         urlBar = findViewById(R.id.urlBar);
-        ImageButton homeButton = findViewById(R.id.homeButton);
         ImageButton menuButton = findViewById(R.id.menuButton);
         toolbarToggle = findViewById(R.id.toolbarToggle);
         tabsButton = findViewById(R.id.tabsButton);
+        siteLogo = findViewById(R.id.siteLogo);
+        faviconLoader = new FaviconLoader();
 
         tabManager = TabManager.get(this);
         tabManager.addListener(tabsListener);
 
         CookieManager.getInstance().setAcceptCookie(true);
 
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goHome();
-            }
-        });
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -600,6 +598,50 @@ public class MainActivity extends Activity {
             urlBar.setSelection(urlBar.getText().length());
         }
         updateTabCounter();
+        updateSiteLogo(url);
+    }
+
+    private void updateSiteLogo(String url) {
+        if (siteLogo == null) {
+            return;
+        }
+        String host = hostOf(url);
+        siteLogo.setTag(host);
+        if (host.isEmpty() || isHomeUrl(url)) {
+            siteLogo.setImageResource(R.drawable.ic_globe);
+            return;
+        }
+        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
+        if (tab != null && tab.favicon != null) {
+            siteLogo.setImageBitmap(tab.favicon);
+            return;
+        }
+        Bitmap cached = faviconLoader == null ? null : faviconLoader.get(host);
+        if (cached != null) {
+            siteLogo.setImageBitmap(cached);
+            return;
+        }
+        siteLogo.setImageResource(R.drawable.ic_globe);
+        if (faviconLoader != null) {
+            faviconLoader.load(host, new FaviconLoader.Callback() {
+                @Override
+                public void onLoaded(String loadedHost, Bitmap bitmap) {
+                    if (bitmap == null || siteLogo == null
+                            || !loadedHost.equals(siteLogo.getTag())) {
+                        return;
+                    }
+                    siteLogo.setImageBitmap(bitmap);
+                }
+            });
+        }
+    }
+
+    private static String hostOf(String url) {
+        if (url == null) {
+            return "";
+        }
+        String host = Uri.parse(url).getHost();
+        return host == null ? "" : host;
     }
 
     private void updateTabCounter() {
@@ -1528,6 +1570,9 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         if (tabManager != null) {
             tabManager.removeListener(tabsListener);
+        }
+        if (faviconLoader != null) {
+            faviconLoader.shutdownNow();
         }
         for (WebView tabView : tabViews.values()) {
             if (webContainer != null) {

@@ -3,6 +3,7 @@
     <string name="app_name">KS Portal</string>
     <string name="url_hint">Enter URL or search</string>
     <string name="home_description">Home</string>
+    <string name="site_logo_description">Website logo</string>
     <string name="forward">Forward</string>
     <string name="more_description">More options</string>
     <string name="collapse_toolbar">Collapse toolbar</string>
