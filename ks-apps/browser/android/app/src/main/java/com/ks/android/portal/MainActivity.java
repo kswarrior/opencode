@@ -11,14 +11,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.view.animation.AccelerateInterpolator;
@@ -33,7 +37,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.PopupMenu;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -456,45 +460,92 @@ public class MainActivity extends Activity {
     private void showMenu(View anchor) {
         hideKeyboard();
         urlBar.clearFocus();
-        PopupMenu popup = new PopupMenu(this, anchor);
-        popup.getMenuInflater().inflate(R.menu.browser_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        View panel = LayoutInflater.from(this).inflate(R.layout.menu_browser, null);
+        final PopupWindow popup = new PopupWindow(panel,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popup.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popup.setOutsideTouchable(true);
+        popup.setElevation(12f * getResources().getDisplayMetrics().density);
+
+        ImageButton back = panel.findViewById(R.id.menuBack);
+        ImageButton forward = panel.findViewById(R.id.menuForward);
+        boolean canGoBack = webView.canGoBack();
+        boolean canGoForward = webView.canGoForward();
+        back.setEnabled(canGoBack);
+        back.setAlpha(canGoBack ? 1f : 0.3f);
+        forward.setEnabled(canGoForward);
+        forward.setAlpha(canGoForward ? 1f : 0.3f);
+
+        panel.findViewById(R.id.menuHome).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.action_home) {
-                    goHome();
-                    return true;
-                }
-                if (id == R.id.action_downloads) {
-                    openDownloadsPage();
-                    return true;
-                }
-                if (id == R.id.action_reload) {
-                    webView.reload();
-                    return true;
-                }
-                if (id == R.id.action_share) {
-                    shareUrl();
-                    return true;
-                }
-                if (id == R.id.action_copy) {
-                    copyUrl();
-                    return true;
-                }
-                if (id == R.id.action_open) {
-                    openInBrowser();
-                    return true;
-                }
-                if (id == R.id.action_settings) {
-                    openSettingsPage();
-                    return true;
-                }
-                return false;
+            public void onClick(View view) {
+                popup.dismiss();
+                goHome();
             }
         });
-        MenuIcons.show(popup);
-        popup.show();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                if (webView.canGoBack()) {
+                    webView.goBack();
+                }
+            }
+        });
+        panel.findViewById(R.id.menuReload).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                webView.reload();
+            }
+        });
+        forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                if (webView.canGoForward()) {
+                    webView.goForward();
+                }
+            }
+        });
+        panel.findViewById(R.id.menuDownloads).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                openDownloadsPage();
+            }
+        });
+        panel.findViewById(R.id.menuShare).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                shareUrl();
+            }
+        });
+        panel.findViewById(R.id.menuCopy).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                copyUrl();
+            }
+        });
+        panel.findViewById(R.id.menuOpen).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                openInBrowser();
+            }
+        });
+        panel.findViewById(R.id.menuSettings).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                openSettingsPage();
+            }
+        });
+
+        popup.showAsDropDown(anchor, 0, 0, Gravity.END);
     }
 
     private void openDownloadsPage() {
