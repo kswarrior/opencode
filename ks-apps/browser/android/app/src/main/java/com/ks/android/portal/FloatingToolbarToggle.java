@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 
 import java.util.Collections;
 
@@ -372,7 +373,7 @@ public class FloatingToolbarToggle extends View {
                 lastRawX = downRawX;
                 lastRawY = downRawY;
                 moved = false;
-                View parent = getParentView();
+                ViewParent parent = getParent();
                 if (parent != null) {
                     parent.requestDisallowInterceptTouchEvent(true);
                 }
