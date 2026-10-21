@@ -87,8 +87,10 @@
     <string name="search_engine_bing">Bing</string>
     <string name="about_title">About KS Portal</string>
     <string name="settings_version">Version %1$s</string>
-    <string name="about_version">Version %1$s (%2$d)</string>
-    <string name="about_description">A fast, minimal browser built by KS Warrior.</string>
+    <string name="about_owner">Owner: KS Warrior</string>
+    <string name="about_version_tag">v%1$s</string>
+    <string name="about_markdown_file">About.md</string>
+    <string name="about_markdown"># About KS Portal\n\n**KS Portal** is a fast, minimal, privacy-first browser built by **KS Warrior**. It keeps the interface out of your way so you can focus on the pages you care about.\n\n## Why KS Portal?\n- **Lightweight** — starts quickly and stays out of the way\n- **Private by design** — no account required and no tracking\n- **Powerful downloads** — pause, resume, rename and organize files\n- **Tab groups** — keep related tabs together with names, icons and colors\n- **Made yours** — custom backgrounds for the home screen, downloads and settings\n\n## Browsing that feels simple\nSearch the web, save bookmarks, switch tabs and download files without leaving the app. The home portal puts your favorite sites and recent pages one tap away.\n\n## Built with\n- **Engine:** Android System WebView\n- **Minimum Android:** 5.0 (API 21)\n- **Package:** `com.ks.android.portal`\n\n---\n\nMade with care by **KS Warrior**.</string>
     <string name="site_settings">Site settings</string>
     <string name="site_settings_summary">Permissions and content</string>
     <string name="site_settings_permissions">Permissions</string>

@@ -130,7 +130,7 @@ final class SiteSettingsStore {
 
     static String addCustomSize(Context context, String name, int width) {
         List<ScreenSize> sizes = customSizes(context);
-        String id = "custom_" + System.currentTimeMillis();
+        String id = "custom_" + System.currentTimeMillis() + "_" + sizes.size();
         sizes.add(new ScreenSize(id, name, width));
         JSONArray array = new JSONArray();
         for (int i = 0; i < sizes.size(); i++) {
