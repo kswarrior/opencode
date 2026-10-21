@@ -212,24 +212,26 @@ final class TabManager {
         notifyListeners();
     }
 
-    synchronized TabGroup createGroup(String name) {
+    synchronized TabGroup createGroup(String name, String icon, int color) {
         String label = name == null ? "" : name.trim();
         if (label.isEmpty()) {
             label = context.getString(R.string.tabs_group_default, nextGroupId);
         }
-        TabGroup group = new TabGroup(nextGroupId++, label, false);
+        TabGroup group = new TabGroup(nextGroupId++, label, icon, color, false);
         groups.add(group);
         saveAndNotify();
         return group;
     }
 
-    synchronized void renameGroup(int id, String name) {
+    synchronized void updateGroup(int id, String name, String icon, int color) {
         TabGroup group = findGroup(id);
         String label = name == null ? "" : name.trim();
         if (group == null || label.isEmpty()) {
             return;
         }
         group.name = label;
+        group.icon = GroupStyle.normalizeIcon(icon);
+        group.color = GroupStyle.normalizeColor(color);
         saveAndNotify();
     }
 
@@ -331,6 +333,8 @@ final class TabManager {
                 JSONObject item = new JSONObject();
                 item.put("id", group.id);
                 item.put("name", group.name);
+                item.put("icon", group.icon);
+                item.put("color", group.color);
                 item.put("collapsed", group.collapsed);
                 groupsJson.put(item);
             }
@@ -362,7 +366,8 @@ final class TabManager {
                     if (name.isEmpty()) {
                         name = context.getString(R.string.tabs_group_default, id);
                     }
-                    groups.add(new TabGroup(id, name, item.optBoolean("collapsed", false)));
+                    groups.add(new TabGroup(id, name, item.optString("icon", ""),
+                            item.optInt("color", 0), item.optBoolean("collapsed", false)));
                     if (id >= nextGroupId) {
                         nextGroupId = id + 1;
                     }
