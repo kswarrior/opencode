@@ -482,8 +482,8 @@ final class AdBlockListStore {
         try {
             for (int i = 0; i < list.urls.length; i++) {
                 try {
-                    SourceResult source = downloadSource(context, list.urls[i],
-                            i == 0 ? etag : null, target.exists());
+                    SourceResult source = downloadSource(context, list.id,
+                            list.urls[i], i == 0 ? etag : null, target.exists());
                     if (source.notModified) {
                         ok++;
                         continue;
@@ -546,8 +546,9 @@ final class AdBlockListStore {
         }
     }
 
-    private static SourceResult downloadSource(Context context, String address,
-                                               String etag, boolean cached)
+    private static SourceResult downloadSource(Context context, String listId,
+                                               String address, String etag,
+                                               boolean cached)
             throws IOException {
         HttpURLConnection connection = null;
         try {
@@ -574,7 +575,7 @@ final class AdBlockListStore {
             String newEtag = connection.getHeaderField("ETag");
             if (newEtag != null && newEtag.length() > 0) {
                 preferences(context).edit().putString(ETAG_PREFIX
-                        + url.toString(), newEtag).apply();
+                        + listId, newEtag).apply();
             }
             int length = connection.getContentLength();
             if (length > MAX_LIST_BYTES) {
