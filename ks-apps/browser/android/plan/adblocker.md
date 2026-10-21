@@ -258,7 +258,7 @@ Design rules:
 | `app/src/main/res/values/strings.xml` | new strings |
 | `app/src/main/assets/adblock/seed.txt` | scriptlets + stronger seed |
 | `app/src/main/assets/adblock/public_suffix_list.dat` | new asset |
-| `app/src/main/AndroidManifest.xml` | version 1.2.0 / 20 |
+| `app/src/main/AndroidManifest.xml` | version 1.2.1 / 21 |
 
 ---
 
