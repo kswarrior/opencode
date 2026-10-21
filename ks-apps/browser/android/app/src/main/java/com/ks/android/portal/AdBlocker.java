@@ -13,7 +13,6 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -52,7 +51,6 @@ final class AdBlocker {
     private static final AtomicInteger UNSAVED_BLOCKS = new AtomicInteger();
     private static final Map<String, AtomicLong> SITE_BLOCKED =
             new ConcurrentHashMap<String, AtomicLong>();
-    private static final Object UPDATE_LOCK = new Object();
     private static final ExecutorService EXECUTOR =
             Executors.newSingleThreadExecutor(new ThreadFactory() {
                 @Override
