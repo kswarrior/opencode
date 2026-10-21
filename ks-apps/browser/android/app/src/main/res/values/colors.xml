@@ -5,6 +5,7 @@
     <color name="ks_panel">#0B0B0B</color>
     <color name="ks_panel_2">#141414</color>
     <color name="ks_border">#4A4A4A</color>
+    <color name="ks_divider">#1FFFFFFF</color>
     <color name="ks_text">#F5F5F5</color>
     <color name="ks_muted">#A3A3A3</color>
 </resources>
