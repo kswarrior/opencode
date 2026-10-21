@@ -8,6 +8,7 @@ final class BrowserTab {
     String url;
     int groupId;
     Bitmap favicon;
+    String faviconHost = "";
     int progress;
     boolean loading;
 

@@ -386,7 +386,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onReceivedIcon(WebView current, Bitmap icon) {
-                tabManager.updateFavicon(tab.id, icon);
+                tabManager.updateFavicon(tab.id, hostOf(current.getUrl()), icon);
             }
         });
 
@@ -612,7 +612,7 @@ public class MainActivity extends Activity {
             return;
         }
         BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
-        if (tab != null && tab.favicon != null) {
+        if (tab != null && tab.favicon != null && host.equals(tab.faviconHost)) {
             siteLogo.setImageBitmap(tab.favicon);
             return;
         }

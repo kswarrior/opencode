@@ -202,12 +202,13 @@ final class TabManager {
         tab.loading = loading;
     }
 
-    synchronized void updateFavicon(int id, Bitmap favicon) {
+    synchronized void updateFavicon(int id, String host, Bitmap favicon) {
         BrowserTab tab = findTab(id);
         if (tab == null || favicon == null) {
             return;
         }
         tab.favicon = favicon;
+        tab.faviconHost = host == null ? "" : host;
         notifyListeners();
     }
 
