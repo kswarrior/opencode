@@ -3,10 +3,12 @@ package com.ks.android.portal;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -91,6 +93,12 @@ public class MainActivity extends Activity {
     private String backgroundCacheJson = "{}";
     private final Set<Integer> privateTabs =
             Collections.synchronizedSet(new HashSet<Integer>());
+    private SharedPreferences settingsPrefs;
+    private final Object loginPromptLock = new Object();
+    private String lastLoginKey = "";
+    private long lastLoginTime;
+    private boolean loginDialogVisible;
+    private static final int REQUEST_NOTIFICATIONS = 2002;
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
@@ -104,6 +112,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        settingsPrefs = getSharedPreferences(NotificationHelper.PREFS, MODE_PRIVATE);
 
         webContainer = findViewById(R.id.webContainer);
         progressBar = findViewById(R.id.progress);
@@ -180,6 +189,7 @@ public class MainActivity extends Activity {
         } else {
             syncActiveTab();
         }
+        NotificationHelper.maybeNotifyUpdate(this);
     }
 
     @Override
@@ -187,6 +197,7 @@ public class MainActivity extends Activity {
         super.onResume();
         for (WebView tabView : tabViews.values()) {
             tabView.onResume();
+            applyWebSettings(tabView.getSettings());
         }
         if (webView != null && isHomeUrl(currentUrl)) {
             webView.evaluateJavascript(
@@ -241,6 +252,7 @@ public class MainActivity extends Activity {
         WebSettings settings = view.getSettings();
         settings.setJavaScriptEnabled(true);
         view.addJavascriptInterface(new PortalBridge(tab.id), "KSPortalNative");
+        view.addJavascriptInterface(new WebContentBridge(tab.id), "KSPortalWeb");
         settings.setDomStorageEnabled(true);
         settings.setDatabaseEnabled(true);
         settings.setLoadWithOverviewMode(true);
@@ -248,16 +260,21 @@ public class MainActivity extends Activity {
         settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
-        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
-        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.0.8");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            settings.setSafeBrowsingEnabled(true);
-        }
+        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.0.9");
+        applyWebSettings(settings);
 
         view.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView current, WebResourceRequest request) {
-                return openExternallyIfNeeded(request.getUrl());
+                Uri uri = request.getUrl();
+                if (request.isForMainFrame()
+                        && "GET".equalsIgnoreCase(request.getMethod())
+                        && setting("security_secure_connections", true)
+                        && "http".equalsIgnoreCase(uri.getScheme())) {
+                    loadUrlWithSettings(current, uri.toString());
+                    return true;
+                }
+                return openExternallyIfNeeded(uri);
             }
 
             @Override
@@ -286,6 +303,9 @@ public class MainActivity extends Activity {
                 if (!privateTabs.contains(tab.id)) {
                     recordRecent(url, title);
                     recordHistory(url, title);
+                }
+                if (!privateTabs.contains(tab.id)) {
+                    injectWebAssist(current, url);
                 }
                 if (isActiveTab(tab)) {
                     progressBar.setVisibility(View.GONE);
