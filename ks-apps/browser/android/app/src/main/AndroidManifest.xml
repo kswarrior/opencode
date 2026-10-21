@@ -29,7 +29,7 @@
             android:value="KS Warrior" />
         <meta-data
             android:name="com.ks.android.portal.VERSION"
-            android:value="1.0.8" />
+            android:value="1.0.9" />
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="true" />
