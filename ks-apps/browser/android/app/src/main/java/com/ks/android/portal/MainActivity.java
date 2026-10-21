@@ -952,6 +952,7 @@ public class MainActivity extends Activity {
         if (view == null || TextUtils.isEmpty(url)) {
             return;
         }
+        url = AdBlocker.cleanNavigationUrl(this, url);
         applySiteSettings(view, url);
         String target = url;
         boolean upgraded = false;
@@ -1218,6 +1219,14 @@ public class MainActivity extends Activity {
                         adBlockSwitch.toggle();
                     }
                 });
+        TextView siteBlocked = panel.findViewById(R.id.siteMenuAdBlockCount);
+        int blockedCount = AdBlocker.siteBlocked(host);
+        if (blockedCount > 0) {
+            siteBlocked.setText(getString(R.string.adblocker_site_blocked, blockedCount));
+            siteBlocked.setVisibility(View.VISIBLE);
+        } else {
+            siteBlocked.setVisibility(View.GONE);
+        }
 
         popup.showAsDropDown(anchor, 0, 0, Gravity.START);
     }
