@@ -149,7 +149,7 @@ public class BackgroundActivity extends Activity {
             final String key = TARGET_KEYS[i];
             TextView chip = new TextView(this);
             chip.setText(TARGET_LABELS[i]);
-            chip.setTextSize(12);
+            chip.setTextSize(11);
             chip.setTypeface(Typeface.DEFAULT_BOLD);
             chip.setGravity(Gravity.CENTER);
             chip.setBackgroundResource(R.drawable.bg_choice_chip);

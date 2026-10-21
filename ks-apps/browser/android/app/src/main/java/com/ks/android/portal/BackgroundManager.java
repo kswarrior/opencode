@@ -59,8 +59,7 @@ final class BackgroundManager {
         View layer;
         Bitmap bitmap = null;
         if (BackgroundStore.isCustom(value)) {
-            bitmap = decode(BackgroundStore.customFile(activity,
-                    BackgroundStore.customFileName(value)), SCREEN_IMAGE_SIZE);
+            bitmap = decodeScreen(activity, BackgroundStore.customFileName(value));
         }
         if (bitmap != null) {
             ImageView image = new ImageView(activity);
@@ -92,6 +91,24 @@ final class BackgroundManager {
 
     static Bitmap decodeThumbnail(Context context, String fileName, int maxSize) {
         return decode(BackgroundStore.customFile(context, fileName), maxSize);
+    }
+
+    private static Bitmap decodeScreen(Context context, String fileName) {
+        File file = BackgroundStore.customFile(context, fileName);
+        if (file == null || !file.isFile()) {
+            return null;
+        }
+        String key = file.getAbsolutePath() + ":" + file.lastModified();
+        if (key.equals(screenCacheKey) && screenCacheBitmap != null
+                && !screenCacheBitmap.isRecycled()) {
+            return screenCacheBitmap;
+        }
+        Bitmap bitmap = decode(file, SCREEN_IMAGE_SIZE);
+        if (bitmap != null) {
+            screenCacheKey = key;
+            screenCacheBitmap = bitmap;
+        }
+        return bitmap;
     }
 
     static String customDataUrl(Context context, String fileName) {
