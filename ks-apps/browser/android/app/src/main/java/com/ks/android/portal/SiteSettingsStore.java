@@ -19,6 +19,7 @@ final class SiteSettingsStore {
     static final String KEY_POPUPS = "popups";
     static final String KEY_SOUND = "sound";
     static final String KEY_AUTOMATIC_DOWNLOADS = "automatic_downloads";
+    static final String KEY_ADBLOCK = "adblock";
 
     static final String GLOBAL_HOST = "*";
     static final String PERMISSION_ASK = "ask";
