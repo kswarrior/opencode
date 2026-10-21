@@ -1142,7 +1142,12 @@ public class MainActivity extends Activity {
         if (tab == null || tab.id != tabManager.getActiveTabId()) {
             return false;
         }
-        return isHomeUrl(tab.url);
+        WebView bridgeView = tabViews.get(tabId);
+        String url = bridgeView == null ? null : bridgeView.getUrl();
+        if (url == null) {
+            url = tab.url;
+        }
+        return isHomeUrl(url);
     }
 
     private boolean handleLogin(int tabId, String rawUrl, String name, String username,
