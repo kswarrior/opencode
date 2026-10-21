@@ -322,69 +322,73 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void setToolbarVisible(boolean visible) {
-        if (visible == toolbarTargetVisible) {
+    private void setToolbarVisible(boolean expanded) {
+        if (!toolbarAvailable) {
+            hideToolbar();
             return;
         }
-        toolbarTargetVisible = visible;
-        toolbar.animate().cancel();
-        content.animate().cancel();
-        if (visible) {
-            if (toolbar.getVisibility() != View.VISIBLE) {
-                toolbar.setVisibility(View.VISIBLE);
-                toolbar.setAlpha(0f);
-                toolbar.setTranslationY(-toolbarHeight);
-                content.setTranslationY(-toolbarHeight);
-            }
-            toolbar.animate()
-                    .alpha(1f)
-                    .translationY(0f)
-                    .setDuration(260)
-                    .setInterpolator(new DecelerateInterpolator())
-                    .start();
-            content.animate()
-                    .translationY(0f)
-                    .setDuration(260)
-                    .setInterpolator(new DecelerateInterpolator())
-                    .start();
-        } else {
-            if (toolbar.getVisibility() == View.GONE) {
-                return;
-            }
-            toolbar.animate()
-                    .alpha(0f)
-                    .translationY(-toolbarHeight)
-                    .setDuration(180)
-                    .setInterpolator(new AccelerateInterpolator())
-                    .withEndAction(new Runnable() {
-                        @Override
-                        public void run() {
-                            toolbar.setVisibility(View.GONE);
-                            toolbar.setAlpha(1f);
-                            toolbar.setTranslationY(0f);
-                            content.setTranslationY(0f);
-                        }
-                    })
-                    .start();
-            content.animate()
-                    .translationY(-toolbarHeight)
-                    .setDuration(180)
-                    .setInterpolator(new AccelerateInterpolator())
-                    .start();
+        if (expanded == toolbarTargetVisible
+                && toolbarContainer.getVisibility() == View.VISIBLE) {
+            return;
         }
+        toolbarTargetVisible = expanded;
+        toolbarContainer.animate().cancel();
+        if (toolbarContainer.getVisibility() != View.VISIBLE) {
+            toolbarContainer.setVisibility(View.VISIBLE);
+            toolbarContainer.setTranslationY(-toolbarHeight);
+        }
+        toolbarContainer.animate()
+                .translationY(expanded ? 0f : -toolbarHeight)
+                .setDuration(expanded ? 260 : 200)
+                .setInterpolator(expanded
+                        ? new DecelerateInterpolator() : new AccelerateInterpolator())
+                .start();
+        progressBar.setTranslationY(expanded ? toolbarHeight : toolbarToggleHeight);
+    }
+
+    private void hideToolbar() {
+        toolbarTargetVisible = false;
+        toolbarContainer.animate().cancel();
+        progressBar.setTranslationY(0f);
+        if (toolbarContainer.getVisibility() != View.VISIBLE) {
+            return;
+        }
+        toolbarContainer.animate()
+                .translationY(-(toolbarHeight + toolbarToggleHeight))
+                .setDuration(180)
+                .setInterpolator(new AccelerateInterpolator())
+                .withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        toolbarContainer.setVisibility(View.GONE);
+                        toolbarContainer.setTranslationY(0f);
+                    }
+                })
+                .start();
+    }
+
+    private void collapseToolbar() {
+        if (!toolbarAvailable || toolbarCollapsed) {
+            return;
+        }
+        toolbarCollapsed = true;
+        hideKeyboard();
+        urlBar.clearFocus();
+        updateToolbarToggle();
+        setToolbarVisible(false);
     }
 
     private void toggleToolbar() {
         if (!toolbarAvailable) {
             return;
         }
-        toolbarCollapsed = !toolbarCollapsed;
         if (toolbarCollapsed) {
-            hideKeyboard();
-            urlBar.clearFocus();
+            toolbarCollapsed = false;
+            updateToolbarToggle();
+            setToolbarVisible(true);
+        } else {
+            collapseToolbar();
         }
-        updateToolbarToggle();
-        setToolbarVisible(!toolbarCollapsed);
     }
 
     private void updateToolbarToggle() {

@@ -124,9 +124,10 @@ public final class R {
     public static final int settingsSearchEngineValue=0x7f03003e;
     public static final int settingsTitle=0x7f03003f;
     public static final int toolbar=0x7f030040;
-    public static final int toolbarToggle=0x7f030041;
-    public static final int urlBar=0x7f030042;
-    public static final int webview=0x7f030043;
+    public static final int toolbarContainer=0x7f030041;
+    public static final int toolbarToggle=0x7f030042;
+    public static final int urlBar=0x7f030043;
+    public static final int webview=0x7f030044;
   }
   public static final class layout {
     public static final int activity_about=0x7f040000;
