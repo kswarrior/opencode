@@ -1,7 +1,7 @@
 # KS Portal Ad Blocker — Brave-class Upgrade Plan
 
 Status: **Implementation complete; device verification pending**
-Target release: **1.2.0** (`versionCode` 20)
+Target release: **1.2.1** (`versionCode` 21)
 Scope owner: KS Portal browser (`com.ks.android.portal`)
 Last updated: 2026-10-21
 
@@ -226,7 +226,7 @@ Design rules:
 - [x] Site info dialog shows blocked count.
 - [x] Reset/delete flows cover new caches.
 - [x] Strings and accessibility labels for all new controls.
-- [x] Version bump to 1.2.0 / 20.
+- [x] Version bump to 1.2.1 / 21.
 
 ### Phase 8 — Tests, build, device verification
 
@@ -331,6 +331,6 @@ Design rules:
 - [x] Engine harness green
 - [x] APK builds and verifies
 - [ ] Device smoke test green (no local device/emulator available)
-- [x] Version 1.2.0 (20)
-- [ ] `release/ks-portal_1.2.0.apk` refreshed with the final build
+- [x] Version 1.2.1 (21)
+- [x] `release/ks-portal_1.2.1.apk` produced from the final build
 - [x] This document updated (Completed / Pending)
