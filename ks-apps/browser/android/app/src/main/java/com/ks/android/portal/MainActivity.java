@@ -54,15 +54,18 @@ public class MainActivity extends Activity {
     private static final int RECENTS_LIMIT = 30;
     private static final int REQUEST_WRITE_STORAGE = 2001;
     private static final Object RECENTS_LOCK = new Object();
+    private static final String TOGGLE_PREFS = "ks_toolbar_toggle";
+    private static final String TOGGLE_EDGE = "edge";
+    private static final String TOGGLE_CENTER_X = "center_x";
+    private static final String TOGGLE_CENTER_Y = "center_y";
 
     private WebView webView;
     private ProgressBar progressBar;
     private View toolbarContainer;
-    private ImageButton toolbarToggle;
+    private FloatingToolbarToggle toolbarToggle;
     private EditText urlBar;
     private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
-    private int toolbarToggleHeight;
     private boolean toolbarTargetVisible;
     private boolean toolbarAvailable;
     private boolean toolbarCollapsed;
@@ -87,7 +90,6 @@ public class MainActivity extends Activity {
         progressBar = findViewById(R.id.progress);
         toolbarContainer = findViewById(R.id.toolbarContainer);
         toolbarHeight = Math.round(56 * getResources().getDisplayMetrics().density);
-        toolbarToggleHeight = Math.round(26 * getResources().getDisplayMetrics().density);
         urlBar = findViewById(R.id.urlBar);
         ImageButton homeButton = findViewById(R.id.homeButton);
         ImageButton menuButton = findViewById(R.id.menuButton);
@@ -190,10 +192,26 @@ public class MainActivity extends Activity {
                 showMenu(view);
             }
         });
-        toolbarToggle.setOnClickListener(new View.OnClickListener() {
+        toolbarToggle.setListener(new FloatingToolbarToggle.Listener() {
             @Override
-            public void onClick(View view) {
+            public void onToggle() {
                 toggleToolbar();
+            }
+
+            @Override
+            public void onPositionChanged() {
+                saveTogglePosition();
+            }
+        });
+        restoreTogglePosition();
+        findViewById(R.id.root).addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int left, int top, int right, int bottom,
+                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                if (right - left != oldRight - oldLeft
+                        || bottom - top != oldBottom - oldTop) {
+                    toolbarToggle.reclamp();
+                }
             }
         });
         urlBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -360,7 +378,7 @@ public class MainActivity extends Activity {
                 .setInterpolator(expanded
                         ? new DecelerateInterpolator() : new AccelerateInterpolator())
                 .start();
-        progressBar.setTranslationY(expanded ? toolbarHeight : toolbarToggleHeight);
+        progressBar.setTranslationY(expanded ? toolbarHeight : 0f);
     }
 
     private void hideToolbar() {
@@ -371,7 +389,7 @@ public class MainActivity extends Activity {
             return;
         }
         toolbarContainer.animate()
-                .translationY(-(toolbarHeight + toolbarToggleHeight))
+                .translationY(-toolbarHeight)
                 .setDuration(180)
                 .setInterpolator(new AccelerateInterpolator())
                 .withEndAction(new Runnable() {
@@ -410,13 +428,12 @@ public class MainActivity extends Activity {
 
     private void updateToolbarToggle() {
         if (!toolbarAvailable) {
-            toolbarToggle.setVisibility(View.GONE);
+            toolbarToggle.setVisibility(View.INVISIBLE);
             return;
         }
         boolean wasVisible = toolbarToggle.getVisibility() == View.VISIBLE;
         toolbarToggle.setVisibility(View.VISIBLE);
-        toolbarToggle.setImageResource(toolbarCollapsed
-                ? R.drawable.ic_chevron_down : R.drawable.ic_chevron_up);
+        toolbarToggle.setCollapsed(toolbarCollapsed);
         toolbarToggle.setContentDescription(getString(toolbarCollapsed
                 ? R.string.expand_toolbar : R.string.collapse_toolbar));
         if (wasVisible) {
@@ -425,6 +442,22 @@ public class MainActivity extends Activity {
             toolbarToggle.setAlpha(0f);
             toolbarToggle.animate().alpha(1f).setDuration(200).start();
         }
+    }
+
+    private void restoreTogglePosition() {
+        SharedPreferences prefs = getSharedPreferences(TOGGLE_PREFS, MODE_PRIVATE);
+        int edge = prefs.getInt(TOGGLE_EDGE, FloatingToolbarToggle.EDGE_RIGHT);
+        float centerX = prefs.getFloat(TOGGLE_CENTER_X, -1f);
+        float centerY = prefs.getFloat(TOGGLE_CENTER_Y, -1f);
+        toolbarToggle.restorePosition(edge, centerX, centerY);
+    }
+
+    private void saveTogglePosition() {
+        getSharedPreferences(TOGGLE_PREFS, MODE_PRIVATE).edit()
+                .putInt(TOGGLE_EDGE, toolbarToggle.getDockEdge())
+                .putFloat(TOGGLE_CENTER_X, toolbarToggle.getCenterX())
+                .putFloat(TOGGLE_CENTER_Y, toolbarToggle.getCenterY())
+                .apply();
     }
 
     private boolean isHomeUrl(String url) {

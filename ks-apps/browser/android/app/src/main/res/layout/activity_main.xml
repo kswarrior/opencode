@@ -91,18 +91,12 @@
                 android:src="@drawable/ic_more_vert"
                 android:tint="@color/ks_text" />
         </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/toolbarToggle"
-            android:layout_width="64dp"
-            android:layout_height="26dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="-1dp"
-            android:background="@drawable/bg_toolbar_toggle"
-            android:contentDescription="@string/collapse_toolbar"
-            android:padding="4dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_chevron_up"
-            android:tint="@color/ks_text" />
     </LinearLayout>
+
+    <com.ks.android.portal.FloatingToolbarToggle
+        android:id="@+id/toolbarToggle"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:contentDescription="@string/collapse_toolbar"
+        android:visibility="invisible" />
 </FrameLayout>
