@@ -1077,6 +1077,7 @@ final class AdBlockEngine {
             boolean genericHide = false;
             boolean document = false;
             boolean unsupported = false;
+            boolean explicitTypes = false;
             String redirect = null;
 
             if (options.length() > 0) {
@@ -1104,7 +1105,7 @@ final class AdBlockEngine {
                             includes = includeDomains(value);
                             excludes = excludeDomains(value);
                         } else {
-                            unsupported = true;
+                            includes = includeDomains(value);
                         }
                     } else if ("third-party".equals(name) || "3p".equals(name)) {
                         party = negated ? PARTY_FIRST : PARTY_THIRD;
@@ -1123,16 +1124,20 @@ final class AdBlockEngine {
                     } else if ("document".equals(name) || "doc".equals(name)) {
                         if (!negated) {
                             document = true;
+                            explicitTypes = true;
                             positiveType = true;
                             positiveMask |= TYPE_DOCUMENT;
                         } else {
+                            explicitTypes = true;
                             negativeType = true;
                             negativeMask |= TYPE_DOCUMENT;
                         }
                     } else if ("all".equals(name) && !negated) {
                         types = TYPE_ALL;
+                        explicitTypes = true;
                     } else if ("network".equals(name) && !negated) {
                         types = TYPE_ALL;
+                        explicitTypes = true;
                     } else if ("popup".equals(name) || "genericblock".equals(name)
                             || "csp".equals(name) || "removeparam".equals(name)
                             || "rewrite".equals(name) || "urltransform".equals(name)
@@ -1152,6 +1157,7 @@ final class AdBlockEngine {
                     } else if ("mp4".equals(name)) {
                         redirect = "noop.mp4";
                     } else if ("xhr".equals(name) || "xmlhttprequest".equals(name)) {
+                        explicitTypes = true;
                         if (negated) {
                             negativeType = true;
                             negativeMask |= TYPE_XMLHTTPREQUEST;
@@ -1162,6 +1168,7 @@ final class AdBlockEngine {
                     } else {
                         int type = typeFor(name);
                         if (type != 0) {
+                            explicitTypes = true;
                             if (negated) {
                                 negativeType = true;
                                 negativeMask |= type;
