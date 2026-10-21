@@ -585,7 +585,10 @@ public class TabsActivity extends Activity {
             }
             holder.name.setText(displayName(tab));
             holder.url.setText(displayUrl(tab));
-            convertView.setSelected(tab.id == tabManager.getActiveTabId());
+            boolean active = tab.id == tabManager.getActiveTabId();
+            convertView.setBackgroundResource(active
+                    ? R.drawable.bg_choice_card_selected
+                    : R.drawable.bg_download_item);
             bindFavicon(holder, tab);
             holder.more.setOnClickListener(new View.OnClickListener() {
                 @Override
