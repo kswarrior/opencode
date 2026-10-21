@@ -1856,6 +1856,12 @@ final class AdBlockEngine {
         if (!hasProceduralOperator(selector) && selector.indexOf(":xpath(") < 0) {
             return false;
         }
+        String lower = selector.toLowerCase(Locale.US);
+        if (lower.indexOf("url(") >= 0 || lower.indexOf("@import") >= 0
+                || lower.indexOf("javascript:") >= 0
+                || lower.indexOf("expression(") >= 0) {
+            return false;
+        }
         int paren = 0;
         int bracket = 0;
         char quote = 0;
