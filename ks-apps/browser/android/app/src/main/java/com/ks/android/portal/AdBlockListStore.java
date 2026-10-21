@@ -509,6 +509,10 @@ final class AdBlockListStore {
             }
             byte[] data = combined.toByteArray();
             String text = new String(data, "UTF-8");
+            if (text.length() > 0 && text.charAt(0) == (char) 0xFEFF) {
+                text = text.substring(1);
+                data = text.getBytes("UTF-8");
+            }
             if (!looksLikeFilterList(text)) {
                 throw new IOException("Not a filter list");
             }
