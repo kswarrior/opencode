@@ -10,7 +10,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class HistoryRepository {
     private static final String PREFS = "ks_history";
@@ -96,6 +98,55 @@ public class HistoryRepository {
             }
         }
         return result;
+    }
+
+    public void remove(HistoryEntry entry) {
+        if (entry == null) {
+            return;
+        }
+        List<HistoryEntry> entries = new ArrayList<HistoryEntry>();
+        entries.add(entry);
+        removeAll(entries);
+    }
+
+    public void removeAll(List<HistoryEntry> entries) {
+        if (entries == null || entries.isEmpty()) {
+            return;
+        }
+        Set<String> keys = new HashSet<String>();
+        for (HistoryEntry entry : entries) {
+            if (entry != null) {
+                keys.add(entryKey(entry.url, entry.visitedAt));
+            }
+        }
+        if (keys.isEmpty()) {
+            return;
+        }
+        synchronized (LOCK) {
+            JSONArray current = read();
+            JSONArray next = new JSONArray();
+            for (int i = 0; i < current.length(); i++) {
+                JSONObject item = current.optJSONObject(i);
+                if (item == null) {
+                    continue;
+                }
+                if (keys.contains(entryKey(item.optString("url"), item.optLong("time", 0L)))) {
+                    continue;
+                }
+                next.put(item);
+            }
+            preferences.edit().putString(KEY, next.toString()).apply();
+        }
+    }
+
+    public void clear() {
+        synchronized (LOCK) {
+            preferences.edit().remove(KEY).apply();
+        }
+    }
+
+    private static String entryKey(String url, long time) {
+        return String.valueOf(time) + "\n" + (url == null ? "" : url);
     }
 
     private JSONArray read() {

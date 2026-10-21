@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class SettingsActivity extends Activity {
     private TextView searchEngineValue;
+    private TextView aiModeValue;
     private TextView adBlockerValue;
     private TextView aboutValue;
 
@@ -26,12 +27,19 @@ public class SettingsActivity extends Activity {
         });
 
         searchEngineValue = findViewById(R.id.settingsSearchEngineValue);
+        aiModeValue = findViewById(R.id.settingsAiModeValue);
         adBlockerValue = findViewById(R.id.settingsAdBlockerValue);
         aboutValue = findViewById(R.id.settingsAboutValue);
         findViewById(R.id.settingsSearchEngine).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SettingsActivity.this, SearchEngineActivity.class));
+            }
+        });
+        findViewById(R.id.settingsAiMode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, AiModeActivity.class));
             }
         });
         findViewById(R.id.settingsAdBlocker).setOnClickListener(new View.OnClickListener() {
@@ -83,6 +91,7 @@ public class SettingsActivity extends Activity {
     private void refreshValues() {
         String engine = SearchEngine.getKey(this);
         searchEngineValue.setText(getString(SearchEngine.labelRes(engine)));
+        aiModeValue.setText(getString(AiModeEngine.labelRes(AiModeEngine.getKey(this))));
         adBlockerValue.setText(AdBlocker.isEnabled(this)
                 ? R.string.adblocker_on : R.string.adblocker_off);
         aboutValue.setText(getString(R.string.settings_version, AppInfo.versionName(this)));

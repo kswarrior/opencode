@@ -91,6 +91,16 @@
     <string name="search_engine_ecosia">Ecosia</string>
     <string name="search_engine_startpage">Startpage</string>
     <string name="search_engine_qwant">Qwant</string>
+    <string name="ai_mode">AI Mode</string>
+    <string name="ai_mode_google">Google AI Mode</string>
+    <string name="ai_mode_chatgpt">ChatGPT</string>
+    <string name="ai_mode_gemini">Gemini</string>
+    <string name="ai_mode_claude">Claude</string>
+    <string name="ai_mode_perplexity">Perplexity</string>
+    <string name="ai_mode_copilot">Microsoft Copilot</string>
+    <string name="ai_mode_grok">Grok</string>
+    <string name="ai_mode_deepseek">DeepSeek</string>
+    <string name="ai_mode_duckduckgo">DuckDuckGo AI</string>
     <string name="adblocker">Ad blocker</string>
     <string name="adblocking">Ad blocking</string>
     <string name="adblocker_on">On</string>
