@@ -38,6 +38,24 @@ public class SettingsActivity extends Activity {
                 startActivity(new Intent(SettingsActivity.this, SiteSettingsActivity.class));
             }
         });
+        findViewById(R.id.settingsNotifications).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, NotificationsActivity.class));
+            }
+        });
+        findViewById(R.id.settingsPrivacySecurity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, PrivacySecurityActivity.class));
+            }
+        });
+        findViewById(R.id.settingsAutofillPasswords).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, AutofillPasswordsActivity.class));
+            }
+        });
         findViewById(R.id.settingsAbout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
