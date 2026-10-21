@@ -279,7 +279,7 @@ public class MainActivity extends Activity {
         settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
-        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.1.2");
+        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.1.3");
         if (defaultUserAgent == null) {
             defaultUserAgent = settings.getUserAgentString();
         }
