@@ -213,6 +213,10 @@ public class TabsActivity extends Activity {
         finish();
     }
 
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
+    }
+
     private void showTabMenu(View anchor, BrowserTab tab) {
         PopupMenu popup = new PopupMenu(this, anchor);
         if (!tab.isHome()) {
@@ -326,7 +330,7 @@ public class TabsActivity extends Activity {
         PopupMenu popup = new PopupMenu(this, anchor);
         popup.getMenu().add(0, GROUP_MENU_NEW_TAB, 0, R.string.tabs_group_new_tab)
                 .setIcon(R.drawable.ic_add);
-        popup.getMenu().add(0, GROUP_MENU_RENAME, 1, R.string.tabs_group_rename)
+        popup.getMenu().add(0, GROUP_MENU_EDIT, 1, R.string.tabs_group_edit)
                 .setIcon(R.drawable.ic_edit);
         popup.getMenu().add(0, GROUP_MENU_CLOSE, 2, R.string.tabs_group_close)
                 .setIcon(R.drawable.ic_close);
@@ -340,8 +344,8 @@ public class TabsActivity extends Activity {
                         tabManager.addTab(MainActivity.HOME_URL, group.id);
                         finish();
                         return true;
-                    case GROUP_MENU_RENAME:
-                        promptRenameGroup(group);
+                    case GROUP_MENU_EDIT:
+                        promptEditGroup(group);
                         return true;
                     case GROUP_MENU_CLOSE:
                         confirmCloseGroup(group);
@@ -536,6 +540,7 @@ public class TabsActivity extends Activity {
                             .inflate(R.layout.item_tab_group, parent, false);
                     holder = new GroupHolder();
                     holder.chevron = convertView.findViewById(R.id.tabGroupChevron);
+                    holder.icon = convertView.findViewById(R.id.tabGroupIcon);
                     holder.name = convertView.findViewById(R.id.tabGroupName);
                     holder.count = convertView.findViewById(R.id.tabGroupCount);
                     holder.more = convertView.findViewById(R.id.tabGroupMore);
@@ -546,6 +551,12 @@ public class TabsActivity extends Activity {
                 holder.name.setText(group.name);
                 int count = tabManager.countTabsInGroup(group.id);
                 holder.count.setText(getString(R.string.tabs_group_count, count));
+                holder.icon.setImageResource(GroupStyle.iconRes(group.icon));
+                holder.icon.setColorFilter(group.color);
+                GradientDrawable iconBackground = new GradientDrawable();
+                iconBackground.setCornerRadius(dp(10));
+                iconBackground.setColor(GroupStyle.softColor(group.color));
+                holder.icon.setBackground(iconBackground);
                 holder.chevron.setImageResource(group.collapsed
                         ? R.drawable.ic_chevron_right : R.drawable.ic_chevron_down);
                 holder.more.setOnClickListener(new View.OnClickListener() {
@@ -613,10 +624,6 @@ public class TabsActivity extends Activity {
         }
     }
 
-    private interface GroupNameListener {
-        void onName(String name);
-    }
-
     private static final class Row {
         final int type;
         final TabGroup group;
@@ -649,6 +656,7 @@ public class TabsActivity extends Activity {
 
     private static final class GroupHolder {
         ImageView chevron;
+        ImageView icon;
         TextView name;
         TextView count;
         ImageButton more;
