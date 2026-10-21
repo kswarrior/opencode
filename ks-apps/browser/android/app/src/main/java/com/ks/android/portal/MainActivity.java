@@ -856,6 +856,20 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public boolean getPrivateMode() {
+            return isBridgeAllowed() && privateMode;
+        }
+
+        @JavascriptInterface
+        public boolean setPrivateMode(boolean enabled) {
+            if (!isBridgeAllowed()) {
+                return false;
+            }
+            privateMode = enabled;
+            return true;
+        }
+
+        @JavascriptInterface
         public String getRecents() {
             if (!isBridgeAllowed()) {
                 return "[]";
