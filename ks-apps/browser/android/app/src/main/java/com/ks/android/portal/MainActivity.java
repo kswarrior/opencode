@@ -27,7 +27,6 @@ import android.webkit.DownloadListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -56,8 +55,6 @@ public class MainActivity extends Activity {
     private View content;
     private ImageButton toolbarToggle;
     private EditText urlBar;
-    private AdBlocker adBlocker;
-    private boolean adBlockEnabledAtLoad;
     private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
     private boolean toolbarTargetVisible;
@@ -86,8 +83,6 @@ public class MainActivity extends Activity {
         ImageButton homeButton = findViewById(R.id.homeButton);
         ImageButton menuButton = findViewById(R.id.menuButton);
         toolbarToggle = findViewById(R.id.toolbarToggle);
-        adBlocker = AdBlocker.get(this);
-        adBlockEnabledAtLoad = adBlocker.isEnabled();
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -119,32 +114,9 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public WebResourceResponse shouldInterceptRequest(WebView view,
-                                                              WebResourceRequest request) {
-                if (request != null
-                        && adBlocker.shouldBlock(request.getUrl(), request.isForMainFrame())) {
-                    return AdBlocker.blockedResponse();
-                }
-                return super.shouldInterceptRequest(view, request);
-            }
-
-            @Override
-            public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-                if (adBlocker.shouldBlock(Uri.parse(url), false)) {
-                    return AdBlocker.blockedResponse();
-                }
-                return super.shouldInterceptRequest(view, url);
-            }
-
-            @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 progressBar.setVisibility(View.VISIBLE);
                 updateChrome(url);
-            }
-
-            @Override
-            public void onPageCommitVisible(WebView view, String url) {
-                injectAdBlock(view);
             }
 
             @Override
@@ -152,7 +124,6 @@ public class MainActivity extends Activity {
                 progressBar.setVisibility(View.GONE);
                 updateChrome(url);
                 recordRecent(url, view.getTitle());
-                injectAdBlock(view);
             }
 
             @Override
@@ -227,17 +198,6 @@ public class MainActivity extends Activity {
             }
         } else {
             webView.loadUrl(HOME_URL);
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (adBlocker != null && adBlocker.isEnabled() != adBlockEnabledAtLoad) {
-            adBlockEnabledAtLoad = adBlocker.isEnabled();
-            if (webView != null && !isHomeUrl(currentUrl)) {
-                webView.reload();
-            }
         }
     }
 
@@ -452,11 +412,6 @@ public class MainActivity extends Activity {
         urlBar.clearFocus();
         PopupMenu popup = new PopupMenu(this, anchor);
         popup.getMenuInflater().inflate(R.menu.browser_menu, popup.getMenu());
-        MenuItem adBlockItem = popup.getMenu().findItem(R.id.action_adblock);
-        if (adBlockItem != null) {
-            adBlockItem.setTitle(adBlocker.isEnabled()
-                    ? R.string.adblock_action_on : R.string.adblock_action_off);
-        }
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -467,10 +422,6 @@ public class MainActivity extends Activity {
                 }
                 if (id == R.id.action_downloads) {
                     openDownloadsPage();
-                    return true;
-                }
-                if (id == R.id.action_adblock) {
-                    toggleAdBlocker();
                     return true;
                 }
                 if (id == R.id.action_reload) {
@@ -506,31 +457,6 @@ public class MainActivity extends Activity {
 
     private void openSettingsPage() {
         startActivity(new Intent(this, SettingsActivity.class));
-    }
-
-    private void toggleAdBlocker() {
-        boolean enabled = !adBlocker.isEnabled();
-        adBlocker.setEnabled(enabled);
-        adBlockEnabledAtLoad = enabled;
-        Toast.makeText(this, enabled ? R.string.adblock_enabled_toast
-                : R.string.adblock_disabled_toast, Toast.LENGTH_SHORT).show();
-        if (!isHomeUrl(currentUrl)) {
-            webView.reload();
-        }
-    }
-
-    private void injectAdBlock(WebView view) {
-        if (view == null || adBlocker == null || !adBlocker.isEnabled()) {
-            return;
-        }
-        String url = view.getUrl();
-        if (url == null || (!url.startsWith("http://") && !url.startsWith("https://"))) {
-            return;
-        }
-        String script = adBlocker.cosmeticScript();
-        if (!TextUtils.isEmpty(script)) {
-            view.evaluateJavascript(script, null);
-        }
     }
 
     private void shareUrl() {
