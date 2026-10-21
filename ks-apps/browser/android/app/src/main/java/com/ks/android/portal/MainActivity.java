@@ -205,8 +205,16 @@ public class MainActivity extends Activity {
         if (webView != null && isHomeUrl(currentUrl)) {
             webView.evaluateJavascript(
                     "window.KSPortalRefreshBackground&&window.KSPortalRefreshBackground();"
-                            + "window.KSPortalRefreshTabs&&window.KSPortalRefreshTabs()",
+                            + "window.KSPortalRefreshTabs&&window.KSPortalRefreshTabs();"
+                            + "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks()",
                     null);
+        }
+        for (WebView tabView : tabViews.values()) {
+            if (tabView != webView && isHomeUrl(tabView.getUrl())) {
+                tabView.evaluateJavascript(
+                        "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks()",
+                        null);
+            }
         }
     }
 
@@ -1491,6 +1499,19 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public boolean removeRecent(String url) {
             return allowed() && MainActivity.this.removeRecent(url);
+        }
+
+        @JavascriptInterface
+        public String getBookmarks() {
+            if (!allowed()) {
+                return "[]";
+            }
+            return BookmarkRepository.getAll(MainActivity.this);
+        }
+
+        @JavascriptInterface
+        public boolean setBookmarks(String json) {
+            return allowed() && BookmarkRepository.setAll(MainActivity.this, json);
         }
     }
 

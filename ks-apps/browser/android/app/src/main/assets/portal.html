@@ -913,13 +913,13 @@ body.launching .recents {
     'radial-gradient(70% 55% at 20% 15%, rgba(34,197,94,.35), transparent 62%), radial-gradient(65% 55% at 92% 88%, rgba(132,204,22,.22), transparent 66%), linear-gradient(180deg, #17321c 0%, #0c1f10 52%, #04100a 100%)',
     'radial-gradient(70% 55% at 82% 10%, rgba(168,85,247,.35), transparent 62%), radial-gradient(65% 55% at 10% 90%, rgba(236,72,153,.25), transparent 66%), linear-gradient(180deg, #2b1633 0%, #180b1f 52%, #0a040f 100%)'
   ];
+  var nativePortal = window.KSPortalNative;
   var bookmarks = loadBookmarks();
   try {
     if (window.localStorage.getItem(BOOKMARK_KEY) === null) saveBookmarks();
   } catch (error) {}
   var bookmarksNav = document.getElementById('bookmarks');
   var recentsNav = document.getElementById('recents');
-  var nativePortal = window.KSPortalNative;
   var recents = [];
   var recentMenu = document.createElement('div');
   recentMenu.className = 'recent-menu';
@@ -1047,26 +1047,61 @@ body.launching .recents {
     }, 320);
   }
 
+  function sanitizeBookmarks(parsed) {
+    var result = [];
+    if (!Array.isArray(parsed)) return result;
+    for (var i = 0; i < parsed.length && result.length < 24; i++) {
+      var item = parsed[i];
+      if (!item || typeof item.name !== 'string' || typeof item.url !== 'string') continue;
+      var url = normalizeBookmarkUrl(item.url);
+      if (!url) continue;
+      var duplicate = false;
+      for (var j = 0; j < result.length; j++) {
+        if (result[j].url === url) {
+          duplicate = true;
+          break;
+        }
+      }
+      if (duplicate) continue;
+      var name = item.name.trim().slice(0, 40);
+      if (!name) name = new URL(url).hostname.replace(/^www\./, '');
+      result.push({ name: name, url: url });
+    }
+    return result;
+  }
+
   function loadBookmarks() {
+    var local = [];
     try {
       var raw = window.localStorage.getItem(BOOKMARK_KEY);
       if (!raw) raw = window.localStorage.getItem(LEGACY_BOOKMARK_KEY);
-      var parsed = raw ? JSON.parse(raw) : [];
-      if (!Array.isArray(parsed)) return [];
-      var result = [];
-      for (var i = 0; i < parsed.length && result.length < 24; i++) {
-        var item = parsed[i];
-        if (!item || typeof item.name !== 'string' || typeof item.url !== 'string') continue;
-        var url = normalizeBookmarkUrl(item.url);
-        if (!url) continue;
-        var name = item.name.trim().slice(0, 40);
-        if (!name) name = new URL(url).hostname.replace(/^www\./, '');
-        result.push({ name: name, url: url });
-      }
-      return result;
+      local = sanitizeBookmarks(raw ? JSON.parse(raw) : []);
     } catch (error) {
-      return [];
+      local = [];
     }
+    var result = local.slice(0);
+    if (nativePortal && typeof nativePortal.getBookmarks === 'function') {
+      try {
+        var nativeRaw = nativePortal.getBookmarks();
+        var nativeItems = sanitizeBookmarks(nativeRaw ? JSON.parse(nativeRaw) : []);
+        for (var i = 0; i < nativeItems.length && result.length < 24; i++) {
+          var duplicate = false;
+          for (var j = 0; j < result.length; j++) {
+            if (result[j].url === nativeItems[i].url) {
+              duplicate = true;
+              break;
+            }
+          }
+          if (!duplicate) result.push(nativeItems[i]);
+        }
+      } catch (error) {}
+    }
+    if (nativePortal && typeof nativePortal.setBookmarks === 'function') {
+      try {
+        nativePortal.setBookmarks(JSON.stringify(result));
+      } catch (error) {}
+    }
+    return result;
   }
 
   function normalizeBookmarkUrl(raw) {
@@ -1103,6 +1138,11 @@ body.launching .recents {
     try {
       window.localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bookmarks));
     } catch (error) {}
+    if (nativePortal && typeof nativePortal.setBookmarks === 'function') {
+      try {
+        nativePortal.setBookmarks(JSON.stringify(bookmarks));
+      } catch (error) {}
+    }
   }
 
   function hostFromUrl(url) {
@@ -1465,6 +1505,12 @@ body.launching .recents {
     }
     bookmarksNav.appendChild(makeAddTile());
   }
+
+  function refreshBookmarks() {
+    bookmarks = loadBookmarks();
+    renderBookmarks();
+  }
+  window.KSPortalRefreshBookmarks = refreshBookmarks;
 
   function openAddModal() {
     removeIndex = -1;

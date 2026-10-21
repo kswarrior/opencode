@@ -579,8 +579,7 @@ public class TabsActivity extends Activity {
                 }
                 holder.name.setText(group.name);
                 int count = tabManager.countTabsInGroup(group.id);
-                holder.count.setText(getResources().getQuantityString(
-                        R.plurals.tabs_count, count, count));
+                holder.count.setText(getString(R.string.tabs_group_count, count));
                 holder.chevron.setImageResource(group.collapsed
                         ? R.drawable.ic_chevron_right : R.drawable.ic_chevron_down);
                 holder.more.setOnClickListener(new View.OnClickListener() {
