@@ -1225,7 +1225,9 @@ public class MainActivity extends Activity {
                 JSONObject object = new JSONObject();
                 object.put("u", saved.username);
                 object.put("p", saved.password);
-                savedJson = object.toString();
+                savedJson = object.toString()
+                        .replace("\u2028", "\\u2028")
+                        .replace("\u2029", "\\u2029");
             } catch (JSONException ignored) {
             }
         }
