@@ -296,6 +296,12 @@ public class FloatingToolbarToggle extends View {
     }
 
     @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        updateGestureExclusion();
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         computeVisualRect();
@@ -366,6 +372,10 @@ public class FloatingToolbarToggle extends View {
                 lastRawX = downRawX;
                 lastRawY = downRawY;
                 moved = false;
+                View parent = getParentView();
+                if (parent != null) {
+                    parent.requestDisallowInterceptTouchEvent(true);
+                }
                 handler.postDelayed(holdRunnable, ViewConfiguration.getLongPressTimeout());
                 return true;
             case MotionEvent.ACTION_MOVE:
