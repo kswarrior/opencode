@@ -162,16 +162,14 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (webView != null) {
-            for (WebView tabView : tabViews.values()) {
-                tabView.onResume();
-            }
-            if (isHomeUrl(currentUrl)) {
-                webView.evaluateJavascript(
-                        "window.KSPortalRefreshBackground&&window.KSPortalRefreshBackground();"
-                                + "window.KSPortalRefreshTabs&&window.KSPortalRefreshTabs()",
-                        null);
-            }
+        for (WebView tabView : tabViews.values()) {
+            tabView.onResume();
+        }
+        if (webView != null && isHomeUrl(currentUrl)) {
+            webView.evaluateJavascript(
+                    "window.KSPortalRefreshBackground&&window.KSPortalRefreshBackground();"
+                            + "window.KSPortalRefreshTabs&&window.KSPortalRefreshTabs()",
+                    null);
         }
     }
 
@@ -208,11 +206,8 @@ public class MainActivity extends Activity {
             view.loadUrl(url);
         } else {
             tabManager.updateTab(tab.id, url, null);
+            syncActiveTab();
         }
-    }
-
-    private TabManager getTabManager() {
-        return tabManager;
     }
 
     @SuppressLint("SetJavaScriptEnabled")
