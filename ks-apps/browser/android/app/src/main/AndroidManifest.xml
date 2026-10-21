@@ -37,7 +37,7 @@
         <activity
             android:name=".TabsActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
-            android:exported="false"
+            android:exported="true"
             android:launchMode="singleTop" />
 
         <activity
