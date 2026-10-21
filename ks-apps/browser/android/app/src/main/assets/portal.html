@@ -17,7 +17,7 @@
   --glass-line: rgba(255, 255, 255, .14);
   --ease: cubic-bezier(.2, .8, .2, 1);
   --tile-width: 84px;
-  --tile-height: 116px;
+  --tile-height: 100px;
 }
 * { box-sizing: border-box; }
 html, body { min-height: 100%; }
@@ -360,11 +360,10 @@ body.has-background .bg::after {
   scroll-snap-type: x proximity;
   animation: fadeUp .3s .08s ease both;
 }
-#topSites { --tile-height: 100px; }
 .sites::-webkit-scrollbar { display: none; }
-.bookmarks-label { animation-delay: .12s; }
+.bookmarks-label { animation-delay: .12s; margin-top: 16px; margin-bottom: 4px; }
 .bookmarks-sites { animation-delay: .16s; }
-.recents-label { animation-delay: .20s; }
+.recents-label { animation-delay: .20s; margin-top: 16px; }
 .recents {
   display: flex;
   flex-direction: column;
