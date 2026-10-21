@@ -155,6 +155,8 @@ public class SiteSettingsActivity extends Activity {
 
     private void buildSiteSettings() {
         addSiteHeader();
+        addSection(R.string.site_settings_permissions,
+                PERMISSION_TITLES, PERMISSION_VALUES, null);
         addToggleSection(R.string.site_settings_content,
                 new SiteToggle(R.string.site_third_party_cookies,
                         R.string.site_settings_cookies_summary,
