@@ -279,7 +279,13 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView current, String url) {
-                return openExternallyIfNeeded(Uri.parse(url));
+                Uri uri = Uri.parse(url);
+                if (setting("security_secure_connections", true)
+                        && "http".equalsIgnoreCase(uri.getScheme())) {
+                    loadUrlWithSettings(current, url);
+                    return true;
+                }
+                return openExternallyIfNeeded(uri);
             }
 
             @Override
