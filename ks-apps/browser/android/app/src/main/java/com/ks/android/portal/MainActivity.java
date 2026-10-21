@@ -903,8 +903,12 @@ public class MainActivity extends Activity {
         WebSettings settings = view.getSettings();
         settings.setJavaScriptEnabled(SiteSettingsStore.getBoolean(this, host,
                 SiteSettingsStore.KEY_JAVASCRIPT, true));
-        settings.setJavaScriptCanOpenWindowsAutomatically(SiteSettingsStore.getBoolean(this,
-                host, SiteSettingsStore.KEY_POPUPS, false));
+        boolean allowPopups = SiteSettingsStore.getBoolean(this,
+                host, SiteSettingsStore.KEY_POPUPS, false);
+        if (allowPopups && AdBlocker.pagePolicy(this, url).popupBlockSuggested) {
+            allowPopups = false;
+        }
+        settings.setJavaScriptCanOpenWindowsAutomatically(allowPopups);
         settings.setMediaPlaybackRequiresUserGesture(!SiteSettingsStore.getBoolean(this, host,
                 SiteSettingsStore.KEY_SOUND, false));
         CookieManager.getInstance().setAcceptThirdPartyCookies(view,

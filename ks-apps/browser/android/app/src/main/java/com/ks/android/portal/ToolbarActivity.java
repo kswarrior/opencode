@@ -130,6 +130,12 @@ public class ToolbarActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_CUSTOMIZE);
+    }
+
     private void loadFromStore() {
         selectedColor = ToolbarSettingsStore.getColor(this);
         selectedMode = ToolbarSettingsStore.getMode(this);

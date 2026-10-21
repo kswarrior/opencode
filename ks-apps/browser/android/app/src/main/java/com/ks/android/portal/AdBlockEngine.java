@@ -1379,13 +1379,13 @@ final class AdBlockEngine {
             String redirect = null;
 
             if (options.length() > 0) {
-                String[] values = options.split(",");
+                List<String> values = splitOptions(options);
                 boolean positiveType = false;
                 boolean negativeType = false;
                 int positiveMask = 0;
                 int negativeMask = 0;
-                for (int i = 0; i < values.length; i++) {
-                    String option = values[i].trim();
+                for (int i = 0; i < values.size(); i++) {
+                    String option = values.get(i).trim();
                     if (option.length() == 0) {
                         continue;
                     }
@@ -1748,13 +1748,67 @@ final class AdBlockEngine {
         return best;
     }
 
+
+    private static List<String> splitOptions(String value) {
+        List<String> result = new ArrayList<String>();
+        if (value == null) {
+            return result;
+        }
+        StringBuilder current = new StringBuilder();
+        char quote = 0;
+        boolean escape = false;
+        boolean regex = false;
+        for (int i = 0; i < value.length(); i++) {
+            char c = value.charAt(i);
+            if (escape) {
+                current.append(c);
+                escape = false;
+                continue;
+            }
+            if (c == '\\') {
+                current.append(c);
+                escape = true;
+                continue;
+            }
+            if (quote != 0) {
+                current.append(c);
+                if (c == quote) {
+                    quote = 0;
+                }
+                continue;
+            }
+            if (c == '"' || c == '\'') {
+                quote = c;
+                current.append(c);
+                continue;
+            }
+            if (c == '/') {
+                int previous = current.length() - 1;
+                char before = previous >= 0 ? current.charAt(previous) : 0;
+                if (regex || before == '=' || before == '~') {
+                    regex = !regex;
+                }
+                current.append(c);
+                continue;
+            }
+            if (c == ',' && !regex) {
+                result.add(current.toString());
+                current.setLength(0);
+                continue;
+            }
+            current.append(c);
+        }
+        result.add(current.toString());
+        return result;
+    }
+
     private static boolean looksLikeOptions(String value) {
         if (value.length() == 0 || value.indexOf(' ') >= 0) {
             return false;
         }
-        String[] parts = value.split(",");
-        for (int i = 0; i < parts.length; i++) {
-            String option = parts[i].trim();
+        List<String> parts = splitOptions(value);
+        for (int i = 0; i < parts.size(); i++) {
+            String option = parts.get(i).trim();
             if (option.length() == 0) {
                 return false;
             }
