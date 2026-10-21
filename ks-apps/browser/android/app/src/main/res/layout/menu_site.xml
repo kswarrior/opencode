@@ -269,7 +269,7 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@string/adblocker"
+            android:text="@string/adblocking"
             android:textColor="@color/ks_text"
             android:textSize="14sp" />
 

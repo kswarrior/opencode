@@ -92,6 +92,7 @@
     <string name="search_engine_startpage">Startpage</string>
     <string name="search_engine_qwant">Qwant</string>
     <string name="adblocker">Ad blocker</string>
+    <string name="adblocking">Ad blocking</string>
     <string name="adblocker_on">On</string>
     <string name="adblocker_off">Off</string>
     <string name="adblocker_summary">Block ads on websites</string>
