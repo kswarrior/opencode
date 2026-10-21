@@ -67,7 +67,7 @@
         <activity
             android:name=".SettingsActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".SearchEngineActivity"
