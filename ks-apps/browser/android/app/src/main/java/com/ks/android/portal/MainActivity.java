@@ -268,10 +268,14 @@ public class MainActivity extends Activity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView current, WebResourceRequest request) {
                 Uri uri = request.getUrl();
+                boolean web = "http".equalsIgnoreCase(uri.getScheme())
+                        || "https".equalsIgnoreCase(uri.getScheme());
                 if (request.isForMainFrame()
                         && "GET".equalsIgnoreCase(request.getMethod())
-                        && setting("security_secure_connections", true)
-                        && "http".equalsIgnoreCase(uri.getScheme())) {
+                        && web
+                        && (requestHeaders() != null
+                        || (setting("security_secure_connections", true)
+                        && "http".equalsIgnoreCase(uri.getScheme())))) {
                     loadUrlWithSettings(current, uri.toString());
                     return true;
                 }
