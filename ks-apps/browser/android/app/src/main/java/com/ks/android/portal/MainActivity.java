@@ -967,7 +967,7 @@ public class MainActivity extends Activity {
         if (view == null || TextUtils.isEmpty(url)) {
             return;
         }
-        url = AdBlocker.cleanNavigationUrl(this, url);
+        url = AdBlocker.cleanNavigationUrl(this, url, view.getUrl());
         applySiteSettings(view, url);
         String target = url;
         boolean upgraded = false;

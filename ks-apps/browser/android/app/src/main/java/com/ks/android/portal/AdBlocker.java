@@ -262,6 +262,10 @@ final class AdBlocker {
     }
 
     static String cleanNavigationUrl(Context context, String url) {
+        return cleanNavigationUrl(context, url, null);
+    }
+
+    static String cleanNavigationUrl(Context context, String url, String pageUrl) {
         if (url == null || url.length() == 0 || !isTrackingStripEnabled(context)) {
             return url;
         }
@@ -269,7 +273,8 @@ final class AdBlocker {
             return url;
         }
         initialize(context);
-        String cleaned = ENGINE.get().cleanUrl(url, url);
+        String cleaned = ENGINE.get().cleanUrl(url,
+                pageUrl == null || pageUrl.length() == 0 ? url : pageUrl);
         if (cleaned == null) {
             cleaned = stripTrackingParameters(url);
         }

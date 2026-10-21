@@ -1058,16 +1058,16 @@ final class AdBlockEngine {
     }
 
     private static String removeOption(String options, String remove) {
-        String[] values = options.split(",");
+        List<String> values = splitOptions(options);
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < values.length; i++) {
-            if (values[i].equalsIgnoreCase(remove)) {
+        for (int i = 0; i < values.size(); i++) {
+            if (values.get(i).equalsIgnoreCase(remove)) {
                 continue;
             }
             if (result.length() > 0) {
                 result.append(',');
             }
-            result.append(values[i]);
+            result.append(values.get(i));
         }
         return result.toString();
     }

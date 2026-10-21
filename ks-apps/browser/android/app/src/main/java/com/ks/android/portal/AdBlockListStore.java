@@ -375,15 +375,6 @@ final class AdBlockListStore {
         return enabled && now - lastUpdate(context) > AUTO_UPDATE_INTERVAL;
     }
 
-    static boolean anyDownloaded(Context context) {
-        for (FilterList list : allLists(context)) {
-            if (hasCache(context, list)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     static String readSeed(Context context) {
         return readAsset(context, "adblock/seed.txt");
     }
