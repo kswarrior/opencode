@@ -1,6 +1,6 @@
 # KS Portal Ad Blocker — Brave-class Upgrade Plan
 
-Status: **In progress**
+Status: **Implementation complete; device verification pending**
 Target release: **1.2.0** (`versionCode` 20)
 Scope owner: KS Portal browser (`com.ks.android.portal`)
 Last updated: 2026-10-21
@@ -156,88 +156,88 @@ Design rules:
 
 ### Phase 1 — Public Suffix List / site isolation
 
-- [ ] Bundle `assets/adblock/public_suffix_list.dat` (MPL 2.0 header retained).
-- [ ] Add `PublicSuffixList.java` (wildcard + exception + normal rules).
-- [ ] Load/install PSL asynchronously; fall back to the baked-in suffix table.
-- [ ] Use PSL for `AdBlockEngine.isThirdParty()` and per-site statistics.
+- [x] Bundle `assets/adblock/public_suffix_list.dat` (MPL 2.0 header retained).
+- [x] Add `PublicSuffixList.java` (wildcard + exception + normal rules).
+- [x] Load/install PSL asynchronously; fall back to the baked-in suffix table.
+- [x] Use PSL for `AdBlockEngine.isThirdParty()` and per-site statistics.
 
 ### Phase 2 — Network engine options
 
-- [ ] `denyallow=` (request host exclusion) and `to=` (request host inclusion).
-- [ ] `redirect-rule=` (redirect without blocking; only used when blocked).
-- [ ] `removeparam=` collection + `cleanUrl()` (plain, `~negated`, regex).
-- [ ] `specifichide` page policy; keep `elemhide`/`generichide`.
-- [ ] `$popup` parsed into a page-level policy flag (best effort).
-- [ ] Ignore only truly unsupported modifiers (`csp`, `header`, `rewrite`,
+- [x] `denyallow=` (request host exclusion) and `to=` (request host inclusion).
+- [x] `redirect-rule=` (redirect without blocking; only used when blocked).
+- [x] `removeparam=` collection + `cleanUrl()` (plain, `~negated`, regex).
+- [x] `specifichide` page policy; keep `elemhide`/`generichide`.
+- [x] `$popup` parsed into a page-level policy flag (best effort).
+- [x] Ignore only truly unsupported modifiers (`csp`, `header`, `rewrite`,
   `urltransform`, `permissions`, `sitekey`, `method`) without dropping the rule.
-- [ ] Improve option splitting for quoted/regex values.
-- [ ] Redirect resources: `noop.js/.txt/.css/.gif/.png/.mp4`, `1x1.gif`,
+- [x] Improve option splitting for quoted/regex values.
+- [x] Redirect resources: `noop.js/.txt/.css/.gif/.png/.mp4`, `1x1.gif`,
   `2x2.png`, `3x2.png`, `noopframe`, `empty`; strip `:priority`.
-- [ ] Keep engine bounded (300k rules) and measure build/memory.
+- [x] Keep engine bounded (300k rules) and measure build/memory.
 
 ### Phase 3 — Cosmetic + procedural engine
 
-- [ ] Accept `#?#`, `#$?#`, `#$#`, `#%#//scriptlet(...)`, `##+js(...)`.
-- [ ] Normalize AdGuard `:-abp-has()` / `:contains()` aliases.
-- [ ] Separate results into CSS, procedural and scriptlet lists.
-- [ ] JS procedural runtime with all operators listed in §2.3.
-- [ ] MutationObserver + debounced timer re-evaluation; SPA-safe.
-- [ ] Caps: 5000 CSS, 800 procedural, 200 scriptlets; per-page dedupe.
-- [ ] Reject `url(`, `@import`, unbalanced braces and unsafe style rules.
-- [ ] Preserve cosmetic exceptions and `specifichide` behavior.
+- [x] Accept `#?#`, `#$?#`, `#$#`, `#%#//scriptlet(...)`, `##+js(...)`.
+- [x] Normalize AdGuard `:-abp-has()` / `:contains()` aliases.
+- [x] Separate results into CSS, procedural and scriptlet lists.
+- [x] JS procedural runtime with all operators listed in §2.3.
+- [x] MutationObserver + debounced timer re-evaluation; SPA-safe.
+- [x] Caps: 5000 CSS, 800 procedural, 200 scriptlets; per-page dedupe.
+- [x] Reject `url(`, `@import`, unbalanced braces and unsafe style rules.
+- [x] Preserve cosmetic exceptions and `specifichide` behavior.
 
 ### Phase 4 — Scriptlet library
 
-- [ ] Build one vetted JS runtime with named functions (see §2.3).
-- [ ] Arg parser: escaped commas, `/regex/flags`, quoted values, empty args.
-- [ ] Support aliases (`aopr`, `aopw`, `nostif`, `nosiif`, `nowoif`, `aeld`,
+- [x] Build one vetted JS runtime with named functions (see §2.3).
+- [x] Arg parser: escaped commas, `/regex/flags`, quoted values, empty args.
+- [x] Support aliases (`aopr`, `aopw`, `nostif`, `nosiif`, `nowoif`, `aeld`,
   `acs`, `norafif`, `set`, `json-prune` variants).
-- [ ] Idempotent injection guard; safe re-injection at start/commit/finish.
-- [ ] Honor `#@#+js(...)` exceptions; cap and dedupe.
+- [x] Idempotent injection guard; safe re-injection at start/commit/finish.
+- [x] Honor `#@#+js(...)` exceptions; cap and dedupe.
 
 ### Phase 5 — Filter list catalog and updates
 
-- [ ] Brave-equivalent catalog (uBO yearly/general/quick-fix/unbreak/badware/
+- [x] Brave-equivalent catalog (uBO yearly/general/quick-fix/unbreak/badware/
   resource-abuse/link-shorteners, EasyList, EasyPrivacy, uBO privacy, URLhaus,
   Brave specific/social/android/unbreak/sugarcoat).
-- [ ] Optional lists: EasyList Cookie, Fanboy Annoyances, AdGuard Mobile Ads,
+- [x] Optional lists: EasyList Cookie, Fanboy Annoyances, AdGuard Mobile Ads,
   AdGuard URL Tracking, AdGuard Cookie Notices, AdGuard Popups, Peter Lowe.
-- [ ] Custom list URL support (add/remove, per-URL cache + enable state).
-- [ ] Custom user filter rules editor.
-- [ ] 24 h auto-update; per-list ETag / `If-Modified-Since`; 304 handling.
-- [ ] Reject HTML/error payloads, strip BOM, enforce 20 MB cap.
-- [ ] Store/display rule counts and updated time per list.
-- [ ] Cache deletion covers custom lists; settings survive.
+- [x] Custom list URL support (add/remove, per-URL cache + enable state).
+- [x] Custom user filter rules editor.
+- [x] 24 h auto-update; per-list ETag / `If-Modified-Since`; 304 handling.
+- [x] Reject HTML/error payloads, strip BOM, enforce 20 MB cap.
+- [x] Store/display rule counts and updated time per list.
+- [x] Cache deletion covers custom lists; settings survive.
 
 ### Phase 6 — Navigation privacy
 
-- [ ] `AdBlocker.cleanNavigationUrl()`: apply `$removeparam` rules.
-- [ ] Curated tracker-parameter fallback (`utm_*`, `gclid`, `fbclid`, etc.).
-- [ ] Toggle in Privacy & security (`privacy_strip_tracking`, default on).
-- [ ] Apply before every main-frame load (URL bar, links, intent, fallback).
-- [ ] Preserve fragment, path and non-tracking params; skip non-http(s).
+- [x] `AdBlocker.cleanNavigationUrl()`: apply `$removeparam` rules.
+- [x] Curated tracker-parameter fallback (`utm_*`, `gclid`, `fbclid`, etc.).
+- [x] Toggle in Privacy & security (`privacy_strip_tracking`, default on).
+- [x] Apply before every main-frame load (URL bar, links, intent, fallback).
+- [x] Preserve fragment, path and non-tracking params; skip non-http(s).
 
 ### Phase 7 — UI / UX
 
-- [ ] Ad blocker screen: advanced section (custom rules, custom list URL,
+- [x] Ad blocker screen: advanced section (custom rules, custom list URL,
   tracking-param toggle, engine compatibility summary).
-- [ ] List rows show rule count + last update; add/remove custom lists.
-- [ ] Site menu shows “N blocked on this page” and honors page policy.
-- [ ] Site info dialog shows blocked count.
-- [ ] Reset/delete flows cover new caches.
-- [ ] Strings and accessibility labels for all new controls.
-- [ ] Version bump to 1.2.0 / 20.
+- [x] List rows show rule count + last update; add/remove custom lists.
+- [x] Site menu shows “N blocked on this page” and honors page policy.
+- [x] Site info dialog shows blocked count.
+- [x] Reset/delete flows cover new caches.
+- [x] Strings and accessibility labels for all new controls.
+- [x] Version bump to 1.2.0 / 20.
 
 ### Phase 8 — Tests, build, device verification
 
-- [ ] Standalone engine harness (`javac`/`java`, package-private access):
+- [x] Standalone engine harness (`javac`/`java`, package-private access):
   anchors, party, types, domains, denyallow, to, badfilter, redirects,
   removeparam, procedural parsing, cosmetic exceptions, PSL isolation.
-- [ ] Build APK with the `android-apk-build` pipeline.
+- [x] Build APK with the `android-apk-build` pipeline.
 - [ ] Install/launch on emulator or device; check logcat for crashes.
 - [ ] Smoke-test: blocked ad on a test page, cosmetic hiding, scriptlet,
   per-site counter, tracking-param strip, list update, custom rule.
-- [ ] Update this document's status board and release notes.
+- [x] Update this document's status board and release notes.
 
 ---
 
@@ -317,20 +317,20 @@ Design rules:
 | # | Phase | Status |
 | --- | --- | --- |
 | 0 | Research and baseline audit | Completed |
-| 1 | Public Suffix List / site isolation | Pending |
-| 2 | Network engine options | Pending |
-| 3 | Cosmetic + procedural engine | Pending |
-| 4 | Scriptlet library | Pending |
-| 5 | Filter lists, custom lists/rules, updates | Pending |
-| 6 | Tracking-parameter stripping | Pending |
-| 7 | UI / UX and version bump | Pending |
-| 8 | Tests, build, device verification | Pending |
+| 1 | Public Suffix List / site isolation | Completed |
+| 2 | Network engine options | Completed |
+| 3 | Cosmetic + procedural engine | Completed |
+| 4 | Scriptlet library | Completed |
+| 5 | Filter lists, custom lists/rules, updates | Completed |
+| 6 | Tracking-parameter stripping | Completed |
+| 7 | UI / UX and version bump | Completed |
+| 8 | Tests, build, device verification | In progress (device pending) |
 
 ### Release checklist
 
-- [ ] Engine harness green
-- [ ] APK builds and verifies
-- [ ] Device smoke test green
-- [ ] Version 1.2.0 (20)
-- [ ] `release/ks-portal_1.2.0.apk` produced
-- [ ] This document updated (Completed / Pending)
+- [x] Engine harness green
+- [x] APK builds and verifies
+- [ ] Device smoke test green (no local device/emulator available)
+- [x] Version 1.2.0 (20)
+- [ ] `release/ks-portal_1.2.0.apk` refreshed with the final build
+- [x] This document updated (Completed / Pending)
