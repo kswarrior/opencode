@@ -12,7 +12,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -53,7 +52,6 @@ public class HistoryActivity extends Activity {
     private ImageButton moreButton;
     private HistoryAdapter adapter;
     private FaviconLoader faviconLoader;
-    private DateFormat timeFormat;
     private DateFormat dateFormat;
     private final List<Row> rows = new ArrayList<Row>();
     private final Set<String> expandedCategories = new HashSet<String>();
@@ -67,7 +65,6 @@ public class HistoryActivity extends Activity {
 
         repository = HistoryRepository.getInstance(this);
         faviconLoader = new FaviconLoader();
-        timeFormat = android.text.format.DateFormat.getTimeFormat(this);
         dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
 
         listView = findViewById(R.id.historyList);
@@ -112,17 +109,6 @@ public class HistoryActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable text) {
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Row row = rows.get(position);
-                if (row.type == TYPE_CATEGORY) {
-                    toggleCategory(row.category);
-                } else if (row.type == TYPE_ENTRY) {
-                    openEntry(row.entry);
-                }
             }
         });
 
