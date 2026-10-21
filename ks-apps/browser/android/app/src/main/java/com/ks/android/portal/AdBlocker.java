@@ -534,13 +534,13 @@ final class AdBlocker {
         scheduleRebuild();
     }
 
-    static boolean addCustomList(Context context, String url) {
+    static AdBlockListStore.FilterList addCustomList(Context context, String url) {
         AdBlockListStore.FilterList list = AdBlockListStore.addCustomList(context, url);
         if (list == null) {
-            return false;
+            return null;
         }
         scheduleRebuild();
-        return true;
+        return list;
     }
 
     static void removeCustomList(Context context, AdBlockListStore.FilterList list) {
