@@ -68,6 +68,8 @@ public class MainActivity extends Activity {
     private String pendingDownloadMime;
     private long pendingDownloadLength;
     private String pendingDownloadReferer;
+    private String backgroundCacheKey = "";
+    private String backgroundCacheJson = "{}";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -495,6 +497,41 @@ public class MainActivity extends Activity {
 
     private void openSettingsPage() {
         startActivity(new Intent(this, SettingsActivity.class));
+    }
+
+    private void openCustomizePage() {
+        startActivity(new Intent(this, CustomizeActivity.class));
+    }
+
+    private String buildBackgroundJson() {
+        String value = BackgroundStore.getValue(this, BackgroundStore.TARGET_HOME);
+        int dim = BackgroundStore.getDim(this);
+        String key = value + "|" + dim;
+        if (key.equals(backgroundCacheKey)) {
+            return backgroundCacheJson;
+        }
+        JSONObject json = new JSONObject();
+        try {
+            json.put("dim", dim);
+            if (BackgroundStore.isCustom(value)) {
+                String image = BackgroundManager.customDataUrl(this,
+                        BackgroundStore.customFileName(value));
+                if (image != null) {
+                    json.put("type", "custom");
+                    json.put("image", image);
+                } else {
+                    json.put("type", "default");
+                    json.put("index", 0);
+                }
+            } else {
+                json.put("type", "default");
+                json.put("index", BackgroundStore.defaultIndex(value));
+            }
+        } catch (JSONException ignored) {
+        }
+        backgroundCacheKey = key;
+        backgroundCacheJson = json.toString();
+        return backgroundCacheJson;
     }
 
     private void shareUrl() {
