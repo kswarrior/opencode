@@ -43,7 +43,14 @@ public class SearchEngineActivity extends Activity {
                     finish();
                 }
             });
-            list.addView(row);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            if (i > 0) {
+                params.topMargin = Math.round(10
+                        * getResources().getDisplayMetrics().density);
+            }
+            list.addView(row, params);
         }
     }
 }

@@ -1,10 +1,7 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -32,13 +29,13 @@ public class SettingsActivity extends Activity {
         findViewById(R.id.settingsSearchEngine).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showSearchEngineDialog();
+                startActivity(new Intent(SettingsActivity.this, SearchEngineActivity.class));
             }
         });
         findViewById(R.id.settingsAbout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showAboutDialog();
+                startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
             }
         });
         refreshValues();
@@ -53,57 +50,6 @@ public class SettingsActivity extends Activity {
     private void refreshValues() {
         String engine = SearchEngine.getKey(this);
         searchEngineValue.setText(getString(SearchEngine.labelRes(engine)));
-        aboutValue.setText(getString(R.string.settings_version, versionName()));
-    }
-
-    private void showSearchEngineDialog() {
-        final String[] keys = SearchEngine.keys();
-        String[] labels = new String[keys.length];
-        int selected = 0;
-        String current = SearchEngine.getKey(this);
-        for (int i = 0; i < keys.length; i++) {
-            labels[i] = getString(SearchEngine.labelRes(keys[i]));
-            if (keys[i].equals(current)) {
-                selected = i;
-            }
-        }
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.search_engine)
-                .setSingleChoiceItems(labels, selected, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SearchEngine.setKey(SettingsActivity.this, keys[which]);
-                        refreshValues();
-                        dialog.dismiss();
-                    }
-                })
-                .setNegativeButton(R.string.cancel, null)
-                .show();
-    }
-
-    private void showAboutDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.about_title)
-                .setMessage(getString(R.string.about_message, versionName(), versionCode()))
-                .setPositiveButton(R.string.ok, null)
-                .show();
-    }
-
-    private String versionName() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
-            return info.versionName == null ? "" : info.versionName;
-        } catch (PackageManager.NameNotFoundException exception) {
-            return "";
-        }
-    }
-
-    private int versionCode() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
-            return info.versionCode;
-        } catch (PackageManager.NameNotFoundException exception) {
-            return 0;
-        }
+        aboutValue.setText(getString(R.string.settings_version, AppInfo.versionName(this)));
     }
 }

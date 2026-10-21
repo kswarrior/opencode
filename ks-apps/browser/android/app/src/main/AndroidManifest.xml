@@ -58,6 +58,16 @@
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:exported="false" />
 
+        <activity
+            android:name=".SearchEngineActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:exported="false" />
+
+        <activity
+            android:name=".AboutActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:exported="false" />
+
         <provider
             android:name=".DownloadFileProvider"
             android:authorities="com.ks.android.portal.files"
