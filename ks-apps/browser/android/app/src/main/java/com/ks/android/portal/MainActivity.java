@@ -1211,6 +1211,7 @@ public class MainActivity extends Activity {
         boolean autoSignIn = setting("autofill_auto_sign_in", true);
         boolean autofillForms = setting("autofill_forms", true);
         boolean siteNotifications = setting(NotificationHelper.KEY_SITES, true);
+        boolean doNotTrack = setting("privacy_do_not_track", false);
         CredentialStore.Credential saved = null;
         if (autoSignIn || autofillForms) {
             saved = CredentialStore.getInstance(this).findForUrl(url);
@@ -1228,7 +1229,11 @@ public class MainActivity extends Activity {
         String script = "(function(){"
                 + "var OFFER=" + offerSave + ",AUTO=" + autoSignIn
                 + ",FORMS=" + autofillForms + ",SITES=" + siteNotifications
-                + ",SAVED=" + savedJson + ";"
+                + ",DNT=" + doNotTrack + ",SAVED=" + savedJson + ";"
+                + "if(DNT){try{Object.defineProperty(navigator,'doNotTrack',"
+                + "{get:function(){return '1';},configurable:true});}catch(e){}"
+                + "try{Object.defineProperty(window,'doNotTrack',"
+                + "{value:'1',configurable:true});}catch(e){}}"
                 + "if(!window.__ksSiteNotif){window.__ksSiteNotif=true;"
                 + "var SN=function(t,o){o=o||{};if(!SITES){return;}"
                 + "try{window.KSPortalWeb&&window.KSPortalWeb.showSiteNotification("
@@ -1285,7 +1290,7 @@ public class MainActivity extends Activity {
                 + "var f=p.form||p.closest('form')||document;var u=userField(f);"
                 + "var changed=false;"
                 + "if(u&&!u.value&&(AUTO||FORMS)&&SAVED.u){u.value=SAVED.u;fire(u);changed=true;}"
-                + "if(AUTO&&!p.value&&SAVED.p){p.value=SAVED.p;fire(p);changed=true;}"
+                + "if((AUTO||FORMS)&&!p.value&&SAVED.p){p.value=SAVED.p;fire(p);changed=true;}"
                 + "if(AUTO&&changed&&f&&f.tagName==='FORM'){try{"
                 + "var k='ks_auto_'+location.href;"
                 + "if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');"
