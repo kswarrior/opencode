@@ -237,7 +237,7 @@ public class MainActivity extends Activity {
         }
         WebView view = tabViews.get(tab.id);
         if (view != null) {
-            view.loadUrl(url);
+            loadUrlWithSettings(view, url);
         } else {
             tabManager.updateTab(tab.id, url, null);
             syncActiveTab();
@@ -399,7 +399,7 @@ public class MainActivity extends Activity {
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             tab.loading = true;
             tab.progress = 0;
-            view.loadUrl(TextUtils.isEmpty(tab.url) ? HOME_URL : tab.url);
+            loadUrlWithSettings(view, TextUtils.isEmpty(tab.url) ? HOME_URL : tab.url);
         }
         for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
             entry.getValue().setVisibility(entry.getKey().intValue() == tab.id
@@ -429,8 +429,35 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void requestDownload(String url, String userAgent, String contentDisposition,
-                                 String mimeType, long contentLength) {
+    private void requestDownload(final String url, final String userAgent,
+                                 final String contentDisposition, final String mimeType,
+                                 final long contentLength) {
+        if (url.regionMatches(true, 0, "http://", 0, 7)
+                && setting("security_unsafe_downloads", true)) {
+            NotificationHelper.securityAlert(this,
+                    getString(R.string.notification_security_title),
+                    getString(R.string.unsafe_download_message));
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.unsafe_download_title)
+                    .setMessage(R.string.unsafe_download_message)
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(R.string.download_continue,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    continueDownload(url, userAgent, contentDisposition,
+                                            mimeType, contentLength);
+                                }
+                            })
+                    .show();
+            return;
+        }
+        continueDownload(url, userAgent, contentDisposition, mimeType, contentLength);
+    }
+
+    private void continueDownload(String url, String userAgent, String contentDisposition,
+                                  String mimeType, long contentLength) {
+        maybeRequestNotificationPermission();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
                 && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -447,6 +474,16 @@ public class MainActivity extends Activity {
         }
         showDownloadConfirm(url, userAgent, contentDisposition, mimeType, contentLength,
                 currentUrl);
+    }
+
+    private void maybeRequestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= 33
+                && NotificationHelper.notificationsEnabledForDownloads(this)
+                && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                    REQUEST_NOTIFICATIONS);
+        }
     }
 
     private void showDownloadConfirm(final String url, final String userAgent,
@@ -480,6 +517,9 @@ public class MainActivity extends Activity {
                                            int[] grantResults) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        if (requestCode == REQUEST_NOTIFICATIONS) {
+            return;
         }
         if (requestCode != REQUEST_WRITE_STORAGE) {
             return;
@@ -638,6 +678,49 @@ public class MainActivity extends Activity {
         return url != null && url.startsWith(HOME_URL);
     }
 
+    private boolean setting(String key, boolean defaultValue) {
+        SharedPreferences preferences = settingsPrefs;
+        return preferences == null ? defaultValue : preferences.getBoolean(key, defaultValue);
+    }
+
+    private void applyWebSettings(WebSettings settings) {
+        settings.setMixedContentMode(setting("security_secure_connections", true)
+                ? WebSettings.MIXED_CONTENT_NEVER_ALLOW
+                : WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
+        settings.setCacheMode(setting("privacy_preload_pages", true)
+                ? WebSettings.LOAD_CACHE_ELSE_NETWORK : WebSettings.LOAD_DEFAULT);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            settings.setSafeBrowsingEnabled(setting("security_safe_browsing", true));
+        }
+    }
+
+    private Map<String, String> requestHeaders() {
+        if (!setting("privacy_do_not_track", false)) {
+            return null;
+        }
+        Map<String, String> headers = new HashMap<String, String>();
+        headers.put("DNT", "1");
+        return headers;
+    }
+
+    private void loadUrlWithSettings(WebView view, String url) {
+        if (view == null || TextUtils.isEmpty(url)) {
+            return;
+        }
+        String target = url;
+        if (!isHomeUrl(url) && setting("security_secure_connections", true)
+                && target.regionMatches(true, 0, "http://", 0, 7)) {
+            target = "https://" + target.substring(7);
+        }
+        Map<String, String> headers = requestHeaders();
+        if (headers != null && (target.startsWith("http://")
+                || target.startsWith("https://"))) {
+            view.loadUrl(target, headers);
+        } else {
+            view.loadUrl(target);
+        }
+    }
+
     private void goHome() {
         hideKeyboard();
         urlBar.clearFocus();
@@ -646,7 +729,7 @@ public class MainActivity extends Activity {
         updateToolbarToggle();
         setToolbarVisible(false);
         if (webView != null) {
-            webView.loadUrl(HOME_URL);
+            loadUrlWithSettings(webView, HOME_URL);
         }
     }
 
@@ -664,7 +747,7 @@ public class MainActivity extends Activity {
                 value = SearchEngine.buildUrl(this, value);
             }
         }
-        webView.loadUrl(value);
+        loadUrlWithSettings(webView, value);
     }
 
     private void showMenu(View anchor) {
