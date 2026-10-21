@@ -83,6 +83,7 @@ public class MainActivity extends Activity {
     private FaviconLoader faviconLoader;
     private EditText urlBar;
     private volatile String currentUrl = HOME_URL;
+    private int lastActiveTabId = -1;
     private int toolbarHeight;
     private boolean toolbarTargetVisible;
     private boolean toolbarAvailable;
@@ -206,13 +207,6 @@ public class MainActivity extends Activity {
                             + "window.KSPortalRefreshTabs&&window.KSPortalRefreshTabs();"
                             + "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks()",
                     null);
-        }
-        for (WebView tabView : tabViews.values()) {
-            if (tabView != webView && isHomeUrl(tabView.getUrl())) {
-                tabView.evaluateJavascript(
-                        "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks()",
-                        null);
-            }
         }
     }
 
@@ -430,6 +424,8 @@ public class MainActivity extends Activity {
             return;
         }
         WebView view = tabViews.get(tab.id);
+        boolean tabChanged = tab.id != lastActiveTabId;
+        lastActiveTabId = tab.id;
         if (view == null) {
             view = createWebView(tab);
             tabViews.put(tab.id, view);
@@ -447,6 +443,11 @@ public class MainActivity extends Activity {
         updateChrome(tab.url);
         progressBar.setProgress(tab.progress);
         progressBar.setVisibility(tab.loading ? View.VISIBLE : View.GONE);
+        if (tabChanged && !tab.loading && isHomeUrl(tab.url)) {
+            view.evaluateJavascript(
+                    "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks()",
+                    null);
+        }
     }
 
     private void removeClosedTabViews() {
