@@ -31,6 +31,7 @@ final class NotificationHelper {
     private static final String KEY_LAST_VERSION = "last_announced_version";
     private static final long PROGRESS_INTERVAL = 900L;
     private static final Map<Long, Long> LAST_PROGRESS = new HashMap<Long, Long>();
+    private static long lastSiteNotification;
 
     private NotificationHelper() {
     }
@@ -114,6 +115,19 @@ final class NotificationHelper {
     static void siteNotification(Context context, String title, String body, String url) {
         if (!pref(context, KEY_SITES, true) || !canNotify(context)) {
             return;
+        }
+        long now = System.currentTimeMillis();
+        synchronized (NotificationHelper.class) {
+            if (now - lastSiteNotification < 1500L) {
+                return;
+            }
+            lastSiteNotification = now;
+        }
+        if (title != null && title.length() > 200) {
+            title = title.substring(0, 200);
+        }
+        if (body != null && body.length() > 1000) {
+            body = body.substring(0, 1000);
         }
         ensureChannels(context);
         int id = 3000 + (Math.abs((title + "|" + body).hashCode()) % 1000);
