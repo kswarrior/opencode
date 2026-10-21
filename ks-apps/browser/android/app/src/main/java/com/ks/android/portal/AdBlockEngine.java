@@ -1195,7 +1195,13 @@ final class AdBlockEngine {
                 return;
             }
             if (badfilter) {
-                badfilters.add(sourceKey);
+                String key = sourceKey;
+                int optionIndex = key.lastIndexOf('$');
+                if (optionIndex >= 0) {
+                    key = key.substring(0, optionIndex) + "$"
+                            + removeOption(key.substring(optionIndex + 1), "badfilter");
+                }
+                badfilters.add(key);
                 return;
             }
 
@@ -1208,7 +1214,7 @@ final class AdBlockEngine {
                 try {
                     regexPattern = Pattern.compile(value.substring(1, value.length() - 1),
                             matchCase ? 0 : Pattern.CASE_INSENSITIVE);
-                } catch (PatternSyntaxException exception) {
+                } catch (PatternSyntaxException syntaxError) {
                     return;
                 }
                 value = value.substring(1, value.length() - 1);
@@ -1229,37 +1235,32 @@ final class AdBlockEngine {
                 return;
             }
             String hostname = anchor == ANCHOR_HOST ? hostLiteral(value) : null;
-            String token = hostname != null ? null : tokenOf(value.toLowerCase(Locale.US));
+            String token = hostname != null || regex
+                    ? null : tokenOf(value.toLowerCase(Locale.US));
             NetworkFilter rule = new NetworkFilter(value, hostname, token, anchor, endAnchor,
                     regex, regexPattern, matchCase, types, party, includes, excludes, exception,
                     important, redirect, sourceKey);
-            allNetwork.add(rule);
-            if (exception && (elemHide || genericHide || (document && !positiveExceptTypes(types)))) {
-                addPageRule(pattern, hostname, includes, excludes, document, elemHide,
-                        genericHide, matchCase);
+            if (exception && (elemHide || genericHide || document)) {
+                addPageRule(rule, document, elemHide, genericHide);
             }
-            if (exception && (elemHide || genericHide)) {
+            boolean pageOnly = exception && (elemHide || genericHide) && !document
+                    && (!explicitTypes || types == TYPE_ALL);
+            if (pageOnly) {
                 return;
             }
+            allNetwork.add(rule);
             networkRuleCount++;
         }
 
-        private boolean positiveExceptTypes(int types) {
-            return types != TYPE_DOCUMENT;
-        }
-
-        private void addPageRule(String pattern, String hostname, String[] includes,
-                                 String[] excludes, boolean block, boolean elemHide,
-                                 boolean genericHide, boolean matchCase) {
-            PageRule rule = new PageRule(pattern, hostname, includes, excludes, block,
-                    elemHide, genericHide, matchCase);
-            String key = hostname == null ? "" : hostname;
+        private void addPageRule(NetworkFilter filter, boolean block, boolean elemHide,
+                                 boolean genericHide) {
+            String key = filter.hostname == null ? "" : filter.hostname;
             List<PageRule> list = pageRules.get(key);
             if (list == null) {
                 list = new ArrayList<PageRule>();
                 pageRules.put(key, list);
             }
-            list.add(rule);
+            list.add(new PageRule(filter, block, elemHide, genericHide));
         }
 
         private void addCosmetic(String line, int marker) {
@@ -1313,13 +1314,6 @@ final class AdBlockEngine {
                     list.add(rule);
                 }
             }
-        }
-
-        private void addPageRule(String pattern, String hostname, String[] includes,
-                                 String[] excludes, boolean document, boolean elemHide,
-                                 boolean genericHide, boolean matchCase, boolean unused) {
-            addPageRule(pattern, hostname, includes, excludes, document, elemHide,
-                    genericHide, matchCase);
         }
     }
 
