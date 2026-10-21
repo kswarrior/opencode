@@ -42,7 +42,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@drawable/bg_header_glass"
+            android:background="@drawable/bg_toolbar_glass"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="7dp">
