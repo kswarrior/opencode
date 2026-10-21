@@ -290,7 +290,7 @@ public class MainActivity extends Activity {
         settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
-        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.1.5");
+        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.1.6");
         if (defaultUserAgent == null) {
             defaultUserAgent = settings.getUserAgentString();
         }
@@ -362,6 +362,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageFinished(WebView current, String url) {
+                pageHost = SiteSettingsStore.hostOf(url);
                 tab.loading = false;
                 tab.progress = 100;
                 applyScreenWidth(current, url);
