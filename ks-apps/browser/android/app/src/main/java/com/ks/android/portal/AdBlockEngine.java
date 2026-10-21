@@ -1221,9 +1221,6 @@ final class AdBlockEngine {
         }
 
         private void addNetwork(String line) {
-            if (networkRuleCount >= MAX_FILTER_COUNT) {
-                return;
-            }
             boolean exception = line.startsWith("@@");
             String source = exception ? line.substring(2) : line;
             String sourceKey = line;
@@ -1242,14 +1239,21 @@ final class AdBlockEngine {
             int party = PARTY_ANY;
             String[] includes = new String[0];
             String[] excludes = new String[0];
+            String[] deny = new String[0];
+            String[] to = new String[0];
             boolean important = false;
             boolean matchCase = false;
             boolean badfilter = false;
             boolean elemHide = false;
             boolean genericHide = false;
+            boolean specificHide = false;
+            boolean popup = false;
             boolean document = false;
             boolean unsupported = false;
             boolean explicitTypes = false;
+            boolean redirectOnly = false;
+            boolean hasRemoveParam = false;
+            String removeParam = null;
             String redirect = null;
 
             if (options.length() > 0) {
@@ -1264,17 +1268,18 @@ final class AdBlockEngine {
                         continue;
                     }
                     boolean negated = option.startsWith("~");
-                    String name = (negated ? option.substring(1) : option)
-                            .toLowerCase(Locale.US);
-                    String value = "";
-                    int equals = name.indexOf('=');
-                    if (equals >= 0) {
-                        value = name.substring(equals + 1);
-                        name = name.substring(0, equals);
-                    }
+                    String body = negated ? option.substring(1) : option;
+                    int equals = body.indexOf('=');
+                    String name = (equals >= 0 ? body.substring(0, equals) : body)
+                            .trim().toLowerCase(Locale.US);
+                    String value = equals >= 0 ? unquote(body.substring(equals + 1)) : "";
                     if ("domain".equals(name) || "from".equals(name)) {
                         includes = includeDomains(value);
                         excludes = excludeDomains(value);
+                    } else if ("denyallow".equals(name)) {
+                        deny = includeDomains(value);
+                    } else if ("to".equals(name)) {
+                        to = includeDomains(value);
                     } else if ("third-party".equals(name) || "3p".equals(name)) {
                         party = negated ? PARTY_FIRST : PARTY_THIRD;
                     } else if ("first-party".equals(name) || "1p".equals(name)) {
@@ -1289,6 +1294,18 @@ final class AdBlockEngine {
                         elemHide = true;
                     } else if ("generichide".equals(name) || "ghide".equals(name)) {
                         genericHide = true;
+                    } else if ("specifichide".equals(name) || "shide".equals(name)) {
+                        specificHide = true;
+                    } else if ("popup".equals(name) || "popunder".equals(name)) {
+                        popup = true;
+                    } else if ("removeparam".equals(name)) {
+                        hasRemoveParam = true;
+                        removeParam = value;
+                    } else if ("redirect-rule".equals(name)) {
+                        if (!negated) {
+                            redirectOnly = true;
+                            redirect = value.length() == 0 ? "noop" : stripPriority(value);
+                        }
                     } else if ("document".equals(name) || "doc".equals(name)) {
                         if (!negated) {
                             document = true;
@@ -1306,17 +1323,16 @@ final class AdBlockEngine {
                     } else if ("network".equals(name) && !negated) {
                         types = TYPE_ALL;
                         explicitTypes = true;
-                    } else if ("popup".equals(name) || "genericblock".equals(name)
-                            || "csp".equals(name) || "removeparam".equals(name)
-                            || "rewrite".equals(name) || "urltransform".equals(name)
-                            || "header".equals(name) || "permissions".equals(name)
-                            || "method".equals(name) || "denyallow".equals(name)
-                            || "to".equals(name) || "sitekey".equals(name)
-                            || "redirect-rule".equals(name)) {
+                    } else if ("method".equals(name) || "genericblock".equals(name)) {
+                        // Accepted as no-ops: WebView cannot match method and generic
+                        // blocking is handled through the page policy.
+                    } else if ("csp".equals(name) || "rewrite".equals(name)
+                            || "urltransform".equals(name) || "header".equals(name)
+                            || "permissions".equals(name) || "sitekey".equals(name)) {
                         unsupported = true;
                     } else if ("redirect".equals(name)) {
                         if (!negated) {
-                            redirect = value.length() == 0 ? "noop" : value;
+                            redirect = value.length() == 0 ? "noop" : stripPriority(value);
                         }
                     } else if ("empty".equals(name)) {
                         redirect = "empty";
@@ -1361,7 +1377,9 @@ final class AdBlockEngine {
                 return;
             }
             if (badfilter) {
-                badfilters.add(badfilterKey(sourceKey));
+                long key = badfilterKey(sourceKey);
+                badfilters.add(key);
+                cleanBadfilters.add(key);
                 return;
             }
 
@@ -1398,29 +1416,58 @@ final class AdBlockEngine {
             String token = hostname != null || regex
                     ? null : tokenOf(value.toLowerCase(Locale.US));
             NetworkFilter rule = new NetworkFilter(value, hostname, token, anchor, endAnchor,
-                    regex, regexPattern, matchCase, types, party, includes, excludes, exception,
-                    important, redirect, hash(sourceKey));
-            if (exception && (elemHide || genericHide || document)) {
-                addPageRule(rule, document, elemHide, genericHide);
+                    regex, regexPattern, matchCase, types, party, includes, excludes, deny, to,
+                    exception, important, redirectOnly, redirect, hash(sourceKey));
+
+            if (hasRemoveParam) {
+                CleanParameter parameter = parseRemoveParam(removeParam);
+                if (parameter != null) {
+                    addCleanRule(rule, new CleanRule(rule, parameter.name,
+                            parameter.pattern, parameter.negated, exception));
+                }
+                return;
             }
-            boolean pageOnly = exception && (elemHide || genericHide) && !document
-                    && (!explicitTypes || types == TYPE_ALL);
+            if (popup) {
+                addPageRule(rule, false, false, false, false, true);
+                return;
+            }
+            if (exception && (elemHide || genericHide || specificHide || document)) {
+                addPageRule(rule, document, elemHide, genericHide, specificHide, false);
+            }
+            boolean pageOnly = exception && (elemHide || genericHide || specificHide)
+                    && !document && (!explicitTypes || types == TYPE_ALL);
             if (pageOnly) {
+                return;
+            }
+            if (networkRuleCount >= MAX_FILTER_COUNT) {
                 return;
             }
             allNetwork.add(rule);
             networkRuleCount++;
         }
 
+        private void addCleanRule(NetworkFilter filter, CleanRule rule) {
+            if (filter.hostname == null) {
+                cleanGeneralRules.add(rule);
+                return;
+            }
+            List<CleanRule> list = cleanHostRules.get(filter.hostname);
+            if (list == null) {
+                list = new ArrayList<CleanRule>();
+                cleanHostRules.put(filter.hostname, list);
+            }
+            list.add(rule);
+        }
+
         private void addPageRule(NetworkFilter filter, boolean block, boolean elemHide,
-                                 boolean genericHide) {
+                                 boolean genericHide, boolean specificHide, boolean popup) {
             String key = filter.hostname == null ? "" : filter.hostname;
             List<PageRule> list = pageRules.get(key);
             if (list == null) {
                 list = new ArrayList<PageRule>();
                 pageRules.put(key, list);
             }
-            list.add(new PageRule(filter, block, elemHide, genericHide));
+            list.add(new PageRule(filter, block, elemHide, genericHide, specificHide, popup));
         }
 
         private void addCosmetic(String line, int marker) {
@@ -1475,6 +1522,72 @@ final class AdBlockEngine {
                 }
             }
         }
+    }
+
+    private static final class CleanParameter {
+        final String name;
+        final Pattern pattern;
+        final boolean negated;
+
+        CleanParameter(String name, Pattern pattern, boolean negated) {
+            this.name = name;
+            this.pattern = pattern;
+            this.negated = negated;
+        }
+    }
+
+    private static CleanParameter parseRemoveParam(String value) {
+        String raw = value == null ? "" : value.trim();
+        boolean negated = raw.startsWith("~");
+        if (negated) {
+            raw = raw.substring(1).trim();
+        }
+        if (raw.length() == 0) {
+            return new CleanParameter(null, null, negated);
+        }
+        if (raw.startsWith("/")) {
+            int last = raw.lastIndexOf('/');
+            if (last > 0) {
+                String body = raw.substring(1, last);
+                String flags = raw.substring(last + 1);
+                int mask = flags.indexOf('i') >= 0 ? Pattern.CASE_INSENSITIVE : 0;
+                try {
+                    return new CleanParameter(null, Pattern.compile(body, mask), negated);
+                } catch (PatternSyntaxException ignored) {
+                    return null;
+                }
+            }
+        }
+        return new CleanParameter(raw.toLowerCase(Locale.US), null, negated);
+    }
+
+    private static String unquote(String value) {
+        String trimmed = value == null ? "" : value.trim();
+        if (trimmed.length() >= 2) {
+            char first = trimmed.charAt(0);
+            char last = trimmed.charAt(trimmed.length() - 1);
+            if ((first == '"' && last == '"') || (first == '\'' && last == '\'')) {
+                return trimmed.substring(1, trimmed.length() - 1);
+            }
+        }
+        return trimmed;
+    }
+
+    private static String stripPriority(String value) {
+        int colon = value.lastIndexOf(':');
+        if (colon > 0) {
+            boolean numeric = true;
+            for (int i = colon + 1; i < value.length(); i++) {
+                if (value.charAt(i) < '0' || value.charAt(i) > '9') {
+                    numeric = false;
+                    break;
+                }
+            }
+            if (numeric) {
+                return value.substring(0, colon);
+            }
+        }
+        return value;
     }
 
     private static int cosmeticMarker(String line) {
