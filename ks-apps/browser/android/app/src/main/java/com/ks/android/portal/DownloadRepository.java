@@ -1651,6 +1651,7 @@ public class DownloadRepository {
                     output.write(buffer, 0, read);
                     bytes += read;
                     long now = System.currentTimeMillis();
+                    boolean update = now - lastUpdate >= 300;
                     synchronized (lock) {
                         DownloadItem item = findLocked(id);
                         if (item == null) {
@@ -1661,12 +1662,11 @@ public class DownloadRepository {
                         if (item.totalBytes > 0 && bytes > item.totalBytes) {
                             item.totalBytes = bytes;
                         }
-                        if (now - lastUpdate >= 300) {
-                            lastUpdate = now;
+                        if (update) {
                             NotificationHelper.downloadProgress(context, item);
                         }
                     }
-                    if (now - lastUpdate >= 300) {
+                    if (update) {
                         lastUpdate = now;
                         notifyListeners();
                     }
