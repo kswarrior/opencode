@@ -95,6 +95,8 @@ public class MainActivity extends Activity {
     private boolean toolbarAvailable;
     private boolean toolbarCollapsed;
     private boolean adBlockEnabledOnResume;
+    private boolean adBlockCosmeticOnResume;
+    private long adBlockEngineVersionOnResume;
     private String pendingDownloadUrl;
     private String pendingDownloadUserAgent;
     private String pendingDownloadDisposition;
@@ -127,7 +129,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AdBlocker.initialize(this);
         adBlockEnabledOnResume = AdBlocker.isEnabled(this);
+        adBlockCosmeticOnResume = AdBlocker.isCosmeticEnabled(this);
+        adBlockEngineVersionOnResume = AdBlocker.engineVersion();
         settingsPrefs = getSharedPreferences(NotificationHelper.PREFS, MODE_PRIVATE);
 
         webContainer = findViewById(R.id.webContainer);
@@ -214,8 +219,14 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         boolean adBlockEnabled = AdBlocker.isEnabled(this);
-        boolean adBlockChanged = adBlockEnabled != adBlockEnabledOnResume;
+        boolean adBlockCosmetic = AdBlocker.isCosmeticEnabled(this);
+        long adBlockEngineVersion = AdBlocker.engineVersion();
+        boolean adBlockChanged = adBlockEnabled != adBlockEnabledOnResume
+                || adBlockCosmetic != adBlockCosmeticOnResume
+                || adBlockEngineVersion != adBlockEngineVersionOnResume;
         adBlockEnabledOnResume = adBlockEnabled;
+        adBlockCosmeticOnResume = adBlockCosmetic;
+        adBlockEngineVersionOnResume = adBlockEngineVersion;
         for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
             WebView tabView = entry.getValue();
             tabView.onResume();
@@ -242,6 +253,8 @@ public class MainActivity extends Activity {
         for (WebView tabView : tabViews.values()) {
             tabView.onPause();
         }
+        AdBlocker.flushStatistics();
+        adBlockEngineVersionOnResume = AdBlocker.engineVersion();
         super.onPause();
     }
 
@@ -299,6 +312,8 @@ public class MainActivity extends Activity {
 
         view.setWebViewClient(new WebViewClient() {
             private volatile String pageHost = SiteSettingsStore.hostOf(tab.url);
+            private volatile String pageUrl = tab.url;
+            private volatile boolean pageAdBlockEnabled = isAdBlockEnabledFor(tab.url);
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView current, WebResourceRequest request) {
@@ -336,19 +351,19 @@ public class MainActivity extends Activity {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView current,
                                                               WebResourceRequest request) {
-                if (request != null && !request.isForMainFrame()) {
-                    Uri uri = request.getUrl();
-                    if (uri != null && AdBlocker.isBlocked(MainActivity.this,
-                            pageHost, uri.toString())) {
-                        return AdBlocker.blockedResponse();
-                    }
+                if (request != null && !request.isForMainFrame()
+                        && pageAdBlockEnabled) {
+                    return AdBlocker.intercept(MainActivity.this, pageUrl,
+                            pageHost, request);
                 }
                 return super.shouldInterceptRequest(current, request);
             }
 
             @Override
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
+                pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
+                pageAdBlockEnabled = isAdBlockEnabledFor(url);
                 tab.loading = true;
                 tab.progress = 0;
                 applySiteSettings(current, url);
@@ -361,8 +376,18 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onPageFinished(WebView current, String url) {
+            public void onPageCommitVisible(WebView current, String url) {
+                pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
+                pageAdBlockEnabled = isAdBlockEnabledFor(url);
+                injectAdBlock(current, url);
+            }
+
+            @Override
+            public void onPageFinished(WebView current, String url) {
+                pageUrl = url;
+                pageHost = SiteSettingsStore.hostOf(url);
+                pageAdBlockEnabled = isAdBlockEnabledFor(url);
                 tab.loading = false;
                 tab.progress = 100;
                 applyScreenWidth(current, url);
@@ -375,6 +400,7 @@ public class MainActivity extends Activity {
                 if (!privateTabs.contains(tab.id)) {
                     injectWebAssist(current, url);
                 }
+                injectAdBlock(current, url);
                 if (isActiveTab(tab)) {
                     progressBar.setVisibility(View.GONE);
                     updateChrome(url);
@@ -1579,6 +1605,25 @@ public class MainActivity extends Activity {
     private void resetLoginPrompt() {
         synchronized (loginPromptLock) {
             loginDialogVisible = false;
+        }
+    }
+
+    private boolean isAdBlockEnabledFor(String url) {
+        if (url == null || isHomeUrl(url)) {
+            return false;
+        }
+        String host = SiteSettingsStore.hostOf(url);
+        return SiteSettingsStore.getBoolean(this, host,
+                SiteSettingsStore.KEY_ADBLOCK, AdBlocker.isEnabled(this));
+    }
+
+    private void injectAdBlock(WebView view, String url) {
+        if (view == null || !isAdBlockEnabledFor(url)) {
+            return;
+        }
+        String script = AdBlocker.pageScript(this, url);
+        if (script != null) {
+            view.evaluateJavascript(script, null);
         }
     }
 
