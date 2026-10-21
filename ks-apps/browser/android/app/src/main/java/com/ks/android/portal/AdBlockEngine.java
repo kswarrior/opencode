@@ -834,15 +834,19 @@ final class AdBlockEngine {
         }
 
         String badfilterKey() {
-            String key = sourceKey;
-            int index = key.lastIndexOf("$");
-            if (index >= 0) {
-                String options = key.substring(index + 1);
-                String cleaned = removeOption(options, "badfilter");
-                key = key.substring(0, index) + "$" + cleaned;
-            }
-            return key;
+            return AdBlockEngine.badfilterKey(sourceKey);
         }
+    }
+
+    private static String badfilterKey(String sourceKey) {
+        String key = sourceKey;
+        int index = key.lastIndexOf('$');
+        if (index >= 0) {
+            String cleaned = removeOption(key.substring(index + 1), "badfilter");
+            key = cleaned.length() == 0 ? key.substring(0, index)
+                    : key.substring(0, index) + "$" + cleaned;
+        }
+        return key;
     }
 
     private static String removeOption(String options, String remove) {
