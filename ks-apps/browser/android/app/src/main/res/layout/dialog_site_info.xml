@@ -115,6 +115,24 @@
             android:textColor="@color/ks_text"
             android:textSize="12sp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:letterSpacing="0.08"
+            android:text="@string/site_info_cookies"
+            android:textColor="@color/ks_muted"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/siteInfoCookies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/ks_text"
+            android:textSize="12sp" />
+
         <Button
             android:id="@+id/siteInfoClose"
             android:layout_width="match_parent"

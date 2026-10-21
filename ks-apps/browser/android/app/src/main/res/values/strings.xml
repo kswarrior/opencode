@@ -131,12 +131,24 @@
     <string name="site_auto_remove_description">To protect your data, let KS Portal remove permissions from sites that you haven\'t visited recently</string>
     <string name="site_menu_information">Site information</string>
     <string name="site_menu_screen_size">Screen size</string>
+    <string name="site_menu_cookies">Cookies</string>
     <string name="site_info_title">Website information</string>
     <string name="site_info_website">Website</string>
     <string name="site_info_address">Address</string>
     <string name="site_info_host">Host</string>
     <string name="site_info_security">Security</string>
     <string name="site_info_screen_size">Screen size</string>
+    <string name="site_info_cookies">Cookies</string>
+    <string name="site_cookies_title">Cookies</string>
+    <string name="site_cookies_none">No cookies</string>
+    <string name="site_cookies_empty">No cookies are stored for this site.</string>
+    <string name="site_cookies_delete">Delete cookie</string>
+    <string name="site_cookies_delete_all">Delete all cookies</string>
+    <string name="site_cookies_delete_all_title">Delete all cookies?</string>
+    <string name="site_cookies_delete_all_message">Remove all cookies stored for %1$s? You may be signed out of this site.</string>
+    <string name="site_cookies_delete_confirm">Delete</string>
+    <string name="site_cookies_deleted">Cookies deleted</string>
+    <string name="site_cookie_empty_value">No value</string>
     <string name="site_secure">Secure connection</string>
     <string name="site_not_secure">Not secure</string>
     <string name="site_local_page">Local page</string>
@@ -338,6 +350,10 @@
     <string name="tabs_save">Save</string>
     <string name="tabs_cancel">Cancel</string>
     <string name="tabs_delete">Delete</string>
+    <plurals name="site_cookies_count">
+        <item quantity="one">%1$d cookie</item>
+        <item quantity="other">%1$d cookies</item>
+    </plurals>
     <plurals name="tabs_count">
         <item quantity="one">%1$d tab</item>
         <item quantity="other">%1$d tabs</item>
