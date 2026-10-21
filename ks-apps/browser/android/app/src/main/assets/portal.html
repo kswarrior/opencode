@@ -498,24 +498,22 @@ body.has-background .bg::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 8px;
-  border: 1px solid rgba(255, 255, 255, .12);
-  border-radius: 10px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
-  box-shadow: 0 14px 32px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .1);
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
   color: inherit;
   font: inherit;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   scroll-snap-align: start;
-  transition: background .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  transition: transform .18s ease;
 }
-.tile:hover, .tile:focus-visible {
-  background: linear-gradient(145deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .045));
+.tile:hover, .tile:focus-visible { transform: translateY(-2px); }
+.tile:hover .tile-logo, .tile:focus-visible .tile-logo {
   border-color: rgba(255, 255, 255, .26);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255, 255, 255, .16);
+  background: rgba(0, 0, 0, .32);
 }
 .tile:active { transform: scale(.97); }
 .tile-logo {
@@ -545,8 +543,7 @@ body.has-background .bg::after {
   letter-spacing: .02em;
 }
 .tile-add {
-  border-style: dashed;
-  background: rgba(255, 255, 255, .02);
+  background: none;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
