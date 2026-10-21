@@ -420,3 +420,39 @@ theverge.com##.ad
 engadget.com##.ad
 techcrunch.com##.ad
 arstechnica.com##.ad
+
+! Advanced cosmetic filters (procedural)
+forbes.com##.ad-slot:has-text(Advertisement)
+cnn.com##.ad-slot:has-text(Advertisement)
+dailymail.co.uk##.ad-slot:has-text(Advertisement)
+weather.com##[data-module="ad"]:has-text(Sponsored)
+booking.com##.bui-grid__column:has(> [data-testid="property-card-ad"])
+reddit.com##shreddit-ad-post
+reddit.com##.promotedlink
+twitch.tv##.ad-banner:has-text(Advertisement)
+spotify.com##[data-testid="ad-slot"]
+linkedin.com##.feed-shared-update-v2:has-text(Promoted)
+
+! Advanced cosmetic filters (AdGuard and uBlock syntax)
+forbes.com#?#.ad-slot:has(> .ad-label)
+cnn.com#?#.ad-slot:has(> .ad-label)
+weather.com#?#div[data-module="ad"]:has(> img)
+youtube.com##ytd-display-ad-renderer
+youtube.com##ytd-promoted-sparkles-web-renderer
+youtube.com##ytd-in-feed-ad-layout-renderer
+facebook.com##div[data-pagelet^="FeedUnit"]:has-text(Sponsored)
+instagram.com##article:has-text(Sponsored)
+
+! Harmless scriptlets for known nuisance behaviours
+bing.com##+js(nowoif)
+duckduckgo.com##+js(nowoif)
+speedtest.net##+js(nowoif)
+weather.com##+js(aopr, __cmp)
+forbes.com##+js(set-constant, __adsDisabled, true)
+cnn.com##+js(set-constant, __adsDisabled, true)
+twitch.tv##+js(set-constant, __adsDisabled, true)
+
+! Cosmetic style rules
+forbes.com#$#.ad-slot { min-height: 0 !important; }
+cnn.com#$#.ad-slot { min-height: 0 !important; }
+
