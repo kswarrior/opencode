@@ -190,12 +190,13 @@ final class AdBlocker {
             return null;
         }
         AdBlockEngine.CosmeticResult cosmetic = ENGINE.get().cosmeticFor(
-                pageUrl, !policy.genericHideDisabled);
+                pageUrl, !policy.genericHideDisabled, !policy.specificHideDisabled);
         List<String> selectors = new ArrayList<String>();
-        addSelectors(selectors, cosmetic.specific, MAX_SPECIFIC_SELECTORS);
-        int remaining = MAX_GENERIC_SELECTORS;
+        if (!policy.specificHideDisabled) {
+            addSelectors(selectors, cosmetic.specific, MAX_SPECIFIC_SELECTORS);
+        }
         if (!policy.genericHideDisabled) {
-            remaining -= addSelectors(selectors, cosmetic.generic, remaining);
+            addSelectors(selectors, cosmetic.generic, MAX_GENERIC_SELECTORS);
         }
         StringBuilder css = new StringBuilder();
         for (int i = 0; i < selectors.size(); i++) {
@@ -209,8 +210,23 @@ final class AdBlocker {
             }
             css.append(selector).append("{display:none!important}\n");
         }
-        String scriptlets = buildScriptlets(cosmetic.scriptlets);
-        if (css.length() == 0 && scriptlets.length() == 0) {
+        int styleCount = 0;
+        for (int i = 0; i < cosmetic.styles.size() && styleCount < MAX_STYLE_RULES; i++) {
+            String style = cosmetic.styles.get(i);
+            if (style == null || style.length() == 0 || style.indexOf('<') >= 0) {
+                continue;
+            }
+            css.append(style).append('\n');
+            styleCount++;
+        }
+        List<String> procedural = new ArrayList<String>();
+        addProcedural(procedural, cosmetic.proceduralSpecific, MAX_PROCEDURAL_RULES);
+        if (!policy.genericHideDisabled) {
+            addProcedural(procedural, cosmetic.proceduralGeneric,
+                    Math.max(0, MAX_PROCEDURAL_RULES - procedural.size()));
+        }
+        List<String> scriptlets = cosmetic.scriptlets;
+        if (css.length() == 0 && procedural.isEmpty() && scriptlets.isEmpty()) {
             return null;
         }
         StringBuilder script = new StringBuilder();
@@ -222,9 +238,115 @@ final class AdBlocker {
                     .append("(d.head||d.documentElement).appendChild(s);}")
                     .append("if(s.textContent!==c){s.textContent=c;}");
         }
-        script.append(scriptlets);
+        if (!procedural.isEmpty()) {
+            String runtime = proceduralRuntime(context);
+            if (runtime.length() > 0) {
+                script.append(runtime);
+                script.append("window.__ksProcedural([");
+                for (int i = 0; i < procedural.size(); i++) {
+                    if (i > 0) {
+                        script.append(',');
+                    }
+                    script.append(JSONObject.quote(procedural.get(i)));
+                }
+                script.append("]);");
+            }
+        }
+        String calls = buildScriptletCalls(scriptlets);
+        if (calls.length() > 0) {
+            String runtime = scriptletRuntime(context);
+            if (runtime.length() > 0) {
+                script.append(runtime).append(calls);
+            }
+        }
         script.append("}catch(e){}})();");
         return script.toString();
+    }
+
+    static String cleanNavigationUrl(Context context, String url) {
+        if (url == null || url.length() == 0 || !isTrackingStripEnabled(context)) {
+            return url;
+        }
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            return url;
+        }
+        initialize(context);
+        String cleaned = ENGINE.get().cleanUrl(url, url);
+        if (cleaned == null) {
+            cleaned = stripTrackingParameters(url);
+        }
+        return cleaned == null ? url : cleaned;
+    }
+
+    private static String stripTrackingParameters(String url) {
+        int queryStart = url.indexOf('?');
+        if (queryStart < 0 || queryStart >= url.length() - 1) {
+            return null;
+        }
+        int fragmentStart = url.indexOf('#', queryStart);
+        String query = fragmentStart >= 0
+                ? url.substring(queryStart + 1, fragmentStart)
+                : url.substring(queryStart + 1);
+        String suffix = fragmentStart >= 0 ? url.substring(fragmentStart) : "";
+        StringBuilder rebuilt = new StringBuilder();
+        boolean changed = false;
+        int start = 0;
+        for (int i = 0; i <= query.length(); i++) {
+            if (i == query.length() || query.charAt(i) == '&') {
+                if (i > start) {
+                    String pair = query.substring(start, i);
+                    int equals = pair.indexOf('=');
+                    String name = equals >= 0 ? pair.substring(0, equals) : pair;
+                    if (isTrackingParameter(name)) {
+                        changed = true;
+                    } else {
+                        if (rebuilt.length() > 0) {
+                            rebuilt.append('&');
+                        }
+                        rebuilt.append(pair);
+                    }
+                }
+                start = i + 1;
+            }
+        }
+        if (!changed) {
+            return null;
+        }
+        StringBuilder result = new StringBuilder();
+        result.append(url.substring(0, queryStart));
+        if (rebuilt.length() > 0) {
+            result.append('?').append(rebuilt);
+        }
+        result.append(suffix);
+        return result.toString();
+    }
+
+    private static boolean isTrackingParameter(String name) {
+        if (name == null) {
+            return false;
+        }
+        String value = name.toLowerCase(Locale.US);
+        if (value.startsWith("utm_")
+                || value.startsWith("mtm_")
+                || value.startsWith("pk_")
+                || value.startsWith("piwik_")
+                || value.startsWith("hsa_")) {
+            return true;
+        }
+        String[] names = {
+                "gclid", "dclid", "gbraid", "wbraid", "fbclid", "msclkid",
+                "twclid", "ttclid", "igshid", "mc_cid", "mc_eid", "mkt_tok",
+                "_hsenc", "_hsmi", "oly_anon_id", "oly_enc_id", "vero_id",
+                "vero_conv", "wickedid", "yclid", "_openstat", "rb_clickid",
+                "s_cid", "elqtrackid", "elqtrack", "elqaid", "elqat",
+                "elqcampaignid", "spm", "scm"
+        };
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].equals(value)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     static int totalBlocked() {
@@ -445,73 +567,74 @@ final class AdBlocker {
         return added;
     }
 
-    private static String buildScriptlets(List<String> scriptlets) {
+    private static void addProcedural(List<String> target, List<String> source, int limit) {
+        int added = 0;
+        for (int i = 0; i < source.size() && added < limit; i++) {
+            String rule = source.get(i);
+            if (rule == null || rule.length() == 0 || rule.indexOf('<') >= 0) {
+                continue;
+            }
+            target.add(rule);
+            added++;
+        }
+    }
+
+    private static String proceduralRuntime(Context context) {
+        String value = proceduralScript;
+        if (value == null) {
+            value = AdBlockListStore.readAsset(context, "adblock/procedural.js");
+            proceduralScript = value;
+        }
+        return value;
+    }
+
+    private static String scriptletRuntime(Context context) {
+        String value = scriptletScript;
+        if (value == null) {
+            value = AdBlockListStore.readAsset(context, "adblock/scriptlets.js");
+            scriptletScript = value;
+        }
+        return value;
+    }
+
+    private static String buildScriptletCalls(List<String> scriptlets) {
         if (scriptlets.isEmpty()) {
             return "";
         }
         StringBuilder script = new StringBuilder();
         int count = 0;
         for (int i = 0; i < scriptlets.size() && count < MAX_SCRIPTLETS; i++) {
-            String raw = scriptlets.get(i);
-            String[] args = splitArguments(raw);
+            String[] args = splitArguments(scriptlets.get(i));
             if (args.length == 0) {
                 continue;
             }
-            String name = args[0].toLowerCase(Locale.US);
-            if ("set-constant".equals(name) && args.length >= 3) {
-                script.append("ksSetConstant(").append(JSONObject.quote(args[1]))
-                        .append(",").append(constantValue(args[2])).append(");");
-                count++;
-            } else if ("abort-on-property-read".equals(name)
-                    || "aopr".equals(name)) {
-                if (args.length >= 2) {
-                    script.append("ksAbortRead(").append(JSONObject.quote(args[1]))
-                            .append(");");
-                    count++;
-                }
-            } else if ("no-setTimeout-if".equals(name) || "nostif".equals(name)) {
-                if (args.length >= 2) {
-                    script.append("ksNoTimer(true,").append(JSONObject.quote(args[1]))
-                            .append(");");
-                    count++;
-                }
-            } else if ("no-setInterval-if".equals(name) || "nosiif".equals(name)) {
-                if (args.length >= 2) {
-                    script.append("ksNoTimer(false,").append(JSONObject.quote(args[1]))
-                            .append(");");
-                    count++;
-                }
-            } else if ("prevent-fetch".equals(name)) {
-                if (args.length >= 2) {
-                    script.append("ksPreventFetch(").append(JSONObject.quote(args[1]))
-                            .append(");");
-                    count++;
-                }
+            String name = normalizeScriptletName(args[0]);
+            if (name.length() == 0) {
+                continue;
             }
+            script.append("window.__ksScriptlet(").append(JSONObject.quote(name))
+                    .append(",[");
+            for (int j = 1; j < args.length; j++) {
+                if (j > 1) {
+                    script.append(',');
+                }
+                script.append(JSONObject.quote(args[j]));
+            }
+            script.append("]);");
+            count++;
         }
-        if (script.length() == 0) {
+        return script.toString();
+    }
+
+    private static String normalizeScriptletName(String value) {
+        String name = value == null ? "" : value.trim().toLowerCase(Locale.US);
+        if (name.endsWith(".js")) {
+            name = name.substring(0, name.length() - 3);
+        }
+        if (name.startsWith("trusted-")) {
             return "";
         }
-        return "if(!window.__ksAdblockScriptlets){window.__ksAdblockScriptlets=true;"
-                + "function ksSetConstant(p,v){try{var a=String(p).split('.'),o=window;"
-                + "for(var i=0;i<a.length-1;i++){o=o[a[i]];if(!o){return;}}"
-                + "var k=a[a.length-1];Object.defineProperty(o,k,{get:function(){return v;},"
-                + "set:function(){},configurable:true});}catch(e){}}"
-                + "function ksAbortRead(p){try{var a=String(p).split('.'),o=window;"
-                + "for(var i=0;i<a.length-1;i++){o=o[a[i]];if(!o){return;}}"
-                + "var k=a[a.length-1];Object.defineProperty(o,k,{get:function(){"
-                + "throw new ReferenceError('blocked');},set:function(){},"
-                + "configurable:true});}catch(e){}}"
-                + "function ksNoTimer(timeout,pat){try{var w=window;"
-                + "var orig=w[timeout?'setTimeout':'setInterval'];if(!orig){return;}"
-                + "var re=new RegExp(pat);w[timeout?'setTimeout':'setInterval']="
-                + "function(fn,d){var s=''+fn;if(re.test(s)){return 0;}"
-                + "return orig.apply(w,arguments);};}catch(e){}}"
-                + "function ksPreventFetch(pat){try{var orig=window.fetch;if(!orig){return;}"
-                + "var re=new RegExp(pat);window.fetch=function(input,init){"
-                + "var u=typeof input==='string'?input:(input&&input.url)||'';"
-                + "if(re.test(u)){return Promise.reject(new TypeError('blocked'));}"
-                + "return orig.apply(window,arguments);};}catch(e){}}" + script + "}";
+        return name;
     }
 
     private static String[] splitArguments(String raw) {
@@ -529,39 +652,26 @@ final class AdBlocker {
             } else if (c == '\\') {
                 escaped = true;
             } else if (c == ',') {
-                result.add(current.toString().trim());
+                result.add(unquoteArgument(current.toString()));
                 current.setLength(0);
             } else {
                 current.append(c);
             }
         }
-        result.add(current.toString().trim());
+        result.add(unquoteArgument(current.toString()));
         return result.toArray(new String[result.size()]);
     }
 
-    private static String constantValue(String value) {
+    private static String unquoteArgument(String value) {
         String trimmed = value == null ? "" : value.trim();
-        if ("true".equals(trimmed) || "false".equals(trimmed)
-                || "null".equals(trimmed) || "undefined".equals(trimmed)) {
-            return trimmed;
+        if (trimmed.length() >= 2) {
+            char first = trimmed.charAt(0);
+            char last = trimmed.charAt(trimmed.length() - 1);
+            if ((first == '"' && last == '"') || (first == '\'' && last == '\'')) {
+                return trimmed.substring(1, trimmed.length() - 1);
+            }
         }
-        if (trimmed.matches("-?[0-9]+(\\.[0-9]+)?")) {
-            return trimmed;
-        }
-        if ((trimmed.startsWith("'") && trimmed.endsWith("'"))
-                || (trimmed.startsWith("\"") && trimmed.endsWith("\""))) {
-            return JSONObject.quote(trimmed.substring(1, trimmed.length() - 1));
-        }
-        if ("noopFunc".equals(trimmed) || "emptyFn".equals(trimmed)) {
-            return "(function(){})";
-        }
-        if ("noopArray".equals(trimmed)) {
-            return "[]";
-        }
-        if ("noopObject".equals(trimmed)) {
-            return "({})";
-        }
-        return JSONObject.quote(trimmed);
+        return trimmed;
     }
 
     private static String pageUrl(String siteHost) {
