@@ -242,6 +242,29 @@ body {
   height: 1px;
   background: linear-gradient(90deg, rgba(255, 255, 255, .14), transparent);
 }
+.section-history {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 9px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .11), rgba(255, 255, 255, .03));
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .12);
+  color: var(--muted);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .2s var(--ease), border-color .2s ease, color .2s ease, background .2s ease;
+}
+.section-history svg { width: 15px; height: 15px; }
+.section-history:hover, .section-history:focus-visible {
+  border-color: rgba(255, 255, 255, .32);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .16), rgba(255, 255, 255, .055));
+  color: var(--text);
+}
+.section-history:active { transform: scale(.9); }
 .sites {
   display: flex;
   gap: 10px;
@@ -709,7 +732,14 @@ body.launching .recents {
   <p class="section-label bookmarks-label">BOOKMARKS</p>
   <nav class="sites bookmarks-sites" id="bookmarks" aria-label="Bookmarks"></nav>
 
-  <p class="section-label recents-label">RECENT SITES</p>
+  <p class="section-label recents-label">
+    <button class="section-history" id="btnHistory" type="button" aria-label="History" title="History">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M13,3c-4.97,0 -9,4.03 -9,9L1,12l3.89,3.89 0.07,0.14L9,12L6,12c0,-3.87 3.13,-7 7,-7s7,3.13 7,7 -3.13,7 -7,7c-1.93,0 -3.68,-0.79 -4.94,-2.06l-1.42,1.42C8.27,19.99 10.51,21 13,21c4.97,0 9,-4.03 9,-9s-4.03,-9 -9,-9zM12,8v5l4.28,2.54 0.72,-1.21 -3.5,-2.08L13.5,8L12,8z"/>
+      </svg>
+    </button>
+    <span>RECENT SITES</span>
+  </p>
   <nav class="recents" id="recents" aria-label="Recent sites"></nav>
 </main>
 
