@@ -502,6 +502,7 @@ public class DownloadRepository {
             tasks.put(item.id, task);
             notifyListenersLocked();
         }
+        NotificationHelper.downloadStarted(context, item);
         executor.execute(task);
         return item;
     }
@@ -546,6 +547,9 @@ public class DownloadRepository {
         }
         if (changed) {
             notifyListeners();
+            synchronized (lock) {
+                NotificationHelper.downloadCancelled(context, findLocked(id));
+            }
         }
     }
 
@@ -574,6 +578,7 @@ public class DownloadRepository {
             }
         }
         deletePublished(content, TextUtils.isEmpty(item.filePath) ? null : new File(item.filePath));
+        NotificationHelper.downloadCancelled(context, item);
         notifyListeners();
     }
 
@@ -680,6 +685,9 @@ public class DownloadRepository {
             persistLocked();
         }
         notifyListeners();
+        synchronized (lock) {
+            NotificationHelper.downloadStarted(context, findLocked(id));
+        }
         executor.execute(task);
         return true;
     }
@@ -1611,6 +1619,7 @@ public class DownloadRepository {
 
                 String responseMime = normalizeMime(current.getContentType());
                 long total = current.getContentLength();
+                DownloadItem downloading;
                 synchronized (lock) {
                     DownloadItem item = findLocked(id);
                     if (item == null) {
@@ -1624,8 +1633,10 @@ public class DownloadRepository {
                     if (total > 0) {
                         item.totalBytes = total;
                     }
+                    downloading = item;
                 }
                 notifyListeners();
+                NotificationHelper.downloadProgress(context, downloading);
 
                 input = current.getInputStream();
                 output = new FileOutputStream(part);
@@ -1649,6 +1660,10 @@ public class DownloadRepository {
                         item.downloadedBytes = bytes;
                         if (item.totalBytes > 0 && bytes > item.totalBytes) {
                             item.totalBytes = bytes;
+                        }
+                        if (now - lastUpdate >= 300) {
+                            lastUpdate = now;
+                            NotificationHelper.downloadProgress(context, item);
                         }
                     }
                     if (now - lastUpdate >= 300) {
