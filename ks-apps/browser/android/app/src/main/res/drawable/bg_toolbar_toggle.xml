@@ -6,8 +6,8 @@
         android:endColor="#141414"
         android:startColor="#1D1D1D" />
     <corners
-        android:bottomLeftRadius="13dp"
-        android:bottomRightRadius="13dp" />
+        android:bottomLeftRadius="6dp"
+        android:bottomRightRadius="6dp" />
     <stroke
         android:width="1dp"
         android:color="#2EFFFFFF" />
