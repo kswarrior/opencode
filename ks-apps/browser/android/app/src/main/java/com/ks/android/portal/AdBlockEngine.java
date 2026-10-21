@@ -1332,8 +1332,20 @@ final class AdBlockEngine {
             String sourceKey = line;
             String pattern = source;
             String options = "";
-            int dollar = source.lastIndexOf('$');
-            if (dollar >= 0 && looksLikeOptions(source.substring(dollar + 1))) {
+            int dollar = -1;
+            int marker = source.length();
+            while (marker > 0) {
+                int candidate = source.lastIndexOf('$', marker - 1);
+                if (candidate < 0) {
+                    break;
+                }
+                if (looksLikeOptions(source.substring(candidate + 1))) {
+                    dollar = candidate;
+                    break;
+                }
+                marker = candidate;
+            }
+            if (dollar >= 0) {
                 pattern = source.substring(0, dollar);
                 options = source.substring(dollar + 1);
             }
