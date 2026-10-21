@@ -432,6 +432,7 @@ example.com##.ad-banner</string>
     <string name="toolbar_height">Height</string>
     <string name="toolbar_size_value">%1$d dp</string>
     <string name="toolbar_colour">COLOUR</string>
+    <string name="toolbar_colour_option">Colour %1$d</string>
     <string name="toolbar_position">POSITION</string>
     <string name="toolbar_mode_fixed">Fixed</string>
     <string name="toolbar_mode_moveable">Moveable</string>
