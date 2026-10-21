@@ -1472,8 +1472,12 @@ final class AdBlockEngine {
 
         private void addCosmetic(String line, int marker) {
             String typeMarker;
-            if (line.startsWith("#@#", marker)) {
+            if (line.startsWith("#@%#", marker)) {
+                typeMarker = "#@%#";
+            } else if (line.startsWith("#@#", marker)) {
                 typeMarker = "#@#";
+            } else if (line.startsWith("#%#", marker)) {
+                typeMarker = "#%#";
             } else if (line.startsWith("##", marker)) {
                 typeMarker = "##";
             } else if (line.startsWith("#?#", marker)) {
@@ -1490,25 +1494,45 @@ final class AdBlockEngine {
             if (selector.length() == 0 || selector.length() > 2048) {
                 return;
             }
-            boolean exception = "#@#".equals(typeMarker);
-            boolean procedural = "#?#".equals(typeMarker) || "#$?#".equals(typeMarker);
+            boolean exception = "#@#".equals(typeMarker) || "#@%#".equals(typeMarker);
+            boolean adGuardScriptlet = "#%#".equals(typeMarker) || "#@%#".equals(typeMarker);
+            if (adGuardScriptlet) {
+                if (!selector.startsWith("//scriptlet(") || !selector.endsWith(")")) {
+                    return;
+                }
+                selector = selector.substring(12, selector.length() - 1).trim();
+            }
+            selector = normalizeProceduralAliases(selector);
             boolean scriptlet = selector.startsWith("+js(") && selector.endsWith(")");
             if (scriptlet) {
                 selector = selector.substring(4, selector.length() - 1).trim();
-            } else if (procedural) {
+            }
+            int kind;
+            if (scriptlet || adGuardScriptlet) {
+                if (!isSafeScriptlet(selector)) {
+                    return;
+                }
+                kind = CosmeticRule.KIND_SCRIPTLET;
+            } else if ("#$#".equals(typeMarker)) {
+                if (!isSafeStyleRule(selector)) {
+                    return;
+                }
+                kind = CosmeticRule.KIND_STYLE;
+            } else if ("#?#".equals(typeMarker) || "#$?#".equals(typeMarker)
+                    || hasProceduralOperator(selector)) {
                 if (!isSafeProcedural(selector)) {
                     return;
                 }
-            } else if ("#$#".equals(typeMarker)) {
-                return;
-            }
-            if (!scriptlet && !isSafeSelector(selector)) {
-                return;
+                kind = CosmeticRule.KIND_PROCEDURAL;
+            } else {
+                if (!isSafeSelector(selector)) {
+                    return;
+                }
+                kind = CosmeticRule.KIND_CSS;
             }
             String[] includes = includeDomains(domains.replace(',', '|'));
             String[] excludes = excludeDomains(domains.replace(',', '|'));
-            CosmeticRule rule = new CosmeticRule(selector, includes, excludes, exception,
-                    scriptlet);
+            CosmeticRule rule = new CosmeticRule(selector, includes, excludes, exception, kind);
             if (rule.generic) {
                 genericCosmetics.add(rule);
             } else {
@@ -1592,7 +1616,7 @@ final class AdBlockEngine {
 
     private static int cosmeticMarker(String line) {
         int best = -1;
-        String[] markers = {"#@#", "##", "#?#", "#$?#", "#$#"};
+        String[] markers = {"#@%#", "#@#", "#%#", "##", "#?#", "#$?#", "#$#"};
         for (int i = 0; i < markers.length; i++) {
             int index = line.indexOf(markers[i]);
             if (index >= 0 && (best < 0 || index < best)) {
@@ -1606,39 +1630,66 @@ final class AdBlockEngine {
         if (value.length() == 0 || value.indexOf(' ') >= 0) {
             return false;
         }
-        for (int i = 0; i < value.length(); i++) {
-            char c = value.charAt(i);
-            if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-                    || (c >= '0' && c <= '9') || c == ',' || c == '~' || c == '='
-                    || c == '_' || c == '-' || c == '|' || c == '.' || c == '*')) {
+        String[] parts = value.split(",");
+        for (int i = 0; i < parts.length; i++) {
+            String option = parts[i].trim();
+            if (option.length() == 0) {
+                return false;
+            }
+            boolean negated = option.startsWith("~");
+            String body = negated ? option.substring(1) : option;
+            int equals = body.indexOf('=');
+            String name = (equals >= 0 ? body.substring(0, equals) : body)
+                    .toLowerCase(Locale.US);
+            if (!isKnownOption(name)) {
                 return false;
             }
         }
         return true;
     }
 
-    private static String hostLiteral(String pattern) {
-        if (pattern.length() == 0 || pattern.charAt(0) == '*') {
-            return null;
-        }
-        int end = 0;
-        while (end < pattern.length()) {
-            char c = pattern.charAt(end);
-            if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-                    || (c >= '0' && c <= '9') || c == '.' || c == '-') {
-                end++;
-            } else {
-                break;
+    private static boolean isKnownOption(String name) {
+        return "domain".equals(name) || "from".equals(name) || "denyallow".equals(name)
+                || "to".equals(name) || "third-party".equals(name) || "3p".equals(name)
+                || "first-party".equals(name) || "1p".equals(name)
+                || "important".equals(name) || "match-case".equals(name)
+                || "badfilter".equals(name) || "elemhide".equals(name)
+                || "ehide".equals(name) || "generichide".equals(name)
+                || "ghide".equals(name) || "specifichide".equals(name)
+                || "shide".equals(name) || "popup".equals(name)
+                || "popunder".equals(name) || "removeparam".equals(name)
+                || "redirect-rule".equals(name) || "redirect".equals(name)
+                || "empty".equals(name) || "mp4".equals(name) || "xhr".equals(name)
+                || "xmlhttprequest".equals(name) || "document".equals(name)
+                || "doc".equals(name) || "all".equals(name) || "network".equals(name)
+                || "method".equals(name) || "genericblock".equals(name)
+                || "csp".equals(name) || "rewrite".equals(name)
+                || "urltransform".equals(name) || "header".equals(name)
+                || "permissions".equals(name) || "sitekey".equals(name)
+                || typeFor(name) != 0;
+    }
+
+    private static String normalizeProceduralAliases(String selector) {
+        String value = selector;
+        value = value.replace(":-abp-has(", ":has(");
+        value = value.replace(":-abp-contains(", ":has-text(");
+        value = value.replace(":contains(", ":has-text(");
+        return value;
+    }
+
+    private static boolean hasProceduralOperator(String selector) {
+        String lower = selector.toLowerCase(Locale.US);
+        String[] operators = {":has-text(", ":matches-css(", ":matches-css-before(",
+                ":matches-css-after(", ":matches-attr(", ":matches-path(",
+                ":min-text-length(", ":upward(", ":xpath(", ":watch-attr(",
+                ":others(", ":if(", ":if-not(", ":remove(", ":style(",
+                ":remove-attr(", ":remove-class("};
+        for (int i = 0; i < operators.length; i++) {
+            if (lower.indexOf(operators[i]) >= 0) {
+                return true;
             }
         }
-        if (end == 0) {
-            return null;
-        }
-        String host = pattern.substring(0, end).toLowerCase(Locale.US);
-        if (host.startsWith(".") || host.endsWith(".") || host.indexOf('.') < 0) {
-            return null;
-        }
-        return host;
+        return false;
     }
 
     private static boolean isSafeSelector(String selector) {
@@ -1647,22 +1698,61 @@ final class AdBlockEngine {
                 || selector.indexOf('\r') >= 0) {
             return false;
         }
-        String lower = selector.toLowerCase(Locale.US);
-        return lower.indexOf(":contains(") < 0 && lower.indexOf(":xpath(") < 0
-                && lower.indexOf(":style(") < 0 && lower.indexOf(":remove(") < 0
-                && lower.indexOf(":upward(") < 0 && lower.indexOf(":watch-attr(") < 0
-                && lower.indexOf(":matches-attr(") < 0 && lower.indexOf(":matches-path(") < 0
-                && lower.indexOf(":min-text-length(") < 0 && lower.indexOf(":others(") < 0
-                && lower.indexOf(":if(") < 0 && lower.indexOf(":if-not(") < 0
-                && lower.indexOf(":has-text(") < 0;
+        return !hasProceduralOperator(selector);
     }
 
     private static boolean isSafeProcedural(String selector) {
-        String lower = selector.toLowerCase(Locale.US);
-        if (lower.indexOf(":has(") >= 0) {
-            return isSafeSelector(selector);
+        if (selector.length() > 2048 || selector.indexOf('<') >= 0
+                || selector.indexOf('{') >= 0 || selector.indexOf('}') >= 0
+                || selector.indexOf('\n') >= 0 || selector.indexOf('\r') >= 0) {
+            return false;
         }
-        return false;
+        if (!hasProceduralOperator(selector) && selector.indexOf(":xpath(") < 0) {
+            return false;
+        }
+        int paren = 0;
+        int bracket = 0;
+        char quote = 0;
+        for (int i = 0; i < selector.length(); i++) {
+            char c = selector.charAt(i);
+            if (quote != 0) {
+                if (c == quote && selector.charAt(i - 1) != '\\') {
+                    quote = 0;
+                }
+            } else if (c == '"' || c == '\'') {
+                quote = c;
+            } else if (c == '(') {
+                paren++;
+            } else if (c == ')') {
+                paren--;
+            } else if (c == '[') {
+                bracket++;
+            } else if (c == ']') {
+                bracket--;
+            }
+            if (paren < 0 || bracket < 0) {
+                return false;
+            }
+        }
+        return paren == 0 && bracket == 0 && quote == 0;
+    }
+
+    private static boolean isSafeScriptlet(String selector) {
+        return selector.length() > 0 && selector.length() <= 2048
+                && selector.indexOf('<') < 0 && selector.indexOf('\n') < 0
+                && selector.indexOf('\r') < 0;
+    }
+
+    private static boolean isSafeStyleRule(String selector) {
+        int open = selector.indexOf('{');
+        if (open <= 0 || !selector.endsWith("}") || selector.indexOf('{', open + 1) >= 0
+                || selector.indexOf('}', 0) != selector.length() - 1
+                || selector.indexOf('<') >= 0) {
+            return false;
+        }
+        String lower = selector.toLowerCase(Locale.US);
+        return lower.indexOf("url(") < 0 && lower.indexOf("@import") < 0
+                && lower.indexOf("expression(") < 0 && lower.indexOf("javascript:") < 0;
     }
 
     private static int typeFor(String name) {
