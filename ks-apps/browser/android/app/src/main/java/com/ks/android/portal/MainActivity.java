@@ -47,9 +47,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends Activity {
     public static final String EXTRA_OPEN_URL = "com.ks.android.portal.extra.OPEN_URL";
@@ -83,6 +86,8 @@ public class MainActivity extends Activity {
     private String pendingDownloadReferer;
     private String backgroundCacheKey = "";
     private String backgroundCacheJson = "{}";
+    private final Set<Integer> privateTabs =
+            Collections.synchronizedSet(new HashSet<Integer>());
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
