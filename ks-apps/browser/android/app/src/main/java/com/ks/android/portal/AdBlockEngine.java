@@ -867,6 +867,9 @@ final class AdBlockEngine {
         int star = -1;
         int starUrl = 0;
         while (u < url.length()) {
+            if (p == pattern.length()) {
+                return !endAnchor;
+            }
             if (p < pattern.length() && pattern.charAt(p) == '*') {
                 star = p++;
                 starUrl = u;
@@ -1195,13 +1198,7 @@ final class AdBlockEngine {
                 return;
             }
             if (badfilter) {
-                String key = sourceKey;
-                int optionIndex = key.lastIndexOf('$');
-                if (optionIndex >= 0) {
-                    key = key.substring(0, optionIndex) + "$"
-                            + removeOption(key.substring(optionIndex + 1), "badfilter");
-                }
-                badfilters.add(key);
+                badfilters.add(badfilterKey(sourceKey));
                 return;
             }
 
