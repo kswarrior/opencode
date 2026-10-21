@@ -324,10 +324,24 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public WebResourceResponse shouldInterceptRequest(WebView current,
+                                                              WebResourceRequest request) {
+                if (request != null && !request.isForMainFrame()) {
+                    Uri uri = request.getUrl();
+                    if (uri != null && AdBlocker.isBlocked(MainActivity.this,
+                            SiteSettingsStore.hostOf(current.getUrl()), uri.toString())) {
+                        return AdBlocker.blockedResponse();
+                    }
+                }
+                return super.shouldInterceptRequest(current, request);
+            }
+
+            @Override
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
                 tab.loading = true;
                 tab.progress = 0;
-                applySiteSettings(current, url);                tabManager.updateTab(tab.id, url, null);
+                applySiteSettings(current, url);
+                tabManager.updateTab(tab.id, url, null);
                 if (isActiveTab(tab)) {
                     progressBar.setProgress(0);
                     progressBar.setVisibility(View.VISIBLE);
