@@ -772,12 +772,24 @@ body.launching .recents {
   var lastFocused = null;
   var suppressUntil = 0;
 
+  function searchBase() {
+    var engine = 'google';
+    if (nativePortal && typeof nativePortal.getSearchEngine === 'function') {
+      try {
+        engine = nativePortal.getSearchEngine() || 'google';
+      } catch (error) {}
+    }
+    if (engine === 'duckduckgo') return 'https://duckduckgo.com/?q=';
+    if (engine === 'bing') return 'https://www.bing.com/search?q=';
+    return 'https://www.google.com/search?q=';
+  }
+
   function resolveUrl(raw) {
     var value = String(raw || '').trim();
     if (!value) return '';
     if (/^https?:\/\//i.test(value)) return value;
     if (/^[^\s/]+\.[^\s]{2,}(\/.*)?$/.test(value)) return 'https://' + value;
-    return 'https://www.google.com/search?q=' + encodeURIComponent(value);
+    return searchBase() + encodeURIComponent(value);
   }
 
   function launch(url) {

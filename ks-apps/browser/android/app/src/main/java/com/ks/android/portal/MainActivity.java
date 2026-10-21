@@ -401,7 +401,7 @@ public class MainActivity extends Activity {
             if (value.matches("^[^\\s/]+\\.[^\\s]{2,}(/.*)?$")) {
                 value = "https://" + value;
             } else {
-                value = "https://www.google.com/search?q=" + Uri.encode(value);
+                value = SearchEngine.buildUrl(this, value);
             }
         }
         webView.loadUrl(value);
@@ -658,6 +658,14 @@ public class MainActivity extends Activity {
                 }
             });
             return true;
+        }
+
+        @JavascriptInterface
+        public String getSearchEngine() {
+            if (!isBridgeAllowed()) {
+                return SearchEngine.DEFAULT;
+            }
+            return SearchEngine.getKey(MainActivity.this);
         }
 
         @JavascriptInterface
