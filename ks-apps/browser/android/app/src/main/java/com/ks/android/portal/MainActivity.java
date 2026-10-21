@@ -422,6 +422,7 @@ public class MainActivity extends Activity {
             WebView closed = entry.getValue();
             webContainer.removeView(closed);
             closed.removeJavascriptInterface("KSPortalNative");
+            closed.removeJavascriptInterface("KSPortalWeb");
             closed.stopLoading();
             closed.destroy();
             privateTabs.remove(tabId);
@@ -1444,6 +1445,7 @@ public class MainActivity extends Activity {
                 webContainer.removeView(tabView);
             }
             tabView.removeJavascriptInterface("KSPortalNative");
+            tabView.removeJavascriptInterface("KSPortalWeb");
             tabView.stopLoading();
             tabView.destroy();
         }
