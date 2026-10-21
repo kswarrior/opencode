@@ -32,6 +32,12 @@ public class SettingsActivity extends Activity {
                 startActivity(new Intent(SettingsActivity.this, SearchEngineActivity.class));
             }
         });
+        findViewById(R.id.settingsSiteSettings).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, SiteSettingsActivity.class));
+            }
+        });
         findViewById(R.id.settingsAbout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -100,7 +100,6 @@
             android:layout_marginTop="-1dp"
             android:background="@drawable/bg_toolbar_toggle"
             android:contentDescription="@string/collapse_toolbar"
-            android:elevation="6dp"
             android:padding="4dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_chevron_up"
