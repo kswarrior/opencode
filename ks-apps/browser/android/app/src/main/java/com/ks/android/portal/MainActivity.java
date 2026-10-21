@@ -1137,9 +1137,7 @@ public class MainActivity extends Activity {
         if (tab == null || tab.id != tabManager.getActiveTabId()) {
             return false;
         }
-        WebView bridgeView = tabViews.get(tabId);
-        String url = bridgeView == null ? tab.url : bridgeView.getUrl();
-        return isHomeUrl(url);
+        return isHomeUrl(tab.url);
     }
 
     private boolean handleLogin(int tabId, String rawUrl, String name, String username,
