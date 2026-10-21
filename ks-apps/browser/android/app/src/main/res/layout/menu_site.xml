@@ -277,7 +277,7 @@
             android:id="@+id/siteMenuAdBlockSwitch"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:clickable="false"
+            android:clickable="true"
             android:focusable="false"
             android:thumbTint="@color/ks_switch_thumb"
             android:trackTint="@color/ks_switch_track" />
