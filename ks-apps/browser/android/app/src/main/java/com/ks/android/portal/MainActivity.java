@@ -38,15 +38,18 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -324,8 +327,7 @@ public class MainActivity extends Activity {
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
                 tab.loading = true;
                 tab.progress = 0;
-                applySiteSettings(current, url);
-                tabManager.updateTab(tab.id, url, null);
+                applySiteSettings(current, url);                tabManager.updateTab(tab.id, url, null);
                 if (isActiveTab(tab)) {
                     progressBar.setProgress(0);
                     progressBar.setVisibility(View.VISIBLE);
