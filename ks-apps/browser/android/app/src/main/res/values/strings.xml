@@ -43,7 +43,10 @@
     <string name="history_category_count">(%1$d)</string>
     <string name="history_delete_category">Delete category</string>
     <string name="history_delete_category_title">Delete category?</string>
-    <string name="history_delete_category_message">Remove all %1$d pages from %2$s history?</string>
+    <plurals name="history_delete_category_message">
+        <item quantity="one">Remove %1$d page from %2$s history?</item>
+        <item quantity="other">Remove all %1$d pages from %2$s history?</item>
+    </plurals>
     <string name="download_location">Download location</string>
     <string name="downloads_search_hint">Search downloads</string>
     <string name="save_to">Save to: %1$s</string>

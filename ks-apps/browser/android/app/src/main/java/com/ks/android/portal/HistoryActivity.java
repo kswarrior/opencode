@@ -329,10 +329,11 @@ public class HistoryActivity extends Activity {
     }
 
     private void confirmDeleteCategory(final Category category) {
+        int count = category.entries.size();
         new AlertDialog.Builder(this)
                 .setTitle(R.string.history_delete_category_title)
-                .setMessage(getString(R.string.history_delete_category_message,
-                        category.entries.size(), category.title))
+                .setMessage(getResources().getQuantityString(
+                        R.plurals.history_delete_category_message, count, count, category.title))
                 .setPositiveButton(R.string.history_delete,
                         new DialogInterface.OnClickListener() {
                             @Override
