@@ -109,6 +109,16 @@ final class AdBlockEngine {
         return cosmeticRuleCount;
     }
 
+    int cleanRuleCount() {
+        return cleanRuleCount;
+    }
+
+    static void installPublicSuffixList(PublicSuffixList list) {
+        if (list != null && list.isReady()) {
+            PUBLIC_SUFFIX_LIST = list;
+        }
+    }
+
     long version() {
         return version;
     }
@@ -191,6 +201,8 @@ final class AdBlockEngine {
         boolean blockDisabled = false;
         boolean elementHideDisabled = false;
         boolean genericHideDisabled = false;
+        boolean specificHideDisabled = false;
+        boolean popupBlockSuggested = false;
         int position = 0;
         while (position >= 0) {
             String suffix = host.substring(position);
@@ -202,6 +214,8 @@ final class AdBlockEngine {
                         blockDisabled |= rule.block;
                         elementHideDisabled |= rule.elemHide;
                         genericHideDisabled |= rule.genericHide;
+                        specificHideDisabled |= rule.specificHide;
+                        popupBlockSuggested |= rule.popup;
                     }
                 }
             }
@@ -211,11 +225,14 @@ final class AdBlockEngine {
         if (blockDisabled) {
             elementHideDisabled = true;
             genericHideDisabled = true;
+            specificHideDisabled = true;
         }
-        return new PagePolicy(blockDisabled, elementHideDisabled, genericHideDisabled);
+        return new PagePolicy(blockDisabled, elementHideDisabled, genericHideDisabled,
+                specificHideDisabled, popupBlockSuggested);
     }
 
-    CosmeticResult cosmeticFor(String pageUrl, boolean genericEnabled) {
+    CosmeticResult cosmeticFor(String pageUrl, boolean genericEnabled,
+                               boolean specificEnabled) {
         String host = hostOf(pageUrl);
         if (host == null) {
             return CosmeticResult.EMPTY;
@@ -240,7 +257,10 @@ final class AdBlockEngine {
         }
         LinkedHashSet<String> specific = new LinkedHashSet<String>();
         LinkedHashSet<String> generic = new LinkedHashSet<String>();
+        LinkedHashSet<String> proceduralSpecific = new LinkedHashSet<String>();
+        LinkedHashSet<String> proceduralGeneric = new LinkedHashSet<String>();
         LinkedHashSet<String> scriptlets = new LinkedHashSet<String>();
+        LinkedHashSet<String> styles = new LinkedHashSet<String>();
         for (CosmeticRule rule : candidates) {
             if (rule.exception || exceptions.contains(rule.selector)
                     || !rule.matchesDomain(host)) {
@@ -249,8 +269,19 @@ final class AdBlockEngine {
             if (rule.generic && !genericEnabled) {
                 continue;
             }
-            if (rule.scriptlet) {
+            if (!rule.generic && !specificEnabled) {
+                continue;
+            }
+            if (rule.kind == CosmeticRule.KIND_SCRIPTLET) {
                 scriptlets.add(rule.selector);
+            } else if (rule.kind == CosmeticRule.KIND_STYLE) {
+                styles.add(rule.selector);
+            } else if (rule.kind == CosmeticRule.KIND_PROCEDURAL) {
+                if (rule.generic) {
+                    proceduralGeneric.add(rule.selector);
+                } else {
+                    proceduralSpecific.add(rule.selector);
+                }
             } else if (rule.generic) {
                 generic.add(rule.selector);
             } else {
@@ -258,7 +289,9 @@ final class AdBlockEngine {
             }
         }
         return new CosmeticResult(new ArrayList<String>(specific),
-                new ArrayList<String>(generic), new ArrayList<String>(scriptlets));
+                new ArrayList<String>(generic), new ArrayList<String>(proceduralSpecific),
+                new ArrayList<String>(proceduralGeneric), new ArrayList<String>(scriptlets),
+                new ArrayList<String>(styles));
     }
 
     private FilterState evaluate(List<NetworkFilter> rules, Request request) {
@@ -700,17 +733,22 @@ final class AdBlockEngine {
     }
 
     static final class PagePolicy {
-        static final PagePolicy DEFAULT = new PagePolicy(false, false, false);
+        static final PagePolicy DEFAULT = new PagePolicy(false, false, false, false, false);
 
         final boolean blockingDisabled;
         final boolean elementHideDisabled;
         final boolean genericHideDisabled;
+        final boolean specificHideDisabled;
+        final boolean popupBlockSuggested;
 
         PagePolicy(boolean blockingDisabled, boolean elementHideDisabled,
-                   boolean genericHideDisabled) {
+                   boolean genericHideDisabled, boolean specificHideDisabled,
+                   boolean popupBlockSuggested) {
             this.blockingDisabled = blockingDisabled;
             this.elementHideDisabled = elementHideDisabled;
             this.genericHideDisabled = genericHideDisabled;
+            this.specificHideDisabled = specificHideDisabled;
+            this.popupBlockSuggested = popupBlockSuggested;
         }
     }
 
