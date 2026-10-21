@@ -1172,6 +1172,7 @@ public class MainActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SiteSettingsStore.setBoolean(MainActivity.this, host,
                         SiteSettingsStore.KEY_ADBLOCK, isChecked);
+                popup.dismiss();
                 reloadActiveTabWithSiteSettings();
             }
         });
