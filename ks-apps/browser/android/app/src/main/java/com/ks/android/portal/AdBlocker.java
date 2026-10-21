@@ -409,6 +409,7 @@ final class AdBlocker {
                             AdBlockListStore.enabledLists(appContext);
                     result = AdBlockListStore.update(appContext, lists);
                     if (result.downloaded > 0) {
+                        loadPublicSuffixList(appContext);
                         rebuild(appContext);
                     }
                 } catch (RuntimeException exception) {
@@ -460,6 +461,7 @@ final class AdBlocker {
         if (context == null) {
             return;
         }
+        loadPublicSuffixList(context);
         if (AdBlockListStore.needsAutoUpdate(context)
                 && AdBlockListStore.enabledLists(context).size() > 0) {
             if (UPDATING.compareAndSet(false, true)) {
@@ -487,6 +489,7 @@ final class AdBlocker {
     }
 
     private static void rebuild(Context context) {
+        loadPublicSuffixList(context);
         AdBlockEngine.Builder builder = new AdBlockEngine.Builder()
                 .version(System.currentTimeMillis());
         builder.addAll(AdBlockListStore.readSeed(context));
@@ -498,6 +501,7 @@ final class AdBlocker {
             }
             builder.addAll(AdBlockListStore.readCached(context, list));
         }
+        builder.addAll(AdBlockListStore.customRules(context));
         ENGINE.set(builder.build());
         engineVersion = System.currentTimeMillis();
     }
@@ -506,24 +510,68 @@ final class AdBlocker {
         AdBlockEngine.Builder builder = new AdBlockEngine.Builder()
                 .version(System.currentTimeMillis());
         builder.addAll(AdBlockListStore.readSeed(context));
+        builder.addAll(AdBlockListStore.customRules(context));
         return builder.build();
+    }
+
+    private static void loadPublicSuffixList(Context context) {
+        if (!PSL_LOADED.compareAndSet(false, true)) {
+            return;
+        }
+        String data = AdBlockListStore.readAsset(context,
+                "adblock/public_suffix_list.dat");
+        if (data.length() > 0) {
+            AdBlockEngine.installPublicSuffixList(PublicSuffixList.parse(data));
+        }
+    }
+
+    static String customRules(Context context) {
+        return AdBlockListStore.customRules(context);
+    }
+
+    static void setCustomRules(Context context, String rules) {
+        AdBlockListStore.setCustomRules(context, rules);
+        scheduleRebuild();
+    }
+
+    static boolean addCustomList(Context context, String url) {
+        AdBlockListStore.FilterList list = AdBlockListStore.addCustomList(context, url);
+        if (list == null) {
+            return false;
+        }
+        scheduleRebuild();
+        return true;
+    }
+
+    static void removeCustomList(Context context, AdBlockListStore.FilterList list) {
+        AdBlockListStore.removeCustomList(context, list);
+        scheduleRebuild();
     }
 
     private static WebResourceResponse blockedResponse(String redirect) {
         String value = redirect == null ? "" : redirect.toLowerCase(Locale.US);
-        if (value.contains("gif") || value.contains("png")) {
+        if (value.contains("gif") || value.contains("png") || value.contains("image")) {
             return new WebResourceResponse("image/gif", null,
                     new ByteArrayInputStream(TRANSPARENT_GIF));
         }
-        if (value.contains(".js") || value.contains("noopjs")) {
+        if (value.contains(".js") || value.contains("noopjs")
+                || value.contains("javascript")) {
             return new WebResourceResponse("application/javascript", "utf-8",
+                    new ByteArrayInputStream(new byte[0]));
+        }
+        if (value.contains(".css") || value.contains("noopcss")) {
+            return new WebResourceResponse("text/css", "utf-8",
                     new ByteArrayInputStream(new byte[0]));
         }
         if (value.contains("mp4") || value.contains("video")) {
             return new WebResourceResponse("video/mp4", null,
                     new ByteArrayInputStream(new byte[0]));
         }
-        if (value.contains("text") || value.contains("empty")) {
+        if (value.contains("html") || value.contains("noopframe")) {
+            return new WebResourceResponse("text/html", "utf-8",
+                    new ByteArrayInputStream(new byte[0]));
+        }
+        if (value.contains("text") || value.contains("empty") || value.contains("noop")) {
             return new WebResourceResponse("text/plain", "utf-8",
                     new ByteArrayInputStream(new byte[0]));
         }
