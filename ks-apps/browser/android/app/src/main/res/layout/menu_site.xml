@@ -242,4 +242,44 @@
             android:src="@drawable/ic_chevron_right"
             android:tint="@color/ks_muted" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/siteMenuAdBlock"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_menu_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_adblock"
+            android:tint="@color/ks_text" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/adblocker"
+            android:textColor="@color/ks_text"
+            android:textSize="14sp" />
+
+        <Switch
+            android:id="@+id/siteMenuAdBlockSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:thumbTint="@color/ks_switch_thumb"
+            android:trackTint="@color/ks_switch_track" />
+    </LinearLayout>
 </LinearLayout>

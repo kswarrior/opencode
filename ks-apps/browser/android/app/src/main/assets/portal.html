@@ -991,19 +991,32 @@ body.launching .recents {
     return engine;
   }
 
+  var SEARCH_BASES = {
+    google: 'https://www.google.com/search?q=',
+    duckduckgo: 'https://duckduckgo.com/?q=',
+    bing: 'https://www.bing.com/search?q=',
+    brave: 'https://search.brave.com/search?q=',
+    yahoo: 'https://search.yahoo.com/search?p=',
+    yandex: 'https://yandex.com/search/?text=',
+    ecosia: 'https://www.ecosia.org/search?q=',
+    startpage: 'https://www.startpage.com/sp/search?query=',
+    qwant: 'https://www.qwant.com/?q='
+  };
+  var SEARCH_AI_PARAMS = {
+    google: '&udm=50',
+    duckduckgo: '&ia=chat',
+    bing: '&showconv=1'
+  };
+
   function searchBase() {
-    var engine = searchEngine();
-    if (engine === 'duckduckgo') return 'https://duckduckgo.com/?q=';
-    if (engine === 'bing') return 'https://www.bing.com/search?q=';
-    return 'https://www.google.com/search?q=';
+    return SEARCH_BASES[searchEngine()] || SEARCH_BASES.google;
   }
 
   function aiSearchUrl(value) {
     var query = encodeURIComponent(value);
     var engine = searchEngine();
-    if (engine === 'duckduckgo') return 'https://duckduckgo.com/?q=' + query + '&ia=chat';
-    if (engine === 'bing') return 'https://www.bing.com/search?q=' + query + '&showconv=1';
-    return 'https://www.google.com/search?q=' + query + '&udm=50';
+    return (SEARCH_BASES[engine] || SEARCH_BASES.google) + query
+      + (SEARCH_AI_PARAMS[engine] || '');
   }
 
   function resolveUrl(raw) {
