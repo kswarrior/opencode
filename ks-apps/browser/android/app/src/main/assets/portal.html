@@ -784,6 +784,15 @@ body.launching .recents {
   var RECENTS_KEY = 'ks_recents_v1';
   var RECENTS_SHOW = 5;
   var RECENTS_STORE = 30;
+  var DEFAULT_BACKGROUNDS = [
+    null,
+    'radial-gradient(70% 55% at 82% 12%, rgba(52,211,153,.35), transparent 62%), radial-gradient(65% 55% at 10% 90%, rgba(56,189,248,.25), transparent 66%), linear-gradient(180deg, #123b36 0%, #0a1f1d 52%, #040b0a 100%)',
+    'radial-gradient(70% 55% at 18% 10%, rgba(167,139,250,.35), transparent 62%), radial-gradient(66% 55% at 90% 85%, rgba(236,72,153,.25), transparent 66%), linear-gradient(180deg, #2b1c55 0%, #1b1236 52%, #080416 100%)',
+    'radial-gradient(75% 50% at 50% 0%, rgba(249,115,22,.35), transparent 64%), radial-gradient(60% 55% at 100% 100%, rgba(239,68,68,.25), transparent 66%), linear-gradient(180deg, #3b1712 0%, #1f0a08 52%, #0b0403 100%)',
+    'radial-gradient(70% 55% at 85% 18%, rgba(34,211,238,.35), transparent 62%), radial-gradient(65% 55% at 8% 92%, rgba(59,130,246,.25), transparent 66%), linear-gradient(180deg, #0e2b3b 0%, #081b25 52%, #030b10 100%)',
+    'radial-gradient(70% 55% at 20% 15%, rgba(34,197,94,.35), transparent 62%), radial-gradient(65% 55% at 92% 88%, rgba(132,204,22,.22), transparent 66%), linear-gradient(180deg, #17321c 0%, #0c1f10 52%, #04100a 100%)',
+    'radial-gradient(70% 55% at 82% 10%, rgba(168,85,247,.35), transparent 62%), radial-gradient(65% 55% at 10% 90%, rgba(236,72,153,.25), transparent 66%), linear-gradient(180deg, #2b1633 0%, #180b1f 52%, #0a040f 100%)'
+  ];
   var bookmarks = loadBookmarks();
   try {
     if (window.localStorage.getItem(BOOKMARK_KEY) === null) saveBookmarks();
@@ -1165,6 +1174,42 @@ body.launching .recents {
     renderRecents();
   }
 
+  function applyBackground() {
+    var bgElement = document.querySelector('.bg');
+    if (!bgElement) return;
+    var info = null;
+    if (nativePortal && typeof nativePortal.getBackground === 'function') {
+      try {
+        info = JSON.parse(nativePortal.getBackground());
+      } catch (error) {
+        info = null;
+      }
+    }
+    var dim = info && typeof info.dim === 'number' ? info.dim : 0;
+    var shade = 'rgba(0,0,0,' + (dim / 100) + ')';
+    var overlay = 'linear-gradient(' + shade + ',' + shade + ')';
+    var custom = false;
+    var css = '';
+    if (info && info.type === 'custom' && info.image) {
+      css = overlay + ', url("' + info.image + '") center / cover no-repeat fixed';
+      custom = true;
+    } else if (info && info.type === 'default' && info.index > 0
+        && DEFAULT_BACKGROUNDS[info.index]) {
+      css = overlay + ', ' + DEFAULT_BACKGROUNDS[info.index];
+      custom = true;
+    } else if (dim > 0) {
+      css = overlay;
+    }
+    bgElement.style.background = css;
+    if (custom) {
+      document.body.classList.add('has-background');
+    } else {
+      document.body.classList.remove('has-background');
+    }
+  }
+
+  window.KSPortalRefreshBackground = applyBackground;
+
   function makeBookmarkTile(bookmark, index) {
     var tile = document.createElement('a');
     tile.className = 'tile';
@@ -1375,6 +1420,10 @@ body.launching .recents {
     event.preventDefault();
     invokeNative('openHistory');
   });
+  document.getElementById('btnCustomize').addEventListener('click', function (event) {
+    event.preventDefault();
+    invokeNative('openCustomize');
+  });
   document.getElementById('btnDownloads').addEventListener('click', function (event) {
     event.preventDefault();
     invokeNative('openDownloads');
@@ -1395,9 +1444,11 @@ body.launching .recents {
 
   renderBookmarks();
   refreshRecents();
+  applyBackground();
 
   window.addEventListener('pageshow', function () {
     refreshRecents();
+    applyBackground();
     if (!launching) return;
     launching = false;
     document.body.classList.remove('launching');
