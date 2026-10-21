@@ -263,7 +263,7 @@ public class MainActivity extends Activity {
         settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
-        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.1.1");
+        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.1.2");
         applyWebSettings(settings);
 
         view.setWebViewClient(new WebViewClient() {
