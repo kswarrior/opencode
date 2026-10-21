@@ -145,7 +145,13 @@ public class FloatingToolbarToggle extends View {
             return;
         }
         restored = true;
-        dockAt(edge, centerX, centerY);
+        float areaLeft = parent.getPaddingLeft();
+        float areaTop = parent.getPaddingTop();
+        float areaRight = parent.getWidth() - parent.getPaddingRight();
+        float areaBottom = parent.getHeight() - parent.getPaddingBottom();
+        float cx = centerX < 0f ? (areaLeft + areaRight) / 2f : centerX;
+        float cy = centerY < 0f ? (areaTop + areaBottom) / 2f : centerY;
+        dockAt(edge, cx, cy);
     }
 
     private void beginDrag() {
