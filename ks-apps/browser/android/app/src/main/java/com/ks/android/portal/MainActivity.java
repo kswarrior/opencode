@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -52,12 +53,12 @@ public class MainActivity extends Activity {
 
     private WebView webView;
     private ProgressBar progressBar;
-    private View toolbar;
-    private View content;
+    private View toolbarContainer;
     private ImageButton toolbarToggle;
     private EditText urlBar;
     private volatile String currentUrl = HOME_URL;
     private int toolbarHeight;
+    private int toolbarToggleHeight;
     private boolean toolbarTargetVisible;
     private boolean toolbarAvailable;
     private boolean toolbarCollapsed;
@@ -77,9 +78,9 @@ public class MainActivity extends Activity {
         webView = findViewById(R.id.webview);
         webView.setBackgroundColor(0xFF070707);
         progressBar = findViewById(R.id.progress);
-        toolbar = findViewById(R.id.toolbar);
-        content = findViewById(R.id.content);
+        toolbarContainer = findViewById(R.id.toolbarContainer);
         toolbarHeight = Math.round(56 * getResources().getDisplayMetrics().density);
+        toolbarToggleHeight = Math.round(26 * getResources().getDisplayMetrics().density);
         urlBar = findViewById(R.id.urlBar);
         ImageButton homeButton = findViewById(R.id.homeButton);
         ImageButton menuButton = findViewById(R.id.menuButton);
@@ -157,6 +158,16 @@ public class MainActivity extends Activity {
                     return;
                 }
                 requestDownload(url, userAgent, contentDisposition, mimeType, contentLength);
+            }
+        });
+
+        webView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+                    collapseToolbar();
+                }
+                return false;
             }
         });
 

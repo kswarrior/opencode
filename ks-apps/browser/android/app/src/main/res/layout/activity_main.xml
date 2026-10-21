@@ -1,72 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_app"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/bg_header_glass"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="7dp"
-        android:visibility="gone">
-
-        <ImageButton
-            android:id="@+id/homeButton"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginEnd="7dp"
-            android:background="@drawable/bg_toolbar_button"
-            android:contentDescription="@string/home_description"
-            android:padding="10dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_home"
-            android:tint="@color/ks_text" />
-
-        <EditText
-            android:id="@+id/urlBar"
-            android:layout_width="0dp"
-            android:layout_height="42dp"
-            android:layout_marginEnd="7dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_url_bar"
-            android:contentDescription="@string/url_hint"
-            android:gravity="center_vertical"
-            android:imeOptions="actionGo"
-            android:importantForAutofill="no"
-            android:inputType="textUri"
-            android:maxLines="1"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
-            android:textColor="@color/ks_text"
-            android:textColorHint="@color/ks_muted"
-            android:textSize="13sp" />
-
-        <ImageButton
-            android:id="@+id/menuButton"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:background="@drawable/bg_toolbar_button"
-            android:contentDescription="@string/more_description"
-            android:padding="10dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_more_vert"
-            android:tint="@color/ks_text" />
-    </LinearLayout>
+    android:fitsSystemWindows="true">
 
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <WebView
             android:id="@+id/webview"
@@ -85,21 +28,82 @@
             android:progressBackgroundTint="@color/ks_panel"
             android:progressTint="@color/ks_text"
             android:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/toolbarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_header_glass"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="7dp">
+
+            <ImageButton
+                android:id="@+id/homeButton"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="7dp"
+                android:background="@drawable/bg_toolbar_button"
+                android:contentDescription="@string/home_description"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_home"
+                android:tint="@color/ks_text" />
+
+            <EditText
+                android:id="@+id/urlBar"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_url_bar"
+                android:contentDescription="@string/url_hint"
+                android:gravity="center_vertical"
+                android:imeOptions="actionGo"
+                android:importantForAutofill="no"
+                android:inputType="textUri"
+                android:maxLines="1"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textColor="@color/ks_text"
+                android:textColorHint="@color/ks_muted"
+                android:textSize="13sp" />
+
+            <ImageButton
+                android:id="@+id/menuButton"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_toolbar_button"
+                android:contentDescription="@string/more_description"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_more_vert"
+                android:tint="@color/ks_text" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/toolbarToggle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="13dp"
+            android:layout_width="64dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-1dp"
             android:background="@drawable/bg_toolbar_toggle"
             android:contentDescription="@string/collapse_toolbar"
             android:elevation="6dp"
-            android:padding="7dp"
+            android:padding="4dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_chevron_up"
-            android:tint="@color/ks_text"
-            android:visibility="gone" />
-    </FrameLayout>
-</LinearLayout>
+            android:tint="@color/ks_text" />
+    </LinearLayout>
+</FrameLayout>
