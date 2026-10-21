@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -33,9 +33,9 @@ public class SearchEngineActivity extends Activity {
             final String key = keys[i];
             View row = inflater.inflate(R.layout.item_search_engine, list, false);
             TextView name = row.findViewById(R.id.engineName);
-            CheckBox check = row.findViewById(R.id.engineCheck);
+            ImageView check = row.findViewById(R.id.engineCheck);
             name.setText(SearchEngine.labelRes(key));
-            check.setChecked(key.equals(current));
+            check.setSelected(key.equals(current));
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

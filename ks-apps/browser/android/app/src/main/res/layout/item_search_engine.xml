@@ -10,15 +10,13 @@
     android:orientation="horizontal"
     android:padding="14dp">
 
-    <CheckBox
+    <ImageView
         android:id="@+id/engineCheck"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:background="@null"
-        android:button="@drawable/bg_engine_check"
-        android:clickable="false"
-        android:focusable="false"
-        android:importantForAccessibility="no" />
+        android:contentDescription="@null"
+        android:importantForAccessibility="no"
+        android:src="@drawable/bg_engine_check" />
 
     <TextView
         android:id="@+id/engineName"
