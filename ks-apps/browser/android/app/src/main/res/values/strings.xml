@@ -222,6 +222,7 @@ example.com##.ad-banner</string>
     <string name="adblocker_custom_list_removed">List removed</string>
     <string name="adblocker_strip_tracking">Remove tracking parameters</string>
     <string name="adblocker_strip_tracking_summary">Clean utm, gclid and similar tags from links you open.</string>
+    <string name="adblocker_list_status">%1$s · %2$d rules</string>
     <string name="adblocker_advanced">Advanced</string>
     <string name="adblocker_advanced_summary">Site exceptions, custom lists and filter rules.</string>
     <string name="about_title">About KS Portal</string>

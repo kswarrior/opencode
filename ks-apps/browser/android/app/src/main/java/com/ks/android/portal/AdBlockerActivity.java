@@ -6,10 +6,12 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.InputType;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,12 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.util.List;
 import java.util.Locale;
 
 public class AdBlockerActivity extends Activity {
     private LinearLayout list;
     private ImageView protectionCheck;
     private ImageView cosmeticCheck;
+    private ImageView stripTrackingCheck;
     private TextView total;
     private TextView session;
     private TextView builtinStatus;
@@ -59,6 +63,7 @@ public class AdBlockerActivity extends Activity {
 
         protectionCheck = findViewById(R.id.adBlockerProtectionCheck);
         cosmeticCheck = findViewById(R.id.adBlockerCosmeticCheck);
+        stripTrackingCheck = findViewById(R.id.adBlockerStripTrackingCheck);
         total = findViewById(R.id.adBlockerTotal);
         session = findViewById(R.id.adBlockerSession);
         builtinStatus = findViewById(R.id.adBlockerBuiltinStatus);
@@ -83,6 +88,32 @@ public class AdBlockerActivity extends Activity {
                         AdBlocker.setCosmeticEnabled(AdBlockerActivity.this,
                                 !AdBlocker.isCosmeticEnabled(AdBlockerActivity.this));
                         refresh();
+                    }
+                });
+
+        findViewById(R.id.adBlockerStripTracking).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AdBlocker.setTrackingStripEnabled(AdBlockerActivity.this,
+                                !AdBlocker.isTrackingStripEnabled(AdBlockerActivity.this));
+                        refresh();
+                    }
+                });
+
+        findViewById(R.id.adBlockerCustomRules).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showCustomRulesDialog();
+                    }
+                });
+
+        findViewById(R.id.adBlockerAddList).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showAddListDialog();
                     }
                 });
 
@@ -136,14 +167,15 @@ public class AdBlockerActivity extends Activity {
         list.removeAllViews();
         LayoutInflater inflater = LayoutInflater.from(this);
         float density = getResources().getDisplayMetrics().density;
-        for (int i = 0; i < AdBlockListStore.LISTS.length; i++) {
-            final AdBlockListStore.FilterList filterList = AdBlockListStore.LISTS[i];
+        List<AdBlockListStore.FilterList> lists = AdBlockListStore.allLists(this);
+        for (int i = 0; i < lists.size(); i++) {
+            final AdBlockListStore.FilterList filterList = lists.get(i);
             View row = inflater.inflate(R.layout.item_adblocker_list, list, false);
             row.setTag(filterList);
             TextView name = row.findViewById(R.id.adBlockerName);
             TextView summary = row.findViewById(R.id.adBlockerSummary);
-            name.setText(filterList.titleRes);
-            summary.setText(filterList.summaryRes);
+            name.setText(filterList.title(this));
+            summary.setText(filterList.summary(this));
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -155,6 +187,16 @@ public class AdBlockerActivity extends Activity {
                         startUpdate();
                     }
                     refresh();
+                }
+            });
+            row.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (filterList.custom) {
+                        confirmRemoveList(filterList);
+                        return true;
+                    }
+                    return false;
                 }
             });
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -170,6 +212,7 @@ public class AdBlockerActivity extends Activity {
     private void refresh() {
         protectionCheck.setSelected(AdBlocker.isEnabled(this));
         cosmeticCheck.setSelected(AdBlocker.isCosmeticEnabled(this));
+        stripTrackingCheck.setSelected(AdBlocker.isTrackingStripEnabled(this));
         total.setText(NumberFormat.getIntegerInstance(Locale.getDefault())
                 .format(AdBlocker.totalBlockedLong()));
         session.setText(NumberFormat.getIntegerInstance(Locale.getDefault())
@@ -207,15 +250,100 @@ public class AdBlockerActivity extends Activity {
             boolean cached = AdBlockListStore.hasCache(this, filterList);
             if (cached) {
                 long updated = AdBlockListStore.updatedAt(this, filterList);
-                status.setText(updated > 0
-                        ? getString(R.string.adblocker_updated_at,
-                                relativeTime(updated))
-                        : getString(R.string.adblocker_downloaded));
+                String updatedText = updated > 0
+                        ? getString(R.string.adblocker_updated_at, relativeTime(updated))
+                        : getString(R.string.adblocker_downloaded);
+                status.setText(getString(R.string.adblocker_list_status, updatedText,
+                        AdBlockListStore.ruleCount(this, filterList)));
             } else {
                 status.setText(R.string.adblocker_not_downloaded);
             }
             row.setAlpha(enabled ? 1f : 0.55f);
         }
+    }
+
+
+    private void showCustomRulesDialog() {
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT
+                | InputType.TYPE_TEXT_FLAG_MULTI_LINE
+                | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        input.setMinLines(8);
+        input.setGravity(android.view.Gravity.TOP | android.view.Gravity.START);
+        input.setText(AdBlocker.customRules(this));
+        input.setHint(R.string.adblocker_custom_rules_hint);
+        int padding = Math.round(20 * getResources().getDisplayMetrics().density);
+        input.setPadding(padding, padding / 2, padding, padding / 2);
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.adblocker_custom_rules)
+                .setView(input)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AdBlocker.setCustomRules(AdBlockerActivity.this,
+                                        input.getText().toString());
+                                Toast.makeText(AdBlockerActivity.this,
+                                        R.string.adblocker_custom_rules_saved,
+                                        Toast.LENGTH_SHORT).show();
+                                refresh();
+                            }
+                        })
+                .show();
+    }
+
+    private void showAddListDialog() {
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT
+                | InputType.TYPE_TEXT_VARIATION_URI);
+        input.setHint(R.string.adblocker_add_list_hint);
+        input.setSingleLine(true);
+        int padding = Math.round(20 * getResources().getDisplayMetrics().density);
+        input.setPadding(padding, padding / 2, padding, padding / 2);
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.adblocker_add_list)
+                .setView(input)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String url = input.getText().toString().trim();
+                                AdBlockListStore.FilterList added =
+                                        AdBlocker.addCustomList(AdBlockerActivity.this, url);
+                                if (added == null) {
+                                    int message = url.startsWith("http://")
+                                            || url.startsWith("https://")
+                                            ? R.string.adblocker_add_list_exists
+                                            : R.string.adblocker_add_list_invalid;
+                                    Toast.makeText(AdBlockerActivity.this, message,
+                                            Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                                buildListRows();
+                                startUpdate();
+                                refresh();
+                            }
+                        })
+                .show();
+    }
+
+    private void confirmRemoveList(final AdBlockListStore.FilterList filterList) {
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.adblocker_remove_list_confirm,
+                        filterList.title(this)))
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.adblocker_remove_list,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AdBlocker.removeCustomList(AdBlockerActivity.this, filterList);
+                                buildListRows();
+                                refresh();
+                            }
+                        })
+                .show();
     }
 
     private void startUpdate() {
