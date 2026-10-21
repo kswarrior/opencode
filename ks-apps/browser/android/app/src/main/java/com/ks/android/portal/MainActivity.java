@@ -1164,6 +1164,24 @@ public class MainActivity extends Activity {
                         CookieDialog.show(MainActivity.this, siteUrl);
                     }
                 });
+        final Switch adBlockSwitch = panel.findViewById(R.id.siteMenuAdBlockSwitch);
+        adBlockSwitch.setChecked(SiteSettingsStore.getBoolean(this, host,
+                SiteSettingsStore.KEY_ADBLOCK, AdBlocker.isEnabled(this)));
+        adBlockSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SiteSettingsStore.setBoolean(MainActivity.this, host,
+                        SiteSettingsStore.KEY_ADBLOCK, isChecked);
+                reloadActiveTabWithSiteSettings();
+            }
+        });
+        panel.findViewById(R.id.siteMenuAdBlock).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        adBlockSwitch.toggle();
+                    }
+                });
 
         popup.showAsDropDown(anchor, 0, 0, Gravity.START);
     }
