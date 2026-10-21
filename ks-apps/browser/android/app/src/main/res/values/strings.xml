@@ -271,6 +271,11 @@
     <string name="tabs_new_group">New group</string>
     <string name="tabs_group_name_hint">Group name</string>
     <string name="tabs_group_default">Group %1$d</string>
+    <string name="tabs_group_count">(%1$d)</string>
+    <string name="tabs_add_bookmark">Add to bookmarks</string>
+    <string name="tabs_bookmark_added">Added to bookmarks</string>
+    <string name="tabs_bookmark_exists">Already in bookmarks</string>
+    <string name="tabs_bookmark_failed">Could not add bookmark</string>
     <string name="tabs_group_rename">Rename group</string>
     <string name="tabs_group_delete">Delete group</string>
     <string name="tabs_group_close">Close group</string>

@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,18 +29,20 @@ public class TabsActivity extends Activity {
     private static final int TYPE_GROUP = 1;
     private static final int TYPE_TAB = 2;
 
-    private static final int MENU_MOVE_TO_GROUP = 1;
-    private static final int MENU_REMOVE_FROM_GROUP = 2;
-    private static final int MENU_CLOSE_TAB = 3;
+    private static final int MENU_ADD_BOOKMARK = 1;
+    private static final int MENU_MOVE_TO_GROUP = 2;
+    private static final int MENU_REMOVE_FROM_GROUP = 3;
+    private static final int MENU_CLOSE_TAB = 4;
 
     private static final int GROUP_MENU_NEW_TAB = 10;
     private static final int GROUP_MENU_RENAME = 11;
     private static final int GROUP_MENU_CLOSE = 12;
     private static final int GROUP_MENU_DELETE = 13;
 
-    private static final int HEADER_MENU_NEW_TAB = 20;
-    private static final int HEADER_MENU_NEW_GROUP = 21;
-    private static final int HEADER_MENU_CLOSE_ALL = 22;
+    private static final int HEADER_MENU_ADD_BOOKMARK = 20;
+    private static final int HEADER_MENU_NEW_TAB = 21;
+    private static final int HEADER_MENU_NEW_GROUP = 22;
+    private static final int HEADER_MENU_CLOSE_ALL = 23;
 
     private TabManager tabManager;
     private FaviconLoader faviconLoader;
@@ -213,18 +216,25 @@ public class TabsActivity extends Activity {
 
     private void showTabMenu(View anchor, BrowserTab tab) {
         PopupMenu popup = new PopupMenu(this, anchor);
-        popup.getMenu().add(0, MENU_MOVE_TO_GROUP, 0, R.string.tabs_move_to_group)
+        if (!tab.isHome()) {
+            popup.getMenu().add(0, MENU_ADD_BOOKMARK, 0, R.string.tabs_add_bookmark)
+                    .setIcon(R.drawable.ic_bookmark);
+        }
+        popup.getMenu().add(0, MENU_MOVE_TO_GROUP, 1, R.string.tabs_move_to_group)
                 .setIcon(R.drawable.ic_folder);
         if (tab.groupId != 0) {
-            popup.getMenu().add(0, MENU_REMOVE_FROM_GROUP, 1,
+            popup.getMenu().add(0, MENU_REMOVE_FROM_GROUP, 2,
                     R.string.tabs_remove_from_group).setIcon(R.drawable.ic_close);
         }
-        popup.getMenu().add(0, MENU_CLOSE_TAB, 2, R.string.tabs_close)
+        popup.getMenu().add(0, MENU_CLOSE_TAB, 3, R.string.tabs_close)
                 .setIcon(R.drawable.ic_close);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(android.view.MenuItem item) {
                 switch (item.getItemId()) {
+                    case MENU_ADD_BOOKMARK:
+                        addBookmark(tab);
+                        return true;
                     case MENU_MOVE_TO_GROUP:
                         showMoveToGroup(tab);
                         return true;
@@ -241,6 +251,24 @@ public class TabsActivity extends Activity {
         });
         MenuIcons.show(popup);
         popup.show();
+    }
+
+    private void addBookmark(BrowserTab tab) {
+        if (tab == null || tab.isHome()) {
+            Toast.makeText(this, R.string.tabs_bookmark_failed, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String name = TextUtils.isEmpty(tab.title) ? hostOf(tab.url) : tab.title;
+        int result = BookmarkRepository.add(this, name, tab.url);
+        int message;
+        if (result == BookmarkRepository.ADDED) {
+            message = R.string.tabs_bookmark_added;
+        } else if (result == BookmarkRepository.EXISTS) {
+            message = R.string.tabs_bookmark_exists;
+        } else {
+            message = R.string.tabs_bookmark_failed;
+        }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void showMoveToGroup(final BrowserTab tab) {
@@ -396,16 +424,24 @@ public class TabsActivity extends Activity {
 
     private void showHeaderMenu(View anchor) {
         PopupMenu popup = new PopupMenu(this, anchor);
-        popup.getMenu().add(0, HEADER_MENU_NEW_TAB, 0, R.string.tabs_new_tab)
+        BrowserTab activeTab = tabManager.getActiveTab();
+        if (activeTab != null && !activeTab.isHome()) {
+            popup.getMenu().add(0, HEADER_MENU_ADD_BOOKMARK, 0, R.string.tabs_add_bookmark)
+                    .setIcon(R.drawable.ic_bookmark);
+        }
+        popup.getMenu().add(0, HEADER_MENU_NEW_TAB, 1, R.string.tabs_new_tab)
                 .setIcon(R.drawable.ic_add);
-        popup.getMenu().add(0, HEADER_MENU_NEW_GROUP, 1, R.string.tabs_new_group)
+        popup.getMenu().add(0, HEADER_MENU_NEW_GROUP, 2, R.string.tabs_new_group)
                 .setIcon(R.drawable.ic_folder);
-        popup.getMenu().add(0, HEADER_MENU_CLOSE_ALL, 2, R.string.tabs_close_all)
+        popup.getMenu().add(0, HEADER_MENU_CLOSE_ALL, 3, R.string.tabs_close_all)
                 .setIcon(R.drawable.ic_close);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(android.view.MenuItem item) {
                 switch (item.getItemId()) {
+                    case HEADER_MENU_ADD_BOOKMARK:
+                        addBookmark(tabManager.getActiveTab());
+                        return true;
                     case HEADER_MENU_NEW_TAB:
                         tabManager.addTab(MainActivity.HOME_URL, 0);
                         finish();
