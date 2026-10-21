@@ -257,7 +257,7 @@ final class AdBlocker {
         initialize(context);
         if (!UPDATING.compareAndSet(false, true)) {
             if (listener != null) {
-                listener.onFinished(false, "busy", 0);
+                listener.onFinished(false, "busy", 0, 0);
             }
             return;
         }
@@ -285,7 +285,7 @@ final class AdBlocker {
                         @Override
                         public void run() {
                             listener.onFinished(finished.success(), finished.firstError,
-                                    finished.downloaded);
+                                    finished.downloaded, finished.failed);
                         }
                     });
                 }
@@ -564,6 +564,6 @@ final class AdBlocker {
     }
 
     interface ListUpdateListener {
-        void onFinished(boolean success, String error, int downloaded);
+        void onFinished(boolean success, String error, int downloaded, int failed);
     }
 }
