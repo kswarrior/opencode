@@ -9,16 +9,17 @@ package com.ks.android.portal;
 
 public final class R {
   public static final class color {
-    public static final int ks_bg=0x7f010000;
-    public static final int ks_border=0x7f010001;
-    public static final int ks_divider=0x7f010002;
-    public static final int ks_muted=0x7f010003;
-    public static final int ks_panel=0x7f010004;
-    public static final int ks_panel_2=0x7f010005;
-    public static final int ks_switch_thumb=0x7f010006;
-    public static final int ks_switch_track=0x7f010007;
-    public static final int ks_text=0x7f010008;
-    public static final int ks_toolbar=0x7f010009;
+    public static final int ks_accent=0x7f010000;
+    public static final int ks_bg=0x7f010001;
+    public static final int ks_border=0x7f010002;
+    public static final int ks_divider=0x7f010003;
+    public static final int ks_muted=0x7f010004;
+    public static final int ks_panel=0x7f010005;
+    public static final int ks_panel_2=0x7f010006;
+    public static final int ks_switch_thumb=0x7f010007;
+    public static final int ks_switch_track=0x7f010008;
+    public static final int ks_text=0x7f010009;
+    public static final int ks_toolbar=0x7f01000a;
   }
   public static final class dimen {
     public static final int browser_menu_width=0x7f020000;
