@@ -749,14 +749,15 @@ final class AdBlockEngine {
         final boolean exception;
         final boolean important;
         final String redirect;
-        final String sourceKey;
+        final long sourceHash;
 
         NetworkFilter(String pattern, String hostname, String token, int anchor,
                       boolean endAnchor, boolean regex, Pattern regexPattern, boolean matchCase,
                       int types, int party, String[] includeDomains, String[] excludeDomains,
-                      boolean exception, boolean important, String redirect, String sourceKey) {
+                      boolean exception, boolean important, String redirect, long sourceHash) {
             this.pattern = pattern;
-            this.patternLower = matchCase ? pattern : pattern.toLowerCase(Locale.US);
+            String lower = matchCase ? pattern : pattern.toLowerCase(Locale.US);
+            this.patternLower = lower.equals(pattern) ? pattern : lower;
             this.hostname = hostname;
             this.token = token;
             this.anchor = anchor;
@@ -771,7 +772,7 @@ final class AdBlockEngine {
             this.exception = exception;
             this.important = important;
             this.redirect = redirect;
-            this.sourceKey = sourceKey;
+            this.sourceHash = sourceHash;
         }
 
         boolean matchesType(int type) {
@@ -833,12 +834,9 @@ final class AdBlockEngine {
             return false;
         }
 
-        String badfilterKey() {
-            return AdBlockEngine.badfilterKey(sourceKey);
-        }
     }
 
-    private static String badfilterKey(String sourceKey) {
+    private static long badfilterKey(String sourceKey) {
         String key = sourceKey;
         int index = key.lastIndexOf('$');
         if (index >= 0) {
@@ -846,7 +844,21 @@ final class AdBlockEngine {
             key = cleaned.length() == 0 ? key.substring(0, index)
                     : key.substring(0, index) + "$" + cleaned;
         }
-        return key;
+        long hash = 0xcbf29ce484222325L;
+        for (int i = 0; i < key.length(); i++) {
+            hash ^= key.charAt(i);
+            hash *= 0x100000001b3L;
+        }
+        return hash;
+    }
+
+    private static long hash(String value) {
+        long hash = 0xcbf29ce484222325L;
+        for (int i = 0; i < value.length(); i++) {
+            hash ^= value.charAt(i);
+            hash *= 0x100000001b3L;
+        }
+        return hash;
     }
 
     private static String removeOption(String options, String remove) {
@@ -967,7 +979,7 @@ final class AdBlockEngine {
         private final Map<String, List<CosmeticRule>> domainCosmetics =
                 new HashMap<String, List<CosmeticRule>>();
         private final List<NetworkFilter> allNetwork = new ArrayList<NetworkFilter>();
-        private final Set<String> badfilters = new HashSet<String>();
+        private final Set<Long> badfilters = new HashSet<Long>();
         private int networkRuleCount;
         private int cosmeticRuleCount;
         private long version;
@@ -1023,7 +1035,7 @@ final class AdBlockEngine {
         AdBlockEngine build() {
             for (int i = allNetwork.size() - 1; i >= 0; i--) {
                 NetworkFilter rule = allNetwork.get(i);
-                if (badfilters.contains(rule.badfilterKey())) {
+                if (badfilters.contains(rule.sourceHash)) {
                     allNetwork.remove(i);
                 }
             }
@@ -1048,6 +1060,7 @@ final class AdBlockEngine {
                 }
             }
             networkRuleCount = allNetwork.size();
+            allNetwork.clear();
             cosmeticRuleCount = genericCosmetics.size();
             for (List<CosmeticRule> list : domainCosmetics.values()) {
                 cosmeticRuleCount += list.size();
@@ -1240,7 +1253,7 @@ final class AdBlockEngine {
                     ? null : tokenOf(value.toLowerCase(Locale.US));
             NetworkFilter rule = new NetworkFilter(value, hostname, token, anchor, endAnchor,
                     regex, regexPattern, matchCase, types, party, includes, excludes, exception,
-                    important, redirect, sourceKey);
+                    important, redirect, hash(sourceKey));
             if (exception && (elemHide || genericHide || document)) {
                 addPageRule(rule, document, elemHide, genericHide);
             }
