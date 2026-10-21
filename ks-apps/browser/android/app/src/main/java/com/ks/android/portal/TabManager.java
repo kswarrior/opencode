@@ -49,23 +49,23 @@ final class TabManager {
         }
     }
 
-    BrowserTab getActiveTab() {
+    synchronized BrowserTab getActiveTab() {
         return findTab(activeTabId);
     }
 
-    int getActiveTabId() {
+    synchronized int getActiveTabId() {
         return activeTabId;
     }
 
-    List<BrowserTab> getTabs() {
+    synchronized List<BrowserTab> getTabs() {
         return new ArrayList<BrowserTab>(tabs);
     }
 
-    List<TabGroup> getGroups() {
+    synchronized List<TabGroup> getGroups() {
         return new ArrayList<TabGroup>(groups);
     }
 
-    BrowserTab findTab(int id) {
+    synchronized BrowserTab findTab(int id) {
         for (int i = 0; i < tabs.size(); i++) {
             BrowserTab tab = tabs.get(i);
             if (tab.id == id) {
@@ -75,7 +75,7 @@ final class TabManager {
         return null;
     }
 
-    TabGroup findGroup(int id) {
+    synchronized TabGroup findGroup(int id) {
         for (int i = 0; i < groups.size(); i++) {
             TabGroup group = groups.get(i);
             if (group.id == id) {
@@ -85,7 +85,7 @@ final class TabManager {
         return null;
     }
 
-    int countTabsInGroup(int groupId) {
+    synchronized int countTabsInGroup(int groupId) {
         int count = 0;
         for (int i = 0; i < tabs.size(); i++) {
             if (tabs.get(i).groupId == groupId) {
@@ -95,7 +95,7 @@ final class TabManager {
         return count;
     }
 
-    BrowserTab addTab(String url, int groupId) {
+    synchronized BrowserTab addTab(String url, int groupId) {
         String target = TextUtils.isEmpty(url) ? MainActivity.HOME_URL : url;
         if (groupId != NO_GROUP && findGroup(groupId) == null) {
             groupId = NO_GROUP;
@@ -107,7 +107,7 @@ final class TabManager {
         return tab;
     }
 
-    boolean selectTab(int id) {
+    synchronized boolean selectTab(int id) {
         BrowserTab tab = findTab(id);
         if (tab == null || activeTabId == id) {
             return tab != null;
@@ -117,7 +117,7 @@ final class TabManager {
         return true;
     }
 
-    boolean closeTab(int id) {
+    synchronized boolean closeTab(int id) {
         int index = indexOfTab(id);
         if (index < 0) {
             return false;
@@ -135,7 +135,7 @@ final class TabManager {
         return true;
     }
 
-    void closeAllTabs() {
+    synchronized void closeAllTabs() {
         tabs.clear();
         groups.clear();
         BrowserTab tab = new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, "");
@@ -144,7 +144,7 @@ final class TabManager {
         saveAndNotify();
     }
 
-    void closeGroup(int groupId) {
+    synchronized void closeGroup(int groupId) {
         if (findGroup(groupId) == null) {
             return;
         }
@@ -171,7 +171,7 @@ final class TabManager {
         saveAndNotify();
     }
 
-    void updateTab(int id, String url, String title) {
+    synchronized void updateTab(int id, String url, String title) {
         BrowserTab tab = findTab(id);
         if (tab == null) {
             return;
@@ -193,7 +193,7 @@ final class TabManager {
         }
     }
 
-    void updateProgress(int id, int progress, boolean loading) {
+    synchronized void updateProgress(int id, int progress, boolean loading) {
         BrowserTab tab = findTab(id);
         if (tab == null) {
             return;
@@ -202,7 +202,7 @@ final class TabManager {
         tab.loading = loading;
     }
 
-    void updateFavicon(int id, Bitmap favicon) {
+    synchronized void updateFavicon(int id, Bitmap favicon) {
         BrowserTab tab = findTab(id);
         if (tab == null || favicon == null) {
             return;
@@ -211,7 +211,7 @@ final class TabManager {
         notifyListeners();
     }
 
-    TabGroup createGroup(String name) {
+    synchronized TabGroup createGroup(String name) {
         String label = name == null ? "" : name.trim();
         if (label.isEmpty()) {
             label = context.getString(R.string.tabs_group_default, nextGroupId);
@@ -222,7 +222,7 @@ final class TabManager {
         return group;
     }
 
-    void renameGroup(int id, String name) {
+    synchronized void renameGroup(int id, String name) {
         TabGroup group = findGroup(id);
         String label = name == null ? "" : name.trim();
         if (group == null || label.isEmpty()) {
@@ -232,7 +232,7 @@ final class TabManager {
         saveAndNotify();
     }
 
-    void deleteGroup(int id) {
+    synchronized void deleteGroup(int id) {
         if (findGroup(id) == null) {
             return;
         }
@@ -246,7 +246,7 @@ final class TabManager {
         saveAndNotify();
     }
 
-    void setGroupCollapsed(int id, boolean collapsed) {
+    synchronized void setGroupCollapsed(int id, boolean collapsed) {
         TabGroup group = findGroup(id);
         if (group == null || group.collapsed == collapsed) {
             return;
@@ -255,7 +255,7 @@ final class TabManager {
         saveAndNotify();
     }
 
-    void moveTabToGroup(int tabId, int groupId) {
+    synchronized void moveTabToGroup(int tabId, int groupId) {
         BrowserTab tab = findTab(tabId);
         if (tab == null) {
             return;
@@ -268,13 +268,13 @@ final class TabManager {
         saveAndNotify();
     }
 
-    void addListener(Listener listener) {
+    synchronized void addListener(Listener listener) {
         if (listener != null && !listeners.contains(listener)) {
             listeners.add(listener);
         }
     }
 
-    void removeListener(Listener listener) {
+    synchronized void removeListener(Listener listener) {
         listeners.remove(listener);
     }
 

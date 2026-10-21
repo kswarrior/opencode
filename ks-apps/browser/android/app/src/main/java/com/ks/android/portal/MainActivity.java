@@ -265,8 +265,10 @@ public class MainActivity extends Activity {
                 tab.progress = 100;
                 String title = current.getTitle();
                 tabManager.updateTab(tab.id, url, cleanRecentName(title, url));
-                recordRecent(url, title);
-                recordHistory(url, title);
+                if (!privateTabs.contains(tab.id)) {
+                    recordRecent(url, title);
+                    recordHistory(url, title);
+                }
                 if (isActiveTab(tab)) {
                     progressBar.setVisibility(View.GONE);
                     updateChrome(url);
