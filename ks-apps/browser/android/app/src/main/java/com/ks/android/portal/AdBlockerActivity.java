@@ -29,6 +29,18 @@ public class AdBlockerActivity extends Activity {
     private TextView updateStatus;
     private Button updateButton;
     private final Handler handler = new Handler(Looper.getMainLooper());
+    private final Runnable refreshPoller = new Runnable() {
+        private int polls;
+
+        @Override
+        public void run() {
+            refresh();
+            polls++;
+            if (AdBlocker.isUpdating() || polls < 3) {
+                handler.postDelayed(this, 1200);
+            }
+        }
+    };
     private String updateMessage;
 
     @Override
@@ -99,18 +111,19 @@ public class AdBlockerActivity extends Activity {
 
         buildListRows();
         refresh();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                refresh();
-            }
-        }, 1500);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        refresh();
+        handler.removeCallbacks(refreshPoller);
+        handler.post(refreshPoller);
+    }
+
+    @Override
+    protected void onPause() {
+        handler.removeCallbacks(refreshPoller);
+        super.onPause();
     }
 
     @Override
@@ -267,12 +280,6 @@ public class AdBlockerActivity extends Activity {
                                         R.string.adblocker_lists_deleted,
                                         Toast.LENGTH_SHORT).show();
                                 refresh();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        refresh();
-                                    }
-                                }, 500);
                             }
                         })
                 .show();

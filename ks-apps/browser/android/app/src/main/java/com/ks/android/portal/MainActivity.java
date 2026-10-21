@@ -303,7 +303,8 @@ public class MainActivity extends Activity {
         settings.setSupportZoom(false);
         settings.setBuiltInZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
-        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.1.6");
+        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/"
+                + AppInfo.versionName(this));
         if (defaultUserAgent == null) {
             defaultUserAgent = settings.getUserAgentString();
         }
@@ -313,7 +314,6 @@ public class MainActivity extends Activity {
         view.setWebViewClient(new WebViewClient() {
             private volatile String pageHost = SiteSettingsStore.hostOf(tab.url);
             private volatile String pageUrl = tab.url;
-            private volatile boolean pageAdBlockEnabled = isAdBlockEnabledFor(tab.url);
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView current, WebResourceRequest request) {
@@ -352,7 +352,7 @@ public class MainActivity extends Activity {
             public WebResourceResponse shouldInterceptRequest(WebView current,
                                                               WebResourceRequest request) {
                 if (request != null && !request.isForMainFrame()
-                        && pageAdBlockEnabled) {
+                        && isAdBlockEnabledFor(pageUrl)) {
                     return AdBlocker.intercept(MainActivity.this, pageUrl,
                             pageHost, request);
                 }
@@ -363,7 +363,6 @@ public class MainActivity extends Activity {
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
-                pageAdBlockEnabled = isAdBlockEnabledFor(url);
                 tab.loading = true;
                 tab.progress = 0;
                 applySiteSettings(current, url);
@@ -379,7 +378,6 @@ public class MainActivity extends Activity {
             public void onPageCommitVisible(WebView current, String url) {
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
-                pageAdBlockEnabled = isAdBlockEnabledFor(url);
                 injectAdBlock(current, url);
             }
 
@@ -387,7 +385,6 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView current, String url) {
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
-                pageAdBlockEnabled = isAdBlockEnabledFor(url);
                 tab.loading = false;
                 tab.progress = 100;
                 applyScreenWidth(current, url);
