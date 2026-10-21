@@ -73,6 +73,16 @@ final class NotificationHelper {
         preferences.edit().putInt(KEY_LAST_VERSION, current).apply();
     }
 
+    static void maybeShowTip(Context context) {
+        SharedPreferences preferences =
+                context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        long last = preferences.getLong("last_tip_time", 0L);
+        if (last > 0 && System.currentTimeMillis() - last < 7L * 24L * 60L * 60L * 1000L) {
+            return;
+        }
+        showTip(context);
+    }
+
     static void showTip(Context context) {
         if (!pref(context, KEY_TIPS, false) || !canNotify(context)) {
             return;
@@ -84,6 +94,8 @@ final class NotificationHelper {
                 .setContentIntent(openAppIntent(context, 0))
                 .setAutoCancel(true);
         notify(context, 2003, builder.build());
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
+                .putLong("last_tip_time", System.currentTimeMillis()).apply();
     }
 
     static void securityAlert(Context context, String title, String text) {

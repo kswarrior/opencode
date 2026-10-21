@@ -190,6 +190,7 @@ public class MainActivity extends Activity {
             syncActiveTab();
         }
         NotificationHelper.maybeNotifyUpdate(this);
+        NotificationHelper.maybeShowTip(this);
     }
 
     @Override
