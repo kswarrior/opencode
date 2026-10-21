@@ -303,7 +303,9 @@ public class MainActivity extends Activity {
                 if (!TextUtils.isEmpty(title)) {
                     tabManager.updateTab(tab.id, null, cleanRecentName(title, current.getUrl()));
                 }
-                recordRecent(current.getUrl(), title);
+                if (!privateTabs.contains(tab.id)) {
+                    recordRecent(current.getUrl(), title);
+                }
             }
 
             @Override
@@ -378,11 +380,13 @@ public class MainActivity extends Activity {
             if (tabManager.findTab(entry.getKey()) != null) {
                 continue;
             }
+            int tabId = entry.getKey().intValue();
             WebView closed = entry.getValue();
             webContainer.removeView(closed);
             closed.removeJavascriptInterface("KSPortalNative");
             closed.stopLoading();
             closed.destroy();
+            privateTabs.remove(tabId);
             iterator.remove();
         }
     }
@@ -1053,6 +1057,24 @@ public class MainActivity extends Activity {
                 return SearchEngine.DEFAULT;
             }
             return SearchEngine.getKey(MainActivity.this);
+        }
+
+        @JavascriptInterface
+        public boolean getPrivateMode() {
+            return allowed() && privateTabs.contains(tabId);
+        }
+
+        @JavascriptInterface
+        public boolean setPrivateMode(boolean enabled) {
+            if (!allowed()) {
+                return false;
+            }
+            if (enabled) {
+                privateTabs.add(tabId);
+            } else {
+                privateTabs.remove(tabId);
+            }
+            return true;
         }
 
         @JavascriptInterface
