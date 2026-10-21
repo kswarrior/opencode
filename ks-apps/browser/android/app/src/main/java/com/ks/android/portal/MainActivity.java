@@ -1302,7 +1302,7 @@ public class MainActivity extends Activity {
                 + "var k='ks_auto_'+location.href;"
                 + "if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');"
                 + "setTimeout(function(){try{if(f.requestSubmit){f.requestSubmit();}"
-                + "else{f.submit();}}catch(e){}},700);}}catch(e){}}}"
+                + "else{f.submit();}}catch(e){}},900);}}catch(e){}}}"
                 + "setTimeout(fill,350);setTimeout(fill,1200);"
                 + "})();";
         view.evaluateJavascript(script, null);
