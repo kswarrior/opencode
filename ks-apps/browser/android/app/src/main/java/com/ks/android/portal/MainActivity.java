@@ -1610,8 +1610,12 @@ public class MainActivity extends Activity {
             return false;
         }
         String host = SiteSettingsStore.hostOf(url);
-        return SiteSettingsStore.getBoolean(this, host,
+        boolean enabled = SiteSettingsStore.getBoolean(this, host,
                 SiteSettingsStore.KEY_ADBLOCK, AdBlocker.isEnabled(this));
+        if (!enabled) {
+            return false;
+        }
+        return !AdBlocker.pagePolicy(this, url).blockingDisabled;
     }
 
     private void injectAdBlock(WebView view, String url) {

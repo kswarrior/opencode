@@ -134,7 +134,7 @@
     <string name="adblocker_stats_reset">Statistics reset</string>
     <string name="adblocker_lists">Filter lists</string>
     <string name="adblocker_lists_summary">Built-in protection always works offline. Extra lists are downloaded when you update.</string>
-    <string name="adblocker_builtin">Built-in protection</string>
+    <string name="adblocker_builtin">Active protection</string>
     <string name="adblocker_builtin_summary">Curated ad and tracker rules, ready offline.</string>
     <string name="adblocker_builtin_status">%1$d network \u00b7 %2$d cosmetic rules</string>
     <string name="adblocker_update">Update lists</string>

@@ -13,7 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 final class AdBlockListStore {
     private static final String PREFS = "ks_adblock_lists";
@@ -119,10 +118,23 @@ final class AdBlockListStore {
 
     static boolean needsAutoUpdate(Context context) {
         long now = System.currentTimeMillis();
-        if (now - preferences(context).getLong(LAST_ATTEMPT, 0L) < 6L * 60L * 60L * 1000L) {
+        if (now - preferences(context).getLong(LAST_ATTEMPT, 0L)
+                < 6L * 60L * 60L * 1000L) {
             return false;
         }
-        return now - lastUpdate(context) > AUTO_UPDATE_INTERVAL;
+        boolean enabled = false;
+        for (int i = 0; i < LISTS.length; i++) {
+            FilterList list = LISTS[i];
+            if (!isEnabled(context, list)) {
+                continue;
+            }
+            enabled = true;
+            long updated = updatedAt(context, list);
+            if (updated == 0 || now - updated > AUTO_UPDATE_INTERVAL) {
+                return true;
+            }
+        }
+        return enabled && now - lastUpdate(context) > AUTO_UPDATE_INTERVAL;
     }
 
     static boolean anyDownloaded(Context context) {
