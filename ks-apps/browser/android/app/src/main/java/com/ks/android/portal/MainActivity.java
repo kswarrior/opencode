@@ -298,6 +298,8 @@ public class MainActivity extends Activity {
         applySiteSettings(view, tab.url);
 
         view.setWebViewClient(new WebViewClient() {
+            private volatile String pageHost = SiteSettingsStore.hostOf(tab.url);
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView current, WebResourceRequest request) {
                 Uri uri = request.getUrl();
@@ -337,7 +339,7 @@ public class MainActivity extends Activity {
                 if (request != null && !request.isForMainFrame()) {
                     Uri uri = request.getUrl();
                     if (uri != null && AdBlocker.isBlocked(MainActivity.this,
-                            SiteSettingsStore.hostOf(current.getUrl()), uri.toString())) {
+                            pageHost, uri.toString())) {
                         return AdBlocker.blockedResponse();
                     }
                 }
@@ -346,6 +348,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
+                pageHost = SiteSettingsStore.hostOf(url);
                 tab.loading = true;
                 tab.progress = 0;
                 applySiteSettings(current, url);
