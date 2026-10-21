@@ -119,14 +119,13 @@ final class AdBlockEngine {
         boolean importantException = false;
         String redirect = null;
 
-        int hostStart = request.hostStart;
-        int hostEnd = request.hostEnd;
-        if (hostStart >= 0 && hostEnd > hostStart) {
-            int position = hostStart;
+        String host = request.host;
+        if (host != null && host.length() > 0) {
+            int position = 0;
             while (position >= 0) {
-                String suffix = compareUrl.substring(position, hostEnd);
+                String suffix = host.substring(position);
                 List<NetworkFilter> rules = hostRules.get(suffix);
-                FilterState state = evaluate(rules, request, compareUrl, url);
+                FilterState state = evaluate(rules, request);
                 if (state.importantBlock) {
                     importantBlock = true;
                     if (state.redirect != null) {
