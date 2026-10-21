@@ -314,6 +314,10 @@ final class AdBlockEngine {
                 } else {
                     state.exception = true;
                 }
+            } else if (rule.redirectOnly) {
+                if (rule.redirect != null && state.redirect == null) {
+                    state.redirect = rule.redirect;
+                }
             } else if (rule.important) {
                 state.importantBlock = true;
                 if (rule.redirect != null && state.redirect == null) {
@@ -755,16 +759,25 @@ final class AdBlockEngine {
     static final class CosmeticResult {
         static final CosmeticResult EMPTY = new CosmeticResult(
                 Collections.<String>emptyList(), Collections.<String>emptyList(),
-                Collections.<String>emptyList());
+                Collections.<String>emptyList(), Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList());
 
         final List<String> specific;
         final List<String> generic;
+        final List<String> proceduralSpecific;
+        final List<String> proceduralGeneric;
         final List<String> scriptlets;
+        final List<String> styles;
 
-        CosmeticResult(List<String> specific, List<String> generic, List<String> scriptlets) {
+        CosmeticResult(List<String> specific, List<String> generic,
+                       List<String> proceduralSpecific, List<String> proceduralGeneric,
+                       List<String> scriptlets, List<String> styles) {
             this.specific = specific;
             this.generic = generic;
+            this.proceduralSpecific = proceduralSpecific;
+            this.proceduralGeneric = proceduralGeneric;
             this.scriptlets = scriptlets;
+            this.styles = styles;
         }
     }
 
@@ -792,15 +805,20 @@ final class AdBlockEngine {
         final int party;
         final String[] includeDomains;
         final String[] excludeDomains;
+        final String[] denyDomains;
+        final String[] toDomains;
         final boolean exception;
         final boolean important;
+        final boolean redirectOnly;
         final String redirect;
         final long sourceHash;
 
         NetworkFilter(String pattern, String hostname, String token, int anchor,
                       boolean endAnchor, boolean regex, Pattern regexPattern, boolean matchCase,
                       int types, int party, String[] includeDomains, String[] excludeDomains,
-                      boolean exception, boolean important, String redirect, long sourceHash) {
+                      String[] denyDomains, String[] toDomains, boolean exception,
+                      boolean important, boolean redirectOnly, String redirect,
+                      long sourceHash) {
             this.pattern = pattern;
             String lower = matchCase ? pattern : pattern.toLowerCase(Locale.US);
             this.patternLower = lower.equals(pattern) ? pattern : lower;
@@ -815,8 +833,11 @@ final class AdBlockEngine {
             this.party = party;
             this.includeDomains = includeDomains;
             this.excludeDomains = excludeDomains;
+            this.denyDomains = denyDomains;
+            this.toDomains = toDomains;
             this.exception = exception;
             this.important = important;
+            this.redirectOnly = redirectOnly;
             this.redirect = redirect;
             this.sourceHash = sourceHash;
         }
@@ -838,6 +859,25 @@ final class AdBlockEngine {
         }
 
         boolean matches(Request request) {
+            if (denyDomains.length > 0) {
+                for (int i = 0; i < denyDomains.length; i++) {
+                    if (domainMatches(request.host, denyDomains[i])) {
+                        return false;
+                    }
+                }
+            }
+            if (toDomains.length > 0) {
+                boolean allowed = false;
+                for (int i = 0; i < toDomains.length; i++) {
+                    if (domainMatches(request.host, toDomains[i])) {
+                        allowed = true;
+                        break;
+                    }
+                }
+                if (!allowed) {
+                    return false;
+                }
+            }
             if (regex) {
                 return regexPattern.matcher(matchCase ? request.url : request.urlLower).find();
             }
@@ -974,16 +1014,55 @@ final class AdBlockEngine {
         final boolean block;
         final boolean elemHide;
         final boolean genericHide;
+        final boolean specificHide;
+        final boolean popup;
 
-        PageRule(NetworkFilter filter, boolean block, boolean elemHide, boolean genericHide) {
+        PageRule(NetworkFilter filter, boolean block, boolean elemHide, boolean genericHide,
+                 boolean specificHide, boolean popup) {
             this.filter = filter;
             this.block = block;
             this.elemHide = elemHide;
             this.genericHide = genericHide;
+            this.specificHide = specificHide;
+            this.popup = popup;
         }
 
         boolean matches(String pageHost, Request request) {
             return domainsAllow(filter.includeDomains, filter.excludeDomains, pageHost)
+                    && filter.matches(request);
+        }
+    }
+
+    static final class CleanRule {
+        final NetworkFilter filter;
+        final String parameter;
+        final Pattern parameterPattern;
+        final boolean negated;
+        final boolean exception;
+
+        CleanRule(NetworkFilter filter, String parameter, Pattern parameterPattern,
+                  boolean negated, boolean exception) {
+            this.filter = filter;
+            this.parameter = parameter;
+            this.parameterPattern = parameterPattern;
+            this.negated = negated;
+            this.exception = exception;
+        }
+
+        boolean matches(String name) {
+            if (parameterPattern != null) {
+                return parameterPattern.matcher(name).find();
+            }
+            if (parameter == null) {
+                return true;
+            }
+            return parameter.equalsIgnoreCase(name);
+        }
+
+        boolean matchesUrl(Request request) {
+            return filter.matchesType(TYPE_DOCUMENT)
+                    && filter.matchesDomain(request.pageHost)
+                    && filter.matchesParty(request.thirdParty)
                     && filter.matches(request);
         }
     }
