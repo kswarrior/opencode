@@ -140,8 +140,8 @@ final class AdBlockEngine {
                 }
                 exception |= state.exception;
                 importantException |= state.importantException;
-                int dot = compareUrl.indexOf('.', position);
-                position = dot >= 0 && dot < hostEnd ? dot + 1 : -1;
+                int dot = host.indexOf('.', position);
+                position = dot >= 0 ? dot + 1 : -1;
             }
         }
 
@@ -149,7 +149,7 @@ final class AdBlockEngine {
         if (!tokens.isEmpty()) {
             for (String token : tokens) {
                 List<NetworkFilter> rules = tokenRules.get(token);
-                FilterState state = evaluate(rules, request, compareUrl, url);
+                FilterState state = evaluate(rules, request);
                 importantBlock |= state.importantBlock;
                 block |= state.block;
                 exception |= state.exception;
@@ -159,7 +159,7 @@ final class AdBlockEngine {
                 }
             }
         }
-        FilterState state = evaluate(generalRules, request, compareUrl, url);
+        FilterState state = evaluate(generalRules, request);
         importantBlock |= state.importantBlock;
         block |= state.block;
         exception |= state.exception;
@@ -259,8 +259,7 @@ final class AdBlockEngine {
                 new ArrayList<String>(generic), new ArrayList<String>(scriptlets));
     }
 
-    private FilterState evaluate(List<NetworkFilter> rules, Request request,
-                                 String compareUrl, String originalUrl) {
+    private FilterState evaluate(List<NetworkFilter> rules, Request request) {
         if (rules == null || rules.isEmpty()) {
             return FilterState.EMPTY;
         }
@@ -271,7 +270,7 @@ final class AdBlockEngine {
                     || !rule.matchesParty(request.thirdParty)) {
                 continue;
             }
-            if (!rule.matches(compareUrl, originalUrl)) {
+            if (!rule.matches(request)) {
                 continue;
             }
             if (rule.exception) {
