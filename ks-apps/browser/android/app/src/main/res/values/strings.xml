@@ -221,4 +221,44 @@
     <string name="background_delete">Delete</string>
     <string name="background_deleted">Background deleted</string>
     <string name="background_photo_hint">Long-press a photo to delete it.</string>
+    <string name="tabs_title">Tabs</string>
+    <string name="tabs_description">Tabs</string>
+    <string name="tabs_default_count">1</string>
+    <string name="tabs_new_tab">New tab</string>
+    <string name="tabs_new_tab_title">New tab</string>
+    <string name="tabs_home_page">Home page</string>
+    <string name="tabs_new_tab_description">New tab</string>
+    <string name="tabs_menu">Tab options</string>
+    <string name="tabs_options">Tab options</string>
+    <string name="tabs_close">Close tab</string>
+    <string name="tabs_close_all">Close all tabs</string>
+    <string name="tabs_close_all_title">Close all tabs?</string>
+    <string name="tabs_close_all_message">This will close every open tab.</string>
+    <string name="tabs_move_to_group">Move to group</string>
+    <string name="tabs_remove_from_group">Remove from group</string>
+    <string name="tabs_new_group">New group</string>
+    <string name="tabs_group_name_hint">Group name</string>
+    <string name="tabs_group_default">Group %1$d</string>
+    <string name="tabs_group_rename">Rename group</string>
+    <string name="tabs_group_delete">Delete group</string>
+    <string name="tabs_group_close">Close group</string>
+    <string name="tabs_group_new_tab">New tab in group</string>
+    <string name="tabs_group_delete_title">Delete group?</string>
+    <string name="tabs_group_delete_message">Delete &quot;%1$s&quot;? Its tabs will stay open.</string>
+    <string name="tabs_group_close_title">Close group?</string>
+    <string name="tabs_group_close_message">Close all tabs in &quot;%1$s&quot;?</string>
+    <string name="tabs_other">Other tabs</string>
+    <string name="tabs_empty">No open tabs</string>
+    <string name="tabs_create">Create</string>
+    <string name="tabs_save">Save</string>
+    <string name="tabs_cancel">Cancel</string>
+    <string name="tabs_delete">Delete</string>
+    <plurals name="tabs_count">
+        <item quantity="one">%1$d tab</item>
+        <item quantity="other">%1$d tabs</item>
+    </plurals>
+    <plurals name="tabs_open_count">
+        <item quantity="one">%1$d tab open</item>
+        <item quantity="other">%1$d tabs open</item>
+    </plurals>
 </resources>
