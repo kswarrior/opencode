@@ -95,7 +95,6 @@
     <string name="adblocking">Ad blocking</string>
     <string name="adblocker_on">On</string>
     <string name="adblocker_off">Off</string>
-    <string name="adblocker_summary">Block ads on websites</string>
     <string name="about_title">About KS Portal</string>
     <string name="settings_version">Version %1$s</string>
     <string name="about_owner">Owner: KS Warrior</string>
