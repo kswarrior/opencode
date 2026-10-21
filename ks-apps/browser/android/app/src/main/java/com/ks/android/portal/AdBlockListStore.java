@@ -25,6 +25,7 @@ final class AdBlockListStore {
     private static final String ENABLED_PREFIX = "enabled_";
     private static final String UPDATED_PREFIX = "updated_";
     private static final String ETAG_PREFIX = "etag_";
+    private static final String MODIFIED_PREFIX = "modified_";
     private static final String COUNT_PREFIX = "count_";
     private static final String CUSTOM_URLS = "custom_urls";
     private static final String CUSTOM_RULES = "custom_rules";
@@ -32,7 +33,7 @@ final class AdBlockListStore {
     private static final String LAST_ATTEMPT = "last_attempt";
     private static final long AUTO_UPDATE_INTERVAL = 24L * 60L * 60L * 1000L;
     private static final long ATTEMPT_INTERVAL = 60L * 60L * 1000L;
-    private static final int MAX_LIST_BYTES = 24 * 1024 * 1024;
+    private static final int MAX_LIST_BYTES = 20 * 1024 * 1024;
 
     static final String ID_EASYLIST = "easylist";
     static final String ID_EASYPRIVACY = "easyprivacy";
@@ -457,6 +458,7 @@ final class AdBlockListStore {
         for (FilterList list : allLists(context)) {
             editor.remove(UPDATED_PREFIX + list.id);
             editor.remove(ETAG_PREFIX + list.id);
+            editor.remove(MODIFIED_PREFIX + list.id);
             editor.remove(COUNT_PREFIX + list.id);
         }
         editor.remove(LAST_UPDATE).apply();
@@ -470,6 +472,8 @@ final class AdBlockListStore {
         IOException firstError = null;
         String etag = list.urls.length == 1
                 ? preferences(context).getString(ETAG_PREFIX + list.id, null) : null;
+        String lastModified = list.urls.length == 1
+                ? preferences(context).getString(MODIFIED_PREFIX + list.id, null) : null;
         try {
             for (int i = 0; i < list.urls.length; i++) {
                 try {
@@ -543,7 +547,7 @@ final class AdBlockListStore {
 
     private static SourceResult downloadSource(Context context, String listId,
                                                String address, String etag,
-                                               boolean cached)
+                                               String lastModified, boolean cached)
             throws IOException {
         HttpURLConnection connection = null;
         try {
@@ -557,8 +561,11 @@ final class AdBlockListStore {
             connection.setRequestProperty("User-Agent",
                     "Mozilla/5.0 (Linux; Android) KSPortal/"
                             + AppInfo.versionName(context));
-            if (etag != null && etag.length() > 0 && cached) {
+            if (cached && etag != null && etag.length() > 0) {
                 connection.setRequestProperty("If-None-Match", etag);
+            }
+            if (cached && lastModified != null && lastModified.length() > 0) {
+                connection.setRequestProperty("If-Modified-Since", lastModified);
             }
             int status = connection.getResponseCode();
             if (status == HttpURLConnection.HTTP_NOT_MODIFIED) {
@@ -568,10 +575,19 @@ final class AdBlockListStore {
                 throw new IOException("HTTP " + status);
             }
             String newEtag = connection.getHeaderField("ETag");
+            String newModified = connection.getHeaderField("Last-Modified");
+            SharedPreferences.Editor headers = preferences(context).edit();
             if (newEtag != null && newEtag.length() > 0) {
-                preferences(context).edit().putString(ETAG_PREFIX
-                        + listId, newEtag).apply();
+                headers.putString(ETAG_PREFIX + listId, newEtag);
+            } else {
+                headers.remove(ETAG_PREFIX + listId);
             }
+            if (newModified != null && newModified.length() > 0) {
+                headers.putString(MODIFIED_PREFIX + listId, newModified);
+            } else {
+                headers.remove(MODIFIED_PREFIX + listId);
+            }
+            headers.apply();
             int length = connection.getContentLength();
             if (length > MAX_LIST_BYTES) {
                 throw new IOException("Filter list too large");
