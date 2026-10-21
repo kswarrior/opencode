@@ -478,7 +478,8 @@ final class AdBlockListStore {
             for (int i = 0; i < list.urls.length; i++) {
                 try {
                     SourceResult source = downloadSource(context, list.id,
-                            list.urls[i], i == 0 ? etag : null, target.exists());
+                            list.urls[i], i == 0 ? etag : null,
+                            i == 0 ? lastModified : null, target.exists());
                     if (source.notModified) {
                         ok++;
                         continue;
