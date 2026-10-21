@@ -1252,6 +1252,11 @@ public class MainActivity extends Activity {
                 .setText(SiteSettingsStore.screenSizeLabel(this, host));
         ((TextView) dialog.findViewById(R.id.siteInfoCookies))
                 .setText(SiteCookies.summary(this, url));
+        int blockedCount = AdBlocker.siteBlocked(host);
+        ((TextView) dialog.findViewById(R.id.siteInfoBlocked))
+                .setText(blockedCount > 0
+                        ? getString(R.string.adblocker_site_blocked, blockedCount)
+                        : getString(R.string.site_info_blocked_none));
         dialog.findViewById(R.id.siteInfoClose).setOnClickListener(
                 new View.OnClickListener() {
                     @Override

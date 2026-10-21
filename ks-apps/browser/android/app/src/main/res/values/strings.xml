@@ -279,6 +279,8 @@ example.com##.ad-banner</string>
     <string name="site_info_security">Security</string>
     <string name="site_info_screen_size">Screen size</string>
     <string name="site_info_cookies">Cookies</string>
+    <string name="site_info_blocked">Blocked</string>
+    <string name="site_info_blocked_none">None on this site</string>
     <string name="site_cookies_title">Cookies</string>
     <string name="site_cookies_none">No cookies</string>
     <string name="site_cookies_empty">No cookies are stored for this site.</string>
