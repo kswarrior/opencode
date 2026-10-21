@@ -360,6 +360,7 @@ body.has-background .bg::after {
   scroll-snap-type: x proximity;
   animation: fadeUp .3s .08s ease both;
 }
+#topSites { --tile-height: 100px; }
 .sites::-webkit-scrollbar { display: none; }
 .bookmarks-label { animation-delay: .12s; }
 .bookmarks-sites { animation-delay: .16s; }
@@ -811,7 +812,7 @@ body.launching .recents {
     </button>
   </div>
 
-  <p class="section-label">TOP SITES</p>
+  <p class="section-label top-sites-label">TOP SITES</p>
   <nav class="sites" id="topSites" aria-label="Top sites">
     <a class="tile" href="https://discord.com">
       <span class="tile-logo">
@@ -1080,22 +1081,25 @@ body.launching .recents {
     } catch (error) {
       local = [];
     }
-    var result = local.slice(0);
+    var nativeItems = [];
     if (nativePortal && typeof nativePortal.getBookmarks === 'function') {
       try {
         var nativeRaw = nativePortal.getBookmarks();
-        var nativeItems = sanitizeBookmarks(nativeRaw ? JSON.parse(nativeRaw) : []);
-        for (var i = 0; i < nativeItems.length && result.length < 24; i++) {
-          var duplicate = false;
-          for (var j = 0; j < result.length; j++) {
-            if (result[j].url === nativeItems[i].url) {
-              duplicate = true;
-              break;
-            }
-          }
-          if (!duplicate) result.push(nativeItems[i]);
+        nativeItems = sanitizeBookmarks(nativeRaw ? JSON.parse(nativeRaw) : []);
+      } catch (error) {
+        nativeItems = [];
+      }
+    }
+    var result = nativeItems.slice(0);
+    for (var i = 0; i < local.length && result.length < 24; i++) {
+      var duplicate = false;
+      for (var j = 0; j < result.length; j++) {
+        if (result[j].url === local[i].url) {
+          duplicate = true;
+          break;
         }
-      } catch (error) {}
+      }
+      if (!duplicate) result.push(local[i]);
     }
     if (nativePortal && typeof nativePortal.setBookmarks === 'function') {
       try {
