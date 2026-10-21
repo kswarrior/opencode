@@ -132,7 +132,20 @@ public class BackgroundActivity extends Activity {
     }
 
     private void buildTargets() {
+        LinearLayout row = null;
+        int gap = dp(4);
         for (int i = 0; i < TARGET_KEYS.length; i++) {
+            if (i % 3 == 0) {
+                row = new LinearLayout(this);
+                row.setOrientation(LinearLayout.HORIZONTAL);
+                LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                if (i > 0) {
+                    rowParams.topMargin = dp(8);
+                }
+                targetGroup.addView(row, rowParams);
+            }
             final String key = TARGET_KEYS[i];
             TextView chip = new TextView(this);
             chip.setText(TARGET_LABELS[i]);
@@ -142,11 +155,10 @@ public class BackgroundActivity extends Activity {
             chip.setBackgroundResource(R.drawable.bg_choice_chip);
             chip.setClickable(true);
             chip.setFocusable(true);
-            chip.setPadding(dp(14), dp(9), dp(14), dp(9));
+            chip.setPadding(dp(6), 0, dp(6), 0);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMarginEnd(dp(8));
+                    0, dp(38), 1f);
+            params.setMargins(gap, 0, gap, 0);
             chip.setLayoutParams(params);
             chip.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -156,17 +168,28 @@ public class BackgroundActivity extends Activity {
                     renderGrid();
                 }
             });
-            targetGroup.addView(chip);
+            row.addView(chip);
+            targetChips.add(chip);
+        }
+        int remainder = TARGET_KEYS.length % 3;
+        if (row != null && remainder != 0) {
+            for (int i = remainder; i < 3; i++) {
+                View spacer = new View(this);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        0, dp(1), 1f);
+                params.setMargins(gap, 0, gap, 0);
+                row.addView(spacer, params);
+            }
         }
         updateTargets();
     }
 
     private void updateTargets() {
-        for (int i = 0; i < targetGroup.getChildCount(); i++) {
-            View chip = targetGroup.getChildAt(i);
+        for (int i = 0; i < targetChips.size(); i++) {
+            TextView chip = targetChips.get(i);
             boolean selected = TARGET_KEYS[i].equals(selectedTarget);
             chip.setSelected(selected);
-            ((TextView) chip).setTextColor(selected
+            chip.setTextColor(selected
                     ? Color.parseColor("#0B0B0B")
                     : getResources().getColor(R.color.ks_text));
         }
