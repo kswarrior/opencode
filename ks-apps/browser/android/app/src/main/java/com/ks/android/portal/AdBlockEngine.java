@@ -177,34 +177,29 @@ final class AdBlockEngine {
             return PagePolicy.DEFAULT;
         }
         String host = hostOf(pageUrl);
-        if (host == null) {
+        Request pageRequest = request(pageUrl, pageUrl, TYPE_DOCUMENT);
+        if (host == null || pageRequest == null) {
             return PagePolicy.DEFAULT;
         }
-        String lowerUrl = pageUrl.toLowerCase(Locale.US);
         boolean blockDisabled = false;
         boolean elementHideDisabled = false;
         boolean genericHideDisabled = false;
-        int hostStart = schemeEnd(lowerUrl);
-        if (hostStart < 0) {
-            return PagePolicy.DEFAULT;
-        }
-        int hostEnd = hostEndOf(lowerUrl, hostStart);
-        int position = hostStart;
+        int position = 0;
         while (position >= 0) {
-            String suffix = lowerUrl.substring(position, hostEnd);
+            String suffix = host.substring(position);
             List<PageRule> rules = pageRules.get(suffix);
             if (rules != null) {
                 for (int i = 0; i < rules.size(); i++) {
                     PageRule rule = rules.get(i);
-                    if (rule.matches(host, lowerUrl)) {
+                    if (rule.matches(host, pageRequest)) {
                         blockDisabled |= rule.block;
                         elementHideDisabled |= rule.elemHide;
                         genericHideDisabled |= rule.genericHide;
                     }
                 }
             }
-            int dot = lowerUrl.indexOf('.', position);
-            position = dot >= 0 && dot < hostEnd ? dot + 1 : -1;
+            int dot = host.indexOf('.', position);
+            position = dot >= 0 ? dot + 1 : -1;
         }
         if (blockDisabled) {
             elementHideDisabled = true;
@@ -909,67 +904,22 @@ final class AdBlockEngine {
     }
 
     private static final class PageRule {
-        final String pattern;
-        final String patternLower;
-        final String hostname;
-        final String[] includeDomains;
-        final String[] excludeDomains;
+        final NetworkFilter filter;
         final boolean block;
         final boolean elemHide;
         final boolean genericHide;
-        final boolean matchCase;
 
-        PageRule(String pattern, String hostname, String[] includeDomains,
-                 String[] excludeDomains, boolean block, boolean elemHide,
-                 boolean genericHide, boolean matchCase) {
-            this.pattern = pattern;
-            this.patternLower = matchCase ? pattern : pattern.toLowerCase(Locale.US);
-            this.hostname = hostname;
-            this.includeDomains = includeDomains;
-            this.excludeDomains = excludeDomains;
+        PageRule(NetworkFilter filter, boolean block, boolean elemHide, boolean genericHide) {
+            this.filter = filter;
             this.block = block;
             this.elemHide = elemHide;
             this.genericHide = genericHide;
-            this.matchCase = matchCase;
         }
 
-        boolean matches(String pageHost, String lowerUrl) {
-            if (!domainsAllow(includeDomains, excludeDomains, pageHost)) {
-                return false;
-            }
-            return filterMatches(pattern, patternLower, matchCase, lowerUrl);
+        boolean matches(String pageHost, Request request) {
+            return domainsAllow(filter.includeDomains, filter.excludeDomains, pageHost)
+                    && filter.matches(request);
         }
-    }
-
-    private static boolean filterMatches(String pattern, String patternLower, boolean matchCase,
-                                         String lowerUrl) {
-        if (pattern.length() == 0) {
-            return true;
-        }
-        String value = matchCase ? pattern : patternLower;
-        String url = matchCase ? lowerUrl : lowerUrl;
-        if (pattern.startsWith("||")) {
-            String rest = value.substring(2);
-            int scheme = schemeEnd(url);
-            if (scheme < 0) {
-                return false;
-            }
-            int hostEnd = hostEndOf(url, scheme);
-            int position = scheme;
-            while (position < hostEnd) {
-                if (matchFrom(rest, 0, url, position,
-                        pattern.endsWith("|"))) {
-                    return true;
-                }
-                int dot = url.indexOf('.', position);
-                if (dot < 0 || dot >= hostEnd) {
-                    break;
-                }
-                position = dot + 1;
-            }
-            return false;
-        }
-        return url.contains(value);
     }
 
     private static final class CosmeticRule {
