@@ -1090,6 +1090,193 @@ public class MainActivity extends Activity {
         return isHomeUrl(url);
     }
 
+    private boolean handleLogin(int tabId, String rawUrl, String name, String username,
+                                String password) {
+        if (privateTabs.contains(tabId)
+                || !setting("autofill_offer_save", true)
+                || TextUtils.isEmpty(password)) {
+            return false;
+        }
+        final String url = normalizeWebUrl(rawUrl);
+        if (url == null) {
+            return false;
+        }
+        final CredentialStore store = CredentialStore.getInstance(this);
+        if (store.matches(url, username, password)) {
+            return false;
+        }
+        final String siteName = cleanRecentName(name, url);
+        final String safeUsername = username == null ? "" : username;
+        final String safePassword = password;
+        final String loginKey = url + "\n" + safeUsername + "\n" + safePassword.hashCode();
+        synchronized (loginPromptLock) {
+            long now = System.currentTimeMillis();
+            if (loginDialogVisible
+                    || (loginKey.equals(lastLoginKey) && now - lastLoginTime < 10000)) {
+                return false;
+            }
+            loginDialogVisible = true;
+            lastLoginKey = loginKey;
+            lastLoginTime = now;
+        }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (isFinishing() || isDestroyed()) {
+                    resetLoginPrompt();
+                    return;
+                }
+                LoginSaveDialog.show(MainActivity.this, siteName, url, safeUsername,
+                        safePassword, new LoginSaveDialog.Listener() {
+                            @Override
+                            public void onSave(String savedUsername, String savedPassword) {
+                                store.save(siteName, url, savedUsername, savedPassword);
+                                Toast.makeText(MainActivity.this, R.string.login_saved,
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onDismiss() {
+                                resetLoginPrompt();
+                            }
+                        });
+            }
+        });
+        return true;
+    }
+
+    private void resetLoginPrompt() {
+        synchronized (loginPromptLock) {
+            loginDialogVisible = false;
+        }
+    }
+
+    private void injectWebAssist(WebView view, String url) {
+        if (view == null || normalizeWebUrl(url) == null) {
+            return;
+        }
+        boolean offerSave = setting("autofill_offer_save", true);
+        boolean autoSignIn = setting("autofill_auto_sign_in", true);
+        boolean autofillForms = setting("autofill_forms", true);
+        boolean siteNotifications = setting(NotificationHelper.KEY_SITES, true);
+        CredentialStore.Credential saved = null;
+        if (autoSignIn || autofillForms) {
+            saved = CredentialStore.getInstance(this).findForUrl(url);
+        }
+        String savedJson = "null";
+        if (saved != null) {
+            try {
+                JSONObject object = new JSONObject();
+                object.put("u", saved.username);
+                object.put("p", saved.password);
+                savedJson = object.toString();
+            } catch (JSONException ignored) {
+            }
+        }
+        String script = "(function(){"
+                + "var OFFER=" + offerSave + ",AUTO=" + autoSignIn
+                + ",FORMS=" + autofillForms + ",SITES=" + siteNotifications
+                + ",SAVED=" + savedJson + ";"
+                + "if(!window.__ksSiteNotif){window.__ksSiteNotif=true;"
+                + "var SN=function(t,o){o=o||{};if(!SITES){return;}"
+                + "try{window.KSPortalWeb&&window.KSPortalWeb.showSiteNotification("
+                + "String(t||''),String(o.body||''),location.href);}catch(e){}};"
+                + "SN.permission=SITES?'granted':'denied';"
+                + "SN.requestPermission=function(cb){var r=SITES?'granted':'denied';"
+                + "if(typeof cb==='function'){setTimeout(function(){cb(r);},0);}"
+                + "if(typeof Promise!=='undefined'){return Promise.resolve(r);}return r;};"
+                + "try{Object.defineProperty(window,'Notification',"
+                + "{value:SN,configurable:true,writable:true});}"
+                + "catch(e){window.Notification=SN;}}"
+                + "function fire(el){try{"
+                + "el.dispatchEvent(new Event('input',{bubbles:true}));"
+                + "el.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}}"
+                + "function userField(root){var list=['input[autocomplete=username]',"
+                + "'input[autocomplete=email]','input[type=email]',"
+                + "'input[name*=user i]','input[id*=user i]',"
+                + "'input[name*=email i]','input[id*=email i]','input[type=text]'];"
+                + "for(var i=0;i<list.length;i++){try{var el=root.querySelector(list[i]);"
+                + "if(el&&!el.disabled&&el.type!=='hidden'){return el;}}catch(e){}}"
+                + "return null;}"
+                + "function pwField(root){var list=root.querySelectorAll('input[type=password]');"
+                + "for(var i=0;i<list.length;i++){var el=list[i];"
+                + "if(!el.disabled&&el.type!=='hidden'){return el;}}return null;}"
+                + "function candidate(form){var root=form||document;"
+                + "var list=root.querySelectorAll('input[type=password]');"
+                + "var p=null,count=0;for(var i=0;i<list.length;i++){var el=list[i];"
+                + "if(!el.disabled&&el.type!=='hidden'){if(!p){p=el;}count++;}}"
+                + "if(!p||!p.value||count>1){return null;}"
+                + "var u=userField(root);return {u:u?u.value:'',p:p.value};}"
+                + "function stash(c){try{sessionStorage.setItem('ks_pending_login',"
+                + "JSON.stringify({u:c.u,p:c.p,n:document.title||'',t:Date.now()}));}"
+                + "catch(e){}}"
+                + "function send(c){if(!c||!c.p||!OFFER){return;}try{"
+                + "sessionStorage.removeItem('ks_pending_login');"
+                + "window.KSPortalWeb&&window.KSPortalWeb.onLogin(location.href,"
+                + "document.title||'',c.u,c.p);}catch(e){}}"
+                + "document.addEventListener('submit',function(e){var f=e.target;"
+                + "if(!f||!f.querySelector){return;}var c=candidate(f);if(!c){return;}"
+                + "stash(c);setTimeout(function(){send(c);},700);},true);"
+                + "document.addEventListener('click',function(e){var t=e.target;"
+                + "if(!t||!t.closest){return;}var b=t.closest('button,input[type=submit]');"
+                + "if(!b){return;}var f=b.form||b.closest('form');if(!f){return;}"
+                + "var label=(b.innerText||b.value||'').toLowerCase();"
+                + "if(b.type!=='submit'&&!/(log\\s*in|sign\\s*in|submit|continue|save)/.test(label))"
+                + "{return;}var c=candidate(f);if(!c){return;}"
+                + "stash(c);setTimeout(function(){send(c);},900);},true);"
+                + "try{var raw=sessionStorage.getItem('ks_pending_login');"
+                + "if(raw){var pending=JSON.parse(raw);"
+                + "if(pending&&pending.p&&Date.now()-pending.t<300000){"
+                + "setTimeout(function(){send(pending);},600);}}}catch(e){}"
+                + "function fill(){if(!SAVED||(!AUTO&&!FORMS)){return;}"
+                + "var p=pwField(document);if(!p){return;}"
+                + "var f=p.form||p.closest('form')||document;var u=userField(f);"
+                + "var changed=false;"
+                + "if(u&&!u.value&&(AUTO||FORMS)&&SAVED.u){u.value=SAVED.u;fire(u);changed=true;}"
+                + "if(AUTO&&!p.value&&SAVED.p){p.value=SAVED.p;fire(p);changed=true;}"
+                + "if(AUTO&&changed&&f&&f.tagName==='FORM'){try{"
+                + "var k='ks_auto_'+location.href;"
+                + "if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,'1');"
+                + "setTimeout(function(){try{if(f.requestSubmit){f.requestSubmit();}"
+                + "else{f.submit();}}catch(e){}},700);}}catch(e){}}}"
+                + "setTimeout(fill,350);setTimeout(fill,1200);"
+                + "})();";
+        view.evaluateJavascript(script, null);
+    }
+
+    private final class WebContentBridge {
+        private final int tabId;
+
+        WebContentBridge(int tabId) {
+            this.tabId = tabId;
+        }
+
+        @JavascriptInterface
+        public boolean onLogin(String url, String name, String username, String password) {
+            if (tabId != tabManager.getActiveTabId()
+                    || username == null || username.length() > 256
+                    || password == null || password.length() > 1024) {
+                return false;
+            }
+            return handleLogin(tabId, url, name, username, password);
+        }
+
+        @JavascriptInterface
+        public boolean showSiteNotification(String title, String body, String url) {
+            if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)) {
+                return false;
+            }
+            String safeTitle = title == null ? "" : title;
+            String safeBody = body == null ? "" : body;
+            if (safeTitle.length() > 200 || safeBody.length() > 1000) {
+                return false;
+            }
+            NotificationHelper.siteNotification(MainActivity.this, safeTitle, safeBody,
+                    normalizeWebUrl(url));
+            return true;
+        }
+    }
+
     private final class PortalBridge {
         private final int tabId;
 

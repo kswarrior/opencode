@@ -2,6 +2,7 @@ package com.ks.android.portal;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 public final class LoginSaveDialog {
     public interface Listener {
         void onSave(String username, String password);
+
+        void onDismiss();
     }
 
     private LoginSaveDialog() {
@@ -32,6 +35,14 @@ public final class LoginSaveDialog {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_login_save);
         dialog.setCanceledOnTouchOutside(true);
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dismissed) {
+                if (listener != null) {
+                    listener.onDismiss();
+                }
+            }
+        });
 
         TextView nameView = dialog.findViewById(R.id.loginSiteName);
         TextView urlView = dialog.findViewById(R.id.loginUrl);
