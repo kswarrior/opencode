@@ -493,7 +493,7 @@ final class AdBlockListStore {
                         throw new IOException("Empty filter list");
                     }
                     combined.write(bytes);
-                    combined.write('\\n');
+                    combined.write('\n');
                     ok++;
                 } catch (IOException exception) {
                     if (firstError == null) {
@@ -615,7 +615,7 @@ final class AdBlockListStore {
         }
         String head = text.length() > 4096 ? text.substring(0, 4096) : text;
         String trimmed = head.trim();
-        if (trimmed.startsWith("<") || trimmed.indexOf("\\u0000") >= 0) {
+        if (trimmed.startsWith("<") || trimmed.indexOf((char) 0) >= 0) {
             return false;
         }
         return head.indexOf("||") >= 0 || head.indexOf("##") >= 0
@@ -628,7 +628,7 @@ final class AdBlockListStore {
         int count = 0;
         int start = 0;
         for (int i = 0; i <= text.length(); i++) {
-            if (i == text.length() || text.charAt(i) == '\\n' || text.charAt(i) == '\\r') {
+            if (i == text.length() || text.charAt(i) == '\n' || text.charAt(i) == '\r') {
                 if (i > start) {
                     String line = text.substring(start, i).trim();
                     if (line.length() > 0 && line.charAt(0) != '!'
