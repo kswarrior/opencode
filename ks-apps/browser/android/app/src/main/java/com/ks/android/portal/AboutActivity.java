@@ -21,8 +21,11 @@ public class AboutActivity extends Activity {
             }
         });
 
-        TextView version = findViewById(R.id.aboutVersion);
-        version.setText(getString(R.string.about_version,
-                AppInfo.versionName(this), AppInfo.versionCode(this)));
+        TextView version = findViewById(R.id.aboutVersionTag);
+        version.setText(getString(R.string.about_version_tag, AppInfo.versionName(this)));
+
+        TextView markdown = findViewById(R.id.aboutMarkdown);
+        markdown.setText(MarkdownRenderer.render(this, getString(R.string.about_markdown)));
+        markdown.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }
