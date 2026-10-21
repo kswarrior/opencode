@@ -1584,6 +1584,23 @@ body.launching .recents {
     } catch (error) {}
   }
 
+  function refreshTabsCount() {
+    var badge = document.getElementById('tabsCount');
+    if (!badge || !nativePortal || typeof nativePortal.getTabCount !== 'function') return;
+    try {
+      var count = nativePortal.getTabCount();
+      if (typeof count === 'number' && count > 0) {
+        badge.textContent = count > 99 ? '99+' : String(count);
+      }
+    } catch (error) {}
+  }
+  window.KSPortalRefreshTabs = refreshTabsCount;
+  refreshTabsCount();
+
+  document.getElementById('btnTabs').addEventListener('click', function (event) {
+    event.preventDefault();
+    invokeNative('openTabs');
+  });
   document.getElementById('btnHistory').addEventListener('click', function (event) {
     event.preventDefault();
     invokeNative('openHistory');
