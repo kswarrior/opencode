@@ -132,6 +132,7 @@ public class DownloadsActivity extends Activity {
         super.onResume();
         refreshPath();
         refreshList();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_DOWNLOADS);
     }
 
     @Override

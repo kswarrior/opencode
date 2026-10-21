@@ -45,6 +45,7 @@ public class SettingsActivity extends Activity {
     protected void onResume() {
         super.onResume();
         refreshValues();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
     }
 
     private void refreshValues() {

@@ -99,7 +99,7 @@ public class MainActivity extends Activity {
         settings.setBuiltInZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
-        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.0.2");
+        settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/1.0.3");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             settings.setSafeBrowsingEnabled(true);
         }
@@ -216,6 +216,16 @@ public class MainActivity extends Activity {
             }
         } else {
             webView.loadUrl(HOME_URL);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (webView != null && isHomeUrl(currentUrl)) {
+            webView.evaluateJavascript(
+                    "window.KSPortalRefreshBackground&&window.KSPortalRefreshBackground()",
+                    null);
         }
     }
 
@@ -755,6 +765,28 @@ public class MainActivity extends Activity {
                 }
             });
             return true;
+        }
+
+        @JavascriptInterface
+        public boolean openCustomize() {
+            if (!isBridgeAllowed()) {
+                return false;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    openCustomizePage();
+                }
+            });
+            return true;
+        }
+
+        @JavascriptInterface
+        public String getBackground() {
+            if (!isBridgeAllowed()) {
+                return "{}";
+            }
+            return buildBackgroundJson();
         }
 
         @JavascriptInterface
