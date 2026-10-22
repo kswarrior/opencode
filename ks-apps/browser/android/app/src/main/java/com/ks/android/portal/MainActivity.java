@@ -625,19 +625,6 @@ public class MainActivity extends Activity {
         super.onPause();
     }
 
-    @Override
-    protected void onDestroy() {
-        if (mediaReceiver != null) {
-            try {
-                unregisterReceiver(mediaReceiver);
-            } catch (IllegalArgumentException ignored) {
-            }
-            mediaReceiver = null;
-        }
-        cancelMediaNotification();
-        super.onDestroy();
-    }
-
     private PendingIntent mediaActionIntent(String action, int requestCode) {
         Intent intent = new Intent(action).setPackage(getPackageName());
         int flags = PendingIntent.FLAG_UPDATE_CURRENT;
