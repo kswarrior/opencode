@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
@@ -28,6 +29,12 @@ public final class LoginSaveDialog {
 
     public static void show(final Activity activity, String siteName, String url,
                             String username, String password, final Listener listener) {
+        show(activity, siteName, url, username, password, null, listener);
+    }
+
+    public static void show(final Activity activity, String siteName, String url,
+                            String username, String password, String warning,
+                            final Listener listener) {
         if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
             return;
         }
@@ -55,6 +62,18 @@ public final class LoginSaveDialog {
         urlView.setText(url);
         usernameView.setText(username == null ? "" : username);
         passwordView.setText(password == null ? "" : password);
+        if (!TextUtils.isEmpty(warning)) {
+            ViewGroup content = dialog.findViewById(android.R.id.content);
+            if (content != null && content.getChildCount() > 0
+                    && content.getChildAt(0) instanceof ViewGroup) {
+                TextView notice = new TextView(activity);
+                notice.setText(warning);
+                notice.setTextColor(Color.parseColor("#FFB86B"));
+                notice.setTextSize(12);
+                notice.setPadding(0, 12, 0, 0);
+                ((ViewGroup) content.getChildAt(0)).addView(notice);
+            }
+        }
         usernameView.setSelection(usernameView.getText().length());
         passwordView.setSelection(passwordView.getText().length());
 

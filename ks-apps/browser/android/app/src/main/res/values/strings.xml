@@ -651,4 +651,14 @@ example.com##.ad-banner</string>
     <string name="voice_unavailable">Voice search is not available</string>
     <string name="autoplay_enabled">Media autoplay allowed</string>
     <string name="autoplay_disabled">Media autoplay blocked</string>
+    <string name="login_warning_duplicate">A password for this site is already saved.</string>
+    <string name="login_warning_weak">This password looks weak.</string>
+    <string name="saved_logins">Saved logins</string>
+    <string name="saved_logins_summary">Review or delete saved passwords</string>
+    <string name="saved_logins_empty">No saved logins</string>
+    <string name="saved_logins_password">%1$s\n%2$s</string>
+    <string name="saved_logins_reveal">Show password</string>
+    <string name="saved_logins_delete">Delete login</string>
+    <string name="saved_logins_unlock">Unlock to view password</string>
+    <string name="saved_logins_cleared">Saved passwords were cleared because the encryption key changed</string>
 </resources>

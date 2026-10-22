@@ -3346,6 +3346,15 @@ public class MainActivity extends Activity {
         final String siteName = cleanRecentName(name, url);
         final String safeUsername = username == null ? "" : username;
         final String safePassword = password;
+        String warning = null;
+        if (store.findForUrl(url) != null) {
+            warning = getString(R.string.login_warning_duplicate);
+        }
+        if (isWeakPassword(safePassword)) {
+            warning = warning == null ? getString(R.string.login_warning_weak)
+                    : warning + " " + getString(R.string.login_warning_weak);
+        }
+        final String loginWarning = warning;
         final String loginKey = url + "\n" + safeUsername + "\n" + safePassword.hashCode();
         synchronized (loginPromptLock) {
             long now = System.currentTimeMillis();
@@ -3365,7 +3374,7 @@ public class MainActivity extends Activity {
                     return;
                 }
                 LoginSaveDialog.show(MainActivity.this, siteName, url, safeUsername,
-                        safePassword, new LoginSaveDialog.Listener() {
+                        safePassword, loginWarning, new LoginSaveDialog.Listener() {
                             @Override
                             public void onSave(String savedUsername, String savedPassword) {
                                 boolean saved = store.save(siteName, url, savedUsername,
@@ -3383,6 +3392,15 @@ public class MainActivity extends Activity {
             }
         });
         return true;
+    }
+
+    private static boolean isWeakPassword(String password) {
+        if (password == null || password.length() < 8) {
+            return true;
+        }
+        String lower = password.toLowerCase(Locale.US);
+        return lower.equals("password") || lower.equals("12345678")
+                || lower.equals("qwerty123") || lower.equals("11111111");
     }
 
     private void resetLoginPrompt() {
