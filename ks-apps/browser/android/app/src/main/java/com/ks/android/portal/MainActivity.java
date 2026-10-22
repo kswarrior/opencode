@@ -5077,6 +5077,14 @@ public class MainActivity extends Activity {
         }
         tabViews.clear();
         webView = null;
+        if (mediaReceiver != null) {
+            try {
+                unregisterReceiver(mediaReceiver);
+            } catch (IllegalArgumentException ignored) {
+            }
+            mediaReceiver = null;
+        }
+        cancelMediaNotification();
         super.onDestroy();
     }
 }
