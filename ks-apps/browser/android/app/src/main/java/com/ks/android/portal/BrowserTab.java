@@ -14,6 +14,7 @@ final class BrowserTab {
     boolean audible;
     boolean muted;
     boolean discarded;
+    boolean pinned;
 
     BrowserTab(int id, String url, int groupId, String title) {
         this.id = id;

@@ -288,6 +288,72 @@ final class TabManager {
         saveAndNotify();
     }
 
+    synchronized void setPinned(int id, boolean pinned) {
+        BrowserTab tab = findTab(id);
+        if (tab == null || tab.pinned == pinned) {
+            return;
+        }
+        tab.pinned = pinned;
+        normalizePinnedOrder();
+        saveAndNotify();
+    }
+
+    synchronized boolean isPinned(int id) {
+        BrowserTab tab = findTab(id);
+        return tab != null && tab.pinned;
+    }
+
+    synchronized void moveTab(int id, int direction) {
+        int index = indexOfTab(id);
+        if (index < 0 || direction == 0) {
+            return;
+        }
+        BrowserTab tab = tabs.get(index);
+        int target = index + (direction < 0 ? -1 : 1);
+        if (target < 0 || target >= tabs.size()) {
+            return;
+        }
+        BrowserTab other = tabs.get(target);
+        if (tab.pinned != other.pinned) {
+            return;
+        }
+        tabs.set(index, other);
+        tabs.set(target, tab);
+        saveAndNotify();
+    }
+
+    synchronized void moveTabBefore(int id, int targetId) {
+        int from = indexOfTab(id);
+        int to = indexOfTab(targetId);
+        if (from < 0 || to < 0 || from == to) {
+            return;
+        }
+        BrowserTab moved = tabs.remove(from);
+        if (from < to) {
+            to--;
+        }
+        to = Math.max(0, Math.min(to, tabs.size()));
+        tabs.add(to, moved);
+        normalizePinnedOrder();
+        saveAndNotify();
+    }
+
+    private void normalizePinnedOrder() {
+        List<BrowserTab> pinned = new ArrayList<BrowserTab>();
+        List<BrowserTab> regular = new ArrayList<BrowserTab>();
+        for (int i = 0; i < tabs.size(); i++) {
+            BrowserTab tab = tabs.get(i);
+            if (tab.pinned) {
+                pinned.add(tab);
+            } else {
+                regular.add(tab);
+            }
+        }
+        tabs.clear();
+        tabs.addAll(pinned);
+        tabs.addAll(regular);
+    }
+
     synchronized void discardTab(int id) {
         BrowserTab tab = findTab(id);
         if (tab == null || id == activeTabId) {
@@ -563,6 +629,7 @@ final class TabManager {
                 item.put("group", tab.groupId);
                 item.put("muted", tab.muted);
                 item.put("discarded", tab.discarded);
+                item.put("pinned", tab.pinned);
                 tabsJson.put(item);
             }
             root.put("tabs", tabsJson);
