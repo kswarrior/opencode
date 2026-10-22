@@ -4715,6 +4715,14 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void setPasskeySupport(boolean available) {
+            settingsPrefs.edit()
+                    .putBoolean("passkey_supported", available)
+                    .putLong("passkey_checked", System.currentTimeMillis())
+                    .apply();
+        }
+
+        @JavascriptInterface
         public boolean openDownloads() {
             if (!allowed()) {
                 return false;
