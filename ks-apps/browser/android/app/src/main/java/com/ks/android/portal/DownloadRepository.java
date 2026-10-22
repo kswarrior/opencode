@@ -2412,13 +2412,8 @@ public class DownloadRepository {
                     if (cancelled) {
                         throw new IOException("Cancelled");
                     }
-                    String base = item.fileName;
-                    int dot = base.lastIndexOf('.');
-                    if (dot > 0) {
-                        base = base.substring(0, dot);
-                    }
                     name = uniqueFileNameLocked(item.relativePath,
-                            withExtension(base, extension), item.id);
+                            withExtension(item.fileName, extension), item.id);
                     relative = item.relativePath;
                     item.fileName = name;
                     item.filePath = filePathFor(relative, name);
