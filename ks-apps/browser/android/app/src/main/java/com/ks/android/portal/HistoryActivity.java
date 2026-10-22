@@ -583,12 +583,6 @@ public class HistoryActivity extends Activity {
                 holder.url.setText(category.primaryUrl);
                 holder.count.setText(getString(R.string.history_category_count,
                         category.entries.size()));
-                holder.count.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        toggleCategory(category);
-                    }
-                });
                 holder.more.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
