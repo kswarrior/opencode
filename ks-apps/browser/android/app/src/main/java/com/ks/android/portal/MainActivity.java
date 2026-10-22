@@ -547,6 +547,77 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public void onReceivedHttpAuthRequest(WebView current,
+                                                  final HttpAuthHandler handler,
+                                                  String host, String realm) {
+                if (handler == null) {
+                    return;
+                }
+                KsDialog.credentials(MainActivity.this,
+                        TextUtils.isEmpty(realm)
+                                ? getString(R.string.http_auth_title, host)
+                                : getString(R.string.http_auth_title_realm, host, realm),
+                        R.string.dialog_cancel, R.string.http_auth_action,
+                        R.string.http_auth_username, R.string.http_auth_password,
+                        new KsDialog.CredentialAction() {
+                            @Override
+                            public void run(String username, String password) {
+                                handler.proceed(username, password);
+                            }
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                handler.cancel();
+                            }
+                        });
+            }
+
+            @Override
+            public void onReceivedClientCertRequest(WebView current,
+                                                    final ClientCertRequest request) {
+                if (request == null) {
+                    return;
+                }
+                pendingClientCertRequest = request;
+                KeyChain.choosePrivateKeyAlias(MainActivity.this,
+                        new KeyChainAliasCallback() {
+                            @Override
+                            public void alias(final String alias) {
+                                if (TextUtils.isEmpty(alias)) {
+                                    request.cancel();
+                                    pendingClientCertRequest = null;
+                                    return;
+                                }
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            PrivateKey key = KeyChain.getPrivateKey(
+                                                    getApplicationContext(), alias);
+                                            X509Certificate[] chain = KeyChain.getCertificateChain(
+                                                    getApplicationContext(), alias);
+                                            if (key == null || chain == null) {
+                                                request.cancel();
+                                            } else {
+                                                request.proceed(key, chain);
+                                            }
+                                        } catch (Exception exception) {
+                                            request.cancel();
+                                        } finally {
+                                            pendingClientCertRequest = null;
+                                        }
+                                    }
+                                }).start();
+                            }
+                        },
+                        request.getKeyTypes(), request.getPrincipals(),
+                        request.getHost(), request.getPort(), null);
+            }
+        });
+
+        view.setWebChromeClient(new WebChromeClient() {
+            @Override
             public boolean onJsAlert(WebView current, String url, String message,
                                      final JsResult result) {
                 String host = SiteSettingsStore.hostOf(url);
@@ -618,77 +689,6 @@ public class MainActivity extends Activity {
                 return true;
             }
 
-            @Override
-            public void onReceivedHttpAuthRequest(WebView current,
-                                                  final HttpAuthHandler handler,
-                                                  String host, String realm) {
-                if (handler == null) {
-                    return;
-                }
-                KsDialog.credentials(MainActivity.this,
-                        TextUtils.isEmpty(realm)
-                                ? getString(R.string.http_auth_title, host)
-                                : getString(R.string.http_auth_title_realm, host, realm),
-                        R.string.dialog_cancel, R.string.http_auth_action,
-                        R.string.http_auth_username, R.string.http_auth_password,
-                        new KsDialog.CredentialAction() {
-                            @Override
-                            public void run(String username, String password) {
-                                handler.proceed(username, password);
-                            }
-                        },
-                        new KsDialog.Action() {
-                            @Override
-                            public void run() {
-                                handler.cancel();
-                            }
-                        });
-            }
-
-            @Override
-            public void onReceivedClientCertRequest(WebView current,
-                                                    final ClientCertRequest request) {
-                if (request == null) {
-                    return;
-                }
-                pendingClientCertRequest = request;
-                KeyChain.choosePrivateKeyAlias(MainActivity.this,
-                        new KeyChainAliasCallback() {
-                            @Override
-                            public void alias(final String alias) {
-                                if (TextUtils.isEmpty(alias)) {
-                                    request.cancel();
-                                    pendingClientCertRequest = null;
-                                    return;
-                                }
-                                new Thread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        try {
-                                            PrivateKey key = KeyChain.getPrivateKey(
-                                                    getApplicationContext(), alias);
-                                            X509Certificate[] chain = KeyChain.getCertificateChain(
-                                                    getApplicationContext(), alias);
-                                            if (key == null || chain == null) {
-                                                request.cancel();
-                                            } else {
-                                                request.proceed(key, chain);
-                                            }
-                                        } catch (Exception exception) {
-                                            request.cancel();
-                                        } finally {
-                                            pendingClientCertRequest = null;
-                                        }
-                                    }
-                                }).start();
-                            }
-                        },
-                        request.getKeyTypes(), request.getPrincipals(),
-                        request.getHost(), request.getPort(), null);
-            }
-        });
-
-        view.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView current, int newProgress) {
                 tab.progress = newProgress;
