@@ -639,8 +639,7 @@ public class MainActivity extends Activity {
                             getString(R.string.file_chooser_title)), REQUEST_FILE_CHOOSER);
                 } catch (ActivityNotFoundException exception) {
                     fileChooserCallback = null;
-                    Toast.makeText(MainActivity.this, R.string.no_app_found,
-                            Toast.LENGTH_SHORT).show();
+                    KsToast.show(MainActivity.this, R.string.no_app_found);
                     return false;
                 }
                 return true;
