@@ -1471,6 +1471,12 @@ public class MainActivity extends Activity {
             }
             int tabId = entry.getKey().intValue();
             WebView closed = entry.getValue();
+            pendingPopups.remove(tabId);
+            popupPromptShown.remove(tabId);
+            Dialog popupDialog = popupDialogs.remove(tabId);
+            if (popupDialog != null && popupDialog.isShowing()) {
+                popupDialog.dismiss();
+            }
             removeErrorOverlay(closed);
             webContainer.removeView(closed);
             closed.removeJavascriptInterface("KSPortalNative");
