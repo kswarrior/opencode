@@ -19,6 +19,13 @@
     <string name="downloads_action">Downloads</string>
     <string name="downloads_title">Downloads</string>
     <string name="history_title">History</string>
+    <string name="find_in_page">Find in page</string>
+    <string name="find_hint">Find in page</string>
+    <string name="find_previous">Previous match</string>
+    <string name="find_next">Next match</string>
+    <string name="find_close">Close find bar</string>
+    <string name="find_no_matches">No matches</string>
+    <string name="find_match_count">%1$d/%2$d</string>
     <string name="history_search_hint">Search history</string>
     <string name="history_filter">Filter history</string>
     <string name="history_filter_all">All time</string>

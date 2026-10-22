@@ -107,6 +107,84 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/findBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/bg_toolbar_glass"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/findInput"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_url_bar"
+            android:gravity="center_vertical"
+            android:hint="@string/find_hint"
+            android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:singleLine="true"
+            android:textColor="@color/ks_text"
+            android:textColorHint="@color/ks_muted"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/findCount"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:minWidth="44dp"
+            android:textColor="@color/ks_muted"
+            android:textSize="12sp" />
+
+        <ImageButton
+            android:id="@+id/findPrev"
+            android:layout_width="40dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_toolbar_button"
+            android:contentDescription="@string/find_previous"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_chevron_up"
+            android:tint="@color/ks_text" />
+
+        <ImageButton
+            android:id="@+id/findNext"
+            android:layout_width="40dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_toolbar_button"
+            android:contentDescription="@string/find_next"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_chevron_down"
+            android:tint="@color/ks_text" />
+
+        <ImageButton
+            android:id="@+id/findClose"
+            android:layout_width="40dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_toolbar_button"
+            android:contentDescription="@string/find_close"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_close"
+            android:tint="@color/ks_text" />
+    </LinearLayout>
+
     <com.ks.android.portal.FloatingToolbarToggle
         android:id="@+id/toolbarToggle"
         android:layout_width="wrap_content"

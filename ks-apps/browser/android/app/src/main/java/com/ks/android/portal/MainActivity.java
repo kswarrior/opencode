@@ -23,7 +23,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.security.KeyChain;
 import android.security.KeyChainAliasCallback;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -102,6 +104,10 @@ public class MainActivity extends Activity {
     private ImageView siteLogo;
     private FaviconLoader faviconLoader;
     private EditText urlBar;
+    private View findBar;
+    private EditText findInput;
+    private TextView findCount;
+    private WebView findTarget;
     private volatile String currentUrl = HOME_URL;
     private int lastActiveTabId = -1;
     private int toolbarHeight;
@@ -198,6 +204,7 @@ public class MainActivity extends Activity {
                 openTabsPage();
             }
         });
+        setupFindBar();
         siteLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -408,6 +415,7 @@ public class MainActivity extends Activity {
                 applySiteSettings(current, url);
                 tabManager.updateTab(tab.id, url, null);
                 if (isActiveTab(tab)) {
+                    closeFindBar();
                     progressBar.setProgress(0);
                     progressBar.setVisibility(View.VISIBLE);
                     updateChrome(url);
@@ -825,6 +833,7 @@ public class MainActivity extends Activity {
                     }
                     return;
                 }
+                closeFindBar();
                 fullscreenView = view;
                 fullscreenCallback = callback;
                 pageFullscreen = true;
@@ -1375,6 +1384,9 @@ public class MainActivity extends Activity {
         if (url == null) {
             url = HOME_URL;
         }
+        if (findTarget != null && (findTarget != webView || isHomeUrl(url))) {
+            closeFindBar();
+        }
         currentUrl = url;
         boolean home = isHomeUrl(url);
         if (home) {
@@ -1494,6 +1506,7 @@ public class MainActivity extends Activity {
             return;
         }
         toolbarCollapsed = true;
+        closeFindBar();
         hideKeyboard();
         urlBar.clearFocus();
         updateToolbarToggle();
@@ -1770,6 +1783,13 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 popup.dismiss();
                 openHistoryPage();
+            }
+        });
+        panel.findViewById(R.id.menuFind).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                showFindBar();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -2330,6 +2350,138 @@ public class MainActivity extends Activity {
         } catch (ActivityNotFoundException e) {
             Toast.makeText(this, R.string.no_app_found, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void setupFindBar() {
+        findBar = findViewById(R.id.findBar);
+        findInput = findViewById(R.id.findInput);
+        findCount = findViewById(R.id.findCount);
+        findInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence text, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable text) {
+                runFind(text == null ? "" : text.toString());
+            }
+        });
+        findInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
+                boolean enter = event != null
+                        && event.getKeyCode() == KeyEvent.KEYCODE_ENTER
+                        && event.getAction() == KeyEvent.ACTION_DOWN;
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || enter) {
+                    stepFind(true);
+                    return true;
+                }
+                return false;
+            }
+        });
+        findViewById(R.id.findPrev).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stepFind(false);
+            }
+        });
+        findViewById(R.id.findNext).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stepFind(true);
+            }
+        });
+        findViewById(R.id.findClose).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closeFindBar();
+            }
+        });
+    }
+
+    private void showFindBar() {
+        if (webView == null || isHomeUrl(currentUrl)) {
+            return;
+        }
+        if (findTarget != webView) {
+            closeFindBar();
+            findTarget = webView;
+            findTarget.setFindListener(new WebView.FindListener() {
+                @Override
+                public void onFindResultReceived(int activeMatchOrdinal, int numberOfMatches,
+                                                 boolean isDoneCounting) {
+                    if (findTarget == null) {
+                        return;
+                    }
+                    if (numberOfMatches == 0) {
+                        if (isDoneCounting) {
+                            findCount.setText(R.string.find_no_matches);
+                        }
+                        return;
+                    }
+                    int current = Math.max(0, activeMatchOrdinal) + 1;
+                    findCount.setText(getString(R.string.find_match_count,
+                            Math.min(current, numberOfMatches), numberOfMatches));
+                }
+            });
+        }
+        findBar.setVisibility(View.VISIBLE);
+        findInput.requestFocus();
+        findInput.setSelection(findInput.getText().length());
+        findInput.post(new Runnable() {
+            @Override
+            public void run() {
+                InputMethodManager imm = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.showSoftInput(findInput, InputMethodManager.SHOW_IMPLICIT);
+                }
+            }
+        });
+        runFind(findInput.getText().toString());
+    }
+
+    private void runFind(String query) {
+        if (findTarget == null) {
+            return;
+        }
+        if (TextUtils.isEmpty(query)) {
+            findTarget.clearMatches();
+            findCount.setText("");
+            return;
+        }
+        findTarget.findAllAsync(query);
+    }
+
+    private void stepFind(boolean forward) {
+        if (findTarget == null) {
+            return;
+        }
+        if (TextUtils.isEmpty(findInput.getText().toString())) {
+            findInput.requestFocus();
+            return;
+        }
+        findTarget.findNext(forward);
+    }
+
+    private void closeFindBar() {
+        if (findBar == null || findBar.getVisibility() == View.GONE) {
+            return;
+        }
+        WebView target = findTarget;
+        findTarget = null;
+        if (target != null) {
+            target.clearMatches();
+            target.setFindListener(null);
+        }
+        findBar.setVisibility(View.GONE);
+        findInput.setText("");
+        findCount.setText("");
+        hideKeyboard();
     }
 
     private void hideKeyboard() {
