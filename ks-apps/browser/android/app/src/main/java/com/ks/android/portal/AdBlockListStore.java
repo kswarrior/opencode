@@ -481,9 +481,9 @@ final class AdBlockListStore {
         try {
             for (int i = 0; i < list.urls.length; i++) {
                 try {
-                    SourceResult source = downloadSource(context, list.id,
-                            list.urls[i], i == 0 ? etag : null,
-                            i == 0 ? lastModified : null, target.exists());
+                    SourceResult source = downloadSource(context, list.urls[i],
+                            i == 0 ? etag : null, i == 0 ? lastModified : null,
+                            target.exists());
                     if (source.notModified) {
                         if (multiSource) {
                             throw new IOException("Unexpected not-modified source");
@@ -596,7 +596,7 @@ final class AdBlockListStore {
             }
             int status = connection.getResponseCode();
             if (status == HttpURLConnection.HTTP_NOT_MODIFIED) {
-                return new SourceResult(null, true);
+                return new SourceResult(null, true, null, null);
             }
             if (status < 200 || status >= 300) {
                 throw new IOException("HTTP " + status);
@@ -627,7 +627,7 @@ final class AdBlockListStore {
                 } catch (IOException ignored) {
                 }
             }
-            return new SourceResult(output.toByteArray(), false);
+            return new SourceResult(output.toByteArray(), false, newEtag, newModified);
         } finally {
             if (connection != null) {
                 connection.disconnect();
