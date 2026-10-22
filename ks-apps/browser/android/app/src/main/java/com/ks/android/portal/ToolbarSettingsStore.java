@@ -22,6 +22,7 @@ final class ToolbarSettingsStore {
     private static final String KEY_EDGE = "edge";
     private static final String KEY_CENTER_X = "center_x";
     private static final String KEY_CENTER_Y = "center_y";
+    private static final String KEY_ADDRESS_BAR_BOTTOM = "address_bar_bottom";
 
     private ToolbarSettingsStore() {
     }
@@ -67,6 +68,14 @@ final class ToolbarSettingsStore {
 
     static void setDefaultEdge(Context context, int edge) {
         preferences(context).edit().putInt(KEY_DEFAULT_EDGE, normalizeEdge(edge)).apply();
+    }
+
+    static boolean isAddressBarBottom(Context context) {
+        return preferences(context).getBoolean(KEY_ADDRESS_BAR_BOTTOM, false);
+    }
+
+    static void setAddressBarBottom(Context context, boolean bottom) {
+        preferences(context).edit().putBoolean(KEY_ADDRESS_BAR_BOTTOM, bottom).apply();
     }
 
     static int getSavedEdge(Context context) {

@@ -149,6 +149,7 @@ public class MainActivity extends Activity {
     private boolean toolbarTargetVisible;
     private boolean toolbarAvailable;
     private boolean toolbarCollapsed;
+    private boolean toolbarAtBottom;
     private boolean adBlockEnabledOnResume;
     private boolean adBlockCosmeticOnResume;
     private long adBlockEngineVersionOnResume;

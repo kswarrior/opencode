@@ -705,6 +705,7 @@ example.com##.ad-banner</string>
     <string name="site_data_clear_action">Clear</string>
     <string name="site_data_cleared">Site data cleared</string>
     <string name="site_data_usage">%1$s stored</string>
+    <string name="site_data_cookies">Cookies (%1$d)</string>
     <string name="secure_exceptions_summary">Sites allowed to load without HTTPS</string>
     <string name="secure_exceptions_empty">No sites are allowed to use insecure connections.</string>
     <string name="secure_exceptions_remove_title">Remove exception?</string>
