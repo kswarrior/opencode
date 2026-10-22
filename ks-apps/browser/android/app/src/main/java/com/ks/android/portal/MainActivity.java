@@ -872,7 +872,7 @@ public class MainActivity extends Activity {
                     return;
                 }
                 if (url.startsWith("data:")) {
-                    saveDataUrl(url, contentDisposition, mimeType);
+                    saveDataUrl(url, null, mimeType);
                     return;
                 }
                 if (url.startsWith("blob:")) {
@@ -2065,9 +2065,7 @@ public class MainActivity extends Activity {
                 + "reader.onload=function(){KSPortalNative.saveBlob(reader.result,"
                 + JSONObject.quote(name) + ",b.type||" + JSONObject.quote(mimeType) + ");};"
                 + "reader.readAsDataURL(b);})"
-                + ".catch(function(){KSPortalNative.saveBlob("
-                + JSONObject.quote(url) + "," + JSONObject.quote(name) + ","
-                + JSONObject.quote(mimeType) + ");});})();";
+                + ".catch(function(){});})();";
         view.evaluateJavascript(script, null);
     }
 
