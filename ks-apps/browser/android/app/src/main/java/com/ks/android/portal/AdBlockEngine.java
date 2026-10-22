@@ -1866,6 +1866,8 @@ final class AdBlockEngine {
         return "domain".equals(name) || "from".equals(name) || "denyallow".equals(name)
                 || "to".equals(name) || "third-party".equals(name) || "3p".equals(name)
                 || "first-party".equals(name) || "1p".equals(name)
+                || "strict3p".equals(name) || "strict1p".equals(name)
+                || "reason".equals(name)
                 || "important".equals(name) || "match-case".equals(name)
                 || "badfilter".equals(name) || "elemhide".equals(name)
                 || "ehide".equals(name) || "generichide".equals(name)
