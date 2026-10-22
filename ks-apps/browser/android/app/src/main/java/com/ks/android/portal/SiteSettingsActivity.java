@@ -1,8 +1,6 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -390,24 +388,21 @@ public class SiteSettingsActivity extends Activity {
     }
 
     private void confirmReset() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.site_settings_reset_title)
-                .setMessage(R.string.site_settings_reset_message)
-                .setNegativeButton(R.string.dialog_cancel, null)
-                .setPositiveButton(R.string.site_settings_reset,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                SiteSettingsStore.reset(SiteSettingsActivity.this, siteHost);
-                                markChanged();
-                                list.removeAllViews();
-                                buildSiteSettings();
-                                Toast.makeText(SiteSettingsActivity.this,
-                                        R.string.site_settings_reset_done,
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                .show();
+        KsDialog.confirmDanger(this, R.string.site_settings_reset_title,
+                getString(R.string.site_settings_reset_message),
+                R.string.dialog_cancel, R.string.site_settings_reset,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        SiteSettingsStore.reset(SiteSettingsActivity.this, siteHost);
+                        markChanged();
+                        list.removeAllViews();
+                        buildSiteSettings();
+                        Toast.makeText(SiteSettingsActivity.this,
+                                R.string.site_settings_reset_done,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void markChanged() {

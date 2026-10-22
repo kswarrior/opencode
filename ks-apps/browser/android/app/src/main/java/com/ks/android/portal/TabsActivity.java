@@ -1,8 +1,6 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -363,33 +361,27 @@ public class TabsActivity extends Activity {
     }
 
     private void confirmCloseGroup(final TabGroup group) {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.tabs_group_close_title)
-                .setMessage(getString(R.string.tabs_group_close_message, group.name))
-                .setPositiveButton(R.string.tabs_group_close,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                tabManager.closeGroup(group.id);
-                            }
-                        })
-                .setNegativeButton(R.string.tabs_cancel, null)
-                .show();
+        KsDialog.confirm(this, R.string.tabs_group_close_title,
+                getString(R.string.tabs_group_close_message, group.name),
+                R.string.tabs_cancel, R.string.tabs_group_close,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        tabManager.closeGroup(group.id);
+                    }
+                });
     }
 
     private void confirmDeleteGroup(final TabGroup group) {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.tabs_group_delete_title)
-                .setMessage(getString(R.string.tabs_group_delete_message, group.name))
-                .setPositiveButton(R.string.tabs_delete,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                tabManager.deleteGroup(group.id);
-                            }
-                        })
-                .setNegativeButton(R.string.tabs_cancel, null)
-                .show();
+        KsDialog.confirmDanger(this, R.string.tabs_group_delete_title,
+                getString(R.string.tabs_group_delete_message, group.name),
+                R.string.tabs_cancel, R.string.tabs_delete,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        tabManager.deleteGroup(group.id);
+                    }
+                });
     }
 
     private void showHeaderMenu(View anchor) {
@@ -432,19 +424,16 @@ public class TabsActivity extends Activity {
     }
 
     private void confirmCloseAll() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.tabs_close_all_title)
-                .setMessage(R.string.tabs_close_all_message)
-                .setPositiveButton(R.string.tabs_close_all,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                tabManager.closeAllTabs();
-                                finish();
-                            }
-                        })
-                .setNegativeButton(R.string.tabs_cancel, null)
-                .show();
+        KsDialog.confirm(this, R.string.tabs_close_all_title,
+                getString(R.string.tabs_close_all_message),
+                R.string.tabs_cancel, R.string.tabs_close_all,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        tabManager.closeAllTabs();
+                        finish();
+                    }
+                });
     }
 
     private void bindFavicon(final ItemHolder holder, final BrowserTab tab) {
