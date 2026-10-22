@@ -21,7 +21,6 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.webkit.MimeTypeMap;
 
 import java.io.File;
