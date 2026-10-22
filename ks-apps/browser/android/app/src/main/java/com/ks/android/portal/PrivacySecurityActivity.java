@@ -53,6 +53,14 @@ public class PrivacySecurityActivity extends ToggleSettingsActivity {
                         showHistoryRetention();
                     }
                 });
+        addAction(R.string.privacy_section, R.string.site_data_manager,
+                R.string.site_data_manager_summary, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new android.content.Intent(
+                                PrivacySecurityActivity.this, SiteDataActivity.class));
+                    }
+                });
     }
 
     private void showHistoryRetention() {

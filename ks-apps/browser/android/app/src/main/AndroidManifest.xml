@@ -61,6 +61,11 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:name=".SiteDataActivity"
+            android:exported="false"
+            android:theme="@style/Theme.KSPortal" />
+
+        <activity
             android:name=".BookmarkActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:exported="false"
