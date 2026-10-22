@@ -226,6 +226,7 @@ public class MainActivity extends Activity {
     private final Handler suggestionHandler = new Handler(Looper.getMainLooper());
     private Runnable suggestionFetch;
     private int suggestionGeneration;
+    private int suggestionPosition = -1;
     private boolean updatingUrlBar;
     private BroadcastReceiver mediaReceiver;
     private boolean activityResumed;
@@ -359,22 +360,23 @@ public class MainActivity extends Activity {
                 if (count <= 0) {
                     return false;
                 }
-                android.widget.ListView list = suggestionPopup.getListView();
-                int position = list == null ? -1 : list.getSelectedItemPosition();
                 if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
-                    position = position < 0 ? 0 : Math.min(count - 1, position + 1);
-                    selectSuggestion(position);
+                    suggestionPosition = suggestionPosition < 0
+                            ? 0 : Math.min(count - 1, suggestionPosition + 1);
+                    selectSuggestion(suggestionPosition);
                     return true;
                 }
                 if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
-                    position = position <= 0 ? count - 1 : position - 1;
-                    selectSuggestion(position);
+                    suggestionPosition = suggestionPosition <= 0
+                            ? count - 1 : suggestionPosition - 1;
+                    selectSuggestion(suggestionPosition);
                     return true;
                 }
                 if (keyCode == KeyEvent.KEYCODE_ENTER
-                        && position >= 0 && position < suggestionUrls.size()) {
+                        && suggestionPosition >= 0
+                        && suggestionPosition < suggestionUrls.size()) {
                     updatingUrlBar = true;
-                    urlBar.setText(suggestionUrls.get(position));
+                    urlBar.setText(suggestionUrls.get(suggestionPosition));
                     urlBar.setSelection(urlBar.getText().length());
                     updatingUrlBar = false;
                     hideSuggestions();
@@ -2872,6 +2874,7 @@ public class MainActivity extends Activity {
                         }
                     });
         }
+        suggestionPosition = -1;
         suggestionAdapter.clear();
         for (Map.Entry<String, String> match : matches.entrySet()) {
             suggestionAdapter.add(match.getValue());
@@ -2942,6 +2945,7 @@ public class MainActivity extends Activity {
             suggestionFetch = null;
         }
         suggestionLabels.clear();
+        suggestionPosition = -1;
         if (suggestionPopup != null && suggestionPopup.isShowing()) {
             suggestionPopup.dismiss();
         }
