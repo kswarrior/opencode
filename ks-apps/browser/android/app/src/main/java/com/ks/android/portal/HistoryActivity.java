@@ -202,43 +202,28 @@ public class HistoryActivity extends Activity {
     }
 
     private void showFilterMenu() {
-        PopupMenu popup = new PopupMenu(this, filterButton);
-        popup.getMenu().add(0, FILTER_ALL, 0, R.string.history_filter_all)
-                .setCheckable(true).setChecked(filter == FILTER_ALL);
-        popup.getMenu().add(0, FILTER_TODAY, 1, R.string.history_filter_today)
-                .setCheckable(true).setChecked(filter == FILTER_TODAY);
-        popup.getMenu().add(0, FILTER_7_DAYS, 2, R.string.history_filter_7_days)
-                .setCheckable(true).setChecked(filter == FILTER_7_DAYS);
-        popup.getMenu().add(0, FILTER_30_DAYS, 3, R.string.history_filter_30_days)
-                .setCheckable(true).setChecked(filter == FILTER_30_DAYS);
-        popup.getMenu().setGroupCheckable(0, true, true);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-                filter = item.getItemId();
-                refreshList();
-                return true;
-            }
-        });
-        popup.show();
+        final int[] ids = {FILTER_ALL, FILTER_TODAY, FILTER_7_DAYS, FILTER_30_DAYS};
+        int[] labels = {R.string.history_filter_all, R.string.history_filter_today,
+                R.string.history_filter_7_days, R.string.history_filter_30_days};
+        KsDialog.menu(this, 0, ids, labels, null, filter - 1,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        filter = ids[index];
+                        refreshList();
+                    }
+                });
     }
 
     private void showHistoryMenu() {
-        PopupMenu popup = new PopupMenu(this, moreButton);
-        popup.getMenu().add(0, MENU_DELETE_HISTORY, 0, R.string.history_delete_all)
-                .setIcon(R.drawable.ic_delete);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-                if (item.getItemId() == MENU_DELETE_HISTORY) {
-                    confirmDeleteHistory();
-                    return true;
-                }
-                return false;
-            }
-        });
-        MenuIcons.show(popup);
-        popup.show();
+        KsDialog.menu(this, 0, new int[]{MENU_DELETE_HISTORY},
+                new int[]{R.string.history_delete_all},
+                new int[]{R.drawable.ic_delete}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        confirmDeleteHistory();
+                    }
+                });
     }
 
     private void confirmDeleteHistory() {
@@ -257,54 +242,36 @@ public class HistoryActivity extends Activity {
     }
 
     private void showCategoryMenu(View anchor, final Category category) {
-        PopupMenu popup = new PopupMenu(this, anchor);
-        popup.getMenu().add(0, MENU_ADD_BOOKMARK, 0, R.string.history_add_bookmark)
-                .setIcon(R.drawable.ic_bookmark);
-        popup.getMenu().add(0, MENU_DELETE_CATEGORY, 1, R.string.history_delete_category)
-                .setIcon(R.drawable.ic_delete);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        final int[] ids = {MENU_ADD_BOOKMARK, MENU_DELETE_CATEGORY};
+        int[] labels = {R.string.history_add_bookmark, R.string.history_delete_category};
+        int[] icons = {R.drawable.ic_bookmark, R.drawable.ic_delete};
+        KsDialog.menu(this, 0, ids, labels, icons, -1, new KsDialog.ChoiceAction() {
             @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-                switch (item.getItemId()) {
-                    case MENU_ADD_BOOKMARK:
-                        addBookmark(category.title, category.primaryUrl);
-                        return true;
-                    case MENU_DELETE_CATEGORY:
-                        confirmDeleteCategory(category);
-                        return true;
-                    default:
-                        return false;
+            public void run(int index) {
+                if (ids[index] == MENU_ADD_BOOKMARK) {
+                    addBookmark(category.title, category.primaryUrl);
+                } else if (ids[index] == MENU_DELETE_CATEGORY) {
+                    confirmDeleteCategory(category);
                 }
             }
         });
-        MenuIcons.show(popup);
-        popup.show();
     }
 
     private void showEntryMenu(View anchor, final HistoryEntry entry) {
-        PopupMenu popup = new PopupMenu(this, anchor);
-        popup.getMenu().add(0, MENU_ADD_BOOKMARK, 0, R.string.history_add_bookmark)
-                .setIcon(R.drawable.ic_bookmark);
-        popup.getMenu().add(0, MENU_REMOVE_ENTRY, 1, R.string.history_delete_entry)
-                .setIcon(R.drawable.ic_delete);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        final int[] ids = {MENU_ADD_BOOKMARK, MENU_REMOVE_ENTRY};
+        int[] labels = {R.string.history_add_bookmark, R.string.history_delete_entry};
+        int[] icons = {R.drawable.ic_bookmark, R.drawable.ic_delete};
+        KsDialog.menu(this, 0, ids, labels, icons, -1, new KsDialog.ChoiceAction() {
             @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-                switch (item.getItemId()) {
-                    case MENU_ADD_BOOKMARK:
-                        addBookmark(entry.name, entry.url);
-                        return true;
-                    case MENU_REMOVE_ENTRY:
-                        repository.remove(entry);
-                        refreshList();
-                        return true;
-                    default:
-                        return false;
+            public void run(int index) {
+                if (ids[index] == MENU_ADD_BOOKMARK) {
+                    addBookmark(entry.name, entry.url);
+                } else if (ids[index] == MENU_REMOVE_ENTRY) {
+                    repository.remove(entry);
+                    refreshList();
                 }
             }
         });
-        MenuIcons.show(popup);
-        popup.show();
     }
 
     private void confirmDeleteCategory(final Category category) {
