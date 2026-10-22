@@ -249,6 +249,7 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         applyToolbarToggleSettings();
+        AdBlocker.maybeUpdate();
         boolean adBlockEnabled = AdBlocker.isEnabled(this);
         boolean adBlockCosmetic = AdBlocker.isCosmeticEnabled(this);
         long adBlockEngineVersion = AdBlocker.engineVersion();
@@ -680,7 +681,7 @@ public class MainActivity extends Activity {
                 toolbarContainer.setVisibility(View.GONE);
                 toolbarToggle.setVisibility(View.GONE);
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                setImmersive(true);
+                applyImmersive(true);
             }
 
             @Override
@@ -1034,7 +1035,7 @@ public class MainActivity extends Activity {
         pendingGeoRetain = false;
     }
 
-    private void setImmersive(boolean enabled) {
+    private void applyImmersive(boolean enabled) {
         View decor = getWindow().getDecorView();
         if (enabled) {
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -1074,7 +1075,7 @@ public class MainActivity extends Activity {
             setToolbarVisible(toolbarAvailable && !toolbarCollapsed);
         }
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setImmersive(false);
+        applyImmersive(false);
         if (notifyCallback && callback != null) {
             callback.onCustomViewHidden();
         }
