@@ -61,6 +61,13 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:name=".BookmarkActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name=".DownloadPathActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:exported="false"

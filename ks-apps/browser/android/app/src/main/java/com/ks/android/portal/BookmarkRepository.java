@@ -152,7 +152,11 @@ final class BookmarkRepository {
             } catch (JSONException error) {
                 return false;
             }
-            items.put(index, item);
+            try {
+                items.put(index, item);
+            } catch (JSONException error) {
+                return false;
+            }
             write(context, items);
             if (!normalizedOld.equals(normalizedNew)) {
                 int folder = assignmentFor(context, normalizedOld);
