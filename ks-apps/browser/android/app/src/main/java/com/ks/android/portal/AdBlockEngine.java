@@ -255,7 +255,7 @@ final class AdBlockEngine {
             specificHideDisabled = true;
         }
         return new PagePolicy(blockDisabled, elementHideDisabled, genericHideDisabled,
-                specificHideDisabled, popupBlockSuggested);
+                specificHideDisabled, popupBlock && !popupException);
     }
 
     String cleanUrl(String url, String pageUrl) {
@@ -302,6 +302,7 @@ final class AdBlockEngine {
         String suffix = fragmentStart >= 0 ? url.substring(fragmentStart) : "";
         StringBuilder rebuilt = new StringBuilder();
         boolean changed = false;
+        boolean exceptedAny = false;
         int start = 0;
         for (int i = 0; i <= query.length(); i++) {
             if (i == query.length() || query.charAt(i) == '&') {
@@ -317,6 +318,7 @@ final class AdBlockEngine {
                         if (rule.exception) {
                             if (applies) {
                                 excepted = true;
+                                exceptedAny = true;
                                 break;
                             }
                         } else if (rule.negated ? !applies : applies) {
@@ -336,7 +338,9 @@ final class AdBlockEngine {
             }
         }
         if (!changed) {
-            return null;
+            // A matching $removeparam exception must keep the parameter; returning
+            // the URL unchanged stops callers from applying a generic fallback.
+            return exceptedAny ? url : null;
         }
         StringBuilder result = new StringBuilder();
         result.append(url.substring(0, queryStart));
@@ -1419,6 +1423,12 @@ final class AdBlockEngine {
                         party = negated ? PARTY_FIRST : PARTY_THIRD;
                     } else if ("first-party".equals(name) || "1p".equals(name)) {
                         party = negated ? PARTY_THIRD : PARTY_FIRST;
+                    } else if ("strict3p".equals(name)) {
+                        party = PARTY_THIRD;
+                    } else if ("strict1p".equals(name)) {
+                        party = PARTY_FIRST;
+                    } else if ("reason".equals(name)) {
+                        // uBO metadata only; it does not change matching.
                     } else if ("important".equals(name) && !negated) {
                         important = true;
                     } else if ("match-case".equals(name) && !negated) {
@@ -1458,11 +1468,13 @@ final class AdBlockEngine {
                     } else if ("network".equals(name) && !negated) {
                         types = TYPE_ALL;
                         explicitTypes = true;
-                    } else if ("method".equals(name) || "genericblock".equals(name)) {
-                        // Accepted as no-ops: WebView cannot match method and generic
-                        // blocking is handled through the page policy.
-                    } else if ("csp".equals(name) || "rewrite".equals(name)
-                            || "urltransform".equals(name) || "header".equals(name)
+                    } else if ("genericblock".equals(name)) {
+                        // Generic blocking is handled through the page policy.
+                    } else if ("method".equals(name) || "csp".equals(name)
+                            || "rewrite".equals(name) || "urltransform".equals(name)
+                            || "header".equals(name) || "urlskip".equals(name)
+                            || "replace".equals(name) || "uritransform".equals(name)
+                            || "ipaddress".equals(name) || "cname".equals(name)
                             || "permissions".equals(name) || "sitekey".equals(name)) {
                         unsupported = true;
                     } else if ("redirect".equals(name)) {
@@ -1515,6 +1527,12 @@ final class AdBlockEngine {
                 long key = badfilterKey(sourceKey);
                 badfilters.add(key);
                 cleanBadfilters.add(key);
+                return;
+            }
+            if (!exception && (elemHide || genericHide || specificHide)) {
+                // $elemhide/$generichide/$specifichide only make sense as
+                // exceptions; blocking variants are invalid and must not turn
+                // into all-type network blocks.
                 return;
             }
 

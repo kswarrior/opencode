@@ -126,7 +126,26 @@ public class MainActivity extends Activity {
             Collections.newSetFromMap(new WeakHashMap<WebView, Boolean>());
     private static final int REQUEST_NOTIFICATIONS = 2002;
     private static final int REQUEST_SITE_SETTINGS = 2003;
+    private static final int REQUEST_FILE_CHOOSER = 2004;
+    private static final int REQUEST_PERMISSION_CAMERA = 2005;
+    private static final int REQUEST_PERMISSION_MICROPHONE = 2006;
+    private static final int REQUEST_PERMISSION_LOCATION = 2007;
     private String defaultUserAgent;
+    private ValueCallback<Uri[]> fileChooserCallback;
+    private PermissionRequest pendingPermissionRequest;
+    private String pendingPermissionHost;
+    private String pendingPermissionKey;
+    private GeolocationPermissions.Callback pendingGeoCallback;
+    private String pendingGeoOrigin;
+    private boolean pendingGeoRetain;
+    private View fullscreenView;
+    private WebChromeClient.CustomViewCallback fullscreenCallback;
+    private boolean pageFullscreen;
+    private final Map<Integer, List<String>> privateTabHosts = new HashMap<Integer, List<String>>();
+    private String pendingHttpAuthHost;
+    private String pendingHttpAuthRealm;
+    private HttpAuthHandler pendingHttpAuthHandler;
+    private ClientCertRequest pendingClientCertRequest;
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
