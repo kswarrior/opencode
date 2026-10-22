@@ -487,7 +487,7 @@ public class MainActivity extends Activity {
     protected void onUserLeaveHint() {
         super.onUserLeaveHint();
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O
-                || isFinishing() || isInPictureInPictureMode()) {
+                || isFinishing() || isInPipMode()) {
             return;
         }
         BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
@@ -541,7 +541,7 @@ public class MainActivity extends Activity {
     }
 
     private void observeGesture(MotionEvent event) {
-        if (event == null || isInPictureInPictureMode()) {
+        if (event == null || isInPipMode()) {
             return;
         }
         int action = event.getActionMasked();
@@ -621,10 +621,11 @@ public class MainActivity extends Activity {
     protected void onPause() {
         activityResumed = false;
         saveTabHistories();
+        boolean inPip = isInPipMode();
         BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
-        boolean keepAudio = !isInPictureInPictureMode() && active != null
+        boolean keepAudio = !inPip && active != null
                 && active.audible && setting("media_background_audio", true);
-        if (!isInPictureInPictureMode()) {
+        if (!inPip) {
             for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
                 if (keepAudio && entry.getKey().intValue() == active.id) {
                     continue;
@@ -640,6 +641,11 @@ public class MainActivity extends Activity {
         AdBlocker.flushStatistics();
         adBlockEngineVersionOnResume = AdBlocker.engineVersion();
         super.onPause();
+    }
+
+    private boolean isInPipMode() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+                && isInPictureInPictureMode();
     }
 
     private PendingIntent mediaActionIntent(String action, int requestCode) {
@@ -2158,7 +2164,10 @@ public class MainActivity extends Activity {
                         data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                 if (results != null && !results.isEmpty()
                         && !TextUtils.isEmpty(results.get(0))) {
-                    openUrlInActiveTab(results.get(0));
+                    String target = resolveUserInput(results.get(0));
+                    if (target != null) {
+                        openUrlInActiveTab(target);
+                    }
                 }
             }
             return;
@@ -2517,8 +2526,8 @@ public class MainActivity extends Activity {
         settings.setTextZoom(settingsPrefs == null ? 100
                 : Math.max(50, Math.min(200,
                 settingsPrefs.getInt("appearance_text_zoom", 100))));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && settingsPrefs != null) {
-            settings.setForceDark(settingsPrefs.getInt("appearance_force_dark", -1));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            applyForceDark(settings);
         }
         settings.setMediaPlaybackRequiresUserGesture(!setting("media_autoplay", false));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -2954,16 +2963,23 @@ public class MainActivity extends Activity {
     }
 
     private void navigateFromBar() {
-        String value = urlBar.getText().toString().trim();
-        if (value.isEmpty() || webView == null) {
+        String target = resolveUserInput(urlBar.getText().toString());
+        if (target == null || webView == null) {
             return;
         }
         hideKeyboard();
         urlBar.clearFocus();
+        loadUrlWithSettings(webView, target);
+    }
+
+    private String resolveUserInput(String raw) {
+        String value = raw == null ? "" : raw.trim();
+        if (value.isEmpty()) {
+            return null;
+        }
         String keywordUrl = SearchEngine.keywordUrl(this, value);
         if (keywordUrl != null) {
-            loadUrlWithSettings(webView, keywordUrl);
-            return;
+            return keywordUrl;
         }
         if (!value.startsWith("http://") && !value.startsWith("https://")) {
             if (value.matches("^[^\\s/]+\\.[^\\s]{2,}(/.*)?$")) {
@@ -2972,7 +2988,7 @@ public class MainActivity extends Activity {
                 value = SearchEngine.buildUrl(this, value);
             }
         }
-        loadUrlWithSettings(webView, value);
+        return value;
     }
 
     private void showToolsMenu() {
