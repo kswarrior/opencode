@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.PictureInPictureParams;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -14,6 +15,7 @@ import android.content.pm.ShortcutManager;
 import android.graphics.drawable.Icon;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -33,6 +35,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Rational;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -331,10 +334,46 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O
+                || isFinishing() || isInPictureInPictureMode()) {
+            return;
+        }
+        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
+        if (tab == null || !tab.audible) {
+            return;
+        }
+        try {
+            enterPictureInPictureMode(new PictureInPictureParams.Builder()
+                    .setAspectRatio(new Rational(16, 9))
+                    .build());
+        } catch (IllegalStateException ignored) {
+        }
+    }
+
+    @Override
+    public void onPictureInPictureModeChanged(boolean inPictureInPicture,
+                                              Configuration configuration) {
+        super.onPictureInPictureModeChanged(inPictureInPicture, configuration);
+        if (toolbarContainer != null) {
+            toolbarContainer.setVisibility(inPictureInPicture ? View.GONE : View.VISIBLE);
+        }
+        if (toolbarToggle != null) {
+            toolbarToggle.setVisibility(inPictureInPicture ? View.GONE : View.VISIBLE);
+        }
+        if (!inPictureInPicture && webView != null) {
+            webView.onResume();
+        }
+    }
+
+    @Override
     protected void onPause() {
         saveTabHistories();
-        for (WebView tabView : tabViews.values()) {
-            tabView.onPause();
+        if (!isInPictureInPictureMode()) {
+            for (WebView tabView : tabViews.values()) {
+                tabView.onPause();
+            }
         }
         AdBlocker.flushStatistics();
         adBlockEngineVersionOnResume = AdBlocker.engineVersion();
