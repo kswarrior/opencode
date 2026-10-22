@@ -454,6 +454,8 @@ public class MainActivity extends Activity {
             @Override
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
                 if (pendingPopups.containsKey(tab.id)) {
+                    pageUrl = url;
+                    pageHost = SiteSettingsStore.hostOf(url);
                     handlePendingPopupLoad(current, tab, url);
                     return;
                 }
@@ -485,6 +487,16 @@ public class MainActivity extends Activity {
             @Override
             public void onPageFinished(WebView current, String url) {
                 if (pendingPopups.containsKey(tab.id)) {
+                    PendingPopup pending = pendingPopups.get(tab.id);
+                    if (pending != null) {
+                        pending.url = TextUtils.isEmpty(url) ? pending.url : url;
+                        pending.title = current.getTitle();
+                        pending.finished = true;
+                    }
+                    pageUrl = url;
+                    pageHost = SiteSettingsStore.hostOf(url);
+                    tab.loading = false;
+                    tab.progress = 100;
                     return;
                 }
                 pageUrl = url;
@@ -514,6 +526,10 @@ public class MainActivity extends Activity {
             @Override
             public void doUpdateVisitedHistory(WebView current, String url, boolean isReload) {
                 if (pendingPopups.containsKey(tab.id)) {
+                    PendingPopup pending = pendingPopups.get(tab.id);
+                    if (pending != null && !TextUtils.isEmpty(url)) {
+                        pending.url = url;
+                    }
                     return;
                 }
                 tabManager.updateTab(tab.id, url, null);
@@ -1256,11 +1272,40 @@ public class MainActivity extends Activity {
                 privateTabHosts.put(tabId, new ArrayList<String>());
             }
         }
-        tabManager.selectTab(tabId);
         String url = pending == null ? "about:blank" : pending.url;
         if (!"about:blank".equals(url)) {
-            loadUrlWithSettings(view, url);
+            applySiteSettings(view, url);
+            tab.url = url;
         }
+        tabManager.selectTab(tabId);
+        if (pending != null && pending.finished) {
+            finalizePendingPopup(tabId, pending.title);
+        }
+    }
+
+    private void finalizePendingPopup(int tabId, String title) {
+        BrowserTab tab = tabManager.findTab(tabId);
+        WebView view = tabViews.get(tabId);
+        if (tab == null || view == null) {
+            return;
+        }
+        String url = view.getUrl();
+        if (TextUtils.isEmpty(url) || isHomeUrl(url)) {
+            return;
+        }
+        tab.loading = false;
+        tab.progress = 100;
+        applyScreenWidth(view, url);
+        String pageTitle = TextUtils.isEmpty(title) ? view.getTitle() : title;
+        tabManager.updateTab(tabId, url, cleanRecentName(pageTitle, url));
+        if (!privateTabs.contains(tabId)) {
+            recordRecent(url, pageTitle);
+            recordHistory(url, pageTitle);
+            injectWebAssist(view, url);
+        }
+        injectAdBlock(view, url);
+        injectAudioWatcher(view, tab);
+        updateChrome(url);
     }
 
     private void discardPendingPopup(int tabId) {
