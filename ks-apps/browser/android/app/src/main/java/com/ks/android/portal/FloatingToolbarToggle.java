@@ -166,7 +166,7 @@ public class FloatingToolbarToggle extends View {
     }
 
     public void reclamp() {
-        if (!restored) {
+        if (!restored || dragging) {
             return;
         }
         View parent = getParentView();
@@ -201,6 +201,7 @@ public class FloatingToolbarToggle extends View {
         if (dragging || !moveable) {
             return;
         }
+        cancelHold();
         dragging = true;
         performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
         animate().scaleX(1.05f).scaleY(1.05f).setDuration(120).start();
@@ -351,7 +352,7 @@ public class FloatingToolbarToggle extends View {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        if (restored) {
+        if (restored && !dragging) {
             dockAt(dockEdge, getCenterX(), getCenterY());
         }
         updateGestureExclusion();
@@ -459,18 +460,22 @@ public class FloatingToolbarToggle extends View {
                 }
                 return true;
             case MotionEvent.ACTION_MOVE:
-                if (moveable && dragging) {
-                    float rawX = event.getRawX();
-                    float rawY = event.getRawY();
-                    moveBy(rawX - lastRawX, rawY - lastRawY);
-                    lastRawX = rawX;
-                    lastRawY = rawY;
-                } else if (moveable
-                        && (Math.abs(event.getRawX() - downRawX) > touchSlop
-                        || Math.abs(event.getRawY() - downRawY) > touchSlop)) {
-                    moved = true;
-                    cancelHold();
+                if (!moveable) {
+                    return true;
                 }
+                float rawX = event.getRawX();
+                float rawY = event.getRawY();
+                if (!dragging
+                        && (Math.abs(rawX - downRawX) > touchSlop
+                        || Math.abs(rawY - downRawY) > touchSlop)) {
+                    moved = true;
+                    beginDrag();
+                }
+                if (dragging) {
+                    moveBy(rawX - lastRawX, rawY - lastRawY);
+                }
+                lastRawX = rawX;
+                lastRawY = rawY;
                 return true;
             case MotionEvent.ACTION_UP:
                 cancelHold();
