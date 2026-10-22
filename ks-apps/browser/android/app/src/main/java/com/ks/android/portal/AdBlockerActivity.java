@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -270,9 +269,8 @@ public class AdBlockerActivity extends Activity {
                     @Override
                     public boolean onSubmit(String value) {
                         AdBlocker.setCustomRules(AdBlockerActivity.this, value);
-                        Toast.makeText(AdBlockerActivity.this,
-                                R.string.adblocker_custom_rules_saved,
-                                Toast.LENGTH_SHORT).show();
+                        KsToast.show(AdBlockerActivity.this,
+                                R.string.adblocker_custom_rules_saved);
                         refresh();
                         return true;
                     }
@@ -294,8 +292,7 @@ public class AdBlockerActivity extends Activity {
                                     || url.startsWith("https://")
                                     ? R.string.adblocker_add_list_exists
                                     : R.string.adblocker_add_list_invalid;
-                            Toast.makeText(AdBlockerActivity.this, message,
-                                    Toast.LENGTH_SHORT).show();
+                            KsToast.show(AdBlockerActivity.this, message);
                             return false;
                         }
                         buildListRows();
@@ -359,9 +356,8 @@ public class AdBlockerActivity extends Activity {
                     @Override
                     public void run() {
                         AdBlocker.resetStatistics(AdBlockerActivity.this);
-                        Toast.makeText(AdBlockerActivity.this,
-                                R.string.adblocker_stats_reset,
-                                Toast.LENGTH_SHORT).show();
+                        KsToast.show(AdBlockerActivity.this,
+                                R.string.adblocker_stats_reset);
                         refresh();
                     }
                 });
@@ -376,9 +372,8 @@ public class AdBlockerActivity extends Activity {
                     public void run() {
                         AdBlocker.clearFilterCache(AdBlockerActivity.this);
                         updateMessage = null;
-                        Toast.makeText(AdBlockerActivity.this,
-                                R.string.adblocker_lists_deleted,
-                                Toast.LENGTH_SHORT).show();
+                        KsToast.show(AdBlockerActivity.this,
+                                R.string.adblocker_lists_deleted);
                         refresh();
                     }
                 });
