@@ -1,7 +1,7 @@
 # KS Portal — Browser Needs & Gap Plan
 
-Status: **Audit complete; implementation not started**
-Current release: **1.2.1** (`versionCode` 21)
+Status: **P0 shipped; P1 in progress**
+Current release: **1.3.1** (`versionCode` 24)
 Scope owner: KS Portal browser (`com.ks.android.portal`)
 Last updated: 2026-10-22
 
