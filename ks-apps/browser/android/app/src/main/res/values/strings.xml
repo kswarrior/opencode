@@ -930,7 +930,7 @@ example.com##.ad-banner</string>
     <string name="video_link_empty">Enter a video link</string>
     <string name="video_link_invalid">Enter a valid http or https link</string>
     <string name="video_page_link_title">This is a web page</string>
-    <string name="video_page_link_message">Open it in the browser and play the video, then return to the video downloader. Direct video, HLS and DASH links can be downloaded here.</string>
+    <string name="video_page_link_message">Open it in the browser and play the video, then return to the video downloader. Direct video and HLS links can be downloaded here.</string>
     <string name="video_open_page">Open page</string>
     <string name="video_empty_title">No videos found yet</string>
     <string name="video_empty_body">Play a video on the page, then open this screen again. You can also paste a direct video or playlist link above.</string>

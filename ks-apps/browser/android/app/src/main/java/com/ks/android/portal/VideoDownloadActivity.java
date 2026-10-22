@@ -680,7 +680,7 @@ public class VideoDownloadActivity extends Activity {
         void setItems(List<VideoSource> next) {
             List<VideoSource> incoming = next == null
                     ? new ArrayList<VideoSource>() : next;
-            if (sameUrls(items, incoming)) {
+            if (sameItems(items, incoming)) {
                 items = incoming;
                 return;
             }
@@ -688,12 +688,18 @@ public class VideoDownloadActivity extends Activity {
             notifyDataSetChanged();
         }
 
-        private boolean sameUrls(List<VideoSource> left, List<VideoSource> right) {
+        private boolean sameItems(List<VideoSource> left, List<VideoSource> right) {
             if (left.size() != right.size()) {
                 return false;
             }
             for (int i = 0; i < left.size(); i++) {
-                if (!left.get(i).url.equals(right.get(i).url)) {
+                VideoSource a = left.get(i);
+                VideoSource b = right.get(i);
+                if (!a.url.equals(b.url) || !safe(a.label).equals(safe(b.label))
+                        || !safe(a.mimeType).equals(safe(b.mimeType))
+                        || a.contentLength != b.contentLength
+                        || a.durationMillis != b.durationMillis
+                        || a.width != b.width || a.height != b.height) {
                     return false;
                 }
             }
