@@ -820,6 +820,8 @@ public class TabsActivity extends Activity {
             holder.url.setText(displayUrl(tab));
             holder.audio.setVisibility(tab.audible || tab.muted ? View.VISIBLE : View.GONE);
             holder.audio.setAlpha(tab.muted ? 0.45f : 1f);
+            holder.audio.setImageResource(tab.muted
+                    ? R.drawable.ic_volume_off : R.drawable.ic_volume_up);
             holder.audio.setContentDescription(getString(tab.muted
                     ? R.string.tabs_muted_description : R.string.tabs_audible_description));
             holder.audio.setOnClickListener(new View.OnClickListener() {

@@ -250,7 +250,7 @@ final class TabManager {
         }
         ClosedTab closed = recentClosed.remove(0);
         saveRecent();
-        addTab(closed.url, closed.groupId);
+        reopen(closed);
         return closed;
     }
 
@@ -260,8 +260,16 @@ final class TabManager {
         }
         ClosedTab closed = recentClosed.remove(index);
         saveRecent();
-        addTab(closed.url, closed.groupId);
+        reopen(closed);
         return closed;
+    }
+
+    private void reopen(ClosedTab closed) {
+        BrowserTab tab = addTab(closed.url, closed.groupId);
+        if (!TextUtils.isEmpty(closed.title) && TextUtils.isEmpty(tab.title)) {
+            tab.title = closed.title;
+            saveAndNotify();
+        }
     }
 
     synchronized void clearRecentlyClosed() {
