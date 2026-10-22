@@ -2595,8 +2595,10 @@ public class MainActivity extends Activity {
         }
         String host = SiteSettingsStore.hostOf(url);
         WebSettings settings = view.getSettings();
+        int defaultZoom = settingsPrefs == null ? 100
+                : settingsPrefs.getInt("appearance_text_zoom", 100);
         settings.setTextZoom(SiteSettingsStore.hasTextZoom(this, host)
-                ? SiteSettingsStore.getTextZoom(this, host, 100) : 100);
+                ? SiteSettingsStore.getTextZoom(this, host, defaultZoom) : defaultZoom);
         settings.setJavaScriptEnabled(SiteSettingsStore.getBoolean(this, host,
                 SiteSettingsStore.KEY_JAVASCRIPT, true));
         boolean allowPopups = SiteSettingsStore.getBoolean(this,
