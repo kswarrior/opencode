@@ -23,8 +23,8 @@
             android:contentDescription="@string/back"
             android:padding="10dp"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_file_download"
-            android:tint="#0B0B0B" />
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/ks_text" />
 
         <TextView
             android:id="@+id/videoTitle"
@@ -90,7 +90,7 @@
             android:padding="10dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_file_download"
-            android:tint="@color/ks_text" />
+            android:tint="#0B0B0B" />
     </LinearLayout>
 
     <TextView
