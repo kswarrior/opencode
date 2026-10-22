@@ -1,5 +1,7 @@
 package com.ks.android.portal;
 
+import android.os.Build;
+
 public class PrivacySecurityActivity extends ToggleSettingsActivity {
     @Override
     protected int pageTitleRes() {
@@ -15,15 +17,25 @@ public class PrivacySecurityActivity extends ToggleSettingsActivity {
                 new ToggleSetting(R.string.adblocker_strip_tracking,
                         R.string.adblocker_strip_tracking_summary,
                         "privacy_strip_tracking", true));
-        addSection(R.string.security_section,
-                new ToggleSetting(R.string.security_safe_browsing,
-                        R.string.security_safe_browsing_summary,
-                        "security_safe_browsing", true),
-                new ToggleSetting(R.string.security_secure_connections,
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            addSection(R.string.security_section,
+                    new ToggleSetting(R.string.security_safe_browsing,
+                            R.string.security_safe_browsing_summary,
+                            "security_safe_browsing", true),
+                    new ToggleSetting(R.string.security_secure_connections,
+                            R.string.security_secure_connections_summary,
+                            "security_secure_connections", true),
+                    new ToggleSetting(R.string.security_unsafe_downloads,
+                            R.string.security_unsafe_downloads_summary,
+                            "security_unsafe_downloads", true));
+        } else {
+            addSection(R.string.security_section,
+                    new ToggleSetting(R.string.security_secure_connections,
                         R.string.security_secure_connections_summary,
-                        "security_secure_connections", true),
-                new ToggleSetting(R.string.security_unsafe_downloads,
-                        R.string.security_unsafe_downloads_summary,
-                        "security_unsafe_downloads", true));
+                            "security_secure_connections", true),
+                    new ToggleSetting(R.string.security_unsafe_downloads,
+                            R.string.security_unsafe_downloads_summary,
+                            "security_unsafe_downloads", true));
+        }
     }
 }
