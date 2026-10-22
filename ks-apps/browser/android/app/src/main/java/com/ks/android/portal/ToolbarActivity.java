@@ -12,7 +12,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,8 +128,7 @@ public class ToolbarActivity extends Activity {
             public void onClick(View view) {
                 ToolbarSettingsStore.reset(ToolbarActivity.this);
                 loadFromStore();
-                Toast.makeText(ToolbarActivity.this, R.string.toolbar_reset_done,
-                        Toast.LENGTH_SHORT).show();
+                KsToast.show(ToolbarActivity.this, R.string.toolbar_reset_done);
             }
         });
     }

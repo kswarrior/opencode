@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -256,7 +255,7 @@ public class TabsActivity extends Activity {
 
     private void addBookmark(BrowserTab tab) {
         if (tab == null || tab.isHome()) {
-            Toast.makeText(this, R.string.tabs_bookmark_failed, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.tabs_bookmark_failed);
             return;
         }
         String name = TextUtils.isEmpty(tab.title) ? hostOf(tab.url) : tab.title;
@@ -269,7 +268,7 @@ public class TabsActivity extends Activity {
         } else {
             message = R.string.tabs_bookmark_failed;
         }
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        KsToast.show(this, message);
     }
 
     private void showMoveToGroup(final BrowserTab tab) {

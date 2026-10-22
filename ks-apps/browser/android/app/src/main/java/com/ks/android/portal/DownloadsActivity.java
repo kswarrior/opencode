@@ -403,7 +403,7 @@ public class DownloadsActivity extends Activity {
     }
 
     private void toast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        KsToast.show(this, message);
     }
 
     private static String formatBytes(long bytes) {
