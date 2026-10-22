@@ -95,9 +95,8 @@ final class CookieDialog {
                 @Override
                 public void onClick(View view) {
                     SiteCookies.delete(url, cookie.name);
-                    Toast.makeText(activity, R.string.site_cookies_deleted,
-                            Toast.LENGTH_SHORT).show();
-                populate(activity, url, scroll, list, summary, empty, deleteAll);
+                    KsToast.show(activity, R.string.site_cookies_deleted);
+                    populate(activity, url, scroll, list, summary, empty, deleteAll);
                 }
             });
             list.addView(row);
@@ -114,8 +113,7 @@ final class CookieDialog {
                     @Override
                     public void run() {
                         SiteCookies.deleteAll(url);
-                        Toast.makeText(activity, R.string.site_cookies_deleted,
-                                Toast.LENGTH_SHORT).show();
+                        KsToast.show(activity, R.string.site_cookies_deleted);
                         refresh.run();
                     }
                 });
