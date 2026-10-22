@@ -341,7 +341,7 @@ final class HlsPlaylist {
                 if (comma >= 0) {
                     value = value.substring(0, comma);
                 }
-                pendingDuration = (long) (parseDouble(value) * 1000d);
+                pendingDuration = Math.round(parseDouble(value) * 1000d);
                 continue;
             }
             if (line.startsWith("#")) {
