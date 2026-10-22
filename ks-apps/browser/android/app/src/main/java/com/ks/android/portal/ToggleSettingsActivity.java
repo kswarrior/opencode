@@ -35,6 +35,7 @@ abstract class ToggleSettingsActivity extends Activity {
     private SharedPreferences preferences;
     private LayoutInflater inflater;
     private LinearLayout list;
+    private int lastHeaderRes;
 
     protected abstract int pageTitleRes();
 
@@ -63,9 +64,12 @@ abstract class ToggleSettingsActivity extends Activity {
 
     protected void addAction(int headerRes, int titleRes, int summaryRes,
                              View.OnClickListener listener) {
-        View header = inflater.inflate(R.layout.item_site_section, list, false);
-        ((TextView) header.findViewById(R.id.siteSectionTitle)).setText(headerRes);
-        list.addView(header);
+        if (lastHeaderRes != headerRes) {
+            View header = inflater.inflate(R.layout.item_site_section, list, false);
+            ((TextView) header.findViewById(R.id.siteSectionTitle)).setText(headerRes);
+            list.addView(header);
+            lastHeaderRes = headerRes;
+        }
 
         LinearLayout card = new LinearLayout(this);
         card.setOrientation(LinearLayout.VERTICAL);
