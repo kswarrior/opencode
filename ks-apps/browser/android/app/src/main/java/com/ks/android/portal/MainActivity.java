@@ -2478,10 +2478,18 @@ public class MainActivity extends Activity {
             target.clearMatches();
             target.setFindListener(null);
         }
-        findBar.setVisibility(View.GONE);
+        InputMethodManager imm = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(findInput.getWindowToken(), 0);
+        }
         findInput.setText("");
+        findInput.clearFocus();
         findCount.setText("");
-        hideKeyboard();
+        findBar.setVisibility(View.GONE);
+        if (webView != null) {
+            webView.requestFocus();
+        }
     }
 
     private void hideKeyboard() {
