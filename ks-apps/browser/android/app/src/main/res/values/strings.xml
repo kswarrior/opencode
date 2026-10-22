@@ -679,4 +679,9 @@ example.com##.ad-banner</string>
     <string name="download_open_with">Open with</string>
     <string name="download_folder">Open containing folder</string>
     <string name="download_folder_unavailable">No folder app is available</string>
+    <string name="tool_reopen_tab">Reopen closed tab</string>
+    <string name="tool_no_closed_tabs">No recently closed tabs</string>
+    <string name="tool_mute_site">Mute site</string>
+    <string name="tool_site_muted">Site muted</string>
+    <string name="tool_site_unmuted">Site unmuted</string>
 </resources>

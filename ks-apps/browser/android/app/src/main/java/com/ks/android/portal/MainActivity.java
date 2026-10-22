@@ -2051,7 +2051,7 @@ public class MainActivity extends Activity {
     }
 
     private void showToolsMenu() {
-        final int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        final int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         int[] labels = new int[]{
                 R.string.tool_print,
                 R.string.tool_reader,
@@ -2061,7 +2061,9 @@ public class MainActivity extends Activity {
                 R.string.tool_voice_search,
                 R.string.tool_private_tab,
                 R.string.tool_add_home,
-                R.string.tool_autoplay};
+                R.string.tool_autoplay,
+                R.string.tool_reopen_tab,
+                R.string.tool_mute_site};
         int[] icons = new int[]{
                 R.drawable.ic_menu_share,
                 R.drawable.ic_menu_open,
@@ -2071,7 +2073,9 @@ public class MainActivity extends Activity {
                 R.drawable.ic_search,
                 R.drawable.ic_add,
                 R.drawable.ic_home,
-                R.drawable.ic_play};
+                R.drawable.ic_play,
+                R.drawable.ic_menu_reload,
+                R.drawable.ic_volume_off};
         KsDialog.menu(this, R.string.tools_title, ids, labels, icons, -1,
                 new KsDialog.ChoiceAction() {
                     @Override
@@ -2103,6 +2107,12 @@ public class MainActivity extends Activity {
                                 break;
                             case 9:
                                 toggleAutoplay();
+                                break;
+                            case 10:
+                                reopenClosedTab();
+                                break;
+                            case 11:
+                                toggleMuteSite();
                                 break;
                             default:
                                 break;
@@ -3929,8 +3939,52 @@ public class MainActivity extends Activity {
         if (tab == null) {
             return;
         }
+        if (!tabManager.isPrivate(tab.id)) {
+            recentClosedTabs.push(new ClosedTab(tab.url, tab.title, tab.groupId));
+            while (recentClosedTabs.size() > 10) {
+                recentClosedTabs.removeLast();
+            }
+        }
         tabManager.closeTab(tab.id);
         syncActiveTab();
+    }
+
+    private void reopenClosedTab() {
+        ClosedTab closed = recentClosedTabs.poll();
+        if (closed == null) {
+            KsToast.show(this, R.string.tool_no_closed_tabs);
+            return;
+        }
+        BrowserTab tab = tabManager.addTab(closed.url, closed.groupId);
+        tab.title = closed.title == null ? "" : closed.title;
+        syncActiveTab();
+    }
+
+    private void toggleMuteSite() {
+        if (webView == null || isHomeUrl(webView.getUrl())) {
+            return;
+        }
+        String host = webView.getUrl() == null ? "" : Uri.parse(webView.getUrl()).getHost();
+        if (TextUtils.isEmpty(host)) {
+            return;
+        }
+        SiteSettingsStore store = SiteSettingsStore.get(this);
+        boolean muted = !store.getBoolean(host, SiteSettingsStore.KEY_SOUND, true);
+        store.setBoolean(host, SiteSettingsStore.KEY_SOUND, !muted);
+        KsToast.show(this, muted ? R.string.tool_site_muted : R.string.tool_site_unmuted);
+        webView.reload();
+    }
+
+    private static final class ClosedTab {
+        final String url;
+        final String title;
+        final int groupId;
+
+        ClosedTab(String url, String title, int groupId) {
+            this.url = url;
+            this.title = title;
+            this.groupId = groupId;
+        }
     }
 
     @Override
