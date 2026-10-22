@@ -424,15 +424,28 @@ public class VideoDownloadActivity extends Activity {
     }
 
     private String suggestedName(VideoSource source, String qualityLabel) {
-        String base = sanitize(pageTitle);
+        String title = isUrlLikeTitle(pageTitle) ? "" : cleanName(pageTitle);
+        String file = cleanName(fileNameFromUrl(source.url));
+        String folder = cleanName(folderNameFromUrl(source.url));
+        String base = "";
+        if (!TextUtils.isEmpty(title)) {
+            base = title;
+        }
+        if (TextUtils.isEmpty(base) && !isGenericName(file)) {
+            base = file;
+        }
         if (TextUtils.isEmpty(base)) {
-            base = sanitize(fileNameFromUrl(source.url));
+            base = folder;
+        }
+        if (TextUtils.isEmpty(base)) {
+            base = file;
         }
         if (TextUtils.isEmpty(base)) {
             base = getString(R.string.video_file_default);
         }
-        if (!TextUtils.isEmpty(qualityLabel)) {
-            base = sanitize(base + " " + qualityLabel);
+        String quality = shortQualityLabel(qualityLabel);
+        if (!TextUtils.isEmpty(quality)) {
+            base = sanitize(base + " " + quality);
         }
         if (TextUtils.isEmpty(base)) {
             base = getString(R.string.video_file_default);
@@ -442,6 +455,91 @@ public class VideoDownloadActivity extends Activity {
             base += extension;
         }
         return base;
+    }
+
+    private static String cleanName(String value) {
+        return sanitize(stripMediaExtension(sanitize(value)));
+    }
+
+    private static String stripMediaExtension(String value) {
+        if (TextUtils.isEmpty(value)) {
+            return "";
+        }
+        String extension = pathExtension(value);
+        if (isKnownExtension(extension) || ".m3u8".equals(extension)
+                || ".mpd".equals(extension)) {
+            return value.substring(0, value.length() - extension.length());
+        }
+        int dot = value.lastIndexOf('.');
+        if (dot > 0) {
+            String tail = value.substring(dot).toLowerCase(Locale.US);
+            if (tail.matches("\\.[a-z0-9]{1,5}")
+                    && ("." + tail.substring(1)).equals(tail)) {
+                return value.substring(0, dot);
+            }
+        }
+        return value;
+    }
+
+    private static String shortQualityLabel(String qualityLabel) {
+        if (TextUtils.isEmpty(qualityLabel)) {
+            return "";
+        }
+        int dash = qualityLabel.indexOf(" - ");
+        String shortLabel = dash > 0 ? qualityLabel.substring(0, dash) : qualityLabel;
+        return sanitize(shortLabel);
+    }
+
+    private static String folderNameFromUrl(String url) {
+        Uri uri;
+        try {
+            uri = Uri.parse(url);
+        } catch (Exception exception) {
+            return "";
+        }
+        String path = uri.getPath();
+        if (TextUtils.isEmpty(path)) {
+            return "";
+        }
+        int end = path.endsWith("/") ? path.length() - 1 : path.length();
+        int slash = path.lastIndexOf('/', end - 1);
+        if (slash < 0) {
+            return "";
+        }
+        int previous = path.lastIndexOf('/', slash - 1);
+        String folder = path.substring(previous + 1, slash);
+        if ("videoplayback".equalsIgnoreCase(folder)
+                || "get".equalsIgnoreCase(folder)) {
+            return "";
+        }
+        return Uri.decode(folder);
+    }
+
+    private static boolean isGenericName(String name) {
+        if (TextUtils.isEmpty(name)) {
+            return true;
+        }
+        String lower = name.toLowerCase(Locale.US);
+        return lower.equals("master") || lower.equals("index")
+                || lower.equals("prog_index") || lower.equals("playlist")
+                || lower.equals("manifest") || lower.equals("media")
+                || lower.equals("stream") || lower.equals("video")
+                || lower.equals("videos") || lower.equals("download")
+                || lower.equals("file") || lower.equals("default")
+                || lower.equals("output") || lower.equals("main")
+                || lower.equals("source") || lower.equals("segment")
+                || lower.equals("segments") || lower.equals("chunk")
+                || lower.equals("chunks");
+    }
+
+    private static boolean isUrlLikeTitle(String title) {
+        if (TextUtils.isEmpty(title)) {
+            return true;
+        }
+        String lower = title.trim().toLowerCase(Locale.US);
+        return lower.startsWith("http://") || lower.startsWith("https://")
+                || lower.startsWith("www.") || lower.contains("/")
+                || lower.matches("^[a-z0-9.-]+\\.[a-z]{2,}$");
     }
 
     private String extensionFor(VideoSource source) {
