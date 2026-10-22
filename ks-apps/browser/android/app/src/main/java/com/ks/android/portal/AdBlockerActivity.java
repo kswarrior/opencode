@@ -1,8 +1,6 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,7 +9,6 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -264,86 +261,64 @@ public class AdBlockerActivity extends Activity {
 
 
     private void showCustomRulesDialog() {
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT
-                | InputType.TYPE_TEXT_FLAG_MULTI_LINE
-                | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        input.setMinLines(8);
-        input.setGravity(android.view.Gravity.TOP | android.view.Gravity.START);
-        input.setText(AdBlocker.customRules(this));
-        input.setHint(R.string.adblocker_custom_rules_hint);
-        int padding = Math.round(20 * getResources().getDisplayMetrics().density);
-        input.setPadding(padding, padding / 2, padding, padding / 2);
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.adblocker_custom_rules)
-                .setView(input)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                AdBlocker.setCustomRules(AdBlockerActivity.this,
-                                        input.getText().toString());
-                                Toast.makeText(AdBlockerActivity.this,
-                                        R.string.adblocker_custom_rules_saved,
-                                        Toast.LENGTH_SHORT).show();
-                                refresh();
-                            }
-                        })
-                .show();
+        KsDialog.input(this, R.string.adblocker_custom_rules, AdBlocker.customRules(this),
+                R.string.adblocker_custom_rules_hint, R.string.dialog_save,
+                InputType.TYPE_CLASS_TEXT
+                        | InputType.TYPE_TEXT_FLAG_MULTI_LINE
+                        | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS,
+                new KsDialog.TextAction() {
+                    @Override
+                    public boolean onSubmit(String value) {
+                        AdBlocker.setCustomRules(AdBlockerActivity.this, value);
+                        Toast.makeText(AdBlockerActivity.this,
+                                R.string.adblocker_custom_rules_saved,
+                                Toast.LENGTH_SHORT).show();
+                        refresh();
+                        return true;
+                    }
+                });
     }
 
     private void showAddListDialog() {
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT
-                | InputType.TYPE_TEXT_VARIATION_URI);
-        input.setHint(R.string.adblocker_add_list_hint);
-        input.setSingleLine(true);
-        int padding = Math.round(20 * getResources().getDisplayMetrics().density);
-        input.setPadding(padding, padding / 2, padding, padding / 2);
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.adblocker_add_list)
-                .setView(input)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String url = input.getText().toString().trim();
-                                AdBlockListStore.FilterList added =
-                                        AdBlocker.addCustomList(AdBlockerActivity.this, url);
-                                if (added == null) {
-                                    int message = url.startsWith("http://")
-                                            || url.startsWith("https://")
-                                            ? R.string.adblocker_add_list_exists
-                                            : R.string.adblocker_add_list_invalid;
-                                    Toast.makeText(AdBlockerActivity.this, message,
-                                            Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
-                                buildListRows();
-                                startUpdate();
-                                refresh();
-                            }
-                        })
-                .show();
+        KsDialog.input(this, R.string.adblocker_add_list, "", R.string.adblocker_add_list_hint,
+                R.string.dialog_add,
+                InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI,
+                new KsDialog.TextAction() {
+                    @Override
+                    public boolean onSubmit(String value) {
+                        String url = value.trim();
+                        AdBlockListStore.FilterList added =
+                                AdBlocker.addCustomList(AdBlockerActivity.this, url);
+                        if (added == null) {
+                            int message = url.startsWith("http://")
+                                    || url.startsWith("https://")
+                                    ? R.string.adblocker_add_list_exists
+                                    : R.string.adblocker_add_list_invalid;
+                            Toast.makeText(AdBlockerActivity.this, message,
+                                    Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+                        buildListRows();
+                        startUpdate();
+                        refresh();
+                        return true;
+                    }
+                });
     }
 
     private void confirmRemoveList(final AdBlockListStore.FilterList filterList) {
-        new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.adblocker_remove_list_confirm,
-                        filterList.title(this)))
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.adblocker_remove_list,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                AdBlocker.removeCustomList(AdBlockerActivity.this, filterList);
-                                buildListRows();
-                                refresh();
-                            }
-                        })
-                .show();
+        KsDialog.confirmDanger(this, R.string.adblocker_remove_list,
+                getString(R.string.adblocker_remove_list_confirm,
+                        filterList.title(this)),
+                R.string.dialog_cancel, R.string.adblocker_remove_list,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        AdBlocker.removeCustomList(AdBlockerActivity.this, filterList);
+                        buildListRows();
+                        refresh();
+                    }
+                });
     }
 
     private void startUpdate() {
@@ -377,40 +352,36 @@ public class AdBlockerActivity extends Activity {
     }
 
     private void confirmReset() {
-        new AlertDialog.Builder(this)
-                .setMessage(R.string.adblocker_reset_confirm)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.adblocker_reset_stats,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                AdBlocker.resetStatistics(AdBlockerActivity.this);
-                                Toast.makeText(AdBlockerActivity.this,
-                                        R.string.adblocker_stats_reset,
-                                        Toast.LENGTH_SHORT).show();
-                                refresh();
-                            }
-                        })
-                .show();
+        KsDialog.confirmDanger(this, R.string.adblocker_reset_stats,
+                getString(R.string.adblocker_reset_confirm),
+                R.string.dialog_cancel, R.string.adblocker_reset_stats,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        AdBlocker.resetStatistics(AdBlockerActivity.this);
+                        Toast.makeText(AdBlockerActivity.this,
+                                R.string.adblocker_stats_reset,
+                                Toast.LENGTH_SHORT).show();
+                        refresh();
+                    }
+                });
     }
 
     private void confirmDelete() {
-        new AlertDialog.Builder(this)
-                .setMessage(R.string.adblocker_delete_confirm)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.adblocker_delete_lists,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                AdBlocker.clearFilterCache(AdBlockerActivity.this);
-                                updateMessage = null;
-                                Toast.makeText(AdBlockerActivity.this,
-                                        R.string.adblocker_lists_deleted,
-                                        Toast.LENGTH_SHORT).show();
-                                refresh();
-                            }
-                        })
-                .show();
+        KsDialog.confirmDanger(this, R.string.adblocker_delete_lists,
+                getString(R.string.adblocker_delete_confirm),
+                R.string.dialog_cancel, R.string.adblocker_delete_lists,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        AdBlocker.clearFilterCache(AdBlockerActivity.this);
+                        updateMessage = null;
+                        Toast.makeText(AdBlockerActivity.this,
+                                R.string.adblocker_lists_deleted,
+                                Toast.LENGTH_SHORT).show();
+                        refresh();
+                    }
+                });
     }
 
     private String relativeTime(long time) {
