@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 final class KsDialog {
@@ -38,6 +39,10 @@ final class KsDialog {
 
     interface MultiChoiceAction {
         void run(boolean[] checked);
+    }
+
+    interface SeekAction {
+        void onValue(int value, boolean committed);
     }
 
     interface CredentialAction {
@@ -358,10 +363,17 @@ final class KsDialog {
     static void multiChoice(final Activity activity, int titleRes, CharSequence[] items,
                             boolean[] checked, int negativeRes, int positiveRes,
                             final MultiChoiceAction action) {
+        multiChoice(activity, activity.getString(titleRes), items, checked, negativeRes,
+                positiveRes, action);
+    }
+
+    static void multiChoice(final Activity activity, CharSequence title, CharSequence[] items,
+                            boolean[] checked, int negativeRes, int positiveRes,
+                            final MultiChoiceAction action) {
         if (!canShow(activity) || items == null) {
             return;
         }
-        final Sheet sheet = createSheet(activity, activity.getString(titleRes), null,
+        final Sheet sheet = createSheet(activity, title, null,
                 negativeRes, positiveRes, false);
         if (sheet == null) {
             return;
@@ -412,11 +424,15 @@ final class KsDialog {
 
     static void items(final Activity activity, int titleRes, CharSequence[] labels,
                       final ChoiceAction action) {
+        items(activity, titleRes == 0 ? null : activity.getString(titleRes), labels, action);
+    }
+
+    static void items(final Activity activity, CharSequence title, CharSequence[] labels,
+                      final ChoiceAction action) {
         if (!canShow(activity) || labels == null || labels.length == 0) {
             return;
         }
-        final Sheet sheet = createSheet(activity,
-                titleRes == 0 ? null : activity.getString(titleRes), null,
+        final Sheet sheet = createSheet(activity, title, null,
                 R.string.dialog_close, 0, false);
         if (sheet == null) {
             return;
@@ -449,6 +465,65 @@ final class KsDialog {
                 sheet.dialog.dismiss();
             }
         });
+        present(sheet, false);
+    }
+
+    static void seek(final Activity activity, CharSequence title, int initial, int max,
+                     final SeekAction action) {
+        if (!canShow(activity)) {
+            return;
+        }
+        final Sheet sheet = createSheet(activity, title, null,
+                R.string.dialog_cancel, R.string.dialog_ok, false);
+        if (sheet == null) {
+            return;
+        }
+        final int start = Math.max(0, Math.min(max, initial));
+        final int[] value = {start};
+        final SeekBar bar = new SeekBar(activity);
+        bar.setMax(max);
+        bar.setProgress(start);
+        bar.setPadding(dp(activity, 12), dp(activity, 8), dp(activity, 12), dp(activity, 8));
+        addBody(sheet, bar);
+        sheet.message.setText(activity.getString(R.string.dialog_percent, start));
+        sheet.message.setVisibility(View.VISIBLE);
+        bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                value[0] = progress;
+                sheet.message.setText(activity.getString(R.string.dialog_percent, progress));
+                if (action != null) {
+                    action.onValue(progress, false);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+        sheet.negative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheet.dialog.dismiss();
+                if (action != null) {
+                    action.onValue(start, false);
+                }
+            }
+        });
+        sheet.positive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheet.dialog.dismiss();
+                if (action != null) {
+                    action.onValue(value[0], true);
+                }
+            }
+        });
+        sheet.dialog.setCanceledOnTouchOutside(false);
         present(sheet, false);
     }
 
