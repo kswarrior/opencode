@@ -330,26 +330,30 @@ and compiling, not device-verified.
 | Area | Items |
 | --- | --- |
 | Trust/correctness | F1-F9, all P2 correctness cleanups (pause/finalise lock check, mkdir verification, toolbar preview restore, Safe Browsing API gate, resource errors, site favicon, narrowed DNT wording, `VERSION` refresh, provider delete, adblock attempt/304 state, unknown permission denial) |
-| Address bar/search | N1 local history/bookmark omnibox suggestions |
-| Page tools | N3 voice search, N7 text scaling, N8 reader, N9 offline save, N11 zoom, N12 force dark, N14 add to home |
-| Tabs | N15 tab search, N16 undo/recently closed, N17 per-tab history restore, N19 close others/duplicates, N20 audio indicator/mute, N21 background-tab discard/restore, N66 open in private tab, N67 toolbar placement |
+| Address bar/search | N1 local recents/history/bookmark suggestions with keyboard selection, N2 privacy-default-off Google suggestions, N4 custom engines with `%s` templates/keywords, N5 editable top sites + section toggles + custom home URL |
+| Page tools | N3 voice search, N7 reader, N8 print/save PDF, N9 offline save, N10 translated page tab with disclosure, N11 text scaling/zoom, N12 force dark, N13 pull/edge gestures, N14 add to home with favicon |
+| Tabs | N6 four launcher shortcuts, N15 tab search, N16 undo/recently closed, N17 per-tab history restore, N18 pin/move/drag reorder, N19 close others/duplicates, N20 audio indicator/mute, N21 background-tab discard/restore, N66 open in private tab, N67 toolbar placement |
 | Bookmarks/history | N23 manager, N24 folders + 1,000 cap, N25 JSON/HTML import/export, N26 CSV/JSON export + filtered delete, N27 retention |
-| Downloads | N28 sort/filter, N29 multi-select, N30 speed, N32 Wi-Fi-only queue + override, N34 size/SHA-256, N35 real global content defaults |
-| Site data/privacy | N36 origin storage manager, N37 timed permission removal, N38 strict HTTPS + listed exceptions, N40 Safe Browsing guard, N41 narrowed DNT claim, N42 site favicon, N43 backup exclusion, N44 unsupported permissions labelled, N45 real global defaults, N46 notification permission consumer, N47 one permission default |
-| Autofill | N48 list/search/edit/reveal/delete, N49 device-credential unlock, N50 in-app-only explanation, N51 forms toggle, N52 no dead payment toggle, N53 passkey explanation, N54 weak/duplicate warning |
-| Media/input/a11y | N55 activity-level PiP for audible tabs (API 26+), N57 autoplay via global site setting, N59 keyboard shortcuts, N60 portal contrast/reduced-motion media queries, N61 RTL enabled audited structurally, N62 six-language portal string table for core labels/dialogs, N63 native error strings, N64 wrap-content headers (`minHeight 56dp`) |
+| Downloads | N28 sort/filter, N29 multi-select, N30 speed, N31 resume-all/retry-all, N32 Wi-Fi-only queue + override, N33 open folder/open-with, N34 size/SHA-256, N35 real global content defaults |
+| Site data/privacy | N36 origin storage manager, N37 inactivity-based permission removal, N38 strict HTTPS + listed exceptions, N39 explicit no-trust-store explanation, N40 Safe Browsing guard, N41 narrowed DNT claim, N42 site favicon, N43 backup exclusion, N44 unsupported permissions labelled, N45 real global defaults, N46 notification permission consumer, N47 one permission default |
+| Autofill | N48 list/search/edit/reveal/delete, N49 device-credential unlock, N50 in-app-only explanation, N51 forms toggle, N52 no dead payment toggle, N53 live platform-authenticator detection + explanation, N54 weak/duplicate warning |
+| Media/input/a11y | N55 PiP with play/pause/stop actions (API 26+), N56 background audio + media notification, N57 global autoplay, N58 48dp touch targets/labels, N59 keyboard shortcuts, N60 portal contrast/reduced-motion media queries, N61 RTL enabled audited structurally, N62 six-language portal string table for core labels/dialogs, N63 native error strings, N64 wrap-content headers (`minHeight 56dp`) |
 
 ### Remaining / partial
 
 | Items | State |
 | --- | --- |
-| N2, N4, N5, N10, N13, N18, N56, N58 | Not started (suggestions provider, custom engines, editable top sites, translation, gestures, reorder/pin, discard, media notification, accessibility audit, high-contrast toggle, portal localization, large-font QA) |
-| N6 | New-tab/private-tab launcher shortcuts ship; search/download shortcuts do not |
-| N31 | Resume-all/retry-all queue actions not added |
-| N33 | Open-containing-folder/open-with not added |
-| N39 | Certificate trusting is never allowed; HTTPS exceptions are managed instead. A separate TLS certificate store does not exist |
-| N55 | PiP shows the active tab, not a cropped video surface; play/pause uses the page controls |
-| N60 | Portal honours `prefers-reduced-motion` and `prefers-contrast`; no native high-contrast toggle |
+| N22, N65 | Deliberately deferred: two-pane tabs and sync need new architecture/backend; sync is not faked |
+| N36 | One/all clearing works. Per-origin clearing removes storage and expires that origin's cookies, but WebView cache cannot be scoped to one origin (clear-all does clear it) |
+| N37 | Removal is a configurable fixed inactivity interval (off/7/30/90 days), not a grant-age policy |
+| N39 | No TLS trust store exists by design; the Security screen now explains this and invalid certificates always warn |
+| N41 | DNT is added to intercepted subresource requests where available; browser-engine requests without interception may omit it |
+| N55 | PiP shows the active tab (not a cropped video surface); play/pause/stop RemoteActions added |
+| N58 | Native touch targets raised to 48dp and existing labels kept; no device/screen-reader pass was possible |
+| N60 | Portal honours `prefers-reduced-motion`/`prefers-contrast`; no native high-contrast toggle |
 | N62 | Core portal labels and bookmark dialogs localised (en/es/fr/de/pt/hi); brand names and some dynamic strings remain English |
 | N64 | Activity headers wrap with `minHeight 56dp`; rows already wrap. No large-font device QA |
-| N22, N65 | Deliberately deferred (L-sized) |
+
+These statuses mean implemented/compiling only. The release artifact must be rebuilt
+after the N2/N4/N5/N13/N18/N53/N55/N56/N58/N66 work; no device/emulator was attached.
+
