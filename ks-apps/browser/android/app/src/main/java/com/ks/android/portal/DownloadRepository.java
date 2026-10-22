@@ -2277,6 +2277,212 @@ public class DownloadRepository {
             }
         }
 
+        private void runHls() {
+            File parent = part.getParentFile();
+            if (parent != null) {
+                parent.mkdirs();
+            }
+            FileOutputStream output = null;
+            try {
+                HlsPlaylist playlist = HlsPlaylist.load(url, userAgent, referer,
+                        authHeader(url));
+                int depth = 0;
+                while (playlist.master && depth < 3) {
+                    HlsPlaylist.Variant variant = playlist.bestVariant();
+                    if (variant == null) {
+                        throw new IOException("Empty playlist");
+                    }
+                    playlist = HlsPlaylist.load(variant.url, userAgent, referer,
+                            authHeader(variant.url));
+                    depth++;
+                }
+                if (playlist.segments.isEmpty()) {
+                    throw new IOException("Empty playlist");
+                }
+                if (playlist.drm) {
+                    throw new IOException(context.getString(R.string.video_error_drm));
+                }
+                DownloadItem downloading;
+                synchronized (lock) {
+                    DownloadItem item = findLocked(id);
+                    if (item == null) {
+                        return;
+                    }
+                    item.status = DownloadItem.STATUS_DOWNLOADING;
+                    item.error = "";
+                    item.totalBytes = 0;
+                    item.downloadedBytes = 0;
+                    downloading = item;
+                }
+                notifyListeners();
+                NotificationHelper.downloadProgress(context, downloading);
+
+                output = new FileOutputStream(part, false);
+                Map<String, byte[]> keys = new HashMap<String, byte[]>();
+                long bytes = 0;
+                long lastUpdate = 0;
+                if (!TextUtils.isEmpty(playlist.initUrl)) {
+                    byte[] init = HlsPlaylist.fetchBytes(playlist.initUrl, userAgent,
+                            referer, authHeader(playlist.initUrl),
+                            playlist.initRangeStart, playlist.initRangeLength);
+                    output.write(init);
+                    bytes += init.length;
+                }
+                for (HlsPlaylist.Segment segment : playlist.segments) {
+                    if (cancelled) {
+                        throw new IOException("Cancelled");
+                    }
+                    if (paused) {
+                        throw new IOException("Paused");
+                    }
+                    byte[] data = HlsPlaylist.fetchBytes(segment.url, userAgent, referer,
+                            authHeader(segment.url), segment.rangeStart,
+                            segment.rangeLength);
+                    if (!TextUtils.isEmpty(segment.keyUrl)) {
+                        byte[] key = keys.get(segment.keyUrl);
+                        if (key == null) {
+                            key = HlsPlaylist.fetchBytes(segment.keyUrl, userAgent,
+                                    referer, authHeader(segment.keyUrl), -1, -1);
+                            keys.put(segment.keyUrl, key);
+                        }
+                        data = HlsPlaylist.decryptAes128(data, key, segment.iv);
+                    }
+                    output.write(data);
+                    bytes += data.length;
+                    long now = System.currentTimeMillis();
+                    boolean update = now - lastUpdate >= 400;
+                    synchronized (lock) {
+                        DownloadItem item = findLocked(id);
+                        if (item == null) {
+                            cancelled = true;
+                            break;
+                        }
+                        item.downloadedBytes = bytes;
+                        if (update) {
+                            NotificationHelper.downloadProgress(context, item);
+                        }
+                    }
+                    if (update) {
+                        lastUpdate = now;
+                        notifyListeners();
+                    }
+                    if (cancelled) {
+                        throw new IOException("Cancelled");
+                    }
+                }
+                output.flush();
+                closeQuietly(output);
+                output = null;
+
+                if (cancelled) {
+                    throw new IOException("Cancelled");
+                }
+                if (paused) {
+                    throw new IOException("Paused");
+                }
+                long finishedBytes = part.length();
+                String extension = playlist.fmp4 ? ".mp4" : ".ts";
+                String mime = playlist.fmp4 ? "video/mp4" : "video/mp2t";
+                String relative;
+                String name;
+                synchronized (lock) {
+                    DownloadItem item = findLocked(id);
+                    if (item == null) {
+                        part.delete();
+                        return;
+                    }
+                    if (paused) {
+                        throw new IOException("Paused");
+                    }
+                    if (cancelled) {
+                        throw new IOException("Cancelled");
+                    }
+                    String base = item.fileName;
+                    int dot = base.lastIndexOf('.');
+                    if (dot > 0) {
+                        base = base.substring(0, dot);
+                    }
+                    name = uniqueFileNameLocked(item.relativePath,
+                            withExtension(base, extension), item.id);
+                    relative = item.relativePath;
+                    item.fileName = name;
+                    item.filePath = filePathFor(relative, name);
+                    item.mimeType = mime;
+                }
+
+                Published published = publishToPublic(part, relative, name, mime);
+                part.delete();
+                boolean discard = false;
+                DownloadItem result = null;
+                synchronized (lock) {
+                    DownloadItem item = findLocked(id);
+                    result = item;
+                    if (item == null || cancelled) {
+                        discard = true;
+                        if (item != null) {
+                            item.status = DownloadItem.STATUS_CANCELLED;
+                            item.error = context.getString(R.string.download_error_cancelled);
+                        }
+                    } else {
+                        item.fileName = published.name;
+                        item.filePath = filePathFor(relative, published.name);
+                        item.contentUri = published.uri == null ? ""
+                                : published.uri.toString();
+                        item.downloadedBytes = published.size > 0
+                                ? published.size : finishedBytes;
+                        item.totalBytes = item.downloadedBytes;
+                        item.status = DownloadItem.STATUS_COMPLETED;
+                        item.error = "";
+                    }
+                    tasks.remove(id);
+                    persistLocked();
+                }
+                if (discard) {
+                    deletePublished(published.uri, published.file);
+                    NotificationHelper.downloadCancelled(context, result);
+                } else {
+                    NotificationHelper.downloadCompleted(context, result);
+                }
+                notifyListeners();
+            } catch (Exception exception) {
+                boolean wasPaused = paused;
+                boolean wasCancelled = cancelled;
+                part.delete();
+                DownloadItem failed = null;
+                synchronized (lock) {
+                    DownloadItem item = findLocked(id);
+                    failed = item;
+                    if (item != null) {
+                        if (wasPaused) {
+                            item.status = DownloadItem.STATUS_PAUSED;
+                            item.error = "";
+                        } else if (wasCancelled) {
+                            item.status = DownloadItem.STATUS_CANCELLED;
+                            item.error = context.getString(R.string.download_error_cancelled);
+                        } else {
+                            item.status = DownloadItem.STATUS_FAILED;
+                            item.error = friendlyError(exception);
+                        }
+                    }
+                    tasks.remove(id);
+                    persistLocked();
+                }
+                notifyListeners();
+                if (wasPaused) {
+                    NotificationHelper.downloadPaused(context, failed);
+                } else if (wasCancelled) {
+                    NotificationHelper.downloadCancelled(context, failed);
+                } else {
+                    NotificationHelper.downloadFailed(context, failed);
+                }
+            } finally {
+                closeQuietly(output);
+                synchronized (lock) {
+                    tasks.remove(id);
+                }
+            }
+        }
+
         private long[] parseContentRange(String header) {
             if (TextUtils.isEmpty(header)) {
                 return null;
