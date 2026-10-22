@@ -83,6 +83,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -147,6 +148,7 @@ public class MainActivity extends Activity {
     private boolean loginDialogVisible;
     private final Map<WebView, String> secureFallbacks = new HashMap<WebView, String>();
     private final Map<WebView, View> errorOverlays = new HashMap<WebView, View>();
+    private final ArrayDeque<ClosedTab> recentClosedTabs = new ArrayDeque<ClosedTab>();
     private final Set<WebView> cacheBypassReloads =
             Collections.newSetFromMap(new WeakHashMap<WebView, Boolean>());
     private static final int REQUEST_NOTIFICATIONS = 2002;
@@ -3968,9 +3970,9 @@ public class MainActivity extends Activity {
         if (TextUtils.isEmpty(host)) {
             return;
         }
-        SiteSettingsStore store = SiteSettingsStore.get(this);
-        boolean muted = !store.getBoolean(host, SiteSettingsStore.KEY_SOUND, true);
-        store.setBoolean(host, SiteSettingsStore.KEY_SOUND, !muted);
+        boolean muted = SiteSettingsStore.getBoolean(this, host,
+                SiteSettingsStore.KEY_SOUND, true);
+        SiteSettingsStore.setBoolean(this, host, SiteSettingsStore.KEY_SOUND, muted);
         KsToast.show(this, muted ? R.string.tool_site_muted : R.string.tool_site_unmuted);
         webView.reload();
     }
