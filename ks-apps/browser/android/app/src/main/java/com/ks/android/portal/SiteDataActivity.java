@@ -202,8 +202,13 @@ public class SiteDataActivity extends Activity {
                     @Override
                     public void run() {
                         WebStorage.getInstance().deleteAllData();
-                        CookieManager.getInstance().removeAllCookies(null);
-                        CookieManager.getInstance().flush();
+                        CookieManager.getInstance().removeAllCookies(
+                                new ValueCallback<Boolean>() {
+                                    @Override
+                                    public void onReceiveValue(Boolean value) {
+                                        CookieManager.getInstance().flush();
+                                    }
+                                });
                         android.webkit.WebView cacheView = new android.webkit.WebView(
                                 SiteDataActivity.this);
                         cacheView.clearCache(true);
