@@ -17,6 +17,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
@@ -50,19 +51,16 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebStorage;
-import android.webkit.SslErrorHandler;
-import android.webkit.HttpAuthHandler;
-import android.webkit.ClientCertRequest;
-import android.security.KeyChain;
+import android.webkit.WebView;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
-import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.Switch;
@@ -467,6 +465,132 @@ public class MainActivity extends Activity {
             public void onReceivedError(WebView current, int errorCode, String description,
                                         String failingUrl) {
                 fallbackToInsecure(current, failingUrl);
+            }
+
+            @Override
+            public void onReceivedSslError(final WebView current,
+                                           final SslErrorHandler handler,
+                                           SslError error) {
+                if (handler == null || error == null) {
+                    return;
+                }
+                String host = error.getUrl();
+                SslCertificate certificate = error.getCertificate();
+                String issuedTo = certificate == null ? ""
+                        : String.valueOf(certificate.getIssuedTo());
+                String issuedBy = certificate == null ? ""
+                        : String.valueOf(certificate.getIssuedBy());
+                String message = getString(R.string.ssl_warning_message,
+                        host, sslErrorText(error.getPrimaryError()),
+                        issuedTo, issuedBy);
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle(R.string.ssl_warning_title)
+                        .setMessage(message)
+                        .setNegativeButton(R.string.ssl_go_back,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        handler.cancel();
+                                    }
+                                })
+                        .setPositiveButton(R.string.ssl_continue,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        handler.proceed();
+                                    }
+                                })
+                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                handler.cancel();
+                            }
+                        })
+                        .show();
+            }
+
+            @Override
+            public void onReceivedHttpAuthRequest(WebView current,
+                                                  final HttpAuthHandler handler,
+                                                  String host, String realm) {
+                if (handler == null) {
+                    return;
+                }
+                final EditText username = new EditText(MainActivity.this);
+                username.setHint(R.string.http_auth_username);
+                final EditText password = new EditText(MainActivity.this);
+                password.setHint(R.string.http_auth_password);
+                password.setInputType(android.text.InputType.TYPE_CLASS_TEXT
+                        | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                LinearLayout layout = new LinearLayout(MainActivity.this);
+                layout.setOrientation(LinearLayout.VERTICAL);
+                int padding = Math.round(20 * getResources().getDisplayMetrics().density);
+                layout.setPadding(padding, padding / 2, padding, 0);
+                layout.addView(username);
+                layout.addView(password);
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle(TextUtils.isEmpty(realm)
+                                ? getString(R.string.http_auth_title, host)
+                                : getString(R.string.http_auth_title_realm, host, realm))
+                        .setView(layout)
+                        .setNegativeButton(android.R.string.cancel,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        handler.cancel();
+                                    }
+                                })
+                        .setPositiveButton(android.R.string.ok,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        handler.proceed(username.getText().toString(),
+                                                password.getText().toString());
+                                    }
+                                })
+                        .show();
+            }
+
+            @Override
+            public void onReceivedClientCertRequest(WebView current,
+                                                    final ClientCertRequest request) {
+                if (request == null) {
+                    return;
+                }
+                pendingClientCertRequest = request;
+                KeyChain.choosePrivateKeyAlias(MainActivity.this,
+                        new KeyChainAliasCallback() {
+                            @Override
+                            public void alias(final String alias) {
+                                if (TextUtils.isEmpty(alias)) {
+                                    request.cancel();
+                                    pendingClientCertRequest = null;
+                                    return;
+                                }
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            PrivateKey key = KeyChain.getPrivateKey(
+                                                    getApplicationContext(), alias);
+                                            X509Certificate[] chain = KeyChain.getCertificateChain(
+                                                    getApplicationContext(), alias);
+                                            if (key == null || chain == null) {
+                                                request.cancel();
+                                            } else {
+                                                request.proceed(key, chain);
+                                            }
+                                        } catch (Exception exception) {
+                                            request.cancel();
+                                        } finally {
+                                            pendingClientCertRequest = null;
+                                        }
+                                    }
+                                }).start();
+                            }
+                        },
+                        request.getKeyTypes(), request.getPrincipals(),
+                        request.getHost(), request.getPort(), null);
             }
         });
 
@@ -1869,6 +1993,24 @@ public class MainActivity extends Activity {
     private void restoreCacheMode(WebView view) {
         if (view != null && cacheBypassReloads.remove(view)) {
             view.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        }
+    }
+
+    private String sslErrorText(int error) {
+        switch (error) {
+            case SslError.SSL_EXPIRED:
+                return getString(R.string.ssl_error_expired);
+            case SslError.SSL_IDMISMATCH:
+                return getString(R.string.ssl_error_mismatch);
+            case SslError.SSL_UNTRUSTED:
+                return getString(R.string.ssl_error_untrusted);
+            case SslError.SSL_NOTYETVALID:
+                return getString(R.string.ssl_error_not_yet_valid);
+            case SslError.SSL_DATE_INVALID:
+                return getString(R.string.ssl_error_date);
+            case SslError.SSL_INVALID:
+            default:
+                return getString(R.string.ssl_error_invalid);
         }
     }
 
