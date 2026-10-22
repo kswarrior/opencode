@@ -4455,18 +4455,14 @@ public class MainActivity extends Activity {
         if (view == null || url == null || !url.startsWith("http")) {
             return;
         }
-        view.evaluateJavascript("(function(){try{return !!(window.PublicKeyCredential"
-                + "&&window.PublicKeyCredential"
-                + ".isUserVerifyingPlatformAuthenticatorAvailable);}catch(e){return false;}})();",
-                new ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String value) {
-                        settingsPrefs.edit()
-                                .putBoolean("passkey_supported", "true".equals(value))
-                                .putLong("passkey_checked", System.currentTimeMillis())
-                                .apply();
-                    }
-                });
+        view.evaluateJavascript("(function(){try{"
+                + "var c=window.PublicKeyCredential;"
+                + "if(!c||typeof c.isUserVerifyingPlatformAuthenticatorAvailable"
+                + "!=='function'){KSPortalNative.setPasskeySupport(false);return;}"
+                + "c.isUserVerifyingPlatformAuthenticatorAvailable().then(function(v){"
+                + "KSPortalNative.setPasskeySupport(!!v);"
+                + "}).catch(function(){KSPortalNative.setPasskeySupport(false);});"
+                + "}catch(e){KSPortalNative.setPasskeySupport(false);}})();", null);
     }
 
     private void injectWebAssist(WebView view, String url) {
