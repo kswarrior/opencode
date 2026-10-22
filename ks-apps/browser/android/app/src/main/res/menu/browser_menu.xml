@@ -9,6 +9,10 @@
         android:icon="@drawable/ic_file_download"
         android:title="@string/downloads_action" />
     <item
+        android:id="@+id/action_videos"
+        android:icon="@drawable/ic_video_download"
+        android:title="@string/video_downloader_action" />
+    <item
         android:id="@+id/action_reload"
         android:icon="@drawable/ic_menu_reload"
         android:title="@string/action_reload" />

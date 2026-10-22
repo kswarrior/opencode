@@ -924,4 +924,35 @@ example.com##.ad-banner</string>
     <string name="download_wifi_only_toast_on">New downloads wait for Wi-Fi</string>
     <string name="download_wifi_only_toast_off">Downloads can use mobile data</string>
 
+    <string name="video_downloader_title">Video downloader</string>
+    <string name="video_downloader_action">Videos</string>
+    <string name="video_link_hint">Paste a video or HLS link</string>
+    <string name="video_link_empty">Enter a video link</string>
+    <string name="video_link_invalid">Enter a valid http or https link</string>
+    <string name="video_page_link_title">This is a web page</string>
+    <string name="video_page_link_message">Open it in the browser and play the video, then return to the video downloader. Direct video, HLS and DASH links can be downloaded here.</string>
+    <string name="video_open_page">Open page</string>
+    <string name="video_empty_title">No videos found yet</string>
+    <string name="video_empty_body">Play a video on the page, then open this screen again. You can also paste a direct video or playlist link above.</string>
+    <string name="video_page_label">Detected on %1$s</string>
+    <string name="video_no_page">Ready to download from a link</string>
+    <string name="video_kind_hls">HLS stream</string>
+    <string name="video_kind_dash">DASH manifest</string>
+    <string name="video_kind_video">Video</string>
+    <string name="video_kind_audio">Audio</string>
+    <string name="video_badge_hls">HLS</string>
+    <string name="video_badge_dash">DASH</string>
+    <string name="video_badge_video">VIDEO</string>
+    <string name="video_badge_audio">AUDIO</string>
+    <string name="video_reading_stream">Reading stream qualities…</string>
+    <string name="video_stream_error">Could not read the stream</string>
+    <string name="video_quality_title">Choose quality</string>
+    <string name="video_dash_unsupported">DASH manifests are not supported yet. Try an HLS or direct video link.</string>
+    <string name="video_copy_link">Copy link</string>
+    <string name="video_open_link">Open link</string>
+    <string name="video_download_link">Download link</string>
+    <string name="video_source_options">Video options</string>
+    <string name="video_file_default">video</string>
+    <string name="video_error_drm">This stream is encrypted or DRM-protected and cannot be downloaded</string>
+
 </resources>
