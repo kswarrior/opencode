@@ -18,7 +18,10 @@ public class PrivacySecurityActivity extends ToggleSettingsActivity {
                         "privacy_do_not_track", false),
                 new ToggleSetting(R.string.adblocker_strip_tracking,
                         R.string.adblocker_strip_tracking_summary,
-                        "privacy_strip_tracking", true));
+                        "privacy_strip_tracking", true),
+                new ToggleSetting(R.string.search_suggestions,
+                        R.string.search_suggestions_summary,
+                        SuggestionProvider.PREF, false));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             addSection(R.string.security_section,
                     new ToggleSetting(R.string.security_safe_browsing,
@@ -44,6 +47,16 @@ public class PrivacySecurityActivity extends ToggleSettingsActivity {
                     @Override
                     public void onClick(View view) {
                         showSecureExceptions();
+                    }
+                });
+        addAction(R.string.security_section, R.string.certificate_exceptions,
+                R.string.certificate_exceptions_summary, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        KsDialog.message(PrivacySecurityActivity.this,
+                                R.string.certificate_exceptions,
+                                getString(R.string.certificate_exceptions_message),
+                                R.string.dialog_ok, null);
                     }
                 });
         addAction(R.string.privacy_section, R.string.history_retention,

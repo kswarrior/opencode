@@ -159,6 +159,11 @@
     <string name="search_engine_error_template">Enter an http(s) URL containing %s</string>
     <string name="search_engine_error_keyword">Keyword must be one word, up to 20 characters</string>
     <string name="search_engine_error_missing">Search engine not found</string>
+    <string name="search_suggestions">Search suggestions</string>
+    <string name="search_suggestions_summary">Off by default. While on, text typed in the address bar is sent to Google for suggestions.</string>
+    <string name="certificate_exceptions">Certificate exceptions</string>
+    <string name="certificate_exceptions_summary">View how invalid certificates are handled</string>
+    <string name="certificate_exceptions_message">KS Portal does not keep a certificate trust store and does not install certificates. Invalid certificates always show a warning and are never trusted automatically.</string>
     <string name="ai_mode">AI Mode</string>
     <string name="ai_mode_google">Google AI Mode</string>
     <string name="ai_mode_chatgpt">ChatGPT</string>
