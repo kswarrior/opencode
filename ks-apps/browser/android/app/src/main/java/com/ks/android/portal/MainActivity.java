@@ -1792,6 +1792,25 @@ public class MainActivity extends Activity {
                 showFindBar();
             }
         });
+        View desktopRow = panel.findViewById(R.id.menuDesktop);
+        TextView desktopLabel = panel.findViewById(R.id.menuDesktopLabel);
+        final String desktopHost = hostOf(menuUrl);
+        final boolean desktopSite = SiteSettingsStore.SCREEN_DESKTOP.equals(
+                SiteSettingsStore.getScreenSizeId(this, desktopHost));
+        desktopLabel.setText(desktopSite ? R.string.mobile_site : R.string.desktop_site);
+        desktopRow.setVisibility(isHomeUrl(menuUrl) ? View.GONE : View.VISIBLE);
+        desktopRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                SiteSettingsStore.setScreenSizeId(MainActivity.this, desktopHost,
+                        desktopSite ? SiteSettingsStore.SCREEN_DEFAULT
+                                : SiteSettingsStore.SCREEN_DESKTOP);
+                if (webView != null) {
+                    reloadPage(webView);
+                }
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
