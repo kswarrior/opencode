@@ -488,7 +488,7 @@ final class VideoSniffer {
                 || ".webm".equals(extension) || ".mov".equals(extension)
                 || ".mkv".equals(extension) || ".flv".equals(extension)
                 || ".avi".equals(extension) || ".ogv".equals(extension)
-                || ".3gp".equals(extension) || ".m4s".equals(extension);
+                || ".3gp".equals(extension);
     }
 
     private static boolean isAudioExtension(String extension) {

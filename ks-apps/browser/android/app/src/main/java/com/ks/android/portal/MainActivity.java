@@ -4017,6 +4017,92 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this, DownloadsActivity.class));
     }
 
+    private void openVideoDownloader() {
+        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
+        if (tab == null) {
+            return;
+        }
+        if (privateTabs.contains(tab.id)) {
+            KsToast.show(this, R.string.private_action_blocked);
+            return;
+        }
+        WebView view = tabViews.get(tab.id);
+        String url = view != null && !TextUtils.isEmpty(view.getUrl())
+                ? view.getUrl() : tab.url;
+        String title = view == null ? tab.title : view.getTitle();
+        if (view != null && !TextUtils.isEmpty(url) && !isHomeUrl(url)) {
+            scanPageMedia(view, tab.id, url, title);
+        }
+        Intent intent = new Intent(this, VideoDownloadActivity.class);
+        intent.putExtra(VideoDownloadActivity.EXTRA_TAB_ID, tab.id);
+        intent.putExtra(VideoDownloadActivity.EXTRA_PAGE_URL, url == null ? "" : url);
+        intent.putExtra(VideoDownloadActivity.EXTRA_PAGE_TITLE,
+                title == null ? "" : title);
+        intent.putExtra(VideoDownloadActivity.EXTRA_USER_AGENT,
+                view == null ? (defaultUserAgent == null ? "" : defaultUserAgent)
+                        : view.getSettings().getUserAgentString());
+        startActivity(intent);
+    }
+
+    private void scanPageMedia(final WebView view, final int tabId, final String pageUrl,
+                               final String pageTitle) {
+        if (view == null || tabId < 0 || privateTabs.contains(tabId)
+                || TextUtils.isEmpty(pageUrl) || isHomeUrl(pageUrl)) {
+            return;
+        }
+        String script = "(function(){try{var out=[];"
+                + "function abs(u){try{return new URL(u,location.href).href;}catch(e){return '';}}"
+                + "function isMedia(u){u=(u||'').split('#')[0].split('?')[0].toLowerCase();"
+                + "return /\\.(mp4|m4v|webm|mov|mkv|flv|avi|ogv|3gp|m3u8|mpd|mp3|m4a|aac|ogg|opus|wav|flac)$/.test(u);}"
+                + "function push(u,m,l,w,h,d){u=abs(u);if(!u||u.indexOf('http')!==0)return;"
+                + "if(!isMedia(u)&&!/^(video|audio)\\//i.test(String(m||'')))return;"
+                + "out.push({u:u,m:String(m||''),l:String(l||''),w:w|0,h:h|0,d:d|0});}"
+                + "var media=document.querySelectorAll('video,audio');"
+                + "for(var i=0;i<media.length;i++){var v=media[i];"
+                + "var rel=v.getAttribute('title')||v.getAttribute('aria-label')"
+                + "||v.getAttribute('data-title')||'';"
+                + "push(v.currentSrc||v.src||'',v.type||'',rel,v.videoWidth||0,"
+                + "v.videoHeight||0,(v.duration||0)*1000);"
+                + "var sources=v.querySelectorAll('source');"
+                + "for(var j=0;j<sources.length;j++){push(sources[j].src||'',"
+                + "sources[j].type||'',rel,v.videoWidth||0,v.videoHeight||0,"
+                + "(v.duration||0)*1000);}}"
+                + "var links=document.querySelectorAll('a[href]');"
+                + "for(var k=0;k<links.length;k++){var a=links[k];var href=a.href||'';"
+                + "if(isMedia(href))push(href,'',(a.textContent||'').trim(),0,0,0);}"
+                + "var metas=document.querySelectorAll('meta[property],meta[name]');"
+                + "for(var n=0;n<metas.length;n++){var meta=metas[n];"
+                + "var p=(meta.getAttribute('property')||meta.getAttribute('name')"
+                + "||'').toLowerCase();"
+                + "if(p==='og:video'||p==='og:video:url'||p==='og:video:secure_url'"
+                + "||p==='og:audio'||p==='og:audio:url'||p==='twitter:player:stream')"
+                + "{push(meta.content||'','','',0,0,0);}}"
+                + "try{var entries=performance.getEntriesByType('resource');"
+                + "for(var r=0;r<entries.length;r++){push(entries[r].name||'','','',0,0,0);}}"
+                + "catch(e){}"
+                + "try{var data=document.querySelectorAll('script[type=\"application/ld+json\"]');"
+                + "for(var s=0;s<data.length;s++){try{var obj=JSON.parse("
+                + "data[s].textContent||'{}');var list=Array.isArray(obj)?obj:[obj];"
+                + "for(var q=0;q<list.length;q++){var item=list[q]||{};"
+                + "if(item.contentUrl)push(item.contentUrl,'','',0,0,0);"
+                + "if(item.video&&item.video.contentUrl)push(item.video.contentUrl,"
+                + "'','',0,0,0);}}catch(e){}}}catch(e){}"
+                + "return out;}catch(e){return [];}})()";
+        view.evaluateJavascript(script, new ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String value) {
+                if (TextUtils.isEmpty(value) || "null".equals(value)) {
+                    return;
+                }
+                try {
+                    VideoSniffer.ingestDom(tabId, new JSONArray(value), pageUrl,
+                            pageTitle);
+                } catch (JSONException ignored) {
+                }
+            }
+        });
+    }
+
     private void openHistoryPage() {
         startActivity(new Intent(this, HistoryActivity.class));
     }
