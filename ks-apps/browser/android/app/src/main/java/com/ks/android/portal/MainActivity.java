@@ -889,10 +889,18 @@ public class MainActivity extends Activity {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView current,
                                                               WebResourceRequest request) {
-                if (request != null && !request.isForMainFrame()
-                        && isAdBlockEnabledFor(pageUrl)) {
-                    return AdBlocker.intercept(MainActivity.this, pageUrl,
-                            pageHost, request);
+                if (request != null) {
+                    String requestUrl = request.getUrl().toString();
+                    if (!privateTabs.contains(tab.id)
+                            && (!request.isForMainFrame()
+                            || VideoSniffer.looksLikeMedia(requestUrl))) {
+                        VideoSniffer.recordRequest(tab.id, requestUrl);
+                    }
+                    if (!request.isForMainFrame()
+                            && isAdBlockEnabledFor(pageUrl)) {
+                        return AdBlocker.intercept(MainActivity.this, pageUrl,
+                                pageHost, request);
+                    }
                 }
                 return super.shouldInterceptRequest(current, request);
             }

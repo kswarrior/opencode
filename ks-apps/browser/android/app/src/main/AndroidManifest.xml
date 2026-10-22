@@ -35,7 +35,7 @@
             android:value="KS Warrior" />
         <meta-data
             android:name="com.ks.android.portal.VERSION"
-            android:value="1.4.0" />
+            android:value="1.5.0" />
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="true" />
@@ -48,6 +48,13 @@
 
         <activity
             android:name=".DownloadsActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".VideoDownloadActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:exported="false"
             android:launchMode="singleTop"
