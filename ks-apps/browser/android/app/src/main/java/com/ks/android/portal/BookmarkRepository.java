@@ -85,6 +85,9 @@ final class BookmarkRepository {
             if (indexOf(items, normalized) >= 0) {
                 return EXISTS;
             }
+            if (items.length() >= LIMIT) {
+                return INVALID;
+            }
             JSONObject item = new JSONObject();
             try {
                 item.put("name", cleanName(name, normalized));
@@ -177,8 +180,21 @@ final class BookmarkRepository {
         synchronized (LOCK) {
             JSONArray items = read(context);
             int index = indexOf(items, normalized);
-            int target = index + delta;
-            if (index < 0 || target < 0 || target >= items.length()) {
+            if (index < 0) {
+                return false;
+            }
+            int folder = assignmentFor(context, normalized);
+            int step = delta < 0 ? -1 : 1;
+            int target = index + step;
+            while (target >= 0 && target < items.length()) {
+                JSONObject candidate = items.optJSONObject(target);
+                if (candidate != null
+                        && assignmentFor(context, candidate.optString("url")) == folder) {
+                    break;
+                }
+                target += step;
+            }
+            if (target < 0 || target >= items.length()) {
                 return false;
             }
             JSONObject moving = items.optJSONObject(index);

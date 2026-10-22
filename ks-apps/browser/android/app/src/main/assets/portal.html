@@ -908,6 +908,7 @@ body.launching .recents {
   var aiMode = false;
   var incognito = false;
   var BOOKMARK_KEY = 'ks_bookmarks_v1';
+  var BOOKMARK_MIGRATED_KEY = 'ks_bookmarks_native_v1';
   var LEGACY_BOOKMARK_KEY = 'ks_favourites_v1';
   var RECENTS_KEY = 'ks_recents_v1';
   var RECENTS_SHOW = 3;
@@ -1323,7 +1324,7 @@ body.launching .recents {
   function sanitizeBookmarks(parsed) {
     var result = [];
     if (!Array.isArray(parsed)) return result;
-    for (var i = 0; i < parsed.length && result.length < 24; i++) {
+    for (var i = 0; i < parsed.length && result.length < 1000; i++) {
       var item = parsed[i];
       if (!item || typeof item.name !== 'string' || typeof item.url !== 'string') continue;
       var url = normalizeBookmarkUrl(item.url);
@@ -1345,6 +1346,8 @@ body.launching .recents {
 
   function loadBookmarks() {
     var local = [];
+    var nativeAvailable = nativePortal
+      && typeof nativePortal.getBookmarks === 'function';
     try {
       var raw = window.localStorage.getItem(BOOKMARK_KEY);
       if (!raw) raw = window.localStorage.getItem(LEGACY_BOOKMARK_KEY);
@@ -1352,31 +1355,29 @@ body.launching .recents {
     } catch (error) {
       local = [];
     }
+    if (!nativeAvailable) return local;
     var nativeItems = [];
-    if (nativePortal && typeof nativePortal.getBookmarks === 'function') {
-      try {
-        var nativeRaw = nativePortal.getBookmarks();
-        nativeItems = sanitizeBookmarks(nativeRaw ? JSON.parse(nativeRaw) : []);
-      } catch (error) {
-        nativeItems = [];
-      }
+    try {
+      var nativeRaw = nativePortal.getBookmarks();
+      nativeItems = sanitizeBookmarks(nativeRaw ? JSON.parse(nativeRaw) : []);
+    } catch (error) {
+      return local;
     }
-    var result = nativeItems.slice(0);
-    for (var i = 0; i < local.length && result.length < 24; i++) {
-      var duplicate = false;
-      for (var j = 0; j < result.length; j++) {
-        if (result[j].url === local[i].url) {
-          duplicate = true;
-          break;
-        }
-      }
-      if (!duplicate) result.push(local[i]);
-    }
-    if (nativePortal && typeof nativePortal.setBookmarks === 'function') {
+    var result = nativeItems;
+    var migrated = false;
+    try {
+      migrated = window.localStorage.getItem(BOOKMARK_MIGRATED_KEY) === '1';
+    } catch (error) {}
+    if (!migrated && result.length === 0 && local.length > 0) {
+      result = local;
       try {
         nativePortal.setBookmarks(JSON.stringify(result));
       } catch (error) {}
     }
+    try {
+      window.localStorage.setItem(BOOKMARK_MIGRATED_KEY, '1');
+      window.localStorage.setItem(BOOKMARK_KEY, JSON.stringify(result));
+    } catch (error) {}
     return result;
   }
 
