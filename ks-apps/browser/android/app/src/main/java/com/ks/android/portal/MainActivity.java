@@ -2535,12 +2535,30 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void applyForceDark(WebSettings settings) {
+        int preference = settingsPrefs == null ? -1
+                : settingsPrefs.getInt("appearance_force_dark", -1);
+        if (Build.VERSION.SDK_INT >= 33) {
+            if (preference == 0) {
+                settings.setAlgorithmicDarkeningAllowed(false);
+            } else if (preference == 1) {
+                settings.setAlgorithmicDarkeningAllowed(true);
+            }
+        }
+        settings.setForceDark(preference == 0 ? WebSettings.FORCE_DARK_OFF
+                : preference == 1 ? WebSettings.FORCE_DARK_ON
+                : WebSettings.FORCE_DARK_AUTO);
+    }
+
     private void applySiteSettings(WebView view, String url) {
         if (view == null) {
             return;
         }
         String host = SiteSettingsStore.hostOf(url);
         WebSettings settings = view.getSettings();
+        if (SiteSettingsStore.hasTextZoom(this, host)) {
+            settings.setTextZoom(SiteSettingsStore.getTextZoom(this, host, 100));
+        }
         settings.setJavaScriptEnabled(SiteSettingsStore.getBoolean(this, host,
                 SiteSettingsStore.KEY_JAVASCRIPT, true));
         boolean allowPopups = SiteSettingsStore.getBoolean(this,
@@ -2549,11 +2567,9 @@ public class MainActivity extends Activity {
             allowPopups = false;
         }
         settings.setJavaScriptCanOpenWindowsAutomatically(allowPopups);
-        if (SiteSettingsStore.contains(this, host, SiteSettingsStore.KEY_SOUND)) {
-            settings.setMediaPlaybackRequiresUserGesture(
-                    !SiteSettingsStore.getBoolean(this, host,
-                            SiteSettingsStore.KEY_SOUND, false));
-        }
+        settings.setMediaPlaybackRequiresUserGesture(
+                !SiteSettingsStore.getBoolean(this, host,
+                        SiteSettingsStore.KEY_SOUND, false));
         CookieManager.getInstance().setAcceptThirdPartyCookies(view,
                 SiteSettingsStore.getBoolean(this, host,
                         SiteSettingsStore.KEY_THIRD_PARTY_COOKIES, true));

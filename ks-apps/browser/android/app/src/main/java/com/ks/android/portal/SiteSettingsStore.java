@@ -118,6 +118,35 @@ final class SiteSettingsStore {
         preferences(context).edit().putBoolean(key(host, name), value).apply();
     }
 
+    static int getTextZoom(Context context, String host, int defaultValue) {
+        if (TextUtils.isEmpty(host)) {
+            return defaultValue;
+        }
+        String siteKey = key(host, "text_zoom");
+        return preferences(context).getInt(siteKey, defaultValue);
+    }
+
+    static boolean hasTextZoom(Context context, String host) {
+        return !TextUtils.isEmpty(host)
+                && preferences(context).contains(key(host, "text_zoom"));
+    }
+
+    static void setTextZoom(Context context, String host, int value) {
+        if (TextUtils.isEmpty(host)) {
+            return;
+        }
+        preferences(context).edit()
+                .putInt(key(host, "text_zoom"), Math.max(50, Math.min(200, value)))
+                .apply();
+    }
+
+    static void clearTextZoom(Context context, String host) {
+        if (TextUtils.isEmpty(host)) {
+            return;
+        }
+        preferences(context).edit().remove(key(host, "text_zoom")).apply();
+    }
+
     static int getAutoRemoveDays(Context context) {
         return preferences(context).getInt(AUTO_REMOVE_DAYS, 0);
     }
