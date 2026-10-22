@@ -43,6 +43,8 @@ public class DownloadsActivity extends Activity {
     private static final int MENU_SIGN_IN = 9;
     private static final int MENU_OPEN_WITH = 10;
     private static final int MENU_FOLDER = 11;
+    private static final int MENU_CHECKSUM = 12;
+    private static final int MENU_START_NOW = 13;
 
     private DownloadRepository repository;
     private ListView listView;
@@ -54,6 +56,10 @@ public class DownloadsActivity extends Activity {
     private String query = "";
     private int sortMode;
     private int filterMode;
+    private boolean selectionMode;
+    private final java.util.Set<Long> selected = new java.util.HashSet<Long>();
+    private View selectionBar;
+    private TextView selectionCount;
 
     private final DownloadRepository.Listener downloadListener = new DownloadRepository.Listener() {
         @Override
@@ -75,6 +81,11 @@ public class DownloadsActivity extends Activity {
         ImageButton back = findViewById(R.id.downloadsBack);
         ImageButton pathButton = findViewById(R.id.downloadPathButton);
         ImageButton filterButton = findViewById(R.id.downloadFilterButton);
+        selectionBar = findViewById(R.id.downloadSelectionBar);
+        selectionCount = findViewById(R.id.downloadSelectionCount);
+        View selectAll = findViewById(R.id.downloadSelectAll);
+        View deleteSelected = findViewById(R.id.downloadDeleteSelected);
+        View closeSelection = findViewById(R.id.downloadSelectionClose);
         sortMode = getPreferences(MODE_PRIVATE).getInt("sort", 0);
         filterMode = getPreferences(MODE_PRIVATE).getInt("filter", 0);
 
@@ -121,12 +132,55 @@ public class DownloadsActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 DownloadItem item = visible.get(position);
+                if (selectionMode) {
+                    toggleSelection(item);
+                    return;
+                }
                 if (item.status == DownloadItem.STATUS_COMPLETED) {
                     openItem(item);
                 } else if (item.status == DownloadItem.STATUS_FAILED
-                        || item.status == DownloadItem.STATUS_CANCELLED) {
+                        || item.status == DownloadItem.STATUS_CANCELLED
+                        || DownloadRepository.ERROR_WAITING_WIFI.equals(item.error)) {
                     showItemMenu(view.findViewById(R.id.downloadMore), item);
                 }
+            }
+        });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
+                                           long id) {
+                if (!selectionMode) {
+                    selectionMode = true;
+                    selectionBar.setVisibility(View.VISIBLE);
+                }
+                toggleSelection(visible.get(position));
+                return true;
+            }
+        });
+        selectAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (selected.size() == visible.size()) {
+                    selected.clear();
+                } else {
+                    selected.clear();
+                    for (DownloadItem item : visible) {
+                        selected.add(Long.valueOf(item.id));
+                    }
+                }
+                refreshList();
+            }
+        });
+        deleteSelected.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmDeleteSelected();
+            }
+        });
+        closeSelection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                endSelection();
             }
         });
 
@@ -145,6 +199,7 @@ public class DownloadsActivity extends Activity {
     protected void onResume() {
         super.onResume();
         refreshPath();
+        repository.resumeWifiQueue();
         refreshList();
         BackgroundManager.apply(this, BackgroundStore.TARGET_DOWNLOADS);
     }
@@ -160,15 +215,17 @@ public class DownloadsActivity extends Activity {
     }
 
     private void showSortFilter() {
-        int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         int[] labels = new int[]{
                 R.string.sort_newest, R.string.sort_oldest, R.string.sort_name,
                 R.string.sort_size, R.string.filter_all, R.string.filter_active,
                 R.string.filter_completed, R.string.filter_failed,
-                R.string.download_resume_all, R.string.download_retry_all};
+                R.string.download_resume_all, R.string.download_retry_all,
+                repository.isWifiOnly() ? R.string.download_wifi_only_on
+                        : R.string.download_wifi_only_off};
         int checked = filterMode > 0 ? 4 + filterMode : sortMode;
         KsDialog.menu(this, R.string.downloads_filter, ids, labels,
-                new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, checked,
+                new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, checked,
                 new KsDialog.ChoiceAction() {
                     @Override
                     public void run(int index) {
@@ -178,6 +235,14 @@ public class DownloadsActivity extends Activity {
                         }
                         if (index == 9) {
                             retryAll();
+                            return;
+                        }
+                        if (index == 10) {
+                            boolean enabled = !repository.isWifiOnly();
+                            DownloadRepository.setWifiOnly(DownloadsActivity.this, enabled);
+                            KsToast.show(DownloadsActivity.this, enabled
+                                    ? R.string.download_wifi_only_toast_on
+                                    : R.string.download_wifi_only_toast_off);
                             return;
                         }
                         if (index < 4) {
@@ -214,6 +279,61 @@ public class DownloadsActivity extends Activity {
             }
         }
         KsToast.show(this, getString(R.string.download_retry_all_done, count));
+    }
+
+    private void toggleSelection(DownloadItem item) {
+        Long key = Long.valueOf(item.id);
+        if (!selected.remove(key)) {
+            selected.add(key);
+        }
+        if (selected.isEmpty()) {
+            endSelection();
+            return;
+        }
+        refreshList();
+    }
+
+    private void endSelection() {
+        selectionMode = false;
+        selected.clear();
+        if (selectionBar != null) {
+            selectionBar.setVisibility(View.GONE);
+        }
+        refreshList();
+    }
+
+    private void updateSelectionBar() {
+        if (selectionBar == null) {
+            return;
+        }
+        selectionBar.setVisibility(selectionMode ? View.VISIBLE : View.GONE);
+        if (selectionMode) {
+            selectionCount.setText(getString(R.string.download_selected_count,
+                    selected.size()));
+        }
+    }
+
+    private void confirmDeleteSelected() {
+        final List<Long> ids = new ArrayList<Long>(selected);
+        if (ids.isEmpty()) {
+            return;
+        }
+        KsDialog.confirmDanger(this, R.string.download_delete_selected_title,
+                getString(R.string.download_delete_selected_message, ids.size()),
+                R.string.download_cancel, R.string.download_delete,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        int deleted = 0;
+                        for (Long id : ids) {
+                            repository.delete(id.longValue());
+                            deleted++;
+                        }
+                        KsToast.show(DownloadsActivity.this,
+                                getString(R.string.download_deleted_selected, deleted));
+                        endSelection();
+                    }
+                });
     }
 
     private boolean matchesFilter(DownloadItem item) {
@@ -256,9 +376,20 @@ public class DownloadsActivity extends Activity {
                 }
             }
         });
+        if (selectionMode) {
+            java.util.Set<Long> available = new java.util.HashSet<Long>();
+            for (DownloadItem item : visible) {
+                available.add(Long.valueOf(item.id));
+            }
+            selected.retainAll(available);
+            if (selected.isEmpty()) {
+                selectionMode = false;
+            }
+        }
         if (adapter != null) {
             adapter.notifyDataSetChanged();
         }
+        updateSelectionBar();
         if (emptyView != null) {
             emptyView.setText(needle.isEmpty() ? R.string.no_downloads : R.string.no_matching_downloads);
         }
@@ -282,7 +413,8 @@ public class DownloadsActivity extends Activity {
     private String statusLabel(DownloadItem item) {
         switch (item.status) {
             case DownloadItem.STATUS_PENDING:
-                return getString(R.string.download_waiting);
+                return getString(DownloadRepository.ERROR_WAITING_WIFI.equals(item.error)
+                        ? R.string.download_waiting_wifi : R.string.download_waiting);
             case DownloadItem.STATUS_DOWNLOADING:
                 return getString(R.string.download_downloading);
             case DownloadItem.STATUS_PAUSED:
@@ -301,7 +433,8 @@ public class DownloadsActivity extends Activity {
         String separator = " \u00B7 ";
         switch (item.status) {
             case DownloadItem.STATUS_PENDING:
-                return getString(R.string.download_waiting);
+                return getString(DownloadRepository.ERROR_WAITING_WIFI.equals(item.error)
+                        ? R.string.download_waiting_wifi : R.string.download_waiting);
             case DownloadItem.STATUS_DOWNLOADING: {
                 StringBuilder builder = new StringBuilder(getString(R.string.download_downloading));
                 if (item.totalBytes > 0) {
@@ -361,13 +494,18 @@ public class DownloadsActivity extends Activity {
         int[] icons;
         if (item.status == DownloadItem.STATUS_COMPLETED) {
             ids = new int[]{MENU_OPEN, MENU_OPEN_WITH, MENU_FOLDER, MENU_RENAME,
-                    MENU_SHARE, MENU_DELETE};
+                    MENU_SHARE, MENU_CHECKSUM, MENU_DELETE};
             labels = new int[]{R.string.download_open, R.string.download_open_with,
                     R.string.download_folder, R.string.download_rename,
-                    R.string.download_share, R.string.download_delete};
+                    R.string.download_share, R.string.download_checksum,
+                    R.string.download_delete};
             icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_menu_open,
                     R.drawable.ic_folder, R.drawable.ic_edit,
-                    R.drawable.ic_menu_share, R.drawable.ic_delete};
+                    R.drawable.ic_menu_share, R.drawable.ic_key, R.drawable.ic_delete};
+        } else if (DownloadRepository.ERROR_WAITING_WIFI.equals(item.error)) {
+            ids = new int[]{MENU_START_NOW, MENU_DELETE};
+            labels = new int[]{R.string.download_start_now, R.string.download_delete};
+            icons = new int[]{R.drawable.ic_play, R.drawable.ic_delete};
         } else if (item.status == DownloadItem.STATUS_PENDING
                 || item.status == DownloadItem.STATUS_DOWNLOADING) {
             ids = new int[]{MENU_PAUSE, MENU_CANCEL, MENU_DELETE};
@@ -433,6 +571,14 @@ public class DownloadsActivity extends Activity {
                     case MENU_SIGN_IN:
                         signIn(item);
                         break;
+                    case MENU_START_NOW:
+                        if (!repository.startQueued(item.id)) {
+                            toast(getString(R.string.download_start_failed));
+                        }
+                        break;
+                    case MENU_CHECKSUM:
+                        showChecksum(item);
+                        break;
                     default:
                         break;
                 }
@@ -459,6 +605,16 @@ public class DownloadsActivity extends Activity {
                     public void run() {
                     }
                 });
+    }
+
+    private void showChecksum(final DownloadItem item) {
+        String digest = repository.sha256(item);
+        if (TextUtils.isEmpty(digest)) {
+            toast(getString(R.string.download_checksum_failed));
+            return;
+        }
+        KsDialog.message(this, R.string.download_checksum_title, digest,
+                R.string.dialog_ok, null);
     }
 
     private void openItem(DownloadItem item) {
@@ -653,6 +809,9 @@ public class DownloadsActivity extends Activity {
             }
 
             final DownloadItem item = getItem(position);
+            convertView.setBackgroundResource(selectionMode
+                    && selected.contains(Long.valueOf(item.id))
+                    ? R.drawable.bg_choice_card_selected : R.drawable.bg_download_item);
             holder.name.setText(item.fileName);
             holder.status.setText(statusLine(item));
             holder.status.setTextColor(item.status == DownloadItem.STATUS_FAILED

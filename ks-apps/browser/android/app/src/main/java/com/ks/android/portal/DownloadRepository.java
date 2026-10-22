@@ -780,7 +780,7 @@ public class DownloadRepository {
                 return false;
             }
             android.net.NetworkInfo info = manager.getActiveNetworkInfo();
-            return info != null && info.isConnected() && info.isMetered();
+            return info != null && info.isConnected() && manager.isActiveNetworkMetered();
         } catch (Exception ignored) {
             return false;
         }
