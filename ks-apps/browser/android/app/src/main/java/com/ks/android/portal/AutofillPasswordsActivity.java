@@ -34,6 +34,13 @@ public class AutofillPasswordsActivity extends ToggleSettingsActivity {
                         showSavedLogins();
                     }
                 });
+        addAction(R.string.autofill_section_passwords, R.string.saved_logins_search,
+                R.string.saved_logins_search_summary, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        promptSearch();
+                    }
+                });
         addAction(R.string.autofill_section_passwords, R.string.autofill_passkeys,
                 R.string.autofill_passkeys_summary, new View.OnClickListener() {
                     @Override
@@ -60,7 +67,24 @@ public class AutofillPasswordsActivity extends ToggleSettingsActivity {
                 });
     }
 
+    private void promptSearch() {
+        KsDialog.input(this, R.string.saved_logins_search, null,
+                R.string.saved_logins_search_hint, R.string.saved_logins_search_action,
+                android.text.InputType.TYPE_CLASS_TEXT,
+                new KsDialog.TextAction() {
+                    @Override
+                    public boolean onSubmit(String value) {
+                        showSavedLogins(value == null ? "" : value.trim());
+                        return true;
+                    }
+                });
+    }
+
     private void showSavedLogins() {
+        showSavedLogins("");
+    }
+
+    private void showSavedLogins(String query) {
         CredentialStore store = CredentialStore.getInstance(this);
         if (!store.isSupported()) {
             KsDialog.message(this, R.string.saved_logins,
@@ -73,10 +97,26 @@ public class AutofillPasswordsActivity extends ToggleSettingsActivity {
                     getString(R.string.saved_logins_cleared),
                     R.string.dialog_ok, null);
         }
-        final List<CredentialStore.Credential> credentials = store.getAll();
+        List<CredentialStore.Credential> all = store.getAll();
+        final List<CredentialStore.Credential> credentials =
+                new java.util.ArrayList<CredentialStore.Credential>();
+        String needle = query == null ? "" : query.toLowerCase(java.util.Locale.US);
+        for (CredentialStore.Credential credential : all) {
+            if (needle.isEmpty()
+                    || (credential.name != null
+                    && credential.name.toLowerCase(java.util.Locale.US).contains(needle))
+                    || (credential.url != null
+                    && credential.url.toLowerCase(java.util.Locale.US).contains(needle))
+                    || (credential.username != null
+                    && credential.username.toLowerCase(java.util.Locale.US).contains(needle))) {
+                credentials.add(credential);
+            }
+        }
         if (credentials.isEmpty()) {
             KsDialog.message(this, R.string.saved_logins,
-                    getString(R.string.saved_logins_empty),
+                    getString(needle.isEmpty()
+                            ? R.string.saved_logins_empty
+                            : R.string.saved_logins_search_empty),
                     R.string.dialog_ok, null);
             return;
         }
@@ -97,17 +137,68 @@ public class AutofillPasswordsActivity extends ToggleSettingsActivity {
     }
 
     private void credentialOptions(final CredentialStore.Credential credential) {
-        KsDialog.menu(this, 0, new int[]{1, 2},
-                new int[]{R.string.saved_logins_reveal, R.string.saved_logins_delete},
-                new int[]{R.drawable.ic_menu_open, R.drawable.ic_delete}, -1,
+        KsDialog.menu(this, 0, new int[]{1, 2, 3},
+                new int[]{R.string.saved_logins_reveal, R.string.saved_logins_edit,
+                        R.string.saved_logins_delete},
+                new int[]{R.drawable.ic_menu_open, R.drawable.ic_edit,
+                        R.drawable.ic_delete}, -1,
                 new KsDialog.ChoiceAction() {
                     @Override
                     public void run(int index) {
                         if (index == 0) {
                             requestUnlock(credential);
+                        } else if (index == 1) {
+                            editCredential(credential);
                         } else {
                             confirmDelete(credential);
                         }
+                    }
+                });
+    }
+
+    private void editCredential(final CredentialStore.Credential credential) {
+        KsDialog.input(this, R.string.saved_logins_edit_username, credential.username,
+                R.string.saved_logins_username_hint, R.string.dialog_save,
+                android.text.InputType.TYPE_CLASS_TEXT, new KsDialog.TextAction() {
+                    @Override
+                    public boolean onSubmit(final String usernameValue) {
+                        final String username = usernameValue == null
+                                ? "" : usernameValue.trim();
+                        if (username.isEmpty()) {
+                            return false;
+                        }
+                        KsDialog.input(AutofillPasswordsActivity.this,
+                                R.string.saved_logins_edit_password, "",
+                                R.string.saved_logins_password_hint,
+                                R.string.dialog_save,
+                                android.text.InputType.TYPE_CLASS_TEXT
+                                        | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD,
+                                new KsDialog.TextAction() {
+                                    @Override
+                                    public boolean onSubmit(String passwordValue) {
+                                        String password = passwordValue == null
+                                                ? "" : passwordValue;
+                                        if (password.isEmpty()) {
+                                            password = credential.password;
+                                        }
+                                        CredentialStore store = CredentialStore
+                                                .getInstance(AutofillPasswordsActivity.this);
+                                        boolean saved = store.save(credential.name,
+                                                credential.url, username, password);
+                                        if (saved && !username.equals(credential.username)) {
+                                            store.delete(credential.url,
+                                                    credential.username);
+                                        }
+                                        KsToast.show(AutofillPasswordsActivity.this,
+                                                saved ? R.string.login_saved
+                                                        : R.string.credentials_unavailable);
+                                        if (saved) {
+                                            showSavedLogins();
+                                        }
+                                        return true;
+                                    }
+                                });
+                        return true;
                     }
                 });
     }

@@ -336,7 +336,7 @@ and compiling, not device-verified.
 | Bookmarks/history | N23 manager, N24 folders + 1,000 cap, N25 JSON/HTML import/export, N26 CSV/JSON export + filtered delete, N27 retention |
 | Downloads | N28 sort/filter, N29 multi-select, N30 speed, N32 Wi-Fi-only queue + override, N34 size/SHA-256, N35 real global content defaults |
 | Site data/privacy | N36 origin storage manager, N37 timed permission removal, N38 strict HTTPS + listed exceptions, N40 Safe Browsing guard, N41 narrowed DNT claim, N42 site favicon, N43 backup exclusion, N44 unsupported permissions labelled, N45 real global defaults, N46 notification permission consumer, N47 one permission default |
-| Autofill | N48 list/reveal/delete (search/edit still missing), N49 device-credential unlock, N50 in-app-only explanation, N51 forms toggle, N52 no dead payment toggle, N53 passkey explanation, N54 weak/duplicate warning |
+| Autofill | N48 list/search/edit/reveal/delete, N49 device-credential unlock, N50 in-app-only explanation, N51 forms toggle, N52 no dead payment toggle, N53 passkey explanation, N54 weak/duplicate warning |
 | Media/input/a11y | N55 activity-level PiP for audible tabs (API 26+), N57 autoplay via global site setting, N59 keyboard shortcuts, N61 RTL enabled audited structurally, N63 native error strings |
 
 ### Remaining / partial
@@ -348,7 +348,6 @@ and compiling, not device-verified.
 | N31 | Resume-all/retry-all queue actions not added |
 | N33 | Open-containing-folder/open-with not added |
 | N39 | Certificate trusting is never allowed; HTTPS exceptions are managed instead. A separate TLS certificate store does not exist |
-| N48 | Saved-login list/reveal/delete; search and edit still missing |
 | N55 | PiP shows the active tab, not a cropped video surface; play/pause uses the page controls |
 | N60 | Portal honours `prefers-reduced-motion`; no native high-contrast toggle |
 | N22, N65 | Deliberately deferred (L-sized) |

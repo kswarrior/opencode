@@ -691,6 +691,16 @@ example.com##.ad-banner</string>
     <string name="saved_logins_password">%1$s\n%2$s</string>
     <string name="saved_logins_reveal">Show password</string>
     <string name="saved_logins_delete">Delete login</string>
+    <string name="saved_logins_search">Search saved logins</string>
+    <string name="saved_logins_search_summary">Find a saved login by site, name or username</string>
+    <string name="saved_logins_search_hint">Site, name or username</string>
+    <string name="saved_logins_search_empty">No saved logins match that search.</string>
+    <string name="saved_logins_search_action">Search</string>
+    <string name="saved_logins_edit">Edit login</string>
+    <string name="saved_logins_edit_username">Edit username</string>
+    <string name="saved_logins_edit_password">New password</string>
+    <string name="saved_logins_username_hint">Username</string>
+    <string name="saved_logins_password_hint">Leave blank to keep the current password</string>
     <string name="saved_logins_unlock">Unlock to view password</string>
     <string name="saved_logins_cleared">Saved passwords were cleared because the encryption key changed</string>
     <string name="downloads_filter">Sort and filter downloads</string>
