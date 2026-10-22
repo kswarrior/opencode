@@ -37,6 +37,9 @@ public class TopSitesActivity extends Activity {
         for (int i = 0; i < sites.size(); i++) {
             addSiteRow(sites.get(i), i);
         }
+        if (sites.size() >= 12) {
+            return;
+        }
         View add = inflater.inflate(R.layout.item_top_site, list, false);
         TextView badge = add.findViewById(R.id.topSiteBadge);
         TextView name = add.findViewById(R.id.topSiteName);
