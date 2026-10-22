@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_menu_item"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="50dp"
+    android:orientation="horizontal"
+    android:paddingStart="12dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/ksMenuIcon"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="14dp"
+        android:alpha="0.9"
+        android:contentDescription="@null"
+        android:importantForAccessibility="no"
+        android:tint="@color/ks_text" />
+
+    <TextView
+        android:id="@+id/ksMenuLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/ks_text"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/ksMenuCheck"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="10dp"
+        android:contentDescription="@null"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_check_dark"
+        android:tint="@color/ks_accent"
+        android:visibility="gone" />
+</LinearLayout>

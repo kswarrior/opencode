@@ -326,6 +326,54 @@ final class KsDialog {
         present(sheet, false);
     }
 
+    static void menu(final Activity activity, int titleRes, final int[] ids,
+                     int[] labelRes, int[] iconRes, int checkedIndex,
+                     final ChoiceAction action) {
+        if (!canShow(activity) || ids == null || labelRes == null
+                || ids.length == 0 || ids.length != labelRes.length) {
+            return;
+        }
+        CharSequence title = titleRes == 0 ? null : activity.getString(titleRes);
+        final Sheet sheet = createSheet(activity, title, null, R.string.dialog_close, 0, false);
+        if (sheet == null) {
+            return;
+        }
+        LayoutInflater inflater = LayoutInflater.from(activity);
+        for (int i = 0; i < ids.length; i++) {
+            final int index = i;
+            View row = inflater.inflate(R.layout.item_ks_menu, sheet.body, false);
+            ImageView icon = row.findViewById(R.id.ksMenuIcon);
+            TextView label = row.findViewById(R.id.ksMenuLabel);
+            ImageView check = row.findViewById(R.id.ksMenuCheck);
+            label.setText(labelRes[i]);
+            row.setContentDescription(activity.getString(labelRes[i]));
+            if (iconRes == null || i >= iconRes.length || iconRes[i] == 0) {
+                icon.setVisibility(View.GONE);
+            } else {
+                icon.setImageResource(iconRes[i]);
+            }
+            check.setVisibility(i == checkedIndex ? View.VISIBLE : View.GONE);
+            row.setSelected(i == checkedIndex);
+            row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sheet.dialog.dismiss();
+                    if (action != null) {
+                        action.run(index);
+                    }
+                }
+            });
+            addBody(sheet, row);
+        }
+        sheet.negative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheet.dialog.dismiss();
+            }
+        });
+        present(sheet, false);
+    }
+
     private static Sheet createSheet(Activity activity, CharSequence title, CharSequence message,
                                      int negativeRes, int positiveRes, boolean danger) {
         if (!canShow(activity)) {
