@@ -221,6 +221,11 @@ public class MainActivity extends Activity {
     private ListPopupWindow suggestionPopup;
     private ArrayAdapter<String> suggestionAdapter;
     private final List<String> suggestionUrls = new ArrayList<String>();
+    private final LinkedHashMap<String, String> suggestionLabels =
+            new LinkedHashMap<String, String>();
+    private final Handler suggestionHandler = new Handler(Looper.getMainLooper());
+    private Runnable suggestionFetch;
+    private int suggestionGeneration;
     private boolean updatingUrlBar;
     private BroadcastReceiver mediaReceiver;
     private boolean activityResumed;
@@ -2822,12 +2827,19 @@ public class MainActivity extends Activity {
             } catch (org.json.JSONException ignored) {
             }
         }
-        if (matches.isEmpty()) {
+        if (!matches.isEmpty()) {
+            renderSuggestionMatches(matches);
+        } else {
             hideSuggestions();
-            return;
         }
+        requestRemoteSuggestions(query);
+    }
+
+    private void renderSuggestionMatches(LinkedHashMap<String, String> matches) {
         suggestionUrls.clear();
         suggestionUrls.addAll(matches.keySet());
+        suggestionLabels.clear();
+        suggestionLabels.putAll(matches);
         if (suggestionPopup == null) {
             suggestionPopup = new ListPopupWindow(this);
             suggestionPopup.setAnchorView(urlBar);
@@ -2864,6 +2876,46 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void requestRemoteSuggestions(final String query) {
+        if (!SuggestionProvider.enabled(this) || query.length() < 2) {
+            return;
+        }
+        final int generation = ++suggestionGeneration;
+        if (suggestionFetch != null) {
+            suggestionHandler.removeCallbacks(suggestionFetch);
+        }
+        suggestionFetch = new Runnable() {
+            @Override
+            public void run() {
+                SuggestionProvider.fetch(MainActivity.this, query,
+                        new SuggestionProvider.Callback() {
+                            @Override
+                            public void onSuggestions(List<String> suggestions) {
+                                if (generation != suggestionGeneration
+                                        || urlBar == null || !urlBar.hasFocus()
+                                        || !query.equals(urlBar.getText().toString().trim())) {
+                                    return;
+                                }
+                                LinkedHashMap<String, String> combined =
+                                        new LinkedHashMap<String, String>(suggestionLabels);
+                                for (String suggestion : suggestions) {
+                                    if (combined.size() >= 10) {
+                                        break;
+                                    }
+                                    if (!combined.containsKey(suggestion)) {
+                                        combined.put(suggestion, suggestion);
+                                    }
+                                }
+                                if (!combined.isEmpty()) {
+                                    renderSuggestionMatches(combined);
+                                }
+                            }
+                        });
+            }
+        };
+        suggestionHandler.postDelayed(suggestionFetch, 250);
+    }
+
     private void selectSuggestion(int position) {
         if (suggestionPopup == null) {
             return;
@@ -2877,6 +2929,12 @@ public class MainActivity extends Activity {
     }
 
     private void hideSuggestions() {
+        suggestionGeneration++;
+        if (suggestionFetch != null) {
+            suggestionHandler.removeCallbacks(suggestionFetch);
+            suggestionFetch = null;
+        }
+        suggestionLabels.clear();
         if (suggestionPopup != null && suggestionPopup.isShowing()) {
             suggestionPopup.dismiss();
         }
