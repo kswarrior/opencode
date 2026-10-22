@@ -190,7 +190,7 @@ public class SettingsActivity extends Activity {
 
     private void refreshValues() {
         String engine = SearchEngine.getKey(this);
-        searchEngineValue.setText(getString(SearchEngine.labelRes(engine)));
+        searchEngineValue.setText(SearchEngine.label(this, engine));
         aiModeValue.setText(getString(AiModeEngine.labelRes(AiModeEngine.getKey(this))));
         adBlockerValue.setText(AdBlocker.isEnabled(this)
                 ? R.string.adblocker_on : R.string.adblocker_off);
