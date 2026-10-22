@@ -1,8 +1,6 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -245,22 +243,19 @@ public class HistoryActivity extends Activity {
     }
 
     private void confirmDeleteHistory() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.history_delete_all_title)
-                .setMessage(R.string.history_delete_all_message)
-                .setPositiveButton(R.string.history_delete,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                expandedCategories.clear();
-                                repository.clear();
-                                refreshList();
-                                Toast.makeText(HistoryActivity.this,
-                                        R.string.history_deleted, Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                .setNegativeButton(R.string.history_cancel, null)
-                .show();
+        KsDialog.confirmDanger(this, R.string.history_delete_all_title,
+                getString(R.string.history_delete_all_message),
+                R.string.history_cancel, R.string.history_delete,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        expandedCategories.clear();
+                        repository.clear();
+                        refreshList();
+                        Toast.makeText(HistoryActivity.this,
+                                R.string.history_deleted, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void showCategoryMenu(View anchor, final Category category) {
@@ -316,21 +311,18 @@ public class HistoryActivity extends Activity {
 
     private void confirmDeleteCategory(final Category category) {
         int count = category.entries.size();
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.history_delete_category_title)
-                .setMessage(getResources().getQuantityString(
-                        R.plurals.history_delete_category_message, count, count, category.title))
-                .setPositiveButton(R.string.history_delete,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                expandedCategories.remove(category.key);
-                                repository.removeAll(category.entries);
-                                refreshList();
-                            }
-                        })
-                .setNegativeButton(R.string.history_cancel, null)
-                .show();
+        KsDialog.confirmDanger(this, R.string.history_delete_category_title,
+                getResources().getQuantityString(
+                        R.plurals.history_delete_category_message, count, count, category.title),
+                R.string.history_cancel, R.string.history_delete,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        expandedCategories.remove(category.key);
+                        repository.removeAll(category.entries);
+                        refreshList();
+                    }
+                });
     }
 
     private void addBookmark(String name, String url) {

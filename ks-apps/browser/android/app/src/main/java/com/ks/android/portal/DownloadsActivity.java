@@ -1,14 +1,13 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ClipData;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -352,29 +350,18 @@ public class DownloadsActivity extends Activity {
     }
 
     private void renameItem(final DownloadItem item) {
-        final EditText input = new EditText(this);
-        input.setSingleLine(true);
-        input.setText(item.fileName);
-        input.setSelection(input.getText().length());
-        FrameLayout container = new FrameLayout(this);
-        int padding = Math.round(20 * getResources().getDisplayMetrics().density);
-        container.setPadding(padding, padding / 2, padding, 0);
-        container.addView(input, new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.download_rename_title)
-                .setView(container)
-                .setPositiveButton(R.string.download_rename, new DialogInterface.OnClickListener() {
+        KsDialog.input(this, R.string.download_rename_title, item.fileName, 0,
+                R.string.download_rename, InputType.TYPE_CLASS_TEXT,
+                new KsDialog.TextAction() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String name = input.getText().toString().trim();
+                    public boolean onSubmit(String value) {
+                        String name = value.trim();
                         if (!repository.rename(item.id, name)) {
                             toast(getString(R.string.download_rename_failed));
                         }
+                        return true;
                     }
-                })
-                .setNegativeButton(R.string.download_cancel, null)
-                .show();
+                });
     }
 
     private Uri contentUriFor(DownloadItem item) {
@@ -404,17 +391,15 @@ public class DownloadsActivity extends Activity {
     }
 
     private void confirmDelete(final DownloadItem item) {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.download_delete_title)
-                .setMessage(getString(R.string.download_delete_message, item.fileName))
-                .setPositiveButton(R.string.download_delete, new DialogInterface.OnClickListener() {
+        KsDialog.confirmDanger(this, R.string.download_delete_title,
+                getString(R.string.download_delete_message, item.fileName),
+                R.string.download_cancel, R.string.download_delete,
+                new KsDialog.Action() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void run() {
                         repository.delete(item.id);
                     }
-                })
-                .setNegativeButton(R.string.download_cancel, null)
-                .show();
+                });
     }
 
     private void toast(String message) {
