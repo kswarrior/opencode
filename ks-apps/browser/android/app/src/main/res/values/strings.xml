@@ -411,6 +411,14 @@ example.com##.ad-banner</string>
     <string name="notification_update_text">Version %1$s is now installed</string>
     <string name="notification_tip_title">KS Portal tip</string>
     <string name="notification_tip_text">Tap the floating button to show or hide the toolbar.</string>
+    <string name="file_chooser_title">Choose a file</string>
+    <string name="permission_camera_title">Use the camera?</string>
+    <string name="permission_microphone_title">Use the microphone?</string>
+    <string name="permission_location_title">Share your location?</string>
+    <string name="permission_site_message">Allow %1$s to use this permission? You can change this later in Site settings.</string>
+    <string name="permission_allow">Allow</string>
+    <string name="permission_block">Block</string>
+    <string name="popup_blocked">Pop-up blocked</string>
     <string name="settings_default_browser">Default browser</string>
     <string name="settings_default_browser_summary">Open links from other apps with KS Portal</string>
     <string name="settings_coming_soon">Coming soon</string>

@@ -485,6 +485,9 @@ final class AdBlockListStore {
                             list.urls[i], i == 0 ? etag : null,
                             i == 0 ? lastModified : null, target.exists());
                     if (source.notModified) {
+                        if (multiSource) {
+                            throw new IOException("Unexpected not-modified source");
+                        }
                         ok++;
                         continue;
                     }
@@ -494,6 +497,9 @@ final class AdBlockListStore {
                     }
                     combined.write(bytes);
                     combined.write('\n');
+                    newEtag = source.etag;
+                    newModified = source.lastModified;
+                    headersKnown = true;
                     ok++;
                 } catch (IOException exception) {
                     if (firstError == null) {
@@ -501,7 +507,7 @@ final class AdBlockListStore {
                     }
                 }
             }
-            if (ok == 0) {
+            if (ok != list.urls.length) {
                 throw firstError == null ? new IOException("Filter list failed") : firstError;
             }
             if (combined.size() == 0) {
@@ -529,9 +535,21 @@ final class AdBlockListStore {
             if (!temporary.renameTo(target)) {
                 throw new IOException("Could not save filter list");
             }
-            preferences(context).edit()
-                    .putInt(COUNT_PREFIX + list.id, countRules(text))
-                    .apply();
+            SharedPreferences.Editor editor = preferences(context).edit()
+                    .putInt(COUNT_PREFIX + list.id, countRules(text));
+            if (headersKnown) {
+                if (newEtag != null && newEtag.length() > 0) {
+                    editor.putString(ETAG_PREFIX + list.id, newEtag);
+                } else {
+                    editor.remove(ETAG_PREFIX + list.id);
+                }
+                if (newModified != null && newModified.length() > 0) {
+                    editor.putString(MODIFIED_PREFIX + list.id, newModified);
+                } else {
+                    editor.remove(MODIFIED_PREFIX + list.id);
+                }
+            }
+            editor.apply();
             return true;
         } finally {
             if (temporary.exists()) {
@@ -543,16 +561,20 @@ final class AdBlockListStore {
     private static final class SourceResult {
         final byte[] bytes;
         final boolean notModified;
+        final String etag;
+        final String lastModified;
 
-        SourceResult(byte[] bytes, boolean notModified) {
+        SourceResult(byte[] bytes, boolean notModified, String etag, String lastModified) {
             this.bytes = bytes;
             this.notModified = notModified;
+            this.etag = etag;
+            this.lastModified = lastModified;
         }
     }
 
-    private static SourceResult downloadSource(Context context, String listId,
-                                               String address, String etag,
-                                               String lastModified, boolean cached)
+    private static SourceResult downloadSource(Context context, String address,
+                                               String etag, String lastModified,
+                                               boolean cached)
             throws IOException {
         HttpURLConnection connection = null;
         try {
@@ -581,18 +603,6 @@ final class AdBlockListStore {
             }
             String newEtag = connection.getHeaderField("ETag");
             String newModified = connection.getHeaderField("Last-Modified");
-            SharedPreferences.Editor headers = preferences(context).edit();
-            if (newEtag != null && newEtag.length() > 0) {
-                headers.putString(ETAG_PREFIX + listId, newEtag);
-            } else {
-                headers.remove(ETAG_PREFIX + listId);
-            }
-            if (newModified != null && newModified.length() > 0) {
-                headers.putString(MODIFIED_PREFIX + listId, newModified);
-            } else {
-                headers.remove(MODIFIED_PREFIX + listId);
-            }
-            headers.apply();
             int length = connection.getContentLength();
             if (length > MAX_LIST_BYTES) {
                 throw new IOException("Filter list too large");

@@ -335,6 +335,7 @@ public class MainActivity extends Activity {
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
+        settings.setSupportMultipleWindows(true);
         settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/"
                 + AppInfo.versionName(this));
         if (defaultUserAgent == null) {
