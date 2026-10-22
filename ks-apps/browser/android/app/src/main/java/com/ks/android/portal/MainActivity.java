@@ -840,8 +840,7 @@ public class MainActivity extends Activity {
                         SiteSettingsStore.KEY_POPUPS, false);
                 if (!allow || AdBlocker.pagePolicy(MainActivity.this,
                         pageUrl).popupBlockSuggested) {
-                    Toast.makeText(MainActivity.this, R.string.popup_blocked,
-                            Toast.LENGTH_SHORT).show();
+                    KsToast.show(MainActivity.this, R.string.popup_blocked);
                     return false;
                 }
                 BrowserTab created = tabManager.addTab("about:blank", 0);
@@ -872,8 +871,7 @@ public class MainActivity extends Activity {
                 }
                 BrowserTab active = tabManager.getActiveTab();
                 if (active != null && privateTabs.contains(active.id)) {
-                    Toast.makeText(MainActivity.this, R.string.private_download_blocked,
-                            Toast.LENGTH_SHORT).show();
+                    KsToast.show(MainActivity.this, R.string.private_download_blocked);
                     return;
                 }
                 if (url.startsWith("data:")) {
@@ -1050,8 +1048,7 @@ public class MainActivity extends Activity {
                                  final long contentLength) {
         BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
         if (active != null && privateTabs.contains(active.id)) {
-            Toast.makeText(this, R.string.private_download_blocked,
-                    Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.private_download_blocked);
             return;
         }
         if (url.regionMatches(true, 0, "http://", 0, 7)
@@ -1148,11 +1145,10 @@ public class MainActivity extends Activity {
         if (item.status == DownloadItem.STATUS_FAILED) {
             String message = TextUtils.isEmpty(item.error)
                     ? getString(R.string.download_start_failed) : item.error;
-            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+            KsToast.show(MainActivity.this, message, Toast.LENGTH_LONG);
         } else {
-            Toast.makeText(MainActivity.this,
-                    getString(R.string.download_started, item.fileName),
-                    Toast.LENGTH_SHORT).show();
+            KsToast.show(MainActivity.this,
+                    getString(R.string.download_started, item.fileName));
         }
     }
 
@@ -1199,8 +1195,7 @@ public class MainActivity extends Activity {
                     pendingDownloadDisposition, pendingDownloadMime, pendingDownloadLength,
                     pendingDownloadReferer);
         } else {
-            Toast.makeText(this, R.string.storage_permission_needed,
-                    Toast.LENGTH_LONG).show();
+            KsToast.show(this, R.string.storage_permission_needed, Toast.LENGTH_LONG);
         }
         pendingDownloadUrl = null;
         pendingDownloadUserAgent = null;
@@ -2072,7 +2067,7 @@ public class MainActivity extends Activity {
         }
         int comma = dataUrl.indexOf(',');
         if (comma < 0 || comma == dataUrl.length() - 1) {
-            Toast.makeText(this, R.string.download_start_failed, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.download_start_failed);
             return false;
         }
         String meta = dataUrl.substring(5, comma);
@@ -2086,7 +2081,7 @@ public class MainActivity extends Activity {
                         .getBytes(java.nio.charset.Charset.forName("UTF-8"));
             }
         } catch (Exception exception) {
-            Toast.makeText(this, R.string.download_start_failed, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.download_start_failed);
             return false;
         }
         String resolvedMime = TextUtils.isEmpty(mimeType)
@@ -2104,11 +2099,10 @@ public class MainActivity extends Activity {
         DownloadItem item = repository.saveBytes(bytes, resolvedName, resolvedMime,
                 currentUrl);
         if (item == null || item.status == DownloadItem.STATUS_FAILED) {
-            Toast.makeText(this, R.string.download_start_failed, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.download_start_failed);
             return false;
         }
-        Toast.makeText(this, getString(R.string.download_started, item.fileName),
-                Toast.LENGTH_SHORT).show();
+        KsToast.show(this, getString(R.string.download_started, item.fileName));
         return true;
     }
 
@@ -2226,7 +2220,7 @@ public class MainActivity extends Activity {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard != null) {
             clipboard.setPrimaryClip(ClipData.newPlainText("URL", text));
-            Toast.makeText(this, R.string.url_copied, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.url_copied);
         }
     }
 
@@ -2244,7 +2238,7 @@ public class MainActivity extends Activity {
         }
         if (BookmarkRepository.contains(this, url)) {
             if (BookmarkRepository.remove(this, url)) {
-                Toast.makeText(this, R.string.bookmark_removed, Toast.LENGTH_SHORT).show();
+                KsToast.show(this, R.string.bookmark_removed);
             }
             return;
         }
@@ -2255,7 +2249,7 @@ public class MainActivity extends Activity {
                 ? R.string.tabs_bookmark_added
                 : result == BookmarkRepository.EXISTS
                 ? R.string.tabs_bookmark_exists : R.string.tabs_bookmark_failed;
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        KsToast.show(this, message);
     }
 
     private void openDownloadsPage() {
@@ -2322,7 +2316,7 @@ public class MainActivity extends Activity {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard != null) {
             clipboard.setPrimaryClip(ClipData.newPlainText("URL", currentUrl));
-            Toast.makeText(this, R.string.url_copied, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.url_copied);
         }
     }
 
@@ -2330,7 +2324,7 @@ public class MainActivity extends Activity {
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(currentUrl)));
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, R.string.no_app_found, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.no_app_found);
         }
     }
 
@@ -2495,7 +2489,7 @@ public class MainActivity extends Activity {
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, R.string.no_app_found, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.no_app_found);
         }
         return true;
     }
@@ -2707,8 +2701,7 @@ public class MainActivity extends Activity {
                             @Override
                             public void onSave(String savedUsername, String savedPassword) {
                                 store.save(siteName, url, savedUsername, savedPassword);
-                                Toast.makeText(MainActivity.this, R.string.login_saved,
-                                        Toast.LENGTH_SHORT).show();
+                                KsToast.show(MainActivity.this, R.string.login_saved);
                             }
 
                             @Override
@@ -3020,8 +3013,7 @@ public class MainActivity extends Activity {
                 return false;
             }
             if (privateTabs.contains(tabId)) {
-                Toast.makeText(MainActivity.this, R.string.private_download_blocked,
-                        Toast.LENGTH_SHORT).show();
+                KsToast.show(MainActivity.this, R.string.private_download_blocked);
                 return false;
             }
             return saveDataUrl(dataUrl, name, mimeType);
