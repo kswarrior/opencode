@@ -51,12 +51,9 @@ javac -source 8 -target 8 -Xlint:-options \
 # 6. Align
 "$BT/zipalign" -f -p 4 "$OUT/base.apk" "$OUT/aligned.apk"
 
-# 7. Sign with the debug keystore (create it once if missing)
-KEYSTORE="$HOME/.android/debug.keystore"
-[ -f "$KEYSTORE" ] || keytool -genkeypair -keystore "$KEYSTORE" \
-  -storepass android -keypass android -alias androiddebugkey \
-  -keyalg RSA -keysize 2048 -validity 10000 \
-  -dname "CN=Android Debug,O=Android,C=US" -noprompt
+# 7. Sign with the committed release keystore
+KEYSTORE="release/ks-portal-release.keystore"
+[ -f "$KEYSTORE" ] || { echo "Missing $KEYSTORE - never generate a new key"; exit 1; }
 
 "$BT/apksigner" sign \
   --ks "$KEYSTORE" --ks-pass pass:android --key-pass pass:android \
@@ -82,4 +79,5 @@ unzip -l "$OUT/signed.apk" | grep -E "classes.dex|portal.html|resources.arsc"
 - Keep `-source 8 -target 8` for javac and `--min-api 21` for d8 to match `minSdkVersion 21`.
 - If `zip` is unavailable, run `"$BT/aapt" add "$OUT/base.apk" classes.dex` from inside `build/dex` instead of step 5.
 - Update the artifact as `release/ks-portal_<versionName>.apk` (plus the `.idsig`). `versionName`/`versionCode` live in `app/src/main/AndroidManifest.xml:4-5`; bump both together.
+- `release/ks-portal-release.keystore` is the permanent signing key (storepass/keypass `android`, alias `androiddebugkey`). Never delete, regenerate, or replace it, and never sign with `~/.android/debug.keystore`: Android only updates an installed app when the certificate matches, so a changed key forces users to uninstall.
 - When only resources changed, steps 1-7 still run fine and are cheap (a few seconds); there is no incremental cache worth maintaining.
