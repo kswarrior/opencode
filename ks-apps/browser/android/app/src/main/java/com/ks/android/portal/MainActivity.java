@@ -1126,7 +1126,7 @@ public class MainActivity extends Activity {
             @Override
             public void onDownloadStart(String url, String userAgent, String contentDisposition,
                                         String mimeType, long contentLength) {
-                if (TextUtils.isEmpty(url)) {
+                if (TextUtils.isEmpty(url) || pendingPopups.containsKey(tab.id)) {
                     return;
                 }
                 BrowserTab active = tabManager.getActiveTab();

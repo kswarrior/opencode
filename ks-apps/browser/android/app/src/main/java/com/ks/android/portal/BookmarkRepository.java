@@ -95,7 +95,7 @@ final class BookmarkRepository {
             items.put(item);
             write(context, items);
             if (folderId != ROOT && findFolder(context, folderId) != null) {
-                setAssignment(context, normalized, folderId);
+                putAssignment(context, normalized, folderId);
             }
             return ADDED;
         }
@@ -158,7 +158,7 @@ final class BookmarkRepository {
                 int folder = assignmentFor(context, normalizedOld);
                 clearAssignment(context, normalizedOld);
                 if (folder != ROOT) {
-                    setAssignment(context, normalizedNew, folder);
+                    putAssignment(context, normalizedNew, folder);
                 }
             }
             return true;
@@ -498,7 +498,7 @@ final class BookmarkRepository {
                 .edit().putString(KEY_ASSIGN, assignments.toString()).apply();
     }
 
-    private static void setAssignment(Context context, String url, int folderId) {
+    private static void putAssignment(Context context, String url, int folderId) {
         JSONObject assignments = assignments(context);
         try {
             assignments.put(url, folderId);
