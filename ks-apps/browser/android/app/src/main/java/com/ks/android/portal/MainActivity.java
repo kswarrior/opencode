@@ -22,6 +22,7 @@ import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
 import android.security.KeyChain;
@@ -83,7 +84,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -148,7 +148,6 @@ public class MainActivity extends Activity {
     private boolean loginDialogVisible;
     private final Map<WebView, String> secureFallbacks = new HashMap<WebView, String>();
     private final Map<WebView, View> errorOverlays = new HashMap<WebView, View>();
-    private final ArrayDeque<ClosedTab> recentClosedTabs = new ArrayDeque<ClosedTab>();
     private final Set<WebView> cacheBypassReloads =
             Collections.newSetFromMap(new WeakHashMap<WebView, Boolean>());
     private static final int REQUEST_NOTIFICATIONS = 2002;
@@ -176,10 +175,13 @@ public class MainActivity extends Activity {
     private HttpAuthHandler pendingHttpAuthHandler;
     private ClientCertRequest pendingClientCertRequest;
 
+    private final Map<Integer, Boolean> appliedMuteState = new HashMap<Integer, Boolean>();
+
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
         public void onTabsChanged() {
             syncActiveTab();
+            applyMuteStates();
         }
     };
 
@@ -312,6 +314,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onPause() {
+        saveTabHistories();
         for (WebView tabView : tabViews.values()) {
             tabView.onPause();
         }
@@ -466,6 +469,7 @@ public class MainActivity extends Activity {
                     injectWebAssist(current, url);
                 }
                 injectAdBlock(current, url);
+                injectAudioWatcher(current, tab);
                 if (isActiveTab(tab)) {
                     progressBar.setVisibility(View.GONE);
                     updateChrome(url);
@@ -1095,6 +1099,57 @@ public class MainActivity extends Activity {
         return tab != null && tabManager.getActiveTabId() == tab.id;
     }
 
+    private void saveTabHistories() {
+        SharedPreferences preferences = getSharedPreferences("ks_tab_history", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
+            int tabId = entry.getKey().intValue();
+            if (tabManager != null && tabManager.isPrivate(tabId)) {
+                editor.remove("h" + tabId);
+                continue;
+            }
+            try {
+                Bundle state = new Bundle();
+                if (entry.getValue().saveState(state) == null) {
+                    continue;
+                }
+                Parcel parcel = Parcel.obtain();
+                try {
+                    parcel.writeBundle(state);
+                    editor.putString("h" + tabId, Base64.encodeToString(
+                            parcel.marshall(), Base64.NO_WRAP));
+                } finally {
+                    parcel.recycle();
+                }
+            } catch (RuntimeException ignored) {
+            }
+        }
+        editor.apply();
+    }
+
+    private boolean restoreTabHistory(WebView view, BrowserTab tab) {
+        if (tab == null || tabManager.isPrivate(tab.id)) {
+            return false;
+        }
+        String raw = getSharedPreferences("ks_tab_history", MODE_PRIVATE)
+                .getString("h" + tab.id, null);
+        if (TextUtils.isEmpty(raw)) {
+            return false;
+        }
+        Parcel parcel = Parcel.obtain();
+        try {
+            byte[] data = Base64.decode(raw, Base64.NO_WRAP);
+            parcel.unmarshall(data, 0, data.length);
+            parcel.setDataPosition(0);
+            Bundle state = parcel.readBundle(WebView.class.getClassLoader());
+            return state != null && view.restoreState(state) != null;
+        } catch (RuntimeException ignored) {
+            return false;
+        } finally {
+            parcel.recycle();
+        }
+    }
+
     private void syncActiveTab() {
         if (webContainer == null) {
             return;
@@ -1115,7 +1170,9 @@ public class MainActivity extends Activity {
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             tab.loading = true;
             tab.progress = 0;
-            loadUrlWithSettings(view, TextUtils.isEmpty(tab.url) ? HOME_URL : tab.url);
+            if (!restoreTabHistory(view, tab)) {
+                loadUrlWithSettings(view, TextUtils.isEmpty(tab.url) ? HOME_URL : tab.url);
+            }
         }
         for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
             entry.getValue().setVisibility(entry.getKey().intValue() == tab.id
@@ -1244,6 +1301,9 @@ public class MainActivity extends Activity {
             closed.destroy();
             clearPrivateTabData(tabId);
             privateTabs.remove(tabId);
+            appliedMuteState.remove(tabId);
+            getSharedPreferences("ks_tab_history", MODE_PRIVATE).edit()
+                    .remove("h" + tabId).apply();
             cacheBypassReloads.remove(closed);
             iterator.remove();
         }
@@ -3591,6 +3651,14 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void setAudible(boolean audible) {
+            if (privateTabs.contains(tabId)) {
+                return;
+            }
+            tabManager.setAudible(tabId, audible);
+        }
+
+        @JavascriptInterface
         public boolean showSiteNotification(String title, String body, String url) {
             if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)) {
                 return false;
@@ -3936,29 +4004,63 @@ public class MainActivity extends Activity {
         return super.dispatchKeyEvent(event);
     }
 
+    private void injectAudioWatcher(WebView view, BrowserTab tab) {
+        if (view == null) {
+            return;
+        }
+        String script = "(function(){if(window.__ksAudioWatch){return;}window.__ksAudioWatch=1;"
+                + "function report(){var playing=false;var items=document.querySelectorAll('audio,video');"
+                + "for(var i=0;i<items.length;i++){var m=items[i];"
+                + "if(window.__ksMuted){m.muted=true;}"
+                + "if(!m.paused&&!m.ended&&m.readyState>2){playing=true;}}"
+                + "if(playing!==window.__ksAudible){window.__ksAudible=playing;"
+                + "try{KSPortalWeb.setAudible(playing);}catch(e){}}}"
+                + "setInterval(report,1000);report();})();";
+        view.evaluateJavascript(script, null);
+        appliedMuteState.remove(tab.id);
+        applyMuteState(tab);
+    }
+
+    private void applyMuteState(BrowserTab tab) {
+        if (tab == null) {
+            return;
+        }
+        WebView view = tabViews.get(tab.id);
+        Boolean applied = appliedMuteState.get(tab.id);
+        if (view == null || (applied != null && applied.booleanValue() == tab.muted)) {
+            return;
+        }
+        appliedMuteState.put(tab.id, Boolean.valueOf(tab.muted));
+        String script = tab.muted
+                ? "(function(){window.__ksMuted=true;var i=document.querySelectorAll('audio,video');"
+                + "for(var n=0;n<i.length;n++){i[n].muted=true;}})();"
+                : "(function(){window.__ksMuted=false;})();";
+        view.evaluateJavascript(script, null);
+    }
+
+    private void applyMuteStates() {
+        if (tabManager == null) {
+            return;
+        }
+        for (BrowserTab tab : tabManager.getTabs()) {
+            applyMuteState(tab);
+        }
+    }
+
     private void closeActiveTab() {
         BrowserTab tab = tabManager.getActiveTab();
         if (tab == null) {
             return;
-        }
-        if (!tabManager.isPrivate(tab.id)) {
-            recentClosedTabs.push(new ClosedTab(tab.url, tab.title, tab.groupId));
-            while (recentClosedTabs.size() > 10) {
-                recentClosedTabs.removeLast();
-            }
         }
         tabManager.closeTab(tab.id);
         syncActiveTab();
     }
 
     private void reopenClosedTab() {
-        ClosedTab closed = recentClosedTabs.poll();
-        if (closed == null) {
+        if (tabManager.reopenLastClosed() == null) {
             KsToast.show(this, R.string.tool_no_closed_tabs);
             return;
         }
-        BrowserTab tab = tabManager.addTab(closed.url, closed.groupId);
-        tab.title = closed.title == null ? "" : closed.title;
         syncActiveTab();
     }
 
@@ -3976,18 +4078,6 @@ public class MainActivity extends Activity {
         KsToast.show(this, soundOn ? R.string.tool_site_muted
                 : R.string.tool_site_unmuted);
         webView.reload();
-    }
-
-    private static final class ClosedTab {
-        final String url;
-        final String title;
-        final int groupId;
-
-        ClosedTab(String url, String title, int groupId) {
-            this.url = url;
-            this.title = title;
-            this.groupId = groupId;
-        }
     }
 
     @Override
