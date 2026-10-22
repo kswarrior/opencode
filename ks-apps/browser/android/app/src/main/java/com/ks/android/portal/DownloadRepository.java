@@ -513,13 +513,14 @@ public class DownloadRepository {
             boolean hls = HlsPlaylist.isHls(item.url, item.mimeType);
             if (hls) {
                 cleanName = withExtension(cleanName, ".mp4");
-                item.mimeType = "video/mp4";
                 item.totalBytes = 0;
             }
             if (cleanName.isEmpty()) {
                 cleanName = "download";
             }
-            item.mimeType = mimeTypeForName(cleanName, item.mimeType);
+            if (!hls) {
+                item.mimeType = mimeTypeForName(cleanName, item.mimeType);
+            }
 
             if (!ensureFolderLocked(item.relativePath)) {
                 item.fileName = cleanName;

@@ -49,14 +49,14 @@ final class HlsPlaylist {
             }
             if (bandwidth > 0) {
                 if (builder.length() > 0) {
-                    builder.append(" · ");
+                    builder.append(" - ");
                 }
                 builder.append(String.format(Locale.US, "%.1f Mbps",
                         bandwidth / 1000000f));
             }
             if (!TextUtils.isEmpty(codecs)) {
                 if (builder.length() > 0) {
-                    builder.append(" · ");
+                    builder.append(" - ");
                 }
                 builder.append(codecs);
             }

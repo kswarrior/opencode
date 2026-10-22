@@ -244,17 +244,14 @@ final class VideoSniffer {
         if (isAudioExtension(extension)) {
             return "audio";
         }
-        if (path != null && path.toLowerCase(Locale.US).contains("/videoplayback")) {
-            return "video";
-        }
         String query = uri.getQuery();
         if (!TextUtils.isEmpty(query)) {
             String decoded = Uri.decode(query).toLowerCase(Locale.US);
-            if (decoded.contains("mime=video/") || decoded.contains("mime=video%2f")) {
-                return "video";
-            }
             if (decoded.contains("mime=audio/") || decoded.contains("mime=audio%2f")) {
                 return "audio";
+            }
+            if (decoded.contains("mime=video/") || decoded.contains("mime=video%2f")) {
+                return "video";
             }
             if (decoded.contains("format=m3u8") || decoded.contains("protocol=m3u8")
                     || decoded.contains("type=m3u8")) {
@@ -263,6 +260,9 @@ final class VideoSniffer {
             if (decoded.contains("format=mpd") || decoded.contains("protocol=mpd")) {
                 return "dash";
             }
+        }
+        if (path != null && path.toLowerCase(Locale.US).contains("/videoplayback")) {
+            return "video";
         }
         return null;
     }
