@@ -128,7 +128,7 @@ final class PageAssist {
                 + "if((st.position==='fixed'||st.position==='sticky')"
                 + "&&parseInt(st.zIndex||'0',10)>=10){var r=el.getBoundingClientRect();"
                 + "if(r.width>40&&r.height>30)hide(el);}}"
-                + "window.__ksQuiet=hidden;return hidden.length?'on':'none';"
+                + "window.__ksQuiet=hidden;return hidden.length?('on:'+hidden.length):'none';"
                 + "}catch(e){return 'error';}})();";
     }
 
@@ -174,6 +174,20 @@ final class PageAssist {
                 + "mark.style.cssText='background:rgba(255,214,10,.35);color:inherit;"
                 + "border-radius:2px;padding:0 1px;';try{range.surroundContents(mark);made++;}"
                 + "catch(e){}break;}}}catch(e){}})();";
+    }
+
+    static String extractSpeechScript() {
+        return "(function(){try{var sel='';try{sel=String(window.getSelection()||'');}catch(e){}"
+                + "if(sel.trim().length>1)return sel.slice(0,120000);"
+                + "var root=document.getElementById('ks-reader');"
+                + "if(root){root=root.querySelector('div:last-child')||root;}"
+                + "if(!root){root=document.querySelector('article')||document.querySelector('main');}"
+                + "if(!root){root=document.body;}var clone=root.cloneNode(true);"
+                + "var bad=clone.querySelectorAll('script,style,nav,header,footer,aside,form,"
+                + "button,input,select,textarea,iframe,noscript,svg,canvas');"
+                + "for(var i=0;i<bad.length;i++){bad[i].parentNode&&bad[i].parentNode.removeChild(bad[i]);}"
+                + "var text=(clone.innerText||clone.textContent||'').replace(/\n{3,}/g,'\n\n').trim();"
+                + "return text.slice(0,120000);}catch(e){return '';}})();";
     }
 
     static String extractTextScript() {
