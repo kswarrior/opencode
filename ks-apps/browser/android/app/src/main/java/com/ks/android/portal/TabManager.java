@@ -288,6 +288,15 @@ final class TabManager {
         saveAndNotify();
     }
 
+    synchronized void discardTab(int id) {
+        BrowserTab tab = findTab(id);
+        if (tab == null || id == activeTabId) {
+            return;
+        }
+        tab.discarded = true;
+        saveAndNotify();
+    }
+
     synchronized boolean isMuted(int id) {
         BrowserTab tab = findTab(id);
         return tab != null && tab.muted;

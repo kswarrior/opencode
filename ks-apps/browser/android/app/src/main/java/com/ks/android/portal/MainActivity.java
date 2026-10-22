@@ -1483,6 +1483,7 @@ public class MainActivity extends Activity {
         boolean tabChanged = tab.id != lastActiveTabId;
         lastActiveTabId = tab.id;
         if (view == null) {
+            tab.discarded = false;
             view = createWebView(tab);
             tabViews.put(tab.id, view);
             webContainer.addView(view, new FrameLayout.LayoutParams(
