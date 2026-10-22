@@ -1194,6 +1194,15 @@ body.launching .recents {
     return SEARCH_BASES[searchEngine()] || SEARCH_BASES.google;
   }
 
+  function searchTemplate() {
+    if (nativePortal && typeof nativePortal.getSearchTemplate === 'function') {
+      try {
+        return nativePortal.getSearchTemplate() || '';
+      } catch (error) {}
+    }
+    return '';
+  }
+
   function aiSearchUrl(value) {
     var query = encodeURIComponent(value);
     var engine = aiModeEngine();
@@ -1207,6 +1216,10 @@ body.launching .recents {
     if (/^https?:\/\//i.test(value)) return value;
     if (/^[^\s/]+\.[^\s]{2,}(\/.*)?$/.test(value)) return 'https://' + value;
     if (aiMode) return aiSearchUrl(value);
+    var template = searchTemplate();
+    if (template.indexOf('%s') >= 0) {
+      return template.replace('%s', encodeURIComponent(value));
+    }
     return searchBase() + encodeURIComponent(value);
   }
 

@@ -2887,6 +2887,11 @@ public class MainActivity extends Activity {
         }
         hideKeyboard();
         urlBar.clearFocus();
+        String keywordUrl = SearchEngine.keywordUrl(this, value);
+        if (keywordUrl != null) {
+            loadUrlWithSettings(webView, keywordUrl);
+            return;
+        }
         if (!value.startsWith("http://") && !value.startsWith("https://")) {
             if (value.matches("^[^\\s/]+\\.[^\\s]{2,}(/.*)?$")) {
                 value = "https://" + value;
@@ -4734,6 +4739,14 @@ public class MainActivity extends Activity {
                 return SearchEngine.DEFAULT;
             }
             return SearchEngine.getKey(MainActivity.this);
+        }
+
+        @JavascriptInterface
+        public String getSearchTemplate() {
+            if (!allowed()) {
+                return "";
+            }
+            return SearchEngine.template(MainActivity.this);
         }
 
         @JavascriptInterface

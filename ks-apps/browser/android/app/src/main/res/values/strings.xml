@@ -145,6 +145,20 @@
     <string name="search_engine_ecosia">Ecosia</string>
     <string name="search_engine_startpage">Startpage</string>
     <string name="search_engine_qwant">Qwant</string>
+    <string name="search_engine_add">Add search engine</string>
+    <string name="search_engine_edit">Edit search engine</string>
+    <string name="search_engine_delete">Delete search engine</string>
+    <string name="search_engine_custom">Custom search engine</string>
+    <string name="search_engine_name_hint">Name</string>
+    <string name="search_engine_template">Search URL</string>
+    <string name="search_engine_template_hint">https://example.com/search?q=%s</string>
+    <string name="search_engine_keyword">Keyword (optional)</string>
+    <string name="search_engine_keyword_hint">For example: ex</string>
+    <string name="search_engine_save">Save</string>
+    <string name="search_engine_error_name">Enter a name up to 40 characters</string>
+    <string name="search_engine_error_template">Enter an http(s) URL containing %s</string>
+    <string name="search_engine_error_keyword">Keyword must be one word, up to 20 characters</string>
+    <string name="search_engine_error_missing">Search engine not found</string>
     <string name="ai_mode">AI Mode</string>
     <string name="ai_mode_google">Google AI Mode</string>
     <string name="ai_mode_chatgpt">ChatGPT</string>
