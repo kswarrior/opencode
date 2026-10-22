@@ -2629,7 +2629,7 @@ public class MainActivity extends Activity {
     }
 
     private void showToolsMenu() {
-        final int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+        final int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
         int[] labels = new int[]{
                 R.string.tool_print,
                 R.string.tool_reader,
@@ -2641,7 +2641,8 @@ public class MainActivity extends Activity {
                 R.string.tool_add_home,
                 R.string.tool_autoplay,
                 R.string.tool_reopen_tab,
-                R.string.tool_mute_site};
+                R.string.tool_mute_site,
+                R.string.tool_translate};
         int[] icons = new int[]{
                 R.drawable.ic_menu_share,
                 R.drawable.ic_menu_open,
@@ -2653,7 +2654,8 @@ public class MainActivity extends Activity {
                 R.drawable.ic_home,
                 R.drawable.ic_play,
                 R.drawable.ic_menu_reload,
-                R.drawable.ic_volume_off};
+                R.drawable.ic_volume_off,
+                R.drawable.ic_globe};
         KsDialog.menu(this, R.string.tools_title, ids, labels, icons, -1,
                 new KsDialog.ChoiceAction() {
                     @Override
@@ -2692,6 +2694,9 @@ public class MainActivity extends Activity {
                             case 11:
                                 toggleMuteSite();
                                 break;
+                            case 12:
+                                translatePage();
+                                break;
                             default:
                                 break;
                         }
@@ -2715,6 +2720,62 @@ public class MainActivity extends Activity {
         }
         PrintDocumentAdapter adapter = view.createPrintDocumentAdapter(name);
         manager.print(name, adapter, null);
+    }
+
+    private void translatePage() {
+        final WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())
+                || !view.getUrl().startsWith("http")) {
+            return;
+        }
+        KsDialog.confirm(this, R.string.tool_translate,
+                getString(R.string.translate_disclosure),
+                R.string.dialog_cancel, R.string.translate_continue, false,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        chooseTranslateLanguage(view);
+                    }
+                }, null, null);
+    }
+
+    private void chooseTranslateLanguage(final WebView view) {
+        final String[] codes = {"es", "fr", "de", "pt", "hi", "en", "it", "ja",
+                "ko", "zh-CN", "ar", "ru"};
+        final String[] names = {
+                getString(R.string.language_spanish),
+                getString(R.string.language_french),
+                getString(R.string.language_german),
+                getString(R.string.language_portuguese),
+                getString(R.string.language_hindi),
+                getString(R.string.language_english),
+                getString(R.string.language_italian),
+                getString(R.string.language_japanese),
+                getString(R.string.language_korean),
+                getString(R.string.language_chinese),
+                getString(R.string.language_arabic),
+                getString(R.string.language_russian)};
+        KsDialog.choose(this, getString(R.string.translate_language), names,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int which) {
+                        String target = codes[which];
+                        String translated = "https://translate.google.com/translate"
+                                + "?sl=auto&tl=" + Uri.encode(target)
+                                + "&u=" + Uri.encode(view.getUrl());
+                        BrowserTab active = tabManager.getActiveTab();
+                        boolean privateTab = active != null
+                                && tabManager.isPrivate(active.id);
+                        if (privateTab) {
+                            loadUrlWithSettings(view, translated);
+                        } else {
+                            int groupId = active == null ? 0 : active.groupId;
+                            tabManager.addTab(translated, groupId);
+                            syncActiveTab();
+                        }
+                        KsToast.show(MainActivity.this, R.string.translate_opened);
+                    }
+                });
     }
 
     private void toggleReaderMode() {
@@ -2866,16 +2927,22 @@ public class MainActivity extends Activity {
             shortcut.putExtra(EXTRA_OPEN_URL, webView.getUrl());
             String title = TextUtils.isEmpty(webView.getTitle())
                     ? webView.getUrl() : webView.getTitle();
+            BrowserTab active = tabManager.getActiveTab();
+            Bitmap icon = active == null || active.favicon == null ? null
+                    : Bitmap.createScaledBitmap(active.favicon, 96, 96, true);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 ShortcutManager manager = getSystemService(ShortcutManager.class);
                 if (manager == null || !manager.isRequestPinShortcutSupported()) {
                     KsToast.show(this, R.string.tool_unavailable);
                     return;
                 }
+                Icon shortcutIcon = icon == null
+                        ? Icon.createWithResource(this, R.mipmap.ic_launcher)
+                        : Icon.createWithBitmap(icon);
                 ShortcutInfo info = new ShortcutInfo.Builder(this,
                         "page_" + Math.abs(webView.getUrl().hashCode()))
                         .setShortLabel(title)
-                        .setIcon(Icon.createWithResource(this, R.mipmap.ic_launcher))
+                        .setIcon(shortcutIcon)
                         .setIntent(shortcut)
                         .build();
                 manager.requestPinShortcut(info, null);
@@ -2883,9 +2950,13 @@ public class MainActivity extends Activity {
                 Intent install = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
                 install.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcut);
                 install.putExtra(Intent.EXTRA_SHORTCUT_NAME, title);
-                install.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-                        Intent.ShortcutIconResource.fromContext(this,
-                                R.mipmap.ic_launcher));
+                if (icon != null) {
+                    install.putExtra(Intent.EXTRA_SHORTCUT_ICON, icon);
+                } else {
+                    install.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+                            Intent.ShortcutIconResource.fromContext(this,
+                                    R.mipmap.ic_launcher));
+                }
                 sendBroadcast(install);
             }
             KsToast.show(this, R.string.tool_add_home_done);
