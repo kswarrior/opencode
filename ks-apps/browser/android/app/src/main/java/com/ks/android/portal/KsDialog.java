@@ -139,9 +139,34 @@ final class KsDialog {
         present(sheet, false);
     }
 
+    static void message(Activity activity, int titleRes, CharSequence message,
+                        int positiveRes, final Action action) {
+        final Sheet sheet = createSheet(activity, activity.getString(titleRes), message,
+                0, positiveRes, false);
+        if (sheet == null) {
+            return;
+        }
+        sheet.positive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheet.dialog.dismiss();
+                if (action != null) {
+                    action.run();
+                }
+            }
+        });
+        present(sheet, false);
+    }
+
     static void input(final Activity activity, int titleRes, CharSequence initial,
                       int hintRes, int positiveRes, int inputType,
                       final TextAction action) {
+        input(activity, titleRes, initial, hintRes, positiveRes, inputType, action, null);
+    }
+
+    static void input(final Activity activity, int titleRes, CharSequence initial,
+                      int hintRes, int positiveRes, int inputType,
+                      final TextAction action, final Action cancelAction) {
         if (!canShow(activity)) {
             return;
         }
@@ -168,6 +193,9 @@ final class KsDialog {
             @Override
             public void onClick(View view) {
                 sheet.dialog.dismiss();
+                if (cancelAction != null) {
+                    cancelAction.run();
+                }
             }
         });
         if ((inputType & InputType.TYPE_TEXT_FLAG_MULTI_LINE) == 0) {
