@@ -112,7 +112,8 @@ final class NotificationHelper {
         notify(context, 2001, builder.build());
     }
 
-    static void siteNotification(Context context, String title, String body, String url) {
+    static void siteNotification(Context context, String host, String title, String body,
+                                 String url) {
         if (!pref(context, KEY_SITES, true) || !canNotify(context)) {
             return;
         }
@@ -129,8 +130,11 @@ final class NotificationHelper {
         if (body != null && body.length() > 1000) {
             body = body.substring(0, 1000);
         }
+        if (!TextUtils.isEmpty(host)) {
+            title = TextUtils.isEmpty(title) ? host : host + " \u00b7 " + title;
+        }
         ensureChannels(context);
-        int id = 3000 + (Math.abs((title + "|" + body).hashCode()) % 1000);
+        int id = 3000 + (Math.abs((host + "|" + title + "|" + body).hashCode()) % 1000);
         Intent intent = url == null ? new Intent(context, MainActivity.class)
                 : new Intent(context, MainActivity.class)
                 .putExtra(MainActivity.EXTRA_OPEN_URL, url);
