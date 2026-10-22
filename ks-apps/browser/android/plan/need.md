@@ -45,7 +45,7 @@ line-number claims without checking the source.
 | --- | --- |
 | System integration | `VIEW` for http/https, `SEND` for text/plain, cold/warm intent handling, default-browser settings row |
 | Tabs | Multiple tabs, tab groups (name/icon/colour), session restore of URLs/titles, private tabs |
-| Navigation | Back, forward, home, reload, stop, URL bar, 9 search engines, 9 AI search modes |
+| Navigation | Back, forward, home, reload, URL bar, 9 search engines, 9 AI search modes |
 | Page tools | Find in page, desktop-site toggle, link/image context menu, fullscreen video |
 | Uploads and media | File chooser (single/multiple), camera/mic/location prompts, popups, HTTP auth, client certificates |
 | Safety UI | TLS interstitial, unsafe-download warning, per-site ad-block and content controls |
@@ -758,7 +758,6 @@ relabelled or removed.
 | "Third-party sign-in" / "Auto-verify" / "Protected content" / "JavaScript optimization" | Static values | Remove until implemented |
 | "Intrusive ads" | Static "Blocked on some sites" | Point to the real ad-block toggle or remove |
 | "Automatically remove permissions" | Static "Enabled" | Implement or remove |
-| "Preload pages" | Maps to `LOAD_CACHE_ELSE_NETWORK`, not real preloading | Rename or implement |
 | About "no tracking" | Remote Google favicon requests leak hosts | Qualify the claim or remove remote favicons |
 | About "pause, resume" | Works, but resume edge can truncate | Fix §5.2 before claiming complete reliability |
 | Incognito chip | Best-effort shared profile; cleanup broken | Fix §5.1 and document the profile limit |
