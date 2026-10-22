@@ -574,6 +574,9 @@ example.com##.ad-banner</string>
     <string name="toolbar_position_bottom">Bottom</string>
     <string name="toolbar_position_center">Center</string>
     <string name="toolbar_summary">%1$s · %2$s</string>
+    <string name="toolbar_address_bar">ADDRESS BAR</string>
+    <string name="toolbar_address_bar_top">Top</string>
+    <string name="toolbar_address_bar_bottom">Bottom</string>
     <string name="toolbar_reset">Reset toolbar</string>
     <string name="toolbar_reset_done">Toolbar settings reset</string>
     <string name="background_title">Background</string>
