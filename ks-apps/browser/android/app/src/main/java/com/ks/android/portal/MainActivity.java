@@ -592,10 +592,6 @@ public class MainActivity extends Activity {
                 && rawY >= location[1] && rawY <= location[1] + view.getHeight();
     }
 
-    private int dp(int value) {
-        return Math.round(value * getResources().getDisplayMetrics().density);
-    }
-
     @Override
     protected void onPause() {
         activityResumed = false;
