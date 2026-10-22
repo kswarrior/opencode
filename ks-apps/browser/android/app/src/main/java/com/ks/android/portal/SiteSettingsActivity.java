@@ -52,8 +52,14 @@ public class SiteSettingsActivity extends Activity {
             "apps_on_device"
     };
 
+    private static final java.util.Set<String> SUPPORTED_PERMISSIONS =
+            new java.util.HashSet<>(java.util.Arrays.asList(
+                    "location", "camera", "microphone", "notifications"));
+
+    private static final int[] AUTO_REMOVE_DAYS = {0, 7, 30, 90};
+
     private static final String[] PERMISSION_DEFAULTS = {
-            SiteSettingsStore.PERMISSION_BLOCKED,
+            SiteSettingsStore.PERMISSION_ASK,
             SiteSettingsStore.PERMISSION_ASK,
             SiteSettingsStore.PERMISSION_ASK,
             SiteSettingsStore.PERMISSION_ASK,
@@ -107,18 +113,6 @@ public class SiteSettingsActivity extends Activity {
             0
     };
 
-    private static final int[] ADDITIONAL_TITLES = {
-            R.string.site_auto_remove_permissions
-    };
-
-    private static final int[] ADDITIONAL_VALUES = {
-            R.string.value_enabled
-    };
-
-    private static final int[] ADDITIONAL_DESCRIPTIONS = {
-            R.string.site_auto_remove_description
-    };
-
     private static final class SiteToggle {
         final int titleRes;
         final int summaryRes;
@@ -164,13 +158,11 @@ public class SiteSettingsActivity extends Activity {
 
     private void buildStaticSettings() {
         addPermissionSection();
+        addAutoRemoveSection();
         addToggleSection(R.string.site_settings_content,
                 new SiteToggle(R.string.site_third_party_cookies,
                         R.string.site_settings_cookies_summary,
                         SiteSettingsStore.KEY_THIRD_PARTY_COOKIES, true),
-                new SiteToggle(R.string.site_images,
-                        R.string.site_settings_images_summary,
-                        SiteSettingsStore.KEY_IMAGES, true),
                 new SiteToggle(R.string.site_images,
                         R.string.site_settings_images_summary,
                         SiteSettingsStore.KEY_IMAGES, true),
@@ -183,9 +175,6 @@ public class SiteSettingsActivity extends Activity {
                 new SiteToggle(R.string.site_sound,
                         R.string.site_settings_sound_summary,
                         SiteSettingsStore.KEY_SOUND, false),
-                new SiteToggle(R.string.site_intrusive_ads,
-                        R.string.site_settings_adblock_summary,
-                        SiteSettingsStore.KEY_ADBLOCK, true),
                 new SiteToggle(R.string.site_intrusive_ads,
                         R.string.site_settings_adblock_summary,
                         SiteSettingsStore.KEY_ADBLOCK, true),
@@ -277,6 +266,13 @@ public class SiteSettingsActivity extends Activity {
             value.setText(permissionValueRes(SiteSettingsStore.getPermission(
                     this, permissionHost, key, defaultValue)));
             value.setVisibility(View.VISIBLE);
+            if (!SUPPORTED_PERMISSIONS.contains(key)) {
+                value.setText(R.string.site_permission_unsupported);
+                value.setTextColor(getResources().getColor(R.color.ks_muted));
+                row.setAlpha(0.7f);
+                card.addView(row);
+                continue;
+            }
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -354,6 +350,64 @@ public class SiteSettingsActivity extends Activity {
             card.addView(row);
         }
         list.addView(card);
+    }
+
+    private void addAutoRemoveSection() {
+        View header = getLayoutInflater().inflate(R.layout.item_site_section, list, false);
+        ((TextView) header.findViewById(R.id.siteSectionTitle))
+                .setText(R.string.site_settings_additional);
+        list.addView(header);
+
+        LinearLayout card = new LinearLayout(this);
+        card.setOrientation(LinearLayout.VERTICAL);
+        card.setBackgroundResource(R.drawable.bg_download_item);
+
+        View row = getLayoutInflater().inflate(R.layout.item_site_setting, card, false);
+        TextView title = row.findViewById(R.id.siteSettingTitle);
+        final TextView value = row.findViewById(R.id.siteSettingValue);
+        TextView description = row.findViewById(R.id.siteSettingDescription);
+        title.setText(R.string.site_auto_remove_permissions);
+        value.setText(autoRemoveLabel(SiteSettingsStore.getAutoRemoveDays(this)));
+        value.setVisibility(View.VISIBLE);
+        description.setText(R.string.site_auto_remove_description_short);
+        description.setVisibility(View.VISIBLE);
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] labels = {
+                        getString(R.string.site_auto_remove_off),
+                        getString(R.string.site_auto_remove_7_days),
+                        getString(R.string.site_auto_remove_30_days),
+                        getString(R.string.site_auto_remove_90_days)
+                };
+                KsDialog.choose(SiteSettingsActivity.this,
+                        getString(R.string.site_auto_remove_dialog_title), labels,
+                        new KsDialog.ChoiceAction() {
+                            @Override
+                            public void run(int index) {
+                                SiteSettingsStore.setAutoRemoveDays(
+                                        SiteSettingsActivity.this, AUTO_REMOVE_DAYS[index]);
+                                value.setText(autoRemoveLabel(AUTO_REMOVE_DAYS[index]));
+                                markChanged();
+                            }
+                        });
+            }
+        });
+        card.addView(row);
+        list.addView(card);
+    }
+
+    private String autoRemoveLabel(int days) {
+        if (days == 7) {
+            return getString(R.string.site_auto_remove_7_days);
+        }
+        if (days == 30) {
+            return getString(R.string.site_auto_remove_30_days);
+        }
+        if (days == 90) {
+            return getString(R.string.site_auto_remove_90_days);
+        }
+        return getString(R.string.site_auto_remove_off);
     }
 
     private void addDisplaySection() {
@@ -449,33 +503,4 @@ public class SiteSettingsActivity extends Activity {
         card.addView(divider, dividerParams);
     }
 
-    private void addSection(int headerRes, int[] titles, int[] values, int[] descriptions) {
-        View header = getLayoutInflater().inflate(R.layout.item_site_section, list, false);
-        ((TextView) header.findViewById(R.id.siteSectionTitle)).setText(headerRes);
-        list.addView(header);
 
-        LinearLayout card = new LinearLayout(this);
-        card.setOrientation(LinearLayout.VERTICAL);
-        card.setBackgroundResource(R.drawable.bg_download_item);
-        for (int i = 0; i < titles.length; i++) {
-            if (i > 0) {
-                addDivider(card);
-            }
-            View row = getLayoutInflater().inflate(R.layout.item_site_setting, card, false);
-            TextView title = row.findViewById(R.id.siteSettingTitle);
-            TextView value = row.findViewById(R.id.siteSettingValue);
-            TextView description = row.findViewById(R.id.siteSettingDescription);
-            title.setText(titles[i]);
-            if (values != null && values[i] != 0) {
-                value.setText(values[i]);
-                value.setVisibility(View.VISIBLE);
-            }
-            if (descriptions != null && descriptions[i] != 0) {
-                description.setText(descriptions[i]);
-                description.setVisibility(View.VISIBLE);
-            }
-            card.addView(row);
-        }
-        list.addView(card);
-    }
-}

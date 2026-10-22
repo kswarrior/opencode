@@ -29,6 +29,8 @@ final class SiteSettingsStore {
     static final String PERMISSION_BLOCKED = "blocked";
 
     private static final String PERMISSION_PREFIX = "permission_";
+    private static final String PERMISSION_STAMP_PREFIX = "stamp_";
+    private static final String AUTO_REMOVE_DAYS = "auto_remove_days";
 
     static final String SCREEN_DEFAULT = "default";
     static final String SCREEN_PHONE = "phone";
@@ -116,8 +118,51 @@ final class SiteSettingsStore {
         preferences(context).edit().putBoolean(key(host, name), value).apply();
     }
 
+    static int getAutoRemoveDays(Context context) {
+        return preferences(context).getInt(AUTO_REMOVE_DAYS, 0);
+    }
+
+    static void setAutoRemoveDays(Context context, int days) {
+        preferences(context).edit().putInt(AUTO_REMOVE_DAYS, Math.max(0, days)).apply();
+    }
+
+    static void prunePermissions(Context context) {
+        int days = getAutoRemoveDays(context);
+        if (days <= 0) {
+            return;
+        }
+        long cutoff = System.currentTimeMillis() - days * 24L * 60L * 60L * 1000L;
+        SharedPreferences preferences = preferences(context);
+        SharedPreferences.Editor editor = null;
+        String marker = "|" + PERMISSION_STAMP_PREFIX;
+        for (String stored : preferences.getAll().keySet()) {
+            int split = stored.indexOf(marker);
+            if (split <= 0) {
+                continue;
+            }
+            Object value = preferences.getAll().get(stored);
+            if (!(value instanceof Long) || (Long) value >= cutoff) {
+                continue;
+            }
+            String host = stored.substring(0, split);
+            String name = stored.substring(split + marker.length());
+            if (GLOBAL_HOST.equals(host)) {
+                continue;
+            }
+            if (editor == null) {
+                editor = preferences.edit();
+            }
+            editor.remove(stored);
+            editor.remove(key(host, PERMISSION_PREFIX + name));
+        }
+        if (editor != null) {
+            editor.apply();
+        }
+    }
+
     static String getPermission(Context context, String host, String name,
                                 String defaultValue) {
+        prunePermissions(context);
         SharedPreferences preferences = preferences(context);
         if (!TextUtils.isEmpty(host)) {
             String siteKey = key(host, PERMISSION_PREFIX + name);
@@ -136,8 +181,11 @@ final class SiteSettingsStore {
         if (TextUtils.isEmpty(host)) {
             return;
         }
-        preferences(context).edit().putString(
-                key(host, PERMISSION_PREFIX + name), value).apply();
+        preferences(context).edit()
+                .putString(key(host, PERMISSION_PREFIX + name), value)
+                .putLong(key(host, PERMISSION_STAMP_PREFIX + name),
+                        System.currentTimeMillis())
+                .apply();
     }
 
     static String getScreenSizeId(Context context, String host) {
