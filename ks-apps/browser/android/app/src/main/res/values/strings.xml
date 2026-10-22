@@ -667,6 +667,8 @@ example.com##.ad-banner</string>
     <string name="tool_autoplay">Toggle media autoplay</string>
     <string name="shortcut_new_tab">New tab</string>
     <string name="shortcut_new_private_tab">New private tab</string>
+    <string name="shortcut_search">Search</string>
+    <string name="shortcut_downloads">Downloads</string>
     <string name="tool_unavailable">Not available on this device</string>
     <string name="tool_dark_unsupported">Dark mode for websites needs Android 10 or newer</string>
     <string name="tool_private_tab_opened">Opened in a private tab</string>

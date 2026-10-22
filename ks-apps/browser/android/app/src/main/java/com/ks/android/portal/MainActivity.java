@@ -106,6 +106,8 @@ public class MainActivity extends Activity {
     static final String HOME_URL = "file:///android_asset/portal.html";
     private static final String ACTION_NEW_TAB = "com.ks.android.portal.NEW_TAB";
     private static final String ACTION_NEW_PRIVATE_TAB = "com.ks.android.portal.NEW_PRIVATE_TAB";
+    private static final String ACTION_SEARCH = "com.ks.android.portal.SEARCH";
+    private static final String ACTION_DOWNLOADS = "com.ks.android.portal.DOWNLOADS";
     private static final String RECENTS_PREFS = "ks_recents";
     private static final String RECENTS_KEY = "items";
     private static final int RECENTS_LIMIT = 30;
@@ -479,7 +481,30 @@ public class MainActivity extends Activity {
             syncActiveTab();
             return true;
         }
+        if (ACTION_SEARCH.equals(action)) {
+            focusSearchBar();
+            return true;
+        }
+        if (ACTION_DOWNLOADS.equals(action)) {
+            openDownloadsPage();
+            return true;
+        }
         return false;
+    }
+
+    private void focusSearchBar() {
+        urlBar.post(new Runnable() {
+            @Override
+            public void run() {
+                urlBar.requestFocus();
+                urlBar.setSelection(urlBar.getText().length());
+                InputMethodManager input = (InputMethodManager)
+                        getSystemService(INPUT_METHOD_SERVICE);
+                if (input != null) {
+                    input.showSoftInput(urlBar, InputMethodManager.SHOW_IMPLICIT);
+                }
+            }
+        });
     }
 
     private void openUrlInActiveTab(String url) {
