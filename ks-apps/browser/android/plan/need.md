@@ -56,7 +56,7 @@ no third-party libraries.
 
 ### 3.1 System browser integration (default browser, open links, share target)
 
-- [x] **Done.** VERIFY/VIEW + SEND filters in the manifest, intent handling in
+- [x] **Done.** VIEW + SEND filters in the manifest, intent handling in
   `onCreate`/`onNewIntent`, and the default-browser row in Settings are in
   place. Verified by launching URLs through the app.
 - **Why:** KS Portal cannot be set as the default browser, does not appear in
