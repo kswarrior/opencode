@@ -58,7 +58,7 @@ final class HomeLayoutStore {
                 return null;
             }
             String host = url.getHost();
-            if (host == null || host.indexOf('.') == -1 || host.indexOf(' ') >= 0) {
+            if (host == null || host.isEmpty() || host.indexOf(' ') >= 0) {
                 return null;
             }
             return url.toString();
@@ -146,6 +146,9 @@ final class HomeLayoutStore {
 
     static void addTopSite(Context context, String name, String url) {
         List<Site> sites = topSites(context);
+        if (sites.size() >= 12) {
+            return;
+        }
         sites.add(new Site(name.trim(), normalizeUrl(url)));
         save(context, sites);
     }
