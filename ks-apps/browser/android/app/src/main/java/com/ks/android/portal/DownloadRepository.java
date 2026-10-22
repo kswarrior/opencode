@@ -698,7 +698,7 @@ public class DownloadRepository {
                 return false;
             }
             File part = new File(stagingRoot, item.id + ".part");
-            long offset = part.isFile() ? part.length() : Math.max(0, item.downloadedBytes);
+            long offset = part.isFile() ? part.length() : 0;
             if (offset <= 0) {
                 part.delete();
             }
@@ -1752,6 +1752,7 @@ public class DownloadRepository {
         private final long resumeOffset;
         private volatile boolean cancelled;
         private volatile boolean paused;
+        private volatile boolean keepPart;
         private volatile HttpURLConnection connection;
 
         DownloadTask(long id, File part, String url, String userAgent, String referer,
@@ -1828,12 +1829,33 @@ public class DownloadRepository {
                 if (cancelled) {
                     throw new IOException("Cancelled");
                 }
+                if (code == HttpURLConnection.HTTP_REQUESTED_RANGE_NOT_SATISFIABLE) {
+                    keepPart = true;
+                    throw new IOException("Resume rejected by server");
+                }
                 if (code < 200 || code >= 300) {
                     throw new IOException("HTTP " + code);
                 }
-                if (offset > 0 && code != HttpURLConnection.HTTP_PARTIAL) {
-                    offset = 0;
-                    part.delete();
+                if (offset > 0) {
+                    if (code == HttpURLConnection.HTTP_PARTIAL) {
+                        long[] range = parseContentRange(
+                                current.getHeaderField("Content-Range"));
+                        if (range == null) {
+                            keepPart = true;
+                            throw new IOException("Invalid resume response");
+                        }
+                        if (range[0] != offset) {
+                            keepPart = true;
+                            throw new IOException("Resume offset changed");
+                        }
+                        if (range[2] > 0 && range[2] <= offset) {
+                            offset = 0;
+                            part.delete();
+                        }
+                    } else {
+                        offset = 0;
+                        part.delete();
+                    }
                 }
 
                 String responseMime = normalizeMime(current.getContentType());
@@ -1903,7 +1925,18 @@ public class DownloadRepository {
                     throw new IOException("Cancelled");
                 }
 
+                if (paused) {
+                    throw new IOException("Paused");
+                }
+                if (cancelled) {
+                    throw new IOException("Cancelled");
+                }
+
                 long finishedBytes = part.length();
+                if (total > 0 && finishedBytes < total) {
+                    keepPart = true;
+                    throw new IOException("Incomplete download");
+                }
                 boolean apk = looksLikeApk(part);
                 String finalUrl = current.getURL() == null ? url : current.getURL().toString();
                 String relative;
@@ -1973,7 +2006,7 @@ public class DownloadRepository {
             } catch (Exception exception) {
                 boolean wasPaused = paused;
                 boolean wasCancelled = cancelled;
-                if (!wasPaused) {
+                if (!wasPaused && !keepPart) {
                     part.delete();
                 }
                 DownloadItem failed = null;
@@ -2013,6 +2046,38 @@ public class DownloadRepository {
                 synchronized (lock) {
                     tasks.remove(id);
                 }
+            }
+        }
+
+        private long[] parseContentRange(String header) {
+            if (TextUtils.isEmpty(header)) {
+                return null;
+            }
+            String value = header.trim();
+            if (!value.startsWith("bytes ")) {
+                return null;
+            }
+            value = value.substring(6).trim();
+            int slash = value.indexOf('/');
+            if (slash <= 0) {
+                return null;
+            }
+            String range = value.substring(0, slash);
+            String totalText = value.substring(slash + 1);
+            int dash = range.indexOf('-');
+            if (dash <= 0) {
+                return null;
+            }
+            try {
+                long start = Long.parseLong(range.substring(0, dash).trim());
+                long end = Long.parseLong(range.substring(dash + 1).trim());
+                long total = "*".equals(totalText) ? 0 : Long.parseLong(totalText.trim());
+                if (start < 0 || end < start || total < 0) {
+                    return null;
+                }
+                return new long[]{start, end, total};
+            } catch (NumberFormatException ignored) {
+                return null;
             }
         }
 
