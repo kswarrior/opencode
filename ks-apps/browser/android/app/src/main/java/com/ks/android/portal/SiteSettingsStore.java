@@ -30,6 +30,7 @@ final class SiteSettingsStore {
 
     private static final String PERMISSION_PREFIX = "permission_";
     private static final String PERMISSION_STAMP_PREFIX = "stamp_";
+    private static final String VISITED_PREFIX = "visited|";
     private static final String AUTO_REMOVE_DAYS = "auto_remove_days";
 
     static final String SCREEN_DEFAULT = "default";
@@ -155,6 +156,29 @@ final class SiteSettingsStore {
         preferences(context).edit().putInt(AUTO_REMOVE_DAYS, Math.max(0, days)).apply();
     }
 
+    static void recordVisit(Context context, String host) {
+        if (TextUtils.isEmpty(host) || GLOBAL_HOST.equals(host)) {
+            return;
+        }
+        preferences(context).edit()
+                .putLong(VISITED_PREFIX + host, System.currentTimeMillis())
+                .apply();
+    }
+
+    static List<String> visitedHosts(Context context) {
+        List<String> hosts = new ArrayList<String>();
+        for (String stored : preferences(context).getAll().keySet()) {
+            if (!stored.startsWith(VISITED_PREFIX)) {
+                continue;
+            }
+            String host = stored.substring(VISITED_PREFIX.length());
+            if (!TextUtils.isEmpty(host) && !GLOBAL_HOST.equals(host)) {
+                hosts.add(host);
+            }
+        }
+        return hosts;
+    }
+
     static void prunePermissions(Context context) {
         int days = getAutoRemoveDays(context);
         if (days <= 0) {
@@ -162,27 +186,52 @@ final class SiteSettingsStore {
         }
         long cutoff = System.currentTimeMillis() - days * 24L * 60L * 60L * 1000L;
         SharedPreferences preferences = preferences(context);
-        SharedPreferences.Editor editor = null;
+        java.util.Map<String, ?> stored = preferences.getAll();
+        java.util.Set<String> hosts = new java.util.HashSet<String>();
         String marker = "|" + PERMISSION_STAMP_PREFIX;
-        for (String stored : preferences.getAll().keySet()) {
-            int split = stored.indexOf(marker);
-            if (split <= 0) {
-                continue;
+        for (String name : stored.keySet()) {
+            int split = name.indexOf(marker);
+            if (split > 0) {
+                hosts.add(name.substring(0, split));
             }
-            Object value = preferences.getAll().get(stored);
-            if (!(value instanceof Long) || (Long) value >= cutoff) {
-                continue;
-            }
-            String host = stored.substring(0, split);
-            String name = stored.substring(split + marker.length());
+        }
+        SharedPreferences.Editor editor = null;
+        for (String host : hosts) {
             if (GLOBAL_HOST.equals(host)) {
+                continue;
+            }
+            boolean recent = false;
+            Object visit = stored.get(VISITED_PREFIX + host);
+            if (visit instanceof Long && (Long) visit >= cutoff) {
+                recent = true;
+            }
+            if (!recent) {
+                String stampPrefix = host + "|" + PERMISSION_STAMP_PREFIX;
+                for (String name : stored.keySet()) {
+                    if (!name.startsWith(stampPrefix)) {
+                        continue;
+                    }
+                    Object value = stored.get(name);
+                    if (value instanceof Long && (Long) value >= cutoff) {
+                        recent = true;
+                        break;
+                    }
+                }
+            }
+            if (recent) {
                 continue;
             }
             if (editor == null) {
                 editor = preferences.edit();
             }
-            editor.remove(stored);
-            editor.remove(key(host, PERMISSION_PREFIX + name));
+            String permissionPrefix = host + "|" + PERMISSION_PREFIX;
+            for (String name : stored.keySet()) {
+                if (name.startsWith(permissionPrefix) || name.startsWith(
+                        host + "|" + PERMISSION_STAMP_PREFIX)) {
+                    editor.remove(name);
+                }
+            }
+            editor.remove(VISITED_PREFIX + host);
         }
         if (editor != null) {
             editor.apply();

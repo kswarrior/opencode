@@ -952,6 +952,8 @@ public class MainActivity extends Activity {
                 String title = current.getTitle();
                 tabManager.updateTab(tab.id, url, cleanRecentName(title, url));
                 if (!privateTabs.contains(tab.id)) {
+                    SiteSettingsStore.recordVisit(MainActivity.this,
+                            SiteSettingsStore.hostOf(url));
                     recordRecent(url, title);
                     recordHistory(url, title);
                 }
