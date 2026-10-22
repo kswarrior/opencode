@@ -618,7 +618,106 @@ final class TabManager {
         }
     }
 
-    private void save() {
+    synchronized String exportState() {
+        return buildState().toString();
+    }
+
+    synchronized boolean importState(String raw) {
+        if (TextUtils.isEmpty(raw)) {
+            return false;
+        }
+        try {
+            JSONObject root = new JSONObject(raw);
+            JSONArray groupsJson = root.optJSONArray("groups");
+            JSONArray tabsJson = root.optJSONArray("tabs");
+            if (groupsJson == null && tabsJson == null) {
+                return false;
+            }
+            groups.clear();
+            for (int i = 0; i < tabs.size(); i++) {
+                if (!privateTabs.contains(tabs.get(i).id)) {
+                    tabs.remove(i);
+                    i--;
+                }
+            }
+            if (groupsJson != null) {
+                for (int i = 0; i < groupsJson.length(); i++) {
+                    JSONObject item = groupsJson.optJSONObject(i);
+                    if (item == null) {
+                        continue;
+                    }
+                    int id = item.optInt("id", 0);
+                    if (id <= 0 || findGroup(id) != null) {
+                        continue;
+                    }
+                    String name = item.optString("name", "").trim();
+                    if (name.isEmpty()) {
+                        name = context.getString(R.string.tabs_group_default, id);
+                    }
+                    groups.add(new TabGroup(id, name, item.optString("icon", ""),
+                            item.optInt("color", 0), item.optBoolean("collapsed", false)));
+                    if (id >= nextGroupId) {
+                        nextGroupId = id + 1;
+                    }
+                }
+            }
+            int firstImported = 0;
+            if (tabsJson != null) {
+                for (int i = 0; i < tabsJson.length(); i++) {
+                    JSONObject item = tabsJson.optJSONObject(i);
+                    if (item == null) {
+                        continue;
+                    }
+                    String url = item.optString("url", "");
+                    if (TextUtils.isEmpty(url)) {
+                        continue;
+                    }
+                    int id = item.optInt("id", 0);
+                    if (id <= 0 || findTab(id) != null) {
+                        id = nextTabId++;
+                    } else if (id >= nextTabId) {
+                        nextTabId = id + 1;
+                    }
+                    int groupId = item.optInt("group", NO_GROUP);
+                    if (findGroup(groupId) == null) {
+                        groupId = NO_GROUP;
+                    }
+                    BrowserTab restored = new BrowserTab(id, url, groupId,
+                            item.optString("title", ""));
+                    restored.muted = item.optBoolean("muted", false);
+                    restored.discarded = item.optBoolean("discarded", false);
+                    restored.pinned = item.optBoolean("pinned", false);
+                    tabs.add(restored);
+                    if (firstImported == 0) {
+                        firstImported = id;
+                    }
+                }
+            }
+            for (int i = 0; i < tabs.size(); i++) {
+                BrowserTab tab = tabs.get(i);
+                if (privateTabs.contains(tab.id) && findGroup(tab.groupId) == null) {
+                    tab.groupId = NO_GROUP;
+                }
+            }
+            if (tabs.isEmpty()) {
+                tabs.add(new BrowserTab(nextTabId++, HomeLayoutStore.homeUrl(context),
+                        NO_GROUP, ""));
+                firstImported = tabs.get(0).id;
+            }
+            int active = root.optInt("active", 0);
+            if (findTab(active) == null || (privateTabs.contains(active) && firstImported != 0)) {
+                active = firstImported != 0 ? firstImported : tabs.get(0).id;
+            }
+            activeTabId = active;
+            normalizePinnedOrder();
+            saveAndNotify();
+            return true;
+        } catch (JSONException exception) {
+            return false;
+        }
+    }
+
+    private JSONObject buildState() {
         JSONObject root = new JSONObject();
         try {
             root.put("active", activeTabId);
@@ -655,7 +754,11 @@ final class TabManager {
             root.put("groups", groupsJson);
         } catch (JSONException ignored) {
         }
-        preferences.edit().putString(KEY_STATE, root.toString()).apply();
+        return root;
+    }
+
+    private void save() {
+        preferences.edit().putString(KEY_STATE, buildState().toString()).apply();
     }
 
     private boolean restore() {
