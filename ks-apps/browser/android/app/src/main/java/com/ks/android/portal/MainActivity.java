@@ -842,6 +842,12 @@ public class MainActivity extends Activity {
     private void requestDownload(final String url, final String userAgent,
                                  final String contentDisposition, final String mimeType,
                                  final long contentLength) {
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active != null && privateTabs.contains(active.id)) {
+            Toast.makeText(this, R.string.private_download_blocked,
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (url.regionMatches(true, 0, "http://", 0, 7)
                 && setting("security_unsafe_downloads", true)) {
             NotificationHelper.securityAlert(this,
@@ -2529,6 +2535,10 @@ public class MainActivity extends Activity {
                 privateTabs.add(tabId);
             } else {
                 privateTabs.remove(tabId);
+            }
+            tabManager.setPrivate(tabId, enabled);
+            if (enabled && privateTabHosts.get(tabId) == null) {
+                privateTabHosts.put(tabId, new ArrayList<String>());
             }
             return true;
         }

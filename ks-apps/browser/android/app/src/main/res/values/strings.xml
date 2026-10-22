@@ -411,6 +411,7 @@ example.com##.ad-banner</string>
     <string name="notification_update_text">Version %1$s is now installed</string>
     <string name="notification_tip_title">KS Portal tip</string>
     <string name="notification_tip_text">Tap the floating button to show or hide the toolbar.</string>
+    <string name="private_download_blocked">Downloads are disabled in private tabs</string>
     <string name="clear_browsing_data">Clear browsing data</string>
     <string name="clear_browsing_data_summary">History, cookies, cache and site settings</string>
     <string name="clear_data_title">Clear browsing data</string>

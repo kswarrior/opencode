@@ -27,6 +27,7 @@ final class TabManager {
     private final SharedPreferences preferences;
     private final List<BrowserTab> tabs = new ArrayList<BrowserTab>();
     private final List<TabGroup> groups = new ArrayList<TabGroup>();
+    private final java.util.Set<Integer> privateTabs = new java.util.HashSet<Integer>();
     private final List<Listener> listeners = new ArrayList<Listener>();
     private int activeTabId;
     private int nextTabId = 1;
@@ -95,6 +96,19 @@ final class TabManager {
         return count;
     }
 
+    synchronized void setPrivate(int id, boolean isPrivate) {
+        if (isPrivate) {
+            privateTabs.add(id);
+        } else {
+            privateTabs.remove(id);
+        }
+        saveAndNotify();
+    }
+
+    synchronized boolean isPrivate(int id) {
+        return privateTabs.contains(id);
+    }
+
     synchronized BrowserTab addTab(String url, int groupId) {
         String target = TextUtils.isEmpty(url) ? MainActivity.HOME_URL : url;
         if (groupId != NO_GROUP && findGroup(groupId) == null) {
@@ -123,6 +137,7 @@ final class TabManager {
             return false;
         }
         tabs.remove(index);
+        privateTabs.remove(id);
         if (tabs.isEmpty()) {
             BrowserTab tab = new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, "");
             tabs.add(tab);
@@ -319,6 +334,9 @@ final class TabManager {
             JSONArray tabsJson = new JSONArray();
             for (int i = 0; i < tabs.size(); i++) {
                 BrowserTab tab = tabs.get(i);
+                if (privateTabs.contains(tab.id)) {
+                    continue;
+                }
                 JSONObject item = new JSONObject();
                 item.put("id", tab.id);
                 item.put("title", tab.title);
