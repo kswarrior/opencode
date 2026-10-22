@@ -58,7 +58,9 @@ no third-party libraries.
 
 - [x] **Done.** VIEW + SEND filters in the manifest, intent handling in
   `onCreate`/`onNewIntent`, and the default-browser row in Settings are in
-  place. Verified by launching URLs through the app.
+  place. Verified on the emulator: cold-start VIEW and SEND, SEND with a URL
+  embedded in surrounding text, and intents delivered while running. The OS
+  chooser could not be tested because Chrome owns the default-browser role.
 - **Why:** KS Portal cannot be set as the default browser, does not appear in
   Android's "Open with" list, and cannot receive shared links. It is currently
   an app with a WebView, not a system browser.
@@ -199,11 +201,11 @@ no third-party libraries.
   Protected-download auth and POST bodies are still unsupported.
 - **Why:** Web apps export via `blob:`; large downloads need pause/resume;
   protected downloads need auth.
-- **Today:** `MainActivity.java:460-465` explicitly rejects `blob:` and
-  `data:` URLs. `DownloadItem` has no paused state (`DownloadItem.java:7-11`),
-  and `DownloadRepository` exposes only cancel (`:530`) and retry (`:647`) —
-  "pause, resume" in the About text (`strings.xml:234`) is inaccurate.
-  Retry starts over rather than resuming.
+- **Today:** `blob:`/`data:` links are fetched in page JS and saved through
+  `KSPortalNative.saveBlob`; paused downloads persist partial files and resume
+  with an HTTP `Range` request. Still missing: HTTP-auth downloads and POST
+  bodies (WebView does not expose them). The About text's pause/resume claim
+  is accurate.
 - **Fix:**
   - Fetch `blob:`/`data:` in page JS, stream to the native bridge, and write
     through `DownloadRepository`.
