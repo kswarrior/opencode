@@ -103,8 +103,7 @@ public class BackgroundActivity extends Activity {
             public void onClick(View view) {
                 BackgroundStore.applyToTargets(BackgroundActivity.this, targetsForSelection(),
                         BackgroundStore.defaultValue(0));
-                Toast.makeText(BackgroundActivity.this, R.string.background_reset_done,
-                        Toast.LENGTH_SHORT).show();
+                KsToast.show(BackgroundActivity.this, R.string.background_reset_done);
                 refreshScreen();
             }
         });
@@ -331,7 +330,7 @@ public class BackgroundActivity extends Activity {
             startActivityForResult(Intent.createChooser(intent,
                     getString(R.string.background_pick_image)), REQUEST_PICK_IMAGE);
         } catch (ActivityNotFoundException exception) {
-            Toast.makeText(this, R.string.background_import_failed, Toast.LENGTH_SHORT).show();
+            KsToast.show(this, R.string.background_import_failed);
         }
     }
 
@@ -359,9 +358,8 @@ public class BackgroundActivity extends Activity {
                             return;
                         }
                         if (fileName == null) {
-                            Toast.makeText(BackgroundActivity.this,
-                                    R.string.background_import_failed,
-                                    Toast.LENGTH_SHORT).show();
+                            KsToast.show(BackgroundActivity.this,
+                                    R.string.background_import_failed);
                             return;
                         }
                         BackgroundStore.applyToTargets(BackgroundActivity.this, targets,
@@ -383,9 +381,8 @@ public class BackgroundActivity extends Activity {
                         thumbnails.remove(fileName);
                         BackgroundStore.deleteCustomImage(BackgroundActivity.this,
                                 fileName);
-                        Toast.makeText(BackgroundActivity.this,
-                                R.string.background_deleted,
-                                Toast.LENGTH_SHORT).show();
+                        KsToast.show(BackgroundActivity.this,
+                                R.string.background_deleted);
                         refreshScreen();
                     }
                 });
