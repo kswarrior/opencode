@@ -337,17 +337,19 @@ and compiling, not device-verified.
 | Downloads | N28 sort/filter, N29 multi-select, N30 speed, N32 Wi-Fi-only queue + override, N34 size/SHA-256, N35 real global content defaults |
 | Site data/privacy | N36 origin storage manager, N37 timed permission removal, N38 strict HTTPS + listed exceptions, N40 Safe Browsing guard, N41 narrowed DNT claim, N42 site favicon, N43 backup exclusion, N44 unsupported permissions labelled, N45 real global defaults, N46 notification permission consumer, N47 one permission default |
 | Autofill | N48 list/search/edit/reveal/delete, N49 device-credential unlock, N50 in-app-only explanation, N51 forms toggle, N52 no dead payment toggle, N53 passkey explanation, N54 weak/duplicate warning |
-| Media/input/a11y | N55 activity-level PiP for audible tabs (API 26+), N57 autoplay via global site setting, N59 keyboard shortcuts, N61 RTL enabled audited structurally, N63 native error strings |
+| Media/input/a11y | N55 activity-level PiP for audible tabs (API 26+), N57 autoplay via global site setting, N59 keyboard shortcuts, N60 portal contrast/reduced-motion media queries, N61 RTL enabled audited structurally, N62 six-language portal string table for core labels/dialogs, N63 native error strings, N64 wrap-content headers (`minHeight 56dp`) |
 
 ### Remaining / partial
 
 | Items | State |
 | --- | --- |
-| N2, N4, N5, N10, N13, N18, N56, N58, N60, N62, N64 | Not started (suggestions provider, custom engines, editable top sites, translation, gestures, reorder/pin, discard, media notification, accessibility audit, high-contrast toggle, portal localization, large-font QA) |
+| N2, N4, N5, N10, N13, N18, N56, N58 | Not started (suggestions provider, custom engines, editable top sites, translation, gestures, reorder/pin, discard, media notification, accessibility audit, high-contrast toggle, portal localization, large-font QA) |
 | N6 | New-tab/private-tab launcher shortcuts ship; search/download shortcuts do not |
 | N31 | Resume-all/retry-all queue actions not added |
 | N33 | Open-containing-folder/open-with not added |
 | N39 | Certificate trusting is never allowed; HTTPS exceptions are managed instead. A separate TLS certificate store does not exist |
 | N55 | PiP shows the active tab, not a cropped video surface; play/pause uses the page controls |
-| N60 | Portal honours `prefers-reduced-motion`; no native high-contrast toggle |
+| N60 | Portal honours `prefers-reduced-motion` and `prefers-contrast`; no native high-contrast toggle |
+| N62 | Core portal labels and bookmark dialogs localised (en/es/fr/de/pt/hi); brand names and some dynamic strings remain English |
+| N64 | Activity headers wrap with `minHeight 56dp`; rows already wrap. No large-font device QA |
 | N22, N65 | Deliberately deferred (L-sized) |

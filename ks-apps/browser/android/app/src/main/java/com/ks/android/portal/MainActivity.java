@@ -546,6 +546,7 @@ public class MainActivity extends Activity {
                 if (pendingPopups.containsKey(tab.id)) {
                     pageUrl = url;
                     pageHost = SiteSettingsStore.hostOf(url);
+                    applySiteSettings(current, url);
                     handlePendingPopupLoad(current, tab, url);
                     return;
                 }
