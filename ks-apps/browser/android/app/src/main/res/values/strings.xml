@@ -619,4 +619,10 @@ example.com##.ad-banner</string>
     <string name="download_sign_in">Sign in</string>
     <string name="download_sign_in_title">Sign in to %1$s</string>
     <string name="download_auth_required">Authentication required</string>
+    <string name="secure_exceptions">Insecure connection exceptions</string>
+    <string name="secure_exceptions_summary">Sites allowed to load without HTTPS</string>
+    <string name="secure_exceptions_empty">No sites are allowed to use insecure connections.</string>
+    <string name="secure_exceptions_remove_title">Remove exception?</string>
+    <string name="secure_exceptions_remove_message">%1$s will use HTTPS again.</string>
+    <string name="secure_exceptions_remove">Remove</string>
 </resources>

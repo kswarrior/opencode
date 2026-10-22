@@ -241,6 +241,21 @@ final class SiteSettingsStore {
         return findSize(context, getScreenSizeId(context, host)).width;
     }
 
+    static List<String> httpsExceptions(Context context) {
+        List<String> hosts = new ArrayList<String>();
+        for (String stored : preferences(context).getAll().keySet()) {
+            String suffix = "|" + KEY_HTTPS_EXCEPTION;
+            if (!stored.endsWith(suffix)) {
+                continue;
+            }
+            String host = stored.substring(0, stored.length() - suffix.length());
+            if (!TextUtils.isEmpty(host) && !GLOBAL_HOST.equals(host)) {
+                hosts.add(host);
+            }
+        }
+        return hosts;
+    }
+
     static void clearAll(Context context) {
         preferences(context).edit().clear().apply();
     }

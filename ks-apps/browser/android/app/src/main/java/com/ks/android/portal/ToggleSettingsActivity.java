@@ -61,6 +61,27 @@ abstract class ToggleSettingsActivity extends Activity {
         buildSettings();
     }
 
+    protected void addAction(int headerRes, int titleRes, int summaryRes,
+                             View.OnClickListener listener) {
+        View header = inflater.inflate(R.layout.item_site_section, list, false);
+        ((TextView) header.findViewById(R.id.siteSectionTitle)).setText(headerRes);
+        list.addView(header);
+
+        LinearLayout card = new LinearLayout(this);
+        card.setOrientation(LinearLayout.VERTICAL);
+        card.setBackgroundResource(R.drawable.bg_download_item);
+        View row = inflater.inflate(R.layout.item_site_setting, card, false);
+        ((TextView) row.findViewById(R.id.siteSettingTitle)).setText(titleRes);
+        TextView description = row.findViewById(R.id.siteSettingDescription);
+        if (summaryRes != 0) {
+            description.setText(summaryRes);
+            description.setVisibility(View.VISIBLE);
+        }
+        row.setOnClickListener(listener);
+        card.addView(row);
+        list.addView(card);
+    }
+
     protected void addSection(int headerRes, ToggleSetting... settings) {
         View header = inflater.inflate(R.layout.item_site_section, list, false);
         ((TextView) header.findViewById(R.id.siteSectionTitle)).setText(headerRes);

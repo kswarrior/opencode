@@ -1,6 +1,8 @@
 package com.ks.android.portal;
 
 import android.os.Build;
+import android.view.View;
+import android.widget.TextView;
 
 public class PrivacySecurityActivity extends ToggleSettingsActivity {
     @Override
@@ -37,5 +39,43 @@ public class PrivacySecurityActivity extends ToggleSettingsActivity {
                             R.string.security_unsafe_downloads_summary,
                             "security_unsafe_downloads", true));
         }
+        addAction(R.string.security_section, R.string.secure_exceptions,
+                R.string.secure_exceptions_summary, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showSecureExceptions();
+                    }
+                });
+    }
+
+    private void showSecureExceptions() {
+        final java.util.List<String> hosts = SiteSettingsStore.httpsExceptions(this);
+        if (hosts.isEmpty()) {
+            KsDialog.message(this, R.string.secure_exceptions,
+                    getString(R.string.secure_exceptions_empty),
+                    R.string.dialog_ok, null);
+            return;
+        }
+        String[] items = hosts.toArray(new String[0]);
+        KsDialog.choose(this, getString(R.string.secure_exceptions), items,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        String host = hosts.get(index);
+                        KsDialog.confirm(PrivacySecurityActivity.this,
+                                R.string.secure_exceptions_remove_title,
+                                getString(R.string.secure_exceptions_remove_message, host),
+                                R.string.dialog_cancel, R.string.secure_exceptions_remove,
+                                new KsDialog.Action() {
+                                    @Override
+                                    public void run() {
+                                        SiteSettingsStore.setBoolean(
+                                                PrivacySecurityActivity.this, host,
+                                                SiteSettingsStore.KEY_HTTPS_EXCEPTION,
+                                                false);
+                                    }
+                                });
+                    }
+                });
     }
 }
