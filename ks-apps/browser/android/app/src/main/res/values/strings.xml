@@ -287,6 +287,9 @@ example.com##.ad-banner</string>
     <string name="site_popups_redirects">Pop-ups and redirects</string>
     <string name="site_sound">Sound</string>
     <string name="site_intrusive_ads">Intrusive ads</string>
+    <string name="site_images">Images</string>
+    <string name="site_settings_images_summary">Load images on this site</string>
+    <string name="site_settings_adblock_summary">Block ads and trackers on this site</string>
     <string name="site_protected_content">Protected content</string>
     <string name="site_third_party_sign_in">Third-party sign-in</string>
     <string name="site_auto_verify">Auto-verify</string>

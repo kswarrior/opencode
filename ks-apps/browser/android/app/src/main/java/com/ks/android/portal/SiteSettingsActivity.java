@@ -185,10 +185,10 @@ public class SiteSettingsActivity extends Activity {
                         SiteSettingsStore.KEY_SOUND, false),
                 new SiteToggle(R.string.site_intrusive_ads,
                         R.string.site_settings_adblock_summary,
-                        SiteSettingsStore.KEY_ADBLOCK, false),
+                        SiteSettingsStore.KEY_ADBLOCK, true),
                 new SiteToggle(R.string.site_intrusive_ads,
                         R.string.site_settings_adblock_summary,
-                        SiteSettingsStore.KEY_ADBLOCK, false),
+                        SiteSettingsStore.KEY_ADBLOCK, true),
                 new SiteToggle(R.string.site_automatic_downloads,
                         R.string.site_settings_downloads_summary,
                         SiteSettingsStore.KEY_AUTOMATIC_DOWNLOADS, false));
@@ -212,7 +212,7 @@ public class SiteSettingsActivity extends Activity {
                         SiteSettingsStore.KEY_SOUND, false),
                 new SiteToggle(R.string.site_intrusive_ads,
                         R.string.site_settings_adblock_summary,
-                        SiteSettingsStore.KEY_ADBLOCK, false),
+                        SiteSettingsStore.KEY_ADBLOCK, true),
                 new SiteToggle(R.string.site_automatic_downloads,
                         R.string.site_settings_downloads_summary,
                         SiteSettingsStore.KEY_AUTOMATIC_DOWNLOADS, false));
