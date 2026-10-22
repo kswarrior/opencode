@@ -330,7 +330,7 @@ and compiling, not device-verified.
 | Area | Items |
 | --- | --- |
 | Trust/correctness | F1-F9, all P2 correctness cleanups (pause/finalise lock check, mkdir verification, toolbar preview restore, Safe Browsing API gate, resource errors, site favicon, narrowed DNT wording, `VERSION` refresh, provider delete, adblock attempt/304 state, unknown permission denial) |
-| Address bar/search | N1 local recents/history/bookmark suggestions with keyboard selection, N2 privacy-default-off Google suggestions, N4 custom engines with `%s` templates/keywords, N5 editable top sites + section toggles + custom home URL |
+| Address bar/search | N1 local recents/history/bookmark suggestions with keyboard selection (suppressed in private tabs), N2 privacy-default-off Google suggestions, N4 custom engines with `%s` templates/keywords, N5 editable top sites + section toggles + custom home URL |
 | Page tools | N3 voice search, N7 reader, N8 print/save PDF, N9 offline save, N10 translated page tab with disclosure, N11 text scaling/zoom, N12 force dark, N13 pull/edge gestures, N14 add to home with favicon |
 | Tabs | N6 four launcher shortcuts, N15 tab search, N16 undo/recently closed, N17 per-tab history restore, N18 pin/move/drag reorder, N19 close others/duplicates, N20 audio indicator/mute, N21 background-tab discard/restore, N66 open in private tab, N67 toolbar placement |
 | Bookmarks/history | N23 manager, N24 folders + 1,000 cap, N25 JSON/HTML import/export, N26 CSV/JSON export + filtered delete, N27 retention |

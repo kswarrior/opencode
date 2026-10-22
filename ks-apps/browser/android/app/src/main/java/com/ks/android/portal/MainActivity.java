@@ -2781,8 +2781,10 @@ public class MainActivity extends Activity {
     }
 
     private void showSuggestions(String query) {
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
         if (!urlBar.hasFocus() || TextUtils.isEmpty(query)
-                || query.startsWith("http://") || query.startsWith("https://")) {
+                || query.startsWith("http://") || query.startsWith("https://")
+                || (active != null && privateTabs.contains(active.id))) {
             hideSuggestions();
             return;
         }
