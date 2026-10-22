@@ -470,6 +470,10 @@ final class AdBlockListStore {
         ByteArrayOutputStream combined = new ByteArrayOutputStream();
         int ok = 0;
         IOException firstError = null;
+        boolean multiSource = list.urls.length > 1;
+        String newEtag = null;
+        String newModified = null;
+        boolean headersKnown = false;
         String etag = list.urls.length == 1
                 ? preferences(context).getString(ETAG_PREFIX + list.id, null) : null;
         String lastModified = list.urls.length == 1

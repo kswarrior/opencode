@@ -488,6 +488,233 @@ public class MainActivity extends Activity {
             public void onReceivedIcon(WebView current, Bitmap icon) {
                 tabManager.updateFavicon(tab.id, hostOf(current.getUrl()), icon);
             }
+
+            @Override
+            public boolean onShowFileChooser(WebView current,
+                                             ValueCallback<Uri[]> callback,
+                                             FileChooserParams params) {
+                if (fileChooserCallback != null) {
+                    fileChooserCallback.onReceiveValue(null);
+                }
+                fileChooserCallback = callback;
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("*/*");
+                boolean multiple = params != null
+                        && params.getMode() == FileChooserParams.MODE_OPEN_MULTIPLE;
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, multiple);
+                String[] accept = params == null ? null : params.getAcceptTypes();
+                if (accept != null && accept.length > 0 && !TextUtils.isEmpty(accept[0])) {
+                    if (accept.length == 1) {
+                        intent.setType(accept[0]);
+                    } else {
+                        intent.putExtra(Intent.EXTRA_MIME_TYPES, accept);
+                    }
+                }
+                try {
+                    startActivityForResult(Intent.createChooser(intent,
+                            getString(R.string.file_chooser_title)), REQUEST_FILE_CHOOSER);
+                } catch (ActivityNotFoundException exception) {
+                    fileChooserCallback = null;
+                    Toast.makeText(MainActivity.this, R.string.no_app_found,
+                            Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                return true;
+            }
+
+            @Override
+            public void onPermissionRequest(final PermissionRequest request) {
+                if (request == null || request.getOrigin() == null) {
+                    return;
+                }
+                String origin = request.getOrigin().toString();
+                String host = SiteSettingsStore.hostOf(origin);
+                String key = null;
+                String permission = null;
+                String[] resources = request.getResources();
+                for (int i = 0; i < resources.length; i++) {
+                    if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resources[i])) {
+                        key = "camera";
+                        permission = Manifest.permission.CAMERA;
+                        break;
+                    }
+                    if (PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resources[i])) {
+                        key = "microphone";
+                        permission = Manifest.permission.RECORD_AUDIO;
+                        break;
+                    }
+                }
+                if (key == null) {
+                    request.grant(resources);
+                    return;
+                }
+                String stored = SiteSettingsStore.getPermission(MainActivity.this, host,
+                        key, SiteSettingsStore.PERMISSION_ASK);
+                if (SiteSettingsStore.PERMISSION_BLOCKED.equals(stored)) {
+                    request.deny();
+                    return;
+                }
+                if (SiteSettingsStore.PERMISSION_ALLOWED.equals(stored)) {
+                    grantPermissionRequest(request, permission);
+                    return;
+                }
+                pendingPermissionRequest = request;
+                pendingPermissionHost = host;
+                pendingPermissionKey = key;
+                final String requestKey = key;
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle(requestKey.equals("camera")
+                                ? R.string.permission_camera_title
+                                : R.string.permission_microphone_title)
+                        .setMessage(getString(R.string.permission_site_message,
+                                host.isEmpty() ? origin : host))
+                        .setNegativeButton(R.string.permission_block,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        SiteSettingsStore.setPermission(MainActivity.this,
+                                                pendingPermissionHost, requestKey,
+                                                SiteSettingsStore.PERMISSION_BLOCKED);
+                                        if (pendingPermissionRequest != null) {
+                                            pendingPermissionRequest.deny();
+                                        }
+                                        clearPendingPermission();
+                                    }
+                                })
+                        .setPositiveButton(R.string.permission_allow,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        SiteSettingsStore.setPermission(MainActivity.this,
+                                                pendingPermissionHost, requestKey,
+                                                SiteSettingsStore.PERMISSION_ALLOWED);
+                                        grantPermissionRequest(pendingPermissionRequest,
+                                                requestKey.equals("camera")
+                                                        ? Manifest.permission.CAMERA
+                                                        : Manifest.permission.RECORD_AUDIO);
+                                    }
+                                })
+                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                if (pendingPermissionRequest != null) {
+                                    pendingPermissionRequest.deny();
+                                }
+                                clearPendingPermission();
+                            }
+                        })
+                        .show();
+            }
+
+            @Override
+            public void onGeolocationPermissionsShowPrompt(final String origin,
+                                                           final GeolocationPermissions.Callback callback) {
+                String host = SiteSettingsStore.hostOf(origin);
+                String stored = SiteSettingsStore.getPermission(MainActivity.this, host,
+                        "location", SiteSettingsStore.PERMISSION_ASK);
+                if (SiteSettingsStore.PERMISSION_BLOCKED.equals(stored)) {
+                    callback.invoke(origin, false, false);
+                    return;
+                }
+                pendingGeoCallback = callback;
+                pendingGeoOrigin = origin;
+                pendingGeoRetain = true;
+                if (SiteSettingsStore.PERMISSION_ALLOWED.equals(stored)) {
+                    grantGeolocation(origin);
+                    return;
+                }
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle(R.string.permission_location_title)
+                        .setMessage(getString(R.string.permission_site_message,
+                                host.isEmpty() ? origin : host))
+                        .setNegativeButton(R.string.permission_block,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        SiteSettingsStore.setPermission(MainActivity.this,
+                                                host, "location",
+                                                SiteSettingsStore.PERMISSION_BLOCKED);
+                                        finishGeolocation(false);
+                                    }
+                                })
+                        .setPositiveButton(R.string.permission_allow,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        SiteSettingsStore.setPermission(MainActivity.this,
+                                                host, "location",
+                                                SiteSettingsStore.PERMISSION_ALLOWED);
+                                        grantGeolocation(origin);
+                                    }
+                                })
+                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                finishGeolocation(false);
+                            }
+                        })
+                        .show();
+            }
+
+            @Override
+            public void onShowCustomView(View view,
+                                         WebChromeClient.CustomViewCallback callback) {
+                if (fullscreenView != null) {
+                    if (callback != null) {
+                        callback.onCustomViewHidden();
+                    }
+                    return;
+                }
+                fullscreenView = view;
+                fullscreenCallback = callback;
+                pageFullscreen = true;
+                ViewGroup root = findViewById(R.id.root);
+                root.addView(view, new FrameLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+                if (webContainer != null) {
+                    webContainer.setVisibility(View.GONE);
+                }
+                toolbarContainer.setVisibility(View.GONE);
+                toolbarToggle.setVisibility(View.GONE);
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                setImmersive(true);
+            }
+
+            @Override
+            public void onHideCustomView() {
+                exitFullscreen();
+            }
+
+            @Override
+            public boolean onCreateWindow(WebView current, boolean isDialog,
+                                          boolean isUserGesture,
+                                          android.os.Message resultMsg) {
+                if (!isUserGesture) {
+                    return false;
+                }
+                String pageUrl = current.getUrl();
+                String host = SiteSettingsStore.hostOf(pageUrl);
+                boolean allow = SiteSettingsStore.getBoolean(MainActivity.this, host,
+                        SiteSettingsStore.KEY_POPUPS, false);
+                if (!allow || AdBlocker.pagePolicy(MainActivity.this,
+                        pageUrl).popupBlockSuggested) {
+                    Toast.makeText(MainActivity.this, R.string.popup_blocked,
+                            Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                BrowserTab created = tabManager.addTab(MainActivity.HOME_URL, 0);
+                final WebView target = tabViews.get(created.id);
+                if (target == null) {
+                    return false;
+                }
+                WebView.WebViewTransport transport =
+                        (WebView.WebViewTransport) resultMsg.obj;
+                transport.setWebView(target);
+                resultMsg.sendToTarget();
+                return true;
+            }
         });
 
         view.setDownloadListener(new DownloadListener() {
@@ -693,6 +920,26 @@ public class MainActivity extends Activity {
         if (requestCode == REQUEST_NOTIFICATIONS) {
             return;
         }
+        if (requestCode == REQUEST_PERMISSION_CAMERA
+                || requestCode == REQUEST_PERMISSION_MICROPHONE) {
+            boolean granted = grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+            if (pendingPermissionRequest != null) {
+                if (granted) {
+                    pendingPermissionRequest.grant(pendingPermissionRequest.getResources());
+                } else {
+                    pendingPermissionRequest.deny();
+                }
+            }
+            clearPendingPermission();
+            return;
+        }
+        if (requestCode == REQUEST_PERMISSION_LOCATION) {
+            boolean granted = grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+            finishGeolocation(granted);
+            return;
+        }
         if (requestCode != REQUEST_WRITE_STORAGE) {
             return;
         }
@@ -717,8 +964,118 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_FILE_CHOOSER) {
+            if (fileChooserCallback != null) {
+                Uri[] result = null;
+                if (resultCode == RESULT_OK && data != null) {
+                    ClipData clip = data.getClipData();
+                    if (clip != null && clip.getItemCount() > 0) {
+                        result = new Uri[clip.getItemCount()];
+                        for (int i = 0; i < clip.getItemCount(); i++) {
+                            result[i] = clip.getItemAt(i).getUri();
+                        }
+                    } else if (data.getData() != null) {
+                        result = new Uri[]{data.getData()};
+                    }
+                }
+                fileChooserCallback.onReceiveValue(result);
+                fileChooserCallback = null;
+            }
+            return;
+        }
         if (requestCode == REQUEST_SITE_SETTINGS && resultCode == RESULT_OK) {
             reloadActiveTabWithSiteSettings();
+        }
+    }
+
+    private boolean hasRuntimePermission(String permission) {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M
+                || checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void grantPermissionRequest(PermissionRequest request, String permission) {
+        if (request == null) {
+            return;
+        }
+        if (hasRuntimePermission(permission)) {
+            request.grant(request.getResources());
+            clearPendingPermission();
+            return;
+        }
+        pendingPermissionRequest = request;
+        int code = Manifest.permission.CAMERA.equals(permission)
+                ? REQUEST_PERMISSION_CAMERA : REQUEST_PERMISSION_MICROPHONE;
+        requestPermissions(new String[]{permission}, code);
+    }
+
+    private void clearPendingPermission() {
+        pendingPermissionRequest = null;
+        pendingPermissionHost = null;
+        pendingPermissionKey = null;
+    }
+
+    private void grantGeolocation(String origin) {
+        if (hasRuntimePermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            finishGeolocation(true);
+            return;
+        }
+        requestPermissions(new String[]{
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_LOCATION);
+    }
+
+    private void finishGeolocation(boolean allowed) {
+        if (pendingGeoCallback != null && pendingGeoOrigin != null) {
+            pendingGeoCallback.invoke(pendingGeoOrigin, allowed, pendingGeoRetain);
+        }
+        pendingGeoCallback = null;
+        pendingGeoOrigin = null;
+        pendingGeoRetain = false;
+    }
+
+    private void setImmersive(boolean enabled) {
+        View decor = getWindow().getDecorView();
+        if (enabled) {
+            decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        } else {
+            decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+        }
+    }
+
+    private void exitFullscreen() {
+        exitFullscreen(false);
+    }
+
+    private void exitFullscreen(boolean notifyCallback) {
+        if (fullscreenView == null) {
+            return;
+        }
+        ViewGroup root = findViewById(R.id.root);
+        View view = fullscreenView;
+        fullscreenView = null;
+        if (view.getParent() instanceof ViewGroup) {
+            ((ViewGroup) view.getParent()).removeView(view);
+        }
+        WebChromeClient.CustomViewCallback callback = fullscreenCallback;
+        fullscreenCallback = null;
+        boolean wasFullscreen = pageFullscreen;
+        pageFullscreen = false;
+        if (webContainer != null) {
+            webContainer.setVisibility(View.VISIBLE);
+        }
+        if (wasFullscreen) {
+            updateToolbarToggle();
+            setToolbarVisible(toolbarAvailable && !toolbarCollapsed);
+        }
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        setImmersive(false);
+        if (notifyCallback && callback != null) {
+            callback.onCustomViewHidden();
         }
     }
 
@@ -2054,6 +2411,10 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+        if (fullscreenView != null) {
+            exitFullscreen(true);
+            return;
+        }
         if (webView != null && webView.canGoBack()) {
             webView.goBack();
         } else {
