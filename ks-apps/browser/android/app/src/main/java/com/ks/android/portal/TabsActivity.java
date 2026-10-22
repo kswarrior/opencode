@@ -13,7 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -338,39 +337,34 @@ public class TabsActivity extends Activity {
     }
 
     private void showGroupMenu(View anchor, final TabGroup group) {
-        PopupMenu popup = new PopupMenu(this, anchor);
-        popup.getMenu().add(0, GROUP_MENU_NEW_TAB, 0, R.string.tabs_group_new_tab)
-                .setIcon(R.drawable.ic_add);
-        popup.getMenu().add(0, GROUP_MENU_EDIT, 1, R.string.tabs_group_edit)
-                .setIcon(R.drawable.ic_edit);
-        popup.getMenu().add(0, GROUP_MENU_CLOSE, 2, R.string.tabs_group_close)
-                .setIcon(R.drawable.ic_close);
-        popup.getMenu().add(0, GROUP_MENU_DELETE, 3, R.string.tabs_group_delete)
-                .setIcon(R.drawable.ic_delete);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        final int[] ids = {GROUP_MENU_NEW_TAB, GROUP_MENU_EDIT, GROUP_MENU_CLOSE,
+                GROUP_MENU_DELETE};
+        int[] labels = {R.string.tabs_group_new_tab, R.string.tabs_group_edit,
+                R.string.tabs_group_close, R.string.tabs_group_delete};
+        int[] icons = {R.drawable.ic_add, R.drawable.ic_edit, R.drawable.ic_close,
+                R.drawable.ic_delete};
+        KsDialog.menu(this, 0, ids, labels, icons, -1, new KsDialog.ChoiceAction() {
             @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-                switch (item.getItemId()) {
+            public void run(int index) {
+                switch (ids[index]) {
                     case GROUP_MENU_NEW_TAB:
                         tabManager.addTab(MainActivity.HOME_URL, group.id);
                         finish();
-                        return true;
+                        break;
                     case GROUP_MENU_EDIT:
                         promptEditGroup(group);
-                        return true;
+                        break;
                     case GROUP_MENU_CLOSE:
                         confirmCloseGroup(group);
-                        return true;
+                        break;
                     case GROUP_MENU_DELETE:
                         confirmDeleteGroup(group);
-                        return true;
+                        break;
                     default:
-                        return false;
+                        break;
                 }
             }
         });
-        MenuIcons.show(popup);
-        popup.show();
     }
 
     private void confirmCloseGroup(final TabGroup group) {
@@ -398,42 +392,48 @@ public class TabsActivity extends Activity {
     }
 
     private void showHeaderMenu(View anchor) {
-        PopupMenu popup = new PopupMenu(this, anchor);
+        List<Integer> ids = new ArrayList<Integer>();
+        List<Integer> labels = new ArrayList<Integer>();
+        List<Integer> icons = new ArrayList<Integer>();
         BrowserTab activeTab = tabManager.getActiveTab();
         if (activeTab != null && !activeTab.isHome()) {
-            popup.getMenu().add(0, HEADER_MENU_ADD_BOOKMARK, 0, R.string.tabs_add_bookmark)
-                    .setIcon(R.drawable.ic_bookmark);
+            ids.add(HEADER_MENU_ADD_BOOKMARK);
+            labels.add(R.string.tabs_add_bookmark);
+            icons.add(R.drawable.ic_bookmark);
         }
-        popup.getMenu().add(0, HEADER_MENU_NEW_TAB, 1, R.string.tabs_new_tab)
-                .setIcon(R.drawable.ic_add);
-        popup.getMenu().add(0, HEADER_MENU_NEW_GROUP, 2, R.string.tabs_new_group)
-                .setIcon(R.drawable.ic_folder);
-        popup.getMenu().add(0, HEADER_MENU_CLOSE_ALL, 3, R.string.tabs_close_all)
-                .setIcon(R.drawable.ic_close);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-                switch (item.getItemId()) {
-                    case HEADER_MENU_ADD_BOOKMARK:
-                        addBookmark(tabManager.getActiveTab());
-                        return true;
-                    case HEADER_MENU_NEW_TAB:
-                        tabManager.addTab(MainActivity.HOME_URL, 0);
-                        finish();
-                        return true;
-                    case HEADER_MENU_NEW_GROUP:
-                        promptCreateGroup();
-                        return true;
-                    case HEADER_MENU_CLOSE_ALL:
-                        confirmCloseAll();
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        MenuIcons.show(popup);
-        popup.show();
+        ids.add(HEADER_MENU_NEW_TAB);
+        labels.add(R.string.tabs_new_tab);
+        icons.add(R.drawable.ic_add);
+        ids.add(HEADER_MENU_NEW_GROUP);
+        labels.add(R.string.tabs_new_group);
+        icons.add(R.drawable.ic_folder);
+        ids.add(HEADER_MENU_CLOSE_ALL);
+        labels.add(R.string.tabs_close_all);
+        icons.add(R.drawable.ic_close);
+        final int[] idArray = toIntArray(ids);
+        KsDialog.menu(this, 0, idArray, toIntArray(labels), toIntArray(icons), -1,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        switch (idArray[index]) {
+                            case HEADER_MENU_ADD_BOOKMARK:
+                                addBookmark(tabManager.getActiveTab());
+                                break;
+                            case HEADER_MENU_NEW_TAB:
+                                tabManager.addTab(MainActivity.HOME_URL, 0);
+                                finish();
+                                break;
+                            case HEADER_MENU_NEW_GROUP:
+                                promptCreateGroup();
+                                break;
+                            case HEADER_MENU_CLOSE_ALL:
+                                confirmCloseAll();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
     }
 
     private void confirmCloseAll() {
