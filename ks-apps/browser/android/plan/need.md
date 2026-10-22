@@ -509,17 +509,17 @@ the `android-device-test` skill.
 
 | # | Area | Priority | Status |
 | --- | --- | --- | --- |
-| 3.1 | Default browser / link and share intents | P0 | Pending |
-| 3.2 | File upload | P0 | Pending |
-| 3.3 | Website permissions | P0 | Pending |
-| 3.4 | Pop-ups / new windows | P0 | Pending |
-| 3.5 | Fullscreen | P0 | Pending |
-| 3.6 | True private mode | P0 | Pending |
-| 3.7 | Clear browsing data | P0 | Pending |
-| 3.8 | Download blob/data, pause/resume, auth | P0 | Pending |
-| 3.9 | TLS / HTTP auth / client certs | P0 | Pending |
-| 3.10 | Bookmark page / History action | P0 | Pending |
-| 3.11 | Link/image context menu | P0 | Pending |
+| 3.1 | Default browser / link and share intents | P0 | Done |
+| 3.2 | File upload | P0 | Done |
+| 3.3 | Website permissions | P0 | Done |
+| 3.4 | Pop-ups / new windows | P0 | Done |
+| 3.5 | Fullscreen | P0 | Done |
+| 3.6 | True private mode | P0 | Partial (best-effort isolation) |
+| 3.7 | Clear browsing data | P0 | Done |
+| 3.8 | Download blob/data, pause/resume, auth | P0 | Mostly done (auth/POST remain) |
+| 3.9 | TLS / HTTP auth / client certs | P0 | Done |
+| 3.10 | Bookmark page / History action | P0 | Done |
+| 3.11 | Link/image context menu | P0 | Done |
 | 4.x | Expected browser features | P1 | Pending |
 | 5.x | Power-user features | P2 | Pending |
 | 7.x | Truthful settings cleanup | P0/P1 | Pending |
