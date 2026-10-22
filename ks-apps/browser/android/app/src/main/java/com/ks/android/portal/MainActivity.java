@@ -447,6 +447,10 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    handlePendingPopupLoad(current, tab, url);
+                    return;
+                }
                 removeErrorOverlay(current);
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
@@ -464,6 +468,9 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageCommitVisible(WebView current, String url) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    return;
+                }
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
                 injectAdBlock(current, url);
@@ -471,6 +478,9 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageFinished(WebView current, String url) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    return;
+                }
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
                 rememberPrivateHost(tab.id, url);
@@ -497,6 +507,9 @@ public class MainActivity extends Activity {
 
             @Override
             public void doUpdateVisitedHistory(WebView current, String url, boolean isReload) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    return;
+                }
                 tabManager.updateTab(tab.id, url, null);
                 rememberPrivateHost(tab.id, url);
                 if (isActiveTab(tab)) {
@@ -507,6 +520,9 @@ public class MainActivity extends Activity {
             @Override
             public void onReceivedError(WebView current, WebResourceRequest request,
                                         WebResourceError error) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    return;
+                }
                 if (request.isForMainFrame()) {
                     fallbackToInsecure(current, request.getUrl().toString());
                 }
@@ -515,12 +531,18 @@ public class MainActivity extends Activity {
             @Override
             public void onReceivedError(WebView current, int errorCode, String description,
                                         String failingUrl) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    return;
+                }
                 fallbackToInsecure(current, failingUrl);
             }
 
             @Override
             public void onReceivedHttpError(WebView current, WebResourceRequest request,
                                             WebResourceResponse errorResponse) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    return;
+                }
                 if (request == null || !request.isForMainFrame()
                         || errorResponse == null) {
                     return;
@@ -572,6 +594,10 @@ public class MainActivity extends Activity {
                 if (handler == null || error == null) {
                     return;
                 }
+                if (pendingPopups.containsKey(tab.id)) {
+                    handler.cancel();
+                    return;
+                }
                 String host = error.getUrl();
                 SslCertificate certificate = error.getCertificate();
                 String issuedTo = certificate == null ? ""
@@ -617,6 +643,10 @@ public class MainActivity extends Activity {
                                                   final HttpAuthHandler handler,
                                                   String host, String realm) {
                 if (handler == null) {
+                    return;
+                }
+                if (pendingPopups.containsKey(tab.id)) {
+                    handler.cancel();
                     return;
                 }
                 KsDialog.credentials(MainActivity.this,
