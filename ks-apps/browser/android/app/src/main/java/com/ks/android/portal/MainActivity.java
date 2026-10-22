@@ -1539,6 +1539,7 @@ public class MainActivity extends Activity {
         if (webContainer == null) {
             return;
         }
+        syncPrivateTabState();
         removeClosedTabViews();
         BrowserTab tab = tabManager.getActiveTab();
         if (tab == null) {

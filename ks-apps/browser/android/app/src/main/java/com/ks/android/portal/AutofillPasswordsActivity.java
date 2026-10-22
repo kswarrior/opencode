@@ -45,9 +45,15 @@ public class AutofillPasswordsActivity extends ToggleSettingsActivity {
                 R.string.autofill_passkeys_summary, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        android.content.SharedPreferences prefs =
+                                getSharedPreferences(PREFS, MODE_PRIVATE);
+                        boolean checked = prefs.getLong("passkey_checked", 0L) > 0L;
+                        boolean supported = prefs.getBoolean("passkey_supported", false);
+                        int message = !checked ? R.string.autofill_passkeys_unknown
+                                : supported ? R.string.autofill_passkeys_available
+                                : R.string.autofill_passkeys_unavailable;
                         KsDialog.message(AutofillPasswordsActivity.this,
-                                R.string.autofill_passkeys,
-                                getString(R.string.autofill_passkeys_unavailable),
+                                R.string.autofill_passkeys, getString(message),
                                 R.string.dialog_ok, null);
                     }
                 });

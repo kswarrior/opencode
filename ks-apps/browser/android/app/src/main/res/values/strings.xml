@@ -428,6 +428,8 @@ example.com##.ad-banner</string>
     <string name="autofill_passkeys">Passkeys</string>
     <string name="autofill_passkeys_summary">Check whether passkeys can be used in KS Portal</string>
     <string name="autofill_passkeys_unavailable">This Android WebView version does not expose passkey (WebAuthn) support to the app. Saved passwords and form filling still work.</string>
+    <string name="autofill_passkeys_available">This Android WebView reports WebAuthn support. Passkey creation and sign-in are handled by the website inside the page; KS Portal does not store or intercept passkeys.</string>
+    <string name="autofill_passkeys_unknown">Passkey support is detected after you open a secure website. KS Portal never intercepts or stores passkeys.</string>
     <string name="autofill_scope">Autofill scope</string>
     <string name="autofill_scope_summary">How KS Portal fills passwords and forms</string>
     <string name="autofill_scope_message">KS Portal fills passwords and forms only inside its own browser. It does not register as a system Autofill service, so other apps are never offered KS Portal data.</string>
