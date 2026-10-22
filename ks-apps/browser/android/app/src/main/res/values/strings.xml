@@ -687,6 +687,7 @@ example.com##.ad-banner</string>
     <string name="js_alert_title">This page says</string>
     <string name="js_confirm_title">This page asks</string>
     <string name="js_prompt_title">This page asks</string>
+    <string name="js_prompt_title_host">%1$s asks: %2$s</string>
     <string name="js_prompt_hint">Enter a value</string>
     <string name="dialog_block">Block</string>
     <string name="renderer_crashed">This page stopped responding and was reloaded</string>

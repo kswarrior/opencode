@@ -1897,61 +1897,39 @@ public class MainActivity extends Activity {
         if (privateTabHosts.isEmpty()) {
             return;
         }
-        CookieManager cookies = CookieManager.getInstance();
         WebStorage storage = WebStorage.getInstance();
         for (List<String> hosts : privateTabHosts.values()) {
             for (String host : hosts) {
                 for (String scheme : new String[]{"https://", "http://"}) {
                     String site = scheme + host;
-                    String header = cookies.getCookie(site);
-                    if (!TextUtils.isEmpty(header)) {
-                        String[] parts = header.split(";");
-                        for (String part : parts) {
-                            int equals = part.indexOf('=');
-                            if (equals <= 0) {
-                                continue;
-                            }
-                            String name = part.substring(0, equals).trim();
-                            cookies.setCookie(site, name + "=; Max-Age=0; path=/");
-                        }
-                    }
+                    SiteCookies.deleteAll(site);
                     storage.deleteOrigin(site);
                 }
             }
         }
-        cookies.flush();
+        CookieManager.getInstance().flush();
+        for (WebView view : tabViews.values()) {
+            view.clearCache(true);
+            break;
+        }
         privateTabHosts.clear();
     }
 
     private void clearPrivateTabData(int tabId) {
         List<String> hosts = privateTabHosts.remove(tabId);
         if (hosts != null) {
-            CookieManager cookies = CookieManager.getInstance();
             WebStorage storage = WebStorage.getInstance();
             for (String host : hosts) {
                 for (String scheme : new String[]{"https://", "http://"}) {
                     String site = scheme + host;
-                    String header = cookies.getCookie(site);
-                    if (!TextUtils.isEmpty(header)) {
-                        String[] parts = header.split(";");
-                        for (String part : parts) {
-                            int equals = part.indexOf('=');
-                            if (equals <= 0) {
-                                continue;
-                            }
-                            String name = part.substring(0, equals).trim();
-                            cookies.setCookie(site, name + "=; Max-Age=0; path=/");
-                        }
-                    }
+                    SiteCookies.deleteAll(site);
                     storage.deleteOrigin(site);
                 }
             }
-            cookies.flush();
+            CookieManager.getInstance().flush();
         }
         WebView view = tabViews.get(tabId);
         if (view != null) {
-            view.clearCache(true);
-            view.clearFormData();
             view.clearHistory();
         }
     }
