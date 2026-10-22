@@ -184,8 +184,9 @@ file without a separate design:
 - Any feature that injects CSS/JS must be opt-in, origin-scoped, skipped on the
   home asset, skipped in private tabs where it could persist data, and easy to
   reset.
-- Do not expose native bridges to page scripts or injected snippets. The
-  existing `PortalBridge.allowed()` boundary must stay intact.
+- Do not add native bridge methods for snippets or page scripts, and do not
+  weaken `PortalBridge.allowed()`. A snippet gets the same page privileges as
+  the site itself, no more.
 - No silent network calls. Features that fetch remote data must name the
   provider, be user-initiated and have an off switch.
 - Prefer reusing existing engines: adblock cleaner for clean share, download
