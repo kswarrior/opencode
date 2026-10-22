@@ -1,9 +1,11 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.graphics.Bitmap;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -102,6 +104,38 @@ public class TabsActivity extends Activity {
         adapter = new TabsAdapter();
         listView.setAdapter(adapter);
         listView.setEmptyView(emptyView);
+        if (Build.VERSION.SDK_INT >= 24) {
+            listView.setOnDragListener(new View.OnDragListener() {
+                @Override
+                public boolean onDrag(View view, android.view.DragEvent event) {
+                    if (event.getAction() == android.view.DragEvent.ACTION_DROP) {
+                        ClipData clip = event.getClipData();
+                        if (clip == null || clip.getItemCount() == 0) {
+                            return false;
+                        }
+                        int draggedId;
+                        try {
+                            draggedId = Integer.parseInt(
+                                    clip.getItemAt(0).getText().toString());
+                        } catch (RuntimeException ignored) {
+                            return false;
+                        }
+                        int position = listView.pointToPosition(
+                                (int) event.getX(), (int) event.getY());
+                        if (position < 0 || position >= rows.size()) {
+                            return false;
+                        }
+                        Row target = rows.get(position);
+                        if (target.type == TYPE_TAB && target.tab.id != draggedId) {
+                            tabManager.moveTabBefore(draggedId, target.tab.id);
+                            refreshList();
+                            return true;
+                        }
+                    }
+                    return true;
+                }
+            });
+        }
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -772,6 +806,17 @@ public class TabsActivity extends Activity {
                 holder = (ItemHolder) convertView.getTag();
             }
             holder.name.setText(displayName(tab));
+            if (tab.pinned) {
+                android.graphics.drawable.Drawable pin = getDrawable(R.drawable.ic_pin);
+                if (pin != null) {
+                    pin.setBounds(0, 0, dp(12), dp(12));
+                    pin.setTint(getResources().getColor(R.color.ks_muted));
+                }
+                holder.name.setCompoundDrawables(pin, null, null, null);
+                holder.name.setCompoundDrawablePadding(dp(4));
+            } else {
+                holder.name.setCompoundDrawables(null, null, null, null);
+            }
             holder.url.setText(displayUrl(tab));
             holder.audio.setVisibility(tab.audible || tab.muted ? View.VISIBLE : View.GONE);
             holder.audio.setAlpha(tab.muted ? 0.45f : 1f);
@@ -806,6 +851,18 @@ public class TabsActivity extends Activity {
                     }
                 }
             });
+            convertView.setOnLongClickListener(Build.VERSION.SDK_INT >= 24
+                    ? new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View view) {
+                            ClipData data = ClipData.newPlainText("tab",
+                                    String.valueOf(tab.id));
+                            view.startDragAndDrop(data,
+                                    new View.DragShadowBuilder(view), null, 0);
+                            return true;
+                        }
+                    }
+                    : null);
             return convertView;
         }
     }
