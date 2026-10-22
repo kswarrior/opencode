@@ -1283,11 +1283,6 @@ body.launching .recents {
       name.textContent = site.name;
       tile.appendChild(logo);
       tile.appendChild(name);
-      tile.addEventListener('click', function (event) {
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        launch(this.href);
-      });
       topNav.appendChild(tile);
     }
   }
@@ -1991,12 +1986,18 @@ body.launching .recents {
     invokeNative('openSettings');
   });
 
-  var tiles = document.querySelectorAll('#topSites .tile');
-  for (var i = 0; i < tiles.length; i++) {
-    tiles[i].addEventListener('click', function (event) {
+  var topSitesNav = document.getElementById('topSites');
+  if (topSitesNav) {
+    topSitesNav.addEventListener('click', function (event) {
+      var tile = event.target;
+      while (tile && tile !== topSitesNav
+          && !(tile.tagName === 'A' && tile.className.indexOf('tile') >= 0)) {
+        tile = tile.parentNode;
+      }
+      if (!tile || tile === topSitesNav) return;
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      launch(this.href);
+      launch(tile.href);
     });
   }
 

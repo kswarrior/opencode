@@ -3,7 +3,6 @@ package com.ks.android.portal;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.webkit.CookieManager;
 
 import org.json.JSONArray;
 
