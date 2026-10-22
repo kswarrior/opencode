@@ -228,6 +228,14 @@ public class MainActivity extends Activity {
         public void onTabsChanged() {
             syncActiveTab();
             applyMuteStates();
+            if (!activityResumed) {
+                BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+                if (active != null && active.audible) {
+                    showMediaNotification(active);
+                } else {
+                    cancelMediaNotification();
+                }
+            }
         }
     };
 
