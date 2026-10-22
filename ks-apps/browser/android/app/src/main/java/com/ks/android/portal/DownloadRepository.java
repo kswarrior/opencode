@@ -1546,10 +1546,24 @@ public class DownloadRepository {
         if (extension.equalsIgnoreCase(current)) {
             return clean;
         }
-        if (TextUtils.isEmpty(current)) {
+        if (!isPlausibleExtension(current)) {
             return clean + extension;
         }
         return clean.substring(0, clean.lastIndexOf('.')) + extension;
+    }
+
+    private static boolean isPlausibleExtension(String extension) {
+        if (TextUtils.isEmpty(extension) || extension.length() < 2
+                || extension.length() > 7) {
+            return false;
+        }
+        for (int i = 1; i < extension.length(); i++) {
+            char c = extension.charAt(i);
+            if (!Character.isLetterOrDigit(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean looksLikeApk(File file) {

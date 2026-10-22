@@ -470,14 +470,6 @@ public class VideoDownloadActivity extends Activity {
                 || ".mpd".equals(extension)) {
             return value.substring(0, value.length() - extension.length());
         }
-        int dot = value.lastIndexOf('.');
-        if (dot > 0) {
-            String tail = value.substring(dot).toLowerCase(Locale.US);
-            if (tail.matches("\\.[a-z0-9]{1,5}")
-                    && ("." + tail.substring(1)).equals(tail)) {
-                return value.substring(0, dot);
-            }
-        }
         return value;
     }
 
