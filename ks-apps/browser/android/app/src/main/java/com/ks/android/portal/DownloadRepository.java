@@ -498,7 +498,7 @@ public class DownloadRepository {
             File part = new File(stagingRoot, item.id + ".part");
             cookie = CookieManager.getInstance().getCookie(item.url);
             task = new DownloadTask(item.id, part, item.url, item.userAgent,
-                    item.referer, cookie);
+                    item.referer, cookie, 0);
             tasks.put(item.id, task);
             notifyListenersLocked();
         }
@@ -551,6 +551,66 @@ public class DownloadRepository {
                 NotificationHelper.downloadCancelled(context, findLocked(id));
             }
         }
+    }
+
+    public void pause(long id) {
+        DownloadTask task = null;
+        DownloadItem item;
+        synchronized (lock) {
+            item = findLocked(id);
+            if (item == null || (item.status != DownloadItem.STATUS_PENDING
+                    && item.status != DownloadItem.STATUS_DOWNLOADING)) {
+                return;
+            }
+            item.status = DownloadItem.STATUS_PAUSED;
+            item.error = "";
+            persistLocked();
+            task = tasks.get(id);
+        }
+        if (task != null) {
+            task.pause();
+        }
+        notifyListeners();
+        NotificationHelper.downloadPaused(context, item);
+    }
+
+    public boolean resume(long id) {
+        DownloadTask task;
+        DownloadItem item;
+        synchronized (lock) {
+            item = findLocked(id);
+            if (item == null || item.status != DownloadItem.STATUS_PAUSED) {
+                return false;
+            }
+            String relative = normalizeRelative(item.relativePath);
+            if (TextUtils.isEmpty(relative)) {
+                relative = getRelativePath();
+            }
+            if (!ensureFolderLocked(relative)) {
+                item.error = context.getString(R.string.download_folder_missing);
+                item.status = DownloadItem.STATUS_FAILED;
+                persistLocked();
+                return false;
+            }
+            File part = new File(stagingRoot, item.id + ".part");
+            long offset = part.isFile() ? part.length() : Math.max(0, item.downloadedBytes);
+            if (offset <= 0) {
+                part.delete();
+            }
+            item.status = DownloadItem.STATUS_PENDING;
+            item.relativePath = relative;
+            item.downloadedBytes = offset;
+            item.error = "";
+            String cookie = CookieManager.getInstance().getCookie(item.url);
+            task = new DownloadTask(item.id, part, item.url, item.userAgent,
+                    item.referer, cookie, offset);
+            tasks.put(item.id, task);
+            persistLocked();
+        }
+        notifyListeners();
+        NotificationHelper.downloadStarted(context, item);
+        executor.execute(task);
+        return true;
     }
 
     public void delete(long id) {
@@ -680,7 +740,7 @@ public class DownloadRepository {
             part.delete();
             String cookie = CookieManager.getInstance().getCookie(item.url);
             task = new DownloadTask(item.id, part, item.url, item.userAgent,
-                    item.referer, cookie);
+                    item.referer, cookie, 0);
             tasks.put(item.id, task);
             persistLocked();
         }
@@ -1554,21 +1614,33 @@ public class DownloadRepository {
         private final String userAgent;
         private final String referer;
         private final String cookie;
+        private final long resumeOffset;
         private volatile boolean cancelled;
+        private volatile boolean paused;
         private volatile HttpURLConnection connection;
 
         DownloadTask(long id, File part, String url, String userAgent, String referer,
-                     String cookie) {
+                     String cookie, long resumeOffset) {
             this.id = id;
             this.part = part;
             this.url = url;
             this.userAgent = userAgent;
             this.referer = referer;
             this.cookie = cookie;
+            this.resumeOffset = Math.max(0, resumeOffset);
         }
 
         void cancel() {
             cancelled = true;
+            disconnect();
+        }
+
+        void pause() {
+            paused = true;
+            disconnect();
+        }
+
+        private void disconnect() {
             HttpURLConnection current = connection;
             if (current != null) {
                 try {
@@ -1580,6 +1652,10 @@ public class DownloadRepository {
 
         @Override
         public void run() {
+            if (paused) {
+                markPaused();
+                return;
+            }
             if (cancelled) {
                 markCancelled();
                 return;
@@ -1608,6 +1684,10 @@ public class DownloadRepository {
                 if (!TextUtils.isEmpty(cookie)) {
                     current.setRequestProperty("Cookie", cookie);
                 }
+                long offset = resumeOffset;
+                if (offset > 0) {
+                    current.setRequestProperty("Range", "bytes=" + offset + "-");
+                }
 
                 int code = current.getResponseCode();
                 if (cancelled) {
@@ -1616,9 +1696,16 @@ public class DownloadRepository {
                 if (code < 200 || code >= 300) {
                     throw new IOException("HTTP " + code);
                 }
+                if (offset > 0 && code != HttpURLConnection.HTTP_PARTIAL) {
+                    offset = 0;
+                    part.delete();
+                }
 
                 String responseMime = normalizeMime(current.getContentType());
                 long total = current.getContentLength();
+                if (offset > 0 && total > 0) {
+                    total += offset;
+                }
                 DownloadItem downloading;
                 synchronized (lock) {
                     DownloadItem item = findLocked(id);
@@ -1639,9 +1726,9 @@ public class DownloadRepository {
                 NotificationHelper.downloadProgress(context, downloading);
 
                 input = current.getInputStream();
-                output = new FileOutputStream(part);
+                output = new FileOutputStream(part, offset > 0);
                 byte[] buffer = new byte[65536];
-                long bytes = 0;
+                long bytes = offset;
                 long lastUpdate = 0;
                 int read;
                 while ((read = input.read(buffer)) != -1) {
@@ -1749,14 +1836,20 @@ public class DownloadRepository {
                 }
                 notifyListeners();
             } catch (Exception exception) {
-                part.delete();
+                boolean wasPaused = paused;
                 boolean wasCancelled = cancelled;
+                if (!wasPaused) {
+                    part.delete();
+                }
                 DownloadItem failed = null;
                 synchronized (lock) {
                     DownloadItem item = findLocked(id);
                     failed = item;
                     if (item != null) {
-                        if (wasCancelled) {
+                        if (wasPaused) {
+                            item.status = DownloadItem.STATUS_PAUSED;
+                            item.error = "";
+                        } else if (wasCancelled) {
                             item.status = DownloadItem.STATUS_CANCELLED;
                             item.error = "Cancelled";
                         } else {
@@ -1768,7 +1861,9 @@ public class DownloadRepository {
                     persistLocked();
                 }
                 notifyListeners();
-                if (wasCancelled) {
+                if (wasPaused) {
+                    NotificationHelper.downloadPaused(context, failed);
+                } else if (wasCancelled) {
                     NotificationHelper.downloadCancelled(context, failed);
                 } else {
                     NotificationHelper.downloadFailed(context, failed);
@@ -1783,6 +1878,23 @@ public class DownloadRepository {
                 synchronized (lock) {
                     tasks.remove(id);
                 }
+            }
+        }
+
+        private void markPaused() {
+            synchronized (lock) {
+                DownloadItem item = findLocked(id);
+                if (item != null && (item.status == DownloadItem.STATUS_PENDING
+                        || item.status == DownloadItem.STATUS_DOWNLOADING)) {
+                    item.status = DownloadItem.STATUS_PAUSED;
+                    item.error = "";
+                }
+                tasks.remove(id);
+                persistLocked();
+            }
+            notifyListeners();
+            synchronized (lock) {
+                NotificationHelper.downloadPaused(context, findLocked(id));
             }
         }
 

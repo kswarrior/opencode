@@ -9,6 +9,7 @@ public class DownloadItem {
     public static final int STATUS_COMPLETED = 2;
     public static final int STATUS_FAILED = 3;
     public static final int STATUS_CANCELLED = 4;
+    public static final int STATUS_PAUSED = 5;
 
     public long id;
     public String url = "";
