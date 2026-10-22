@@ -1023,14 +1023,31 @@ public class MainActivity extends Activity {
                 }
                 String pageUrl = current.getUrl();
                 String host = SiteSettingsStore.hostOf(pageUrl);
-                boolean allow = SiteSettingsStore.getBoolean(MainActivity.this, host,
-                        SiteSettingsStore.KEY_POPUPS, false);
-                if (!allow || AdBlocker.pagePolicy(MainActivity.this,
+                if (AdBlocker.pagePolicy(MainActivity.this,
                         pageUrl).popupBlockSuggested) {
                     KsToast.show(MainActivity.this, R.string.popup_blocked);
                     return false;
                 }
-                BrowserTab created = tabManager.addTab("about:blank", 0);
+                boolean allow = SiteSettingsStore.getBoolean(MainActivity.this, host,
+                        SiteSettingsStore.KEY_POPUPS, false);
+                if (!allow && !pendingPopups.isEmpty()) {
+                    KsToast.show(MainActivity.this, R.string.popup_blocked);
+                    return false;
+                }
+                int sourceTabId = -1;
+                for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
+                    if (entry.getValue() == current) {
+                        sourceTabId = entry.getKey().intValue();
+                        break;
+                    }
+                }
+                BrowserTab created = allow
+                        ? tabManager.addTab("about:blank", 0)
+                        : tabManager.addTabInBackground("about:blank", 0);
+                if (!allow) {
+                    pendingPopups.put(created.id, new PendingPopup(sourceTabId, pageUrl,
+                            sourceTabId >= 0 && privateTabs.contains(sourceTabId)));
+                }
                 WebView target = tabViews.get(created.id);
                 if (target == null) {
                     target = createWebView(created);
@@ -1044,7 +1061,11 @@ public class MainActivity extends Activity {
                         (WebView.WebViewTransport) resultMsg.obj;
                 transport.setWebView(target);
                 resultMsg.sendToTarget();
-                syncActiveTab();
+                if (allow) {
+                    syncActiveTab();
+                } else {
+                    schedulePopupPrompt(created.id, target);
+                }
                 return true;
             }
         });
@@ -1111,6 +1132,115 @@ public class MainActivity extends Activity {
             }
         });
         return view;
+    }
+
+    private void schedulePopupPrompt(final int tabId, final WebView target) {
+        target.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                PendingPopup pending = pendingPopups.get(tabId);
+                if (pending == null || popupPromptShown.contains(tabId)) {
+                    return;
+                }
+                String url = target.getUrl();
+                if (!TextUtils.isEmpty(url)) {
+                    pending.url = url;
+                }
+                if (popupPromptShown.add(tabId)) {
+                    showPopupPrompt(tabId, pending);
+                }
+            }
+        }, 700);
+    }
+
+    private void handlePendingPopupLoad(final WebView view, final BrowserTab tab, String url) {
+        final PendingPopup pending = pendingPopups.get(tab.id);
+        if (pending == null) {
+            return;
+        }
+        String resolved = TextUtils.isEmpty(url) ? "about:blank" : url;
+        pending.url = resolved;
+        boolean blank = "about:blank".equals(resolved);
+        if (!blank) {
+            view.stopLoading();
+        }
+        if (!popupPromptShown.add(tab.id)) {
+            return;
+        }
+        view.post(new Runnable() {
+            @Override
+            public void run() {
+                PendingPopup live = pendingPopups.get(tab.id);
+                if (live == null) {
+                    popupPromptShown.remove(tab.id);
+                    return;
+                }
+                showPopupPrompt(tab.id, live);
+            }
+        });
+    }
+
+    private void showPopupPrompt(final int tabId, PendingPopup pending) {
+        if (isFinishing() || isDestroyed()) {
+            discardPendingPopup(tabId);
+            return;
+        }
+        String popupUrl = "about:blank".equals(pending.url)
+                ? getString(R.string.popup_confirm_blank_url) : pending.url;
+        hideKeyboard();
+        urlBar.clearFocus();
+        Dialog dialog = PopupConfirmDialog.show(this, pending.sourceUrl, popupUrl,
+                new PopupConfirmDialog.Listener() {
+                    @Override
+                    public void onOpen() {
+                        openPendingPopup(tabId);
+                    }
+
+                    @Override
+                    public void onBlock() {
+                        discardPendingPopup(tabId);
+                    }
+                });
+        if (dialog != null) {
+            popupDialogs.put(tabId, dialog);
+        } else {
+            discardPendingPopup(tabId);
+        }
+    }
+
+    private void openPendingPopup(int tabId) {
+        PendingPopup pending = pendingPopups.remove(tabId);
+        popupPromptShown.remove(tabId);
+        popupDialogs.remove(tabId);
+        BrowserTab tab = tabManager.findTab(tabId);
+        WebView view = tabViews.get(tabId);
+        if (tab == null || view == null) {
+            return;
+        }
+        if (pending != null && pending.privateSource) {
+            privateTabs.add(tabId);
+            tabManager.setPrivate(tabId, true);
+            if (privateTabHosts.get(tabId) == null) {
+                privateTabHosts.put(tabId, new ArrayList<String>());
+            }
+        }
+        tabManager.selectTab(tabId);
+        String url = pending == null ? "about:blank" : pending.url;
+        if (!"about:blank".equals(url)) {
+            loadUrlWithSettings(view, url);
+        }
+    }
+
+    private void discardPendingPopup(int tabId) {
+        pendingPopups.remove(tabId);
+        popupPromptShown.remove(tabId);
+        Dialog dialog = popupDialogs.remove(tabId);
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
+        if (tabManager.findTab(tabId) != null) {
+            tabManager.closeTab(tabId);
+        }
     }
 
     private boolean isActiveTab(BrowserTab tab) {
