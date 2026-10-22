@@ -74,6 +74,13 @@ final class KsDialog {
                 positiveAction, null, null);
     }
 
+    static void confirm(Activity activity, int titleRes, CharSequence message,
+                        int negativeRes, int positiveRes, boolean danger,
+                        Action positiveAction) {
+        confirm(activity, titleRes, message, negativeRes, positiveRes, danger,
+                positiveAction, null, null);
+    }
+
     static void confirmDanger(Activity activity, int titleRes, CharSequence message,
                               int negativeRes, int positiveRes, Action positiveAction) {
         confirm(activity, titleRes, message, negativeRes, positiveRes, true,
