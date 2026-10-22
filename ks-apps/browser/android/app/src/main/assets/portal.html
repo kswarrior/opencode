@@ -737,6 +737,16 @@ body.launching .recents {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
 }
+@media (prefers-contrast: more) {
+  body, .tile-name, .section-label, .wordmark {
+    color: #ffffff !important;
+  }
+  .omni, .mode-chip, .top-action, .tile, .recent-button {
+    border-color: rgba(255, 255, 255, .82) !important;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .9) !important;
+  }
+  .section-label, .tile-name { opacity: 1 !important; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .001ms !important;
