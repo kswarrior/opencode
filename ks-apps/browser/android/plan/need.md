@@ -22,12 +22,18 @@ Priority meaning:
 
 Audited at `app/src/main`:
 
-- all 53 Java sources, `AndroidManifest.xml`, the resource inventory, layouts,
-  menus, strings, drawables and `assets/portal.html`;
+- all 53 Java sources at the API/flow level, `AndroidManifest.xml`, the
+  resource inventory, layouts, menus, strings, drawables and
+  `assets/portal.html`;
 - every `WebViewClient` / `WebChromeClient` callback;
 - the download engine, history, bookmarks, tabs, site settings, cookie
   handling, credential store, ad-block engine and notification stack;
 - intent filters, runtime permissions, storage paths and platform limits.
+
+Remaining static-audit gap: the `AdBlockEngine` parser internals around
+lines 751-1450 were sampled rather than read line-by-line; the engine's
+external behavior is confirmed through its callers and supported filter
+surface. This does not block the product backlog below.
 
 Platform: Android System WebView, minSdk 21, targetSdk 35, Java 8, no Gradle,
 no AndroidX, no third-party libraries. Builds are assembled with the
