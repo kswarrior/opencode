@@ -74,7 +74,9 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListPopupWindow;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -90,6 +92,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -197,6 +200,10 @@ public class MainActivity extends Activity {
     }
 
     private final Map<Integer, Boolean> appliedMuteState = new HashMap<Integer, Boolean>();
+    private ListPopupWindow suggestionPopup;
+    private ArrayAdapter<String> suggestionAdapter;
+    private final List<String> suggestionUrls = new ArrayList<String>();
+    private boolean updatingUrlBar;
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
@@ -272,6 +279,22 @@ public class MainActivity extends Activity {
                         || bottom - top != oldBottom - oldTop) {
                     toolbarToggle.reclamp();
                 }
+            }
+        });
+        urlBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence text, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text, int start, int before, int count) {
+                if (!updatingUrlBar) {
+                    showSuggestions(text == null ? "" : text.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
             }
         });
         urlBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -1908,8 +1931,11 @@ public class MainActivity extends Activity {
         updateToolbarToggle();
         setToolbarVisible(!home && !toolbarCollapsed);
         if (!home && !urlBar.hasFocus()) {
+            updatingUrlBar = true;
             urlBar.setText(url);
             urlBar.setSelection(urlBar.getText().length());
+            updatingUrlBar = false;
+            hideSuggestions();
         }
         updateTabCounter();
         updateSiteLogo(url);
@@ -2362,6 +2388,94 @@ public class MainActivity extends Activity {
         setToolbarVisible(false);
         if (webView != null) {
             loadUrlWithSettings(webView, HOME_URL);
+        }
+    }
+
+    private void showSuggestions(String query) {
+        if (!urlBar.hasFocus() || TextUtils.isEmpty(query)
+                || query.startsWith("http://") || query.startsWith("https://")) {
+            hideSuggestions();
+            return;
+        }
+        String needle = query.toLowerCase(Locale.US);
+        LinkedHashMap<String, String> matches = new LinkedHashMap<String, String>();
+        List<HistoryEntry> history = HistoryRepository.getInstance(this).getEntries();
+        for (HistoryEntry entry : history) {
+            if (matches.size() >= 6) {
+                break;
+            }
+            String name = entry.name == null ? "" : entry.name;
+            String url = entry.url == null ? "" : entry.url;
+            if (name.toLowerCase(Locale.US).contains(needle)
+                    || url.toLowerCase(Locale.US).contains(needle)) {
+                matches.put(url, TextUtils.isEmpty(name) ? url : name);
+            }
+        }
+        if (matches.size() < 6) {
+            try {
+                org.json.JSONArray bookmarks = new org.json.JSONArray(
+                        BookmarkRepository.getAllDetailed(this));
+                for (int i = 0; i < bookmarks.length() && matches.size() < 6; i++) {
+                    org.json.JSONObject item = bookmarks.optJSONObject(i);
+                    if (item == null) {
+                        continue;
+                    }
+                    String name = item.optString("name");
+                    String url = item.optString("url");
+                    if ((name.toLowerCase(Locale.US).contains(needle)
+                            || url.toLowerCase(Locale.US).contains(needle))
+                            && !matches.containsKey(url)) {
+                        matches.put(url, TextUtils.isEmpty(name) ? url : name);
+                    }
+                }
+            } catch (org.json.JSONException ignored) {
+            }
+        }
+        if (matches.isEmpty()) {
+            hideSuggestions();
+            return;
+        }
+        suggestionUrls.clear();
+        suggestionUrls.addAll(matches.keySet());
+        if (suggestionPopup == null) {
+            suggestionPopup = new ListPopupWindow(this);
+            suggestionPopup.setAnchorView(urlBar);
+            suggestionPopup.setInputMethodMode(ListPopupWindow.INPUT_METHOD_NOT_NEEDED);
+            suggestionPopup.setModal(false);
+            suggestionAdapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1);
+            suggestionPopup.setAdapter(suggestionAdapter);
+            suggestionPopup.setOnItemClickListener(
+                    new android.widget.AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(android.widget.AdapterView<?> parent,
+                                                View view, int position, long id) {
+                            if (position < 0 || position >= suggestionUrls.size()) {
+                                return;
+                            }
+                            updatingUrlBar = true;
+                            urlBar.setText(suggestionUrls.get(position));
+                            urlBar.setSelection(urlBar.getText().length());
+                            updatingUrlBar = false;
+                            hideSuggestions();
+                            navigateFromBar();
+                        }
+                    });
+        }
+        suggestionAdapter.clear();
+        for (Map.Entry<String, String> match : matches.entrySet()) {
+            suggestionAdapter.add(match.getValue());
+        }
+        suggestionAdapter.notifyDataSetChanged();
+        suggestionPopup.setWidth(urlBar.getWidth());
+        if (!suggestionPopup.isShowing()) {
+            suggestionPopup.show();
+        }
+    }
+
+    private void hideSuggestions() {
+        if (suggestionPopup != null && suggestionPopup.isShowing()) {
+            suggestionPopup.dismiss();
         }
     }
 
