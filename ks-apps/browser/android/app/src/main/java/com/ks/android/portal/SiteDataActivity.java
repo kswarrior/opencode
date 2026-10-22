@@ -79,7 +79,7 @@ public class SiteDataActivity extends Activity {
                 finish();
             }
         });
-        header.addView(back, new LinearLayout.LayoutParams(dp(42), dp(42)));
+        header.addView(back, new LinearLayout.LayoutParams(dp(48), dp(48)));
 
         TextView title = new TextView(this);
         title.setText(R.string.site_data_manager);
@@ -104,11 +104,12 @@ public class SiteDataActivity extends Activity {
                 confirmClearAll();
             }
         });
-        LinearLayout.LayoutParams clearParams = new LinearLayout.LayoutParams(dp(42), dp(42));
+        LinearLayout.LayoutParams clearParams = new LinearLayout.LayoutParams(dp(48), dp(48));
         clearParams.setMarginStart(dp(7));
         header.addView(clearAll, clearParams);
         root.addView(header, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, dp(56)));
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
 
         android.widget.ScrollView scroll = new android.widget.ScrollView(this);
         scroll.setFillViewport(true);
