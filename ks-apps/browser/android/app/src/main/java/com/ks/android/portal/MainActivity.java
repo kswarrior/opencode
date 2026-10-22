@@ -1535,6 +1535,19 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void syncPrivateTabState() {
+        privateTabs.clear();
+        for (BrowserTab tab : tabManager.getTabs()) {
+            if (tabManager.isPrivate(tab.id)) {
+                privateTabs.add(tab.id);
+                if (privateTabHosts.get(tab.id) == null) {
+                    privateTabHosts.put(tab.id, new ArrayList<String>());
+                }
+            }
+        }
+        privateTabHosts.keySet().retainAll(privateTabs);
+    }
+
     private void syncActiveTab() {
         if (webContainer == null) {
             return;
@@ -2911,13 +2924,21 @@ public class MainActivity extends Activity {
                 || isHomeUrl(webView.getUrl())) {
             return;
         }
-        String url = webView.getUrl();
-        BrowserTab tab = tabManager.addTab(url, tabManager.getActiveTabId());
+        openUrlInPrivateTab(webView.getUrl(), activeGroupId());
+        KsToast.show(this, R.string.tool_private_tab_opened);
+    }
+
+    private int activeGroupId() {
+        BrowserTab active = tabManager.getActiveTab();
+        return active == null ? 0 : active.groupId;
+    }
+
+    private void openUrlInPrivateTab(String url, int groupId) {
+        BrowserTab tab = tabManager.addTab(url, groupId);
         privateTabs.add(tab.id);
         tabManager.setPrivate(tab.id, true);
         privateTabHosts.put(tab.id, new ArrayList<String>());
         syncActiveTab();
-        KsToast.show(this, R.string.tool_private_tab_opened);
     }
 
     private void addToHomeScreen() {
@@ -3447,10 +3468,12 @@ public class MainActivity extends Activity {
         final String targetImage = imageUrl;
         String[] items = targetImage == null
                 ? new String[]{getString(R.string.context_open_new_tab),
+                getString(R.string.context_open_private),
                 getString(R.string.context_copy_link),
                 getString(R.string.context_share_link),
                 getString(R.string.context_download_link)}
                 : new String[]{getString(R.string.context_open_new_tab),
+                getString(R.string.context_open_private),
                 getString(R.string.context_copy_link),
                 getString(R.string.context_share_link),
                 getString(R.string.context_save_image)};
@@ -3461,8 +3484,10 @@ public class MainActivity extends Activity {
                     tabManager.addTab(url, 0);
                     syncActiveTab();
                 } else if (which == 1) {
-                    copyText(url);
+                    openUrlInPrivateTab(url, 0);
                 } else if (which == 2) {
+                    copyText(url);
+                } else if (which == 3) {
                     shareText(url);
                 } else if (targetImage != null) {
                     saveImage(targetImage);
@@ -3476,6 +3501,7 @@ public class MainActivity extends Activity {
 
     private void showImageContextMenu(final WebView view, final String url) {
         String[] items = new String[]{getString(R.string.context_open_image),
+                getString(R.string.context_open_private),
                 getString(R.string.context_save_image),
                 getString(R.string.context_copy_image),
                 getString(R.string.context_share_image)};
@@ -3486,8 +3512,10 @@ public class MainActivity extends Activity {
                     tabManager.addTab(url, 0);
                     syncActiveTab();
                 } else if (which == 1) {
-                    saveImage(url);
+                    openUrlInPrivateTab(url, 0);
                 } else if (which == 2) {
+                    saveImage(url);
+                } else if (which == 3) {
                     copyText(url);
                 } else {
                     shareText(url);
