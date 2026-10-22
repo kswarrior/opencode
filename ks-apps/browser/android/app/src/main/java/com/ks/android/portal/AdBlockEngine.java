@@ -1441,6 +1441,9 @@ final class AdBlockEngine {
             boolean explicitTypes = false;
             boolean redirectOnly = false;
             boolean hasRemoveParam = false;
+            boolean domainOption = false;
+            boolean denyOption = false;
+            boolean toOption = false;
             String removeParam = null;
             String redirect = null;
 
@@ -1462,11 +1465,14 @@ final class AdBlockEngine {
                             .trim().toLowerCase(Locale.US);
                     String value = equals >= 0 ? unquote(body.substring(equals + 1)) : "";
                     if ("domain".equals(name) || "from".equals(name)) {
+                        domainOption = true;
                         includes = includeDomains(value);
                         excludes = excludeDomains(value);
                     } else if ("denyallow".equals(name)) {
+                        denyOption = true;
                         deny = includeDomains(value);
                     } else if ("to".equals(name)) {
+                        toOption = true;
                         to = includeDomains(value);
                     } else if ("third-party".equals(name) || "3p".equals(name)) {
                         party = negated ? PARTY_FIRST : PARTY_THIRD;
@@ -1569,6 +1575,14 @@ final class AdBlockEngine {
                 if (types == 0) {
                     unsupported = true;
                 }
+            }
+            if (domainOption && includes.length == 0 && excludes.length == 0) {
+                // An explicit $domain= that produced no usable entries must not
+                // degrade into a rule that matches every site.
+                unsupported = true;
+            }
+            if ((denyOption && deny.length == 0) || (toOption && to.length == 0)) {
+                unsupported = true;
             }
             if (unsupported) {
                 return;
