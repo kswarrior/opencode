@@ -140,6 +140,8 @@ new work below.
 | N20 | P1 | Tab audio indicator and per-tab mute | A speaker indicator appears for audible tabs; tapping mutes only that tab | S |
 | N21 | P2 | Discard/hibernate background tabs | Memory-heavy background tabs can be discarded and restored on selection without losing the URL | M |
 | N22 | P2 | Two-pane/split-screen tabs | Tablet/landscape mode shows two live panes; phone layout is unchanged | L |
+| N66 | P2 | Open link/new tab in a private tab | Link context menu and tab screen offer "Open in private tab"; the new tab is isolated from history/recents | S |
+| N67 | P2 | Bottom address bar / toolbar placement option | User can move the main URL toolbar to the bottom without breaking find, fullscreen or the floating toggle | M |
 
 ### 4.4 Bookmarks and history
 
@@ -235,7 +237,7 @@ status: it needs a layout and focus rewrite, not a small patch.
 | --- | --- | --- |
 | 0 - Trust | 1.3.2 | F1-F9, all P2 correctness cleanups, regression tests for private mode, resume, bridge origin, credentials, clear data and site settings |
 | 1 - Daily browser | 1.4.0 | N1-N4, N7-N9, N11-N13, N15-N20, N23-N25, N28-N29, N35, N38, N43-N45, N47-N48, N55, N58, N62 |
-| 2 - Comfort | 1.5.0 | N5-N6, N10, N14, N21, N26-N27, N30-N34, N36-N37, N39-N42, N46, N49-N54, N56-N57, N59-N61, N63-N64 |
+| 2 - Comfort | 1.5.0 | N5-N6, N10, N14, N21, N26-N27, N30-N34, N36-N37, N39-N42, N46, N49-N54, N56-N57, N59-N61, N63-N64, N66-N67 |
 | 3 - Scale | later | N22, N65, and any item that needs a new architecture or backend |
 
 Every slice keeps the current constraints: no Gradle, no AndroidX, no
