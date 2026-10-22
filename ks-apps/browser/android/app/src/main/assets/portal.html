@@ -981,6 +981,159 @@ body.launching .recents {
   var lastFocused = null;
   var suppressUntil = 0;
 
+  var PORTAL_STRINGS = {
+    en: {
+      placeholder: 'Search or enter address', askAI: 'Ask AI anything',
+      privatePlaceholder: 'Search privately', topSites: 'TOP SITES',
+      bookmarks: 'BOOKMARKS', recentSites: 'RECENT SITES',
+      addBookmark: 'Add bookmark', removeBookmark: 'Remove bookmark?',
+      removeMessage: 'Remove "%s" from your bookmarks?', name: 'Name',
+      url: 'URL', cancel: 'Cancel', add: 'Add', remove: 'Remove',
+      invalidUrl: 'Enter a valid website address.',
+      duplicate: 'This site is already in bookmarks.',
+      tabs: 'Tabs', customize: 'Customize', downloads: 'Downloads',
+      settings: 'Settings', history: 'History', go: 'Go',
+      searchOptions: 'Search options', aiMode: 'AI Mode',
+      incognito: 'Incognito', addTile: 'Add bookmark', topSitesAria: 'Top sites',
+      bookmarksAria: 'Bookmarks', recentAria: 'Recent sites',
+      optionsFor: 'Options for '
+    },
+    es: {
+      placeholder: 'Buscar o escribir dirección', askAI: 'Preguntar a la IA',
+      privatePlaceholder: 'Buscar en privado', topSites: 'SITIOS PRINCIPALES',
+      bookmarks: 'MARCADORES', recentSites: 'SITIOS RECIENTES',
+      addBookmark: 'Añadir marcador', removeBookmark: '¿Quitar marcador?',
+      removeMessage: '¿Quitar "%s" de tus marcadores?', name: 'Nombre',
+      url: 'URL', cancel: 'Cancelar', add: 'Añadir', remove: 'Quitar',
+      invalidUrl: 'Introduce una dirección web válida.',
+      duplicate: 'Este sitio ya está en marcadores.',
+      tabs: 'Pestañas', customize: 'Personalizar', downloads: 'Descargas',
+      settings: 'Ajustes', history: 'Historial', go: 'Ir',
+      searchOptions: 'Opciones de búsqueda', aiMode: 'Modo IA',
+      incognito: 'Incógnito', addTile: 'Añadir marcador', topSitesAria: 'Sitios principales',
+      bookmarksAria: 'Marcadores', recentAria: 'Sitios recientes',
+      optionsFor: 'Opciones de '
+    },
+    fr: {
+      placeholder: 'Rechercher ou saisir une adresse', askAI: 'Demander à l’IA',
+      privatePlaceholder: 'Rechercher en privé', topSites: 'SITES PRINCIPAUX',
+      bookmarks: 'FAVORIS', recentSites: 'SITES RÉCENTS',
+      addBookmark: 'Ajouter un favori', removeBookmark: 'Supprimer le favori ?',
+      removeMessage: 'Supprimer « %s » de vos favoris ?', name: 'Nom',
+      url: 'URL', cancel: 'Annuler', add: 'Ajouter', remove: 'Supprimer',
+      invalidUrl: 'Saisissez une adresse web valide.',
+      duplicate: 'Ce site figure déjà dans les favoris.',
+      tabs: 'Onglets', customize: 'Personnaliser', downloads: 'Téléchargements',
+      settings: 'Paramètres', history: 'Historique', go: 'Aller',
+      searchOptions: 'Options de recherche', aiMode: 'Mode IA',
+      incognito: 'Navigation privée', addTile: 'Ajouter un favori', topSitesAria: 'Sites principaux',
+      bookmarksAria: 'Favoris', recentAria: 'Sites récents',
+      optionsFor: 'Options pour '
+    },
+    de: {
+      placeholder: 'Suchen oder Adresse eingeben', askAI: 'KI fragen',
+      privatePlaceholder: 'Privat suchen', topSites: 'TOP-SEITEN',
+      bookmarks: 'LESEZEICHEN', recentSites: 'LETZTE SEITEN',
+      addBookmark: 'Lesezeichen hinzufügen', removeBookmark: 'Lesezeichen entfernen?',
+      removeMessage: '"%s" aus den Lesezeichen entfernen?', name: 'Name',
+      url: 'URL', cancel: 'Abbrechen', add: 'Hinzufügen', remove: 'Entfernen',
+      invalidUrl: 'Geben Sie eine gültige Webadresse ein.',
+      duplicate: 'Diese Seite ist bereits in den Lesezeichen.',
+      tabs: 'Tabs', customize: 'Anpassen', downloads: 'Downloads',
+      settings: 'Einstellungen', history: 'Verlauf', go: 'Los',
+      searchOptions: 'Suchoptionen', aiMode: 'KI-Modus',
+      incognito: 'Inkognito', addTile: 'Lesezeichen hinzufügen', topSitesAria: 'Top-Seiten',
+      bookmarksAria: 'Lesezeichen', recentAria: 'Letzte Seiten',
+      optionsFor: 'Optionen für '
+    },
+    pt: {
+      placeholder: 'Pesquisar ou digitar endereço', askAI: 'Perguntar à IA',
+      privatePlaceholder: 'Pesquisar em privado', topSites: 'SITES PRINCIPAIS',
+      bookmarks: 'FAVORITOS', recentSites: 'SITES RECENTES',
+      addBookmark: 'Adicionar favorito', removeBookmark: 'Remover favorito?',
+      removeMessage: 'Remover "%s" dos seus favoritos?', name: 'Nome',
+      url: 'URL', cancel: 'Cancelar', add: 'Adicionar', remove: 'Remover',
+      invalidUrl: 'Introduza um endereço web válido.',
+      duplicate: 'Este site já está nos favoritos.',
+      tabs: 'Separadores', customize: 'Personalizar', downloads: 'Transferências',
+      settings: 'Definições', history: 'Histórico', go: 'Ir',
+      searchOptions: 'Opções de pesquisa', aiMode: 'Modo IA',
+      incognito: 'Privado', addTile: 'Adicionar favorito', topSitesAria: 'Sites principais',
+      bookmarksAria: 'Favoritos', recentAria: 'Sites recentes',
+      optionsFor: 'Opções de '
+    },
+    hi: {
+      placeholder: 'खोजें या पता लिखें', askAI: 'AI से पूछें',
+      privatePlaceholder: 'निजी तौर पर खोजें', topSites: 'मुख्य साइटें',
+      bookmarks: 'बुकमार्क', recentSites: 'हाल की साइटें',
+      addBookmark: 'बुकमार्क जोड़ें', removeBookmark: 'बुकमार्क हटाएं?',
+      removeMessage: '"%s" को बुकमार्क से हटाएं?', name: 'नाम',
+      url: 'URL', cancel: 'रद्द करें', add: 'जोड़ें', remove: 'हटाएं',
+      invalidUrl: 'मान्य वेबसाइट पता दर्ज करें।',
+      duplicate: 'यह साइट पहले से बुकमार्क में है।',
+      tabs: 'टैब', customize: 'अनुकूलित करें', downloads: 'डाउनलोड',
+      settings: 'सेटिंग्स', history: 'इतिहास', go: 'जाएं',
+      searchOptions: 'खोज विकल्प', aiMode: 'AI मोड',
+      incognito: 'गुप्त', addTile: 'बुकमार्क जोड़ें', topSitesAria: 'मुख्य साइटें',
+      bookmarksAria: 'बुकमार्क', recentAria: 'हाल की साइटें',
+      optionsFor: 'विकल्प: '
+    }
+  };
+  var portalLocale = String(navigator.language || 'en').toLowerCase().split('-')[0];
+  var portalText = PORTAL_STRINGS[portalLocale] || PORTAL_STRINGS.en;
+
+  function t(key) {
+    return portalText[key] || PORTAL_STRINGS.en[key] || key;
+  }
+
+  function formatText(key, value) {
+    return t(key).split('%s').join(value);
+  }
+
+  function applyPortalStrings() {
+    input.placeholder = t('placeholder');
+    input.setAttribute('aria-label', t('placeholder'));
+    var topLabel = document.querySelector('.top-sites-label');
+    if (topLabel) topLabel.textContent = t('topSites');
+    var bookmarksLabel = document.querySelector('.bookmarks-label');
+    if (bookmarksLabel) bookmarksLabel.textContent = t('bookmarks');
+    var recentsLabel = document.querySelector('.recents-label span');
+    if (recentsLabel) recentsLabel.textContent = t('recentSites');
+    var topNav = document.getElementById('topSites');
+    if (topNav) topNav.setAttribute('aria-label', t('topSitesAria'));
+    bookmarksNav.setAttribute('aria-label', t('bookmarksAria'));
+    recentsNav.setAttribute('aria-label', t('recentAria'));
+    var modeRow = document.querySelector('.mode-row');
+    if (modeRow) modeRow.setAttribute('aria-label', t('searchOptions'));
+    aiButton.setAttribute('aria-label', t('aiMode'));
+    incognitoButton.setAttribute('aria-label', t('incognito'));
+    var historyButton = document.getElementById('btnHistory');
+    if (historyButton) {
+      historyButton.setAttribute('aria-label', t('history'));
+      historyButton.setAttribute('title', t('history'));
+    }
+    var actions = {
+      btnTabs: 'tabs', btnCustomize: 'customize',
+      btnDownloads: 'downloads', btnSettings: 'settings'
+    };
+    for (var id in actions) {
+      var button = document.getElementById(id);
+      if (button) {
+        button.setAttribute('aria-label', t(actions[id]));
+        button.setAttribute('title', t(actions[id]));
+      }
+    }
+    var goButton = document.querySelector('.omni button[type="submit"]');
+    if (goButton) goButton.setAttribute('aria-label', t('go'));
+    bookmarkTitle.textContent = t('addBookmark');
+    bookmarkSave.textContent = t('add');
+    var cancelButton = document.getElementById('bookmarkCancel');
+    if (cancelButton) cancelButton.textContent = t('cancel');
+    var fieldLabels = bookmarkFields.querySelectorAll('span');
+    if (fieldLabels.length > 0) fieldLabels[0].textContent = t('name');
+    if (fieldLabels.length > 1) fieldLabels[1].textContent = t('url');
+  }
+
   function searchEngine() {
     var engine = 'google';
     if (nativePortal && typeof nativePortal.getSearchEngine === 'function') {
@@ -1059,7 +1212,8 @@ body.launching .recents {
     aiButton.setAttribute('aria-pressed', aiMode ? 'true' : 'false');
     incognitoButton.classList.toggle('active', incognito);
     incognitoButton.setAttribute('aria-pressed', incognito ? 'true' : 'false');
-    input.placeholder = aiMode ? 'Ask AI anything' : (incognito ? 'Search privately' : 'Search or enter address');
+    input.placeholder = aiMode ? t('askAI')
+      : (incognito ? t('privatePlaceholder') : t('placeholder'));
   }
 
   function restoreModes() {
@@ -1557,7 +1711,7 @@ body.launching .recents {
     var tile = document.createElement('button');
     tile.type = 'button';
     tile.className = 'tile tile-add';
-    tile.setAttribute('aria-label', 'Add bookmark');
+    tile.setAttribute('aria-label', t('addTile'));
     var logo = document.createElement('span');
     logo.className = 'tile-logo add-logo';
     var plus = document.createElement('span');
@@ -1589,14 +1743,14 @@ body.launching .recents {
 
   function openAddModal() {
     removeIndex = -1;
-    bookmarkTitle.textContent = 'Add bookmark';
+    bookmarkTitle.textContent = t('addBookmark');
     bookmarkFields.hidden = false;
     bookmarkCopy.hidden = true;
     bookmarkCopy.textContent = '';
     bookmarkName.value = '';
     bookmarkUrl.value = '';
     bookmarkError.textContent = '';
-    bookmarkSave.textContent = 'Add';
+    bookmarkSave.textContent = t('add');
     bookmarkSave.classList.remove('danger');
     openModal();
     window.setTimeout(function () { bookmarkName.focus(); }, 30);
@@ -1605,12 +1759,12 @@ body.launching .recents {
   function openRemoveModal(bookmark, index) {
     if (modal.classList.contains('open') && removeIndex === index) return;
     removeIndex = index;
-    bookmarkTitle.textContent = 'Remove bookmark?';
+    bookmarkTitle.textContent = t('removeBookmark');
     bookmarkFields.hidden = true;
     bookmarkCopy.hidden = false;
-    bookmarkCopy.textContent = 'Remove "' + bookmark.name + '" from your bookmarks?';
+    bookmarkCopy.textContent = formatText('removeMessage', bookmark.name);
     bookmarkError.textContent = '';
-    bookmarkSave.textContent = 'Remove';
+    bookmarkSave.textContent = t('remove');
     bookmarkSave.classList.add('danger');
     openModal();
     window.setTimeout(function () { bookmarkSave.focus(); }, 30);
@@ -1644,7 +1798,7 @@ body.launching .recents {
     }
     var url = normalizeBookmarkUrl(bookmarkUrl.value);
     if (!url) {
-      bookmarkError.textContent = 'Enter a valid website address.';
+      bookmarkError.textContent = t('invalidUrl');
       bookmarkUrl.focus();
       return;
     }
@@ -1652,7 +1806,7 @@ body.launching .recents {
     if (!name) name = new URL(url).hostname.replace(/^www\./, '');
     for (var i = 0; i < bookmarks.length; i++) {
       if (bookmarks[i].url === url) {
-        bookmarkError.textContent = 'This site is already in bookmarks.';
+        bookmarkError.textContent = t('duplicate');
         return;
       }
     }
@@ -1752,6 +1906,7 @@ body.launching .recents {
     });
   }
 
+  applyPortalStrings();
   renderBookmarks();
   refreshRecents();
   applyBackground();
