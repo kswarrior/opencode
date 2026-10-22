@@ -1047,6 +1047,12 @@ public class MainActivity extends Activity {
                     return;
                 }
                 String host = error.getUrl();
+                String pageHost = SiteSettingsStore.hostOf(current.getUrl());
+                if (!pageHost.isEmpty()
+                        && !pageHost.equals(SiteSettingsStore.hostOf(host))) {
+                    handler.cancel();
+                    return;
+                }
                 SslCertificate certificate = error.getCertificate();
                 String issuedTo = certificate == null ? ""
                         : certificateName(certificate.getIssuedTo());
@@ -1058,7 +1064,7 @@ public class MainActivity extends Activity {
                 final String insecure = insecureVersionOf(host);
                 final WebView failedView = current;
                 KsDialog.confirm(MainActivity.this, R.string.ssl_warning_title, message,
-                        R.string.ssl_go_back, R.string.error_page_load_insecure, false,
+                        R.string.ssl_go_back, R.string.ssl_continue, true,
                         new KsDialog.Action() {
                             @Override
                             public void run() {
@@ -1216,7 +1222,10 @@ public class MainActivity extends Activity {
             public boolean onJsPrompt(WebView current, String url, String message,
                                       String defaultValue, final JsPromptResult result) {
                 String host = SiteSettingsStore.hostOf(url);
-                KsDialog.input(MainActivity.this, R.string.js_prompt_title,
+                CharSequence title = TextUtils.isEmpty(host)
+                        ? getString(R.string.js_prompt_title)
+                        : getString(R.string.js_prompt_title_host, host, message);
+                KsDialog.input(MainActivity.this, title,
                         defaultValue == null ? "" : defaultValue,
                         R.string.js_prompt_hint, R.string.dialog_ok,
                         InputType.TYPE_CLASS_TEXT, new KsDialog.TextAction() {

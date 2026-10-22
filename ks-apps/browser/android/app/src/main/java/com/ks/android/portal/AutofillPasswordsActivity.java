@@ -217,17 +217,23 @@ public class AutofillPasswordsActivity extends ToggleSettingsActivity {
                     ? manager.isDeviceSecure() : manager.isKeyguardSecure();
         }
         if (manager == null || !secure) {
-            reveal(credential);
+            showUnlockUnavailable();
             return;
         }
         Intent intent = manager.createConfirmDeviceCredentialIntent(
                 getString(R.string.saved_logins), getString(R.string.saved_logins_unlock));
         if (intent == null) {
-            reveal(credential);
+            showUnlockUnavailable();
             return;
         }
         pendingReveal = credential;
         startActivityForResult(intent, REQUEST_UNLOCK);
+    }
+
+    private void showUnlockUnavailable() {
+        KsDialog.message(this, R.string.saved_logins,
+                getString(R.string.saved_logins_unlock_unavailable),
+                R.string.dialog_ok, null);
     }
 
     private void reveal(CredentialStore.Credential credential) {
