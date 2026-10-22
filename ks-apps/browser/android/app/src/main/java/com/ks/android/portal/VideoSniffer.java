@@ -351,7 +351,17 @@ final class VideoSniffer {
             for (String name : keys) {
                 String lower = name.toLowerCase(Locale.US);
                 if ("range".equals(lower) || "rn".equals(lower) || "rbuf".equals(lower)
-                        || "cb".equals(lower) || "cachebust".equals(lower)) {
+                        || "cb".equals(lower) || "cachebust".equals(lower)
+                        || "sq".equals(lower) || "dur".equals(lower)
+                        || "mh".equals(lower) || "mn".equals(lower)
+                        || "ms".equals(lower) || "mv".equals(lower)
+                        || "mvi".equals(lower) || "pl".equals(lower)
+                        || "lsparams".equals(lower) || "lsig".equals(lower)
+                        || "sig".equals(lower) || "n".equals(lower)
+                        || "pot".equals(lower) || "ei".equals(lower)
+                        || "expire".equals(lower) || "ip".equals(lower)
+                        || "mt".equals(lower) || "mm".equals(lower)
+                        || "txp".equals(lower)) {
                     continue;
                 }
                 String value = uri.getQueryParameter(name);
