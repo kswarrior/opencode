@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ks.android.portal"
-    android:versionCode="21"
-    android:versionName="1.2.1">
+    android:versionCode="22"
+    android:versionName="1.2.2">
 
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35" />
 
@@ -30,7 +30,7 @@
             android:value="KS Warrior" />
         <meta-data
             android:name="com.ks.android.portal.VERSION"
-            android:value="1.1.7" />
+            android:value="1.2.2" />
         <meta-data
             android:name="android.webkit.WebView.EnableSafeBrowsing"
             android:value="true" />

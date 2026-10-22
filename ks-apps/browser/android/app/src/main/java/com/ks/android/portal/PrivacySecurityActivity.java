@@ -14,10 +14,7 @@ public class PrivacySecurityActivity extends ToggleSettingsActivity {
                         "privacy_do_not_track", false),
                 new ToggleSetting(R.string.adblocker_strip_tracking,
                         R.string.adblocker_strip_tracking_summary,
-                        "privacy_strip_tracking", true),
-                new ToggleSetting(R.string.privacy_preload_pages,
-                        R.string.privacy_preload_pages_summary,
-                        "privacy_preload_pages", true));
+                        "privacy_strip_tracking", true));
         addSection(R.string.security_section,
                 new ToggleSetting(R.string.security_safe_browsing,
                         R.string.security_safe_browsing_summary,

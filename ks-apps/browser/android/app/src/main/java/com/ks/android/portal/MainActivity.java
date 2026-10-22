@@ -540,6 +540,7 @@ public class MainActivity extends Activity {
             closed.stopLoading();
             closed.destroy();
             privateTabs.remove(tabId);
+            cacheBypassReloads.remove(closed);
             iterator.remove();
         }
     }

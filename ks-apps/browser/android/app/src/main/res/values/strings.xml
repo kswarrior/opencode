@@ -361,8 +361,6 @@ example.com##.ad-banner</string>
     <string name="security_section">Security</string>
     <string name="privacy_do_not_track">Do Not Track</string>
     <string name="privacy_do_not_track_summary">Ask websites not to track your browsing</string>
-    <string name="privacy_preload_pages">Preload pages</string>
-    <string name="privacy_preload_pages_summary">Load pages faster using preloading</string>
     <string name="security_safe_browsing">Safe Browsing</string>
     <string name="security_safe_browsing_summary">Warn about dangerous sites and downloads</string>
     <string name="security_secure_connections">Always use secure connections</string>
