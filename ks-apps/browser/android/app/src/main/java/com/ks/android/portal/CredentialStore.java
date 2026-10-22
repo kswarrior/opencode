@@ -27,6 +27,7 @@ import javax.crypto.spec.GCMParameterSpec;
 final class CredentialStore {
     private static final String PREFS = "ks_passwords";
     private static final String KEY_ITEMS = "items";
+    private static final String KEY_CLEARED = "cleared_after_error";
     private static final String KEY_ALIAS = "ks_portal_passwords";
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
@@ -82,10 +83,21 @@ final class CredentialStore {
                 && TextUtils.equals(credential.password, password == null ? "" : password);
     }
 
-    void save(String name, String rawUrl, String username, String password) {
+    boolean isSupported() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+    }
+
+    boolean wasClearedAfterError() {
+        return preferences.getBoolean(KEY_CLEARED, false);
+    }
+
+    boolean save(String name, String rawUrl, String username, String password) {
+        if (!isSupported()) {
+            return false;
+        }
         String origin = originOf(rawUrl);
         if (origin == null || TextUtils.isEmpty(password)) {
-            return;
+            return false;
         }
         synchronized (lock) {
             List<Credential> credentials = readLocked();
@@ -107,7 +119,7 @@ final class CredentialStore {
             existing.username = username == null ? "" : username;
             existing.password = password;
             existing.updatedAt = System.currentTimeMillis();
-            writeLocked(credentials);
+            return writeLocked(credentials);
         }
     }
 
@@ -116,6 +128,9 @@ final class CredentialStore {
         String stored = preferences.getString(KEY_ITEMS, "");
         String json = decrypt(stored);
         if (TextUtils.isEmpty(json)) {
+            if (!TextUtils.isEmpty(stored)) {
+                preferences.edit().remove(KEY_ITEMS).putBoolean(KEY_CLEARED, true).apply();
+            }
             return result;
         }
         try {
@@ -141,7 +156,7 @@ final class CredentialStore {
         return result;
     }
 
-    private void writeLocked(List<Credential> credentials) {
+    private boolean writeLocked(List<Credential> credentials) {
         JSONArray array = new JSONArray();
         try {
             for (Credential credential : credentials) {
@@ -154,36 +169,44 @@ final class CredentialStore {
                 array.put(object);
             }
         } catch (JSONException ignored) {
+            return false;
         }
-        preferences.edit().putString(KEY_ITEMS, encrypt(array.toString())).apply();
+        String encrypted = encrypt(array.toString());
+        if (encrypted == null) {
+            return false;
+        }
+        preferences.edit().putString(KEY_ITEMS, encrypted)
+                .putBoolean(KEY_CLEARED, false).apply();
+        return true;
     }
 
     private String encrypt(String plain) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            try {
-                Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
-                cipher.init(Cipher.ENCRYPT_MODE, secretKey());
-                byte[] iv = cipher.getIV();
-                byte[] value = cipher.doFinal(plain.getBytes(UTF8));
-                byte[] payload = new byte[1 + iv.length + value.length];
-                payload[0] = (byte) iv.length;
-                System.arraycopy(iv, 0, payload, 1, iv.length);
-                System.arraycopy(value, 0, payload, 1 + iv.length, value.length);
-                return "enc:" + Base64.encodeToString(payload, Base64.NO_WRAP);
-            } catch (Exception ignored) {
-            }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return null;
         }
-        return "b64:" + Base64.encodeToString(plain.getBytes(UTF8), Base64.NO_WRAP);
+        try {
+            Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey());
+            byte[] iv = cipher.getIV();
+            byte[] value = cipher.doFinal(plain.getBytes(UTF8));
+            byte[] payload = new byte[1 + iv.length + value.length];
+            payload[0] = (byte) iv.length;
+            System.arraycopy(iv, 0, payload, 1, iv.length);
+            System.arraycopy(value, 0, payload, 1 + iv.length, value.length);
+            return "enc:" + Base64.encodeToString(payload, Base64.NO_WRAP);
+        } catch (Exception ignored) {
+            return null;
+        }
     }
 
     private String decrypt(String stored) {
         if (TextUtils.isEmpty(stored)) {
             return "";
         }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return "";
+        }
         if (stored.startsWith("enc:")) {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-                return "";
-            }
             try {
                 byte[] payload = Base64.decode(stored.substring(4), Base64.NO_WRAP);
                 int ivLength = payload[0] & 0xFF;
@@ -202,14 +225,38 @@ final class CredentialStore {
                 return "";
             }
         }
-        if (stored.startsWith("b64:")) {
-            try {
-                return new String(Base64.decode(stored.substring(4), Base64.NO_WRAP), UTF8);
-            } catch (Exception ignored) {
-                return "";
-            }
-        }
         return "";
+    }
+
+    void clearAll() {
+        synchronized (lock) {
+            preferences.edit().remove(KEY_ITEMS).putBoolean(KEY_CLEARED, false).apply();
+        }
+    }
+
+    List<Credential> getAll() {
+        synchronized (lock) {
+            return readLocked();
+        }
+    }
+
+    boolean delete(String originUrl, String username) {
+        String origin = originOf(originUrl);
+        if (origin == null) {
+            return false;
+        }
+        synchronized (lock) {
+            List<Credential> credentials = readLocked();
+            for (int i = credentials.size() - 1; i >= 0; i--) {
+                Credential credential = credentials.get(i);
+                if (origin.equals(originOf(credential.url))
+                        && TextUtils.equals(credential.username,
+                        username == null ? "" : username)) {
+                    credentials.remove(i);
+                }
+            }
+            return writeLocked(credentials);
+        }
     }
 
     private SecretKey secretKey() throws Exception {
