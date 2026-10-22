@@ -354,6 +354,7 @@ and compiling, not device-verified.
 | N62 | Core portal labels and bookmark dialogs localised (en/es/fr/de/pt/hi); brand names and some dynamic strings remain English |
 | N64 | Activity headers wrap with `minHeight 56dp`; rows already wrap. No large-font device QA |
 
-These statuses mean implemented/compiling only. The release artifact must be rebuilt
-after the N2/N4/N5/N13/N18/N53/N55/N56/N58/N66 work; no device/emulator was attached.
+These statuses mean implemented/compiling only. The release artifact was rebuilt and
+signed after the N2/N4/N5/N13/N18/N20/N53/N55/N56/N58/N66 work; no device/emulator
+was attached.
 
