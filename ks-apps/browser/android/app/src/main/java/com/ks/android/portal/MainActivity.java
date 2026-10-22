@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.security.KeyChain;
 import android.security.KeyChainAliasCallback;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -861,9 +862,21 @@ public class MainActivity extends Activity {
             @Override
             public void onDownloadStart(String url, String userAgent, String contentDisposition,
                                         String mimeType, long contentLength) {
-                if (TextUtils.isEmpty(url) || url.startsWith("blob:") || url.startsWith("data:")) {
-                    Toast.makeText(MainActivity.this, R.string.download_unsupported,
+                if (TextUtils.isEmpty(url)) {
+                    return;
+                }
+                BrowserTab active = tabManager.getActiveTab();
+                if (active != null && privateTabs.contains(active.id)) {
+                    Toast.makeText(MainActivity.this, R.string.private_download_blocked,
                             Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (url.startsWith("data:")) {
+                    saveDataUrl(url, contentDisposition, mimeType);
+                    return;
+                }
+                if (url.startsWith("blob:")) {
+                    fetchBlobDownload(view, url, contentDisposition, mimeType);
                     return;
                 }
                 requestDownload(url, userAgent, contentDisposition, mimeType, contentLength);
@@ -1996,6 +2009,68 @@ public class MainActivity extends Activity {
         }
     }
 
+    private boolean saveDataUrl(String dataUrl, String name, String mimeType) {
+        if (TextUtils.isEmpty(dataUrl) || !dataUrl.startsWith("data:")) {
+            return false;
+        }
+        int comma = dataUrl.indexOf(',');
+        if (comma < 0 || comma == dataUrl.length() - 1) {
+            Toast.makeText(this, R.string.download_start_failed, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        String meta = dataUrl.substring(5, comma);
+        String payload = dataUrl.substring(comma + 1);
+        byte[] bytes;
+        try {
+            if (meta.toLowerCase(java.util.Locale.US).contains(";base64")) {
+                bytes = Base64.decode(payload, Base64.DEFAULT);
+            } else {
+                bytes = java.net.URLDecoder.decode(payload, "UTF-8")
+                        .getBytes(java.nio.charset.Charset.forName("UTF-8"));
+            }
+        } catch (Exception exception) {
+            Toast.makeText(this, R.string.download_start_failed, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        String resolvedMime = TextUtils.isEmpty(mimeType)
+                ? meta.split(";")[0] : mimeType;
+        String resolvedName = name;
+        if (TextUtils.isEmpty(resolvedName)) {
+            resolvedName = resolvedMime.startsWith("image/") ? "image" : "download";
+            String extension = android.webkit.MimeTypeMap.getSingleton()
+                    .getExtensionFromMimeType(resolvedMime);
+            if (!TextUtils.isEmpty(extension)) {
+                resolvedName = resolvedName + "." + extension;
+            }
+        }
+        DownloadRepository repository = DownloadRepository.getInstance(this);
+        DownloadItem item = repository.saveBytes(bytes, resolvedName, resolvedMime,
+                currentUrl);
+        if (item == null || item.status == DownloadItem.STATUS_FAILED) {
+            Toast.makeText(this, R.string.download_start_failed, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        Toast.makeText(this, getString(R.string.download_started, item.fileName),
+                Toast.LENGTH_SHORT).show();
+        return true;
+    }
+
+    private void fetchBlobDownload(final WebView view, final String url,
+                                   final String contentDisposition, final String mimeType) {
+        final String name = DownloadRepository.getInstance(this)
+                .suggestFileName(url, contentDisposition, mimeType);
+        String script = "(function(){fetch(" + JSONObject.quote(url) + ")"
+                + ".then(function(r){return r.blob();})"
+                + ".then(function(b){var reader=new FileReader();"
+                + "reader.onload=function(){KSPortalNative.saveBlob(reader.result,"
+                + JSONObject.quote(name) + ",b.type||" + JSONObject.quote(mimeType) + ");};"
+                + "reader.readAsDataURL(b);})"
+                + ".catch(function(){KSPortalNative.saveBlob("
+                + JSONObject.quote(url) + "," + JSONObject.quote(name) + ","
+                + JSONObject.quote(mimeType) + ");});})();";
+        view.evaluateJavascript(script, null);
+    }
+
     private String sslErrorText(int error) {
         switch (error) {
             case SslError.SSL_EXPIRED:
@@ -2503,6 +2578,17 @@ public class MainActivity extends Activity {
                 + "var OFFER=" + offerSave + ",AUTO=" + autoSignIn
                 + ",FORMS=" + autofillForms + ",SITES=" + siteNotifications
                 + ",DNT=" + doNotTrack + ",SAVED=" + savedJson + ";"
+                + "if(!window.__ksBlobHook){window.__ksBlobHook=true;"
+                + "document.addEventListener('click',function(e){var a=e.target;"
+                + "while(a&&a.nodeType===1&&a.tagName!=='A'){a=a.parentElement;}"
+                + "if(!a||!a.getAttribute)return;var href=a.href||'';"
+                + "if(href.indexOf('blob:')!==0&&href.indexOf('data:')!==0)return;"
+                + "var dl=a.getAttribute('download');if(!dl)return;e.preventDefault();"
+                + "if(href.indexOf('data:')===0){try{KSPortalNative.saveBlob(href,dl,a.type||'');}"
+                + "catch(x){}}else{try{fetch(href).then(function(r){return r.blob();})"
+                + ".then(function(b){var reader=new FileReader();reader.onload=function(){"
+                + "KSPortalNative.saveBlob(reader.result,dl,b.type||'');};"
+                + "reader.readAsDataURL(b);});}catch(x){}}},true);}"
                 + "if(DNT){try{Object.defineProperty(navigator,'doNotTrack',"
                 + "{get:function(){return '1';},configurable:true});}catch(e){}"
                 + "try{Object.defineProperty(window,'doNotTrack',"
@@ -2725,6 +2811,19 @@ public class MainActivity extends Activity {
                 return AiModeEngine.DEFAULT;
             }
             return AiModeEngine.getKey(MainActivity.this);
+        }
+
+        @JavascriptInterface
+        public boolean saveBlob(String dataUrl, String name, String mimeType) {
+            if (!allowed()) {
+                return false;
+            }
+            if (privateTabs.contains(tabId)) {
+                Toast.makeText(MainActivity.this, R.string.private_download_blocked,
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            return saveDataUrl(dataUrl, name, mimeType);
         }
 
         @JavascriptInterface
