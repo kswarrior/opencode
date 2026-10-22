@@ -1831,7 +1831,7 @@ public class DownloadRepository {
                 if (cancelled) {
                     throw new IOException("Cancelled");
                 }
-                if (code == HttpURLConnection.HTTP_REQUESTED_RANGE_NOT_SATISFIABLE) {
+                if (code == 416) {
                     keepPart = true;
                     throw new IOException("Resume rejected by server");
                 }

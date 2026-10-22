@@ -500,6 +500,39 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public boolean onRenderProcessGone(WebView current,
+                                               RenderProcessGoneDetail detail) {
+                int tabId = -1;
+                for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
+                    if (entry.getValue() == current) {
+                        tabId = entry.getKey();
+                        break;
+                    }
+                }
+                if (tabId < 0) {
+                    return false;
+                }
+                removeErrorOverlay(current);
+                tabViews.remove(tabId);
+                if (webContainer != null) {
+                    webContainer.removeView(current);
+                }
+                current.removeJavascriptInterface("KSPortalNative");
+                current.removeJavascriptInterface("KSPortalWeb");
+                current.destroy();
+                BrowserTab tab = tabManager.findTab(tabId);
+                if (tab != null) {
+                    tab.loading = false;
+                    tab.progress = 0;
+                }
+                if (tabManager.getActiveTabId() == tabId) {
+                    syncActiveTab();
+                }
+                KsToast.show(MainActivity.this, R.string.renderer_crashed);
+                return true;
+            }
+
+            @Override
             public void onReceivedSslError(final WebView current,
                                            final SslErrorHandler handler,
                                            SslError error) {
@@ -769,8 +802,23 @@ public class MainActivity extends Activity {
                     }
                 }
                 if (!wantsCamera && !wantsMicrophone) {
+                    for (int i = 0; i < resources.length; i++) {
+                        if (!PermissionRequest.RESOURCE_PROTECTED_MEDIA_ID
+                                .equals(resources[i])) {
+                            request.deny();
+                            return;
+                        }
+                    }
                     request.grant(resources);
                     return;
+                }
+                for (int i = 0; i < resources.length; i++) {
+                    if (!PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resources[i])
+                            && !PermissionRequest.RESOURCE_AUDIO_CAPTURE
+                            .equals(resources[i])) {
+                        request.deny();
+                        return;
+                    }
                 }
                 String key = wantsCamera && wantsMicrophone
                         ? "camera_microphone" : wantsCamera ? "camera" : "microphone";
