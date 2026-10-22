@@ -119,7 +119,7 @@ public class DownloadRepository {
             }
         });
         load();
-    }
+
         try {
             context.registerReceiver(new android.content.BroadcastReceiver() {
                 @Override
@@ -130,7 +130,7 @@ public class DownloadRepository {
                     android.net.ConnectivityManager.CONNECTIVITY_ACTION));
         } catch (RuntimeException ignored) {
         }
-
+    }
 
     public static void setAuth(String host, String username, String password) {
         if (TextUtils.isEmpty(host) || username == null || password == null) {

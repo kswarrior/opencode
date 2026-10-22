@@ -768,4 +768,22 @@ example.com##.ad-banner</string>
     <string name="history_retention_forever">Forever</string>
     <string name="history_retention_current">Kept for %1$s</string>
 
+
+    <string name="download_select_all">Select all</string>
+    <string name="download_clear_selection">Clear selection</string>
+    <string name="download_delete_selected">Delete</string>
+    <string name="download_selected_count">%1$d selected</string>
+    <string name="download_delete_selected_title">Delete selected downloads?</string>
+    <string name="download_delete_selected_message">Delete %1$d items? Downloaded files will also be removed.</string>
+    <string name="download_deleted_selected">Deleted %1$d downloads</string>
+    <string name="download_checksum">SHA-256 checksum</string>
+    <string name="download_checksum_title">SHA-256 checksum</string>
+    <string name="download_checksum_failed">Could not compute checksum</string>
+    <string name="download_wifi_only_on">Wi-Fi-only downloads: on</string>
+    <string name="download_wifi_only_off">Wi-Fi-only downloads: off</string>
+    <string name="download_waiting_wifi">Waiting for Wi-Fi</string>
+    <string name="download_start_now">Download now (mobile data)</string>
+    <string name="download_wifi_only_toast_on">New downloads wait for Wi-Fi</string>
+    <string name="download_wifi_only_toast_off">Downloads can use mobile data</string>
+
 </resources>
