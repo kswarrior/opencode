@@ -907,6 +907,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
+                VideoSniffer.reset(tab.id, url);
                 if (pendingPopups.containsKey(tab.id)) {
                     pageUrl = url;
                     pageHost = SiteSettingsStore.hostOf(url);
@@ -974,6 +975,23 @@ public class MainActivity extends Activity {
                 injectAdBlock(current, url);
                 injectAudioWatcher(current, tab);
                 if (!privateTabs.contains(tab.id)) {
+                    VideoSniffer.setPage(tab.id, url, title);
+                    scanPageMedia(current, tab.id, url, title);
+                    final int scanTabId = tab.id;
+                    final String scanUrl = url;
+                    final String scanTitle = title;
+                    current.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            BrowserTab activeTab = tabManager.findTab(scanTabId);
+                            if (activeTab != null && !privateTabs.contains(scanTabId)) {
+                                WebView scanView = tabViews.get(scanTabId);
+                                if (scanView != null && scanUrl.equals(scanView.getUrl())) {
+                                    scanPageMedia(scanView, scanTabId, scanUrl, scanTitle);
+                                }
+                            }
+                        }
+                    }, 2500);
                     detectPasskeySupport(current, url);
                 }
                 if (isActiveTab(tab)) {
@@ -1989,6 +2007,7 @@ public class MainActivity extends Activity {
             }
             int tabId = entry.getKey().intValue();
             WebView closed = entry.getValue();
+            VideoSniffer.remove(tabId);
             if (existing != null && !tabManager.isPrivate(tabId)) {
                 SharedPreferences.Editor history = getSharedPreferences(
                         "ks_tab_history", MODE_PRIVATE).edit();
@@ -3535,6 +3554,13 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 popup.dismiss();
                 openDownloadsPage();
+            }
+        });
+        panel.findViewById(R.id.menuVideos).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                openVideoDownloader();
             }
         });
         panel.findViewById(R.id.menuShare).setOnClickListener(new View.OnClickListener() {
