@@ -1984,6 +1984,7 @@ public class MainActivity extends Activity {
                 history.apply();
                 existing.discarded = false;
             }
+            clearPrivateTabData(tabId);
             pendingPopups.remove(tabId);
             popupPromptShown.remove(tabId);
             Dialog popupDialog = popupDialogs.remove(tabId);
@@ -1996,7 +1997,6 @@ public class MainActivity extends Activity {
             closed.removeJavascriptInterface("KSPortalWeb");
             closed.stopLoading();
             closed.destroy();
-            clearPrivateTabData(tabId);
             privateTabs.remove(tabId);
             appliedMuteState.remove(tabId);
             getSharedPreferences("ks_tab_history", MODE_PRIVATE).edit()
