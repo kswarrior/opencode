@@ -13,6 +13,7 @@ final class BrowserTab {
     boolean loading;
     boolean audible;
     boolean muted;
+    boolean discarded;
 
     BrowserTab(int id, String url, int groupId, String title) {
         this.id = id;

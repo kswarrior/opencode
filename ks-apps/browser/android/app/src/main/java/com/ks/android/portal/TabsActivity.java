@@ -32,6 +32,7 @@ public class TabsActivity extends Activity {
     private static final int MENU_REMOVE_FROM_GROUP = 3;
     private static final int MENU_CLOSE_TAB = 4;
     private static final int MENU_MUTE_TAB = 5;
+    private static final int MENU_DISCARD_TAB = 6;
 
     private static final int GROUP_MENU_NEW_TAB = 10;
     private static final int GROUP_MENU_EDIT = 11;
@@ -281,6 +282,11 @@ public class TabsActivity extends Activity {
         ids.add(MENU_MUTE_TAB);
         labels.add(tab.muted ? R.string.tabs_unmute : R.string.tabs_mute);
         icons.add(R.drawable.ic_volume_off);
+        if (tab.id != tabManager.getActiveTabId()) {
+            ids.add(MENU_DISCARD_TAB);
+            labels.add(R.string.tabs_discard);
+            icons.add(R.drawable.ic_close);
+        }
         ids.add(MENU_CLOSE_TAB);
         labels.add(R.string.tabs_close);
         icons.add(R.drawable.ic_close);
@@ -301,6 +307,9 @@ public class TabsActivity extends Activity {
                                 break;
                             case MENU_MUTE_TAB:
                                 tabManager.toggleMuted(tab.id);
+                                break;
+                            case MENU_DISCARD_TAB:
+                                tabManager.discardTab(tab.id);
                                 break;
                             case MENU_CLOSE_TAB:
                                 tabManager.closeTab(tab.id);

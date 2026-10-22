@@ -730,6 +730,7 @@ example.com##.ad-banner</string>
     <string name="tabs_search_hint">Search tabs</string>
     <string name="tabs_search_empty">No tabs match your search</string>
     <string name="tabs_mute">Mute tab</string>
+    <string name="tabs_discard">Discard tab</string>
     <string name="tabs_unmute">Unmute tab</string>
     <string name="tabs_audible_description">Playing audio</string>
     <string name="tabs_muted_description">Muted</string>

@@ -553,6 +553,7 @@ final class TabManager {
                 item.put("url", tab.url);
                 item.put("group", tab.groupId);
                 item.put("muted", tab.muted);
+                item.put("discarded", tab.discarded);
                 tabsJson.put(item);
             }
             root.put("tabs", tabsJson);
@@ -624,6 +625,7 @@ final class TabManager {
                     BrowserTab restored = new BrowserTab(id, url, groupId,
                             item.optString("title", ""));
                     restored.muted = item.optBoolean("muted", false);
+                    restored.discarded = item.optBoolean("discarded", false);
                     tabs.add(restored);
                     if (id >= nextTabId) {
                         nextTabId = id + 1;

@@ -1415,31 +1415,35 @@ public class MainActivity extends Activity {
     }
 
     private void saveTabHistories() {
-        SharedPreferences preferences = getSharedPreferences("ks_tab_history", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        SharedPreferences.Editor editor = getSharedPreferences(
+                "ks_tab_history", MODE_PRIVATE).edit();
         for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
             int tabId = entry.getKey().intValue();
             if (tabManager != null && tabManager.isPrivate(tabId)) {
                 editor.remove("h" + tabId);
                 continue;
             }
-            try {
-                Bundle state = new Bundle();
-                if (entry.getValue().saveState(state) == null) {
-                    continue;
-                }
-                Parcel parcel = Parcel.obtain();
-                try {
-                    parcel.writeBundle(state);
-                    editor.putString("h" + tabId, Base64.encodeToString(
-                            parcel.marshall(), Base64.NO_WRAP));
-                } finally {
-                    parcel.recycle();
-                }
-            } catch (RuntimeException ignored) {
-            }
+            saveTabHistory(editor, tabId, entry.getValue());
         }
         editor.apply();
+    }
+
+    private void saveTabHistory(SharedPreferences.Editor editor, int tabId, WebView view) {
+        try {
+            Bundle state = new Bundle();
+            if (view.saveState(state) == null) {
+                return;
+            }
+            Parcel parcel = Parcel.obtain();
+            try {
+                parcel.writeBundle(state);
+                editor.putString("h" + tabId, Base64.encodeToString(
+                        parcel.marshall(), Base64.NO_WRAP));
+            } finally {
+                parcel.recycle();
+            }
+        } catch (RuntimeException ignored) {
+        }
     }
 
     private boolean restoreTabHistory(WebView view, BrowserTab tab) {
@@ -1603,11 +1607,19 @@ public class MainActivity extends Activity {
         Iterator<Map.Entry<Integer, WebView>> iterator = tabViews.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<Integer, WebView> entry = iterator.next();
-            if (tabManager.findTab(entry.getKey()) != null) {
+            BrowserTab existing = tabManager.findTab(entry.getKey());
+            if (existing != null && !existing.discarded) {
                 continue;
             }
             int tabId = entry.getKey().intValue();
             WebView closed = entry.getValue();
+            if (existing != null && !tabManager.isPrivate(tabId)) {
+                SharedPreferences.Editor history = getSharedPreferences(
+                        "ks_tab_history", MODE_PRIVATE).edit();
+                saveTabHistory(history, tabId, closed);
+                history.apply();
+                existing.discarded = false;
+            }
             pendingPopups.remove(tabId);
             popupPromptShown.remove(tabId);
             Dialog popupDialog = popupDialogs.remove(tabId);
