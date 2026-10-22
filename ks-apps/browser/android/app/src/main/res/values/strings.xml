@@ -449,6 +449,8 @@ example.com##.ad-banner</string>
     <string name="clear_data_cache">Cached pages and files</string>
     <string name="clear_data_form">Saved form data</string>
     <string name="clear_data_sites">Site settings and permissions</string>
+    <string name="clear_data_downloads">Download history</string>
+    <string name="clear_data_download_files">Downloaded files</string>
     <string name="clear_data_confirm">Clear</string>
     <string name="clear_data_done">Browsing data cleared</string>
     <string name="file_chooser_title">Choose a file</string>

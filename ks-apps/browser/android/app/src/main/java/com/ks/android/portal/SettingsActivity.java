@@ -114,7 +114,9 @@ public class SettingsActivity extends Activity {
                 getString(R.string.clear_data_cookies),
                 getString(R.string.clear_data_cache),
                 getString(R.string.clear_data_form),
-                getString(R.string.clear_data_sites)};
+                getString(R.string.clear_data_sites),
+                getString(R.string.clear_data_downloads),
+                getString(R.string.clear_data_download_files)};
         final boolean[] checked = new boolean[labels.length];
         KsDialog.multiChoice(this, R.string.clear_data_title, labels, checked,
                 R.string.dialog_cancel, R.string.clear_data_confirm,
@@ -138,16 +140,15 @@ public class SettingsActivity extends Activity {
             HistoryRepository.getInstance(this).clear();
             getSharedPreferences("ks_recents", MODE_PRIVATE).edit().clear().apply();
         }
-        if (checked[1] || checked[3]) {
+        if (checked[1]) {
             CookieManager cookies = CookieManager.getInstance();
             cookies.removeAllCookies(null);
             cookies.flush();
             WebStorage.getInstance().deleteAllData();
         }
-        if (checked[1] || checked[2]) {
+        if (checked[2]) {
             WebView webView = new WebView(this);
             webView.clearCache(true);
-            webView.clearFormData();
             webView.destroy();
         }
         if (checked[3]) {
@@ -155,6 +156,9 @@ public class SettingsActivity extends Activity {
         }
         if (checked[4]) {
             SiteSettingsStore.clearAll(this);
+        }
+        if (checked[5] || checked[6]) {
+            DownloadRepository.getInstance(this).clearHistory(checked[6]);
         }
         KsToast.show(this, R.string.clear_data_done);
     }

@@ -747,6 +747,36 @@ public class DownloadRepository {
         notifyListeners();
     }
 
+    public void clearHistory(boolean deleteFiles) {
+        List<DownloadItem> removed;
+        synchronized (lock) {
+            removed = new ArrayList<DownloadItem>(items);
+            for (DownloadTask task : tasks.values()) {
+                task.cancel();
+            }
+            tasks.clear();
+            items.clear();
+            persistLocked();
+        }
+        for (DownloadItem item : removed) {
+            new File(stagingRoot, item.id + ".part").delete();
+            if (!deleteFiles) {
+                continue;
+            }
+            Uri content = null;
+            if (!TextUtils.isEmpty(item.contentUri)) {
+                try {
+                    content = Uri.parse(item.contentUri);
+                } catch (Exception ignored) {
+                }
+            }
+            deletePublished(content, TextUtils.isEmpty(item.filePath)
+                    ? null : new File(item.filePath));
+            NotificationHelper.downloadCancelled(context, item);
+        }
+        notifyListeners();
+    }
+
     public boolean rename(long id, String newName) {
         boolean changed = false;
         synchronized (lock) {
