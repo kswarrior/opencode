@@ -1,9 +1,7 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -119,25 +117,14 @@ public class SettingsActivity extends Activity {
                 getString(R.string.clear_data_form),
                 getString(R.string.clear_data_sites)};
         final boolean[] checked = new boolean[labels.length];
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.clear_data_title)
-                .setMultiChoiceItems(labels, checked,
-                        new DialogInterface.OnMultiChoiceClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which,
-                                                boolean selected) {
-                                checked[which] = selected;
-                            }
-                        })
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(R.string.clear_data_confirm,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                clearBrowsingData(checked);
-                            }
-                        })
-                .show();
+        KsDialog.multiChoice(this, R.string.clear_data_title, labels, checked,
+                R.string.dialog_cancel, R.string.clear_data_confirm,
+                new KsDialog.MultiChoiceAction() {
+                    @Override
+                    public void run(boolean[] selected) {
+                        clearBrowsingData(selected);
+                    }
+                });
     }
 
     private void clearBrowsingData(boolean[] checked) {
