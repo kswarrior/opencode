@@ -104,6 +104,8 @@ import java.util.WeakHashMap;
 public class MainActivity extends Activity {
     public static final String EXTRA_OPEN_URL = "com.ks.android.portal.extra.OPEN_URL";
     static final String HOME_URL = "file:///android_asset/portal.html";
+    private static final String ACTION_NEW_TAB = "com.ks.android.portal.NEW_TAB";
+    private static final String ACTION_NEW_PRIVATE_TAB = "com.ks.android.portal.NEW_PRIVATE_TAB";
     private static final String RECENTS_PREFS = "ks_recents";
     private static final String RECENTS_KEY = "items";
     private static final int RECENTS_LIMIT = 30;
@@ -311,11 +313,13 @@ public class MainActivity extends Activity {
             }
         });
 
-        String openUrl = urlFromIntent(getIntent());
-        if (openUrl != null) {
-            openUrlInActiveTab(openUrl);
-        } else {
-            syncActiveTab();
+        if (!handleShortcutIntent(getIntent())) {
+            String openUrl = urlFromIntent(getIntent());
+            if (openUrl != null) {
+                openUrlInActiveTab(openUrl);
+            } else {
+                syncActiveTab();
+            }
         }
         NotificationHelper.maybeNotifyUpdate(this);
         NotificationHelper.maybeShowTip(this);
@@ -407,6 +411,9 @@ public class MainActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+        if (handleShortcutIntent(intent)) {
+            return;
+        }
         String url = urlFromIntent(intent);
         if (url == null) {
             return;
@@ -415,6 +422,27 @@ public class MainActivity extends Activity {
         hideKeyboard();
         urlBar.clearFocus();
         openUrlInActiveTab(url);
+    }
+
+    private boolean handleShortcutIntent(Intent intent) {
+        if (intent == null || Intent.ACTION_MAIN.equals(intent.getAction())) {
+            return false;
+        }
+        String action = intent.getAction();
+        if (ACTION_NEW_PRIVATE_TAB.equals(action)) {
+            BrowserTab tab = tabManager.addTab(HOME_URL, 0);
+            privateTabs.add(tab.id);
+            tabManager.setPrivate(tab.id, true);
+            privateTabHosts.put(tab.id, new ArrayList<String>());
+            syncActiveTab();
+            return true;
+        }
+        if (ACTION_NEW_TAB.equals(action)) {
+            tabManager.addTab(HOME_URL, 0);
+            syncActiveTab();
+            return true;
+        }
+        return false;
     }
 
     private void openUrlInActiveTab(String url) {
