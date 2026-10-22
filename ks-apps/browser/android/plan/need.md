@@ -269,8 +269,10 @@ no third-party libraries.
 
 ### 4.1 Page tools
 
-- [ ] **Find in page** — `WebView.findAllAsync` / `findNext` / `clearMatches`,
-  with a toolbar, match count, previous/next and highlight.
+- [x] **Find in page** — done. Top find bar below the toolbar uses
+  `findAllAsync` / `findNext` / `clearMatches`, with a live match counter
+  (`1/2`), previous/next, a no-matches state and highlight. Verified on the
+  emulator; closing clears highlights and the keyboard.
 - [ ] **Reader mode** — extract the main article with a conservative JS
   readability pass, render in a native reading view. Allow exit and font-size
   control.
@@ -522,7 +524,7 @@ the `android-device-test` skill.
 | 3.9 | TLS / HTTP auth / client certs | P0 | Done |
 | 3.10 | Bookmark page / History action | P0 | Done |
 | 3.11 | Link/image context menu | P0 | Done |
-| 4.x | Expected browser features | P1 | Pending |
+| 4.x | Expected browser features | P1 | In progress (find in page done) |
 | 5.x | Power-user features | P2 | Pending |
 | 7.x | Truthful settings cleanup | P0/P1 | Pending |
 
