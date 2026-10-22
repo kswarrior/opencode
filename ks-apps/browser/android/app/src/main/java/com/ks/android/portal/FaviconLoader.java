@@ -2,7 +2,6 @@ package com.ks.android.portal;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.LruCache;
@@ -97,13 +96,12 @@ final class FaviconLoader {
         HttpURLConnection connection = null;
         InputStream input = null;
         try {
-            URL url = new URL("https://www.google.com/s2/favicons?domain="
-                    + Uri.encode(host) + "&sz=64");
+            URL url = new URL("https://" + host + "/favicon.ico");
             connection = (HttpURLConnection) url.openConnection();
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
             connection.setInstanceFollowRedirects(true);
-            connection.setRequestProperty("User-Agent", "KSPortal/1.1.7");
+            connection.setRequestProperty("User-Agent", "KSPortal/1.4.0");
             connection.setRequestProperty("Referer", "https://" + host + "/");
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 return null;

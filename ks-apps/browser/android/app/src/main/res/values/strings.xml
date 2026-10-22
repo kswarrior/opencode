@@ -389,11 +389,11 @@ example.com##.ad-banner</string>
     <string name="privacy_section">Privacy</string>
     <string name="security_section">Security</string>
     <string name="privacy_do_not_track">Do Not Track</string>
-    <string name="privacy_do_not_track_summary">Ask websites not to track your browsing</string>
+    <string name="privacy_do_not_track_summary">Send Do Not Track with main page requests</string>
     <string name="security_safe_browsing">Safe Browsing</string>
     <string name="security_safe_browsing_summary">Warn about dangerous sites and downloads</string>
     <string name="security_secure_connections">Always use secure connections</string>
-    <string name="security_secure_connections_summary">Upgrade page loads to HTTPS when possible</string>
+    <string name="security_secure_connections_summary">Upgrade to HTTPS and ask before loading an insecure version</string>
     <string name="security_unsafe_downloads">Warn about unsafe downloads</string>
     <string name="security_unsafe_downloads_summary">Pause downloads that look dangerous</string>
     <string name="autofill_passwords">Autofill and Passwords</string>

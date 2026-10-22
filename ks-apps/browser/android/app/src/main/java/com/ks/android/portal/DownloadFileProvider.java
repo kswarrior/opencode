@@ -80,7 +80,11 @@ public class DownloadFileProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        return 0;
+        File file = fileForUri(uri);
+        if (!file.isFile()) {
+            return 0;
+        }
+        return file.delete() ? 1 : 0;
     }
 
     @Override
