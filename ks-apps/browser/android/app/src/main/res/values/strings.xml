@@ -427,6 +427,7 @@ example.com##.ad-banner</string>
     <string name="toolbar_title">Toolbar</string>
     <string name="toolbar_preview">PREVIEW</string>
     <string name="toolbar_preview_hint">Tap the toggle to preview open and close</string>
+    <string name="toolbar_preview_hint_moveable">Tap to open or close · drag to move the toggle</string>
     <string name="toolbar_preview_description">Toolbar toggle preview</string>
     <string name="toolbar_size">SIZE</string>
     <string name="toolbar_width">Width</string>
@@ -438,7 +439,7 @@ example.com##.ad-banner</string>
     <string name="toolbar_mode_fixed">Fixed</string>
     <string name="toolbar_mode_moveable">Moveable</string>
     <string name="toolbar_mode_fixed_summary">The toggle stays at the default position.</string>
-    <string name="toolbar_mode_moveable_summary">Long-press the toggle and drag it anywhere on screen.</string>
+    <string name="toolbar_mode_moveable_summary">Drag the toggle anywhere on the screen.</string>
     <string name="toolbar_default_position">DEFAULT POSITION</string>
     <string name="toolbar_position_right">Right</string>
     <string name="toolbar_position_left">Left</string>
