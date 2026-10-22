@@ -13,7 +13,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewDatabase;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
     private TextView searchEngineValue;
@@ -157,7 +156,7 @@ public class SettingsActivity extends Activity {
         if (checked[4]) {
             SiteSettingsStore.clearAll(this);
         }
-        Toast.makeText(this, R.string.clear_data_done, Toast.LENGTH_SHORT).show();
+        KsToast.show(this, R.string.clear_data_done);
     }
 
     private void openDefaultBrowserSettings() {
@@ -174,7 +173,7 @@ public class SettingsActivity extends Activity {
             try {
                 startActivity(new Intent(Settings.ACTION_SETTINGS));
             } catch (ActivityNotFoundException ignored) {
-                Toast.makeText(this, R.string.no_app_found, Toast.LENGTH_SHORT).show();
+                KsToast.show(this, R.string.no_app_found);
             }
         }
     }
