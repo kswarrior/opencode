@@ -293,6 +293,7 @@ public class MainActivity extends Activity {
             }
         });
         setupFindBar();
+        applyToolbarPlacement();
         siteLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -472,6 +473,7 @@ public class MainActivity extends Activity {
         super.onResume();
         activityResumed = true;
         cancelMediaNotification();
+        applyToolbarPlacement();
         applyToolbarToggleSettings();
         AdBlocker.maybeUpdate();
         boolean adBlockEnabled = AdBlocker.isEnabled(this);
@@ -2412,15 +2414,15 @@ public class MainActivity extends Activity {
         toolbarContainer.animate().cancel();
         if (toolbarContainer.getVisibility() != View.VISIBLE) {
             toolbarContainer.setVisibility(View.VISIBLE);
-            toolbarContainer.setTranslationY(-toolbarHeight);
+            toolbarContainer.setTranslationY(hiddenToolbarOffset());
         }
         toolbarContainer.animate()
-                .translationY(expanded ? 0f : -toolbarHeight)
+                .translationY(expanded ? 0f : hiddenToolbarOffset())
                 .setDuration(expanded ? 260 : 200)
                 .setInterpolator(expanded
                         ? new DecelerateInterpolator() : new AccelerateInterpolator())
                 .start();
-        progressBar.setTranslationY(expanded ? toolbarHeight : 0f);
+        progressBar.setTranslationY(!toolbarAtBottom && expanded ? toolbarHeight : 0f);
     }
 
     private void hideToolbar() {
@@ -2431,7 +2433,7 @@ public class MainActivity extends Activity {
             return;
         }
         toolbarContainer.animate()
-                .translationY(-toolbarHeight)
+                .translationY(hiddenToolbarOffset())
                 .setDuration(180)
                 .setInterpolator(new AccelerateInterpolator())
                 .withEndAction(new Runnable() {
@@ -2485,6 +2487,32 @@ public class MainActivity extends Activity {
             toolbarToggle.setAlpha(0f);
             toolbarToggle.animate().alpha(1f).setDuration(200).start();
         }
+    }
+
+    private void applyToolbarPlacement() {
+        toolbarAtBottom = ToolbarSettingsStore.isAddressBarBottom(this);
+        int gravity = toolbarAtBottom ? Gravity.BOTTOM : Gravity.TOP;
+        if (toolbarContainer != null) {
+            FrameLayout.LayoutParams params =
+                    (FrameLayout.LayoutParams) toolbarContainer.getLayoutParams();
+            params.gravity = gravity;
+            toolbarContainer.setLayoutParams(params);
+            if (toolbarContainer.getVisibility() == View.VISIBLE) {
+                toolbarContainer.setTranslationY(toolbarTargetVisible ? 0f : hiddenToolbarOffset());
+            }
+        }
+        if (findBar != null) {
+            FrameLayout.LayoutParams params =
+                    (FrameLayout.LayoutParams) findBar.getLayoutParams();
+            params.gravity = gravity;
+            params.topMargin = toolbarAtBottom ? 0 : toolbarHeight;
+            params.bottomMargin = toolbarAtBottom ? toolbarHeight : 0;
+            findBar.setLayoutParams(params);
+        }
+    }
+
+    private float hiddenToolbarOffset() {
+        return toolbarAtBottom ? toolbarHeight : -toolbarHeight;
     }
 
     private void applyToolbarToggleSettings() {
