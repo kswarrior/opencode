@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_header_glass"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="7dp">
+
+        <ImageButton
+            android:id="@+id/bookmarksBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_toolbar_button"
+            android:contentDescription="@string/back"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/ks_text" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/bookmarksTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@string/bookmarks_title"
+                android:textColor="@color/ks_text"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bookmarksSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/ks_muted"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/bookmarksMenu"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_toolbar_button"
+            android:contentDescription="@string/bookmarks_options"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_more_vert"
+            android:tint="@color/ks_text" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/bookmarksSearch"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/bg_url_bar"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="8dp"
+        android:hint="@string/bookmarks_search_hint"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:singleLine="true"
+        android:textColor="@color/ks_text"
+        android:textColorHint="@color/ks_muted"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/bookmarksList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="6dp"
+            android:paddingStart="8dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="14dp" />
+
+        <TextView
+            android:id="@+id/bookmarksEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="28dp"
+            android:text="@string/bookmarks_empty"
+            android:textColor="@color/ks_muted"
+            android:textSize="14sp" />
+    </FrameLayout>
+</LinearLayout>
