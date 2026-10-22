@@ -747,6 +747,34 @@ public class MainActivity extends Activity {
                 return false;
             }
         });
+        view.setLongClickable(true);
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View touched) {
+                WebView.HitTestResult hit = view.getHitTestResult();
+                if (hit == null) {
+                    return false;
+                }
+                final String extra = hit.getExtra();
+                if (TextUtils.isEmpty(extra)) {
+                    return false;
+                }
+                int type = hit.getType();
+                if (type == WebView.HitTestResult.SRC_ANCHOR_TYPE) {
+                    showLinkContextMenu(view, extra, false);
+                    return true;
+                }
+                if (type == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
+                    showLinkContextMenu(view, extra, false);
+                    return true;
+                }
+                if (type == WebView.HitTestResult.IMAGE_TYPE) {
+                    showImageContextMenu(view, extra);
+                    return true;
+                }
+                return false;
+            }
+        });
         return view;
     }
 
@@ -1772,6 +1800,93 @@ public class MainActivity extends Activity {
         if (view != null && cacheBypassReloads.remove(view)) {
             view.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         }
+    }
+
+    private void showLinkContextMenu(final WebView view, final String url,
+                                     final boolean imageLink) {
+        String imageUrl = null;
+        if (imageLink) {
+            WebView.HitTestResult hit = view.getHitTestResult();
+            imageUrl = hit == null ? null : hit.getExtra();
+        }
+        final String targetImage = imageUrl;
+        String[] items = targetImage == null
+                ? new String[]{getString(R.string.context_open_new_tab),
+                getString(R.string.context_copy_link),
+                getString(R.string.context_share_link),
+                getString(R.string.context_download_link)}
+                : new String[]{getString(R.string.context_open_new_tab),
+                getString(R.string.context_copy_link),
+                getString(R.string.context_share_link),
+                getString(R.string.context_save_image)};
+        new AlertDialog.Builder(this)
+                .setTitle(url)
+                .setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            tabManager.addTab(url, 0);
+                            syncActiveTab();
+                        } else if (which == 1) {
+                            copyText(url);
+                        } else if (which == 2) {
+                            shareText(url);
+                        } else if (targetImage != null) {
+                            saveImage(targetImage);
+                        } else {
+                            startDownloadOrConfirm(url, defaultUserAgent, null, null,
+                                    -1, view.getUrl());
+                        }
+                    }
+                })
+                .show();
+    }
+
+    private void showImageContextMenu(final WebView view, final String url) {
+        String[] items = new String[]{getString(R.string.context_open_image),
+                getString(R.string.context_save_image),
+                getString(R.string.context_copy_image),
+                getString(R.string.context_share_image)};
+        new AlertDialog.Builder(this)
+                .setTitle(url)
+                .setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            tabManager.addTab(url, 0);
+                            syncActiveTab();
+                        } else if (which == 1) {
+                            saveImage(url);
+                        } else if (which == 2) {
+                            copyText(url);
+                        } else {
+                            shareText(url);
+                        }
+                    }
+                })
+                .show();
+    }
+
+    private void saveImage(String url) {
+        String userAgent = defaultUserAgent == null
+                ? new WebView(this).getSettings().getUserAgentString() : defaultUserAgent;
+        startDownloadOrConfirm(url, userAgent, null, "image/*", -1,
+                webView == null ? null : webView.getUrl());
+    }
+
+    private void copyText(String text) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null) {
+            clipboard.setPrimaryClip(ClipData.newPlainText("URL", text));
+            Toast.makeText(this, R.string.url_copied, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void shareText(String text) {
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(Intent.EXTRA_TEXT, text);
+        startActivity(Intent.createChooser(share, getString(R.string.share_chooser)));
     }
 
     private void toggleBookmark() {
