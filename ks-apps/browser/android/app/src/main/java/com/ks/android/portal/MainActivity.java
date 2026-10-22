@@ -183,6 +183,8 @@ public class MainActivity extends Activity {
         final String sourceUrl;
         final boolean privateSource;
         String url;
+        String title = "";
+        boolean finished;
 
         PendingPopup(String sourceUrl, boolean privateSource) {
             this.sourceUrl = TextUtils.isEmpty(sourceUrl) ? "about:blank" : sourceUrl;
@@ -1194,10 +1196,6 @@ public class MainActivity extends Activity {
         }
         String resolved = TextUtils.isEmpty(url) ? "about:blank" : url;
         pending.url = resolved;
-        boolean blank = "about:blank".equals(resolved);
-        if (!blank) {
-            view.stopLoading();
-        }
         if (!popupPromptShown.add(tab.id)) {
             return;
         }
