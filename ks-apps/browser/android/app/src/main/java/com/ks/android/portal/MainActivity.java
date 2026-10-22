@@ -9,6 +9,9 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
+import android.graphics.drawable.Icon;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -19,8 +22,11 @@ import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintManager;
 import android.security.KeyChain;
 import android.security.KeyChainAliasCallback;
+import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -145,6 +151,8 @@ public class MainActivity extends Activity {
             Collections.newSetFromMap(new WeakHashMap<WebView, Boolean>());
     private static final int REQUEST_NOTIFICATIONS = 2002;
     private static final int REQUEST_SITE_SETTINGS = 2003;
+    private static final int REQUEST_VOICE_SEARCH = 7002;
+
     private static final int REQUEST_FILE_CHOOSER = 2004;
     private static final int REQUEST_PERMISSION_CAMERA = 2005;
     private static final int REQUEST_PERMISSION_MICROPHONE = 2006;
@@ -1404,6 +1412,17 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_VOICE_SEARCH) {
+            if (resultCode == RESULT_OK && data != null) {
+                java.util.ArrayList<String> results =
+                        data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                if (results != null && !results.isEmpty()
+                        && !TextUtils.isEmpty(results.get(0))) {
+                    openUrlInActiveTab(results.get(0));
+                }
+            }
+            return;
+        }
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_FILE_CHOOSER) {
             if (fileChooserCallback != null) {
@@ -1748,6 +1767,13 @@ public class MainActivity extends Activity {
                 ? WebSettings.MIXED_CONTENT_NEVER_ALLOW
                 : WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        settings.setTextZoom(settingsPrefs == null ? 100
+                : Math.max(50, Math.min(200,
+                settingsPrefs.getInt("appearance_text_zoom", 100))));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && settingsPrefs != null) {
+            settings.setForceDark(settingsPrefs.getInt("appearance_force_dark", -1));
+        }
+        settings.setMediaPlaybackRequiresUserGesture(!setting("media_autoplay", false));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             settings.setSafeBrowsingEnabled(setting("security_safe_browsing", true));
         }
@@ -1767,8 +1793,11 @@ public class MainActivity extends Activity {
             allowPopups = false;
         }
         settings.setJavaScriptCanOpenWindowsAutomatically(allowPopups);
-        settings.setMediaPlaybackRequiresUserGesture(!SiteSettingsStore.getBoolean(this, host,
-                SiteSettingsStore.KEY_SOUND, false));
+        if (SiteSettingsStore.contains(this, host, SiteSettingsStore.KEY_SOUND)) {
+            settings.setMediaPlaybackRequiresUserGesture(
+                    !SiteSettingsStore.getBoolean(this, host,
+                            SiteSettingsStore.KEY_SOUND, false));
+        }
         CookieManager.getInstance().setAcceptThirdPartyCookies(view,
                 SiteSettingsStore.getBoolean(this, host,
                         SiteSettingsStore.KEY_THIRD_PARTY_COOKIES, true));
@@ -2021,6 +2050,271 @@ public class MainActivity extends Activity {
         loadUrlWithSettings(webView, value);
     }
 
+    private void showToolsMenu() {
+        final int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] labels = new int[]{
+                R.string.tool_print,
+                R.string.tool_reader,
+                R.string.tool_save_page,
+                R.string.tool_text_size,
+                R.string.tool_dark_mode,
+                R.string.tool_voice_search,
+                R.string.tool_private_tab,
+                R.string.tool_add_home,
+                R.string.tool_autoplay};
+        int[] icons = new int[]{
+                R.drawable.ic_menu_share,
+                R.drawable.ic_menu_open,
+                R.drawable.ic_file_download,
+                R.drawable.ic_screen_size,
+                R.drawable.ic_settings,
+                R.drawable.ic_search,
+                R.drawable.ic_add,
+                R.drawable.ic_home,
+                R.drawable.ic_play};
+        KsDialog.menu(this, R.string.tools_title, ids, labels, icons, -1,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        switch (ids[index]) {
+                            case 1:
+                                printPage();
+                                break;
+                            case 2:
+                                toggleReaderMode();
+                                break;
+                            case 3:
+                                savePageOffline();
+                                break;
+                            case 4:
+                                chooseTextSize();
+                                break;
+                            case 5:
+                                chooseDarkMode();
+                                break;
+                            case 6:
+                                startVoiceSearch();
+                                break;
+                            case 7:
+                                openCurrentInPrivateTab();
+                                break;
+                            case 8:
+                                addToHomeScreen();
+                                break;
+                            case 9:
+                                toggleAutoplay();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+    }
+
+    private void printPage() {
+        WebView view = webView;
+        if (view == null || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        PrintManager manager = (PrintManager) getSystemService(PRINT_SERVICE);
+        if (manager == null) {
+            KsToast.show(this, R.string.tool_unavailable);
+            return;
+        }
+        String name = view.getTitle();
+        if (TextUtils.isEmpty(name)) {
+            name = view.getUrl();
+        }
+        PrintDocumentAdapter adapter = view.createPrintDocumentAdapter(name);
+        manager.print(name, adapter, null);
+    }
+
+    private void toggleReaderMode() {
+        if (webView == null || isHomeUrl(webView.getUrl())) {
+            return;
+        }
+        String script = "(function(){"
+                + "if(window.__ksReader){window.__ksReader.remove();window.__ksReader=null;"
+                + "return;}"
+                + "var src=document.querySelector('article')||document.querySelector('main')"
+                + "||document.body;if(!src){return;}"
+                + "var wrap=document.createElement('div');wrap.id='ks-reader';"
+                + "wrap.style.cssText='position:fixed;inset:0;z-index:2147483647;"
+                + "background:#0B0F17;color:#E8ECF6;overflow:auto;padding:28px 22px 60px;"
+                + "font:18px/1.75 -apple-system,Roboto,Segoe UI,sans-serif;';"
+                + "var bar=document.createElement('div');"
+                + "bar.style.cssText='display:flex;gap:10px;align-items:center;"
+                + "justify-content:flex-end;margin-bottom:18px;';"
+                + "var title=document.createElement('div');"
+                + "title.textContent=document.title||'';"
+                + "title.style.cssText='flex:1;font-size:13px;letter-spacing:.08em;"
+                + "text-transform:uppercase;color:#8C93A6;overflow:hidden;"
+                + "text-overflow:ellipsis;white-space:nowrap;';"
+                + "bar.appendChild(title);"
+                + "function btn(t,fn){var b=document.createElement('button');b.textContent=t;"
+                + "b.style.cssText='background:#181E2A;color:#E8ECF6;border:1px solid #2A3242;"
+                + "border-radius:10px;padding:8px 12px;font-size:14px;';"
+                + "b.onclick=fn;bar.appendChild(b);return b;}"
+                + "btn('A-',function(){var n=parseInt(wrap.dataset.size||'18',10);"
+                + "n=Math.max(14,n-2);wrap.dataset.size=n;wrap.style.fontSize=n+'px';});"
+                + "btn('A+',function(){var n=parseInt(wrap.dataset.size||'18',10);"
+                + "n=Math.min(30,n+2);wrap.dataset.size=n;wrap.style.fontSize=n+'px';});"
+                + "btn('Light',function(){var dark=wrap.dataset.light!=='1';"
+                + "wrap.dataset.light=dark?'1':'0';wrap.style.background=dark?'#FAFAF7':'#0B0F17';"
+                + "wrap.style.color=dark?'#16181D':'#E8ECF6';});"
+                + "btn('Close',function(){wrap.remove();window.__ksReader=null;});"
+                + "var body=document.createElement('div');body.style.maxWidth='760px';"
+                + "body.style.margin='0 auto';"
+                + "var clone=src.cloneNode(true);"
+                + "clone.querySelectorAll('script,style,nav,aside,form,iframe,video,audio,"
+                + "button,input,select,textarea,header,footer').forEach(function(n){n.remove();});"
+                + "body.innerHTML=clone.innerHTML;"
+                + "body.querySelectorAll('a').forEach(function(a){a.target='_blank';});"
+                + "wrap.appendChild(bar);wrap.appendChild(body);"
+                + "document.documentElement.appendChild(wrap);window.__ksReader=wrap;})();";
+        webView.evaluateJavascript(script, null);
+    }
+
+    private void savePageOffline() {
+        if (webView == null || isHomeUrl(webView.getUrl())) {
+            return;
+        }
+        String script = "(function(){try{"
+                + "var html='<!doctype html>'+document.documentElement.outerHTML;"
+                + "KSPortalWeb.savePage(html,document.title||location.hostname||'page');"
+                + "}catch(e){}})();";
+        webView.evaluateJavascript(script, null);
+    }
+
+    private void chooseTextSize() {
+        final int[] values = {85, 100, 115, 130, 150};
+        int[] labels = {R.string.text_size_small, R.string.text_size_default,
+                R.string.text_size_large, R.string.text_size_larger,
+                R.string.text_size_largest};
+        int checked = 1;
+        int current = settingsPrefs.getInt("appearance_text_zoom", 100);
+        for (int i = 0; i < values.length; i++) {
+            if (values[i] == current) {
+                checked = i;
+            }
+        }
+        KsDialog.menu(this, R.string.tool_text_size, values, labels,
+                new int[]{0, 0, 0, 0, 0}, checked, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        settingsPrefs.edit().putInt("appearance_text_zoom",
+                                values[index]).apply();
+                        applyWebSettingsToAll();
+                    }
+                });
+    }
+
+    private void chooseDarkMode() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            KsToast.show(this, R.string.tool_dark_unsupported);
+            return;
+        }
+        final int[] values = {-1, 0, 1};
+        int[] labels = {R.string.dark_mode_auto, R.string.dark_mode_off,
+                R.string.dark_mode_on};
+        int current = settingsPrefs.getInt("appearance_force_dark", -1);
+        int checked = 0;
+        for (int i = 0; i < values.length; i++) {
+            if (values[i] == current) {
+                checked = i;
+            }
+        }
+        KsDialog.menu(this, R.string.tool_dark_mode, values, labels,
+                new int[]{0, 0, 0}, checked, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        settingsPrefs.edit().putInt("appearance_force_dark",
+                                values[index]).apply();
+                        applyWebSettingsToAll();
+                    }
+                });
+    }
+
+    private void applyWebSettingsToAll() {
+        for (WebView tabView : tabViews.values()) {
+            applyWebSettings(tabView.getSettings());
+        }
+    }
+
+    private void startVoiceSearch() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getString(R.string.voice_prompt));
+        try {
+            startActivityForResult(intent, REQUEST_VOICE_SEARCH);
+        } catch (ActivityNotFoundException exception) {
+            KsToast.show(this, R.string.voice_unavailable);
+        }
+    }
+
+    private void openCurrentInPrivateTab() {
+        if (webView == null || TextUtils.isEmpty(webView.getUrl())
+                || isHomeUrl(webView.getUrl())) {
+            return;
+        }
+        String url = webView.getUrl();
+        BrowserTab tab = tabManager.addTab(url, tabManager.getActiveTabId());
+        privateTabs.add(tab.id);
+        tabManager.setPrivate(tab.id, true);
+        privateTabHosts.put(tab.id, new ArrayList<String>());
+        tabManager.setActiveTab(tab.id);
+        syncActiveTab();
+        KsToast.show(this, R.string.tool_private_tab_opened);
+    }
+
+    private void addToHomeScreen() {
+        if (webView == null || TextUtils.isEmpty(webView.getUrl())
+                || isHomeUrl(webView.getUrl())) {
+            return;
+        }
+        try {
+            Intent shortcut = new Intent(Intent.ACTION_VIEW, Uri.parse(webView.getUrl()));
+            shortcut.setClass(this, MainActivity.class);
+            shortcut.putExtra(EXTRA_OPEN_URL, webView.getUrl());
+            String title = TextUtils.isEmpty(webView.getTitle())
+                    ? webView.getUrl() : webView.getTitle();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                ShortcutManager manager = getSystemService(ShortcutManager.class);
+                if (manager == null || !manager.isRequestPinShortcutSupported()) {
+                    KsToast.show(this, R.string.tool_unavailable);
+                    return;
+                }
+                ShortcutInfo info = new ShortcutInfo.Builder(this,
+                        "page_" + Math.abs(webView.getUrl().hashCode()))
+                        .setShortLabel(title)
+                        .setIcon(Icon.createWithResource(this, R.mipmap.ic_launcher))
+                        .setIntent(shortcut)
+                        .build();
+                manager.requestPinShortcut(info, null);
+            } else {
+                Intent install = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+                install.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcut);
+                install.putExtra(Intent.EXTRA_SHORTCUT_NAME, title);
+                install.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+                        Intent.ShortcutIconResource.fromContext(this,
+                                R.mipmap.ic_launcher));
+                sendBroadcast(install);
+            }
+            KsToast.show(this, R.string.tool_add_home_done);
+        } catch (Exception exception) {
+            KsToast.show(this, R.string.tool_unavailable);
+        }
+    }
+
+    private void toggleAutoplay() {
+        boolean enabled = !settingsPrefs.getBoolean("media_autoplay", false);
+        settingsPrefs.edit().putBoolean("media_autoplay", enabled).apply();
+        applyWebSettingsToAll();
+        KsToast.show(this, enabled ? R.string.autoplay_enabled
+                : R.string.autoplay_disabled);
+    }
+
     private void showMenu(View anchor) {
         hideKeyboard();
         urlBar.clearFocus();
@@ -2078,6 +2372,13 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 popup.dismiss();
                 showFindBar();
+            }
+        });
+        panel.findViewById(R.id.menuTools).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                showToolsMenu();
             }
         });
         View desktopRow = panel.findViewById(R.id.menuDesktop);
@@ -3458,6 +3759,32 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public boolean savePage(String html, String title) {
+            if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)) {
+                return false;
+            }
+            BrowserTab tab = tabManager.findTab(tabId);
+            if (tab == null || html == null || html.length() > 8 * 1024 * 1024) {
+                return false;
+            }
+            String clean = cleanRecentName(title, tab.url);
+            if (TextUtils.isEmpty(clean)) {
+                clean = "page";
+            }
+            String name = clean + ".html";
+            DownloadItem item = DownloadRepository.getInstance(MainActivity.this)
+                    .saveBytes(html.getBytes(java.nio.charset.Charset.forName("UTF-8")),
+                            name, "text/html", tab.url);
+            if (item == null || item.status == DownloadItem.STATUS_FAILED) {
+                KsToast.show(MainActivity.this, R.string.download_start_failed);
+                return false;
+            }
+            KsToast.show(MainActivity.this,
+                    getString(R.string.download_started, item.fileName));
+            return true;
+        }
+
+        @JavascriptInterface
         public boolean saveBlob(String dataUrl, String name, String mimeType) {
             if (tabManager.findTab(tabId) == null) {
                 return false;
@@ -3529,6 +3856,60 @@ public class MainActivity extends Activity {
         public boolean setBookmarks(String json) {
             return allowed() && BookmarkRepository.setAll(MainActivity.this, json);
         }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event != null && event.getAction() == KeyEvent.ACTION_DOWN
+                && event.isCtrlPressed()) {
+            switch (event.getKeyCode()) {
+                case KeyEvent.KEYCODE_T:
+                    tabManager.addTab(HOME_URL, 0);
+                    syncActiveTab();
+                    return true;
+                case KeyEvent.KEYCODE_W:
+                    closeActiveTab();
+                    return true;
+                case KeyEvent.KEYCODE_R:
+                    if (webView != null) {
+                        webView.reload();
+                    }
+                    return true;
+                case KeyEvent.KEYCODE_F:
+                    openFindBar();
+                    return true;
+                case KeyEvent.KEYCODE_L:
+                    urlBar.requestFocus();
+                    urlBar.selectAll();
+                    showKeyboard(urlBar);
+                    return true;
+                default:
+                    break;
+            }
+        }
+        if (event != null && event.getAction() == KeyEvent.ACTION_DOWN
+                && event.isAltPressed()) {
+            if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT
+                    && webView != null && webView.canGoBack()) {
+                webView.goBack();
+                return true;
+            }
+            if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT
+                    && webView != null && webView.canGoForward()) {
+                webView.goForward();
+                return true;
+            }
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+    private void closeActiveTab() {
+        BrowserTab tab = tabManager.getActiveTab();
+        if (tab == null) {
+            return;
+        }
+        tabManager.closeTab(tab.id);
+        syncActiveTab();
     }
 
     @Override
