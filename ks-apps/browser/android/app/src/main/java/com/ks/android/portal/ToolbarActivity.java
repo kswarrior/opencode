@@ -155,6 +155,7 @@ public class ToolbarActivity extends Activity {
         updateModeSummary();
         updateColorSwatches();
         updatePositionChips();
+        preview.setMoveable(ToolbarSettingsStore.MODE_MOVEABLE.equals(selectedMode));
 
         preview.setAccentColor(selectedColor);
         preview.setToggleSize(currentWidth(), currentHeight());
@@ -268,6 +269,11 @@ public class ToolbarActivity extends Activity {
             public void onClick(View view) {
                 selectedMode = mode;
                 ToolbarSettingsStore.setMode(ToolbarActivity.this, mode);
+                boolean moveable = ToolbarSettingsStore.MODE_MOVEABLE.equals(mode);
+                preview.setMoveable(moveable);
+                if (!moveable) {
+                    centerPreview();
+                }
                 updateModeChips();
                 updateModeSummary();
             }
@@ -294,9 +300,15 @@ public class ToolbarActivity extends Activity {
     }
 
     private void updateModeSummary() {
-        modeSummary.setText(ToolbarSettingsStore.MODE_FIXED.equals(selectedMode)
+        boolean fixed = ToolbarSettingsStore.MODE_FIXED.equals(selectedMode);
+        modeSummary.setText(fixed
                 ? R.string.toolbar_mode_fixed_summary
                 : R.string.toolbar_mode_moveable_summary);
+        if (previewHint != null) {
+            previewHint.setText(fixed
+                    ? R.string.toolbar_preview_hint
+                    : R.string.toolbar_preview_hint_moveable);
+        }
     }
 
     private void buildPositions() {
