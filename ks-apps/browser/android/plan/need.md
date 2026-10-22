@@ -315,3 +315,40 @@ implies otherwise.
 - Do not use stale line numbers from older audits; check the current source.
 - Re-run the full smoke suite after any `WebViewClient`/`WebChromeClient`
   callback change; those callbacks are the app's correctness boundary.
+
+---
+
+## 10. Implementation status (2026-10-22)
+
+Release under test: `1.4.0` (`versionCode` 25). Artifact:
+`release/ks-portal_1.4.0.apk` (manual AAPT2/javac/d8/zipalign/apksigner
+pipeline). No device/emulator was attached, so status below means implemented
+and compiling, not device-verified.
+
+### Done
+
+| Area | Items |
+| --- | --- |
+| Trust/correctness | F1-F9, all P2 correctness cleanups (pause/finalise lock check, mkdir verification, toolbar preview restore, Safe Browsing API gate, resource errors, site favicon, narrowed DNT wording, `VERSION` refresh, provider delete, adblock attempt/304 state, unknown permission denial) |
+| Address bar/search | N1 local history/bookmark omnibox suggestions |
+| Page tools | N3 voice search, N7 text scaling, N8 reader, N9 offline save, N11 zoom, N12 force dark, N14 add to home |
+| Tabs | N15 tab search, N16 undo/recently closed, N17 per-tab history restore, N19 close others/duplicates, N20 audio indicator/mute, N66 open in private tab, N67 toolbar placement |
+| Bookmarks/history | N23 manager, N24 folders + 1,000 cap, N25 JSON/HTML import/export, N26 CSV/JSON export + filtered delete, N27 retention |
+| Downloads | N28 sort/filter, N29 multi-select, N30 speed, N32 Wi-Fi-only queue + override, N34 size/SHA-256, N35 real global content defaults |
+| Site data/privacy | N36 origin storage manager, N37 timed permission removal, N38 strict HTTPS + listed exceptions, N40 Safe Browsing guard, N41 narrowed DNT claim, N42 site favicon, N43 backup exclusion, N44 unsupported permissions labelled, N45 real global defaults, N46 notification permission consumer, N47 one permission default |
+| Autofill | N48 list/reveal/delete (search/edit still missing), N49 device-credential unlock, N50 in-app-only explanation, N51 forms toggle, N52 no dead payment toggle, N53 passkey explanation, N54 weak/duplicate warning |
+| Media/input/a11y | N55 activity-level PiP for audible tabs (API 26+), N57 autoplay via global site setting, N59 keyboard shortcuts, N61 RTL enabled audited structurally, N63 native error strings |
+
+### Remaining / partial
+
+| Items | State |
+| --- | --- |
+| N2, N4, N5, N10, N13, N18, N21, N56, N58, N60, N62, N64 | Not started (suggestions provider, custom engines, editable top sites, translation, gestures, reorder/pin, discard, media notification, accessibility audit, high-contrast toggle, portal localization, large-font QA) |
+| N6 | New-tab/private-tab launcher shortcuts ship; search/download shortcuts do not |
+| N31 | Resume-all/retry-all queue actions not added |
+| N33 | Open-containing-folder/open-with not added |
+| N39 | Certificate trusting is never allowed; HTTPS exceptions are managed instead. A separate TLS certificate store does not exist |
+| N48 | Saved-login list/reveal/delete; search and edit still missing |
+| N55 | PiP shows the active tab, not a cropped video surface; play/pause uses the page controls |
+| N60 | Portal honours `prefers-reduced-motion`; no native high-contrast toggle |
+| N22, N65 | Deliberately deferred (L-sized) |
