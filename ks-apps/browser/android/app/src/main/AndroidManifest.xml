@@ -89,6 +89,16 @@
             android:exported="false" />
 
         <activity
+            android:name=".HomeLayoutActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:exported="false" />
+
+        <activity
+            android:name=".TopSitesActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:exported="false" />
+
+        <activity
             android:name=".ToolbarActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:exported="false" />

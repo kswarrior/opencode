@@ -45,6 +45,12 @@ public class CustomizeActivity extends Activity {
                 startActivity(new Intent(CustomizeActivity.this, GestureActivity.class));
             }
         });
+        findViewById(R.id.customizeHomeLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomizeActivity.this, HomeLayoutActivity.class));
+            }
+        });
     }
 
     @Override
