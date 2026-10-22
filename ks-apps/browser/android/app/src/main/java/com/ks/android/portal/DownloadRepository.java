@@ -507,6 +507,111 @@ public class DownloadRepository {
         return item;
     }
 
+    public DownloadItem saveBytes(byte[] data, String requestedName, String mimeType,
+                                  String referer) {
+        if (data == null || data.length == 0) {
+            return null;
+        }
+        final DownloadItem item;
+        final File part;
+        synchronized (lock) {
+            item = new DownloadItem();
+            item.id = nextIdLocked();
+            item.url = "blob:";
+            item.referer = referer == null ? "" : referer;
+            item.createdAt = System.currentTimeMillis();
+            item.totalBytes = data.length;
+            item.relativePath = getRelativePath();
+            String name = sanitizeFileName(requestedName);
+            if (name.isEmpty()) {
+                name = "download";
+            }
+            item.mimeType = mimeTypeForName(name, normalizeMime(mimeType));
+            name = adjustExtensionForMime(name, item.mimeType);
+            if (!ensureFolderLocked(item.relativePath)) {
+                item.fileName = name;
+                item.status = DownloadItem.STATUS_FAILED;
+                item.error = context.getString(R.string.download_folder_missing);
+                items.add(item);
+                persistLocked();
+                notifyListenersLocked();
+                return item;
+            }
+            item.fileName = uniqueFileNameLocked(item.relativePath, name, item.id);
+            item.filePath = filePathFor(item.relativePath, item.fileName);
+            item.status = DownloadItem.STATUS_DOWNLOADING;
+            items.add(item);
+            persistLocked();
+            part = new File(stagingRoot, item.id + ".part");
+            notifyListenersLocked();
+        }
+        NotificationHelper.downloadStarted(context, item);
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    File parent = part.getParentFile();
+                    if (parent != null) {
+                        parent.mkdirs();
+                    }
+                    FileOutputStream output = new FileOutputStream(part);
+                    try {
+                        output.write(data);
+                        output.getFD().sync();
+                    } finally {
+                        output.close();
+                    }
+                    String relative;
+                    String name;
+                    String mime;
+                    synchronized (lock) {
+                        DownloadItem current = findLocked(item.id);
+                        if (current == null) {
+                            part.delete();
+                            return;
+                        }
+                        relative = current.relativePath;
+                        name = current.fileName;
+                        mime = current.mimeType;
+                    }
+                    Published published = publishToPublic(part, relative, name, mime);
+                    part.delete();
+                    synchronized (lock) {
+                        DownloadItem current = findLocked(item.id);
+                        if (current == null) {
+                            return;
+                        }
+                        current.fileName = published.name;
+                        current.filePath = filePathFor(relative, published.name);
+                        current.contentUri = published.uri == null ? ""
+                                : published.uri.toString();
+                        current.downloadedBytes = published.size > 0
+                                ? published.size : data.length;
+                        current.totalBytes = current.downloadedBytes;
+                        current.status = DownloadItem.STATUS_COMPLETED;
+                        current.error = "";
+                        persistLocked();
+                    }
+                    NotificationHelper.downloadCompleted(context, item);
+                    notifyListeners();
+                } catch (Exception exception) {
+                    part.delete();
+                    synchronized (lock) {
+                        DownloadItem current = findLocked(item.id);
+                        if (current != null) {
+                            current.status = DownloadItem.STATUS_FAILED;
+                            current.error = friendlyError(exception);
+                            persistLocked();
+                        }
+                    }
+                    NotificationHelper.downloadFailed(context, item);
+                    notifyListeners();
+                }
+            }
+        });
+        return item;
+    }
+
     private boolean ensureFolderLocked(String relative) {
         if (folderExistsLocked(relative)) {
             rememberFolderLocked(relative);
