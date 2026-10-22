@@ -20,6 +20,7 @@ final class SiteSettingsStore {
     static final String KEY_SOUND = "sound";
     static final String KEY_AUTOMATIC_DOWNLOADS = "automatic_downloads";
     static final String KEY_ADBLOCK = "adblock";
+    static final String KEY_IMAGES = "images";
 
     static final String GLOBAL_HOST = "*";
     static final String PERMISSION_ASK = "ask";
@@ -86,10 +87,18 @@ final class SiteSettingsStore {
 
     static boolean getBoolean(Context context, String host, String name,
                               boolean defaultValue) {
-        if (TextUtils.isEmpty(host)) {
-            return defaultValue;
+        SharedPreferences preferences = preferences(context);
+        if (!TextUtils.isEmpty(host)) {
+            String siteKey = key(host, name);
+            if (preferences.contains(siteKey)) {
+                return preferences.getBoolean(siteKey, defaultValue);
+            }
         }
-        return preferences(context).getBoolean(key(host, name), defaultValue);
+        String globalKey = key(GLOBAL_HOST, name);
+        if (preferences.contains(globalKey)) {
+            return preferences.getBoolean(globalKey, defaultValue);
+        }
+        return defaultValue;
     }
 
     static void setBoolean(Context context, String host, String name, boolean value) {
@@ -124,10 +133,14 @@ final class SiteSettingsStore {
     }
 
     static String getScreenSizeId(Context context, String host) {
-        if (TextUtils.isEmpty(host)) {
-            return SCREEN_DEFAULT;
+        SharedPreferences preferences = preferences(context);
+        if (!TextUtils.isEmpty(host)) {
+            String stored = preferences.getString(SCREEN_SIZE + host, null);
+            if (stored != null) {
+                return stored;
+            }
         }
-        return preferences(context).getString(SCREEN_SIZE + host, SCREEN_DEFAULT);
+        return preferences.getString(SCREEN_SIZE + GLOBAL_HOST, SCREEN_DEFAULT);
     }
 
     static void setScreenSizeId(Context context, String host, String id) {
