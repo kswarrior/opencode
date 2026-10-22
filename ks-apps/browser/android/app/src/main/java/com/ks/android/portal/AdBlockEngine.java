@@ -730,7 +730,61 @@ final class AdBlockEngine {
     }
 
     private static boolean domainMatches(String host, String domain) {
-        return host.equals(domain) || host.endsWith("." + domain);
+        if (host == null || domain == null || host.length() == 0
+                || domain.length() == 0) {
+            return false;
+        }
+        if (domain.indexOf('*') < 0) {
+            return host.equals(domain) || host.endsWith("." + domain);
+        }
+        int position = 0;
+        while (position >= 0) {
+            if (wildcardDomainMatches(domain, host, position)) {
+                return true;
+            }
+            int dot = host.indexOf('.', position);
+            position = dot >= 0 ? dot + 1 : -1;
+        }
+        return false;
+    }
+
+    private static boolean wildcardDomainMatches(String pattern, String value, int start) {
+        int p = 0;
+        int v = start;
+        int star = -1;
+        int starValue = 0;
+        while (v < value.length()) {
+            if (p < pattern.length() && pattern.charAt(p) == '*') {
+                star = p++;
+                starValue = v;
+            } else if (p < pattern.length() && pattern.charAt(p) == value.charAt(v)) {
+                p++;
+                v++;
+            } else if (star >= 0) {
+                p = star + 1;
+                v = ++starValue;
+            } else {
+                return false;
+            }
+        }
+        while (p < pattern.length() && pattern.charAt(p) == '*') {
+            p++;
+        }
+        return p == pattern.length();
+    }
+
+    private static String normalizeDomain(String value) {
+        String domain = value.trim().toLowerCase(Locale.US);
+        if (domain.startsWith("~")) {
+            domain = domain.substring(1);
+        }
+        while (domain.startsWith("*.") || domain.startsWith(".")) {
+            domain = domain.substring(domain.charAt(0) == '.' ? 1 : 2);
+        }
+        if (domain.length() == 0 || domain.indexOf('/') >= 0 || domain.indexOf(':') >= 0) {
+            return null;
+        }
+        return domain;
     }
 
     private static String[] splitDomains(String value, String separator) {
@@ -738,23 +792,12 @@ final class AdBlockEngine {
         String[] result = new String[raw.length];
         int count = 0;
         for (int i = 0; i < raw.length; i++) {
-            String domain = raw[i].trim().toLowerCase(Locale.US);
-            if (domain.startsWith("~")) {
-                domain = domain.substring(1);
-            }
-            if (domain.startsWith("*.")) {
-                domain = domain.substring(2);
-            }
-            if (domain.length() > 0 && domain.indexOf('*') < 0) {
+            String domain = normalizeDomain(raw[i]);
+            if (domain != null) {
                 result[count++] = domain;
             }
         }
-        if (count == raw.length) {
-            return result;
-        }
-        String[] trimmed = new String[count];
-        System.arraycopy(result, 0, trimmed, 0, count);
-        return trimmed;
+        return trim(result, count);
     }
 
     private static String[] excludeDomains(String value) {
@@ -762,15 +805,12 @@ final class AdBlockEngine {
         String[] result = new String[raw.length];
         int count = 0;
         for (int i = 0; i < raw.length; i++) {
-            String domain = raw[i].trim().toLowerCase(Locale.US);
+            String domain = raw[i].trim();
             if (!domain.startsWith("~")) {
                 continue;
             }
-            domain = domain.substring(1);
-            if (domain.startsWith("*.")) {
-                domain = domain.substring(2);
-            }
-            if (domain.length() > 0 && domain.indexOf('*') < 0) {
+            domain = normalizeDomain(domain);
+            if (domain != null) {
                 result[count++] = domain;
             }
         }
@@ -782,14 +822,12 @@ final class AdBlockEngine {
         String[] result = new String[raw.length];
         int count = 0;
         for (int i = 0; i < raw.length; i++) {
-            String domain = raw[i].trim().toLowerCase(Locale.US);
+            String domain = raw[i].trim();
             if (domain.startsWith("~")) {
                 continue;
             }
-            if (domain.startsWith("*.")) {
-                domain = domain.substring(2);
-            }
-            if (domain.length() > 0 && domain.indexOf('*') < 0) {
+            domain = normalizeDomain(domain);
+            if (domain != null) {
                 result[count++] = domain;
             }
         }
