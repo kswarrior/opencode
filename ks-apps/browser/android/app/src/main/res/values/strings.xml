@@ -766,6 +766,10 @@ example.com##.ad-banner</string>
     <string name="tabs_search_empty">No tabs match your search</string>
     <string name="tabs_mute">Mute tab</string>
     <string name="tabs_open_private">Open in private tab</string>
+    <string name="tabs_pin">Pin tab</string>
+    <string name="tabs_unpin">Unpin tab</string>
+    <string name="tabs_move_left">Move left</string>
+    <string name="tabs_move_right">Move right</string>
     <string name="tabs_discard">Discard tab</string>
     <string name="tabs_unmute">Unmute tab</string>
     <string name="tabs_audible_description">Playing audio</string>

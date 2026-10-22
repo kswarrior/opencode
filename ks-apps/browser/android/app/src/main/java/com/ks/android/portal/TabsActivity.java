@@ -35,7 +35,8 @@ public class TabsActivity extends Activity {
     private static final int MENU_DISCARD_TAB = 6;
     private static final int MENU_OPEN_PRIVATE = 7;
     private static final int MENU_PIN_TAB = 8;
-    private static final int MENU_MOVE_LEFT = 9;
+    private static final int MENU_MOVE_LEFT = 90;
+    private static final int MENU_MOVE_RIGHT = 91;
 
     private static final int GROUP_MENU_NEW_TAB = 10;
     private static final int GROUP_MENU_EDIT = 11;
@@ -285,6 +286,15 @@ public class TabsActivity extends Activity {
         ids.add(MENU_OPEN_PRIVATE);
         labels.add(R.string.tabs_open_private);
         icons.add(R.drawable.ic_shield);
+        ids.add(MENU_PIN_TAB);
+        labels.add(tab.pinned ? R.string.tabs_unpin : R.string.tabs_pin);
+        icons.add(R.drawable.ic_pin);
+        ids.add(MENU_MOVE_LEFT);
+        labels.add(R.string.tabs_move_left);
+        icons.add(R.drawable.ic_chevron_left);
+        ids.add(MENU_MOVE_RIGHT);
+        labels.add(R.string.tabs_move_right);
+        icons.add(R.drawable.ic_chevron_right);
         ids.add(MENU_MUTE_TAB);
         labels.add(tab.muted ? R.string.tabs_unmute : R.string.tabs_mute);
         icons.add(R.drawable.ic_volume_off);
@@ -313,6 +323,15 @@ public class TabsActivity extends Activity {
                                 break;
                             case MENU_OPEN_PRIVATE:
                                 openPrivateTab(tab);
+                                break;
+                            case MENU_PIN_TAB:
+                                tabManager.setPinned(tab.id, !tab.pinned);
+                                break;
+                            case MENU_MOVE_LEFT:
+                                tabManager.moveTab(tab.id, -1);
+                                break;
+                            case MENU_MOVE_RIGHT:
+                                tabManager.moveTab(tab.id, 1);
                                 break;
                             case MENU_MUTE_TAB:
                                 tabManager.toggleMuted(tab.id);
