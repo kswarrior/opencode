@@ -585,8 +585,23 @@ public class MainActivity extends Activity {
             }
         }
         if (setting("gesture_pull_refresh", true) && dy > dp(120)
-                && Math.abs(dy) > Math.abs(dx) * 1.5f && view.getScrollY() == 0) {
-            reloadPage(view);
+                && Math.abs(dy) > Math.abs(dx) * 1.5f) {
+            view.evaluateJavascript(
+                    "(function(){return window.scrollY||document.documentElement.scrollTop"
+                            + "||document.body.scrollTop||0;})()",
+                    new ValueCallback<String>() {
+                        @Override
+                        public void onReceiveValue(String value) {
+                            try {
+                                String clean = value == null ? "0"
+                                        : value.replace("\"", "").trim();
+                                if (Double.parseDouble(clean) <= 1) {
+                                    reloadPage(view);
+                                }
+                            } catch (NumberFormatException ignored) {
+                            }
+                        }
+                    });
         }
     }
 
