@@ -1591,10 +1591,10 @@ public class MainActivity extends Activity {
                     return;
                 }
                 BrowserTab active = tabManager.getActiveTab();
-        if (active != null && privateTabs.contains(active.id)) {
-            KsToast.show(this, R.string.private_action_blocked);
-            return;
-        }
+                if (active != null && privateTabs.contains(active.id)) {
+                    KsToast.show(MainActivity.this, R.string.private_action_blocked);
+                    return;
+                }
                 if (url.startsWith("data:")) {
                     saveDataUrl(url, null, mimeType);
                     return;
