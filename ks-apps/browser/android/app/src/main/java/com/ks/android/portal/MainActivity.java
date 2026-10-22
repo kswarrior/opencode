@@ -1062,19 +1062,16 @@ public class MainActivity extends Activity {
             NotificationHelper.securityAlert(this,
                     getString(R.string.notification_security_title),
                     getString(R.string.unsafe_download_message));
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.unsafe_download_title)
-                    .setMessage(R.string.unsafe_download_message)
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .setPositiveButton(R.string.download_continue,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    continueDownload(url, userAgent, contentDisposition,
-                                            mimeType, contentLength);
-                                }
-                            })
-                    .show();
+            KsDialog.confirm(this, R.string.unsafe_download_title,
+                    getString(R.string.unsafe_download_message),
+                    R.string.dialog_cancel, R.string.download_continue, false,
+                    new KsDialog.Action() {
+                        @Override
+                        public void run() {
+                            continueDownload(url, userAgent, contentDisposition,
+                                    mimeType, contentLength);
+                        }
+                    });
             return;
         }
         continueDownload(url, userAgent, contentDisposition, mimeType, contentLength);
@@ -2179,27 +2176,24 @@ public class MainActivity extends Activity {
                 getString(R.string.context_copy_link),
                 getString(R.string.context_share_link),
                 getString(R.string.context_save_image)};
-        new AlertDialog.Builder(this)
-                .setTitle(url)
-                .setItems(items, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0) {
-                            tabManager.addTab(url, 0);
-                            syncActiveTab();
-                        } else if (which == 1) {
-                            copyText(url);
-                        } else if (which == 2) {
-                            shareText(url);
-                        } else if (targetImage != null) {
-                            saveImage(targetImage);
-                        } else {
-                            startDownloadOrConfirm(url, defaultUserAgent, null, null,
-                                    -1, view.getUrl());
-                        }
-                    }
-                })
-                .show();
+        KsDialog.choose(this, url, items, new KsDialog.ChoiceAction() {
+            @Override
+            public void run(int which) {
+                if (which == 0) {
+                    tabManager.addTab(url, 0);
+                    syncActiveTab();
+                } else if (which == 1) {
+                    copyText(url);
+                } else if (which == 2) {
+                    shareText(url);
+                } else if (targetImage != null) {
+                    saveImage(targetImage);
+                } else {
+                    startDownloadOrConfirm(url, defaultUserAgent, null, null,
+                            -1, view.getUrl());
+                }
+            }
+        });
     }
 
     private void showImageContextMenu(final WebView view, final String url) {
@@ -2207,24 +2201,21 @@ public class MainActivity extends Activity {
                 getString(R.string.context_save_image),
                 getString(R.string.context_copy_image),
                 getString(R.string.context_share_image)};
-        new AlertDialog.Builder(this)
-                .setTitle(url)
-                .setItems(items, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0) {
-                            tabManager.addTab(url, 0);
-                            syncActiveTab();
-                        } else if (which == 1) {
-                            saveImage(url);
-                        } else if (which == 2) {
-                            copyText(url);
-                        } else {
-                            shareText(url);
-                        }
-                    }
-                })
-                .show();
+        KsDialog.choose(this, url, items, new KsDialog.ChoiceAction() {
+            @Override
+            public void run(int which) {
+                if (which == 0) {
+                    tabManager.addTab(url, 0);
+                    syncActiveTab();
+                } else if (which == 1) {
+                    saveImage(url);
+                } else if (which == 2) {
+                    copyText(url);
+                } else {
+                    shareText(url);
+                }
+            }
+        });
     }
 
     private void saveImage(String url) {
