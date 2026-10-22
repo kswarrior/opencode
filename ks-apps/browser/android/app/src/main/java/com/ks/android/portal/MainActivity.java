@@ -986,38 +986,75 @@ public class MainActivity extends Activity {
     }
 
     private void clearPrivateSessionIfDone() {
-        if (!privateTabs.isEmpty() || !privateTabHosts.isEmpty()) {
-            if (!privateTabs.isEmpty()) {
-                return;
-            }
+        if (!privateTabs.isEmpty()) {
+            return;
         }
         if (privateTabHosts.isEmpty()) {
             return;
         }
         CookieManager cookies = CookieManager.getInstance();
+        WebStorage storage = WebStorage.getInstance();
         for (List<String> hosts : privateTabHosts.values()) {
             for (String host : hosts) {
-                String header = cookies.getCookie("https://" + host);
-                if (TextUtils.isEmpty(header)) {
-                    continue;
-                }
-                String[] parts = header.split(";");
-                for (String part : parts) {
-                    int equals = part.indexOf('=');
-                    if (equals <= 0) {
-                        continue;
+                for (String scheme : new String[]{"https://", "http://"}) {
+                    String site = scheme + host;
+                    String header = cookies.getCookie(site);
+                    if (!TextUtils.isEmpty(header)) {
+                        String[] parts = header.split(";");
+                        for (String part : parts) {
+                            int equals = part.indexOf('=');
+                            if (equals <= 0) {
+                                continue;
+                            }
+                            String name = part.substring(0, equals).trim();
+                            cookies.setCookie(site, name + "=; Max-Age=0; path=/");
+                        }
                     }
-                    String name = part.substring(0, equals).trim();
-                    cookies.setCookie("https://" + host,
-                            name + "=; Max-Age=0; path=/");
+                    storage.deleteOrigin(site);
                 }
             }
         }
         cookies.flush();
         privateTabHosts.clear();
-        WebStorage.getInstance().deleteAllData();
-        if (webView != null) {
-            webView.clearCache(true);
+    }
+
+    private void clearPrivateTabData(int tabId) {
+        List<String> hosts = privateTabHosts.remove(tabId);
+        if (hosts != null) {
+            CookieManager cookies = CookieManager.getInstance();
+            WebStorage storage = WebStorage.getInstance();
+            for (String host : hosts) {
+                for (String scheme : new String[]{"https://", "http://"}) {
+                    String site = scheme + host;
+                    String header = cookies.getCookie(site);
+                    if (!TextUtils.isEmpty(header)) {
+                        String[] parts = header.split(";");
+                        for (String part : parts) {
+                            int equals = part.indexOf('=');
+                            if (equals <= 0) {
+                                continue;
+                            }
+                            String name = part.substring(0, equals).trim();
+                            cookies.setCookie(site, name + "=; Max-Age=0; path=/");
+                        }
+                    }
+                    storage.deleteOrigin(site);
+                }
+            }
+            cookies.flush();
+        }
+        WebView view = tabViews.get(tabId);
+        if (view != null) {
+            view.clearCache(true);
+            view.clearFormData();
+            view.clearHistory();
+        }
+    }
+
+    private void clearAllPrivateData() {
+        privateTabs.clear();
+        for (Integer tabId : new ArrayList<Integer>(privateTabHosts.keySet())) {
+            clearPrivateTabData(tabId);
         }
     }
 
@@ -1035,8 +1072,8 @@ public class MainActivity extends Activity {
             closed.removeJavascriptInterface("KSPortalWeb");
             closed.stopLoading();
             closed.destroy();
+            clearPrivateTabData(tabId);
             privateTabs.remove(tabId);
-            privateTabHosts.remove(tabId);
             cacheBypassReloads.remove(closed);
             iterator.remove();
         }
@@ -2700,8 +2737,11 @@ public class MainActivity extends Activity {
                         safePassword, new LoginSaveDialog.Listener() {
                             @Override
                             public void onSave(String savedUsername, String savedPassword) {
-                                store.save(siteName, url, savedUsername, savedPassword);
-                                KsToast.show(MainActivity.this, R.string.login_saved);
+                                boolean saved = store.save(siteName, url, savedUsername,
+                                        savedPassword);
+                                KsToast.show(MainActivity.this, saved
+                                        ? R.string.login_saved
+                                        : R.string.credentials_unavailable);
                             }
 
                             @Override
@@ -3033,6 +3073,8 @@ public class MainActivity extends Activity {
                 privateTabs.add(tabId);
             } else {
                 privateTabs.remove(tabId);
+                clearPrivateTabData(tabId);
+                clearPrivateSessionIfDone();
             }
             tabManager.setPrivate(tabId, enabled);
             if (enabled && privateTabHosts.get(tabId) == null) {
@@ -3094,6 +3136,9 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        if (isFinishing()) {
+            clearAllPrivateData();
+        }
         if (tabManager != null) {
             tabManager.removeListener(tabsListener);
         }
