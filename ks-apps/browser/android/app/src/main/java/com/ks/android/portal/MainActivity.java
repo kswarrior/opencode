@@ -700,59 +700,56 @@ public class MainActivity extends Activity {
                         ? R.string.permission_camera_microphone_title
                         : wantsCamera ? R.string.permission_camera_title
                         : R.string.permission_microphone_title;
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(title)
-                        .setMessage(getString(R.string.permission_site_message,
-                                host.isEmpty() ? origin : host))
-                        .setNegativeButton(R.string.permission_block,
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        if (requestKey.contains("camera")) {
-                                            SiteSettingsStore.setPermission(MainActivity.this,
-                                                    pendingPermissionHost, "camera",
-                                                    SiteSettingsStore.PERMISSION_BLOCKED);
-                                        }
-                                        if (requestKey.contains("microphone")) {
-                                            SiteSettingsStore.setPermission(MainActivity.this,
-                                                    pendingPermissionHost, "microphone",
-                                                    SiteSettingsStore.PERMISSION_BLOCKED);
-                                        }
-                                        if (pendingPermissionRequest != null) {
-                                            pendingPermissionRequest.deny();
-                                        }
-                                        clearPendingPermission();
-                                    }
-                                })
-                        .setPositiveButton(R.string.permission_allow,
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        if (requestKey.contains("camera")) {
-                                            SiteSettingsStore.setPermission(MainActivity.this,
-                                                    pendingPermissionHost, "camera",
-                                                    SiteSettingsStore.PERMISSION_ALLOWED);
-                                        }
-                                        if (requestKey.contains("microphone")) {
-                                            SiteSettingsStore.setPermission(MainActivity.this,
-                                                    pendingPermissionHost, "microphone",
-                                                    SiteSettingsStore.PERMISSION_ALLOWED);
-                                        }
-                                        grantPermissionRequest(pendingPermissionRequest,
-                                                permissionList(requestKey.contains("camera"),
-                                                        requestKey.contains("microphone")));
-                                    }
-                                })
-                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                KsDialog.confirm(MainActivity.this, title,
+                        getString(R.string.permission_site_message,
+                                host.isEmpty() ? origin : host),
+                        R.string.permission_block, R.string.permission_allow, false,
+                        new KsDialog.Action() {
                             @Override
-                            public void onCancel(DialogInterface dialog) {
+                            public void run() {
+                                if (requestKey.contains("camera")) {
+                                    SiteSettingsStore.setPermission(MainActivity.this,
+                                            pendingPermissionHost, "camera",
+                                            SiteSettingsStore.PERMISSION_ALLOWED);
+                                }
+                                if (requestKey.contains("microphone")) {
+                                    SiteSettingsStore.setPermission(MainActivity.this,
+                                            pendingPermissionHost, "microphone",
+                                            SiteSettingsStore.PERMISSION_ALLOWED);
+                                }
+                                grantPermissionRequest(pendingPermissionRequest,
+                                        permissionList(requestKey.contains("camera"),
+                                                requestKey.contains("microphone")));
+                            }
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                if (requestKey.contains("camera")) {
+                                    SiteSettingsStore.setPermission(MainActivity.this,
+                                            pendingPermissionHost, "camera",
+                                            SiteSettingsStore.PERMISSION_BLOCKED);
+                                }
+                                if (requestKey.contains("microphone")) {
+                                    SiteSettingsStore.setPermission(MainActivity.this,
+                                            pendingPermissionHost, "microphone",
+                                            SiteSettingsStore.PERMISSION_BLOCKED);
+                                }
                                 if (pendingPermissionRequest != null) {
                                     pendingPermissionRequest.deny();
                                 }
                                 clearPendingPermission();
                             }
-                        })
-                        .show();
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                if (pendingPermissionRequest != null) {
+                                    pendingPermissionRequest.deny();
+                                }
+                                clearPendingPermission();
+                            }
+                        });
             }
 
             @Override
