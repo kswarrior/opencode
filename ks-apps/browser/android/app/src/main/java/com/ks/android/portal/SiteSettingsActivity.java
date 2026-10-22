@@ -77,42 +77,6 @@ public class SiteSettingsActivity extends Activity {
             SiteSettingsStore.PERMISSION_ASK
     };
 
-    private static final int[] CONTENT_TITLES = {
-            R.string.site_third_party_cookies,
-            R.string.site_javascript,
-            R.string.site_popups_redirects,
-            R.string.site_sound,
-            R.string.site_intrusive_ads,
-            R.string.site_protected_content,
-            R.string.site_third_party_sign_in,
-            R.string.site_auto_verify,
-            R.string.site_on_device_site_data,
-            R.string.site_desktop_site,
-            R.string.site_background_sync,
-            R.string.site_automatic_downloads,
-            R.string.site_javascript_optimization,
-            R.string.site_saved_zoom,
-            R.string.site_data_stored
-    };
-
-    private static final int[] CONTENT_VALUES = {
-            R.string.value_third_party_cookies_allowed,
-            R.string.value_allowed,
-            R.string.value_not_allowed,
-            R.string.value_allowed,
-            R.string.value_blocked_some_sites,
-            R.string.value_allowed,
-            R.string.value_allowed,
-            R.string.value_allowed,
-            R.string.value_sites_can_save,
-            R.string.value_off,
-            R.string.value_allowed,
-            R.string.value_ask_first,
-            R.string.value_js_faster_less_secure,
-            0,
-            0
-    };
-
     private static final class SiteToggle {
         final int titleRes;
         final int summaryRes;

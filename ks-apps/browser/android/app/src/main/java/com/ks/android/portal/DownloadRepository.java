@@ -687,7 +687,7 @@ public class DownloadRepository {
                 if (item != null && (item.status == DownloadItem.STATUS_PENDING
                         || item.status == DownloadItem.STATUS_DOWNLOADING)) {
                     item.status = DownloadItem.STATUS_CANCELLED;
-                    item.error = "Cancelled";
+                    item.error = context.getString(R.string.download_error_cancelled);
                     changed = true;
                     persistLocked();
                 }
@@ -1708,16 +1708,47 @@ public class DownloadRepository {
         return new File(directory, name).getAbsolutePath();
     }
 
-    private static String friendlyError(Exception exception) {
+    private String friendlyError(Exception exception) {
         if (exception instanceof UnknownHostException) {
-            return "No network";
+            return context.getString(R.string.download_error_no_network);
         }
         if (exception instanceof SocketTimeoutException) {
-            return "Timed out";
+            return context.getString(R.string.download_error_timed_out);
         }
         String message = exception.getMessage();
         if (message == null || message.trim().isEmpty()) {
-            return "Download failed";
+            return context.getString(R.string.download_error_failed);
+        }
+        return localizeError(message.trim());
+    }
+
+    private String localizeError(String message) {
+        if ("Cancelled".equals(message)) {
+            return context.getString(R.string.download_error_cancelled);
+        }
+        if ("Interrupted".equals(message)) {
+            return context.getString(R.string.download_error_interrupted);
+        }
+        if ("File missing".equals(message)) {
+            return context.getString(R.string.download_error_file_missing);
+        }
+        if ("Incomplete download".equals(message)) {
+            return context.getString(R.string.download_error_incomplete);
+        }
+        if ("Resume rejected by server".equals(message)) {
+            return context.getString(R.string.download_error_resume_rejected);
+        }
+        if ("Could not create file in Downloads".equals(message)) {
+            return context.getString(R.string.download_error_create_file);
+        }
+        if ("Could not open Downloads file".equals(message)) {
+            return context.getString(R.string.download_error_open_file);
+        }
+        if ("Could not save download".equals(message)) {
+            return context.getString(R.string.download_error_save);
+        }
+        if ("Could not finish download".equals(message)) {
+            return context.getString(R.string.download_error_finish);
         }
         return message;
     }
@@ -1752,7 +1783,7 @@ public class DownloadRepository {
                 if (item.status == DownloadItem.STATUS_PENDING
                         || item.status == DownloadItem.STATUS_DOWNLOADING) {
                     item.status = DownloadItem.STATUS_FAILED;
-                    item.error = "Interrupted";
+                    item.error = context.getString(R.string.download_error_interrupted);
                 } else if (item.status == DownloadItem.STATUS_PAUSED) {
                     File part = new File(stagingRoot, item.id + ".part");
                     long actual = part.isFile() ? part.length() : 0;
@@ -1760,13 +1791,13 @@ public class DownloadRepository {
                         item.downloadedBytes = actual;
                     } else {
                         item.status = DownloadItem.STATUS_FAILED;
-                        item.error = "Interrupted";
+                        item.error = context.getString(R.string.download_error_interrupted);
                         item.downloadedBytes = 0;
                     }
                 } else if (item.status == DownloadItem.STATUS_COMPLETED
                         && !isFileAvailable(item)) {
                     item.status = DownloadItem.STATUS_FAILED;
-                    item.error = "File missing";
+                    item.error = context.getString(R.string.download_error_file_missing);
                 }
                 items.add(item);
                 if (item.id >= nextId) {
@@ -2162,7 +2193,7 @@ public class DownloadRepository {
                         discard = true;
                         if (item != null) {
                             item.status = DownloadItem.STATUS_CANCELLED;
-                            item.error = "Cancelled";
+                            item.error = context.getString(R.string.download_error_cancelled);
                         }
                     } else {
                         item.fileName = published.name;
@@ -2201,7 +2232,7 @@ public class DownloadRepository {
                             item.error = "";
                         } else if (wasCancelled) {
                             item.status = DownloadItem.STATUS_CANCELLED;
-                            item.error = "Cancelled";
+                            item.error = context.getString(R.string.download_error_cancelled);
                         } else {
                             item.status = DownloadItem.STATUS_FAILED;
                             item.error = friendlyError(exception);
@@ -2286,7 +2317,7 @@ public class DownloadRepository {
                 if (item != null && (item.status == DownloadItem.STATUS_PENDING
                         || item.status == DownloadItem.STATUS_DOWNLOADING)) {
                     item.status = DownloadItem.STATUS_CANCELLED;
-                    item.error = "Cancelled";
+                    item.error = context.getString(R.string.download_error_cancelled);
                 }
                 tasks.remove(id);
                 persistLocked();
