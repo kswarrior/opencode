@@ -40,6 +40,8 @@ public class DownloadsActivity extends Activity {
     private static final int MENU_DELETE = 4;
     private static final int MENU_CANCEL = 5;
     private static final int MENU_RETRY = 6;
+    private static final int MENU_PAUSE = 7;
+    private static final int MENU_RESUME = 8;
 
     private DownloadRepository repository;
     private ListView listView;
@@ -183,6 +185,8 @@ public class DownloadsActivity extends Activity {
                 return getString(R.string.download_waiting);
             case DownloadItem.STATUS_DOWNLOADING:
                 return getString(R.string.download_downloading);
+            case DownloadItem.STATUS_PAUSED:
+                return getString(R.string.download_paused);
             case DownloadItem.STATUS_COMPLETED:
                 return getString(R.string.download_completed);
             case DownloadItem.STATUS_CANCELLED:
@@ -200,6 +204,19 @@ public class DownloadsActivity extends Activity {
                 return getString(R.string.download_waiting);
             case DownloadItem.STATUS_DOWNLOADING: {
                 StringBuilder builder = new StringBuilder(getString(R.string.download_downloading));
+                if (item.totalBytes > 0) {
+                    int percent = (int) Math.min(100,
+                            (item.downloadedBytes * 100) / item.totalBytes);
+                    builder.append(separator).append(percent).append('%');
+                    builder.append(separator).append(formatBytes(item.downloadedBytes));
+                    builder.append(" / ").append(formatBytes(item.totalBytes));
+                } else {
+                    builder.append(separator).append(formatBytes(item.downloadedBytes));
+                }
+                return builder.toString();
+            }
+            case DownloadItem.STATUS_PAUSED: {
+                StringBuilder builder = new StringBuilder(getString(R.string.download_paused));
                 if (item.totalBytes > 0) {
                     int percent = (int) Math.min(100,
                             (item.downloadedBytes * 100) / item.totalBytes);
@@ -239,9 +256,18 @@ public class DownloadsActivity extends Activity {
                     .setIcon(R.drawable.ic_delete);
         } else if (item.status == DownloadItem.STATUS_PENDING
                 || item.status == DownloadItem.STATUS_DOWNLOADING) {
-            popup.getMenu().add(0, MENU_CANCEL, 0, R.string.download_cancel)
+            popup.getMenu().add(0, MENU_PAUSE, 0, R.string.download_pause)
+                    .setIcon(R.drawable.ic_pause);
+            popup.getMenu().add(0, MENU_CANCEL, 1, R.string.download_cancel)
                     .setIcon(R.drawable.ic_close);
-            popup.getMenu().add(0, MENU_DELETE, 1, R.string.download_delete)
+            popup.getMenu().add(0, MENU_DELETE, 2, R.string.download_delete)
+                    .setIcon(R.drawable.ic_delete);
+        } else if (item.status == DownloadItem.STATUS_PAUSED) {
+            popup.getMenu().add(0, MENU_RESUME, 0, R.string.download_resume)
+                    .setIcon(R.drawable.ic_play);
+            popup.getMenu().add(0, MENU_CANCEL, 1, R.string.download_cancel)
+                    .setIcon(R.drawable.ic_close);
+            popup.getMenu().add(0, MENU_DELETE, 2, R.string.download_delete)
                     .setIcon(R.drawable.ic_delete);
         } else {
             popup.getMenu().add(0, MENU_RETRY, 0, R.string.download_retry)
@@ -270,6 +296,14 @@ public class DownloadsActivity extends Activity {
                         return true;
                     case MENU_RETRY:
                         if (!repository.retry(item.id)) {
+                            toast(getString(R.string.download_start_failed));
+                        }
+                        return true;
+                    case MENU_PAUSE:
+                        repository.pause(item.id);
+                        return true;
+                    case MENU_RESUME:
+                        if (!repository.resume(item.id)) {
                             toast(getString(R.string.download_start_failed));
                         }
                         return true;
@@ -449,7 +483,8 @@ public class DownloadsActivity extends Activity {
             holder.path.setText(item.filePath);
 
             if (item.status == DownloadItem.STATUS_PENDING
-                    || item.status == DownloadItem.STATUS_DOWNLOADING) {
+                    || item.status == DownloadItem.STATUS_DOWNLOADING
+                    || item.status == DownloadItem.STATUS_PAUSED) {
                 holder.progress.setVisibility(View.VISIBLE);
                 if (item.totalBytes > 0) {
                     holder.progress.setIndeterminate(false);
@@ -477,7 +512,8 @@ public class DownloadsActivity extends Activity {
                     if (item.status == DownloadItem.STATUS_COMPLETED) {
                         openItem(item);
                     } else if (item.status == DownloadItem.STATUS_FAILED
-                            || item.status == DownloadItem.STATUS_CANCELLED) {
+                            || item.status == DownloadItem.STATUS_CANCELLED
+                            || item.status == DownloadItem.STATUS_PAUSED) {
                         showItemMenu(view.findViewById(R.id.downloadMore), item);
                     }
                 }

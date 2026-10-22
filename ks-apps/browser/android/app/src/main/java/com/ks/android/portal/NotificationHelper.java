@@ -215,6 +215,29 @@ final class NotificationHelper {
         notify(context, notificationId(item.id), builder.build());
     }
 
+    static void downloadPaused(Context context, DownloadItem item) {
+        if (item == null) {
+            return;
+        }
+        NotificationManager manager = manager(context);
+        if (manager != null) {
+            manager.cancel(notificationId(item.id));
+        }
+        forgetProgress(item.id);
+        if (!pref(context, KEY_DOWNLOAD, true) || !canNotify(context)) {
+            return;
+        }
+        ensureChannels(context);
+        Notification.Builder builder = builder(context, CHANNEL_DOWNLOADS)
+                .setContentTitle(context.getString(R.string.notification_download_paused_title))
+                .setContentText(context.getString(R.string.notification_download_paused_text,
+                        item.fileName))
+                .setContentIntent(openDownloadsIntent(context))
+                .setOnlyAlertOnce(true)
+                .setProgress(100, 0, false);
+        notify(context, notificationId(item.id), builder.build());
+    }
+
     static void downloadFailed(Context context, DownloadItem item) {
         if (item == null) {
             return;
