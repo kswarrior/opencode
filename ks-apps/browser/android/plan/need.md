@@ -321,8 +321,10 @@ no third-party libraries.
   (the "Saved zoom" row is currently static).
 - [ ] **Force dark / night mode** — `WebSettings.setForceDark` on compatible
   WebView versions, plus a manual dark stylesheet fallback.
-- [ ] **Desktop site toggle** — one-tap action in the browser menu, not only
-  buried in screen-size settings.
+- [x] **Desktop site toggle** — done. Browser menu row toggles the current
+  host between desktop (1280px viewport + desktop UA) and the default, then
+  reloads; its label switches to "Mobile site". Verified UA and width on the
+  emulator.
 - [ ] **Picture-in-Picture** — `enterPictureInPictureMode` on Android 8+ for
   video; custom controls to enter/exit.
 - [ ] **Background audio and media notification** — keep audio playing when
@@ -524,7 +526,7 @@ the `android-device-test` skill.
 | 3.9 | TLS / HTTP auth / client certs | P0 | Done |
 | 3.10 | Bookmark page / History action | P0 | Done |
 | 3.11 | Link/image context menu | P0 | Done |
-| 4.x | Expected browser features | P1 | In progress (find in page done) |
+| 4.x | Expected browser features | P1 | In progress (find, desktop site done) |
 | 5.x | Power-user features | P2 | Pending |
 | 7.x | Truthful settings cleanup | P0/P1 | Pending |
 
