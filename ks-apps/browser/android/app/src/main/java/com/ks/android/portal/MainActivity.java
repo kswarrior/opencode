@@ -419,6 +419,7 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView current, String url) {
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
+                rememberPrivateHost(tab.id, url);
                 tab.loading = false;
                 tab.progress = 100;
                 applyScreenWidth(current, url);
@@ -442,6 +443,7 @@ public class MainActivity extends Activity {
             @Override
             public void doUpdateVisitedHistory(WebView current, String url, boolean isReload) {
                 tabManager.updateTab(tab.id, url, null);
+                rememberPrivateHost(tab.id, url);
                 if (isActiveTab(tab)) {
                     updateChrome(url);
                 }
@@ -819,6 +821,60 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void rememberPrivateHost(int tabId, String url) {
+        if (!privateTabs.contains(tabId)) {
+            return;
+        }
+        String host = SiteSettingsStore.hostOf(url);
+        if (TextUtils.isEmpty(host)) {
+            return;
+        }
+        List<String> hosts = privateTabHosts.get(tabId);
+        if (hosts == null) {
+            hosts = new ArrayList<String>();
+            privateTabHosts.put(tabId, hosts);
+        }
+        if (!hosts.contains(host)) {
+            hosts.add(host);
+        }
+    }
+
+    private void clearPrivateSessionIfDone() {
+        if (!privateTabs.isEmpty() || !privateTabHosts.isEmpty()) {
+            if (!privateTabs.isEmpty()) {
+                return;
+            }
+        }
+        if (privateTabHosts.isEmpty()) {
+            return;
+        }
+        CookieManager cookies = CookieManager.getInstance();
+        for (List<String> hosts : privateTabHosts.values()) {
+            for (String host : hosts) {
+                String header = cookies.getCookie("https://" + host);
+                if (TextUtils.isEmpty(header)) {
+                    continue;
+                }
+                String[] parts = header.split(";");
+                for (String part : parts) {
+                    int equals = part.indexOf('=');
+                    if (equals <= 0) {
+                        continue;
+                    }
+                    String name = part.substring(0, equals).trim();
+                    cookies.setCookie("https://" + host,
+                            name + "=; Max-Age=0; path=/");
+                }
+            }
+        }
+        cookies.flush();
+        privateTabHosts.clear();
+        WebStorage.getInstance().deleteAllData();
+        if (webView != null) {
+            webView.clearCache(true);
+        }
+    }
+
     private void removeClosedTabViews() {
         Iterator<Map.Entry<Integer, WebView>> iterator = tabViews.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -834,9 +890,11 @@ public class MainActivity extends Activity {
             closed.stopLoading();
             closed.destroy();
             privateTabs.remove(tabId);
+            privateTabHosts.remove(tabId);
             cacheBypassReloads.remove(closed);
             iterator.remove();
         }
+        clearPrivateSessionIfDone();
     }
 
     private void requestDownload(final String url, final String userAgent,
