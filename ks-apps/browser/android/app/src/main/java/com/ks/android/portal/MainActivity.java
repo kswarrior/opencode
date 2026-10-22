@@ -2874,7 +2874,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public boolean saveBlob(String dataUrl, String name, String mimeType) {
-            if (!allowed()) {
+            if (tabManager.findTab(tabId) == null) {
                 return false;
             }
             if (privateTabs.contains(tabId)) {
