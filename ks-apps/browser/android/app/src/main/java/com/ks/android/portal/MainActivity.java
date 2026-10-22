@@ -127,6 +127,9 @@ public class MainActivity extends Activity {
             Collections.synchronizedSet(new HashSet<Integer>());
     private SharedPreferences settingsPrefs;
     private final Object loginPromptLock = new Object();
+    private final Object notificationPromptLock = new Object();
+    private final Map<String, Long> notificationPromptTimes =
+            new HashMap<String, Long>();
     private String lastLoginKey = "";
     private long lastLoginTime;
     private boolean loginDialogVisible;
@@ -2697,6 +2700,46 @@ public class MainActivity extends Activity {
         return isHomeUrl(tab.url);
     }
 
+    private void grantSiteNotifications(String host, boolean allowed) {
+        SiteSettingsStore.setPermission(this, host, "notifications",
+                allowed ? SiteSettingsStore.PERMISSION_ALLOWED
+                        : SiteSettingsStore.PERMISSION_BLOCKED);
+        if (webView != null) {
+            String value = allowed ? "granted" : "denied";
+            webView.evaluateJavascript("(function(){"
+                    + "if(window.Notification){try{window.Notification.permission='"
+                    + value + "';}catch(e){}}"
+                    + "try{window.dispatchEvent(new Event('ksnotificationchange'));}"
+                    + "catch(e){}})();", null);
+        }
+        KsToast.show(this, allowed ? R.string.notification_site_allowed
+                : R.string.notification_site_blocked);
+    }
+
+    private static String originOf(String rawUrl) {
+        String normalized = normalizeWebUrl(rawUrl);
+        if (normalized == null) {
+            return null;
+        }
+        Uri uri = Uri.parse(normalized);
+        String host = uri.getHost();
+        if (host == null) {
+            return null;
+        }
+        int port = uri.getPort();
+        if (port <= 0) {
+            port = "https".equalsIgnoreCase(uri.getScheme()) ? 443 : 80;
+        }
+        return uri.getScheme().toLowerCase(Locale.US) + "://"
+                + host.toLowerCase(Locale.US) + ":" + port;
+    }
+
+    private static boolean sameOrigin(String first, String second) {
+        String a = originOf(first);
+        String b = originOf(second);
+        return a != null && a.equals(b);
+    }
+
     private boolean handleLogin(int tabId, String rawUrl, String name, String username,
                                 String password) {
         if (privateTabs.contains(tabId)
@@ -2706,6 +2749,10 @@ public class MainActivity extends Activity {
         }
         final String url = normalizeWebUrl(rawUrl);
         if (url == null) {
+            return false;
+        }
+        BrowserTab active = tabManager.getActiveTab();
+        if (active == null || active.id != tabId || !sameOrigin(url, active.url)) {
             return false;
         }
         final CredentialStore store = CredentialStore.getInstance(this);
@@ -2791,6 +2838,11 @@ public class MainActivity extends Activity {
         boolean autoSignIn = setting("autofill_auto_sign_in", true);
         boolean autofillForms = setting("autofill_forms", true);
         boolean siteNotifications = setting(NotificationHelper.KEY_SITES, true);
+        String notifPermission = SiteSettingsStore.getPermission(this,
+                SiteSettingsStore.hostOf(url), "notifications",
+                SiteSettingsStore.PERMISSION_ASK);
+        boolean notificationsAllowed = siteNotifications
+                && SiteSettingsStore.PERMISSION_ALLOWED.equals(notifPermission);
         boolean doNotTrack = setting("privacy_do_not_track", false);
         CredentialStore.Credential saved = null;
         if (autoSignIn || autofillForms) {
@@ -2811,7 +2863,8 @@ public class MainActivity extends Activity {
         String script = "(function(){"
                 + "var OFFER=" + offerSave + ",AUTO=" + autoSignIn
                 + ",FORMS=" + autofillForms + ",SITES=" + siteNotifications
-                + ",DNT=" + doNotTrack + ",SAVED=" + savedJson + ";"
+                + ",DNT=" + doNotTrack + ",SAVED=" + savedJson
+                + ",NOTIF_ALLOWED=" + notificationsAllowed + ";"
                 + "if(!window.__ksBlobHook){window.__ksBlobHook=true;"
                 + "document.addEventListener('click',function(e){var a=e.target;"
                 + "while(a&&a.nodeType===1&&a.tagName!=='A'){a=a.parentElement;}"
@@ -2828,13 +2881,18 @@ public class MainActivity extends Activity {
                 + "try{Object.defineProperty(window,'doNotTrack',"
                 + "{value:'1',configurable:true});}catch(e){}}"
                 + "if(!window.__ksSiteNotif){window.__ksSiteNotif=true;"
-                + "var SN=function(t,o){o=o||{};if(!SITES){return;}"
+                + "var SN=function(t,o){o=o||{};"
+                + "if(!SITES||SN.permission!=='granted'){return;}"
                 + "try{window.KSPortalWeb&&window.KSPortalWeb.showSiteNotification("
                 + "String(t||''),String(o.body||''),location.href);}catch(e){}};"
-                + "SN.permission=SITES?'granted':'denied';"
-                + "SN.requestPermission=function(cb){var r=SITES?'granted':'denied';"
-                + "if(typeof cb==='function'){setTimeout(function(){cb(r);},0);}"
-                + "if(typeof Promise!=='undefined'){return Promise.resolve(r);}return r;};"
+                + "SN.permission=NOTIF_ALLOWED?'granted':'default';"
+                + "SN.requestPermission=function(cb){var r=SN.permission;"
+                + "if(r==='default'&&SITES){try{window.KSPortalWeb&&"
+                + "window.KSPortalWeb.requestSiteNotifications(location.href);}"
+                + "catch(e){}}"
+                + "if(typeof cb==='function'){setTimeout(function(){cb(SN.permission);},0);}"
+                + "if(typeof Promise!=='undefined'){return Promise.resolve(SN.permission);}"
+                + "return SN.permission;};"
                 + "try{Object.defineProperty(window,'Notification',"
                 + "{value:SN,configurable:true,writable:true});}"
                 + "catch(e){window.Notification=SN;}}"
@@ -2923,14 +2981,82 @@ public class MainActivity extends Activity {
             if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)) {
                 return false;
             }
+            String safeUrl = normalizeWebUrl(url);
+            BrowserTab active = tabManager.getActiveTab();
+            if (safeUrl == null || active == null || !sameOrigin(safeUrl, active.url)) {
+                return false;
+            }
+            String host = SiteSettingsStore.hostOf(active.url);
+            if (!setting(NotificationHelper.KEY_SITES, true)
+                    || !SiteSettingsStore.PERMISSION_ALLOWED.equals(
+                    SiteSettingsStore.getPermission(MainActivity.this, host,
+                            "notifications", SiteSettingsStore.PERMISSION_ASK))) {
+                return false;
+            }
             String safeTitle = title == null ? "" : title;
             String safeBody = body == null ? "" : body;
             if (safeTitle.length() > 200 || safeBody.length() > 1000) {
                 return false;
             }
-            NotificationHelper.siteNotification(MainActivity.this, safeTitle, safeBody,
-                    normalizeWebUrl(url));
+            NotificationHelper.siteNotification(MainActivity.this, host, safeTitle,
+                    safeBody, safeUrl);
             return true;
+        }
+
+        @JavascriptInterface
+        public boolean requestSiteNotifications(String url) {
+            if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)) {
+                return false;
+            }
+            String safeUrl = normalizeWebUrl(url);
+            BrowserTab active = tabManager.getActiveTab();
+            if (safeUrl == null || active == null || !sameOrigin(safeUrl, active.url)) {
+                return false;
+            }
+            if (!setting(NotificationHelper.KEY_SITES, true)) {
+                return false;
+            }
+            final String host = SiteSettingsStore.hostOf(active.url);
+            if (TextUtils.isEmpty(host)) {
+                return false;
+            }
+            final String current = SiteSettingsStore.getPermission(MainActivity.this,
+                    host, "notifications", SiteSettingsStore.PERMISSION_ASK);
+            if (!SiteSettingsStore.PERMISSION_ASK.equals(current)) {
+                return SiteSettingsStore.PERMISSION_ALLOWED.equals(current);
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    synchronized (notificationPromptLock) {
+                        long now = System.currentTimeMillis();
+                        Long last = notificationPromptTimes.get(host);
+                        if (last != null && now - last < 60000) {
+                            return;
+                        }
+                        notificationPromptTimes.put(host, now);
+                    }
+                    if (isFinishing() || isDestroyed()) {
+                        return;
+                    }
+                    KsDialog.confirm(MainActivity.this, R.string.notification_site_title,
+                            getString(R.string.notification_site_message, host),
+                            R.string.dialog_block, R.string.permission_allow,
+                            new KsDialog.Action() {
+                                @Override
+                                public void run() {
+                                    grantSiteNotifications(host, false);
+                                }
+                            },
+                            new KsDialog.Action() {
+                                @Override
+                                public void run() {
+                                    grantSiteNotifications(host, true);
+                                }
+                            });
+                }
+            });
+            return false;
         }
     }
 
