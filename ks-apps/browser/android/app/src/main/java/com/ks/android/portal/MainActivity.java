@@ -983,8 +983,8 @@ public class MainActivity extends Activity {
                     current.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            BrowserTab activeTab = tabManager.findTab(scanTabId);
-                            if (activeTab != null && !privateTabs.contains(scanTabId)) {
+                            if (tabManager.findTab(scanTabId) != null
+                                    && !privateTabs.contains(scanTabId)) {
                                 WebView scanView = tabViews.get(scanTabId);
                                 if (scanView != null && scanUrl.equals(scanView.getUrl())) {
                                     scanPageMedia(scanView, scanTabId, scanUrl, scanTitle);

@@ -295,6 +295,12 @@ final class VideoSniffer {
             return;
         }
         synchronized (bucket) {
+            if (TextUtils.isEmpty(source.pageUrl)) {
+                source.pageUrl = bucket.pageUrl;
+            }
+            if (TextUtils.isEmpty(source.pageTitle)) {
+                source.pageTitle = bucket.pageTitle;
+            }
             String key = dedupeKey(source.url);
             VideoSource existing = bucket.items.get(key);
             if (existing != null) {
