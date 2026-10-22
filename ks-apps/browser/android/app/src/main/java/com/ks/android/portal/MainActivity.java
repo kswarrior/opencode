@@ -174,6 +174,24 @@ public class MainActivity extends Activity {
     private String pendingHttpAuthRealm;
     private HttpAuthHandler pendingHttpAuthHandler;
     private ClientCertRequest pendingClientCertRequest;
+    private final Map<Integer, PendingPopup> pendingPopups =
+            new HashMap<Integer, PendingPopup>();
+    private final Set<Integer> popupPromptShown = new HashSet<Integer>();
+    private final Map<Integer, Dialog> popupDialogs = new HashMap<Integer, Dialog>();
+
+    private static final class PendingPopup {
+        final int sourceTabId;
+        final String sourceUrl;
+        final boolean privateSource;
+        String url;
+
+        PendingPopup(int sourceTabId, String sourceUrl, boolean privateSource) {
+            this.sourceTabId = sourceTabId;
+            this.sourceUrl = TextUtils.isEmpty(sourceUrl) ? "about:blank" : sourceUrl;
+            this.privateSource = privateSource;
+            this.url = "about:blank";
+        }
+    }
 
     private final Map<Integer, Boolean> appliedMuteState = new HashMap<Integer, Boolean>();
 

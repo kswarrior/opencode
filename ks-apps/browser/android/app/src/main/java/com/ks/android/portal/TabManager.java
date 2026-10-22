@@ -136,6 +136,16 @@ final class TabManager {
         return tab;
     }
 
+    synchronized BrowserTab addTabInBackground(String url, int groupId) {
+        String target = TextUtils.isEmpty(url) ? MainActivity.HOME_URL : url;
+        if (groupId != NO_GROUP && findGroup(groupId) == null) {
+            groupId = NO_GROUP;
+        }
+        BrowserTab tab = new BrowserTab(nextTabId++, target, groupId, "");
+        tabs.add(tab);
+        return tab;
+    }
+
     synchronized boolean selectTab(int id) {
         BrowserTab tab = findTab(id);
         if (tab == null || activeTabId == id) {

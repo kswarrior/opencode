@@ -354,6 +354,48 @@ final class KsDialog {
         present(sheet, false);
     }
 
+    static void items(final Activity activity, int titleRes, CharSequence[] labels,
+                      final ChoiceAction action) {
+        if (!canShow(activity) || labels == null || labels.length == 0) {
+            return;
+        }
+        final Sheet sheet = createSheet(activity,
+                titleRes == 0 ? null : activity.getString(titleRes), null,
+                R.string.dialog_close, 0, false);
+        if (sheet == null) {
+            return;
+        }
+        LayoutInflater inflater = LayoutInflater.from(activity);
+        for (int i = 0; i < labels.length; i++) {
+            final int index = i;
+            View row = inflater.inflate(R.layout.item_ks_menu, sheet.body, false);
+            ImageView icon = row.findViewById(R.id.ksMenuIcon);
+            TextView label = row.findViewById(R.id.ksMenuLabel);
+            ImageView check = row.findViewById(R.id.ksMenuCheck);
+            icon.setVisibility(View.GONE);
+            check.setVisibility(View.GONE);
+            label.setText(labels[i]);
+            row.setContentDescription(labels[i]);
+            row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sheet.dialog.dismiss();
+                    if (action != null) {
+                        action.run(index);
+                    }
+                }
+            });
+            addBody(sheet, row);
+        }
+        sheet.negative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sheet.dialog.dismiss();
+            }
+        });
+        present(sheet, false);
+    }
+
     static void menu(final Activity activity, int titleRes, final int[] ids,
                      int[] labelRes, int[] iconRes, int checkedIndex,
                      final ChoiceAction action) {

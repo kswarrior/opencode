@@ -86,6 +86,13 @@
     <string name="download_confirm_name_label">File name</string>
     <string name="download_confirm_name_empty">Enter a file name</string>
     <string name="download_confirm_action">Download</string>
+    <string name="popup_confirm_title">Open pop-up?</string>
+    <string name="popup_confirm_message">A site wants to open a new window. Check the address before opening.</string>
+    <string name="popup_confirm_from_label">From</string>
+    <string name="popup_confirm_url_label">Pop-up URL</string>
+    <string name="popup_confirm_block">Block</string>
+    <string name="popup_confirm_open">Open</string>
+    <string name="popup_confirm_blank_url">Blank page</string>
     <string name="storage_permission_needed">Storage permission is needed to save to Downloads</string>
     <string name="download_file_missing">File not found</string>
     <string name="download_no_app">No app can open this file</string>
@@ -684,4 +691,21 @@ example.com##.ad-banner</string>
     <string name="tool_mute_site">Mute site</string>
     <string name="tool_site_muted">Site muted</string>
     <string name="tool_site_unmuted">Site unmuted</string>
+
+    <string name="tabs_search_hint">Search tabs</string>
+    <string name="tabs_search_empty">No tabs match your search</string>
+    <string name="tabs_mute">Mute tab</string>
+    <string name="tabs_unmute">Unmute tab</string>
+    <string name="tabs_audible_description">Playing audio</string>
+    <string name="tabs_muted_description">Muted</string>
+    <string name="tabs_close_others">Close other tabs</string>
+    <string name="tabs_close_others_title">Close other tabs?</string>
+    <string name="tabs_close_others_message">Every tab except the current one will be closed.</string>
+    <string name="tabs_close_duplicates">Close duplicate tabs</string>
+    <string name="tabs_close_duplicates_title">Close duplicate tabs?</string>
+    <string name="tabs_close_duplicates_message">Tabs with the same address will be closed, keeping one of each.</string>
+    <string name="tabs_no_duplicates">No duplicate tabs</string>
+    <string name="tabs_recently_closed">Recently closed</string>
+    <string name="tabs_no_recently_closed">No recently closed tabs</string>
+
 </resources>

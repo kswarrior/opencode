@@ -5,11 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -28,6 +31,7 @@ public class TabsActivity extends Activity {
     private static final int MENU_MOVE_TO_GROUP = 2;
     private static final int MENU_REMOVE_FROM_GROUP = 3;
     private static final int MENU_CLOSE_TAB = 4;
+    private static final int MENU_MUTE_TAB = 5;
 
     private static final int GROUP_MENU_NEW_TAB = 10;
     private static final int GROUP_MENU_EDIT = 11;
@@ -38,12 +42,17 @@ public class TabsActivity extends Activity {
     private static final int HEADER_MENU_NEW_TAB = 21;
     private static final int HEADER_MENU_NEW_GROUP = 22;
     private static final int HEADER_MENU_CLOSE_ALL = 23;
+    private static final int HEADER_MENU_RECENT = 24;
+    private static final int HEADER_MENU_CLOSE_OTHERS = 25;
+    private static final int HEADER_MENU_CLOSE_DUPLICATES = 26;
 
     private TabManager tabManager;
     private FaviconLoader faviconLoader;
     private ListView listView;
     private TextView emptyView;
     private TextView subtitle;
+    private EditText searchInput;
+    private String query = "";
     private TabsAdapter adapter;
     private final List<Row> rows = new ArrayList<Row>();
 
@@ -65,6 +74,22 @@ public class TabsActivity extends Activity {
         listView = findViewById(R.id.tabsList);
         emptyView = findViewById(R.id.tabsEmpty);
         subtitle = findViewById(R.id.tabsSubtitle);
+        searchInput = findViewById(R.id.tabsSearch);
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence text, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable text) {
+                query = text == null ? "" : text.toString().trim();
+                refreshList();
+            }
+        });
         ImageButton back = findViewById(R.id.tabsBack);
         ImageButton newTab = findViewById(R.id.tabsNew);
         ImageButton menu = findViewById(R.id.tabsMenu);
@@ -125,6 +150,29 @@ public class TabsActivity extends Activity {
         List<BrowserTab> tabs = tabManager.getTabs();
         List<TabGroup> groups = tabManager.getGroups();
         rows.clear();
+        if (!query.isEmpty()) {
+            String needle = query.toLowerCase(Locale.US);
+            int matches = 0;
+            for (int i = 0; i < tabs.size(); i++) {
+                BrowserTab tab = tabs.get(i);
+                String haystack = (displayName(tab) + " " + displayUrl(tab))
+                        .toLowerCase(Locale.US);
+                if (haystack.contains(needle)) {
+                    rows.add(Row.tab(tab));
+                    matches++;
+                }
+            }
+            if (matches == 0) {
+                emptyView.setText(R.string.tabs_search_empty);
+            } else {
+                emptyView.setText(R.string.tabs_empty);
+            }
+            adapter.notifyDataSetChanged();
+            subtitle.setText(getResources().getQuantityString(R.plurals.tabs_count,
+                    matches, matches));
+            return;
+        }
+        emptyView.setText(R.string.tabs_empty);
         for (int i = 0; i < groups.size(); i++) {
             TabGroup group = groups.get(i);
             rows.add(Row.group(group));
@@ -230,6 +278,9 @@ public class TabsActivity extends Activity {
             labels.add(R.string.tabs_remove_from_group);
             icons.add(R.drawable.ic_close);
         }
+        ids.add(MENU_MUTE_TAB);
+        labels.add(tab.muted ? R.string.tabs_unmute : R.string.tabs_mute);
+        icons.add(R.drawable.ic_volume_off);
         ids.add(MENU_CLOSE_TAB);
         labels.add(R.string.tabs_close);
         icons.add(R.drawable.ic_close);
@@ -247,6 +298,9 @@ public class TabsActivity extends Activity {
                                 break;
                             case MENU_REMOVE_FROM_GROUP:
                                 tabManager.moveTabToGroup(tab.id, 0);
+                                break;
+                            case MENU_MUTE_TAB:
+                                tabManager.toggleMuted(tab.id);
                                 break;
                             case MENU_CLOSE_TAB:
                                 tabManager.closeTab(tab.id);
@@ -407,6 +461,15 @@ public class TabsActivity extends Activity {
         ids.add(HEADER_MENU_NEW_GROUP);
         labels.add(R.string.tabs_new_group);
         icons.add(R.drawable.ic_folder);
+        ids.add(HEADER_MENU_CLOSE_OTHERS);
+        labels.add(R.string.tabs_close_others);
+        icons.add(R.drawable.ic_close);
+        ids.add(HEADER_MENU_CLOSE_DUPLICATES);
+        labels.add(R.string.tabs_close_duplicates);
+        icons.add(R.drawable.ic_close);
+        ids.add(HEADER_MENU_RECENT);
+        labels.add(R.string.tabs_recently_closed);
+        icons.add(R.drawable.ic_history);
         ids.add(HEADER_MENU_CLOSE_ALL);
         labels.add(R.string.tabs_close_all);
         icons.add(R.drawable.ic_close);
@@ -426,11 +489,74 @@ public class TabsActivity extends Activity {
                             case HEADER_MENU_NEW_GROUP:
                                 promptCreateGroup();
                                 break;
+                            case HEADER_MENU_CLOSE_OTHERS:
+                                confirmCloseOthers();
+                                break;
+                            case HEADER_MENU_CLOSE_DUPLICATES:
+                                confirmCloseDuplicates();
+                                break;
+                            case HEADER_MENU_RECENT:
+                                showRecentlyClosed();
+                                break;
                             case HEADER_MENU_CLOSE_ALL:
                                 confirmCloseAll();
                                 break;
                             default:
                                 break;
+                        }
+                    }
+                });
+    }
+
+    private void confirmCloseOthers() {
+        final BrowserTab active = tabManager.getActiveTab();
+        if (active == null) {
+            return;
+        }
+        KsDialog.confirm(this, R.string.tabs_close_others_title,
+                getString(R.string.tabs_close_others_message),
+                R.string.tabs_cancel, R.string.tabs_close_others,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        tabManager.closeOtherTabs(active.id);
+                    }
+                });
+    }
+
+    private void confirmCloseDuplicates() {
+        KsDialog.confirm(this, R.string.tabs_close_duplicates_title,
+                getString(R.string.tabs_close_duplicates_message),
+                R.string.tabs_cancel, R.string.tabs_close_duplicates,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        int closed = tabManager.closeDuplicateTabs();
+                        if (closed == 0) {
+                            KsToast.show(TabsActivity.this, R.string.tabs_no_duplicates);
+                        }
+                    }
+                });
+    }
+
+    private void showRecentlyClosed() {
+        final List<TabManager.ClosedTab> closed = tabManager.getRecentlyClosed();
+        if (closed.isEmpty()) {
+            KsToast.show(this, R.string.tabs_no_recently_closed);
+            return;
+        }
+        CharSequence[] labels = new CharSequence[closed.size()];
+        for (int i = 0; i < closed.size(); i++) {
+            TabManager.ClosedTab item = closed.get(i);
+            String label = TextUtils.isEmpty(item.title) ? hostOf(item.url) : item.title;
+            labels[i] = label;
+        }
+        KsDialog.items(this, R.string.tabs_recently_closed, labels,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        if (tabManager.reopenClosed(index) != null) {
+                            finish();
                         }
                     }
                 });
@@ -592,6 +718,7 @@ public class TabsActivity extends Activity {
                 holder.initial = convertView.findViewById(R.id.tabInitial);
                 holder.name = convertView.findViewById(R.id.tabName);
                 holder.url = convertView.findViewById(R.id.tabUrl);
+                holder.audio = convertView.findViewById(R.id.tabAudio);
                 holder.more = convertView.findViewById(R.id.tabMore);
                 convertView.setTag(holder);
             } else {
@@ -599,6 +726,16 @@ public class TabsActivity extends Activity {
             }
             holder.name.setText(displayName(tab));
             holder.url.setText(displayUrl(tab));
+            holder.audio.setVisibility(tab.audible || tab.muted ? View.VISIBLE : View.GONE);
+            holder.audio.setAlpha(tab.muted ? 0.45f : 1f);
+            holder.audio.setContentDescription(getString(tab.muted
+                    ? R.string.tabs_muted_description : R.string.tabs_audible_description));
+            holder.audio.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tabManager.toggleMuted(tab.id);
+                }
+            });
             boolean active = tab.id == tabManager.getActiveTabId();
             convertView.setBackgroundResource(active
                     ? R.drawable.bg_choice_card_selected
@@ -669,6 +806,7 @@ public class TabsActivity extends Activity {
         TextView initial;
         TextView name;
         TextView url;
+        ImageView audio;
         ImageButton more;
     }
 }
