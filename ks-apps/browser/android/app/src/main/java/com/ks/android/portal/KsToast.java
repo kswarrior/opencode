@@ -18,6 +18,13 @@ final class KsToast {
         show(activity, activity.getString(messageRes), Toast.LENGTH_SHORT);
     }
 
+    static void show(Activity activity, int messageRes, int duration) {
+        if (activity == null) {
+            return;
+        }
+        show(activity, activity.getString(messageRes), duration);
+    }
+
     static void show(Activity activity, CharSequence message) {
         show(activity, message, Toast.LENGTH_SHORT);
     }
