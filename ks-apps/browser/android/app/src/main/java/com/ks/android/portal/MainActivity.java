@@ -3308,14 +3308,20 @@ public class MainActivity extends Activity {
                 || isHomeUrl(webView.getUrl())) {
             return;
         }
+        BrowserTab active = tabManager.getActiveTab();
+        if (active != null && privateTabs.contains(active.id)) {
+            KsToast.show(this, R.string.private_download_blocked);
+            return;
+        }
         try {
             Intent shortcut = new Intent(Intent.ACTION_VIEW, Uri.parse(webView.getUrl()));
             shortcut.setClass(this, MainActivity.class);
             shortcut.putExtra(EXTRA_OPEN_URL, webView.getUrl());
             String title = TextUtils.isEmpty(webView.getTitle())
                     ? webView.getUrl() : webView.getTitle();
-            BrowserTab active = tabManager.getActiveTab();
-            Bitmap icon = active == null || active.favicon == null ? null
+            String host = SiteSettingsStore.hostOf(webView.getUrl());
+            Bitmap icon = active == null || active.favicon == null
+                    || !host.equals(active.faviconHost) ? null
                     : Bitmap.createScaledBitmap(active.favicon, 96, 96, true);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 ShortcutManager manager = getSystemService(ShortcutManager.class);

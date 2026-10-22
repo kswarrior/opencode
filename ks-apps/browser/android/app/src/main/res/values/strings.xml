@@ -325,6 +325,10 @@ example.com##.ad-banner</string>
     <string name="site_automatic_downloads">Automatic downloads</string>
     <string name="site_javascript_optimization">JavaScript optimization &amp; security</string>
     <string name="site_saved_zoom">Saved zoom for sites</string>
+    <string name="site_text_zoom">Text size</string>
+    <string name="site_text_zoom_default">Default</string>
+    <string name="site_text_zoom_summary">Override the page text size for this site</string>
+    <string name="text_zoom_percent">%1$d%%</string>
     <string name="site_data_stored">Data stored</string>
     <string name="site_auto_remove_permissions">Automatically remove permissions</string>
     <string name="site_auto_remove_description">To protect your data, let KS Portal remove permissions from sites that you haven\'t visited recently</string>
@@ -485,6 +489,7 @@ example.com##.ad-banner</string>
     <string name="notification_tip_title">KS Portal tip</string>
     <string name="notification_tip_text">Tap the floating button to show or hide the toolbar.</string>
     <string name="private_download_blocked">Downloads are disabled in private tabs</string>
+    <string name="private_action_blocked">Not available in private tabs</string>
     <string name="clear_browsing_data">Clear browsing data</string>
     <string name="clear_browsing_data_summary">History, cookies, cache and site settings</string>
     <string name="clear_data_title">Clear browsing data</string>

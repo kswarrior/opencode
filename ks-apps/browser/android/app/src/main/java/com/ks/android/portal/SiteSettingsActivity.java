@@ -444,7 +444,65 @@ public class SiteSettingsActivity extends Activity {
             }
         });
         card.addView(row);
+        addDivider(card);
+
+        View zoomRow = getLayoutInflater().inflate(R.layout.item_site_setting, card, false);
+        TextView zoomTitle = zoomRow.findViewById(R.id.siteSettingTitle);
+        final TextView zoomValue = zoomRow.findViewById(R.id.siteSettingValue);
+        TextView zoomDescription = zoomRow.findViewById(R.id.siteSettingDescription);
+        zoomTitle.setText(R.string.site_text_zoom);
+        zoomValue.setText(zoomLabel(SiteSettingsStore.getTextZoom(
+                this, siteHost, settingsZoom())));
+        zoomValue.setVisibility(View.VISIBLE);
+        zoomDescription.setText(R.string.site_text_zoom_summary);
+        zoomDescription.setVisibility(View.VISIBLE);
+        zoomRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int[] values = {0, 85, 100, 115, 130, 150};
+                String[] labels = {
+                        getString(R.string.site_text_zoom_default),
+                        getString(R.string.text_size_small),
+                        getString(R.string.text_size_default),
+                        getString(R.string.text_size_large),
+                        getString(R.string.text_size_larger),
+                        getString(R.string.text_size_largest)
+                };
+                KsDialog.choose(SiteSettingsActivity.this,
+                        getString(R.string.site_text_zoom), labels,
+                        new KsDialog.ChoiceAction() {
+                            @Override
+                            public void run(int index) {
+                                if (values[index] == 0) {
+                                    SiteSettingsStore.clearTextZoom(
+                                            SiteSettingsActivity.this, siteHost);
+                                } else {
+                                    SiteSettingsStore.setTextZoom(
+                                            SiteSettingsActivity.this, siteHost,
+                                            values[index]);
+                                }
+                                zoomValue.setText(zoomLabel(SiteSettingsStore.getTextZoom(
+                                        SiteSettingsActivity.this, siteHost,
+                                        settingsZoom())));
+                                markChanged();
+                            }
+                        });
+            }
+        });
+        card.addView(zoomRow);
         list.addView(card);
+    }
+
+    private int settingsZoom() {
+        return getSharedPreferences(NotificationHelper.PREFS, MODE_PRIVATE)
+                .getInt("appearance_text_zoom", 100);
+    }
+
+    private String zoomLabel(int value) {
+        if (value <= 0) {
+            return getString(R.string.site_text_zoom_default);
+        }
+        return getString(R.string.text_zoom_percent, value);
     }
 
     private void addResetSection() {
