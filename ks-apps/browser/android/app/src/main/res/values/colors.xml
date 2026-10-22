@@ -10,4 +10,5 @@
     <color name="ks_muted">#A3A3A3</color>
     <color name="ks_accent">#7AB8FF</color>
     <color name="ks_danger">#FF8A80</color>
+    <color name="ks_on_danger">#1B0505</color>
 </resources>
