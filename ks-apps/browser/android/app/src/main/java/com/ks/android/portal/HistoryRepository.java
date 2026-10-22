@@ -17,7 +17,9 @@ import java.util.Set;
 public class HistoryRepository {
     private static final String PREFS = "ks_history";
     private static final String KEY = "items";
+    private static final String KEY_RETENTION = "retention_days";
     private static final int LIMIT = 500;
+    static final int RETENTION_FOREVER = 0;
     private static final long DUPLICATE_WINDOW_MS = 2000L;
     private static final Object LOCK = new Object();
     private static HistoryRepository instance;
@@ -45,6 +47,36 @@ public class HistoryRepository {
             return null;
         }
         return TextUtils.isEmpty(uri.getHost()) ? null : uri.toString();
+    }
+
+    public int getRetentionDays() {
+        return preferences.getInt(KEY_RETENTION, RETENTION_FOREVER);
+    }
+
+    public void setRetentionDays(int days) {
+        preferences.edit().putInt(KEY_RETENTION, Math.max(0, days)).apply();
+        prune();
+    }
+
+    public void prune() {
+        int days = getRetentionDays();
+        if (days <= 0) {
+            return;
+        }
+        long cutoff = System.currentTimeMillis() - days * 24L * 60L * 60L * 1000L;
+        synchronized (LOCK) {
+            JSONArray current = read();
+            JSONArray next = new JSONArray();
+            for (int i = 0; i < current.length(); i++) {
+                JSONObject item = current.optJSONObject(i);
+                if (item != null && item.optLong("time", 0L) >= cutoff) {
+                    next.put(item);
+                }
+            }
+            if (next.length() != current.length()) {
+                preferences.edit().putString(KEY, next.toString()).apply();
+            }
+        }
     }
 
     public void record(String name, String url) {
@@ -81,6 +113,7 @@ public class HistoryRepository {
     }
 
     public List<HistoryEntry> getEntries() {
+        prune();
         List<HistoryEntry> result = new ArrayList<HistoryEntry>();
         synchronized (LOCK) {
             JSONArray stored = read();

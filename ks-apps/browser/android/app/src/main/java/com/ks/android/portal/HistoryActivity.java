@@ -1,6 +1,7 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -36,6 +37,12 @@ public class HistoryActivity extends Activity {
     private static final int MENU_ADD_BOOKMARK = 101;
     private static final int MENU_REMOVE_ENTRY = 102;
     private static final int MENU_DELETE_CATEGORY = 103;
+    private static final int MENU_EXPORT_CSV = 104;
+    private static final int MENU_EXPORT_JSON = 105;
+    private static final int MENU_DELETE_FILTERED = 106;
+
+    private static final int REQUEST_EXPORT_CSV = 4201;
+    private static final int REQUEST_EXPORT_JSON = 4202;
 
     private static final int TYPE_SECTION = 0;
     private static final int TYPE_CATEGORY = 1;
@@ -53,6 +60,7 @@ public class HistoryActivity extends Activity {
     private final Set<String> expandedCategories = new HashSet<String>();
     private String query = "";
     private int filter = FILTER_ALL;
+    private String pendingExport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,14 +223,142 @@ public class HistoryActivity extends Activity {
     }
 
     private void showHistoryMenu() {
-        KsDialog.menu(this, 0, new int[]{MENU_DELETE_HISTORY},
-                new int[]{R.string.history_delete_all},
-                new int[]{R.drawable.ic_delete}, -1, new KsDialog.ChoiceAction() {
-                    @Override
-                    public void run(int index) {
+        final int[] ids = {MENU_EXPORT_CSV, MENU_EXPORT_JSON, MENU_DELETE_FILTERED,
+                MENU_DELETE_HISTORY};
+        int[] labels = {R.string.history_export_csv, R.string.history_export_json,
+                R.string.history_delete_filtered, R.string.history_delete_all};
+        int[] icons = {R.drawable.ic_file_download, R.drawable.ic_file_download,
+                R.drawable.ic_delete, R.drawable.ic_delete};
+        KsDialog.menu(this, 0, ids, labels, icons, -1, new KsDialog.ChoiceAction() {
+            @Override
+            public void run(int index) {
+                switch (ids[index]) {
+                    case MENU_EXPORT_CSV:
+                        exportHistory(true);
+                        break;
+                    case MENU_EXPORT_JSON:
+                        exportHistory(false);
+                        break;
+                    case MENU_DELETE_FILTERED:
+                        confirmDeleteFiltered();
+                        break;
+                    case MENU_DELETE_HISTORY:
                         confirmDeleteHistory();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+    }
+
+    private List<HistoryEntry> visibleEntries() {
+        List<HistoryEntry> result = new ArrayList<HistoryEntry>();
+        String needle = query.toLowerCase(Locale.US);
+        for (HistoryEntry entry : repository.getEntries()) {
+            if (matchesFilter(entry) && matchesQuery(entry, needle)) {
+                result.add(entry);
+            }
+        }
+        return result;
+    }
+
+    private void exportHistory(boolean csv) {
+        List<HistoryEntry> entries = visibleEntries();
+        if (entries.isEmpty()) {
+            KsToast.show(this, R.string.history_export_empty);
+            return;
+        }
+        StringBuilder builder = new StringBuilder();
+        if (csv) {
+            builder.append("title,url,visited\n");
+            for (HistoryEntry entry : entries) {
+                builder.append(csvValue(entry.name)).append(',')
+                        .append(csvValue(entry.url)).append(',')
+                        .append(entry.visitedAt).append('\n');
+            }
+        } else {
+            builder.append('[');
+            for (int i = 0; i < entries.size(); i++) {
+                HistoryEntry entry = entries.get(i);
+                if (i > 0) {
+                    builder.append(',');
+                }
+                builder.append("{\"name\":").append(jsonValue(entry.name))
+                        .append(",\"url\":").append(jsonValue(entry.url))
+                        .append(",\"time\":").append(entry.visitedAt).append('}');
+            }
+            builder.append(']');
+        }
+        pendingExport = builder.toString();
+        try {
+            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType(csv ? "text/csv" : "application/json");
+            intent.putExtra(Intent.EXTRA_TITLE, csv ? "history.csv" : "history.json");
+            startActivityForResult(intent, csv ? REQUEST_EXPORT_CSV : REQUEST_EXPORT_JSON);
+        } catch (ActivityNotFoundException exception) {
+            KsToast.show(this, R.string.history_export_failed);
+        }
+    }
+
+    private void confirmDeleteFiltered() {
+        final List<HistoryEntry> entries = visibleEntries();
+        if (entries.isEmpty()) {
+            return;
+        }
+        KsDialog.confirmDanger(this, R.string.history_delete_filtered,
+                getString(R.string.history_delete_filtered_message, entries.size()),
+                R.string.history_cancel, R.string.history_delete,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        repository.removeAll(entries);
+                        refreshList();
+                        KsToast.show(HistoryActivity.this, R.string.history_deleted);
                     }
                 });
+    }
+
+    private static String csvValue(String value) {
+        String safe = value == null ? "" : value;
+        return "\"" + safe.replace("\"", "\"\"") + "\"";
+    }
+
+    private static String jsonValue(String value) {
+        String safe = value == null ? "" : value.replace("\\", "\\\\")
+                .replace("\"", "\\\"").replace("\n", "\\n");
+        return "\"" + safe + "\"";
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK || data == null || data.getData() == null
+                || (requestCode != REQUEST_EXPORT_CSV && requestCode != REQUEST_EXPORT_JSON)) {
+            return;
+        }
+        java.io.OutputStream output = null;
+        try {
+            output = getContentResolver().openOutputStream(data.getData(), "wt");
+            if (output == null || pendingExport == null) {
+                KsToast.show(this, R.string.history_export_failed);
+                return;
+            }
+            output.write(pendingExport.getBytes("UTF-8"));
+            output.flush();
+            KsToast.show(this, R.string.history_exported);
+        } catch (Exception exception) {
+            KsToast.show(this, R.string.history_export_failed);
+        } finally {
+            pendingExport = null;
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (Exception ignored) {
+                }
+            }
+        }
     }
 
     private void confirmDeleteHistory() {

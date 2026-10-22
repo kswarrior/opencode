@@ -46,6 +46,29 @@ public class PrivacySecurityActivity extends ToggleSettingsActivity {
                         showSecureExceptions();
                     }
                 });
+        addAction(R.string.privacy_section, R.string.history_retention,
+                R.string.history_retention_summary, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showHistoryRetention();
+                    }
+                });
+    }
+
+    private void showHistoryRetention() {
+        final int[] days = {30, 90, 365, HistoryRepository.RETENTION_FOREVER};
+        String[] labels = {getString(R.string.history_retention_30),
+                getString(R.string.history_retention_90),
+                getString(R.string.history_retention_365),
+                getString(R.string.history_retention_forever)};
+        KsDialog.choose(this, getString(R.string.history_retention), labels,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        HistoryRepository.getInstance(PrivacySecurityActivity.this)
+                                .setRetentionDays(days[index]);
+                    }
+                });
     }
 
     private void showSecureExceptions() {

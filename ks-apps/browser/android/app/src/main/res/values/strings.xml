@@ -752,4 +752,20 @@ example.com##.ad-banner</string>
     <string name="settings_bookmarks">Bookmarks</string>
     <string name="settings_bookmarks_summary">Folders, search, import and export</string>
 
+
+    <string name="history_export_csv">Export as CSV</string>
+    <string name="history_export_json">Export as JSON</string>
+    <string name="history_delete_filtered">Delete filtered history</string>
+    <string name="history_delete_filtered_message">Delete %1$d matching history entries? This cannot be undone.</string>
+    <string name="history_export_empty">No matching history to export</string>
+    <string name="history_exported">History exported</string>
+    <string name="history_export_failed">Could not export history</string>
+    <string name="history_retention">History retention</string>
+    <string name="history_retention_summary">Automatically delete older history</string>
+    <string name="history_retention_30">30 days</string>
+    <string name="history_retention_90">90 days</string>
+    <string name="history_retention_365">365 days</string>
+    <string name="history_retention_forever">Forever</string>
+    <string name="history_retention_current">Kept for %1$s</string>
+
 </resources>
