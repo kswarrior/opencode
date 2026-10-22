@@ -52,6 +52,33 @@ final class BookmarkRepository {
         }
     }
 
+    static boolean contains(Context context, String url) {
+        String normalized = normalize(url);
+        if (normalized == null) {
+            return false;
+        }
+        synchronized (LOCK) {
+            return indexOf(read(context), normalized) >= 0;
+        }
+    }
+
+    static boolean remove(Context context, String url) {
+        String normalized = normalize(url);
+        if (normalized == null) {
+            return false;
+        }
+        synchronized (LOCK) {
+            JSONArray items = read(context);
+            int index = indexOf(items, normalized);
+            if (index < 0) {
+                return false;
+            }
+            items.remove(index);
+            write(context, items);
+            return true;
+        }
+    }
+
     static boolean setAll(Context context, String json) {
         if (json == null) {
             return false;
