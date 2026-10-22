@@ -60,6 +60,7 @@ public class DownloadRepository {
     private static final String MEDIA_IS_PENDING = "is_pending";
 
     public static final String ERROR_AUTH_REQUIRED = "auth_required";
+    public static final String ERROR_WAITING_WIFI = "waiting_wifi";
 
     private static final Map<String, String[]> AUTH_CACHE =
             new ConcurrentHashMap<String, String[]>();
@@ -119,6 +120,17 @@ public class DownloadRepository {
         });
         load();
     }
+        try {
+            context.registerReceiver(new android.content.BroadcastReceiver() {
+                @Override
+                public void onReceive(Context receiverContext, android.content.Intent intent) {
+                    resumeWifiQueue();
+                }
+            }, new android.content.IntentFilter(
+                    android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+        } catch (RuntimeException ignored) {
+        }
+
 
     public static void setAuth(String host, String username, String password) {
         if (TextUtils.isEmpty(host) || username == null || password == null) {
@@ -526,8 +538,16 @@ public class DownloadRepository {
             cookie = CookieManager.getInstance().getCookie(item.url);
             task = new DownloadTask(item.id, part, item.url, item.userAgent,
                     item.referer, cookie, 0);
-            tasks.put(item.id, task);
+            if (isWifiOnly() && isMetered()) {
+                item.error = ERROR_WAITING_WIFI;
+            } else {
+                tasks.put(item.id, task);
+            }
             notifyListenersLocked();
+        }
+        if (ERROR_WAITING_WIFI.equals(item.error)) {
+            notifyListeners();
+            return item;
         }
         NotificationHelper.downloadStarted(context, item);
         executor.execute(task);
@@ -739,6 +759,106 @@ public class DownloadRepository {
         NotificationHelper.downloadStarted(context, item);
         executor.execute(task);
         return true;
+    }
+
+    public boolean isWifiOnly() {
+        return context.getSharedPreferences("ks_settings", Context.MODE_PRIVATE)
+                .getBoolean("download_wifi_only", false);
+    }
+
+    public static void setWifiOnly(Context context, boolean enabled) {
+        context.getSharedPreferences("ks_settings", Context.MODE_PRIVATE)
+                .edit().putBoolean("download_wifi_only", enabled).apply();
+    }
+
+    public boolean isMetered() {
+        try {
+            android.net.ConnectivityManager manager =
+                    (android.net.ConnectivityManager) context.getSystemService(
+                            Context.CONNECTIVITY_SERVICE);
+            if (manager == null) {
+                return false;
+            }
+            android.net.NetworkInfo info = manager.getActiveNetworkInfo();
+            return info != null && info.isConnected() && info.isMetered();
+        } catch (Exception ignored) {
+            return false;
+        }
+    }
+
+    public boolean startQueued(long id) {
+        synchronized (lock) {
+            DownloadItem item = findLocked(id);
+            if (item == null || !ERROR_WAITING_WIFI.equals(item.error)) {
+                return false;
+            }
+            item.status = DownloadItem.STATUS_PAUSED;
+            item.error = "";
+            persistLocked();
+        }
+        return resume(id);
+    }
+
+    public int resumeWifiQueue() {
+        if (isWifiOnly() && isMetered()) {
+            return 0;
+        }
+        List<Long> ids = new ArrayList<Long>();
+        synchronized (lock) {
+            for (DownloadItem item : items) {
+                if (item.status == DownloadItem.STATUS_PENDING
+                        && ERROR_WAITING_WIFI.equals(item.error)) {
+                    item.status = DownloadItem.STATUS_PAUSED;
+                    item.error = "";
+                    ids.add(Long.valueOf(item.id));
+                }
+            }
+            if (!ids.isEmpty()) {
+                persistLocked();
+            }
+        }
+        int count = 0;
+        for (Long id : ids) {
+            if (resume(id.longValue())) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public String sha256(DownloadItem item) {
+        if (item == null) {
+            return "";
+        }
+        java.io.InputStream input = null;
+        try {
+            if (!TextUtils.isEmpty(item.contentUri)) {
+                input = context.getContentResolver().openInputStream(
+                        Uri.parse(item.contentUri));
+            } else if (!TextUtils.isEmpty(item.filePath)) {
+                input = new java.io.FileInputStream(item.filePath);
+            }
+            if (input == null) {
+                return "";
+            }
+            java.security.MessageDigest digest =
+                    java.security.MessageDigest.getInstance("SHA-256");
+            byte[] buffer = new byte[65536];
+            int read;
+            while ((read = input.read(buffer)) != -1) {
+                digest.update(buffer, 0, read);
+            }
+            byte[] result = digest.digest();
+            StringBuilder hex = new StringBuilder(result.length * 2);
+            for (byte value : result) {
+                hex.append(String.format(java.util.Locale.US, "%02x", value & 0xff));
+            }
+            return hex.toString();
+        } catch (Exception exception) {
+            return "";
+        } finally {
+            closeQuietly(input);
+        }
     }
 
     public void delete(long id) {
