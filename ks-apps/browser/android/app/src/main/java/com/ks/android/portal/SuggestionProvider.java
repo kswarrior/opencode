@@ -55,11 +55,6 @@ final class SuggestionProvider {
                     connection.setRequestProperty("Accept", "application/json");
                     connection.setRequestProperty("User-Agent",
                             "Mozilla/5.0 (Linux; Android) KSPortal");
-                    String cookies = CookieManager.getInstance()
-                            .getCookie("https://suggestqueries.google.com/");
-                    if (cookies != null) {
-                        connection.setRequestProperty("Cookie", cookies);
-                    }
                     BufferedReader reader = new BufferedReader(new InputStreamReader(
                             connection.getInputStream(), "UTF-8"));
                     StringBuilder body = new StringBuilder();

@@ -59,7 +59,7 @@ final class TabManager {
         this.context = context;
         preferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         if (!restore()) {
-            tabs.add(new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, ""));
+            tabs.add(new BrowserTab(nextTabId++, HomeLayoutStore.homeUrl(context), NO_GROUP, ""));
             activeTabId = tabs.get(0).id;
             save();
         }
@@ -125,7 +125,7 @@ final class TabManager {
     }
 
     synchronized BrowserTab addTab(String url, int groupId) {
-        String target = TextUtils.isEmpty(url) ? MainActivity.HOME_URL : url;
+        String target = TextUtils.isEmpty(url) ? HomeLayoutStore.homeUrl(context) : url;
         if (groupId != NO_GROUP && findGroup(groupId) == null) {
             groupId = NO_GROUP;
         }
@@ -137,7 +137,7 @@ final class TabManager {
     }
 
     synchronized BrowserTab addTabInBackground(String url, int groupId) {
-        String target = TextUtils.isEmpty(url) ? MainActivity.HOME_URL : url;
+        String target = TextUtils.isEmpty(url) ? HomeLayoutStore.homeUrl(context) : url;
         if (groupId != NO_GROUP && findGroup(groupId) == null) {
             groupId = NO_GROUP;
         }
@@ -168,7 +168,7 @@ final class TabManager {
         tabs.remove(index);
         privateTabs.remove(id);
         if (tabs.isEmpty()) {
-            BrowserTab tab = new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, "");
+            BrowserTab tab = new BrowserTab(nextTabId++, HomeLayoutStore.homeUrl(context), NO_GROUP, "");
             tabs.add(tab);
             activeTabId = tab.id;
         } else if (activeTabId == id) {
@@ -183,7 +183,7 @@ final class TabManager {
         rememberAllClosed();
         tabs.clear();
         groups.clear();
-        BrowserTab tab = new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, "");
+        BrowserTab tab = new BrowserTab(nextTabId++, HomeLayoutStore.homeUrl(context), NO_GROUP, "");
         tabs.add(tab);
         activeTabId = tab.id;
         saveAndNotify();
@@ -228,7 +228,7 @@ final class TabManager {
             closed++;
         }
         if (tabs.isEmpty()) {
-            BrowserTab tab = new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, "");
+            BrowserTab tab = new BrowserTab(nextTabId++, HomeLayoutStore.homeUrl(context), NO_GROUP, "");
             tabs.add(tab);
             activeTabId = tab.id;
         } else if (findTab(activeTabId) == null) {
@@ -461,7 +461,7 @@ final class TabManager {
         }
         removeGroupInternal(groupId);
         if (tabs.isEmpty()) {
-            BrowserTab tab = new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, "");
+            BrowserTab tab = new BrowserTab(nextTabId++, HomeLayoutStore.homeUrl(context), NO_GROUP, "");
             tabs.add(tab);
             activeTabId = tab.id;
         } else if (activeClosed) {
@@ -690,9 +690,9 @@ final class TabManager {
                     if (id <= 0 || findTab(id) != null) {
                         continue;
                     }
-                    String url = item.optString("url", MainActivity.HOME_URL);
+                    String url = item.optString("url", HomeLayoutStore.homeUrl(context));
                     if (TextUtils.isEmpty(url)) {
-                        url = MainActivity.HOME_URL;
+                        url = HomeLayoutStore.homeUrl(context);
                     }
                     int groupId = item.optInt("group", NO_GROUP);
                     if (findGroup(groupId) == null) {

@@ -146,7 +146,7 @@ public class TabsActivity extends Activity {
         newTab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tabManager.addTab(MainActivity.HOME_URL, 0);
+                tabManager.addTab(HomeLayoutStore.homeUrl(this), 0);
                 finish();
             }
         });
@@ -483,7 +483,7 @@ public class TabsActivity extends Activity {
             public void run(int index) {
                 switch (ids[index]) {
                     case GROUP_MENU_NEW_TAB:
-                        tabManager.addTab(MainActivity.HOME_URL, group.id);
+                        tabManager.addTab(HomeLayoutStore.homeUrl(this), group.id);
                         finish();
                         break;
                     case GROUP_MENU_EDIT:
@@ -564,7 +564,7 @@ public class TabsActivity extends Activity {
                                 addBookmark(tabManager.getActiveTab());
                                 break;
                             case HEADER_MENU_NEW_TAB:
-                                tabManager.addTab(MainActivity.HOME_URL, 0);
+                                tabManager.addTab(HomeLayoutStore.homeUrl(this), 0);
                                 finish();
                                 break;
                             case HEADER_MENU_NEW_GROUP:
