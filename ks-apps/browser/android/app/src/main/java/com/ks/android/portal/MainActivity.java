@@ -180,13 +180,11 @@ public class MainActivity extends Activity {
     private final Map<Integer, Dialog> popupDialogs = new HashMap<Integer, Dialog>();
 
     private static final class PendingPopup {
-        final int sourceTabId;
         final String sourceUrl;
         final boolean privateSource;
         String url;
 
-        PendingPopup(int sourceTabId, String sourceUrl, boolean privateSource) {
-            this.sourceTabId = sourceTabId;
+        PendingPopup(String sourceUrl, boolean privateSource) {
             this.sourceUrl = TextUtils.isEmpty(sourceUrl) ? "about:blank" : sourceUrl;
             this.privateSource = privateSource;
             this.url = "about:blank";
@@ -403,6 +401,9 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView current, WebResourceRequest request) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    return false;
+                }
                 Uri uri = request.getUrl();
                 boolean web = "http".equalsIgnoreCase(uri.getScheme())
                         || "https".equalsIgnoreCase(uri.getScheme());
@@ -421,6 +422,9 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView current, String url) {
+                if (pendingPopups.containsKey(tab.id)) {
+                    return false;
+                }
                 Uri uri = Uri.parse(url);
                 boolean web = "http".equalsIgnoreCase(uri.getScheme())
                         || "https".equalsIgnoreCase(uri.getScheme());
@@ -1075,7 +1079,7 @@ public class MainActivity extends Activity {
                         ? tabManager.addTab("about:blank", 0)
                         : tabManager.addTabInBackground("about:blank", 0);
                 if (!allow) {
-                    pendingPopups.put(created.id, new PendingPopup(sourceTabId, pageUrl,
+                    pendingPopups.put(created.id, new PendingPopup(pageUrl,
                             sourceTabId >= 0 && privateTabs.contains(sourceTabId)));
                 }
                 WebView target = tabViews.get(created.id);
