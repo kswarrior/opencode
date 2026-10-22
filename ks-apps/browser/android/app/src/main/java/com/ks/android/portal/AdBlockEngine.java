@@ -1434,7 +1434,7 @@ final class AdBlockEngine {
                         party = PARTY_THIRD;
                     } else if ("strict1p".equals(name)) {
                         party = PARTY_FIRST;
-                    } else if ("reason".equals(name)) {
+                    } else if ("reason".equals(name) || "tag".equals(name)) {
                         // uBO metadata only; it does not change matching.
                     } else if ("important".equals(name) && !negated) {
                         important = true;
@@ -1482,6 +1482,7 @@ final class AdBlockEngine {
                             || "header".equals(name) || "urlskip".equals(name)
                             || "replace".equals(name) || "uritransform".equals(name)
                             || "ipaddress".equals(name) || "cname".equals(name)
+                            || "inline-script".equals(name)
                             || "permissions".equals(name) || "sitekey".equals(name)) {
                         unsupported = true;
                     } else if ("redirect".equals(name)) {
@@ -1867,7 +1868,8 @@ final class AdBlockEngine {
                 || "to".equals(name) || "third-party".equals(name) || "3p".equals(name)
                 || "first-party".equals(name) || "1p".equals(name)
                 || "strict3p".equals(name) || "strict1p".equals(name)
-                || "reason".equals(name)
+                || "reason".equals(name) || "tag".equals(name)
+                || "inline-script".equals(name)
                 || "important".equals(name) || "match-case".equals(name)
                 || "badfilter".equals(name) || "elemhide".equals(name)
                 || "ehide".equals(name) || "generichide".equals(name)
