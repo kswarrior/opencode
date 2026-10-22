@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -252,8 +251,7 @@ public class HistoryActivity extends Activity {
                         expandedCategories.clear();
                         repository.clear();
                         refreshList();
-                        Toast.makeText(HistoryActivity.this,
-                                R.string.history_deleted, Toast.LENGTH_SHORT).show();
+                        KsToast.show(HistoryActivity.this, R.string.history_deleted);
                     }
                 });
     }
@@ -335,7 +333,7 @@ public class HistoryActivity extends Activity {
         } else {
             message = R.string.tabs_bookmark_failed;
         }
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        KsToast.show(this, message);
     }
 
     private void toggleCategory(Category category) {
