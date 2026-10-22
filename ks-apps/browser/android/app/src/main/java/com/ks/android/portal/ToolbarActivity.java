@@ -227,12 +227,6 @@ public class ToolbarActivity extends Activity {
             }
             colorViews.add(swatch);
         }
-        if (row != null && COLORS.length % columns != 0) {
-            for (int i = COLORS.length % columns; i < columns; i++) {
-                View spacer = new View(this);
-                row.addView(spacer, new LinearLayout.LayoutParams(0, 1, 1f));
-            }
-        }
     }
 
     private void updateColorSwatches() {
