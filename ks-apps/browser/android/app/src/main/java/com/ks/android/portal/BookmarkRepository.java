@@ -253,9 +253,6 @@ final class BookmarkRepository {
                     }
                 }
                 writeAssignments(context, kept);
-                if (previous.length() != items.length()) {
-                    notifyChanged(context);
-                }
             }
             return true;
         } catch (JSONException error) {
@@ -486,6 +483,7 @@ final class BookmarkRepository {
     private static void write(Context context, JSONArray items) {
         context.getApplicationContext().getSharedPreferences(PREFS, Context.MODE_PRIVATE)
                 .edit().putString(KEY, items.toString()).apply();
+        notifyChanged(context);
     }
 
     private static JSONArray readFolders(Context context) {
