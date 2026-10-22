@@ -64,6 +64,7 @@ public class SiteDataActivity extends Activity {
         header.setOrientation(LinearLayout.HORIZONTAL);
         header.setGravity(android.view.Gravity.CENTER_VERTICAL);
         header.setBackgroundResource(R.drawable.bg_header_glass);
+        header.setMinimumHeight(dp(56));
         int padding = dp(7);
         header.setPadding(padding, padding, padding, padding);
 
@@ -203,6 +204,10 @@ public class SiteDataActivity extends Activity {
                         WebStorage.getInstance().deleteAllData();
                         CookieManager.getInstance().removeAllCookies(null);
                         CookieManager.getInstance().flush();
+                        android.webkit.WebView cacheView = new android.webkit.WebView(
+                                SiteDataActivity.this);
+                        cacheView.clearCache(true);
+                        cacheView.destroy();
                         KsToast.show(SiteDataActivity.this, R.string.site_data_cleared);
                         showOrigins(Collections.<WebStorage.Origin>emptyList());
                     }
@@ -210,14 +215,13 @@ public class SiteDataActivity extends Activity {
     }
 
     private void expireCookies(String origin) {
-        String[] schemes = {"https", "http"};
+        if (origin == null || !origin.startsWith("http")) {
+            return;
+        }
         CookieManager manager = CookieManager.getInstance();
-        for (String scheme : schemes) {
-            String url = scheme + "://" + origin + "/";
-            String cookies = manager.getCookie(url);
-            if (cookies == null) {
-                continue;
-            }
+        String url = origin.endsWith("/") ? origin : origin + "/";
+        String cookies = manager.getCookie(url);
+        if (cookies != null) {
             for (String cookie : cookies.split(";")) {
                 String trimmed = cookie.trim();
                 int equals = trimmed.indexOf('=');

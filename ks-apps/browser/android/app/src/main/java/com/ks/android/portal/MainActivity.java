@@ -669,6 +669,9 @@ public class MainActivity extends Activity {
                 }
                 injectAdBlock(current, url);
                 injectAudioWatcher(current, tab);
+                if (!privateTabs.contains(tab.id)) {
+                    detectPasskeySupport(current, url);
+                }
                 if (isActiveTab(tab)) {
                     progressBar.setVisibility(View.GONE);
                     updateChrome(url);
@@ -4089,6 +4092,24 @@ public class MainActivity extends Activity {
         if (script != null) {
             view.evaluateJavascript(script, null);
         }
+    }
+
+    private void detectPasskeySupport(WebView view, String url) {
+        if (view == null || url == null || !url.startsWith("http")) {
+            return;
+        }
+        view.evaluateJavascript("(function(){try{return !!(window.PublicKeyCredential"
+                + "&&window.PublicKeyCredential"
+                + ".isUserVerifyingPlatformAuthenticatorAvailable);}catch(e){return false;}})();",
+                new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        settingsPrefs.edit()
+                                .putBoolean("passkey_supported", "true".equals(value))
+                                .putLong("passkey_checked", System.currentTimeMillis())
+                                .apply();
+                    }
+                });
     }
 
     private void injectWebAssist(WebView view, String url) {
