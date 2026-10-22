@@ -75,6 +75,7 @@ final class AdBlockEngine {
     private final Map<String, List<PageRule>> pageRules;
     private final List<CosmeticRule> genericCosmetics;
     private final Map<String, List<CosmeticRule>> domainCosmetics;
+    private final List<CosmeticRule> wildcardCosmetics;
     private final Map<String, List<CleanRule>> cleanHostRules;
     private final List<CleanRule> cleanGeneralRules;
     private final int networkRuleCount;
@@ -89,6 +90,7 @@ final class AdBlockEngine {
         pageRules = builder.pageRules;
         genericCosmetics = builder.genericCosmetics;
         domainCosmetics = builder.domainCosmetics;
+        wildcardCosmetics = builder.wildcardCosmetics;
         cleanHostRules = builder.cleanHostRules;
         cleanGeneralRules = builder.cleanGeneralRules;
         networkRuleCount = builder.networkRuleCount;
@@ -359,6 +361,7 @@ final class AdBlockEngine {
         }
         Set<CosmeticRule> candidates = new LinkedHashSet<CosmeticRule>();
         candidates.addAll(genericCosmetics);
+        candidates.addAll(wildcardCosmetics);
         int position = 0;
         while (position >= 0) {
             String suffix = host.substring(position);
@@ -1274,6 +1277,7 @@ final class AdBlockEngine {
         private final List<CosmeticRule> genericCosmetics = new ArrayList<CosmeticRule>();
         private final Map<String, List<CosmeticRule>> domainCosmetics =
                 new HashMap<String, List<CosmeticRule>>();
+        private final List<CosmeticRule> wildcardCosmetics = new ArrayList<CosmeticRule>();
         private final Map<String, List<CleanRule>> cleanHostRules =
                 new HashMap<String, List<CleanRule>>();
         private final List<CleanRule> cleanGeneralRules = new ArrayList<CleanRule>();
@@ -1385,7 +1389,7 @@ final class AdBlockEngine {
             for (List<CleanRule> list : cleanHostRules.values()) {
                 cleanRuleCount += list.size();
             }
-            cosmeticRuleCount = genericCosmetics.size();
+            cosmeticRuleCount = genericCosmetics.size() + wildcardCosmetics.size();
             for (List<CosmeticRule> list : domainCosmetics.values()) {
                 cosmeticRuleCount += list.size();
             }
@@ -1735,13 +1739,21 @@ final class AdBlockEngine {
             if (rule.generic) {
                 genericCosmetics.add(rule);
             } else {
+                boolean wildcard = false;
                 for (int i = 0; i < includes.length; i++) {
+                    if (includes[i].indexOf('*') >= 0) {
+                        wildcard = true;
+                        continue;
+                    }
                     List<CosmeticRule> list = domainCosmetics.get(includes[i]);
                     if (list == null) {
                         list = new ArrayList<CosmeticRule>();
                         domainCosmetics.put(includes[i], list);
                     }
                     list.add(rule);
+                }
+                if (wildcard) {
+                    wildcardCosmetics.add(rule);
                 }
             }
         }
