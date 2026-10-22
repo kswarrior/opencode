@@ -1934,11 +1934,15 @@ public class MainActivity extends Activity {
             }
         }
         CookieManager.getInstance().flush();
+        clearPrivateCache();
+        privateTabHosts.clear();
+    }
+
+    private void clearPrivateCache() {
         for (WebView view : tabViews.values()) {
             view.clearCache(true);
             break;
         }
-        privateTabHosts.clear();
     }
 
     private void clearPrivateTabData(int tabId) {
@@ -5161,7 +5165,11 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         if (isFinishing()) {
+            boolean hadPrivateData = !privateTabHosts.isEmpty();
             clearAllPrivateData();
+            if (hadPrivateData) {
+                clearPrivateCache();
+            }
         }
         if (tabManager != null) {
             tabManager.removeListener(tabsListener);
