@@ -1324,6 +1324,13 @@ final class AdBlockEngine {
             }
             networkRuleCount = allNetwork.size();
             allNetwork.clear();
+            for (List<PageRule> list : pageRules.values()) {
+                for (int i = list.size() - 1; i >= 0; i--) {
+                    if (badfilters.contains(list.get(i).filter.sourceHash)) {
+                        list.remove(i);
+                    }
+                }
+            }
             for (int i = cleanGeneralRules.size() - 1; i >= 0; i--) {
                 if (cleanBadfilters.contains(cleanGeneralRules.get(i).filter.sourceHash)) {
                     cleanGeneralRules.remove(i);
