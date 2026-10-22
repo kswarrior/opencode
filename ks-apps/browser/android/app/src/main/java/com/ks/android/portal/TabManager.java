@@ -17,9 +17,23 @@ final class TabManager {
         void onTabsChanged();
     }
 
+    static final class ClosedTab {
+        final String url;
+        final String title;
+        final int groupId;
+
+        ClosedTab(String url, String title, int groupId) {
+            this.url = url;
+            this.title = title == null ? "" : title;
+            this.groupId = groupId;
+        }
+    }
+
     private static final String PREFS = "ks_tabs";
     private static final String KEY_STATE = "state";
+    private static final String KEY_RECENT = "recent_closed";
     private static final int NO_GROUP = 0;
+    private static final int RECENT_LIMIT = 10;
 
     private static TabManager instance;
 
@@ -29,6 +43,7 @@ final class TabManager {
     private final List<TabGroup> groups = new ArrayList<TabGroup>();
     private final java.util.Set<Integer> privateTabs = new java.util.HashSet<Integer>();
     private final List<Listener> listeners = new ArrayList<Listener>();
+    private final List<ClosedTab> recentClosed = new ArrayList<ClosedTab>();
     private int activeTabId;
     private int nextTabId = 1;
     private int nextGroupId = 1;
@@ -136,6 +151,10 @@ final class TabManager {
         if (index < 0) {
             return false;
         }
+        BrowserTab closing = tabs.get(index);
+        if (!privateTabs.contains(id) && !closing.isHome()) {
+            rememberClosed(closing);
+        }
         tabs.remove(index);
         privateTabs.remove(id);
         if (tabs.isEmpty()) {
@@ -151,12 +170,190 @@ final class TabManager {
     }
 
     synchronized void closeAllTabs() {
+        rememberAllClosed();
         tabs.clear();
         groups.clear();
         BrowserTab tab = new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, "");
         tabs.add(tab);
         activeTabId = tab.id;
         saveAndNotify();
+    }
+
+    synchronized void closeOtherTabs(int keepId) {
+        BrowserTab keep = findTab(keepId);
+        if (keep == null) {
+            return;
+        }
+        for (int i = tabs.size() - 1; i >= 0; i--) {
+            BrowserTab tab = tabs.get(i);
+            if (tab.id == keepId) {
+                continue;
+            }
+            if (!privateTabs.contains(tab.id) && !tab.isHome()) {
+                rememberClosed(tab);
+            }
+            tabs.remove(i);
+        }
+        activeTabId = keep.id;
+        saveAndNotify();
+    }
+
+    synchronized int closeDuplicateTabs() {
+        java.util.Set<String> seen = new java.util.LinkedHashSet<String>();
+        int closed = 0;
+        for (int i = tabs.size() - 1; i >= 0; i--) {
+            BrowserTab tab = tabs.get(i);
+            String key = tab.url == null ? "" : tab.url;
+            if (key.isEmpty() || tab.isHome()) {
+                continue;
+            }
+            if (seen.add(key)) {
+                continue;
+            }
+            if (!privateTabs.contains(tab.id)) {
+                rememberClosed(tab);
+            }
+            tabs.remove(i);
+            privateTabs.remove(tab.id);
+            closed++;
+        }
+        if (tabs.isEmpty()) {
+            BrowserTab tab = new BrowserTab(nextTabId++, MainActivity.HOME_URL, NO_GROUP, "");
+            tabs.add(tab);
+            activeTabId = tab.id;
+        } else if (findTab(activeTabId) == null) {
+            activeTabId = tabs.get(0).id;
+        }
+        if (closed > 0) {
+            saveAndNotify();
+        }
+        return closed;
+    }
+
+    synchronized List<ClosedTab> getRecentlyClosed() {
+        return new ArrayList<ClosedTab>(recentClosed);
+    }
+
+    synchronized ClosedTab reopenLastClosed() {
+        if (recentClosed.isEmpty()) {
+            return null;
+        }
+        ClosedTab closed = recentClosed.remove(0);
+        saveRecent();
+        addTab(closed.url, closed.groupId);
+        return closed;
+    }
+
+    synchronized ClosedTab reopenClosed(int index) {
+        if (index < 0 || index >= recentClosed.size()) {
+            return null;
+        }
+        ClosedTab closed = recentClosed.remove(index);
+        saveRecent();
+        addTab(closed.url, closed.groupId);
+        return closed;
+    }
+
+    synchronized void clearRecentlyClosed() {
+        recentClosed.clear();
+        saveRecent();
+        notifyListeners();
+    }
+
+    synchronized void setMuted(int id, boolean muted) {
+        BrowserTab tab = findTab(id);
+        if (tab == null || tab.muted == muted) {
+            return;
+        }
+        tab.muted = muted;
+        saveAndNotify();
+    }
+
+    synchronized void toggleMuted(int id) {
+        BrowserTab tab = findTab(id);
+        if (tab == null) {
+            return;
+        }
+        tab.muted = !tab.muted;
+        saveAndNotify();
+    }
+
+    synchronized boolean isMuted(int id) {
+        BrowserTab tab = findTab(id);
+        return tab != null && tab.muted;
+    }
+
+    synchronized void setAudible(int id, boolean audible) {
+        BrowserTab tab = findTab(id);
+        if (tab == null || tab.audible == audible) {
+            return;
+        }
+        tab.audible = audible;
+        notifyListeners();
+    }
+
+    private void rememberClosed(BrowserTab tab) {
+        recentClosed.add(0, new ClosedTab(tab.url, tab.title, tab.groupId));
+        while (recentClosed.size() > RECENT_LIMIT) {
+            recentClosed.remove(recentClosed.size() - 1);
+        }
+        saveRecent();
+    }
+
+    private void rememberAllClosed() {
+        for (int i = tabs.size() - 1; i >= 0; i--) {
+            BrowserTab tab = tabs.get(i);
+            if (!privateTabs.contains(tab.id) && !tab.isHome()) {
+                recentClosed.add(0, new ClosedTab(tab.url, tab.title, tab.groupId));
+            }
+        }
+        while (recentClosed.size() > RECENT_LIMIT) {
+            recentClosed.remove(recentClosed.size() - 1);
+        }
+        saveRecent();
+    }
+
+    private void saveRecent() {
+        JSONArray array = new JSONArray();
+        for (int i = 0; i < recentClosed.size(); i++) {
+            ClosedTab closed = recentClosed.get(i);
+            JSONObject item = new JSONObject();
+            try {
+                item.put("url", closed.url);
+                item.put("title", closed.title);
+                item.put("group", closed.groupId);
+            } catch (JSONException ignored) {
+                continue;
+            }
+            array.put(item);
+        }
+        preferences.edit().putString(KEY_RECENT, array.toString()).apply();
+    }
+
+    private void restoreRecent() {
+        String raw = preferences.getString(KEY_RECENT, null);
+        if (TextUtils.isEmpty(raw)) {
+            return;
+        }
+        try {
+            JSONArray array = new JSONArray(raw);
+            for (int i = 0; i < array.length() && recentClosed.size() < RECENT_LIMIT; i++) {
+                JSONObject item = array.optJSONObject(i);
+                if (item == null) {
+                    continue;
+                }
+                String url = item.optString("url", "");
+                if (TextUtils.isEmpty(url)) {
+                    continue;
+                }
+                int groupId = item.optInt("group", NO_GROUP);
+                if (findGroup(groupId) == null) {
+                    groupId = NO_GROUP;
+                }
+                recentClosed.add(new ClosedTab(url, item.optString("title", ""), groupId));
+            }
+        } catch (JSONException ignored) {
+        }
     }
 
     synchronized void closeGroup(int groupId) {
@@ -170,6 +367,9 @@ final class TabManager {
             if (tab.groupId == groupId) {
                 if (tab.id == activeTabId) {
                     activeClosed = true;
+                }
+                if (!privateTabs.contains(tab.id) && !tab.isHome()) {
+                    rememberClosed(tab);
                 }
                 tabs.remove(i);
             }
@@ -342,6 +542,7 @@ final class TabManager {
                 item.put("title", tab.title);
                 item.put("url", tab.url);
                 item.put("group", tab.groupId);
+                item.put("muted", tab.muted);
                 tabsJson.put(item);
             }
             root.put("tabs", tabsJson);
@@ -410,7 +611,10 @@ final class TabManager {
                     if (findGroup(groupId) == null) {
                         groupId = NO_GROUP;
                     }
-                    tabs.add(new BrowserTab(id, url, groupId, item.optString("title", "")));
+                    BrowserTab restored = new BrowserTab(id, url, groupId,
+                            item.optString("title", ""));
+                    restored.muted = item.optBoolean("muted", false);
+                    tabs.add(restored);
                     if (id >= nextTabId) {
                         nextTabId = id + 1;
                     }
@@ -432,6 +636,7 @@ final class TabManager {
             if (storedNextGroup > nextGroupId) {
                 nextGroupId = storedNextGroup;
             }
+            restoreRecent();
             return true;
         } catch (JSONException exception) {
             return false;

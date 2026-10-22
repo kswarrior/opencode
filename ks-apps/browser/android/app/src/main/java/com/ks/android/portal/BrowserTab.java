@@ -11,6 +11,8 @@ final class BrowserTab {
     String faviconHost = "";
     int progress;
     boolean loading;
+    boolean audible;
+    boolean muted;
 
     BrowserTab(int id, String url, int groupId, String title) {
         this.id = id;
