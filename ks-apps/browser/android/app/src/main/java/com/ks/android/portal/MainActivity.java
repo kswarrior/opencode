@@ -2263,7 +2263,6 @@ public class MainActivity extends Activity {
         privateTabs.add(tab.id);
         tabManager.setPrivate(tab.id, true);
         privateTabHosts.put(tab.id, new ArrayList<String>());
-        tabManager.setActiveTab(tab.id);
         syncActiveTab();
         KsToast.show(this, R.string.tool_private_tab_opened);
     }
@@ -3876,12 +3875,16 @@ public class MainActivity extends Activity {
                     }
                     return true;
                 case KeyEvent.KEYCODE_F:
-                    openFindBar();
+                    showFindBar();
                     return true;
                 case KeyEvent.KEYCODE_L:
                     urlBar.requestFocus();
                     urlBar.selectAll();
-                    showKeyboard(urlBar);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(
+                            INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.showSoftInput(urlBar, InputMethodManager.SHOW_IMPLICIT);
+                    }
                     return true;
                 default:
                     break;
