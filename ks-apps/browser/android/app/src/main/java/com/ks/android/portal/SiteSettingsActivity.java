@@ -164,10 +164,34 @@ public class SiteSettingsActivity extends Activity {
 
     private void buildStaticSettings() {
         addPermissionSection();
-        addSection(R.string.site_settings_content,
-                CONTENT_TITLES, CONTENT_VALUES, null);
-        addSection(R.string.site_settings_additional,
-                ADDITIONAL_TITLES, ADDITIONAL_VALUES, ADDITIONAL_DESCRIPTIONS);
+        addToggleSection(R.string.site_settings_content,
+                new SiteToggle(R.string.site_third_party_cookies,
+                        R.string.site_settings_cookies_summary,
+                        SiteSettingsStore.KEY_THIRD_PARTY_COOKIES, true),
+                new SiteToggle(R.string.site_images,
+                        R.string.site_settings_images_summary,
+                        SiteSettingsStore.KEY_IMAGES, true),
+                new SiteToggle(R.string.site_images,
+                        R.string.site_settings_images_summary,
+                        SiteSettingsStore.KEY_IMAGES, true),
+                new SiteToggle(R.string.site_javascript,
+                        R.string.site_settings_javascript_summary,
+                        SiteSettingsStore.KEY_JAVASCRIPT, true),
+                new SiteToggle(R.string.site_popups_redirects,
+                        R.string.site_settings_popups_summary,
+                        SiteSettingsStore.KEY_POPUPS, false),
+                new SiteToggle(R.string.site_sound,
+                        R.string.site_settings_sound_summary,
+                        SiteSettingsStore.KEY_SOUND, false),
+                new SiteToggle(R.string.site_intrusive_ads,
+                        R.string.site_settings_adblock_summary,
+                        SiteSettingsStore.KEY_ADBLOCK, false),
+                new SiteToggle(R.string.site_intrusive_ads,
+                        R.string.site_settings_adblock_summary,
+                        SiteSettingsStore.KEY_ADBLOCK, false),
+                new SiteToggle(R.string.site_automatic_downloads,
+                        R.string.site_settings_downloads_summary,
+                        SiteSettingsStore.KEY_AUTOMATIC_DOWNLOADS, false));
     }
 
     private void buildSiteSettings() {
@@ -186,6 +210,9 @@ public class SiteSettingsActivity extends Activity {
                 new SiteToggle(R.string.site_sound,
                         R.string.site_settings_sound_summary,
                         SiteSettingsStore.KEY_SOUND, false),
+                new SiteToggle(R.string.site_intrusive_ads,
+                        R.string.site_settings_adblock_summary,
+                        SiteSettingsStore.KEY_ADBLOCK, false),
                 new SiteToggle(R.string.site_automatic_downloads,
                         R.string.site_settings_downloads_summary,
                         SiteSettingsStore.KEY_AUTOMATIC_DOWNLOADS, false));
@@ -207,8 +234,14 @@ public class SiteSettingsActivity extends Activity {
         url.setText(siteUrl);
 
         if (siteUrl.startsWith("https://")) {
-            security.setText(R.string.site_secure);
-            security.setTextColor(getResources().getColor(R.color.ks_accent));
+            if (SiteSettingsStore.getBoolean(this, siteHost,
+                    SiteSettingsStore.KEY_HTTPS_EXCEPTION, false)) {
+                security.setText(R.string.site_not_secure);
+                security.setTextColor(getResources().getColor(R.color.ks_danger));
+            } else {
+                security.setText(R.string.site_secure);
+                security.setTextColor(getResources().getColor(R.color.ks_accent));
+            }
         } else if (siteUrl.startsWith("http://")) {
             security.setText(R.string.site_not_secure);
             security.setTextColor(getResources().getColor(R.color.ks_danger));
@@ -302,12 +335,12 @@ public class SiteSettingsActivity extends Activity {
                 summary.setVisibility(View.VISIBLE);
             }
             toggle.setContentDescription(getString(setting.titleRes));
-            toggle.setChecked(SiteSettingsStore.getBoolean(this, siteHost,
+            toggle.setChecked(SiteSettingsStore.getBoolean(this, permissionHost,
                     setting.key, setting.defaultValue));
             toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    SiteSettingsStore.setBoolean(SiteSettingsActivity.this, siteHost,
+                    SiteSettingsStore.setBoolean(SiteSettingsActivity.this, permissionHost,
                             setting.key, isChecked);
                     markChanged();
                 }
