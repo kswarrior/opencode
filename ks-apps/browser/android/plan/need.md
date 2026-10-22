@@ -332,7 +332,7 @@ and compiling, not device-verified.
 | Trust/correctness | F1-F9, all P2 correctness cleanups (pause/finalise lock check, mkdir verification, toolbar preview restore, Safe Browsing API gate, resource errors, site favicon, narrowed DNT wording, `VERSION` refresh, provider delete, adblock attempt/304 state, unknown permission denial) |
 | Address bar/search | N1 local history/bookmark omnibox suggestions |
 | Page tools | N3 voice search, N7 text scaling, N8 reader, N9 offline save, N11 zoom, N12 force dark, N14 add to home |
-| Tabs | N15 tab search, N16 undo/recently closed, N17 per-tab history restore, N19 close others/duplicates, N20 audio indicator/mute, N66 open in private tab, N67 toolbar placement |
+| Tabs | N15 tab search, N16 undo/recently closed, N17 per-tab history restore, N19 close others/duplicates, N20 audio indicator/mute, N21 background-tab discard/restore, N66 open in private tab, N67 toolbar placement |
 | Bookmarks/history | N23 manager, N24 folders + 1,000 cap, N25 JSON/HTML import/export, N26 CSV/JSON export + filtered delete, N27 retention |
 | Downloads | N28 sort/filter, N29 multi-select, N30 speed, N32 Wi-Fi-only queue + override, N34 size/SHA-256, N35 real global content defaults |
 | Site data/privacy | N36 origin storage manager, N37 timed permission removal, N38 strict HTTPS + listed exceptions, N40 Safe Browsing guard, N41 narrowed DNT claim, N42 site favicon, N43 backup exclusion, N44 unsupported permissions labelled, N45 real global defaults, N46 notification permission consumer, N47 one permission default |
@@ -343,7 +343,7 @@ and compiling, not device-verified.
 
 | Items | State |
 | --- | --- |
-| N2, N4, N5, N10, N13, N18, N21, N56, N58, N60, N62, N64 | Not started (suggestions provider, custom engines, editable top sites, translation, gestures, reorder/pin, discard, media notification, accessibility audit, high-contrast toggle, portal localization, large-font QA) |
+| N2, N4, N5, N10, N13, N18, N56, N58, N60, N62, N64 | Not started (suggestions provider, custom engines, editable top sites, translation, gestures, reorder/pin, discard, media notification, accessibility audit, high-contrast toggle, portal localization, large-font QA) |
 | N6 | New-tab/private-tab launcher shortcuts ship; search/download shortcuts do not |
 | N31 | Resume-all/retry-all queue actions not added |
 | N33 | Open-containing-folder/open-with not added |
