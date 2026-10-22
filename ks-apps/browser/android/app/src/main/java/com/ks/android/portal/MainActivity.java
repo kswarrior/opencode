@@ -222,6 +222,10 @@ public class MainActivity extends Activity {
     private boolean updatingUrlBar;
     private BroadcastReceiver mediaReceiver;
     private boolean activityResumed;
+    private float gestureStartX;
+    private float gestureStartY;
+    private boolean gestureTracking;
+    private WebView gestureView;
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
@@ -518,6 +522,78 @@ public class MainActivity extends Activity {
         if (!inPictureInPicture && webView != null) {
             webView.onResume();
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        observeGesture(event);
+        return super.dispatchTouchEvent(event);
+    }
+
+    private void observeGesture(MotionEvent event) {
+        if (event == null || isInPictureInPictureMode()) {
+            return;
+        }
+        int action = event.getActionMasked();
+        if (action == MotionEvent.ACTION_DOWN) {
+            gestureTracking = false;
+            gestureView = webView;
+            if (gestureView == null || event.getPointerCount() != 1
+                    || pointInView(toolbarToggle, event.getRawX(), event.getRawY())
+                    || pointInView(findBar, event.getRawX(), event.getRawY())
+                    || pointInView(toolbarContainer, event.getRawX(), event.getRawY())) {
+                return;
+            }
+            gestureStartX = event.getRawX();
+            gestureStartY = event.getRawY();
+            gestureTracking = true;
+            return;
+        }
+        if (action == MotionEvent.ACTION_CANCEL) {
+            gestureTracking = false;
+            return;
+        }
+        if (action != MotionEvent.ACTION_UP || !gestureTracking || gestureView == null
+                || event.getPointerCount() != 1) {
+            return;
+        }
+        gestureTracking = false;
+        WebView view = gestureView;
+        gestureView = null;
+        float dx = event.getRawX() - gestureStartX;
+        float dy = event.getRawY() - gestureStartY;
+        int threshold = dp(72);
+        if (setting("gesture_edge_swipe", true) && Math.abs(dx) > threshold
+                && Math.abs(dx) > Math.abs(dy) * 1.5f) {
+            int edge = dp(28);
+            int width = getResources().getDisplayMetrics().widthPixels;
+            if (gestureStartX <= edge && dx > 0 && view.canGoBack()) {
+                view.goBack();
+                return;
+            }
+            if (gestureStartX >= width - edge && dx < 0 && view.canGoForward()) {
+                view.goForward();
+                return;
+            }
+        }
+        if (setting("gesture_pull_refresh", true) && dy > dp(120)
+                && Math.abs(dy) > Math.abs(dx) * 1.5f && view.getScrollY() == 0) {
+            reloadPage(view);
+        }
+    }
+
+    private boolean pointInView(View view, float rawX, float rawY) {
+        if (view == null || view.getVisibility() != View.VISIBLE) {
+            return false;
+        }
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        return rawX >= location[0] && rawX <= location[0] + view.getWidth()
+                && rawY >= location[1] && rawY <= location[1] + view.getHeight();
+    }
+
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
     @Override
