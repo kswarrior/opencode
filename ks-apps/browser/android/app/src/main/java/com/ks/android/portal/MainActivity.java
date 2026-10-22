@@ -769,37 +769,34 @@ public class MainActivity extends Activity {
                     grantGeolocation(origin);
                     return;
                 }
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(R.string.permission_location_title)
-                        .setMessage(getString(R.string.permission_site_message,
-                                host.isEmpty() ? origin : host))
-                        .setNegativeButton(R.string.permission_block,
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        SiteSettingsStore.setPermission(MainActivity.this,
-                                                host, "location",
-                                                SiteSettingsStore.PERMISSION_BLOCKED);
-                                        finishGeolocation(false);
-                                    }
-                                })
-                        .setPositiveButton(R.string.permission_allow,
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        SiteSettingsStore.setPermission(MainActivity.this,
-                                                host, "location",
-                                                SiteSettingsStore.PERMISSION_ALLOWED);
-                                        grantGeolocation(origin);
-                                    }
-                                })
-                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                KsDialog.confirm(MainActivity.this, R.string.permission_location_title,
+                        getString(R.string.permission_site_message,
+                                host.isEmpty() ? origin : host),
+                        R.string.permission_block, R.string.permission_allow, false,
+                        new KsDialog.Action() {
                             @Override
-                            public void onCancel(DialogInterface dialog) {
+                            public void run() {
+                                SiteSettingsStore.setPermission(MainActivity.this,
+                                        host, "location",
+                                        SiteSettingsStore.PERMISSION_ALLOWED);
+                                grantGeolocation(origin);
+                            }
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                SiteSettingsStore.setPermission(MainActivity.this,
+                                        host, "location",
+                                        SiteSettingsStore.PERMISSION_BLOCKED);
                                 finishGeolocation(false);
                             }
-                        })
-                        .show();
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                finishGeolocation(false);
+                            }
+                        });
             }
 
             @Override
