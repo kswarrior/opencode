@@ -312,6 +312,43 @@ public class MainActivity extends Activity {
                 return false;
             }
         });
+        urlBar.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent event) {
+                if (event == null || event.getAction() != KeyEvent.ACTION_DOWN
+                        || suggestionPopup == null || !suggestionPopup.isShowing()
+                        || suggestionAdapter == null) {
+                    return false;
+                }
+                int count = suggestionAdapter.getCount();
+                if (count <= 0) {
+                    return false;
+                }
+                android.widget.ListView list = suggestionPopup.getListView();
+                int position = list == null ? -1 : list.getSelectedItemPosition();
+                if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                    position = position < 0 ? 0 : Math.min(count - 1, position + 1);
+                    selectSuggestion(position);
+                    return true;
+                }
+                if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+                    position = position <= 0 ? count - 1 : position - 1;
+                    selectSuggestion(position);
+                    return true;
+                }
+                if (keyCode == KeyEvent.KEYCODE_ENTER
+                        && position >= 0 && position < suggestionUrls.size()) {
+                    updatingUrlBar = true;
+                    urlBar.setText(suggestionUrls.get(position));
+                    urlBar.setSelection(urlBar.getText().length());
+                    updatingUrlBar = false;
+                    hideSuggestions();
+                    navigateFromBar();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         if (!handleShortcutIntent(getIntent())) {
             String openUrl = urlFromIntent(getIntent());
@@ -2441,6 +2478,22 @@ public class MainActivity extends Activity {
         }
         String needle = query.toLowerCase(Locale.US);
         LinkedHashMap<String, String> matches = new LinkedHashMap<String, String>();
+        synchronized (RECENTS_LOCK) {
+            JSONArray recents = readRecentsLocked();
+            for (int i = 0; i < recents.length() && matches.size() < 4; i++) {
+                JSONObject item = recents.optJSONObject(i);
+                if (item == null) {
+                    continue;
+                }
+                String name = item.optString("name");
+                String url = item.optString("url");
+                if ((name.toLowerCase(Locale.US).contains(needle)
+                        || url.toLowerCase(Locale.US).contains(needle))
+                        && !matches.containsKey(url)) {
+                    matches.put(url, TextUtils.isEmpty(name) ? url : name);
+                }
+            }
+        }
         List<HistoryEntry> history = HistoryRepository.getInstance(this).getEntries();
         for (HistoryEntry entry : history) {
             if (matches.size() >= 6) {
@@ -2513,6 +2566,18 @@ public class MainActivity extends Activity {
         if (!suggestionPopup.isShowing()) {
             suggestionPopup.show();
         }
+    }
+
+    private void selectSuggestion(int position) {
+        if (suggestionPopup == null) {
+            return;
+        }
+        android.widget.ListView list = suggestionPopup.getListView();
+        if (list == null) {
+            return;
+        }
+        list.setSelection(position);
+        list.setItemChecked(position, true);
     }
 
     private void hideSuggestions() {
