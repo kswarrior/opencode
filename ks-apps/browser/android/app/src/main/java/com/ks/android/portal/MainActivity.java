@@ -1470,6 +1470,24 @@ public class MainActivity extends Activity {
                 goHome();
             }
         });
+        TextView bookmarkLabel = panel.findViewById(R.id.menuBookmarkLabel);
+        final String menuUrl = webView == null ? currentUrl : webView.getUrl();
+        bookmarkLabel.setText(BookmarkRepository.contains(MainActivity.this, menuUrl)
+                ? R.string.bookmark_remove : R.string.bookmark_add);
+        panel.findViewById(R.id.menuBookmark).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                toggleBookmark();
+            }
+        });
+        panel.findViewById(R.id.menuHistory).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
+                openHistoryPage();
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1754,6 +1772,27 @@ public class MainActivity extends Activity {
         if (view != null && cacheBypassReloads.remove(view)) {
             view.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         }
+    }
+
+    private void toggleBookmark() {
+        String url = webView == null ? currentUrl : webView.getUrl();
+        if (TextUtils.isEmpty(url) || isHomeUrl(url)) {
+            return;
+        }
+        if (BookmarkRepository.contains(this, url)) {
+            if (BookmarkRepository.remove(this, url)) {
+                Toast.makeText(this, R.string.bookmark_removed, Toast.LENGTH_SHORT).show();
+            }
+            return;
+        }
+        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
+        String title = tab == null ? null : tab.title;
+        int result = BookmarkRepository.add(this, title, url);
+        int message = result == BookmarkRepository.ADDED
+                ? R.string.tabs_bookmark_added
+                : result == BookmarkRepository.EXISTS
+                ? R.string.tabs_bookmark_exists : R.string.tabs_bookmark_failed;
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void openDownloadsPage() {
