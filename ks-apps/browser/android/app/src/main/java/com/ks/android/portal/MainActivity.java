@@ -4,12 +4,19 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.PictureInPictureParams;
+import android.app.RemoteAction;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
 import android.graphics.drawable.Icon;
@@ -108,6 +115,11 @@ public class MainActivity extends Activity {
     private static final String ACTION_NEW_PRIVATE_TAB = "com.ks.android.portal.NEW_PRIVATE_TAB";
     private static final String ACTION_SEARCH = "com.ks.android.portal.SEARCH";
     private static final String ACTION_DOWNLOADS = "com.ks.android.portal.DOWNLOADS";
+    private static final String ACTION_MEDIA_PLAY = "com.ks.android.portal.MEDIA_PLAY";
+    private static final String ACTION_MEDIA_PAUSE = "com.ks.android.portal.MEDIA_PAUSE";
+    private static final String ACTION_MEDIA_STOP = "com.ks.android.portal.MEDIA_STOP";
+    private static final String MEDIA_CHANNEL = "ks_media_playback";
+    private static final int MEDIA_NOTIFICATION_ID = 4301;
     private static final String RECENTS_PREFS = "ks_recents";
     private static final String RECENTS_KEY = "items";
     private static final int RECENTS_LIMIT = 30;
@@ -208,6 +220,8 @@ public class MainActivity extends Activity {
     private ArrayAdapter<String> suggestionAdapter;
     private final List<String> suggestionUrls = new ArrayList<String>();
     private boolean updatingUrlBar;
+    private BroadcastReceiver mediaReceiver;
+    private boolean activityResumed;
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
@@ -360,13 +374,61 @@ public class MainActivity extends Activity {
                 syncActiveTab();
             }
         }
+        registerMediaReceiver();
         NotificationHelper.maybeNotifyUpdate(this);
         NotificationHelper.maybeShowTip(this);
+    }
+
+    private void registerMediaReceiver() {
+        mediaReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                handleMediaAction(intent == null ? null : intent.getAction());
+            }
+        };
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_MEDIA_PLAY);
+        filter.addAction(ACTION_MEDIA_PAUSE);
+        filter.addAction(ACTION_MEDIA_STOP);
+        if (Build.VERSION.SDK_INT >= 33) {
+            registerReceiver(mediaReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(mediaReceiver, filter);
+        }
+    }
+
+    private void handleMediaAction(String action) {
+        WebView view = webView;
+        if (action == null || view == null) {
+            return;
+        }
+        if (ACTION_MEDIA_PLAY.equals(action)) {
+            view.evaluateJavascript("(function(){var m=document.querySelector("
+                    + "'video,audio');if(m){m.play();}})();", null);
+            return;
+        }
+        if (ACTION_MEDIA_PAUSE.equals(action)) {
+            view.evaluateJavascript("(function(){var m=document.querySelector("
+                    + "'video,audio');if(m){m.pause();}})();", null);
+            return;
+        }
+        if (ACTION_MEDIA_STOP.equals(action)) {
+            view.evaluateJavascript("(function(){var m=document.querySelector("
+                    + "'video,audio');if(m){m.pause();try{m.currentTime=0;}catch(e){}}})();",
+                    null);
+            BrowserTab active = tabManager.getActiveTab();
+            if (active != null) {
+                tabManager.setAudible(active.id, false);
+            }
+            cancelMediaNotification();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        activityResumed = true;
+        cancelMediaNotification();
         applyToolbarToggleSettings();
         AdBlocker.maybeUpdate();
         boolean adBlockEnabled = AdBlocker.isEnabled(this);
