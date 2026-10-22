@@ -63,6 +63,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.WeakHashMap;
 
 public class MainActivity extends Activity {
     public static final String EXTRA_OPEN_URL = "com.ks.android.portal.extra.OPEN_URL";
@@ -109,6 +110,8 @@ public class MainActivity extends Activity {
     private long lastLoginTime;
     private boolean loginDialogVisible;
     private final Map<WebView, String> secureFallbacks = new HashMap<WebView, String>();
+    private final Set<WebView> cacheBypassReloads =
+            Collections.newSetFromMap(new WeakHashMap<WebView, Boolean>());
     private static final int REQUEST_NOTIFICATIONS = 2002;
     private static final int REQUEST_SITE_SETTINGS = 2003;
     private String defaultUserAgent;
@@ -400,6 +403,7 @@ public class MainActivity extends Activity {
                     progressBar.setVisibility(View.GONE);
                     updateChrome(url);
                 }
+                restoreCacheMode(current);
             }
 
             @Override
@@ -888,8 +892,7 @@ public class MainActivity extends Activity {
         settings.setMixedContentMode(setting("security_secure_connections", true)
                 ? WebSettings.MIXED_CONTENT_NEVER_ALLOW
                 : WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
-        settings.setCacheMode(setting("privacy_preload_pages", true)
-                ? WebSettings.LOAD_CACHE_ELSE_NETWORK : WebSettings.LOAD_DEFAULT);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             settings.setSafeBrowsingEnabled(setting("security_safe_browsing", true));
         }
@@ -1084,7 +1087,7 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 popup.dismiss();
                 if (webView != null) {
-                    webView.reload();
+                    reloadPage(webView);
                 }
             }
         });
@@ -1332,7 +1335,28 @@ public class MainActivity extends Activity {
             url = tab.url;
         }
         applySiteSettings(view, url);
+        reloadPage(view);
+    }
+
+    private void reloadPage(final WebView view) {
+        if (view == null) {
+            return;
+        }
+        cacheBypassReloads.add(view);
+        view.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         view.reload();
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                restoreCacheMode(view);
+            }
+        }, 30000);
+    }
+
+    private void restoreCacheMode(WebView view) {
+        if (view != null && cacheBypassReloads.remove(view)) {
+            view.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        }
     }
 
     private void openDownloadsPage() {
