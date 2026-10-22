@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.webkit.CookieManager;
 import android.webkit.MimeTypeMap;
 
@@ -31,6 +32,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -56,6 +58,11 @@ public class DownloadRepository {
     private static final String MEDIA_MIME_TYPE = "mime_type";
     private static final String MEDIA_RELATIVE_PATH = "relative_path";
     private static final String MEDIA_IS_PENDING = "is_pending";
+
+    public static final String ERROR_AUTH_REQUIRED = "auth_required";
+
+    private static final Map<String, String[]> AUTH_CACHE =
+            new ConcurrentHashMap<String, String[]>();
 
     private static DownloadRepository instance;
 
@@ -111,6 +118,30 @@ public class DownloadRepository {
             }
         });
         load();
+    }
+
+    public static void setAuth(String host, String username, String password) {
+        if (TextUtils.isEmpty(host) || username == null || password == null) {
+            return;
+        }
+        AUTH_CACHE.put(host.toLowerCase(Locale.US),
+                new String[]{username, password});
+    }
+
+    private static String authHeader(String rawUrl) {
+        if (TextUtils.isEmpty(rawUrl)) {
+            return "";
+        }
+        String host = SiteSettingsStore.hostOf(rawUrl);
+        if (TextUtils.isEmpty(host)) {
+            return "";
+        }
+        String[] auth = AUTH_CACHE.get(host.toLowerCase(Locale.US));
+        if (auth == null) {
+            return "";
+        }
+        String value = auth[0] + ":" + auth[1];
+        return "Basic " + Base64.encodeToString(value.getBytes(), Base64.NO_WRAP);
     }
 
     public static synchronized DownloadRepository getInstance(Context context) {
@@ -877,6 +908,22 @@ public class DownloadRepository {
         }
         executor.execute(task);
         return true;
+    }
+
+    public boolean retryWithAuth(long id, String username, String password) {
+        DownloadItem item;
+        synchronized (lock) {
+            item = findLocked(id);
+        }
+        if (item == null) {
+            return false;
+        }
+        String host = SiteSettingsStore.hostOf(item.url);
+        if (TextUtils.isEmpty(host)) {
+            return false;
+        }
+        setAuth(host, username, password);
+        return retry(id);
     }
 
     public void addListener(Listener listener) {
@@ -1822,6 +1869,10 @@ public class DownloadRepository {
                 if (!TextUtils.isEmpty(cookie)) {
                     current.setRequestProperty("Cookie", cookie);
                 }
+                String auth = authHeader(url);
+                if (!TextUtils.isEmpty(auth)) {
+                    current.setRequestProperty("Authorization", auth);
+                }
                 long offset = resumeOffset;
                 if (offset > 0) {
                     current.setRequestProperty("Range", "bytes=" + offset + "-");
@@ -1834,6 +1885,9 @@ public class DownloadRepository {
                 if (code == 416) {
                     keepPart = true;
                     throw new IOException("Resume rejected by server");
+                }
+                if (code == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                    throw new IOException(ERROR_AUTH_REQUIRED);
                 }
                 if (code < 200 || code >= 300) {
                     throw new IOException("HTTP " + code);

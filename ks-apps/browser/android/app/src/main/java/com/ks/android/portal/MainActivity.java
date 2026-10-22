@@ -595,6 +595,7 @@ public class MainActivity extends Activity {
                         new KsDialog.CredentialAction() {
                             @Override
                             public void run(String username, String password) {
+                                DownloadRepository.setAuth(host, username, password);
                                 handler.proceed(username, password);
                             }
                         },

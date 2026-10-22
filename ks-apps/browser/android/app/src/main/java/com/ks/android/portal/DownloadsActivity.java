@@ -38,6 +38,7 @@ public class DownloadsActivity extends Activity {
     private static final int MENU_RETRY = 6;
     private static final int MENU_PAUSE = 7;
     private static final int MENU_RESUME = 8;
+    private static final int MENU_SIGN_IN = 9;
 
     private DownloadRepository repository;
     private ListView listView;
@@ -262,6 +263,12 @@ public class DownloadsActivity extends Activity {
                     R.string.download_delete};
             icons = new int[]{R.drawable.ic_play, R.drawable.ic_close,
                     R.drawable.ic_delete};
+        } else if (DownloadRepository.ERROR_AUTH_REQUIRED.equals(item.error)) {
+            ids = new int[]{MENU_SIGN_IN, MENU_RETRY, MENU_DELETE};
+            labels = new int[]{R.string.download_sign_in, R.string.download_retry,
+                    R.string.download_delete};
+            icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_menu_reload,
+                    R.drawable.ic_delete};
         } else {
             ids = new int[]{MENU_RETRY, MENU_DELETE};
             labels = new int[]{R.string.download_retry, R.string.download_delete};
@@ -299,11 +306,35 @@ public class DownloadsActivity extends Activity {
                             toast(getString(R.string.download_start_failed));
                         }
                         break;
+                    case MENU_SIGN_IN:
+                        signIn(item);
+                        break;
                     default:
                         break;
                 }
             }
         });
+    }
+
+    private void signIn(final DownloadItem item) {
+        String host = SiteSettingsStore.hostOf(item.url);
+        KsDialog.credentials(this,
+                getString(R.string.download_sign_in_title, host),
+                R.string.dialog_cancel, R.string.download_sign_in,
+                R.string.http_auth_username, R.string.http_auth_password,
+                new KsDialog.CredentialAction() {
+                    @Override
+                    public void run(String username, String password) {
+                        if (!repository.retryWithAuth(item.id, username, password)) {
+                            toast(getString(R.string.download_start_failed));
+                        }
+                    }
+                },
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                    }
+                });
     }
 
     private void openItem(DownloadItem item) {
