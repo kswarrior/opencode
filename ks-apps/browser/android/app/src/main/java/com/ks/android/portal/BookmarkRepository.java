@@ -31,6 +31,8 @@ final class BookmarkRepository {
         }
     }
 
+    static final String ACTION_CHANGED = "com.ks.android.portal.BOOKMARKS_CHANGED";
+
     private static final String PREFS = "ks_bookmarks";
     private static final String KEY = "items";
     private static final String KEY_FOLDERS = "folders";
@@ -235,7 +237,6 @@ final class BookmarkRepository {
                 items.put(item);
             }
             synchronized (LOCK) {
-                JSONArray previous = read(context);
                 write(context, items);
                 JSONObject assignments = assignments(context);
                 JSONObject kept = new JSONObject();
@@ -448,8 +449,7 @@ final class BookmarkRepository {
     }
 
     static void notifyChanged(Context context) {
-        android.content.Intent intent = new android.content.Intent(
-                "com.ks.android.portal.BOOKMARKS_CHANGED");
+        android.content.Intent intent = new android.content.Intent(ACTION_CHANGED);
         intent.setPackage(context.getPackageName());
         context.sendBroadcast(intent);
     }

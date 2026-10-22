@@ -229,6 +229,7 @@ public class MainActivity extends Activity {
     private int suggestionPosition = -1;
     private boolean updatingUrlBar;
     private BroadcastReceiver mediaReceiver;
+    private BroadcastReceiver bookmarksReceiver;
     private boolean activityResumed;
     private float gestureStartX;
     private float gestureStartY;
@@ -396,6 +397,7 @@ public class MainActivity extends Activity {
             }
         }
         registerMediaReceiver();
+        registerBookmarksReceiver();
         NotificationHelper.maybeNotifyUpdate(this);
         NotificationHelper.maybeShowTip(this);
     }
@@ -415,6 +417,25 @@ public class MainActivity extends Activity {
             registerReceiver(mediaReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
         } else {
             registerReceiver(mediaReceiver, filter);
+        }
+    }
+
+    private void registerBookmarksReceiver() {
+        bookmarksReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (webView != null && isHomeUrl(webView.getUrl())) {
+                    webView.evaluateJavascript(
+                            "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks()",
+                            null);
+                }
+            }
+        };
+        IntentFilter filter = new IntentFilter(BookmarkRepository.ACTION_CHANGED);
+        if (Build.VERSION.SDK_INT >= 33) {
+            registerReceiver(bookmarksReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(bookmarksReceiver, filter);
         }
     }
 
@@ -5133,6 +5154,13 @@ public class MainActivity extends Activity {
             } catch (IllegalArgumentException ignored) {
             }
             mediaReceiver = null;
+        }
+        if (bookmarksReceiver != null) {
+            try {
+                unregisterReceiver(bookmarksReceiver);
+            } catch (IllegalArgumentException ignored) {
+            }
+            bookmarksReceiver = null;
         }
         cancelMediaNotification();
         super.onDestroy();
