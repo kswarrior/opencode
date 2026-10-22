@@ -42,6 +42,7 @@ public class ToolbarActivity extends Activity {
     private TextView widthValue;
     private TextView heightValue;
     private TextView modeSummary;
+    private TextView previewHint;
     private SeekBar widthBar;
     private SeekBar heightBar;
     private final List<View> colorViews = new ArrayList<View>();
@@ -69,6 +70,7 @@ public class ToolbarActivity extends Activity {
         widthValue = findViewById(R.id.toolbarWidthValue);
         heightValue = findViewById(R.id.toolbarHeightValue);
         modeSummary = findViewById(R.id.toolbarModeSummary);
+        previewHint = findViewById(R.id.toolbarPreviewHint);
         widthBar = findViewById(R.id.toolbarWidth);
         heightBar = findViewById(R.id.toolbarHeight);
 
@@ -83,6 +85,9 @@ public class ToolbarActivity extends Activity {
 
             @Override
             public void onPositionChanged() {
+                selectedEdge = preview.getDockEdge();
+                ToolbarSettingsStore.setDefaultEdge(ToolbarActivity.this, selectedEdge);
+                updatePositionChips();
             }
         });
 
