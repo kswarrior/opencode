@@ -510,6 +510,12 @@ public class DownloadRepository {
                 cleanName = suggestFileName(item.url, contentDisposition, item.mimeType);
             }
             cleanName = adjustExtensionForMime(cleanName, item.mimeType);
+            boolean hls = HlsPlaylist.isHls(item.url, item.mimeType);
+            if (hls) {
+                cleanName = withExtension(cleanName, ".mp4");
+                item.mimeType = "video/mp4";
+                item.totalBytes = 0;
+            }
             if (cleanName.isEmpty()) {
                 cleanName = "download";
             }
@@ -537,7 +543,7 @@ public class DownloadRepository {
             File part = new File(stagingRoot, item.id + ".part");
             cookie = CookieManager.getInstance().getCookie(item.url);
             task = new DownloadTask(item.id, part, item.url, item.userAgent,
-                    item.referer, cookie, 0);
+                    item.referer, cookie, 0, hls);
             if (isWifiOnly() && isMetered()) {
                 item.error = ERROR_WAITING_WIFI;
             } else {
