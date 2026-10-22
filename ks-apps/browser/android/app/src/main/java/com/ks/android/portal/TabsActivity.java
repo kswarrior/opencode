@@ -33,6 +33,7 @@ public class TabsActivity extends Activity {
     private static final int MENU_CLOSE_TAB = 4;
     private static final int MENU_MUTE_TAB = 5;
     private static final int MENU_DISCARD_TAB = 6;
+    private static final int MENU_OPEN_PRIVATE = 7;
 
     private static final int GROUP_MENU_NEW_TAB = 10;
     private static final int GROUP_MENU_EDIT = 11;
@@ -279,6 +280,9 @@ public class TabsActivity extends Activity {
             labels.add(R.string.tabs_remove_from_group);
             icons.add(R.drawable.ic_close);
         }
+        ids.add(MENU_OPEN_PRIVATE);
+        labels.add(R.string.tabs_open_private);
+        icons.add(R.drawable.ic_shield);
         ids.add(MENU_MUTE_TAB);
         labels.add(tab.muted ? R.string.tabs_unmute : R.string.tabs_mute);
         icons.add(R.drawable.ic_volume_off);
@@ -305,6 +309,9 @@ public class TabsActivity extends Activity {
                             case MENU_REMOVE_FROM_GROUP:
                                 tabManager.moveTabToGroup(tab.id, 0);
                                 break;
+                            case MENU_OPEN_PRIVATE:
+                                openPrivateTab(tab);
+                                break;
                             case MENU_MUTE_TAB:
                                 tabManager.toggleMuted(tab.id);
                                 break;
@@ -327,6 +334,16 @@ public class TabsActivity extends Activity {
             result[i] = values.get(i);
         }
         return result;
+    }
+
+    private void openPrivateTab(BrowserTab tab) {
+        if (tab == null) {
+            return;
+        }
+        BrowserTab created = tabManager.addTab(tab.url, tab.groupId);
+        tabManager.setPrivate(created.id, true);
+        tabManager.selectTab(created.id);
+        finish();
     }
 
     private void addBookmark(BrowserTab tab) {

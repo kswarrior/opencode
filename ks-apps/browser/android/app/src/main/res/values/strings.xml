@@ -578,6 +578,7 @@ example.com##.ad-banner</string>
     <string name="tabs_add_bookmark">Add to bookmarks</string>
     <string name="bookmark_add">Bookmark this page</string>
     <string name="context_open_new_tab">Open in new tab</string>
+    <string name="context_open_private">Open in private tab</string>
     <string name="context_copy_link">Copy link address</string>
     <string name="context_share_link">Share link</string>
     <string name="context_download_link">Download link</string>
@@ -751,6 +752,7 @@ example.com##.ad-banner</string>
     <string name="tabs_search_hint">Search tabs</string>
     <string name="tabs_search_empty">No tabs match your search</string>
     <string name="tabs_mute">Mute tab</string>
+    <string name="tabs_open_private">Open in private tab</string>
     <string name="tabs_discard">Discard tab</string>
     <string name="tabs_unmute">Unmute tab</string>
     <string name="tabs_audible_description">Playing audio</string>
