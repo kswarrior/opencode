@@ -56,6 +56,7 @@ import android.webkit.WebView;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -135,6 +136,7 @@ public class MainActivity extends Activity {
     private long lastLoginTime;
     private boolean loginDialogVisible;
     private final Map<WebView, String> secureFallbacks = new HashMap<WebView, String>();
+    private final Map<WebView, View> errorOverlays = new HashMap<WebView, View>();
     private final Set<WebView> cacheBypassReloads =
             Collections.newSetFromMap(new WeakHashMap<WebView, Boolean>());
     private static final int REQUEST_NOTIFICATIONS = 2002;
@@ -410,6 +412,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageStarted(WebView current, String url, Bitmap favicon) {
+                removeErrorOverlay(current);
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
                 tab.loading = true;
@@ -480,6 +483,20 @@ public class MainActivity extends Activity {
             }
 
             @Override
+            public void onReceivedHttpError(WebView current, WebResourceRequest request,
+                                            WebResourceResponse errorResponse) {
+                if (request == null || !request.isForMainFrame()
+                        || errorResponse == null) {
+                    return;
+                }
+                int status = errorResponse.getStatusCode();
+                if (status >= 400) {
+                    showLoadError(current, request.getUrl().toString(),
+                            getString(R.string.error_page_http, status));
+                }
+            }
+
+            @Override
             public void onReceivedSslError(final WebView current,
                                            final SslErrorHandler handler,
                                            SslError error) {
@@ -495,12 +512,21 @@ public class MainActivity extends Activity {
                 String message = getString(R.string.ssl_warning_message,
                         host, sslErrorText(error.getPrimaryError()),
                         issuedTo, issuedBy);
+                final String insecure = insecureVersionOf(host);
+                final WebView failedView = current;
                 KsDialog.confirm(MainActivity.this, R.string.ssl_warning_title, message,
-                        R.string.ssl_go_back, R.string.ssl_continue, false,
+                        R.string.ssl_go_back, R.string.error_page_load_insecure, false,
                         new KsDialog.Action() {
                             @Override
                             public void run() {
-                                handler.proceed();
+                                handler.cancel();
+                                if (insecure != null) {
+                                    String site = SiteSettingsStore.hostOf(host);
+                                    SiteSettingsStore.setBoolean(MainActivity.this, site,
+                                            SiteSettingsStore.KEY_HTTPS_EXCEPTION, true);
+                                    removeErrorOverlay(failedView);
+                                    failedView.loadUrl(insecure);
+                                }
                             }
                         },
                         new KsDialog.Action() {
@@ -515,6 +541,78 @@ public class MainActivity extends Activity {
                                 handler.cancel();
                             }
                         });
+            }
+
+            @Override
+            public boolean onJsAlert(WebView current, String url, String message,
+                                     final JsResult result) {
+                String host = SiteSettingsStore.hostOf(url);
+                KsDialog.confirm(MainActivity.this, R.string.js_alert_title,
+                        TextUtils.isEmpty(host) ? message
+                                : host + "\n\n" + message,
+                        0, R.string.dialog_ok, false,
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                result.confirm();
+                            }
+                        }, null, new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                result.cancel();
+                            }
+                        });
+                return true;
+            }
+
+            @Override
+            public boolean onJsConfirm(WebView current, String url, String message,
+                                       final JsResult result) {
+                String host = SiteSettingsStore.hostOf(url);
+                KsDialog.confirm(MainActivity.this, R.string.js_confirm_title,
+                        TextUtils.isEmpty(host) ? message
+                                : host + "\n\n" + message,
+                        R.string.dialog_cancel, R.string.dialog_ok, false,
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                result.confirm();
+                            }
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                result.cancel();
+                            }
+                        }, new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                result.cancel();
+                            }
+                        });
+                return true;
+            }
+
+            @Override
+            public boolean onJsPrompt(WebView current, String url, String message,
+                                      String defaultValue, final JsPromptResult result) {
+                String host = SiteSettingsStore.hostOf(url);
+                KsDialog.input(MainActivity.this, R.string.js_prompt_title,
+                        defaultValue == null ? "" : defaultValue,
+                        R.string.js_prompt_hint, R.string.dialog_ok,
+                        InputType.TYPE_CLASS_TEXT, new KsDialog.TextAction() {
+                            @Override
+                            public boolean onSubmit(String value) {
+                                result.confirm(value);
+                                return true;
+                            }
+                        }, new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                result.cancel();
+                            }
+                        });
+                return true;
             }
 
             @Override
@@ -960,6 +1058,10 @@ public class MainActivity extends Activity {
             entry.getValue().setVisibility(entry.getKey().intValue() == tab.id
                     ? View.VISIBLE : View.GONE);
         }
+        for (Map.Entry<WebView, View> entry : errorOverlays.entrySet()) {
+            entry.getValue().setVisibility(entry.getKey() == view
+                    ? View.VISIBLE : View.GONE);
+        }
         webView = view;
         updateChrome(tab.url);
         progressBar.setProgress(tab.progress);
@@ -1071,6 +1173,7 @@ public class MainActivity extends Activity {
             }
             int tabId = entry.getKey().intValue();
             WebView closed = entry.getValue();
+            removeErrorOverlay(closed);
             webContainer.removeView(closed);
             closed.removeJavascriptInterface("KSPortalNative");
             closed.removeJavascriptInterface("KSPortalWeb");
@@ -1675,14 +1778,19 @@ public class MainActivity extends Activity {
         boolean upgraded = false;
         if (!isHomeUrl(url) && setting("security_secure_connections", true)
                 && target.regionMatches(true, 0, "http://", 0, 7)) {
-            target = "https://" + target.substring(7);
-            upgraded = true;
+            String host = SiteSettingsStore.hostOf(target);
+            if (!SiteSettingsStore.getBoolean(this, host,
+                    SiteSettingsStore.KEY_HTTPS_EXCEPTION, false)) {
+                target = "https://" + target.substring(7);
+                upgraded = true;
+            }
         }
         if (upgraded) {
             secureFallbacks.put(view, url);
         } else {
             secureFallbacks.remove(view);
         }
+        removeErrorOverlay(view);
         Map<String, String> headers = requestHeaders();
         if (headers != null && (target.startsWith("http://")
                 || target.startsWith("https://"))) {
@@ -1693,20 +1801,136 @@ public class MainActivity extends Activity {
     }
 
     private void fallbackToInsecure(WebView view, String failingUrl) {
-        if (view == null || TextUtils.isEmpty(failingUrl)
-                || !setting("security_secure_connections", true)
-                || !failingUrl.startsWith("https://")) {
+        showLoadError(view, failingUrl, getString(R.string.error_page_network));
+    }
+
+    private void showLoadError(final WebView view, final String failingUrl,
+                               CharSequence description) {
+        if (view == null || TextUtils.isEmpty(failingUrl) || !isNetworkUrl(failingUrl)) {
             return;
         }
-        String original = secureFallbacks.remove(view);
-        if (original != null && original.startsWith("http://")) {
-            Map<String, String> headers = requestHeaders();
-            if (headers != null) {
-                view.loadUrl(original, headers);
-            } else {
-                view.loadUrl(original);
-            }
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active == null || tabViews.get(active.id) != view) {
+            return;
         }
+        removeErrorOverlay(view);
+        final String insecure = insecureVersionOf(failingUrl);
+        boolean canInsecure = insecure != null
+                && setting("security_secure_connections", true);
+        LinearLayout panel = new LinearLayout(this);
+        panel.setOrientation(LinearLayout.VERTICAL);
+        panel.setGravity(Gravity.CENTER);
+        panel.setBackgroundColor(Color.parseColor("#0B0F17"));
+        int pad = dp(28);
+        panel.setPadding(pad, pad, pad, pad);
+
+        TextView brand = new TextView(this);
+        brand.setText(R.string.error_page_brand);
+        brand.setTextColor(Color.parseColor("#7C5CFF"));
+        brand.setTextSize(13);
+        brand.setGravity(Gravity.CENTER);
+        panel.addView(brand);
+
+        TextView title = new TextView(this);
+        title.setText(R.string.error_page_title);
+        title.setTextColor(Color.parseColor("#F2F4F8"));
+        title.setTextSize(24);
+        title.setGravity(Gravity.CENTER);
+        title.setPadding(0, dp(10), 0, 0);
+        panel.addView(title);
+
+        TextView detail = new TextView(this);
+        detail.setText(TextUtils.isEmpty(description)
+                ? getString(R.string.error_page_network) : description);
+        detail.setTextColor(Color.parseColor("#A8AFBF"));
+        detail.setTextSize(14);
+        detail.setGravity(Gravity.CENTER);
+        detail.setPadding(0, dp(8), 0, 0);
+        panel.addView(detail);
+
+        TextView address = new TextView(this);
+        address.setText(failingUrl);
+        address.setTextColor(Color.parseColor("#6F7688"));
+        address.setTextSize(12);
+        address.setGravity(Gravity.CENTER);
+        address.setPadding(0, dp(18), 0, dp(18));
+        panel.addView(address);
+
+        Button retry = new Button(this);
+        retry.setText(R.string.error_page_retry);
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeErrorOverlay(view);
+                Map<String, String> headers = requestHeaders();
+                if (headers != null) {
+                    view.loadUrl(failingUrl, headers);
+                } else {
+                    view.loadUrl(failingUrl);
+                }
+            }
+        });
+        panel.addView(retry);
+
+        if (canInsecure) {
+            Button loadInsecure = new Button(this);
+            loadInsecure.setText(R.string.error_page_load_insecure);
+            loadInsecure.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String host = SiteSettingsStore.hostOf(failingUrl);
+                    SiteSettingsStore.setBoolean(MainActivity.this, host,
+                            SiteSettingsStore.KEY_HTTPS_EXCEPTION, true);
+                    removeErrorOverlay(view);
+                    Map<String, String> headers = requestHeaders();
+                    if (headers != null) {
+                        view.loadUrl(insecure, headers);
+                    } else {
+                        view.loadUrl(insecure);
+                    }
+                }
+            });
+            panel.addView(loadInsecure);
+        }
+
+        Button back = new Button(this);
+        back.setText(R.string.error_page_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeErrorOverlay(view);
+                if (view.canGoBack()) {
+                    view.goBack();
+                } else {
+                    goHome();
+                }
+            }
+        });
+        panel.addView(back);
+
+        errorOverlays.put(view, panel);
+        webContainer.addView(panel, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        panel.setVisibility(View.VISIBLE);
+    }
+
+    private void removeErrorOverlay(WebView view) {
+        View overlay = errorOverlays.remove(view);
+        if (overlay != null && webContainer != null) {
+            webContainer.removeView(overlay);
+        }
+    }
+
+    private boolean isNetworkUrl(String url) {
+        return url != null && (url.startsWith("http://") || url.startsWith("https://"));
+    }
+
+    private String insecureVersionOf(String url) {
+        if (url == null || !url.startsWith("https://")) {
+            return null;
+        }
+        return "http://" + url.substring(8);
     }
 
     private void goHome() {
