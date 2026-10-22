@@ -13,8 +13,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class SiteDataActivity extends Activity {
     private LinearLayout list;
@@ -147,36 +149,60 @@ public class SiteDataActivity extends Activity {
 
     private void showOrigins(List<WebStorage.Origin> origins) {
         list.removeAllViews();
-        boolean isEmpty = origins.isEmpty();
-        empty.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
-        clearAll.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
+        Set<String> seen = new HashSet<String>();
+        int rows = 0;
         for (int i = 0; i < origins.size(); i++) {
             final String origin = safeOrigin(origins.get(i));
-            if (origin.isEmpty()) {
+            if (origin.isEmpty() || !seen.add(origin)) {
                 continue;
             }
             long usage = origins.get(i).getUsage();
-            View row = getLayoutInflater().inflate(R.layout.item_site_setting, list, false);
-            TextView title = row.findViewById(R.id.siteSettingTitle);
-            TextView value = row.findViewById(R.id.siteSettingValue);
-            title.setText(origin);
-            value.setText(getString(R.string.site_data_usage, formatBytes(usage)));
-            value.setVisibility(View.VISIBLE);
-            if (i > 0) {
-                View divider = new View(this);
-                divider.setBackgroundColor(getResources().getColor(R.color.ks_divider));
-                list.addView(divider, new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        Math.max(1, dp(1))));
-            }
-            row.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    confirmClear(origin);
-                }
-            });
-            list.addView(row);
+            addOriginRow(origin, getString(R.string.site_data_usage, formatBytes(usage)),
+                    rows++ > 0);
         }
+        List<String> visited = SiteSettingsStore.visitedHosts(this);
+        for (int i = 0; i < visited.size(); i++) {
+            String host = visited.get(i);
+            for (String scheme : new String[]{"https://", "http://"}) {
+                String origin = scheme + host;
+                if (seen.contains(origin)) {
+                    continue;
+                }
+                int cookies = SiteCookies.count(origin);
+                if (cookies <= 0) {
+                    continue;
+                }
+                seen.add(origin);
+                addOriginRow(origin, getString(R.string.site_data_cookies, cookies),
+                        rows++ > 0);
+            }
+        }
+        boolean isEmpty = rows == 0;
+        empty.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
+        clearAll.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
+    }
+
+    private void addOriginRow(final String origin, CharSequence valueText, boolean divider) {
+        if (divider) {
+            View dividerView = new View(this);
+            dividerView.setBackgroundColor(getResources().getColor(R.color.ks_divider));
+            list.addView(dividerView, new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    Math.max(1, dp(1))));
+        }
+        View row = getLayoutInflater().inflate(R.layout.item_site_setting, list, false);
+        TextView title = row.findViewById(R.id.siteSettingTitle);
+        TextView value = row.findViewById(R.id.siteSettingValue);
+        title.setText(origin);
+        value.setText(valueText);
+        value.setVisibility(View.VISIBLE);
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmClear(origin);
+            }
+        });
+        list.addView(row);
     }
 
     private void confirmClear(final String origin) {
@@ -187,7 +213,7 @@ public class SiteDataActivity extends Activity {
                     @Override
                     public void run() {
                         WebStorage.getInstance().deleteOrigin(origin);
-                        expireCookies(origin);
+                        SiteCookies.deleteAll(origin);
                         KsToast.show(SiteDataActivity.this, R.string.site_data_cleared);
                         reload();
                     }
@@ -217,26 +243,6 @@ public class SiteDataActivity extends Activity {
                         showOrigins(Collections.<WebStorage.Origin>emptyList());
                     }
                 }, null, null);
-    }
-
-    private void expireCookies(String origin) {
-        if (origin == null || !origin.startsWith("http")) {
-            return;
-        }
-        CookieManager manager = CookieManager.getInstance();
-        String url = origin.endsWith("/") ? origin : origin + "/";
-        String cookies = manager.getCookie(url);
-        if (cookies != null) {
-            for (String cookie : cookies.split(";")) {
-                String trimmed = cookie.trim();
-                int equals = trimmed.indexOf('=');
-                String name = equals > 0 ? trimmed.substring(0, equals) : trimmed;
-                if (!name.isEmpty()) {
-                    manager.setCookie(url, name + "=; Max-Age=0; Path=/");
-                }
-            }
-        }
-        manager.flush();
     }
 
     private static String safeOrigin(WebStorage.Origin origin) {
