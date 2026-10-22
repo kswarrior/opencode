@@ -292,7 +292,7 @@ example.com##.ad-banner</string>
     <string name="site_third_party_cookies">Third-party cookies</string>
     <string name="site_javascript">JavaScript</string>
     <string name="site_popups_redirects">Pop-ups and redirects</string>
-    <string name="site_sound">Sound</string>
+    <string name="site_sound">Autoplay and sound</string>
     <string name="site_intrusive_ads">Intrusive ads</string>
     <string name="site_images">Images</string>
     <string name="site_settings_images_summary">Load images on this site</string>
@@ -347,7 +347,7 @@ example.com##.ad-banner</string>
     <string name="site_settings_javascript_summary">Allow scripts to run on this site</string>
     <string name="site_settings_cookies_summary">Allow third-party cookies on this site</string>
     <string name="site_settings_popups_summary">Allow this site to open pop-ups automatically</string>
-    <string name="site_settings_sound_summary">Allow this site to play sound automatically</string>
+    <string name="site_settings_sound_summary">Allow this site to play media automatically, including sound</string>
     <string name="site_settings_downloads_summary">Download files from this site without asking</string>
     <string name="site_settings_reset">Reset site settings</string>
     <string name="site_settings_reset_summary">Restore the defaults for this site</string>
@@ -414,7 +414,7 @@ example.com##.ad-banner</string>
     <string name="security_unsafe_downloads">Warn about unsafe downloads</string>
     <string name="security_unsafe_downloads_summary">Pause downloads that look dangerous</string>
     <string name="autofill_passwords">Autofill and Passwords</string>
-    <string name="autofill_passwords_summary">Passwords, forms and payment methods</string>
+    <string name="autofill_passwords_summary">Passwords and forms</string>
     <string name="autofill_section_passwords">Passwords</string>
     <string name="autofill_offer_save">Offer to save passwords</string>
     <string name="autofill_offer_save_summary">Ask to save new passwords after you sign in</string>
@@ -425,6 +425,9 @@ example.com##.ad-banner</string>
     <string name="autofill_forms_summary">Fill in addresses and other saved information</string>
     <string name="autofill_payments">Payment methods</string>
     <string name="autofill_payments_summary">Save and fill payment methods at checkout</string>
+    <string name="autofill_passkeys">Passkeys</string>
+    <string name="autofill_passkeys_summary">Check whether passkeys can be used in KS Portal</string>
+    <string name="autofill_passkeys_unavailable">This Android WebView version does not expose passkey (WebAuthn) support to the app. Saved passwords and form filling still work.</string>
     <string name="login_save_title">Save password?</string>
     <string name="login_save_name_label">NAME</string>
     <string name="login_save_url_label">URL</string>

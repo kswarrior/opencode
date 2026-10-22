@@ -34,6 +34,16 @@ public class AutofillPasswordsActivity extends ToggleSettingsActivity {
                         showSavedLogins();
                     }
                 });
+        addAction(R.string.autofill_section_passwords, R.string.autofill_passkeys,
+                R.string.autofill_passkeys_summary, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        KsDialog.message(AutofillPasswordsActivity.this,
+                                R.string.autofill_passkeys,
+                                getString(R.string.autofill_passkeys_unavailable),
+                                R.string.dialog_ok, null);
+                    }
+                });
         addSection(R.string.autofill_section_forms,
                 new ToggleSetting(R.string.autofill_forms,
                         R.string.autofill_forms_summary,
