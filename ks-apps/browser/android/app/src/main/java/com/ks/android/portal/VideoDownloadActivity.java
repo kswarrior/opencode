@@ -208,6 +208,10 @@ public class VideoDownloadActivity extends Activity {
             return;
         }
         String kind = VideoSniffer.kindOf(url);
+        if (kind == null) {
+            offerOpenPage(url);
+            return;
+        }
         VideoSource source = VideoSniffer.fromUrl(url, kind);
         if (source == null) {
             KsToast.show(this, R.string.video_link_invalid);
