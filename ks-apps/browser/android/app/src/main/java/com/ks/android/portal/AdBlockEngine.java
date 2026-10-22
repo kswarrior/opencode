@@ -1881,6 +1881,9 @@ final class AdBlockEngine {
                 || "method".equals(name) || "genericblock".equals(name)
                 || "csp".equals(name) || "rewrite".equals(name)
                 || "urltransform".equals(name) || "header".equals(name)
+                || "urlskip".equals(name) || "replace".equals(name)
+                || "uritransform".equals(name) || "ipaddress".equals(name)
+                || "cname".equals(name)
                 || "permissions".equals(name) || "sitekey".equals(name)
                 || typeFor(name) != 0;
     }

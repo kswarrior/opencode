@@ -706,15 +706,21 @@ public class MainActivity extends Activity {
                             Toast.LENGTH_SHORT).show();
                     return false;
                 }
-                BrowserTab created = tabManager.addTab(MainActivity.HOME_URL, 0);
-                final WebView target = tabViews.get(created.id);
+                BrowserTab created = tabManager.addTab("about:blank", 0);
+                WebView target = tabViews.get(created.id);
                 if (target == null) {
-                    return false;
+                    target = createWebView(created);
+                    tabViews.put(created.id, target);
+                    webContainer.addView(target, new FrameLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT));
+                    target.setVisibility(View.GONE);
                 }
                 WebView.WebViewTransport transport =
                         (WebView.WebViewTransport) resultMsg.obj;
                 transport.setWebView(target);
                 resultMsg.sendToTarget();
+                syncActiveTab();
                 return true;
             }
         });
