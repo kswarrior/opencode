@@ -73,6 +73,12 @@ public class SettingsActivity extends Activity {
                 startActivity(new Intent(SettingsActivity.this, PrivacySecurityActivity.class));
             }
         });
+        findViewById(R.id.settingsBookmarks).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, BookmarkActivity.class));
+            }
+        });
         findViewById(R.id.settingsAutofillPasswords).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

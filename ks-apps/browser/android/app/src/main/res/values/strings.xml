@@ -708,4 +708,48 @@ example.com##.ad-banner</string>
     <string name="tabs_recently_closed">Recently closed</string>
     <string name="tabs_no_recently_closed">No recently closed tabs</string>
 
+
+    <string name="bookmarks_title">Bookmarks</string>
+    <string name="bookmarks_options">Bookmark options</string>
+    <string name="bookmarks_search_hint">Search bookmarks</string>
+    <string name="bookmarks_search_empty">No bookmarks match your search</string>
+    <string name="bookmarks_empty">No bookmarks here</string>
+    <string name="bookmarks_count">%1$d bookmarks</string>
+    <string name="bookmarks_count_in">%1$d bookmarks in %2$s</string>
+    <string name="bookmarks_new_folder">New folder</string>
+    <string name="bookmarks_new_subfolder">New subfolder</string>
+    <string name="bookmarks_folder_hint">Folder name</string>
+    <string name="bookmarks_create">Create</string>
+    <string name="bookmarks_folder_failed">Could not create folder</string>
+    <string name="bookmarks_rename">Rename</string>
+    <string name="bookmarks_delete_folder">Delete folder</string>
+    <string name="bookmarks_delete_folder_message">Delete &quot;%1$s&quot;? Its bookmarks move to the parent folder.</string>
+    <string name="bookmarks_parent_folder">..</string>
+    <string name="bookmarks_no_folder">No folder</string>
+    <string name="bookmarks_open">Open</string>
+    <string name="bookmarks_edit">Edit</string>
+    <string name="bookmarks_move">Move to folder</string>
+    <string name="bookmarks_move_up">Move up</string>
+    <string name="bookmarks_move_down">Move down</string>
+    <string name="bookmarks_delete">Delete bookmark</string>
+    <string name="bookmarks_delete_message">Delete &quot;%1$s&quot;?</string>
+    <string name="bookmarks_edit_name">Edit bookmark name</string>
+    <string name="bookmarks_edit_url">Edit bookmark URL</string>
+    <string name="bookmarks_name_hint">Name</string>
+    <string name="bookmarks_url_hint">https://example.com</string>
+    <string name="bookmarks_next">Next</string>
+    <string name="bookmarks_update_failed">Could not update bookmark</string>
+    <string name="bookmarks_import">Import bookmarks</string>
+    <string name="bookmarks_export_json">Export as JSON</string>
+    <string name="bookmarks_export_html">Export as HTML</string>
+    <string name="bookmarks_imported">Imported %1$d bookmarks</string>
+    <string name="bookmarks_import_empty">No new bookmarks found</string>
+    <string name="bookmarks_import_failed">Could not import bookmarks</string>
+    <string name="bookmarks_file_too_large">Bookmark file is too large</string>
+    <string name="bookmarks_exported">Bookmarks exported</string>
+    <string name="bookmarks_export_failed">Could not export bookmarks</string>
+    <string name="bookmarks_item_options">Bookmark options</string>
+    <string name="settings_bookmarks">Bookmarks</string>
+    <string name="settings_bookmarks_summary">Folders, search, import and export</string>
+
 </resources>
