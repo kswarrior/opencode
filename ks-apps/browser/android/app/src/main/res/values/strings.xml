@@ -1171,14 +1171,14 @@ Remote debugging is only active while this toggle is on. Turn it off when you ar
     <string name="dev_js_too_large">Snippet is too large (32 KB maximum)</string>
     <string name="dev_js_empty">No snippet saved for this host</string>
     <string name="dev_js_warning_title">Run custom JavaScript?</string>
-    <string name="dev_js_warning">A snippet runs automatically on this host with the page's own privileges. It can read or change page data, including data visible to that site. It cannot access browser settings, passwords, other sites or native bridge methods beyond what the page already has. Only use code you understand.</string>
+    <string name="dev_js_warning">A snippet runs automatically on this host with the page\'s own privileges. It can read or change page data, including data visible to that site. It cannot access browser settings, passwords, other sites or native bridge methods beyond what the page already has. Only use code you understand.</string>
     <string name="dev_js_accept">I understand</string>
     <string name="dev_js_run">Run saved snippet now</string>
     <string name="dev_js_run_desc">Execute the saved snippet once on the current page</string>
     <string name="dev_zapper">Element zapper</string>
     <string name="dev_zapper_desc">Tap elements to hide them and save the generated selector as CSS</string>
     <string name="dev_zapper_hint">Tap any element to hide it. Reopen the zapper to stop.</string>
-    <string name="dev_clear_site_tools">Clear this site's CSS, snippet and zaps</string>
+    <string name="dev_clear_site_tools">Clear this site\'s CSS, snippet and zaps</string>
     <string name="dev_clear_site_tools_desc">Remove saved injections for this host</string>
     <string name="dev_clear_site_tools_confirm">Remove all custom CSS, JavaScript and zapped selectors for %1$s?</string>
     <string name="dev_export">Export all data</string>
@@ -1205,7 +1205,7 @@ Remote debugging is only active while this toggle is on. Turn it off when you ar
     <string name="dev_storage_desc">Show localStorage and sessionStorage for this origin; report IndexedDB presence</string>
     <string name="dev_clear_site">Clear current site data</string>
     <string name="dev_clear_site_desc">Remove cookies and site storage for this origin. WebView can only clear its shared cache.</string>
-    <string name="dev_clear_site_confirm">Remove cookies and site storage for %1$s? WebView's shared cache will also be cleared.</string>
+    <string name="dev_clear_site_confirm">Remove cookies and site storage for %1$s? WebView\'s shared cache will also be cleared.</string>
     <string name="dev_clear_site_done">Site data cleared for %1$s</string>
     <string name="dev_cert">Certificate and connection</string>
     <string name="dev_cert_desc">Show issuer, subject, validity and TLS cipher</string>
