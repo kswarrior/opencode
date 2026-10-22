@@ -56,7 +56,9 @@ no third-party libraries.
 
 ### 3.1 System browser integration (default browser, open links, share target)
 
-- [ ] **Not done.**
+- [x] **Done.** VERIFY/VIEW + SEND filters in the manifest, intent handling in
+  `onCreate`/`onNewIntent`, and the default-browser row in Settings are in
+  place. Verified by launching URLs through the app.
 - **Why:** KS Portal cannot be set as the default browser, does not appear in
   Android's "Open with" list, and cannot receive shared links. It is currently
   an app with a WebView, not a system browser.
@@ -73,7 +75,8 @@ no third-party libraries.
 
 ### 3.2 File upload (`<input type="file">`)
 
-- [ ] **Not done.**
+- [x] **Done.** Implemented `onShowFileChooser` with single/multiple
+  selection. Verified on the emulator: uploaded a PNG through a file input.
 - **Why:** Login avatars, attachments, resumes, government forms and most
   upload flows are dead ends without it.
 - **Today:** the `WebChromeClient` at `MainActivity.java:428` implements only
@@ -89,7 +92,10 @@ no third-party libraries.
 
 ### 3.3 Website permissions (camera, microphone, location)
 
-- [ ] **Not done — the UI is currently cosmetic.**
+- [x] **Done.** Per-site ask/allow/block dialogs, runtime CAMERA /
+  RECORD_AUDIO / location requests, combined camera+microphone prompts and
+  geolocation prompts are wired. Verified: camera preview renders; combined
+  camera+mic prompt works.
 - **Why:** Video calls, voice search, maps, QR scanners and delivery tracking
   all request these.
 - **Today:** `SiteSettingsActivity.java:26-75` stores 16 permissions and
@@ -110,7 +116,9 @@ no third-party libraries.
 
 ### 3.4 Pop-ups and new windows (`window.open`, `target="_blank"`)
 
-- [ ] **Not done.**
+- [x] **Done.** `setSupportMultipleWindows` + `onCreateWindow` create a real
+  tab behind the site popup setting. Verified blocked-by-default and allowed
+  after enabling the site toggle.
 - **Why:** OAuth and payment flows frequently open a popup; links that open a
   new tab currently do nothing.
 - **Today:** `setSupportMultipleWindows` is not enabled and
@@ -126,7 +134,9 @@ no third-party libraries.
 
 ### 3.5 Fullscreen web content and video
 
-- [ ] **Not done.**
+- [x] **Done.** `onShowCustomView` / `onHideCustomView` overlay, immersive UI,
+  back-button exit and callback restoration. Verified with an HTML5
+  fullscreen request.
 - **Why:** Fullscreen is essential for video, slides, games and canvas apps.
 - **Today:** no `onShowCustomView` / `onHideCustomView`. HTML5 fullscreen
   requests are ignored.
@@ -139,7 +149,11 @@ no third-party libraries.
 
 ### 3.6 True private / incognito tabs
 
-- [ ] **Not done — current mode is a flag, not isolation.**
+- [ ] **Partial — best-effort isolation.** Private tabs are not persisted,
+  skip history/recents/autofill, block downloads, and closing the last one
+  expires tracked-host cookies plus clears WebStorage and cache. WebView still
+  shares one cookie/profile store, so isolation is not cryptographic; this
+  limit must be documented in the UI.
 - **Why:** Users expect private tabs to leave no cookies, storage, cache,
   history or downloads after closing.
 - **Today:** `privateTabs` is an in-memory `Set` (`MainActivity.java:104`).
@@ -160,7 +174,10 @@ no third-party libraries.
 
 ### 3.7 Clear browsing data
 
-- [ ] **Not done.**
+- [x] **Done.** Settings row with history/recents, cookies/storage, cache,
+  form data and site-settings options, reusing CookieManager, WebStorage,
+  `clearCache`, form-data clearing, `HistoryRepository` and
+  `SiteSettingsStore.clearAll`.
 - **Why:** A browser needs one place to remove history, cache, cookies, site
   storage and download records.
 - **Today:** only per-site cookie deletion exists (`SiteCookies`). There is no
@@ -176,7 +193,10 @@ no third-party libraries.
 
 ### 3.8 Download completeness (blob/data, pause/resume, auth, POST)
 
-- [ ] **Not done.**
+- [ ] **Mostly done — download auth/POST remain.** blob:/data: downloads via
+  the JS bridge, paused state, persisted partial files and HTTP Range resume
+  are implemented and verified (paused at 53%, resumed to completion).
+  Protected-download auth and POST bodies are still unsupported.
 - **Why:** Web apps export via `blob:`; large downloads need pause/resume;
   protected downloads need auth.
 - **Today:** `MainActivity.java:460-465` explicitly rejects `blob:` and
@@ -197,7 +217,9 @@ no third-party libraries.
 
 ### 3.9 TLS, HTTP auth and client-certificate UX
 
-- [ ] **Not done.**
+- [x] **Done.** TLS interstitial with readable certificate names and reasons,
+  HTTP basic-auth dialog, KeyChain client-certificate picker. Verified the
+  self-signed interstitial shows "Issued to/by: localhost".
 - **Why:** Silent failures look like a broken site; users need to understand
   and act on certificate and auth problems.
 - **Today:** no `onReceivedSslError`, `onReceivedHttpAuthRequest` or
@@ -213,7 +235,8 @@ no third-party libraries.
 
 ### 3.10 Bookmark current page and reach History from a page
 
-- [ ] **Not done.**
+- [x] **Done.** Browser menu now has Bookmark (add/remove toggle) and History.
+  Verified both rows render and act.
 - **Why:** These are the two most common page actions and currently require
   going Home first or long-pressing a tab.
 - **Today:** bookmarks can only be added on the portal or from the Tabs list;
@@ -226,7 +249,8 @@ no third-party libraries.
 
 ### 3.11 Link/image long-press context menu
 
-- [ ] **Not done.**
+- [x] **Done.** Hit-test context dialog for links, images, image links and
+  text with open/copy/share/download/save-image actions.
 - **Why:** "Open in new tab", "copy link", "share link", "download link" and
   "save image" are basic browsing actions.
 - **Today:** no `WebView` context-menu integration; only the platform default
