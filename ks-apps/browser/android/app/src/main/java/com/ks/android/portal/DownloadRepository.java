@@ -360,13 +360,9 @@ public class DownloadRepository {
                 rememberFolderLocked(relative);
                 return true;
             }
-            if (!useMediaStore) {
-                File directory = new File(root, relative);
-                if (!directory.mkdirs() && !directory.isDirectory()) {
-                    return false;
-                }
-            } else {
-                new File(root, relative).mkdirs();
+            File directory = new File(root, relative);
+            if (!directory.mkdirs() && !directory.isDirectory()) {
+                return false;
             }
             rememberFolderLocked(relative);
             return true;
@@ -620,13 +616,9 @@ public class DownloadRepository {
         if (!isCreateMissing()) {
             return false;
         }
-        if (!useMediaStore) {
-            File directory = new File(root, relative);
-            if (!directory.mkdirs() && !directory.isDirectory()) {
-                return false;
-            }
-        } else {
-            new File(root, relative).mkdirs();
+        File directory = new File(root, relative);
+        if (!directory.mkdirs() && !directory.isDirectory()) {
+            return false;
         }
         rememberFolderLocked(relative);
         return true;
@@ -1594,6 +1586,16 @@ public class DownloadRepository {
                         || item.status == DownloadItem.STATUS_DOWNLOADING) {
                     item.status = DownloadItem.STATUS_FAILED;
                     item.error = "Interrupted";
+                } else if (item.status == DownloadItem.STATUS_PAUSED) {
+                    File part = new File(stagingRoot, item.id + ".part");
+                    long actual = part.isFile() ? part.length() : 0;
+                    if (actual > 0) {
+                        item.downloadedBytes = actual;
+                    } else {
+                        item.status = DownloadItem.STATUS_FAILED;
+                        item.error = "Interrupted";
+                        item.downloadedBytes = 0;
+                    }
                 } else if (item.status == DownloadItem.STATUS_COMPLETED
                         && !isFileAvailable(item)) {
                     item.status = DownloadItem.STATUS_FAILED;
