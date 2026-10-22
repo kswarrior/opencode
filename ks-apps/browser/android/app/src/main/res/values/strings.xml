@@ -498,6 +498,13 @@ example.com##.ad-banner</string>
     <string name="customize_action">Customize</string>
     <string name="customize_background">Background</string>
     <string name="customize_toolbar">Toolbar</string>
+    <string name="customize_gestures">Gestures</string>
+    <string name="customize_gestures_summary">Pull to refresh and edge-swipe navigation</string>
+    <string name="gestures_title">Gestures</string>
+    <string name="gesture_pull_refresh">Pull to refresh</string>
+    <string name="gesture_pull_refresh_summary">Drag down from the top of a page to reload it</string>
+    <string name="gesture_edge_swipe">Edge-swipe navigation</string>
+    <string name="gesture_edge_swipe_summary">Swipe from the left or right edge to go back or forward</string>
     <string name="customize_coming_soon">More options coming soon</string>
     <string name="customize_description">New ways to personalize KS Portal are on the way.</string>
     <string name="toolbar_title">Toolbar</string>

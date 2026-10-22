@@ -39,6 +39,12 @@ public class CustomizeActivity extends Activity {
                 startActivity(new Intent(CustomizeActivity.this, ToolbarActivity.class));
             }
         });
+        findViewById(R.id.customizeGestures).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomizeActivity.this, GestureActivity.class));
+            }
+        });
     }
 
     @Override
