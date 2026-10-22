@@ -188,11 +188,13 @@ public class ToolbarActivity extends Activity {
         LinearLayout container = findViewById(R.id.toolbarColors);
         int columns = 4;
         int gap = dp(3);
+        int size = dp(48);
         LinearLayout row = null;
         for (int i = 0; i < COLORS.length; i++) {
             if (i % columns == 0) {
                 row = new LinearLayout(this);
                 row.setOrientation(LinearLayout.HORIZONTAL);
+                row.setGravity(Gravity.CENTER);
                 LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -203,8 +205,7 @@ public class ToolbarActivity extends Activity {
             }
             final int color = COLORS[i];
             View swatch = new View(this);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    0, dp(42), 1f);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
             params.setMargins(gap, gap, gap, gap);
             swatch.setLayoutParams(params);
             swatch.setTag(Integer.valueOf(color));
