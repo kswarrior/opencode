@@ -105,7 +105,7 @@ final class VideoSniffer {
     }
 
     static void recordRequest(int tabId, String url) {
-        if (tabId < 0 || TextUtils.isEmpty(url)) {
+        if (tabId < 0 || TextUtils.isEmpty(url) || !BUCKETS.containsKey(tabId)) {
             return;
         }
         String kind = kindOf(url);
@@ -121,7 +121,7 @@ final class VideoSniffer {
     }
 
     static void ingestDom(int tabId, JSONArray array, String pageUrl, String pageTitle) {
-        if (tabId < 0 || array == null) {
+        if (tabId < 0 || array == null || !BUCKETS.containsKey(tabId)) {
             return;
         }
         setPage(tabId, pageUrl, pageTitle);
