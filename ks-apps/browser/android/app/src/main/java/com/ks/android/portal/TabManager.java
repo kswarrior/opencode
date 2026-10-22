@@ -702,12 +702,14 @@ final class TabManager {
                             item.optString("title", ""));
                     restored.muted = item.optBoolean("muted", false);
                     restored.discarded = item.optBoolean("discarded", false);
+                    restored.pinned = item.optBoolean("pinned", false);
                     tabs.add(restored);
                     if (id >= nextTabId) {
                         nextTabId = id + 1;
                     }
                 }
             }
+            normalizePinnedOrder();
             if (tabs.isEmpty()) {
                 return false;
             }

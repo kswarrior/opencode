@@ -34,6 +34,8 @@ public class TabsActivity extends Activity {
     private static final int MENU_MUTE_TAB = 5;
     private static final int MENU_DISCARD_TAB = 6;
     private static final int MENU_OPEN_PRIVATE = 7;
+    private static final int MENU_PIN_TAB = 8;
+    private static final int MENU_MOVE_LEFT = 9;
 
     private static final int GROUP_MENU_NEW_TAB = 10;
     private static final int GROUP_MENU_EDIT = 11;
