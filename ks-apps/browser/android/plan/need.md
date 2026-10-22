@@ -223,7 +223,9 @@ new work below.
 | ID | P | Add | Note | Size |
 | --- | --- | --- | --- | --- |
 | N65 | P2 | Optional sync for bookmarks/history/tabs | Requires an account or user-supplied backend; do not fake sync locally | L |
-| N22 | P2 | Split-screen/tablet two-pane | See tabs; needs a layout and focus rewrite | L |
+
+Split-screen/tablet two-pane (N22) is tracked in 4.3 and shares this deferred
+status: it needs a layout and focus rewrite, not a small patch.
 
 ---
 

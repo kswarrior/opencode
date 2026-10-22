@@ -105,7 +105,7 @@ none of them should send data anywhere.
 | B3 | Console and error viewer | Captures `onConsoleMessage` plus injected JS errors in a bounded ring buffer with copy/clear | High | S |
 | B4 | Custom User-Agent editor | Free-form UA plus phone/tablet/desktop presets, separate from the per-site screen-size presets | High | S |
 | B5 | Per-site custom CSS | Injects saved CSS for one host; toggleable and resettable | High | M |
-| B6 | Per-site JS snippets / runner | Runs a saved snippet on matching pages or once on demand, with a loud warning and no access to native bridges | High | M |
+| B6 | Per-site JS snippets / runner | Runs a saved snippet on matching pages or once on demand, with a loud warning; snippets get page privileges only and must never receive new bridge methods or secrets | High | M |
 | B7 | Element zapper | Tap an element to hide it and save the generated selector as per-site CSS | Medium | M |
 | B8 | Export/import all data | JSON export/import of bookmarks, history, tabs, groups and settings; credentials always excluded | High | M |
 | B9 | Session/tab export | Copy the tab list as JSON, Markdown or plain URLs | Medium | S |
