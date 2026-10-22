@@ -473,8 +473,25 @@ public class MainActivity extends Activity {
             return;
         }
         try {
+            List<RemoteAction> actions = new ArrayList<RemoteAction>();
+            actions.add(new RemoteAction(
+                    Icon.createWithResource(this, R.drawable.ic_play),
+                    getString(R.string.media_action_play),
+                    getString(R.string.media_action_play),
+                    mediaActionIntent(ACTION_MEDIA_PLAY, 21)));
+            actions.add(new RemoteAction(
+                    Icon.createWithResource(this, R.drawable.ic_pause),
+                    getString(R.string.media_action_pause),
+                    getString(R.string.media_action_pause),
+                    mediaActionIntent(ACTION_MEDIA_PAUSE, 22)));
+            actions.add(new RemoteAction(
+                    Icon.createWithResource(this, R.drawable.ic_close),
+                    getString(R.string.media_action_stop),
+                    getString(R.string.media_action_stop),
+                    mediaActionIntent(ACTION_MEDIA_STOP, 23)));
             enterPictureInPictureMode(new PictureInPictureParams.Builder()
                     .setAspectRatio(new Rational(16, 9))
+                    .setActions(actions)
                     .build());
         } catch (IllegalStateException ignored) {
         }
@@ -497,15 +514,108 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onPause() {
+        activityResumed = false;
         saveTabHistories();
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        boolean keepAudio = !isInPictureInPictureMode() && active != null
+                && active.audible && setting("media_background_audio", true);
         if (!isInPictureInPictureMode()) {
-            for (WebView tabView : tabViews.values()) {
-                tabView.onPause();
+            for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
+                if (keepAudio && entry.getKey().intValue() == active.id) {
+                    continue;
+                }
+                entry.getValue().onPause();
             }
+        }
+        if (keepAudio) {
+            showMediaNotification(active);
+        } else {
+            cancelMediaNotification();
         }
         AdBlocker.flushStatistics();
         adBlockEngineVersionOnResume = AdBlocker.engineVersion();
         super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mediaReceiver != null) {
+            try {
+                unregisterReceiver(mediaReceiver);
+            } catch (IllegalArgumentException ignored) {
+            }
+            mediaReceiver = null;
+        }
+        cancelMediaNotification();
+        super.onDestroy();
+    }
+
+    private PendingIntent mediaActionIntent(String action, int requestCode) {
+        Intent intent = new Intent(action).setPackage(getPackageName());
+        int flags = PendingIntent.FLAG_UPDATE_CURRENT;
+        if (Build.VERSION.SDK_INT >= 23) {
+            flags |= PendingIntent.FLAG_IMMUTABLE;
+        }
+        return PendingIntent.getBroadcast(this, requestCode, intent, flags);
+    }
+
+    private void showMediaNotification(BrowserTab tab) {
+        if (tab == null) {
+            return;
+        }
+        NotificationManager manager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+        if (manager == null) {
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(MEDIA_CHANNEL,
+                    getString(R.string.media_notification_channel),
+                    NotificationManager.IMPORTANCE_LOW);
+            channel.setShowBadge(false);
+            manager.createNotificationChannel(channel);
+        }
+        String title = tab.title;
+        if (TextUtils.isEmpty(title)) {
+            title = SiteSettingsStore.hostOf(tab.url);
+        }
+        if (tabManager.isPrivate(tab.id) || TextUtils.isEmpty(title)) {
+            title = getString(R.string.media_private_tab);
+        }
+        Intent open = new Intent(this, MainActivity.class);
+        int flags = PendingIntent.FLAG_UPDATE_CURRENT;
+        if (Build.VERSION.SDK_INT >= 23) {
+            flags |= PendingIntent.FLAG_IMMUTABLE;
+        }
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, open, flags);
+        Notification.Builder builder = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                ? new Notification.Builder(this, MEDIA_CHANNEL)
+                : new Notification.Builder(this);
+        builder.setSmallIcon(R.drawable.ic_play)
+                .setContentTitle(title)
+                .setContentText(getString(R.string.media_notification_text))
+                .setContentIntent(contentIntent)
+                .setOngoing(true)
+                .setOnlyAlertOnce(true)
+                .setVisibility(Notification.VISIBILITY_PRIVATE)
+                .addAction(R.drawable.ic_play, getString(R.string.media_action_play),
+                        mediaActionIntent(ACTION_MEDIA_PLAY, 11))
+                .addAction(R.drawable.ic_pause, getString(R.string.media_action_pause),
+                        mediaActionIntent(ACTION_MEDIA_PAUSE, 12))
+                .addAction(R.drawable.ic_close, getString(R.string.media_action_stop),
+                        mediaActionIntent(ACTION_MEDIA_STOP, 13));
+        try {
+            manager.notify(MEDIA_NOTIFICATION_ID, builder.build());
+        } catch (SecurityException ignored) {
+        }
+    }
+
+    private void cancelMediaNotification() {
+        NotificationManager manager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+        if (manager != null) {
+            manager.cancel(MEDIA_NOTIFICATION_ID);
+        }
     }
 
     @Override
