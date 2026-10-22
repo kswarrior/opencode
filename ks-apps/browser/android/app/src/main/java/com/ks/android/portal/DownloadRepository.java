@@ -747,9 +747,11 @@ public class DownloadRepository {
                 return false;
             }
             File part = new File(stagingRoot, item.id + ".part");
+            boolean hls = HlsPlaylist.isHls(item.url, item.mimeType);
             long offset = part.isFile() ? part.length() : 0;
-            if (offset <= 0) {
+            if (hls || offset <= 0) {
                 part.delete();
+                offset = 0;
             }
             item.status = DownloadItem.STATUS_PENDING;
             item.relativePath = relative;
@@ -757,7 +759,7 @@ public class DownloadRepository {
             item.error = "";
             String cookie = CookieManager.getInstance().getCookie(item.url);
             task = new DownloadTask(item.id, part, item.url, item.userAgent,
-                    item.referer, cookie, offset);
+                    item.referer, cookie, offset, hls);
             tasks.put(item.id, task);
             persistLocked();
         }
@@ -1022,9 +1024,10 @@ public class DownloadRepository {
             item.error = "";
             File part = new File(stagingRoot, item.id + ".part");
             part.delete();
+            boolean hls = HlsPlaylist.isHls(item.url, item.mimeType);
             String cookie = CookieManager.getInstance().getCookie(item.url);
             task = new DownloadTask(item.id, part, item.url, item.userAgent,
-                    item.referer, cookie, 0);
+                    item.referer, cookie, 0, hls);
             tasks.put(item.id, task);
             persistLocked();
         }
@@ -1956,13 +1959,14 @@ public class DownloadRepository {
         private final String referer;
         private final String cookie;
         private final long resumeOffset;
+        private final boolean hls;
         private volatile boolean cancelled;
         private volatile boolean paused;
         private volatile boolean keepPart;
         private volatile HttpURLConnection connection;
 
         DownloadTask(long id, File part, String url, String userAgent, String referer,
-                     String cookie, long resumeOffset) {
+                     String cookie, long resumeOffset, boolean hls) {
             this.id = id;
             this.part = part;
             this.url = url;
@@ -1970,6 +1974,7 @@ public class DownloadRepository {
             this.referer = referer;
             this.cookie = cookie;
             this.resumeOffset = Math.max(0, resumeOffset);
+            this.hls = hls;
         }
 
         void cancel() {
@@ -2000,6 +2005,10 @@ public class DownloadRepository {
             }
             if (cancelled) {
                 markCancelled();
+                return;
+            }
+            if (hls) {
+                runHls();
                 return;
             }
             File parent = part.getParentFile();
