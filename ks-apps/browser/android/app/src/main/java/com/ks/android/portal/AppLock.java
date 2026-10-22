@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Build;
 
 final class AppLock {
+    private static final String EXTRA_TITLE = "android.app.extra.TITLE";
+    private static final String EXTRA_DESCRIPTION = "android.app.extra.DESCRIPTION";
+
     private AppLock() {
     }
 
@@ -25,9 +28,9 @@ final class AppLock {
         try {
             Intent intent = manager.createConfirmDeviceCredentialIntent(null, null);
             if (intent != null) {
-                intent.putExtra(KeyguardManager.EXTRA_TITLE,
+                intent.putExtra(EXTRA_TITLE,
                         context.getString(R.string.app_lock_prompt_title));
-                intent.putExtra(KeyguardManager.EXTRA_DESCRIPTION,
+                intent.putExtra(EXTRA_DESCRIPTION,
                         context.getString(R.string.app_lock_prompt_message));
             }
             return intent;
