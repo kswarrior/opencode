@@ -18,7 +18,6 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.webkit.MimeTypeMap;
@@ -237,80 +236,74 @@ public class DownloadsActivity extends Activity {
         }
     }
 
-    private void showItemMenu(View anchor, DownloadItem item) {
+    private void showItemMenu(View anchor, final DownloadItem item) {
         if (anchor == null) {
             return;
         }
-        PopupMenu popup = new PopupMenu(this, anchor);
+        final int[] ids;
+        int[] labels;
+        int[] icons;
         if (item.status == DownloadItem.STATUS_COMPLETED) {
-            popup.getMenu().add(0, MENU_OPEN, 0, R.string.download_open)
-                    .setIcon(R.drawable.ic_menu_open);
-            popup.getMenu().add(0, MENU_RENAME, 1, R.string.download_rename)
-                    .setIcon(R.drawable.ic_edit);
-            popup.getMenu().add(0, MENU_SHARE, 2, R.string.download_share)
-                    .setIcon(R.drawable.ic_menu_share);
-            popup.getMenu().add(0, MENU_DELETE, 3, R.string.download_delete)
-                    .setIcon(R.drawable.ic_delete);
+            ids = new int[]{MENU_OPEN, MENU_RENAME, MENU_SHARE, MENU_DELETE};
+            labels = new int[]{R.string.download_open, R.string.download_rename,
+                    R.string.download_share, R.string.download_delete};
+            icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_edit,
+                    R.drawable.ic_menu_share, R.drawable.ic_delete};
         } else if (item.status == DownloadItem.STATUS_PENDING
                 || item.status == DownloadItem.STATUS_DOWNLOADING) {
-            popup.getMenu().add(0, MENU_PAUSE, 0, R.string.download_pause)
-                    .setIcon(R.drawable.ic_pause);
-            popup.getMenu().add(0, MENU_CANCEL, 1, R.string.download_cancel)
-                    .setIcon(R.drawable.ic_close);
-            popup.getMenu().add(0, MENU_DELETE, 2, R.string.download_delete)
-                    .setIcon(R.drawable.ic_delete);
+            ids = new int[]{MENU_PAUSE, MENU_CANCEL, MENU_DELETE};
+            labels = new int[]{R.string.download_pause, R.string.download_cancel,
+                    R.string.download_delete};
+            icons = new int[]{R.drawable.ic_pause, R.drawable.ic_close,
+                    R.drawable.ic_delete};
         } else if (item.status == DownloadItem.STATUS_PAUSED) {
-            popup.getMenu().add(0, MENU_RESUME, 0, R.string.download_resume)
-                    .setIcon(R.drawable.ic_play);
-            popup.getMenu().add(0, MENU_CANCEL, 1, R.string.download_cancel)
-                    .setIcon(R.drawable.ic_close);
-            popup.getMenu().add(0, MENU_DELETE, 2, R.string.download_delete)
-                    .setIcon(R.drawable.ic_delete);
+            ids = new int[]{MENU_RESUME, MENU_CANCEL, MENU_DELETE};
+            labels = new int[]{R.string.download_resume, R.string.download_cancel,
+                    R.string.download_delete};
+            icons = new int[]{R.drawable.ic_play, R.drawable.ic_close,
+                    R.drawable.ic_delete};
         } else {
-            popup.getMenu().add(0, MENU_RETRY, 0, R.string.download_retry)
-                    .setIcon(R.drawable.ic_menu_reload);
-            popup.getMenu().add(0, MENU_DELETE, 1, R.string.download_delete)
-                    .setIcon(R.drawable.ic_delete);
+            ids = new int[]{MENU_RETRY, MENU_DELETE};
+            labels = new int[]{R.string.download_retry, R.string.download_delete};
+            icons = new int[]{R.drawable.ic_menu_reload, R.drawable.ic_delete};
         }
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        KsDialog.menu(this, 0, ids, labels, icons, -1, new KsDialog.ChoiceAction() {
             @Override
-            public boolean onMenuItemClick(android.view.MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
+            public void run(int index) {
+                switch (ids[index]) {
                     case MENU_OPEN:
                         openItem(item);
-                        return true;
+                        break;
                     case MENU_RENAME:
                         renameItem(item);
-                        return true;
+                        break;
                     case MENU_SHARE:
                         shareItem(item);
-                        return true;
+                        break;
                     case MENU_DELETE:
                         confirmDelete(item);
-                        return true;
+                        break;
                     case MENU_CANCEL:
                         repository.cancel(item.id);
-                        return true;
+                        break;
                     case MENU_RETRY:
                         if (!repository.retry(item.id)) {
                             toast(getString(R.string.download_start_failed));
                         }
-                        return true;
+                        break;
                     case MENU_PAUSE:
                         repository.pause(item.id);
-                        return true;
+                        break;
                     case MENU_RESUME:
                         if (!repository.resume(item.id)) {
                             toast(getString(R.string.download_start_failed));
                         }
-                        return true;
+                        break;
                     default:
-                        return false;
+                        break;
                 }
             }
         });
-        MenuIcons.show(popup);
-        popup.show();
     }
 
     private void openItem(DownloadItem item) {

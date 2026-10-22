@@ -214,43 +214,57 @@ public class TabsActivity extends Activity {
         return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
-    private void showTabMenu(View anchor, BrowserTab tab) {
-        PopupMenu popup = new PopupMenu(this, anchor);
+    private void showTabMenu(View anchor, final BrowserTab tab) {
+        List<Integer> ids = new ArrayList<Integer>();
+        List<Integer> labels = new ArrayList<Integer>();
+        List<Integer> icons = new ArrayList<Integer>();
         if (!tab.isHome()) {
-            popup.getMenu().add(0, MENU_ADD_BOOKMARK, 0, R.string.tabs_add_bookmark)
-                    .setIcon(R.drawable.ic_bookmark);
+            ids.add(MENU_ADD_BOOKMARK);
+            labels.add(R.string.tabs_add_bookmark);
+            icons.add(R.drawable.ic_bookmark);
         }
-        popup.getMenu().add(0, MENU_MOVE_TO_GROUP, 1, R.string.tabs_move_to_group)
-                .setIcon(R.drawable.ic_folder);
+        ids.add(MENU_MOVE_TO_GROUP);
+        labels.add(R.string.tabs_move_to_group);
+        icons.add(R.drawable.ic_folder);
         if (tab.groupId != 0) {
-            popup.getMenu().add(0, MENU_REMOVE_FROM_GROUP, 2,
-                    R.string.tabs_remove_from_group).setIcon(R.drawable.ic_close);
+            ids.add(MENU_REMOVE_FROM_GROUP);
+            labels.add(R.string.tabs_remove_from_group);
+            icons.add(R.drawable.ic_close);
         }
-        popup.getMenu().add(0, MENU_CLOSE_TAB, 3, R.string.tabs_close)
-                .setIcon(R.drawable.ic_close);
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(android.view.MenuItem item) {
-                switch (item.getItemId()) {
-                    case MENU_ADD_BOOKMARK:
-                        addBookmark(tab);
-                        return true;
-                    case MENU_MOVE_TO_GROUP:
-                        showMoveToGroup(tab);
-                        return true;
-                    case MENU_REMOVE_FROM_GROUP:
-                        tabManager.moveTabToGroup(tab.id, 0);
-                        return true;
-                    case MENU_CLOSE_TAB:
-                        tabManager.closeTab(tab.id);
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        MenuIcons.show(popup);
-        popup.show();
+        ids.add(MENU_CLOSE_TAB);
+        labels.add(R.string.tabs_close);
+        icons.add(R.drawable.ic_close);
+        final int[] idArray = toIntArray(ids);
+        KsDialog.menu(this, 0, idArray, toIntArray(labels), toIntArray(icons), -1,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        switch (idArray[index]) {
+                            case MENU_ADD_BOOKMARK:
+                                addBookmark(tab);
+                                break;
+                            case MENU_MOVE_TO_GROUP:
+                                showMoveToGroup(tab);
+                                break;
+                            case MENU_REMOVE_FROM_GROUP:
+                                tabManager.moveTabToGroup(tab.id, 0);
+                                break;
+                            case MENU_CLOSE_TAB:
+                                tabManager.closeTab(tab.id);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+    }
+
+    private static int[] toIntArray(List<Integer> values) {
+        int[] result = new int[values.size()];
+        for (int i = 0; i < values.size(); i++) {
+            result[i] = values.get(i);
+        }
+        return result;
     }
 
     private void addBookmark(BrowserTab tab) {

@@ -191,6 +191,9 @@ remaining security hardening; they do not replace F3/F4/F7.
 | N46 | P2 | Wire the site notification permission row | Site notification shim checks the per-site permission and the global toggle | S |
 | N47 | P1 | One source of truth for permission defaults | Location (and every other permission) displays the same default that runtime uses | S |
 
+N44, N45, N47 are the implementation build-out for F6. Schedule them as one
+change with one `SiteSettingsStore` source; do not create a second store.
+
 ### 4.8 Autofill and identity
 
 | ID | P | Add | Done when | Size |
