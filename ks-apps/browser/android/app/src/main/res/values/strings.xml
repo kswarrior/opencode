@@ -672,4 +672,11 @@ example.com##.ad-banner</string>
     <string name="filter_failed">Failed and cancelled</string>
     <string name="download_speed">%1$s/s</string>
     <string name="download_eta">%1$s left</string>
+    <string name="download_resume_all">Resume all paused</string>
+    <string name="download_retry_all">Retry all failed</string>
+    <string name="download_resume_all_done">Resumed %1$d downloads</string>
+    <string name="download_retry_all_done">Retried %1$d downloads</string>
+    <string name="download_open_with">Open with</string>
+    <string name="download_folder">Open containing folder</string>
+    <string name="download_folder_unavailable">No folder app is available</string>
 </resources>

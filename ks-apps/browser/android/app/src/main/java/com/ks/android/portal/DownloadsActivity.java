@@ -41,6 +41,8 @@ public class DownloadsActivity extends Activity {
     private static final int MENU_PAUSE = 7;
     private static final int MENU_RESUME = 8;
     private static final int MENU_SIGN_IN = 9;
+    private static final int MENU_OPEN_WITH = 10;
+    private static final int MENU_FOLDER = 11;
 
     private DownloadRepository repository;
     private ListView listView;
@@ -158,17 +160,26 @@ public class DownloadsActivity extends Activity {
     }
 
     private void showSortFilter() {
-        int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
+        int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int[] labels = new int[]{
                 R.string.sort_newest, R.string.sort_oldest, R.string.sort_name,
                 R.string.sort_size, R.string.filter_all, R.string.filter_active,
-                R.string.filter_completed, R.string.filter_failed};
-        int checked = sortMode < 4 ? sortMode : 4 + (filterMode - 0);
+                R.string.filter_completed, R.string.filter_failed,
+                R.string.download_resume_all, R.string.download_retry_all};
+        int checked = filterMode > 0 ? 4 + filterMode : sortMode;
         KsDialog.menu(this, R.string.downloads_filter, ids, labels,
-                new int[]{0, 0, 0, 0, 0, 0, 0, 0}, checked,
+                new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, checked,
                 new KsDialog.ChoiceAction() {
                     @Override
                     public void run(int index) {
+                        if (index == 8) {
+                            resumeAll();
+                            return;
+                        }
+                        if (index == 9) {
+                            retryAll();
+                            return;
+                        }
                         if (index < 4) {
                             sortMode = index;
                         } else {
@@ -180,6 +191,29 @@ public class DownloadsActivity extends Activity {
                         refreshList();
                     }
                 });
+    }
+
+    private void resumeAll() {
+        int count = 0;
+        for (DownloadItem item : repository.getItems()) {
+            if (item.status == DownloadItem.STATUS_PAUSED
+                    && repository.resume(item.id)) {
+                count++;
+            }
+        }
+        KsToast.show(this, getString(R.string.download_resume_all_done, count));
+    }
+
+    private void retryAll() {
+        int count = 0;
+        for (DownloadItem item : repository.getItems()) {
+            if ((item.status == DownloadItem.STATUS_FAILED
+                    || item.status == DownloadItem.STATUS_CANCELLED)
+                    && repository.retry(item.id)) {
+                count++;
+            }
+        }
+        KsToast.show(this, getString(R.string.download_retry_all_done, count));
     }
 
     private boolean matchesFilter(DownloadItem item) {
@@ -326,10 +360,13 @@ public class DownloadsActivity extends Activity {
         int[] labels;
         int[] icons;
         if (item.status == DownloadItem.STATUS_COMPLETED) {
-            ids = new int[]{MENU_OPEN, MENU_RENAME, MENU_SHARE, MENU_DELETE};
-            labels = new int[]{R.string.download_open, R.string.download_rename,
+            ids = new int[]{MENU_OPEN, MENU_OPEN_WITH, MENU_FOLDER, MENU_RENAME,
+                    MENU_SHARE, MENU_DELETE};
+            labels = new int[]{R.string.download_open, R.string.download_open_with,
+                    R.string.download_folder, R.string.download_rename,
                     R.string.download_share, R.string.download_delete};
-            icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_edit,
+            icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_menu_open,
+                    R.drawable.ic_folder, R.drawable.ic_edit,
                     R.drawable.ic_menu_share, R.drawable.ic_delete};
         } else if (item.status == DownloadItem.STATUS_PENDING
                 || item.status == DownloadItem.STATUS_DOWNLOADING) {
@@ -361,6 +398,12 @@ public class DownloadsActivity extends Activity {
                 switch (ids[index]) {
                     case MENU_OPEN:
                         openItem(item);
+                        break;
+                    case MENU_OPEN_WITH:
+                        openWith(item);
+                        break;
+                    case MENU_FOLDER:
+                        openFolder(item);
                         break;
                     case MENU_RENAME:
                         renameItem(item);
@@ -432,6 +475,40 @@ public class DownloadsActivity extends Activity {
             startActivity(intent);
         } catch (Exception exception) {
             toast(getString(R.string.download_no_app));
+        }
+    }
+
+    private void openWith(DownloadItem item) {
+        if (!repository.isFileAvailable(item)) {
+            toast(getString(R.string.download_file_missing));
+            return;
+        }
+        Uri uri = contentUriFor(item);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(uri, mimeTypeFor(item, uri));
+        intent.setClipData(ClipData.newRawUri(item.fileName, uri));
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        try {
+            startActivity(Intent.createChooser(intent,
+                    getString(R.string.download_open_with)));
+        } catch (Exception exception) {
+            toast(getString(R.string.download_no_app));
+        }
+    }
+
+    private void openFolder(DownloadItem item) {
+        File file = TextUtils.isEmpty(item.filePath) ? null : new File(item.filePath);
+        File folder = file == null ? null : file.getParentFile();
+        if (folder == null || !folder.isDirectory()) {
+            toast(getString(R.string.download_folder_unavailable));
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(folder), "resource/folder");
+        try {
+            startActivity(intent);
+        } catch (Exception exception) {
+            toast(getString(R.string.download_folder_unavailable));
         }
     }
 
