@@ -411,6 +411,16 @@ example.com##.ad-banner</string>
     <string name="notification_update_text">Version %1$s is now installed</string>
     <string name="notification_tip_title">KS Portal tip</string>
     <string name="notification_tip_text">Tap the floating button to show or hide the toolbar.</string>
+    <string name="clear_browsing_data">Clear browsing data</string>
+    <string name="clear_browsing_data_summary">History, cookies, cache and site settings</string>
+    <string name="clear_data_title">Clear browsing data</string>
+    <string name="clear_data_history">Browsing history and recents</string>
+    <string name="clear_data_cookies">Cookies and site data</string>
+    <string name="clear_data_cache">Cached pages and files</string>
+    <string name="clear_data_form">Saved form data</string>
+    <string name="clear_data_sites">Site settings and permissions</string>
+    <string name="clear_data_confirm">Clear</string>
+    <string name="clear_data_done">Browsing data cleared</string>
     <string name="file_chooser_title">Choose a file</string>
     <string name="permission_camera_title">Use the camera?</string>
     <string name="permission_microphone_title">Use the microphone?</string>

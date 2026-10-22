@@ -227,6 +227,10 @@ final class SiteSettingsStore {
         return findSize(context, getScreenSizeId(context, host)).width;
     }
 
+    static void clearAll(Context context) {
+        preferences(context).edit().clear().apply();
+    }
+
     static void reset(Context context, String host) {
         if (TextUtils.isEmpty(host)) {
             return;
