@@ -75,6 +75,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -2716,7 +2717,7 @@ public class MainActivity extends Activity {
                 : R.string.notification_site_blocked);
     }
 
-    private static String originOf(String rawUrl) {
+    private String originOf(String rawUrl) {
         String normalized = normalizeWebUrl(rawUrl);
         if (normalized == null) {
             return null;
@@ -2734,7 +2735,7 @@ public class MainActivity extends Activity {
                 + host.toLowerCase(Locale.US) + ":" + port;
     }
 
-    private static boolean sameOrigin(String first, String second) {
+    private boolean sameOrigin(String first, String second) {
         String a = originOf(first);
         String b = originOf(second);
         return a != null && a.equals(b);
@@ -3041,19 +3042,19 @@ public class MainActivity extends Activity {
                     }
                     KsDialog.confirm(MainActivity.this, R.string.notification_site_title,
                             getString(R.string.notification_site_message, host),
-                            R.string.dialog_block, R.string.permission_allow,
-                            new KsDialog.Action() {
-                                @Override
-                                public void run() {
-                                    grantSiteNotifications(host, false);
-                                }
-                            },
+                            R.string.dialog_block, R.string.permission_allow, false,
                             new KsDialog.Action() {
                                 @Override
                                 public void run() {
                                     grantSiteNotifications(host, true);
                                 }
-                            });
+                            },
+                            new KsDialog.Action() {
+                                @Override
+                                public void run() {
+                                    grantSiteNotifications(host, false);
+                                }
+                            }, null);
                 }
             });
             return false;
