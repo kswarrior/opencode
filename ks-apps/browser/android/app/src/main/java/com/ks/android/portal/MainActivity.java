@@ -2258,6 +2258,9 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (handleAdvancedResult(requestCode, resultCode)) {
+            return;
+        }
         if (requestCode == REQUEST_VOICE_SEARCH) {
             if (resultCode == RESULT_OK && data != null) {
                 java.util.ArrayList<String> results =
@@ -2659,6 +2662,10 @@ public class MainActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             settings.setSafeBrowsingEnabled(setting("security_safe_browsing", true));
         }
+        String customUserAgent = AdvancedStore.customUserAgent(this);
+        if (!TextUtils.isEmpty(customUserAgent)) {
+            settings.setUserAgentString(customUserAgent);
+        }
     }
 
     private void applyForceDark(WebSettings settings) {
@@ -2700,8 +2707,12 @@ public class MainActivity extends Activity {
         CookieManager.getInstance().setAcceptThirdPartyCookies(view,
                 SiteSettingsStore.getBoolean(this, host,
                         SiteSettingsStore.KEY_THIRD_PARTY_COOKIES, true));
-        settings.setBlockNetworkImage(!SiteSettingsStore.getBoolean(this, host,
-                SiteSettingsStore.KEY_IMAGES, true));
+        boolean loadImages = SiteSettingsStore.getBoolean(this, host,
+                SiteSettingsStore.KEY_IMAGES, true);
+        if (AdvancedStore.isDataSaver(this) && !isHomeUrl(url)) {
+            loadImages = false;
+        }
+        settings.setBlockNetworkImage(!loadImages);
 
         SiteSettingsStore.ScreenSize size = SiteSettingsStore.findSize(this,
                 SiteSettingsStore.getScreenSizeId(this, host));
@@ -2714,6 +2725,10 @@ public class MainActivity extends Activity {
         }
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
+        String customUserAgent = AdvancedStore.customUserAgent(this);
+        if (!TextUtils.isEmpty(customUserAgent)) {
+            settings.setUserAgentString(customUserAgent);
+        }
     }
 
     private String userAgentForWidth(int width) {
@@ -3135,7 +3150,7 @@ public class MainActivity extends Activity {
     }
 
     private void showToolsMenu() {
-        final int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        final int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
         int[] labels = new int[]{
                 R.string.tool_print,
                 R.string.tool_reader,
@@ -3148,7 +3163,9 @@ public class MainActivity extends Activity {
                 R.string.tool_autoplay,
                 R.string.tool_reopen_tab,
                 R.string.tool_mute_site,
-                R.string.tool_translate};
+                R.string.tool_translate,
+                R.string.tool_extras,
+                R.string.tool_dev_tools};
         int[] icons = new int[]{
                 R.drawable.ic_menu_share,
                 R.drawable.ic_menu_open,
@@ -3161,7 +3178,9 @@ public class MainActivity extends Activity {
                 R.drawable.ic_play,
                 R.drawable.ic_menu_reload,
                 R.drawable.ic_volume_off,
-                R.drawable.ic_globe};
+                R.drawable.ic_globe,
+                R.drawable.ic_menu_open,
+                R.drawable.ic_settings};
         KsDialog.menu(this, R.string.tools_title, ids, labels, icons, -1,
                 new KsDialog.ChoiceAction() {
                     @Override
@@ -3202,6 +3221,12 @@ public class MainActivity extends Activity {
                                 break;
                             case 12:
                                 translatePage();
+                                break;
+                            case 13:
+                                openExtras();
+                                break;
+                            case 14:
+                                openDeveloperTools();
                                 break;
                             default:
                                 break;
