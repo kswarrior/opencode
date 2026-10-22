@@ -728,7 +728,7 @@ public class MainActivity extends Activity {
         }
         String action = intent.getAction();
         if (ACTION_NEW_PRIVATE_TAB.equals(action)) {
-            BrowserTab tab = tabManager.addTab(HOME_URL, 0);
+            BrowserTab tab = tabManager.addTab(newTabUrl(), 0);
             privateTabs.add(tab.id);
             tabManager.setPrivate(tab.id, true);
             privateTabHosts.put(tab.id, new ArrayList<String>());
@@ -736,7 +736,7 @@ public class MainActivity extends Activity {
             return true;
         }
         if (ACTION_NEW_TAB.equals(action)) {
-            tabManager.addTab(HOME_URL, 0);
+            tabManager.addTab(newTabUrl(), 0);
             syncActiveTab();
             return true;
         }
@@ -1830,7 +1830,7 @@ public class MainActivity extends Activity {
             tab.loading = true;
             tab.progress = 0;
             if (!restoreTabHistory(view, tab)) {
-                loadUrlWithSettings(view, TextUtils.isEmpty(tab.url) ? HOME_URL : tab.url);
+                loadUrlWithSettings(view, TextUtils.isEmpty(tab.url) ? newTabUrl() : tab.url);
             }
         }
         for (Map.Entry<Integer, WebView> entry : tabViews.entrySet()) {
@@ -2495,6 +2495,10 @@ public class MainActivity extends Activity {
         return url != null && url.startsWith(HOME_URL);
     }
 
+    private String newTabUrl() {
+        return HomeLayoutStore.homeUrl(this);
+    }
+
     private boolean setting(String key, boolean defaultValue) {
         SharedPreferences preferences = settingsPrefs;
         return preferences == null ? defaultValue : preferences.getBoolean(key, defaultValue);
@@ -2767,7 +2771,7 @@ public class MainActivity extends Activity {
         updateToolbarToggle();
         setToolbarVisible(false);
         if (webView != null) {
-            loadUrlWithSettings(webView, HOME_URL);
+            loadUrlWithSettings(webView, newTabUrl());
         }
     }
 
@@ -3339,7 +3343,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 popup.dismiss();
-                tabManager.addTab(HOME_URL, 0);
+                tabManager.addTab(newTabUrl(), 0);
             }
         });
         panel.findViewById(R.id.menuHome).setOnClickListener(new View.OnClickListener() {
@@ -4810,6 +4814,14 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public String getHomeLayout() {
+            if (!allowed()) {
+                return "";
+            }
+            return HomeLayoutStore.json(MainActivity.this);
+        }
+
+        @JavascriptInterface
         public String getAiMode() {
             if (!allowed()) {
                 return AiModeEngine.DEFAULT;
@@ -4923,7 +4935,7 @@ public class MainActivity extends Activity {
                 && event.isCtrlPressed()) {
             switch (event.getKeyCode()) {
                 case KeyEvent.KEYCODE_T:
-                    tabManager.addTab(HOME_URL, 0);
+                    tabManager.addTab(newTabUrl(), 0);
                     syncActiveTab();
                     return true;
                 case KeyEvent.KEYCODE_W:
