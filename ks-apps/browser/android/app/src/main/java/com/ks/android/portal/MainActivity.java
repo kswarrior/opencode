@@ -11,6 +11,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -311,6 +312,7 @@ public class MainActivity extends Activity {
 
     private void openUrlInActiveTab(String url) {
         BrowserTab tab = tabManager.getActiveTab();
+        Log.d("KSIntent", "openUrlInActiveTab " + url + " tab=" + (tab == null ? "null" : tab.url));
         if (tab == null) {
             tabManager.addTab(url, 0);
             return;
@@ -2374,6 +2376,9 @@ public class MainActivity extends Activity {
         if (intent == null) {
             return null;
         }
+        Log.d("KSIntent", "action=" + intent.getAction() + " data=" + intent.getDataString()
+                + " text=" + intent.getStringExtra(Intent.EXTRA_TEXT)
+                + " open=" + intent.getStringExtra(EXTRA_OPEN_URL));
         String explicit = normalizeWebUrl(intent.getStringExtra(EXTRA_OPEN_URL));
         if (explicit != null) {
             return explicit;
