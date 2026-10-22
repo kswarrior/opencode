@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -58,6 +59,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.webkit.ClientCertRequest;
+import android.webkit.ConsoleMessage;
 import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions;
@@ -76,6 +78,9 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.net.URLEncoder;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
 import android.webkit.WebViewClient;
@@ -178,6 +183,10 @@ public class MainActivity extends Activity {
     private static final int REQUEST_NOTIFICATIONS = 2002;
     private static final int REQUEST_SITE_SETTINGS = 2003;
     private static final int REQUEST_VOICE_SEARCH = 7002;
+    private static final int REQUEST_EXTRAS = 2008;
+    private static final int REQUEST_DEV_TOOLS = 2009;
+    private static final int REQUEST_APP_UNLOCK = 2010;
+    private static final int REQUEST_PRIVATE_UNLOCK = 2011;
 
     private static final int REQUEST_FILE_CHOOSER = 2004;
     private static final int REQUEST_PERMISSION_CAMERA = 2005;
@@ -232,6 +241,14 @@ public class MainActivity extends Activity {
     private BroadcastReceiver mediaReceiver;
     private BroadcastReceiver bookmarksReceiver;
     private boolean activityResumed;
+    private boolean appUnlocked;
+    private boolean privateUnlocked;
+    private boolean privatePromptShowing;
+    private Runnable pendingPrivateAction;
+    private ReadAloudController readAloud;
+    private float readAloudRate = 1f;
+    private String previousPageUrl = "";
+    private int nightDimStrength;
     private float gestureStartX;
     private float gestureStartY;
     private boolean gestureTracking;
@@ -258,6 +275,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        WebView.setWebContentsDebuggingEnabled(AdvancedStore.isDeveloperEnabled(this)
+                && AdvancedStore.isRemoteDebugging(this));
+        readAloud = new ReadAloudController(this);
         AdBlocker.initialize(this);
         adBlockEnabledOnResume = AdBlocker.isEnabled(this);
         adBlockCosmeticOnResume = AdBlocker.isCosmeticEnabled(this);
@@ -402,6 +422,7 @@ public class MainActivity extends Activity {
         registerBookmarksReceiver();
         NotificationHelper.maybeNotifyUpdate(this);
         NotificationHelper.maybeShowTip(this);
+        maybePromptAppLock();
     }
 
     private void registerMediaReceiver() {
@@ -505,6 +526,8 @@ public class MainActivity extends Activity {
                             + "window.KSPortalRefreshHome&&window.KSPortalRefreshHome()",
                     null);
         }
+        applyScreenSecurity();
+        maybePromptPrivateLock();
     }
 
     @Override
@@ -896,10 +919,20 @@ public class MainActivity extends Activity {
                             || VideoSniffer.looksLikeMedia(requestUrl))) {
                         VideoSniffer.recordRequest(tab.id, requestUrl);
                     }
+                    WebResourceResponse blocked = null;
                     if (!request.isForMainFrame()
                             && isAdBlockEnabledFor(pageUrl)) {
-                        return AdBlocker.intercept(MainActivity.this, pageUrl,
+                        blocked = AdBlocker.intercept(MainActivity.this, pageUrl,
                                 pageHost, request);
+                    }
+                    if (AdvancedStore.isDeveloperEnabled(MainActivity.this)
+                            && AdvancedStore.isRequestLogEnabled(MainActivity.this)
+                            && !privateTabs.contains(tab.id)) {
+                        RequestLogStore.record(requestUrl, request.isForMainFrame(),
+                                blocked != null);
+                    }
+                    if (blocked != null) {
+                        return blocked;
                     }
                 }
                 return super.shouldInterceptRequest(current, request);
@@ -916,6 +949,10 @@ public class MainActivity extends Activity {
                     return;
                 }
                 removeErrorOverlay(current);
+                if (!TextUtils.isEmpty(pageUrl) && !pageUrl.equals(url)
+                        && !isHomeUrl(pageUrl)) {
+                    previousPageUrl = pageUrl;
+                }
                 pageUrl = url;
                 pageHost = SiteSettingsStore.hostOf(url);
                 tab.loading = true;
@@ -973,6 +1010,9 @@ public class MainActivity extends Activity {
                     injectWebAssist(current, url);
                 }
                 injectAdBlock(current, url);
+                if (!privateTabs.contains(tab.id)) {
+                    applyAdvancedPageFeatures(current, url);
+                }
                 injectAudioWatcher(current, tab);
                 if (!privateTabs.contains(tab.id)) {
                     VideoSniffer.setPage(tab.id, url, title);
@@ -1292,6 +1332,22 @@ public class MainActivity extends Activity {
                                 result.cancel();
                             }
                         });
+                return true;
+            }
+
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage message) {
+                if (AdvancedStore.isDeveloperEnabled(MainActivity.this)
+                        && message != null) {
+                    String source = message.sourceId();
+                    if (!TextUtils.isEmpty(source)) {
+                        source = "  " + source + ":" + message.lineNumber();
+                    } else {
+                        source = "";
+                    }
+                    ConsoleLogStore.add(message.messageLevel() == null ? "LOG"
+                            : message.messageLevel().name(), message.message() + source);
+                }
                 return true;
             }
 
@@ -5297,6 +5353,10 @@ public class MainActivity extends Activity {
         }
         if (faviconLoader != null) {
             faviconLoader.shutdownNow();
+        }
+        if (readAloud != null) {
+            readAloud.shutdown();
+            readAloud = null;
         }
         for (WebView tabView : tabViews.values()) {
             if (webContainer != null) {
