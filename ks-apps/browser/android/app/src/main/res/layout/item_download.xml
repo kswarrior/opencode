@@ -71,8 +71,8 @@
 
     <ImageButton
         android:id="@+id/downloadMore"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/download_options"
         android:padding="7dp"

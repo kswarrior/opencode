@@ -17,8 +17,8 @@
 
         <ImageButton
             android:id="@+id/historyBack"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/back"
             android:padding="10dp"
@@ -41,8 +41,8 @@
 
         <ImageButton
             android:id="@+id/historyMore"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="7dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/history_options"
@@ -65,7 +65,7 @@
         <EditText
             android:id="@+id/historySearch"
             android:layout_width="0dp"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:background="@drawable/bg_url_bar"
             android:drawableStart="@drawable/ic_search"
@@ -84,8 +84,8 @@
 
         <ImageButton
             android:id="@+id/historyFilterButton"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="7dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/history_filter"

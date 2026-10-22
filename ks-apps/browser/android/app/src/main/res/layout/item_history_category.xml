@@ -92,8 +92,8 @@
 
     <ImageButton
         android:id="@+id/historyCategoryMore"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="2dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/history_category_options"

@@ -52,8 +52,8 @@
 
     <ImageButton
         android:id="@+id/historyMore"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/history_entry_options"
         android:padding="8dp"

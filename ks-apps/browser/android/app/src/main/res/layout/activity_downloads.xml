@@ -17,8 +17,8 @@
 
         <ImageButton
             android:id="@+id/downloadsBack"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/back"
             android:padding="10dp"
@@ -52,7 +52,7 @@
         <EditText
             android:id="@+id/downloadSearch"
             android:layout_width="0dp"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:background="@drawable/bg_url_bar"
             android:drawableStart="@drawable/ic_search"
@@ -71,8 +71,8 @@
 
         <ImageButton
             android:id="@+id/downloadFilterButton"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="7dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/downloads_filter"
@@ -83,8 +83,8 @@
 
         <ImageButton
             android:id="@+id/downloadPathButton"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="7dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/download_button"
@@ -117,7 +117,7 @@
         <TextView
             android:id="@+id/downloadSelectAll"
             android:layout_width="wrap_content"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_toolbar_button"
             android:gravity="center"
             android:paddingStart="10dp"
@@ -129,7 +129,7 @@
         <TextView
             android:id="@+id/downloadDeleteSelected"
             android:layout_width="wrap_content"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_marginStart="6dp"
             android:background="@drawable/bg_danger_button"
             android:gravity="center"
@@ -141,8 +141,8 @@
 
         <ImageButton
             android:id="@+id/downloadSelectionClose"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="4dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/dialog_cancel"

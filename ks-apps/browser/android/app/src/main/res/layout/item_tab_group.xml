@@ -49,8 +49,8 @@
 
     <ImageButton
         android:id="@+id/tabGroupMore"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="2dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/tabs_options"

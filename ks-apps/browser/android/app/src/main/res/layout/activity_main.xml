@@ -49,8 +49,8 @@
 
             <ImageView
                 android:id="@+id/siteLogo"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="7dp"
                 android:background="@drawable/bg_toolbar_button"
                 android:contentDescription="@string/site_logo_description"
@@ -61,7 +61,7 @@
             <EditText
                 android:id="@+id/urlBar"
                 android:layout_width="0dp"
-                android:layout_height="42dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_url_bar"
@@ -81,8 +81,8 @@
 
             <TextView
                 android:id="@+id/tabsButton"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="7dp"
                 android:background="@drawable/bg_tab_counter"
                 android:clickable="true"
@@ -96,8 +96,8 @@
 
             <ImageButton
                 android:id="@+id/menuButton"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@drawable/bg_toolbar_button"
                 android:contentDescription="@string/more_description"
                 android:padding="10dp"
@@ -122,7 +122,7 @@
         <EditText
             android:id="@+id/findInput"
             android:layout_width="0dp"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
             android:background="@drawable/bg_url_bar"
@@ -142,7 +142,7 @@
         <TextView
             android:id="@+id/findCount"
             android:layout_width="wrap_content"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="4dp"
             android:gravity="center"
             android:minWidth="44dp"
@@ -151,8 +151,8 @@
 
         <ImageButton
             android:id="@+id/findPrev"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/find_previous"
             android:padding="10dp"
@@ -162,8 +162,8 @@
 
         <ImageButton
             android:id="@+id/findNext"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="4dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/find_next"
@@ -174,8 +174,8 @@
 
         <ImageButton
             android:id="@+id/findClose"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="4dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/find_close"

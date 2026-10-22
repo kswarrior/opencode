@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/siteMenuIcon"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/site_logo_description"
             android:padding="8dp"
@@ -86,7 +86,7 @@
     <LinearLayout
         android:id="@+id/siteMenuInfo"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@drawable/bg_menu_item"
         android:clickable="true"
         android:focusable="true"
@@ -117,7 +117,7 @@
     <LinearLayout
         android:id="@+id/siteMenuSettings"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@drawable/bg_menu_item"
         android:clickable="true"
         android:focusable="true"
@@ -148,7 +148,7 @@
     <LinearLayout
         android:id="@+id/siteMenuScreenSize"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@drawable/bg_menu_item"
         android:clickable="true"
         android:focusable="true"
@@ -197,7 +197,7 @@
     <LinearLayout
         android:id="@+id/siteMenuCookies"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@drawable/bg_menu_item"
         android:clickable="true"
         android:focusable="true"

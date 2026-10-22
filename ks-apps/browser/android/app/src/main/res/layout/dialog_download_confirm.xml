@@ -91,7 +91,7 @@
             <Button
                 android:id="@+id/confirmCancel"
                 android:layout_width="0dp"
-                android:layout_height="46dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_secondary_button"
                 android:minHeight="0dp"
@@ -106,7 +106,7 @@
             <Button
                 android:id="@+id/confirmDownload"
                 android:layout_width="0dp"
-                android:layout_height="46dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1.5"
                 android:background="@drawable/bg_primary_button"

@@ -17,8 +17,8 @@
 
         <ImageButton
             android:id="@+id/bookmarksBack"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/back"
             android:padding="10dp"
@@ -56,8 +56,8 @@
 
         <ImageButton
             android:id="@+id/bookmarksMenu"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@drawable/bg_toolbar_button"
             android:contentDescription="@string/bookmarks_options"
             android:padding="10dp"
@@ -69,7 +69,7 @@
     <EditText
         android:id="@+id/bookmarksSearch"
         android:layout_width="match_parent"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="10dp"
