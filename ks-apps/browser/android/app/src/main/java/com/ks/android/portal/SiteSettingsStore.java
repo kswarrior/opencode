@@ -102,6 +102,13 @@ final class SiteSettingsStore {
         return defaultValue;
     }
 
+    static boolean contains(Context context, String host, String name) {
+        if (TextUtils.isEmpty(host)) {
+            return false;
+        }
+        return preferences(context).contains(key(host, name));
+    }
+
     static void setBoolean(Context context, String host, String name, boolean value) {
         if (TextUtils.isEmpty(host)) {
             return;
