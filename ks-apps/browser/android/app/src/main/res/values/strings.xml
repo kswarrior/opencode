@@ -661,4 +661,15 @@ example.com##.ad-banner</string>
     <string name="saved_logins_delete">Delete login</string>
     <string name="saved_logins_unlock">Unlock to view password</string>
     <string name="saved_logins_cleared">Saved passwords were cleared because the encryption key changed</string>
+    <string name="downloads_filter">Sort and filter downloads</string>
+    <string name="sort_newest">Newest first</string>
+    <string name="sort_oldest">Oldest first</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_size">Largest first</string>
+    <string name="filter_all">All downloads</string>
+    <string name="filter_active">Active and paused</string>
+    <string name="filter_completed">Completed</string>
+    <string name="filter_failed">Failed and cancelled</string>
+    <string name="download_speed">%1$s/s</string>
+    <string name="download_eta">%1$s left</string>
 </resources>

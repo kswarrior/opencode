@@ -25,6 +25,8 @@ import android.webkit.MimeTypeMap;
 import java.io.File;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -48,6 +50,8 @@ public class DownloadsActivity extends Activity {
     private DownloadAdapter adapter;
     private final List<DownloadItem> visible = new ArrayList<DownloadItem>();
     private String query = "";
+    private int sortMode;
+    private int filterMode;
 
     private final DownloadRepository.Listener downloadListener = new DownloadRepository.Listener() {
         @Override
@@ -68,6 +72,9 @@ public class DownloadsActivity extends Activity {
         search = findViewById(R.id.downloadSearch);
         ImageButton back = findViewById(R.id.downloadsBack);
         ImageButton pathButton = findViewById(R.id.downloadPathButton);
+        ImageButton filterButton = findViewById(R.id.downloadFilterButton);
+        sortMode = getPreferences(MODE_PRIVATE).getInt("sort", 0);
+        filterMode = getPreferences(MODE_PRIVATE).getInt("filter", 0);
 
         adapter = new DownloadAdapter();
         listView.setAdapter(adapter);
@@ -87,6 +94,12 @@ public class DownloadsActivity extends Activity {
         };
         pathButton.setOnClickListener(pathClick);
         pathLabel.setOnClickListener(pathClick);
+        filterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSortFilter();
+            }
+        });
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence text, int start, int count, int after) {
@@ -144,15 +157,71 @@ public class DownloadsActivity extends Activity {
         pathLabel.setText(getString(R.string.save_to, repository.getDisplayPath()));
     }
 
+    private void showSortFilter() {
+        int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
+        int[] labels = new int[]{
+                R.string.sort_newest, R.string.sort_oldest, R.string.sort_name,
+                R.string.sort_size, R.string.filter_all, R.string.filter_active,
+                R.string.filter_completed, R.string.filter_failed};
+        int checked = sortMode < 4 ? sortMode : 4 + (filterMode - 0);
+        KsDialog.menu(this, R.string.downloads_filter, ids, labels,
+                new int[]{0, 0, 0, 0, 0, 0, 0, 0}, checked,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        if (index < 4) {
+                            sortMode = index;
+                        } else {
+                            filterMode = index - 4;
+                        }
+                        getPreferences(MODE_PRIVATE).edit()
+                                .putInt("sort", sortMode)
+                                .putInt("filter", filterMode).apply();
+                        refreshList();
+                    }
+                });
+    }
+
+    private boolean matchesFilter(DownloadItem item) {
+        switch (filterMode) {
+            case 1:
+                return item.status == DownloadItem.STATUS_PENDING
+                        || item.status == DownloadItem.STATUS_DOWNLOADING
+                        || item.status == DownloadItem.STATUS_PAUSED;
+            case 2:
+                return item.status == DownloadItem.STATUS_COMPLETED;
+            case 3:
+                return item.status == DownloadItem.STATUS_FAILED
+                        || item.status == DownloadItem.STATUS_CANCELLED;
+            default:
+                return true;
+        }
+    }
+
     private void refreshList() {
         List<DownloadItem> all = repository.getItems();
         String needle = query.toLowerCase(Locale.US);
         visible.clear();
         for (DownloadItem item : all) {
-            if (matches(item, needle)) {
+            if (matches(item, needle) && matchesFilter(item)) {
                 visible.add(item);
             }
         }
+        Collections.sort(visible, new Comparator<DownloadItem>() {
+            @Override
+            public int compare(DownloadItem left, DownloadItem right) {
+                switch (sortMode) {
+                    case 1:
+                        return Long.compare(left.createdAt, right.createdAt);
+                    case 2:
+                        return left.fileName.compareToIgnoreCase(right.fileName);
+                    case 3:
+                        return Long.compare(right.totalBytes, left.totalBytes);
+                    default:
+                        return Long.compare(right.createdAt, left.createdAt);
+                }
+            }
+        });
         if (adapter != null) {
             adapter.notifyDataSetChanged();
         }
@@ -209,6 +278,18 @@ public class DownloadsActivity extends Activity {
                     builder.append(" / ").append(formatBytes(item.totalBytes));
                 } else {
                     builder.append(separator).append(formatBytes(item.downloadedBytes));
+                }
+                long elapsed = Math.max(1, (System.currentTimeMillis() - item.createdAt) / 1000);
+                long speed = item.downloadedBytes / elapsed;
+                if (speed > 0) {
+                    builder.append(separator)
+                            .append(getString(R.string.download_speed, formatBytes(speed)));
+                    if (item.totalBytes > item.downloadedBytes) {
+                        long seconds = (item.totalBytes - item.downloadedBytes) / speed;
+                        builder.append(separator)
+                                .append(getString(R.string.download_eta,
+                                        formatDuration(seconds)));
+                    }
                 }
                 return builder.toString();
             }
@@ -427,6 +508,17 @@ public class DownloadsActivity extends Activity {
 
     private void toast(String message) {
         KsToast.show(this, message);
+    }
+
+    private static String formatDuration(long seconds) {
+        if (seconds < 60) {
+            return seconds + "s";
+        }
+        long minutes = seconds / 60;
+        if (minutes < 60) {
+            return minutes + "m " + (seconds % 60) + "s";
+        }
+        return (minutes / 60) + "h " + (minutes % 60) + "m";
     }
 
     private static String formatBytes(long bytes) {
