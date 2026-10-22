@@ -47,10 +47,12 @@ public class ToolbarActivity extends Activity {
     private final List<View> colorViews = new ArrayList<View>();
     private final List<TextView> modeChips = new ArrayList<TextView>();
     private final List<TextView> positionChips = new ArrayList<TextView>();
+    private final List<TextView> addressChips = new ArrayList<TextView>();
 
     private int selectedColor;
     private String selectedMode;
     private int selectedEdge;
+    private boolean addressBottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +123,7 @@ public class ToolbarActivity extends Activity {
         buildColors();
         buildModes();
         buildPositions();
+        buildAddressBar();
         loadFromStore();
 
         findViewById(R.id.toolbarReset).setOnClickListener(new View.OnClickListener() {
@@ -153,6 +156,8 @@ public class ToolbarActivity extends Activity {
         updateModeSummary();
         updateColorSwatches();
         updatePositionChips();
+        addressBottom = ToolbarSettingsStore.isAddressBarBottom(this);
+        updateAddressChips();
         preview.setMoveable(ToolbarSettingsStore.MODE_MOVEABLE.equals(selectedMode));
 
         preview.setAccentColor(selectedColor);
@@ -352,6 +357,41 @@ public class ToolbarActivity extends Activity {
         for (int i = 0; i < positionChips.size(); i++) {
             TextView chip = positionChips.get(i);
             boolean selected = POSITION_EDGES[i] == selectedEdge;
+            chip.setSelected(selected);
+            chip.setTextColor(selected
+                    ? 0xFF0B0B0B
+                    : getResources().getColor(R.color.ks_text));
+        }
+    }
+
+    private void buildAddressBar() {
+        LinearLayout container = findViewById(R.id.toolbarAddressBar);
+        addAddressChip(container, false, R.string.toolbar_address_bar_top);
+        addAddressChip(container, true, R.string.toolbar_address_bar_bottom);
+    }
+
+    private void addAddressChip(LinearLayout container, final boolean bottom, int labelRes) {
+        TextView chip = createChip(labelRes, dp(42));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                0, dp(42), 1f);
+        params.setMargins(dp(3), 0, dp(3), 0);
+        chip.setLayoutParams(params);
+        chip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addressBottom = bottom;
+                ToolbarSettingsStore.setAddressBarBottom(ToolbarActivity.this, bottom);
+                updateAddressChips();
+            }
+        });
+        container.addView(chip);
+        addressChips.add(chip);
+    }
+
+    private void updateAddressChips() {
+        for (int i = 0; i < addressChips.size(); i++) {
+            TextView chip = addressChips.get(i);
+            boolean selected = i == 0 ? !addressBottom : addressBottom;
             chip.setSelected(selected);
             chip.setTextColor(selected
                     ? 0xFF0B0B0B

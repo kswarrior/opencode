@@ -245,6 +245,25 @@
                 android:padding="10dp" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:letterSpacing="0.14"
+                android:text="@string/toolbar_address_bar"
+                android:textColor="@color/ks_muted"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/toolbarAddressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_download_item"
+                android:orientation="horizontal"
+                android:padding="10dp" />
+
+            <TextView
                 android:id="@+id/toolbarReset"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
