@@ -592,4 +592,21 @@ example.com##.ad-banner</string>
         <item quantity="one">%1$d tab open</item>
         <item quantity="other">%1$d tabs open</item>
     </plurals>
+    <string name="dialog_ok">OK</string>
+    <string name="credentials_unavailable">Passwords are not available on this device</string>
+    <string name="notification_site_title">Allow notifications?</string>
+    <string name="notification_site_message">%1$s wants to send you notifications.</string>
+    <string name="notification_site_allowed">Notifications allowed</string>
+    <string name="notification_site_blocked">Notifications blocked</string>
+    <string name="error_page_brand">KS Portal</string>
+    <string name="error_page_title">This page could not be loaded</string>
+    <string name="error_page_network">Check your connection and try again.</string>
+    <string name="error_page_http">The server returned HTTP %1$d.</string>
+    <string name="error_page_retry">Retry</string>
+    <string name="error_page_load_insecure">Load insecure version</string>
+    <string name="error_page_back">Go back</string>
+    <string name="js_alert_title">This page says</string>
+    <string name="js_confirm_title">This page asks</string>
+    <string name="js_prompt_title">This page asks</string>
+    <string name="js_prompt_hint">Enter a value</string>
 </resources>

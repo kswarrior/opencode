@@ -1722,6 +1722,8 @@ public class MainActivity extends Activity {
         CookieManager.getInstance().setAcceptThirdPartyCookies(view,
                 SiteSettingsStore.getBoolean(this, host,
                         SiteSettingsStore.KEY_THIRD_PARTY_COOKIES, true));
+        settings.setBlockNetworkImage(!SiteSettingsStore.getBoolean(this, host,
+                SiteSettingsStore.KEY_IMAGES, true));
 
         SiteSettingsStore.ScreenSize size = SiteSettingsStore.findSize(this,
                 SiteSettingsStore.getScreenSizeId(this, host));
