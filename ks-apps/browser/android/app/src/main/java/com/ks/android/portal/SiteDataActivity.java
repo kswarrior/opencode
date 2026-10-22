@@ -14,20 +14,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 public class SiteDataActivity extends Activity {
     private LinearLayout list;
     private TextView empty;
     private ImageButton clearAll;
 
-    private final ValueCallback<Set<WebStorage.Origin>> originsCallback =
-            new ValueCallback<Set<WebStorage.Origin>>() {
+    private final ValueCallback<Map> originsCallback = new ValueCallback<Map>() {
                 @Override
-                public void onReceiveValue(Set<WebStorage.Origin> origins) {
+                public void onReceiveValue(Map origins) {
                     final List<WebStorage.Origin> items = new ArrayList<>();
                     if (origins != null) {
-                        items.addAll(origins);
+                        for (Object value : origins.values()) {
+                            if (value instanceof WebStorage.Origin) {
+                                items.add((WebStorage.Origin) value);
+                            }
+                        }
                     }
                     Collections.sort(items, new Comparator<WebStorage.Origin>() {
                         @Override
