@@ -48,6 +48,16 @@ public class AutofillPasswordsActivity extends ToggleSettingsActivity {
                 new ToggleSetting(R.string.autofill_forms,
                         R.string.autofill_forms_summary,
                         "autofill_forms", true));
+        addAction(R.string.autofill_section_forms, R.string.autofill_scope,
+                R.string.autofill_scope_summary, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        KsDialog.message(AutofillPasswordsActivity.this,
+                                R.string.autofill_scope,
+                                getString(R.string.autofill_scope_message),
+                                R.string.dialog_ok, null);
+                    }
+                });
     }
 
     private void showSavedLogins() {

@@ -2124,6 +2124,12 @@ public class DownloadRepository {
                         part.delete();
                         return;
                     }
+                    if (paused) {
+                        throw new IOException("Paused");
+                    }
+                    if (cancelled) {
+                        throw new IOException("Cancelled");
+                    }
                     if (!TextUtils.isEmpty(responseMime)
                             && !"application/octet-stream".equals(responseMime)) {
                         item.mimeType = responseMime;

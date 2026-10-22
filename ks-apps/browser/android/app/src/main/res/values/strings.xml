@@ -420,7 +420,7 @@ example.com##.ad-banner</string>
     <string name="autofill_offer_save_summary">Ask to save new passwords after you sign in</string>
     <string name="autofill_auto_sign_in">Auto sign-in</string>
     <string name="autofill_auto_sign_in_summary">Sign in automatically with saved passwords</string>
-    <string name="autofill_section_forms">Forms and payments</string>
+    <string name="autofill_section_forms">Forms</string>
     <string name="autofill_forms">Autofill forms</string>
     <string name="autofill_forms_summary">Fill in addresses and other saved information</string>
     <string name="autofill_payments">Payment methods</string>
@@ -428,6 +428,9 @@ example.com##.ad-banner</string>
     <string name="autofill_passkeys">Passkeys</string>
     <string name="autofill_passkeys_summary">Check whether passkeys can be used in KS Portal</string>
     <string name="autofill_passkeys_unavailable">This Android WebView version does not expose passkey (WebAuthn) support to the app. Saved passwords and form filling still work.</string>
+    <string name="autofill_scope">Autofill scope</string>
+    <string name="autofill_scope_summary">How KS Portal fills passwords and forms</string>
+    <string name="autofill_scope_message">KS Portal fills passwords and forms only inside its own browser. It does not register as a system Autofill service, so other apps are never offered KS Portal data.</string>
     <string name="login_save_title">Save password?</string>
     <string name="login_save_name_label">NAME</string>
     <string name="login_save_url_label">URL</string>
