@@ -1,9 +1,7 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -376,24 +374,21 @@ public class BackgroundActivity extends Activity {
     }
 
     private void confirmDelete(final String fileName) {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.background_delete_title)
-                .setMessage(R.string.background_delete_message)
-                .setNegativeButton(R.string.download_cancel, null)
-                .setPositiveButton(R.string.background_delete,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                thumbnails.remove(fileName);
-                                BackgroundStore.deleteCustomImage(BackgroundActivity.this,
-                                        fileName);
-                                Toast.makeText(BackgroundActivity.this,
-                                        R.string.background_deleted,
-                                        Toast.LENGTH_SHORT).show();
-                                refreshScreen();
-                            }
-                        })
-                .show();
+        KsDialog.confirmDanger(this, R.string.background_delete_title,
+                getString(R.string.background_delete_message),
+                R.string.download_cancel, R.string.background_delete,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        thumbnails.remove(fileName);
+                        BackgroundStore.deleteCustomImage(BackgroundActivity.this,
+                                fileName);
+                        Toast.makeText(BackgroundActivity.this,
+                                R.string.background_deleted,
+                                Toast.LENGTH_SHORT).show();
+                        refreshScreen();
+                    }
+                });
     }
 
     private int dp(int value) {

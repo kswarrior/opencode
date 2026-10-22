@@ -109,22 +109,18 @@ final class CookieDialog {
     private static void confirmDeleteAll(final Activity activity, final String url,
                                          String host, final Runnable refresh) {
         String site = TextUtils.isEmpty(host) ? url : host;
-        new AlertDialog.Builder(activity)
-                .setTitle(R.string.site_cookies_delete_all_title)
-                .setMessage(activity.getString(
-                        R.string.site_cookies_delete_all_message, site))
-                .setNegativeButton(R.string.dialog_cancel, null)
-                .setPositiveButton(R.string.site_cookies_delete_confirm,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                SiteCookies.deleteAll(url);
-                                Toast.makeText(activity, R.string.site_cookies_deleted,
-                                        Toast.LENGTH_SHORT).show();
-                                refresh.run();
-                            }
-                        })
-                .show();
+        KsDialog.confirmDanger(activity, R.string.site_cookies_delete_all_title,
+                activity.getString(R.string.site_cookies_delete_all_message, site),
+                R.string.dialog_cancel, R.string.site_cookies_delete_confirm,
+                new KsDialog.Action() {
+                    @Override
+                    public void run() {
+                        SiteCookies.deleteAll(url);
+                        Toast.makeText(activity, R.string.site_cookies_deleted,
+                                Toast.LENGTH_SHORT).show();
+                        refresh.run();
+                    }
+                });
     }
 
     private static void limitListHeight(Activity activity, Dialog dialog) {
