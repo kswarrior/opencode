@@ -493,30 +493,26 @@ public class MainActivity extends Activity {
                 String message = getString(R.string.ssl_warning_message,
                         host, sslErrorText(error.getPrimaryError()),
                         issuedTo, issuedBy);
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(R.string.ssl_warning_title)
-                        .setMessage(message)
-                        .setNegativeButton(R.string.ssl_go_back,
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        handler.cancel();
-                                    }
-                                })
-                        .setPositiveButton(R.string.ssl_continue,
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        handler.proceed();
-                                    }
-                                })
-                        .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                KsDialog.confirm(MainActivity.this, R.string.ssl_warning_title, message,
+                        R.string.ssl_go_back, R.string.ssl_continue, false,
+                        new KsDialog.Action() {
                             @Override
-                            public void onCancel(DialogInterface dialog) {
+                            public void run() {
+                                handler.proceed();
+                            }
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
                                 handler.cancel();
                             }
-                        })
-                        .show();
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                handler.cancel();
+                            }
+                        });
             }
 
             @Override
@@ -526,39 +522,24 @@ public class MainActivity extends Activity {
                 if (handler == null) {
                     return;
                 }
-                final EditText username = new EditText(MainActivity.this);
-                username.setHint(R.string.http_auth_username);
-                final EditText password = new EditText(MainActivity.this);
-                password.setHint(R.string.http_auth_password);
-                password.setInputType(android.text.InputType.TYPE_CLASS_TEXT
-                        | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                LinearLayout layout = new LinearLayout(MainActivity.this);
-                layout.setOrientation(LinearLayout.VERTICAL);
-                int padding = Math.round(20 * getResources().getDisplayMetrics().density);
-                layout.setPadding(padding, padding / 2, padding, 0);
-                layout.addView(username);
-                layout.addView(password);
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(TextUtils.isEmpty(realm)
+                KsDialog.credentials(MainActivity.this,
+                        TextUtils.isEmpty(realm)
                                 ? getString(R.string.http_auth_title, host)
-                                : getString(R.string.http_auth_title_realm, host, realm))
-                        .setView(layout)
-                        .setNegativeButton(android.R.string.cancel,
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        handler.cancel();
-                                    }
-                                })
-                        .setPositiveButton(android.R.string.ok,
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        handler.proceed(username.getText().toString(),
-                                                password.getText().toString());
-                                    }
-                                })
-                        .show();
+                                : getString(R.string.http_auth_title_realm, host, realm),
+                        R.string.dialog_cancel, R.string.http_auth_action,
+                        R.string.http_auth_username, R.string.http_auth_password,
+                        new KsDialog.CredentialAction() {
+                            @Override
+                            public void run(String username, String password) {
+                                handler.proceed(username, password);
+                            }
+                        },
+                        new KsDialog.Action() {
+                            @Override
+                            public void run() {
+                                handler.cancel();
+                            }
+                        });
             }
 
             @Override
