@@ -21,6 +21,7 @@ final class SiteSettingsStore {
     static final String KEY_AUTOMATIC_DOWNLOADS = "automatic_downloads";
     static final String KEY_ADBLOCK = "adblock";
     static final String KEY_IMAGES = "images";
+    static final String KEY_HTTPS_EXCEPTION = "https_exception";
 
     static final String GLOBAL_HOST = "*";
     static final String PERMISSION_ASK = "ask";

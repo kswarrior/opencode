@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.security.KeyChain;
 import android.security.KeyChainAliasCallback;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -43,6 +44,8 @@ import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions;
 import android.webkit.HttpAuthHandler;
 import android.webkit.JavascriptInterface;
+import android.webkit.JsPromptResult;
+import android.webkit.JsResult;
 import android.webkit.PermissionRequest;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
@@ -1924,6 +1927,10 @@ public class MainActivity extends Activity {
 
     private boolean isNetworkUrl(String url) {
         return url != null && (url.startsWith("http://") || url.startsWith("https://"));
+    }
+
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
     private String insecureVersionOf(String url) {
