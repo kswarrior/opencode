@@ -341,6 +341,7 @@ public class MainActivity extends Activity {
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
+        settings.setGeolocationEnabled(true);
         settings.setSupportMultipleWindows(true);
         settings.setUserAgentString(settings.getUserAgentString() + " KSPortal/"
                 + AppInfo.versionName(this));
@@ -478,9 +479,9 @@ public class MainActivity extends Activity {
                 String host = error.getUrl();
                 SslCertificate certificate = error.getCertificate();
                 String issuedTo = certificate == null ? ""
-                        : String.valueOf(certificate.getIssuedTo());
+                        : certificateName(certificate.getIssuedTo());
                 String issuedBy = certificate == null ? ""
-                        : String.valueOf(certificate.getIssuedBy());
+                        : certificateName(certificate.getIssuedBy());
                 String message = getString(R.string.ssl_warning_message,
                         host, sslErrorText(error.getPrimaryError()),
                         issuedTo, issuedBy);
@@ -665,52 +666,69 @@ public class MainActivity extends Activity {
                 }
                 String origin = request.getOrigin().toString();
                 String host = SiteSettingsStore.hostOf(origin);
-                String key = null;
-                String permission = null;
+                boolean wantsCamera = false;
+                boolean wantsMicrophone = false;
                 String[] resources = request.getResources();
                 for (int i = 0; i < resources.length; i++) {
                     if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resources[i])) {
-                        key = "camera";
-                        permission = Manifest.permission.CAMERA;
-                        break;
+                        wantsCamera = true;
                     }
                     if (PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resources[i])) {
-                        key = "microphone";
-                        permission = Manifest.permission.RECORD_AUDIO;
-                        break;
+                        wantsMicrophone = true;
                     }
                 }
-                if (key == null) {
+                if (!wantsCamera && !wantsMicrophone) {
                     request.grant(resources);
                     return;
                 }
-                String stored = SiteSettingsStore.getPermission(MainActivity.this, host,
-                        key, SiteSettingsStore.PERMISSION_ASK);
-                if (SiteSettingsStore.PERMISSION_BLOCKED.equals(stored)) {
+                String key = wantsCamera && wantsMicrophone
+                        ? "camera_microphone" : wantsCamera ? "camera" : "microphone";
+                String cameraValue = SiteSettingsStore.getPermission(MainActivity.this,
+                        host, "camera", SiteSettingsStore.PERMISSION_ASK);
+                String microphoneValue = SiteSettingsStore.getPermission(MainActivity.this,
+                        host, "microphone", SiteSettingsStore.PERMISSION_ASK);
+                boolean blocked = (wantsCamera
+                        && SiteSettingsStore.PERMISSION_BLOCKED.equals(cameraValue))
+                        || (wantsMicrophone
+                        && SiteSettingsStore.PERMISSION_BLOCKED.equals(microphoneValue));
+                if (blocked) {
                     request.deny();
                     return;
                 }
-                if (SiteSettingsStore.PERMISSION_ALLOWED.equals(stored)) {
-                    grantPermissionRequest(request, permission);
+                boolean allowed = (!wantsCamera
+                        || SiteSettingsStore.PERMISSION_ALLOWED.equals(cameraValue))
+                        && (!wantsMicrophone
+                        || SiteSettingsStore.PERMISSION_ALLOWED.equals(microphoneValue));
+                if (allowed) {
+                    grantPermissionRequest(request, permissionList(wantsCamera, wantsMicrophone));
                     return;
                 }
                 pendingPermissionRequest = request;
                 pendingPermissionHost = host;
                 pendingPermissionKey = key;
                 final String requestKey = key;
+                int title = wantsCamera && wantsMicrophone
+                        ? R.string.permission_camera_microphone_title
+                        : wantsCamera ? R.string.permission_camera_title
+                        : R.string.permission_microphone_title;
                 new AlertDialog.Builder(MainActivity.this)
-                        .setTitle(requestKey.equals("camera")
-                                ? R.string.permission_camera_title
-                                : R.string.permission_microphone_title)
+                        .setTitle(title)
                         .setMessage(getString(R.string.permission_site_message,
                                 host.isEmpty() ? origin : host))
                         .setNegativeButton(R.string.permission_block,
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        SiteSettingsStore.setPermission(MainActivity.this,
-                                                pendingPermissionHost, requestKey,
-                                                SiteSettingsStore.PERMISSION_BLOCKED);
+                                        if (requestKey.contains("camera")) {
+                                            SiteSettingsStore.setPermission(MainActivity.this,
+                                                    pendingPermissionHost, "camera",
+                                                    SiteSettingsStore.PERMISSION_BLOCKED);
+                                        }
+                                        if (requestKey.contains("microphone")) {
+                                            SiteSettingsStore.setPermission(MainActivity.this,
+                                                    pendingPermissionHost, "microphone",
+                                                    SiteSettingsStore.PERMISSION_BLOCKED);
+                                        }
                                         if (pendingPermissionRequest != null) {
                                             pendingPermissionRequest.deny();
                                         }
@@ -721,13 +739,19 @@ public class MainActivity extends Activity {
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        SiteSettingsStore.setPermission(MainActivity.this,
-                                                pendingPermissionHost, requestKey,
-                                                SiteSettingsStore.PERMISSION_ALLOWED);
+                                        if (requestKey.contains("camera")) {
+                                            SiteSettingsStore.setPermission(MainActivity.this,
+                                                    pendingPermissionHost, "camera",
+                                                    SiteSettingsStore.PERMISSION_ALLOWED);
+                                        }
+                                        if (requestKey.contains("microphone")) {
+                                            SiteSettingsStore.setPermission(MainActivity.this,
+                                                    pendingPermissionHost, "microphone",
+                                                    SiteSettingsStore.PERMISSION_ALLOWED);
+                                        }
                                         grantPermissionRequest(pendingPermissionRequest,
-                                                requestKey.equals("camera")
-                                                        ? Manifest.permission.CAMERA
-                                                        : Manifest.permission.RECORD_AUDIO);
+                                                permissionList(requestKey.contains("camera"),
+                                                        requestKey.contains("microphone")));
                                     }
                                 })
                         .setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -1165,8 +1189,12 @@ public class MainActivity extends Activity {
         }
         if (requestCode == REQUEST_PERMISSION_CAMERA
                 || requestCode == REQUEST_PERMISSION_MICROPHONE) {
-            boolean granted = grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+            boolean granted = grantResults.length > 0;
+            for (int i = 0; i < grantResults.length; i++) {
+                if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                    granted = false;
+                }
+            }
             if (pendingPermissionRequest != null) {
                 if (granted) {
                     pendingPermissionRequest.grant(pendingPermissionRequest.getResources());
@@ -1236,19 +1264,40 @@ public class MainActivity extends Activity {
                 || checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
     }
 
-    private void grantPermissionRequest(PermissionRequest request, String permission) {
+    private String[] permissionList(boolean camera, boolean microphone) {
+        int size = (camera ? 1 : 0) + (microphone ? 1 : 0);
+        String[] permissions = new String[size];
+        int index = 0;
+        if (camera) {
+            permissions[index++] = Manifest.permission.CAMERA;
+        }
+        if (microphone) {
+            permissions[index] = Manifest.permission.RECORD_AUDIO;
+        }
+        return permissions;
+    }
+
+    private void grantPermissionRequest(PermissionRequest request, String[] permissions) {
         if (request == null) {
             return;
         }
-        if (hasRuntimePermission(permission)) {
+        boolean allGranted = true;
+        java.util.List<String> missing = new ArrayList<String>();
+        for (int i = 0; i < permissions.length; i++) {
+            if (hasRuntimePermission(permissions[i])) {
+                continue;
+            }
+            allGranted = false;
+            missing.add(permissions[i]);
+        }
+        if (allGranted) {
             request.grant(request.getResources());
             clearPendingPermission();
             return;
         }
         pendingPermissionRequest = request;
-        int code = Manifest.permission.CAMERA.equals(permission)
-                ? REQUEST_PERMISSION_CAMERA : REQUEST_PERMISSION_MICROPHONE;
-        requestPermissions(new String[]{permission}, code);
+        requestPermissions(missing.toArray(new String[missing.size()]),
+                REQUEST_PERMISSION_CAMERA);
     }
 
     private void clearPendingPermission() {
@@ -2067,6 +2116,18 @@ public class MainActivity extends Activity {
                 + "reader.readAsDataURL(b);})"
                 + ".catch(function(){});})();";
         view.evaluateJavascript(script, null);
+    }
+
+    private String certificateName(SslCertificate.DName name) {
+        if (name == null) {
+            return "";
+        }
+        String common = name.getCName();
+        String organization = name.getOName();
+        if (!TextUtils.isEmpty(common)) {
+            return common;
+        }
+        return TextUtils.isEmpty(organization) ? "" : organization;
     }
 
     private String sslErrorText(int error) {
