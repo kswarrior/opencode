@@ -9,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SiteSettingsActivity extends Activity {
     static final String EXTRA_SITE_URL = "com.ks.android.portal.extra.SITE_URL";
@@ -398,9 +397,8 @@ public class SiteSettingsActivity extends Activity {
                         markChanged();
                         list.removeAllViews();
                         buildSiteSettings();
-                        Toast.makeText(SiteSettingsActivity.this,
-                                R.string.site_settings_reset_done,
-                                Toast.LENGTH_SHORT).show();
+                        KsToast.show(SiteSettingsActivity.this,
+                                R.string.site_settings_reset_done);
                     }
                 });
     }
