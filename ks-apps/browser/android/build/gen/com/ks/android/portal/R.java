@@ -104,6 +104,7 @@ public final class R {
     public static final int ic_settings=0x7f030049;
     public static final int ic_shield=0x7f03004a;
     public static final int ic_toolbar_toggle=0x7f03004b;
+    public static final int ic_volume_off=0x7f03004c;
   }
   public static final class id {
     public static final int aboutBack=0x7f040000;

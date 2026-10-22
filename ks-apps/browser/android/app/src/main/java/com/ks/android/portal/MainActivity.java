@@ -3970,10 +3970,11 @@ public class MainActivity extends Activity {
         if (TextUtils.isEmpty(host)) {
             return;
         }
-        boolean muted = SiteSettingsStore.getBoolean(this, host,
+        boolean soundOn = SiteSettingsStore.getBoolean(this, host,
                 SiteSettingsStore.KEY_SOUND, true);
-        SiteSettingsStore.setBoolean(this, host, SiteSettingsStore.KEY_SOUND, muted);
-        KsToast.show(this, muted ? R.string.tool_site_muted : R.string.tool_site_unmuted);
+        SiteSettingsStore.setBoolean(this, host, SiteSettingsStore.KEY_SOUND, !soundOn);
+        KsToast.show(this, soundOn ? R.string.tool_site_muted
+                : R.string.tool_site_unmuted);
         webView.reload();
     }
 
