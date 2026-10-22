@@ -393,7 +393,6 @@ final class AdBlockListStore {
     }
 
     static UpdateResult update(Context context, List<FilterList> lists) {
-        preferences(context).edit().putLong(LAST_ATTEMPT, System.currentTimeMillis()).apply();
         File directory = directory(context);
         if (!directory.isDirectory() && !directory.mkdirs()) {
             return new UpdateResult(0, lists.size(), "cache");
@@ -418,10 +417,10 @@ final class AdBlockListStore {
                 }
             }
         }
+        long now = System.currentTimeMillis();
+        preferences(context).edit().putLong(LAST_ATTEMPT, now).apply();
         if (downloaded > 0) {
-            preferences(context).edit()
-                    .putLong(LAST_UPDATE, System.currentTimeMillis())
-                    .apply();
+            preferences(context).edit().putLong(LAST_UPDATE, now).apply();
         }
         return new UpdateResult(downloaded, failed, firstError);
     }
@@ -511,7 +510,7 @@ final class AdBlockListStore {
                 throw firstError == null ? new IOException("Filter list failed") : firstError;
             }
             if (combined.size() == 0) {
-                return false;
+                return true;
             }
             byte[] data = combined.toByteArray();
             String text = new String(data, "UTF-8");
