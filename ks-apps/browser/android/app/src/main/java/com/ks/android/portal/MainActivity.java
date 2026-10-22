@@ -1868,8 +1868,8 @@ public class MainActivity extends Activity {
     }
 
     private void saveImage(String url) {
-        String userAgent = defaultUserAgent == null
-                ? new WebView(this).getSettings().getUserAgentString() : defaultUserAgent;
+        String userAgent = defaultUserAgent != null ? defaultUserAgent
+                : webView == null ? "" : webView.getSettings().getUserAgentString();
         startDownloadOrConfirm(url, userAgent, null, "image/*", -1,
                 webView == null ? null : webView.getUrl());
     }
