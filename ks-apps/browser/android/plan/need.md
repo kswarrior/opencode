@@ -329,23 +329,24 @@ and compiling, not device-verified.
 
 | Area | Items |
 | --- | --- |
-| Trust/correctness | F1-F9, all P2 correctness cleanups (pause/finalise lock check, mkdir verification, toolbar preview restore, Safe Browsing API gate, resource errors, site favicon, narrowed DNT wording, `VERSION` refresh, provider delete, adblock attempt/304 state, unknown permission denial) |
-| Address bar/search | N1 local recents/history/bookmark suggestions with keyboard selection (suppressed in private tabs), N2 privacy-default-off Google suggestions, N4 custom engines with `%s` templates/keywords, N5 editable top sites + section toggles + custom home URL |
-| Page tools | N3 voice search, N7 reader, N8 print/save PDF, N9 offline save, N10 translated page tab with disclosure, N11 text scaling/zoom, N12 force dark, N13 pull/edge gestures, N14 add to home with favicon |
-| Tabs | N6 four launcher shortcuts, N15 tab search, N16 undo/recently closed, N17 per-tab history restore, N18 pin/move/drag reorder, N19 close others/duplicates, N20 audio indicator/mute, N21 background-tab discard/restore, N66 open in private tab, N67 toolbar placement |
-| Bookmarks/history | N23 manager, N24 folders + 1,000 cap, N25 JSON/HTML import/export, N26 CSV/JSON export + filtered delete, N27 retention |
+| Trust/correctness | F1-F9, all P2 correctness cleanups. F1 private cleanup now removes per-host cookies/WebStorage and cache only when the private session ends, and no longer clears global form data. F7 cancels cross-host subresource certificate errors. Bookmark loading is native-authoritative with a one-time migration, a 1,000-item cap, an enforced native limit, folder-aware reordering and a live refresh broadcast. PiP calls are API-guarded and JS prompt cancel resolves the prompt |
+| Address bar/search | N1 local recents/history/bookmark suggestions with keyboard selection (suppressed in private tabs), N2 privacy-default-off Google suggestions, N3 voice queries resolved through the same input parser, N4 custom engines with `%s` templates/keywords, N5 editable top sites + section toggles + custom home URL |
+| Page tools | N7 reader, N8 print/save PDF, N9 offline HTML snapshot, N10 translated page tab with disclosure, N11 per-site text scaling/zoom, N12 force dark, N13 pull/edge gestures, N14 add to home with favicon (blocked in private tabs) |
+| Tabs | N6 four launcher shortcuts, N15 tab search, N16 undo/recently closed with title restore, N17 per-tab history restore, N18 pin/move/drag reorder, N19 close others/duplicates, N20 audio indicator/mute, N21 background-tab discard/restore, N66 open in private tab, N67 top/bottom address-bar placement |
+| Bookmarks/history | N23 manager with live home refresh, N24 folders + enforced 1,000 cap, N25 JSON/HTML import/export, N26 CSV/JSON export + filtered delete, N27 retention |
 | Downloads | N28 sort/filter, N29 multi-select, N30 speed, N31 resume-all/retry-all, N32 Wi-Fi-only queue + override, N33 open folder/open-with, N34 size/SHA-256, N35 real global content defaults |
-| Site data/privacy | N36 origin storage manager, N37 inactivity-based permission removal, N38 strict HTTPS + listed exceptions, N39 explicit no-trust-store explanation, N40 Safe Browsing guard, N41 narrowed DNT claim, N42 site favicon, N43 backup exclusion, N44 unsupported permissions labelled, N45 real global defaults, N46 notification permission consumer, N47 one permission default |
-| Autofill | N48 list/search/edit/reveal/delete, N49 device-credential unlock, N50 in-app-only explanation, N51 forms toggle, N52 no dead payment toggle, N53 live platform-authenticator detection + explanation, N54 weak/duplicate warning |
-| Media/input/a11y | N55 PiP with play/pause/stop actions (API 26+), N56 background audio + media notification, N57 global autoplay, N58 48dp touch targets/labels, N59 keyboard shortcuts, N60 portal contrast/reduced-motion media queries, N61 RTL enabled audited structurally, N62 six-language portal string table for core labels/dialogs, N63 native error strings, N64 wrap-content headers (`minHeight 56dp`) |
+| Site data/privacy | N36 origin storage manager including cookie-only visited origins, N37 last-visit-aware permission removal, N38 strict HTTPS + listed exceptions, N39 explicit no-trust-store explanation, N40 Safe Browsing guard, N41 narrowed DNT claim, N42 site favicon, N43 backup exclusion, N44 unsupported permissions labelled, N45 real global defaults, N46 notification permission consumer, N47 one permission default |
+| Autofill | N48 list/search/edit/reveal/delete (requires a secure device lock), N49 device-credential unlock, N50 in-app-only explanation, N51 password-form autofill toggle, N52 no dead payment toggle, N53 live platform-authenticator detection + explanation, N54 weak/duplicate warning |
+| Media/input/a11y | N55 PiP with play/pause/stop actions (API 26+), N56 background audio + media notification, N57 global autoplay, N58 48dp touch targets/labels + auto-mirrored directional icons, N59 keyboard shortcuts, N60 portal contrast/reduced-motion media queries, N61 RTL enabled audited structurally, N62 six-language portal string table for core labels/dialogs, N63 localized download error messages, N64 wrap-content headers (`minHeight 56dp`) |
 
 ### Remaining / partial
 
 | Items | State |
 | --- | --- |
+| N9 | Saves the rendered outer HTML only; linked images, CSS and scripts are not embedded |
 | N22, N65 | Deliberately deferred: two-pane tabs and sync need new architecture/backend; sync is not faked |
-| N36 | One/all clearing works. Per-origin clearing removes storage and expires that origin's cookies, but WebView cache cannot be scoped to one origin (clear-all does clear it) |
-| N37 | Removal is a configurable fixed inactivity interval (off/7/30/90 days), not a grant-age policy |
+| N36 | One/all clearing works and cookie-only visited origins are listed. Per-origin clearing removes WebStorage and all cookies for that origin; WebView cache still cannot be scoped to one origin (clear-all clears it) |
+| N37 | Removal uses the later of last visit and last permission grant/use within a configurable interval (off/7/30/90 days); it is still a fixed interval, not a grant-age policy |
 | N39 | No TLS trust store exists by design; the Security screen now explains this and invalid certificates always warn |
 | N41 | DNT is added to intercepted subresource requests where available; browser-engine requests without interception may omit it |
 | N55 | PiP shows the active tab (not a cropped video surface); play/pause/stop RemoteActions added |
@@ -355,6 +356,7 @@ and compiling, not device-verified.
 | N64 | Activity headers wrap with `minHeight 56dp`; rows already wrap. No large-font device QA |
 
 These statuses mean implemented/compiling only. The release artifact was rebuilt and
-signed after the N2/N4/N5/N13/N18/N20/N53/N55/N56/N58/N66 work; no device/emulator
-was attached.
+signed after the private-cleanup, bookmark, site-data, bottom-toolbar, zoom, SSL,
+voice, PiP, error-localization and accessibility fixes; no device/emulator was
+attached.
 
