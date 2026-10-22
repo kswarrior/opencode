@@ -179,6 +179,9 @@ new work below.
 | N42 | P2 | Private favicon loading | No Google request by default; site favicon or generated fallback is used; remote provider is opt-in | S |
 | N43 | P1 | Backup exclusion for private data | Credentials, history, downloads and private data are excluded from Android backup, or `allowBackup` is false | S |
 
+N38 is the user-facing exception manager for the F7 load path. N39-N42 are the
+remaining security hardening; they do not replace F3/F4/F7.
+
 ### 4.7 Permissions and site controls
 
 | ID | P | Add | Done when | Size |
