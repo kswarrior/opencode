@@ -786,11 +786,12 @@ public class MainActivity extends Activity {
         }
         String action = intent.getAction();
         if (ACTION_NEW_PRIVATE_TAB.equals(action)) {
-            BrowserTab tab = tabManager.addTab(newTabUrl(), 0);
-            privateTabs.add(tab.id);
-            tabManager.setPrivate(tab.id, true);
-            privateTabHosts.put(tab.id, new ArrayList<String>());
-            syncActiveTab();
+            runWithPrivateUnlock(new Runnable() {
+                @Override
+                public void run() {
+                    openUrlInPrivateTab(newTabUrl(), 0);
+                }
+            });
             return true;
         }
         if (ACTION_NEW_TAB.equals(action)) {
@@ -1978,6 +1979,7 @@ public class MainActivity extends Activity {
                     "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks()",
                     null);
         }
+        applyScreenSecurity();
     }
 
     private void rememberPrivateHost(int tabId, String url) {
@@ -3447,12 +3449,79 @@ public class MainActivity extends Activity {
         return active == null ? 0 : active.groupId;
     }
 
-    private void openUrlInPrivateTab(String url, int groupId) {
-        BrowserTab tab = tabManager.addTab(url, groupId);
-        privateTabs.add(tab.id);
-        tabManager.setPrivate(tab.id, true);
-        privateTabHosts.put(tab.id, new ArrayList<String>());
+    private void openUrlInPrivateTab(final String url, final int groupId) {
+        runWithPrivateUnlock(new Runnable() {
+            @Override
+            public void run() {
+                BrowserTab tab = tabManager.addTab(url, groupId);
+                privateTabs.add(tab.id);
+                tabManager.setPrivate(tab.id, true);
+                privateTabHosts.put(tab.id, new ArrayList<String>());
+                syncActiveTab();
+            }
+        });
+    }
+
+    private void runWithPrivateUnlock(final Runnable action) {
+        if (!AdvancedStore.isPrivateLock(this) || privateUnlocked) {
+            action.run();
+            return;
+        }
+        pendingPrivateAction = action;
+        if (!privatePromptShowing) {
+            privatePromptShowing = true;
+            if (!AppLock.request(this, REQUEST_PRIVATE_UNLOCK)) {
+                privatePromptShowing = false;
+                pendingPrivateAction = null;
+            }
+        }
+    }
+
+    private void maybePromptPrivateLock() {
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active == null || !privateTabs.contains(active.id)
+                || !AdvancedStore.isPrivateLock(this) || privateUnlocked
+                || privatePromptShowing) {
+            return;
+        }
+        privatePromptShowing = true;
+        if (!AppLock.request(this, REQUEST_PRIVATE_UNLOCK)) {
+            privatePromptShowing = false;
+            leavePrivateTab();
+        }
+    }
+
+    private void leavePrivateTab() {
+        for (BrowserTab tab : tabManager.getTabs()) {
+            if (!privateTabs.contains(tab.id)) {
+                tabManager.selectTab(tab.id);
+                return;
+            }
+        }
+        tabManager.addTab(newTabUrl(), 0);
         syncActiveTab();
+    }
+
+    private void maybePromptAppLock() {
+        if (!AdvancedStore.isAppLock(this) || appUnlocked) {
+            return;
+        }
+        if (!AppLock.request(this, REQUEST_APP_UNLOCK)) {
+            appUnlocked = true;
+        }
+    }
+
+    private void applyScreenSecurity() {
+        boolean secure = false;
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active != null && privateTabs.contains(active.id)) {
+            secure = true;
+        }
+        if (secure) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
     }
 
     private void addToHomeScreen() {
@@ -5170,20 +5239,33 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
-        public boolean setPrivateMode(boolean enabled) {
+        public boolean setPrivateMode(final boolean enabled) {
             if (!allowed()) {
                 return false;
             }
             if (enabled) {
-                privateTabs.add(tabId);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        runWithPrivateUnlock(new Runnable() {
+                            @Override
+                            public void run() {
+                                privateTabs.add(tabId);
+                                tabManager.setPrivate(tabId, true);
+                                if (privateTabHosts.get(tabId) == null) {
+                                    privateTabHosts.put(tabId, new ArrayList<String>());
+                                }
+                                applyScreenSecurity();
+                            }
+                        });
+                    }
+                });
             } else {
                 privateTabs.remove(tabId);
                 clearPrivateTabData(tabId);
                 clearPrivateSessionIfDone();
-            }
-            tabManager.setPrivate(tabId, enabled);
-            if (enabled && privateTabHosts.get(tabId) == null) {
-                privateTabHosts.put(tabId, new ArrayList<String>());
+                tabManager.setPrivate(tabId, false);
+                applyScreenSecurity();
             }
             return true;
         }
