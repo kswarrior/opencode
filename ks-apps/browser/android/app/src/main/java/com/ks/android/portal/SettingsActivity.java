@@ -1,11 +1,15 @@
 package com.ks.android.portal;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity {
     private TextView searchEngineValue;
@@ -72,6 +76,13 @@ public class SettingsActivity extends Activity {
                 startActivity(new Intent(SettingsActivity.this, AutofillPasswordsActivity.class));
             }
         });
+        findViewById(R.id.settingsDefaultBrowser).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        openDefaultBrowserSettings();
+                    }
+                });
         findViewById(R.id.settingsAbout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +97,25 @@ public class SettingsActivity extends Activity {
         super.onResume();
         refreshValues();
         BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
+    }
+
+    private void openDefaultBrowserSettings() {
+        Intent intent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent = new Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS);
+        } else {
+            intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            intent.setData(android.net.Uri.parse("package:" + getPackageName()));
+        }
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException exception) {
+            try {
+                startActivity(new Intent(Settings.ACTION_SETTINGS));
+            } catch (ActivityNotFoundException ignored) {
+                Toast.makeText(this, R.string.no_app_found, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void refreshValues() {

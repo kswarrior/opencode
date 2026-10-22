@@ -203,7 +203,8 @@ final class AdBlockEngine {
         boolean elementHideDisabled = false;
         boolean genericHideDisabled = false;
         boolean specificHideDisabled = false;
-        boolean popupBlockSuggested = false;
+        boolean popupBlock = false;
+        boolean popupException = false;
         int position = 0;
         while (position >= 0) {
             String suffix = host.substring(position);
@@ -216,7 +217,13 @@ final class AdBlockEngine {
                         elementHideDisabled |= rule.elemHide;
                         genericHideDisabled |= rule.genericHide;
                         specificHideDisabled |= rule.specificHide;
-                        popupBlockSuggested |= rule.popup;
+                        if (rule.popup) {
+                            if (rule.filter.exception) {
+                                popupException = true;
+                            } else {
+                                popupBlock = true;
+                            }
+                        }
                     }
                 }
             }
@@ -232,7 +239,13 @@ final class AdBlockEngine {
                     elementHideDisabled |= rule.elemHide;
                     genericHideDisabled |= rule.genericHide;
                     specificHideDisabled |= rule.specificHide;
-                    popupBlockSuggested |= rule.popup;
+                    if (rule.popup) {
+                        if (rule.filter.exception) {
+                            popupException = true;
+                        } else {
+                            popupBlock = true;
+                        }
+                    }
                 }
             }
         }

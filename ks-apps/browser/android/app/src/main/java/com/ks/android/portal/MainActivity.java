@@ -67,10 +67,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
@@ -214,7 +216,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        String openUrl = normalizeWebUrl(getIntent().getStringExtra(EXTRA_OPEN_URL));
+        String openUrl = urlFromIntent(getIntent());
         if (openUrl != null) {
             openUrlInActiveTab(openUrl);
         } else {
@@ -272,7 +274,7 @@ public class MainActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        String url = normalizeWebUrl(intent.getStringExtra(EXTRA_OPEN_URL));
+        String url = urlFromIntent(intent);
         if (url == null) {
             return;
         }
@@ -1476,12 +1478,42 @@ public class MainActivity extends Activity {
         if (TextUtils.isEmpty(raw)) {
             return null;
         }
-        Uri uri = Uri.parse(raw);
+        Uri uri = Uri.parse(raw.trim());
         String scheme = uri.getScheme();
         if (!"http".equalsIgnoreCase(scheme) && !"https".equalsIgnoreCase(scheme)) {
             return null;
         }
         return TextUtils.isEmpty(uri.getHost()) ? null : uri.toString();
+    }
+
+    private String urlFromIntent(Intent intent) {
+        if (intent == null) {
+            return null;
+        }
+        String explicit = normalizeWebUrl(intent.getStringExtra(EXTRA_OPEN_URL));
+        if (explicit != null) {
+            return explicit;
+        }
+        String action = intent.getAction();
+        if (Intent.ACTION_VIEW.equals(action)) {
+            return normalizeWebUrl(intent.getDataString());
+        }
+        if (Intent.ACTION_SEND.equals(action)) {
+            String text = intent.getStringExtra(Intent.EXTRA_TEXT);
+            if (TextUtils.isEmpty(text)) {
+                return null;
+            }
+            String direct = normalizeWebUrl(text);
+            if (direct != null) {
+                return direct;
+            }
+            java.util.regex.Matcher matcher = java.util.regex.Pattern
+                    .compile("https?://[^\\s]+").matcher(text);
+            if (matcher.find()) {
+                return normalizeWebUrl(matcher.group());
+            }
+        }
+        return null;
     }
 
     static String cleanRecentName(String title, String url) {

@@ -411,6 +411,8 @@ example.com##.ad-banner</string>
     <string name="notification_update_text">Version %1$s is now installed</string>
     <string name="notification_tip_title">KS Portal tip</string>
     <string name="notification_tip_text">Tap the floating button to show or hide the toolbar.</string>
+    <string name="settings_default_browser">Default browser</string>
+    <string name="settings_default_browser_summary">Open links from other apps with KS Portal</string>
     <string name="settings_coming_soon">Coming soon</string>
     <string name="settings_description">More browser controls and preferences are on the way.</string>
     <string name="settings_action">Settings</string>
