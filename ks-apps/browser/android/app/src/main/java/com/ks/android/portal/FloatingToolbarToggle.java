@@ -460,19 +460,20 @@ public class FloatingToolbarToggle extends View {
                 }
                 return true;
             case MotionEvent.ACTION_MOVE:
-                if (!moveable) {
-                    return true;
-                }
                 float rawX = event.getRawX();
                 float rawY = event.getRawY();
-                if (!dragging
-                        && (Math.abs(rawX - downRawX) > touchSlop
-                        || Math.abs(rawY - downRawY) > touchSlop)) {
+                boolean beyondSlop = Math.abs(rawX - downRawX) > touchSlop
+                        || Math.abs(rawY - downRawY) > touchSlop;
+                if (beyondSlop) {
                     moved = true;
-                    beginDrag();
                 }
-                if (dragging) {
-                    moveBy(rawX - lastRawX, rawY - lastRawY);
+                if (moveable) {
+                    if (!dragging && beyondSlop) {
+                        beginDrag();
+                    }
+                    if (dragging) {
+                        moveBy(rawX - lastRawX, rawY - lastRawY);
+                    }
                 }
                 lastRawX = rawX;
                 lastRawY = rawY;
