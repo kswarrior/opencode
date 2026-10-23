@@ -123,7 +123,11 @@ public class ExtrasActivity extends Activity {
                     public void onToggle(boolean next) {
                         AdvancedStore.setDataSaver(ExtrasActivity.this, next);
                         setResult(RESULT_RELOAD);
-                        rebuild();
+                        if (next) {
+                            rebuild();
+                        } else {
+                            finish();
+                        }
                     }
                 });
         addAction(R.string.extra_quiet, R.string.extra_quiet_desc, ACTION_QUIET);

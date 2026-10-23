@@ -983,13 +983,12 @@ public class DeveloperToolsActivity extends Activity {
     private void clearSite() {
         Uri uri = Uri.parse(currentUrl);
         String scheme = uri.getScheme() == null ? "https" : uri.getScheme();
-        String origin = scheme + "://" + host;
-        for (String candidate : new String[]{"https://" + host, "http://" + host}) {
-            SiteCookies.deleteAll(candidate);
-            try {
-                WebStorage.getInstance().deleteOrigin(candidate);
-            } catch (Exception ignored) {
-            }
+        String authority = uri.getAuthority() == null ? host : uri.getAuthority();
+        String origin = scheme + "://" + authority;
+        SiteCookies.deleteAll(currentUrl);
+        try {
+            WebStorage.getInstance().deleteOrigin(origin);
+        } catch (Exception ignored) {
         }
         CookieManager.getInstance().flush();
         try {
