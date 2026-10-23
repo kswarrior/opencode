@@ -5336,7 +5336,11 @@ public class MainActivity extends Activity {
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("text/plain");
         share.putExtra(Intent.EXTRA_TEXT, text);
-        startActivity(Intent.createChooser(share, getString(R.string.share_chooser)));
+        try {
+            startActivity(Intent.createChooser(share, getString(R.string.share_chooser)));
+        } catch (Exception exception) {
+            copyPlainText(text);
+        }
     }
 
     private void toggleBookmark() {
