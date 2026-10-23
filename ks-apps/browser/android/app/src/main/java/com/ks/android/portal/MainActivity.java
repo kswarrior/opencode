@@ -5567,7 +5567,8 @@ public class MainActivity extends Activity {
             return;
         }
         String script = "(function(){try{var out=[];"
-                + "function abs(u){try{return new URL(u,location.href).href;}catch(e){return '';}}"
+                + "function abs(u){if(!u)return '';try{return new URL(u,location.href).href;}"
+                + "catch(e){return '';}}"
                 + "function isMedia(u){u=(u||'').split('#')[0].split('?')[0].toLowerCase();"
                 + "return /\\/videoplayback/.test(u)||"
                 + "/\\.(mp4|m4v|webm|mov|mkv|flv|avi|ogv|3gp|m3u8|mpd|mp3|m4a|aac|ogg|opus|wav|flac)$/.test(u);}"
@@ -5628,7 +5629,7 @@ public class MainActivity extends Activity {
             return;
         }
         String script = "(function(){if(window.__ksMediaWatch){return;}window.__ksMediaWatch=1;"
-                + "function abs(u){try{return new URL(u,location.href).href;}"
+                + "function abs(u){if(!u)return '';try{return new URL(u,location.href).href;}"
                 + "catch(e){return '';}}"
                 + "function collect(){try{var now=Date.now();"
                 + "if(now-(window.__ksMediaLast||0)<800){return;}"
