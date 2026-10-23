@@ -145,6 +145,7 @@ public class MainActivity extends Activity {
     private VideoSourceSheet videoSourceSheet;
     private final Handler mediaHandler = new Handler(Looper.getMainLooper());
     private boolean mediaUpdatePosted;
+    private boolean mediaButtonVisible;
     private ImageView siteLogo;
     private FaviconLoader faviconLoader;
     private EditText urlBar;
@@ -1668,6 +1669,9 @@ public class MainActivity extends Activity {
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 applyImmersive(true);
                 updateMediaButton();
+                if (mediaButton != null && mediaButtonVisible) {
+                    mediaButton.bringToFront();
+                }
             }
 
             @Override
@@ -2738,6 +2742,7 @@ public class MainActivity extends Activity {
         }
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         applyImmersive(false);
+        updateMediaButton();
         if (notifyCallback && callback != null) {
             callback.onCustomViewHidden();
         }
@@ -2794,10 +2799,11 @@ public class MainActivity extends Activity {
             return;
         }
         BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
-        boolean show = tab != null && !privateTabs.contains(tab.id)
-                && !isHomeUrl(currentUrl)
-                && !VideoSniffer.snapshot(tab.id).isEmpty();
-        int count = show ? VideoSniffer.snapshot(tab.id).size() : 0;
+        List<VideoSource> sources = tab == null || privateTabs.contains(tab.id)
+                ? null : VideoSniffer.snapshot(tab.id);
+        boolean show = sources != null && !sources.isEmpty()
+                && !isHomeUrl(currentUrl);
+        int count = sources == null ? 0 : sources.size();
         FrameLayout.LayoutParams params =
                 (FrameLayout.LayoutParams) mediaButton.getLayoutParams();
         int bottomMargin = dp(18);
@@ -2812,11 +2818,15 @@ public class MainActivity extends Activity {
             mediaButton.setContentDescription(count == 1
                     ? getString(R.string.media_download_button)
                     : getString(R.string.media_download_button_count, count));
-            mediaButton.setVisibility(View.VISIBLE);
-            mediaButton.bringToFront();
-        } else {
+            if (!mediaButtonVisible) {
+                mediaButton.setVisibility(View.VISIBLE);
+                mediaButton.bringToFront();
+                mediaButtonVisible = true;
+            }
+        } else if (mediaButtonVisible) {
             mediaButton.setContentDescription(getString(R.string.media_download_button));
             mediaButton.setVisibility(View.GONE);
+            mediaButtonVisible = false;
         }
     }
 
