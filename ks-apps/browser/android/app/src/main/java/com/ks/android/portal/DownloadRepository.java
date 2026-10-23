@@ -163,6 +163,22 @@ public class DownloadRepository {
         return instance;
     }
 
+    static synchronized DownloadRepository peek() {
+        return instance;
+    }
+
+    void reloadFromPreferences() {
+        synchronized (lock) {
+            if (!tasks.isEmpty()) {
+                return;
+            }
+            items.clear();
+            nextId = System.currentTimeMillis();
+            load();
+            notifyListenersLocked();
+        }
+    }
+
     public File getRoot() {
         return root;
     }

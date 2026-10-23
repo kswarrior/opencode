@@ -363,6 +363,12 @@ final class StorageManager {
         if (category.split != null) {
             applyTabSnapshot(category, root);
         }
+        if (category == DOWNLOADS) {
+            DownloadRepository repository = DownloadRepository.peek();
+            if (repository != null) {
+                repository.reloadFromPreferences();
+            }
+        }
         return true;
     }
 
