@@ -147,7 +147,7 @@ final class HlsRemuxer {
                     break;
                 }
                 if (time < lastTime) {
-                    time = lastTime;
+                    return false;
                 }
                 lastTime = time;
                 info.set(0, size, time, extractor.getSampleFlags());
