@@ -253,6 +253,7 @@ public class MainActivity extends Activity {
     private float gestureStartY;
     private boolean gestureTracking;
     private WebView gestureView;
+    private int gestureSerial;
 
     private final TabManager.Listener tabsListener = new TabManager.Listener() {
         @Override
@@ -605,6 +606,9 @@ public class MainActivity extends Activity {
             gestureStartX = event.getRawX();
             gestureStartY = event.getRawY();
             gestureTracking = true;
+            if (setting("gesture_pull_refresh", true)) {
+                beginPullRefreshCheck(gestureView);
+            }
             return;
         }
         if (action == MotionEvent.ACTION_CANCEL) {
@@ -636,23 +640,67 @@ public class MainActivity extends Activity {
         }
         if (setting("gesture_pull_refresh", true) && dy > dp(120)
                 && Math.abs(dy) > Math.abs(dx) * 1.5f) {
-            view.evaluateJavascript(
-                    "(function(){return window.scrollY||document.documentElement.scrollTop"
-                            + "||document.body.scrollTop||0;})()",
-                    new ValueCallback<String>() {
-                        @Override
-                        public void onReceiveValue(String value) {
-                            try {
-                                String clean = value == null ? "0"
-                                        : value.replace("\"", "").trim();
-                                if (Double.parseDouble(clean) <= 1) {
-                                    reloadPage(view);
-                                }
-                            } catch (NumberFormatException ignored) {
-                            }
-                        }
-                    });
+            finishPullRefreshCheck(view, gestureSerial);
         }
+    }
+
+    private void beginPullRefreshCheck(final WebView view) {
+        if (view == null) {
+            return;
+        }
+        final int serial = ++gestureSerial;
+        view.evaluateJavascript(
+                "(function(){"
+                        + "if(window.__ksPortalPullHandler){"
+                        + "document.removeEventListener('scroll',"
+                        + "window.__ksPortalPullHandler,true);"
+                        + "window.__ksPortalPullHandler=null;}"
+                        + "window.__ksPortalPullId=" + serial + ";"
+                        + "window.__ksPortalPullTop=false;"
+                        + "window.__ksPortalPullMoved=false;"
+                        + "var y=window.scrollY||window.pageYOffset"
+                        + "||document.documentElement.scrollTop"
+                        + "||document.body.scrollTop||0;"
+                        + "if(y<=1){window.__ksPortalPullTop=true;"
+                        + "window.__ksPortalPullHandler=function(){"
+                        + "window.__ksPortalPullMoved=true;"
+                        + "document.removeEventListener('scroll',"
+                        + "window.__ksPortalPullHandler,true);"
+                        + "window.__ksPortalPullHandler=null;};"
+                        + "document.addEventListener('scroll',"
+                        + "window.__ksPortalPullHandler,true);}"
+                        + "return y;})()",
+                null);
+    }
+
+    private void finishPullRefreshCheck(final WebView view, final int serial) {
+        view.evaluateJavascript(
+                "(function(){"
+                        + "var y=window.scrollY||window.pageYOffset"
+                        + "||document.documentElement.scrollTop"
+                        + "||document.body.scrollTop||0;"
+                        + "var ok=window.__ksPortalPullId===" + serial
+                        + "&&window.__ksPortalPullTop===true"
+                        + "&&window.__ksPortalPullMoved!==true"
+                        + "&&y<=1;"
+                        + "if(window.__ksPortalPullHandler){"
+                        + "document.removeEventListener('scroll',"
+                        + "window.__ksPortalPullHandler,true);"
+                        + "window.__ksPortalPullHandler=null;}"
+                        + "return ok?1:0;})()",
+                new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        if (serial != gestureSerial) {
+                            return;
+                        }
+                        String clean = value == null ? ""
+                                : value.replace("\"", "").trim();
+                        if ("1".equals(clean)) {
+                            reloadPage(view);
+                        }
+                    }
+                });
     }
 
     private boolean pointInView(View view, float rawX, float rawY) {
