@@ -2465,7 +2465,8 @@ public class DownloadRepository {
                         }
                         HlsRemuxer.Result remuxResult = HlsRemuxer.remux(part, remuxFile);
                         if (remuxResult != null) {
-                            File backup = new File(parent, part.getName() + ".ts.bak");
+                            File backup = new File(remuxParent,
+                                    part.getName() + ".ts.bak");
                             if (backup.exists()) {
                                 backup.delete();
                             }
