@@ -2315,6 +2315,7 @@ public class DownloadRepository {
                         }
                     }
                 }
+                MediaProbe directProbe = null;
                 if (!apk) {
                     String hintName = null;
                     String hintMime = null;
@@ -2326,11 +2327,7 @@ public class DownloadRepository {
                         }
                     }
                     if (isMediaHint(hintName, hintMime)) {
-                        MediaProbe probe = MediaProbe.probe(part);
-                        if (probe == null) {
-                            throw new IOException(context.getString(
-                                    R.string.download_error_unplayable_media));
-                        }
+                        directProbe = MediaProbe.probe(part);
                     }
                 }
                 String finalUrl = current.getURL() == null ? url : current.getURL().toString();
@@ -2361,6 +2358,10 @@ public class DownloadRepository {
                         improved = withExtension(improved,
                                 directRemuxHasVideo ? ".mp4" : ".m4a");
                         item.mimeType = directRemuxHasVideo ? "video/mp4" : "audio/mp4";
+                    } else if (directProbe != null && !directProbe.hasVideo
+                            && directProbe.hasAudio) {
+                        improved = withExtension(improved, ".m4a");
+                        item.mimeType = "audio/mp4";
                     }
                     name = uniqueFileNameLocked(item.relativePath, improved, item.id);
                     relative = item.relativePath;
@@ -2598,21 +2599,17 @@ public class DownloadRepository {
                 String mime;
                 if (playlist.fmp4) {
                     MediaProbe probe = MediaProbe.probe(part);
-                    if (probe == null) {
-                        throw new IOException(context.getString(
-                                R.string.download_error_unplayable_media));
+                    if (probe != null && !probe.hasVideo && probe.hasAudio) {
+                        extension = ".m4a";
+                        mime = "audio/mp4";
+                    } else {
+                        extension = ".mp4";
+                        mime = "video/mp4";
                     }
-                    extension = probe.hasVideo ? ".mp4" : ".m4a";
-                    mime = probe.hasVideo ? "video/mp4" : "audio/mp4";
                 } else if (remuxed) {
                     extension = remuxHasVideo ? ".mp4" : ".m4a";
                     mime = remuxHasVideo ? "video/mp4" : "audio/mp4";
                 } else {
-                    MediaProbe probe = MediaProbe.probe(part);
-                    if (probe == null) {
-                        throw new IOException(context.getString(
-                                R.string.download_error_unplayable_media));
-                    }
                     extension = ".ts";
                     mime = "video/mp2t";
                 }
