@@ -215,7 +215,7 @@ separate design:
 | B1-B20 | All 20 implemented in source; B10 is partial and labelled above |
 | Video downloader | C1-C4 implemented; HLS VOD works in source, DASH/live/DRM limitations documented |
 | Standard surface | Cross-checked against `SettingsActivity`, `MainActivity`, `TabManager`, `HistoryRepository`, `BookmarkRepository`, `DownloadRepository`, `SiteSettingsStore`, `AdBlockListStore`, `AppLock`, `NotificationHelper` and `assets/portal.html` |
-| Build | Built with the `android-apk-build` skill pipeline (AAPT2 → javac → d8 → zipalign → apksigner) into `build/signed.apk`; signature and manifest verified with `apksigner` and `aapt2 dump badging` |
+| Build | Rebuilt 2026-10-23 with the `android-apk-build` skill pipeline (AAPT2 → javac → d8 → zipalign → apksigner): 693 classes → `build/signed.apk`; `apksigner verify` passes, the APK contains `classes.dex`, `resources.arsc` and `assets/portal.html`, and badging reports `com.ks.android.portal` 1.5.1 (27), minSdk 21, targetSdk 35 |
 | Device/MCP test | No target was attached: `adb devices -l` is empty, and no emulator/system image is installed in this environment. The `mobile-mcp` and `android-mcp` servers are configured in `opencode.json`, but no runtime UI automation was possible, so device-verified claims are deliberately absent |
 
 Skills used for this recheck: `ks-portal-dev` for the file map, architecture and
