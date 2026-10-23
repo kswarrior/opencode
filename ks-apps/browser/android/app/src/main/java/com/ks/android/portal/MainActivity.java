@@ -6086,6 +6086,62 @@ public class MainActivity extends Activity {
             });
             return false;
         }
+
+        @JavascriptInterface
+        public void saveReadingProgress(int percent) {
+            if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)
+                    || !AdvancedStore.isResumeEnabled(MainActivity.this)) {
+                return;
+            }
+            BrowserTab active = tabManager.getActiveTab();
+            if (active == null || TextUtils.isEmpty(active.url)) {
+                return;
+            }
+            AdvancedStore.saveReadingProgress(MainActivity.this, active.url, percent);
+        }
+
+        @JavascriptInterface
+        public void selectionAction(String action, String text) {
+            if (tabId != tabManager.getActiveTabId() || text == null
+                    || text.length() > 8000) {
+                return;
+            }
+            final String safeAction = action == null ? "" : action;
+            final String safeText = text;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    handleSelectionAction(safeAction, safeText);
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public boolean saveZappedSelector(String selector) {
+            if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)
+                    || selector == null) {
+                return false;
+            }
+            String rule = selector.trim();
+            if (rule.length() < 2 || rule.length() > 512 || rule.indexOf('{') >= 0
+                    || rule.indexOf('}') >= 0 || rule.indexOf('<') >= 0) {
+                return false;
+            }
+            BrowserTab active = tabManager.getActiveTab();
+            if (active == null) {
+                return false;
+            }
+            String host = SiteSettingsStore.hostOf(active.url);
+            if (TextUtils.isEmpty(host)) {
+                return false;
+            }
+            String css = AdvancedStore.siteCss(MainActivity.this, host);
+            String addition = rule + "{display:none!important}\n";
+            if (css.length() + addition.length() > 32768) {
+                return false;
+            }
+            return AdvancedStore.setSiteCss(MainActivity.this, host, css + addition);
+        }
     }
 
     private final class PortalBridge {
