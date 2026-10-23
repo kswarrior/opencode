@@ -26,6 +26,15 @@ final class HlsRemuxer {
     }
 
     static Result remux(File input, File output) {
+        Result result = remuxWithMuxer(input, output);
+        if (result != null) {
+            return result;
+        }
+        output.delete();
+        return Mp4Remuxer.remux(input, output);
+    }
+
+    private static Result remuxWithMuxer(File input, File output) {
         if (input == null || output == null || !input.isFile()
                 || input.length() <= 0) {
             return null;
