@@ -525,7 +525,7 @@ final class StorageManager {
         }
     }
 
-    private boolean isExternal(String location) {
+    private static boolean isExternal(String location) {
         return StorageFiles.LOCATION_SHARED.equals(location)
                 || StorageFiles.LOCATION_CUSTOM.equals(location);
     }

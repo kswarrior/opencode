@@ -55,6 +55,10 @@ final class TabManager {
         return instance;
     }
 
+    static synchronized TabManager peek() {
+        return instance;
+    }
+
     private TabManager(Context context) {
         this.context = context;
         preferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
@@ -63,6 +67,23 @@ final class TabManager {
             activeTabId = tabs.get(0).id;
             save();
         }
+    }
+
+    synchronized void reload() {
+        tabs.clear();
+        groups.clear();
+        privateTabs.clear();
+        recentClosed.clear();
+        activeTabId = 0;
+        nextTabId = 1;
+        nextGroupId = 1;
+        if (!restore()) {
+            tabs.add(new BrowserTab(nextTabId++, HomeLayoutStore.homeUrl(context),
+                    NO_GROUP, ""));
+            activeTabId = tabs.get(0).id;
+            save();
+        }
+        notifyListeners();
     }
 
     synchronized BrowserTab getActiveTab() {
