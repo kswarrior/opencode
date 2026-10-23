@@ -153,6 +153,11 @@ final class HlsPlaylist {
         Collections.sort(sorted, new Comparator<Variant>() {
             @Override
             public int compare(Variant left, Variant right) {
+                int byCodec = Integer.compare(codecRank(left.codecs),
+                        codecRank(right.codecs));
+                if (byCodec != 0) {
+                    return byCodec;
+                }
                 int byBandwidth = Long.compare(right.bandwidth, left.bandwidth);
                 if (byBandwidth != 0) {
                     return byBandwidth;
@@ -161,6 +166,26 @@ final class HlsPlaylist {
             }
         });
         return sorted.get(0);
+    }
+
+    private static int codecRank(String codecs) {
+        if (TextUtils.isEmpty(codecs)) {
+            return 1;
+        }
+        String lower = codecs.toLowerCase(Locale.US);
+        if (lower.contains("avc1") || lower.contains("avc3")
+                || lower.contains("h264")) {
+            return 0;
+        }
+        if (lower.contains("hvc1") || lower.contains("hev1")
+                || lower.contains("hevc")) {
+            return 2;
+        }
+        if (lower.contains("av01") || lower.contains("vp09")
+                || lower.contains("vp9")) {
+            return 3;
+        }
+        return 1;
     }
 
     static byte[] fetchBytes(String url, String userAgent, String referer, String auth,
@@ -252,6 +277,8 @@ final class HlsPlaylist {
         long pendingRangeLength = -1;
         String keyUrl = null;
         byte[] keyIv = null;
+        String lastRangeUrl = null;
+        long lastRangeEnd = -1;
 
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i).trim();
