@@ -17,6 +17,8 @@ import java.util.UUID;
 final class ReadAloudController {
     interface Listener {
         void onFinished();
+
+        void onUnavailable();
     }
 
     private final Context context;
@@ -43,6 +45,7 @@ final class ReadAloudController {
             public void onInit(int status) {
                 if (status != TextToSpeech.SUCCESS) {
                     unavailable = true;
+                    notifyUnavailable();
                     return;
                 }
                 ready = true;
@@ -64,9 +67,7 @@ final class ReadAloudController {
 
                     @Override
                     public void onError(String utteranceId) {
-                        if (isLast(utteranceId)) {
-                            finish();
-                        }
+                        finish();
                     }
                 });
                 if (selectedVoice != null) {
@@ -99,28 +100,29 @@ final class ReadAloudController {
         return unavailable;
     }
 
-    void speak(String text, float rate, Listener listener) {
+    boolean speak(String text, float rate, Listener listener) {
         ensureReady();
         if (unavailable) {
             if (listener != null) {
-                listener.onFinished();
+                listener.onUnavailable();
             }
-            return;
+            return false;
         }
         String clean = text == null ? "" : text.trim();
         if (clean.isEmpty()) {
             if (listener != null) {
                 listener.onFinished();
             }
-            return;
+            return false;
         }
         if (!ready) {
             pendingText = clean;
             pendingRate = rate;
             pendingListener = listener;
-            return;
+            return true;
         }
         speakNow(clean, rate, listener);
+        return true;
     }
 
     private void speakNow(String text, float rate, Listener listener) {
@@ -149,6 +151,15 @@ final class ReadAloudController {
 
     private Listener lastListener;
 
+    private void notifyUnavailable() {
+        Listener listener = pendingListener;
+        pendingText = null;
+        pendingListener = null;
+        if (listener != null) {
+            listener.onUnavailable();
+        }
+    }
+
     private void finish() {
         speaking = false;
         Listener listener = lastListener;
@@ -164,6 +175,7 @@ final class ReadAloudController {
 
     private void stopInternal(boolean notify) {
         speaking = false;
+        Listener listener = lastListener;
         lastListener = null;
         pendingText = null;
         pendingListener = null;
@@ -172,6 +184,9 @@ final class ReadAloudController {
                 speech.stop();
             } catch (Exception ignored) {
             }
+        }
+        if (notify && listener != null) {
+            listener.onFinished();
         }
     }
 

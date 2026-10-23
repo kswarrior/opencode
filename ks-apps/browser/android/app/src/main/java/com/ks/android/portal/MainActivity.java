@@ -3621,8 +3621,21 @@ public class MainActivity extends Activity {
                         if (readAloud == null) {
                             return;
                         }
-                        readAloud.speak(text, readAloudRate, null);
-                        KsToast.show(MainActivity.this, R.string.extra_read_start);
+                        boolean started = readAloud.speak(text, readAloudRate,
+                                new ReadAloudController.Listener() {
+                                    @Override
+                                    public void onFinished() {
+                                    }
+
+                                    @Override
+                                    public void onUnavailable() {
+                                        KsToast.show(MainActivity.this,
+                                                R.string.extra_read_unavailable);
+                                    }
+                                });
+                        if (started) {
+                            KsToast.show(MainActivity.this, R.string.extra_read_start);
+                        }
                     }
                 });
     }
