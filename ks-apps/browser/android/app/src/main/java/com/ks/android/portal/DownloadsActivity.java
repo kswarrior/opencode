@@ -443,6 +443,8 @@ public class DownloadsActivity extends Activity {
             case 3:
                 return item.status == DownloadItem.STATUS_FAILED
                         || item.status == DownloadItem.STATUS_CANCELLED;
+            case 4:
+                return mediaKind(item) != 0;
             default:
                 return true;
         }
