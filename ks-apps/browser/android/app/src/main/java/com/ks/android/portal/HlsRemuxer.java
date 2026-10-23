@@ -33,7 +33,7 @@ final class HlsRemuxer {
         MediaExtractor extractor = new MediaExtractor();
         MediaMuxer muxer = null;
         boolean started = false;
-        boolean released = false;
+        boolean success = false;
         try {
             extractor.setDataSource(input.getAbsolutePath());
             int videoTrack = -1;
@@ -97,10 +97,10 @@ final class HlsRemuxer {
 
             muxer.stop();
             started = false;
-            released = true;
             if (output.length() <= 0) {
                 return null;
             }
+            success = true;
             return new Result(videoTrack >= 0, audioTrack >= 0);
         } catch (Exception exception) {
             return null;
@@ -111,12 +111,7 @@ final class HlsRemuxer {
                 } catch (Exception ignored) {
                 }
             }
-            if (muxer != null && !released) {
-                try {
-                    muxer.release();
-                } catch (Exception ignored) {
-                }
-            } else if (muxer != null) {
+            if (muxer != null) {
                 try {
                     muxer.release();
                 } catch (Exception ignored) {
@@ -126,7 +121,7 @@ final class HlsRemuxer {
                 extractor.release();
             } catch (Exception ignored) {
             }
-            if (!released) {
+            if (!success) {
                 output.delete();
             }
         }
