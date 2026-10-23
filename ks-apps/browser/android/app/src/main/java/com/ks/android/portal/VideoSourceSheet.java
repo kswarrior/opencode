@@ -277,7 +277,10 @@ final class VideoSourceSheet {
         if (lower.contains("stream") || lower.equals("video")) {
             return "";
         }
-        if (!lower.matches(".*\\d{3,4}p.*") && !lower.startsWith("audio")) {
+        if (!lower.matches("^\\d{3,4}p.*") && !lower.startsWith("audio")) {
+            return "";
+        }
+        if (shortLabel.length() > 16) {
             return "";
         }
         return sanitize(shortLabel);
@@ -331,8 +334,8 @@ final class VideoSourceSheet {
         }
         String lower = title.trim().toLowerCase(Locale.US);
         return lower.startsWith("http://") || lower.startsWith("https://")
-                || lower.startsWith("www.") || lower.contains("/")
-                || lower.matches("^[a-z0-9.-]+\\.[a-z]{2,}$");
+                || lower.startsWith("www.")
+                || lower.matches("^[a-z0-9.-]+\\.[a-z]{2,}(/.*)?$");
     }
 
     private static String extensionFor(VideoSource source) {
