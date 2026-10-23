@@ -3550,6 +3550,723 @@ public class MainActivity extends Activity {
                 });
     }
 
+    private void openExtras() {
+        WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        Intent intent = new Intent(this, ExtrasActivity.class);
+        intent.putExtra(ExtrasActivity.EXTRA_URL, view.getUrl());
+        intent.putExtra(ExtrasActivity.EXTRA_TITLE,
+                view.getTitle() == null ? "" : view.getTitle());
+        startActivityForResult(intent, REQUEST_EXTRAS);
+    }
+
+    private void openDeveloperTools() {
+        WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        Intent intent = new Intent(this, DeveloperToolsActivity.class);
+        intent.putExtra(DeveloperToolsActivity.EXTRA_URL, view.getUrl());
+        intent.putExtra(DeveloperToolsActivity.EXTRA_TITLE,
+                view.getTitle() == null ? "" : view.getTitle());
+        intent.putExtra(DeveloperToolsActivity.EXTRA_UA,
+                view.getSettings().getUserAgentString());
+        intent.putExtra(DeveloperToolsActivity.EXTRA_DEFAULT_UA,
+                defaultUserAgent == null ? "" : defaultUserAgent);
+        intent.putExtra(DeveloperToolsActivity.EXTRA_REFERER,
+                previousPageUrl == null ? "" : previousPageUrl);
+        startActivityForResult(intent, REQUEST_DEV_TOOLS);
+    }
+
+    private void showReadAloudMenu() {
+        if (readAloud == null) {
+            return;
+        }
+        int[] labels = {R.string.extra_read_start, R.string.extra_read_stop,
+                R.string.extra_read_speed, R.string.extra_read_voice};
+        KsDialog.menu(this, R.string.extra_read_title, new int[]{1, 2, 3, 4}, labels,
+                new int[]{0, 0, 0, 0}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        if (index == 0) {
+                            startReadAloud();
+                        } else if (index == 1) {
+                            readAloud.stop();
+                            KsToast.show(MainActivity.this, R.string.extra_read_stop);
+                        } else if (index == 2) {
+                            chooseReadAloudSpeed();
+                        } else {
+                            chooseReadAloudVoice();
+                        }
+                    }
+                });
+    }
+
+    private void startReadAloud() {
+        final WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        view.evaluateJavascript(PageAssist.extractSpeechScript(),
+                new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        String text = decodeJsString(value);
+                        if (TextUtils.isEmpty(text)) {
+                            KsToast.show(MainActivity.this, R.string.extra_read_empty);
+                            return;
+                        }
+                        if (readAloud == null) {
+                            return;
+                        }
+                        readAloud.speak(text, readAloudRate, null);
+                        KsToast.show(MainActivity.this, R.string.extra_read_start);
+                    }
+                });
+    }
+
+    private void chooseReadAloudSpeed() {
+        final float[] values = {0.75f, 1f, 1.25f, 1.5f};
+        int[] labels = {R.string.extra_speed_075, R.string.extra_speed_100,
+                R.string.extra_speed_125, R.string.extra_speed_150};
+        int checked = 1;
+        for (int i = 0; i < values.length; i++) {
+            if (values[i] == readAloudRate) {
+                checked = i;
+            }
+        }
+        KsDialog.menu(this, R.string.extra_read_speed, new int[]{1, 2, 3, 4}, labels,
+                new int[]{0, 0, 0, 0}, checked, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        readAloudRate = values[index];
+                    }
+                });
+    }
+
+    private void chooseReadAloudVoice() {
+        if (readAloud == null) {
+            return;
+        }
+        readAloud.ensureReady();
+        List<android.speech.tts.Voice> voices = readAloud.voices();
+        if (voices.isEmpty()) {
+            KsToast.show(this, R.string.extra_read_voice_missing);
+            return;
+        }
+        final List<android.speech.tts.Voice> choices =
+                new ArrayList<android.speech.tts.Voice>(voices);
+        CharSequence[] labels = new CharSequence[choices.size() + 1];
+        labels[0] = getString(R.string.extra_read_voice_default);
+        for (int i = 0; i < choices.size(); i++) {
+            labels[i + 1] = readAloud.voiceLabel(choices.get(i));
+        }
+        KsDialog.choose(this, getString(R.string.extra_read_voice), labels,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        readAloud.setVoice(index == 0 ? null : choices.get(index - 1));
+                    }
+                });
+    }
+
+    private void toggleAutoScroll() {
+        final WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        view.evaluateJavascript(PageAssist.autoScrollScript(60),
+                new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        boolean started = value != null && value.contains("started");
+                        KsToast.show(MainActivity.this, started
+                                ? R.string.extra_auto_started : R.string.extra_auto_stopped);
+                    }
+                });
+    }
+
+    private void showReadingAids() {
+        int[] labels = {R.string.extra_bionic, R.string.extra_focus};
+        KsDialog.menu(this, R.string.extra_reading_aids_title, new int[]{1, 2}, labels,
+                new int[]{0, 0}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        WebView view = webView;
+                        if (view == null) {
+                            return;
+                        }
+                        String script = index == 0 ? PageAssist.bionicScript()
+                                : PageAssist.focusScript();
+                        view.evaluateJavascript(script, new ValueCallback<String>() {
+                            @Override
+                            public void onReceiveValue(String value) {
+                                String result = decodeJsString(value);
+                                if ("empty".equals(result)) {
+                                    KsToast.show(MainActivity.this,
+                                            R.string.extra_bionic_empty);
+                                } else if ("on".equals(result)) {
+                                    KsToast.show(MainActivity.this,
+                                            R.string.extra_bionic_on);
+                                } else if ("off".equals(result)) {
+                                    KsToast.show(MainActivity.this,
+                                            R.string.extra_bionic_off);
+                                } else {
+                                    KsToast.show(MainActivity.this,
+                                            R.string.extra_focus_on);
+                                }
+                            }
+                        });
+                    }
+                });
+    }
+
+    private void showNightDim() {
+        KsDialog.seek(this, getString(R.string.extra_night_title), nightDimStrength, 45,
+                new KsDialog.SeekAction() {
+                    @Override
+                    public void onValue(int value, boolean committed) {
+                        nightDimStrength = value;
+                        applyNightDim(value);
+                        if (committed) {
+                            settingsPrefs.edit().putInt("extra_night_dim", value).apply();
+                        }
+                    }
+                });
+    }
+
+    private void applyNightDim(int strength) {
+        WebView view = webView;
+        if (view != null) {
+            view.evaluateJavascript(PageAssist.nightDimScript(strength), null);
+        }
+    }
+
+    private void showReaderStyle() {
+        int[] labels = {R.string.extra_reader_font, R.string.extra_reader_line,
+                R.string.extra_reader_width, R.string.extra_reader_dyslexic};
+        KsDialog.menu(this, R.string.extra_reader_title, new int[]{1, 2, 3, 4}, labels,
+                new int[]{0, 0, 0, 0}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        if (index == 0) {
+                            chooseReaderFont();
+                        } else if (index == 1) {
+                            chooseReaderLine();
+                        } else if (index == 2) {
+                            chooseReaderWidth();
+                        } else {
+                            applyReaderStyle(AdvancedStore.readerFont(MainActivity.this),
+                                    AdvancedStore.readerLine(MainActivity.this),
+                                    AdvancedStore.readerWidth(MainActivity.this),
+                                    !AdvancedStore.readerDyslexic(MainActivity.this));
+                        }
+                    }
+                });
+    }
+
+    private void chooseReaderFont() {
+        int[] labels = {R.string.extra_reader_sans, R.string.extra_reader_serif,
+                R.string.extra_reader_mono};
+        KsDialog.choose(this, getString(R.string.extra_reader_font), new CharSequence[]{
+                getString(labels[0]), getString(labels[1]), getString(labels[2])},
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        String font = index == 1 ? "serif" : index == 2 ? "mono" : "sans";
+                        applyReaderStyle(font, AdvancedStore.readerLine(MainActivity.this),
+                                AdvancedStore.readerWidth(MainActivity.this),
+                                AdvancedStore.readerDyslexic(MainActivity.this));
+                    }
+                });
+    }
+
+    private void chooseReaderLine() {
+        final String[] values = {"1.5", "1.75", "2.0"};
+        int[] labels = {R.string.extra_reader_line_tight, R.string.extra_reader_line_normal,
+                R.string.extra_reader_line_loose};
+        KsDialog.choose(this, getString(R.string.extra_reader_line), new CharSequence[]{
+                getString(labels[0]), getString(labels[1]), getString(labels[2])},
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        applyReaderStyle(AdvancedStore.readerFont(MainActivity.this),
+                                values[index], AdvancedStore.readerWidth(MainActivity.this),
+                                AdvancedStore.readerDyslexic(MainActivity.this));
+                    }
+                });
+    }
+
+    private void chooseReaderWidth() {
+        final int[] values = {620, 760, 1000};
+        int[] labels = {R.string.extra_reader_narrow, R.string.extra_reader_medium,
+                R.string.extra_reader_wide};
+        KsDialog.choose(this, getString(R.string.extra_reader_width), new CharSequence[]{
+                getString(labels[0]), getString(labels[1]), getString(labels[2])},
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        applyReaderStyle(AdvancedStore.readerFont(MainActivity.this),
+                                AdvancedStore.readerLine(MainActivity.this), values[index],
+                                AdvancedStore.readerDyslexic(MainActivity.this));
+                    }
+                });
+    }
+
+    private void applyReaderStyle(String font, String line, int width, boolean dyslexic) {
+        AdvancedStore.setReaderStyle(this, font, line, width, dyslexic);
+        WebView view = webView;
+        if (view != null) {
+            view.evaluateJavascript(PageAssist.readerTypographyScript(font, line, width,
+                    dyslexic), null);
+        }
+        KsToast.show(this, R.string.extra_reader_saved);
+    }
+
+    private void copyPageText() {
+        WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        view.evaluateJavascript(PageAssist.extractTextScript(),
+                new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        String text = decodeJsString(value);
+                        if (TextUtils.isEmpty(text)) {
+                            KsToast.show(MainActivity.this, R.string.extra_copy_text_empty);
+                            return;
+                        }
+                        copyPlainText(text);
+                        KsToast.show(MainActivity.this, R.string.extra_copy_text_done);
+                    }
+                });
+    }
+
+    private void showCleanShare() {
+        final WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        int[] labels = {R.string.extra_clean_copy, R.string.extra_markdown_copy,
+                R.string.extra_clean_send, R.string.extra_markdown_send};
+        KsDialog.menu(this, R.string.extra_clean_title, new int[]{1, 2, 3, 4}, labels,
+                new int[]{0, 0, 0, 0}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        String clean = AdBlocker.cleanNavigationUrl(MainActivity.this,
+                                view.getUrl(), previousPageUrl);
+                        String title = view.getTitle() == null ? "" : view.getTitle();
+                        String markdown = "[" + title + "](" + clean + ")";
+                        if (index == 0) {
+                            copyPlainText(clean);
+                        } else if (index == 1) {
+                            copyPlainText(markdown);
+                        } else if (index == 2) {
+                            shareText(clean);
+                        } else {
+                            shareText(markdown);
+                        }
+                    }
+                });
+    }
+
+    private void captureScreenshot() {
+        WebView view = webView;
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (view == null || active == null || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        if (privateTabs.contains(active.id)) {
+            KsToast.show(this, R.string.extra_screenshot_private);
+            return;
+        }
+        int width = view.getWidth();
+        int height = view.getHeight();
+        if (width <= 0 || height <= 0) {
+            KsToast.show(this, R.string.extra_screenshot_failed);
+            return;
+        }
+        try {
+            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            view.draw(canvas);
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
+            bitmap.recycle();
+            DownloadItem item = DownloadRepository.getInstance(this).saveBytes(
+                    output.toByteArray(), "screenshot-" + System.currentTimeMillis() + ".png",
+                    "image/png", view.getUrl());
+            KsToast.show(this, item == null ? R.string.extra_screenshot_failed
+                    : R.string.extra_screenshot_saved);
+        } catch (Exception exception) {
+            KsToast.show(this, R.string.extra_screenshot_failed);
+        }
+    }
+
+    private void shareAllTabs() {
+        int[] labels = {R.string.extra_tabs_text, R.string.extra_tabs_urls,
+                R.string.extra_tabs_json, R.string.extra_tabs_markdown};
+        KsDialog.menu(this, R.string.extra_tabs_title, new int[]{1, 2, 3, 4}, labels,
+                new int[]{0, 0, 0, 0}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        String text = tabsAsText(index);
+                        if (TextUtils.isEmpty(text)) {
+                            KsToast.show(MainActivity.this, R.string.extra_tabs_empty);
+                        } else {
+                            shareText(text);
+                        }
+                    }
+                });
+    }
+
+    private String tabsAsText(int format) {
+        List<BrowserTab> tabs = tabManager == null ? new ArrayList<BrowserTab>()
+                : tabManager.getTabs();
+        StringBuilder builder = new StringBuilder();
+        JSONArray json = new JSONArray();
+        for (BrowserTab tab : tabs) {
+            if (tabManager.isPrivate(tab.id)) {
+                continue;
+            }
+            String title = TextUtils.isEmpty(tab.title) ? tab.url : tab.title;
+            if (format == 0) {
+                builder.append(title).append('\n').append(tab.url).append("\n\n");
+            } else if (format == 1) {
+                builder.append(tab.url).append('\n');
+            } else if (format == 2) {
+                JSONObject item = new JSONObject();
+                try {
+                    item.put("title", title);
+                    item.put("url", tab.url);
+                } catch (JSONException ignored) {
+                }
+                json.put(item);
+            } else {
+                builder.append("- [").append(title).append("](").append(tab.url)
+                        .append(")\n");
+            }
+        }
+        if (format == 2) {
+            return json.length() == 0 ? "" : json.toString();
+        }
+        return builder.toString().trim();
+    }
+
+    private void showNotesMenu() {
+        int[] labels = {R.string.extra_notes_page, R.string.extra_notes_site,
+                R.string.extra_note_add};
+        KsDialog.menu(this, R.string.extra_notes_title, new int[]{1, 2, 3}, labels,
+                new int[]{0, 0, 0}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        if (index == 0) {
+                            showNotesFor(false);
+                        } else if (index == 1) {
+                            showNotesFor(true);
+                        } else {
+                            addNoteForSelection("");
+                        }
+                    }
+                });
+    }
+
+    private void showNotesFor(boolean site) {
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active == null || privateTabs.contains(active.id)) {
+            KsToast.show(this, R.string.extra_note_in_private);
+            return;
+        }
+        String host = SiteSettingsStore.hostOf(active.url);
+        JSONArray notes = site ? AdvancedStore.notesForHost(this, host)
+                : AdvancedStore.notesForUrl(this, active.url);
+        if (notes.length() == 0) {
+            KsToast.show(this, R.string.extra_notes_empty);
+            return;
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < notes.length(); i++) {
+            JSONObject item = notes.optJSONObject(i);
+            if (item == null) {
+                continue;
+            }
+            builder.append("“").append(item.optString("q")).append("”");
+            String note = item.optString("n");
+            if (!TextUtils.isEmpty(note)) {
+                builder.append("\n").append(note);
+            }
+            builder.append("\n\n");
+        }
+        KsDialog.message(this, R.string.extra_notes_title, builder.toString().trim(),
+                R.string.dialog_close, null);
+    }
+
+    private void addNoteForSelection(final String preset) {
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active == null || privateTabs.contains(active.id)) {
+            KsToast.show(this, R.string.extra_note_in_private);
+            return;
+        }
+        KsDialog.input(this, R.string.extra_note_quote, preset, R.string.extra_note_quote,
+                R.string.dialog_ok, InputType.TYPE_CLASS_TEXT
+                        | InputType.TYPE_TEXT_FLAG_MULTI_LINE,
+                new KsDialog.TextAction() {
+                    @Override
+                    public boolean onSubmit(String quote) {
+                        String clean = quote == null ? "" : quote.trim();
+                        if (clean.isEmpty()) {
+                            return false;
+                        }
+                        promptNoteForQuote(clean);
+                        return true;
+                    }
+                });
+    }
+
+    private void promptNoteForQuote(final String quote) {
+        final BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active == null || privateTabs.contains(active.id)) {
+            KsToast.show(this, R.string.extra_note_in_private);
+            return;
+        }
+        final String url = active.url;
+        final String host = SiteSettingsStore.hostOf(url);
+        KsDialog.input(this, R.string.extra_note_add, "", R.string.extra_note_hint,
+                R.string.dialog_ok, InputType.TYPE_CLASS_TEXT
+                        | InputType.TYPE_TEXT_FLAG_MULTI_LINE,
+                new KsDialog.TextAction() {
+                    @Override
+                    public boolean onSubmit(String note) {
+                        AdvancedStore.addNote(MainActivity.this, url, host, quote,
+                                note == null ? "" : note, false);
+                        KsToast.show(MainActivity.this, R.string.extra_note_saved);
+                        return true;
+                    }
+                });
+    }
+
+    private void showImagesMenu() {
+        final WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        view.evaluateJavascript(PageAssist.collectImagesScript(),
+                new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        try {
+                            JSONArray images = new JSONArray(value == null ? "[]" : value);
+                            if (images.length() == 0) {
+                                KsToast.show(MainActivity.this, R.string.extra_images_empty);
+                                return;
+                            }
+                            final List<String> urls = new ArrayList<String>();
+                            CharSequence[] labels = new CharSequence[images.length()];
+                            for (int i = 0; i < images.length(); i++) {
+                                JSONObject item = images.optJSONObject(i);
+                                String src = item == null ? "" : item.optString("src");
+                                String alt = item == null ? "" : item.optString("alt");
+                                urls.add(src);
+                                labels[i] = TextUtils.isEmpty(alt) ? src : alt;
+                            }
+                            KsDialog.multiChoice(MainActivity.this,
+                                    getString(R.string.extra_images_title), labels, null,
+                                    R.string.dialog_cancel,
+                                    R.string.download_confirm_action,
+                                    new KsDialog.MultiChoiceAction() {
+                                        @Override
+                                        public void run(boolean[] checked) {
+                                            int count = 0;
+                                            String userAgent = defaultUserAgent == null ? ""
+                                                    : defaultUserAgent;
+                                            String pageUrl = view.getUrl();
+                                            for (int i = 0; i < checked.length; i++) {
+                                                if (!checked[i] || i >= urls.size()) {
+                                                    continue;
+                                                }
+                                                startDownloadOrConfirm(urls.get(i), userAgent,
+                                                        null, "image/*", -1, pageUrl);
+                                                count++;
+                                            }
+                                            if (count == 0) {
+                                                KsToast.show(MainActivity.this,
+                                                        R.string.extra_images_none_selected);
+                                            } else {
+                                                KsToast.show(MainActivity.this,
+                                                        getString(R.string.extra_images_queued,
+                                                                count));
+                                            }
+                                        }
+                                    });
+                        } catch (JSONException exception) {
+                            KsToast.show(MainActivity.this, R.string.extra_images_empty);
+                        }
+                    }
+                });
+    }
+
+    private void showAiShare() {
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        final WebView view = webView;
+        if (active == null || view == null || TextUtils.isEmpty(view.getUrl())
+                || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        final String title = view.getTitle() == null ? "" : view.getTitle();
+        final String text = title + "\n" + view.getUrl();
+        int[] labels = {R.string.extra_ai_copy, R.string.extra_ai_send};
+        KsDialog.menu(this, R.string.extra_ai_title, new int[]{1, 2}, labels,
+                new int[]{0, 0}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        if (index == 0) {
+                            copyPlainText(text);
+                        } else {
+                            shareText(text);
+                        }
+                    }
+                });
+    }
+
+    private void openCurrentInApp() {
+        WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(view.getUrl()));
+            startActivity(Intent.createChooser(intent,
+                    getString(R.string.extra_open_app_title)));
+        } catch (Exception exception) {
+            KsToast.show(this, R.string.extra_open_app_failed);
+        }
+    }
+
+    private void showConvertDialog(String initial) {
+        KsDialog.input(this, R.string.extra_convert_title, initial,
+                R.string.extra_convert_hint, R.string.dialog_ok,
+                InputType.TYPE_CLASS_TEXT, new KsDialog.TextAction() {
+                    @Override
+                    public boolean onSubmit(String value) {
+                        String result = UnitConverter.convert(value);
+                        if (result == null) {
+                            KsToast.show(MainActivity.this, R.string.extra_convert_invalid);
+                            return false;
+                        }
+                        KsDialog.message(MainActivity.this, R.string.extra_convert_title,
+                                result, R.string.dialog_copy, new KsDialog.Action() {
+                                    @Override
+                                    public void run() {
+                                        copyPlainText(result);
+                                    }
+                                });
+                        return true;
+                    }
+                });
+    }
+
+    private void toggleQuietMode() {
+        WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        view.evaluateJavascript(PageAssist.quietScript(), new ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String value) {
+                String result = decodeJsString(value);
+                if (result != null && result.startsWith("on:")) {
+                    int count = 0;
+                    try {
+                        count = Integer.parseInt(result.substring(3));
+                    } catch (NumberFormatException ignored) {
+                    }
+                    KsToast.show(MainActivity.this,
+                            getString(R.string.extra_quiet_on, count));
+                } else if ("off".equals(result)) {
+                    KsToast.show(MainActivity.this, R.string.extra_quiet_off);
+                } else {
+                    KsToast.show(MainActivity.this, R.string.extra_quiet_none);
+                }
+            }
+        });
+    }
+
+    private void handleSelectionAction(String action, String text) {
+        String clean = text == null ? "" : text.trim();
+        if (clean.isEmpty()) {
+            return;
+        }
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active == null) {
+            return;
+        }
+        String url = active.url == null ? "" : active.url;
+        String title = TextUtils.isEmpty(active.title) ? url : active.title;
+        String host = SiteSettingsStore.hostOf(url);
+        if ("search".equals(action)) {
+            tabManager.addTab(SearchEngine.buildUrl(this, clean), 0);
+            syncActiveTab();
+        } else if ("define".equals(action)) {
+            tabManager.addTab(SearchEngine.buildUrl(this, "define " + clean), 0);
+            syncActiveTab();
+        } else if ("translate".equals(action)) {
+            String target = "https://translate.google.com/?sl=auto&tl="
+                    + Locale.getDefault().getLanguage() + "&text="
+                    + Uri.encode(clean) + "&op=translate";
+            tabManager.addTab(target, 0);
+            syncActiveTab();
+        } else if ("share".equals(action)) {
+            shareText(clean);
+        } else if ("markdown".equals(action)) {
+            copyPlainText("> " + clean + "\n\n[" + title + "](" + url + ")");
+        } else if ("convert".equals(action)) {
+            showConvertDialog(clean);
+        } else if ("note".equals(action)) {
+            if (privateTabs.contains(active.id)) {
+                KsToast.show(this, R.string.extra_note_in_private);
+            } else {
+                promptNoteForQuote(clean);
+            }
+        } else if ("highlight".equals(action)) {
+            if (privateTabs.contains(active.id)) {
+                KsToast.show(this, R.string.extra_note_in_private);
+            } else {
+                AdvancedStore.addNote(this, url, host, clean, "", true);
+                WebView view = webView;
+                if (view != null) {
+                    JSONArray quotes = new JSONArray();
+                    quotes.put(clean);
+                    view.evaluateJavascript(PageAssist.highlightScript(quotes), null);
+                }
+                KsToast.show(this, R.string.extra_note_saved);
+            }
+        }
+    }
+
+    private void copyPlainText(String text) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(
+                Context.CLIPBOARD_SERVICE);
+        if (clipboard != null && text != null) {
+            clipboard.setPrimaryClip(ClipData.newPlainText("KS Portal", text));
+            KsToast.show(this, R.string.extra_copied);
+        }
+    }
+
+    private String decodeJsString(String value) {
+        if (value == null || "null".equals(value)) {
+            return "";
+        }
+        try {
+            JSONArray array = new JSONArray("[" + value + "]");
+            return array.optString(0, "");
+        } catch (JSONException exception) {
+            return value;
+        }
+    }
+
     private void printPage() {
         WebView view = webView;
         if (view == null || isHomeUrl(view.getUrl())) {
