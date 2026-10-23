@@ -1607,6 +1607,51 @@ public class DownloadRepository {
         return head.startsWith("#EXTM3U");
     }
 
+    private static boolean looksLikeMpegTs(File file) {
+        if (file == null || !file.isFile()) {
+            return false;
+        }
+        FileInputStream input = null;
+        try {
+            input = new FileInputStream(file);
+            byte[] data = new byte[188 * 3];
+            int read = input.read(data);
+            if (read < 188 * 3) {
+                return false;
+            }
+            for (int offset = 0; offset < 188; offset++) {
+                if (data[offset] == 0x47
+                        && data[offset + 188] == 0x47
+                        && data[offset + 376] == 0x47) {
+                    return true;
+                }
+            }
+        } catch (Exception ignored) {
+        } finally {
+            closeQuietly(input);
+        }
+        return false;
+    }
+
+    private static boolean isMediaHint(String name, String mimeType) {
+        String mime = normalizeMime(mimeType);
+        if (mime.startsWith("video/") || mime.startsWith("audio/")) {
+            return true;
+        }
+        String extension = extensionOf(name);
+        return ".mp4".equals(extension) || ".m4v".equals(extension)
+                || ".webm".equals(extension) || ".mov".equals(extension)
+                || ".mkv".equals(extension) || ".flv".equals(extension)
+                || ".avi".equals(extension) || ".ogv".equals(extension)
+                || ".3gp".equals(extension) || ".mpg".equals(extension)
+                || ".mpeg".equals(extension) || ".ts".equals(extension)
+                || ".m2ts".equals(extension) || ".mts".equals(extension)
+                || ".mp3".equals(extension) || ".m4a".equals(extension)
+                || ".aac".equals(extension) || ".ogg".equals(extension)
+                || ".opus".equals(extension) || ".wav".equals(extension)
+                || ".flac".equals(extension);
+    }
+
     private static boolean looksLikeHtml(File file) {
         if (file == null || !file.isFile()) {
             return false;
@@ -2233,6 +2278,61 @@ public class DownloadRepository {
                 if (!apk && looksLikeHtml(part)) {
                     throw new IOException(context.getString(R.string.download_error_not_media));
                 }
+                boolean directTs = !apk && looksLikeMpegTs(part);
+                boolean directRemuxed = false;
+                boolean directRemuxHasVideo = false;
+                if (directTs) {
+                    File remuxParent = part.getParentFile();
+                    if (remuxParent != null) {
+                        File remuxFile = new File(remuxParent,
+                                part.getName() + ".remux.mp4");
+                        if (remuxFile.exists()) {
+                            remuxFile.delete();
+                        }
+                        HlsRemuxer.Result remuxResult = HlsRemuxer.remux(part, remuxFile);
+                        MediaProbe remuxProbe = remuxResult == null ? null
+                                : MediaProbe.probe(remuxFile);
+                        if (remuxProbe != null) {
+                            File backup = new File(remuxParent,
+                                    part.getName() + ".ts.bak");
+                            if (backup.exists()) {
+                                backup.delete();
+                            }
+                            if (part.renameTo(backup)) {
+                                if (remuxFile.renameTo(part)) {
+                                    backup.delete();
+                                    directRemuxed = true;
+                                    directRemuxHasVideo = remuxProbe.hasVideo;
+                                } else {
+                                    backup.renameTo(part);
+                                    remuxFile.delete();
+                                }
+                            } else {
+                                remuxFile.delete();
+                            }
+                        } else {
+                            remuxFile.delete();
+                        }
+                    }
+                }
+                if (!apk) {
+                    String hintName = null;
+                    String hintMime = null;
+                    synchronized (lock) {
+                        DownloadItem item = findLocked(id);
+                        if (item != null) {
+                            hintName = item.fileName;
+                            hintMime = item.mimeType;
+                        }
+                    }
+                    if (isMediaHint(hintName, hintMime)) {
+                        MediaProbe probe = MediaProbe.probe(part);
+                        if (probe == null) {
+                            throw new IOException(context.getString(
+                                    R.string.download_error_unplayable_media));
+                        }
+                    }
+                }
                 String finalUrl = current.getURL() == null ? url : current.getURL().toString();
                 String relative;
                 String name;
@@ -2257,6 +2357,10 @@ public class DownloadRepository {
                             current.getHeaderField("Content-Disposition"), item.mimeType);
                     if (apk) {
                         improved = withExtension(improved, ".apk");
+                    } else if (directRemuxed) {
+                        improved = withExtension(improved,
+                                directRemuxHasVideo ? ".mp4" : ".m4a");
+                        item.mimeType = directRemuxHasVideo ? "video/mp4" : "audio/mp4";
                     }
                     name = uniqueFileNameLocked(item.relativePath, improved, item.id);
                     relative = item.relativePath;
@@ -2464,7 +2568,9 @@ public class DownloadRepository {
                             remuxFile.delete();
                         }
                         HlsRemuxer.Result remuxResult = HlsRemuxer.remux(part, remuxFile);
-                        if (remuxResult != null) {
+                        MediaProbe remuxProbe = remuxResult == null ? null
+                                : MediaProbe.probe(remuxFile);
+                        if (remuxProbe != null) {
                             File backup = new File(remuxParent,
                                     part.getName() + ".ts.bak");
                             if (backup.exists()) {
@@ -2474,7 +2580,7 @@ public class DownloadRepository {
                                 if (remuxFile.renameTo(part)) {
                                     backup.delete();
                                     remuxed = true;
-                                    remuxHasVideo = remuxResult.hasVideo;
+                                    remuxHasVideo = remuxProbe.hasVideo;
                                 } else {
                                     backup.renameTo(part);
                                     remuxFile.delete();
@@ -2482,6 +2588,8 @@ public class DownloadRepository {
                             } else {
                                 remuxFile.delete();
                             }
+                        } else {
+                            remuxFile.delete();
                         }
                     }
                 }
