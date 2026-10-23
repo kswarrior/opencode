@@ -1183,7 +1183,6 @@ Remote debugging is only active while this toggle is on. Turn it off when you ar
     <string name="dev_zapper">Element zapper</string>
     <string name="dev_zapper_desc">Tap elements to hide them and save the generated selector as CSS</string>
     <string name="dev_zapper_hint">Tap any element to hide it. Reopen the zapper to stop.</string>
-    <string name="dev_zapper_saved">Element hidden and selector saved</string>
     <string name="dev_zapper_saved">Element hidden and selector saved for this site</string>
     <string name="dev_clear_site_tools">Clear this site\'s CSS, snippet and zaps</string>
     <string name="dev_clear_site_tools_desc">Remove saved injections for this host</string>
