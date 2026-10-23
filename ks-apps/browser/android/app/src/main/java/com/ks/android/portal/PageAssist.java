@@ -159,7 +159,11 @@ final class PageAssist {
 
     static String highlightScript(JSONArray quotes) {
         String safe = quotes == null ? "[]" : quotes.toString();
-        return "(function(){try{var q=" + safe + ";if(!q||!q.length)return;"
+        return "(function(){try{var old=document.querySelectorAll('mark.ks-highlight');"
+                + "for(var x=old.length-1;x>=0;x--){var parent=old[x].parentNode;"
+                + "if(!parent)continue;parent.replaceChild(document.createTextNode("
+                + "old[x].textContent),old[x]);parent.normalize();}"
+                + "var q=" + safe + ";if(!q||!q.length)return 'empty';"
                 + "var walker=document.createTreeWalker(document.body||document.documentElement,"
                 + "NodeFilter.SHOW_TEXT,null,false);var nodes=[],n;"
                 + "while((n=walker.nextNode())){var tag=n.parentNode&&n.parentNode.tagName;"

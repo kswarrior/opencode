@@ -4127,6 +4127,7 @@ public class MainActivity extends Activity {
                                         @Override
                                         public void run() {
                                             AdvancedStore.deleteNote(MainActivity.this, id);
+                                            refreshHighlights();
                                             KsToast.show(MainActivity.this,
                                                     R.string.extra_note_deleted);
                                             showNotesFor(siteWide);
@@ -4135,6 +4136,16 @@ public class MainActivity extends Activity {
                         }
                     }
                 });
+    }
+
+    private void refreshHighlights() {
+        WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl())
+                || isHomeUrl(view.getUrl())) {
+            return;
+        }
+        view.evaluateJavascript(PageAssist.highlightScript(
+                AdvancedStore.highlightsForUrl(this, view.getUrl())), null);
     }
 
     private void addNoteForSelection(final String preset) {
@@ -4409,12 +4420,7 @@ public class MainActivity extends Activity {
                 KsToast.show(this, R.string.extra_note_in_private);
             } else {
                 AdvancedStore.addNote(this, url, host, clean, "", true);
-                WebView view = webView;
-                if (view != null) {
-                    JSONArray quotes = new JSONArray();
-                    quotes.put(clean);
-                    view.evaluateJavascript(PageAssist.highlightScript(quotes), null);
-                }
+                refreshHighlights();
                 KsToast.show(this, R.string.extra_note_saved);
             }
         }
