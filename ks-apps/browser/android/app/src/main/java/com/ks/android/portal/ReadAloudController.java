@@ -30,7 +30,6 @@ final class ReadAloudController {
     private float pendingRate = 1f;
     private Listener pendingListener;
     private Voice selectedVoice;
-    private int chunks;
 
     ReadAloudController(Context context) {
         this.context = context.getApplicationContext();
@@ -67,7 +66,7 @@ final class ReadAloudController {
 
                     @Override
                     public void onError(String utteranceId) {
-                        finish();
+                        fail();
                     }
                 });
                 if (selectedVoice != null) {
@@ -129,7 +128,6 @@ final class ReadAloudController {
         stopInternal(false);
         speaking = true;
         final String token = UUID.randomUUID().toString();
-        chunks = 0;
         List<String> parts = split(text);
         for (int i = 0; i < parts.size(); i++) {
             String id = (i == parts.size() - 1 ? "ks-last-" : "ks-chunk-") + token + "-" + i;
@@ -139,11 +137,14 @@ final class ReadAloudController {
             }
             try {
                 speech.setSpeechRate(Math.max(0.5f, Math.min(2.0f, rate)));
-                speech.speak(parts.get(i), i == 0 ? TextToSpeech.QUEUE_FLUSH
+                int result = speech.speak(parts.get(i), i == 0 ? TextToSpeech.QUEUE_FLUSH
                         : TextToSpeech.QUEUE_ADD, null, id);
-                chunks++;
+                if (result == TextToSpeech.ERROR) {
+                    fail();
+                    return;
+                }
             } catch (Exception exception) {
-                finish();
+                fail();
                 return;
             }
         }
@@ -155,6 +156,15 @@ final class ReadAloudController {
         Listener listener = pendingListener;
         pendingText = null;
         pendingListener = null;
+        if (listener != null) {
+            listener.onUnavailable();
+        }
+    }
+
+    private void fail() {
+        speaking = false;
+        Listener listener = lastListener;
+        lastListener = null;
         if (listener != null) {
             listener.onUnavailable();
         }

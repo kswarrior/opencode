@@ -3629,8 +3629,13 @@ public class MainActivity extends Activity {
 
                                     @Override
                                     public void onUnavailable() {
-                                        KsToast.show(MainActivity.this,
-                                                R.string.extra_read_unavailable);
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                KsToast.show(MainActivity.this,
+                                                        R.string.extra_read_unavailable);
+                                            }
+                                        });
                                     }
                                 });
                         if (started) {
