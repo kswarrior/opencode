@@ -152,7 +152,7 @@ public class SettingsActivity extends Activity {
         }
         if (checked[0]) {
             HistoryRepository.getInstance(this).clear();
-            getSharedPreferences("ks_recents", MODE_PRIVATE).edit().clear().apply();
+            RecentsStore.clear(this);
         }
         if (checked[1]) {
             CookieManager cookies = CookieManager.getInstance();

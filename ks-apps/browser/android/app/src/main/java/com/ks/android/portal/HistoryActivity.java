@@ -370,6 +370,7 @@ public class HistoryActivity extends Activity {
                     public void run() {
                         expandedCategories.clear();
                         repository.clear();
+                        RecentsStore.clear(HistoryActivity.this);
                         refreshList();
                         KsToast.show(HistoryActivity.this, R.string.history_deleted);
                     }

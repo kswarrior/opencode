@@ -533,6 +533,7 @@ public class MainActivity extends Activity {
                     "window.KSPortalRefreshBackground&&window.KSPortalRefreshBackground();"
                             + "window.KSPortalRefreshTabs&&window.KSPortalRefreshTabs();"
                             + "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks();"
+                            + "window.KSPortalRefreshRecents&&window.KSPortalRefreshRecents();"
                             + "window.KSPortalRefreshHome&&window.KSPortalRefreshHome()",
                     null);
         }
