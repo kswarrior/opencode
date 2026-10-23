@@ -5987,6 +5987,61 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void saveReadingProgress(int percent) {
+            if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)) {
+                return;
+            }
+            BrowserTab tab = tabManager.findTab(tabId);
+            if (tab == null || !isNetworkUrl(tab.url)) {
+                return;
+            }
+            AdvancedStore.saveReadingProgress(MainActivity.this, tab.url,
+                    Math.max(0, Math.min(100, percent)));
+        }
+
+        @JavascriptInterface
+        public void saveZappedSelector(final String selector) {
+            if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)
+                    || TextUtils.isEmpty(selector) || selector.length() > 1000) {
+                return;
+            }
+            final BrowserTab tab = tabManager.findTab(tabId);
+            if (tab == null || !isNetworkUrl(tab.url)) {
+                return;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    String host = SiteSettingsStore.hostOf(tab.url);
+                    String existing = AdvancedStore.siteCss(MainActivity.this, host);
+                    String css = (TextUtils.isEmpty(existing) ? "" : existing + "\n")
+                            + selector + "{display:none!important;}";
+                    boolean saved = AdvancedStore.setSiteCss(MainActivity.this, host, css);
+                    KsToast.show(MainActivity.this, saved
+                            ? R.string.dev_zapper_saved : R.string.dev_css_too_large);
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void selectionAction(final String action, final String text) {
+            if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)
+                    || TextUtils.isEmpty(action) || action.length() > 32
+                    || TextUtils.isEmpty(text) || text.length() > 4000) {
+                return;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (tabId == tabManager.getActiveTabId()
+                            && !privateTabs.contains(tabId)) {
+                        handleSelectionAction(action, text);
+                    }
+                }
+            });
+        }
+
+        @JavascriptInterface
         public boolean onLogin(String url, String name, String username, String password) {
             if (tabId != tabManager.getActiveTabId()
                     || username == null || username.length() > 256
