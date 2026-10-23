@@ -408,8 +408,7 @@ final class Mp4Remuxer {
             }
             deltas[i] = (int) delta;
         }
-        int defaultDelta = Math.max(1,
-                (1024 * sampleRate + 44100 / 2) / 44100);
+        int defaultDelta = 1024;
         deltas[track.sampleCount - 1] = track.sampleCount > 1
                 ? deltas[track.sampleCount - 2] : defaultDelta;
         long start = usToTicks(track.minPtsUs - globalMinUs, sampleRate);
