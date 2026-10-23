@@ -1,2 +1,8 @@
+app/src/main/java/com/ks/android/portal/MainActivity.java:6021: error: cannot find symbol
+                            ? R.string.dev_zapper_saved : R.string.dev_css_too_large);
+                                      ^
+  symbol:   variable dev_zapper_saved
+  location: class string
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
+1 error
