@@ -1110,6 +1110,7 @@ example.com##.ad-banner</string>
     <string name="extra_selection_highlight">Highlight</string>
     <string name="extra_selection_markdown">Markdown</string>
     <string name="extra_selection_convert">Convert</string>
+    <string name="extra_selection_empty">Select some text first</string>
     <string name="extra_convert_title">Convert units</string>
     <string name="extra_convert_hint">Example: 12 km to miles, 100 F to C</string>
     <string name="extra_convert_empty">Select a value first, for example “5 kg to lb”</string>
