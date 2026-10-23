@@ -976,11 +976,10 @@ public class MainActivity extends Activity {
                                                               WebResourceRequest request) {
                 if (request != null) {
                     String requestUrl = request.getUrl().toString();
-                    boolean mediaRequest = VideoSniffer.looksLikeMedia(requestUrl);
                     if (!privateTabs.contains(tab.id)
-                            && (!request.isForMainFrame() || mediaRequest)) {
-                        VideoSniffer.recordRequest(tab.id, requestUrl);
-                        if (mediaRequest) {
+                            && (!request.isForMainFrame()
+                            || VideoSniffer.looksLikeMedia(requestUrl))) {
+                        if (VideoSniffer.recordRequest(tab.id, requestUrl)) {
                             scheduleMediaButtonUpdate();
                         }
                     }

@@ -104,20 +104,21 @@ final class VideoSniffer {
         }
     }
 
-    static void recordRequest(int tabId, String url) {
+    static boolean recordRequest(int tabId, String url) {
         if (tabId < 0 || TextUtils.isEmpty(url) || !BUCKETS.containsKey(tabId)) {
-            return;
+            return false;
         }
         String kind = kindOf(url);
         if (kind == null) {
-            return;
+            return false;
         }
         VideoSource source = fromUrl(url, kind);
         if (source == null) {
-            return;
+            return false;
         }
         source.origin = "network";
         add(tabId, source);
+        return true;
     }
 
     static void ingestDom(int tabId, JSONArray array, String pageUrl, String pageTitle) {
