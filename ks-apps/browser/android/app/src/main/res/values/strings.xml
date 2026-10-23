@@ -811,6 +811,7 @@ example.com##.ad-banner</string>
     <string name="filter_active">Active and paused</string>
     <string name="filter_completed">Completed</string>
     <string name="filter_failed">Failed and cancelled</string>
+    <string name="filter_videos">Videos and audio</string>
     <string name="download_speed">%1$s/s</string>
     <string name="download_eta">%1$s left</string>
     <string name="download_resume_all">Resume all paused</string>

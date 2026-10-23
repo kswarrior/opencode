@@ -310,29 +310,30 @@ public class DownloadsActivity extends Activity {
     }
 
     private void showSortFilter() {
-        int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+        int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
         int[] labels = new int[]{
                 R.string.sort_newest, R.string.sort_oldest, R.string.sort_name,
                 R.string.sort_size, R.string.filter_all, R.string.filter_active,
                 R.string.filter_completed, R.string.filter_failed,
-                R.string.download_resume_all, R.string.download_retry_all,
+                R.string.filter_videos, R.string.download_resume_all,
+                R.string.download_retry_all,
                 repository.isWifiOnly() ? R.string.download_wifi_only_on
                         : R.string.download_wifi_only_off};
         int checked = filterMode > 0 ? 4 + filterMode : sortMode;
         KsDialog.menu(this, R.string.downloads_filter, ids, labels,
-                new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, checked,
+                new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, checked,
                 new KsDialog.ChoiceAction() {
                     @Override
                     public void run(int index) {
-                        if (index == 8) {
+                        if (index == 9) {
                             resumeAll();
                             return;
                         }
-                        if (index == 9) {
+                        if (index == 10) {
                             retryAll();
                             return;
                         }
-                        if (index == 10) {
+                        if (index == 11) {
                             boolean enabled = !repository.isWifiOnly();
                             DownloadRepository.setWifiOnly(DownloadsActivity.this, enabled);
                             KsToast.show(DownloadsActivity.this, enabled
