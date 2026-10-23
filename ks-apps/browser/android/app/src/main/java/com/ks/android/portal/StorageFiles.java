@@ -176,15 +176,11 @@ final class StorageFiles {
         if (uri != null) {
             try {
                 output = resolver.openOutputStream(uri, "wt");
-            } catch (Exception ignored) {
+            } catch (Exception exception) {
                 output = null;
             }
             if (output == null) {
-                try {
-                    resolver.delete(uri, null, null);
-                } catch (Exception ignored) {
-                }
-                uri = null;
+                throw new IOException("Could not open shared data file");
             }
         }
         boolean created = false;
