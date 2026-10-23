@@ -225,7 +225,8 @@ public class DownloadsActivity extends Activity {
 
     private void promptDownloadLink() {
         KsDialog.input(this, R.string.download_add_link, "", R.string.download_link_hint,
-                R.string.download_confirm_action, InputType.TYPE_TEXT_VARIATION_URI,
+                R.string.download_confirm_action,
+                InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI,
                 new KsDialog.TextAction() {
                     @Override
                     public boolean onSubmit(String value) {
