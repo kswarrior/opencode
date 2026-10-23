@@ -2456,9 +2456,10 @@ public class DownloadRepository {
                 boolean remuxed = false;
                 boolean remuxHasVideo = false;
                 if (!playlist.fmp4) {
-                    File parent = part.getParentFile();
-                    if (parent != null) {
-                        File remuxFile = new File(parent, part.getName() + ".remux.mp4");
+                    File remuxParent = part.getParentFile();
+                    if (remuxParent != null) {
+                        File remuxFile = new File(remuxParent,
+                                part.getName() + ".remux.mp4");
                         if (remuxFile.exists()) {
                             remuxFile.delete();
                         }
