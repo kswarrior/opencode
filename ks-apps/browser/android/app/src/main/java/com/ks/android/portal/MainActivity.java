@@ -4027,7 +4027,7 @@ public class MainActivity extends Activity {
                         } else if (index == 1) {
                             showNotesFor(true);
                         } else {
-                            addNoteForSelection("");
+                            addNoteForSelection(null);
                         }
                     }
                 });
@@ -4040,27 +4040,79 @@ public class MainActivity extends Activity {
             return;
         }
         String host = SiteSettingsStore.hostOf(active.url);
-        JSONArray notes = site ? AdvancedStore.notesForHost(this, host)
+        final JSONArray notes = site ? AdvancedStore.notesForHost(this, host)
                 : AdvancedStore.notesForUrl(this, active.url);
         if (notes.length() == 0) {
             KsToast.show(this, R.string.extra_notes_empty);
             return;
         }
-        StringBuilder builder = new StringBuilder();
+        CharSequence[] labels = new CharSequence[notes.length()];
         for (int i = 0; i < notes.length(); i++) {
             JSONObject item = notes.optJSONObject(i);
-            if (item == null) {
-                continue;
+            String quote = item == null ? "" : item.optString("q");
+            String note = item == null ? "" : item.optString("n");
+            if (quote.length() > 80) {
+                quote = quote.substring(0, 80) + "…";
             }
-            builder.append("“").append(item.optString("q")).append("”");
-            String note = item.optString("n");
-            if (!TextUtils.isEmpty(note)) {
-                builder.append("\n").append(note);
-            }
-            builder.append("\n\n");
+            labels[i] = TextUtils.isEmpty(note) ? quote : quote + " — " + note;
         }
-        KsDialog.message(this, R.string.extra_notes_title, builder.toString().trim(),
-                R.string.dialog_close, null);
+        final boolean siteWide = site;
+        KsDialog.choose(this, getString(R.string.extra_notes_title), labels,
+                new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        showNoteActions(notes.optJSONObject(index), siteWide);
+                    }
+                });
+    }
+
+    private void showNoteActions(final JSONObject note, final boolean siteWide) {
+        if (note == null) {
+            return;
+        }
+        final long id = note.optLong("id");
+        final String quote = note.optString("q");
+        final String text = note.optString("n");
+        final String url = note.optString("u");
+        int[] labels = {R.string.dialog_copy, R.string.action_share,
+                R.string.extra_note_delete};
+        KsDialog.menu(this, R.string.extra_notes_title, new int[]{1, 2, 3}, labels,
+                new int[]{0, 0, 0}, -1, new KsDialog.ChoiceAction() {
+                    @Override
+                    public void run(int index) {
+                        if (index == 0) {
+                            StringBuilder builder = new StringBuilder("“")
+                                    .append(quote).append("”");
+                            if (!TextUtils.isEmpty(text)) {
+                                builder.append("\n").append(text);
+                            }
+                            copyPlainText(builder.toString());
+                        } else if (index == 1) {
+                            StringBuilder builder = new StringBuilder("“")
+                                    .append(quote).append("”");
+                            if (!TextUtils.isEmpty(text)) {
+                                builder.append("\n").append(text);
+                            }
+                            if (!TextUtils.isEmpty(url)) {
+                                builder.append("\n\n").append(url);
+                            }
+                            shareText(builder.toString());
+                        } else {
+                            KsDialog.confirmDanger(MainActivity.this,
+                                    R.string.extra_note_delete, "“" + quote + "”",
+                                    R.string.dialog_cancel, R.string.extra_note_delete,
+                                    new KsDialog.Action() {
+                                        @Override
+                                        public void run() {
+                                            AdvancedStore.deleteNote(MainActivity.this, id);
+                                            KsToast.show(MainActivity.this,
+                                                    R.string.extra_note_deleted);
+                                            showNotesFor(siteWide);
+                                        }
+                                    });
+                        }
+                    }
+                });
     }
 
     private void addNoteForSelection(final String preset) {
