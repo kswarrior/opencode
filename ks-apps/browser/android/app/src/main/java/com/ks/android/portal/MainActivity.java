@@ -3698,25 +3698,29 @@ public class MainActivity extends Activity {
                         if (view == null) {
                             return;
                         }
-                        String script = index == 0 ? PageAssist.bionicScript()
+                        final boolean bionic = index == 0;
+                        String script = bionic ? PageAssist.bionicScript()
                                 : PageAssist.focusScript();
                         view.evaluateJavascript(script, new ValueCallback<String>() {
                             @Override
                             public void onReceiveValue(String value) {
                                 String result = decodeJsString(value);
-                                if ("empty".equals(result)) {
-                                    KsToast.show(MainActivity.this,
-                                            R.string.extra_bionic_empty);
-                                } else if ("on".equals(result)) {
-                                    KsToast.show(MainActivity.this,
-                                            R.string.extra_bionic_on);
-                                } else if ("off".equals(result)) {
-                                    KsToast.show(MainActivity.this,
-                                            R.string.extra_bionic_off);
+                                int message;
+                                if (bionic) {
+                                    if ("empty".equals(result)) {
+                                        message = R.string.extra_bionic_empty;
+                                    } else if ("on".equals(result)) {
+                                        message = R.string.extra_bionic_on;
+                                    } else if ("off".equals(result)) {
+                                        message = R.string.extra_bionic_off;
+                                    } else {
+                                        message = R.string.extra_bionic_empty;
+                                    }
                                 } else {
-                                    KsToast.show(MainActivity.this,
-                                            R.string.extra_focus_on);
+                                    message = "off".equals(result)
+                                            ? R.string.extra_focus_off : R.string.extra_focus_on;
                                 }
+                                KsToast.show(MainActivity.this, message);
                             }
                         });
                     }
@@ -3890,19 +3894,74 @@ public class MainActivity extends Activity {
             return;
         }
         try {
-            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            final Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             view.draw(canvas);
+            int[] labels = {R.string.extra_screenshot_save,
+                    R.string.extra_screenshot_share};
+            KsDialog.menu(this, R.string.extra_screenshot, new int[]{1, 2}, labels,
+                    new int[]{0, 0}, -1, new KsDialog.ChoiceAction() {
+                        @Override
+                        public void run(int index) {
+                            if (index == 0) {
+                                saveScreenshot(bitmap);
+                            } else {
+                                shareScreenshot(bitmap);
+                            }
+                        }
+                    });
+        } catch (Exception exception) {
+            KsToast.show(this, R.string.extra_screenshot_failed);
+        }
+    }
+
+    private void saveScreenshot(Bitmap bitmap) {
+        try {
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
-            bitmap.recycle();
+            String referer = webView == null ? "" : webView.getUrl();
             DownloadItem item = DownloadRepository.getInstance(this).saveBytes(
                     output.toByteArray(), "screenshot-" + System.currentTimeMillis() + ".png",
-                    "image/png", view.getUrl());
+                    "image/png", referer);
             KsToast.show(this, item == null ? R.string.extra_screenshot_failed
                     : R.string.extra_screenshot_saved);
         } catch (Exception exception) {
             KsToast.show(this, R.string.extra_screenshot_failed);
+        } finally {
+            bitmap.recycle();
+        }
+    }
+
+    private void shareScreenshot(Bitmap bitmap) {
+        File file = null;
+        try {
+            File directory = new File(getCacheDir(), "shared");
+            if (!directory.isDirectory() && !directory.mkdirs()) {
+                throw new java.io.IOException("no cache");
+            }
+            file = new File(directory, "screenshot-" + System.currentTimeMillis() + ".png");
+            java.io.FileOutputStream output = new java.io.FileOutputStream(file);
+            try {
+                if (!bitmap.compress(Bitmap.CompressFormat.PNG, 100, output)) {
+                    throw new java.io.IOException("compress failed");
+                }
+            } finally {
+                output.close();
+            }
+            Uri uri = DownloadFileProvider.getUriForFile(this, file);
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("image/png");
+            share.putExtra(Intent.EXTRA_STREAM, uri);
+            share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(share,
+                    getString(R.string.extra_screenshot_share)));
+        } catch (Exception exception) {
+            if (file != null) {
+                file.delete();
+            }
+            KsToast.show(this, R.string.extra_screenshot_share_failed);
+        } finally {
+            bitmap.recycle();
         }
     }
 
@@ -4345,6 +4404,11 @@ public class MainActivity extends Activity {
         if (webView == null || isHomeUrl(webView.getUrl())) {
             return;
         }
+        String readerFont = PageAssist.readerFontCss(AdvancedStore.readerFont(this),
+                AdvancedStore.readerDyslexic(this));
+        String readerLine = AdvancedStore.readerLine(this);
+        int readerWidth = AdvancedStore.readerWidth(this);
+        String readerSpacing = AdvancedStore.readerDyslexic(this) ? "0.02em" : "normal";
         String script = "(function(){"
                 + "if(window.__ksReader){window.__ksReader.remove();window.__ksReader=null;"
                 + "return;}"
@@ -4353,7 +4417,8 @@ public class MainActivity extends Activity {
                 + "var wrap=document.createElement('div');wrap.id='ks-reader';"
                 + "wrap.style.cssText='position:fixed;inset:0;z-index:2147483647;"
                 + "background:#0B0F17;color:#E8ECF6;overflow:auto;padding:28px 22px 60px;"
-                + "font:18px/1.75 -apple-system,Roboto,Segoe UI,sans-serif;';"
+                + "letter-spacing:" + readerSpacing + ";"
+                + "font:18px/" + readerLine + " " + readerFont + ";';"
                 + "var bar=document.createElement('div');"
                 + "bar.style.cssText='display:flex;gap:10px;align-items:center;"
                 + "justify-content:flex-end;margin-bottom:18px;';"
@@ -4375,7 +4440,7 @@ public class MainActivity extends Activity {
                 + "wrap.dataset.light=dark?'1':'0';wrap.style.background=dark?'#FAFAF7':'#0B0F17';"
                 + "wrap.style.color=dark?'#16181D':'#E8ECF6';});"
                 + "btn('Close',function(){wrap.remove();window.__ksReader=null;});"
-                + "var body=document.createElement('div');body.style.maxWidth='760px';"
+                + "var body=document.createElement('div');body.style.maxWidth='" + readerWidth + "px';"
                 + "body.style.margin='0 auto';"
                 + "var clone=src.cloneNode(true);"
                 + "clone.querySelectorAll('script,style,nav,aside,form,iframe,video,audio,"

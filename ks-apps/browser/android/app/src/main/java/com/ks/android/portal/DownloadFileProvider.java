@@ -101,8 +101,10 @@ public class DownloadFileProvider extends ContentProvider {
         DownloadRepository repository = DownloadRepository.getInstance(getContext());
         try {
             String filePath = file.getCanonicalPath();
+            File shared = new File(getContext().getCacheDir(), "shared");
             if (!isInside(filePath, repository.getRoot())
-                    && !isInside(filePath, repository.getLegacyRoot())) {
+                    && !isInside(filePath, repository.getLegacyRoot())
+                    && !isInside(filePath, shared)) {
                 throw new SecurityException("Path outside downloads");
             }
             return file;

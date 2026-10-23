@@ -1078,6 +1078,9 @@ example.com##.ad-banner</string>
     <string name="extra_screenshot_saved">Screenshot saved</string>
     <string name="extra_screenshot_failed">Screenshot failed</string>
     <string name="extra_screenshot_private">Screenshots are disabled in private tabs</string>
+    <string name="extra_screenshot_save">Save to Downloads</string>
+    <string name="extra_screenshot_share">Share screenshot</string>
+    <string name="extra_screenshot_share_failed">Could not share the screenshot</string>
     <string name="extra_tabs_title">All tabs</string>
     <string name="extra_tabs_text">Plain text</string>
     <string name="extra_tabs_urls">URLs only</string>

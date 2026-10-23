@@ -1,5 +1,6 @@
 build/classes/com/ks/android/portal/DownloadRepository$DownloadTask.class
 build/classes/com/ks/android/portal/DownloadsActivity$DownloadAdapter$1.class
+build/classes/com/ks/android/portal/MainActivity$WebContentBridge$3$1.class
 build/classes/com/ks/android/portal/SiteDataActivity$6$1.class
 build/classes/com/ks/android/portal/AdBlockerActivity$1.class
 build/classes/com/ks/android/portal/DownloadRepository$Published.class
@@ -61,6 +62,7 @@ build/classes/com/ks/android/portal/MainActivity$89.class
 build/classes/com/ks/android/portal/MainActivity$23.class
 build/classes/com/ks/android/portal/DeveloperToolsActivity$35$1.class
 build/classes/com/ks/android/portal/MainActivity$95.class
+build/classes/com/ks/android/portal/MainActivity$WebContentBridge$3.class
 build/classes/com/ks/android/portal/BookmarkActivity$Bookmark.class
 build/classes/com/ks/android/portal/PermissionDialog$Listener.class
 build/classes/com/ks/android/portal/DeveloperToolsActivity$12.class
@@ -81,7 +83,6 @@ build/classes/com/ks/android/portal/BookmarkActivity$BookmarkAdapter$4.class
 build/classes/com/ks/android/portal/ExtrasActivity$8.class
 build/classes/com/ks/android/portal/VideoDownloadActivity$10.class
 build/classes/com/ks/android/portal/LoginSaveDialog$1.class
-build/classes/com/ks/android/portal/MainActivity$WebContentBridge$1$1.class
 build/classes/com/ks/android/portal/TabsActivity$TabsAdapter$2.class
 build/classes/com/ks/android/portal/AdBlockerActivity$18.class
 build/classes/com/ks/android/portal/SiteDataActivity$4.class
@@ -334,7 +335,6 @@ build/classes/com/ks/android/portal/SettingsActivity$1.class
 build/classes/com/ks/android/portal/SiteSettingsActivity$7$1.class
 build/classes/com/ks/android/portal/DeveloperToolsActivity$19.class
 build/classes/com/ks/android/portal/SiteSettingsActivity$1.class
-build/classes/com/ks/android/portal/MainActivity$WebContentBridge$1$2.class
 build/classes/com/ks/android/portal/SearchEngineActivity$4.class
 build/classes/com/ks/android/portal/DeveloperToolsActivity$51.class
 build/classes/com/ks/android/portal/HistoryActivity$3.class
@@ -431,6 +431,7 @@ build/classes/com/ks/android/portal/KsDialog$13.class
 build/classes/com/ks/android/portal/SiteSettingsActivity$2$1.class
 build/classes/com/ks/android/portal/ToolbarActivity$2.class
 build/classes/com/ks/android/portal/SiteSettingsActivity.class
+build/classes/com/ks/android/portal/MainActivity$WebContentBridge$3$2.class
 build/classes/com/ks/android/portal/TabsActivity$19.class
 build/classes/com/ks/android/portal/MainActivity$86.class
 build/classes/com/ks/android/portal/MainActivity$75.class
