@@ -771,8 +771,11 @@ final class Mp4Remuxer {
 
     private static byte[] fullBox(String type, int version, int flags,
                                   byte[]... payloads) {
-        return box(type, concat(new byte[]{(byte) version, (byte) (flags >>> 16),
-                (byte) (flags >>> 8), (byte) flags}, payloads));
+        byte[][] parts = new byte[payloads.length + 1][];
+        parts[0] = new byte[]{(byte) version, (byte) (flags >>> 16),
+                (byte) (flags >>> 8), (byte) flags};
+        System.arraycopy(payloads, 0, parts, 1, payloads.length);
+        return box(type, concat(parts));
     }
 
     private static byte[] concat(byte[]... parts) {
