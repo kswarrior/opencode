@@ -345,6 +345,7 @@ public class StorageActivity extends Activity {
         boolean granted = grantResults.length > 0
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
         if (!granted) {
+            pendingCategory = null;
             KsToast.show(this, R.string.storage_permission_needed);
             return;
         }
@@ -358,6 +359,7 @@ public class StorageActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != RESULT_OK || data == null || data.getData() == null) {
+            pendingCategory = null;
             return;
         }
         Uri uri = data.getData();
