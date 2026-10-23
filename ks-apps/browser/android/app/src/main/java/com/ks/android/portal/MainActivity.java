@@ -5954,6 +5954,14 @@ public class MainActivity extends Activity {
         return name.length() > 80 ? name.substring(0, 80) : name;
     }
 
+    private void recordHistory(String rawUrl, String title) {
+        String url = normalizeWebUrl(rawUrl);
+        if (url == null) {
+            return;
+        }
+        HistoryRepository.getInstance(this).record(cleanRecentName(title, url), url);
+    }
+
     private void recordRecent(String rawUrl, String title) {
         RecentsStore.record(this, title, rawUrl);
     }
@@ -6673,9 +6681,7 @@ public class MainActivity extends Activity {
             if (!allowed()) {
                 return "[]";
             }
-            synchronized (RECENTS_LOCK) {
-                return readRecentsLocked().toString();
-            }
+            return RecentsStore.getAll(MainActivity.this).toString();
         }
 
         @JavascriptInterface
