@@ -38,6 +38,17 @@
             android:textColor="@color/ks_text"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/downloadAddLink"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_toolbar_button"
+            android:contentDescription="@string/download_add_link"
+            android:padding="11dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_add"
+            android:tint="@color/ks_text" />
     </LinearLayout>
 
     <LinearLayout
