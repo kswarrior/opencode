@@ -928,6 +928,17 @@ example.com##.ad-banner</string>
 
     <string name="video_downloader_title">Video downloader</string>
     <string name="video_downloader_action">Videos</string>
+    <string name="media_download_button">Detected videos</string>
+    <string name="media_download_button_count">%1$d videos detected on this page</string>
+    <string name="video_sources_title">Videos on this page</string>
+    <string name="video_sources_empty_title">No videos detected yet</string>
+    <string name="video_sources_empty_body">Play a video on this page and it will appear here with a download button.</string>
+    <string name="video_sources_no_page">Videos found while browsing</string>
+    <string name="video_download_action">Download video</string>
+    <string name="download_add_link">Download from link</string>
+    <string name="download_link_hint">Paste a video or HLS link</string>
+    <string name="download_link_invalid">Enter a valid http or https link</string>
+    <string name="download_link_opened_page">No media link found. Opening the page instead</string>
     <string name="video_link_hint">Paste a video or HLS link</string>
     <string name="video_link_empty">Enter a video link</string>
     <string name="video_link_invalid">Enter a valid http or https link</string>
