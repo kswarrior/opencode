@@ -223,6 +223,92 @@ public class DownloadsActivity extends Activity {
         pathLabel.setText(getString(R.string.save_to, repository.getDisplayPath()));
     }
 
+    private void promptDownloadLink() {
+        KsDialog.input(this, R.string.download_add_link, "", R.string.download_link_hint,
+                R.string.download_confirm_action, InputType.TYPE_TEXT_VARIATION_URI,
+                new KsDialog.TextAction() {
+                    @Override
+                    public boolean onSubmit(String value) {
+                        String url = value == null ? "" : value.trim();
+                        Uri uri = null;
+                        try {
+                            uri = Uri.parse(url);
+                        } catch (Exception ignored) {
+                        }
+                        if (uri == null || uri.getHost() == null
+                                || (!"http".equalsIgnoreCase(uri.getScheme())
+                                && !"https".equalsIgnoreCase(uri.getScheme()))) {
+                            KsToast.show(DownloadsActivity.this,
+                                    R.string.download_link_invalid);
+                            return false;
+                        }
+                        String kind = VideoSniffer.kindOf(url);
+                        if ("dash".equals(kind)) {
+                            KsToast.show(DownloadsActivity.this,
+                                    R.string.video_dash_unsupported);
+                            return false;
+                        }
+                        if (kind == null) {
+                            Intent intent = new Intent(DownloadsActivity.this,
+                                    MainActivity.class);
+                            intent.putExtra(MainActivity.EXTRA_OPEN_URL, url);
+                            startActivity(intent);
+                            KsToast.show(DownloadsActivity.this,
+                                    R.string.download_link_opened_page);
+                            return true;
+                        }
+                        final String mediaUrl = url;
+                        final String mime = mediaMime(url, kind);
+                        String userAgent;
+                        try {
+                            userAgent = WebSettings.getDefaultUserAgent(
+                                    DownloadsActivity.this);
+                        } catch (Exception exception) {
+                            userAgent = "";
+                        }
+                        final String finalUserAgent = userAgent;
+                        final DownloadRepository repo = DownloadRepository.getInstance(
+                                DownloadsActivity.this);
+                        String name = repo.suggestFileName(url, null, mime);
+                        DownloadConfirmDialog.show(DownloadsActivity.this, url, name,
+                                repo.getDisplayPath(),
+                                new DownloadConfirmDialog.Listener() {
+                                    @Override
+                                    public void onDownload(String fileName) {
+                                        DownloadItem item = repo.startDownload(mediaUrl,
+                                                finalUserAgent, null, mime, 0, null,
+                                                fileName);
+                                        if (item == null
+                                                || item.status == DownloadItem.STATUS_FAILED) {
+                                            KsToast.show(DownloadsActivity.this,
+                                                    R.string.download_start_failed);
+                                        } else {
+                                            KsToast.show(DownloadsActivity.this,
+                                                    getString(R.string.download_started,
+                                                            item.fileName));
+                                        }
+                                    }
+                                });
+                        return true;
+                    }
+                });
+    }
+
+    private static String mediaMime(String url, String kind) {
+        if ("hls".equals(kind)) {
+            return "application/vnd.apple.mpegurl";
+        }
+        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+        if (!TextUtils.isEmpty(extension)) {
+            String mime = MimeTypeMap.getSingleton()
+                    .getMimeTypeFromExtension(extension.toLowerCase(Locale.US));
+            if (!TextUtils.isEmpty(mime)) {
+                return mime;
+            }
+        }
+        return "audio".equals(kind) ? "audio/mpeg" : "video/mp4";
+    }
+
     private void showSortFilter() {
         int[] ids = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
         int[] labels = new int[]{
@@ -784,6 +870,34 @@ public class DownloadsActivity extends Activity {
                 .format(new Date(time));
     }
 
+    private static int mediaKind(DownloadItem item) {
+        String mime = item.mimeType == null ? "" : item.mimeType.toLowerCase(Locale.US);
+        if (mime.startsWith("video/")) {
+            return 1;
+        }
+        if (mime.startsWith("audio/")) {
+            return 2;
+        }
+        String name = item.fileName == null ? "" : item.fileName.toLowerCase(Locale.US);
+        int dot = name.lastIndexOf('.');
+        String extension = dot >= 0 ? name.substring(dot) : "";
+        if (".mp4".equals(extension) || ".m4v".equals(extension)
+                || ".webm".equals(extension) || ".mov".equals(extension)
+                || ".mkv".equals(extension) || ".flv".equals(extension)
+                || ".avi".equals(extension) || ".ogv".equals(extension)
+                || ".3gp".equals(extension) || ".mpg".equals(extension)
+                || ".mpeg".equals(extension)) {
+            return 1;
+        }
+        if (".mp3".equals(extension) || ".m4a".equals(extension)
+                || ".aac".equals(extension) || ".ogg".equals(extension)
+                || ".opus".equals(extension) || ".wav".equals(extension)
+                || ".flac".equals(extension)) {
+            return 2;
+        }
+        return 0;
+    }
+
     private class DownloadAdapter extends BaseAdapter {
         @Override
         public int getCount() {
@@ -807,6 +921,7 @@ public class DownloadsActivity extends Activity {
                 convertView = LayoutInflater.from(DownloadsActivity.this)
                         .inflate(R.layout.item_download, parent, false);
                 holder = new ViewHolder();
+                holder.icon = convertView.findViewById(R.id.downloadIcon);
                 holder.name = convertView.findViewById(R.id.downloadName);
                 holder.status = convertView.findViewById(R.id.downloadStatus);
                 holder.path = convertView.findViewById(R.id.downloadPath);
@@ -821,6 +936,17 @@ public class DownloadsActivity extends Activity {
             convertView.setBackgroundResource(selectionMode
                     && selected.contains(Long.valueOf(item.id))
                     ? R.drawable.bg_choice_card_selected : R.drawable.bg_download_item);
+            int kind = mediaKind(item);
+            if (kind == 2) {
+                holder.icon.setImageResource(R.drawable.ic_volume_up);
+                holder.icon.setColorFilter(getResources().getColor(R.color.ks_accent));
+            } else if (kind == 1) {
+                holder.icon.setImageResource(R.drawable.ic_video_download);
+                holder.icon.setColorFilter(getResources().getColor(R.color.ks_accent));
+            } else {
+                holder.icon.setImageResource(R.drawable.ic_file_download);
+                holder.icon.setColorFilter(getResources().getColor(R.color.ks_text));
+            }
             holder.name.setText(item.fileName);
             holder.status.setText(statusLine(item));
             holder.status.setTextColor(item.status == DownloadItem.STATUS_FAILED
@@ -868,6 +994,7 @@ public class DownloadsActivity extends Activity {
     }
 
     private static class ViewHolder {
+        ImageView icon;
         TextView name;
         TextView status;
         TextView path;
