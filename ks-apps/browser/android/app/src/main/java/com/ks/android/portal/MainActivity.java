@@ -2976,7 +2976,7 @@ public class MainActivity extends Activity {
                         SiteSettingsStore.KEY_THIRD_PARTY_COOKIES, true));
         boolean loadImages = SiteSettingsStore.getBoolean(this, host,
                 SiteSettingsStore.KEY_IMAGES, true);
-        if (AdvancedStore.isDataSaver(this) && !isHomeUrl(url)) {
+        if (AdvancedStore.isDataSaver(this) && isNetworkUrl(url)) {
             loadImages = false;
         }
         settings.setBlockNetworkImage(!loadImages);
@@ -4214,6 +4214,11 @@ public class MainActivity extends Activity {
 
     private void showImagesMenu() {
         final WebView view = webView;
+        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        if (active != null && privateTabs.contains(active.id)) {
+            KsToast.show(this, R.string.private_download_blocked);
+            return;
+        }
         if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
             return;
         }
