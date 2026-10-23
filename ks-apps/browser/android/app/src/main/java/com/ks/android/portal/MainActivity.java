@@ -127,11 +127,7 @@ public class MainActivity extends Activity {
     private static final String ACTION_MEDIA_STOP = "com.ks.android.portal.MEDIA_STOP";
     private static final String MEDIA_CHANNEL = "ks_media_playback";
     private static final int MEDIA_NOTIFICATION_ID = 4301;
-    private static final String RECENTS_PREFS = "ks_recents";
-    private static final String RECENTS_KEY = "items";
-    private static final int RECENTS_LIMIT = 30;
     private static final int REQUEST_WRITE_STORAGE = 2001;
-    private static final Object RECENTS_LOCK = new Object();
 
     private TabManager tabManager;
     private final Map<Integer, WebView> tabViews = new HashMap<Integer, WebView>();
@@ -5958,107 +5954,12 @@ public class MainActivity extends Activity {
         return name.length() > 80 ? name.substring(0, 80) : name;
     }
 
-    private JSONArray readRecentsLocked() {
-        JSONArray result = new JSONArray();
-        String raw = getSharedPreferences(RECENTS_PREFS, MODE_PRIVATE)
-                .getString(RECENTS_KEY, "[]");
-        try {
-            JSONArray stored = new JSONArray(raw);
-            for (int i = 0; i < stored.length() && result.length() < RECENTS_LIMIT; i++) {
-                JSONObject source = stored.optJSONObject(i);
-                if (source == null) {
-                    continue;
-                }
-                String url = normalizeWebUrl(source.optString("url"));
-                if (url == null) {
-                    continue;
-                }
-                JSONObject item = new JSONObject();
-                item.put("name", cleanRecentName(source.optString("name"), url));
-                item.put("url", url);
-                item.put("time", source.optLong("time", 0L));
-                result.put(item);
-            }
-        } catch (JSONException ignored) {
-        }
-        return result;
-    }
-
-    private void recordHistory(String rawUrl, String title) {
-        String url = normalizeWebUrl(rawUrl);
-        if (url == null) {
-            return;
-        }
-        HistoryRepository.getInstance(this).record(cleanRecentName(title, url), url);
-    }
-
     private void recordRecent(String rawUrl, String title) {
-        String url = normalizeWebUrl(rawUrl);
-        if (url == null) {
-            return;
-        }
-        synchronized (RECENTS_LOCK) {
-            JSONArray current = readRecentsLocked();
-            JSONArray next = new JSONArray();
-            try {
-                String name = cleanRecentName(title, url);
-                if (TextUtils.isEmpty(title == null ? "" : title.trim())) {
-                    for (int i = 0; i < current.length(); i++) {
-                        JSONObject old = current.optJSONObject(i);
-                        if (old != null && url.equals(old.optString("url"))) {
-                            String oldName = old.optString("name");
-                            if (!TextUtils.isEmpty(oldName)) {
-                                name = oldName;
-                            }
-                            break;
-                        }
-                    }
-                }
-                JSONObject item = new JSONObject();
-                item.put("name", name);
-                item.put("url", url);
-                item.put("time", System.currentTimeMillis());
-                next.put(item);
-                for (int i = 0; i < current.length() && next.length() < RECENTS_LIMIT; i++) {
-                    JSONObject existing = current.optJSONObject(i);
-                    if (existing == null || url.equals(existing.optString("url"))) {
-                        continue;
-                    }
-                    next.put(existing);
-                }
-                getSharedPreferences(RECENTS_PREFS, MODE_PRIVATE).edit()
-                        .putString(RECENTS_KEY, next.toString()).apply();
-            } catch (JSONException ignored) {
-            }
-        }
+        RecentsStore.record(this, title, rawUrl);
     }
 
     private boolean removeRecent(String rawUrl) {
-        String url = normalizeWebUrl(rawUrl);
-        if (url == null) {
-            return false;
-        }
-        synchronized (RECENTS_LOCK) {
-            JSONArray current = readRecentsLocked();
-            JSONArray next = new JSONArray();
-            boolean removed = false;
-            for (int i = 0; i < current.length(); i++) {
-                JSONObject existing = current.optJSONObject(i);
-                if (existing == null) {
-                    continue;
-                }
-                if (url.equals(existing.optString("url"))) {
-                    removed = true;
-                } else {
-                    next.put(existing);
-                }
-            }
-            if (removed) {
-                getSharedPreferences(RECENTS_PREFS, MODE_PRIVATE).edit()
-                        .putString(RECENTS_KEY, next.toString()).apply();
-            }
-            return removed;
-        }
+        return RecentsStore.remove(this, rawUrl);
     }
 
     private boolean isBridgeAllowed(int tabId) {
