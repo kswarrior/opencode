@@ -190,6 +190,11 @@ final class PageAssist {
                 + "return text.slice(0,120000);}catch(e){return '';}})();";
     }
 
+    static String selectionTextScript() {
+        return "(function(){try{var text=String(window.getSelection()||'');"
+                + "return text.trim().slice(0,120000);}catch(e){return '';}})();";
+    }
+
     static String extractTextScript() {
         return "(function(){try{var root=document.getElementById('ks-reader');"
                 + "if(root){root=root.querySelector('div:last-child')||root;}"

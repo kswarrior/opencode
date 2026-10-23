@@ -22,12 +22,26 @@ final class UnitConverter {
         addLength("ft", "foot", 0.3048);
         addLength("yd", "yard", 0.9144);
         addLength("mi", "mile", 1609.344);
+        LENGTH.put("millimeters", 0.001);
+        LENGTH.put("centimeters", 0.01);
+        LENGTH.put("meters", 1.0);
+        LENGTH.put("kilometers", 1000.0);
+        LENGTH.put("inches", 0.0254);
+        LENGTH.put("feet", 0.3048);
+        LENGTH.put("yards", 0.9144);
+        LENGTH.put("miles", 1609.344);
         addMass("mg", "milligram", 0.001);
         addMass("g", "gram", 1.0);
         addMass("kg", "kilogram", 1000.0);
         addMass("oz", "ounce", 28.349523125);
         addMass("lb", "pound", 453.59237);
         addMass("st", "stone", 6350.29318);
+        MASS.put("milligrams", 0.001);
+        MASS.put("grams", 1.0);
+        MASS.put("kilograms", 1000.0);
+        MASS.put("ounces", 28.349523125);
+        MASS.put("pounds", 453.59237);
+        MASS.put("stones", 6350.29318);
     }
 
     private UnitConverter() {

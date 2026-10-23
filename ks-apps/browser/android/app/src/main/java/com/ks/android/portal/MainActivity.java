@@ -2349,7 +2349,7 @@ public class MainActivity extends Activity {
                 addToHomeScreen();
                 break;
             case ExtrasActivity.ACTION_CONVERT:
-                showConvertDialog("");
+                convertSelection();
                 break;
             case ExtrasActivity.ACTION_QUIET:
                 toggleQuietMode();
@@ -4211,16 +4211,21 @@ public class MainActivity extends Activity {
                                         @Override
                                         public void run(boolean[] checked) {
                                             int count = 0;
-                                            String userAgent = defaultUserAgent == null ? ""
-                                                    : defaultUserAgent;
+                                            String userAgent = view.getSettings()
+                                                    .getUserAgentString();
                                             String pageUrl = view.getUrl();
+                                            DownloadRepository repository =
+                                                    DownloadRepository.getInstance(MainActivity.this);
                                             for (int i = 0; i < checked.length; i++) {
                                                 if (!checked[i] || i >= urls.size()) {
                                                     continue;
                                                 }
-                                                startDownloadOrConfirm(urls.get(i), userAgent,
-                                                        null, "image/*", -1, pageUrl);
-                                                count++;
+                                                DownloadItem item = repository.startDownload(
+                                                        urls.get(i), userAgent, null,
+                                                        "image/*", -1, pageUrl);
+                                                if (item != null) {
+                                                    count++;
+                                                }
                                             }
                                             if (count == 0) {
                                                 KsToast.show(MainActivity.this,
@@ -4274,6 +4279,22 @@ public class MainActivity extends Activity {
         } catch (Exception exception) {
             KsToast.show(this, R.string.extra_open_app_failed);
         }
+    }
+
+    private void convertSelection() {
+        WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            showConvertDialog("");
+            return;
+        }
+        view.evaluateJavascript(PageAssist.selectionTextScript(),
+                new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        String selected = decodeJsString(value).trim();
+                        showConvertDialog(selected);
+                    }
+                });
     }
 
     private void showConvertDialog(String initial) {
