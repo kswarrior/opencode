@@ -737,6 +737,8 @@ example.com##.ad-banner</string>
     <string name="tool_add_home">Add to home screen</string>
     <string name="tool_autoplay">Toggle media autoplay</string>
     <string name="tool_translate">Translate page</string>
+    <string name="tool_extras">Extras</string>
+    <string name="tool_dev_tools">Developer tools</string>
     <string name="translate_disclosure">Translation is provided by Google Translate and opens in a new tab. KS Portal sends only the page URL, not the page text. Nothing is translated automatically.</string>
     <string name="translate_continue">Continue</string>
     <string name="translate_language">Translate to</string>

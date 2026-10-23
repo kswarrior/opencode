@@ -20,6 +20,7 @@
         android:maxSdkVersion="28" />
 
     <application
+        android:name=".KsApplication"
         android:allowBackup="false"
         android:enableOnBackInvokedCallback="false"
         android:hardwareAccelerated="true"
