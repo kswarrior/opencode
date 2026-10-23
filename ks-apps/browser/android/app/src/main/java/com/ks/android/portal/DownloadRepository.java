@@ -2411,9 +2411,49 @@ public class DownloadRepository {
                 if (paused) {
                     throw new IOException("Paused");
                 }
+                boolean remuxed = false;
+                boolean remuxHasVideo = false;
+                if (!playlist.fmp4) {
+                    File parent = part.getParentFile();
+                    if (parent != null) {
+                        File remuxFile = new File(parent, part.getName() + ".remux.mp4");
+                        if (remuxFile.exists()) {
+                            remuxFile.delete();
+                        }
+                        HlsRemuxer.Result remuxResult = HlsRemuxer.remux(part, remuxFile);
+                        if (remuxResult != null) {
+                            File backup = new File(parent, part.getName() + ".ts.bak");
+                            if (backup.exists()) {
+                                backup.delete();
+                            }
+                            if (part.renameTo(backup)) {
+                                if (remuxFile.renameTo(part)) {
+                                    backup.delete();
+                                    remuxed = true;
+                                    remuxHasVideo = remuxResult.hasVideo;
+                                } else {
+                                    backup.renameTo(part);
+                                    remuxFile.delete();
+                                }
+                            } else {
+                                remuxFile.delete();
+                            }
+                        }
+                    }
+                }
                 long finishedBytes = part.length();
-                String extension = playlist.fmp4 ? ".mp4" : ".ts";
-                String mime = playlist.fmp4 ? "video/mp4" : "video/mp2t";
+                String extension;
+                String mime;
+                if (playlist.fmp4) {
+                    extension = ".mp4";
+                    mime = "video/mp4";
+                } else if (remuxed) {
+                    extension = remuxHasVideo ? ".mp4" : ".m4a";
+                    mime = remuxHasVideo ? "video/mp4" : "audio/mp4";
+                } else {
+                    extension = ".ts";
+                    mime = "video/mp2t";
+                }
                 String relative;
                 String name;
                 synchronized (lock) {
