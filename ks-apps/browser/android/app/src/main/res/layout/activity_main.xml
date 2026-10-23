@@ -191,4 +191,20 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/collapse_toolbar"
         android:visibility="invisible" />
+
+    <ImageButton
+        android:id="@+id/mediaButton"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/bg_media_fab"
+        android:contentDescription="@string/media_download_button"
+        android:elevation="6dp"
+        android:padding="13dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_video_download"
+        android:tint="@color/ks_text"
+        android:visibility="gone" />
 </FrameLayout>

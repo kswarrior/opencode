@@ -60,14 +60,14 @@
         android:textStyle="bold" />
 
     <ImageButton
-        android:id="@+id/videoSourceMore"
+        android:id="@+id/videoSourceDownload"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="3dp"
         android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/video_source_options"
-        android:padding="7dp"
+        android:contentDescription="@string/video_download_action"
+        android:padding="10dp"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_more_vert"
-        android:tint="@color/ks_text" />
+        android:src="@drawable/ic_file_download"
+        android:tint="@color/ks_accent" />
 </LinearLayout>
