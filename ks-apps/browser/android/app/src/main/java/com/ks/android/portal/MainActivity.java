@@ -283,6 +283,7 @@ public class MainActivity extends Activity {
         adBlockCosmeticOnResume = AdBlocker.isCosmeticEnabled(this);
         adBlockEngineVersionOnResume = AdBlocker.engineVersion();
         settingsPrefs = getSharedPreferences(NotificationHelper.PREFS, MODE_PRIVATE);
+        nightDimStrength = settingsPrefs.getInt("extra_night_dim", 0);
 
         webContainer = findViewById(R.id.webContainer);
         progressBar = findViewById(R.id.progress);
