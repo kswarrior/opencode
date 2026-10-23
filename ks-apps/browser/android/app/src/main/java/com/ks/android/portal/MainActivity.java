@@ -3425,20 +3425,18 @@ public class MainActivity extends Activity {
         }
         String needle = query.toLowerCase(Locale.US);
         LinkedHashMap<String, String> matches = new LinkedHashMap<String, String>();
-        synchronized (RECENTS_LOCK) {
-            JSONArray recents = readRecentsLocked();
-            for (int i = 0; i < recents.length() && matches.size() < 4; i++) {
-                JSONObject item = recents.optJSONObject(i);
-                if (item == null) {
-                    continue;
-                }
-                String name = item.optString("name");
-                String url = item.optString("url");
-                if ((name.toLowerCase(Locale.US).contains(needle)
-                        || url.toLowerCase(Locale.US).contains(needle))
-                        && !matches.containsKey(url)) {
-                    matches.put(url, TextUtils.isEmpty(name) ? url : name);
-                }
+        JSONArray recents = RecentsStore.getAll(this);
+        for (int i = 0; i < recents.length() && matches.size() < 4; i++) {
+            JSONObject item = recents.optJSONObject(i);
+            if (item == null) {
+                continue;
+            }
+            String name = item.optString("name");
+            String url = item.optString("url");
+            if ((name.toLowerCase(Locale.US).contains(needle)
+                    || url.toLowerCase(Locale.US).contains(needle))
+                    && !matches.containsKey(url)) {
+                matches.put(url, TextUtils.isEmpty(name) ? url : name);
             }
         }
         List<HistoryEntry> history = HistoryRepository.getInstance(this).getEntries();
