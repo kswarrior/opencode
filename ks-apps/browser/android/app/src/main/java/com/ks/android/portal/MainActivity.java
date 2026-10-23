@@ -3966,15 +3966,24 @@ public class MainActivity extends Activity {
     }
 
     private void shareAllTabs() {
-        int[] labels = {R.string.extra_tabs_text, R.string.extra_tabs_urls,
-                R.string.extra_tabs_json, R.string.extra_tabs_markdown};
-        KsDialog.menu(this, R.string.extra_tabs_title, new int[]{1, 2, 3, 4}, labels,
-                new int[]{0, 0, 0, 0}, -1, new KsDialog.ChoiceAction() {
+        CharSequence[] labels = {
+                getString(R.string.dialog_copy) + " " + getString(R.string.extra_tabs_text),
+                getString(R.string.action_share) + " " + getString(R.string.extra_tabs_text),
+                getString(R.string.dialog_copy) + " " + getString(R.string.extra_tabs_urls),
+                getString(R.string.action_share) + " " + getString(R.string.extra_tabs_urls),
+                getString(R.string.dialog_copy) + " " + getString(R.string.extra_tabs_json),
+                getString(R.string.action_share) + " " + getString(R.string.extra_tabs_json),
+                getString(R.string.dialog_copy) + " " + getString(R.string.extra_tabs_markdown),
+                getString(R.string.action_share) + " " + getString(R.string.extra_tabs_markdown)};
+        KsDialog.choose(this, getString(R.string.extra_tabs_title), labels,
+                new KsDialog.ChoiceAction() {
                     @Override
                     public void run(int index) {
-                        String text = tabsAsText(index);
+                        String text = tabsAsText(index / 2);
                         if (TextUtils.isEmpty(text)) {
                             KsToast.show(MainActivity.this, R.string.extra_tabs_empty);
+                        } else if (index % 2 == 0) {
+                            copyPlainText(text);
                         } else {
                             shareText(text);
                         }
