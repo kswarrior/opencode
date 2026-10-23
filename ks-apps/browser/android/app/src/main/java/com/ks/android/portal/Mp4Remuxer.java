@@ -51,6 +51,7 @@ final class Mp4Remuxer {
         int height;
         int channels;
         int sampleRate;
+        boolean annexB;
         long[] ptsTicks;
         int[] sttsDeltas;
         int[] cttsOffsets;
@@ -220,6 +221,9 @@ final class Mp4Remuxer {
         track.height = intValue(format, MediaFormat.KEY_HEIGHT, 0);
         track.sampleRate = intValue(format, MediaFormat.KEY_SAMPLE_RATE, 44100);
         track.channels = intValue(format, MediaFormat.KEY_CHANNEL_COUNT, 2);
+        if (isAvc(track.mime)) {
+            track.annexB = isAnnexB(configBytes(format, "csd-0"));
+        }
         LongList times = new LongList();
         IntList sizes = new IntList();
         IntList flags = new IntList();
@@ -263,9 +267,12 @@ final class Mp4Remuxer {
                     byte[] data = new byte[size];
                     buffer.position(0);
                     buffer.get(data);
+                    if (track.annexB) {
+                        data = annexBToLengthPrefixed(data);
+                    }
                     file.write(data);
                     times.add(pts);
-                    sizes.add(size);
+                    sizes.add(data.length);
                     flags.add(sampleFlags);
                     if (pts < minPts) {
                         minPts = pts;
@@ -361,16 +368,21 @@ final class Mp4Remuxer {
         if (sync.size > 0 && sync.size < track.sampleCount) {
             track.syncSamples = sync.toArray();
         }
-        byte[] config = configBytes(track.format);
-        if (config == null || config.length == 0) {
-            return false;
-        }
         int width = Math.max(1, track.width);
         int height = Math.max(1, track.height);
         if (isAvc(track.mime)) {
+            byte[] config = avcConfig(configBytes(track.format, "csd-0"),
+                    configBytes(track.format, "csd-1"));
+            if (config == null || config.length == 0) {
+                return false;
+            }
             track.sampleEntry = videoSampleEntry("avc1", width, height,
                     box("avcC", config));
         } else if (isHevc(track.mime)) {
+            byte[] config = configBytes(track.format, "csd-0");
+            if (config == null || config.length < 8 || config[0] != 1) {
+                return false;
+            }
             track.sampleEntry = videoSampleEntry("hvc1", width, height,
                     box("hvcC", config));
         } else {
@@ -417,7 +429,7 @@ final class Mp4Remuxer {
             track.cttsOffsets = new int[track.sampleCount];
             Arrays.fill(track.cttsOffsets, (int) start);
         }
-        byte[] config = configBytes(track.format);
+        byte[] config = configBytes(track.format, "csd-0");
         if (config == null || config.length == 0) {
             config = defaultAacConfig(sampleRate, track.channels);
         }
@@ -685,15 +697,165 @@ final class Mp4Remuxer {
         return new byte[]{(byte) (value >>> 8), (byte) value};
     }
 
-    private static byte[] configBytes(MediaFormat format) {
-        ByteBuffer buffer = format.getByteBuffer("csd-0");
-        if (buffer == null) {
+    private static byte[] configBytes(MediaFormat format, String key) {
+        try {
+            ByteBuffer buffer = format.getByteBuffer(key);
+            if (buffer == null) {
+                return null;
+            }
+            ByteBuffer copy = buffer.duplicate();
+            byte[] data = new byte[copy.remaining()];
+            copy.get(data);
+            return data;
+        } catch (Exception exception) {
             return null;
         }
-        ByteBuffer copy = buffer.duplicate();
-        byte[] data = new byte[copy.remaining()];
-        copy.get(data);
-        return data;
+    }
+
+    private static boolean isAnnexB(byte[] data) {
+        if (data == null || data.length < 4) {
+            return false;
+        }
+        return data[0] == 0 && data[1] == 0
+                && (data[2] == 1 || (data[2] == 0 && data[3] == 1));
+    }
+
+    private static byte[] annexBToLengthPrefixed(byte[] data) {
+        if (data == null || data.length < 4 || !isAnnexB(data)) {
+            return data;
+        }
+        List<byte[]> units = nalUnits(data);
+        if (units.isEmpty()) {
+            return data;
+        }
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        DataOutputStream stream = new DataOutputStream(output);
+        try {
+            for (byte[] unit : units) {
+                stream.writeInt(unit.length);
+                stream.write(unit);
+            }
+        } catch (IOException exception) {
+            return data;
+        }
+        return output.toByteArray();
+    }
+
+    private static byte[] avcConfig(byte[] csd0, byte[] csd1) {
+        if (csd0 != null && csd0.length >= 7 && csd0[0] == 1
+                && csd0[4] == (byte) 0xFF) {
+            return csd0;
+        }
+        List<byte[]> units = new ArrayList<byte[]>();
+        units.addAll(nalUnits(csd0));
+        units.addAll(nalUnits(csd1));
+        List<byte[]> sps = new ArrayList<byte[]>();
+        List<byte[]> pps = new ArrayList<byte[]>();
+        for (byte[] unit : units) {
+            if (unit.length == 0) {
+                continue;
+            }
+            int type = unit[0] & 0x1F;
+            if (type == 7) {
+                sps.add(unit);
+            } else if (type == 8) {
+                pps.add(unit);
+            }
+        }
+        if (sps.isEmpty()) {
+            return null;
+        }
+        byte[] first = sps.get(0);
+        if (first.length < 4) {
+            return null;
+        }
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        DataOutputStream stream = new DataOutputStream(output);
+        try {
+            stream.writeByte(1);
+            stream.writeByte(first[1]);
+            stream.writeByte(first[2]);
+            stream.writeByte(first[3]);
+            stream.writeByte(0xFF);
+            stream.writeByte(0xE0 | Math.min(31, sps.size()));
+            for (byte[] unit : sps) {
+                stream.writeShort(unit.length);
+                stream.write(unit);
+            }
+            stream.writeByte(Math.min(255, pps.size()));
+            for (byte[] unit : pps) {
+                stream.writeShort(unit.length);
+                stream.write(unit);
+            }
+        } catch (IOException exception) {
+            return null;
+        }
+        return output.toByteArray();
+    }
+
+    private static List<byte[]> nalUnits(byte[] data) {
+        List<byte[]> units = new ArrayList<byte[]>();
+        if (data == null || data.length == 0) {
+            return units;
+        }
+        int start = startCode(data, 0);
+        if (start >= 0) {
+            int position = start;
+            while (position >= 0 && position < data.length) {
+                int length = startCodeLength(data, position);
+                int unitStart = position + length;
+                int next = startCode(data, unitStart);
+                int unitEnd = next >= 0 ? next : data.length;
+                while (unitEnd > unitStart && data[unitEnd - 1] == 0) {
+                    unitEnd--;
+                }
+                if (unitEnd > unitStart) {
+                    byte[] unit = new byte[unitEnd - unitStart];
+                    System.arraycopy(data, unitStart, unit, 0, unit.length);
+                    units.add(unit);
+                }
+                position = next;
+            }
+            return units;
+        }
+        int offset = 0;
+        while (offset + 4 <= data.length) {
+            int length = ((data[offset] & 0xFF) << 24)
+                    | ((data[offset + 1] & 0xFF) << 16)
+                    | ((data[offset + 2] & 0xFF) << 8)
+                    | (data[offset + 3] & 0xFF);
+            offset += 4;
+            if (length <= 0 || offset + length > data.length) {
+                return new ArrayList<byte[]>();
+            }
+            byte[] unit = new byte[length];
+            System.arraycopy(data, offset, unit, 0, length);
+            units.add(unit);
+            offset += length;
+        }
+        return units;
+    }
+
+    private static int startCode(byte[] data, int from) {
+        for (int i = Math.max(0, from); i + 3 < data.length; i++) {
+            if (data[i] == 0 && data[i + 1] == 0) {
+                if (data[i + 2] == 1) {
+                    return i;
+                }
+                if (i + 3 < data.length && data[i + 2] == 0
+                        && data[i + 3] == 1) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    private static int startCodeLength(byte[] data, int position) {
+        if (position + 2 < data.length && data[position + 2] == 1) {
+            return 3;
+        }
+        return 4;
     }
 
     private static long medianDelta(long[] sorted) {
