@@ -170,22 +170,29 @@ final class HlsPlaylist {
 
     private static int codecRank(String codecs) {
         if (TextUtils.isEmpty(codecs)) {
-            return 1;
+            return 10;
         }
         String lower = codecs.toLowerCase(Locale.US);
+        int videoRank;
         if (lower.contains("avc1") || lower.contains("avc3")
                 || lower.contains("h264")) {
-            return 0;
-        }
-        if (lower.contains("hvc1") || lower.contains("hev1")
+            videoRank = 0;
+        } else if (lower.contains("hvc1") || lower.contains("hev1")
                 || lower.contains("hevc")) {
-            return 2;
-        }
-        if (lower.contains("av01") || lower.contains("vp09")
+            videoRank = 2;
+        } else if (lower.contains("av01") || lower.contains("vp09")
                 || lower.contains("vp9")) {
-            return 3;
+            videoRank = 3;
+        } else {
+            videoRank = 1;
         }
-        return 1;
+        boolean auxiliaryAudio = !lower.contains("mp4a")
+                && (lower.contains("ac-3") || lower.contains("ec-3")
+                || lower.contains("ac3") || lower.contains("eac3")
+                || lower.contains("opus") || lower.contains("flac")
+                || lower.contains("alac") || lower.contains("dtsc")
+                || lower.contains("dtse") || lower.contains("dtsh"));
+        return videoRank * 10 + (auxiliaryAudio ? 1 : 0);
     }
 
     static byte[] fetchBytes(String url, String userAgent, String referer, String auth,
