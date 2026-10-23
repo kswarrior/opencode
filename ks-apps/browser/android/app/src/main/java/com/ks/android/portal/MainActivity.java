@@ -4116,9 +4116,29 @@ public class MainActivity extends Activity {
     }
 
     private void addNoteForSelection(final String preset) {
-        BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+        final BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
         if (active == null || privateTabs.contains(active.id)) {
             KsToast.show(this, R.string.extra_note_in_private);
+            return;
+        }
+        if (preset == null) {
+            WebView view = tabViews.get(active.id);
+            if (view == null) {
+                return;
+            }
+            view.evaluateJavascript(PageAssist.selectionTextScript(),
+                    new ValueCallback<String>() {
+                        @Override
+                        public void onReceiveValue(String value) {
+                            String selected = decodeJsString(value).trim();
+                            if (selected.isEmpty()) {
+                                KsToast.show(MainActivity.this,
+                                        R.string.extra_selection_empty);
+                            } else {
+                                addNoteForSelection(selected);
+                            }
+                        }
+                    });
             return;
         }
         KsDialog.input(this, R.string.extra_note_quote, preset, R.string.extra_note_quote,
