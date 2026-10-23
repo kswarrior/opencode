@@ -93,9 +93,12 @@ public class DownloadFileProvider extends ContentProvider {
     }
 
     private File fileForUri(Uri uri) {
-        String path = uri.getLastPathSegment();
-        if (path == null) {
+        String path = uri.getPath();
+        if (path == null || path.length() <= 1) {
             throw new IllegalArgumentException("Missing path");
+        }
+        if (path.charAt(0) == '/') {
+            path = path.substring(1);
         }
         File file = new File(path);
         DownloadRepository repository = DownloadRepository.getInstance(getContext());
