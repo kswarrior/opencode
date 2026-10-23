@@ -976,10 +976,13 @@ public class MainActivity extends Activity {
                                                               WebResourceRequest request) {
                 if (request != null) {
                     String requestUrl = request.getUrl().toString();
+                    boolean mediaRequest = VideoSniffer.looksLikeMedia(requestUrl);
                     if (!privateTabs.contains(tab.id)
-                            && (!request.isForMainFrame()
-                            || VideoSniffer.looksLikeMedia(requestUrl))) {
+                            && (!request.isForMainFrame() || mediaRequest)) {
                         VideoSniffer.recordRequest(tab.id, requestUrl);
+                        if (mediaRequest) {
+                            scheduleMediaButtonUpdate();
+                        }
                     }
                     WebResourceResponse blocked = null;
                     if (!request.isForMainFrame()
@@ -1078,6 +1081,7 @@ public class MainActivity extends Activity {
                 injectAudioWatcher(current, tab);
                 if (!privateTabs.contains(tab.id)) {
                     VideoSniffer.setPage(tab.id, url, title);
+                    injectMediaWatcher(current);
                     scanPageMedia(current, tab.id, url, title);
                     final int scanTabId = tab.id;
                     final String scanUrl = url;
@@ -1664,6 +1668,7 @@ public class MainActivity extends Activity {
                 toolbarToggle.setVisibility(View.GONE);
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 applyImmersive(true);
+                updateMediaButton();
             }
 
             @Override
@@ -2763,6 +2768,75 @@ public class MainActivity extends Activity {
         }
         updateTabCounter();
         updateSiteLogo(url);
+        updateMediaButton();
+    }
+
+    private void scheduleMediaButtonUpdate() {
+        if (mediaUpdatePosted) {
+            return;
+        }
+        mediaUpdatePosted = true;
+        mediaHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mediaUpdatePosted = false;
+                updateMediaButton();
+            }
+        }, 300L);
+    }
+
+    private void updateMediaButton() {
+        if (mediaButton == null) {
+            return;
+        }
+        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
+        boolean show = tab != null && !privateTabs.contains(tab.id)
+                && !isHomeUrl(currentUrl)
+                && !VideoSniffer.snapshot(tab.id).isEmpty();
+        int count = show ? VideoSniffer.snapshot(tab.id).size() : 0;
+        FrameLayout.LayoutParams params =
+                (FrameLayout.LayoutParams) mediaButton.getLayoutParams();
+        int bottomMargin = dp(18);
+        if (!pageFullscreen && toolbarAtBottom && toolbarTargetVisible) {
+            bottomMargin += toolbarHeight;
+        }
+        if (params.bottomMargin != bottomMargin) {
+            params.bottomMargin = bottomMargin;
+            mediaButton.setLayoutParams(params);
+        }
+        if (show) {
+            mediaButton.setContentDescription(count == 1
+                    ? getString(R.string.media_download_button)
+                    : getString(R.string.media_download_button_count, count));
+            mediaButton.setVisibility(View.VISIBLE);
+            mediaButton.bringToFront();
+        } else {
+            mediaButton.setContentDescription(getString(R.string.media_download_button));
+            mediaButton.setVisibility(View.GONE);
+        }
+    }
+
+    private void openVideoSources() {
+        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
+        if (tab == null || privateTabs.contains(tab.id)) {
+            return;
+        }
+        WebView view = tabViews.get(tab.id);
+        String url = view != null && !TextUtils.isEmpty(view.getUrl())
+                ? view.getUrl() : tab.url;
+        if (TextUtils.isEmpty(url) || isHomeUrl(url)) {
+            return;
+        }
+        String title = view == null ? tab.title : view.getTitle();
+        scanPageMedia(view, tab.id, url, title);
+        if (videoSourceSheet != null) {
+            videoSourceSheet.dismiss();
+            videoSourceSheet = null;
+        }
+        String userAgent = view == null
+                ? (defaultUserAgent == null ? "" : defaultUserAgent)
+                : view.getSettings().getUserAgentString();
+        videoSourceSheet = VideoSourceSheet.show(this, tab.id, url, title, userAgent);
     }
 
     private void updateSiteLogo(String url) {
@@ -5014,13 +5088,6 @@ public class MainActivity extends Activity {
                 openDownloadsPage();
             }
         });
-        panel.findViewById(R.id.menuVideos).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                popup.dismiss();
-                openVideoDownloader();
-            }
-        });
         panel.findViewById(R.id.menuShare).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -5477,33 +5544,6 @@ public class MainActivity extends Activity {
 
     private void openDownloadsPage() {
         startActivity(new Intent(this, DownloadsActivity.class));
-    }
-
-    private void openVideoDownloader() {
-        BrowserTab tab = tabManager == null ? null : tabManager.getActiveTab();
-        if (tab == null) {
-            return;
-        }
-        if (privateTabs.contains(tab.id)) {
-            KsToast.show(this, R.string.private_action_blocked);
-            return;
-        }
-        WebView view = tabViews.get(tab.id);
-        String url = view != null && !TextUtils.isEmpty(view.getUrl())
-                ? view.getUrl() : tab.url;
-        String title = view == null ? tab.title : view.getTitle();
-        if (view != null && !TextUtils.isEmpty(url) && !isHomeUrl(url)) {
-            scanPageMedia(view, tab.id, url, title);
-        }
-        Intent intent = new Intent(this, VideoDownloadActivity.class);
-        intent.putExtra(VideoDownloadActivity.EXTRA_TAB_ID, tab.id);
-        intent.putExtra(VideoDownloadActivity.EXTRA_PAGE_URL, url == null ? "" : url);
-        intent.putExtra(VideoDownloadActivity.EXTRA_PAGE_TITLE,
-                title == null ? "" : title);
-        intent.putExtra(VideoDownloadActivity.EXTRA_USER_AGENT,
-                view == null ? (defaultUserAgent == null ? "" : defaultUserAgent)
-                        : view.getSettings().getUserAgentString());
-        startActivity(intent);
     }
 
     private void scanPageMedia(final WebView view, final int tabId, final String pageUrl,
