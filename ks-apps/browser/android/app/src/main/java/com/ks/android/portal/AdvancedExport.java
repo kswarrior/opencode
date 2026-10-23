@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 final class AdvancedExport {
-    private static final int FORMAT_VERSION = 1;
+    static final int FORMAT_VERSION = 1;
     private static final List<String> ALLOWED = Arrays.asList(
             "ks_settings", "ks_bookmarks", "ks_history", "ks_site_settings",
             "ks_recents", "ks_customize", "ks_toolbar_toggle", "ks_advance",
@@ -25,28 +25,44 @@ final class AdvancedExport {
     }
 
     static String exportJson(Context context) throws JSONException {
+        return exportJson(context, false);
+    }
+
+    static String exportJson(Context context, boolean includePasswords) throws JSONException {
         JSONObject root = new JSONObject();
         root.put("format", "ks-portal-backup");
         root.put("version", FORMAT_VERSION);
         root.put("exported", System.currentTimeMillis());
+        root.put("includesPasswords", includePasswords);
         JSONObject preferences = new JSONObject();
         for (String name : ALLOWED) {
-            SharedPreferences prefs = context.getSharedPreferences(name, Context.MODE_PRIVATE);
-            JSONObject values = new JSONObject();
-            for (Map.Entry<String, ?> entry : prefs.getAll().entrySet()) {
-                JSONObject value = encode(entry.getValue());
-                if (value != null) {
-                    values.put(entry.getKey(), value);
-                }
-            }
-            preferences.put(name, values);
+            preferences.put(name, snapshot(context, name));
+        }
+        if (includePasswords) {
+            preferences.put("ks_passwords", snapshot(context, "ks_passwords"));
         }
         root.put("preferences", preferences);
         root.put("tabState", TabManager.get(context).exportState());
         return root.toString(2);
     }
 
+    private static JSONObject snapshot(Context context, String name) throws JSONException {
+        SharedPreferences prefs = context.getSharedPreferences(name, Context.MODE_PRIVATE);
+        JSONObject values = new JSONObject();
+        for (Map.Entry<String, ?> entry : prefs.getAll().entrySet()) {
+            JSONObject value = encode(entry.getValue());
+            if (value != null) {
+                values.put(entry.getKey(), value);
+            }
+        }
+        return values;
+    }
+
     static String importJson(Context context, String raw) {
+        return importJson(context, raw, false);
+    }
+
+    static String importJson(Context context, String raw, boolean includePasswords) {
         if (raw == null || raw.trim().isEmpty()) {
             return "empty";
         }
@@ -66,7 +82,8 @@ final class AdvancedExport {
             Iterator<String> names = preferences.keys();
             while (names.hasNext()) {
                 String name = names.next();
-                if (!ALLOWED.contains(name)) {
+                if (!ALLOWED.contains(name)
+                        && !(includePasswords && "ks_passwords".equals(name))) {
                     continue;
                 }
                 JSONObject values = preferences.optJSONObject(name);
