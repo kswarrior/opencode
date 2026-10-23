@@ -131,11 +131,11 @@ public class StorageActivity extends Activity {
     }
 
     private void chooseLocation(final StorageManager.Category category) {
-        String custom = StorageManager.locationLabel(this, category);
         String customAction = getString(R.string.storage_location_custom);
         if (StorageFiles.LOCATION_CUSTOM.equals(
                 StorageManager.get(this).location(category))) {
-            customAction = getString(R.string.storage_location_change_custom, custom);
+            String path = StorageFiles.describeTree(StorageManager.get(this).tree(category));
+            customAction = getString(R.string.storage_location_change_custom, path);
         }
         CharSequence[] items = new CharSequence[]{
                 getString(R.string.storage_location_internal),
@@ -196,7 +196,7 @@ public class StorageActivity extends Activity {
                 getString(R.string.storage_backup_format_json),
                 getString(R.string.storage_backup_format_zip)
         };
-        KsDialog.choose(this, R.string.storage_backup_format_title, items,
+        KsDialog.choose(this, getString(R.string.storage_backup_format_title), items,
                 new KsDialog.ChoiceAction() {
                     @Override
                     public void run(int index) {
@@ -210,7 +210,7 @@ public class StorageActivity extends Activity {
                 getString(R.string.storage_backup_include_no),
                 getString(R.string.storage_backup_include_yes)
         };
-        KsDialog.choose(this, R.string.storage_backup_include_title, items,
+        KsDialog.choose(this, getString(R.string.storage_backup_include_title), items,
                 new KsDialog.ChoiceAction() {
                     @Override
                     public void run(int index) {
