@@ -2259,6 +2259,270 @@ public class MainActivity extends Activity {
         pendingDownloadReferer = null;
     }
 
+    private boolean handleAdvancedResult(int requestCode, int resultCode) {
+        if (requestCode == REQUEST_APP_UNLOCK) {
+            appUnlocked = resultCode == RESULT_OK;
+            if (!appUnlocked) {
+                finish();
+            }
+            return true;
+        }
+        if (requestCode == REQUEST_PRIVATE_UNLOCK) {
+            privatePromptShowing = false;
+            if (resultCode == RESULT_OK) {
+                privateUnlocked = true;
+                Runnable action = pendingPrivateAction;
+                pendingPrivateAction = null;
+                if (action != null) {
+                    action.run();
+                }
+            } else {
+                pendingPrivateAction = null;
+                BrowserTab active = tabManager == null ? null : tabManager.getActiveTab();
+                if (active != null && privateTabs.contains(active.id)) {
+                    leavePrivateTab();
+                }
+            }
+            return true;
+        }
+        if (requestCode == REQUEST_EXTRAS) {
+            if (resultCode == ExtrasActivity.RESULT_RELOAD) {
+                reloadActiveTabWithSiteSettings();
+            } else {
+                handleExtrasAction(resultCode);
+            }
+            return true;
+        }
+        if (requestCode == REQUEST_DEV_TOOLS) {
+            if (resultCode == DeveloperToolsActivity.ACTION_RELOAD) {
+                reloadActiveTabWithSiteSettings();
+            } else {
+                handleDeveloperAction(resultCode);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private void handleExtrasAction(int action) {
+        switch (action) {
+            case ExtrasActivity.ACTION_READ_ALOUD:
+                showReadAloudMenu();
+                break;
+            case ExtrasActivity.ACTION_AUTO_SCROLL:
+                toggleAutoScroll();
+                break;
+            case ExtrasActivity.ACTION_READING_AIDS:
+                showReadingAids();
+                break;
+            case ExtrasActivity.ACTION_NIGHT_DIM:
+                showNightDim();
+                break;
+            case ExtrasActivity.ACTION_READER_STYLE:
+                showReaderStyle();
+                break;
+            case ExtrasActivity.ACTION_COPY_TEXT:
+                copyPageText();
+                break;
+            case ExtrasActivity.ACTION_CLEAN_SHARE:
+                showCleanShare();
+                break;
+            case ExtrasActivity.ACTION_SCREENSHOT:
+                captureScreenshot();
+                break;
+            case ExtrasActivity.ACTION_SHARE_TABS:
+                shareAllTabs();
+                break;
+            case ExtrasActivity.ACTION_NOTES:
+                showNotesMenu();
+                break;
+            case ExtrasActivity.ACTION_IMAGES:
+                showImagesMenu();
+                break;
+            case ExtrasActivity.ACTION_AI_SHARE:
+                showAiShare();
+                break;
+            case ExtrasActivity.ACTION_OPEN_IN_APP:
+                openCurrentInApp();
+                break;
+            case ExtrasActivity.ACTION_SHORTCUT:
+                addToHomeScreen();
+                break;
+            case ExtrasActivity.ACTION_CONVERT:
+                showConvertDialog("");
+                break;
+            case ExtrasActivity.ACTION_QUIET:
+                toggleQuietMode();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void handleDeveloperAction(int action) {
+        WebView view = webView;
+        if (view == null || TextUtils.isEmpty(view.getUrl()) || isHomeUrl(view.getUrl())) {
+            if (action != DeveloperToolsActivity.ACTION_RELOAD) {
+                KsToast.show(this, R.string.dev_need_page);
+            }
+            return;
+        }
+        switch (action) {
+            case DeveloperToolsActivity.ACTION_ZAPPER:
+                view.evaluateJavascript(PageAssist.zapperScript(), null);
+                break;
+            case DeveloperToolsActivity.ACTION_STORAGE:
+                view.evaluateJavascript(PageAssist.storageScript(),
+                        new ValueCallback<String>() {
+                            @Override
+                            public void onReceiveValue(String value) {
+                                KsDialog.message(MainActivity.this, R.string.dev_storage_title,
+                                        formatStorage(value), R.string.dialog_close, null);
+                            }
+                        });
+                break;
+            case DeveloperToolsActivity.ACTION_TIMING:
+                view.evaluateJavascript(PageAssist.timingsScript(),
+                        new ValueCallback<String>() {
+                            @Override
+                            public void onReceiveValue(String value) {
+                                KsDialog.message(MainActivity.this, R.string.dev_timing_title,
+                                        formatTiming(value), R.string.dialog_close, null);
+                            }
+                        });
+                break;
+            case DeveloperToolsActivity.ACTION_LINKS:
+                view.evaluateJavascript(PageAssist.linksScript(),
+                        new ValueCallback<String>() {
+                            @Override
+                            public void onReceiveValue(String value) {
+                                KsDialog.message(MainActivity.this, R.string.dev_links_title,
+                                        formatLinks(value, true), R.string.dialog_close, null);
+                            }
+                        });
+                break;
+            case DeveloperToolsActivity.ACTION_HEADINGS:
+                view.evaluateJavascript(PageAssist.linksScript(),
+                        new ValueCallback<String>() {
+                            @Override
+                            public void onReceiveValue(String value) {
+                                KsDialog.message(MainActivity.this, R.string.dev_headings_title,
+                                        formatLinks(value, false), R.string.dialog_close, null);
+                            }
+                        });
+                break;
+            case DeveloperToolsActivity.ACTION_RUN_JS:
+                runSavedSnippet(view);
+                break;
+            case DeveloperToolsActivity.ACTION_RELOAD:
+                reloadActiveTabWithSiteSettings();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void runSavedSnippet(WebView view) {
+        String host = SiteSettingsStore.hostOf(view.getUrl());
+        String snippet = AdvancedStore.siteJs(this, host);
+        if (TextUtils.isEmpty(snippet)) {
+            KsToast.show(this, R.string.dev_js_empty);
+            return;
+        }
+        String script = "(function(){try{" + snippet
+                + "\nreturn 'ok';}catch(e){return 'error';}})();";
+        view.evaluateJavascript(script, new ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String value) {
+                boolean ok = value != null && value.contains("ok");
+                KsToast.show(MainActivity.this, ok ? R.string.dev_js_ran
+                        : R.string.dev_js_failed);
+            }
+        });
+    }
+
+    private String formatStorage(String value) {
+        try {
+            JSONObject root = new JSONObject(value == null ? "{}" : value);
+            StringBuilder builder = new StringBuilder();
+            appendStorage(builder, root.optJSONArray("local"), "localStorage");
+            appendStorage(builder, root.optJSONArray("session"), "sessionStorage");
+            if (root.optBoolean("indexeddb", false)) {
+                builder.append("IndexedDB: present\n");
+            }
+            String error = root.optString("error", "");
+            if (!TextUtils.isEmpty(error)) {
+                builder.append(error).append('\n');
+            }
+            return builder.length() == 0
+                    ? getString(R.string.dev_storage_empty) : builder.toString().trim();
+        } catch (JSONException exception) {
+            return getString(R.string.dev_storage_unavailable);
+        }
+    }
+
+    private void appendStorage(StringBuilder builder, JSONArray items, String title) {
+        if (items == null || items.length() == 0) {
+            return;
+        }
+        builder.append(title).append('\n');
+        for (int i = 0; i < items.length(); i++) {
+            JSONObject item = items.optJSONObject(i);
+            if (item != null) {
+                builder.append("  ").append(item.optString("k"))
+                        .append(" = ").append(item.optString("v")).append('\n');
+            }
+        }
+        builder.append('\n');
+    }
+
+    private String formatTiming(String value) {
+        try {
+            JSONArray items = new JSONArray(value == null ? "[]" : value);
+            if (items.length() == 0) {
+                return getString(R.string.dev_timing_empty);
+            }
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject item = items.optJSONObject(i);
+                if (item != null) {
+                    builder.append(item.optString("name")).append(": ")
+                            .append(item.optLong("ms")).append(" ms\n");
+                }
+            }
+            return builder.toString().trim();
+        } catch (JSONException exception) {
+            return getString(R.string.dev_timing_empty);
+        }
+    }
+
+    private String formatLinks(String value, boolean links) {
+        try {
+            JSONObject root = new JSONObject(value == null ? "{}" : value);
+            JSONArray items = root.optJSONArray(links ? "links" : "headings");
+            if (items == null || items.length() == 0) {
+                return getString(R.string.dev_none_found);
+            }
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject item = items.optJSONObject(i);
+                if (item == null) {
+                    continue;
+                }
+                if (links) {
+                    builder.append(item.optString("text")).append('\n')
+                            .append(item.optString("href")).append("\n\n");
+                } else {
+                    builder.append(item.optString("level")).append(' ')
+                            .append(item.optString("text")).append('\n');
+                }
+            }
+            return builder.toString().trim();
+        } catch (JSONException exception) {
+            return getString(R.string.dev_none_found);
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (handleAdvancedResult(requestCode, resultCode)) {
@@ -2758,6 +3022,54 @@ public class MainActivity extends Activity {
                 + "(document.head||document.documentElement).appendChild(m);}"
                 + "m.setAttribute('content','width='+w);})();";
         view.evaluateJavascript(script, null);
+    }
+
+    private void applyAdvancedPageFeatures(WebView view, String url) {
+        if (view == null || TextUtils.isEmpty(url) || isHomeUrl(url)) {
+            return;
+        }
+        String host = SiteSettingsStore.hostOf(url);
+        if (AdvancedStore.isDeveloperEnabled(this) && !TextUtils.isEmpty(host)) {
+            String css = AdvancedStore.siteCss(this, host);
+            if (!TextUtils.isEmpty(css)) {
+                String script = "(function(){var e=document.getElementById('ks-site-css');"
+                        + "if(!e){e=document.createElement('style');e.id='ks-site-css';"
+                        + "(document.head||document.documentElement).appendChild(e);}"
+                        + "e.textContent=" + JSONObject.quote(css) + ";})();";
+                view.evaluateJavascript(script, null);
+            }
+            String snippet = AdvancedStore.siteJs(this, host);
+            if (!TextUtils.isEmpty(snippet) && AdvancedStore.isJsWarningAcknowledged(this)) {
+                view.evaluateJavascript("(function(){try{" + snippet
+                        + "\n}catch(e){}})();", null);
+            }
+        }
+        if (AdvancedStore.isResumeEnabled(this)) {
+            int start = AdvancedStore.readingProgress(this, url);
+            view.evaluateJavascript(PageAssist.readingScript(start, true), null);
+        }
+        if (AdvancedStore.isSelectionEnabled(this)) {
+            String[] labels = {
+                    getString(R.string.extra_selection_search),
+                    getString(R.string.extra_selection_define),
+                    getString(R.string.extra_selection_translate),
+                    getString(R.string.extra_selection_share),
+                    getString(R.string.extra_selection_note),
+                    getString(R.string.extra_selection_highlight),
+                    getString(R.string.extra_selection_markdown),
+                    getString(R.string.extra_selection_convert)};
+            view.evaluateJavascript(PageAssist.selectionScript(labels), null);
+        }
+        JSONArray highlights = AdvancedStore.highlightsForUrl(this, url);
+        if (highlights.length() > 0) {
+            view.evaluateJavascript(PageAssist.highlightScript(highlights), null);
+        }
+        view.evaluateJavascript(PageAssist.readerTypographyScript(
+                AdvancedStore.readerFont(this), AdvancedStore.readerLine(this),
+                AdvancedStore.readerWidth(this), AdvancedStore.readerDyslexic(this)), null);
+        if (nightDimStrength > 0) {
+            view.evaluateJavascript(PageAssist.nightDimScript(nightDimStrength), null);
+        }
     }
 
     private Map<String, String> requestHeaders() {

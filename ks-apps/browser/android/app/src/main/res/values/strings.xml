@@ -1062,6 +1062,9 @@ example.com##.ad-banner</string>
     <string name="extra_reader_narrow">Narrow</string>
     <string name="extra_reader_medium">Medium</string>
     <string name="extra_reader_wide">Wide</string>
+    <string name="extra_reader_line_tight">1.5</string>
+    <string name="extra_reader_line_normal">1.75</string>
+    <string name="extra_reader_line_loose">2.0</string>
     <string name="extra_reader_saved">Reader appearance updated</string>
     <string name="extra_reader_open_first">Open reader mode to preview these settings</string>
     <string name="extra_clean_title">Clean share</string>
