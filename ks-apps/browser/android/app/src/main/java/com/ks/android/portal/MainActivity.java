@@ -3668,7 +3668,27 @@ public class MainActivity extends Activity {
         if (readAloud == null) {
             return;
         }
-        readAloud.ensureReady();
+        readAloud.ensureReady(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        showReadAloudVoices();
+                    }
+                });
+            }
+        });
+    }
+
+    private void showReadAloudVoices() {
+        if (readAloud == null || isFinishing() || isDestroyed()) {
+            return;
+        }
+        if (readAloud.isUnavailable()) {
+            KsToast.show(this, R.string.extra_read_unavailable);
+            return;
+        }
         List<android.speech.tts.Voice> voices = readAloud.voices();
         if (voices.isEmpty()) {
             KsToast.show(this, R.string.extra_read_voice_missing);
@@ -3685,7 +3705,9 @@ public class MainActivity extends Activity {
                 new KsDialog.ChoiceAction() {
                     @Override
                     public void run(int index) {
-                        readAloud.setVoice(index == 0 ? null : choices.get(index - 1));
+                        if (readAloud != null) {
+                            readAloud.setVoice(index == 0 ? null : choices.get(index - 1));
+                        }
                     }
                 });
     }

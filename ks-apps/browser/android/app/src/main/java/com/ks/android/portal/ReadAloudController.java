@@ -29,6 +29,7 @@ final class ReadAloudController {
     private String pendingText;
     private float pendingRate = 1f;
     private Listener pendingListener;
+    private final List<Runnable> readyCallbacks = new ArrayList<Runnable>();
     private Voice selectedVoice;
 
     ReadAloudController(Context context) {
@@ -36,7 +37,18 @@ final class ReadAloudController {
     }
 
     void ensureReady() {
-        if (speech != null || unavailable) {
+        ensureReady(null);
+    }
+
+    void ensureReady(final Runnable callback) {
+        if (ready || unavailable) {
+            runCallback(callback);
+            return;
+        }
+        if (callback != null) {
+            readyCallbacks.add(callback);
+        }
+        if (speech != null) {
             return;
         }
         speech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
@@ -45,6 +57,7 @@ final class ReadAloudController {
                 if (status != TextToSpeech.SUCCESS) {
                     unavailable = true;
                     notifyUnavailable();
+                    runReadyCallbacks();
                     return;
                 }
                 ready = true;
@@ -75,6 +88,7 @@ final class ReadAloudController {
                     } catch (Exception ignored) {
                     }
                 }
+                runReadyCallbacks();
                 if (pendingText != null) {
                     String text = pendingText;
                     float rate = pendingRate;
@@ -85,6 +99,24 @@ final class ReadAloudController {
                 }
             }
         });
+    }
+
+    private void runReadyCallbacks() {
+        List<Runnable> callbacks = new ArrayList<Runnable>(readyCallbacks);
+        readyCallbacks.clear();
+        for (Runnable callback : callbacks) {
+            runCallback(callback);
+        }
+    }
+
+    private void runCallback(Runnable callback) {
+        if (callback == null) {
+            return;
+        }
+        try {
+            callback.run();
+        } catch (RuntimeException ignored) {
+        }
     }
 
     private boolean isLast(String utteranceId) {
@@ -202,6 +234,7 @@ final class ReadAloudController {
 
     void shutdown() {
         stopInternal(false);
+        readyCallbacks.clear();
         if (speech != null) {
             try {
                 speech.shutdown();
