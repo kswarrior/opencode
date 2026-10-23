@@ -28,6 +28,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +37,8 @@ import java.util.Locale;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
@@ -1043,9 +1046,13 @@ public class DeveloperToolsActivity extends Activity {
                 connection.setRequestProperty("User-Agent", ua);
             }
             connection.connect();
+            URL target = new URL(url);
             StringBuilder builder = new StringBuilder();
             builder.append(getString(R.string.dev_cert_state)).append(connection.getResponseCode())
                     .append('\n');
+            String tlsVersion = tlsVersion(target);
+            builder.append(getString(R.string.dev_cert_protocol))
+                    .append(tlsVersion == null ? "?" : tlsVersion).append('\n');
             builder.append(getString(R.string.dev_cert_cipher))
                     .append(connection.getCipherSuite()).append('\n');
             Certificate[] certificates = connection.getServerCertificates();
@@ -1062,7 +1069,17 @@ public class DeveloperToolsActivity extends Activity {
                     .append(cert.getNotBefore()).append(" – ").append(cert.getNotAfter())
                     .append('\n');
             builder.append(getString(R.string.dev_cert_serial))
-                    .append(cert.getSerialNumber().toString(16));
+                    .append(cert.getSerialNumber().toString(16)).append('\n');
+            builder.append(getString(R.string.dev_cert_chain));
+            for (int i = 0; i < certificates.length; i++) {
+                if (!(certificates[i] instanceof X509Certificate)) {
+                    continue;
+                }
+                X509Certificate link = (X509Certificate) certificates[i];
+                builder.append('\n').append("  ").append(i + 1).append(". ")
+                        .append(link.getSubjectDN()).append(" — ")
+                        .append(link.getIssuerDN());
+            }
             return builder.toString();
         } catch (SSLPeerUnverifiedException exception) {
             return getString(R.string.dev_cert_unverified);
@@ -1071,6 +1088,27 @@ public class DeveloperToolsActivity extends Activity {
         } finally {
             if (connection != null) {
                 connection.disconnect();
+            }
+        }
+    }
+
+    private String tlsVersion(URL url) {
+        SSLSocket socket = null;
+        try {
+            socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket();
+            socket.connect(new InetSocketAddress(url.getHost(),
+                    url.getPort() == -1 ? 443 : url.getPort()), 12000);
+            socket.setSoTimeout(12000);
+            socket.startHandshake();
+            return socket.getSession().getProtocol();
+        } catch (Exception exception) {
+            return null;
+        } finally {
+            if (socket != null) {
+                try {
+                    socket.close();
+                } catch (Exception ignored) {
+                }
             }
         }
     }
@@ -1134,14 +1172,14 @@ public class DeveloperToolsActivity extends Activity {
                 .append(AdBlocker.isEnabled(this) ? "on" : "off")
                 .append(" #").append(AdBlocker.engineVersion()).append('\n');
         builder.append(getString(R.string.dev_diag_ua)).append(ua);
-        KsDialog.message(this, R.string.dev_diagnostics, builder.toString(),
+        builderForCopy = builder.toString();
+        KsDialog.message(this, R.string.dev_diagnostics, builderForCopy,
                 R.string.dialog_copy, new KsDialog.Action() {
                     @Override
                     public void run() {
                         copy(builderForCopy);
                     }
                 });
-        builderForCopy = builder.toString();
     }
 
     private String builderForCopy = "";
