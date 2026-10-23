@@ -735,6 +735,7 @@ public class MainActivity extends Activity {
             cancelMediaNotification();
         }
         AdBlocker.flushStatistics();
+        StorageManager.get(this).flush();
         adBlockEngineVersionOnResume = AdBlocker.engineVersion();
         super.onPause();
     }

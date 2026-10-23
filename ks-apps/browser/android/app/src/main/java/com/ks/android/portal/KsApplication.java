@@ -7,5 +7,6 @@ public class KsApplication extends Application {
     public void onCreate() {
         super.onCreate();
         CrashLogger.install(this);
+        StorageManager.get(this).initialize();
     }
 }
