@@ -18,6 +18,7 @@ public class SettingsActivity extends Activity {
     private TextView searchEngineValue;
     private TextView aiModeValue;
     private TextView adBlockerValue;
+    private TextView storageValue;
     private TextView aboutValue;
 
     @Override
@@ -36,6 +37,7 @@ public class SettingsActivity extends Activity {
         searchEngineValue = findViewById(R.id.settingsSearchEngineValue);
         aiModeValue = findViewById(R.id.settingsAiModeValue);
         adBlockerValue = findViewById(R.id.settingsAdBlockerValue);
+        storageValue = findViewById(R.id.settingsStorageValue);
         aboutValue = findViewById(R.id.settingsAboutValue);
         findViewById(R.id.settingsSearchEngine).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +85,12 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SettingsActivity.this, AutofillPasswordsActivity.class));
+            }
+        });
+        findViewById(R.id.settingsStorage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, StorageActivity.class));
             }
         });
         findViewById(R.id.settingsClearData).setOnClickListener(new View.OnClickListener() {
@@ -194,6 +202,7 @@ public class SettingsActivity extends Activity {
         aiModeValue.setText(getString(AiModeEngine.labelRes(AiModeEngine.getKey(this))));
         adBlockerValue.setText(AdBlocker.isEnabled(this)
                 ? R.string.adblocker_on : R.string.adblocker_off);
+        storageValue.setText(StorageManager.summary(this));
         aboutValue.setText(getString(R.string.settings_version, AppInfo.versionName(this)));
     }
 }
