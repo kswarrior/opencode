@@ -17,10 +17,12 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.webkit.MimeTypeMap;
+import android.webkit.WebSettings;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -81,6 +83,7 @@ public class DownloadsActivity extends Activity {
         ImageButton back = findViewById(R.id.downloadsBack);
         ImageButton pathButton = findViewById(R.id.downloadPathButton);
         ImageButton filterButton = findViewById(R.id.downloadFilterButton);
+        ImageButton addLink = findViewById(R.id.downloadAddLink);
         selectionBar = findViewById(R.id.downloadSelectionBar);
         selectionCount = findViewById(R.id.downloadSelectionCount);
         View selectAll = findViewById(R.id.downloadSelectAll);
@@ -111,6 +114,12 @@ public class DownloadsActivity extends Activity {
             @Override
             public void onClick(View view) {
                 showSortFilter();
+            }
+        });
+        addLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                promptDownloadLink();
             }
         });
         search.addTextChangedListener(new TextWatcher() {
