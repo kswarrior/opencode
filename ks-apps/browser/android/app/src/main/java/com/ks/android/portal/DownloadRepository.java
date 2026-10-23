@@ -1599,6 +1599,41 @@ public class DownloadRepository {
         }
     }
 
+    private static boolean looksLikeHlsPlaylist(File file) {
+        if (file == null || !file.isFile()) {
+            return false;
+        }
+        String head = readHeadText(file, 64).replace("\uFEFF", "").trim();
+        return head.startsWith("#EXTM3U");
+    }
+
+    private static boolean looksLikeHtml(File file) {
+        if (file == null || !file.isFile()) {
+            return false;
+        }
+        String head = readHeadText(file, 512).trim().toLowerCase(Locale.US);
+        return head.startsWith("<!doctype") || head.startsWith("<html")
+                || head.startsWith("<?xml") || head.startsWith("{")
+                || head.startsWith("[");
+    }
+
+    private static String readHeadText(File file, int maxBytes) {
+        FileInputStream input = null;
+        try {
+            input = new FileInputStream(file);
+            byte[] data = new byte[maxBytes];
+            int read = input.read(data);
+            if (read <= 0) {
+                return "";
+            }
+            return new String(data, 0, read, "UTF-8");
+        } catch (Exception ignored) {
+            return "";
+        } finally {
+            closeQuietly(input);
+        }
+    }
+
     private static String extensionOf(String name) {
         if (TextUtils.isEmpty(name)) {
             return "";
@@ -2190,7 +2225,14 @@ public class DownloadRepository {
                     keepPart = true;
                     throw new IOException("Incomplete download");
                 }
+                if (looksLikeHlsPlaylist(part)) {
+                    runHls();
+                    return;
+                }
                 boolean apk = looksLikeApk(part);
+                if (!apk && looksLikeHtml(part)) {
+                    throw new IOException(context.getString(R.string.download_error_not_media));
+                }
                 String finalUrl = current.getURL() == null ? url : current.getURL().toString();
                 String relative;
                 String name;
