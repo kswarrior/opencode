@@ -355,9 +355,10 @@ final class HlsPlaylist {
                 continue;
             }
             if (line.startsWith("#EXT-X-BYTERANGE:")) {
-                long[] range = parseRange(line.substring(line.indexOf(':') + 1));
+                String rangeText = line.substring(line.indexOf(':') + 1);
+                long[] range = parseRange(rangeText);
                 if (range != null) {
-                    pendingRangeStart = range[0];
+                    pendingRangeStart = rangeText.indexOf('@') >= 0 ? range[0] : -1;
                     pendingRangeLength = range[1];
                 }
                 continue;
@@ -376,10 +377,26 @@ final class HlsPlaylist {
             }
             String resolved = resolve(baseUrl, line);
             byte[] iv = keyIv == null ? sequenceIv(sequence) : keyIv;
+            long rangeStart = pendingRangeStart;
+            if (rangeStart < 0 && pendingRangeLength >= 0) {
+                if (lastRangeUrl != null && lastRangeUrl.equals(resolved)
+                        && lastRangeEnd >= 0) {
+                    rangeStart = lastRangeEnd;
+                } else {
+                    rangeStart = 0;
+                }
+            }
             segments.add(new Segment(resolved, Math.max(0, pendingDuration), keyUrl,
-                    iv, pendingRangeStart, pendingRangeLength));
+                    iv, rangeStart, pendingRangeLength));
             durationMillis += Math.max(0, pendingDuration);
             sequence++;
+            if (pendingRangeLength >= 0) {
+                lastRangeUrl = resolved;
+                lastRangeEnd = rangeStart + pendingRangeLength;
+            } else {
+                lastRangeUrl = null;
+                lastRangeEnd = -1;
+            }
             pendingDuration = 0;
             pendingRangeStart = -1;
             pendingRangeLength = -1;
