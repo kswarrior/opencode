@@ -590,6 +590,14 @@ public class MainActivity extends Activity {
         if (toolbarToggle != null) {
             toolbarToggle.setVisibility(inPictureInPicture ? View.GONE : View.VISIBLE);
         }
+        if (mediaButton != null) {
+            if (inPictureInPicture) {
+                mediaButtonVisible = false;
+                mediaButton.setVisibility(View.GONE);
+            } else {
+                updateMediaButton();
+            }
+        }
         if (!inPictureInPicture && webView != null) {
             webView.onResume();
         }
