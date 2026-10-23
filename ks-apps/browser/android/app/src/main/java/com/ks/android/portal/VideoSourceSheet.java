@@ -89,7 +89,7 @@ final class VideoSourceSheet {
         String label = !TextUtils.isEmpty(pageTitle) && !isUrlLikeTitle(pageTitle)
                 ? pageTitle : pageUrl;
         pageView.setText(TextUtils.isEmpty(label)
-                ? activity.getString(R.string.video_no_page) : label);
+                ? activity.getString(R.string.video_sources_no_page) : label);
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,10 +202,7 @@ final class VideoSourceSheet {
                                 userAgent, null, mimeType, contentLength, pageUrl,
                                 fileName);
                         if (item == null || item.status == DownloadItem.STATUS_FAILED) {
-                            KsToast.show(activity, TextUtils.isEmpty(item == null
-                                    ? "" : item.error)
-                                    ? R.string.download_start_failed
-                                    : R.string.download_start_failed);
+                            KsToast.show(activity, R.string.download_start_failed);
                         } else {
                             KsToast.show(activity,
                                     activity.getString(R.string.download_started,

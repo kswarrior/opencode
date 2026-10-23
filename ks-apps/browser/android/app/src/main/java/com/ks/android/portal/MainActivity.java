@@ -141,6 +141,10 @@ public class MainActivity extends Activity {
     private View toolbarContainer;
     private FloatingToolbarToggle toolbarToggle;
     private TextView tabsButton;
+    private ImageButton mediaButton;
+    private VideoSourceSheet videoSourceSheet;
+    private final Handler mediaHandler = new Handler(Looper.getMainLooper());
+    private boolean mediaUpdatePosted;
     private ImageView siteLogo;
     private FaviconLoader faviconLoader;
     private EditText urlBar;
@@ -294,6 +298,7 @@ public class MainActivity extends Activity {
         ImageButton menuButton = findViewById(R.id.menuButton);
         toolbarToggle = findViewById(R.id.toolbarToggle);
         tabsButton = findViewById(R.id.tabsButton);
+        mediaButton = findViewById(R.id.mediaButton);
         siteLogo = findViewById(R.id.siteLogo);
         faviconLoader = new FaviconLoader();
 
@@ -312,6 +317,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 openTabsPage();
+            }
+        });
+        mediaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openVideoSources();
             }
         });
         setupFindBar();
