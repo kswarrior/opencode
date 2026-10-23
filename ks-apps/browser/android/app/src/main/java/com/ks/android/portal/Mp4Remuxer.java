@@ -112,12 +112,14 @@ final class Mp4Remuxer {
                 return null;
             }
 
+            byte[] ftyp = ftyp();
             file = new RandomAccessFile(output, "rw");
             file.setLength(0);
-            file.write(ftyp());
+            file.write(ftyp);
             long mdatStart = file.getFilePointer();
             file.writeInt(0);
             file.write(bytes("mdat"));
+            long dataStart = file.getFilePointer();
 
             Track video = null;
             Track audio = null;
@@ -176,9 +178,39 @@ final class Mp4Remuxer {
             }
             int nextTrackId = (audio == null ? 1 : audio.id) + 1;
             byte[] moov = buildMoov(video, audio, movieDuration, nextTrackId);
-            file.write(moov);
+            long shift = moov.length;
+            boolean canFastStart = true;
+            if (video != null && video.dataOffset > 0xFFFFFFFFL - shift) {
+                canFastStart = false;
+            }
+            if (audio != null && audio.dataOffset > 0xFFFFFFFFL - shift) {
+                canFastStart = false;
+            }
+            byte[] fastMoov = null;
+            if (canFastStart) {
+                if (video != null) {
+                    video.dataOffset += shift;
+                }
+                if (audio != null) {
+                    audio.dataOffset += shift;
+                }
+                fastMoov = buildMoov(video, audio, movieDuration, nextTrackId);
+                if (fastMoov.length != moov.length) {
+                    fastMoov = null;
+                }
+            }
             file.close();
             file = null;
+            if (fastMoov == null
+                    || !fastStart(output, ftyp, fastMoov, dataStart, dataEnd, mdatSize)) {
+                RandomAccessFile fallback = new RandomAccessFile(output, "rw");
+                try {
+                    fallback.seek(dataEnd);
+                    fallback.write(moov);
+                } finally {
+                    fallback.close();
+                }
+            }
             if (output.length() <= 0) {
                 return null;
             }
@@ -199,6 +231,81 @@ final class Mp4Remuxer {
             }
             if (!success) {
                 output.delete();
+            }
+        }
+    }
+
+    private static boolean fastStart(File output, byte[] ftyp, byte[] moov,
+                                     long dataStart, long dataEnd, long mdatSize) {
+        if (output == null || ftyp == null || moov == null
+                || dataStart < 0 || dataEnd < dataStart
+                || mdatSize <= 8 || mdatSize > 0xFFFFFFFFL) {
+            return false;
+        }
+        File parent = output.getAbsoluteFile().getParentFile();
+        if (parent == null) {
+            return false;
+        }
+        File temporary = new File(parent, output.getName() + ".fast");
+        File backup = new File(parent, output.getName() + ".old");
+        RandomAccessFile input = null;
+        RandomAccessFile target = null;
+        try {
+            if (temporary.exists()) {
+                temporary.delete();
+            }
+            if (backup.exists()) {
+                backup.delete();
+            }
+            target = new RandomAccessFile(temporary, "rw");
+            target.setLength(0);
+            target.write(ftyp);
+            target.write(moov);
+            target.writeInt((int) mdatSize);
+            target.write(bytes("mdat"));
+            input = new RandomAccessFile(output, "r");
+            input.seek(dataStart);
+            byte[] buffer = new byte[1024 * 1024];
+            long remaining = dataEnd - dataStart;
+            while (remaining > 0) {
+                int read = input.read(buffer, 0,
+                        (int) Math.min(buffer.length, remaining));
+                if (read <= 0) {
+                    return false;
+                }
+                target.write(buffer, 0, read);
+                remaining -= read;
+            }
+            target.close();
+            target = null;
+            input.close();
+            input = null;
+            if (!output.renameTo(backup)) {
+                return false;
+            }
+            if (!temporary.renameTo(output)) {
+                backup.renameTo(output);
+                return false;
+            }
+            backup.delete();
+            return true;
+        } catch (Exception exception) {
+            return false;
+        } finally {
+            if (target != null) {
+                try {
+                    target.close();
+                } catch (Exception ignored) {
+                }
+            }
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (Exception ignored) {
+                }
+            }
+            if (temporary.exists() && !temporary.equals(output)) {
+                temporary.delete();
             }
         }
     }
