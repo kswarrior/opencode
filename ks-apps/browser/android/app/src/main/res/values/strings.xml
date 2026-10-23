@@ -107,6 +107,7 @@
     <string name="download_error_save">Could not save download</string>
     <string name="download_error_finish">Could not finish download</string>
     <string name="download_error_not_media">The link returned a web page instead of a video</string>
+    <string name="download_error_unplayable_media">The downloaded file has no playable audio or video</string>
     <string name="download_file_missing">File not found</string>
     <string name="download_no_app">No app can open this file</string>
     <string name="download_options">Download options</string>

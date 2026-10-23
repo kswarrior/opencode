@@ -2597,12 +2597,22 @@ public class DownloadRepository {
                 String extension;
                 String mime;
                 if (playlist.fmp4) {
-                    extension = ".mp4";
-                    mime = "video/mp4";
+                    MediaProbe probe = MediaProbe.probe(part);
+                    if (probe == null) {
+                        throw new IOException(context.getString(
+                                R.string.download_error_unplayable_media));
+                    }
+                    extension = probe.hasVideo ? ".mp4" : ".m4a";
+                    mime = probe.hasVideo ? "video/mp4" : "audio/mp4";
                 } else if (remuxed) {
                     extension = remuxHasVideo ? ".mp4" : ".m4a";
                     mime = remuxHasVideo ? "video/mp4" : "audio/mp4";
                 } else {
+                    MediaProbe probe = MediaProbe.probe(part);
+                    if (probe == null) {
+                        throw new IOException(context.getString(
+                                R.string.download_error_unplayable_media));
+                    }
                     extension = ".ts";
                     mime = "video/mp2t";
                 }
