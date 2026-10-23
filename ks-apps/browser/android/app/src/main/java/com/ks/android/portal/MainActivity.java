@@ -2752,6 +2752,11 @@ public class MainActivity extends Activity {
             closeFindBar();
         }
         currentUrl = url;
+        if (videoSourceSheet != null && tabManager != null
+                && videoSourceSheet.tabId() != tabManager.getActiveTabId()) {
+            videoSourceSheet.dismiss();
+            videoSourceSheet = null;
+        }
         boolean home = isHomeUrl(url);
         if (home) {
             toolbarCollapsed = false;
@@ -5602,8 +5607,44 @@ public class MainActivity extends Activity {
                             pageTitle);
                 } catch (JSONException ignored) {
                 }
+                if (tabManager != null && tabManager.getActiveTabId() == tabId) {
+                    updateMediaButton();
+                }
             }
         });
+    }
+
+    private void injectMediaWatcher(WebView view) {
+        if (view == null) {
+            return;
+        }
+        String script = "(function(){if(window.__ksMediaWatch){return;}window.__ksMediaWatch=1;"
+                + "function abs(u){try{return new URL(u,location.href).href;}"
+                + "catch(e){return '';}}"
+                + "function collect(){try{var now=Date.now();"
+                + "if(now-(window.__ksMediaLast||0)<800){return;}"
+                + "window.__ksMediaLast=now;var out=[];"
+                + "var media=document.querySelectorAll('video,audio');"
+                + "for(var i=0;i<media.length;i++){var v=media[i];"
+                + "var src=v.currentSrc||v.src||'';"
+                + "if(!src||src.indexOf('blob:')===0||src.indexOf('data:')===0){continue;}"
+                + "var rel=v.getAttribute('title')||v.getAttribute('aria-label')"
+                + "||v.getAttribute('data-title')||'';"
+                + "out.push({u:abs(src),m:v.type||'',l:rel,w:v.videoWidth||0,"
+                + "h:v.videoHeight||0,d:(v.duration||0)*1000});"
+                + "var sources=v.querySelectorAll('source');"
+                + "for(var j=0;j<sources.length;j++){var s=sources[j].src||'';"
+                + "if(!s||s.indexOf('blob:')===0||s.indexOf('data:')===0){continue;}"
+                + "out.push({u:abs(s),m:sources[j].type||'',l:rel,w:0,h:0,d:0});}}"
+                + "if(out.length){try{KSPortalWeb.reportMedia(JSON.stringify(out));}"
+                + "catch(e){}}}catch(e){}}"
+                + "function later(){setTimeout(collect,250);}"
+                + "document.addEventListener('play',later,true);"
+                + "document.addEventListener('playing',later,true);"
+                + "document.addEventListener('loadedmetadata',later,true);"
+                + "document.addEventListener('durationchange',later,true);"
+                + "collect();})();";
+        view.evaluateJavascript(script, null);
     }
 
     private void openHistoryPage() {
@@ -6382,6 +6423,37 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void reportMedia(final String json) {
+            if (TextUtils.isEmpty(json) || json.length() > 200000
+                    || privateTabs.contains(tabId)) {
+                return;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (privateTabs.contains(tabId) || tabManager == null) {
+                        return;
+                    }
+                    BrowserTab tab = tabManager.findTab(tabId);
+                    if (tab == null || TextUtils.isEmpty(tab.url)
+                            || isHomeUrl(tab.url)) {
+                        return;
+                    }
+                    try {
+                        JSONArray array = new JSONArray(json);
+                        VideoSniffer.setPage(tabId, tab.url, tab.title);
+                        VideoSniffer.ingestDom(tabId, array, tab.url, tab.title);
+                    } catch (JSONException ignored) {
+                        return;
+                    }
+                    if (tabManager.getActiveTabId() == tabId) {
+                        updateMediaButton();
+                    }
+                }
+            });
+        }
+
+        @JavascriptInterface
         public boolean showSiteNotification(String title, String body, String url) {
             if (tabId != tabManager.getActiveTabId() || privateTabs.contains(tabId)) {
                 return false;
@@ -6855,6 +6927,11 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        if (videoSourceSheet != null) {
+            videoSourceSheet.dismiss();
+            videoSourceSheet = null;
+        }
+        mediaHandler.removeCallbacksAndMessages(null);
         if (isFinishing()) {
             boolean hadPrivateData = !privateTabHosts.isEmpty();
             clearAllPrivateData();

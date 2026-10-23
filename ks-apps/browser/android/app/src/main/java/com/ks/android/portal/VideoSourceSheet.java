@@ -135,6 +135,10 @@ final class VideoSourceSheet {
         handler.postDelayed(refreshRunnable, REFRESH_INTERVAL);
     }
 
+    int tabId() {
+        return tabId;
+    }
+
     void dismiss() {
         handler.removeCallbacksAndMessages(null);
         if (dialog != null) {
