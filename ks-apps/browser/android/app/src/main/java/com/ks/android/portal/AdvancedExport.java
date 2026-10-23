@@ -19,7 +19,7 @@ final class AdvancedExport {
     private static final List<String> ALLOWED = Arrays.asList(
             "ks_settings", "ks_bookmarks", "ks_history", "ks_site_settings",
             "ks_recents", "ks_customize", "ks_toolbar_toggle", "ks_advance",
-            "ks_adblock_lists");
+            "ks_adblock_lists", "ks_tab_history");
 
     private AdvancedExport() {
     }
