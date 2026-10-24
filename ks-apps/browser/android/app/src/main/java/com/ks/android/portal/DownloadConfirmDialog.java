@@ -70,18 +70,7 @@ public final class DownloadConfirmDialog {
         });
 
         dialog.show();
-        Window window = dialog.getWindow();
-        if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            window.setGravity(Gravity.BOTTOM);
-            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
-                    WindowManager.LayoutParams.WRAP_CONTENT);
-            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-            WindowManager.LayoutParams params = window.getAttributes();
-            params.dimAmount = 0.62f;
-            window.setAttributes(params);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        }
+        DialogStyle.apply(activity, dialog);
     }
 
     private static void submit(Activity activity, Dialog dialog, EditText nameView,

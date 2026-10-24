@@ -5285,18 +5285,7 @@ public class MainActivity extends Activity {
     }
 
     private void applyBottomSheetWindow(Dialog dialog) {
-        Window window = dialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setGravity(Gravity.BOTTOM);
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.WRAP_CONTENT);
-        WindowManager.LayoutParams params = window.getAttributes();
-        params.dimAmount = 0.62f;
-        window.setAttributes(params);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        DialogStyle.apply(this, dialog);
     }
 
     private String siteSecurityLabel(String url) {

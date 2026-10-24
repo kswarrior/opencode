@@ -637,19 +637,7 @@ final class KsDialog {
 
     private static void present(final Sheet sheet, boolean focusInput) {
         sheet.dialog.show();
-        Window window = sheet.dialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setGravity(Gravity.BOTTOM);
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        WindowManager.LayoutParams params = window.getAttributes();
-        params.dimAmount = 0.62f;
-        window.setAttributes(params);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        DialogStyle.apply((Activity) sheet.dialog.getContext(), sheet.dialog);
 
         final int max = dp(sheet.dialog.getContext(), 320);
         sheet.scroll.post(new Runnable() {
