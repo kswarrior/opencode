@@ -16,7 +16,7 @@ public class GestureActivity extends ToggleSettingsActivity {
         addSection(R.string.gestures_title,
                 new ToggleSetting(R.string.gesture_pull_refresh,
                         R.string.gesture_pull_refresh_summary,
-                        "gesture_pull_refresh", true),
+                        "gesture_pull_refresh", false),
                 new ToggleSetting(R.string.gesture_edge_swipe,
                         R.string.gesture_edge_swipe_summary,
                         "gesture_edge_swipe", true));

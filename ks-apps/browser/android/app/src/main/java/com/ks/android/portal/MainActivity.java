@@ -623,7 +623,7 @@ public class MainActivity extends Activity {
             gestureStartX = event.getRawX();
             gestureStartY = event.getRawY();
             gestureTracking = true;
-            if (setting("gesture_pull_refresh", true)) {
+            if (setting("gesture_pull_refresh", false)) {
                 beginPullRefreshCheck(gestureView);
             }
             return;
@@ -655,7 +655,7 @@ public class MainActivity extends Activity {
                 return;
             }
         }
-        if (setting("gesture_pull_refresh", true) && dy > dp(120)
+        if (setting("gesture_pull_refresh", false) && dy > dp(120)
                 && Math.abs(dy) > Math.abs(dx) * 1.5f) {
             finishPullRefreshCheck(view, gestureSerial);
         }
