@@ -151,8 +151,11 @@ public class DialogStyleActivity extends Activity {
         }
         int available = Math.max(1, stageWidth - dp(24));
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) previewSheet.getLayoutParams();
-        params.width = Math.max(dp(180), Math.round(available * size / 100f));
-        previewSheet.setLayoutParams(params);
+        int newWidth = Math.max(dp(180), Math.round(available * size / 100f));
+        if (params.width != newWidth) {
+            params.width = newWidth;
+            previewSheet.setLayoutParams(params);
+        }
     }
 
     private int dp(int value) {

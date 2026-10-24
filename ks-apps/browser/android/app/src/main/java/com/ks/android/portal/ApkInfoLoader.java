@@ -73,7 +73,9 @@ final class ApkInfoLoader {
     static boolean isPackageFile(String fileName) {
         String extension = extensionOf(fileName);
         return ".apk".equals(extension) || ".apks".equals(extension)
-                || ".xapk".equals(extension) || ".apkm".equals(extension);
+                || ".xapk".equals(extension) || ".apkm".equals(extension)
+                || ".mcpack".equals(extension) || ".mcaddon".equals(extension)
+                || ".mcworld".equals(extension) || ".mctemplate".equals(extension);
     }
 
     Info get(long itemId, long size) {
@@ -154,6 +156,10 @@ final class ApkInfoLoader {
     }
 
     private Info readFile(File file, String extension) {
+        if (".mcpack".equals(extension) || ".mcaddon".equals(extension)
+                || ".mcworld".equals(extension) || ".mctemplate".equals(extension)) {
+            return readMinecraftPack(file, extension);
+        }
         if (".xapk".equals(extension) || ".apks".equals(extension)
                 || ".apkm".equals(extension)) {
             return readBundle(file, extension);
