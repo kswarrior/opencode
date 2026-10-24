@@ -603,15 +603,28 @@ public class DownloadsActivity extends Activity {
         int[] labels;
         int[] icons;
         if (item.status == DownloadItem.STATUS_COMPLETED) {
-            ids = new int[]{MENU_OPEN, MENU_OPEN_WITH, MENU_FOLDER, MENU_RENAME,
-                    MENU_SHARE, MENU_CHECKSUM, MENU_DELETE};
-            labels = new int[]{R.string.download_open, R.string.download_open_with,
-                    R.string.download_folder, R.string.download_rename,
-                    R.string.download_share, R.string.download_checksum,
-                    R.string.download_delete};
-            icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_menu_open,
-                    R.drawable.ic_folder, R.drawable.ic_edit,
-                    R.drawable.ic_menu_share, R.drawable.ic_key, R.drawable.ic_delete};
+            if (ApkInfoLoader.isPackageFile(item.fileName)) {
+                ids = new int[]{MENU_OPEN, MENU_OPEN_WITH, MENU_FOLDER, MENU_RENAME,
+                        MENU_SHARE, MENU_CHECKSUM, MENU_APP_INFO, MENU_DELETE};
+                labels = new int[]{R.string.download_open, R.string.download_open_with,
+                        R.string.download_folder, R.string.download_rename,
+                        R.string.download_share, R.string.download_checksum,
+                        R.string.download_app_info_action, R.string.download_delete};
+                icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_menu_open,
+                        R.drawable.ic_folder, R.drawable.ic_edit,
+                        R.drawable.ic_menu_share, R.drawable.ic_key, R.drawable.ic_info,
+                        R.drawable.ic_delete};
+            } else {
+                ids = new int[]{MENU_OPEN, MENU_OPEN_WITH, MENU_FOLDER, MENU_RENAME,
+                        MENU_SHARE, MENU_CHECKSUM, MENU_DELETE};
+                labels = new int[]{R.string.download_open, R.string.download_open_with,
+                        R.string.download_folder, R.string.download_rename,
+                        R.string.download_share, R.string.download_checksum,
+                        R.string.download_delete};
+                icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_menu_open,
+                        R.drawable.ic_folder, R.drawable.ic_edit,
+                        R.drawable.ic_menu_share, R.drawable.ic_key, R.drawable.ic_delete};
+            }
         } else if (DownloadRepository.ERROR_WAITING_WIFI.equals(item.error)) {
             ids = new int[]{MENU_START_NOW, MENU_DELETE};
             labels = new int[]{R.string.download_start_now, R.string.download_delete};
@@ -689,6 +702,9 @@ public class DownloadsActivity extends Activity {
                     case MENU_CHECKSUM:
                         showChecksum(item);
                         break;
+                    case MENU_APP_INFO:
+                        showAppInfo(item);
+                        break;
                     default:
                         break;
                 }
@@ -725,6 +741,55 @@ public class DownloadsActivity extends Activity {
         }
         KsDialog.message(this, R.string.download_checksum_title, digest,
                 R.string.dialog_ok, null);
+    }
+
+    private void showAppInfo(final DownloadItem item) {
+        ApkInfoLoader.Info cached = apkInfoLoader.get(item.id, item.downloadedBytes);
+        if (cached != null) {
+            showAppInfoDialog(cached);
+            return;
+        }
+        apkInfoLoader.load(item, new ApkInfoLoader.Callback() {
+            @Override
+            public void onLoaded(long itemId, ApkInfoLoader.Info info) {
+                if (!isFinishing() && info != null) {
+                    showAppInfoDialog(info);
+                } else if (!isFinishing()) {
+                    toast(getString(R.string.download_app_info_failed));
+                }
+            }
+        });
+    }
+
+    private void showAppInfoDialog(ApkInfoLoader.Info info) {
+        StringBuilder body = new StringBuilder();
+        if (!TextUtils.isEmpty(info.label)) {
+            appendLine(body, getString(R.string.download_app_info_name, info.label));
+        }
+        if (!TextUtils.isEmpty(info.packageName)) {
+            appendLine(body, getString(R.string.download_app_info_package, info.packageName));
+        }
+        String version = info.versionName == null ? "" : info.versionName.trim();
+        if (info.versionCode > 0) {
+            version = TextUtils.isEmpty(version) ? String.valueOf(info.versionCode)
+                    : version + " (" + info.versionCode + ")";
+        }
+        if (!TextUtils.isEmpty(version)) {
+            appendLine(body, getString(R.string.download_app_info_version, version));
+        }
+        if (body.length() == 0) {
+            toast(getString(R.string.download_app_info_failed));
+            return;
+        }
+        KsDialog.message(this, R.string.download_app_info_action, body.toString(),
+                R.string.dialog_ok, null);
+    }
+
+    private static void appendLine(StringBuilder builder, String line) {
+        if (builder.length() > 0) {
+            builder.append('\n');
+        }
+        builder.append(line);
     }
 
     private void openItem(DownloadItem item) {
@@ -911,6 +976,76 @@ public class DownloadsActivity extends Activity {
             return 2;
         }
         return 0;
+    }
+
+    private void bindDownloadIcon(final ViewHolder holder, final DownloadItem item) {
+        holder.icon.setTag(Long.valueOf(item.id));
+        holder.appInfo.setText("");
+        holder.appInfo.setVisibility(View.GONE);
+        bindFileIcon(holder, item);
+        if (item.status != DownloadItem.STATUS_COMPLETED
+                || !ApkInfoLoader.isPackageFile(item.fileName)) {
+            return;
+        }
+        ApkInfoLoader.Info cached = apkInfoLoader.get(item.id, item.downloadedBytes);
+        if (cached != null) {
+            applyApkInfo(holder, cached);
+            return;
+        }
+        apkInfoLoader.load(item, new ApkInfoLoader.Callback() {
+            @Override
+            public void onLoaded(long itemId, ApkInfoLoader.Info info) {
+                if (info != null && Long.valueOf(itemId).equals(holder.icon.getTag())) {
+                    applyApkInfo(holder, info);
+                }
+            }
+        });
+    }
+
+    private void bindFileIcon(ViewHolder holder, DownloadItem item) {
+        holder.icon.setClipToOutline(false);
+        holder.icon.setBackgroundResource(R.drawable.bg_file_icon);
+        holder.icon.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
+        holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        int kind = mediaKind(item);
+        if (kind == 2) {
+            holder.icon.setImageResource(R.drawable.ic_volume_up);
+            holder.icon.setColorFilter(getResources().getColor(R.color.ks_accent));
+        } else if (kind == 1) {
+            holder.icon.setImageResource(R.drawable.ic_video_download);
+            holder.icon.setColorFilter(getResources().getColor(R.color.ks_accent));
+        } else {
+            holder.icon.setImageResource(R.drawable.ic_file_download);
+            holder.icon.setColorFilter(getResources().getColor(R.color.ks_text));
+        }
+    }
+
+    private void applyApkInfo(ViewHolder holder, ApkInfoLoader.Info info) {
+        if (info.icon != null) {
+            holder.icon.setColorFilter(null);
+            holder.icon.setPadding(0, 0, 0, 0);
+            holder.icon.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            holder.icon.setBackgroundResource(R.drawable.bg_app_icon);
+            holder.icon.setClipToOutline(true);
+            holder.icon.setImageBitmap(info.icon);
+        }
+        String line = apkInfoLine(info);
+        if (!TextUtils.isEmpty(line)) {
+            holder.appInfo.setText(line);
+            holder.appInfo.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private String apkInfoLine(ApkInfoLoader.Info info) {
+        if (info == null) {
+            return "";
+        }
+        String label = info.label == null ? "" : info.label.trim();
+        String version = info.versionName == null ? "" : info.versionName.trim();
+        if (!TextUtils.isEmpty(label) && !TextUtils.isEmpty(version)) {
+            return getString(R.string.download_app_info, label, version);
+        }
+        return TextUtils.isEmpty(label) ? version : label;
     }
 
     private class DownloadAdapter extends BaseAdapter {
