@@ -6,6 +6,11 @@ import android.view.View;
 
 public class HomeLayoutActivity extends ToggleSettingsActivity {
     @Override
+    protected String backgroundTarget() {
+        return BackgroundStore.TARGET_CUSTOMIZE;
+    }
+
+    @Override
     protected int pageTitleRes() {
         return R.string.home_layout;
     }

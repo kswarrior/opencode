@@ -120,6 +120,12 @@ public class SiteSettingsActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
+    }
+
     private void buildStaticSettings() {
         addPermissionSection();
         addAutoRemoveSection();

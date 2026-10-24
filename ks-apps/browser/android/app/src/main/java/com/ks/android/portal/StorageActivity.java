@@ -55,6 +55,7 @@ public class StorageActivity extends Activity {
     protected void onResume() {
         super.onResume();
         buildUi();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
     }
 
     @Override

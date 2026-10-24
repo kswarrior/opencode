@@ -31,6 +31,12 @@ public class TopSitesActivity extends Activity {
         renderList();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_CUSTOMIZE);
+    }
+
     private void renderList() {
         list.removeAllViews();
         List<HomeLayoutStore.Site> sites = HomeLayoutStore.topSites(this);

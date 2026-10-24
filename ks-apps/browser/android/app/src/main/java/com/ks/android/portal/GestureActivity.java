@@ -2,6 +2,11 @@ package com.ks.android.portal;
 
 public class GestureActivity extends ToggleSettingsActivity {
     @Override
+    protected String backgroundTarget() {
+        return BackgroundStore.TARGET_CUSTOMIZE;
+    }
+
+    @Override
     protected int pageTitleRes() {
         return R.string.gestures_title;
     }

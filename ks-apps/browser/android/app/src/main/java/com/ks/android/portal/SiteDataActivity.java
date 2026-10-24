@@ -56,6 +56,12 @@ public class SiteDataActivity extends Activity {
         reload();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
+    }
+
     private View buildContent() {
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
