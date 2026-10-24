@@ -3,8 +3,10 @@ package com.ks.android.portal;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -201,12 +203,34 @@ final class MediaThumbnailLoader {
             } else {
                 return null;
             }
-            Bitmap frame = retriever.getFrameAtTime(1000000L,
-                    MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
-            if (frame == null) {
-                frame = retriever.getFrameAtTime(0);
+            int target = targetSize();
+            int width = intMetadata(retriever,
+                    MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH);
+            int height = intMetadata(retriever,
+                    MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT);
+            int rotation = intMetadata(retriever,
+                    MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION);
+            Bitmap frame;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1
+                    && width > 0 && height > 0) {
+                int[] fit = fit(width, height, target);
+                frame = retriever.getScaledFrameAtTime(1000000L,
+                        MediaMetadataRetriever.OPTION_CLOSEST_SYNC, fit[0], fit[1]);
+                if (frame == null) {
+                    frame = retriever.getScaledFrameAtTime(0,
+                            MediaMetadataRetriever.OPTION_CLOSEST_SYNC, fit[0], fit[1]);
+                }
+            } else {
+                frame = retriever.getFrameAtTime(1000000L,
+                        MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
+                if (frame == null) {
+                    frame = retriever.getFrameAtTime(0);
+                }
             }
-            return scale(frame, targetSize());
+            if (frame != null && (rotation == 90 || rotation == 270)) {
+                frame = rotate(frame, rotation);
+            }
+            return scale(frame, target);
         } catch (Exception ignored) {
             return null;
         } finally {
@@ -215,6 +239,37 @@ final class MediaThumbnailLoader {
             } catch (Exception ignored) {
             }
         }
+    }
+
+    private static int intMetadata(MediaMetadataRetriever retriever, int key) {
+        try {
+            String value = retriever.extractMetadata(key);
+            return TextUtils.isEmpty(value) ? 0 : Integer.parseInt(value.trim());
+        } catch (Exception ignored) {
+            return 0;
+        }
+    }
+
+    private static int[] fit(int width, int height, int target) {
+        float factor = Math.min((float) target / width, (float) target / height);
+        if (factor > 1f) {
+            factor = 1f;
+        }
+        return new int[]{
+                Math.max(1, Math.round(width * factor)),
+                Math.max(1, Math.round(height * factor))
+        };
+    }
+
+    private Bitmap rotate(Bitmap bitmap, int degrees) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degrees);
+        Bitmap rotated = Bitmap.createBitmap(bitmap, 0, 0,
+                bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        if (rotated != bitmap) {
+            bitmap.recycle();
+        }
+        return rotated;
     }
 
     private Bitmap scale(Bitmap bitmap, int target) {

@@ -74,7 +74,12 @@ final class ApkInfoLoader {
         String extension = extensionOf(fileName);
         return ".apk".equals(extension) || ".apks".equals(extension)
                 || ".xapk".equals(extension) || ".apkm".equals(extension)
-                || ".mcpack".equals(extension) || ".mcaddon".equals(extension)
+                || isMinecraftPack(fileName);
+    }
+
+    static boolean isMinecraftPack(String fileName) {
+        String extension = extensionOf(fileName);
+        return ".mcpack".equals(extension) || ".mcaddon".equals(extension)
                 || ".mcworld".equals(extension) || ".mctemplate".equals(extension);
     }
 
@@ -252,9 +257,6 @@ final class ApkInfoLoader {
                         }
                     }
                 }
-            }
-            if (".mcworld".equals(extension) || ".mctemplate".equals(extension)) {
-                return readMinecraftWorld(zip);
             }
             return null;
         } catch (Exception ignored) {

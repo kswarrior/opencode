@@ -610,12 +610,15 @@ public class DownloadsActivity extends Activity {
         int[] icons;
         if (item.status == DownloadItem.STATUS_COMPLETED) {
             if (ApkInfoLoader.isPackageFile(item.fileName)) {
+                int infoLabel = ApkInfoLoader.isMinecraftPack(item.fileName)
+                        ? R.string.download_pack_info_action
+                        : R.string.download_app_info_action;
                 ids = new int[]{MENU_OPEN, MENU_OPEN_WITH, MENU_FOLDER, MENU_RENAME,
                         MENU_SHARE, MENU_CHECKSUM, MENU_APP_INFO, MENU_DELETE};
                 labels = new int[]{R.string.download_open, R.string.download_open_with,
                         R.string.download_folder, R.string.download_rename,
                         R.string.download_share, R.string.download_checksum,
-                        R.string.download_app_info_action, R.string.download_delete};
+                        infoLabel, R.string.download_delete};
                 icons = new int[]{R.drawable.ic_menu_open, R.drawable.ic_menu_open,
                         R.drawable.ic_folder, R.drawable.ic_edit,
                         R.drawable.ic_menu_share, R.drawable.ic_key, R.drawable.ic_info,
@@ -750,24 +753,26 @@ public class DownloadsActivity extends Activity {
     }
 
     private void showAppInfo(final DownloadItem item) {
+        final boolean pack = ApkInfoLoader.isMinecraftPack(item.fileName);
         ApkInfoLoader.Info cached = apkInfoLoader.get(item.id, item.downloadedBytes);
         if (cached != null) {
-            showAppInfoDialog(cached);
+            showAppInfoDialog(cached, pack);
             return;
         }
         apkInfoLoader.load(item, new ApkInfoLoader.Callback() {
             @Override
             public void onLoaded(long itemId, ApkInfoLoader.Info info) {
                 if (!isFinishing() && info != null) {
-                    showAppInfoDialog(info);
+                    showAppInfoDialog(info, pack);
                 } else if (!isFinishing()) {
-                    toast(getString(R.string.download_app_info_failed));
+                    toast(getString(pack ? R.string.download_pack_info_failed
+                            : R.string.download_app_info_failed));
                 }
             }
         });
     }
 
-    private void showAppInfoDialog(ApkInfoLoader.Info info) {
+    private void showAppInfoDialog(ApkInfoLoader.Info info, boolean pack) {
         StringBuilder body = new StringBuilder();
         if (!TextUtils.isEmpty(info.label)) {
             appendLine(body, getString(R.string.download_app_info_name, info.label));
@@ -784,11 +789,13 @@ public class DownloadsActivity extends Activity {
             appendLine(body, getString(R.string.download_app_info_version, version));
         }
         if (body.length() == 0) {
-            toast(getString(R.string.download_app_info_failed));
+            toast(getString(pack ? R.string.download_pack_info_failed
+                    : R.string.download_app_info_failed));
             return;
         }
-        KsDialog.message(this, R.string.download_app_info_action, body.toString(),
-                R.string.dialog_ok, null);
+        KsDialog.message(this, pack ? R.string.download_pack_info_action
+                        : R.string.download_app_info_action,
+                body.toString(), R.string.dialog_ok, null);
     }
 
     private static void appendLine(StringBuilder builder, String line) {
