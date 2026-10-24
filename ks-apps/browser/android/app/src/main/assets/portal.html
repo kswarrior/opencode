@@ -1074,7 +1074,9 @@ body.launching .recents {
       searchOptions: 'Search options', aiMode: 'AI Mode',
       incognito: 'Incognito', addTile: 'Add bookmark', topSitesAria: 'Top sites',
       bookmarksAria: 'Bookmarks', recentAria: 'Recent sites',
-      optionsFor: 'Options for '
+      optionsFor: 'Options for ', open: 'Open', editTopSites: 'Edit top sites',
+      addToBookmarks: 'Add to bookmarks', removeFromBookmarks: 'Remove from bookmarks',
+      removeFromRecents: 'Remove from recents'
     },
     es: {
       placeholder: 'Buscar o escribir dirección', askAI: 'Preguntar a la IA',
@@ -1723,10 +1725,10 @@ body.launching .recents {
     bindItemLongPress(link, function () {
       var isBookmark = bookmarkIndexFor(item.url) >= 0;
       openItemSheet(item, [
-        { label: 'Open', action: function () { launch(item.url); } },
-        { label: isBookmark ? 'Remove from bookmarks' : 'Add to bookmarks',
+        { label: t('open'), action: function () { launch(item.url); } },
+        { label: isBookmark ? t('removeFromBookmarks') : t('addToBookmarks'),
           action: function () { toggleRecentBookmark(item); } },
-        { label: 'Remove from recents', danger: true,
+        { label: t('removeFromRecents'), danger: true,
           action: function () { removeRecent(item.url); } }
       ]);
     });
@@ -2007,8 +2009,8 @@ body.launching .recents {
   function bindTopSiteLongPress(tile, site) {
     bindItemLongPress(tile, function () {
       openItemSheet(site, [
-        { label: 'Open', action: function () { launch(site.url); } },
-        { label: 'Edit top sites', action: function () { invokeNative('openCustomize'); } }
+        { label: t('open'), action: function () { launch(site.url); } },
+        { label: t('editTopSites'), action: function () { invokeNative('openCustomize'); } }
       ]);
     });
   }
