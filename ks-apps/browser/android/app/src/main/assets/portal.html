@@ -1351,12 +1351,7 @@ body.launching .recents {
       name.textContent = site.name;
       tile.appendChild(logo);
       tile.appendChild(name);
-      bindItemLongPress(tile, function () {
-        openItemSheet(site, [
-          { label: 'Open', action: function () { launch(site.url); } },
-          { label: 'Edit top sites', action: function () { invokeNative('openCustomize'); } }
-        ]);
-      });
+      bindTopSiteLongPress(tile, site);
       topNav.appendChild(tile);
     }
   }
@@ -1717,9 +1712,23 @@ body.launching .recents {
     link.appendChild(separator);
     link.appendChild(url);
     link.addEventListener('click', function (event) {
+      if (Date.now() < suppressUntil) {
+        event.preventDefault();
+        return;
+      }
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       launch(item.url);
+    });
+    bindItemLongPress(link, function () {
+      var isBookmark = bookmarkIndexFor(item.url) >= 0;
+      openItemSheet(item, [
+        { label: 'Open', action: function () { launch(item.url); } },
+        { label: isBookmark ? 'Remove from bookmarks' : 'Add to bookmarks',
+          action: function () { toggleRecentBookmark(item); } },
+        { label: 'Remove from recents', danger: true,
+          action: function () { removeRecent(item.url); } }
+      ]);
     });
 
     var menuButton = document.createElement('button');
@@ -1799,6 +1808,32 @@ body.launching .recents {
   }
 
   window.KSPortalRefreshBackground = applyBackground;
+
+  function applyPopupStyle() {
+    var info = null;
+    if (nativePortal && typeof nativePortal.getPopupStyle === 'function') {
+      try {
+        info = JSON.parse(nativePortal.getPopupStyle());
+      } catch (error) {
+        info = null;
+      }
+    }
+    var dim = info && typeof info.dim === 'number' ? info.dim : 62;
+    var blur = info && typeof info.blur === 'number' ? info.blur : 0;
+    var width = info && typeof info.width === 'number' ? info.width : 100;
+    var radius = info && typeof info.radius === 'number' ? info.radius : 18;
+    dim = Math.max(0, Math.min(90, dim));
+    blur = Math.max(0, Math.min(30, blur));
+    width = Math.max(70, Math.min(100, width));
+    radius = Math.max(0, Math.min(32, radius));
+    var root = document.documentElement;
+    root.style.setProperty('--popup-dim', String(dim / 100));
+    root.style.setProperty('--popup-blur', blur + 'px');
+    root.style.setProperty('--popup-width', width + '%');
+    root.style.setProperty('--popup-radius', radius + 'px');
+  }
+
+  window.KSPortalRefreshPopupStyle = applyPopupStyle;
 
   function makeBookmarkTile(bookmark, index) {
     var tile = document.createElement('a');
@@ -1969,6 +2004,15 @@ body.launching .recents {
     itemSheetLastFocused = null;
   }
 
+  function bindTopSiteLongPress(tile, site) {
+    bindItemLongPress(tile, function () {
+      openItemSheet(site, [
+        { label: 'Open', action: function () { launch(site.url); } },
+        { label: 'Edit top sites', action: function () { invokeNative('openCustomize'); } }
+      ]);
+    });
+  }
+
   function bindItemLongPress(element, open) {
     var timer = 0;
     function cancel() {
@@ -2084,6 +2128,9 @@ body.launching .recents {
   modal.addEventListener('click', function (event) {
     if (event.target === modal) closeModal();
   });
+  itemSheet.addEventListener('click', function (event) {
+    if (event.target === itemSheet) closeItemSheet();
+  });
   document.addEventListener('click', function (event) {
     if (!recentMenu.classList.contains('open')) return;
     if (recentMenu.contains(event.target)) return;
@@ -2095,6 +2142,10 @@ body.launching .recents {
     if (event.key !== 'Escape') return;
     if (recentMenu.classList.contains('open')) {
       closeRecentMenu();
+      return;
+    }
+    if (itemSheet.classList.contains('open')) {
+      closeItemSheet();
       return;
     }
     if (modal.classList.contains('open')) closeModal();
@@ -2185,12 +2236,14 @@ body.launching .recents {
   renderBookmarks();
   refreshRecents();
   applyBackground();
+  applyPopupStyle();
   restoreModes();
   updateModeUi();
 
   window.addEventListener('pageshow', function () {
     refreshRecents();
     applyBackground();
+    applyPopupStyle();
     if (!launching) return;
     launching = false;
     document.body.classList.remove('launching');
