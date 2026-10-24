@@ -3,6 +3,8 @@ package com.ks.android.portal;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,6 +53,7 @@ public class DownloadsActivity extends Activity {
 
     private DownloadRepository repository;
     private ApkInfoLoader apkInfoLoader;
+    private MediaThumbnailLoader thumbnailLoader;
     private int iconPadding;
     private ListView listView;
     private TextView emptyView;
@@ -80,6 +83,7 @@ public class DownloadsActivity extends Activity {
 
         repository = DownloadRepository.getInstance(this);
         apkInfoLoader = new ApkInfoLoader(this);
+        thumbnailLoader = new MediaThumbnailLoader(this);
         iconPadding = Math.round(9 * getResources().getDisplayMetrics().density);
         listView = findViewById(R.id.downloadsList);
         emptyView = findViewById(R.id.downloadsEmpty);
@@ -227,6 +231,7 @@ public class DownloadsActivity extends Activity {
     @Override
     protected void onDestroy() {
         apkInfoLoader.shutdownNow();
+        thumbnailLoader.shutdownNow();
         super.onDestroy();
     }
 
