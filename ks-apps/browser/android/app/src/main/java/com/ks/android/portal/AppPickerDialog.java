@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,10 +29,12 @@ final class AppPickerDialog {
     private static final class Entry {
         final ApplicationInfo info;
         final String label;
+        final Drawable icon;
 
-        Entry(ApplicationInfo info, String label) {
+        Entry(ApplicationInfo info, String label, Drawable icon) {
             this.info = info;
             this.label = label;
+            this.icon = icon;
         }
     }
 
@@ -144,7 +147,13 @@ final class AppPickerDialog {
                         if (TextUtils.isEmpty(name)) {
                             name = info.packageName;
                         }
-                        loaded.add(new Entry(info, name));
+                        Drawable icon;
+                        try {
+                            icon = packageManager.getApplicationIcon(info);
+                        } catch (Exception exception) {
+                            icon = null;
+                        }
+                        loaded.add(new Entry(info, name, icon));
                     }
                     Collections.sort(loaded, new Comparator<Entry>() {
                         @Override
@@ -203,11 +212,11 @@ final class AppPickerDialog {
             }
             Entry entry = getItem(position);
             holder.label.setText(entry.label);
-            try {
-                holder.icon.setImageDrawable(packageManager.getApplicationIcon(entry.info));
+            if (entry.icon != null) {
+                holder.icon.setImageDrawable(entry.icon);
                 holder.icon.clearColorFilter();
                 holder.icon.setPadding(0, 0, 0, 0);
-            } catch (Exception exception) {
+            } else {
                 holder.icon.setImageResource(R.drawable.ic_menu_open);
                 holder.icon.setColorFilter(activity.getResources()
                         .getColor(R.color.ks_text));
@@ -215,7 +224,6 @@ final class AppPickerDialog {
                         * activity.getResources().getDisplayMetrics().density);
                 holder.icon.setPadding(padding, padding, padding, padding);
             }
-            convertView.setContentDescription(entry.label);
             return convertView;
         }
     }
