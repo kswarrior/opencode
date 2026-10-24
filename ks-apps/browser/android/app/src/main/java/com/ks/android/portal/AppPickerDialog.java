@@ -108,19 +108,6 @@ final class AppPickerDialog {
         dialog.show();
         DialogStyle.apply(activity, dialog);
 
-        final int maxHeight = Math.round(
-                activity.getResources().getDisplayMetrics().heightPixels * 0.58f);
-        listView.post(new Runnable() {
-            @Override
-            public void run() {
-                if (listView != null && listView.getHeight() > maxHeight) {
-                    ViewGroup.LayoutParams params = listView.getLayoutParams();
-                    params.height = maxHeight;
-                    listView.setLayoutParams(params);
-                }
-            }
-        });
-
         loadApps();
     }
 
@@ -169,7 +156,8 @@ final class AppPickerDialog {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (dismissed || dialog == null) {
+                        if (dismissed || dialog == null || activity.isFinishing()
+                                || activity.isDestroyed()) {
                             return;
                         }
                         entries.clear();
@@ -178,10 +166,27 @@ final class AppPickerDialog {
                         emptyView.setText(loaded.isEmpty()
                                 ? R.string.download_open_with_empty
                                 : R.string.download_open_with_loading);
+                        limitListHeight();
                     }
                 });
             }
         }, "ks-app-picker").start();
+    }
+
+    private void limitListHeight() {
+        if (listView == null || entries.isEmpty()) {
+            return;
+        }
+        float density = activity.getResources().getDisplayMetrics().density;
+        int estimated = Math.round(entries.size() * 62 * density);
+        int maxHeight = Math.round(
+                activity.getResources().getDisplayMetrics().heightPixels * 0.58f);
+        if (estimated <= maxHeight) {
+            return;
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = maxHeight;
+        listView.setLayoutParams(params);
     }
 
     private final class AppAdapter extends BaseAdapter {
