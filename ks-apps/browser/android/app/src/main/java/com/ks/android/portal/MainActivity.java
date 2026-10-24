@@ -6529,6 +6529,20 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public boolean openHomeLayout() {
+            if (!allowed()) {
+                return false;
+            }
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    startActivity(new Intent(MainActivity.this, HomeLayoutActivity.class));
+                }
+            });
+            return true;
+        }
+
+        @JavascriptInterface
         public boolean openTabs() {
             if (!allowed()) {
                 return false;

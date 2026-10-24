@@ -2010,7 +2010,7 @@ body.launching .recents {
     bindItemLongPress(tile, function () {
       openItemSheet(site, [
         { label: t('open'), action: function () { launch(site.url); } },
-        { label: t('editTopSites'), action: function () { invokeNative('openCustomize'); } }
+        { label: t('editTopSites'), action: function () { invokeNative('openHomeLayout'); } }
       ]);
     });
   }
