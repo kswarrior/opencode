@@ -18,6 +18,10 @@
   --ease: cubic-bezier(.2, .8, .2, 1);
   --tile-width: 84px;
   --tile-height: 100px;
+  --popup-dim: .62;
+  --popup-blur: 0px;
+  --popup-width: 100%;
+  --popup-radius: 18px;
 }
 * { box-sizing: border-box; }
 html, body { min-height: 100%; }
@@ -602,18 +606,21 @@ body.has-background .bg::after {
   align-items: flex-end;
   justify-content: center;
   padding: 18px calc(18px + env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) calc(18px + env(safe-area-inset-left));
-  background: rgba(0, 0, 0, .64);
+  background: rgba(0, 0, 0, var(--popup-dim, .62));
+  -webkit-backdrop-filter: blur(var(--popup-blur, 0px));
+  backdrop-filter: blur(var(--popup-blur, 0px));
 }
 .modal-scrim.open {
   display: flex;
   animation: fadeIn .18s ease both;
 }
 .modal-card {
-  width: min(430px, 100%);
+  width: min(430px, var(--popup-width, 100%));
   margin: 0;
   padding: 18px;
   border: 1px solid rgba(255, 255, 255, .16);
-  border-radius: 14px;
+  border-radius: var(--popup-radius, 18px);
+  overflow: hidden;
   background: linear-gradient(160deg, #202020, #101010);
   box-shadow: 0 26px 70px rgba(0, 0, 0, .65), inset 0 1px 0 rgba(255, 255, 255, .12);
   animation: rise .24s cubic-bezier(.2, .8, .2, 1) both;
@@ -697,6 +704,78 @@ body.has-background .bg::after {
   color: #1b0505;
 }
 .modal-btn:active { transform: scale(.98); }
+.item-sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+.item-sheet-logo {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 13px;
+}
+.item-sheet-meta {
+  min-width: 0;
+  flex: 1;
+}
+.item-sheet-meta h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.item-sheet-url {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.item-sheet-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+.item-sheet-action {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .06);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.item-sheet-action:active { transform: scale(.99); }
+.item-sheet-action.danger {
+  border-color: rgba(255, 120, 120, .28);
+  background: rgba(255, 80, 80, .1);
+  color: #ff9a9a;
+}
+.item-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .035);
+}
+.item-preview[hidden] { display: none; }
 .tile-name {
   max-width: 100%;
   overflow: hidden;
@@ -880,6 +959,13 @@ body.launching .recents {
 <div class="modal-scrim" id="bookmarkModal" aria-hidden="true">
   <form class="modal-card" id="bookmarkForm" role="dialog" aria-modal="true" aria-labelledby="bookmarkTitle">
     <h2 id="bookmarkTitle">Add bookmark</h2>
+    <div class="item-preview" id="bookmarkPreview" hidden>
+      <span class="tile-logo item-sheet-logo" id="bookmarkPreviewLogo"></span>
+      <div class="item-sheet-meta">
+        <h2 id="bookmarkPreviewName"></h2>
+        <p class="item-sheet-url" id="bookmarkPreviewUrl"></p>
+      </div>
+    </div>
     <div id="bookmarkFields">
       <label class="modal-field">
         <span>Name</span>
@@ -897,6 +983,19 @@ body.launching .recents {
       <button class="modal-btn primary" id="bookmarkSave" type="submit">Add</button>
     </div>
   </form>
+</div>
+
+<div class="modal-scrim" id="itemSheet" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="itemSheetName">
+    <div class="item-sheet-head">
+      <span class="tile-logo item-sheet-logo" id="itemSheetLogo"></span>
+      <div class="item-sheet-meta">
+        <h2 id="itemSheetName"></h2>
+        <p class="item-sheet-url" id="itemSheetUrl"></p>
+      </div>
+    </div>
+    <div class="item-sheet-actions" id="itemSheetActions"></div>
+  </div>
 </div>
 <script>
 (function () {
