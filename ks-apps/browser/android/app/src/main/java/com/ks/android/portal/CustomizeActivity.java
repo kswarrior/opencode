@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class CustomizeActivity extends Activity {
     private TextView backgroundValue;
     private TextView toolbarValue;
+    private TextView dialogsValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,13 @@ public class CustomizeActivity extends Activity {
                 startActivity(new Intent(CustomizeActivity.this, ToolbarActivity.class));
             }
         });
+        dialogsValue = findViewById(R.id.customizeDialogsValue);
+        findViewById(R.id.customizeDialogs).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomizeActivity.this, DialogStyleActivity.class));
+            }
+        });
         findViewById(R.id.customizeGestures).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +66,7 @@ public class CustomizeActivity extends Activity {
         super.onResume();
         backgroundValue.setText(BackgroundStore.summary(this));
         toolbarValue.setText(ToolbarSettingsStore.summary(this));
+        dialogsValue.setText(DialogStyleStore.summary(this));
         BackgroundManager.apply(this, BackgroundStore.TARGET_CUSTOMIZE);
     }
 }

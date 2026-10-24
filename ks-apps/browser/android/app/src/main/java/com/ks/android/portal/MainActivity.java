@@ -6558,6 +6558,14 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public String getPopupStyle() {
+            if (!allowed()) {
+                return "{}";
+            }
+            return DialogStyleStore.json(MainActivity.this);
+        }
+
+        @JavascriptInterface
         public String getSearchEngine() {
             if (!allowed()) {
                 return SearchEngine.DEFAULT;
