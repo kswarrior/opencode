@@ -1025,7 +1025,8 @@ public class DownloadsActivity extends Activity {
     }
 
     private void bindDownloadIcon(final ViewHolder holder, final DownloadItem item) {
-        holder.icon.setTag(Long.valueOf(item.id));
+        final String tag = item.id + ":" + item.downloadedBytes;
+        holder.icon.setTag(tag);
         holder.appInfo.setText("");
         holder.appInfo.setVisibility(View.GONE);
         bindFileIcon(holder, item);
@@ -1041,7 +1042,7 @@ public class DownloadsActivity extends Activity {
             apkInfoLoader.load(item, new ApkInfoLoader.Callback() {
                 @Override
                 public void onLoaded(long itemId, ApkInfoLoader.Info info) {
-                    if (info != null && Long.valueOf(itemId).equals(holder.icon.getTag())) {
+                    if (info != null && tag.equals(holder.icon.getTag())) {
                         applyApkInfo(holder, info);
                     }
                 }
@@ -1059,7 +1060,7 @@ public class DownloadsActivity extends Activity {
         thumbnailLoader.load(item, new MediaThumbnailLoader.Callback() {
             @Override
             public void onLoaded(long itemId, Bitmap bitmap) {
-                if (bitmap != null && Long.valueOf(itemId).equals(holder.icon.getTag())) {
+                if (bitmap != null && tag.equals(holder.icon.getTag())) {
                     applyArtwork(holder, bitmap);
                 }
             }

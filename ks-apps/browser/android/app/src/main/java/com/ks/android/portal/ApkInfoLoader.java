@@ -289,7 +289,16 @@ final class ApkInfoLoader {
                     info.label = localized;
                 }
             }
-            ZipEntry icon = findEntryEnding(zip, "pack_icon.png");
+            ZipEntry icon = findEntryEnding(zip, base + "pack_icon.png");
+            if (icon == null) {
+                icon = findEntryEnding(zip, base + "pack_icon.jpg");
+            }
+            if (icon == null) {
+                icon = findEntryEnding(zip, base + "pack_icon.jpeg");
+            }
+            if (icon == null) {
+                icon = findEntryEnding(zip, "pack_icon.png");
+            }
             if (icon == null) {
                 icon = findEntryEnding(zip, "pack_icon.jpg");
             }
