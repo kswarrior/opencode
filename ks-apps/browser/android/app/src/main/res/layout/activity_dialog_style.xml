@@ -80,7 +80,7 @@
                     android:id="@+id/dialogStylePreviewSheet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="bottom|center_horizontal"
                     android:layout_margin="12dp"
                     android:background="@drawable/bg_download_sheet"
                     android:orientation="vertical"

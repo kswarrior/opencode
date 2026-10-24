@@ -24,7 +24,7 @@ final class DialogStyle {
             return;
         }
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setGravity(Gravity.BOTTOM);
+        window.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         int width = WindowManager.LayoutParams.MATCH_PARENT;
