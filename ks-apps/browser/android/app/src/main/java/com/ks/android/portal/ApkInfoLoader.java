@@ -109,9 +109,7 @@ final class ApkInfoLoader {
             @Override
             public void run() {
                 final Info info = read(path, contentUri, fileName);
-                if (info != null) {
-                    cache.put(key, info);
-                }
+                cache.put(key, info != null ? info : new Info());
                 final List<Callback> waiting;
                 synchronized (pending) {
                     waiting = pending.remove(key);
