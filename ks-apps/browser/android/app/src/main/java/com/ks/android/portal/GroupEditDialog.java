@@ -91,19 +91,7 @@ final class GroupEditDialog {
         });
 
         dialog.show();
-        Window window = dialog.getWindow();
-        if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            window.setGravity(Gravity.CENTER);
-            DisplayMetrics metrics = activity.getResources().getDisplayMetrics();
-            int width = Math.min((int) (metrics.widthPixels * 0.92f), dp(activity, 400));
-            window.setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT);
-            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-            WindowManager.LayoutParams params = window.getAttributes();
-            params.dimAmount = 0.65f;
-            window.setAttributes(params);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        }
+        DialogStyle.apply(activity, dialog);
     }
 
     private static void buildIcons(final Activity activity, LinearLayout container,

@@ -91,7 +91,7 @@ final class ScreenSizeDialog {
         });
 
         dialog.show();
-        applySheetWindow(dialog);
+        applySheetWindow(activity, dialog);
         limitListHeight(activity, dialog);
     }
 
@@ -133,7 +133,7 @@ final class ScreenSizeDialog {
         });
 
         dialog.show();
-        applySheetWindow(dialog);
+        applySheetWindow(activity, dialog);
         nameView.requestFocus();
         Window window = dialog.getWindow();
         if (window != null) {
@@ -187,18 +187,7 @@ final class ScreenSizeDialog {
         });
     }
 
-    private static void applySheetWindow(Dialog dialog) {
-        Window window = dialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setGravity(Gravity.BOTTOM);
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.WRAP_CONTENT);
-        WindowManager.LayoutParams params = window.getAttributes();
-        params.dimAmount = 0.62f;
-        window.setAttributes(params);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+    private static void applySheetWindow(Activity activity, Dialog dialog) {
+        DialogStyle.apply(activity, dialog);
     }
 }
