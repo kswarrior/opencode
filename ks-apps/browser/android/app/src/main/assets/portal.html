@@ -1890,7 +1890,7 @@ body.launching .recents {
       timer = window.setTimeout(function () {
         timer = 0;
         suppressUntil = Date.now() + 800;
-        openRemoveModal(bookmark, index);
+        openBookmarkSheet(bookmark, index);
       }, 520);
     }
     tile.addEventListener('touchstart', start, { passive: true });
@@ -1904,8 +1904,16 @@ body.launching .recents {
       event.preventDefault();
       cancel();
       suppressUntil = Date.now() + 800;
-      openRemoveModal(bookmark, index);
+      openBookmarkSheet(bookmark, index);
     });
+  }
+
+  function openBookmarkSheet(bookmark, index) {
+    openItemSheet(bookmark, [
+      { label: t('open'), action: function () { launch(bookmark.url); } },
+      { label: t('remove'), danger: true,
+        action: function () { openRemoveModal(bookmark, index); } }
+    ]);
   }
 
   function makeAddTile() {
