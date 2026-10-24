@@ -37,15 +37,15 @@ final class DialogStyle {
 
         WindowManager.LayoutParams params = window.getAttributes();
         params.dimAmount = DialogStyleStore.getDim(activity) / 100f;
+        params.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             int blur = DialogStyleStore.getBlur(activity);
             if (blur > 0) {
                 params.setBlurBehindRadius(dp(activity, blur));
-                window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+                params.flags |= WindowManager.LayoutParams.FLAG_BLUR_BEHIND;
             }
         }
         window.setAttributes(params);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
 
         View sheet = dialog.findViewById(R.id.dialogSheet);
         if (sheet != null) {

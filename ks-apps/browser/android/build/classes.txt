@@ -331,6 +331,7 @@ build/classes/com/ks/android/portal/ToolbarActivity$1.class
 build/classes/com/ks/android/portal/RecentsStore.class
 build/classes/com/ks/android/portal/KsDialog$18.class
 build/classes/com/ks/android/portal/TabsActivity$TabsAdapter$3.class
+build/classes/com/ks/android/portal/MainActivity$PortalBridge$7$1.class
 build/classes/com/ks/android/portal/StorageActivity$6.class
 build/classes/com/ks/android/portal/KsDialog$1.class
 build/classes/com/ks/android/portal/SearchEngineActivity$8.class
@@ -435,7 +436,6 @@ build/classes/com/ks/android/portal/HistoryActivity$HistoryAdapter$3.class
 build/classes/com/ks/android/portal/ConsoleLogStore.class
 build/classes/com/ks/android/portal/TabsActivity$TabsAdapter$1.class
 build/classes/com/ks/android/portal/DownloadsActivity$19.class
-build/classes/com/ks/android/portal/MainActivity$PortalBridge$6$1.class
 build/classes/com/ks/android/portal/HlsRemuxer$Result.class
 build/classes/com/ks/android/portal/MainActivity$24.class
 build/classes/com/ks/android/portal/DeveloperToolsActivity$38.class
@@ -672,6 +672,7 @@ build/classes/com/ks/android/portal/TopSitesActivity$6.class
 build/classes/com/ks/android/portal/DownloadPathActivity.class
 build/classes/com/ks/android/portal/AdBlocker$4.class
 build/classes/com/ks/android/portal/AutofillPasswordsActivity$7.class
+build/classes/com/ks/android/portal/MainActivity$PortalBridge$7.class
 build/classes/com/ks/android/portal/VideoSourceSheet$SourceAdapter.class
 build/classes/com/ks/android/portal/BookmarkActivity$Row.class
 build/classes/com/ks/android/portal/CustomizeActivity$2.class
