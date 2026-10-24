@@ -2080,7 +2080,7 @@ public class DownloadRepository {
                      String cookie, long resumeOffset, boolean hls) {
             this.id = id;
             this.part = part;
-            this.url = url;
+            this.url = VideoSniffer.downloadUrl(url == null ? "" : url);
             this.userAgent = userAgent;
             this.referer = referer;
             this.cookie = cookie;
