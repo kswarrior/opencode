@@ -527,8 +527,6 @@ example.com##.ad-banner</string>
     <string name="popup_blocked">Pop-up blocked</string>
     <string name="settings_default_browser">Default browser</string>
     <string name="settings_default_browser_summary">Open links from other apps with KS Portal</string>
-    <string name="settings_coming_soon">Coming soon</string>
-    <string name="settings_description">More browser controls and preferences are on the way.</string>
     <string name="settings_action">Settings</string>
     <string name="open_downloads">Open downloads</string>
     <string name="open_settings">Open settings</string>
