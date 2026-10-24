@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.LruCache;
 
 import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -146,22 +147,14 @@ final class MediaThumbnailLoader {
     private Bitmap readImage(String path, String contentUri) {
         try {
             int target = targetSize();
+            boolean fromUri = TextUtils.isEmpty(path) || !new File(path).canRead();
+            if (fromUri && TextUtils.isEmpty(contentUri)) {
+                return null;
+            }
             BitmapFactory.Options bounds = new BitmapFactory.Options();
             bounds.inJustDecodeBounds = true;
-            if (!TextUtils.isEmpty(contentUri)) {
-                InputStream input = context.getContentResolver()
-                        .openInputStream(Uri.parse(contentUri));
-                if (input == null) {
-                    return null;
-                }
-                try {
-                    BitmapFactory.decodeStream(input, null, bounds);
-                } finally {
-                    closeQuietly(input);
-                }
-            } else if (!TextUtils.isEmpty(path)) {
-                BitmapFactory.decodeFile(path, bounds);
-            } else {
+            decodeImageSource(fromUri, path, contentUri, bounds);
+            if (bounds.outWidth <= 0 || bounds.outHeight <= 0) {
                 return null;
             }
             int sample = 1;
@@ -172,36 +165,40 @@ final class MediaThumbnailLoader {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = sample;
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            Bitmap bitmap;
-            if (!TextUtils.isEmpty(contentUri)) {
-                InputStream input = context.getContentResolver()
-                        .openInputStream(Uri.parse(contentUri));
-                if (input == null) {
-                    return null;
-                }
-                try {
-                    bitmap = BitmapFactory.decodeStream(input, null, options);
-                } finally {
-                    closeQuietly(input);
-                }
-            } else {
-                bitmap = BitmapFactory.decodeFile(path, options);
-            }
-            return scale(bitmap, target);
+            return scale(decodeImageSource(fromUri, path, contentUri, options), target);
         } catch (Exception ignored) {
             return null;
         }
     }
 
+    private Bitmap decodeImageSource(boolean fromUri, String path, String contentUri,
+                                     BitmapFactory.Options options) throws IOException {
+        if (!fromUri) {
+            return BitmapFactory.decodeFile(path, options);
+        }
+        InputStream input = context.getContentResolver()
+                .openInputStream(Uri.parse(contentUri));
+        if (input == null) {
+            return null;
+        }
+        try {
+            return BitmapFactory.decodeStream(input, null, options);
+        } finally {
+            closeQuietly(input);
+        }
+    }
+
     private Bitmap readVideo(String path, String contentUri) {
+        boolean fromUri = TextUtils.isEmpty(path) || !new File(path).canRead();
+        if (fromUri && TextUtils.isEmpty(contentUri)) {
+            return null;
+        }
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         try {
-            if (!TextUtils.isEmpty(contentUri)) {
+            if (fromUri) {
                 retriever.setDataSource(context, Uri.parse(contentUri));
-            } else if (!TextUtils.isEmpty(path)) {
-                retriever.setDataSource(path);
             } else {
-                return null;
+                retriever.setDataSource(path);
             }
             int target = targetSize();
             int width = intMetadata(retriever,
