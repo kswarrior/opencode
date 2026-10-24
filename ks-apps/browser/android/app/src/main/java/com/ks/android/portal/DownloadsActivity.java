@@ -1073,6 +1073,7 @@ public class DownloadsActivity extends Activity {
                 holder = new ViewHolder();
                 holder.icon = convertView.findViewById(R.id.downloadIcon);
                 holder.name = convertView.findViewById(R.id.downloadName);
+                holder.appInfo = convertView.findViewById(R.id.downloadAppInfo);
                 holder.status = convertView.findViewById(R.id.downloadStatus);
                 holder.path = convertView.findViewById(R.id.downloadPath);
                 holder.progress = convertView.findViewById(R.id.downloadProgress);
@@ -1086,17 +1087,7 @@ public class DownloadsActivity extends Activity {
             convertView.setBackgroundResource(selectionMode
                     && selected.contains(Long.valueOf(item.id))
                     ? R.drawable.bg_choice_card_selected : R.drawable.bg_download_item);
-            int kind = mediaKind(item);
-            if (kind == 2) {
-                holder.icon.setImageResource(R.drawable.ic_volume_up);
-                holder.icon.setColorFilter(getResources().getColor(R.color.ks_accent));
-            } else if (kind == 1) {
-                holder.icon.setImageResource(R.drawable.ic_video_download);
-                holder.icon.setColorFilter(getResources().getColor(R.color.ks_accent));
-            } else {
-                holder.icon.setImageResource(R.drawable.ic_file_download);
-                holder.icon.setColorFilter(getResources().getColor(R.color.ks_text));
-            }
+            bindDownloadIcon(holder, item);
             holder.name.setText(item.fileName);
             holder.status.setText(statusLine(item));
             holder.status.setTextColor(item.status == DownloadItem.STATUS_FAILED
@@ -1146,6 +1137,7 @@ public class DownloadsActivity extends Activity {
     private static class ViewHolder {
         ImageView icon;
         TextView name;
+        TextView appInfo;
         TextView status;
         TextView path;
         ProgressBar progress;
