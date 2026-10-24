@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Build;
@@ -165,10 +166,48 @@ final class MediaThumbnailLoader {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = sample;
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            return scale(decodeImageSource(fromUri, path, contentUri, options), target);
+            Bitmap bitmap = scale(decodeImageSource(fromUri, path, contentUri, options),
+                    target);
+            int degrees = exifDegrees(fromUri, path, contentUri);
+            return degrees == 0 ? bitmap : rotate(bitmap, degrees);
         } catch (Exception ignored) {
             return null;
         }
+    }
+
+    private int exifDegrees(boolean fromUri, String path, String contentUri) {
+        try {
+            ExifInterface exif;
+            if (!fromUri) {
+                exif = new ExifInterface(path);
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                InputStream input = context.getContentResolver()
+                        .openInputStream(Uri.parse(contentUri));
+                if (input == null) {
+                    return 0;
+                }
+                try {
+                    exif = new ExifInterface(input);
+                } finally {
+                    closeQuietly(input);
+                }
+            } else {
+                return 0;
+            }
+            int orientation = exif.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_90) {
+                return 90;
+            }
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_180) {
+                return 180;
+            }
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_270) {
+                return 270;
+            }
+        } catch (Exception ignored) {
+        }
+        return 0;
     }
 
     private Bitmap decodeImageSource(boolean fromUri, String path, String contentUri,
@@ -224,7 +263,7 @@ final class MediaThumbnailLoader {
                     frame = retriever.getFrameAtTime(0);
                 }
             }
-            if (frame != null && (rotation == 90 || rotation == 270)) {
+            if (frame != null && rotation != 0) {
                 frame = rotate(frame, rotation);
             }
             return scale(frame, target);
