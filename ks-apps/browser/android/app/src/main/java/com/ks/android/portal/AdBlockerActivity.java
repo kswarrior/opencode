@@ -145,6 +145,7 @@ public class AdBlockerActivity extends Activity {
         super.onResume();
         handler.removeCallbacks(refreshPoller);
         handler.post(refreshPoller);
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
     }
 
     @Override

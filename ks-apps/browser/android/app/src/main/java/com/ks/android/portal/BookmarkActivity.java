@@ -463,6 +463,12 @@ public class BookmarkActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != RESULT_OK || data == null || data.getData() == null) {

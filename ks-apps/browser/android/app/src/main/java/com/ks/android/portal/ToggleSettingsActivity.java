@@ -62,6 +62,16 @@ abstract class ToggleSettingsActivity extends Activity {
         buildSettings();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, backgroundTarget());
+    }
+
+    protected String backgroundTarget() {
+        return BackgroundStore.TARGET_SETTINGS;
+    }
+
     protected void addAction(int headerRes, int titleRes, int summaryRes,
                              View.OnClickListener listener) {
         if (lastHeaderRes != headerRes) {

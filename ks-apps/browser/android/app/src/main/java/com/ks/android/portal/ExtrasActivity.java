@@ -217,6 +217,12 @@ public class ExtrasActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_HOME);
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode != REQUEST_APP_LOCK && requestCode != REQUEST_PRIVATE_LOCK) {

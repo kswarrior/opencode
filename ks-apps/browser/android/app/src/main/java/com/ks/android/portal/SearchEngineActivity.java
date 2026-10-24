@@ -34,6 +34,12 @@ public class SearchEngineActivity extends Activity {
         renderList();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
+    }
+
     private void renderList() {
         list.removeAllViews();
         String current = SearchEngine.getKey(this);

@@ -53,4 +53,10 @@ public class AiModeActivity extends Activity {
             list.addView(row, params);
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
+    }
 }

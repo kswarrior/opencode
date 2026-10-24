@@ -28,4 +28,10 @@ public class AboutActivity extends Activity {
         markdown.setText(MarkdownRenderer.render(this, getString(R.string.about_markdown)));
         markdown.setMovementMethod(LinkMovementMethod.getInstance());
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_SETTINGS);
+    }
 }

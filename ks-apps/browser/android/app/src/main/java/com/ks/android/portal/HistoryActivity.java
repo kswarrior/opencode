@@ -120,6 +120,12 @@ public class HistoryActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_HOME);
+    }
+
+    @Override
     protected void onDestroy() {
         faviconLoader.shutdownNow();
         super.onDestroy();

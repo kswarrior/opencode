@@ -121,6 +121,12 @@ public class DownloadPathActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        BackgroundManager.apply(this, BackgroundStore.TARGET_DOWNLOADS);
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
