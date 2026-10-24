@@ -230,6 +230,12 @@ final class ApkInfoLoader {
         ZipFile zip = null;
         try {
             zip = new ZipFile(file);
+            if (".mcworld".equals(extension) || ".mctemplate".equals(extension)) {
+                Info world = readMinecraftWorld(zip);
+                if (world != null) {
+                    return world;
+                }
+            }
             ZipEntry manifest = findEntryEnding(zip, "manifest.json");
             if (manifest != null) {
                 return readMinecraftManifest(zip, manifest);
@@ -307,7 +313,8 @@ final class ApkInfoLoader {
         Info info = new Info();
         byte[] nameData = readEntryLoose(zip, "levelname.txt", 8192);
         if (nameData != null) {
-            info.label = new String(nameData).trim();
+            info.label = new String(nameData, java.nio.charset.StandardCharsets.UTF_8)
+                    .replace("\uFEFF", "").trim();
         }
         ZipEntry icon = findEntryEnding(zip, "world_icon.jpeg");
         if (icon == null) {
@@ -338,7 +345,7 @@ final class ApkInfoLoader {
             if (data == null) {
                 continue;
             }
-            String text = new String(data);
+            String text = new String(data, java.nio.charset.StandardCharsets.UTF_8);
             String[] lines = text.split("\n");
             for (String line : lines) {
                 int equals = line.indexOf('=');
@@ -402,7 +409,8 @@ final class ApkInfoLoader {
         return slash < 0 ? "" : name.substring(0, slash + 1);
     }
 
-    private static void mergeInfo(Info target, Info fallback) {        if (fallback == null) {
+    private static void mergeInfo(Info target, Info fallback) {
+        if (fallback == null) {
             return;
         }
         if (TextUtils.isEmpty(target.label)) {
