@@ -169,6 +169,62 @@ final class VideoSniffer {
         }
     }
 
+    static String downloadUrl(String url) {
+        if (TextUtils.isEmpty(url)) {
+            return url;
+        }
+        Uri uri;
+        try {
+            uri = Uri.parse(url);
+        } catch (Exception exception) {
+            return url;
+        }
+        String host = uri.getHost();
+        if (TextUtils.isEmpty(host)) {
+            return url;
+        }
+        host = host.toLowerCase(Locale.US);
+        if (!"googlevideo.com".equals(host) && !host.endsWith(".googlevideo.com")) {
+            return url;
+        }
+        String cleaned = removeQueryParameter(url, "range");
+        cleaned = removeQueryParameter(cleaned, "rn");
+        cleaned = removeQueryParameter(cleaned, "rbuf");
+        return cleaned;
+    }
+
+    private static String removeQueryParameter(String url, String name) {
+        int query = url.indexOf('?');
+        if (query < 0) {
+            return url;
+        }
+        int fragment = url.indexOf('#', query);
+        String base = fragment < 0 ? url : url.substring(0, fragment);
+        String suffix = fragment < 0 ? "" : url.substring(fragment);
+        String rawQuery = base.substring(query + 1);
+        if (rawQuery.isEmpty()) {
+            return url;
+        }
+        StringBuilder builder = new StringBuilder(base.substring(0, query));
+        char separator = '?';
+        String[] parts = rawQuery.split("&", -1);
+        for (int i = 0; i < parts.length; i++) {
+            String part = parts[i];
+            if (part.isEmpty()) {
+                continue;
+            }
+            int equals = part.indexOf('=');
+            String key = equals < 0 ? part : part.substring(0, equals);
+            if (name.equalsIgnoreCase(key)) {
+                continue;
+            }
+            builder.append(separator).append(part);
+            separator = '&';
+        }
+        builder.append(suffix);
+        return builder.toString();
+    }
+
     static boolean looksLikeMedia(String url) {
         return kindOf(url) != null;
     }
@@ -188,7 +244,7 @@ final class VideoSniffer {
             return null;
         }
         VideoSource source = new VideoSource();
-        source.url = url;
+        source.url = downloadUrl(url);
         source.kind = kind == null ? "video" : kind;
         source.mimeType = mimeFor(uri, source.kind);
         source.label = qualityLabel(uri, source.kind);

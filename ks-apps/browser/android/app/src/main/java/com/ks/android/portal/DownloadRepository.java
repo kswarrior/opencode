@@ -513,7 +513,7 @@ public class DownloadRepository {
         synchronized (lock) {
             item = new DownloadItem();
             item.id = nextIdLocked();
-            item.url = url == null ? "" : url;
+            item.url = VideoSniffer.downloadUrl(url == null ? "" : url);
             item.mimeType = normalizeMime(mimeType);
             item.userAgent = userAgent == null ? "" : userAgent;
             item.referer = referer == null ? "" : referer;
