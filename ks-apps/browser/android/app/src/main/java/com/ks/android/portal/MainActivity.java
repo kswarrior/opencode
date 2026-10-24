@@ -531,6 +531,7 @@ public class MainActivity extends Activity {
         if (webView != null && isHomeUrl(currentUrl)) {
             webView.evaluateJavascript(
                     "window.KSPortalRefreshBackground&&window.KSPortalRefreshBackground();"
+                            + "window.KSPortalRefreshPopupStyle&&window.KSPortalRefreshPopupStyle();"
                             + "window.KSPortalRefreshTabs&&window.KSPortalRefreshTabs();"
                             + "window.KSPortalRefreshBookmarks&&window.KSPortalRefreshBookmarks();"
                             + "window.KSPortalRefreshRecents&&window.KSPortalRefreshRecents();"
