@@ -139,6 +139,9 @@ final class AppPickerDialog {
                         if (activity.getPackageName().equals(info.packageName)) {
                             continue;
                         }
+                        if (!info.enabled) {
+                            continue;
+                        }
                         if (packageManager.getLaunchIntentForPackage(info.packageName) == null) {
                             continue;
                         }
