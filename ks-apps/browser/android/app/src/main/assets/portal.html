@@ -1045,6 +1045,16 @@ body.launching .recents {
   var bookmarkUrl = document.getElementById('bookmarkUrl');
   var bookmarkError = document.getElementById('bookmarkError');
   var bookmarkSave = document.getElementById('bookmarkSave');
+  var bookmarkPreview = document.getElementById('bookmarkPreview');
+  var bookmarkPreviewLogo = document.getElementById('bookmarkPreviewLogo');
+  var bookmarkPreviewName = document.getElementById('bookmarkPreviewName');
+  var bookmarkPreviewUrl = document.getElementById('bookmarkPreviewUrl');
+  var itemSheet = document.getElementById('itemSheet');
+  var itemSheetLogo = document.getElementById('itemSheetLogo');
+  var itemSheetName = document.getElementById('itemSheetName');
+  var itemSheetUrl = document.getElementById('itemSheetUrl');
+  var itemSheetActions = document.getElementById('itemSheetActions');
+  var itemSheetLastFocused = null;
   var removeIndex = -1;
   var lastFocused = null;
   var suppressUntil = 0;
@@ -1341,6 +1351,12 @@ body.launching .recents {
       name.textContent = site.name;
       tile.appendChild(logo);
       tile.appendChild(name);
+      bindItemLongPress(tile, function () {
+        openItemSheet(site, [
+          { label: 'Open', action: function () { launch(site.url); } },
+          { label: 'Edit top sites', action: function () { invokeNative('openCustomize'); } }
+        ]);
+      });
       topNav.appendChild(tile);
     }
   }
@@ -1889,9 +1905,106 @@ body.launching .recents {
   }
   window.KSPortalRefreshBookmarks = refreshBookmarks;
 
+  function populateItemPreview(logo, nameEl, urlEl, name, url) {
+    logo.textContent = '';
+    var fallback = document.createElement('span');
+    fallback.className = 'fallback';
+    fallback.textContent = initialFor(name);
+    logo.appendChild(fallback);
+    var icon = faviconUrl(url);
+    if (icon) {
+      var image = document.createElement('img');
+      image.alt = '';
+      image.loading = 'lazy';
+      image.referrerPolicy = 'no-referrer';
+      image.src = icon;
+      image.onerror = function () { image.remove(); };
+      logo.appendChild(image);
+    }
+    if (nameEl) nameEl.textContent = name || hostFromUrl(url);
+    if (urlEl) urlEl.textContent = url;
+  }
+
+  function addItemSheetAction(label, danger, action) {
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'item-sheet-action' + (danger ? ' danger' : '');
+    button.textContent = label;
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      closeItemSheet();
+      action();
+    });
+    itemSheetActions.appendChild(button);
+  }
+
+  function openItemSheet(item, actions) {
+    closeRecentMenu();
+    itemSheetLastFocused = document.activeElement;
+    itemSheetName.textContent = item.name || hostFromUrl(item.url);
+    itemSheetUrl.textContent = item.url;
+    populateItemPreview(itemSheetLogo, null, null, item.name, item.url);
+    itemSheetActions.textContent = '';
+    for (var i = 0; i < actions.length; i++) {
+      addItemSheetAction(actions[i].label, actions[i].danger, actions[i].action);
+    }
+    itemSheet.classList.add('open');
+    itemSheet.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    var first = itemSheetActions.querySelector('button');
+    if (first) {
+      window.setTimeout(function () { first.focus(); }, 30);
+    }
+  }
+
+  function closeItemSheet() {
+    if (!itemSheet.classList.contains('open')) return;
+    itemSheet.classList.remove('open');
+    itemSheet.setAttribute('aria-hidden', 'true');
+    itemSheetActions.textContent = '';
+    document.body.style.overflow = '';
+    if (itemSheetLastFocused && itemSheetLastFocused.focus) {
+      try { itemSheetLastFocused.focus(); } catch (error) {}
+    }
+    itemSheetLastFocused = null;
+  }
+
+  function bindItemLongPress(element, open) {
+    var timer = 0;
+    function cancel() {
+      if (timer) {
+        window.clearTimeout(timer);
+        timer = 0;
+      }
+    }
+    function start(event) {
+      if (event.type === 'mousedown' && event.button !== 0) return;
+      cancel();
+      timer = window.setTimeout(function () {
+        timer = 0;
+        suppressUntil = Date.now() + 800;
+        open();
+      }, 520);
+    }
+    element.addEventListener('touchstart', start, { passive: true });
+    element.addEventListener('touchend', cancel);
+    element.addEventListener('touchcancel', cancel);
+    element.addEventListener('touchmove', cancel, { passive: true });
+    element.addEventListener('mousedown', start);
+    element.addEventListener('mouseup', cancel);
+    element.addEventListener('mouseleave', cancel);
+    element.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+      cancel();
+      suppressUntil = Date.now() + 800;
+      open();
+    });
+  }
+
   function openAddModal() {
     removeIndex = -1;
     bookmarkTitle.textContent = t('addBookmark');
+    bookmarkPreview.hidden = true;
     bookmarkFields.hidden = false;
     bookmarkCopy.hidden = true;
     bookmarkCopy.textContent = '';
@@ -1908,6 +2021,9 @@ body.launching .recents {
     if (modal.classList.contains('open') && removeIndex === index) return;
     removeIndex = index;
     bookmarkTitle.textContent = t('removeBookmark');
+    bookmarkPreview.hidden = false;
+    populateItemPreview(bookmarkPreviewLogo, bookmarkPreviewName, bookmarkPreviewUrl,
+      bookmark.name, bookmark.url);
     bookmarkFields.hidden = true;
     bookmarkCopy.hidden = false;
     bookmarkCopy.textContent = formatText('removeMessage', bookmark.name);
@@ -2054,6 +2170,10 @@ body.launching .recents {
         tile = tile.parentNode;
       }
       if (!tile || tile === topSitesNav) return;
+      if (Date.now() < suppressUntil) {
+        event.preventDefault();
+        return;
+      }
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       launch(tile.href);
