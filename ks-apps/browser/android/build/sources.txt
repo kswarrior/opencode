@@ -14,6 +14,7 @@ app/src/main/java/com/ks/android/portal/BackgroundStore.java
 app/src/main/java/com/ks/android/portal/StorageManager.java
 app/src/main/java/com/ks/android/portal/DialogStyle.java
 app/src/main/java/com/ks/android/portal/SuggestionProvider.java
+app/src/main/java/com/ks/android/portal/MediaThumbnailLoader.java
 app/src/main/java/com/ks/android/portal/AppLock.java
 app/src/main/java/com/ks/android/portal/StorageActivity.java
 app/src/main/java/com/ks/android/portal/DialogStyleStore.java
@@ -27,6 +28,7 @@ app/src/main/java/com/ks/android/portal/AdBlockEngine.java
 app/src/main/java/com/ks/android/portal/DownloadPathActivity.java
 app/src/main/java/com/ks/android/portal/TopSitesActivity.java
 app/src/main/java/com/ks/android/portal/PopupConfirmDialog.java
+app/src/main/java/com/ks/android/portal/AppPickerDialog.java
 app/src/main/java/com/ks/android/portal/DeveloperToolsActivity.java
 app/src/main/java/com/ks/android/portal/TabManager.java
 app/src/main/java/com/ks/android/portal/CookieDialog.java

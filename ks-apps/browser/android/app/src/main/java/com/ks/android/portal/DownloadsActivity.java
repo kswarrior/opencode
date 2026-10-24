@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -814,7 +815,24 @@ public class DownloadsActivity extends Activity {
         }
     }
 
-    private void openWith(DownloadItem item) {
+    private void openWith(final DownloadItem item) {
+        if (!repository.isFileAvailable(item)) {
+            toast(getString(R.string.download_file_missing));
+            return;
+        }
+        AppPickerDialog.show(this, item.fileName, new AppPickerDialog.Listener() {
+            @Override
+            public void onAppSelected(ApplicationInfo app) {
+                openWithApp(item, app);
+            }
+        });
+    }
+
+    private void openWithApp(DownloadItem item, ApplicationInfo app) {
+        if (app == null || TextUtils.isEmpty(app.packageName)) {
+            toast(getString(R.string.download_no_app));
+            return;
+        }
         if (!repository.isFileAvailable(item)) {
             toast(getString(R.string.download_file_missing));
             return;
@@ -822,11 +840,27 @@ public class DownloadsActivity extends Activity {
         Uri uri = contentUriFor(item);
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeTypeFor(item, uri));
+        intent.setPackage(app.packageName);
         intent.setClipData(ClipData.newRawUri(item.fileName, uri));
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         try {
-            startActivity(Intent.createChooser(intent,
-                    getString(R.string.download_open_with)));
+            startActivity(intent);
+            return;
+        } catch (Exception ignored) {
+        }
+        PackageManager manager = getPackageManager();
+        Intent launch = manager.getLaunchIntentForPackage(app.packageName);
+        if (launch == null) {
+            toast(getString(R.string.download_no_app));
+            return;
+        }
+        launch.setClipData(ClipData.newRawUri(item.fileName, uri));
+        launch.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        try {
+            startActivity(launch);
+            CharSequence label = app.loadLabel(manager);
+            String name = label == null ? app.packageName : label.toString();
+            toast(getString(R.string.download_open_with_unsupported, name));
         } catch (Exception exception) {
             toast(getString(R.string.download_no_app));
         }
@@ -988,20 +1022,38 @@ public class DownloadsActivity extends Activity {
         holder.appInfo.setText("");
         holder.appInfo.setVisibility(View.GONE);
         bindFileIcon(holder, item);
-        if (item.status != DownloadItem.STATUS_COMPLETED
-                || !ApkInfoLoader.isPackageFile(item.fileName)) {
+        if (item.status != DownloadItem.STATUS_COMPLETED) {
             return;
         }
-        ApkInfoLoader.Info cached = apkInfoLoader.get(item.id, item.downloadedBytes);
-        if (cached != null) {
-            applyApkInfo(holder, cached);
+        if (ApkInfoLoader.isPackageFile(item.fileName)) {
+            ApkInfoLoader.Info cached = apkInfoLoader.get(item.id, item.downloadedBytes);
+            if (cached != null) {
+                applyApkInfo(holder, cached);
+                return;
+            }
+            apkInfoLoader.load(item, new ApkInfoLoader.Callback() {
+                @Override
+                public void onLoaded(long itemId, ApkInfoLoader.Info info) {
+                    if (info != null && Long.valueOf(itemId).equals(holder.icon.getTag())) {
+                        applyApkInfo(holder, info);
+                    }
+                }
+            });
             return;
         }
-        apkInfoLoader.load(item, new ApkInfoLoader.Callback() {
+        if (!MediaThumbnailLoader.isThumbnailFile(item)) {
+            return;
+        }
+        Bitmap thumbnail = thumbnailLoader.get(item.id, item.downloadedBytes);
+        if (thumbnail != null) {
+            applyArtwork(holder, thumbnail);
+            return;
+        }
+        thumbnailLoader.load(item, new MediaThumbnailLoader.Callback() {
             @Override
-            public void onLoaded(long itemId, ApkInfoLoader.Info info) {
-                if (info != null && Long.valueOf(itemId).equals(holder.icon.getTag())) {
-                    applyApkInfo(holder, info);
+            public void onLoaded(long itemId, Bitmap bitmap) {
+                if (bitmap != null && Long.valueOf(itemId).equals(holder.icon.getTag())) {
+                    applyArtwork(holder, bitmap);
                 }
             }
         });
@@ -1027,18 +1079,22 @@ public class DownloadsActivity extends Activity {
 
     private void applyApkInfo(ViewHolder holder, ApkInfoLoader.Info info) {
         if (info.icon != null) {
-            holder.icon.setColorFilter(null);
-            holder.icon.setPadding(0, 0, 0, 0);
-            holder.icon.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            holder.icon.setBackgroundResource(R.drawable.bg_app_icon);
-            holder.icon.setClipToOutline(true);
-            holder.icon.setImageBitmap(info.icon);
+            applyArtwork(holder, info.icon);
         }
         String line = apkInfoLine(info);
         if (!TextUtils.isEmpty(line)) {
             holder.appInfo.setText(line);
             holder.appInfo.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void applyArtwork(ViewHolder holder, Bitmap bitmap) {
+        holder.icon.setColorFilter(null);
+        holder.icon.setPadding(0, 0, 0, 0);
+        holder.icon.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        holder.icon.setBackgroundResource(R.drawable.bg_app_icon);
+        holder.icon.setClipToOutline(true);
+        holder.icon.setImageBitmap(bitmap);
     }
 
     private String apkInfoLine(ApkInfoLoader.Info info) {
