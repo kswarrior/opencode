@@ -90,7 +90,7 @@ public class DialogStyleActivity extends Activity {
             public void onClick(View view) {
                 DialogStyleStore.reset(DialogStyleActivity.this);
                 loadValues();
-                KsToast.show(DialogStyleActivity.this, R.string.dialog_style_reset);
+                KsToast.show(DialogStyleActivity.this, R.string.dialog_style_reset_done);
             }
         });
 

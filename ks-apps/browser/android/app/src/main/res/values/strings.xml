@@ -580,6 +580,7 @@ example.com##.ad-banner</string>
     <string name="dialog_style_size">Width</string>
     <string name="dialog_style_shape">Corner shape</string>
     <string name="dialog_style_reset">Reset</string>
+    <string name="dialog_style_reset_done">Defaults restored</string>
     <string name="dialog_style_summary_value">%1$d%% dim · %2$d dp shape</string>
     <string name="dialog_style_percent_value">%1$d%%</string>
     <string name="dialog_style_dp_value">%1$d dp</string>
