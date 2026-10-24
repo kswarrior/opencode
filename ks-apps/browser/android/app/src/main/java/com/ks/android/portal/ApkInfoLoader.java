@@ -226,8 +226,183 @@ final class ApkInfoLoader {
         }
     }
 
-    private static void mergeInfo(Info target, Info fallback) {
-        if (fallback == null) {
+    private Info readMinecraftPack(File file, String extension) {
+        ZipFile zip = null;
+        try {
+            zip = new ZipFile(file);
+            ZipEntry manifest = findEntryEnding(zip, "manifest.json");
+            if (manifest != null) {
+                return readMinecraftManifest(zip, manifest);
+            }
+            if (".mcaddon".equals(extension)) {
+                ZipEntry pack = findEntryEnding(zip, ".mcpack");
+                if (pack != null) {
+                    File temp = extractEntry(zip, pack);
+                    if (temp != null) {
+                        Info info = readMinecraftPack(temp, ".mcpack");
+                        temp.delete();
+                        if (info != null) {
+                            return info;
+                        }
+                    }
+                }
+            }
+            if (".mcworld".equals(extension) || ".mctemplate".equals(extension)) {
+                return readMinecraftWorld(zip);
+            }
+            return null;
+        } catch (Exception ignored) {
+            return null;
+        } finally {
+            closeQuietly(zip);
+        }
+    }
+
+    private static Info readMinecraftManifest(ZipFile zip, ZipEntry manifest) {
+        byte[] data = readEntry(zip, manifest.getName(), MAX_JSON_BYTES);
+        if (data == null) {
+            return null;
+        }
+        try {
+            JSONObject json = new JSONObject(
+                    new String(data, "UTF-8").replace("\uFEFF", ""));
+            JSONObject header = json.optJSONObject("header");
+            String name = header == null ? valueOf(json, "name")
+                    : valueOf(header, "name");
+            Object versionValue = header == null ? json.opt("version")
+                    : header.opt("version");
+            Info info = new Info();
+            info.label = name;
+            info.versionName = versionString(versionValue);
+            String base = entryBase(manifest);
+            if (name.startsWith("pack.")) {
+                String localized = readLanguageName(zip, base, name);
+                if (!TextUtils.isEmpty(localized)) {
+                    info.label = localized;
+                }
+            }
+            ZipEntry icon = findEntryEnding(zip, "pack_icon.png");
+            if (icon == null) {
+                icon = findEntryEnding(zip, "pack_icon.jpg");
+            }
+            if (icon == null) {
+                icon = findEntryEnding(zip, "pack_icon.jpeg");
+            }
+            if (icon != null) {
+                byte[] iconData = readEntry(zip, icon.getName(), MAX_ICON_BYTES);
+                if (iconData != null) {
+                    info.icon = decodeIcon(iconData);
+                }
+            }
+            if (info.icon == null && TextUtils.isEmpty(info.label)) {
+                return null;
+            }
+            return info;
+        } catch (Exception ignored) {
+            return null;
+        }
+    }
+
+    private static Info readMinecraftWorld(ZipFile zip) {
+        Info info = new Info();
+        byte[] nameData = readEntryLoose(zip, "levelname.txt", 8192);
+        if (nameData != null) {
+            info.label = new String(nameData).trim();
+        }
+        ZipEntry icon = findEntryEnding(zip, "world_icon.jpeg");
+        if (icon == null) {
+            icon = findEntryEnding(zip, "world_icon.jpg");
+        }
+        if (icon == null) {
+            icon = findEntryEnding(zip, "world_icon.png");
+        }
+        if (icon != null) {
+            byte[] iconData = readEntry(zip, icon.getName(), MAX_ICON_BYTES);
+            if (iconData != null) {
+                info.icon = decodeIcon(iconData);
+            }
+        }
+        if (info.icon == null && TextUtils.isEmpty(info.label)) {
+            return null;
+        }
+        return info;
+    }
+
+    private static String readLanguageName(ZipFile zip, String base, String key) {
+        String[] languages = new String[]{"en_US.lang", "en_GB.lang", "en.lang"};
+        for (String language : languages) {
+            byte[] data = readEntryLoose(zip, base + "texts/" + language, 256 * 1024);
+            if (data == null && !TextUtils.isEmpty(base)) {
+                data = readEntryLoose(zip, "texts/" + language, 256 * 1024);
+            }
+            if (data == null) {
+                continue;
+            }
+            String text = new String(data);
+            String[] lines = text.split("\n");
+            for (String line : lines) {
+                int equals = line.indexOf('=');
+                if (equals <= 0) {
+                    continue;
+                }
+                if (line.substring(0, equals).trim().equals(key)) {
+                    return line.substring(equals + 1).trim();
+                }
+            }
+        }
+        return "";
+    }
+
+    private static String versionString(Object value) {
+        if (value == null || value == JSONObject.NULL) {
+            return "";
+        }
+        if (value instanceof org.json.JSONArray) {
+            org.json.JSONArray array = (org.json.JSONArray) value;
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < array.length(); i++) {
+                if (i > 0) {
+                    builder.append('.');
+                }
+                builder.append(array.optString(i));
+            }
+            return builder.toString();
+        }
+        return String.valueOf(value).trim();
+    }
+
+    private static ZipEntry findEntryEnding(ZipFile zip, String suffix) {
+        ZipEntry best = null;
+        String needle = suffix.toLowerCase(Locale.US);
+        Enumeration<? extends ZipEntry> entries = zip.entries();
+        while (entries.hasMoreElements()) {
+            ZipEntry entry = entries.nextElement();
+            if (entry.isDirectory() || entry.getName() == null) {
+                continue;
+            }
+            String name = entry.getName().toLowerCase(Locale.US);
+            if (!name.equals(needle) && !name.endsWith("/" + needle)) {
+                continue;
+            }
+            if (best == null || entry.getName().length() < best.getName().length()) {
+                best = entry;
+            }
+        }
+        return best;
+    }
+
+    private static byte[] readEntryLoose(ZipFile zip, String name, int limit) {
+        ZipEntry entry = findEntryEnding(zip, name);
+        return entry == null ? null : readEntry(zip, entry.getName(), limit);
+    }
+
+    private static String entryBase(ZipEntry entry) {
+        String name = entry.getName();
+        int slash = name.lastIndexOf('/');
+        return slash < 0 ? "" : name.substring(0, slash + 1);
+    }
+
+    private static void mergeInfo(Info target, Info fallback) {        if (fallback == null) {
             return;
         }
         if (TextUtils.isEmpty(target.label)) {
