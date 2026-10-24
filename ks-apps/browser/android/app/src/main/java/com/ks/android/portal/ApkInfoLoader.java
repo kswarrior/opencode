@@ -246,7 +246,7 @@ final class ApkInfoLoader {
                 return readMinecraftManifest(zip, manifest);
             }
             if (".mcaddon".equals(extension)) {
-                ZipEntry pack = findEntryEnding(zip, ".mcpack");
+                ZipEntry pack = findEntryWithExtension(zip, ".mcpack");
                 if (pack != null) {
                     File temp = extractEntry(zip, pack);
                     if (temp != null) {
@@ -400,6 +400,26 @@ final class ApkInfoLoader {
             }
             String name = entry.getName().toLowerCase(Locale.US);
             if (!name.equals(needle) && !name.endsWith("/" + needle)) {
+                continue;
+            }
+            if (best == null || entry.getName().length() < best.getName().length()) {
+                best = entry;
+            }
+        }
+        return best;
+    }
+
+    private static ZipEntry findEntryWithExtension(ZipFile zip, String extension) {
+        ZipEntry best = null;
+        String needle = extension.toLowerCase(Locale.US);
+        Enumeration<? extends ZipEntry> entries = zip.entries();
+        while (entries.hasMoreElements()) {
+            ZipEntry entry = entries.nextElement();
+            if (entry.isDirectory() || entry.getName() == null) {
+                continue;
+            }
+            String name = entry.getName().toLowerCase(Locale.US);
+            if (!name.endsWith(needle)) {
                 continue;
             }
             if (best == null || entry.getName().length() < best.getName().length()) {
