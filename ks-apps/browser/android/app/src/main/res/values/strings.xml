@@ -111,6 +111,12 @@
     <string name="download_file_missing">File not found</string>
     <string name="download_no_app">No app can open this file</string>
     <string name="download_options">Download options</string>
+    <string name="download_app_info">%1$s · %2$s</string>
+    <string name="download_app_info_action">App info</string>
+    <string name="download_app_info_name">Name: %1$s</string>
+    <string name="download_app_info_package">Package: %1$s</string>
+    <string name="download_app_info_version">Version: %1$s</string>
+    <string name="download_app_info_failed">Could not read app info</string>
     <string name="download_delete_title">Delete download?</string>
     <string name="download_delete_message">Delete &quot;%1$s&quot;?</string>
     <string name="download_rename_title">Rename download</string>

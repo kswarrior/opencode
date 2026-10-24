@@ -47,8 +47,11 @@ public class DownloadsActivity extends Activity {
     private static final int MENU_FOLDER = 11;
     private static final int MENU_CHECKSUM = 12;
     private static final int MENU_START_NOW = 13;
+    private static final int MENU_APP_INFO = 14;
 
     private DownloadRepository repository;
+    private ApkInfoLoader apkInfoLoader;
+    private int iconPadding;
     private ListView listView;
     private TextView emptyView;
     private TextView pathLabel;
@@ -76,6 +79,8 @@ public class DownloadsActivity extends Activity {
         setContentView(R.layout.activity_downloads);
 
         repository = DownloadRepository.getInstance(this);
+        apkInfoLoader = new ApkInfoLoader(this);
+        iconPadding = Math.round(9 * getResources().getDisplayMetrics().density);
         listView = findViewById(R.id.downloadsList);
         emptyView = findViewById(R.id.downloadsEmpty);
         pathLabel = findViewById(R.id.downloadPathLabel);
@@ -217,6 +222,12 @@ public class DownloadsActivity extends Activity {
     protected void onStop() {
         repository.removeListener(downloadListener);
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        apkInfoLoader.shutdownNow();
+        super.onDestroy();
     }
 
     private void refreshPath() {
