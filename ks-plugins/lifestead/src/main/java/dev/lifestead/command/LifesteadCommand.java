@@ -335,7 +335,7 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
                 case "hearts" -> sender.hasPermission("lifesteal.hearts.others")
                         ? filter(onlineNames(), args[1]) : List.of();
                 case "revive" -> filter(eliminatedNames(), args[1]);
-                case "giveheart" -> filter(onlineNames(), args[1]);
+                case "giveheart" -> filter(knownNames(), args[1]);
                 case "sethearts", "eliminate" -> filter(knownNames(), args[1]);
                 case "reset" -> {
                     List<String> names = knownNames();
