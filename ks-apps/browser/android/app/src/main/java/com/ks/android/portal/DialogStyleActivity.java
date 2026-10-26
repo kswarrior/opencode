@@ -23,6 +23,7 @@ public class DialogStyleActivity extends Activity {
     private SeekBar blurBar;
     private SeekBar sizeBar;
     private SeekBar shapeBar;
+    private boolean loading;
 
     private static final int SIZE_MIN = 70;
 
