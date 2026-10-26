@@ -204,4 +204,4 @@ Use the `minecraft-skills` MCP:
 - `get_command_details` to verify command syntax before hardcoding command trees.
 - `run_rcon_command` after configuring RCON for live smoke tests.
 
-Use the `vitaminmcp` MCP for end-to-end Paper or Purpur testing. Run its `setup` prompt, place `VitaminMCP.jar` in the server `plugins/` directory, restart, then use `session_start` and the session tools to spawn bots, run commands, inspect inventories, and read logs. Its supported server range may lag the newest release; verify coverage or fall back to manual servers plus RCON.
+Use the `vitaminmcp` MCP for end-to-end Paper or Purpur testing. Run its `setup` prompt, place `VitaminMCP.jar` in the server `plugins/` directory, restart, then use `session_start` and the session tools to spawn bots, run commands, inspect inventories, and read logs. It does not test Spigot or CraftBukkit; run those manually. Its supported server range may lag the newest release; verify coverage or fall back to manual servers plus RCON.
