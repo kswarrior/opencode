@@ -105,6 +105,35 @@ export function findCustomItem(bot, needle) {
   return bot.inventory.items().find((item) => itemName(item).toLowerCase().includes(lower))
 }
 
+export function countLifesteadItems(bot, kind) {
+  return itemCount(bot, (item) => isLifesteadItem(item, kind))
+}
+
+export function findLifesteadItem(bot, kind) {
+  return bot.inventory.items().find((item) => isLifesteadItem(item, kind))
+}
+
+export function itemLore(item) {
+  if (!item) {
+    return []
+  }
+  const component = componentData(item, 'lore')
+  if (component) {
+    return component.map((line) => plainComponent(simplify(line))).filter(Boolean)
+  }
+  return item.customLore || []
+}
+
+export function blockBelow(bot) {
+  for (let offset = -1; offset >= -5; offset--) {
+    const block = bot.blockAt(bot.entity.position.offset(0, offset, 0))
+    if (block && block.name !== 'air' && block.name !== 'cave_air') {
+      return block
+    }
+  }
+  return null
+}
+
 export function windowTitle(window) {
   return plainComponent(window?.title)
 }
@@ -235,6 +264,26 @@ export async function useHeldItemAndWaitForWindow(bot, { timeout = 10000 } = {})
   clearTimeout(timer)
   if (!window) {
     throw new Error('No window opened after using the held item')
+  }
+  return window
+}
+
+export async function useItemOnBlockAndWaitForMessage(bot, block, matcher, options = {}) {
+  const waiter = waitForMessage(bot, matcher, options)
+  await bot.activateBlock(block)
+  return waiter
+}
+
+export async function useItemOnBlockAndWaitForWindow(bot, block, { timeout = 10000 } = {}) {
+  const opened = once(bot, 'windowOpen')
+  const timer = setTimeout(() => {
+    bot.emit('windowOpen', null)
+  }, timeout)
+  await bot.activateBlock(block)
+  const [window] = await opened
+  clearTimeout(timer)
+  if (!window) {
+    throw new Error('No window opened after using the held item on a block')
   }
   return window
 }
