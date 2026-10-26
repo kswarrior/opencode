@@ -5,7 +5,7 @@ Target: Minecraft Java Edition 1.21.11 (resource pack format 75)
 ## Files
 
 - ZIP: `Lifestead-ResourcePack-1.0.0.zip`
-- SHA-1: `58e5ac1e430bbfff158b4ee288b4c60671d029fa`
+- SHA-1: `0c8f80b8a441f8158a2d303ba158b6734d26a0f7`
 
 ## Install
 
@@ -14,7 +14,7 @@ Target: Minecraft Java Edition 1.21.11 (resource pack format 75)
 
    ```properties
    resource-pack=https://your-host.example/Lifestead-ResourcePack-1.0.0.zip
-   resource-pack-sha1=58e5ac1e430bbfff158b4ee288b4c60671d029fa
+   resource-pack-sha1=0c8f80b8a441f8158a2d303ba158b6734d26a0f7
    require-resource-pack=false
    ```
 
