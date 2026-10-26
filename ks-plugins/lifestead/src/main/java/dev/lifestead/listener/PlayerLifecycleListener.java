@@ -23,6 +23,7 @@ public final class PlayerLifecycleListener implements Listener {
         PlayerProfile profile = plugin.getHeartManager().profile(event.getPlayer());
         profile.setLastSeen(System.currentTimeMillis());
         plugin.getDataStore().save(profile);
+        plugin.getDeathListener().clearRecent(event.getPlayer().getUniqueId());
         plugin.getItems().deliverPendingHearts(event.getPlayer());
         plugin.getEliminations().handleJoin(event.getPlayer());
     }
@@ -37,6 +38,7 @@ public final class PlayerLifecycleListener implements Listener {
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event) {
+        plugin.getDeathListener().clearRecent(event.getPlayer().getUniqueId());
         plugin.getEliminations().handleRespawn(event.getPlayer());
     }
 

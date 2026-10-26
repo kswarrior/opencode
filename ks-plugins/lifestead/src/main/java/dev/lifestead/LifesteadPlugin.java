@@ -107,7 +107,8 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     private void registerListeners() {
         getServer().getPluginManager().registerEvents(new PlayerLifecycleListener(this), this);
-        getServer().getPluginManager().registerEvents(new DeathListener(this), this);
+        deathListener = new DeathListener(this);
+        getServer().getPluginManager().registerEvents(deathListener, this);
         getServer().getPluginManager().registerEvents(new CombatListener(this), this);
         getServer().getPluginManager().registerEvents(new ItemListener(this), this);
         getServer().getPluginManager().registerEvents(new GuiListener(this), this);
@@ -183,6 +184,10 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     public Effects getEffects() {
         return effects;
+    }
+
+    public DeathListener getDeathListener() {
+        return deathListener;
     }
 
     public int getResyncTaskId() {
