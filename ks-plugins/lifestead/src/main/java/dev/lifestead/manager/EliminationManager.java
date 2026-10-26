@@ -24,9 +24,11 @@ public final class EliminationManager {
         if (profile.isEliminated()) {
             return;
         }
+        long now = System.currentTimeMillis();
         profile.setHearts(0);
         profile.setEliminated(true);
-        profile.setLastSeen(System.currentTimeMillis());
+        profile.setLastSeen(now);
+        profile.setEliminatedAt(now);
         plugin.getDataStore().save(profile);
 
         Player online = Bukkit.getPlayer(profile.getUuid());
@@ -69,6 +71,7 @@ public final class EliminationManager {
             return false;
         }
         profile.setEliminated(false);
+        profile.setEliminatedAt(0L);
         plugin.getDataStore().save(profile);
         pardon(profile.getName());
 

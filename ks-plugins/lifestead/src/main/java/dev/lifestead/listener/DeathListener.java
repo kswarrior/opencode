@@ -47,17 +47,24 @@ public final class DeathListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onDeath(PlayerDeathEvent event) {
         Player victim = event.getEntity();
-        if (!processing.add(victim.getUniqueId())) {
+        UUID uuid = victim.getUniqueId();
+        if (!processing.add(uuid)) {
             return;
         }
         try {
-            handleDeath(victim);
+            long now = System.currentTimeMillis();
+            Long previous = recentlyProcessed.get(uuid);
+            if (previous != null && now - previous < DUPLICATE_DEATH_WINDOW_MILLIS) {
+                return;
+            }
+            recentlyProcessed.put(uuid, now);
+            handleDeath(victim, now);
         } finally {
-            processing.remove(victim.getUniqueId());
+            processing.remove(uuid);
         }
     }
 
-    private void handleDeath(Player victim) {
+    private void handleDeath(Player victim, long now) {
         Settings settings = plugin.getSettings();
         if (settings.isWorldDisabled(victim.getWorld())) {
             return;
@@ -73,6 +80,12 @@ public final class DeathListener implements Listener {
 
         Player killer = findKiller(victim);
         Category category = category(victim, killer);
+        if (category == Category.PVP && killer != null && !killer.equals(victim)) {
+            PlayerProfile killerProfile = plugin.getHeartManager().profile(killer);
+            killerProfile.setKills(killerProfile.getKills() + 1);
+            killerProfile.setLastKillAt(now);
+            plugin.getDataStore().save(killerProfile);
+        }
         if (!isLossEnabled(settings, category)) {
             return;
         }
