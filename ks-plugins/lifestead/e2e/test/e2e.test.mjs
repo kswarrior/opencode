@@ -317,14 +317,17 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
       /no longer a server operator|De-opped|Nothing changed/
     )
     await sleep(700)
-    const deniedSet = await sendCommand(beta, `/ls sethearts ${ALPHA} 5`, /no permission/)
-    assert.match(deniedSet.text, /no permission/i)
-    const deniedOthers = await sendCommand(beta, `/ls hearts ${ALPHA}`, /no permission/)
-    assert.match(deniedOthers.text, /no permission/i)
-    const ownHearts = await sendCommand(beta, '/ls hearts', /has \d+ heart\(s\)/)
-    assert.match(ownHearts.text, /has \d+ heart\(s\)/)
-    await server.commandExpect(`op ${BETA}`, /server operator|Nothing changed/)
-    await sleep(700)
+    try {
+      const deniedSet = await sendCommand(beta, `/ls sethearts ${ALPHA} 5`, /permission/i)
+      assert.match(deniedSet.text, /permission/i)
+      const deniedOthers = await sendCommand(beta, `/ls hearts ${ALPHA}`, /permission/i)
+      assert.match(deniedOthers.text, /permission/i)
+      const ownHearts = await sendCommand(beta, '/ls hearts', /has \d+ heart\(s\)/)
+      assert.match(ownHearts.text, /has \d+ heart\(s\)/)
+    } finally {
+      await server.commandExpect(`op ${BETA}`, /server operator|Nothing changed/)
+      await sleep(700)
+    }
   })
 
   test('tab completion lists subcommands, recipes, and heart amounts', async () => {
@@ -646,6 +649,8 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     )
     await sleep(700)
     const tableBlock = alpha.blockAt(alpha.entity.position.offset(2, 0, 0))
+    assert.equal(tableBlock?.name, 'crafting_table')
+    assert.equal(alpha.currentWindow, null)
     const window = await alpha.openBlock(tableBlock)
     const heartSlot = window.slots.findIndex((slot) => isLifesteadItem(slot, 'heart'))
     assert.ok(heartSlot >= 0)
