@@ -20,7 +20,6 @@ import {
   closeCurrentWindow,
   countLifesteadItems,
   createTestBot,
-  customItemCount,
   disconnect,
   equipItem,
   findLifesteadItem,
