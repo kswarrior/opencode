@@ -1,6 +1,7 @@
 import { once } from 'node:events'
 import { setTimeout as sleep } from 'node:timers/promises'
 import mineflayer from 'mineflayer'
+import { simplify } from 'prismarine-nbt'
 import { HOST, MINECRAFT_VERSION, PORT } from './paths.mjs'
 
 export function plainComponent(value) {
@@ -36,12 +37,48 @@ export function plainComponent(value) {
   return String(value)
 }
 
+function componentData(item, type) {
+  return item?.componentMap?.get(type)?.data ?? null
+}
+
+export function customModelData(item) {
+  const component = componentData(item, 'custom_model_data')
+  if (component?.floats?.length) {
+    return component.floats[0]
+  }
+  return item?.customModelData ?? null
+}
+
 export function itemName(item) {
   if (!item) {
     return ''
   }
-  const custom = plainComponent(item.customName)
-  return custom || item.displayName || item.name || ''
+  const customComponent = componentData(item, 'custom_name')
+  if (customComponent) {
+    const custom = plainComponent(simplify(customComponent))
+    if (custom) {
+      return custom
+    }
+  }
+  if (typeof item.customName === 'string') {
+    const custom = plainComponent(item.customName)
+    if (custom) {
+      return custom
+    }
+  }
+  return item.displayName || item.name || ''
+}
+
+export function isLifesteadItem(item, kind) {
+  const customData = componentData(item, 'custom_data')
+  if (customData) {
+    const simplified = simplify(customData)
+    const value = simplified?.PublicBukkitValues?.['lifestead:item-type']
+    if (value) {
+      return value === kind
+    }
+  }
+  return false
 }
 
 export function itemCount(bot, predicate) {
