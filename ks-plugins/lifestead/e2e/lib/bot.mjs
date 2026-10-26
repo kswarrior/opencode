@@ -206,7 +206,7 @@ export async function commandAndChat(bot, command, matcher, options = {}) {
 
 export async function hearts(bot, player = null) {
   const command = player ? `/ls hearts ${player}` : '/ls hearts'
-  const message = await commandAndChat(bot, command, /heart\(s\)/)
+  const message = await commandAndChat(bot, command, /has \d+ heart\(s\)/)
   const match = message.text.match(/has\s+(\d+)\s+heart/i)
   if (!match) {
     throw new Error(`Could not parse hearts from message: ${message.text}`)

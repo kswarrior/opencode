@@ -100,6 +100,14 @@ async function resetAll() {
   return line
 }
 
+async function eliminateSeeds() {
+  for (let index = 1; index <= SEED_COUNT; index++) {
+    const name = `E2EPage${String(index).padStart(2, '0')}`
+    await server.commandExpect(`lifestead eliminate ${name}`, /Eliminated|already eliminated/)
+  }
+  await sleep(500)
+}
+
 async function clearInventory(name) {
   await server.commandExpect(
     `clear ${name}`,
@@ -394,6 +402,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     message = await sendCommand(alpha, '/ls deposit 1', /maximum/)
     assert.match(message.text, /maximum/)
     await clearInventory(ALPHA)
+    await setHearts(ALPHA, 15)
     message = await sendCommand(alpha, '/ls deposit 1', /do not have any heart items/)
     assert.match(message.text, /do not have any heart items/)
 
@@ -478,6 +487,8 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   })
 
   test('revive beacon GUI paginates and revives a seeded offline player', async () => {
+    await resetAll()
+    await eliminateSeeds()
     await clearInventory(ALPHA)
     await giveLifesteadItem(ALPHA, 'revive_beacon', 1)
     await equipKind(alpha, 'revive_beacon')
@@ -491,11 +502,13 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
 
     const backToFirst = await clickAndWaitForWindow(alpha, 45)
     assert.match(windowTitle(backToFirst), /Revive Beacon.*Page 1\/2/)
+    const target = itemName(backToFirst.slots[9])
+    assert.ok(target, 'Expected a player name on the first revive head')
 
     const revivedWindow = await clickAndWaitForWindow(alpha, 9)
     assert.match(windowTitle(revivedWindow), /Revive Beacon.*Page 1\/1/)
     assert.equal(countLifesteadItems(alpha, 'revive_beacon'), 0)
-    assert.equal(await heartsFor('E2EPage01'), 4)
+    assert.equal(await heartsFor(target), 4)
     const reviveMessage = await waitForMessage(alpha, /will be revived/, {
       timeout: 5000,
       since: 0
