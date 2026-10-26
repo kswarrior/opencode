@@ -101,7 +101,10 @@ async function resetAll() {
 }
 
 async function clearInventory(name) {
-  await server.commandExpect(`clear ${name}`, /Cleared the inventory|No items were found/)
+  await server.commandExpect(
+    `clear ${name}`,
+    /Cleared the inventory|No items were found|Removed \d+ item\(s\) from player/
+  )
   await sleep(200)
 }
 
@@ -177,7 +180,7 @@ async function preparePvp(victimHearts) {
 
 async function pvpKill({ expectElimination = false } = {}) {
   const death = waitForPlayerDeath(beta, { timeout: 20000 })
-  await attackPlayer(alpha, beta, { hits: 3, interval: 350 })
+  await attackPlayer(alpha, beta, { hits: 1, interval: 350 })
   await death
   if (!expectElimination) {
     await waitForRespawn(beta, { timeout: 20000 })
@@ -185,9 +188,9 @@ async function pvpKill({ expectElimination = false } = {}) {
   await sleep(700)
 }
 
-async function killByEnvironment(name = BETA) {
+async function killByEnvironment(name = BETA, victimHearts = 1) {
   const bot = aliveBot(name)
-  await setHearts(name, 1)
+  await setHearts(name, victimHearts)
   const death = waitForPlayerDeath(bot, { timeout: 15000 })
   await server.commandExpect(`kill ${name}`, /Killed|died|was killed/)
   await death
@@ -262,8 +265,8 @@ before(async () => {
   })
   server = new PaperServer({ dir: SERVER_DIR })
   await server.start()
-  await server.commandExpect(`op ${ALPHA}`, /Opped|Nothing changed/)
-  await server.commandExpect(`op ${BETA}`, /Opped|Nothing changed/)
+  await server.commandExpect(`op ${ALPHA}`, /server operator|Nothing changed/)
+  await server.commandExpect(`op ${BETA}`, /server operator|Nothing changed/)
   await connectBoth()
 })
 
@@ -309,7 +312,10 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   })
 
   test('permissions gate admin subcommands while base commands stay available', async () => {
-    await server.commandExpect(`deop ${BETA}`, /De-opped|Nothing changed/)
+    await server.commandExpect(
+      `deop ${BETA}`,
+      /no longer a server operator|De-opped|Nothing changed/
+    )
     await sleep(700)
     const deniedSet = await sendCommand(beta, `/ls sethearts ${ALPHA} 5`, /no permission/)
     assert.match(deniedSet.text, /no permission/i)
@@ -317,18 +323,20 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.match(deniedOthers.text, /no permission/i)
     const ownHearts = await sendCommand(beta, '/ls hearts', /has \d+ heart\(s\)/)
     assert.match(ownHearts.text, /has \d+ heart\(s\)/)
-    await server.commandExpect(`op ${BETA}`, /Opped|Nothing changed/)
+    await server.commandExpect(`op ${BETA}`, /server operator|Nothing changed/)
     await sleep(700)
   })
 
   test('tab completion lists subcommands, recipes, and heart amounts', async () => {
-    const subcommands = await alpha.tabComplete('/ls ', true)
+    const names = (entries) =>
+      entries.map((entry) => (typeof entry === 'string' ? entry : entry.match))
+    const subcommands = names(await alpha.tabComplete('/ls ', true))
     for (const expected of ['help', 'hearts', 'withdraw', 'deposit', 'recipe', 'revive', 'giveheart', 'sethearts', 'eliminate', 'reset', 'reload']) {
       assert.ok(subcommands.includes(expected), `Missing tab completion ${expected}`)
     }
-    const recipes = await alpha.tabComplete('/ls recipe ', true)
+    const recipes = names(await alpha.tabComplete('/ls recipe ', true))
     assert.deepEqual(recipes.sort(), ['all', 'beacon', 'heart'].sort())
-    const amounts = await alpha.tabComplete(`/ls giveheart ${ALPHA} `, true)
+    const amounts = names(await alpha.tabComplete(`/ls giveheart ${ALPHA} `, true))
     assert.ok(amounts.includes('1'))
     assert.ok(amounts.includes('10'))
   })
@@ -506,11 +514,11 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     window = await clickAndWaitForWindow(alpha, 11)
     assert.equal(windowTitle(window), 'Recipe: Heart')
     assert.equal(itemName(window.slots[25]), 'Heart')
-    assert.equal(window.slots[10]?.name, 'diamond')
-    assert.equal(window.slots[11]?.name, 'gold_block')
-    assert.equal(window.slots[12]?.name, 'gold_block')
-    assert.equal(window.slots[13]?.name, 'nether_star')
-    assert.equal(window.slots[15]?.name, 'redstone_block')
+    assert.equal(window.slots[11]?.name, 'diamond')
+    assert.equal(window.slots[19]?.name, 'gold_block')
+    assert.equal(window.slots[20]?.name, 'nether_star')
+    assert.equal(window.slots[21]?.name, 'gold_block')
+    assert.equal(window.slots[29]?.name, 'redstone_block')
     const info = itemLore(window.slots[4])
     assert.ok(info.some((line) => line.includes('Type: Shaped')))
     assert.ok(info.some((line) => line.includes('Enabled: Yes')))
@@ -520,9 +528,13 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     window = await clickAndWaitForWindow(alpha, 15)
     assert.equal(windowTitle(window), 'Recipe: Revive Beacon')
     assert.equal(itemName(window.slots[25]), 'Revive Beacon')
-    assert.equal(window.slots[10]?.name, 'totem_of_undying')
-    assert.equal(window.slots[11]?.name, 'nether_star')
-    assert.equal(window.slots[12]?.name, 'wither_skeleton_skull')
+    assert.equal(window.slots[11]?.name, 'totem_of_undying')
+    assert.equal(window.slots[19]?.name, 'nether_star')
+    assert.equal(window.slots[20]?.name, 'wither_skeleton_skull')
+    assert.equal(window.slots[21]?.name, 'enchanted_golden_apple')
+    assert.equal(window.slots[28]?.name, 'netherite_block')
+    assert.equal(window.slots[29]?.name, 'netherite_block')
+    assert.equal(window.slots[30]?.name, 'netherite_block')
     await clickAndWaitForClose(alpha, 49)
     assert.equal(alpha.currentWindow, null)
 
@@ -573,12 +585,10 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.match(windowTitle(window), /Revive Beacon/)
     const head = window.slots.findIndex((item) => item?.name === 'player_head')
     assert.ok(head >= 0, 'Expected a player head in the revive GUI')
-    const reopened = await clickAndWaitForWindow(alpha, head)
-    assert.match(windowTitle(reopened), /Revive Beacon/)
+    await clickAndWaitForClose(alpha, head)
     assert.equal(countLifesteadItems(alpha, 'revive_beacon'), 0)
     await waitForGameMode(beta, 'survival')
     assert.equal(await hearts(beta), 4)
-    await closeCurrentWindow(alpha)
     await resetAll()
   })
 
@@ -631,11 +641,11 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await clearInventory(ALPHA)
     await giveLifesteadItem(ALPHA, 'heart', 1)
     await server.commandExpect(
-      `execute at ${ALPHA} run setblock ~1 ~ ~ minecraft:crafting_table`,
+      `execute at ${ALPHA} run setblock ~2 ~ ~ minecraft:crafting_table`,
       /Changed the block/
     )
     await sleep(700)
-    const tableBlock = alpha.blockAt(alpha.entity.position.offset(1, 0, 0))
+    const tableBlock = alpha.blockAt(alpha.entity.position.offset(2, 0, 0))
     const window = await alpha.openBlock(tableBlock)
     const heartSlot = window.slots.findIndex((slot) => isLifesteadItem(slot, 'heart'))
     assert.ok(heartSlot >= 0)
@@ -730,7 +740,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await setConfig({ settings: { 'disabled-worlds': ['world'] } })
     await resetAll()
     await setHearts(BETA, 3)
-    await killByEnvironment(BETA)
+    await killByEnvironment(BETA, 3)
     await waitForRespawn(beta)
     assert.equal(await hearts(beta), 3)
     assert.equal(beta.game.gameMode, 'survival')
