@@ -1,6 +1,7 @@
 package dev.lifestead.manager;
 
 import dev.lifestead.LifesteadPlugin;
+import dev.lifestead.data.PlayerProfile;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -138,6 +139,18 @@ public final class ItemManager {
             giveOrDrop(player, createBeacon(stackSize));
             remaining -= stackSize;
         }
+    }
+
+    public void deliverPendingHearts(Player player) {
+        PlayerProfile profile = plugin.getHeartManager().profile(player);
+        int pending = profile.getPendingHeartItems();
+        if (pending <= 0 || profile.isEliminated()) {
+            return;
+        }
+        profile.setPendingHeartItems(0);
+        plugin.getDataStore().save(profile);
+        giveHearts(player, pending);
+        plugin.getMessages().send(player, "hearts.pending-received", "amount", Integer.toString(pending));
     }
 
     private ItemStack create(String type, String path, Material fallback, int amount) {

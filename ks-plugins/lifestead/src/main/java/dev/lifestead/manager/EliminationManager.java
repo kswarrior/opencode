@@ -97,6 +97,7 @@ public final class EliminationManager {
         }
         Settings settings = plugin.getSettings();
         profile.setEliminated(false);
+        profile.setEliminatedAt(0L);
         profile.setHearts(settings.reviveHearts);
         profile.setLastSeen(System.currentTimeMillis());
         plugin.getDataStore().save(profile);

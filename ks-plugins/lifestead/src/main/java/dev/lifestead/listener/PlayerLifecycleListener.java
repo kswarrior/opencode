@@ -23,6 +23,7 @@ public final class PlayerLifecycleListener implements Listener {
         PlayerProfile profile = plugin.getHeartManager().profile(event.getPlayer());
         profile.setLastSeen(System.currentTimeMillis());
         plugin.getDataStore().save(profile);
+        plugin.getItems().deliverPendingHearts(event.getPlayer());
         plugin.getEliminations().handleJoin(event.getPlayer());
     }
 
