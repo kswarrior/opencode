@@ -637,7 +637,7 @@ final class KsDialog {
 
     private static void present(final Sheet sheet, boolean focusInput) {
         sheet.dialog.show();
-        DialogStyle.apply((Activity) sheet.dialog.getContext(), sheet.dialog);
+        DialogStyle.apply(sheet.dialog.getContext(), sheet.dialog);
 
         final int max = dp(sheet.dialog.getContext(), 320);
         sheet.scroll.post(new Runnable() {

@@ -61,7 +61,7 @@ final class CookieDialog {
         });
 
         dialog.show();
-        applySheetWindow(dialog);
+        applySheetWindow(activity, dialog);
         limitListHeight(activity, dialog);
     }
 
@@ -136,7 +136,7 @@ final class CookieDialog {
         });
     }
 
-    private static void applySheetWindow(Dialog dialog) {
-        DialogStyle.apply((Activity) dialog.getContext(), dialog);
+    private static void applySheetWindow(Activity activity, Dialog dialog) {
+        DialogStyle.apply(activity, dialog);
     }
 }

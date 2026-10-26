@@ -15,8 +15,8 @@ final class DialogStyle {
     private DialogStyle() {
     }
 
-    static void apply(Activity activity, Dialog dialog) {
-        if (activity == null || dialog == null) {
+    static void apply(Context context, Dialog dialog) {
+        if (context == null || dialog == null) {
             return;
         }
         Window window = dialog.getWindow();
@@ -28,20 +28,20 @@ final class DialogStyle {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int size = DialogStyleStore.getSize(activity);
+        int size = DialogStyleStore.getSize(context);
         if (size < 100) {
-            int screen = activity.getResources().getDisplayMetrics().widthPixels;
-            width = Math.max(dp(activity, 260), Math.round(screen * size / 100f));
+            int screen = context.getResources().getDisplayMetrics().widthPixels;
+            width = Math.max(dp(context, 260), Math.round(screen * size / 100f));
         }
         window.setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT);
 
         WindowManager.LayoutParams params = window.getAttributes();
-        params.dimAmount = DialogStyleStore.getDim(activity) / 100f;
+        params.dimAmount = DialogStyleStore.getDim(context) / 100f;
         params.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            int blur = DialogStyleStore.getBlur(activity);
+            int blur = DialogStyleStore.getBlur(context);
             if (blur > 0) {
-                params.setBlurBehindRadius(dp(activity, blur));
+                params.setBlurBehindRadius(dp(context, blur));
                 params.flags |= WindowManager.LayoutParams.FLAG_BLUR_BEHIND;
             }
         }
@@ -52,14 +52,14 @@ final class DialogStyle {
             GradientDrawable background = new GradientDrawable(
                     GradientDrawable.Orientation.TOP_BOTTOM,
                     new int[]{Color.argb(244, 28, 28, 30), Color.argb(248, 12, 12, 14)});
-            background.setCornerRadius(dp(activity, DialogStyleStore.getShape(activity)));
-            background.setStroke(dp(activity, 1), 0x40FFFFFF);
+            background.setCornerRadius(dp(context, DialogStyleStore.getShape(context)));
+            background.setStroke(dp(context, 1), 0x40FFFFFF);
             sheet.setBackground(background);
             sheet.setClipToOutline(true);
         }
     }
 
-    private static int dp(Activity activity, int value) {
-        return Math.round(value * activity.getResources().getDisplayMetrics().density);
+    private static int dp(Context context, int value) {
+        return Math.round(value * context.getResources().getDisplayMetrics().density);
     }
 }
