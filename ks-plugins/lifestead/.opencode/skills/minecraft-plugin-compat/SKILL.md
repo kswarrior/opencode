@@ -70,9 +70,11 @@ static boolean hasClass(String name) {
     }
 }
 
-boolean folia = hasClass("io.papermc.paper.threadedregions.RegionizedServer");
-boolean paper = hasClass("io.papermc.paper.ServerBuildInfo");
+boolean paperFamily = hasClass("io.papermc.paper.ServerBuildInfo");
+boolean folia = isFolia();
 ```
+
+`isFolia()` uses Paper's `ServerBuildInfo` reflectively, so Spigot never loads a missing class.
 
 Do not reference a Paper or Folia type from a field, method signature, superclass, or annotation in the common main class. A missing class referenced during class loading can fail before any runtime check runs.
 
@@ -83,10 +85,15 @@ Folia does not have a main thread in the Bukkit sense. `Bukkit.getScheduler()` i
 ```java
 public static boolean isFolia() {
     try {
-        Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
-        return true;
-    } catch (ClassNotFoundException exception) {
-        return false;
+        Class<?> buildInfoType = Class.forName("io.papermc.paper.ServerBuildInfo");
+        Object buildInfo = buildInfoType.getMethod("buildInfo").invoke(null);
+        Class<?> keyType = Class.forName("net.kyori.adventure.key.Key");
+        Object key = keyType.getMethod("key", String.class, String.class)
+                .invoke(null, "papermc", "folia");
+        return (boolean) buildInfoType.getMethod("isBrandCompatible", keyType)
+                .invoke(buildInfo, key);
+    } catch (ReflectiveOperationException exception) {
+        return "Folia".equalsIgnoreCase(Bukkit.getServer().getName());
     }
 }
 ```
