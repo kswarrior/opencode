@@ -73,6 +73,14 @@ async function main() {
       count: item.count
     }))
     console.log(`Alpha inventory: ${JSON.stringify(inventoryDump)}`)
+    const rawItem = alpha.inventory.items()[0]
+    if (rawItem) {
+      console.log(`Raw item keys: ${JSON.stringify(Object.keys(rawItem))}`)
+      console.log(`Raw components: ${JSON.stringify(rawItem.components)}`)
+      console.log(`Raw componentMap: ${JSON.stringify([...rawItem.componentMap.keys()])}`)
+      console.log(`Raw componentMap values: ${JSON.stringify([...rawItem.componentMap.values()])}`)
+      console.log(`Raw nbt: ${JSON.stringify(rawItem.nbt)?.slice(0, 1000)}`)
+    }
     server.command('data get entity E2EAlpha Inventory')
     await sleep(1000)
     console.log(server.lines.filter((line) => line.includes('E2EAlpha has the following entity data')).join('\n'))
