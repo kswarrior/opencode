@@ -1,0 +1,68 @@
+name: Lifestead
+version: '${project.version}'
+main: dev.lifestead.LifesteadPlugin
+api-version: '1.21.11'
+authors: [Lifestead]
+description: Lifesteal SMP hearts, elimination, revival, heart items, and recipes.
+website: https://github.com/lifestead
+softdepend: [PlaceholderAPI]
+
+commands:
+  lifestead:
+    description: Main Lifestead command.
+    usage: /lifestead help
+    aliases: [ls, lifesteal]
+    permission: lifesteal.use
+
+permissions:
+  lifesteal.use:
+    description: Use the base Lifestead command.
+    default: true
+  lifesteal.hearts:
+    description: View your own hearts.
+    default: true
+  lifesteal.hearts.others:
+    description: View another player's hearts.
+    default: op
+  lifesteal.withdraw:
+    description: Withdraw hearts as items.
+    default: true
+  lifesteal.deposit:
+    description: Deposit heart items.
+    default: true
+  lifesteal.recipe:
+    description: Open the recipe viewer.
+    default: true
+  lifesteal.revive:
+    description: Revive eliminated players.
+    default: op
+  lifesteal.give:
+    description: Give heart items to players.
+    default: op
+  lifesteal.set:
+    description: Set a player's heart count.
+    default: op
+  lifesteal.eliminate:
+    description: Eliminate players.
+    default: op
+  lifesteal.reset:
+    description: Reset heart and elimination state.
+    default: op
+  lifesteal.reload:
+    description: Reload the plugin configuration.
+    default: op
+  lifesteal.admin:
+    description: Grants all Lifestead administration permissions.
+    default: op
+    children:
+      lifesteal.hearts: true
+      lifesteal.hearts.others: true
+      lifesteal.withdraw: true
+      lifesteal.deposit: true
+      lifesteal.recipe: true
+      lifesteal.revive: true
+      lifesteal.give: true
+      lifesteal.set: true
+      lifesteal.eliminate: true
+      lifesteal.reset: true
+      lifesteal.reload: true

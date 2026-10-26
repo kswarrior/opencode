@@ -1,0 +1,118 @@
+# Lifestead configuration
+# Colors use & codes and &#RRGGBB hex codes.
+
+database:
+  # YAML or SQLITE. SQLite is bundled with the plugin.
+  type: YAML
+
+settings:
+  start-hearts: 10
+  minimum-hearts: 0
+  maximum-hearts: 20
+  gain-per-kill: 1
+  lose-per-death: 1
+  # Hearts that can never be withdrawn. The guard is applied on top of the minimum.
+  withdraw-guard: 1
+  # Worlds where heart stealing and heart loss are disabled.
+  disabled-worlds: []
+  # How often online players have their max-health attribute resynced.
+  health-resync-ticks: 40
+
+death-loss:
+  pvp: true
+  mob: true
+  environment: true
+
+anti-farm:
+  enabled: true
+  # Seconds before the same killer can gain a heart from the same victim again.
+  victim-cooldown-seconds: 300
+  # Block heart gain when killer and victim share an IP address.
+  same-ip: true
+  # Maximum rewarded kills on the same victim inside the window below.
+  max-kills-per-victim: 3
+  window-minutes: 60
+
+combat-log:
+  enabled: true
+  # Seconds after taking damage during which logging out counts as combat logging.
+  duration-seconds: 15
+  # Hearts lost when a player combat logs.
+  penalty-hearts: 1
+
+elimination:
+  # BAN or SPECTATOR.
+  mode: BAN
+  ban-reason: '&cYou ran out of hearts. You can be revived with a Revive Beacon.'
+  announce: true
+
+revive:
+  hearts: 4
+  teleport-to-spawn: true
+  # Empty uses the first world on the server.
+  spawn-world: ''
+  # Set use-coordinates to true to use the coordinates below instead of world spawn.
+  use-coordinates: false
+  coordinates:
+    x: 0.0
+    y: 64.0
+    z: 0.0
+    yaw: 0.0
+    pitch: 0.0
+
+effects:
+  sounds: true
+  particles: true
+  steal-sound: ENTITY_PLAYER_LEVELUP
+  lose-sound: ENTITY_PLAYER_HURT
+  revive-sound: BLOCK_BEACON_ACTIVATE
+  heart-particle: HEART
+  particle-count: 12
+
+items:
+  heart:
+    material: NETHER_STAR
+    name: '&cHeart'
+    lore:
+      - '&7Right-click to gain &c1 heart&7.'
+      - '&8Raises your maximum health.'
+    glow: true
+    custom-model-data: 1001
+  revive-beacon:
+    material: BEACON
+    name: '&dRevive Beacon'
+    lore:
+      - '&7Right-click to open the revival menu.'
+      - '&8Consumed when a player is revived.'
+    glow: true
+    custom-model-data: 1002
+    consume-on-revive: true
+
+recipes:
+  heart:
+    enabled: true
+    shaped: true
+    result-amount: 1
+    shape:
+      - ' D '
+      - 'GNG'
+      - ' R '
+    ingredients:
+      D: DIAMOND
+      G: GOLD_BLOCK
+      N: NETHER_STAR
+      R: REDSTONE_BLOCK
+  revive-beacon:
+    enabled: true
+    shaped: true
+    result-amount: 1
+    shape:
+      - ' T '
+      - 'SWA'
+      - 'NNN'
+    ingredients:
+      T: TOTEM_OF_UNDYING
+      S: NETHER_STAR
+      W: WITHER_SKELETON_SKULL
+      A: ENCHANTED_GOLDEN_APPLE
+      N: NETHERITE_BLOCK
