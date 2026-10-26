@@ -30,11 +30,6 @@ public final class LifesteadPlaceholderExpansion extends PlaceholderExpansion {
     }
 
     @Override
-    public boolean persist() {
-        return true;
-    }
-
-    @Override
     public String onRequest(OfflinePlayer player, String params) {
         if (player == null) {
             return "";

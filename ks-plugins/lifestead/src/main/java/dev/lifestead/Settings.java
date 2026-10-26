@@ -89,12 +89,16 @@ public final class Settings {
         combatLogDurationSeconds = Math.max(1, config.getInt("combat-log.duration-seconds", 15));
         combatLogPenaltyHearts = Math.max(0, config.getInt("combat-log.penalty-hearts", 1));
 
-        eliminationMode = config.getString("elimination.mode", "BAN").toUpperCase(Locale.ROOT);
+        String mode = config.getString("elimination.mode", "BAN");
+        eliminationMode = mode == null ? "BAN" : mode.toUpperCase(Locale.ROOT);
         if (!eliminationMode.equals("SPECTATOR")) {
             eliminationMode = "BAN";
         }
-        banReason = config.getString("elimination.ban-reason",
+        String configuredReason = config.getString("elimination.ban-reason",
                 "&cYou ran out of hearts. You can be revived with a Revive Beacon.");
+        banReason = configuredReason == null
+                ? "&cYou ran out of hearts. You can be revived with a Revive Beacon."
+                : configuredReason;
         eliminateAnnounce = config.getBoolean("elimination.announce", true);
 
         reviveHearts = clamp(config.getInt("revive.hearts", 4), minHearts, maxHearts);
@@ -116,7 +120,8 @@ public final class Settings {
         particleCount = Math.max(1, config.getInt("effects.particle-count", 12));
         broadcastSteals = config.getBoolean("effects.broadcast-steals", false);
 
-        databaseType = config.getString("database.type", "YAML").toUpperCase(Locale.ROOT);
+        String configuredDatabase = config.getString("database.type", "YAML");
+        databaseType = configuredDatabase == null ? "YAML" : configuredDatabase.toUpperCase(Locale.ROOT);
         if (!databaseType.equals("SQLITE")) {
             databaseType = "YAML";
         }

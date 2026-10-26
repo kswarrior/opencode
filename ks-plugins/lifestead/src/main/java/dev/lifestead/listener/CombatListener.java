@@ -67,6 +67,7 @@ public final class CombatListener implements Listener {
             return;
         }
         if (profile.getHearts() <= 0) {
+            plugin.getEliminations().eliminate(profile, "combat log");
             return;
         }
         plugin.getMessages().broadcast("combat-log.penalty",
