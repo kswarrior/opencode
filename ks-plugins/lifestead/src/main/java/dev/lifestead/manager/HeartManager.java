@@ -55,9 +55,6 @@ public final class HeartManager {
         if (online != null) {
             applyHealth(online);
         }
-        if (clamped <= 0 && !profile.isEliminated()) {
-            plugin.getEliminations().eliminate(profile, "admin");
-        }
         return clamped;
     }
 

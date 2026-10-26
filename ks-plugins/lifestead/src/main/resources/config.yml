@@ -68,6 +68,8 @@ effects:
   revive-sound: BLOCK_BEACON_ACTIVATE
   heart-particle: HEART
   particle-count: 12
+  # Broadcast every successful heart steal to the whole server.
+  broadcast-steals: false
 
 items:
   heart:

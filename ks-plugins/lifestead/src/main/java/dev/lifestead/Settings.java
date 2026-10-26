@@ -54,6 +54,7 @@ public final class Settings {
     public String reviveSound;
     public String heartParticle;
     public int particleCount;
+    public boolean broadcastSteals;
 
     public String databaseType;
 
@@ -113,6 +114,7 @@ public final class Settings {
         reviveSound = config.getString("effects.revive-sound", "BLOCK_BEACON_ACTIVATE");
         heartParticle = config.getString("effects.heart-particle", "HEART");
         particleCount = Math.max(1, config.getInt("effects.particle-count", 12));
+        broadcastSteals = config.getBoolean("effects.broadcast-steals", false);
 
         databaseType = config.getString("database.type", "YAML").toUpperCase(Locale.ROOT);
         if (!databaseType.equals("SQLITE")) {
