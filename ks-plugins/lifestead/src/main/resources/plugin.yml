@@ -6,7 +6,7 @@ authors: [Lifestead]
 description: Lifesteal SMP hearts, elimination, revival, heart items, and recipes.
 website: https://github.com/lifestead
 softdepend: [PlaceholderAPI]
-folia-supported: false
+# Folia is not supported: the plugin uses the Bukkit scheduler.
 
 commands:
   lifestead:
