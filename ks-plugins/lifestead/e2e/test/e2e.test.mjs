@@ -642,6 +642,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   test('custom items cannot be used as crafting ingredients', async () => {
     await resetAll()
     await clearInventory(ALPHA)
+    await server.commandExpect(`give ${ALPHA} minecraft:dirt 1`, /Gave/)
     await giveLifesteadItem(ALPHA, 'heart', 1)
     await server.commandExpect(
       `execute at ${ALPHA} run setblock ~2 ~ ~ minecraft:crafting_table`,
