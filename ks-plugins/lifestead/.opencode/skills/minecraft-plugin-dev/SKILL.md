@@ -266,6 +266,10 @@ player.getPersistentDataContainer()
 - Relocate shaded libraries into your own package.
 - Avoid `minimize()` on the Shadow plugin unless reflection usage has been audited; it can remove classes needed at runtime.
 
+## Project-specific build output
+
+In this workspace, `ks-plugins/lifestead` builds its shaded plugin JAR into `release/plugin/`, not `target/`. Use the `lifestead-build` skill for its exact commands, verification steps, and resource pack output.
+
 ## Definition of done
 
 - `./gradlew clean build` succeeds.
