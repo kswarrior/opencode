@@ -6,6 +6,7 @@ authors: [Lifestead]
 description: Lifesteal SMP hearts, elimination, revival, heart items, and recipes.
 website: https://github.com/lifestead
 softdepend: [PlaceholderAPI]
+folia-supported: false
 
 commands:
   lifestead:

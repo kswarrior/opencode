@@ -24,8 +24,8 @@ public final class PlayerLifecycleListener implements Listener {
         profile.setLastSeen(System.currentTimeMillis());
         plugin.getDataStore().save(profile);
         plugin.getDeathListener().clearRecent(event.getPlayer().getUniqueId());
-        plugin.getItems().deliverPendingHearts(event.getPlayer());
         plugin.getEliminations().handleJoin(event.getPlayer());
+        plugin.getItems().deliverPendingHearts(event.getPlayer());
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

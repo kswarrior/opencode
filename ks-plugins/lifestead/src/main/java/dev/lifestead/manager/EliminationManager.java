@@ -144,6 +144,10 @@ public final class EliminationManager {
     public void handleJoin(Player player) {
         PlayerProfile profile = plugin.getHearts().profile(player);
         Settings settings = plugin.getSettings();
+        if (!profile.isEliminated() && profile.getHearts() <= 0) {
+            eliminate(profile, "start");
+            return;
+        }
         if (profile.isEliminated()) {
             if ("BAN".equals(settings.eliminationMode)) {
                 ban(profile.getName());

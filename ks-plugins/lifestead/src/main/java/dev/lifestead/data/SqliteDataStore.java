@@ -81,6 +81,10 @@ public final class SqliteDataStore implements DataStore {
         addColumn(columns, "last_kill_at", "INTEGER NOT NULL DEFAULT 0");
         addColumn(columns, "eliminated_at", "INTEGER NOT NULL DEFAULT 0");
         addColumn(columns, "pending_heart_items", "INTEGER NOT NULL DEFAULT 0");
+        try (Statement statement = connection.createStatement()) {
+            statement.executeUpdate("UPDATE lifestead_players SET eliminated_at = last_seen"
+                    + " WHERE eliminated <> 0 AND eliminated_at = 0");
+        }
     }
 
     private void addColumn(Set<String> columns, String name, String definition) throws SQLException {
