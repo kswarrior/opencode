@@ -211,11 +211,30 @@ export async function openWindowWithCommand(bot, command, { timeout = 10000 } = 
 }
 
 export async function clickAndWaitForWindow(bot, slot, options = {}) {
+  const { timeout = 10000 } = options
   const opened = once(bot, 'windowOpen')
+  const timer = setTimeout(() => {
+    bot.emit('windowOpen', null)
+  }, timeout)
   await bot.clickWindow(slot, 0, 0)
   const [window] = await opened
+  clearTimeout(timer)
   if (!window) {
     throw new Error(`No window opened after clicking slot ${slot}`)
+  }
+  return window
+}
+
+export async function useHeldItemAndWaitForWindow(bot, { timeout = 10000 } = {}) {
+  const opened = once(bot, 'windowOpen')
+  const timer = setTimeout(() => {
+    bot.emit('windowOpen', null)
+  }, timeout)
+  bot.activateItem()
+  const [window] = await opened
+  clearTimeout(timer)
+  if (!window) {
+    throw new Error('No window opened after using the held item')
   }
   return window
 }
