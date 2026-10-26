@@ -23,14 +23,14 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 public final class DeathListener implements Listener {
 
     private enum Category {
-        PVP("PvP"),
+        PVP("pvp"),
         MOB("mob"),
         ENVIRONMENT("environment");
 
-        private final String display;
+        private final String causeKey;
 
-        Category(String display) {
-            this.display = display;
+        Category(String causeKey) {
+            this.causeKey = causeKey;
         }
     }
 

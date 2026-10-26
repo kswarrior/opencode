@@ -5,6 +5,7 @@ general:
   player-only: '&cThat command can only be used by a player.'
   unknown-command: '&cUnknown subcommand. Use &f/ls help&c.'
   player-not-found: '&cPlayer &f{player}&c was not found.'
+  unknown-player: 'Unknown'
   invalid-number: '&cInvalid number: &f{input}&c.'
   reloaded: '&aConfiguration, messages, and recipes reloaded.'
   eliminated-action: '&cYou are eliminated. Ask someone to revive you.'
@@ -52,6 +53,14 @@ elimination:
   eliminate-offline: '&c{player} was eliminated.'
   eliminate-admin: '&cEliminated &f{player}&c.'
   already-eliminated: '&c{player} is already eliminated.'
+  causes:
+    pvp: 'PvP'
+    mob: 'mob'
+    environment: 'environment'
+    admin: 'admin'
+    combat-log: 'combat log'
+    reset: 'reset'
+    start: 'start'
 
 combat-log:
   penalty: '&c{player} &7combat logged and lost &c{hearts} &7heart(s).'
