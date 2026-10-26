@@ -30,6 +30,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private RecipeManager recipes;
     private AntiFarm antiFarm;
     private Effects effects;
+    private DeathListener deathListener;
     private int resyncTaskId = -1;
     private int antiFarmTaskId = -1;
 
@@ -68,6 +69,7 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        stopTasks();
         getServer().getScheduler().cancelTasks(this);
         if (recipes != null) {
             recipes.unregister();

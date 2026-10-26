@@ -64,6 +64,10 @@ public final class DeathListener implements Listener {
         }
     }
 
+    public void clearRecent(UUID uuid) {
+        recentlyProcessed.remove(uuid);
+    }
+
     private void handleDeath(Player victim, long now) {
         Settings settings = plugin.getSettings();
         if (settings.isWorldDisabled(victim.getWorld())) {
