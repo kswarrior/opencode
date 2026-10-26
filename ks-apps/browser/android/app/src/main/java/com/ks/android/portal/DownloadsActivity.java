@@ -845,8 +845,10 @@ public class DownloadsActivity extends Activity {
             return;
         }
         Uri uri = contentUriFor(item);
+        String mime = ApkInfoLoader.isMinecraftPack(item.fileName)
+                ? "application/octet-stream" : mimeTypeFor(item, uri);
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(uri, mimeTypeFor(item, uri));
+        intent.setDataAndType(uri, mime);
         intent.setPackage(app.packageName);
         intent.setClipData(ClipData.newRawUri(item.fileName, uri));
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -923,13 +925,24 @@ public class DownloadsActivity extends Activity {
     }
 
     private Uri contentUriFor(DownloadItem item) {
+        Uri fileUri = null;
+        if (!TextUtils.isEmpty(item.filePath)) {
+            File file = new File(item.filePath);
+            if (file.isFile()) {
+                fileUri = DownloadFileProvider.getUriForFile(this, file);
+            }
+        }
+        if (ApkInfoLoader.isMinecraftPack(item.fileName) && fileUri != null) {
+            return fileUri;
+        }
         if (!TextUtils.isEmpty(item.contentUri)) {
             try {
                 return Uri.parse(item.contentUri);
             } catch (Exception ignored) {
             }
         }
-        return DownloadFileProvider.getUriForFile(this, new File(item.filePath));
+        return fileUri != null ? fileUri
+                : DownloadFileProvider.getUriForFile(this, new File(item.filePath));
     }
 
     private String mimeTypeFor(DownloadItem item, Uri uri) {

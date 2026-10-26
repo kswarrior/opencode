@@ -17,11 +17,14 @@ public class DownloadFileProvider extends ContentProvider {
     public static final String AUTHORITY = "com.ks.android.portal.files";
 
     public static Uri getUriForFile(Context context, File file) {
-        return new Uri.Builder()
-                .scheme("content")
-                .authority(AUTHORITY)
-                .appendPath(file.getAbsolutePath())
-                .build();
+        Uri.Builder builder = new Uri.Builder().scheme("content").authority(AUTHORITY);
+        String[] segments = file.getAbsolutePath().split("/");
+        for (String segment : segments) {
+            if (segment.length() > 0) {
+                builder.appendPath(segment);
+            }
+        }
+        return builder.build();
     }
 
     @Override
