@@ -90,6 +90,8 @@ The major version must be no higher than the Java version used by the oldest tar
 
 Common code stays on the `org.bukkit.*` row. Anything below it needs an adapter and a runtime check.
 
+Some Spigot additions are methods or nested types on `org.bukkit` classes, such as `Player#spigot()`. If CraftBukkit must load the JAR, avoid those additions and test on CraftBukkit itself; package names alone are not proof of CraftBukkit compatibility.
+
 ## Paper-only features
 
 Paper adds Adventure, Brigadier commands, async chunk APIs, the Paper plugin loader, and more. They are not present on Spigot or CraftBukkit.
@@ -191,6 +193,8 @@ For each run:
 - Paper-only plugins: `paper-plugin.yml` and the Paper plugin loader are not valid for the Spigot/Bukkit target.
 
 ## MCP-assisted checks
+
+Use the `context7` MCP with library `/websites/hub_spigotmc_javadocs_spigot` to verify Spigot API classes, methods, and event signatures.
 
 Use the `minecraft-skills` MCP:
 

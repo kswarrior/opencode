@@ -22,6 +22,7 @@ Build one JAR against the Spigot API with a single `plugin.yml`. The same JAR mu
 2. Confirm whether CraftBukkit must load the JAR. If yes, avoid Spigot-only additions such as `Player#spigot()` and `org.spigotmc.event.*`.
 3. Confirm whether Paper-only features are required. If yes, isolate them in adapter classes.
 4. Use the `minecraft-skills` MCP to verify current versions, command syntax, and item/block data instead of guessing.
+5. Use the `context7` MCP library `/websites/hub_spigotmc_javadocs_spigot` to verify Spigot API classes and methods.
 
 | Minecraft line | Java | Spigot API | api-version |
 | --- | --- | --- | --- |
