@@ -1,36 +1,48 @@
 ---
 name: minecraft-plugin-dev
-description: Use when creating, editing, or debugging a Minecraft Java server plugin for Paper, Spigot, Purpur, Folia, or Bukkit, including JavaPlugin lifecycle, plugin.yml, Gradle or Maven builds, commands, events, configuration, PersistentDataContainer, and shading.
+description: Use when creating, editing, or debugging a Minecraft Java server plugin targeting the Spigot API for one JAR that runs on Spigot, Bukkit, Paper, and Purpur, including JavaPlugin lifecycle, plugin.yml, api-version, Gradle or Maven builds, commands, events, configuration, PersistentDataContainer, and shading.
 ---
 
 # Minecraft plugin development
 
+## Default target
+
+Build one JAR against the Spigot API with a single `plugin.yml`. The same JAR must load on Spigot, CraftBukkit (Bukkit), Paper, and Purpur.
+
+- Compile against `org.spigotmc:spigot-api`.
+- Use only `org.bukkit.*` APIs in shared code when CraftBukkit support is required. Spigot-only APIs belong behind an optional adapter or are avoided.
+- Ship `plugin.yml`, not `paper-plugin.yml`.
+- Set `api-version` to the oldest Minecraft version the JAR supports.
+- Compile with the Java version required by the oldest server in the supported range.
+- Do not set `folia-supported`; Folia is not part of this target.
+
 ## Decide the target before writing code
 
-1. Confirm the server software: Paper, Spigot, Purpur, Folia, CraftBukkit, or a proxy such as Velocity or BungeeCord.
-2. Confirm the minimum Minecraft version and the Java version available on that server.
-3. Confirm whether one JAR must run on several server types or several Minecraft versions. If yes, use the `minecraft-plugin-compat` skill.
+1. Confirm the minimum Minecraft version. This sets `api-version` and the Java release level.
+2. Confirm whether CraftBukkit must load the JAR. If yes, avoid Spigot-only additions such as `Player#spigot()` and `org.spigotmc.event.*`.
+3. Confirm whether Paper-only features are required. If yes, isolate them in adapter classes.
 4. Use the `minecraft-skills` MCP to verify current versions, command syntax, and item/block data instead of guessing.
 
-| Minecraft line | Java | Spigot API | Paper API |
+| Minecraft line | Java | Spigot API | api-version |
 | --- | --- | --- | --- |
-| 1.17 to 1.20.4 | 17 | `1.20.4-R0.1-SNAPSHOT` | matching `1.20.4-R0.1-SNAPSHOT` |
-| 1.20.5 to 1.21.11 | 21 | `1.21.11-R0.2-SNAPSHOT` | `1.21.11-R0.1-SNAPSHOT` |
-| 26.1 to 26.3 | 25 | `26.3-R0.1-SNAPSHOT` | build-qualified, for example `26.3.build.+` |
+| 1.17 to 1.20.4 | 17 | `1.20.4-R0.1-SNAPSHOT` | `1.20.4` |
+| 1.20.5 to 1.21.11 | 21 | `1.21.11-R0.2-SNAPSHOT` | `1.21.11` |
+| 26.1 to 26.3 | 25 | `26.3-R0.1-SNAPSHOT` | `26.3` |
 
-Spigot still uses the old `version-R0.1-SNAPSHOT` naming. Paper 26.x uses build-qualified versions such as `26.3.build.223-stable`. Query `https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/maven-metadata.xml` or use the `minecraft-skills` MCP before pinning a Paper version.
+Spigot still uses the old `version-R0.1-SNAPSHOT` naming. Paper 26.x API versions are build-qualified, but this target does not need the Paper API. Query Maven metadata or use the `minecraft-skills` MCP `latest_version` tool before pinning a version.
 
 Purpur uses the Paper API plus optional Purpur-specific API. Paper forks such as Pufferfish and Leaf are normally Paper-compatible. Velocity and BungeeCord are proxies with different plugin APIs and cannot share the Bukkit plugin entrypoint.
 
 ## One JAR rule of thumb
 
-For a JAR that must load on Paper, Spigot, Purpur, and Folia:
+For a JAR that must load on Spigot, CraftBukkit, Paper, and Purpur:
 
 - Use `plugin.yml`. Do not use `paper-plugin.yml`; Spigot ignores it and Paper may prefer it, producing different behavior per platform.
 - Compile against the oldest Spigot API in the supported range.
-- Keep `io.papermc.paper.*`, Folia scheduler classes, Adventure classes, and NMS out of the main class.
+- Stick to `org.bukkit.*` in common code. Spigot APIs are available on Spigot and Paper, but not necessarily on CraftBukkit.
+- Keep `io.papermc.paper.*`, Adventure classes, Purpur-specific classes, and NMS out of the main class.
 - Set `api-version` to the oldest Minecraft version actually supported.
-- Set `folia-supported: true` only after the scheduling audit passes. Folia refuses to load plugins that do not declare support, which is safer than loading broken code.
+- Do not set `folia-supported: true`. Folia requires a separate scheduler audit and is not covered by this target.
 - If Paper-only features are required, put them in separate adapter classes and load them only when the relevant classes are present. See `minecraft-plugin-compat`.
 
 ## Gradle build
@@ -46,17 +58,25 @@ plugins {
 group = "dev.lifestead"
 version = "1.0.0"
 
+val spigotApiVersion = "26.3-R0.1-SNAPSHOT"
+val javaVersion = 25
+
 repositories {
     mavenCentral()
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:26.3-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:$spigotApiVersion")
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(25))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(javaVersion))
+}
+
+tasks.withType<org.gradle.api.tasks.compile.JavaCompile>().configureEach {
+    options.encoding = "UTF-8"
+    options.release.set(javaVersion)
 }
 
 tasks.processResources {
@@ -75,12 +95,14 @@ tasks.build {
 }
 ```
 
+For a 1.21.11 through 26.3 JAR, set `spigotApiVersion = "1.21.11-R0.2-SNAPSHOT"`, `javaVersion = 21`, and `api-version: '1.21.11'`. For a 26.3-only JAR, use `26.3-R0.1-SNAPSHOT`, Java 25, and `api-version: '26.3'`. The Spigot API version, Java release, and `api-version` must all describe the oldest server that must load the JAR.
+
 - Use `compileOnly` for server APIs.
 - Use `implementation` for libraries that must be bundled, then relocate them.
 - Do not shade the server API, Bukkit, Spigot, Paper, Adventure, Gson, Guava, or SLF4J.
-- Add the Paper repository only when compiling against the Paper API: `maven("https://repo.papermc.io/repository/maven-public/")`.
+- Add the Paper repository only if an isolated Paper-only adapter compiles against the Paper API: `maven("https://repo.papermc.io/repository/maven-public/")`.
 - Add the Spigot repository when compiling against Spigot API snapshots.
-- For Maven, use `spigot-api` or `paper-api` with `<scope>provided</scope>` and configure `maven-shade-plugin` with relocation.
+- For Maven, use `spigot-api` with `<scope>provided</scope>` and configure `maven-shade-plugin` with relocation.
 
 Build and inspect:
 
@@ -120,9 +142,10 @@ softdepend: [PlaceholderAPI, Vault]
 Rules:
 
 - `main` must extend `org.bukkit.plugin.java.JavaPlugin`.
-- `api-version` must be a literal supported version, such as `1.20.6` or `26.3`, not a wildcard.
+- `api-version` must be a literal supported version, such as `1.20.6` or `26.3`, not a wildcard. It must match the oldest target server.
+- The JAR's class-file version must be no newer than the Java version used by that oldest server.
 - Use `depend` only for required plugins. Use `softdepend` for optional integrations.
-- `folia-supported: true` is a promise that all scheduling and shared state is Folia-safe.
+- Do not set `folia-supported` for this target. Folia requires a separate scheduler audit.
 - Keep command declarations and the `setExecutor` registration in sync.
 
 ## Main class lifecycle
