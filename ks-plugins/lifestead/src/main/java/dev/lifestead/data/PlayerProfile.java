@@ -68,4 +68,36 @@ public final class PlayerProfile {
     public void setLastSeen(long lastSeen) {
         this.lastSeen = lastSeen;
     }
+
+    public int getKills() {
+        return kills;
+    }
+
+    public void setKills(int kills) {
+        this.kills = Math.max(0, kills);
+    }
+
+    public long getLastKillAt() {
+        return lastKillAt;
+    }
+
+    public void setLastKillAt(long lastKillAt) {
+        this.lastKillAt = Math.max(0L, lastKillAt);
+    }
+
+    public long getEliminatedAt() {
+        return eliminatedAt;
+    }
+
+    public void setEliminatedAt(long eliminatedAt) {
+        this.eliminatedAt = Math.max(0L, eliminatedAt);
+    }
+
+    public int getPendingHeartItems() {
+        return pendingHeartItems;
+    }
+
+    public void setPendingHeartItems(int pendingHeartItems) {
+        this.pendingHeartItems = Math.max(0, pendingHeartItems);
+    }
 }

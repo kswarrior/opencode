@@ -23,18 +23,27 @@ public final class SqliteDataStore implements DataStore {
                 name TEXT NOT NULL,
                 hearts INTEGER NOT NULL,
                 eliminated INTEGER NOT NULL,
-                last_seen INTEGER NOT NULL
+                last_seen INTEGER NOT NULL,
+                kills INTEGER NOT NULL DEFAULT 0,
+                last_kill_at INTEGER NOT NULL DEFAULT 0,
+                eliminated_at INTEGER NOT NULL DEFAULT 0,
+                pending_heart_items INTEGER NOT NULL DEFAULT 0
             )
             """;
 
     private static final String UPSERT = """
-            INSERT INTO lifestead_players (uuid, name, hearts, eliminated, last_seen)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO lifestead_players (uuid, name, hearts, eliminated, last_seen,
+                kills, last_kill_at, eliminated_at, pending_heart_items)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(uuid) DO UPDATE SET
                 name = excluded.name,
                 hearts = excluded.hearts,
                 eliminated = excluded.eliminated,
-                last_seen = excluded.last_seen
+                last_seen = excluded.last_seen,
+                kills = excluded.kills,
+                last_kill_at = excluded.last_kill_at,
+                eliminated_at = excluded.eliminated_at,
+                pending_heart_items = excluded.pending_heart_items
             """;
 
     private final LifesteadPlugin plugin;
@@ -54,13 +63,38 @@ public final class SqliteDataStore implements DataStore {
         try (Statement statement = connection.createStatement()) {
             statement.execute(CREATE_TABLE);
         }
+        ensureColumns();
         loadAll();
+    }
+
+    private void ensureColumns() throws SQLException {
+        java.util.Set<String> columns = new java.util.HashSet<>();
+        try (Statement statement = connection.createStatement();
+                ResultSet result = statement.executeQuery("PRAGMA table_info(lifestead_players)")) {
+            while (result.next()) {
+                columns.add(result.getString("name"));
+            }
+        }
+        addColumn(columns, "kills", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "last_kill_at", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "eliminated_at", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "pending_heart_items", "INTEGER NOT NULL DEFAULT 0");
+    }
+
+    private void addColumn(java.util.Set<String> columns, String name, String definition) throws SQLException {
+        if (columns.contains(name)) {
+            return;
+        }
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("ALTER TABLE lifestead_players ADD COLUMN " + name + " " + definition);
+        }
     }
 
     private void loadAll() throws SQLException {
         try (Statement statement = connection.createStatement();
                 ResultSet result = statement.executeQuery(
-                        "SELECT uuid, name, hearts, eliminated, last_seen FROM lifestead_players")) {
+                        "SELECT uuid, name, hearts, eliminated, last_seen, kills, last_kill_at,"
+                                + " eliminated_at, pending_heart_items FROM lifestead_players")) {
             while (result.next()) {
                 try {
                     UUID uuid = UUID.fromString(result.getString("uuid"));
@@ -69,7 +103,11 @@ public final class SqliteDataStore implements DataStore {
                             result.getString("name"),
                             result.getInt("hearts"),
                             result.getInt("eliminated") != 0,
-                            result.getLong("last_seen")));
+                            result.getLong("last_seen"),
+                            result.getInt("kills"),
+                            result.getLong("last_kill_at"),
+                            result.getLong("eliminated_at"),
+                            result.getInt("pending_heart_items")));
                 } catch (IllegalArgumentException exception) {
                     plugin.getLogger().warning("Skipping invalid SQLite player UUID.");
                 }

@@ -47,7 +47,12 @@ public final class YamlDataStore implements DataStore {
                 int hearts = player.getInt("hearts", plugin.getSettings().startHearts);
                 boolean eliminated = player.getBoolean("eliminated", false);
                 long lastSeen = player.getLong("last-seen", 0L);
-                profiles.put(uuid, new PlayerProfile(uuid, name, hearts, eliminated, lastSeen));
+                int kills = player.getInt("kills", 0);
+                long lastKillAt = player.getLong("last-kill-at", 0L);
+                long eliminatedAt = player.getLong("eliminated-at", eliminated ? lastSeen : 0L);
+                int pendingHeartItems = player.getInt("pending-heart-items", 0);
+                profiles.put(uuid, new PlayerProfile(uuid, name, hearts, eliminated, lastSeen,
+                        kills, lastKillAt, eliminatedAt, pendingHeartItems));
             } catch (IllegalArgumentException exception) {
                 plugin.getLogger().warning("Skipping invalid player data key: " + key);
             }
@@ -103,6 +108,10 @@ public final class YamlDataStore implements DataStore {
             section.set(path + ".hearts", profile.getHearts());
             section.set(path + ".eliminated", profile.isEliminated());
             section.set(path + ".last-seen", profile.getLastSeen());
+            section.set(path + ".kills", profile.getKills());
+            section.set(path + ".last-kill-at", profile.getLastKillAt());
+            section.set(path + ".eliminated-at", profile.getEliminatedAt());
+            section.set(path + ".pending-heart-items", profile.getPendingHeartItems());
         }
         File temporary = new File(file.getParentFile(), file.getName() + ".tmp");
         try {
