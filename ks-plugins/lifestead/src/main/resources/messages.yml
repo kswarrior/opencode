@@ -1,0 +1,88 @@
+prefix: '&8[&cLifestead&8] &r'
+
+general:
+  no-permission: '&cYou do not have permission to do that.'
+  player-only: '&cThat command can only be used by a player.'
+  unknown-command: '&cUnknown subcommand. Use &f/ls help&c.'
+  player-not-found: '&cPlayer &f{player}&c was not found.'
+  invalid-number: '&cInvalid number: &f{input}&c.'
+  reloaded: '&aConfiguration, messages, and recipes reloaded.'
+  eliminated-action: '&cYou are eliminated. Ask someone to revive you.'
+  database-error: '&cA database error occurred. Check the server console.'
+
+hearts:
+  display: '&f{player} &7has &c{hearts}&7 heart(s) &8(&7min &c{min}&8, &7max &c{max}&8).'
+  set: '&aSet &f{player}&a''s hearts to &c{hearts}&a.'
+  added: '&aAdded &c{amount} &aheart(s) to &f{player}&a.'
+  removed: '&cRemoved &c{amount} &cheart(s) from &f{player}&c.'
+  gained: '&aYou stole &c{amount} &aheart(s) from &f{victim}&a.'
+  lost: '&cYou lost &c{amount} &cheart(s).'
+  broadcast: '&f{killer} &7stole &c{amount} &7heart(s) from &f{victim}&7.'
+  at-max: '&cYou are already at the maximum of &f{max} &cheart(s).'
+  at-min: '&cYou are already at the minimum of &f{min} &cheart(s).'
+  withdraw: '&aWithdrew &c{amount} &aheart item(s).'
+  withdraw-guard: '&cYou must keep at least &f{guard} &cheart(s) in your body.'
+  deposit: '&aDeposited &c{amount} &aheart item(s).'
+  no-items: '&cYou do not have any heart items.'
+  inventory-full: '&eYour inventory was full, so some heart items were dropped at your feet.'
+  item-used: '&aYou gained &c1 heart&a.'
+  item-max: '&cYou are already at the maximum number of hearts.'
+
+items:
+  beacon-opened: '&dRevive Beacon opened.'
+  beacon-consumed: '&dThe Revive Beacon was consumed.'
+  beacon-missing: '&cYou must be holding a Revive Beacon to revive someone.'
+
+elimination:
+  eliminated: '&c{victim} &7ran out of hearts and was eliminated&8 ({cause})&7.'
+  eliminated-self: '&cYou have been eliminated! Your hearts reached zero.'
+  spectator: '&7You are now a spectator. Wait for someone to revive you.'
+  not-eliminated: '&c{player} is not eliminated.'
+  revive-offline: '&e{player} will be revived the next time they join.'
+  revived: '&aYou revived &f{player} &awith &c{hearts} &aheart(s).'
+  revive-self: '&aYou have been revived!'
+  revive-broadcast: '&d{player} &7has been revived with &c{hearts} &7heart(s).'
+  beacon-empty: '&7No eliminated players are available to revive.'
+  reset: '&aReset hearts and elimination state for &f{player}&a.'
+  reset-all: '&aReset hearts and elimination state for &f{count}&a player(s).'
+  eliminate-offline: '&c{player} was eliminated.'
+
+combat-log:
+  penalty: '&c{player} &7combat logged and lost &c{hearts} &7heart(s).'
+  eliminated: '&c{player} &7combat logged at zero hearts and was eliminated.'
+
+gui:
+  revive-title: '&8Revive Beacon &7- Page {page}/{pages}'
+  revive-info: '&cEliminated Players'
+  revive-info-lore:
+    - '&7Page &f{page}&7/&f{pages}'
+    - '&7Total: &f{total}'
+  revive-head-lore:
+    - '&7Click to revive &f{player}&7.'
+    - '&8Hearts on revive: &c{hearts}'
+  prev: '&aPrevious Page'
+  next: '&aNext Page'
+  close: '&cClose'
+  recipe-menu-title: '&8Lifestead Recipes'
+  recipe-title: '&8Recipe: {recipe}'
+  recipe-heart: '&cHeart'
+  recipe-beacon: '&dRevive Beacon'
+  recipe-ingredients: '&7Ingredients'
+  recipe-result: '&aResult'
+  recipe-back: '&eBack'
+  recipe-empty: '&8Empty'
+
+commands:
+  help-header: '&8&m-----&r &cLifestead &7Commands &8&m-----'
+  help:
+    - '&c/ls help &8- &7Show this help.'
+    - '&c/ls hearts [player] &8- &7View heart counts.'
+    - '&c/ls withdraw [amount] &8- &7Turn hearts into items.'
+    - '&c/ls deposit [amount] &8- &7Turn heart items into hearts.'
+    - '&c/ls recipe [heart|beacon|all] &8- &7Open the recipe viewer.'
+    - '&c/ls revive <player> &8- &7Revive an eliminated player.'
+    - '&c/ls giveheart <player> [amount] &8- &7Give heart items.'
+    - '&c/ls sethearts <player> <amount> &8- &7Set a heart count.'
+    - '&c/ls eliminate <player> &8- &7Eliminate a player.'
+    - '&c/ls reset <player|all> &8- &7Reset hearts and elimination.'
+    - '&c/ls reload &8- &7Reload configuration and recipes.'
