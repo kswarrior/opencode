@@ -66,6 +66,16 @@ async function main() {
 
     await sendCommand(beta, `/ls giveheart ${ALPHA} 2`, /Gave .*heart item/)
     await sleep(1000)
+    const inventoryDump = alpha.inventory.items().map((item) => ({
+      name: item.name,
+      displayName: item.displayName,
+      customName: plainComponent(item.customName),
+      count: item.count
+    }))
+    console.log(`Alpha inventory: ${JSON.stringify(inventoryDump)}`)
+    server.command('data get entity E2EAlpha Inventory')
+    await sleep(1000)
+    console.log(server.lines.filter((line) => line.includes('E2EAlpha has the following entity data')).join('\n'))
     const heartItems = customItemCount(alpha, 'Heart')
     console.log(`Alpha heart items: ${heartItems}`)
     if (heartItems < 2) {
