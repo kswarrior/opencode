@@ -3,7 +3,9 @@ package dev.lifestead.listener;
 import dev.lifestead.LifesteadPlugin;
 import dev.lifestead.Settings;
 import dev.lifestead.data.PlayerProfile;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import org.bukkit.GameMode;
@@ -32,8 +34,11 @@ public final class DeathListener implements Listener {
         }
     }
 
+    private static final long DUPLICATE_DEATH_WINDOW_MILLIS = 1000L;
+
     private final LifesteadPlugin plugin;
     private final Set<UUID> processing = new HashSet<>();
+    private final Map<UUID, Long> recentlyProcessed = new HashMap<>();
 
     public DeathListener(LifesteadPlugin plugin) {
         this.plugin = plugin;

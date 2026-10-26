@@ -10,9 +10,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 public final class SqliteDataStore implements DataStore {
@@ -68,7 +70,7 @@ public final class SqliteDataStore implements DataStore {
     }
 
     private void ensureColumns() throws SQLException {
-        java.util.Set<String> columns = new java.util.HashSet<>();
+        Set<String> columns = new HashSet<>();
         try (Statement statement = connection.createStatement();
                 ResultSet result = statement.executeQuery("PRAGMA table_info(lifestead_players)")) {
             while (result.next()) {
@@ -81,7 +83,7 @@ public final class SqliteDataStore implements DataStore {
         addColumn(columns, "pending_heart_items", "INTEGER NOT NULL DEFAULT 0");
     }
 
-    private void addColumn(java.util.Set<String> columns, String name, String definition) throws SQLException {
+    private void addColumn(Set<String> columns, String name, String definition) throws SQLException {
         if (columns.contains(name)) {
             return;
         }
@@ -196,6 +198,10 @@ public final class SqliteDataStore implements DataStore {
         statement.setInt(3, profile.getHearts());
         statement.setInt(4, profile.isEliminated() ? 1 : 0);
         statement.setLong(5, profile.getLastSeen());
+        statement.setInt(6, profile.getKills());
+        statement.setLong(7, profile.getLastKillAt());
+        statement.setLong(8, profile.getEliminatedAt());
+        statement.setInt(9, profile.getPendingHeartItems());
     }
 
     @Override
