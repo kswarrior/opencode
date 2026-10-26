@@ -18,7 +18,6 @@ import {
   clickAndWaitForClose,
   clickAndWaitForWindow,
   closeCurrentWindow,
-  connectBot as _unusedConnectBot,
   countLifesteadItems,
   createTestBot,
   customItemCount,
@@ -41,6 +40,7 @@ import {
   windowTitle
 } from '../lib/bot.mjs'
 import { PLUGIN_JAR, SERVER_DIR } from '../lib/paths.mjs'
+import { PaperServer } from '../lib/server.mjs'
 
 const SEED_COUNT = 37
 const START_HEARTS = 10
@@ -260,9 +260,7 @@ before(async () => {
       }
     }
   })
-  server = (await import('../lib/server.mjs')).PaperServer
-    ? new (await import('../lib/server.mjs')).PaperServer({ dir: SERVER_DIR })
-    : null
+  server = new PaperServer({ dir: SERVER_DIR })
   await server.start()
   await server.commandExpect(`op ${ALPHA}`, /Opped|Nothing changed/)
   await server.commandExpect(`op ${BETA}`, /Opped|Nothing changed/)
@@ -608,10 +606,15 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     const redstone = source('redstone_block')
     assert.ok([diamond, gold, star, redstone].every((slot) => slot >= 0))
     await alpha.moveSlotItem(diamond, 2)
+    await sleep(200)
     await alpha.moveSlotItem(star, 5)
+    await sleep(200)
     await alpha.moveSlotItem(redstone, 8)
+    await sleep(200)
     await alpha.clickWindow(gold, 0, 0)
+    await sleep(200)
     await alpha.clickWindow(4, 1, 0)
+    await sleep(200)
     await alpha.clickWindow(6, 1, 0)
     await sleep(700)
     const result = window.slots[0]
@@ -638,7 +641,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.ok(heartSlot >= 0)
     await alpha.moveSlotItem(heartSlot, 1)
     await sleep(500)
-    assert.equal(window.slots[0], null)
+    assert.ok(!window.slots[0])
     await closeCurrentWindow(alpha)
     await clearInventory(ALPHA)
   })
@@ -740,7 +743,6 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await resetAll()
     await setPvpDamage(1)
     await preparePvp(10)
-    const death = waitForPlayerDeath(beta, { timeout: 5000 }).catch(() => null)
     await attackPlayer(alpha, beta, { hits: 1, interval: 300 })
     await sleep(500)
     await disconnect(beta)
@@ -760,7 +762,6 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     beta = await createTestBot({ username: BETA })
     await waitForGameMode(beta, 'spectator')
     assert.equal(await hearts(beta), 0)
-    await death
     await revive(BETA)
     await setPvpDamage(1)
     await resetAll()
@@ -822,7 +823,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await ended
     assert.match(beta.kickReason || '', /ran out of hearts/i)
     beta = null
-    const bans = await server.commandExpect('banlist players', /ban/i)
+    const bans = await server.commandExpect('banlist players', /E2EBeta/)
     assert.match(bans, /E2EBeta/)
     await setConfig({ elimination: { mode: 'SPECTATOR' } })
     await resetPlayer(BETA)
