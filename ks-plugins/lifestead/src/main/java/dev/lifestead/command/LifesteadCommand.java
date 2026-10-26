@@ -192,8 +192,8 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
                     "usage", "/ls giveheart <player> [amount]");
             return;
         }
-        Player target = Bukkit.getPlayerExact(args[1]);
-        if (target == null) {
+        PlayerProfile profile = findProfile(args[1]);
+        if (profile == null) {
             notFound(sender, args[1]);
             return;
         }
@@ -201,9 +201,18 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         if (amount == null) {
             return;
         }
-        plugin.getItems().giveHearts(target, amount);
-        plugin.getMessages().send(sender, "hearts.given",
-                "player", target.getName(), "amount", Integer.toString(amount));
+        Player target = Bukkit.getPlayer(profile.getUuid());
+        if (target != null) {
+            plugin.getItems().giveHearts(target, amount);
+            plugin.getMessages().send(sender, "hearts.given",
+                    "player", target.getName(), "amount", Integer.toString(amount));
+            return;
+        }
+        long total = (long) profile.getPendingHeartItems() + amount;
+        profile.setPendingHeartItems((int) Math.min(Integer.MAX_VALUE, total));
+        plugin.getDataStore().save(profile);
+        plugin.getMessages().send(sender, "hearts.given-offline",
+                "player", profile.getName(), "amount", Integer.toString(amount));
     }
 
     private void setHearts(CommandSender sender, String[] args) {

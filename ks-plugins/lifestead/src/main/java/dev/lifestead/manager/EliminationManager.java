@@ -87,6 +87,7 @@ public final class EliminationManager {
                 }
             }
             plugin.getHearts().applyHealth(online);
+            plugin.getItems().deliverPendingHearts(online);
         }
         return true;
     }
@@ -121,6 +122,7 @@ public final class EliminationManager {
                     online.setHealth(max);
                     plugin.getMessages().send(online, "elimination.revive-self");
                     plugin.getEffects().revived(online);
+                    plugin.getItems().deliverPendingHearts(online);
                 }
             });
             if (actor != null) {
