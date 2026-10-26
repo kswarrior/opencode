@@ -101,7 +101,7 @@ public final class Settings {
                 : configuredReason;
         eliminateAnnounce = config.getBoolean("elimination.announce", true);
 
-        reviveHearts = clamp(config.getInt("revive.hearts", 4), minHearts, maxHearts);
+        reviveHearts = clamp(config.getInt("revive.hearts", 4), Math.max(1, minHearts), maxHearts);
         reviveTeleport = config.getBoolean("revive.teleport-to-spawn", true);
         reviveUseCoordinates = config.getBoolean("revive.use-coordinates", false);
         reviveSpawnWorld = config.getString("revive.spawn-world", "");

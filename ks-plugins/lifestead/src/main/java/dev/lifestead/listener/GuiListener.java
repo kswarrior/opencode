@@ -63,7 +63,9 @@ public final class GuiListener implements Listener {
         PlayerProfile profile = plugin.getDataStore().get(target);
         if (profile == null || !profile.isEliminated()) {
             plugin.getMessages().send(player, "elimination.not-eliminated",
-                    "player", profile == null ? "Unknown" : profile.getName());
+                    "player", profile == null
+                            ? plugin.getMessages().get("general.unknown-player")
+                            : profile.getName());
             return;
         }
 

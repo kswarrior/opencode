@@ -20,7 +20,7 @@ public final class EliminationManager {
         this.plugin = plugin;
     }
 
-    public void eliminate(PlayerProfile profile, String cause) {
+    public void eliminate(PlayerProfile profile, String causeKey) {
         if (profile.isEliminated()) {
             return;
         }
@@ -62,7 +62,8 @@ public final class EliminationManager {
         }
         if (settings.eliminateAnnounce) {
             plugin.getMessages().broadcast("elimination.eliminated",
-                    "victim", profile.getName(), "cause", cause);
+                    "victim", profile.getName(),
+                    "cause", plugin.getMessages().get("elimination.causes." + causeKey));
         }
     }
 

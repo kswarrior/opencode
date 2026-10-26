@@ -106,7 +106,7 @@ public final class DeathListener implements Listener {
         }
 
         if (victimProfile.getHearts() <= 0) {
-            plugin.getEliminations().eliminate(victimProfile, category.display);
+            plugin.getEliminations().eliminate(victimProfile, category.causeKey);
         }
 
         if (category != Category.PVP || killer == null || killer.equals(victim)) {
