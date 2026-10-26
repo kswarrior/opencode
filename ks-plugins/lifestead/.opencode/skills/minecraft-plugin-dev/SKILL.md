@@ -90,7 +90,7 @@ tasks.shadowJar {
     relocate("com.example.lib", "dev.lifestead.lib")
 }
 
-tasks.build {
+tasks.named("build") {
     dependsOn(tasks.shadowJar)
 }
 ```
@@ -179,7 +179,7 @@ public final class LifeSteadPlugin extends JavaPlugin {
 
 - Never assume `getCommand(...)` is non-null.
 - Cancel tasks and close database or file handles in `onDisable`.
-- Do not call `Bukkit.getScheduler()` from cross-platform code if Folia support is claimed. Use the adapter pattern in `minecraft-plugin-compat`.
+- `Bukkit.getScheduler()` is valid on Spigot, CraftBukkit, Paper, and Purpur. It is not valid on Folia, which is outside this target.
 - Log through `getLogger()`, not `System.out`.
 
 ## Commands
