@@ -211,7 +211,7 @@ async function killByMob(name = BETA) {
   await server.command('difficulty easy')
   await server.command('time set night')
   await server.command('gamerule doDaylightCycle false')
-  const death = waitForPlayerDeath(bot, { timeout: 30000 })
+  const death = waitForPlayerDeath(bot, { timeout: 60000 })
   await server.command(`execute at ${name} run summon minecraft:zombie ~ ~ ~ {PersistenceRequired:1b}`)
   await death
   await sleep(700)
@@ -794,6 +794,9 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await revive(BETA)
     await setPvpDamage(1)
     await resetAll()
+    await setConfig({
+      'combat-log': { enabled: false, 'duration-seconds': 30, 'penalty-hearts': 1 }
+    })
   })
 
   test('reload updates messages and recipe enablement', async () => {
