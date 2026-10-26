@@ -90,6 +90,10 @@ async function main() {
 
     const recipeWindow = await openWindowWithCommand(alpha, '/ls recipe')
     const title = windowTitle(recipeWindow)
+    console.log(`Recipe window raw: ${JSON.stringify(recipeWindow.title)}`)
+    console.log(`Recipe window keys: ${JSON.stringify(Object.keys(recipeWindow.title || {}))}`)
+    console.log(`Recipe window toString: ${String(recipeWindow.title)}`)
+    console.log(`Recipe window slots: ${JSON.stringify(recipeWindow.slots.map((item) => item ? item.name : null).filter(Boolean))}`)
     console.log(`Recipe window: ${title || plainComponent(recipeWindow.title)}`)
     if (!title.includes('Lifestead Recipes')) {
       throw new Error(`Unexpected recipe window title: ${title}`)
