@@ -31,9 +31,6 @@ public final class ItemListener implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onInteract(PlayerInteractEvent event) {
-        plugin.getLogger().info("DEBUG interact player=" + event.getPlayer().getName()
-                + " action=" + event.getAction() + " hand=" + event.getHand()
-                + " item=" + event.getItem() + " heart=" + plugin.getItems().isHeart(event.getItem()));
         if (event.getHand() != EquipmentSlot.HAND) {
             return;
         }
