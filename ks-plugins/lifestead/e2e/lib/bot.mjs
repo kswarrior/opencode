@@ -284,6 +284,18 @@ export async function attackPlayer(killer, victim, { hits = 16, interval = 650 }
   }
 }
 
+export async function waitForRespawn(bot, { timeout = 20000 } = {}) {
+  if (bot.isAlive) {
+    return
+  }
+  await Promise.race([
+    once(bot, 'spawn').then(() => undefined),
+    sleep(timeout).then(() => {
+      throw new Error(`Timed out waiting for ${bot.username} to respawn`)
+    })
+  ])
+}
+
 export async function waitForPlayerDeath(bot, { timeout = 20000 } = {}) {
   if (!bot.isAlive) {
     return
