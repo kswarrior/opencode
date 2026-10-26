@@ -111,7 +111,7 @@ function serverProperties() {
     'function-permission-level': 2,
     gamemode: 'survival',
     'generate-structures': false,
-    'generator-settings': '{}',
+    'generator-settings': '{"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":2},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains"}',
     hardcore: false,
     'hide-online-players': false,
     'initial-disabled-packs': '',

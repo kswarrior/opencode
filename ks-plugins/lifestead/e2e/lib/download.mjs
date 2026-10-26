@@ -6,7 +6,9 @@ import { CACHE_DIR, PAPER_VERSION } from './paths.mjs'
 const USER_AGENT = 'lifestead-e2e/1.0 (Minecraft plugin test harness)'
 const PAPER_API = 'https://fill.papermc.io/v3/projects/paper'
 const PLACEHOLDER_API_URL =
-  'https://repo.extendedclip.com/releases/me/clip/placeholderapi/2.12.3/placeholderapi-2.12.3.jar'
+  'https://github.com/PlaceholderAPI/PlaceholderAPI/releases/download/2.12.3/PlaceholderAPI-2.12.3.jar'
+const PLACEHOLDER_API_SHA256 =
+  'fde03259f5af6938f3c33eeb4d814000a1adabf1d2304ce14970be81f609a437'
 
 async function exists(file) {
   try {
@@ -80,12 +82,19 @@ export async function downloadPlaceholderApi() {
   await mkdir(CACHE_DIR, { recursive: true })
   const destination = path.join(CACHE_DIR, 'PlaceholderAPI-2.12.3.jar')
   if (await exists(destination)) {
-    const info = await stat(destination)
-    if (info.size > 1000) {
+    const actual = await sha256(destination)
+    if (actual === PLACEHOLDER_API_SHA256) {
       return { file: destination, cached: true }
     }
     await rm(destination, { force: true })
   }
   const size = await download(PLACEHOLDER_API_URL, destination)
+  const actual = await sha256(destination)
+  if (actual !== PLACEHOLDER_API_SHA256) {
+    await rm(destination, { force: true })
+    throw new Error(
+      `PlaceholderAPI checksum mismatch: expected ${PLACEHOLDER_API_SHA256}, got ${actual}`
+    )
+  }
   return { file: destination, cached: false, size }
 }
