@@ -155,27 +155,7 @@ public final class RecipeManager {
     }
 
     private ItemStack ingredientItem(Material material) {
-        ItemStack item = new ItemStack(material);
-        var meta = item.getItemMeta();
-        if (meta != null) {
-            meta.setDisplayName(plugin.getMessages().colorize("&f" + pretty(material.name())));
-            item.setItemMeta(meta);
-        }
-        return item;
-    }
-
-    private String pretty(String name) {
-        String lower = name.toLowerCase().replace('_', ' ');
-        StringBuilder builder = new StringBuilder();
-        for (String word : lower.split(" ")) {
-            if (!word.isEmpty()) {
-                if (!builder.isEmpty()) {
-                    builder.append(' ');
-                }
-                builder.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
-            }
-        }
-        return builder.toString();
+        return new ItemStack(material);
     }
 
     private Material material(String name) {

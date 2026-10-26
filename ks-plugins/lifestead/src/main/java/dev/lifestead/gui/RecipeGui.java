@@ -86,11 +86,16 @@ public final class RecipeGui implements InventoryHolder {
         ItemStack item = new ItemStack(Material.BOOK);
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
+            boolean enabled = plugin.getRecipes().isEnabled(
+                    mode == Mode.HEART ? ItemManager.HEART : ItemManager.BEACON);
             meta.setDisplayName(plugin.getMessages().get("gui.recipe-ingredients"));
             meta.setLore(List.of(
-                    plugin.getMessages().colorize("&7Type: &f" + (display.shaped() ? "Shaped" : "Shapeless")),
-                    plugin.getMessages().colorize("&7Enabled: &f" + plugin.getRecipes().isEnabled(
-                            mode == Mode.HEART ? ItemManager.HEART : ItemManager.BEACON))));
+                    plugin.getMessages().get("gui.recipe-type",
+                            "type", plugin.getMessages().get(display.shaped()
+                                    ? "gui.recipe-shaped" : "gui.recipe-shapeless")),
+                    plugin.getMessages().get("gui.recipe-enabled",
+                            "enabled", plugin.getMessages().get(enabled
+                                    ? "gui.recipe-yes" : "gui.recipe-no"))));
             item.setItemMeta(meta);
         }
         return item;

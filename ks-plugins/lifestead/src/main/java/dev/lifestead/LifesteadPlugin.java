@@ -87,7 +87,9 @@ public final class LifesteadPlugin extends JavaPlugin {
         if (!previousDatabase.equals(settings.databaseType)) {
             getLogger().warning("The database type changed. Restart the server to switch storage backends.");
         }
+        startTasks();
         heartManager.resyncAll();
+        dataStore.saveAll();
     }
 
     private void registerCommand() {
@@ -110,11 +112,23 @@ public final class LifesteadPlugin extends JavaPlugin {
     }
 
     private void startTasks() {
+        stopTasks();
         long resyncTicks = settings.healthResyncTicks;
         resyncTaskId = getServer().getScheduler().runTaskTimer(this,
                 () -> heartManager.resyncAll(), resyncTicks, resyncTicks).getTaskId();
         antiFarmTaskId = getServer().getScheduler().runTaskTimer(this,
                 () -> antiFarm.prune(), 20L * 60L * 5L, 20L * 60L * 5L).getTaskId();
+    }
+
+    private void stopTasks() {
+        if (resyncTaskId != -1) {
+            getServer().getScheduler().cancelTask(resyncTaskId);
+            resyncTaskId = -1;
+        }
+        if (antiFarmTaskId != -1) {
+            getServer().getScheduler().cancelTask(antiFarmTaskId);
+            antiFarmTaskId = -1;
+        }
     }
 
     private void registerPlaceholder() {
