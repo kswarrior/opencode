@@ -269,7 +269,8 @@ player.getPersistentDataContainer()
 
 - `./gradlew clean build` succeeds.
 - The JAR contains one `plugin.yml` and no bundled server API classes.
+- `spigot-api`, `api-version`, and the Java release all target the oldest supported Minecraft version.
 - Every command in `plugin.yml` has an executor.
 - Every registered listener, task, and resource is cleaned up on disable.
-- The plugin enables and disables cleanly on the oldest and newest supported server.
-- The JAR has been checked with the `minecraft-skills` MCP `validate_paper_plugin_jar` or `inspect_java_targets` tool when available.
+- The same JAR enables and disables cleanly on Spigot, CraftBukkit, Paper, and Purpur at the oldest and newest supported version.
+- The JAR has been checked with the `minecraft-skills` MCP `inspect_java_targets` tool when available. Use `validate_paper_plugin_jar` only as an additional check for Paper compatibility.
