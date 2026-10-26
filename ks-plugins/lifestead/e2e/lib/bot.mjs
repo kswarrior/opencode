@@ -23,6 +23,13 @@ export function plainComponent(value) {
     return value.map(plainComponent).join('')
   }
   if (typeof value === 'object') {
+    if (typeof value.type === 'string' && 'value' in value) {
+      try {
+        return plainComponent(simplify(value))
+      } catch {
+        // Fall through to the generic object handling.
+      }
+    }
     let text = ''
     if (typeof value.text === 'string') {
       text += value.text
