@@ -93,8 +93,16 @@ public final class ItemManager {
     }
 
     public boolean consumeBeaconFromMainHand(Player player) {
+        return consumeFromMainHand(player, BEACON);
+    }
+
+    public boolean consumeHeartFromMainHand(Player player) {
+        return consumeFromMainHand(player, HEART);
+    }
+
+    private boolean consumeFromMainHand(Player player, String type) {
         ItemStack item = player.getInventory().getItemInMainHand();
-        if (!isBeacon(item)) {
+        if (!isType(item, type)) {
             return false;
         }
         int amount = item.getAmount();
@@ -130,10 +138,6 @@ public final class ItemManager {
             giveOrDrop(player, createBeacon(stackSize));
             remaining -= stackSize;
         }
-    }
-
-    public boolean dropIfFullWarning() {
-        return true;
     }
 
     private ItemStack create(String type, String path, Material fallback, int amount) {
