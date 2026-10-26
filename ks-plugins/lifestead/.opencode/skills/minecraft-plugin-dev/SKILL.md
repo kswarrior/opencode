@@ -101,7 +101,6 @@ api-version: '26.3'
 authors: [YourName]
 description: Example plugin description
 website: https://example.com
-folia-supported: true
 commands:
   lifestead:
     description: Main LifeStead command
