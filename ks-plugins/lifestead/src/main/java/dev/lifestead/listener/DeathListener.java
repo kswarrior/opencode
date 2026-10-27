@@ -167,8 +167,10 @@ public final class DeathListener implements Listener {
             return entity;
         }
         if (entity instanceof Projectile projectile) {
-            Entity shooter = projectile.getShooter();
-            return shooter == null ? entity : resolveSource(shooter, depth + 1);
+            if (projectile.getShooter() instanceof Entity shooter) {
+                return resolveSource(shooter, depth + 1);
+            }
+            return entity;
         }
         if (entity instanceof TNTPrimed tnt) {
             return resolveSource(tnt.getSource(), depth + 1);

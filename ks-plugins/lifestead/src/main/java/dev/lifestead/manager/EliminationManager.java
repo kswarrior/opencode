@@ -324,12 +324,16 @@ public final class EliminationManager {
         if (world == null) {
             return null;
         }
-        var border = world.getWorldBorder();
+        org.bukkit.WorldBorder border = world.getWorldBorder();
         if (border.isInside(location)) {
             return location;
         }
-        double x = Math.max(border.getMinX() + 1.0, Math.min(border.getMaxX() - 1.0, location.getX()));
-        double z = Math.max(border.getMinZ() + 1.0, Math.min(border.getMaxZ() - 1.0, location.getZ()));
+        Location center = border.getCenter();
+        double radius = Math.max(1.0, border.getSize() / 2.0);
+        double x = Math.max(center.getX() - radius + 1.0,
+                Math.min(center.getX() + radius - 1.0, location.getX()));
+        double z = Math.max(center.getZ() - radius + 1.0,
+                Math.min(center.getZ() + radius - 1.0, location.getZ()));
         Location clamped = location.clone();
         clamped.setX(x);
         clamped.setZ(z);
@@ -374,7 +378,8 @@ public final class EliminationManager {
                     + "; falling back to a name ban: " + exception.getMessage());
         }
         try {
-            BanList<String> banList = Bukkit.getBanList(BanList.Type.NAME);
+            @SuppressWarnings("rawtypes")
+            BanList banList = Bukkit.getBanList(BanList.Type.NAME);
             if (!banList.isBanned(profile.getName())) {
                 banList.addBan(profile.getName(), reason, (Date) null, "Lifestead");
             }
@@ -401,7 +406,8 @@ public final class EliminationManager {
                     + ": " + exception.getMessage());
         }
         try {
-            BanList<String> nameBans = Bukkit.getBanList(BanList.Type.NAME);
+            @SuppressWarnings("rawtypes")
+            BanList nameBans = Bukkit.getBanList(BanList.Type.NAME);
             if (nameBans.isBanned(profile.getName())) {
                 nameBans.pardon(profile.getName());
             }
