@@ -154,7 +154,7 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         Plugin pl = findPlugin(args[1]);
         if (pl == null) { msg(s, ChatColor.RED + "Plugin not found: " + args[1]); return; }
         if (pl.equals(plugin)) { msg(s, ChatColor.RED + "Cannot reload KSPluginManager itself."); return; }
-        File jar = getPluginJar(pl);
+        File jar = findJarForPlugin(pl);
         PluginLifecycle.unload(pl);
         if (jar != null && jar.exists()) {
             try {
@@ -235,7 +235,7 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         File jar = null;
         if (pl != null) {
             if (pl.equals(plugin)) { msg(s, ChatColor.RED + "Cannot remove KSPluginManager itself."); return; }
-            jar = getPluginJar(pl);
+            jar = findJarForPlugin(pl);
             PluginLifecycle.unload(pl);
         } else {
             jar = resolveJar(name);
@@ -247,6 +247,11 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         boolean deletedJar = false;
         if (jar != null && jar.exists()) {
             deletedJar = jar.delete();
+        }
+        // also remove Paper remapped copy if present
+        if (jar != null) {
+            File remapped = new File(plugin.getDataFolder().getParentFile(), ".paper-remapped/" + jar.getName());
+            if (remapped.exists()) remapped.delete();
         }
         // delete config folder: try plugin name
         String baseName = name;
@@ -292,6 +297,26 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
             }
         }
         return new File(dir, name.endsWith(".jar") ? name : name + ".jar");
+    }
+
+    private File findJarForPlugin(Plugin pl) {
+        File dir = plugin.getDataFolder().getParentFile();
+        File exact = new File(dir, pl.getName() + ".jar");
+        if (exact.exists()) return exact;
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File x : files) {
+                if (!x.getName().toLowerCase().endsWith(".jar")) continue;
+                String base = x.getName().substring(0, x.getName().length() - 4);
+                String lname = pl.getName().toLowerCase();
+                if (base.equalsIgnoreCase(pl.getName())
+                        || base.toLowerCase().startsWith(lname + "-")
+                        || base.toLowerCase().startsWith(lname + "_")) {
+                    return x;
+                }
+            }
+        }
+        return getPluginJar(pl);
     }
 
     private File getPluginJar(Plugin pl) {
