@@ -193,7 +193,9 @@ public class PluginLifecycle {
                                 } catch (Exception ignored) {}
                             }
                         }
+                        System.out.println("[KSPM-DEBUG]   removing " + toRemove.size() + " from " + f.getName());
                         for (Object o : toRemove) ((java.util.Collection) val).remove(o);
+                        System.out.println("[KSPM-DEBUG]   after size=" + ((java.util.Collection)val).size());
                     }
                     if (val != null && val.getClass().getName().contains("PluginProvider")) {
                         try {
