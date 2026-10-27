@@ -176,7 +176,10 @@ public final class DeathListener implements Listener {
             return resolveSource(tnt.getSource(), depth + 1);
         }
         if (entity instanceof AreaEffectCloud cloud) {
-            return resolveSource(cloud.getSource(), depth + 1);
+            if (cloud.getSource() instanceof Entity source) {
+                return resolveSource(source, depth + 1);
+            }
+            return entity;
         }
         if (entity instanceof EvokerFangs fangs) {
             return resolveSource(fangs.getOwner(), depth + 1);
