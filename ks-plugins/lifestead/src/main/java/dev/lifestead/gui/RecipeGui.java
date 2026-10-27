@@ -146,10 +146,6 @@ public final class RecipeGui implements InventoryHolder {
         return actions.get(slot);
     }
 
-    public boolean hasAction(int slot) {
-        return actions.containsKey(slot);
-    }
-
     @Override
     public Inventory getInventory() {
         return inventory;

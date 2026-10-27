@@ -103,12 +103,22 @@ public final class LifesteadPlugin extends JavaPlugin {
     }
 
     public void reloadAll() {
+        FileConfiguration candidate = YamlConfiguration.loadConfiguration(
+                new File(getDataFolder(), "config.yml"));
+        RecipeManager.PreparedRecipes prepared;
+        try {
+            prepared = recipes.prepare(candidate);
+        } catch (RuntimeException exception) {
+            throw new IllegalStateException("Recipe configuration is invalid; nothing was"
+                    + " reloaded: " + exception.getMessage(), exception);
+        }
+
+        recipes.install(prepared);
         reloadConfig();
         messages.reload();
         settings.load();
         heartManager.normalizeAll();
         eliminations.reconcileMode();
-        boolean recipesReloaded = recipes.reload();
         String activeDatabase = activeStorageName();
         if (!activeDatabase.equals(settings.databaseType)) {
             getLogger().warning("Configured storage is " + settings.databaseType
@@ -118,10 +128,6 @@ public final class LifesteadPlugin extends JavaPlugin {
         startTasks();
         heartManager.resyncAll();
         dataStore.saveAll();
-        if (!recipesReloaded) {
-            throw new IllegalStateException(
-                    "Recipe configuration is invalid; the previous recipe set was kept.");
-        }
     }
 
     private void registerCommand() {

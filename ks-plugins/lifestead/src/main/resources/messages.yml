@@ -9,7 +9,6 @@ general:
   invalid-number: '&cInvalid number: &f{input}&c.'
   reloaded: '&aConfiguration, messages, and recipes reloaded.'
   eliminated-action: '&cYou are eliminated. Ask someone to revive you.'
-  database-error: '&cA database error occurred. Check the server console.'
   reload-error: '&cReload failed. Existing recipes and data were preserved. Check the server console.'
   usage: '&cUsage: &f{usage}'
 
@@ -19,6 +18,7 @@ hearts:
   set-eliminated: '&c{player} is eliminated. Use &f/ls revive {player}&c to restore them.'
   given: '&aGave &c{amount} &aheart item(s) to &f{player}&a.'
   given-offline: '&aQueued &c{amount} &aheart item(s) for &f{player}&a. They will receive them when they next join.'
+  give-limit: '&cYou can give at most &f{max} &cheart item(s) at once.'
   pending-received: '&aReceived &c{amount} &aheart item(s) that were given while you were offline.'
   gained: '&aYou stole &c{amount} &aheart(s) from &f{victim}&a.'
   lost: '&cYou lost &c{amount} &cheart(s).'
@@ -83,7 +83,6 @@ gui:
   recipe-heart: '&cHeart'
   recipe-beacon: '&dRevive Beacon'
   recipe-ingredients: '&7Ingredients'
-  recipe-result: '&aResult'
   recipe-back: '&eBack'
   recipe-empty: '&8Empty'
   recipe-type: '&7Type: &f{type}'
