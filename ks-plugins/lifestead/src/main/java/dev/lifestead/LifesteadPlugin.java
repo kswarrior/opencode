@@ -3,6 +3,7 @@ package dev.lifestead;
 import dev.lifestead.command.LifesteadCommand;
 import dev.lifestead.data.DataStore;
 import dev.lifestead.data.DataStoreFactory;
+import dev.lifestead.data.SqliteDataStore;
 import dev.lifestead.integration.LifesteadPlaceholderExpansion;
 import dev.lifestead.listener.CombatListener;
 import dev.lifestead.listener.DeathListener;
@@ -31,6 +32,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private AntiFarm antiFarm;
     private Effects effects;
     private DeathListener deathListener;
+    private LifesteadPlaceholderExpansion placeholderExpansion;
     private int resyncTaskId = -1;
     private int antiFarmTaskId = -1;
 
@@ -63,7 +65,7 @@ public final class LifesteadPlugin extends JavaPlugin {
         startTasks();
         registerPlaceholder();
 
-        getLogger().info("Lifestead enabled with " + settings.databaseType
+        getLogger().info("Lifestead enabled with " + activeStorageName()
                 + " storage. Hearts: " + settings.startHearts + "/" + settings.maxHearts + ".");
     }
 
@@ -74,6 +76,15 @@ public final class LifesteadPlugin extends JavaPlugin {
         if (recipes != null) {
             recipes.unregister();
         }
+        if (placeholderExpansion != null) {
+            try {
+                placeholderExpansion.unregister();
+            } catch (RuntimeException exception) {
+                getLogger().warning("Could not unregister PlaceholderAPI expansion: "
+                        + exception.getMessage());
+            }
+            placeholderExpansion = null;
+        }
         if (dataStore != null) {
             dataStore.close();
         }
@@ -81,13 +92,15 @@ public final class LifesteadPlugin extends JavaPlugin {
     }
 
     public void reloadAll() {
-        String previousDatabase = settings.databaseType;
         reloadConfig();
         messages.reload();
         settings.load();
         recipes.reload();
-        if (!previousDatabase.equals(settings.databaseType)) {
-            getLogger().warning("The database type changed. Restart the server to switch storage backends.");
+        String activeDatabase = activeStorageName();
+        if (!activeDatabase.equals(settings.databaseType)) {
+            getLogger().warning("Configured storage is " + settings.databaseType
+                    + " but the server is using " + activeDatabase
+                    + ". Restart the server to switch storage backends.");
         }
         startTasks();
         heartManager.resyncAll();
@@ -134,12 +147,17 @@ public final class LifesteadPlugin extends JavaPlugin {
         }
     }
 
+    private String activeStorageName() {
+        return dataStore instanceof SqliteDataStore ? "SQLITE" : "YAML";
+    }
+
     private void registerPlaceholder() {
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") == null) {
             return;
         }
         try {
-            new LifesteadPlaceholderExpansion(this).register();
+            placeholderExpansion = new LifesteadPlaceholderExpansion(this);
+            placeholderExpansion.register();
             getLogger().info("Registered PlaceholderAPI expansion.");
         } catch (Throwable throwable) {
             getLogger().warning("Could not register PlaceholderAPI expansion: " + throwable.getMessage());
