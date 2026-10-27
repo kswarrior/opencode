@@ -1,3 +1,8 @@
+/*
+ * KS Lifestead - by KS Warrior
+ * Websites: https://ks.42web.io | https://ksx.pages.dev
+ * YouTube, Discord, Instagram: ks_warrior_pro
+ */
 import { access } from 'node:fs/promises'
 import { downloadPaper, downloadPlaceholderApi } from '../lib/download.mjs'
 import { prepareServer } from '../lib/fixtures.mjs'

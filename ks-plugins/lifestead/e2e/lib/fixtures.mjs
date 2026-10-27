@@ -1,3 +1,8 @@
+/*
+ * KS Lifestead - by KS Warrior
+ * Websites: https://ks.42web.io | https://ksx.pages.dev
+ * YouTube, Discord, Instagram: ks_warrior_pro
+ */
 import { createHash, randomUUID } from 'node:crypto'
 import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'

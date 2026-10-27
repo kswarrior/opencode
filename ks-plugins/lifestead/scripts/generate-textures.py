@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# KS Lifestead - by KS Warrior
+# Websites: https://ks.42web.io | https://ksx.pages.dev
+# YouTube, Discord, Instagram: ks_warrior_pro
 import os
 import struct
 import sys

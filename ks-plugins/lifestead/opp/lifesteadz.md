@@ -15,14 +15,17 @@
 
 | Item | Value |
 | --- | --- |
-| Plugin / version | `Lifestead` 1.0.0 |
+| Plugin / version | `KS Lifestead` 1.0.0 (technical ID `Lifestead`) |
+| Author | KS Warrior |
+| Websites | https://ks.42web.io, https://ksx.pages.dev |
+| Social | YouTube, Discord, Instagram: `ks_warrior_pro` |
 | Main class | `dev.lifestead.LifesteadPlugin` |
 | Target API | Spigot API `1.21.11-R0.2-SNAPSHOT`, `api-version: '1.21.11'` |
 | Java | 21 |
 | Scheduler | Bukkit; Folia unsupported |
 | Storage | YAML default; SQLite optional with schema version 2 |
 | Soft dependency | PlaceholderAPI 2.12.3 |
-| Build | Maven + Shade; `release/plugin/Lifestead-1.0.0.jar` |
+| Build | Maven + Shade; `release/plugin/KS-Lifestead-1.0.0.jar` |
 | Resource pack | Format 75; ZIP, SHA-1, README in `release/resource-pack/` |
 | Tests | JUnit unit tests plus Paper 1.21.11 + Mineflayer E2E |
 | Git tag | No `v1.0.0` tag; release operation, not code |

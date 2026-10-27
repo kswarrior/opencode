@@ -1,5 +1,8 @@
 # Lifestead Bug and Gap Backlog
 
+> **KS Lifestead** by **KS Warrior** — [ks.42web.io](https://ks.42web.io) | [ksx.pages.dev](https://ksx.pages.dev) | YouTube/Discord/Instagram: `ks_warrior_pro`
+
+
 Last verified: 2026-10-27 (post-remediation)
 
 Baseline: Paper 1.21.11 build 132, Java 21, flat world, two real Mineflayer

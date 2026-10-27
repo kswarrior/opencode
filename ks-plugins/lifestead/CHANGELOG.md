@@ -50,6 +50,14 @@
   failed-reload isolation, zero-heart normalization, malformed YAML recovery,
   oversized `giveheart`, and off-hand item use.
 
+### Branding
+
+- Release name is **KS Lifestead**; author is **KS Warrior**.
+- Websites: https://ks.42web.io and https://ksx.pages.dev
+- YouTube, Discord, and Instagram: `ks_warrior_pro`
+- Plugin and resource-pack artifacts now use the `KS-Lifestead-*` prefix while
+  the technical plugin ID and data folder remain `Lifestead` for compatibility.
+
 ### Changed
 
 - Revive GUI icons remain intentional vanilla items; unused generated GUI

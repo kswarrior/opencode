@@ -1,5 +1,8 @@
 # Lifestead - Basic Plan
 
+> **KS Lifestead** by **KS Warrior** — [ks.42web.io](https://ks.42web.io) | [ksx.pages.dev](https://ksx.pages.dev) | YouTube/Discord/Instagram: `ks_warrior_pro`
+
+
 ## Goal
 
 Build a simple, reliable Lifesteal-style plugin: players steal hearts in PvP, lose hearts on death, can withdraw/deposit heart items, are eliminated at 0 hearts, and return through a Revive Beacon.

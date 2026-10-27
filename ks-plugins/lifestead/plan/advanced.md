@@ -1,5 +1,8 @@
 # Lifestead - Advanced Plan
 
+> **KS Lifestead** by **KS Warrior** — [ks.42web.io](https://ks.42web.io) | [ksx.pages.dev](https://ksx.pages.dev) | YouTube/Discord/Instagram: `ks_warrior_pro`
+
+
 Advanced, battle-tested features already shipped by existing Lifesteal plugins. Core mechanics live in `basic.md`; this file is the roadmap/backlog for extras. Each feature names at least one plugin that already has it.
 
 ## 1. Heart Progression
