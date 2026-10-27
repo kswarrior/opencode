@@ -323,6 +323,15 @@ export async function equipItem(bot, item) {
   }
 }
 
+export async function equipOffhandItem(bot, item) {
+  await bot.equip(item, 'off-hand')
+  await sleep(150)
+  const offhand = bot.inventory.slots[45]
+  if (!offhand || offhand.type !== item.type) {
+    throw new Error(`Could not equip ${itemName(item)} to the off hand`)
+  }
+}
+
 export async function attackPlayer(killer, victim, { hits = 16, interval = 650 } = {}) {
   const entity = killer.players[victim.username]?.entity
   if (!entity) {
