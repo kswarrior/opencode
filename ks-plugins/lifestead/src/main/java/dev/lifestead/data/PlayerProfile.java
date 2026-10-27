@@ -13,6 +13,7 @@ public final class PlayerProfile {
     private long lastKillAt;
     private long eliminatedAt;
     private int pendingHeartItems;
+    private boolean pendingReviveTeleport;
 
     public PlayerProfile(UUID uuid, String name, int hearts, boolean eliminated, long lastSeen) {
         this(uuid, name, hearts, eliminated, lastSeen, 0, 0L, eliminated ? lastSeen : 0L, 0);
@@ -99,5 +100,13 @@ public final class PlayerProfile {
 
     public void setPendingHeartItems(int pendingHeartItems) {
         this.pendingHeartItems = Math.max(0, pendingHeartItems);
+    }
+
+    public boolean isPendingReviveTeleport() {
+        return pendingReviveTeleport;
+    }
+
+    public void setPendingReviveTeleport(boolean pendingReviveTeleport) {
+        this.pendingReviveTeleport = pendingReviveTeleport;
     }
 }
