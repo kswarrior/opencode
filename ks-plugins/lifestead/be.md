@@ -1,50 +1,55 @@
 # Lifestead Bug and Gap Backlog
 
-Last verified: 2026-10-27
+Last verified: 2026-10-27 (post-remediation)
 
-Baseline: current tree after re-verification. Server used for live checks:
-Paper 1.21.11 build 132, Java 21, flat world, two real Mineflayer bots
-(`E2EAlpha`, `E2EBeta`), PlaceholderAPI 2.12.3, YAML storage
+Baseline: Paper 1.21.11 build 132, Java 21, flat world, two real Mineflayer
+bots (`E2EAlpha`, `E2EBeta`), PlaceholderAPI 2.12.3, YAML and SQLite storage
 (`online-mode=false`).
 
 ## Verification Status
 
 - Maven build + unit tests: **PASS**. 6 JUnit tests; shaded JAR built.
 - Resource pack: **PASS**. ZIP and SHA-1 regenerated; the checked-in
-  `release/resource-pack/SHA1.txt` matches the ZIP.
-- End-to-end suite: **37/38 PASS**.
-  - The one failure is `runtime log is free of plugin errors and profile
-    lookups` (`e2e/test/e2e.test.mjs:1381`).
-  - Evidence: a real Mojang lookup timeout from the revive GUI
-    (`e2e/.server/logs/e2e-server.log:913`):
-    `Couldn't look up profile properties for <uuid>` followed by
-    `MinecraftClientException: Failed to read from
-    https://sessionserver.mojang.com/session/minecraft/profile/... due to
-    Read timed out`.
-  - The revive flow itself passed. The GUI test checks for lookups after only
-    1.5 seconds (`e2e.test.mjs:796`) while `SkinService` allows 5 seconds
-    (`SkinService.java:18`), so detection is racy; the final log assertion
-    caught the warning.
-- Targeted probes (temporary `probe.test.mjs`, now removed) confirmed:
-  - `/papi reload` unregisters the non-persistent expansion; placeholders
-    return the raw `%lifesteal_hearts%` token until restart.
-  - `/ls reload` is not atomic: an invalid recipe produced a reload error but
-    the new `maximum-hearts` value (30) was already applied.
-  - A seeded zero-heart, non-eliminated profile is treated as alive by
-    `/ls hearts`, `/ls revive`, and PAPI until that player joins.
-  - A failed recipe reload keeps the old active recipe set, but
-    `/ls recipe heart` displays the invalid new config (`Empty` slots).
-  - BAN elimination writes the correct UUID profile ban and revive pardons it.
-  - A non-stackable heart item does not overstack: `giveheart 3` produced three
-    separate stacks; no overstack was observed.
+  `release/resource-pack/SHA1.txt` matches the ZIP
+  (`c32596d47ab9b74d2ba6438637636baf0461294a`).
+- End-to-end suite: **41/41 PASS** (was 37/38 before remediation).
+  - Added coverage for `/papi reload` persistence, atomic failed-reload
+    isolation (settings and recipe GUI), zero-heart offline normalization,
+    malformed YAML quarantine, oversized `giveheart`, off-hand heart/beacon
+    use, and the corrected runtime-log filter.
+  - The expected invalid-reload error is explicitly whitelisted by the
+    runtime-log gate.
 - PvP melee fallbacks in the last full run: **0**. Set
   `E2E_REQUIRE_REAL_MELEE=1` to make any fallback fatal.
 - Not verified: Spigot, Bukkit, Purpur, Folia, MySQL, other Minecraft versions,
   large-player-count load, long-running soak, or real resource-pack acceptance
   by a client.
 
-No P0 or P1 issue is confirmed on the tested Paper target. The highest open
-items are P2.
+All 18 backlog items below are fixed. Remaining test-coverage gaps are listed
+in section 3.
+
+### Remediation summary
+
+| Item | Fix | Verification |
+| --- | --- | --- |
+| BUG-01 | Expansion returns `persist() == true` and implements `getPlaceholders()`. | E2E runs `/papi reload` and resolves placeholders afterwards. |
+| BUG-02 | Reload validates recipes against a candidate config, installs recipes first, and applies settings/messages/tasks only after success. | E2E failed reload keeps `maximum-hearts` at 20. |
+| BUG-03 | Normalization converts `hearts <= 0 && !eliminated` to eliminated and clears pending revive teleport. | E2E offline `/ls eliminate` reports "already eliminated". |
+| BUG-04 | `writeAll()` returns success; dirty UUIDs clear only on success and retry every 30 seconds. | Source-verified; no filesystem fault-injection test. |
+| BUG-05 | New `YamlSafety` pre-parses and quarantines `playerdata.yml`/`antifarm.yml` to `.corrupt[.N]`. | E2E corrupts `playerdata.yml` and verifies `.corrupt` plus empty start. |
+| BUG-06 | `giveheart` is capped at 2304 items (36 stacks) for online and queued offline grants. | E2E oversized request is rejected with the limit message. |
+| BUG-07 | Skin lookups are skipped and cached as failures when `online-mode=false`. | E2E runtime log has no Mojang lookup or HTTP failure. |
+| BUG-08 | A saved combat tag within the window applies its penalty on join. | Source-verified; no crash-window E2E test. |
+| BUG-09 | Recipe displays use the last successfully installed config snapshot. | E2E failed reload shows the old diamond ingredient. |
+| BUG-10 | Online-dead revive sets the pending teleport and completes it on respawn. | Source-verified; no death-screen E2E test. |
+| BUG-11 | In-flight skin requests keep a list of callbacks and notify all of them. | Source-verified; no concurrent-request test. |
+| BUG-12 | Anti-farm records and saves only after a positive heart gain. | Source-verified; no zero-gain E2E test. |
+| BUG-13 | Removed dead methods and message keys. | Build + source audit. |
+| BUG-14 | Both hands are handled; consumption uses the used hand; beacons work from either hand. | E2E off-hand heart heals and off-hand beacon revives. |
+| BUG-15 | Added smithing, brewing, entity/item-frame, dispense, and stonecutter/merchant/beacon inventory guards. Paper 1.21.11 has no `PrepareStonecuttingEvent`, so `InventoryClickEvent` is used. | Build + source audit; no per-path E2E test. |
+| BUG-16 | Log filter matches `[<time> ERROR]: [Lifestead]` and `at dev.lifestead.` frames; expected reload/corruption errors are whitelisted. | E2E runtime-log test passes with the invalid reload present. |
+| BUG-17 | README documents every placeholder and alias; `getPlaceholders()` lists them. | Source + README audit. |
+| BUG-18 | `particle-count` is clamped to 1-200 with a warning. | Build + source audit. |
 
 Severity used below:
 
@@ -56,7 +61,10 @@ Severity used below:
 
 ---
 
-## 1. P2 Open Items
+## 1. P2 Items (fixed in this remediation)
+
+Original reproduction notes are retained below for historical context. Current
+status is in the remediation summary above.
 
 ### BUG-01: `/papi reload` unregisters the Lifestead expansion
 
@@ -245,7 +253,10 @@ offline-mode test that opens both revive pages and asserts no HTTP lookup.
 
 ---
 
-## 2. P3 Open Items
+## 2. P3 Items (fixed in this remediation)
+
+Original reproduction notes are retained below for historical context. Current
+status is in the remediation summary above.
 
 ### BUG-08: Combat tags are documented as restart-persistent but are cleared on join
 
@@ -504,16 +515,16 @@ when clamping.
 - No large-player-count or long-running soak test. YAML writes all profiles on
   each flush; SQLite saves synchronously on the main thread. No evidence of a
   production-scale problem, but no measurement either.
-- No tests for: `/papi reload`, failed-reload state isolation, zero-heart
-  offline profiles, malformed YAML recovery, YAML write failure, oversized
-  `giveheart`, concurrent skin callbacks, online-dead revive teleport, or
-  custom-item protection paths.
-- The E2E runtime-log gate is weaker than it appears (BUG-16).
-- `minimum-hearts > 0` floors `removeHearts`
-  (`src/main/java/dev/lifestead/manager/HeartManager.java:80`), so PvP/death
-  losses can never take a player to zero unless the minimum is 0. This may be
-  intended as a safety floor, but the README does not explain that it disables
-  normal elimination by heart loss. Document it or validate the setting.
+- Newly covered by E2E: `/papi reload`, failed-reload state isolation,
+  zero-heart offline normalization, malformed YAML recovery, oversized
+  `giveheart`, off-hand heart/beacon use, and the corrected runtime-log gate.
+- Still no automated test for: YAML write-failure retry (fault injection),
+  crash-window combat-tag recovery, online-dead revive teleport, concurrent
+  skin callbacks, zero-gain anti-farm recording, or each custom-item protection
+  path (smithing, stonecutter, merchant, beacon, composter, item frames).
+- `minimum-hearts > 0` floors heart loss, so normal elimination by heart loss
+  is disabled unless the minimum is 0. This is now documented in `config.yml`
+  and `README.md`.
 - Resource-pack hosting, a signed release tag, and public release publication
   remain external operations.
 
