@@ -85,6 +85,23 @@ public class PluginLifecycle {
 
         // Clean plugin manager collections
         cleanObject(pm, plugin);
+        // Paper: clean nested PaperPluginInstanceManager
+        try {
+            Field ppmField = null;
+            for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
+                try { ppmField = c.getDeclaredField("paperPluginManager"); break; } catch (NoSuchFieldException ignored) {}
+            }
+            if (ppmField != null) {
+                ppmField.setAccessible(true);
+                Object ppm = ppmField.get(pm);
+                if (ppm != null) {
+                    Field imField = ppm.getClass().getDeclaredField("instanceManager");
+                    imField.setAccessible(true);
+                    Object im = imField.get(ppm);
+                    if (im != null) cleanObject(im, plugin);
+                }
+            }
+        } catch (Exception ignored) {}
 
         // Command map
         try {
