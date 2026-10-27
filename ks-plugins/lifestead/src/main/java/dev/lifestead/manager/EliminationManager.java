@@ -196,7 +196,19 @@ public final class EliminationManager {
         }
     }
 
-    public Location spawnLocation(Player player) {        Settings settings = plugin.getSettings();
+    public boolean teleportToReviveSpawn(Player player) {
+        if (!plugin.getSettings().reviveTeleport) {
+            return false;
+        }
+        Location location = spawnLocation(player);
+        if (location == null) {
+            return false;
+        }
+        return player.teleport(location);
+    }
+
+    public Location spawnLocation(Player player) {
+        Settings settings = plugin.getSettings();
         World world = null;
         if (settings.reviveSpawnWorld != null && !settings.reviveSpawnWorld.isBlank()) {
             world = Bukkit.getWorld(settings.reviveSpawnWorld);

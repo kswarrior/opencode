@@ -301,6 +301,7 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
 
     private void resetProfile(PlayerProfile profile) {
         profile.setLastSeen(System.currentTimeMillis());
+        profile.setPendingReviveTeleport(false);
         plugin.getHeartManager().setHearts(profile, plugin.getSettings().startHearts);
         if (plugin.getSettings().startHearts <= 0 && !profile.isEliminated()) {
             plugin.getEliminations().eliminate(profile, "reset");

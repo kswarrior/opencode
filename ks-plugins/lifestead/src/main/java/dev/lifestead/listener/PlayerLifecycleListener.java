@@ -21,11 +21,22 @@ public final class PlayerLifecycleListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onJoin(PlayerJoinEvent event) {
         PlayerProfile profile = plugin.getHeartManager().profile(event.getPlayer());
+        boolean pendingReviveTeleport = profile.isPendingReviveTeleport();
+        if (pendingReviveTeleport) {
+            profile.setPendingReviveTeleport(false);
+        }
         profile.setLastSeen(System.currentTimeMillis());
         plugin.getDataStore().save(profile);
         plugin.getDeathListener().clearRecent(event.getPlayer().getUniqueId());
         plugin.getEliminations().handleJoin(event.getPlayer());
         plugin.getItems().deliverPendingHearts(event.getPlayer());
+        if (pendingReviveTeleport) {
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                if (event.getPlayer().isOnline()) {
+                    plugin.getEliminations().teleportToReviveSpawn(event.getPlayer());
+                }
+            }, 2L);
+        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
