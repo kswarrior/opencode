@@ -9,6 +9,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public final class Settings {
 
+    public static final int MAX_SUPPORTED_HEARTS = 512;
+
     private final LifesteadPlugin plugin;
 
     public int startHearts;

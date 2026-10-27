@@ -4,7 +4,7 @@
 > `ks-plugins/lifestead` (version `1.0.0`). There is no separate `lifesteadz`
 > source tree in this repository.
 >
-> **Inspected.** `src/main`, `src/main/resources`, `pom.xml`, `scripts/`,
+> **Source baseline.** `src/main`, `src/main/resources`, `pom.xml`, `scripts/`,
 > `resourcepack/`, `release/`, `e2e/`, and `plan/basic.md` at commit
 > `03c7ca47c` (2026-10-27).
 >
