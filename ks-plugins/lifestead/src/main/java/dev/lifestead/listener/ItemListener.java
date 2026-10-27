@@ -41,6 +41,10 @@ public final class ItemListener implements Listener {
         }
         EquipmentSlot hand = event.getHand();
         Player player = event.getPlayer();
+        plugin.getLogger().info("DEBUG interact hand=" + hand + " action=" + event.getAction()
+                + " item=" + (event.getItem() == null ? "null" : event.getItem().getType())
+                + " main=" + player.getInventory().getItemInMainHand().getType()
+                + " off=" + player.getInventory().getItemInOffHand().getType());
         if (hand == EquipmentSlot.OFF_HAND
                 && plugin.getItems().isCustom(player.getInventory().getItemInMainHand())) {
             return;
