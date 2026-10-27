@@ -59,7 +59,8 @@
     timer (`settings.health-resync-ticks`, default 40 ticks).
   - If another plugin changes max health, the periodic task restores the
     Lifestead value.
-- Disabled worlds suppress heart loss, stealing, and elimination.
+- Disabled worlds suppress death-based heart loss, stealing, and death-based
+  elimination.
 - Duplicate-death protection: a per-player processing set plus a 1-second
   duplicate window prevents double processing of one death
   (`DeathListener.java:47`).
@@ -122,7 +123,8 @@
     coordinates/yaw/pitch.
   - Applies max health; for online players it also sets current health to the
     restored maximum.
-  - Delivers any queued offline heart items.
+  - Delivers queued heart items to online players; offline players receive them
+    on their next join.
   - Announces the revival when elimination announcements are enabled.
 - Offline players can be revived. Their state and hearts are updated immediately;
   teleport-to-spawn is not applied when they next join (see the partial gap in
@@ -604,44 +606,43 @@ PlaceholderAPI requirement is completely missing.
 
 These are implemented extras beyond the basic plan:
 
-1. **Native combat-log subsystem** - damage timer, logout penalty, and
-   elimination at zero.
-2. **Withdraw guard** - prevents withdrawing hearts below a configurable floor.
-3. **Offline heart-item queue** - `/ls giveheart` to offline players, delivered
+1. **Withdraw guard** - prevents withdrawing hearts below a configurable floor.
+2. **Offline heart-item queue** - `/ls giveheart` to offline players, delivered
    on join or revive.
-4. **Kill counter and last-kill timestamp** - persisted per profile.
-5. **Periodic health resync** - configurable `health-resync-ticks`, in addition
+3. **Kill counter** - a persisted count of kills, in addition to the planned
+   last-kill timestamp.
+4. **Periodic health resync** - configurable `health-resync-ticks`, in addition
    to event-driven resync.
-6. **Shapeless recipes and configurable result amounts** - both recipe types
-   support shaped/shapeless and result quantity.
-7. **Extended custom-item protections** - brewing fuel, dispensing, grindstone,
-   anvil, and crafting-ingredient blocking.
-8. **Disabled worlds suppress more than stealing** - heart loss, killer gain,
-   and elimination are also suppressed.
-9. **Tab completion** - permission-filtered subcommands, names, recipes, and
+5. **Configurable recipe result amounts** - both recipe types can produce more
+   than one result.
+6. **Extended custom-item protections** - brewing fuel, dispensing, grindstone,
+   anvil, and crafting-ingredient blocking beyond the planned
+   place/smelt/fuel blocks.
+7. **Broader disabled-world handling** - disabled worlds also suppress killer
+   gain and death-based elimination, not only stealing/damage.
+8. **Tab completion** - permission-filtered subcommands, names, recipes, and
    amount suggestions.
-10. **Extra PlaceholderAPI placeholders** - `heart`, `min_hearts`, `max`,
-    `health`, `status`, and `withdrawable` variants.
-11. **SQLite auto-migration and YAML fallback** - missing columns are added;
+9. **Extra PlaceholderAPI placeholders** - `heart`, `min_hearts`, `max`,
+   `health`, `status`, and `withdrawable` variants.
+10. **SQLite auto-migration and YAML fallback** - missing columns are added;
     SQLite startup failure falls back to YAML.
-12. **Invalid-config safety** - invalid materials, sounds, particles, shapes,
+11. **Invalid-config safety** - invalid materials, sounds, particles, shapes,
     and recipe rows are logged/ignored rather than crashing.
-13. **Hex color support** - `&#RRGGBB` in addition to `&` codes.
-14. **Revive spawn world and coordinates** - `spawn-world`, `use-coordinates`,
-    and full coordinates/yaw/pitch.
-15. **Extra death/elimination cause labels** - `admin`, `combat-log`, `reset`,
+12. **Hex color support** - `&#RRGGBB` in addition to `&` codes.
+13. **Revive spawn world and explicit coordinates** - `spawn-world`,
+    `use-coordinates`, and full coordinates/yaw/pitch.
+14. **Extra death/elimination cause labels** - `admin`, `combat-log`, `reset`,
     and `start`.
-16. **Recipe aliases** - `beacon`, `revive-beacon`, and `revive_beacon` accepted
+15. **Recipe aliases** - `beacon`, `revive-beacon`, and `revive_beacon` accepted
     by `/ls recipe`.
-17. **`lifesteal.admin` aggregate permission** - grants all administration
-    children.
-18. **Custom item appearance controls** - per-item material, name, lore, glow,
-    and CustomModelData.
-19. **Optional steal broadcasts** - `effects.broadcast-steals`.
-20. **E2E test suite and build scripts** - 25 tests, texture generator, pack
-    builder, and release packaging.
-21. **Database fallback logging and startup summary** - storage type and heart
+16. **Missing-message fallback** - undefined single-value message keys return a
+    visible placeholder instead of failing silently.
+17. **Database fallback logging and startup summary** - storage type and heart
     defaults are logged on enable.
+18. **Revive GUI detail** - page/total counters, player-head lore, and
+    automatic refresh after a revive.
+19. **Anti-farm rolling window** - repeat-kill limits use a configurable
+    time window rather than a permanent cap.
 
 ## 6. Open Questions from `plan/basic.md`
 
