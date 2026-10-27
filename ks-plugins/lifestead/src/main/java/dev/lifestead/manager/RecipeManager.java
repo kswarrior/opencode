@@ -2,7 +2,9 @@ package dev.lifestead.manager;
 
 import dev.lifestead.LifesteadPlugin;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -17,6 +19,7 @@ public final class RecipeManager {
     private final LifesteadPlugin plugin;
     private final NamespacedKey heartKey;
     private final NamespacedKey beaconKey;
+    private final Map<NamespacedKey, Recipe> active = new LinkedHashMap<>();
 
     public RecipeManager(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -24,17 +27,51 @@ public final class RecipeManager {
         this.beaconKey = new NamespacedKey(plugin, "revive_beacon");
     }
 
-    public void reload() {
-        unregister();
-        if (plugin.getConfig().getBoolean("recipes.heart.enabled", true)) {
-            register(ItemManager.HEART, "recipes.heart", heartKey);
+    public boolean reload() {
+        List<Recipe> candidates = new ArrayList<>();
+        try {
+            if (plugin.getConfig().getBoolean("recipes.heart.enabled", true)) {
+                candidates.add(build(ItemManager.HEART, "recipes.heart", heartKey));
+            }
+            if (plugin.getConfig().getBoolean("recipes.revive-beacon.enabled", true)) {
+                candidates.add(build(ItemManager.BEACON, "recipes.revive-beacon", beaconKey));
+            }
+        } catch (RuntimeException exception) {
+            plugin.getLogger().warning("Recipe configuration is invalid; keeping the previous"
+                    + " recipe set: " + exception.getMessage());
+            return false;
         }
-        if (plugin.getConfig().getBoolean("recipes.revive-beacon.enabled", true)) {
-            register(ItemManager.BEACON, "recipes.revive-beacon", beaconKey);
+
+        Map<NamespacedKey, Recipe> previous = new LinkedHashMap<>(active);
+        unregister();
+        try {
+            for (Recipe recipe : candidates) {
+                Bukkit.addRecipe(recipe);
+                active.put(keyOf(recipe), recipe);
+            }
+            return true;
+        } catch (RuntimeException exception) {
+            unregister();
+            for (Map.Entry<NamespacedKey, Recipe> entry : previous.entrySet()) {
+                try {
+                    Bukkit.addRecipe(entry.getValue());
+                    active.put(entry.getKey(), entry.getValue());
+                } catch (RuntimeException restoreException) {
+                    plugin.getLogger().severe("Could not restore recipe " + entry.getKey()
+                            + ": " + restoreException.getMessage());
+                }
+            }
+            plugin.getLogger().warning("Could not register the new recipes; restored the previous"
+                    + " set: " + exception.getMessage());
+            return false;
         }
     }
 
     public void unregister() {
+        for (NamespacedKey key : active.keySet()) {
+            Bukkit.removeRecipe(key);
+        }
+        active.clear();
         Bukkit.removeRecipe(heartKey);
         Bukkit.removeRecipe(beaconKey);
     }
@@ -84,68 +121,71 @@ public final class RecipeManager {
         return new RecipeDisplay(grid, result, shaped);
     }
 
-    private void register(String type, String path, NamespacedKey key) {
+    private Recipe build(String type, String path, NamespacedKey key) {
         ConfigurationSection recipe = plugin.getConfig().getConfigurationSection(path);
         if (recipe == null) {
-            plugin.getLogger().warning("Missing recipe configuration: " + path);
-            return;
+            throw new IllegalArgumentException("Missing recipe configuration: " + path);
         }
         int resultAmount = Math.max(1, recipe.getInt("result-amount", 1));
         ItemStack result = createResult(type, resultAmount);
         boolean shaped = recipe.getBoolean("shaped", true);
         ConfigurationSection ingredients = recipe.getConfigurationSection("ingredients");
         if (ingredients == null || ingredients.getKeys(false).isEmpty()) {
-            plugin.getLogger().warning("Recipe " + path + " has no ingredients and was skipped.");
-            return;
+            throw new IllegalArgumentException("Recipe " + path + " has no ingredients.");
         }
 
-        try {
-            Recipe built;
-            if (shaped) {
-                List<String> shape = recipe.getStringList("shape");
-                if (shape.isEmpty() || shape.size() > 3) {
-                    plugin.getLogger().warning("Recipe " + path + " has an invalid shape and was skipped.");
-                    return;
-                }
-                for (String line : shape) {
-                    if (line.length() > 3) {
-                        plugin.getLogger().warning("Recipe " + path + " has a row longer than 3 and was skipped.");
-                        return;
-                    }
-                }
-                ShapedRecipe shapedRecipe = new ShapedRecipe(key, result);
-                shapedRecipe.shape(shape.toArray(new String[0]));
-                for (String symbol : ingredients.getKeys(false)) {
-                    if (symbol.length() != 1) {
-                        plugin.getLogger().warning("Recipe " + path + " ingredient keys must be one character.");
-                        continue;
-                    }
-                    Material material = material(ingredients.getString(symbol));
-                    if (material == null) {
-                        plugin.getLogger().warning("Recipe " + path + " has an invalid material: "
-                                + ingredients.getString(symbol) + ".");
-                        continue;
-                    }
-                    shapedRecipe.setIngredient(symbol.charAt(0), material);
-                }
-                built = shapedRecipe;
-            } else {
-                ShapelessRecipe shapelessRecipe = new ShapelessRecipe(key, result);
-                for (String symbol : ingredients.getKeys(false)) {
-                    Material material = material(ingredients.getString(symbol));
-                    if (material == null) {
-                        plugin.getLogger().warning("Recipe " + path + " has an invalid material: "
-                                + ingredients.getString(symbol) + ".");
-                        continue;
-                    }
-                    shapelessRecipe.addIngredient(material);
-                }
-                built = shapelessRecipe;
+        Map<Character, Material> parsed = new LinkedHashMap<>();
+        for (String symbol : ingredients.getKeys(false)) {
+            if (symbol.length() != 1) {
+                throw new IllegalArgumentException(
+                        "Recipe " + path + " ingredient keys must be one character.");
             }
-            Bukkit.addRecipe(built);
-        } catch (IllegalArgumentException exception) {
-            plugin.getLogger().warning("Could not register recipe " + path + ": " + exception.getMessage());
+            Material material = material(ingredients.getString(symbol));
+            if (material == null) {
+                throw new IllegalArgumentException("Recipe " + path
+                        + " has an invalid material: " + ingredients.getString(symbol) + ".");
+            }
+            parsed.put(symbol.charAt(0), material);
         }
+
+        if (shaped) {
+            List<String> shape = recipe.getStringList("shape");
+            if (shape.isEmpty() || shape.size() > 3) {
+                throw new IllegalArgumentException("Recipe " + path + " has an invalid shape.");
+            }
+            for (String line : shape) {
+                if (line.isEmpty() || line.length() > 3) {
+                    throw new IllegalArgumentException(
+                            "Recipe " + path + " has an invalid shape row.");
+                }
+                for (char symbol : line.toCharArray()) {
+                    if (symbol != ' ' && !parsed.containsKey(symbol)) {
+                        throw new IllegalArgumentException("Recipe " + path
+                                + " shape uses undefined symbol '" + symbol + "'.");
+                    }
+                }
+            }
+            ShapedRecipe shapedRecipe = new ShapedRecipe(key, result);
+            shapedRecipe.shape(shape.toArray(new String[0]));
+            for (Map.Entry<Character, Material> entry : parsed.entrySet()) {
+                boolean used = shape.stream().anyMatch(line -> line.indexOf(entry.getKey()) >= 0);
+                if (used) {
+                    shapedRecipe.setIngredient(entry.getKey(), entry.getValue());
+                }
+            }
+            return shapedRecipe;
+        }
+
+        ShapelessRecipe shapelessRecipe = new ShapelessRecipe(key, result);
+        for (Material material : parsed.values()) {
+            shapelessRecipe.addIngredient(material);
+        }
+        return shapelessRecipe;
+    }
+
+    private NamespacedKey keyOf(Recipe recipe) {
+        return recipe instanceof ShapedRecipe shaped ? shaped.getKey()
+                : ((ShapelessRecipe) recipe).getKey();
     }
 
     private ItemStack createResult(String type, int amount) {
