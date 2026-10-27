@@ -309,6 +309,12 @@ export async function useHeldItem(bot, matcher, options = {}) {
   return waiter ? waiter : null
 }
 
+export async function useOffhandItem(bot, matcher, options = {}) {
+  const waiter = matcher ? waitForMessage(bot, matcher, options) : null
+  bot.activateItem(true)
+  return waiter ? waiter : null
+}
+
 export async function equipItem(bot, item) {
   await bot.equip(item, 'hand')
   await sleep(150)
