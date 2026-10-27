@@ -101,7 +101,7 @@ describe('Lifestead targeted probes', { concurrency: 1 }, () => {
   test('reload with an invalid recipe still applies other config changes', async () => {
     await patchPluginConfig(fixture, {
       settings: { 'maximum-hearts': 30 },
-      recipes: { heart: { ingredients: { H: 'NOT_A_REAL_MATERIAL' } } }
+      recipes: { heart: { ingredients: { D: 'NOT_A_REAL_MATERIAL' } } }
     })
     const failed = await sendCommand(alpha, '/ls reload', /Reload failed/)
     assert.match(failed.text, /Reload failed/)
