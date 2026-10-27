@@ -434,6 +434,13 @@ Source: `resourcepack/`.
 
 ## 3. Comparison with `plan/basic.md`
 
+Summary: **0 MISSING**, **7 PARTIAL**, **3 OPTIONAL**, and all other listed
+requirements **HAVE**. The partial rows are the cross-platform test claim,
+Paper/Purpur test coverage, offline-revive teleport, custom GUI icons/sounds,
+resource-pack hosting URL, and the final two milestones (cross-platform testing
+and the version tag). No core heart, elimination, revival, item, recipe,
+command, persistence, or PlaceholderAPI requirement is completely missing.
+
 ### 3.1 Target platforms
 
 | `plan/basic.md` requirement | Status | Notes |
