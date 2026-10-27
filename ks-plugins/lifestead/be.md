@@ -1,69 +1,50 @@
 # Lifestead Bug and Gap Backlog
 
-Last verified: 2026-10-27  
-Baseline: working tree after the remediation pass.  
-Server used for verification: Paper 1.21.11 build 132, Java 21, two real
-Mineflayer bots (`E2EAlpha`, `E2EBeta`), flat world, PlaceholderAPI 2.12.3.
+Last verified: 2026-10-27
+
+Baseline: current tree after re-verification. Server used for live checks:
+Paper 1.21.11 build 132, Java 21, flat world, two real Mineflayer bots
+(`E2EAlpha`, `E2EBeta`), PlaceholderAPI 2.12.3, YAML storage
+(`online-mode=false`).
 
 ## Verification Status
 
-- Maven build + unit tests: **PASS**. 6 JUnit tests, shaded JAR built.
-- Resource pack: **PASS**. ZIP, SHA-1 file, and install README regenerated; the
-  checked-in SHA-1 matches the ZIP.
-- End-to-end suite: **38/38 PASS**. Final runtime log has no `[Lifestead]`
-  `SEVERE`/`ERROR` lines and no player-profile lookup failures.
-- Paper build is pinned to **132**; `E2E_PAPER_LATEST=1` opts into the latest
-  stable build. Local server/plugin JAR overrides are supported.
-- Core loop verified on Paper: PvP steal, death causes, anti-farm, elimination,
-  ban/spectator modes, revival (online/offline), heart items, withdrawal,
-  deposit, queue delivery, recipes, recipe GUI, revive GUI with async skins,
-  PlaceholderAPI, YAML/SQLite persistence, reload, disabled worlds, combat
-  logging, world-change combat tags, unsafe spawn fallback, and invalid recipe
-  reload preservation.
-- PvP melee fallbacks in this run: **0**. Set `E2E_REQUIRE_REAL_MELEE=1` to
-  make any fallback a hard failure.
-- Not verified: Purpur, Spigot, Bukkit, Folia, MySQL, other Minecraft versions,
-  large-player-count load, or long-running server soak.
+- Maven build + unit tests: **PASS**. 6 JUnit tests; shaded JAR built.
+- Resource pack: **PASS**. ZIP and SHA-1 regenerated; the checked-in
+  `release/resource-pack/SHA1.txt` matches the ZIP.
+- End-to-end suite: **37/38 PASS**.
+  - The one failure is `runtime log is free of plugin errors and profile
+    lookups` (`e2e/test/e2e.test.mjs:1381`).
+  - Evidence: a real Mojang lookup timeout from the revive GUI
+    (`e2e/.server/logs/e2e-server.log:913`):
+    `Couldn't look up profile properties for <uuid>` followed by
+    `MinecraftClientException: Failed to read from
+    https://sessionserver.mojang.com/session/minecraft/profile/... due to
+    Read timed out`.
+  - The revive flow itself passed. The GUI test checks for lookups after only
+    1.5 seconds (`e2e.test.mjs:796`) while `SkinService` allows 5 seconds
+    (`SkinService.java:18`), so detection is racy; the final log assertion
+    caught the warning.
+- Targeted probes (temporary `probe.test.mjs`, now removed) confirmed:
+  - `/papi reload` unregisters the non-persistent expansion; placeholders
+    return the raw `%lifesteal_hearts%` token until restart.
+  - `/ls reload` is not atomic: an invalid recipe produced a reload error but
+    the new `maximum-hearts` value (30) was already applied.
+  - A seeded zero-heart, non-eliminated profile is treated as alive by
+    `/ls hearts`, `/ls revive`, and PAPI until that player joins.
+  - A failed recipe reload keeps the old active recipe set, but
+    `/ls recipe heart` displays the invalid new config (`Empty` slots).
+  - BAN elimination writes the correct UUID profile ban and revive pardons it.
+  - A non-stackable heart item does not overstack: `giveheart 3` produced three
+    separate stacks; no overstack was observed.
+- PvP melee fallbacks in the last full run: **0**. Set
+  `E2E_REQUIRE_REAL_MELEE=1` to make any fallback fatal.
+- Not verified: Spigot, Bukkit, Purpur, Folia, MySQL, other Minecraft versions,
+  large-player-count load, long-running soak, or real resource-pack acceptance
+  by a client.
 
-## Resolution Status
-
-| Item | Status | Verification / residual |
-| --- | --- | --- |
-| BUG-01 | Fixed | Positive `sethearts` on an eliminated profile is refused; E2E test. |
-| BUG-02 | Fixed | Startup normalization persists bounds; E2E seeded profiles. |
-| BUG-03 | Fixed | Combat tag persists through world changes; E2E nether test. |
-| BUG-04 | Fixed | Owned mobs/pets, projectiles, TNT, and area clouds credit the owner. |
-| BUG-05 | Fixed | Admin help permission-gated; E2E permissions test. |
-| BUG-06 | Fixed | Tab completion is permission-filtered; E2E test. |
-| BUG-07 | Fixed | SQLite closed-save guard; schema init refresh fixed during E2E. |
-| BUG-08 | Fixed | Deposit race refunds without consuming items. |
-| BUG-09 | Fixed | Give-first/clear-later delivery; at-least-once trade-off documented. |
-| BUG-10 | Fixed | Duplicate-death timer removed; in-flight set retained. |
-| BUG-11 | Fixed | Reset clears combat, pending items, kills, and anti-farm history. |
-| BUG-12 | Fixed | Atomic recipe reload with rollback; E2E invalid-recipe test. |
-| BUG-13 | Fixed | Paper profile ban via reflection, Spigot profile attempt, name fallback. |
-| GAP-01 | Fixed | Invalid values warn/clamp; E2E warning assertions. |
-| GAP-02 | Fixed | Safe revive search and fallback; E2E unsafe-coordinate test. |
-| GAP-03 | Fixed | Anti-farm and combat tags persist. |
-| GAP-04 | Fixed | YAML batched per tick plus atomic move. |
-| GAP-05 | Fixed | SQLite `user_version` 2, backup, additive migration. |
-| GAP-06 | Fixed | Item definitions generated from config; duplicate material rejected. |
-| GAP-07 | Fixed | Dead keys removed; remaining keys are wired. |
-| GAP-08 | Fixed | Async, cached, bounded skin lookup with fallback. |
-| GAP-09 | Partial | Build script requires an explicit HTTPS URL; hosting is external. |
-| GAP-10 | Fixed | Unused GUI textures are no longer generated. |
-| GAP-11 | Partial | README/LICENSE/CHANGELOG and CI workflow added; tag is external. |
-| GAP-12 | Fixed | `opp/lifesteadz.md` rewritten to match the implementation. |
-| GAP-13 | Fixed | Atomic recipe reload and specific reload error message. |
-| GAP-14 | Fixed | Elimination mode changes reconcile online and offline state. |
-| TEST-01 | Partial | Harness accepts local Spigot/Purpur/Paper JARs; only Paper was run. |
-| TEST-02 | Partial | 6 JUnit tests plus CI; no lint/static-analysis gate. |
-| TEST-03 | Fixed | Paper build 132 pinned with explicit latest-build opt-in. |
-| TEST-04 | Partial | Fallbacks counted; `E2E_REQUIRE_REAL_MELEE=1` makes them fatal. |
-| TEST-05 | Fixed | Regression E2E tests added for the listed fixed behaviors. |
-
-External release operations remain: public HTTPS pack hosting, a signed
-`v1.0.0` tag, and real Spigot/Purpur/MySQL runs.
+No P0 or P1 issue is confirmed on the tested Paper target. The highest open
+items are P2.
 
 Severity used below:
 
@@ -73,682 +54,493 @@ Severity used below:
   config/ops gap.
 - **P3**: edge case, UX, cosmetic, documentation, or test-coverage gap.
 
-No confirmed P0 or P1 issue remains on the tested Paper target. The highest
-priority open items are P2.
-
 ---
 
-## 1. Confirmed Defects
+## 1. P2 Open Items
 
-### BUG-01: `/ls sethearts <player> <positive>` silently revives an eliminated player
+### BUG-01: `/papi reload` unregisters the Lifestead expansion
 
 **Severity:** P2  
-**Area:** Commands / elimination
+**Area:** PlaceholderAPI integration  
+**Verification:** Confirmed live
 
-**Evidence:** `HeartManager.setHearts` calls `clearEliminated(profile, false)`
-whenever a positive amount is applied to an eliminated profile
-(`src/main/java/dev/lifestead/manager/HeartManager.java:46`). `/ls sethearts`
-then only sends the normal “Set hearts” message
-(`src/main/java/dev/lifestead/command/LifesteadCommand.java:245`).
+**Evidence:** Before `/papi reload`, `papi parse E2EAlpha
+%lifesteal_hearts%` returned the current value. After `/papi reload` and a
+three-second wait, the same parse returned the unresolved
+`%lifesteal_hearts%` token. `LifesteadPlaceholderExpansion` does not override
+`persist()` (`src/main/java/dev/lifestead/integration/LifesteadPlaceholderExpansion.java`).
+PlaceholderAPI's reload path removes expansions whose `persist()` is false and
+then reloads only persistent/disk/cloud expansions, so the plugin does not
+re-register until the server restarts.
 
-**Impact:** An admin who only intends to change hearts also clears the
-elimination, pardons the name ban, restores survival for spectators, and skips
-the normal revive announcement, effects, and revive-cost flow. This is easy to
-trigger by accident and is inconsistent with `/ls revive`.
+**Impact:** Any admin who runs `/papi reload` silently loses every Lifestead
+placeholder until restart, affecting scoreboards, tab lists, holograms, and
+other placeholder consumers.
 
-**Suggested fix:** Do not revive implicitly from `setHearts`. Either reject
-positive sethearts on eliminated profiles and direct the admin to `/ls revive`,
-or route through `EliminationManager.revive` so the same messages, effects,
-announcement, teleport, and permission behavior apply.
-
-**Missing test:** Set a player to zero, then set them to a positive value and
-assert whether they should be revived or rejected; assert the message/announcement.
+**Suggested fix:** Override `persist()` to return `true`. Add an E2E test that
+runs `/papi reload` and asserts the placeholder still resolves. Optionally
+implement `getPlaceholders()` so `/papi info` lists the supported keys.
 
 ---
 
-### BUG-02: Offline heart reads bypass min/max normalization
+### BUG-02: `/ls reload` applies part of a failed reload
 
 **Severity:** P2  
-**Area:** Data consistency / commands / PlaceholderAPI
+**Area:** Reload / configuration consistency  
+**Verification:** Confirmed live
 
-**Evidence:** Online reads use `HeartManager.profile`, which calls
-`normalize`. Offline reads return the raw data-store profile:
-`LifesteadCommand.findProfile` (`src/main/java/dev/lifestead/command/LifesteadCommand.java:410`)
-and `LifesteadPlaceholderExpansion.onRequest`
-(`src/main/java/dev/lifestead/integration/LifesteadPlaceholderExpansion.java:37`).
-`PlayerProfile` clamps only negative values and eliminated players at load
-(`src/main/java/dev/lifestead/data/PlayerProfile.java`); it does not apply the
-current `minimum-hearts`/`maximum-hearts` settings.
+**Evidence:** In a probe, `recipes.heart.ingredients.D` was set to
+`NOT_A_REAL_MATERIAL`. `/ls reload` correctly reported failure and kept the
+previous recipe set, but `/ls hearts E2EAlpha` then reported the new
+`maximum-hearts: 30` value. `LifesteadPlugin.reloadAll`
+(`src/main/java/dev/lifestead/LifesteadPlugin.java:102`) applies
+`reloadConfig()`, `messages.reload()`, `settings.load()`,
+`heartManager.normalizeAll()`, `eliminations.reconcileMode()`, and `startTasks()`
+before it checks the recipe result. It throws only after
+`heartManager.resyncAll()` and `dataStore.saveAll()` have also run.
 
-**Impact:** After an admin lowers the maximum hearts, an offline player can
-still be shown with old out-of-range hearts by `/ls hearts <offline>` and by
-`%lifesteal_hearts%` / `%lifesteal_withdrawable%`. The data is corrected only
-after that player joins or a mutating command touches the profile. Manual YAML
-edits have the same effect.
+**Impact:** A failed reload leaves a mixed runtime state: new settings, messages,
+tasks, and normalized data, but old recipes. The command message says
+"Existing recipes and data were preserved", which is misleading. This can
+change gameplay limits or timings even though the admin was told the reload
+failed.
 
-**Suggested fix:** Normalize profiles when loading from the data store and/or
-in every read path; if normalization changes a value, save it. Add a shared
-`normalizeAndPersist` helper used by commands, PAPI, and GUI reads.
-
-**Missing test:** Seed a non-eliminated profile above the configured maximum,
-restart, and assert `/ls hearts <offline>` and PAPI return the clamped value.
+**Suggested fix:** Validate the whole new configuration before mutating live
+state. At minimum, reload and validate recipes first, and only then apply
+settings/messages/tasks; on failure restore the previous config file and leave
+runtime state untouched. Add an E2E test that fails a recipe reload and asserts
+that settings, messages, and tasks did not change.
 
 ---
 
-### BUG-03: Combat-log penalty can be bypassed by changing world before quitting
+### BUG-03: Zero-heart non-eliminated profiles load as alive
 
 **Severity:** P2  
-**Area:** Combat logging / disabled worlds
+**Area:** Data normalization / elimination  
+**Verification:** Confirmed live
 
-**Evidence:** `CombatListener.onDamage` records a tag only when the player is in
-an enabled world (`src/main/java/dev/lifestead/listener/CombatListener.java:33`).
-`onQuit` checks the player’s world **at quit time** and returns without a
-penalty if that world is disabled (`CombatListener.java:54`).
+**Evidence:** A seeded profile with `hearts: -5` and `eliminated: false`
+loaded as 0 hearts and remained alive. `/ls hearts` showed 0, `/ls revive`
+said "not eliminated", and PAPI returned `status=alive`. Only
+`EliminationManager.handleJoin` converts this state to eliminated
+(`src/main/java/dev/lifestead/manager/EliminationManager.java:198`).
+`PlayerProfile` clamps negative hearts to 0 without setting elimination
+(`src/main/java/dev/lifestead/data/PlayerProfile.java:33`), and
+`HeartManager.normalize` only clamps the numeric value
+(`src/main/java/dev/lifestead/manager/HeartManager.java:94`).
 
-**Impact:** A player can take damage in an enabled world, enter a disabled world,
-then quit within the combat-log duration and avoid the configured heart penalty.
+**Impact:** Offline reads, placeholders, and admin commands report a
+zero-heart player as alive. The player is only eliminated on the next join.
+If an admin gives hearts or edits the profile in that window, the invalid
+alive-at-zero state can persist longer.
 
-**Suggested fix:** Store the world (or enabled/disabled state) with the combat
-tag and evaluate the tag that was actually applied. Alternatively, do not skip
-the penalty at quit when a valid enabled-world tag exists. Add a regression test
-that moves the player to a disabled world before disconnect.
+**Suggested fix:** Normalize `hearts <= 0 && !eliminated` to eliminated during
+startup/reload normalization (and persist it), or reject such data at load.
+Keep the on-join guard as a second line of defense. Add a regression test for
+offline `/ls hearts` and PAPI status.
 
 ---
 
-### BUG-04: Kills by a player-owned mob are not credited as PvP
+### BUG-04: YAML save failures discard the dirty flag
 
 **Severity:** P2  
-**Area:** Death cause resolution
+**Area:** Persistence / data loss  
+**Verification:** Source-evidenced; not separately live-tested
 
-**Evidence:** `DeathListener.resolveSource` unwraps only `Projectile` chains
-(`src/main/java/dev/lifestead/listener/DeathListener.java:180`). A tamed wolf,
-cat, or other owned living entity is therefore treated as a mob, not as the
-owner’s PvP kill. `victim.getKiller()` may cover some direct cases, but it does
-not map an owned mob back to its owner.
+**Evidence:** `YamlDataStore.flush()` calls `writeAll()` and then
+unconditionally `dirty.clear()` (`src/main/java/dev/lifestead/data/YamlDataStore.java:144`).
+`writeAll()` catches `IOException`, logs `Could not save player data`, and
+returns normally (`YamlDataStore.java:152-178`). `saveAll()` has the same
+unconditional clear (`YamlDataStore.java:118-123`). A failed write therefore
+removes every pending UUID from the dirty set; no retry is scheduled and the
+failure is only visible in the console.
 
-**Impact:** A player can kill another player with a wolf and avoid the PvP steal
-category; the victim is instead treated as a mob death. Explosion sources
-(player-ignited TNT, respawn anchors, etc.) also need an explicit source check
-because only projectile sources are unwrapped here. Paper’s `getKiller()` may
-cover some explosion cases; verify before changing that path.
+**Impact:** A transient disk-full, permission, or filesystem error can lose
+all changes made since the last successful write. Because `writeAll()` writes
+the whole profile map, a later successful save may also overwrite a good file
+with stale in-memory data if the process continues.
 
-**Suggested fix:** Resolve the responsible player from:
-owned/tamed living entities, `TNTPrimed` source, and other source-aware
-explosion entities. Keep self-kills classified as environment. Add tests for
-wolf, TNT, creeper, and player-arrow kills.
-
----
-
-### BUG-05: Admin help is shown to every player with the base command permission
-
-**Severity:** P3  
-**Area:** Permissions / information disclosure
-
-**Evidence:** `LifesteadCommand.help` prints every line from
-`messages.yml:commands.help` without checking the permission for each command
-(`src/main/java/dev/lifestead/command/LifesteadCommand.java:49`). The command
-itself only requires `lifesteal.use`, which defaults to everyone.
-
-**Impact:** Normal players can see admin command syntax and discover internal
-player-targeting actions. This is not privilege escalation because each
-subcommand still checks its permission, but it is an avoidable information leak.
-
-**Suggested fix:** Store the required permission alongside each help entry and
-filter lines, or split the help text into public and admin sections.
+**Suggested fix:** Make `writeAll()` return success/failure and clear `dirty`
+only on success. Keep failed UUIDs dirty and retry with backoff, or disable the
+store/plugin after a repeated failure. Add a test using an unwritable directory.
 
 ---
 
-### BUG-06: Tab completion exposes admin-only player names without permission
-
-**Severity:** P3  
-**Area:** Permissions / information disclosure
-
-**Evidence:** In `LifesteadCommand.onTabComplete`, the `revive`, `giveheart`,
-`sethearts`, `eliminate`, and `reset` cases return `eliminatedNames()` or
-`knownNames()` without checking the corresponding permission
-(`src/main/java/dev/lifestead/command/LifesteadCommand.java:345`). Only the
-`hearts` case checks `lifesteal.hearts.others`.
-
-**Impact:** A player without `lifesteal.revive`, `lifesteal.give`,
-`lifesteal.set`, `lifesteal.eliminate`, or `lifesteal.reset` can still tab
-complete known/eliminated player names, including offline players.
-
-**Suggested fix:** Gate each second-argument completion branch on the same
-permission used by the command handler.
-
----
-
-### BUG-07: SQLite `save()` can throw after the store is closed
-
-**Severity:** P3  
-**Area:** Persistence robustness
-
-**Evidence:** `SqliteDataStore.save` calls `connection.prepareStatement`
-without a null/closed check (`src/main/java/dev/lifestead/data/SqliteDataStore.java:164`).
-`saveAll` guards for `connection == null`, but `save` does not. `close` sets the
-connection to null (`SqliteDataStore.java:219`).
-
-**Impact:** A late save after plugin shutdown or a failed re-initialization can
-throw an uncaught `NullPointerException` instead of logging a controlled error.
-The current event flow normally saves before close, so this is a latent
-robustness issue rather than a reproduced data-loss bug.
-
-**Suggested fix:** Add a `closed` flag or null/closed connection guard to
-`save`, and log a warning or return cleanly.
-
----
-
-### BUG-08: Deposit can report “Deposited 0” after an inventory race
-
-**Severity:** P3  
-**Area:** Commands / inventory consistency
-
-**Evidence:** `deposit` counts matching items, chooses an amount, consumes the
-items, then adds hearts and always sends the deposit message
-(`src/main/java/dev/lifestead/command/LifesteadCommand.java:142`). If another
-plugin/player action removes or changes the items between `countHearts` and
-`consumeHearts`, `consumed` can be 0.
-
-**Impact:** A misleading “Deposited 0 heart item(s)” message, and the player may
-believe items were taken without gaining hearts.
-
-**Suggested fix:** Re-check `consumed > 0` before sending the success message;
-report an inventory/race error when nothing was consumed.
-
----
-
-### BUG-09: Pending heart-item delivery has a crash window
-
-**Severity:** P3  
-**Area:** Data consistency / offline delivery
-
-**Evidence:** `ItemManager.deliverPendingHearts` clears the pending count and
-saves the profile **before** calling `giveHearts`
-(`src/main/java/dev/lifestead/manager/ItemManager.java:151`). A crash or
-disconnect between the save and the item creation loses the queued items.
-
-**Impact:** A player can permanently lose queued heart items if the server
-stops at exactly the wrong point.
-
-**Suggested fix:** Make delivery idempotent (e.g., give first and then clear
-with a recovery marker), or write a delivery journal and reconcile on startup.
-At minimum, document the accepted risk.
-
----
-
-### BUG-10: One-second duplicate-death guard can suppress a legitimate second death
-
-**Severity:** P3  
-**Area:** Death handling
-
-**Evidence:** `DeathListener.onDeath` ignores any death for the same UUID within
-1 second of the previous processed death (`src/main/java/dev/lifestead/listener/DeathListener.java:56`).
-The guard is intended to prevent duplicate events, but it also suppresses a
-genuine second death in that window.
-
-**Impact:** Rare, but a player can escape a second heart loss/elimination if
-they die again within one second (for example after an unusual respawn or
-another plugin forcing death).
-
-**Suggested fix:** Deduplicate by event identity/tick rather than a blanket
-one-second window, or only suppress the exact same death event. Keep the
-respawn/join cleanup path.
-
----
-
-### BUG-11: Reset does not clear combat-log state, queued items, or kill stats
-
-**Severity:** P3  
-**Area:** Commands / reset semantics
-
-**Evidence:** `LifesteadCommand.resetProfile` only updates last-seen, clears the
-pending revive teleport flag, and changes hearts
-(`src/main/java/dev/lifestead/command/LifesteadCommand.java:302`). It does not
-clear `CombatListener.lastCombat`, `pendingHeartItems`, or `kills/lastKillAt`.
-
-**Impact:** A player reset immediately after taking damage can still be
-combat-log penalized on quit. Queued offline heart items survive the reset and
-arrive later. Kill statistics also survive, which may or may not be intended.
-The exact intended reset contract is not documented.
-
-**Suggested fix:** Define and document what reset means. If it is a full player
-reset, clear combat tags, pending items, and stat fields; if it is only hearts
-and elimination, rename the command or document the retained state.
-
----
-
-### BUG-12: Invalid recipe configuration can lose old recipes or fail reload
-
-**Severity:** P3, needs reproduction  
-**Area:** Recipes / reload robustness
-
-**Evidence:** `RecipeManager.reload` unregisters both recipes first, then
-registers them (`src/main/java/dev/lifestead/manager/RecipeManager.java`).
-`register` logs invalid symbols/materials but continues, and catches only
-`IllegalArgumentException` (`RecipeManager.java:118`). A shape symbol with no
-valid ingredient, or a missing shape entry, can leave an incomplete
-`ShapedRecipe` and may throw `IllegalStateException` from `Bukkit.addRecipe`.
-
-**Impact:** A bad config edit plus `/ls reload` can make the plugin permanently
-lose the old recipes until a valid reload/restart, or fail plugin enable if the
-exception escapes `onEnable`.
-
-**Suggested fix:** Validate every shape character against a parsed ingredient
-map before constructing the recipe, catch `RuntimeException` around
-registration, register into a temporary structure, and only unregister the old
-recipes after the new ones validate.
-
----
-
-### BUG-13: BAN mode is name-based only
-
-**Severity:** P3  
-**Area:** Elimination / ban enforcement
-
-**Evidence:** `EliminationManager.ban` and `pardon` use
-`Bukkit.getBanList(BanList.Type.NAME)` with the profile’s last-known name
-(`src/main/java/dev/lifestead/manager/EliminationManager.java:232`).
-
-**Impact:** On servers/accounts where a player can change their name, a
-name-only ban can be evaded. After a name change, the stored profile may still
-hold the old name, so a later `/ls revive` can pardon the wrong name.
-
-**Suggested fix:** Use UUID/profile bans where the server API supports them, or
-persist and ban both the current name and UUID/profile identity. Document the
-name-ban limitation if cross-platform API support prevents this.
-
----
-
-## 2. Operational and Configuration Gaps
-
-### GAP-01: Invalid configuration values are silently replaced or clamped
+### BUG-05: Malformed `playerdata.yml` loads as empty and is later overwritten
 
 **Severity:** P2  
-**Area:** Startup / reload operations
+**Area:** Persistence / data recovery  
+**Verification:** Source-evidenced; Bukkit load behavior, not live-tested
 
-**Evidence:** `Settings.load` (`src/main/java/dev/lifestead/Settings.java:89`)
-silently performs many fallbacks/clamps:
+**Evidence:** `YamlDataStore.init()` calls
+`YamlConfiguration.loadConfiguration(file)` without detecting parse failure
+(`src/main/java/dev/lifestead/data/YamlDataStore.java:36`). Bukkit's
+`loadConfiguration` logs the parse error and returns an empty configuration
+instead of throwing; `init()` then finds no `players` section and returns with
+an empty profile map. The next `getOrCreate()` plus `save()` writes that empty
+map back over the original file.
 
-- invalid `elimination.mode` → `BAN` (line 109)
-- invalid `database.type` → `YAML` (line 140)
-- `start-hearts`, `gain-per-kill`, `lose-per-death`, `withdraw-guard`,
-  `health-resync-ticks`, anti-farm values, combat-log values, `revive.hearts`,
-  and `particle-count` are clamped without warnings
-- invalid `effects.*-sound` / `heart-particle` values are silently ignored in
-  `Effects` (`src/main/java/dev/lifestead/util/Effects.java:65`)
+**Impact:** A truncated/corrupt data file (for example after a crash or manual
+edit) can turn into permanent loss of every profile on the next player join or
+save. The console shows a load error, but the plugin keeps running and does not
+quarantine the file.
 
-Within `Settings`, only maximum-hearts overflow and minimum >= maximum produce
-warnings; invalid item materials and invalid recipe materials do warn separately.
-
-**Impact:** A typo in a production config can silently change gameplay (for
-example, an intended spectator server falls back to BAN, or SQLite data is
-written to YAML), and admins have no startup warning to diagnose it.
-
-**Suggested fix:** Validate each enum/type and log a warning for every fallback
-or clamp. Consider failing fast for storage/mode typos rather than silently
-choosing a different behavior.
+**Suggested fix:** Detect parse failure explicitly (pre-parse with SnakeYAML or
+inspect the loaded file), rename the bad file to `playerdata.yml.corrupt`, log
+a clear recovery message, and refuse to overwrite it. Apply the same treatment
+to `antifarm.yml`. Add a startup test with an intentionally malformed file.
 
 ---
 
-### GAP-02: Revive spawn settings are not validated
+### BUG-06: `/ls giveheart` accepts an unbounded amount
 
 **Severity:** P2  
-**Area:** Revival
+**Area:** Commands / main-thread performance  
+**Verification:** Source-evidenced
 
-**Evidence:** `EliminationManager.spawnLocation` looks up
-`revive.spawn-world`; if the world is missing it silently falls back to the
-first loaded world (`src/main/java/dev/lifestead/manager/EliminationManager.java:210`).
-Coordinates are not checked for world bounds or safety.
+**Evidence:** `LifesteadCommand.giveHeart` accepts any positive Java `int`
+(`src/main/java/dev/lifestead/command/LifesteadCommand.java:259`).
+`ItemManager.giveHearts` loops once per 64 items
+(`src/main/java/dev/lifestead/manager/ItemManager.java:129-138`), and the
+offline branch stores up to `Integer.MAX_VALUE` pending items
+(`LifesteadCommand.java:273-275`). A later join calls `giveHearts` with that
+pending count.
 
-**Impact:** A typo in `spawn-world` can send revived players to an unexpected
-world (usually the first world), and invalid coordinates can put them in a wall,
-void, or another unsafe location.
+**Impact:** A typo such as `/ls giveheart Steve 2000000000` executes roughly
+31 million stack operations on the main thread, can freeze the server for
+minutes, and may leave a huge pending queue that repeats the freeze on join.
+The command is permission-gated (`lifesteal.give`, default op), so this is an
+operational footgun rather than an unauthenticated exploit.
 
-**Suggested fix:** Warn on an unknown world and either fail the revive or use
-the player’s current world only with an explicit warning. Validate coordinates
-and use a safe-spawn search.
+**Suggested fix:** Cap the amount (for example one inventory's worth, or a
+configurable maximum), reject larger values with a usage message, and clamp
+offline pending totals to the same cap. Add a test for an oversized request.
 
 ---
 
-### GAP-03: Anti-farm and combat-log history are in memory only
+### BUG-07: Offline-mode servers still request Mojang skins for revive heads
 
 **Severity:** P2  
-**Area:** Anti-abuse / persistence
+**Area:** Revive GUI / external requests  
+**Verification:** Confirmed live
 
-**Evidence:** `AntiFarm` stores `lastReward` and `history` in `HashMap`s
-(`src/main/java/dev/lifestead/manager/AntiFarm.java`); `CombatListener` stores
-`lastCombat` in a `HashMap` (`src/main/java/dev/lifestead/listener/CombatListener.java:19`).
-Neither is written to the data store.
+**Evidence:** `ReviveGui.build` requests an async Mojang lookup for every head
+not already cached (`src/main/java/dev/lifestead/gui/ReviveGui.java:79-86`).
+`SkinService` unconditionally calls `PlayerProfile.update()`
+(`src/main/java/dev/lifestead/manager/SkinService.java:63`). The E2E server is
+`online-mode=false` (`e2e/lib/fixtures.mjs:129`), yet the run produced a real
+sessionserver timeout and warning (`e2e-server.log:913`). Some offline UUIDs
+return an empty profile quickly; others time out for up to five seconds.
 
-**Impact:** Restarting the server clears anti-farm cooldowns/repeat-kill limits
-and combat tags. A player can avoid a cooldown or combat-log penalty by
-arranging a restart, and there is no audit trail across restarts.
+**Impact:** On offline-mode servers, every uncached revive page sends up to 36
+useless Mojang requests, delays head loading, risks rate limiting, and produces
+console warnings. It also makes the E2E no-lookup assertion fail nondeterministically.
 
-**Suggested fix:** Persist anti-farm pair history/timestamps and active combat
-tags with the player data, or document that restart clears them. Add an audit
-log if anti-abuse is expected to survive restarts.
-
----
-
-### GAP-04: YAML storage rewrites the entire file on every save
-
-**Severity:** P2  
-**Area:** Performance / persistence
-
-**Evidence:** `YamlDataStore.save` calls `saveAll`
-(`src/main/java/dev/lifestead/data/YamlDataStore.java:98`), and `saveAll`
-rebuilds every profile and writes a temporary file plus an atomic move
-(`YamlDataStore.java:104`). Saves happen on joins, quits, heart changes, kills,
-revives, and each reset loop iteration.
-
-**Impact:** On a large server, a single death can trigger multiple full-file
-writes on the main thread. `/ls reset all` re-saves the entire file once per
-profile, making it O(n²). This can cause server stalls and TPS spikes.
-
-**Suggested fix:** Batch/debounce YAML writes, add a dirty-profile set and a
-periodic async snapshot where safe, or recommend SQLite for larger servers.
-Change `/ls reset all` to mutate all profiles and save once.
+**Suggested fix:** Skip external skin lookup when `Bukkit.getOnlineMode()` is
+false, or only look up profiles for players known to be online with a complete
+profile. Cache the "no skin" result without a network call. Add a deterministic
+offline-mode test that opens both revive pages and asserts no HTTP lookup.
 
 ---
 
-### GAP-05: SQLite has no schema version and only additive migrations
+## 2. P3 Open Items
 
-**Severity:** P2  
-**Area:** Persistence / upgrades
-
-**Evidence:** `SqliteDataStore.init` creates the table if absent and
-`ensureColumns` only adds five optional columns
-(`src/main/java/dev/lifestead/data/SqliteDataStore.java:63`). There is no
-`PRAGMA user_version`, migration registry, backup, or pre-migration validation.
-
-**Impact:** A future schema change or an older table missing required columns
-can fail at load time. Admins have no supported upgrade/rollback procedure.
-
-**Suggested fix:** Introduce a schema version, ordered migrations, a pre-upgrade
-backup, and a startup failure with a clear message when an unsupported schema is
-detected.
-
----
-
-### GAP-06: Resource-pack model IDs are hardcoded and can diverge from config
-
-**Severity:** P2  
-**Area:** Resource pack / custom items
-
-**Evidence:** `ItemManager` reads `items.*.custom-model-data` from config
-(defaults 1001/1002), but the generated pack’s item definitions hardcode
-thresholds `1001.0` and `1002.0` in
-`resourcepack/assets/minecraft/items/nether_star.json` and `beacon.json`.
-Changing the config value makes the pack stop matching the custom item.
-
-**Impact:** A supported config change silently disables custom textures/models.
-
-**Suggested fix:** Either treat the model data values as fixed/internal and
-document that, or generate the resource-pack JSON from the configured values.
-
----
-
-### GAP-07: Dead message keys in `messages.yml`
+### BUG-08: Combat tags are documented as restart-persistent but are cleared on join
 
 **Severity:** P3  
-**Area:** Configuration / cleanup
+**Area:** Combat logging / documentation  
+**Verification:** Source-evidenced
 
-**Evidence:** These keys are not referenced by the Java source:
+**Evidence:** `config.yml:43` says "The tag is saved across restarts" and
+`README.md:84` says combat tags are persisted. `CombatListener.onJoin` calls
+`clearTag` (`src/main/java/dev/lifestead/listener/CombatListener.java:45-47`),
+which sets `combatAt` to zero and saves before any penalty can be applied.
+`onQuit` does apply the penalty for a normal disconnect, but a crash or a
+server stop after damage leaves a saved tag that is discarded on the next join.
 
-- `hearts.added`
-- `hearts.removed`
-- `hearts.at-min`
-- `items.beacon-opened`
-- `elimination.eliminate-offline`
-- `combat-log.eliminated`
+**Impact:** Players who combat-log via a server crash or forced restart avoid
+the configured penalty, contrary to the documentation.
 
-The command paths use `hearts.set`, `hearts.given`, `elimination.eliminate-admin`,
-the normal elimination broadcast, etc. instead.
-
-**Impact:** Admins editing these messages see no effect, and the file implies
-behavior that does not exist.
-
-**Suggested fix:** Remove the keys or wire them into the intended paths. Add a
-message-key usage test if messages are part of the public config contract.
+**Suggested fix:** Either apply the outstanding penalty on join when the saved
+tag is still within the configured window, or change the docs to say the tag
+only survives world changes. Add a restart/crash-window test.
 
 ---
 
-### GAP-08: Revive GUI heads have default skins
+### BUG-09: Recipe GUI reads invalid new config after a failed reload
 
 **Severity:** P3  
-**Area:** GUI / cosmetics
+**Area:** Recipe GUI / reload consistency  
+**Verification:** Confirmed live
 
-**Evidence:** `ReviveGui.head` creates `PLAYER_HEAD` with an `ItemMeta` but does
-not set an owning player profile (`src/main/java/dev/lifestead/gui/ReviveGui.java`).
-This was an intentional trade-off to avoid asynchronous Mojang profile lookups
-and rate limiting.
+**Evidence:** With the invalid `ingredients.D` value, `/ls reload` kept the old
+active recipe but `/ls recipe heart` showed `Empty` in the ingredient slot.
+`RecipeManager.display` reads the live `plugin.getConfig()` directly
+(`src/main/java/dev/lifestead/manager/RecipeManager.java:84-121`), while the
+active recipe map still contains the previous valid recipe. The result item and
+enabled flag also come from the new config.
 
-**Impact:** Eliminated players appear as default Steve/Alex heads instead of
-their real skins.
+**Impact:** After a failed reload the recipe GUI can show an empty or different
+recipe from the one actually craftable. Admins may diagnose the wrong config
+and players see inconsistent information until the next successful reload or
+restart.
 
-**Suggested fix:** If skins are required, resolve cached profiles asynchronously
-with a bounded cache and a timeout/fallback to the default head. Do not perform
-blocking profile lookups on the main thread.
+**Suggested fix:** Build displays from the active recipe set/last successful
+config snapshot, or restore the previous config file on failure (see BUG-02).
+Add a GUI assertion to the invalid-recipe reload test.
 
 ---
 
-### GAP-09: Resource pack still uses a placeholder hosting URL
+### BUG-10: Reviving an online dead player skips the configured teleport
 
 **Severity:** P3  
-**Area:** Release / resource pack
+**Area:** Revival edge case  
+**Verification:** Source-evidenced
 
-**Evidence:** `scripts/build-resource-pack.sh` generates
-`release/resource-pack/README.md` with
-`https://your-host.example/Lifestead-ResourcePack-1.0.0.zip`.
+**Evidence:** `EliminationManager.revive` sets
+`pendingReviveTeleport` only when the target is offline
+(`src/main/java/dev/lifestead/manager/EliminationManager.java:158`), then
+teleports only when `!online.isDead()` (`EliminationManager.java:165`). If an
+eliminated player is online but dead (for example during the death screen),
+revive restores survival and hearts but neither teleports nor sets a pending
+teleport. `handleRespawn` only reapplies health
+(`EliminationManager.java:228`).
 
-**Impact:** The pack ZIP and SHA-1 are ready, but a server operator cannot use
-the documented `resource-pack=` URL until they host it themselves.
+**Impact:** The player respawns at the death location instead of the configured
+revive spawn. This is a narrow timing window but contradicts the revive-spawn
+setting.
 
-**Suggested fix:** Publish the ZIP to a stable HTTPS host and put the real URL
-in the release README (and optionally in server setup docs). Keep the placeholder
-only in the generic template.
+**Suggested fix:** When the target is online and dead, set the pending teleport
+flag and perform the teleport from `handleRespawn`, or defer the revive until
+respawn. Add a regression test if the harness can hold a bot on the death screen.
 
 ---
 
-### GAP-10: Generated GUI textures are unused
+### BUG-11: SkinService drops callbacks for a second concurrent GUI request
 
 **Severity:** P3  
-**Area:** Resource pack / GUI
+**Area:** Revive GUI / async callbacks  
+**Verification:** Source-evidenced
 
-**Evidence:** `scripts/generate-textures.py` writes
-`assets/lifestead/textures/gui/heart.png` and
-`assets/lifestead/textures/gui/revive_beacon.png`, but no GUI code references
-them; the GUIs use vanilla paper/head/barrier/arrow icons.
+**Evidence:** `SkinService.request` stores a UUID in `inFlight` and returns
+immediately if another request for that UUID is already running
+(`src/main/java/dev/lifestead/manager/SkinService.java:51-53`). Only the first
+request's callback is retained; the second GUI receives no update when the
+lookup completes. If the first GUI was closed or is showing a different page,
+the second remains on the default head until reopened after caching.
 
-**Impact:** The pack contains unused assets and the plan’s “GUI icons” item is
-only partially implemented.
+**Impact:** A player who closes and quickly reopens the revive GUI during a
+slow lookup can see blank/default heads. Cosmetic only.
 
-**Suggested fix:** Either wire the textures into custom GUI item models (with
-fallbacks) or stop generating them and mark the item as intentionally vanilla.
+**Suggested fix:** Keep a list of callbacks per in-flight UUID and notify all
+requesters, or have GUIs re-render from the cache after a short delay. Add a
+unit/integration test with two concurrent requests for one UUID.
 
 ---
 
-### GAP-11: No README, LICENSE, CHANGELOG, or release tag
+### BUG-12: Anti-farm records a reward before hearts are actually added
 
 **Severity:** P3  
-**Area:** Packaging / documentation
+**Area:** Anti-farm / config edge  
+**Verification:** Source-evidenced
 
-**Evidence:** The plugin directory has only `opp/` and `plan/` documents; there
-is no root `README.md`, `LICENSE`, or `CHANGELOG.md`. `git tag -l` is empty, and
-`plugin.yml` uses the placeholder website `https://github.com/lifestead`.
+**Evidence:** `DeathListener` calls `AntiFarm.canReward` before
+`HeartManager.addHearts` (`src/main/java/dev/lifestead/listener/DeathListener.java:120-124`).
+`canReward` immediately updates `lastReward` and `history` and saves
+(`src/main/java/dev/lifestead/manager/AntiFarm.java:59-64`). If
+`settings.gain-per-kill` is 0 (allowed by `Settings`), the reward attempt
+records a kill but adds no hearts; subsequent attempts within the cooldown are
+blocked. A failed add due to a concurrent state change has the same effect.
 
-**Impact:** New operators lack install/config/compatibility instructions, the
-license is unclear, and the planned `v1.0.0` release is not tagged.
+**Impact:** With a zero gain-per-kill configuration, the anti-farm window is
+consumed without any reward. Mostly a configuration footgun; the default gain
+of 1 is unaffected.
 
-**Suggested fix:** Add a README with requirements, install, config, commands,
-permissions, resource-pack setup, and testing instructions. Add the chosen
-license, a changelog, a real project URL, and a `v1.0.0` tag.
+**Suggested fix:** Record the reward only after `addHearts` returns a positive
+amount, or validate that gain-per-kill is at least 1 at startup.
 
 ---
 
-### GAP-12: `opp/lifesteadz.md` is stale and overstates some behavior
+### BUG-13: Dead message keys and dead code remain
 
 **Severity:** P3  
-**Area:** Documentation accuracy
+**Area:** Cleanup  
+**Verification:** Source-evidenced
 
-**Evidence:** The document says the suite has 25 tests, claims offline revive
-teleport is not applied on the next join, and describes tab completion as
-permission-filtered for names. The current suite has 33 tests, offline revive
-teleport is implemented in `PlayerLifecycleListener` and covered by a test, and
-admin-only name completion is not permission-filtered.
+**Evidence:** `general.database-error` (`messages.yml:12`) and
+`gui.recipe-result` (`messages.yml:86`) are never sent. `EliminationManager.clearEliminated`
+is unused, `RecipeGui.hasAction` is unused, `AntiFarm.trackedPairs` is unused,
+and `ItemManager.giveBeacons` has no callers. The previous backlog claimed the
+dead keys were removed; they are still present.
 
-**Impact:** Anyone using the audit as a requirements/status source will make
-wrong decisions.
+**Impact:** Maintenance noise and a stale backlog claim. No runtime effect.
 
-**Suggested fix:** Re-baseline the document against the current commit and
-describe known gaps (including the ones in this file) instead of claiming
-completion.
+**Suggested fix:** Remove or wire the entries and methods, or document why they
+are intentionally retained.
 
 ---
 
-### GAP-13: Reload uses a misleading error message and is not atomic for recipes
+### BUG-14: Off-hand custom hearts and beacons are ignored
 
 **Severity:** P3  
-**Area:** Reload / UX
+**Area:** Item interaction / UX  
+**Verification:** Source-evidenced
 
-**Evidence:** `LifesteadCommand.reload` catches any `RuntimeException` and
-sends `general.database-error` (`src/main/java/dev/lifestead/command/LifesteadCommand.java`).
-`RecipeManager.reload` unregisters old recipes before registering new ones.
+**Evidence:** `ItemListener.onInteract` returns unless the event hand is
+`EquipmentSlot.HAND` (`src/main/java/dev/lifestead/listener/ItemListener.java:33-35`).
+A custom heart or revive beacon in the off hand therefore does not activate;
+an off-hand beacon cannot open the revive GUI. Block placement is still
+blocked by `onPlace` because it checks the actual item in hand.
 
-**Impact:** A recipe/config error is reported as a database error, and a failed
-reload can leave the server without custom recipes until the next successful
-reload/restart.
+**Impact:** Players holding the item in the off hand get no feedback and may
+think the item is broken. No item loss.
 
-**Suggested fix:** Use a dedicated reload-error message, validate recipes
-first, and only replace the live recipe set after successful registration.
-
----
-
-### GAP-14: Elimination mode changes do not reconcile existing player state
-
-**Severity:** P3, needs verification  
-**Area:** Config changes / elimination
-
-**Evidence:** `Settings.load` updates `eliminationMode`, but no reload/start
-migration walks eliminated profiles. Players already banned under `BAN` cannot
-join to be converted to `SPECTATOR`; players already in spectator under
-`SPECTATOR` are not kicked/banned when switching to `BAN`.
-
-**Impact:** Changing `elimination.mode` can leave the server in a mixed state
-until every affected player is manually pardoned/re-eliminated.
-
-**Suggested fix:** Document that a mode switch requires an admin migration, or
-add a reconciliation pass that unban/kick/set-spectator consistently.
+**Suggested fix:** Handle both hands, consume from the hand that was used, and
+avoid double-processing when both hands hold custom items. Add a bot test.
 
 ---
 
-## 3. Test and Tooling Gaps
+### BUG-15: Custom-item protection is incomplete for configurable materials
 
-### TEST-01: Only Paper 1.21.11 is exercised
+**Severity:** P3  
+**Area:** Item protection / exploitability depends on config  
+**Verification:** Source-evidenced; not live-tested
 
-The plugin is built against the Spigot API and claims compatibility with
-Paper/Spigot/Purpur/Bukkit, but only Paper 1.21.11 runs in the E2E suite.
-Purpur and Spigot are explicitly listed as targets in `plan/basic.md`.
+**Evidence:** `ItemListener` guards crafting, anvil, grindstone, furnace/smoker/
+campfire, brewing fuel, dispensing, and block placement. It does not guard
+smithing tables, stonecutters, villager trading, composting, beacon payment, or
+item frames. Because `items.heart.material` and
+`items.revive-beacon.material` are configurable, a server can set a material
+that those systems accept (for example an emerald for trading or stone for a
+stonecutter), allowing the custom item to be consumed or transformed.
 
-**Suggested fix:** Add at least one smoke/CI run on Spigot and Purpur, plus a
-Bukkit-compatible load check. Do not claim support without evidence.
+**Impact:** With default materials (nether star/beacon), most listed systems do
+not accept the items. With custom materials, players may lose custom items or
+convert them into ordinary items. No duplication was demonstrated.
 
-### TEST-02: No unit tests, CI, linting, or static analysis
-
-There is no JUnit test source set, no GitHub Actions/CI workflow, no Checkstyle/
-SpotBugs/PMD, and no ESLint/Prettier for the E2E harness. The only automated
-verification is the network-dependent Paper + Mineflayer suite.
-
-**Suggested fix:** Add unit tests for settings parsing, heart clamping,
-anti-farm decisions, message rendering, and profile normalization. Add CI for
-build + unit tests + E2E. Add basic static analysis and formatting checks.
-
-### TEST-03: E2E downloads latest stable Paper for the version
-
-`e2e/lib/download.mjs` queries the Paper API for the latest stable build for
-1.21.11 rather than pinning a build. Checksums are verified, but test results
-can change when Paper publishes a new build.
-
-**Suggested fix:** Pin the Paper build in the test config (with the checksum)
-and provide an explicit opt-in “latest” mode.
-
-### TEST-04: Mobile/network and bot timing remain dependencies
-
-The suite needs network access to download Paper/PlaceholderAPI, real Java 21,
-Node 20+, and Mineflayer. The PvP helper now falls back to command damage if the
-bot melee misses, which makes the suite reliable but can mask a regression in
-actual player melee.
-
-**Suggested fix:** Keep the deterministic fallback but add a separate assertion
-that a real bot melee hit lands at least once per run, or label the command
-fallback in test output and document the masking.
-
-### TEST-05: Bugs and gaps in this report lack regression tests
-
-In particular, there is no test for:
-
-- positive `sethearts` on an eliminated player
-- offline/PAPI normalization after a max-hearts change
-- combat-log penalty after entering a disabled world
-- owned-mob or TNT kill credit
-- permission-filtered admin tab completion
-- invalid config fallback warnings
-- recipe config failure during reload
-- SQLite failure fallback and late saves
-- reset clearing combat/pending state
-
-**Suggested fix:** Add focused tests with each fix; keep the existing 33 cases
-as the core regression suite.
+**Suggested fix:** Add guards for the remaining `PrepareSmithingEvent`,
+`PrepareStonecuttingEvent`, merchant trades, composter, beacon payment, and
+entity placement paths; or validate at startup that configured materials are
+not accepted by those systems. Add tests for each guarded path.
 
 ---
 
-## 4. Not Defects / Intentional Trade-offs
+### BUG-16: Runtime-log assertion cannot see Bukkit-formatted plugin errors
 
-These are recorded so they are not mistaken for missed requirements:
+**Severity:** P3  
+**Area:** E2E coverage  
+**Verification:** Confirmed by source and run log
 
-- **Revive GUI default skins** are a deliberate trade-off to avoid Mojang
-  profile lookups; see GAP-08 for the cosmetic option.
-- **Unknown PAPI players return `start-hearts`** rather than creating a profile
-  or returning empty; this is documented by the current tests and avoids data
-  writes from placeholders.
-- **Folia is unsupported**; `plugin.yml` documents this, matching the plan.
-- **Heart tiers, shop, trade, vault, MySQL, bounties, prestige, leaderboards,
-  and other advanced features** are roadmap items in `plan/advanced.md`, not
-  defects in the v1.0.0 core.
-- **No public addon API/events** is an advanced-plan guardrail, not a basic-plan
-  requirement.
+**Evidence:** The final test filters lines with
+`/\[Lifestead\].*(SEVERE|ERROR)/i` (`e2e/test/e2e.test.mjs:1384-1387`).
+Paper writes `[14:33:19 ERROR]: [Lifestead] Reload failed: ...`
+(`e2e-server.log:1670`), with `ERROR` before `[Lifestead]`, so the regex misses
+it. The startup check uses the same ordering assumption
+(`e2e.test.mjs:384-386`). The test also intends to catch stack traces, but the
+reload error has no stack. Separately, the GUI lookup assertion is racy
+(1.5-second wait versus a 5-second timeout), as described in BUG-07.
 
----
+**Impact:** Unexpected plugin `ERROR`/`SEVERE` lines and stack traces can pass
+the runtime-log gate. The suite's claim of a clean log is weaker than it
+appears. Note that a corrected filter will also catch the *expected*
+invalid-reload error unless the test whitelists that deliberate failure.
 
-## 5. Fix Order Used
-
-1. **BUG-01, BUG-02, BUG-03** — admin/revive consistency, offline data, and
-   the combat-log bypass.
-2. **BUG-04** — owned-mob/explosion credit.
-3. **GAP-01, GAP-02, GAP-13** — loud config validation and safe reload.
-4. **GAP-03, GAP-04, GAP-05** — persistence and SQLite migrations.
-5. **BUG-05 through BUG-12** — robustness/UX fixes.
-6. **TEST-01, TEST-02, TEST-03** — harness, unit tests, and CI.
-7. **GAP-06 through GAP-14** — packaging, docs, and resource-pack polish.
+**Suggested fix:** Match `^\[[^]]+ (ERROR|SEVERE)\]: \[Lifestead\]` (and the
+logged stack-trace lines), whitelist expected failures from the invalid-recipe
+test, and make the skin assertion wait for the configured timeout or use a
+deterministic offline mode.
 
 ---
 
-## 6. Reproduce Verification
+### BUG-17: PAPI placeholders are undocumented
 
-```bash
-cd ks-plugins/lifestead
-./scripts/build.sh
-cd e2e
-npm ci
-npm test
-```
+**Severity:** P3  
+**Area:** Documentation  
+**Verification:** Source + README audit
 
-Expected final state for the current code:
+**Evidence:** The expansion supports `hearts`, `max_hearts`, `min_hearts`,
+`health`, `eliminated`, `status`, and `withdrawable`/`withdrawable_hearts`
+(`src/main/java/dev/lifestead/integration/LifesteadPlaceholderExpansion.java:37-64`),
+but the README only mentions that PlaceholderAPI is optional and never lists
+the identifiers. The expansion also does not implement `getPlaceholders()` or
+`getRequiredPlugin()`.
 
-- Maven build success and 6/6 JUnit tests.
-- `# tests 38`
-- `# pass 38`
-- `# fail 0`
-- no `[Lifestead] SEVERE`/`ERROR` lines in
-  `e2e/.server/logs/e2e-server.log`.
-- Resource-pack SHA-1 file matches the ZIP.
+**Impact:** Server owners cannot discover the supported placeholders without
+reading source, and `/papi info` does not list them.
+
+**Suggested fix:** Document the placeholder table and implement
+`getPlaceholders()`; `getRequiredPlugin()` is optional because the plugin is a
+soft dependency.
+
+---
+
+### BUG-18: `effects.particle-count` is unbounded
+
+**Severity:** P3  
+**Area:** Configuration / performance  
+**Verification:** Source-evidenced
+
+**Evidence:** `Settings.load` applies only a lower bound of 1
+(`src/main/java/dev/lifestead/Settings.java:155`). `Effects` passes the value
+directly to `World.spawnParticle`
+(`src/main/java/dev/lifestead/util/Effects.java:83-84`). A large value can
+spawn millions of particles per effect and lag or crash clients.
+
+**Impact:** An accidental large config value can cause severe client/server
+lag. Admin-only configuration issue.
+
+**Suggested fix:** Clamp to a sane maximum (for example a few hundred) and warn
+when clamping.
+
+---
+
+## 3. Gaps and Test Coverage
+
+- Only Paper 1.21.11 build 132 was run. Spigot, Bukkit, Purpur, Folia, MySQL,
+  other Minecraft versions, and resource-pack client acceptance remain
+  unverified.
+- No large-player-count or long-running soak test. YAML writes all profiles on
+  each flush; SQLite saves synchronously on the main thread. No evidence of a
+  production-scale problem, but no measurement either.
+- No tests for: `/papi reload`, failed-reload state isolation, zero-heart
+  offline profiles, malformed YAML recovery, YAML write failure, oversized
+  `giveheart`, concurrent skin callbacks, online-dead revive teleport, or
+  custom-item protection paths.
+- The E2E runtime-log gate is weaker than it appears (BUG-16).
+- `minimum-hearts > 0` floors `removeHearts`
+  (`src/main/java/dev/lifestead/manager/HeartManager.java:80`), so PvP/death
+  losses can never take a player to zero unless the minimum is 0. This may be
+  intended as a safety floor, but the README does not explain that it disables
+  normal elimination by heart loss. Document it or validate the setting.
+- Resource-pack hosting, a signed release tag, and public release publication
+  remain external operations.
+
+---
+
+## 4. Rechecked and Removed from the Old Backlog
+
+These old items are no longer open in the form previously recorded:
+
+- Implicit revive via positive `/ls sethearts`: now rejected for eliminated
+  players (`LifesteadCommand.java:298`).
+- Offline heart reads bypassing normalization: commands and PAPI now call
+  `normalizeAndPersist` (`LifesteadCommand.java:472-481`,
+  `LifesteadPlaceholderExpansion.java:37-40`).
+- Combat-world bypass at quit: `onQuit` no longer skips the penalty based on
+  the player's current world.
+- Owned-mob/projectile/TNT/cloud kill credit: `DeathListener.resolveSource`
+  handles these paths.
+- Admin help/tab permission leaks: filtered by permission.
+- SQLite save after close, deposit race, duplicate-death guard, reset state
+  cleanup, profile bans, safe revive spawn, SQLite migration, and item
+  definition generation: rechecked in source/E2E and still fixed.
+- "38/38 PASS" and "no profile lookup failures": no longer true; see
+  Verification Status.
+- "Atomic recipe reload": the recipe **registration** rolls back correctly,
+  but the overall reload is not atomic (BUG-02). The old BUG-12/GAP-13 wording
+  overstated this.
+- "Dead keys removed": false; BUG-13.
+- "Combat tags are persisted across restarts": false; BUG-08.
+- "No `[Lifestead]` SEVERE/ERROR lines": the log test misses Bukkit's
+  `[ERROR]: [Lifestead]` ordering; the invalid-recipe test intentionally logs
+  one. See BUG-16.
