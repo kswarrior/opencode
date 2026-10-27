@@ -27,6 +27,7 @@ public final class EliminationManager {
         long now = System.currentTimeMillis();
         profile.setHearts(0);
         profile.setEliminated(true);
+        profile.setPendingReviveTeleport(false);
         profile.setLastSeen(now);
         profile.setEliminatedAt(now);
         plugin.getDataStore().save(profile);
@@ -73,6 +74,7 @@ public final class EliminationManager {
         }
         profile.setEliminated(false);
         profile.setEliminatedAt(0L);
+        profile.setPendingReviveTeleport(false);
         plugin.getDataStore().save(profile);
         pardon(profile.getName());
 
@@ -98,14 +100,15 @@ public final class EliminationManager {
             return false;
         }
         Settings settings = plugin.getSettings();
+        Player online = Bukkit.getPlayer(profile.getUuid());
         profile.setEliminated(false);
         profile.setEliminatedAt(0L);
         profile.setHearts(settings.reviveHearts);
         profile.setLastSeen(System.currentTimeMillis());
+        profile.setPendingReviveTeleport(online == null && settings.reviveTeleport);
         plugin.getDataStore().save(profile);
         pardon(profile.getName());
 
-        Player online = Bukkit.getPlayer(profile.getUuid());
         if (online != null) {
             if (online.getGameMode() == GameMode.SPECTATOR) {
                 online.setGameMode(GameMode.SURVIVAL);
@@ -193,8 +196,7 @@ public final class EliminationManager {
         }
     }
 
-    public Location spawnLocation(Player player) {
-        Settings settings = plugin.getSettings();
+    public Location spawnLocation(Player player) {        Settings settings = plugin.getSettings();
         World world = null;
         if (settings.reviveSpawnWorld != null && !settings.reviveSpawnWorld.isBlank()) {
             world = Bukkit.getWorld(settings.reviveSpawnWorld);
