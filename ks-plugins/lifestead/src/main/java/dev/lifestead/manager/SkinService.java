@@ -22,7 +22,8 @@ public final class SkinService {
 
     private final LifesteadPlugin plugin;
     private final Map<UUID, Entry> cache = new ConcurrentHashMap<>();
-    private final Map<UUID, Boolean> inFlight = new ConcurrentHashMap<>();
+    private final Map<UUID, List<BiConsumer<UUID, PlayerProfile>>> inFlight =
+            new ConcurrentHashMap<>();
 
     public SkinService(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -42,7 +43,7 @@ public final class SkinService {
     public void request(UUID uuid, String name, BiConsumer<UUID, PlayerProfile> callback) {
         Optional<PlayerProfile> cached = cached(uuid);
         if (cached.isPresent()) {
-            notifyMainThread(uuid, cached.get(), callback);
+            notifyMainThread(uuid, cached.get(), List.of(callback));
             return;
         }
         Entry cachedFailure = cache.get(uuid);
@@ -50,7 +51,15 @@ public final class SkinService {
                 && cachedFailure.expiresAt() >= System.currentTimeMillis()) {
             return;
         }
-        if (inFlight.putIfAbsent(uuid, Boolean.TRUE) != null) {
+        if (!Bukkit.getOnlineMode()) {
+            cache.put(uuid, new Entry(null, System.currentTimeMillis() + FAILURE_TTL_MILLIS));
+            return;
+        }
+        List<BiConsumer<UUID, PlayerProfile>> callbacks = new CopyOnWriteArrayList<>();
+        callbacks.add(callback);
+        List<BiConsumer<UUID, PlayerProfile>> existing = inFlight.putIfAbsent(uuid, callbacks);
+        if (existing != null) {
+            existing.add(callback);
             return;
         }
         PlayerProfile lookup;
@@ -65,7 +74,7 @@ public final class SkinService {
             lookup.update()
                     .orTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
                     .whenComplete((updated, failure) -> {
-                        inFlight.remove(uuid);
+                        List<BiConsumer<UUID, PlayerProfile>> pending = inFlight.remove(uuid);
                         if (failure != null || updated == null || !updated.isComplete()) {
                             cache.put(uuid, new Entry(null,
                                     System.currentTimeMillis() + FAILURE_TTL_MILLIS));
@@ -74,7 +83,9 @@ public final class SkinService {
                         cache.put(uuid, new Entry(updated,
                                 System.currentTimeMillis() + SUCCESS_TTL_MILLIS));
                         prune();
-                        notifyMainThread(uuid, updated, callback);
+                        if (pending != null) {
+                            notifyMainThread(uuid, updated, pending);
+                        }
                     });
         } catch (RuntimeException exception) {
             inFlight.remove(uuid);
@@ -83,15 +94,17 @@ public final class SkinService {
     }
 
     private void notifyMainThread(UUID uuid, PlayerProfile profile,
-            BiConsumer<UUID, PlayerProfile> callback) {
+            List<BiConsumer<UUID, PlayerProfile>> callbacks) {
         if (!plugin.isEnabled()) {
             return;
         }
-        try {
-            Bukkit.getScheduler().runTask(plugin, () -> callback.accept(uuid, profile));
-        } catch (RuntimeException exception) {
-            plugin.getLogger().warning("Could not update a revive GUI skin: "
-                    + exception.getMessage());
+        for (BiConsumer<UUID, PlayerProfile> callback : callbacks) {
+            try {
+                Bukkit.getScheduler().runTask(plugin, () -> callback.accept(uuid, profile));
+            } catch (RuntimeException exception) {
+                plugin.getLogger().warning("Could not update a revive GUI skin: "
+                        + exception.getMessage());
+            }
         }
     }
 

@@ -86,33 +86,6 @@ public final class EliminationManager {
         }
     }
 
-    public boolean clearEliminated(PlayerProfile profile, boolean teleport) {
-        if (!profile.isEliminated()) {
-            return false;
-        }
-        profile.setEliminated(false);
-        profile.setEliminatedAt(0L);
-        profile.setPendingReviveTeleport(false);
-        plugin.getDataStore().save(profile);
-        pardon(profile);
-
-        Player online = Bukkit.getPlayer(profile.getUuid());
-        if (online != null) {
-            if (online.getGameMode() == GameMode.SPECTATOR) {
-                online.setGameMode(GameMode.SURVIVAL);
-            }
-            if (teleport) {
-                Location location = spawnLocation(online);
-                if (location != null) {
-                    online.teleport(location);
-                }
-            }
-            plugin.getHearts().applyHealth(online);
-            plugin.getItems().deliverPendingHearts(online);
-        }
-        return true;
-    }
-
     public void reset(PlayerProfile profile, int hearts, boolean save) {
         boolean wasEliminated = profile.isEliminated();
         profile.setEliminated(false);
@@ -153,7 +126,8 @@ public final class EliminationManager {
         profile.setEliminatedAt(0L);
         profile.setHearts(settings.reviveHearts);
         profile.setLastSeen(System.currentTimeMillis());
-        profile.setPendingReviveTeleport(online == null && settings.reviveTeleport);
+        profile.setPendingReviveTeleport(settings.reviveTeleport
+                && (online == null || online.isDead()));
         plugin.getDataStore().save(profile);
         pardon(profile);
 
@@ -171,7 +145,9 @@ public final class EliminationManager {
                 if (online.isOnline()) {
                     plugin.getHearts().applyHealth(online);
                     double max = Math.max(2.0, profile.getHearts() * 2.0);
-                    online.setHealth(max);
+                    if (!online.isDead()) {
+                        online.setHealth(max);
+                    }
                     plugin.getMessages().send(online, "elimination.revive-self");
                     plugin.getEffects().revived(online);
                     plugin.getItems().deliverPendingHearts(online);
@@ -235,13 +211,22 @@ public final class EliminationManager {
                     }
                 }, 2L);
             }
-        } else {
-            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
-                if (player.isOnline()) {
-                    plugin.getHearts().applyHealth(player);
-                }
-            }, 2L);
+            return;
         }
+        boolean pendingTeleport = profile.isPendingReviveTeleport();
+        if (pendingTeleport) {
+            profile.setPendingReviveTeleport(false);
+            plugin.getDataStore().save(profile);
+        }
+        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+            if (!player.isOnline()) {
+                return;
+            }
+            plugin.getHearts().applyHealth(player);
+            if (pendingTeleport) {
+                teleportToReviveSpawn(player);
+            }
+        }, 2L);
     }
 
     public boolean teleportToReviveSpawn(Player player) {
