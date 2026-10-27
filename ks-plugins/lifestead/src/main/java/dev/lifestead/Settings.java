@@ -12,6 +12,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 public final class Settings {
 
     public static final int MAX_SUPPORTED_HEARTS = 512;
+    public static final int MAX_PARTICLE_COUNT = 200;
 
     private final LifesteadPlugin plugin;
 
@@ -152,8 +153,8 @@ public final class Settings {
         loseSound = soundValue(config, "effects.lose-sound", "ENTITY_PLAYER_HURT");
         reviveSound = soundValue(config, "effects.revive-sound", "BLOCK_BEACON_ACTIVATE");
         heartParticle = particleValue(config, "effects.heart-particle", "HEART");
-        particleCount = atLeast("effects.particle-count",
-                intValue(config, "effects.particle-count", 12), 1);
+        particleCount = clamped("effects.particle-count",
+                intValue(config, "effects.particle-count", 12), 1, MAX_PARTICLE_COUNT);
         broadcastSteals = booleanValue(config, "effects.broadcast-steals", false);
 
         String configuredDatabase = config.getString("database.type", "YAML");

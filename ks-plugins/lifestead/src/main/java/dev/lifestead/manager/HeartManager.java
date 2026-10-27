@@ -91,23 +91,33 @@ public final class HeartManager {
         return profile.getHearts() < plugin.getSettings().maxHearts;
     }
 
-    public PlayerProfile normalize(PlayerProfile profile) {
+    public boolean normalize(PlayerProfile profile) {
         Settings settings = plugin.getSettings();
+        boolean changed = false;
+        if (!profile.isEliminated() && profile.getHearts() <= 0) {
+            profile.setHearts(0);
+            profile.setEliminated(true);
+            if (profile.getEliminatedAt() <= 0) {
+                profile.setEliminatedAt(profile.getLastSeen() > 0
+                        ? profile.getLastSeen() : System.currentTimeMillis());
+            }
+            profile.setPendingReviveTeleport(false);
+            changed = true;
+        }
         int clamped = profile.isEliminated() ? 0
                 : Settings.clamp(profile.getHearts(), settings.minHearts, settings.maxHearts);
         if (clamped != profile.getHearts()) {
             profile.setHearts(clamped);
+            changed = true;
         }
-        return profile;
+        return changed;
     }
 
     public boolean normalizeAndPersist(PlayerProfile profile) {
         if (profile == null) {
             return false;
         }
-        int before = profile.getHearts();
-        normalize(profile);
-        if (before == profile.getHearts()) {
+        if (!normalize(profile)) {
             return false;
         }
         plugin.getDataStore().save(profile);
@@ -117,9 +127,7 @@ public final class HeartManager {
     public void normalizeAll() {
         boolean changed = false;
         for (PlayerProfile profile : plugin.getDataStore().all()) {
-            int before = profile.getHearts();
-            normalize(profile);
-            changed |= before != profile.getHearts();
+            changed |= normalize(profile);
         }
         if (changed) {
             plugin.getDataStore().saveAll();
