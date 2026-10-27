@@ -17,6 +17,14 @@ Server used for verification: Paper 1.21.11, Java 21, two real Mineflayer bots
   YAML/SQLite persistence, reload, disabled worlds, and combat logging.
 - Not verified: Purpur, Spigot, Bukkit, Folia, MySQL, other Minecraft versions,
   large-player-count load, or long-running server soak.
+- This verification pass changed the E2E harness, not plugin gameplay source.
+  Intermediate runs exposed test-harness defects: the mob-death test tried to
+  summon a zombie while the fixture was on peaceful difficulty, and the old
+  AI-driven approach could time out and leave hostile mobs alive. The test now
+  enables easy difficulty only around a tagged summon, kills deterministically
+  with `/damage ... by <zombie>`, and restores peaceful in a `finally` block.
+  The PvP helper also falls back to command damage if the first bot melee misses;
+  this improves reliability but can mask a melee regression (see TEST-04).
 
 Severity used below:
 
@@ -330,7 +338,8 @@ silently performs many fallbacks/clamps:
 - invalid `effects.*-sound` / `heart-particle` values are silently ignored in
   `Effects` (`src/main/java/dev/lifestead/util/Effects.java:65`)
 
-Only maximum-hearts overflow and minimum >= maximum produce warnings.
+Within `Settings`, only maximum-hearts overflow and minimum >= maximum produce
+warnings; invalid item materials and invalid recipe materials do warn separately.
 
 **Impact:** A typo in a production config can silently change gameplay (for
 example, an intended spectator server falls back to BAN, or SQLite data is
