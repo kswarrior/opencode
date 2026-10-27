@@ -35,7 +35,7 @@
 | Git tag | No `v1.0.0` tag exists (`git tag -l` is empty) |
 
 **Bottom line:** the full core loop from `plan/basic.md` is implemented. The
-remaining gaps are test coverage, offline-revive teleport, resource-pack
+remaining differences are test coverage, offline-revive teleport, resource-pack
 hosting/GUI-icon wiring, and the version tag; heart tiers, economy/MySQL, and
 Folia are optional and not implemented.
 
@@ -617,7 +617,7 @@ PlaceholderAPI requirement is completely missing.
 
 ## 5. In LifesteadZ but Not in `plan/basic.md`
 
-These are implemented extras beyond the basic plan:
+All items in this section are **EXTRA** relative to `plan/basic.md`:
 
 1. **Withdraw guard** - prevents withdrawing hearts below a configurable floor.
 2. **Offline heart-item queue** - `/ls giveheart` to offline players, delivered

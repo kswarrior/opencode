@@ -144,24 +144,20 @@ public final class DeathListener implements Listener {
 
     private Player findKiller(Player victim) {
         Player killer = victim.getKiller();
-        if (killer != null) {
+        if (killer != null && !killer.equals(victim)) {
             return killer;
         }
         EntityDamageEvent lastDamage = victim.getLastDamageCause();
         if (!(lastDamage instanceof EntityDamageByEntityEvent damageByEntity)) {
             return null;
         }
-        return playerFrom(damageByEntity.getDamager());
+        Player shooter = playerFrom(damageByEntity.getDamager());
+        return shooter == null || shooter.equals(victim) ? null : shooter;
     }
 
     private Player playerFrom(Entity entity) {
-        if (entity instanceof Player player) {
-            return player;
-        }
-        if (entity instanceof Projectile projectile && projectile.getShooter() instanceof Player shooter) {
-            return shooter;
-        }
-        return null;
+        Entity source = resolveSource(entity);
+        return source instanceof Player player ? player : null;
     }
 
     private Category category(Player victim, Player killer) {
@@ -170,12 +166,24 @@ public final class DeathListener implements Listener {
         }
         EntityDamageEvent lastDamage = victim.getLastDamageCause();
         if (lastDamage instanceof EntityDamageByEntityEvent damageByEntity) {
-            Entity damager = damageByEntity.getDamager();
-            if (damager instanceof LivingEntity) {
+            Entity source = resolveSource(damageByEntity.getDamager());
+            if (source instanceof Player player) {
+                return player.equals(victim) ? Category.ENVIRONMENT : Category.PVP;
+            }
+            if (source instanceof LivingEntity) {
                 return Category.MOB;
             }
         }
         return Category.ENVIRONMENT;
+    }
+
+    private Entity resolveSource(Entity damager) {
+        Entity source = damager;
+        while (source instanceof Projectile projectile
+                && projectile.getShooter() instanceof Entity shooter) {
+            source = shooter;
+        }
+        return source;
     }
 
     private boolean isLossEnabled(Settings settings, Category category) {
