@@ -10,12 +10,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockCookEvent;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.BrewEvent;
 import org.bukkit.event.inventory.BrewingStandFuelEvent;
 import org.bukkit.event.inventory.FurnaceBurnEvent;
 import org.bukkit.event.inventory.FurnaceSmeltEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.event.inventory.PrepareGrindstoneEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.inventory.PrepareSmithingEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -31,19 +36,22 @@ public final class ItemListener implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onInteract(PlayerInteractEvent event) {
-        if (event.getHand() != EquipmentSlot.HAND) {
-            return;
-        }
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
             return;
         }
-        ItemStack item = event.getItem();
+        EquipmentSlot hand = event.getHand();
+        Player player = event.getPlayer();
+        if (hand == EquipmentSlot.OFF_HAND
+                && plugin.getItems().isCustom(player.getInventory().getItemInMainHand())) {
+            return;
+        }
+        ItemStack item = event.getItem() != null
+                ? event.getItem() : player.getInventory().getItem(hand);
         if (plugin.getItems().isHeart(item)) {
             event.setCancelled(true);
-            useHeart(event.getPlayer());
+            useHeart(player, hand);
         } else if (plugin.getItems().isBeacon(item)) {
             event.setCancelled(true);
-            Player player = event.getPlayer();
             if (plugin.getHearts().profile(player).isEliminated()) {
                 plugin.getMessages().send(player, "general.eliminated-action");
                 return;
@@ -53,7 +61,7 @@ public final class ItemListener implements Listener {
         }
     }
 
-    private void useHeart(Player player) {
+    private void useHeart(Player player, EquipmentSlot hand) {
         PlayerProfile profile = plugin.getHearts().profile(player);
         if (profile.isEliminated()) {
             plugin.getMessages().send(player, "general.eliminated-action");
@@ -67,7 +75,7 @@ public final class ItemListener implements Listener {
         if (added <= 0) {
             return;
         }
-        plugin.getItems().consumeHeartFromMainHand(player);
+        plugin.getItems().consumeHeartFromHand(player, hand);
         plugin.getMessages().send(player, "hearts.item-used");
         plugin.getEffects().healed(player);
     }
@@ -131,6 +139,47 @@ public final class ItemListener implements Listener {
                 event.getInventory().setResult(new ItemStack(Material.AIR));
                 return;
             }
+        }
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onSmithing(PrepareSmithingEvent event) {
+        for (int slot = 0; slot < 3; slot++) {
+            if (plugin.getItems().isCustom(event.getInventory().getItem(slot))) {
+                event.setResult(null);
+                return;
+            }
+        }
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onInventoryClick(InventoryClickEvent event) {
+        InventoryType type = event.getInventory().getType();
+        if (type != InventoryType.STONECUTTER && type != InventoryType.MERCHANT
+                && type != InventoryType.BEACON && type != InventoryType.SMITHING) {
+            return;
+        }
+        if (plugin.getItems().isCustom(event.getCurrentItem())
+                || plugin.getItems().isCustom(event.getCursor())) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onBrew(BrewEvent event) {
+        for (ItemStack item : event.getContents().getContents()) {
+            if (plugin.getItems().isCustom(item)) {
+                event.setCancelled(true);
+                return;
+            }
+        }
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onInteractEntity(PlayerInteractEntityEvent event) {
+        ItemStack item = event.getPlayer().getInventory().getItem(event.getHand());
+        if (plugin.getItems().isCustom(item)) {
+            event.setCancelled(true);
         }
     }
 
