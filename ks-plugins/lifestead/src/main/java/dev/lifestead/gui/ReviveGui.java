@@ -15,6 +15,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 public final class ReviveGui implements InventoryHolder {
 
@@ -31,6 +32,7 @@ public final class ReviveGui implements InventoryHolder {
     private final int page;
     private final int pages;
     private final Map<Integer, UUID> targets = new HashMap<>();
+    private final Map<Integer, PlayerProfile> slotProfiles = new HashMap<>();
     private Inventory inventory;
 
     private ReviveGui(LifesteadPlugin plugin, int page, int pages) {
@@ -73,8 +75,15 @@ public final class ReviveGui implements InventoryHolder {
         for (int index = start; index < end; index++) {
             PlayerProfile profile = eliminated.get(index);
             int slot = CONTENT_SLOTS[index - start];
-            inventory.setItem(slot, head(profile));
+            org.bukkit.profile.PlayerProfile skin =
+                    plugin.getSkins().cached(profile.getUuid()).orElse(null);
+            inventory.setItem(slot, head(profile, skin));
             targets.put(slot, profile.getUuid());
+            slotProfiles.put(slot, profile);
+            if (skin == null) {
+                plugin.getSkins().request(profile.getUuid(), profile.getName(),
+                        (uuid, loaded) -> applySkin(uuid, loaded));
+            }
         }
 
         if (page > 0) {
@@ -101,9 +110,30 @@ public final class ReviveGui implements InventoryHolder {
         return item;
     }
 
-    private ItemStack head(PlayerProfile profile) {
+    private void applySkin(UUID uuid, org.bukkit.profile.PlayerProfile skin) {
+        if (inventory == null) {
+            return;
+        }
+        for (Map.Entry<Integer, UUID> entry : targets.entrySet()) {
+            if (!entry.getValue().equals(uuid)) {
+                continue;
+            }
+            PlayerProfile profile = slotProfiles.get(entry.getKey());
+            if (profile != null) {
+                inventory.setItem(entry.getKey(), head(profile, skin));
+            }
+            return;
+        }
+    }
+
+    private ItemStack head(PlayerProfile profile, org.bukkit.profile.PlayerProfile skin) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         ItemMeta meta = item.getItemMeta();
+        if (meta instanceof SkullMeta skull && skin != null) {
+            skull.setOwnerProfile(skin);
+            item.setItemMeta(skull);
+            meta = item.getItemMeta();
+        }
         if (meta != null) {
             meta.setDisplayName(plugin.getMessages().colorize("&a" + profile.getName()));
             meta.setLore(plugin.getMessages().getList("gui.revive-head-lore",

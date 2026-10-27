@@ -15,6 +15,7 @@ import dev.lifestead.manager.EliminationManager;
 import dev.lifestead.manager.HeartManager;
 import dev.lifestead.manager.ItemManager;
 import dev.lifestead.manager.RecipeManager;
+import dev.lifestead.manager.SkinService;
 import dev.lifestead.util.Effects;
 import dev.lifestead.util.MessageService;
 import org.bukkit.command.PluginCommand;
@@ -30,6 +31,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private ItemManager items;
     private RecipeManager recipes;
     private AntiFarm antiFarm;
+    private SkinService skins;
     private Effects effects;
     private DeathListener deathListener;
     private LifesteadPlaceholderExpansion placeholderExpansion;
@@ -56,6 +58,7 @@ public final class LifesteadPlugin extends JavaPlugin {
         heartManager = new HeartManager(this);
         eliminations = new EliminationManager(this);
         antiFarm = new AntiFarm(this);
+        skins = new SkinService(this);
         effects = new Effects(this);
         recipes = new RecipeManager(this);
         heartManager.normalizeAll();
@@ -209,6 +212,10 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     public AntiFarm getAntiFarm() {
         return antiFarm;
+    }
+
+    public SkinService getSkins() {
+        return skins;
     }
 
     public Effects getEffects() {
