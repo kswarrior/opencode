@@ -1,0 +1,15 @@
+name: KSPluginManager
+version: '${project.version}'
+main: dev.ks.pluginmanager.KSPluginManagerPlugin
+api-version: '1.21'
+author: KS
+description: Runtime plugin manager with load/unload/reload and multi-source updates.
+commands:
+  pm:
+    description: KS Plugin Manager
+    usage: /pm <list|info|load|unload|reload|update ...>
+    permission: kspluginmanager.use
+permissions:
+  kspluginmanager.use:
+    description: Use KS Plugin Manager
+    default: op

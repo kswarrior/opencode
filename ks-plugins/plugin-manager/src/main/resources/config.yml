@@ -1,0 +1,7 @@
+# KS Plugin Manager
+auto-update-check: true
+update-interval-hours: 24
+sources:
+  - modrinth
+  - hangar
+  - spigot
