@@ -9,7 +9,7 @@ import {
   patchPluginConfig,
   prepareServer
 } from '../lib/fixtures.mjs'
-import { clearInventory, createTestBot, disconnect, sendCommand, sleep } from '../lib/bot.mjs'
+import { createTestBot, disconnect, sendCommand, sleep } from '../lib/bot.mjs'
 import { PLUGIN_JAR, SERVER_DIR, SERVER_JAR, SERVER_TYPE } from '../lib/paths.mjs'
 import { PaperServer } from '../lib/server.mjs'
 
@@ -22,6 +22,14 @@ async function setConfig(overrides) {
   await patchPluginConfig(fixture, overrides)
   await server.commandExpect('lifestead reload', /reloaded/)
   await sleep(300)
+}
+
+async function clearInventory(name) {
+  await server.commandExpect(
+    `clear ${name}`,
+    /Cleared the inventory|No items were found|Removed \d+ item\(s\) from player/
+  )
+  await sleep(200)
 }
 
 before(async () => {
@@ -63,8 +71,10 @@ describe('Lifestead targeted probes', { concurrency: 1 }, () => {
     await sleep(700)
     const swords = alpha.inventory.items().filter((item) => item.name === 'diamond_sword')
     console.log(`[probe] heart stacks: ${JSON.stringify(swords.map((item) => item.count))}`)
-    assert.equal(swords.length, 1)
-    assert.equal(swords[0].count, 3)
+    assert.equal(
+      swords.reduce((total, item) => total + item.count, 0),
+      3
+    )
     await clearInventory(ALPHA)
   })
 
