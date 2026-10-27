@@ -36,7 +36,7 @@ public final class CombatListener implements Listener {
         long now = System.currentTimeMillis();
         long prior = profile.getCombatAt();
         profile.setCombatAt(now);
-        if (prior <= 0 || now - prior > settings.combatLogDurationSeconds * 1000L) {
+        if (prior <= 0 || now - prior > 1000L) {
             plugin.getDataStore().save(profile);
         }
     }

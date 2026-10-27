@@ -3,6 +3,7 @@
 
 database:
   # YAML or SQLITE. SQLite is bundled with the plugin.
+  # Switching this value requires a server restart; /ls reload only warns.
   type: YAML
 
 settings:
@@ -12,6 +13,7 @@ settings:
   gain-per-kill: 1
   lose-per-death: 1
   # Hearts that can never be withdrawn. The guard is applied on top of the minimum.
+  # Invalid or out-of-range values are clamped with a startup warning.
   withdraw-guard: 1
   # Worlds where heart stealing and heart loss are disabled.
   disabled-worlds: []
@@ -30,6 +32,7 @@ anti-farm:
   # Block heart gain when killer and victim share an IP address.
   same-ip: true
   # Maximum rewarded kills on the same victim inside the window below.
+  # 0 disables the cap and the window. State persists in antifarm.yml.
   max-kills-per-victim: 3
   window-minutes: 60
 
@@ -37,7 +40,7 @@ combat-log:
   enabled: true
   # Seconds after taking damage during which logging out counts as combat logging.
   duration-seconds: 15
-  # Hearts lost when a player combat logs.
+  # Hearts lost when a player combat logs. The tag is saved across restarts.
   penalty-hearts: 1
 
 elimination:
@@ -49,9 +52,10 @@ elimination:
 revive:
   hearts: 4
   teleport-to-spawn: true
-  # Empty uses the first world on the server.
+  # Empty uses the player's current world. An unknown world falls back with a warning.
   spawn-world: ''
   # Set use-coordinates to true to use the coordinates below instead of world spawn.
+  # Unsafe or out-of-border locations are searched nearby; a safe fallback is used.
   use-coordinates: false
   coordinates:
     x: 0.0

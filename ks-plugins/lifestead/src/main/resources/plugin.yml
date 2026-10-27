@@ -4,7 +4,7 @@ main: dev.lifestead.LifesteadPlugin
 api-version: '1.21.11'
 authors: [Lifestead]
 description: Lifesteal SMP hearts, elimination, revival, heart items, and recipes.
-website: https://github.com/lifestead
+website: https://github.com/anomalyco/opencode/tree/main/ks-plugins/lifestead
 softdepend: [PlaceholderAPI]
 # Folia is not supported: the plugin uses the Bukkit scheduler.
 

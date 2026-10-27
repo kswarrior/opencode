@@ -54,19 +54,25 @@ public final class SkinService {
             cache.put(uuid, new Entry(null, System.currentTimeMillis() + FAILURE_TTL_MILLIS));
             return;
         }
-        lookup.update()
-                .orTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
-                .whenComplete((updated, failure) -> {
-                    inFlight.remove(uuid);
-                    if (failure != null || updated == null || !updated.isComplete()) {
-                        cache.put(uuid, new Entry(null,
-                                System.currentTimeMillis() + FAILURE_TTL_MILLIS));
-                        return;
-                    }
-                    cache.put(uuid, new Entry(updated, System.currentTimeMillis() + SUCCESS_TTL_MILLIS));
-                    prune();
-                    notifyMainThread(uuid, updated, callback);
-                });
+        try {
+            lookup.update()
+                    .orTimeout(TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                    .whenComplete((updated, failure) -> {
+                        inFlight.remove(uuid);
+                        if (failure != null || updated == null || !updated.isComplete()) {
+                            cache.put(uuid, new Entry(null,
+                                    System.currentTimeMillis() + FAILURE_TTL_MILLIS));
+                            return;
+                        }
+                        cache.put(uuid, new Entry(updated,
+                                System.currentTimeMillis() + SUCCESS_TTL_MILLIS));
+                        prune();
+                        notifyMainThread(uuid, updated, callback);
+                    });
+        } catch (RuntimeException exception) {
+            inFlight.remove(uuid);
+            cache.put(uuid, new Entry(null, System.currentTimeMillis() + FAILURE_TTL_MILLIS));
+        }
     }
 
     private void notifyMainThread(UUID uuid, PlayerProfile profile,
