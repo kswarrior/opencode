@@ -310,7 +310,10 @@ public final class EliminationManager {
                         if (isSafe(world, blockX, clampedY, blockZ)) {
                             Location location = new Location(world, blockX + 0.5, clampedY,
                                     blockZ + 0.5, yaw, pitch);
-                            return insideBorder(location);
+                            Location inside = insideBorder(location);
+                            if (inside != null) {
+                                return inside;
+                            }
                         }
                     }
                 }
@@ -337,7 +340,11 @@ public final class EliminationManager {
         Location clamped = location.clone();
         clamped.setX(x);
         clamped.setZ(z);
-        return border.isInside(clamped) ? clamped : null;
+        if (!border.isInside(clamped)) {
+            return null;
+        }
+        return isSafe(world, (int) Math.floor(x), (int) Math.floor(clamped.getY()),
+                (int) Math.floor(z)) ? clamped : null;
     }
 
     private boolean isSafe(World world, int x, int y, int z) {
