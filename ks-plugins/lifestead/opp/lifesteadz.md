@@ -120,7 +120,8 @@
   - Optionally teleports to spawn (`revive.teleport-to-spawn`, default true).
   - Spawn target can be a world spawn, a configured world, or explicit
     coordinates/yaw/pitch.
-  - Applies max health and sets current health to the restored maximum.
+  - Applies max health; for online players it also sets current health to the
+    restored maximum.
   - Delivers any queued offline heart items.
   - Announces the revival when elimination announcements are enabled.
 - Offline players can be revived. Their state and hearts are updated immediately;
