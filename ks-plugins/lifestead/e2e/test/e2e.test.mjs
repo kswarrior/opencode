@@ -610,8 +610,72 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.match(missing.text, /was not found/)
   })
 
+  test('config clamps maximum hearts, minimum hearts, and withdraw guard', async () => {
+    await setConfig({
+      settings: {
+        'minimum-hearts': 0,
+        'maximum-hearts': 9999,
+        'withdraw-guard': 9999
+      }
+    })
+    assert.ok(
+      server.lines.some((line) => line.includes('maximum-hearts cannot exceed 512')),
+      'Expected a maximum-hearts overflow warning'
+    )
+    await resetAll()
+    let display = await server.commandExpect(
+      'lifestead hearts E2EAlpha',
+      /has \d+ heart\(s\)/
+    )
+    assert.equal(parseDisplayedRange(display).max, 512)
+
+    await setHearts(ALPHA, 600)
+    assert.equal(await hearts(alpha), 512)
+    const guardBlocked = await sendCommand(alpha, '/ls withdraw 1', /must keep at least/)
+    assert.match(guardBlocked.text, /at least 512/)
+
+    await setConfig({
+      settings: {
+        'minimum-hearts': 9999,
+        'maximum-hearts': 20,
+        'withdraw-guard': 1
+      }
+    })
+    assert.ok(
+      server.lines.some((line) =>
+        line.includes('must be lower than settings.maximum-hearts')
+      ),
+      'Expected a minimum-hearts overflow warning'
+    )
+    await resetAll()
+    display = await server.commandExpect(
+      'lifestead hearts E2EAlpha',
+      /has \d+ heart\(s\)/
+    )
+    const range = parseDisplayedRange(display)
+    assert.equal(range.min, 19)
+    assert.equal(range.max, 20)
+
+    await setHearts(ALPHA, 0)
+    await waitForGameMode(alpha, 'spectator')
+    assert.equal(await hearts(alpha), 0)
+    await revive(ALPHA)
+    await waitForGameMode(alpha, 'survival')
+    assert.equal(await hearts(alpha), 19)
+
+    await setConfig({
+      settings: {
+        'minimum-hearts': 0,
+        'maximum-hearts': 20,
+        'withdraw-guard': 1
+      }
+    })
+    await resetAll()
+  })
+
   test('offline eliminate and revive update data and messages', async () => {
     await resetAll()
+    assert.equal(await heartsFor('E2EPage37'), 0)
     const eliminated = await sendCommand(beta, '/ls eliminate E2EPage03', /Eliminated/)
     assert.match(eliminated.text, /Eliminated/)
     assert.equal(await heartsFor('E2EPage03'), 0)
@@ -620,12 +684,47 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.equal(await heartsFor('E2EPage03'), 4)
   })
 
+  test('offline revive applies configured coordinates on the next join', async () => {
+    const targetY = Math.round(alpha.entity.position.y) + 1
+    await setConfig({
+      revive: {
+        'teleport-to-spawn': true,
+        'spawn-world': 'world',
+        'use-coordinates': true,
+        coordinates: { x: 96.5, y: targetY, z: 96.5, yaw: 0.0, pitch: 0.0 }
+      }
+    })
+    await resetAll()
+    await disconnect(beta)
+    beta = null
+    await sleep(500)
+    await server.commandExpect(`lifestead eliminate ${BETA}`, /Eliminated/)
+    await server.commandExpect(`lifestead revive ${BETA}`, /will be revived/)
+    beta = await createTestBot({ username: BETA })
+    await waitForPosition(
+      beta,
+      (position) => Math.abs(position.x - 96.5) < 2 && Math.abs(position.z - 96.5) < 2
+    )
+    assert.equal(await hearts(beta), 4)
+    await server.commandExpect(`tp ${BETA} ${ALPHA}`, /Teleported/)
+    await setConfig({
+      revive: {
+        'teleport-to-spawn': true,
+        'spawn-world': 'world',
+        'use-coordinates': false,
+        coordinates: { x: 0.0, y: 64.0, z: 0.0, yaw: 0.0, pitch: 0.0 }
+      }
+    })
+    await resetAll()
+  })
+
   test('revive beacon GUI paginates and revives a seeded offline player', async () => {
     await resetAll()
     await eliminateSeeds()
     await clearInventory(ALPHA)
     await giveLifesteadItem(ALPHA, 'revive_beacon', 1)
     await equipKind(alpha, 'revive_beacon')
+    const lookupsBefore = countProfileLookupWarnings()
     const firstPage = await useOnGroundForWindow(alpha)
     assert.match(windowTitle(firstPage), /Revive Beacon.*Page 1\/2/)
     assert.equal(firstPage.slots.filter((item) => item?.name === 'player_head').length, 36)
@@ -649,6 +748,11 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     }).catch(() => null)
     assert.ok(reviveMessage, 'Expected offline revive feedback in the GUI flow')
     await closeCurrentWindow(alpha)
+    assert.equal(
+      countProfileLookupWarnings(),
+      lookupsBefore,
+      'Revive GUI heads must not trigger Mojang profile lookups'
+    )
     await clearInventory(ALPHA)
     await resetAll()
   })
