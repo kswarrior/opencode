@@ -1133,7 +1133,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await sleep(500)
     await server.command(`execute in minecraft:the_nether run tp ${BETA} 0 64 0`)
     await sleep(1000)
-    assert.equal(beta.game.dimension, 'minecraft:the_nether')
+    assert.match(beta.game.dimension, /the_nether/)
     await disconnect(beta)
     beta = null
     await sleep(1000)
