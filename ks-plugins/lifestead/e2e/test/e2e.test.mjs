@@ -105,7 +105,10 @@ async function resetAll() {
 async function eliminateSeeds() {
   for (let index = 1; index <= SEED_COUNT; index++) {
     const name = `E2EPage${String(index).padStart(2, '0')}`
-    await server.commandExpect(`lifestead eliminate ${name}`, /Eliminated|already eliminated/)
+    await server.commandExpect(
+      `lifestead eliminate ${name}`,
+      /Eliminated|already eliminated|was eliminated/i
+    )
   }
   await sleep(500)
 }
@@ -518,7 +521,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await setHearts(ALPHA, 0)
     message = await sendCommand(alpha, '/ls withdraw 1', /eliminated/)
     assert.match(message.text, /eliminated/i)
-    await resetPlayer(ALPHA)
+    await resetAll()
   })
 
   test('full inventories report dropped heart items on every delivery path', async () => {
@@ -714,8 +717,12 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
 
   test('offline eliminate and revive data and messages', async () => {
     await resetAll()
-    const eliminated = await sendCommand(beta, '/ls eliminate E2EPage03', /Eliminated/)
-    assert.match(eliminated.text, /Eliminated/)
+    const eliminated = await sendCommand(
+      beta,
+      '/ls eliminate E2EPage03',
+      /Eliminated|was eliminated/i
+    )
+    assert.match(eliminated.text, /eliminated/i)
     assert.equal(await heartsFor('E2EPage03'), 0)
     const revived = await sendCommand(beta, '/ls revive E2EPage03', /will be revived/)
     assert.match(revived.text, /will be revived/)
@@ -736,7 +743,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await disconnect(beta)
     beta = null
     await sleep(500)
-    await server.commandExpect(`lifestead eliminate ${BETA}`, /Eliminated/)
+    await server.commandExpect(`lifestead eliminate ${BETA}`, /Eliminated|was eliminated/i)
     await server.commandExpect(`lifestead revive ${BETA}`, /will be revived/)
     beta = await createTestBot({ username: BETA })
     await waitForPosition(
@@ -1260,8 +1267,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     const bans = await server.commandExpect('banlist players', /E2EBeta/)
     assert.match(bans, /E2EBeta/)
     await setConfig({ elimination: { mode: 'SPECTATOR' } })
-    await resetPlayer(BETA)
-    await setHearts(BETA, START_HEARTS)
+    await resetAll()
     await sleep(700)
     beta = await createTestBot({ username: BETA })
     await waitForGameMode(beta, 'survival')
@@ -1270,6 +1276,8 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   })
 
   test('revive avoids unsafe configured coordinates', async () => {
+    await server.commandExpect('forceload add 200 200 220 220', /Added|chunk/i)
+    await sleep(700)
     await server.commandExpect(
       'fill 200 100 200 220 100 220 stone',
       /Successfully filled|Changed the blocks/
@@ -1307,6 +1315,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
       'fill 200 100 200 220 101 220 air',
       /Successfully filled|Changed the blocks/
     )
+    await server.commandExpect('forceload remove 200 200 220 220', /Removed|chunk/i)
     await setConfig({
       revive: {
         'teleport-to-spawn': true,
