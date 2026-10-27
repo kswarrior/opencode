@@ -8,6 +8,8 @@ database:
 
 settings:
   start-hearts: 10
+  # Floor for heart loss. Above 0, deaths cannot reach zero, which disables
+  # normal elimination by heart loss. Keep at 0 for elimination gameplay.
   minimum-hearts: 0
   maximum-hearts: 20
   gain-per-kill: 1

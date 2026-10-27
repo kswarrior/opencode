@@ -40,11 +40,11 @@ The main command is `/lifestead`, with `/ls` and `/lifesteal` aliases.
 | `/ls deposit [amount]` | `lifesteal.deposit` | everyone | Turn heart items into body hearts. |
 | `/ls recipe [heart\|beacon\|all]` | `lifesteal.recipe` | everyone | Open the recipe viewer. |
 | `/ls revive <player>` | `lifesteal.revive` | op | Revive an online or known offline player. |
-| `/ls giveheart <player> [amount]` | `lifesteal.give` | op | Give heart items; queue for offline players. |
+| `/ls giveheart <player> [amount]` | `lifesteal.give` | op | Give up to 2304 heart items; queue for offline players. |
 | `/ls sethearts <player> <amount>` | `lifesteal.set` | op | Set hearts; zero eliminates. Eliminated players must be revived instead. |
 | `/ls eliminate <player>` | `lifesteal.eliminate` | op | Eliminate an online or known offline player. |
 | `/ls reset <player\|all>` | `lifesteal.reset` | op | Reset hearts, elimination, combat, kill, pending-item, and anti-farm state. |
-| `/ls reload` | `lifesteal.reload` | op | Reload config, messages, recipes, tasks, and health. Invalid recipes keep the previous set. |
+| `/ls reload` | `lifesteal.reload` | op | Reload config, messages, recipes, tasks, and health. Invalid config or recipes apply nothing. |
 
 `lifesteal.admin` is an aggregate parent permission that grants every
 administration node.
@@ -60,7 +60,8 @@ administration node.
 - `combat-log`: enable toggle, duration, and heart penalty.
 - `elimination`: `BAN` or `SPECTATOR` mode, ban reason, and announcements.
 - `revive`: restored hearts, teleport toggle, world, coordinates, yaw, and pitch.
-- `effects`: sounds, particles, and steal broadcasts.
+- `effects`: sounds, particles, and steal broadcasts. `particle-count` is
+  clamped to 1-200.
 - `items`: material, name, lore, glow, and CustomModelData for both items.
 - `recipes`: shaped/shapeless recipes, result amounts, shapes, and ingredients.
 
@@ -68,22 +69,50 @@ Invalid numbers, enums, sounds, particles, and coordinates are clamped or
 ignored with a startup or reload warning. Every fallback is visible in the
 console instead of being silent.
 
+`minimum-hearts` is a floor for heart loss. Setting it above `0` prevents normal
+death/PvP losses from reaching zero, so players cannot be eliminated by heart
+loss; keep it at `0` for elimination gameplay.
+
 `messages.yml` contains all chat, GUI, and help text. It supports `&` color
 codes and `&#RRGGBB` hex colors. The prefix is configurable.
+
+## PlaceholderAPI
+
+Install PlaceholderAPI and the `lifesteal` expansion registers automatically.
+The expansion persists across `/papi reload`. Supported placeholders:
+
+| Placeholder | Value |
+| --- | --- |
+| `%lifesteal_hearts%` / `%lifesteal_heart%` | Current hearts. |
+| `%lifesteal_max_hearts%` / `%lifesteal_max-hearts%` / `%lifesteal_max%` | Configured maximum. |
+| `%lifesteal_min_hearts%` / `%lifesteal_min-hearts%` / `%lifesteal_min%` | Configured minimum. |
+| `%lifesteal_health%` | Current hearts as health points (hearts x 2). |
+| `%lifesteal_eliminated%` | `true` or `false`. |
+| `%lifesteal_status%` | `alive` or `eliminated`. |
+| `%lifesteal_withdrawable%` / `%lifesteal_withdrawable_hearts%` | Hearts that can be withdrawn. |
+
+All values respect the configured min/max clamps and are normalized on read.
 
 ## Gameplay notes
 
 - One heart is two health points. Max health is driven by the
   `Attribute.MAX_HEALTH` attribute.
-- A player at zero hearts is eliminated. `BAN` mode applies a profile ban with a
-  name-ban fallback; `SPECTATOR` mode keeps the player as a spectator.
+- A player at zero hearts is eliminated. This is normalized for offline
+  profiles and PAPI reads, not only on join. `BAN` mode applies a profile ban
+  with a name-ban fallback; `SPECTATOR` mode keeps the player as a spectator.
 - A revive pardons the ban, restores the configured hearts, and can teleport to
-  a validated safe spawn. Offline players are teleported when they next join.
+  a validated safe spawn. Offline players are teleported when they next join;
+  online players who are still on the death screen are teleported on respawn.
 - Pending heart items are delivered on join or revive. If the inventory is full,
-  leftovers are dropped at the player's feet.
-- Combat tags are persisted, so changing worlds or restarting the server does
-  not erase an active combat-log penalty.
+  leftovers are dropped at the player's feet. `giveheart` is capped at 2304
+  items (36 stacks) per request.
+- Combat tags persist across world changes, plugin reloads, restarts, and
+  crashes. A pending penalty is applied on quit or when the player next joins.
 - The anti-farm history persists in `antifarm.yml`.
+- Custom heart and beacon items cannot be used as crafting, smithing, anvil,
+  grindstone, furnace, brewing, stonecutter, merchant, beacon, composter, or
+  item-frame inputs, and cannot be dispensed or placed. They work from either
+  hand.
 
 ## Data and backups
 
@@ -95,7 +124,12 @@ existing SQLite database, the plugin copies it to
 - SQLite schema failures stop startup instead of silently switching storage.
 - Other SQLite startup failures log a warning and fall back to YAML.
 - Changing `database.type` requires a restart.
-- YAML writes are batched to one flush per tick and use an atomic move.
+- YAML writes are batched to one flush per tick and use an atomic move. Failed
+  writes stay dirty and retry every 30 seconds instead of dropping changes.
+- Malformed `playerdata.yml` or `antifarm.yml` is quarantined as
+  `<name>.corrupt` (or `.corrupt.N`) and the plugin starts with empty data for
+  that file instead of overwriting it. Repair or restore the quarantined file
+  before restarting.
 - Back up the plugin data directory before changing storage or upgrading.
 
 ## Resource pack
