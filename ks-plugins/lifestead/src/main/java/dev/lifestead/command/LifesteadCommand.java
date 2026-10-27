@@ -342,7 +342,7 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         if (args.length == 2) {
             return switch (subcommand) {
                 case "hearts" -> sender.hasPermission("lifesteal.hearts.others")
-                        ? filter(onlineNames(), args[1]) : List.of();
+                        ? filter(knownNames(), args[1]) : List.of();
                 case "revive" -> filter(eliminatedNames(), args[1]);
                 case "giveheart" -> filter(knownNames(), args[1]);
                 case "sethearts", "eliminate" -> filter(knownNames(), args[1]);
@@ -378,14 +378,6 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
                 .filter(option -> option.toLowerCase(Locale.ROOT).startsWith(lower))
                 .sorted(String.CASE_INSENSITIVE_ORDER)
                 .toList();
-    }
-
-    private List<String> onlineNames() {
-        List<String> names = new ArrayList<>();
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            names.add(player.getName());
-        }
-        return names;
     }
 
     private List<String> knownNames() {
