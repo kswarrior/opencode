@@ -9,11 +9,20 @@ public final class DataStoreFactory {
 
     public static DataStore create(LifesteadPlugin plugin) throws Exception {
         if ("SQLITE".equals(plugin.getSettings().databaseType)) {
+            SqliteDataStore store = null;
             try {
-                SqliteDataStore store = new SqliteDataStore(plugin);
+                store = new SqliteDataStore(plugin);
                 store.init();
                 return store;
             } catch (Exception exception) {
+                if (store != null) {
+                    try {
+                        store.close();
+                    } catch (RuntimeException closeException) {
+                        plugin.getLogger().warning("Could not close the failed SQLite store: "
+                                + closeException.getMessage());
+                    }
+                }
                 plugin.getLogger().severe("SQLite could not be started; falling back to YAML: "
                         + exception.getMessage());
             }

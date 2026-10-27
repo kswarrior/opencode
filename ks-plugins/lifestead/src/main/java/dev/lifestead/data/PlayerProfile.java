@@ -23,7 +23,7 @@ public final class PlayerProfile {
             int kills, long lastKillAt, long eliminatedAt, int pendingHeartItems) {
         this.uuid = uuid;
         this.name = name == null ? uuid.toString() : name;
-        this.hearts = hearts;
+        this.hearts = eliminated ? 0 : Math.max(0, hearts);
         this.eliminated = eliminated;
         this.lastSeen = lastSeen;
         this.kills = Math.max(0, kills);

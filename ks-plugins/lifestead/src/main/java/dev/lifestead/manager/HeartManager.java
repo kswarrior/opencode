@@ -45,7 +45,7 @@ public final class HeartManager {
 
     public int setHearts(PlayerProfile profile, int amount) {
         Settings settings = plugin.getSettings();
-        int clamped = Settings.clamp(amount, settings.minHearts, settings.maxHearts);
+        int clamped = amount <= 0 ? 0 : Settings.clamp(amount, settings.minHearts, settings.maxHearts);
         profile.setHearts(clamped);
         Player online = plugin.getServer().getPlayer(profile.getUuid());
         if (clamped > 0 && profile.isEliminated()) {
