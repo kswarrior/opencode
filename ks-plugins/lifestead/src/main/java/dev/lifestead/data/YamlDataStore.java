@@ -1,6 +1,7 @@
 package dev.lifestead.data;
 
 import dev.lifestead.LifesteadPlugin;
+import dev.lifestead.util.YamlSafety;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.AtomicMoveNotSupportedException;
@@ -24,8 +25,11 @@ public final class YamlDataStore implements DataStore {
     private final Map<UUID, PlayerProfile> profiles = new LinkedHashMap<>();
     private final Set<UUID> dirty = new HashSet<>();
     private boolean flushScheduled;
+    private boolean retryScheduled;
+    private boolean storageBlocked;
     private boolean closed;
     private boolean warnedClosed;
+    private boolean warnedBlocked;
 
     public YamlDataStore(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -35,6 +39,20 @@ public final class YamlDataStore implements DataStore {
     @Override
     public synchronized void init() {
         if (!file.exists()) {
+            return;
+        }
+        if (!YamlSafety.isParseable(file)) {
+            try {
+                File quarantined = YamlSafety.quarantine(file);
+                plugin.getLogger().severe("playerdata.yml is malformed; moved it to "
+                        + quarantined.getName() + " and started with empty player data."
+                        + " Repair or restore the quarantined file, then restart.");
+            } catch (IOException exception) {
+                storageBlocked = true;
+                plugin.getLogger().severe("playerdata.yml is malformed and could not be"
+                        + " quarantined: " + exception.getMessage()
+                        + ". Refusing to overwrite it; repair the file and restart.");
+            }
             return;
         }
         YamlConfiguration data = YamlConfiguration.loadConfiguration(file);
@@ -107,6 +125,10 @@ public final class YamlDataStore implements DataStore {
             warnClosed();
             return;
         }
+        if (storageBlocked) {
+            warnBlocked();
+            return;
+        }
         profiles.put(profile.getUuid(), profile);
         dirty.add(profile.getUuid());
         scheduleFlush();
@@ -118,8 +140,13 @@ public final class YamlDataStore implements DataStore {
             warnClosed();
             return;
         }
-        writeAll();
-        dirty.clear();
+        if (storageBlocked) {
+            warnBlocked();
+            return;
+        }
+        if (writeAll()) {
+            dirty.clear();
+        }
     }
 
     private void scheduleFlush() {
@@ -131,7 +158,9 @@ public final class YamlDataStore implements DataStore {
             plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
                 synchronized (YamlDataStore.this) {
                     flushScheduled = false;
-                    flush();
+                    if (!flush()) {
+                        scheduleRetry();
+                    }
                 }
             }, 1L);
         } catch (RuntimeException exception) {
@@ -141,15 +170,46 @@ public final class YamlDataStore implements DataStore {
         }
     }
 
-    private void flush() {
-        if (closed || dirty.isEmpty()) {
+    private void scheduleRetry() {
+        if (retryScheduled || closed || storageBlocked || dirty.isEmpty()) {
             return;
         }
-        writeAll();
-        dirty.clear();
+        retryScheduled = true;
+        try {
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                synchronized (YamlDataStore.this) {
+                    retryScheduled = false;
+                    if (closed || dirty.isEmpty()) {
+                        return;
+                    }
+                    if (!flush()) {
+                        scheduleRetry();
+                    }
+                }
+            }, 20L * 30L);
+        } catch (RuntimeException exception) {
+            retryScheduled = false;
+            plugin.getLogger().warning("Could not schedule a player-data retry: "
+                    + exception.getMessage());
+        }
     }
 
-    private void writeAll() {
+    private boolean flush() {
+        if (closed || dirty.isEmpty()) {
+            return true;
+        }
+        if (writeAll()) {
+            dirty.clear();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean writeAll() {
+        if (storageBlocked) {
+            warnBlocked();
+            return false;
+        }
         YamlConfiguration data = new YamlConfiguration();
         ConfigurationSection section = data.createSection("players");
         for (PlayerProfile profile : profiles.values()) {
@@ -174,8 +234,11 @@ public final class YamlDataStore implements DataStore {
             } catch (AtomicMoveNotSupportedException exception) {
                 Files.move(temporary.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
             }
+            return true;
         } catch (IOException exception) {
-            plugin.getLogger().severe("Could not save player data: " + exception.getMessage());
+            plugin.getLogger().severe("Could not save player data: " + exception.getMessage()
+                    + " (will retry)");
+            return false;
         }
     }
 
@@ -185,6 +248,15 @@ public final class YamlDataStore implements DataStore {
         }
         warnedClosed = true;
         plugin.getLogger().warning("Ignoring a player-data save after the YAML store was closed.");
+    }
+
+    private void warnBlocked() {
+        if (warnedBlocked) {
+            return;
+        }
+        warnedBlocked = true;
+        plugin.getLogger().severe("Refusing to save player data because playerdata.yml is"
+                + " malformed and could not be quarantined. Repair the file and restart.");
     }
 
     @Override
