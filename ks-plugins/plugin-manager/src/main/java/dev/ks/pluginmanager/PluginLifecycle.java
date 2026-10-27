@@ -57,6 +57,7 @@ public class PluginLifecycle {
             }
         }
         disable(plugin);
+        cleanPaperProviders(plugin);
         // Try Paper instance manager field
         try {
             for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
