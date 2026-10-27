@@ -56,7 +56,17 @@ public class PluginLifecycle {
                     String type = f.getType().getName().toLowerCase();
                     if (name.contains("manager") || name.contains("instance") || type.contains("manager") || type.contains("instance")) {
                         Object im = f.get(pm);
-                        if (im != null && im != pm) cleanObject(im, plugin);
+                        if (im != null && im != pm) {
+                            System.out.println("[KSPM-DEBUG] instanceManager class = " + im.getClass().getName());
+                            for (Class<?> cc = im.getClass(); cc != null; cc = cc.getSuperclass()) {
+                                for (Field ff : cc.getDeclaredFields()) {
+                                    ff.setAccessible(true);
+                                    Object vv = null; try { vv = ff.get(im); } catch(Exception e){vv="<err>";}
+                                    System.out.println("[KSPM-DEBUG]   imfield " + ff.getName() + " : " + ff.getType().getName() + " = " + (vv==null?"null":vv.getClass().getName()));
+                                }
+                            }
+                            cleanObject(im, plugin);
+                        }
                     }
                 }
             }
