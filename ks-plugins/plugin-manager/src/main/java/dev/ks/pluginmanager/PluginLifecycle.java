@@ -120,6 +120,7 @@ public class PluginLifecycle {
             if (cl instanceof URLClassLoader) ((URLClassLoader) cl).close();
         } catch (Exception ignored) {}
 
+        System.out.println("[KSPM-DEBUG] after unload getPlugin=" + Bukkit.getPluginManager().getPlugin(plugin.getName()));
         return true;
     }
 
