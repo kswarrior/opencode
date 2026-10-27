@@ -243,16 +243,77 @@ async function heartsFor(name) {
   return parseDisplayedHearts(line)
 }
 
+function parseDisplayedRange(line) {
+  const min = line.match(/min[^0-9]*(\d+)/i)
+  const max = line.match(/max[^0-9]*(\d+)/i)
+  assert.ok(min && max, `Could not parse heart range from: ${line}`)
+  return { min: Number(min[1]), max: Number(max[1]) }
+}
+
+function countProfileLookupWarnings() {
+  return server.lines.filter((line) =>
+    line.includes("Couldn't look up profile properties")
+  ).length
+}
+
+async function waitForPosition(bot, predicate, { timeout = 15000 } = {}) {
+  const deadline = Date.now() + timeout
+  while (Date.now() < deadline) {
+    if (predicate(bot.entity.position)) {
+      return true
+    }
+    await sleep(100)
+  }
+  throw new Error(
+    `Timed out waiting for ${bot.username} position; last=${JSON.stringify(bot.entity.position)}`
+  )
+}
+
+async function entityUuidNbt(selector) {
+  const line = await server.commandExpect(`data get entity ${selector} UUID`, /\[I;/)
+  const match = line.match(/\[I;[^\]]+\]/)
+  assert.ok(match, `Could not parse entity UUID from: ${line}`)
+  return match[0].replace(/\s+/g, '')
+}
+
+async function summonArrowWithOwner(ownerNbt, tag, at = BETA) {
+  await server.commandExpect(
+    `execute at ${at} run summon minecraft:arrow ~ ~1 ~ ` +
+      `{Owner:${ownerNbt},PickupStatus:0b,life:1200s,Tags:["${tag}"]}`,
+    /Summoned new/
+  )
+  await sleep(200)
+}
+
+async function summonOwnedArrow(owner, tag, at = BETA) {
+  await summonArrowWithOwner(await entityUuidNbt(owner), tag, at)
+}
+
+async function killWithArrow(tag, cause, { gain = false } = {}) {
+  const alphaBefore = await heartsFor(ALPHA)
+  const eliminated = server.waitForLine(
+    new RegExp(`E2EBeta ran out of hearts and was eliminated \\(${cause}\\)`),
+    { timeout: 15000 }
+  )
+  await server.command(`damage ${BETA} 20 minecraft:arrow by @e[tag=${tag},limit=1]`)
+  await eliminated
+  await sleep(500)
+  assert.equal(await heartsFor(BETA), 0)
+  assert.equal(await heartsFor(ALPHA), alphaBefore + (gain ? 1 : 0))
+}
+
 before(async () => {
   await access(PLUGIN_JAR)
   paper = await downloadPaper()
   placeholderApi = await downloadPlaceholderApi()
+  const seededProfiles = fakeEliminatedProfiles(SEED_COUNT)
+  seededProfiles[seededProfiles.length - 1].hearts = 5
   fixture = await prepareServer({
     fresh: true,
     paperJar: paper.file,
     pluginJar: PLUGIN_JAR,
     placeholderApiJar: placeholderApi.file,
-    seedProfiles: fakeEliminatedProfiles(SEED_COUNT),
+    seedProfiles: seededProfiles,
     config: {
       'anti-farm': {
         'same-ip': true,
@@ -287,6 +348,7 @@ after(async () => {
 describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   test('plugin and PlaceholderAPI load without plugin errors', () => {
     assert.ok(server.lines.some((line) => line.includes('Lifestead enabled')))
+    assert.ok(server.lines.some((line) => line.includes('YAML storage')))
     assert.ok(
       server.lines.some((line) => line.includes('Registered PlaceholderAPI expansion'))
     )
@@ -349,6 +411,11 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     const amounts = names(await alpha.tabComplete(`/ls giveheart ${ALPHA} `, true))
     assert.ok(amounts.includes('1'))
     assert.ok(amounts.includes('10'))
+    const offlineHearts = names(await alpha.tabComplete('/ls hearts E2EPage3', true))
+    assert.ok(
+      offlineHearts.includes('E2EPage37'),
+      `Expected offline players in hearts completion, got ${offlineHearts.join(', ')}`
+    )
   })
 
   test('hearts displays self, others, and reports unknown players', async () => {
@@ -420,6 +487,74 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     message = await sendCommand(alpha, '/ls withdraw 1', /eliminated/)
     assert.match(message.text, /eliminated/i)
     await resetPlayer(ALPHA)
+  })
+
+  test('full inventories report dropped heart items on every delivery path', async () => {
+    await resetAll()
+    await clearInventory(ALPHA)
+    await server.commandExpect(`give ${ALPHA} minecraft:iron_sword 36`, /Gave/)
+    await sleep(700)
+    assert.equal(alpha.inventory.items().length, 36)
+    await server.command('kill @e[type=minecraft:item]')
+    await sleep(300)
+
+    const withdrawNotice = waitForMessage(alpha, /inventory was full/i)
+    const withdrew = await sendCommand(alpha, '/ls withdraw 2', /Withdrew 2/)
+    assert.match(withdrew.text, /Withdrew 2/)
+    assert.match((await withdrawNotice).text, /inventory was full/i)
+    await sleep(500)
+    assert.equal(await hearts(alpha), 8)
+    assert.equal(countLifesteadItems(alpha, 'heart'), 0)
+    const withdrawnDrop = await server.commandExpect(
+      `execute at ${ALPHA} run execute if entity @e[type=minecraft:item,distance=..4] ` +
+        'run say E2E_WITHDRAW_DROPPED',
+      /E2E_WITHDRAW_DROPPED/
+    )
+    assert.match(withdrawnDrop, /E2E_WITHDRAW_DROPPED/)
+
+    await server.command('kill @e[type=minecraft:item]')
+    await sleep(200)
+    const giveNotice = waitForMessage(alpha, /inventory was full/i)
+    const gave = await sendCommand(beta, `/ls giveheart ${ALPHA} 1`, /Gave 1/)
+    assert.match(gave.text, /Gave 1/)
+    assert.match((await giveNotice).text, /inventory was full/i)
+    await sleep(300)
+    assert.equal(countLifesteadItems(alpha, 'heart'), 0)
+
+    await disconnect(alpha)
+    alpha = null
+    await sleep(500)
+    await server.commandExpect(`lifestead giveheart ${ALPHA} 1`, /Queued 1/)
+    alpha = await createTestBot({ username: ALPHA })
+    const received = await waitForMessage(alpha, /Received 1/, { since: 0 })
+    const pendingNotice = await waitForMessage(alpha, /inventory was full/i, { since: 0 })
+    assert.match(received.text, /Received 1/)
+    assert.match(pendingNotice.text, /inventory was full/i)
+    await sleep(500)
+    assert.equal(countLifesteadItems(alpha, 'heart'), 0)
+    await clearInventory(ALPHA)
+    await resetAll()
+  })
+
+  test('withdrawing to zero with no guard eliminates with a withdrawal cause', async () => {
+    await setConfig({ settings: { 'minimum-hearts': 0, 'withdraw-guard': 0 } })
+    await resetAll()
+    await clearInventory(ALPHA)
+    await setHearts(ALPHA, 1)
+    const withdrew = await sendCommand(alpha, '/ls withdraw 1', /Withdrew 1/)
+    assert.match(withdrew.text, /Withdrew 1/)
+    await waitForGameMode(alpha, 'spectator')
+    assert.equal(await hearts(alpha), 0)
+    assert.ok(
+      server.lines.some((line) =>
+        line.includes('E2EAlpha ran out of hearts and was eliminated (withdrawal)')
+      ),
+      'Expected a withdrawal elimination announcement'
+    )
+    await revive(ALPHA)
+    await waitForGameMode(alpha, 'survival')
+    await setConfig({ settings: { 'minimum-hearts': 0, 'withdraw-guard': 1 } })
+    await resetAll()
   })
 
   test('giveheart queues offline items and delivers them on join', async () => {
