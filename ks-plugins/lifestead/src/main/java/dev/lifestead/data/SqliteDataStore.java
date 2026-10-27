@@ -2,6 +2,9 @@ package dev.lifestead.data;
 
 import dev.lifestead.LifesteadPlugin;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,6 +21,8 @@ import java.util.Set;
 import java.util.UUID;
 
 public final class SqliteDataStore implements DataStore {
+
+    private static final int SCHEMA_VERSION = 2;
 
     private static final String CREATE_TABLE = """
             CREATE TABLE IF NOT EXISTS lifestead_players (
@@ -57,6 +62,8 @@ public final class SqliteDataStore implements DataStore {
     private final File file;
     private final Map<UUID, PlayerProfile> profiles = new LinkedHashMap<>();
     private Connection connection;
+    private boolean closed;
+    private boolean warnedClosed;
 
     public SqliteDataStore(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -64,17 +71,64 @@ public final class SqliteDataStore implements DataStore {
     }
 
     @Override
-    public void init() throws Exception {
+    public synchronized void init() throws Exception {
         Class.forName("org.sqlite.JDBC");
         connection = DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
-        try (Statement statement = connection.createStatement()) {
-            statement.execute(CREATE_TABLE);
+        try {
+            int version = readUserVersion();
+            if (version > SCHEMA_VERSION) {
+                throw new SQLException("Unsupported SQLite schema version " + version
+                        + "; this Lifestead build supports up to " + SCHEMA_VERSION
+                        + ". Back up and migrate the database before starting.");
+            }
+            boolean tableExists = tableExists();
+            Set<String> columns = columns();
+            boolean migrationNeeded = tableExists
+                    && (version < SCHEMA_VERSION || missingColumns(columns));
+            if (migrationNeeded) {
+                backup(version);
+            }
+            try (Statement statement = connection.createStatement()) {
+                statement.execute(CREATE_TABLE);
+            }
+            ensureColumns(columns);
+            writeUserVersion();
+            loadAll();
+        } catch (Exception exception) {
+            try {
+                connection.close();
+            } catch (SQLException ignored) {
+                // The original failure is more useful.
+            }
+            connection = null;
+            closed = true;
+            throw exception;
         }
-        ensureColumns();
-        loadAll();
     }
 
-    private void ensureColumns() throws SQLException {
+    private int readUserVersion() throws SQLException {
+        try (Statement statement = connection.createStatement();
+                ResultSet result = statement.executeQuery("PRAGMA user_version")) {
+            return result.next() ? result.getInt(1) : 0;
+        }
+    }
+
+    private void writeUserVersion() throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("PRAGMA user_version = " + SCHEMA_VERSION);
+        }
+    }
+
+    private boolean tableExists() throws SQLException {
+        try (Statement statement = connection.createStatement();
+                ResultSet result = statement.executeQuery(
+                        "SELECT name FROM sqlite_master WHERE type = 'table'"
+                                + " AND name = 'lifestead_players'")) {
+            return result.next();
+        }
+    }
+
+    private Set<String> columns() throws SQLException {
         Set<String> columns = new HashSet<>();
         try (Statement statement = connection.createStatement();
                 ResultSet result = statement.executeQuery("PRAGMA table_info(lifestead_players)")) {
@@ -82,6 +136,35 @@ public final class SqliteDataStore implements DataStore {
                 columns.add(result.getString("name"));
             }
         }
+        return columns;
+    }
+
+    private boolean missingColumns(Set<String> columns) {
+        return !columns.contains("kills")
+                || !columns.contains("last_kill_at")
+                || !columns.contains("eliminated_at")
+                || !columns.contains("pending_heart_items")
+                || !columns.contains("pending_revive_teleport")
+                || !columns.contains("combat_at");
+    }
+
+    private void backup(int version) throws SQLException {
+        if (!file.exists()) {
+            return;
+        }
+        File backup = new File(file.getParentFile(),
+                file.getName() + ".bak-v" + version + "-" + System.currentTimeMillis());
+        try {
+            Files.copy(file.toPath(), backup.toPath(), StandardCopyOption.COPY_ATTRIBUTES);
+            plugin.getLogger().info("Backed up SQLite data to " + backup.getName()
+                    + " before schema migration.");
+        } catch (IOException exception) {
+            throw new SQLException("Could not back up the SQLite database before migration: "
+                    + exception.getMessage(), exception);
+        }
+    }
+
+    private void ensureColumns(Set<String> columns) throws SQLException {
         addColumn(columns, "kills", "INTEGER NOT NULL DEFAULT 0");
         addColumn(columns, "last_kill_at", "INTEGER NOT NULL DEFAULT 0");
         addColumn(columns, "eliminated_at", "INTEGER NOT NULL DEFAULT 0");
@@ -101,6 +184,7 @@ public final class SqliteDataStore implements DataStore {
         try (Statement statement = connection.createStatement()) {
             statement.execute("ALTER TABLE lifestead_players ADD COLUMN " + name + " " + definition);
         }
+        columns.add(name);
     }
 
     private void loadAll() throws SQLException {
@@ -167,6 +251,10 @@ public final class SqliteDataStore implements DataStore {
 
     @Override
     public synchronized void save(PlayerProfile profile) {
+        if (closed || connection == null) {
+            warnClosed();
+            return;
+        }
         profiles.put(profile.getUuid(), profile);
         try (PreparedStatement statement = connection.prepareStatement(UPSERT)) {
             bind(statement, profile);
@@ -178,7 +266,8 @@ public final class SqliteDataStore implements DataStore {
 
     @Override
     public synchronized void saveAll() {
-        if (connection == null) {
+        if (closed || connection == null) {
+            warnClosed();
             return;
         }
         try {
@@ -221,9 +310,21 @@ public final class SqliteDataStore implements DataStore {
         statement.setLong(11, profile.getCombatAt());
     }
 
+    private void warnClosed() {
+        if (warnedClosed) {
+            return;
+        }
+        warnedClosed = true;
+        plugin.getLogger().warning("Ignoring a player-data save after the SQLite store was closed.");
+    }
+
     @Override
     public synchronized void close() {
+        if (closed) {
+            return;
+        }
         if (connection == null) {
+            closed = true;
             return;
         }
         saveAll();
@@ -231,7 +332,9 @@ public final class SqliteDataStore implements DataStore {
             connection.close();
         } catch (SQLException exception) {
             plugin.getLogger().warning("Could not close SQLite connection: " + exception.getMessage());
+        } finally {
+            connection = null;
+            closed = true;
         }
-        connection = null;
     }
 }

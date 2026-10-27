@@ -8,9 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -20,6 +22,10 @@ public final class YamlDataStore implements DataStore {
     private final LifesteadPlugin plugin;
     private final File file;
     private final Map<UUID, PlayerProfile> profiles = new LinkedHashMap<>();
+    private final Set<UUID> dirty = new HashSet<>();
+    private boolean flushScheduled;
+    private boolean closed;
+    private boolean warnedClosed;
 
     public YamlDataStore(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -97,12 +103,53 @@ public final class YamlDataStore implements DataStore {
 
     @Override
     public synchronized void save(PlayerProfile profile) {
+        if (closed) {
+            warnClosed();
+            return;
+        }
         profiles.put(profile.getUuid(), profile);
-        saveAll();
+        dirty.add(profile.getUuid());
+        scheduleFlush();
     }
 
     @Override
     public synchronized void saveAll() {
+        if (closed) {
+            warnClosed();
+            return;
+        }
+        writeAll();
+        dirty.clear();
+    }
+
+    private void scheduleFlush() {
+        if (flushScheduled) {
+            return;
+        }
+        flushScheduled = true;
+        try {
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                synchronized (YamlDataStore.this) {
+                    flushScheduled = false;
+                    flush();
+                }
+            }, 1L);
+        } catch (RuntimeException exception) {
+            flushScheduled = false;
+            plugin.getLogger().warning("Could not schedule a player-data save: "
+                    + exception.getMessage());
+        }
+    }
+
+    private void flush() {
+        if (closed || dirty.isEmpty()) {
+            return;
+        }
+        writeAll();
+        dirty.clear();
+    }
+
+    private void writeAll() {
         YamlConfiguration data = new YamlConfiguration();
         ConfigurationSection section = data.createSection("players");
         for (PlayerProfile profile : profiles.values()) {
@@ -132,8 +179,20 @@ public final class YamlDataStore implements DataStore {
         }
     }
 
+    private void warnClosed() {
+        if (warnedClosed) {
+            return;
+        }
+        warnedClosed = true;
+        plugin.getLogger().warning("Ignoring a player-data save after the YAML store was closed.");
+    }
+
     @Override
     public synchronized void close() {
+        if (closed) {
+            return;
+        }
         saveAll();
+        closed = true;
     }
 }
