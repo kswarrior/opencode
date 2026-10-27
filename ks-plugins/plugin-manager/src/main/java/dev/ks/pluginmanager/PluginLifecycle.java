@@ -22,40 +22,7 @@ public class PluginLifecycle {
     }
 
     public static boolean unload(Plugin plugin) {
-        System.out.println("[KSPM-DEBUG] pm class = " + Bukkit.getPluginManager().getClass().getName());
         PluginManager pm = Bukkit.getPluginManager();
-        for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
-            System.out.println("[KSPM-DEBUG] class " + c.getName());
-            for (Field f : c.getDeclaredFields()) {
-                f.setAccessible(true);
-                Object v = null;
-                try { v = f.get(pm); } catch (Exception e) { v = "<err>"; }
-                System.out.println("[KSPM-DEBUG]   field " + f.getName() + " : " + f.getType().getName() + " = " + (v==null?"null":v.getClass().getName()));
-                if (f.getName().equals("paperPluginManager") && v != null) {
-                    Object ppm = v;
-                    System.out.println("[KSPM-DEBUG] --- paperPluginManager class = " + ppm.getClass().getName());
-                    for (Class<?> cc = ppm.getClass(); cc != null; cc = cc.getSuperclass()) {
-                        for (Field ff : cc.getDeclaredFields()) {
-                            ff.setAccessible(true);
-                            Object vv = null;
-                            try { vv = ff.get(ppm); } catch (Exception e) { vv = "<err>"; }
-                            System.out.println("[KSPM-DEBUG]     pfield " + ff.getName() + " : " + ff.getType().getName() + " = " + (vv==null?"null":vv.getClass().getName()));
-                            if (ff.getName().equals("instanceManager") && vv != null) {
-                                Object im = vv;
-                                System.out.println("[KSPM-DEBUG] --- instanceManager class = " + im.getClass().getName());
-                                for (Class<?> ic = im.getClass(); ic != null; ic = ic.getSuperclass()) {
-                                    for (Field inf : ic.getDeclaredFields()) {
-                                        inf.setAccessible(true);
-                                        Object iv = null; try { iv = inf.get(im); } catch(Exception e){iv="<err>";}
-                                        System.out.println("[KSPM-DEBUG]       imfield " + inf.getName() + " : " + inf.getType().getName() + " = " + (iv==null?"null":iv.getClass().getName()));
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
         disable(plugin);
         cleanPaperProviders(plugin);
         // Try Paper instance manager field
@@ -68,14 +35,6 @@ public class PluginLifecycle {
                     if (name.contains("manager") || name.contains("instance") || type.contains("manager") || type.contains("instance")) {
                         Object im = f.get(pm);
                         if (im != null && im != pm) {
-                            System.out.println("[KSPM-DEBUG] instanceManager class = " + im.getClass().getName());
-                            for (Class<?> cc = im.getClass(); cc != null; cc = cc.getSuperclass()) {
-                                for (Field ff : cc.getDeclaredFields()) {
-                                    ff.setAccessible(true);
-                                    Object vv = null; try { vv = ff.get(im); } catch(Exception e){vv="<err>";}
-                                    System.out.println("[KSPM-DEBUG]   imfield " + ff.getName() + " : " + ff.getType().getName() + " = " + (vv==null?"null":vv.getClass().getName()));
-                                }
-                            }
                             cleanObject(im, plugin);
                         }
                     }
@@ -137,7 +96,6 @@ public class PluginLifecycle {
             if (cl instanceof URLClassLoader) ((URLClassLoader) cl).close();
         } catch (Exception ignored) {}
 
-        System.out.println("[KSPM-DEBUG] after unload getPlugin=" + Bukkit.getPluginManager().getPlugin(plugin.getName()));
         return true;
     }
 
@@ -185,22 +143,16 @@ public class PluginLifecycle {
             if (!(storageMap instanceof java.util.Map)) return;
             Class<?> epCls = Class.forName("io.papermc.paper.plugin.entrypoint.Entrypoint");
             Object pluginEntrypoint = epCls.getField("PLUGIN").get(null);
-            System.out.println("[KSPM-DEBUG] storageMap size=" + ((java.util.Map<?,?>)storageMap).size());
-            for (Object k : ((java.util.Map<?,?>)storageMap).keySet()) {
-                System.out.println("[KSPM-DEBUG]   key=" + k + " val=" + ((java.util.Map<?,?>)storageMap).get(k).getClass().getName());
-            }
             Object providerStorage = ((java.util.Map<?,?>) storageMap).get(pluginEntrypoint);
-            System.out.println("[KSPM-DEBUG] providerStorage = " + (providerStorage==null?"null":providerStorage.getClass().getName()));
             if (providerStorage == null) return;
             for (Class<?> c = providerStorage.getClass(); c != null; c = c.getSuperclass()) {
                 for (java.lang.reflect.Field f : c.getDeclaredFields()) {
                     f.setAccessible(true);
                     Object val = null;
                     try { val = f.get(providerStorage); } catch (Exception ignored) { continue; }
-                    System.out.println("[KSPM-DEBUG]   field " + f.getName() + " : " + (val==null?"null":val.getClass().getName()));
                     if (val instanceof java.util.Collection) {
                         java.util.Collection<?> col = (java.util.Collection<?>) val;
-                        System.out.println("[KSPM-DEBUG]   collection field " + f.getName() + " size=" + col.size());
+
                         java.util.List<Object> toRemove = new java.util.ArrayList<>();
                         for (Object o : col) {
                             if (o instanceof org.bukkit.plugin.java.JavaPlugin) {
@@ -212,9 +164,7 @@ public class PluginLifecycle {
                                 } catch (Exception ignored) {}
                             }
                         }
-                        System.out.println("[KSPM-DEBUG]   removing " + toRemove.size() + " from " + f.getName());
                         for (Object o : toRemove) ((java.util.Collection) val).remove(o);
-                        System.out.println("[KSPM-DEBUG]   after size=" + ((java.util.Collection)val).size());
                     }
                     if (val != null && val.getClass().getName().contains("PluginProvider")) {
                         try {
@@ -226,9 +176,7 @@ public class PluginLifecycle {
                     }
                 }
             }
-        } catch (Throwable t) {
-            System.out.println("[KSPM-DEBUG] cleanPaperProviders failed: " + t);
-        }
+        } catch (Throwable ignored) {}
     }
 
 }
