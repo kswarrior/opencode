@@ -197,8 +197,8 @@ Exploit and misuse protection (`ItemListener.java:74`):
 - Recipes are registered under namespaced keys `lifestead:heart` and
   `lifestead:revive_beacon`.
 - Recipes unregister and re-register on reload.
-- Invalid shapes, row lengths, symbols, or materials are logged and skipped
-  safely.
+- Invalid shapes, row lengths, symbols, or materials are logged, and recipe
+  registration fails safely rather than crashing the plugin.
 - Recipe viewer:
   - `/ls recipe` opens a menu with Heart and Revive Beacon entries.
   - `/ls recipe heart` opens the Heart recipe page.

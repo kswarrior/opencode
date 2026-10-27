@@ -30,6 +30,9 @@ public final class CombatListener implements Listener {
         if (!(event.getEntity() instanceof Player player) || event.getFinalDamage() <= 0) {
             return;
         }
+        if (plugin.getSettings().isWorldDisabled(player.getWorld())) {
+            return;
+        }
         lastCombat.put(player.getUniqueId(), System.currentTimeMillis());
     }
 
@@ -48,6 +51,9 @@ public final class CombatListener implements Listener {
         Player player = event.getPlayer();
         Long last = lastCombat.remove(player.getUniqueId());
         Settings settings = plugin.getSettings();
+        if (settings.isWorldDisabled(player.getWorld())) {
+            return;
+        }
         if (!settings.combatLogEnabled || settings.combatLogPenaltyHearts <= 0) {
             return;
         }
