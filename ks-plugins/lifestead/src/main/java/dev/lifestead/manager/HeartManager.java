@@ -18,7 +18,8 @@ public final class HeartManager {
     public PlayerProfile profile(Player player) {
         PlayerProfile profile = plugin.getDataStore().getOrCreate(player.getUniqueId(), player.getName());
         profile.setName(player.getName());
-        return normalize(profile);
+        normalizeAndPersist(profile);
+        return profile;
     }
 
     public int hearts(Player player) {
@@ -46,12 +47,12 @@ public final class HeartManager {
     public int setHearts(PlayerProfile profile, int amount) {
         Settings settings = plugin.getSettings();
         int clamped = amount <= 0 ? 0 : Settings.clamp(amount, settings.minHearts, settings.maxHearts);
-        profile.setHearts(clamped);
-        Player online = plugin.getServer().getPlayer(profile.getUuid());
-        if (clamped > 0 && profile.isEliminated()) {
-            plugin.getEliminations().clearEliminated(profile, false);
+        if (profile.isEliminated()) {
+            clamped = 0;
         }
+        profile.setHearts(clamped);
         plugin.getDataStore().save(profile);
+        Player online = plugin.getServer().getPlayer(profile.getUuid());
         if (online != null) {
             applyHealth(online);
         }
@@ -59,7 +60,7 @@ public final class HeartManager {
     }
 
     public int addHearts(PlayerProfile profile, int amount) {
-        if (amount <= 0) {
+        if (amount <= 0 || profile.isEliminated()) {
             return 0;
         }
         int before = profile.getHearts();
@@ -73,7 +74,7 @@ public final class HeartManager {
     }
 
     public int removeHearts(PlayerProfile profile, int amount) {
-        if (amount <= 0) {
+        if (amount <= 0 || profile.isEliminated()) {
             return 0;
         }
         int before = profile.getHearts();
@@ -98,6 +99,31 @@ public final class HeartManager {
             profile.setHearts(clamped);
         }
         return profile;
+    }
+
+    public boolean normalizeAndPersist(PlayerProfile profile) {
+        if (profile == null) {
+            return false;
+        }
+        int before = profile.getHearts();
+        normalize(profile);
+        if (before == profile.getHearts()) {
+            return false;
+        }
+        plugin.getDataStore().save(profile);
+        return true;
+    }
+
+    public void normalizeAll() {
+        boolean changed = false;
+        for (PlayerProfile profile : plugin.getDataStore().all()) {
+            int before = profile.getHearts();
+            normalize(profile);
+            changed |= before != profile.getHearts();
+        }
+        if (changed) {
+            plugin.getDataStore().saveAll();
+        }
     }
 
     public void resyncAll() {

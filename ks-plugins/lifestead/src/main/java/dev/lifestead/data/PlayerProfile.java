@@ -14,13 +14,20 @@ public final class PlayerProfile {
     private long eliminatedAt;
     private int pendingHeartItems;
     private boolean pendingReviveTeleport;
+    private long combatAt;
 
     public PlayerProfile(UUID uuid, String name, int hearts, boolean eliminated, long lastSeen) {
-        this(uuid, name, hearts, eliminated, lastSeen, 0, 0L, eliminated ? lastSeen : 0L, 0);
+        this(uuid, name, hearts, eliminated, lastSeen, 0, 0L, eliminated ? lastSeen : 0L, 0, 0L);
     }
 
     public PlayerProfile(UUID uuid, String name, int hearts, boolean eliminated, long lastSeen,
             int kills, long lastKillAt, long eliminatedAt, int pendingHeartItems) {
+        this(uuid, name, hearts, eliminated, lastSeen, kills, lastKillAt, eliminatedAt,
+                pendingHeartItems, 0L);
+    }
+
+    public PlayerProfile(UUID uuid, String name, int hearts, boolean eliminated, long lastSeen,
+            int kills, long lastKillAt, long eliminatedAt, int pendingHeartItems, long combatAt) {
         this.uuid = uuid;
         this.name = name == null ? uuid.toString() : name;
         this.hearts = eliminated ? 0 : Math.max(0, hearts);
@@ -30,6 +37,7 @@ public final class PlayerProfile {
         this.lastKillAt = Math.max(0L, lastKillAt);
         this.eliminatedAt = Math.max(0L, eliminatedAt);
         this.pendingHeartItems = Math.max(0, pendingHeartItems);
+        this.combatAt = Math.max(0L, combatAt);
     }
 
     public UUID getUuid() {
@@ -108,5 +116,13 @@ public final class PlayerProfile {
 
     public void setPendingReviveTeleport(boolean pendingReviveTeleport) {
         this.pendingReviveTeleport = pendingReviveTeleport;
+    }
+
+    public long getCombatAt() {
+        return combatAt;
+    }
+
+    public void setCombatAt(long combatAt) {
+        this.combatAt = Math.max(0L, combatAt);
     }
 }
