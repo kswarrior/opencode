@@ -905,6 +905,14 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     const heart = findLifesteadItem(alpha, 'heart')
     assert.ok(heart, 'Expected a heart item in the inventory')
     await equipOffhandItem(alpha, heart)
+    console.log('DEBUG feature', alpha.supportFeature('useItemWithOwnPacket'))
+    console.log(
+      'DEBUG offhand',
+      await server.commandExpect(
+        `data get entity ${ALPHA} equipment.offhand`,
+        /lifestead:item-type/
+      )
+    )
     const healed = await useOffhandItem(alpha, /gained 1 heart/)
     assert.match(healed.text, /gained 1 heart/)
     await sleep(500)
