@@ -2,8 +2,8 @@ package dev.lifestead.integration;
 
 import dev.lifestead.LifesteadPlugin;
 import dev.lifestead.data.PlayerProfile;
+import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 
@@ -36,21 +36,10 @@ public final class LifesteadPlaceholderExpansion extends PlaceholderExpansion {
     }
 
     @Override
-    public Map<String, String> getPlaceholders() {
-        return Map.ofEntries(
-                Map.entry("hearts", "Current heart count"),
-                Map.entry("heart", "Alias for hearts"),
-                Map.entry("max_hearts", "Configured maximum hearts"),
-                Map.entry("max-hearts", "Alias for max_hearts"),
-                Map.entry("max", "Alias for max_hearts"),
-                Map.entry("min_hearts", "Configured minimum hearts"),
-                Map.entry("min-hearts", "Alias for min_hearts"),
-                Map.entry("min", "Alias for min_hearts"),
-                Map.entry("health", "Current hearts as health points"),
-                Map.entry("eliminated", "true when the player is eliminated"),
-                Map.entry("status", "alive or eliminated"),
-                Map.entry("withdrawable", "Hearts that can be withdrawn"),
-                Map.entry("withdrawable_hearts", "Alias for withdrawable"));
+    public List<String> getPlaceholders() {
+        return List.of("hearts", "heart", "max_hearts", "max-hearts", "max",
+                "min_hearts", "min-hearts", "min", "health", "eliminated", "status",
+                "withdrawable", "withdrawable_hearts");
     }
 
     @Override
