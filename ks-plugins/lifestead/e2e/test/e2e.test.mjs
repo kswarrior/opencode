@@ -993,6 +993,44 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await resetAll()
   })
 
+  test('projectile deaths resolve player, self, and mob shooters', async () => {
+    await setConfig({ 'anti-farm': { 'same-ip': false, 'victim-cooldown-seconds': 300 } })
+    await resetAll()
+    await server.command('kill @e[type=minecraft:arrow]')
+    await server.command('kill @e[type=minecraft:skeleton]')
+
+    await summonOwnedArrow(ALPHA, 'e2e_arrow_pvp')
+    await killWithArrow('e2e_arrow_pvp', 'pvp', { gain: true })
+    assert.equal(await hearts(alpha), 11)
+    await revive(BETA)
+    await waitForGameMode(beta, 'survival')
+    await resetAll()
+
+    await summonOwnedArrow(BETA, 'e2e_arrow_self')
+    await killWithArrow('e2e_arrow_self', 'environment')
+    await revive(BETA)
+    await waitForGameMode(beta, 'survival')
+    await resetAll()
+
+    await server.commandExpect(
+      `execute at ${BETA} run summon minecraft:skeleton ~ ~ ~ ` +
+        '{NoAI:1b,PersistenceRequired:1b,Tags:["e2e_arrow_skeleton"]}',
+      /Summoned new/
+    )
+    await sleep(300)
+    const skeletonUuid = await entityUuidNbt('@e[tag=e2e_arrow_skeleton,limit=1]')
+    await summonArrowWithOwner(skeletonUuid, 'e2e_arrow_mob')
+    await killWithArrow('e2e_arrow_mob', 'mob')
+    await revive(BETA)
+    await waitForGameMode(beta, 'survival')
+    assert.equal(await hearts(alpha), 10)
+
+    await server.command('kill @e[type=minecraft:arrow]')
+    await server.command('kill @e[tag=e2e_arrow_skeleton]')
+    await setConfig({ 'anti-farm': { 'same-ip': true, 'victim-cooldown-seconds': 300 } })
+    await resetAll()
+  })
+
   test('disabled worlds suppress heart loss and elimination', async () => {
     await setConfig({ settings: { 'disabled-worlds': ['world'] } })
     await resetAll()
@@ -1035,6 +1073,25 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await setConfig({
       'combat-log': { enabled: false, 'duration-seconds': 30, 'penalty-hearts': 1 }
     })
+  })
+
+  test('disabled worlds suppress combat-log tracking and penalties', async () => {
+    await setConfig({
+      settings: { 'disabled-worlds': ['world'] },
+      'combat-log': { enabled: true, 'duration-seconds': 30, 'penalty-hearts': 1 }
+    })
+    await resetAll()
+    await setHearts(BETA, 8)
+    await server.command(`damage ${BETA} 1`)
+    await sleep(400)
+    await disconnect(beta)
+    beta = null
+    await sleep(1000)
+    beta = await createTestBot({ username: BETA })
+    await sleep(700)
+    assert.equal(await hearts(beta), 8)
+    await setConfig({ settings: { 'disabled-worlds': [] } })
+    await resetAll()
   })
 
   test('reload updates messages and recipe enablement', async () => {
