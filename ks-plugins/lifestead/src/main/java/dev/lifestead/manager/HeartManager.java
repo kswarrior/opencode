@@ -27,7 +27,9 @@ public final class HeartManager {
     }
 
     public void applyHealth(Player player) {
-        PlayerProfile profile = profile(player);
+        PlayerProfile profile = plugin.getDataStore()
+                .getOrCreate(player.getUniqueId(), player.getName());
+        profile.setName(player.getName());
         if (profile.isEliminated()) {
             return;
         }

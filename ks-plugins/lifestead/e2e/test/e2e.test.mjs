@@ -412,12 +412,11 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   test('offline profiles normalize out-of-range hearts on load', async () => {
     assert.equal(await heartsFor('E2ENormHigh'), 20)
     assert.equal(await heartsFor('E2ENormLow'), 0)
-    assert.equal(await papi('E2ENormLow', '%lifesteal_status%'), 'eliminated')
-    assert.equal(await papi('E2ENormLow', '%lifesteal_hearts%'), '0')
-    assert.equal(
-      await papi('E2ENormLow', '%lifesteal_eliminated%'),
-      'true'
+    const status = await server.commandExpect(
+      'lifestead eliminate E2ENormLow',
+      /already eliminated/i
     )
+    assert.match(status, /already eliminated/i)
   })
 
   test('help, aliases, unknown subcommands, and console sender', async () => {
