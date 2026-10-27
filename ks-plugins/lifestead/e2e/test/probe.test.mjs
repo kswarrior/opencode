@@ -110,15 +110,16 @@ describe('Lifestead targeted probes', { concurrency: 1 }, () => {
       /has \d+ heart\(s\)/
     )
     console.log(`[probe] after failed reload: ${display}`)
-    assert.match(display, /max\s+30/i)
     const window = await openWindowWithCommand(alpha, '/ls recipe heart')
-    console.log(`[probe] recipe ingredient after failed reload: ${itemName(window.slots[11])}`)
-    assert.equal(itemName(window.slots[11]), 'light_gray_stained_glass_pane')
+    const ingredient = itemName(window.slots[11])
+    console.log(`[probe] recipe ingredient after failed reload: ${ingredient}`)
     await closeCurrentWindow(alpha)
     await setConfig({
       settings: { 'maximum-hearts': 20 },
-      recipes: { heart: { ingredients: { H: 'NETHER_STAR' } } }
+      recipes: { heart: { ingredients: { D: 'DIAMOND' } } }
     })
+    assert.match(display, /max\s+30/i)
+    assert.equal(ingredient, 'light_gray_stained_glass_pane')
   })
 
   test('normalized zero-heart offline profile is still considered alive', async () => {
