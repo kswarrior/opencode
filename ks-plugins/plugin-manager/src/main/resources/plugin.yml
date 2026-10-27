@@ -6,6 +6,7 @@ author: KS
 description: Runtime plugin manager with load/unload/reload and multi-source updates.
 commands:
   pm:
+    aliases: [kspluginmanager, kspm, plugman]
     description: KS Plugin Manager
     usage: /pm <list|info|load|unload|reload|update ...>
     permission: kspluginmanager.use
