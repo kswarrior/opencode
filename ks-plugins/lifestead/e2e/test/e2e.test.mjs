@@ -51,6 +51,8 @@ let fixture
 let server
 let alpha
 let beta
+let pvpFallbacks = 0
+const REQUIRE_REAL_MELEE = process.env.E2E_REQUIRE_REAL_MELEE === '1'
 
 function aliveBot(name) {
   return name === ALPHA ? alpha : beta
@@ -191,7 +193,13 @@ async function pvpKill({ expectElimination = false } = {}) {
     const death = waitForPlayerDeath(beta, { timeout: 6000 })
     await attackPlayer(alpha, beta, { hits: 1, interval: 350 })
     await death
-  } catch {
+  } catch (error) {
+    if (REQUIRE_REAL_MELEE) {
+      throw new Error(
+        `Real melee PvP failed and the /damage fallback is disabled: ${error.message}`
+      )
+    }
+    pvpFallbacks++
     await server.command(`damage ${BETA} 20 minecraft:player_attack by ${ALPHA}`)
     await waitForPlayerDeath(beta, { timeout: 10000 })
   }
@@ -321,6 +329,8 @@ before(async () => {
   placeholderApi = await downloadPlaceholderApi()
   const seededProfiles = fakeEliminatedProfiles(SEED_COUNT)
   seededProfiles[seededProfiles.length - 1].hearts = 5
+  seededProfiles.push({ name: 'E2ENormHigh', hearts: 999, eliminated: false })
+  seededProfiles.push({ name: 'E2ENormLow', hearts: -5, eliminated: false })
   fixture = await prepareServer({
     fresh: true,
     paperJar: paper.file,
@@ -376,6 +386,11 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
 
   test('stale eliminated seed loads with zero hearts', async () => {
     assert.equal(await heartsFor('E2EPage37'), 0)
+  })
+
+  test('offline profiles normalize out-of-range hearts on load', async () => {
+    assert.equal(await heartsFor('E2ENormHigh'), 20)
+    assert.equal(await heartsFor('E2ENormLow'), 0)
   })
 
   test('help, aliases, unknown subcommands, and console sender', async () => {
@@ -605,6 +620,13 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
 
     await setHearts(ALPHA, 0)
     await waitForGameMode(alpha, 'spectator')
+    assert.equal(await hearts(alpha), 0)
+    const refused = await sendCommand(
+      beta,
+      `/ls sethearts ${ALPHA} 5`,
+      /is eliminated/
+    )
+    assert.match(refused.text, /revive/i)
     assert.equal(await hearts(alpha), 0)
     const already = await sendCommand(beta, `/ls eliminate ${ALPHA}`, /already eliminated/)
     assert.match(already.text, /already eliminated/)
@@ -1093,6 +1115,31 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     })
   })
 
+  test('combat tags survive changing worlds before disconnect', async () => {
+    await setConfig({
+      'combat-log': { enabled: true, 'duration-seconds': 30, 'penalty-hearts': 1 }
+    })
+    await resetAll()
+    await setPvpDamage(1)
+    await preparePvp(10)
+    await attackPlayer(alpha, beta, { hits: 1, interval: 300 })
+    await sleep(500)
+    await server.commandExpect(
+      `execute in minecraft:the_nether run tp ${BETA} 0 64 0`,
+      /Teleported/
+    )
+    await sleep(700)
+    await disconnect(beta)
+    beta = null
+    await sleep(1000)
+    beta = await createTestBot({ username: BETA })
+    await sleep(700)
+    assert.equal(await hearts(beta), 9)
+    await server.commandExpect(`tp ${BETA} ${ALPHA}`, /Teleported/)
+    await setPvpDamage(1)
+    await resetAll()
+  })
+
   test('disabled worlds suppress combat-log tracking and penalties', async () => {
     await setConfig({
       settings: { 'disabled-worlds': ['world'] },
@@ -1110,6 +1157,25 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.equal(await hearts(beta), 8)
     await setConfig({ settings: { 'disabled-worlds': [] } })
     await resetAll()
+  })
+
+  test('invalid recipe reload keeps the previous recipe set', async () => {
+    await patchPluginConfig(fixture, {
+      recipes: { heart: { ingredients: { H: 'NOT_A_REAL_MATERIAL' } } }
+    })
+    const failed = await sendCommand(alpha, '/ls reload', /Reload failed/)
+    assert.match(failed.text, /Existing recipes and data were preserved/)
+    await sleep(300)
+    const window = await openWindowWithCommand(alpha, '/ls recipe heart')
+    const info = itemLore(window.slots[4])
+    assert.ok(info.some((line) => line.includes('Enabled: Yes')))
+    await closeCurrentWindow(alpha)
+
+    await patchPluginConfig(fixture, {
+      recipes: { heart: { ingredients: { H: 'DIAMOND' } } }
+    })
+    await server.commandExpect('lifestead reload', /reloaded/)
+    await sleep(300)
   })
 
   test('reload updates messages and recipe enablement', async () => {
@@ -1205,6 +1271,53 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await resetAll()
   })
 
+  test('revive avoids unsafe configured coordinates', async () => {
+    await server.commandExpect(
+      'fill 200 100 200 220 100 220 stone',
+      /Successfully filled|Changed the blocks/
+    )
+    await server.commandExpect(
+      'fill 200 101 200 220 101 220 lava',
+      /Successfully filled|Changed the blocks/
+    )
+    await setConfig({
+      revive: {
+        'teleport-to-spawn': true,
+        'spawn-world': 'world',
+        'use-coordinates': true,
+        coordinates: { x: 210.5, y: 102.0, z: 210.5, yaw: 0.0, pitch: 0.0 }
+      }
+    })
+    await resetAll()
+    await setHearts(BETA, 0)
+    await waitForGameMode(beta, 'spectator')
+    await server.commandExpect(`tp ${BETA} ${ALPHA}`, /Teleported/)
+    const before = beta.entity.position.clone()
+    await revive(BETA)
+    await waitForGameMode(beta, 'survival')
+    const after = beta.entity.position
+    assert.ok(
+      after.distanceTo(before) < 5,
+      `Expected revive to keep the player nearby, before=${JSON.stringify(before)} after=${JSON.stringify(after)}`
+    )
+    assert.ok(
+      server.lines.some((line) => line.includes('Could not find a safe revive location')),
+      'Expected an unsafe revive fallback warning'
+    )
+    await server.commandExpect(
+      'fill 200 100 200 220 101 220 air',
+      /Successfully filled|Changed the blocks/
+    )
+    await setConfig({
+      revive: {
+        'teleport-to-spawn': true,
+        'spawn-world': 'world',
+        'use-coordinates': false
+      }
+    })
+    await resetAll()
+  })
+
   test('YAML storage persists hearts and elimination across restart', async () => {
     await resetAll()
     await setHearts(ALPHA, 7)
@@ -1248,6 +1361,13 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
       'utf8'
     ).catch(() => '')
     assert.ok(yamlData === '' || yamlData.includes('players'))
+  })
+
+  test('PvP fallback usage is reported', () => {
+    console.log(`[E2E] pvpKill /damage fallbacks: ${pvpFallbacks}`)
+    if (REQUIRE_REAL_MELEE) {
+      assert.equal(pvpFallbacks, 0, 'Real melee PvP was required for every kill')
+    }
   })
 
   test('runtime log is free of plugin errors and profile lookups', async () => {
