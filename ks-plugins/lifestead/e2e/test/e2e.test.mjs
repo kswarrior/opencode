@@ -39,7 +39,7 @@ import {
   waitForRespawn,
   windowTitle
 } from '../lib/bot.mjs'
-import { PLUGIN_JAR, SERVER_DIR } from '../lib/paths.mjs'
+import { PLUGIN_JAR, SERVER_DIR, SERVER_JAR, SERVER_TYPE } from '../lib/paths.mjs'
 import { PaperServer } from '../lib/server.mjs'
 
 const SEED_COUNT = 37
@@ -315,7 +315,9 @@ async function killWithArrow(tag, cause, { gain = false } = {}) {
 
 before(async () => {
   await access(PLUGIN_JAR)
-  paper = await downloadPaper()
+  paper = SERVER_JAR
+    ? { file: SERVER_JAR, build: SERVER_TYPE, sha256: 'local' }
+    : await downloadPaper()
   placeholderApi = await downloadPlaceholderApi()
   const seededProfiles = fakeEliminatedProfiles(SEED_COUNT)
   seededProfiles[seededProfiles.length - 1].hearts = 5

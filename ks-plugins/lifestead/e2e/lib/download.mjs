@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto'
 import { access, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
-import { CACHE_DIR, PAPER_VERSION } from './paths.mjs'
+import { CACHE_DIR, PAPER_BUILD, PAPER_LATEST, PAPER_VERSION } from './paths.mjs'
 
 const USER_AGENT = 'lifestead-e2e/1.0 (Minecraft plugin test harness)'
 const PAPER_API = 'https://fill.papermc.io/v3/projects/paper'
@@ -53,9 +53,23 @@ export async function downloadPaper(version = PAPER_VERSION) {
   if (!Array.isArray(builds)) {
     throw new Error(`Unexpected Paper build response: ${JSON.stringify(builds).slice(0, 300)}`)
   }
-  const build = builds.find((candidate) => candidate.channel === 'STABLE')
-  if (!build) {
-    throw new Error(`No stable Paper build found for ${version}`)
+  let build
+  if (PAPER_LATEST) {
+    build = builds.find((candidate) => candidate.channel === 'STABLE')
+    if (!build) {
+      throw new Error(`No stable Paper build found for ${version}`)
+    }
+  } else {
+    build = builds.find((candidate) => String(candidate.id) === String(PAPER_BUILD))
+    if (!build) {
+      throw new Error(
+        `Paper build ${PAPER_BUILD} was not found for ${version}; ` +
+          'set E2E_PAPER_BUILD to a valid build or E2E_PAPER_LATEST=1'
+      )
+    }
+    if (build.channel !== 'STABLE') {
+      throw new Error(`Paper build ${PAPER_BUILD} for ${version} is ${build.channel}, not STABLE`)
+    }
   }
   const artifact = build.downloads?.['server:default']
   if (!artifact?.url || !artifact?.checksums?.sha256) {
