@@ -1,11 +1,15 @@
-# Lifestead resource pack 1.0.0
+# KS Lifestead resource pack 1.0.0
+
+Author: KS Warrior
+- Websites: https://ks.42web.io | https://ksx.pages.dev
+- YouTube, Discord, Instagram: ks_warrior_pro
 
 Target: Minecraft Java Edition 1.21.11 (resource pack format 75)
 
 ## Files
 
-- ZIP: `Lifestead-ResourcePack-1.0.0.zip`
-- SHA-1: `d2b9c1a8503ea38ce23d9e1fac3e5463614c20d5`
+- ZIP: `KS-Lifestead-ResourcePack-1.0.0.zip`
+- SHA-1: `8626f81bba20076185b7a39278e09c0394549756`
 
 No public URL was supplied. Host the ZIP on a stable public HTTPS URL before using it on a server.
 
@@ -15,8 +19,8 @@ No public URL was supplied. Host the ZIP on a stable public HTTPS URL before usi
 2. Put the URL in `server.properties`:
 
    ```properties
-   resource-pack=https://your-host.example/Lifestead-ResourcePack-1.0.0.zip
-   resource-pack-sha1=d2b9c1a8503ea38ce23d9e1fac3e5463614c20d5
+   resource-pack=https://your-host.example/KS-Lifestead-ResourcePack-1.0.0.zip
+   resource-pack-sha1=8626f81bba20076185b7a39278e09c0394549756
    require-resource-pack=false
    ```
 
