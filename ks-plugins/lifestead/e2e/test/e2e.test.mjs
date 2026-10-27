@@ -294,7 +294,7 @@ async function killWithArrow(tag, cause, { gain = false } = {}) {
   await setHearts(BETA, 1)
   const alphaBefore = await heartsFor(ALPHA)
   const eliminated = server.waitForLine(
-    new RegExp(`E2EBeta ran out of hearts and was eliminated \\(${cause}\\)`),
+    new RegExp(`E2EBeta ran out of hearts and was eliminated \\(${cause}\\)`, 'i'),
     { timeout: 15000 }
   )
   await server.command(`damage ${BETA} 20 minecraft:arrow by @e[tag=${tag},limit=1]`)
