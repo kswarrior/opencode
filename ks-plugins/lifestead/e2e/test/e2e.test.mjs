@@ -35,6 +35,7 @@ import {
   useItemOnBlockAndWaitForMessage,
   useItemOnBlockAndWaitForWindow,
   useOffhandItem,
+  useOffhandItemAndWaitForWindow,
   waitForGameMode,
   waitForMessage,
   waitForPlayerDeath,
@@ -930,7 +931,25 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await resetAll()
   })
 
-  test('heart recipe produces a custom result in a real crafting table', async () => {
+  test('custom beacon works from the off hand', async () => {
+    await resetAll()
+    await setHearts(BETA, 0)
+    await waitForGameMode(beta, 'spectator')
+    await clearInventory(ALPHA)
+    await giveLifesteadItem(ALPHA, 'revive_beacon', 1)
+    const beacon = findLifesteadItem(alpha, 'revive_beacon')
+    assert.ok(beacon, 'Expected a revive beacon in the inventory')
+    await equipOffhandItem(alpha, beacon)
+    const window = await useOffhandItemAndWaitForWindow(alpha)
+    assert.match(windowTitle(window), /Revive Beacon/)
+    const head = window.slots.findIndex((item) => item?.name === 'player_head')
+    assert.ok(head >= 0, 'Expected a player head in the revive GUI')
+    await clickAndWaitForClose(alpha, head)
+    assert.equal(countLifesteadItems(alpha, 'revive_beacon'), 0)
+    await waitForGameMode(beta, 'survival')
+    assert.equal(await hearts(beta), 4)
+    await resetAll()
+  })
     await resetAll()
     await clearInventory(ALPHA)
     for (const command of [

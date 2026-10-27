@@ -70,14 +70,14 @@ public final class GuiListener implements Listener {
         }
 
         boolean consume = plugin.getConfig().getBoolean("items.revive-beacon.consume-on-revive", true);
-        if (consume && !plugin.getItems().hasBeaconInMainHand(player)) {
+        if (consume && !plugin.getItems().hasBeaconInHand(player)) {
             plugin.getMessages().send(player, "items.beacon-missing");
             return;
         }
         if (!plugin.getEliminations().revive(profile, player)) {
             return;
         }
-        if (consume && plugin.getItems().consumeBeaconFromMainHand(player)) {
+        if (consume && plugin.getItems().consumeBeaconFromHand(player)) {
             plugin.getMessages().send(player, "items.beacon-consumed");
         }
 

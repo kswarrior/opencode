@@ -100,16 +100,16 @@ public final class ItemManager {
         return requested - remaining;
     }
 
-    public boolean hasBeaconInMainHand(Player player) {
-        return isBeacon(player.getInventory().getItemInMainHand());
+    public boolean hasBeaconInHand(Player player) {
+        return isBeacon(player.getInventory().getItemInMainHand())
+                || isBeacon(player.getInventory().getItemInOffHand());
     }
 
-    public boolean consumeBeaconFromMainHand(Player player) {
-        return consumeFromHand(player, BEACON, EquipmentSlot.HAND);
-    }
-
-    public boolean consumeHeartFromMainHand(Player player) {
-        return consumeFromHand(player, HEART, EquipmentSlot.HAND);
+    public boolean consumeBeaconFromHand(Player player) {
+        if (isBeacon(player.getInventory().getItemInMainHand())) {
+            return consumeFromHand(player, BEACON, EquipmentSlot.HAND);
+        }
+        return consumeFromHand(player, BEACON, EquipmentSlot.OFF_HAND);
     }
 
     public boolean consumeHeartFromHand(Player player, EquipmentSlot slot) {

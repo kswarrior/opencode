@@ -268,6 +268,20 @@ export async function useHeldItemAndWaitForWindow(bot, { timeout = 10000 } = {})
   return window
 }
 
+export async function useOffhandItemAndWaitForWindow(bot, { timeout = 10000 } = {}) {
+  const opened = once(bot, 'windowOpen')
+  const timer = setTimeout(() => {
+    bot.emit('windowOpen', null)
+  }, timeout)
+  bot.activateItem(true)
+  const [window] = await opened
+  clearTimeout(timer)
+  if (!window) {
+    throw new Error('No window opened after using the off-hand item')
+  }
+  return window
+}
+
 export async function useItemOnBlockAndWaitForMessage(bot, block, matcher, options = {}) {
   const waiter = waitForMessage(bot, matcher, options)
   await bot.activateBlock(block)
