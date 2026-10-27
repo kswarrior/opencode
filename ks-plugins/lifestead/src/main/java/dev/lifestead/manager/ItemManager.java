@@ -8,8 +8,10 @@ import java.util.Map;
 import java.util.Set;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,6 +21,7 @@ public final class ItemManager {
 
     public static final String HEART = "heart";
     public static final String BEACON = "revive_beacon";
+    public static final int MAX_GIVE_HEART_ITEMS = 36 * 64;
 
     private final LifesteadPlugin plugin;
     private final NamespacedKey itemKey;
@@ -30,11 +33,19 @@ public final class ItemManager {
     }
 
     public ItemStack createHeart(int amount) {
-        return create(HEART, "items.heart", Material.NETHER_STAR, amount);
+        return createHeart(amount, plugin.getConfig());
+    }
+
+    public ItemStack createHeart(int amount, FileConfiguration config) {
+        return create(HEART, "items.heart", Material.NETHER_STAR, amount, config);
     }
 
     public ItemStack createBeacon(int amount) {
-        return create(BEACON, "items.revive-beacon", Material.BEACON, amount);
+        return createBeacon(amount, plugin.getConfig());
+    }
+
+    public ItemStack createBeacon(int amount, FileConfiguration config) {
+        return create(BEACON, "items.revive-beacon", Material.BEACON, amount, config);
     }
 
     public boolean isHeart(ItemStack item) {

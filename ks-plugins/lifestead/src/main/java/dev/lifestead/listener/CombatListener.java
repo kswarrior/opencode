@@ -43,7 +43,15 @@ public final class CombatListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        clearTag(event.getPlayer());
+        Player player = event.getPlayer();
+        PlayerProfile profile = plugin.getHeartManager().profile(player);
+        long combatAt = profile.getCombatAt();
+        if (combatAt <= 0) {
+            return;
+        }
+        profile.setCombatAt(0L);
+        plugin.getDataStore().save(profile);
+        applyPenalty(player, profile, combatAt);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -53,7 +61,10 @@ public final class CombatListener implements Listener {
         long combatAt = profile.getCombatAt();
         profile.setCombatAt(0L);
         plugin.getDataStore().save(profile);
+        applyPenalty(player, profile, combatAt);
+    }
 
+    private void applyPenalty(Player player, PlayerProfile profile, long combatAt) {
         Settings settings = plugin.getSettings();
         if (!settings.combatLogEnabled || settings.combatLogPenaltyHearts <= 0) {
             return;

@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
@@ -20,6 +21,7 @@ public final class RecipeManager {
     private final NamespacedKey heartKey;
     private final NamespacedKey beaconKey;
     private final Map<NamespacedKey, Recipe> active = new LinkedHashMap<>();
+    private FileConfiguration activeConfig;
 
     public RecipeManager(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -27,29 +29,29 @@ public final class RecipeManager {
         this.beaconKey = new NamespacedKey(plugin, "revive_beacon");
     }
 
-    public boolean reload() {
-        List<Recipe> candidates = new ArrayList<>();
-        try {
-            if (plugin.getConfig().getBoolean("recipes.heart.enabled", true)) {
-                candidates.add(build(ItemManager.HEART, "recipes.heart", heartKey));
-            }
-            if (plugin.getConfig().getBoolean("recipes.revive-beacon.enabled", true)) {
-                candidates.add(build(ItemManager.BEACON, "recipes.revive-beacon", beaconKey));
-            }
-        } catch (RuntimeException exception) {
-            plugin.getLogger().warning("Recipe configuration is invalid; keeping the previous"
-                    + " recipe set: " + exception.getMessage());
-            return false;
-        }
+    public record PreparedRecipes(List<Recipe> recipes, FileConfiguration config) {
+    }
 
+    public PreparedRecipes prepare(FileConfiguration config) {
+        List<Recipe> candidates = new ArrayList<>();
+        if (config.getBoolean("recipes.heart.enabled", true)) {
+            candidates.add(build(ItemManager.HEART, "recipes.heart", heartKey, config));
+        }
+        if (config.getBoolean("recipes.revive-beacon.enabled", true)) {
+            candidates.add(build(ItemManager.BEACON, "recipes.revive-beacon", beaconKey, config));
+        }
+        return new PreparedRecipes(candidates, config);
+    }
+
+    public void install(PreparedRecipes prepared) {
         Map<NamespacedKey, Recipe> previous = new LinkedHashMap<>(active);
         unregister();
         try {
-            for (Recipe recipe : candidates) {
+            for (Recipe recipe : prepared.recipes()) {
                 Bukkit.addRecipe(recipe);
                 active.put(keyOf(recipe), recipe);
             }
-            return true;
+            activeConfig = prepared.config();
         } catch (RuntimeException exception) {
             unregister();
             for (Map.Entry<NamespacedKey, Recipe> entry : previous.entrySet()) {
@@ -61,8 +63,18 @@ public final class RecipeManager {
                             + ": " + restoreException.getMessage());
                 }
             }
-            plugin.getLogger().warning("Could not register the new recipes; restored the previous"
-                    + " set: " + exception.getMessage());
+            throw new IllegalStateException("Could not register the new recipes;"
+                    + " the previous set was restored: " + exception.getMessage(), exception);
+        }
+    }
+
+    public boolean reload() {
+        try {
+            install(prepare(plugin.getConfig()));
+            return true;
+        } catch (RuntimeException exception) {
+            plugin.getLogger().warning("Recipe configuration is invalid; keeping the previous"
+                    + " recipe set: " + exception.getMessage());
             return false;
         }
     }
@@ -78,24 +90,25 @@ public final class RecipeManager {
 
     public boolean isEnabled(String type) {
         String path = "recipes." + configName(type) + ".enabled";
-        return plugin.getConfig().getBoolean(path, true);
+        return config().getBoolean(path, true);
     }
 
     public RecipeDisplay display(String type) {
+        FileConfiguration config = config();
         String path = "recipes." + configName(type);
-        int resultAmount = Math.max(1, plugin.getConfig().getInt(path + ".result-amount", 1));
-        ItemStack result = createResult(type, resultAmount);
+        int resultAmount = Math.max(1, config.getInt(path + ".result-amount", 1));
+        ItemStack result = createResult(type, resultAmount, config);
         List<ItemStack> grid = new ArrayList<>();
         for (int index = 0; index < 9; index++) {
             grid.add(null);
         }
-        boolean shaped = plugin.getConfig().getBoolean(path + ".shaped", true);
-        ConfigurationSection ingredients = plugin.getConfig().getConfigurationSection(path + ".ingredients");
+        boolean shaped = config.getBoolean(path + ".shaped", true);
+        ConfigurationSection ingredients = config.getConfigurationSection(path + ".ingredients");
         if (ingredients == null) {
             return new RecipeDisplay(grid, result, shaped);
         }
         if (shaped) {
-            List<String> shape = plugin.getConfig().getStringList(path + ".shape");
+            List<String> shape = config.getStringList(path + ".shape");
             for (int row = 0; row < 3 && row < shape.size(); row++) {
                 String line = shape.get(row);
                 for (int column = 0; column < 3 && column < line.length(); column++) {
@@ -121,13 +134,13 @@ public final class RecipeManager {
         return new RecipeDisplay(grid, result, shaped);
     }
 
-    private Recipe build(String type, String path, NamespacedKey key) {
-        ConfigurationSection recipe = plugin.getConfig().getConfigurationSection(path);
+    private Recipe build(String type, String path, NamespacedKey key, FileConfiguration config) {
+        ConfigurationSection recipe = config.getConfigurationSection(path);
         if (recipe == null) {
             throw new IllegalArgumentException("Missing recipe configuration: " + path);
         }
         int resultAmount = Math.max(1, recipe.getInt("result-amount", 1));
-        ItemStack result = createResult(type, resultAmount);
+        ItemStack result = createResult(type, resultAmount, config);
         boolean shaped = recipe.getBoolean("shaped", true);
         ConfigurationSection ingredients = recipe.getConfigurationSection("ingredients");
         if (ingredients == null || ingredients.getKeys(false).isEmpty()) {
@@ -188,10 +201,14 @@ public final class RecipeManager {
                 : ((ShapelessRecipe) recipe).getKey();
     }
 
-    private ItemStack createResult(String type, int amount) {
+    private ItemStack createResult(String type, int amount, FileConfiguration config) {
         return ItemManager.HEART.equals(type)
-                ? plugin.getItems().createHeart(amount)
-                : plugin.getItems().createBeacon(amount);
+                ? plugin.getItems().createHeart(amount, config)
+                : plugin.getItems().createBeacon(amount, config);
+    }
+
+    private FileConfiguration config() {
+        return activeConfig != null ? activeConfig : plugin.getConfig();
     }
 
     private ItemStack ingredientItem(Material material) {
