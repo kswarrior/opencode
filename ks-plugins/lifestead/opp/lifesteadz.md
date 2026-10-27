@@ -34,6 +34,11 @@
 | Tests | 25 Paper 1.21.11 + Mineflayer E2E tests in `e2e/test/e2e.test.mjs` |
 | Git tag | No `v1.0.0` tag exists (`git tag -l` is empty) |
 
+**Bottom line:** the full core loop from `plan/basic.md` is implemented. The
+remaining gaps are test coverage, offline-revive teleport, resource-pack
+hosting/GUI-icon wiring, and the version tag; heart tiers, economy/MySQL, and
+Folia are optional and not implemented.
+
 ## 2. Everything LifesteadZ Has
 
 ### 2.1 Hearts and health
@@ -436,9 +441,10 @@ Source: `resourcepack/`.
 
 Summary: **0 MISSING**, **7 PARTIAL**, **3 OPTIONAL**, and all other listed
 requirements **HAVE**. The partial rows are the cross-platform test claim,
-Paper/Purpur test coverage, offline-revive teleport, custom GUI icons/sounds,
-resource-pack hosting URL, and the final two milestones (cross-platform testing
-and the version tag). No core heart, elimination, revival, item, recipe,
+Paper/Purpur test coverage, offline-revive teleport, custom GUI icons (custom
+sounds are optional and absent), resource-pack hosting URL, and the final two
+milestones (cross-platform testing and the version tag). No core heart,
+elimination, revival, item, recipe,
 command, persistence, or PlaceholderAPI requirement is completely missing.
 
 ### 3.1 Target platforms
