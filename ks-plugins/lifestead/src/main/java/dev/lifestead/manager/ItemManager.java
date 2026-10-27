@@ -154,9 +154,9 @@ public final class ItemManager {
         if (pending <= 0 || profile.isEliminated()) {
             return;
         }
+        boolean dropped = giveHearts(player, pending);
         profile.setPendingHeartItems(0);
         plugin.getDataStore().save(profile);
-        boolean dropped = giveHearts(player, pending);
         plugin.getMessages().send(player, "hearts.pending-received", "amount", Integer.toString(pending));
         if (dropped) {
             plugin.getMessages().send(player, "hearts.inventory-full");

@@ -27,7 +27,6 @@ public final class PlayerLifecycleListener implements Listener {
         }
         profile.setLastSeen(System.currentTimeMillis());
         plugin.getDataStore().save(profile);
-        plugin.getDeathListener().clearRecent(event.getPlayer().getUniqueId());
         plugin.getEliminations().handleJoin(event.getPlayer());
         plugin.getItems().deliverPendingHearts(event.getPlayer());
         if (pendingReviveTeleport) {
@@ -49,7 +48,6 @@ public final class PlayerLifecycleListener implements Listener {
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event) {
-        plugin.getDeathListener().clearRecent(event.getPlayer().getUniqueId());
         plugin.getEliminations().handleRespawn(event.getPlayer());
     }
 

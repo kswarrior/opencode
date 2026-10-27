@@ -3,16 +3,18 @@ package dev.lifestead.listener;
 import dev.lifestead.LifesteadPlugin;
 import dev.lifestead.Settings;
 import dev.lifestead.data.PlayerProfile;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import org.bukkit.GameMode;
+import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EvokerFangs;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Tameable;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -34,11 +36,10 @@ public final class DeathListener implements Listener {
         }
     }
 
-    private static final long DUPLICATE_DEATH_WINDOW_MILLIS = 1000L;
+    private static final int MAX_SOURCE_DEPTH = 8;
 
     private final LifesteadPlugin plugin;
     private final Set<UUID> processing = new HashSet<>();
-    private final Map<UUID, Long> recentlyProcessed = new HashMap<>();
 
     public DeathListener(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -52,20 +53,10 @@ public final class DeathListener implements Listener {
             return;
         }
         try {
-            long now = System.currentTimeMillis();
-            Long previous = recentlyProcessed.get(uuid);
-            if (previous != null && now - previous < DUPLICATE_DEATH_WINDOW_MILLIS) {
-                return;
-            }
-            recentlyProcessed.put(uuid, now);
-            handleDeath(victim, now);
+            handleDeath(victim, System.currentTimeMillis());
         } finally {
             processing.remove(uuid);
         }
-    }
-
-    public void clearRecent(UUID uuid) {
-        recentlyProcessed.remove(uuid);
     }
 
     private void handleDeath(Player victim, long now) {
@@ -82,8 +73,11 @@ public final class DeathListener implements Listener {
             return;
         }
 
-        Player killer = findKiller(victim);
-        Category category = category(victim, killer);
+        EntityDamageEvent lastDamage = victim.getLastDamageCause();
+        Entity damager = lastDamage instanceof EntityDamageByEntityEvent damageByEntity
+                ? damageByEntity.getDamager() : null;
+        Player killer = findKiller(victim, damager);
+        Category category = category(victim, killer, damager);
         if (category == Category.PVP && killer != null && !killer.equals(victim)) {
             PlayerProfile killerProfile = plugin.getHeartManager().profile(killer);
             killerProfile.setKills(killerProfile.getKills() + 1);
@@ -142,48 +136,55 @@ public final class DeathListener implements Listener {
         }
     }
 
-    private Player findKiller(Player victim) {
+    private Player findKiller(Player victim, Entity damager) {
         Player killer = victim.getKiller();
         if (killer != null && !killer.equals(victim)) {
             return killer;
         }
-        EntityDamageEvent lastDamage = victim.getLastDamageCause();
-        if (!(lastDamage instanceof EntityDamageByEntityEvent damageByEntity)) {
-            return null;
-        }
-        Player shooter = playerFrom(damageByEntity.getDamager());
-        return shooter == null || shooter.equals(victim) ? null : shooter;
+        Entity source = resolveSource(damager, 0);
+        return source instanceof Player player && !player.equals(victim) ? player : null;
     }
 
-    private Player playerFrom(Entity entity) {
-        Entity source = resolveSource(entity);
-        return source instanceof Player player ? player : null;
-    }
-
-    private Category category(Player victim, Player killer) {
+    private Category category(Player victim, Player killer, Entity damager) {
         if (killer != null) {
             return Category.PVP;
         }
-        EntityDamageEvent lastDamage = victim.getLastDamageCause();
-        if (lastDamage instanceof EntityDamageByEntityEvent damageByEntity) {
-            Entity source = resolveSource(damageByEntity.getDamager());
-            if (source instanceof Player player) {
-                return player.equals(victim) ? Category.ENVIRONMENT : Category.PVP;
-            }
-            if (source instanceof LivingEntity) {
-                return Category.MOB;
-            }
+        Entity source = resolveSource(damager, 0);
+        if (source instanceof Player player) {
+            return player.equals(victim) ? Category.ENVIRONMENT : Category.PVP;
+        }
+        if (source instanceof LivingEntity) {
+            return Category.MOB;
         }
         return Category.ENVIRONMENT;
     }
 
-    private Entity resolveSource(Entity damager) {
-        Entity source = damager;
-        while (source instanceof Projectile projectile
-                && projectile.getShooter() instanceof Entity shooter) {
-            source = shooter;
+    private Entity resolveSource(Entity entity, int depth) {
+        if (entity == null || depth > MAX_SOURCE_DEPTH) {
+            return null;
         }
-        return source;
+        if (entity instanceof Player) {
+            return entity;
+        }
+        if (entity instanceof Projectile projectile) {
+            Entity shooter = projectile.getShooter();
+            return shooter == null ? entity : resolveSource(shooter, depth + 1);
+        }
+        if (entity instanceof TNTPrimed tnt) {
+            return resolveSource(tnt.getSource(), depth + 1);
+        }
+        if (entity instanceof AreaEffectCloud cloud) {
+            return resolveSource(cloud.getSource(), depth + 1);
+        }
+        if (entity instanceof EvokerFangs fangs) {
+            return resolveSource(fangs.getOwner(), depth + 1);
+        }
+        if (entity instanceof Tameable tameable
+                && tameable.isTamed()
+                && tameable.getOwner() instanceof Player owner) {
+            return owner;
+        }
+        return entity;
     }
 
     private boolean isLossEnabled(Settings settings, Category category) {
