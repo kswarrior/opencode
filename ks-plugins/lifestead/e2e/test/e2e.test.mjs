@@ -950,6 +950,8 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.equal(await hearts(beta), 4)
     await resetAll()
   })
+
+  test('heart recipe produces a custom result in a real crafting table', async () => {
     await resetAll()
     await clearInventory(ALPHA)
     for (const command of [
