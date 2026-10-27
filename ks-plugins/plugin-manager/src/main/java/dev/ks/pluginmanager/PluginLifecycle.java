@@ -154,4 +154,53 @@ public class PluginLifecycle {
             }
         }
     }
+
+    private static void cleanPaperProviders(Plugin plugin) {
+        try {
+            Class<?> lehCls = Class.forName("io.papermc.paper.plugin.entrypoint.LaunchEntryPointHandler");
+            java.lang.reflect.Field instanceField = lehCls.getField("INSTANCE");
+            Object handler = instanceField.get(null);
+            java.lang.reflect.Field storageField = lehCls.getDeclaredField("storage");
+            storageField.setAccessible(true);
+            Object storageMap = storageField.get(handler);
+            if (!(storageMap instanceof java.util.Map)) return;
+            Class<?> epCls = Class.forName("io.papermc.paper.plugin.entrypoint.Entrypoint");
+            Object pluginEntrypoint = epCls.getField("PLUGIN").get(null);
+            Object providerStorage = ((java.util.Map<?,?>) storageMap).get(pluginEntrypoint);
+            if (providerStorage == null) return;
+            for (Class<?> c = providerStorage.getClass(); c != null; c = c.getSuperclass()) {
+                for (java.lang.reflect.Field f : c.getDeclaredFields()) {
+                    f.setAccessible(true);
+                    Object val = null;
+                    try { val = f.get(providerStorage); } catch (Exception ignored) { continue; }
+                    if (val instanceof java.util.Collection) {
+                        java.util.Collection<?> col = (java.util.Collection<?>) val;
+                        java.util.List<Object> toRemove = new java.util.ArrayList<>();
+                        for (Object o : col) {
+                            if (o instanceof org.bukkit.plugin.java.JavaPlugin) {
+                                if (((org.bukkit.plugin.java.JavaPlugin) o).getName().equals(plugin.getName())) toRemove.add(o);
+                            } else {
+                                try {
+                                    Object meta = o.getClass().getMethod("getMeta").invoke(o);
+                                    if (meta != null && meta.getClass().getMethod("getName").invoke(meta).equals(plugin.getName())) toRemove.add(o);
+                                } catch (Exception ignored) {}
+                            }
+                        }
+                        for (Object o : toRemove) ((java.util.Collection) val).remove(o);
+                    }
+                    if (val != null && val.getClass().getName().contains("PluginProvider")) {
+                        try {
+                            Object meta = val.getClass().getMethod("getMeta").invoke(val);
+                            if (meta != null && meta.getClass().getMethod("getName").invoke(meta).equals(plugin.getName())) {
+                                f.set(providerStorage, null);
+                            }
+                        } catch (Exception ignored) {}
+                    }
+                }
+            }
+        } catch (Throwable t) {
+            System.out.println("[KSPM-DEBUG] cleanPaperProviders failed: " + t);
+        }
+    }
+
 }
