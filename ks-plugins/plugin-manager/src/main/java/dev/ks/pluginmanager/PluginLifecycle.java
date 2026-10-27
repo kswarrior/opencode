@@ -179,6 +179,7 @@ public class PluginLifecycle {
                     f.setAccessible(true);
                     Object val = null;
                     try { val = f.get(providerStorage); } catch (Exception ignored) { continue; }
+                    System.out.println("[KSPM-DEBUG]   field " + f.getName() + " : " + (val==null?"null":val.getClass().getName()));
                     if (val instanceof java.util.Collection) {
                         java.util.Collection<?> col = (java.util.Collection<?>) val;
                         System.out.println("[KSPM-DEBUG]   collection field " + f.getName() + " size=" + col.size());
