@@ -174,7 +174,7 @@ store/plugin after a repeated failure. Add a test using an unwritable directory.
 
 **Evidence:** `YamlDataStore.init()` calls
 `YamlConfiguration.loadConfiguration(file)` without detecting parse failure
-(`src/main/java/dev/lifestead/data/YamlDataStore.java:36`). Bukkit's
+(`src/main/java/dev/lifestead/data/YamlDataStore.java:40`). Bukkit's
 `loadConfiguration` logs the parse error and returns an empty configuration
 instead of throwing; `init()` then finds no `players` section and returns with
 an empty profile map. The next `getOrCreate()` plus `save()` writes that empty
@@ -299,8 +299,8 @@ Add a GUI assertion to the invalid-recipe reload test.
 
 **Evidence:** `EliminationManager.revive` sets
 `pendingReviveTeleport` only when the target is offline
-(`src/main/java/dev/lifestead/manager/EliminationManager.java:158`), then
-teleports only when `!online.isDead()` (`EliminationManager.java:165`). If an
+(`src/main/java/dev/lifestead/manager/EliminationManager.java:156`), then
+teleports only when `!online.isDead()` (`EliminationManager.java:164`). If an
 eliminated player is online but dead (for example during the death screen),
 revive restores survival and hearts but neither teleports nor sets a pending
 teleport. `handleRespawn` only reapplies health
@@ -347,7 +347,7 @@ unit/integration test with two concurrent requests for one UUID.
 **Evidence:** `DeathListener` calls `AntiFarm.canReward` before
 `HeartManager.addHearts` (`src/main/java/dev/lifestead/listener/DeathListener.java:120-124`).
 `canReward` immediately updates `lastReward` and `history` and saves
-(`src/main/java/dev/lifestead/manager/AntiFarm.java:59-64`). If
+(`src/main/java/dev/lifestead/manager/AntiFarm.java:67-69`). If
 `settings.gain-per-kill` is 0 (allowed by `Settings`), the reward attempt
 records a kill but adds no hearts; subsequent attempts within the cooldown are
 blocked. A failed add due to a concurrent state change has the same effect.
