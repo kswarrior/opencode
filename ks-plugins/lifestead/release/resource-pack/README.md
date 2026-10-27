@@ -5,7 +5,7 @@ Target: Minecraft Java Edition 1.21.11 (resource pack format 75)
 ## Files
 
 - ZIP: `Lifestead-ResourcePack-1.0.0.zip`
-- SHA-1: `5f4a189e0618749470f708989a7488116e47b424`
+- SHA-1: `93bbfca5e05778a4b2ebb8777534f41a10505980`
 
 No public URL was supplied. Host the ZIP on a stable public HTTPS URL before using it on a server.
 
@@ -16,7 +16,7 @@ No public URL was supplied. Host the ZIP on a stable public HTTPS URL before usi
 
    ```properties
    resource-pack=https://your-host.example/Lifestead-ResourcePack-1.0.0.zip
-   resource-pack-sha1=5f4a189e0618749470f708989a7488116e47b424
+   resource-pack-sha1=93bbfca5e05778a4b2ebb8777534f41a10505980
    require-resource-pack=false
    ```
 
