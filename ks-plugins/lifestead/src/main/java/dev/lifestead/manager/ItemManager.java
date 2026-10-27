@@ -116,29 +116,36 @@ public final class ItemManager {
         return true;
     }
 
-    public void giveOrDrop(Player player, ItemStack item) {
+    public boolean giveOrDrop(Player player, ItemStack item) {
         Map<Integer, ItemStack> leftovers = player.getInventory().addItem(item);
+        boolean dropped = false;
         for (ItemStack leftover : leftovers.values()) {
+            dropped = true;
             player.getWorld().dropItemNaturally(player.getLocation(), leftover);
         }
+        return dropped;
     }
 
-    public void giveHearts(Player player, int amount) {
+    public boolean giveHearts(Player player, int amount) {
         int remaining = amount;
+        boolean dropped = false;
         while (remaining > 0) {
             int stackSize = Math.min(64, remaining);
-            giveOrDrop(player, createHeart(stackSize));
+            dropped |= giveOrDrop(player, createHeart(stackSize));
             remaining -= stackSize;
         }
+        return dropped;
     }
 
-    public void giveBeacons(Player player, int amount) {
+    public boolean giveBeacons(Player player, int amount) {
         int remaining = amount;
+        boolean dropped = false;
         while (remaining > 0) {
             int stackSize = Math.min(64, remaining);
-            giveOrDrop(player, createBeacon(stackSize));
+            dropped |= giveOrDrop(player, createBeacon(stackSize));
             remaining -= stackSize;
         }
+        return dropped;
     }
 
     public void deliverPendingHearts(Player player) {
@@ -149,8 +156,11 @@ public final class ItemManager {
         }
         profile.setPendingHeartItems(0);
         plugin.getDataStore().save(profile);
-        giveHearts(player, pending);
+        boolean dropped = giveHearts(player, pending);
         plugin.getMessages().send(player, "hearts.pending-received", "amount", Integer.toString(pending));
+        if (dropped) {
+            plugin.getMessages().send(player, "hearts.inventory-full");
+        }
     }
 
     private ItemStack create(String type, String path, Material fallback, int amount) {

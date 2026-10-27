@@ -86,12 +86,13 @@ Folia are optional and not implemented.
 
 ### 2.3 Combat logging
 
-- Tracks the last damage time for every player.
+- Tracks the last damage time for players in enabled worlds.
 - If a player quits within `combat-log.duration-seconds` (default 15) of taking
   damage, they lose `combat-log.penalty-hearts` (default 1) hearts.
 - If the penalty reaches 0 hearts, the player is eliminated with the
   `combat-log` cause.
-- Creative/spectator players and already-eliminated players are exempt.
+- Creative/spectator players, already-eliminated players, and disabled worlds
+  are exempt.
 - The whole subsystem can be disabled.
 
 ### 2.4 Elimination
