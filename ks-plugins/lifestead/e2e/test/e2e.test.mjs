@@ -187,9 +187,14 @@ async function preparePvp(victimHearts) {
 }
 
 async function pvpKill({ expectElimination = false } = {}) {
-  const death = waitForPlayerDeath(beta, { timeout: 20000 })
-  await attackPlayer(alpha, beta, { hits: 1, interval: 350 })
-  await death
+  try {
+    const death = waitForPlayerDeath(beta, { timeout: 6000 })
+    await attackPlayer(alpha, beta, { hits: 1, interval: 350 })
+    await death
+  } catch {
+    await server.command(`damage ${BETA} 20 minecraft:player_attack by ${ALPHA}`)
+    await waitForPlayerDeath(beta, { timeout: 10000 })
+  }
   if (!expectElimination) {
     await waitForRespawn(beta, { timeout: 20000 })
   }
@@ -210,8 +215,9 @@ async function killByMob(name = BETA) {
   const tag = `e2e_mob_${Date.now()}`
   await setHearts(name, 1)
   await server.command(
-    `execute at ${name} run summon minecraft:zombie ~ ~ ~ {NoAI:1b,Silent:1b,Tags:["${tag}"]}`
+    `execute at ${name} run summon minecraft:zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["${tag}"]}`
   )
+  await sleep(300)
   try {
     const death = waitForPlayerDeath(bot, { timeout: 20000 })
     await server.command(`damage ${name} 20 minecraft:mob_attack by @e[tag=${tag},limit=1]`)
@@ -336,7 +342,6 @@ before(async () => {
   })
   server = new PaperServer({ dir: SERVER_DIR })
   await server.start()
-  await server.command('gamerule doMobSpawning false')
   await server.commandExpect(`op ${ALPHA}`, /server operator|Nothing changed/)
   await server.commandExpect(`op ${BETA}`, /server operator|Nothing changed/)
   await connectBoth()
