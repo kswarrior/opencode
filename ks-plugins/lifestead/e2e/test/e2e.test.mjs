@@ -1139,6 +1139,14 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.equal(await papi(BETA, '%lifesteal_status%'), 'eliminated')
     assert.equal(await papi(BETA, '%lifesteal_eliminated%'), 'true')
     assert.equal(await papi(BETA, '%lifesteal_hearts%'), '0')
+    assert.equal(
+      await papi('E2EGhost', '%lifesteal_hearts%'),
+      String(START_HEARTS),
+      'Unknown offline players should read defaults without creating profiles'
+    )
+    await server.commandExpect('lifestead hearts E2EGhost', /was not found/)
+    const yamlData = await readFile(fixture.playerdataFile, 'utf8')
+    assert.ok(!yamlData.includes('E2EGhost'), 'Placeholder reads must not persist profiles')
     await resetAll()
   })
 
