@@ -1,0 +1,20 @@
+{
+  "name": "lifestead-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "End-to-end tests that drive a real Paper server with real Mineflayer bots.",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 --test-timeout=900000 test/e2e.test.mjs",
+    "test:smoke": "node scripts/smoke.mjs",
+    "download": "node scripts/download.mjs"
+  },
+  "dependencies": {
+    "mineflayer": "4.39.0",
+    "prismarine-nbt": "^2.8.0",
+    "yaml": "2.8.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
