@@ -15,7 +15,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 
 public final class ReviveGui implements InventoryHolder {
 
@@ -105,13 +104,12 @@ public final class ReviveGui implements InventoryHolder {
     private ItemStack head(PlayerProfile profile) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         ItemMeta meta = item.getItemMeta();
-        if (meta instanceof SkullMeta skullMeta) {
-            skullMeta.setOwnerProfile(Bukkit.createPlayerProfile(profile.getUuid(), profile.getName()));
-            skullMeta.setDisplayName(plugin.getMessages().colorize("&a" + profile.getName()));
-            skullMeta.setLore(plugin.getMessages().getList("gui.revive-head-lore",
+        if (meta != null) {
+            meta.setDisplayName(plugin.getMessages().colorize("&a" + profile.getName()));
+            meta.setLore(plugin.getMessages().getList("gui.revive-head-lore",
                     "player", profile.getName(),
                     "hearts", Integer.toString(plugin.getSettings().reviveHearts)));
-            item.setItemMeta(skullMeta);
+            item.setItemMeta(meta);
         }
         return item;
     }

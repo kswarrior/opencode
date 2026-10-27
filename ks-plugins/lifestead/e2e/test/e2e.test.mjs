@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict'
-import { access, readFile } from 'node:fs/promises'
+import { access, readFile, writeFile } from 'node:fs/promises'
 import { once } from 'node:events'
 import path from 'node:path'
 import { after, before, describe, test } from 'node:test'
+import { parse, stringify } from 'yaml'
 import { downloadPaper, downloadPlaceholderApi } from '../lib/download.mjs'
 import {
   ALPHA,
@@ -290,6 +291,7 @@ async function summonOwnedArrow(owner, tag, at = BETA) {
 }
 
 async function killWithArrow(tag, cause, { gain = false } = {}) {
+  await setHearts(BETA, 1)
   const alphaBefore = await heartsFor(ALPHA)
   const eliminated = server.waitForLine(
     new RegExp(`E2EBeta ran out of hearts and was eliminated \\(${cause}\\)`),
@@ -359,6 +361,10 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
       (line) => line.includes('[Lifestead]') && /\bSEVERE\b/.test(line)
     )
     assert.deepEqual(pluginErrors, [])
+  })
+
+  test('stale eliminated seed loads with zero hearts', async () => {
+    assert.equal(await heartsFor('E2EPage37'), 0)
   })
 
   test('help, aliases, unknown subcommands, and console sender', async () => {
@@ -673,9 +679,8 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await resetAll()
   })
 
-  test('offline eliminate and revive update data and messages', async () => {
+  test('offline eliminate and revive data and messages', async () => {
     await resetAll()
-    assert.equal(await heartsFor('E2EPage37'), 0)
     const eliminated = await sendCommand(beta, '/ls eliminate E2EPage03', /Eliminated/)
     assert.match(eliminated.text, /Eliminated/)
     assert.equal(await heartsFor('E2EPage03'), 0)
@@ -748,6 +753,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     }).catch(() => null)
     assert.ok(reviveMessage, 'Expected offline revive feedback in the GUI flow')
     await closeCurrentWindow(alpha)
+    await sleep(1500)
     assert.equal(
       countProfileLookupWarnings(),
       lookupsBefore,
@@ -1139,15 +1145,32 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.equal(await papi(BETA, '%lifesteal_status%'), 'eliminated')
     assert.equal(await papi(BETA, '%lifesteal_eliminated%'), 'true')
     assert.equal(await papi(BETA, '%lifesteal_hearts%'), '0')
+    await resetAll()
+
+    const ghost = await createTestBot({ username: 'E2EGhost' })
+    await sleep(700)
+    await disconnect(ghost)
+    await sleep(500)
+    await disconnectBoth()
+    await server.stop()
+    const playerdata = parse(await readFile(fixture.playerdataFile, 'utf8'))
+    for (const [uuid, profile] of Object.entries(playerdata.players ?? {})) {
+      if (profile?.name === 'E2EGhost') {
+        delete playerdata.players[uuid]
+      }
+    }
+    await writeFile(fixture.playerdataFile, stringify(playerdata))
+    await server.start()
+    await connectBoth()
+    await resetAll()
     assert.equal(
       await papi('E2EGhost', '%lifesteal_hearts%'),
       String(START_HEARTS),
-      'Unknown offline players should read defaults without creating profiles'
+      'Known offline players without a profile should read defaults'
     )
     await server.commandExpect('lifestead hearts E2EGhost', /was not found/)
     const yamlData = await readFile(fixture.playerdataFile, 'utf8')
     assert.ok(!yamlData.includes('E2EGhost'), 'Placeholder reads must not persist profiles')
-    await resetAll()
   })
 
   test('BAN elimination mode kicks and bans, then revival pardons', async () => {
