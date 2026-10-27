@@ -106,8 +106,14 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         }
         int amount = Math.min(requested, available);
         plugin.getHeartManager().setHearts(profile, profile.getHearts() - amount);
-        plugin.getItems().giveHearts(player, amount);
+        boolean dropped = plugin.getItems().giveHearts(player, amount);
         plugin.getMessages().send(sender, "hearts.withdraw", "amount", Integer.toString(amount));
+        if (dropped) {
+            plugin.getMessages().send(sender, "hearts.inventory-full");
+        }
+        if (profile.getHearts() <= 0 && !profile.isEliminated()) {
+            plugin.getEliminations().eliminate(profile, "withdraw");
+        }
     }
 
     private void deposit(CommandSender sender, String[] args) {
@@ -203,9 +209,12 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         }
         Player target = Bukkit.getPlayer(profile.getUuid());
         if (target != null) {
-            plugin.getItems().giveHearts(target, amount);
+            boolean dropped = plugin.getItems().giveHearts(target, amount);
             plugin.getMessages().send(sender, "hearts.given",
                     "player", target.getName(), "amount", Integer.toString(amount));
+            if (dropped) {
+                plugin.getMessages().send(target, "hearts.inventory-full");
+            }
             return;
         }
         long total = (long) profile.getPendingHeartItems() + amount;
