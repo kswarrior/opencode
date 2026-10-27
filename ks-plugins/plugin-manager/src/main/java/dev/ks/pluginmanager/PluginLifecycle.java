@@ -35,12 +35,22 @@ public class PluginLifecycle {
                     Object ppm = v;
                     System.out.println("[KSPM-DEBUG] --- paperPluginManager class = " + ppm.getClass().getName());
                     for (Class<?> cc = ppm.getClass(); cc != null; cc = cc.getSuperclass()) {
-                        System.out.println("[KSPM-DEBUG]   pclass " + cc.getName());
                         for (Field ff : cc.getDeclaredFields()) {
                             ff.setAccessible(true);
                             Object vv = null;
                             try { vv = ff.get(ppm); } catch (Exception e) { vv = "<err>"; }
                             System.out.println("[KSPM-DEBUG]     pfield " + ff.getName() + " : " + ff.getType().getName() + " = " + (vv==null?"null":vv.getClass().getName()));
+                            if (ff.getName().equals("instanceManager") && vv != null) {
+                                Object im = vv;
+                                System.out.println("[KSPM-DEBUG] --- instanceManager class = " + im.getClass().getName());
+                                for (Class<?> ic = im.getClass(); ic != null; ic = ic.getSuperclass()) {
+                                    for (Field inf : ic.getDeclaredFields()) {
+                                        inf.setAccessible(true);
+                                        Object iv = null; try { iv = inf.get(im); } catch(Exception e){iv="<err>";}
+                                        System.out.println("[KSPM-DEBUG]       imfield " + inf.getName() + " : " + inf.getType().getName() + " = " + (iv==null?"null":iv.getClass().getName()));
+                                    }
+                                }
+                            }
                         }
                     }
                 }
