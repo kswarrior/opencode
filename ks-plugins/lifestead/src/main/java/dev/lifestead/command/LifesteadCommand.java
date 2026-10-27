@@ -49,8 +49,49 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
     private void help(CommandSender sender) {
         plugin.getMessages().sendRaw(sender, "commands.help-header");
         for (String line : plugin.getMessages().getList("commands.help")) {
-            sender.sendMessage(line);
+            String required = helpPermission(line);
+            if (required == null || sender.hasPermission(required)) {
+                sender.sendMessage(line);
+            }
         }
+    }
+
+    private String helpPermission(String line) {
+        String plain = plugin.getMessages().stripColor(line).toLowerCase(Locale.ROOT);
+        if (plain.contains("/ls help")) {
+            return null;
+        }
+        if (plain.contains("/ls hearts")) {
+            return "lifesteal.hearts";
+        }
+        if (plain.contains("/ls withdraw")) {
+            return "lifesteal.withdraw";
+        }
+        if (plain.contains("/ls deposit")) {
+            return "lifesteal.deposit";
+        }
+        if (plain.contains("/ls recipe")) {
+            return "lifesteal.recipe";
+        }
+        if (plain.contains("/ls revive")) {
+            return "lifesteal.revive";
+        }
+        if (plain.contains("/ls giveheart")) {
+            return "lifesteal.give";
+        }
+        if (plain.contains("/ls sethearts")) {
+            return "lifesteal.set";
+        }
+        if (plain.contains("/ls eliminate")) {
+            return "lifesteal.eliminate";
+        }
+        if (plain.contains("/ls reset")) {
+            return "lifesteal.reset";
+        }
+        if (plain.contains("/ls reload")) {
+            return "lifesteal.reload";
+        }
+        return null;
     }
 
     private void hearts(CommandSender sender, String[] args) {
@@ -146,6 +187,10 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         }
         int amount = Math.min(requested, Math.min(available, capacity));
         int consumed = plugin.getItems().consumeHearts(player, amount);
+        if (consumed <= 0) {
+            plugin.getMessages().send(sender, "hearts.deposit-race");
+            return;
+        }
         plugin.getHeartManager().addHearts(profile, consumed);
         plugin.getMessages().send(sender, "hearts.deposit", "amount", Integer.toString(consumed));
     }
@@ -242,6 +287,11 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         if (value == null) {
             return;
         }
+        if (profile.isEliminated() && value > 0) {
+            plugin.getMessages().send(sender, "hearts.set-eliminated",
+                    "player", profile.getName());
+            return;
+        }
         int applied = plugin.getHeartManager().setHearts(profile, value);
         if (applied <= 0 && !profile.isEliminated()) {
             plugin.getEliminations().eliminate(profile, "admin");
@@ -268,7 +318,9 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             return;
         }
         plugin.getEliminations().eliminate(profile, "admin");
-        plugin.getMessages().send(sender, "elimination.eliminate-admin", "player", profile.getName());
+        plugin.getMessages().send(sender, Bukkit.getPlayer(profile.getUuid()) == null
+                ? "elimination.eliminate-offline" : "elimination.eliminate-admin",
+                "player", profile.getName());
     }
 
     private void reset(CommandSender sender, String[] args) {
@@ -282,10 +334,12 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         if (args[1].equalsIgnoreCase("all")) {
             int count = 0;
             for (PlayerProfile profile : plugin.getDataStore().all()) {
-                resetProfile(profile);
+                plugin.getEliminations().reset(profile, plugin.getSettings().startHearts, false);
                 count++;
             }
             plugin.getAntiFarm().resetAll();
+            plugin.getDataStore().saveAll();
+            plugin.getHeartManager().resyncAll();
             plugin.getMessages().send(sender, "elimination.reset-all", "count", Integer.toString(count));
             return;
         }
@@ -294,18 +348,9 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             notFound(sender, args[1]);
             return;
         }
-        resetProfile(profile);
+        plugin.getEliminations().reset(profile, plugin.getSettings().startHearts, true);
         plugin.getAntiFarm().reset(profile.getUuid());
         plugin.getMessages().send(sender, "elimination.reset", "player", profile.getName());
-    }
-
-    private void resetProfile(PlayerProfile profile) {
-        profile.setLastSeen(System.currentTimeMillis());
-        profile.setPendingReviveTeleport(false);
-        plugin.getHeartManager().setHearts(profile, plugin.getSettings().startHearts);
-        if (plugin.getSettings().startHearts <= 0 && !profile.isEliminated()) {
-            plugin.getEliminations().eliminate(profile, "reset");
-        }
     }
 
     private void reload(CommandSender sender) {
@@ -317,7 +362,7 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             plugin.getMessages().send(sender, "general.reloaded");
         } catch (RuntimeException exception) {
             plugin.getLogger().severe("Reload failed: " + exception.getMessage());
-            plugin.getMessages().send(sender, "general.database-error");
+            plugin.getMessages().send(sender, "general.reload-error");
         }
     }
 
@@ -344,23 +389,32 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             return switch (subcommand) {
                 case "hearts" -> sender.hasPermission("lifesteal.hearts.others")
                         ? filter(knownNames(), args[1]) : List.of();
-                case "revive" -> filter(eliminatedNames(), args[1]);
-                case "giveheart" -> filter(knownNames(), args[1]);
-                case "sethearts", "eliminate" -> filter(knownNames(), args[1]);
+                case "revive" -> sender.hasPermission("lifesteal.revive")
+                        ? filter(eliminatedNames(), args[1]) : List.of();
+                case "giveheart" -> sender.hasPermission("lifesteal.give")
+                        ? filter(knownNames(), args[1]) : List.of();
+                case "sethearts" -> sender.hasPermission("lifesteal.set")
+                        ? filter(knownNames(), args[1]) : List.of();
+                case "eliminate" -> sender.hasPermission("lifesteal.eliminate")
+                        ? filter(knownNames(), args[1]) : List.of();
                 case "reset" -> {
+                    if (!sender.hasPermission("lifesteal.reset")) {
+                        yield List.of();
+                    }
                     List<String> names = knownNames();
                     names.add("all");
                     yield filter(names, args[1]);
                 }
-                case "recipe" -> filter(List.of("heart", "beacon", "all"), args[1]);
+                case "recipe" -> sender.hasPermission("lifesteal.recipe")
+                        ? filter(List.of("heart", "beacon", "all"), args[1]) : List.of();
                 default -> List.of();
             };
         }
         if (args.length == 3) {
-            if (subcommand.equals("giveheart")) {
+            if (subcommand.equals("giveheart") && sender.hasPermission("lifesteal.give")) {
                 return filter(List.of("1", "5", "10", "16"), args[2]);
             }
-            if (subcommand.equals("sethearts")) {
+            if (subcommand.equals("sethearts") && sender.hasPermission("lifesteal.set")) {
                 return filter(List.of("0", "1", "5", "10", "20"), args[2]);
             }
         }
@@ -412,7 +466,11 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         if (online != null) {
             return plugin.getHeartManager().profile(online);
         }
-        return plugin.getDataStore().getByName(name);
+        PlayerProfile offline = plugin.getDataStore().getByName(name);
+        if (offline != null) {
+            plugin.getHeartManager().normalizeAndPersist(offline);
+        }
+        return offline;
     }
 
     private void notFound(CommandSender sender, String name) {

@@ -35,7 +35,7 @@ public final class EliminationManager {
         Player online = Bukkit.getPlayer(profile.getUuid());
         Settings settings = plugin.getSettings();
         if ("BAN".equals(settings.eliminationMode)) {
-            ban(profile.getName());
+            ban(profile);
             if (online != null) {
                 String reason = plugin.getMessages().colorize(settings.banReason);
                 plugin.getServer().getScheduler().runTask(plugin, () -> {
@@ -76,7 +76,7 @@ public final class EliminationManager {
         profile.setEliminatedAt(0L);
         profile.setPendingReviveTeleport(false);
         plugin.getDataStore().save(profile);
-        pardon(profile.getName());
+        pardon(profile);
 
         Player online = Bukkit.getPlayer(profile.getUuid());
         if (online != null) {
@@ -95,6 +95,36 @@ public final class EliminationManager {
         return true;
     }
 
+    public void reset(PlayerProfile profile, int hearts, boolean save) {
+        boolean wasEliminated = profile.isEliminated();
+        profile.setEliminated(false);
+        profile.setEliminatedAt(0L);
+        profile.setPendingReviveTeleport(false);
+        profile.setPendingHeartItems(0);
+        profile.setKills(0);
+        profile.setLastKillAt(0L);
+        profile.setCombatAt(0L);
+        profile.setLastSeen(System.currentTimeMillis());
+        profile.setHearts(Math.max(0, hearts));
+        if (wasEliminated) {
+            pardon(profile);
+        }
+        if (save) {
+            plugin.getDataStore().save(profile);
+        }
+        if (hearts <= 0) {
+            eliminate(profile, "reset");
+            return;
+        }
+        Player online = Bukkit.getPlayer(profile.getUuid());
+        if (online != null) {
+            if (online.getGameMode() == GameMode.SPECTATOR) {
+                online.setGameMode(GameMode.SURVIVAL);
+            }
+            plugin.getHearts().applyHealth(online);
+        }
+    }
+
     public boolean revive(PlayerProfile profile, CommandSender actor) {
         if (!profile.isEliminated()) {
             return false;
@@ -107,7 +137,7 @@ public final class EliminationManager {
         profile.setLastSeen(System.currentTimeMillis());
         profile.setPendingReviveTeleport(online == null && settings.reviveTeleport);
         plugin.getDataStore().save(profile);
-        pardon(profile.getName());
+        pardon(profile);
 
         if (online != null) {
             if (online.getGameMode() == GameMode.SPECTATOR) {
@@ -153,7 +183,7 @@ public final class EliminationManager {
         }
         if (profile.isEliminated()) {
             if ("BAN".equals(settings.eliminationMode)) {
-                ban(profile.getName());
+                ban(profile);
                 String reason = plugin.getMessages().colorize(settings.banReason);
                 plugin.getServer().getScheduler().runTask(plugin, () -> {
                     if (player.isOnline()) {
@@ -229,26 +259,90 @@ public final class EliminationManager {
         return world.getSpawnLocation();
     }
 
-    public void ban(String name) {
+    public void ban(PlayerProfile profile) {
+        if (profile == null) {
+            return;
+        }
+        String reason = plugin.getMessages().stripColor(plugin.getSettings().banReason);
         try {
-            BanList banList = Bukkit.getBanList(BanList.Type.NAME);
-            if (!banList.isBanned(name)) {
-                String reason = plugin.getMessages().stripColor(plugin.getSettings().banReason);
-                banList.addBan(name, reason, (Date) null, "Lifestead");
+            org.bukkit.profile.PlayerProfile banProfile =
+                    Bukkit.createPlayerProfile(profile.getUuid(), profile.getName());
+            BanList<org.bukkit.profile.PlayerProfile> banList =
+                    Bukkit.getBanList(BanList.Type.PROFILE);
+            if (!banList.isBanned(banProfile)) {
+                banList.addBan(banProfile, reason, (Date) null, "Lifestead");
+            }
+            return;
+        } catch (RuntimeException exception) {
+            plugin.getLogger().warning("Could not apply a profile ban for " + profile.getName()
+                    + "; falling back to a name ban: " + exception.getMessage());
+        }
+        try {
+            BanList<String> banList = Bukkit.getBanList(BanList.Type.NAME);
+            if (!banList.isBanned(profile.getName())) {
+                banList.addBan(profile.getName(), reason, (Date) null, "Lifestead");
             }
         } catch (RuntimeException exception) {
-            plugin.getLogger().warning("Could not ban " + name + ": " + exception.getMessage());
+            plugin.getLogger().warning("Could not ban " + profile.getName() + ": "
+                    + exception.getMessage());
         }
     }
 
-    public void pardon(String name) {
+    public void pardon(PlayerProfile profile) {
+        if (profile == null) {
+            return;
+        }
         try {
-            BanList banList = Bukkit.getBanList(BanList.Type.NAME);
-            if (banList.isBanned(name)) {
-                banList.pardon(name);
+            org.bukkit.profile.PlayerProfile banProfile =
+                    Bukkit.createPlayerProfile(profile.getUuid(), profile.getName());
+            BanList<org.bukkit.profile.PlayerProfile> profileBans =
+                    Bukkit.getBanList(BanList.Type.PROFILE);
+            if (profileBans.isBanned(banProfile)) {
+                profileBans.pardon(banProfile);
             }
         } catch (RuntimeException exception) {
-            plugin.getLogger().warning("Could not unban " + name + ": " + exception.getMessage());
+            plugin.getLogger().warning("Could not pardon the profile for " + profile.getName()
+                    + ": " + exception.getMessage());
+        }
+        try {
+            BanList<String> nameBans = Bukkit.getBanList(BanList.Type.NAME);
+            if (nameBans.isBanned(profile.getName())) {
+                nameBans.pardon(profile.getName());
+            }
+        } catch (RuntimeException exception) {
+            plugin.getLogger().warning("Could not unban " + profile.getName() + ": "
+                    + exception.getMessage());
+        }
+    }
+
+    public void reconcileMode() {
+        boolean banMode = "BAN".equals(plugin.getSettings().eliminationMode);
+        for (PlayerProfile profile : plugin.getDataStore().all()) {
+            if (!profile.isEliminated()) {
+                continue;
+            }
+            if (banMode) {
+                ban(profile);
+                Player online = Bukkit.getPlayer(profile.getUuid());
+                if (online != null) {
+                    String reason = plugin.getMessages().colorize(plugin.getSettings().banReason);
+                    plugin.getServer().getScheduler().runTask(plugin, () -> {
+                        if (online.isOnline()) {
+                            online.kickPlayer(reason);
+                        }
+                    });
+                }
+            } else {
+                pardon(profile);
+                Player online = Bukkit.getPlayer(profile.getUuid());
+                if (online != null) {
+                    plugin.getServer().getScheduler().runTask(plugin, () -> {
+                        if (online.isOnline()) {
+                            online.setGameMode(GameMode.SPECTATOR);
+                        }
+                    });
+                }
+            }
         }
     }
 }
