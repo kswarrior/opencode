@@ -279,7 +279,7 @@ async function entityUuidNbt(selector) {
 async function summonArrowWithOwner(ownerNbt, tag, at = BETA) {
   await server.commandExpect(
     `execute at ${at} run summon minecraft:arrow ~ ~1 ~ ` +
-      `{Owner:${ownerNbt},PickupStatus:0b,life:1200s,Tags:["${tag}"]}`,
+      `{Owner:${ownerNbt},Tags:["${tag}"]}`,
     /Summoned new/
   )
   await sleep(200)
