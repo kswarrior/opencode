@@ -1019,20 +1019,20 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await resetAll()
 
     await server.commandExpect(
-      `execute at ${BETA} run summon minecraft:skeleton ~ ~ ~ ` +
-        '{NoAI:1b,PersistenceRequired:1b,Tags:["e2e_arrow_skeleton"]}',
+      `execute at ${BETA} run summon minecraft:armor_stand ~ ~ ~ ` +
+        '{Tags:["e2e_arrow_shooter"]}',
       /Summoned new/
     )
     await sleep(300)
-    const skeletonUuid = await entityUuidNbt('@e[tag=e2e_arrow_skeleton,limit=1]')
-    await summonArrowWithOwner(skeletonUuid, 'e2e_arrow_mob')
+    const shooterUuid = await entityUuidNbt('@e[tag=e2e_arrow_shooter,limit=1]')
+    await summonArrowWithOwner(shooterUuid, 'e2e_arrow_mob')
     await killWithArrow('e2e_arrow_mob', 'mob')
     await revive(BETA)
     await waitForGameMode(beta, 'survival')
     assert.equal(await hearts(alpha), 10)
 
     await server.command('kill @e[type=minecraft:arrow]')
-    await server.command('kill @e[tag=e2e_arrow_skeleton]')
+    await server.command('kill @e[tag=e2e_arrow_shooter]')
     await setConfig({ 'anti-farm': { 'same-ip': true, 'victim-cooldown-seconds': 300 } })
     await resetAll()
   })
