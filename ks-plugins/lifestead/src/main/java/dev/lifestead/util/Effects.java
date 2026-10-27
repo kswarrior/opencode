@@ -74,8 +74,12 @@ public final class Effects {
         if (!settings.effectsParticles || location.getWorld() == null) {
             return;
         }
+        String particleName = settings.heartParticle;
+        if (particleName == null || particleName.isBlank()) {
+            return;
+        }
         try {
-            Particle particle = Particle.valueOf(settings.heartParticle.toUpperCase(Locale.ROOT));
+            Particle particle = Particle.valueOf(particleName.toUpperCase(Locale.ROOT));
             location.getWorld().spawnParticle(particle, location.clone().add(0, 1, 0),
                     settings.particleCount, 0.35, 0.5, 0.35, 0.01);
         } catch (IllegalArgumentException ignored) {

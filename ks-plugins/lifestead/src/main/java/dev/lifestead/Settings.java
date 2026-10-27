@@ -69,12 +69,27 @@ public final class Settings {
     public void load() {
         FileConfiguration config = plugin.getConfig();
 
-        minHearts = Math.max(0, config.getInt("settings.minimum-hearts", 0));
-        maxHearts = Math.max(minHearts + 1, config.getInt("settings.maximum-hearts", 20));
+        int requestedMin = Math.max(0, config.getInt("settings.minimum-hearts", 0));
+        int requestedMax = Math.max(1, config.getInt("settings.maximum-hearts", 20));
+        if (requestedMax > MAX_SUPPORTED_HEARTS) {
+            plugin.getLogger().warning("settings.maximum-hearts cannot exceed "
+                    + MAX_SUPPORTED_HEARTS + "; clamping " + requestedMax + " to "
+                    + MAX_SUPPORTED_HEARTS + ".");
+            requestedMax = MAX_SUPPORTED_HEARTS;
+        }
+        if (requestedMin >= requestedMax) {
+            int clamped = requestedMax - 1;
+            plugin.getLogger().warning("settings.minimum-hearts (" + requestedMin
+                    + ") must be lower than settings.maximum-hearts (" + requestedMax
+                    + "); clamping minimum-hearts to " + clamped + ".");
+            requestedMin = clamped;
+        }
+        minHearts = requestedMin;
+        maxHearts = requestedMax;
         startHearts = clamp(config.getInt("settings.start-hearts", 10), minHearts, maxHearts);
         gainPerKill = Math.max(0, config.getInt("settings.gain-per-kill", 1));
         losePerDeath = Math.max(1, config.getInt("settings.lose-per-death", 1));
-        withdrawGuard = Math.max(0, config.getInt("settings.withdraw-guard", 1));
+        withdrawGuard = clamp(config.getInt("settings.withdraw-guard", 1), 0, maxHearts);
         healthResyncTicks = Math.max(20, config.getInt("settings.health-resync-ticks", 40));
 
         deathLossPvp = config.getBoolean("death-loss.pvp", true);

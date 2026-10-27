@@ -92,7 +92,8 @@ public final class HeartManager {
 
     public PlayerProfile normalize(PlayerProfile profile) {
         Settings settings = plugin.getSettings();
-        int clamped = Settings.clamp(profile.getHearts(), settings.minHearts, settings.maxHearts);
+        int clamped = profile.isEliminated() ? 0
+                : Settings.clamp(profile.getHearts(), settings.minHearts, settings.maxHearts);
         if (clamped != profile.getHearts()) {
             profile.setHearts(clamped);
         }
