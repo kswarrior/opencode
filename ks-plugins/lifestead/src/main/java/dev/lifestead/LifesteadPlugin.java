@@ -58,6 +58,8 @@ public final class LifesteadPlugin extends JavaPlugin {
         antiFarm = new AntiFarm(this);
         effects = new Effects(this);
         recipes = new RecipeManager(this);
+        heartManager.normalizeAll();
+        eliminations.reconcileMode();
         recipes.reload();
 
         registerCommand();
@@ -75,6 +77,9 @@ public final class LifesteadPlugin extends JavaPlugin {
         getServer().getScheduler().cancelTasks(this);
         if (recipes != null) {
             recipes.unregister();
+        }
+        if (antiFarm != null) {
+            antiFarm.save();
         }
         if (placeholderExpansion != null) {
             try {
@@ -95,7 +100,9 @@ public final class LifesteadPlugin extends JavaPlugin {
         reloadConfig();
         messages.reload();
         settings.load();
-        recipes.reload();
+        heartManager.normalizeAll();
+        eliminations.reconcileMode();
+        boolean recipesReloaded = recipes.reload();
         String activeDatabase = activeStorageName();
         if (!activeDatabase.equals(settings.databaseType)) {
             getLogger().warning("Configured storage is " + settings.databaseType
@@ -105,6 +112,10 @@ public final class LifesteadPlugin extends JavaPlugin {
         startTasks();
         heartManager.resyncAll();
         dataStore.saveAll();
+        if (!recipesReloaded) {
+            throw new IllegalStateException(
+                    "Recipe configuration is invalid; the previous recipe set was kept.");
+        }
     }
 
     private void registerCommand() {

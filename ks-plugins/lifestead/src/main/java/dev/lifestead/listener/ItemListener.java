@@ -48,6 +48,7 @@ public final class ItemListener implements Listener {
                 plugin.getMessages().send(player, "general.eliminated-action");
                 return;
             }
+            plugin.getMessages().send(player, "items.beacon-opened");
             ReviveGui.open(plugin, player, 0);
         }
     }

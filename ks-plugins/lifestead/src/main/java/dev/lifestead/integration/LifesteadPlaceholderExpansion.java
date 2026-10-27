@@ -35,6 +35,9 @@ public final class LifesteadPlaceholderExpansion extends PlaceholderExpansion {
             return "";
         }
         PlayerProfile profile = plugin.getDataStore().get(player.getUniqueId());
+        if (profile != null) {
+            plugin.getHeartManager().normalizeAndPersist(profile);
+        }
         boolean eliminated = profile != null && profile.isEliminated();
         int hearts = profile != null ? profile.getHearts()
                 : plugin.getSettings().startHearts;

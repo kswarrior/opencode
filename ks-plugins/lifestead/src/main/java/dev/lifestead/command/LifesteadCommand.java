@@ -191,8 +191,16 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             plugin.getMessages().send(sender, "hearts.deposit-race");
             return;
         }
-        plugin.getHeartManager().addHearts(profile, consumed);
-        plugin.getMessages().send(sender, "hearts.deposit", "amount", Integer.toString(consumed));
+        int added = plugin.getHeartManager().addHearts(profile, consumed);
+        if (added <= 0) {
+            boolean dropped = plugin.getItems().giveHearts(player, consumed);
+            plugin.getMessages().send(sender, "hearts.deposit-race");
+            if (dropped) {
+                plugin.getMessages().send(sender, "hearts.inventory-full");
+            }
+            return;
+        }
+        plugin.getMessages().send(sender, "hearts.deposit", "amount", Integer.toString(added));
     }
 
     private void recipe(CommandSender sender, String[] args) {
