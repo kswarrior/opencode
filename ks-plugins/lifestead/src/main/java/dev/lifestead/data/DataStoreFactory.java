@@ -14,6 +14,10 @@ public final class DataStoreFactory {
                 store = new SqliteDataStore(plugin);
                 store.init();
                 return store;
+            } catch (SqliteDataStore.SchemaException exception) {
+                plugin.getLogger().severe("SQLite schema could not be used; refusing to fall back"
+                        + " to YAML: " + exception.getMessage());
+                throw exception;
             } catch (Exception exception) {
                 if (store != null) {
                     try {

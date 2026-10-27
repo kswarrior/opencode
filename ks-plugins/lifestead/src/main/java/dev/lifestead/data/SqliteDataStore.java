@@ -22,6 +22,16 @@ import java.util.UUID;
 
 public final class SqliteDataStore implements DataStore {
 
+    public static final class SchemaException extends SQLException {
+        public SchemaException(String message) {
+            super(message);
+        }
+
+        public SchemaException(String message, Throwable cause) {
+            super(message, cause);
+        }
+    }
+
     private static final int SCHEMA_VERSION = 2;
 
     private static final String CREATE_TABLE = """
@@ -77,7 +87,7 @@ public final class SqliteDataStore implements DataStore {
         try {
             int version = readUserVersion();
             if (version > SCHEMA_VERSION) {
-                throw new SQLException("Unsupported SQLite schema version " + version
+                throw new SchemaException("Unsupported SQLite schema version " + version
                         + "; this Lifestead build supports up to " + SCHEMA_VERSION
                         + ". Back up and migrate the database before starting.");
             }
@@ -94,6 +104,19 @@ public final class SqliteDataStore implements DataStore {
             ensureColumns(columns);
             writeUserVersion();
             loadAll();
+        } catch (SQLException exception) {
+            try {
+                connection.close();
+            } catch (SQLException ignored) {
+                // The original failure is more useful.
+            }
+            connection = null;
+            closed = true;
+            if (exception instanceof SchemaException schemaException) {
+                throw schemaException;
+            }
+            throw new SchemaException("SQLite schema initialization failed: "
+                    + exception.getMessage(), exception);
         } catch (Exception exception) {
             try {
                 connection.close();
@@ -159,7 +182,7 @@ public final class SqliteDataStore implements DataStore {
             plugin.getLogger().info("Backed up SQLite data to " + backup.getName()
                     + " before schema migration.");
         } catch (IOException exception) {
-            throw new SQLException("Could not back up the SQLite database before migration: "
+            throw new SchemaException("Could not back up the SQLite database before migration: "
                     + exception.getMessage(), exception);
         }
     }

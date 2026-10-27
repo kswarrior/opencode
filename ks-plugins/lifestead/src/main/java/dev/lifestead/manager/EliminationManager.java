@@ -4,17 +4,35 @@ import dev.lifestead.LifesteadPlugin;
 import dev.lifestead.Settings;
 import dev.lifestead.data.PlayerProfile;
 import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public final class EliminationManager {
 
+    private static final Set<Material> UNSAFE_BLOCKS = EnumSet.of(
+            Material.LAVA,
+            Material.FIRE,
+            Material.SOUL_FIRE,
+            Material.MAGMA_BLOCK,
+            Material.CACTUS,
+            Material.POWDER_SNOW,
+            Material.SWEET_BERRY_BUSH,
+            Material.CAMPFIRE,
+            Material.SOUL_CAMPFIRE,
+            Material.LAVA_CAULDRON);
+
     private final LifesteadPlugin plugin;
+    private final Set<String> warnedWorlds = new HashSet<>();
 
     public EliminationManager(LifesteadPlugin plugin) {
         this.plugin = plugin;
