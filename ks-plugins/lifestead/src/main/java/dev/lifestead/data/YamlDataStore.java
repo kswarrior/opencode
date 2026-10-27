@@ -51,8 +51,9 @@ public final class YamlDataStore implements DataStore {
                 long lastKillAt = player.getLong("last-kill-at", 0L);
                 long eliminatedAt = player.getLong("eliminated-at", eliminated ? lastSeen : 0L);
                 int pendingHeartItems = player.getInt("pending-heart-items", 0);
+                long combatAt = player.getLong("combat-at", 0L);
                 PlayerProfile profile = new PlayerProfile(uuid, name, hearts, eliminated, lastSeen,
-                        kills, lastKillAt, eliminatedAt, pendingHeartItems);
+                        kills, lastKillAt, eliminatedAt, pendingHeartItems, combatAt);
                 profile.setPendingReviveTeleport(player.getBoolean("pending-revive-teleport", false));
                 profiles.put(uuid, profile);
             } catch (IllegalArgumentException exception) {
@@ -115,6 +116,7 @@ public final class YamlDataStore implements DataStore {
             section.set(path + ".eliminated-at", profile.getEliminatedAt());
             section.set(path + ".pending-heart-items", profile.getPendingHeartItems());
             section.set(path + ".pending-revive-teleport", profile.isPendingReviveTeleport());
+            section.set(path + ".combat-at", profile.getCombatAt());
         }
         File temporary = new File(file.getParentFile(), file.getName() + ".tmp");
         try {

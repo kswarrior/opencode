@@ -30,14 +30,16 @@ public final class SqliteDataStore implements DataStore {
                 last_kill_at INTEGER NOT NULL DEFAULT 0,
                 eliminated_at INTEGER NOT NULL DEFAULT 0,
                 pending_heart_items INTEGER NOT NULL DEFAULT 0,
-                pending_revive_teleport INTEGER NOT NULL DEFAULT 0
+                pending_revive_teleport INTEGER NOT NULL DEFAULT 0,
+                combat_at INTEGER NOT NULL DEFAULT 0
             )
             """;
 
     private static final String UPSERT = """
             INSERT INTO lifestead_players (uuid, name, hearts, eliminated, last_seen,
-                kills, last_kill_at, eliminated_at, pending_heart_items, pending_revive_teleport)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                kills, last_kill_at, eliminated_at, pending_heart_items, pending_revive_teleport,
+                combat_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(uuid) DO UPDATE SET
                 name = excluded.name,
                 hearts = excluded.hearts,
@@ -47,7 +49,8 @@ public final class SqliteDataStore implements DataStore {
                 last_kill_at = excluded.last_kill_at,
                 eliminated_at = excluded.eliminated_at,
                 pending_heart_items = excluded.pending_heart_items,
-                pending_revive_teleport = excluded.pending_revive_teleport
+                pending_revive_teleport = excluded.pending_revive_teleport,
+                combat_at = excluded.combat_at
             """;
 
     private final LifesteadPlugin plugin;
@@ -84,6 +87,7 @@ public final class SqliteDataStore implements DataStore {
         addColumn(columns, "eliminated_at", "INTEGER NOT NULL DEFAULT 0");
         addColumn(columns, "pending_heart_items", "INTEGER NOT NULL DEFAULT 0");
         addColumn(columns, "pending_revive_teleport", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "combat_at", "INTEGER NOT NULL DEFAULT 0");
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("UPDATE lifestead_players SET eliminated_at = last_seen"
                     + " WHERE eliminated <> 0 AND eliminated_at = 0");
@@ -103,8 +107,8 @@ public final class SqliteDataStore implements DataStore {
         try (Statement statement = connection.createStatement();
                 ResultSet result = statement.executeQuery(
                         "SELECT uuid, name, hearts, eliminated, last_seen, kills, last_kill_at,"
-                                + " eliminated_at, pending_heart_items, pending_revive_teleport"
-                                + " FROM lifestead_players")) {
+                                + " eliminated_at, pending_heart_items, pending_revive_teleport,"
+                                + " combat_at FROM lifestead_players")) {
             while (result.next()) {
                 try {
                     UUID uuid = UUID.fromString(result.getString("uuid"));
@@ -117,7 +121,8 @@ public final class SqliteDataStore implements DataStore {
                             result.getInt("kills"),
                             result.getLong("last_kill_at"),
                             result.getLong("eliminated_at"),
-                            result.getInt("pending_heart_items"));
+                            result.getInt("pending_heart_items"),
+                            result.getLong("combat_at"));
                     profile.setPendingReviveTeleport(result.getInt("pending_revive_teleport") != 0);
                     profiles.put(uuid, profile);
                 } catch (IllegalArgumentException exception) {
@@ -213,6 +218,7 @@ public final class SqliteDataStore implements DataStore {
         statement.setLong(8, profile.getEliminatedAt());
         statement.setInt(9, profile.getPendingHeartItems());
         statement.setInt(10, profile.isPendingReviveTeleport() ? 1 : 0);
+        statement.setLong(11, profile.getCombatAt());
     }
 
     @Override
