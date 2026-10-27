@@ -10,8 +10,7 @@ bots (`E2EAlpha`, `E2EBeta`), PlaceholderAPI 2.12.3, YAML and SQLite storage
 
 - Maven build + unit tests: **PASS**. 6 JUnit tests; shaded JAR built.
 - Resource pack: **PASS**. ZIP and SHA-1 regenerated; the checked-in
-  `release/resource-pack/SHA1.txt` matches the ZIP
-  (`c32596d47ab9b74d2ba6438637636baf0461294a`).
+  `release/resource-pack/SHA1.txt` matches the ZIP.
 - End-to-end suite: **41/41 PASS** (was 37/38 before remediation).
   - Added coverage for `/papi reload` persistence, atomic failed-reload
     isolation (settings and recipe GUI), zero-heart offline normalization,
@@ -547,13 +546,14 @@ These old items are no longer open in the form previously recorded:
 - SQLite save after close, deposit race, duplicate-death guard, reset state
   cleanup, profile bans, safe revive spawn, SQLite migration, and item
   definition generation: rechecked in source/E2E and still fixed.
-- "38/38 PASS" and "no profile lookup failures": no longer true; see
-  Verification Status.
-- "Atomic recipe reload": the recipe **registration** rolls back correctly,
-  but the overall reload is not atomic (BUG-02). The old BUG-12/GAP-13 wording
-  overstated this.
-- "Dead keys removed": false; BUG-13.
-- "Combat tags are persisted across restarts": false; BUG-08.
-- "No `[Lifestead]` SEVERE/ERROR lines": the log test misses Bukkit's
-  `[ERROR]: [Lifestead]` ordering; the invalid-recipe test intentionally logs
-  one. See BUG-16.
+- "No profile lookup failures": now true on offline-mode E2E; external
+  lookups are skipped by BUG-07.
+- "Atomic recipe reload": now true for recipes, settings, messages, tasks, and
+  GUI state (BUG-02/BUG-09).
+- "Dead keys removed": now true (BUG-13).
+- "Combat tags are persisted across restarts": now true, including the join
+  penalty path (BUG-08).
+- "No `[Lifestead]` SEVERE/ERROR lines": the E2E gate now matches Bukkit's
+  `[ERROR]: [Lifestead]` ordering and stack frames, with expected test failures
+  whitelisted (BUG-16).
+- Full suite count is now 41/41 PASS (was 37/38).
