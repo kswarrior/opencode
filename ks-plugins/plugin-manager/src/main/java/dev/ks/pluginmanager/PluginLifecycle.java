@@ -34,7 +34,6 @@ public class PluginLifecycle {
             }
         }
         disable(plugin);
-        PluginManager pm = Bukkit.getPluginManager();
         // Try Paper instance manager field
         try {
             for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
