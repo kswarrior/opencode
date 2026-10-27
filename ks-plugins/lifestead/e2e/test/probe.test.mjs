@@ -2,18 +2,27 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { after, before, describe, test } from 'node:test'
-import { downloadPaper } from '../lib/download.mjs'
+import { downloadPaper, downloadPlaceholderApi } from '../lib/download.mjs'
 import {
   ALPHA,
   offlineUuid,
   patchPluginConfig,
   prepareServer
 } from '../lib/fixtures.mjs'
-import { createTestBot, disconnect, sendCommand, sleep } from '../lib/bot.mjs'
+import {
+  closeCurrentWindow,
+  createTestBot,
+  disconnect,
+  itemName,
+  openWindowWithCommand,
+  sendCommand,
+  sleep
+} from '../lib/bot.mjs'
 import { PLUGIN_JAR, SERVER_DIR, SERVER_JAR, SERVER_TYPE } from '../lib/paths.mjs'
 import { PaperServer } from '../lib/server.mjs'
 
 let paper
+let placeholderApi
 let fixture
 let server
 let alpha
@@ -22,6 +31,14 @@ async function setConfig(overrides) {
   await patchPluginConfig(fixture, overrides)
   await server.commandExpect('lifestead reload', /reloaded/)
   await sleep(300)
+}
+
+async function papi(player, text) {
+  const line = await server.commandExpect(
+    `papi parse ${player} ${text}`,
+    (candidate) => /INFO\]:\s/.test(candidate) && !candidate.includes('PlaceholderAPI')
+  )
+  return line.split('INFO]: ').pop().trim()
 }
 
 async function clearInventory(name) {
@@ -36,10 +53,12 @@ before(async () => {
   paper = SERVER_JAR
     ? { file: SERVER_JAR, build: SERVER_TYPE, sha256: 'local' }
     : await downloadPaper()
+  placeholderApi = await downloadPlaceholderApi()
   fixture = await prepareServer({
     fresh: true,
     paperJar: paper.file,
     pluginJar: PLUGIN_JAR,
+    placeholderApiJar: placeholderApi.file,
     seedProfiles: [
       { uuid: offlineUuid('E2EProbeBan'), name: 'E2EProbeBan', hearts: 0, eliminated: true },
       { uuid: offlineUuid('E2EProbeSkin'), name: 'E2EProbeSkin', hearts: 0, eliminated: true },
@@ -92,6 +111,10 @@ describe('Lifestead targeted probes', { concurrency: 1 }, () => {
     )
     console.log(`[probe] after failed reload: ${display}`)
     assert.match(display, /max\s+30/i)
+    const window = await openWindowWithCommand(alpha, '/ls recipe heart')
+    console.log(`[probe] recipe ingredient after failed reload: ${itemName(window.slots[11])}`)
+    assert.equal(itemName(window.slots[11]), 'light_gray_stained_glass_pane')
+    await closeCurrentWindow(alpha)
     await setConfig({
       settings: { 'maximum-hearts': 20 },
       recipes: { heart: { ingredients: { H: 'NETHER_STAR' } } }
@@ -133,5 +156,16 @@ describe('Lifestead targeted probes', { concurrency: 1 }, () => {
     console.log(`[probe] after revive: ${JSON.stringify(pardoned)}`)
     assert.ok(!pardoned.some((entry) => entry.name === 'E2EProbeBan'))
     await setConfig({ elimination: { mode: 'SPECTATOR' } })
+  })
+
+  test('PlaceholderAPI reload unregisters the non-persistent expansion', async () => {
+    const before = await papi(ALPHA, '%lifesteal_hearts%')
+    console.log(`[probe] papi hearts before reload: ${before}`)
+    assert.equal(before, '10')
+    server.command('papi reload')
+    await sleep(3000)
+    const after = await papi(ALPHA, '%lifesteal_hearts%')
+    console.log(`[probe] papi hearts after reload: ${after}`)
+    assert.notEqual(after, '10')
   })
 })
