@@ -1124,11 +1124,9 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await preparePvp(10)
     await attackPlayer(alpha, beta, { hits: 1, interval: 300 })
     await sleep(500)
-    await server.commandExpect(
-      `execute in minecraft:the_nether run tp ${BETA} 0 64 0`,
-      /Teleported/
-    )
-    await sleep(700)
+    await server.command(`execute in minecraft:the_nether run tp ${BETA} 0 64 0`)
+    await sleep(1000)
+    assert.equal(beta.game.dimension, 'minecraft:the_nether')
     await disconnect(beta)
     beta = null
     await sleep(1000)
@@ -1292,6 +1290,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await setHearts(BETA, 0)
     await waitForGameMode(beta, 'spectator')
     await server.commandExpect(`tp ${BETA} ${ALPHA}`, /Teleported/)
+    await sleep(700)
     const before = beta.entity.position.clone()
     await revive(BETA)
     await waitForGameMode(beta, 'survival')
