@@ -43,6 +43,11 @@ public final class SkinService {
             notifyMainThread(uuid, cached.get(), callback);
             return;
         }
+        Entry cachedFailure = cache.get(uuid);
+        if (cachedFailure != null && cachedFailure.profile() == null
+                && cachedFailure.expiresAt() >= System.currentTimeMillis()) {
+            return;
+        }
         if (inFlight.putIfAbsent(uuid, Boolean.TRUE) != null) {
             return;
         }
