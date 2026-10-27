@@ -121,7 +121,8 @@ that settings, messages, and tasks did not change.
 
 **Evidence:** A seeded profile with `hearts: -5` and `eliminated: false`
 loaded as 0 hearts and remained alive. `/ls hearts` showed 0, `/ls revive`
-said "not eliminated", and PAPI returned `status=alive`. Only
+said "not eliminated", and `/ls sethearts 5` succeeded. PAPI derives
+elimination from the same flag and would also report `status=alive`. Only
 `EliminationManager.handleJoin` converts this state to eliminated
 (`src/main/java/dev/lifestead/manager/EliminationManager.java:198`).
 `PlayerProfile` clamps negative hearts to 0 without setting elimination
@@ -152,13 +153,13 @@ unconditionally `dirty.clear()` (`src/main/java/dev/lifestead/data/YamlDataStore
 `writeAll()` catches `IOException`, logs `Could not save player data`, and
 returns normally (`YamlDataStore.java:152-178`). `saveAll()` has the same
 unconditional clear (`YamlDataStore.java:118-123`). A failed write therefore
-removes every pending UUID from the dirty set; no retry is scheduled and the
-failure is only visible in the console.
+removes every pending UUID from the dirty set; there is no immediate retry and
+the failure is only visible in the console.
 
 **Impact:** A transient disk-full, permission, or filesystem error can lose
-all changes made since the last successful write. Because `writeAll()` writes
-the whole profile map, a later successful save may also overwrite a good file
-with stale in-memory data if the process continues.
+all changes made since the last successful write if the server stops before a
+later save writes the in-memory map again. A repeated failure keeps returning
+normally, so callers cannot detect or react to it.
 
 **Suggested fix:** Make `writeAll()` return success/failure and clear `dirty`
 only on success. Keep failed UUIDs dirty and retry with backoff, or disable the
@@ -177,8 +178,8 @@ store/plugin after a repeated failure. Add a test using an unwritable directory.
 (`src/main/java/dev/lifestead/data/YamlDataStore.java:40`). Bukkit's
 `loadConfiguration` logs the parse error and returns an empty configuration
 instead of throwing; `init()` then finds no `players` section and returns with
-an empty profile map. The next `getOrCreate()` plus `save()` writes that empty
-map back over the original file.
+an empty profile map. The next `getOrCreate()` plus `save()` writes a file
+containing only the newly seen profile, erasing the old entries.
 
 **Impact:** A truncated/corrupt data file (for example after a crash or manual
 edit) can turn into permanent loss of every profile on the next player join or
@@ -229,8 +230,9 @@ not already cached (`src/main/java/dev/lifestead/gui/ReviveGui.java:79-86`).
 `SkinService` unconditionally calls `PlayerProfile.update()`
 (`src/main/java/dev/lifestead/manager/SkinService.java:63`). The E2E server is
 `online-mode=false` (`e2e/lib/fixtures.mjs:129`), yet the run produced a real
-sessionserver timeout and warning (`e2e-server.log:913`). Some offline UUIDs
-return an empty profile quickly; others time out for up to five seconds.
+sessionserver timeout and warning (`e2e-server.log:913`). At least one lookup
+held for the full five-second timeout; only one lookup warning appeared in the
+run log.
 
 **Impact:** On offline-mode servers, every uncached revive page sends up to 36
 useless Mojang requests, delays head loading, risks rate limiting, and produces
