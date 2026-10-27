@@ -1,30 +1,69 @@
 # Lifestead Bug and Gap Backlog
 
 Last verified: 2026-10-27  
-Baseline: `ks-plugins/lifestead` at `1483c00b4` (plus this report)  
-Server used for verification: Paper 1.21.11, Java 21, two real Mineflayer bots
-(`E2EAlpha`, `E2EBeta`), flat world, PlaceholderAPI 2.12.3.
+Baseline: working tree after the remediation pass.  
+Server used for verification: Paper 1.21.11 build 132, Java 21, two real
+Mineflayer bots (`E2EAlpha`, `E2EBeta`), flat world, PlaceholderAPI 2.12.3.
 
 ## Verification Status
 
-- `./scripts/build.sh`: **PASS**. JAR and resource-pack ZIP rebuilt.
-- Resource pack SHA-1: generated SHA file matches the ZIP on disk.
-- End-to-end suite: **33/33 PASS**. Final runtime log has no `[Lifestead]`
-  `SEVERE` lines and no player-profile lookup failures.
+- Maven build + unit tests: **PASS**. 6 JUnit tests, shaded JAR built.
+- Resource pack: **PASS**. ZIP, SHA-1 file, and install README regenerated; the
+  checked-in SHA-1 matches the ZIP.
+- End-to-end suite: **38/38 PASS**. Final runtime log has no `[Lifestead]`
+  `SEVERE`/`ERROR` lines and no player-profile lookup failures.
+- Paper build is pinned to **132**; `E2E_PAPER_LATEST=1` opts into the latest
+  stable build. Local server/plugin JAR overrides are supported.
 - Core loop verified on Paper: PvP steal, death causes, anti-farm, elimination,
   ban/spectator modes, revival (online/offline), heart items, withdrawal,
-  deposit, queue delivery, recipes, recipe GUI, revive GUI, PlaceholderAPI,
-  YAML/SQLite persistence, reload, disabled worlds, and combat logging.
+  deposit, queue delivery, recipes, recipe GUI, revive GUI with async skins,
+  PlaceholderAPI, YAML/SQLite persistence, reload, disabled worlds, combat
+  logging, world-change combat tags, unsafe spawn fallback, and invalid recipe
+  reload preservation.
+- PvP melee fallbacks in this run: **0**. Set `E2E_REQUIRE_REAL_MELEE=1` to
+  make any fallback a hard failure.
 - Not verified: Purpur, Spigot, Bukkit, Folia, MySQL, other Minecraft versions,
   large-player-count load, or long-running server soak.
-- This verification pass changed the E2E harness, not plugin gameplay source.
-  Intermediate runs exposed test-harness defects: the mob-death test tried to
-  summon a zombie while the fixture was on peaceful difficulty, and the old
-  AI-driven approach could time out and leave hostile mobs alive. The test now
-  enables easy difficulty only around a tagged summon, kills deterministically
-  with `/damage ... by <zombie>`, and restores peaceful in a `finally` block.
-  The PvP helper also falls back to command damage if the first bot melee misses;
-  this improves reliability but can mask a melee regression (see TEST-04).
+
+## Resolution Status
+
+| Item | Status | Verification / residual |
+| --- | --- | --- |
+| BUG-01 | Fixed | Positive `sethearts` on an eliminated profile is refused; E2E test. |
+| BUG-02 | Fixed | Startup normalization persists bounds; E2E seeded profiles. |
+| BUG-03 | Fixed | Combat tag persists through world changes; E2E nether test. |
+| BUG-04 | Fixed | Owned mobs/pets, projectiles, TNT, and area clouds credit the owner. |
+| BUG-05 | Fixed | Admin help permission-gated; E2E permissions test. |
+| BUG-06 | Fixed | Tab completion is permission-filtered; E2E test. |
+| BUG-07 | Fixed | SQLite closed-save guard; schema init refresh fixed during E2E. |
+| BUG-08 | Fixed | Deposit race refunds without consuming items. |
+| BUG-09 | Fixed | Give-first/clear-later delivery; at-least-once trade-off documented. |
+| BUG-10 | Fixed | Duplicate-death timer removed; in-flight set retained. |
+| BUG-11 | Fixed | Reset clears combat, pending items, kills, and anti-farm history. |
+| BUG-12 | Fixed | Atomic recipe reload with rollback; E2E invalid-recipe test. |
+| BUG-13 | Fixed | Paper profile ban via reflection, Spigot profile attempt, name fallback. |
+| GAP-01 | Fixed | Invalid values warn/clamp; E2E warning assertions. |
+| GAP-02 | Fixed | Safe revive search and fallback; E2E unsafe-coordinate test. |
+| GAP-03 | Fixed | Anti-farm and combat tags persist. |
+| GAP-04 | Fixed | YAML batched per tick plus atomic move. |
+| GAP-05 | Fixed | SQLite `user_version` 2, backup, additive migration. |
+| GAP-06 | Fixed | Item definitions generated from config; duplicate material rejected. |
+| GAP-07 | Fixed | Dead keys removed; remaining keys are wired. |
+| GAP-08 | Fixed | Async, cached, bounded skin lookup with fallback. |
+| GAP-09 | Partial | Build script requires an explicit HTTPS URL; hosting is external. |
+| GAP-10 | Fixed | Unused GUI textures are no longer generated. |
+| GAP-11 | Partial | README/LICENSE/CHANGELOG/CI added; release tagging is external. |
+| GAP-12 | Fixed | `opp/lifesteadz.md` rewritten to match the implementation. |
+| GAP-13 | Fixed | Atomic recipe reload and specific reload error message. |
+| GAP-14 | Fixed | Elimination mode changes reconcile online and offline state. |
+| TEST-01 | Partial | Harness accepts local Spigot/Purpur/Paper JARs; only Paper was run. |
+| TEST-02 | Partial | 6 JUnit tests plus CI; no lint/static-analysis gate. |
+| TEST-03 | Fixed | Paper build 132 pinned with explicit latest-build opt-in. |
+| TEST-04 | Partial | Fallbacks counted; `E2E_REQUIRE_REAL_MELEE=1` makes them fatal. |
+| TEST-05 | Fixed | Regression E2E tests added for the listed fixed behaviors. |
+
+External release operations remain: public HTTPS pack hosting, a signed
+`v1.0.0` tag, and real Spigot/Purpur/MySQL runs.
 
 Severity used below:
 
@@ -681,20 +720,16 @@ These are recorded so they are not mistaken for missed requirements:
 
 ---
 
-## 5. Suggested Fix Order
+## 5. Fix Order Used
 
-1. **BUG-01, BUG-02, BUG-03** — admin/revive consistency, offline data
-   correctness, and the combat-log bypass.
-2. **BUG-04** — resolve owned-mob/explosion credit, with tests.
-3. **GAP-01, GAP-02, GAP-13** — fail/warn loudly on invalid config and make
-   reload safe.
-4. **GAP-03, GAP-04, GAP-05** — anti-abuse persistence, YAML write pressure,
-   and SQLite migrations.
-5. **BUG-05, BUG-06, BUG-07, BUG-08, BUG-09, BUG-10, BUG-11, BUG-12** —
-   low-risk robustness/UX fixes and tests.
-6. **TEST-01, TEST-02, TEST-03** — cross-platform/CI coverage.
-7. **GAP-06 through GAP-14** — packaging, docs, resource-pack polish, and
-   release tagging.
+1. **BUG-01, BUG-02, BUG-03** — admin/revive consistency, offline data, and
+   the combat-log bypass.
+2. **BUG-04** — owned-mob/explosion credit.
+3. **GAP-01, GAP-02, GAP-13** — loud config validation and safe reload.
+4. **GAP-03, GAP-04, GAP-05** — persistence and SQLite migrations.
+5. **BUG-05 through BUG-12** — robustness/UX fixes.
+6. **TEST-01, TEST-02, TEST-03** — harness, unit tests, and CI.
+7. **GAP-06 through GAP-14** — packaging, docs, and resource-pack polish.
 
 ---
 
@@ -710,8 +745,10 @@ npm test
 
 Expected final state for the current code:
 
-- Maven build success.
-- `# tests 33`
-- `# pass 33`
+- Maven build success and 6/6 JUnit tests.
+- `# tests 38`
+- `# pass 38`
 - `# fail 0`
-- no `[Lifestead] SEVERE` lines in `e2e/.server/logs/e2e-server.log`.
+- no `[Lifestead] SEVERE`/`ERROR` lines in
+  `e2e/.server/logs/e2e-server.log`.
+- Resource-pack SHA-1 file matches the ZIP.
