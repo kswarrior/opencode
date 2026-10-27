@@ -42,7 +42,8 @@ combat-log:
   enabled: true
   # Seconds after taking damage during which logging out counts as combat logging.
   duration-seconds: 15
-  # Hearts lost when a player combat logs. The tag is saved across restarts.
+  # Hearts lost when a player combat logs. The tag and penalty persist across
+  # restarts and crashes; an outstanding penalty is applied when the player joins.
   penalty-hearts: 1
 
 elimination:
@@ -73,6 +74,7 @@ effects:
   lose-sound: ENTITY_PLAYER_HURT
   revive-sound: BLOCK_BEACON_ACTIVATE
   heart-particle: HEART
+  # Clamped to 1-200 to avoid client/server lag.
   particle-count: 12
   # Broadcast every successful heart steal to the whole server.
   broadcast-steals: false
