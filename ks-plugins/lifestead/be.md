@@ -52,7 +52,7 @@ Mineflayer bots (`E2EAlpha`, `E2EBeta`), flat world, PlaceholderAPI 2.12.3.
 | GAP-08 | Fixed | Async, cached, bounded skin lookup with fallback. |
 | GAP-09 | Partial | Build script requires an explicit HTTPS URL; hosting is external. |
 | GAP-10 | Fixed | Unused GUI textures are no longer generated. |
-| GAP-11 | Partial | README/LICENSE/CHANGELOG/CI added; release tagging is external. |
+| GAP-11 | Partial | README/LICENSE/CHANGELOG and CI workflow added; tag is external. |
 | GAP-12 | Fixed | `opp/lifesteadz.md` rewritten to match the implementation. |
 | GAP-13 | Fixed | Atomic recipe reload and specific reload error message. |
 | GAP-14 | Fixed | Elimination mode changes reconcile online and offline state. |

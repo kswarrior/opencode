@@ -221,7 +221,8 @@ and withdrawable hearts. Registration is optional and failure is logged.
 - Regression coverage includes eliminated `sethearts`, offline normalization,
   world-change combat logs, invalid recipe reloads, and unsafe revive
   coordinates.
-- CI is in `.github/workflows/lifestead-ci.yml`.
+- CI workflow source is `ci/lifestead-ci.yml`; install it at the repository
+  root `.github/workflows/` to enable Actions.
 
 ## 3. Not Implemented / External
 
