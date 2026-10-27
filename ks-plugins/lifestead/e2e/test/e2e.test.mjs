@@ -214,6 +214,7 @@ async function killByMob(name = BETA) {
   const bot = aliveBot(name)
   const tag = `e2e_mob_${Date.now()}`
   await setHearts(name, 1)
+  await server.command('difficulty easy')
   await server.command(
     `execute at ${name} run summon minecraft:zombie ~ ~ ~ {PersistenceRequired:1b,Tags:["${tag}"]}`
   )
@@ -225,6 +226,7 @@ async function killByMob(name = BETA) {
     await sleep(700)
   } finally {
     await server.command(`kill @e[tag=${tag}]`)
+    await server.command('difficulty peaceful')
   }
 }
 
