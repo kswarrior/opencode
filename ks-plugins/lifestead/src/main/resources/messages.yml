@@ -10,13 +10,13 @@ general:
   reloaded: '&aConfiguration, messages, and recipes reloaded.'
   eliminated-action: '&cYou are eliminated. Ask someone to revive you.'
   database-error: '&cA database error occurred. Check the server console.'
+  reload-error: '&cReload failed. Existing recipes and data were preserved. Check the server console.'
   usage: '&cUsage: &f{usage}'
 
 hearts:
   display: '&f{player} &7has &c{hearts}&7 heart(s) &8(&7min &c{min}&8, &7max &c{max}&8).'
   set: '&aSet &f{player}&a''s hearts to &c{hearts}&a.'
-  added: '&aAdded &c{amount} &aheart(s) to &f{player}&a.'
-  removed: '&cRemoved &c{amount} &cheart(s) from &f{player}&c.'
+  set-eliminated: '&c{player} is eliminated. Use &f/ls revive {player}&c to restore them.'
   given: '&aGave &c{amount} &aheart item(s) to &f{player}&a.'
   given-offline: '&aQueued &c{amount} &aheart item(s) for &f{player}&a. They will receive them when they next join.'
   pending-received: '&aReceived &c{amount} &aheart item(s) that were given while you were offline.'
@@ -24,10 +24,10 @@ hearts:
   lost: '&cYou lost &c{amount} &cheart(s).'
   broadcast: '&f{killer} &7stole &c{amount} &7heart(s) from &f{victim}&7.'
   at-max: '&cYou are already at the maximum of &f{max} &cheart(s).'
-  at-min: '&cYou are already at the minimum of &f{min} &cheart(s).'
   withdraw: '&aWithdrew &c{amount} &aheart item(s).'
   withdraw-guard: '&cYou must keep at least &f{guard} &cheart(s) in your body.'
   deposit: '&aDeposited &c{amount} &aheart item(s).'
+  deposit-race: '&cThe heart items changed while depositing. Nothing was consumed; please try again.'
   no-items: '&cYou do not have any heart items.'
   inventory-full: '&eYour inventory was full, so some heart items were dropped at your feet.'
   item-used: '&aYou gained &c1 heart&a.'
@@ -65,7 +65,6 @@ elimination:
 
 combat-log:
   penalty: '&c{player} &7combat logged and lost &c{hearts} &7heart(s).'
-  eliminated: '&c{player} &7combat logged at zero hearts and was eliminated.'
 
 gui:
   revive-title: '&8Revive Beacon &7- Page {page}/{pages}'
