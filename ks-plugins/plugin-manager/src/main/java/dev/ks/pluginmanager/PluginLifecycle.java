@@ -30,9 +30,10 @@ public class PluginLifecycle {
                 for (Field f : c.getDeclaredFields()) {
                     f.setAccessible(true);
                     String name = f.getName().toLowerCase();
-                    if (name.contains("instance") && name.contains("manager")) {
+                    String type = f.getType().getName().toLowerCase();
+                    if (name.contains("manager") || name.contains("instance") || type.contains("manager") || type.contains("instance")) {
                         Object im = f.get(pm);
-                        if (im != null) cleanObject(im, plugin);
+                        if (im != null && im != pm) cleanObject(im, plugin);
                     }
                 }
             }
@@ -84,7 +85,7 @@ public class PluginLifecycle {
         for (Class<?> cls = c; cls != null; cls = cls.getSuperclass()) {
             for (Field f : cls.getDeclaredFields()) {
                 String name = f.getName().toLowerCase();
-                if (!(name.contains("plugin") || name.contains("lookup") || name.contains("command"))) continue;
+                if (!(name.contains("plugin") || name.contains("lookup") || name.contains("command") || name.contains("manager") || name.contains("instance"))) continue;
                 f.setAccessible(true);
                 Object val;
                 try { val = f.get(obj); } catch (Exception e) { continue; }
