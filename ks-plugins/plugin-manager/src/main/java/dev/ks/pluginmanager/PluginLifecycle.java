@@ -22,6 +22,17 @@ public class PluginLifecycle {
     }
 
     public static boolean unload(Plugin plugin) {
+        System.out.println("[KSPM-DEBUG] pm class = " + Bukkit.getPluginManager().getClass().getName());
+        PluginManager pm = Bukkit.getPluginManager();
+        for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
+            System.out.println("[KSPM-DEBUG] class " + c.getName());
+            for (Field f : c.getDeclaredFields()) {
+                f.setAccessible(true);
+                Object v = null;
+                try { v = f.get(pm); } catch (Exception e) { v = "<err>"; }
+                System.out.println("[KSPM-DEBUG]   field " + f.getName() + " : " + f.getType().getName() + " = " + (v==null?"null":v.getClass().getName()));
+            }
+        }
         disable(plugin);
         PluginManager pm = Bukkit.getPluginManager();
         // Try Paper instance manager field
