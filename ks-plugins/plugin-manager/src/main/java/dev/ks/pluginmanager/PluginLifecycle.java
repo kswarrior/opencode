@@ -167,6 +167,7 @@ public class PluginLifecycle {
             Class<?> epCls = Class.forName("io.papermc.paper.plugin.entrypoint.Entrypoint");
             Object pluginEntrypoint = epCls.getField("PLUGIN").get(null);
             Object providerStorage = ((java.util.Map<?,?>) storageMap).get(pluginEntrypoint);
+            System.out.println("[KSPM-DEBUG] providerStorage = " + (providerStorage==null?"null":providerStorage.getClass().getName()));
             if (providerStorage == null) return;
             for (Class<?> c = providerStorage.getClass(); c != null; c = c.getSuperclass()) {
                 for (java.lang.reflect.Field f : c.getDeclaredFields()) {
@@ -175,6 +176,7 @@ public class PluginLifecycle {
                     try { val = f.get(providerStorage); } catch (Exception ignored) { continue; }
                     if (val instanceof java.util.Collection) {
                         java.util.Collection<?> col = (java.util.Collection<?>) val;
+                        System.out.println("[KSPM-DEBUG]   collection field " + f.getName() + " size=" + col.size());
                         java.util.List<Object> toRemove = new java.util.ArrayList<>();
                         for (Object o : col) {
                             if (o instanceof org.bukkit.plugin.java.JavaPlugin) {
