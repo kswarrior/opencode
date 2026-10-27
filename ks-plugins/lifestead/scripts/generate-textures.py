@@ -148,11 +148,10 @@ def main(target):
     heart = render_heart()
     beacon = render_beacon()
     write_png(os.path.join(target, "pack.png"), 128, 128, render_pack_icon(heart))
-    for base in ("item", "gui"):
-        write_png(os.path.join(target, "assets", "lifestead", "textures", base, "heart.png"),
-                  16, 16, heart)
-        write_png(os.path.join(target, "assets", "lifestead", "textures", base, "revive_beacon.png"),
-                  16, 16, beacon)
+    write_png(os.path.join(target, "assets", "lifestead", "textures", "item", "heart.png"),
+              16, 16, heart)
+    write_png(os.path.join(target, "assets", "lifestead", "textures", "item", "revive_beacon.png"),
+              16, 16, beacon)
     print("Generated resource pack textures in " + target)
 
 
