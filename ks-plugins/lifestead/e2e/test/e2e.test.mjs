@@ -207,18 +207,19 @@ async function killByEnvironment(name = BETA, victimHearts = 1) {
 
 async function killByMob(name = BETA) {
   const bot = aliveBot(name)
+  const tag = `e2e_mob_${Date.now()}`
   await setHearts(name, 1)
-  await server.command('difficulty easy')
-  await server.command('time set night')
-  await server.command('gamerule doDaylightCycle false')
-  const death = waitForPlayerDeath(bot, { timeout: 60000 })
-  await server.command(`execute at ${name} run summon minecraft:zombie ~ ~ ~ {PersistenceRequired:1b}`)
-  await death
-  await sleep(700)
-  await server.command('kill @e[type=minecraft:zombie]')
-  await server.command('difficulty peaceful')
-  await server.command('time set day')
-  await server.command('gamerule doDaylightCycle true')
+  await server.command(
+    `execute at ${name} run summon minecraft:zombie ~ ~ ~ {NoAI:1b,Silent:1b,Tags:["${tag}"]}`
+  )
+  try {
+    const death = waitForPlayerDeath(bot, { timeout: 20000 })
+    await server.command(`damage ${name} 20 minecraft:mob_attack by @e[tag=${tag},limit=1]`)
+    await death
+    await sleep(700)
+  } finally {
+    await server.command(`kill @e[tag=${tag}]`)
+  }
 }
 
 async function revive(name = BETA) {
@@ -335,6 +336,7 @@ before(async () => {
   })
   server = new PaperServer({ dir: SERVER_DIR })
   await server.start()
+  await server.command('gamerule doMobSpawning false')
   await server.commandExpect(`op ${ALPHA}`, /server operator|Nothing changed/)
   await server.commandExpect(`op ${BETA}`, /server operator|Nothing changed/)
   await connectBoth()
@@ -987,6 +989,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
       server.lines.some((line) => line.includes('E2EBeta ran out of hearts and was eliminated (environment)'))
     )
     await revive(BETA)
+    await waitForGameMode(beta, 'survival')
     assert.equal(await hearts(beta), 4)
 
     await killByMob(BETA)
