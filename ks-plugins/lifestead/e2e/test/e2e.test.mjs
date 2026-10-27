@@ -277,6 +277,22 @@ function countProfileLookupWarnings() {
   ).length
 }
 
+function isLifesteadErrorLine(line) {
+  return (
+    /^\s*at dev\.lifestead\./i.test(line) ||
+    /\[[^\]]*\b(?:ERROR|SEVERE)\]:\s*\[Lifestead\]/i.test(line) ||
+    /\[Lifestead\].*\b(?:ERROR|SEVERE)\b/i.test(line)
+  )
+}
+
+function pluginErrorLines(lines) {
+  return lines.filter(
+    (line) =>
+      isLifesteadErrorLine(line) &&
+      !/Reload failed: Recipe configuration is invalid/.test(line)
+  )
+}
+
 async function waitForPosition(bot, predicate, { timeout = 15000 } = {}) {
   const deadline = Date.now() + timeout
   while (Date.now() < deadline) {
@@ -381,9 +397,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     assert.ok(
       server.lines.some((line) => line.includes('Successfully registered internal expansion: lifesteal'))
     )
-    const pluginErrors = server.lines.filter(
-      (line) => line.includes('[Lifestead]') && /\bSEVERE\b/.test(line)
-    )
+    const pluginErrors = pluginErrorLines(server.lines)
     assert.deepEqual(pluginErrors, [])
   })
 
@@ -394,6 +408,12 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   test('offline profiles normalize out-of-range hearts on load', async () => {
     assert.equal(await heartsFor('E2ENormHigh'), 20)
     assert.equal(await heartsFor('E2ENormLow'), 0)
+    assert.equal(await papi('E2ENormLow', '%lifesteal_status%'), 'eliminated')
+    assert.equal(await papi('E2ENormLow', '%lifesteal_hearts%'), '0')
+    assert.equal(
+      await papi('E2ENormLow', '%lifesteal_eliminated%'),
+      'true'
+    )
   })
 
   test('help, aliases, unknown subcommands, and console sender', async () => {
