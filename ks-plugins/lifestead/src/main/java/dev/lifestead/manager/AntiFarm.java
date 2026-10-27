@@ -2,6 +2,7 @@ package dev.lifestead.manager;
 
 import dev.lifestead.LifesteadPlugin;
 import dev.lifestead.Settings;
+import dev.lifestead.util.YamlSafety;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -31,6 +32,8 @@ public final class AntiFarm {
     private final Map<Pair, Deque<Long>> history = new HashMap<>();
     private boolean loaded;
     private boolean dirty;
+    private boolean writeBlocked;
+    private boolean warnedBlocked;
 
     public AntiFarm(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -63,12 +66,21 @@ public final class AntiFarm {
                 && rewards.size() >= settings.antiFarmMaxKillsPerVictim) {
             return false;
         }
+        return true;
+    }
 
+    public synchronized void recordReward(Player killer, Player victim) {
+        ensureLoaded();
+        Settings settings = plugin.getSettings();
+        if (!settings.antiFarmEnabled) {
+            return;
+        }
+        Pair pair = new Pair(killer.getUniqueId(), victim.getUniqueId());
+        long now = System.currentTimeMillis();
         lastReward.put(pair, now);
-        rewards.addLast(now);
+        history.computeIfAbsent(pair, ignored -> new ArrayDeque<>()).addLast(now);
         dirty = true;
         save();
-        return true;
     }
 
     public synchronized void reset(UUID player) {
@@ -101,11 +113,6 @@ public final class AntiFarm {
                 && firstAddress.getAddress().equals(secondAddress.getAddress());
     }
 
-    public synchronized int trackedPairs() {
-        ensureLoaded();
-        return lastReward.size();
-    }
-
     public synchronized void prune() {
         ensureLoaded();
         long cutoff = System.currentTimeMillis() - plugin.getSettings().antiFarmWindowMinutes * 60_000L;
@@ -132,6 +139,10 @@ public final class AntiFarm {
 
     public synchronized void save() {
         if (!dirty) {
+            return;
+        }
+        if (writeBlocked) {
+            warnBlocked();
             return;
         }
         YamlConfiguration data = new YamlConfiguration();
@@ -164,12 +175,35 @@ public final class AntiFarm {
         }
     }
 
+    private void warnBlocked() {
+        if (warnedBlocked) {
+            return;
+        }
+        warnedBlocked = true;
+        plugin.getLogger().severe("Refusing to save anti-farm data because antifarm.yml is"
+                + " malformed and could not be quarantined. Repair the file and restart.");
+    }
+
     private void ensureLoaded() {
         if (loaded) {
             return;
         }
         loaded = true;
         if (!file.exists()) {
+            return;
+        }
+        if (!YamlSafety.isParseable(file)) {
+            try {
+                File quarantined = YamlSafety.quarantine(file);
+                plugin.getLogger().severe("antifarm.yml is malformed; moved it to "
+                        + quarantined.getName() + " and started with empty anti-farm data."
+                        + " Repair or restore the quarantined file, then restart.");
+            } catch (IOException exception) {
+                writeBlocked = true;
+                plugin.getLogger().severe("antifarm.yml is malformed and could not be"
+                        + " quarantined: " + exception.getMessage()
+                        + ". Refusing to overwrite it; repair the file and restart.");
+            }
             return;
         }
         YamlConfiguration data = YamlConfiguration.loadConfiguration(file);

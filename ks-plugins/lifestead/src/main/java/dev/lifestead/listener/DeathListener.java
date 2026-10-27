@@ -125,6 +125,7 @@ public final class DeathListener implements Listener {
         if (gained <= 0) {
             return;
         }
+        plugin.getAntiFarm().recordReward(killer, victim);
         plugin.getMessages().send(killer, "hearts.gained",
                 "amount", Integer.toString(gained), "victim", victimProfile.getName());
         plugin.getEffects().steal(killer, victim);
