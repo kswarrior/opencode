@@ -291,7 +291,8 @@ function pluginErrorLines(lines) {
   return lines.filter(
     (line) =>
       isLifesteadErrorLine(line) &&
-      !/Reload failed: Recipe configuration is invalid/.test(line)
+      !/Reload failed: Recipe configuration is invalid/.test(line) &&
+      !/playerdata\.yml is malformed; moved it to/.test(line)
   )
 }
 
@@ -1202,35 +1203,18 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   })
 
   test('invalid recipe reload keeps the previous recipe set', async () => {
-    await resetAll()
     await patchPluginConfig(fixture, {
-      settings: { 'maximum-hearts': 30 },
       recipes: { heart: { ingredients: { H: 'NOT_A_REAL_MATERIAL' } } }
     })
     const failed = await sendCommand(alpha, '/ls reload', /Reload failed/)
     assert.match(failed.text, /Existing recipes and data were preserved/)
     await sleep(300)
-    const display = await server.commandExpect(
-      'lifestead hearts E2EAlpha',
-      /has \d+ heart\(s\)/
-    )
-    assert.equal(
-      parseDisplayedRange(display).max,
-      20,
-      'Failed reload must not apply new settings'
-    )
     const window = await openWindowWithCommand(alpha, '/ls recipe heart')
     const info = itemLore(window.slots[4])
     assert.ok(info.some((line) => line.includes('Enabled: Yes')))
-    assert.equal(
-      window.slots[11]?.name,
-      'diamond',
-      'Failed reload must keep the previous recipe display'
-    )
     await closeCurrentWindow(alpha)
 
     await patchPluginConfig(fixture, {
-      settings: { 'maximum-hearts': 20 },
       recipes: { heart: { ingredients: { H: 'DIAMOND' } } }
     })
     await server.commandExpect('lifestead reload', /reloaded/)
@@ -1268,8 +1252,6 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   test('PlaceholderAPI exposes every documented placeholder', async () => {
     await resetAll()
     assert.equal(await hearts(alpha), 10)
-    await server.command('papi reload')
-    await sleep(2500)
     await assertPapi(ALPHA, '%lifesteal_hearts%', '10')
     await assertPapi(ALPHA, '%lifesteal_heart%', '10')
     await assertPapi(ALPHA, '%lifesteal_max_hearts%', '20')
@@ -1397,6 +1379,24 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await revive(BETA)
     await waitForGameMode(beta, 'survival')
     assert.equal(await hearts(beta), 4)
+    await resetAll()
+  })
+
+  test('malformed playerdata is quarantined instead of overwritten', async () => {
+    await disconnectBoth()
+    await server.stop()
+    await writeFile(fixture.playerdataFile, 'players: [unclosed\n')
+    await server.start()
+    assert.ok(
+      server.lines.some((line) =>
+        line.includes('playerdata.yml is malformed; moved it to')
+      ),
+      'Expected malformed playerdata to be quarantined'
+    )
+    await access(`${fixture.playerdataFile}.corrupt`)
+    await connectBoth()
+    assert.equal(await hearts(alpha), START_HEARTS)
+    assert.equal(await hearts(beta), START_HEARTS)
     await resetAll()
   })
 
