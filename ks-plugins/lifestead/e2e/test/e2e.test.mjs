@@ -1214,4 +1214,23 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     ).catch(() => '')
     assert.ok(yamlData === '' || yamlData.includes('players'))
   })
+
+  test('runtime log is free of plugin errors and profile lookups', async () => {
+    const log = await readFile(path.join(SERVER_DIR, 'logs', 'e2e-server.log'), 'utf8')
+    const lines = log.split('\n')
+    const severe = lines.filter(
+      (line) =>
+        /\[Lifestead\].*(SEVERE|ERROR)/i.test(line) ||
+        (/dev\.lifestead\./i.test(line) && /(Exception|Error)/i.test(line))
+    )
+    assert.deepEqual(severe, [], 'Plugin logged errors during the E2E run')
+    assert.ok(
+      !log.includes("Couldn't look up profile properties"),
+      'Unexpected Mojang profile lookup'
+    )
+    assert.ok(
+      !log.includes('MinecraftClientHttpException'),
+      'Unexpected Mojang HTTP failure'
+    )
+  })
 })
