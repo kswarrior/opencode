@@ -167,6 +167,10 @@ public class PluginLifecycle {
             if (!(storageMap instanceof java.util.Map)) return;
             Class<?> epCls = Class.forName("io.papermc.paper.plugin.entrypoint.Entrypoint");
             Object pluginEntrypoint = epCls.getField("PLUGIN").get(null);
+            System.out.println("[KSPM-DEBUG] storageMap size=" + ((java.util.Map<?,?>)storageMap).size());
+            for (Object k : ((java.util.Map<?,?>)storageMap).keySet()) {
+                System.out.println("[KSPM-DEBUG]   key=" + k + " val=" + ((java.util.Map<?,?>)storageMap).get(k).getClass().getName());
+            }
             Object providerStorage = ((java.util.Map<?,?>) storageMap).get(pluginEntrypoint);
             System.out.println("[KSPM-DEBUG] providerStorage = " + (providerStorage==null?"null":providerStorage.getClass().getName()));
             if (providerStorage == null) return;
