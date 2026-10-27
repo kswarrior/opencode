@@ -61,6 +61,7 @@ elimination:
     combat-log: 'combat log'
     reset: 'reset'
     start: 'start'
+    withdraw: 'withdrawal'
 
 combat-log:
   penalty: '&c{player} &7combat logged and lost &c{hearts} &7heart(s).'
