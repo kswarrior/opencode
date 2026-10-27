@@ -1,6 +1,6 @@
-# Lifestead
+# KS Lifestead
 
-Lifestead is a Spigot-API plugin for Minecraft Java Edition 1.21.11. It turns
+KS Lifestead is a Spigot-API plugin for Minecraft Java Edition 1.21.11. It turns
 player deaths into a heart economy: players steal hearts in PvP, lose hearts on
 death, can withdraw and deposit hearts as items, and are eliminated at zero
 hearts until someone revives them.
@@ -20,7 +20,7 @@ cross-platform verification gap.
 ## Install
 
 1. Build the plugin with `./scripts/build.sh`, or use the JAR in
-   `release/plugin/Lifestead-1.0.0.jar`.
+   `release/plugin/KS-Lifestead-1.0.0.jar`.
 2. Put the JAR in the server's `plugins/` directory.
 3. Optionally install PlaceholderAPI in `plugins/` as well.
 4. Start the server once to generate `plugins/Lifestead/config.yml` and
@@ -149,13 +149,27 @@ To embed a public URL in the generated README, pass it as the second argument
 or set `LIFESTEAD_RESOURCE_PACK_URL`:
 
 ```bash
-./scripts/build-resource-pack.sh 1.0.0 https://cdn.example.com/Lifestead-ResourcePack-1.0.0.zip
+./scripts/build-resource-pack.sh 1.0.0 https://cdn.example.com/KS-Lifestead-ResourcePack-1.0.0.zip
 ```
 
 The URL must use HTTPS. Hosting the ZIP is an operator responsibility; the
 repository does not publish a pack URL. The plugin's configured vanilla
 materials remain usable when a player declines the pack. GUI icons intentionally
 use vanilla items; the pack contains item textures only.
+
+## Author
+
+KS Lifestead is created by **KS Warrior**.
+
+- Website: [ks.42web.io](https://ks.42web.io)
+- Mirror: [ksx.pages.dev](https://ksx.pages.dev)
+- YouTube: [@ks_warrior_pro](https://www.youtube.com/@ks_warrior_pro)
+- Discord: `ks_warrior_pro`
+- Instagram: [@ks_warrior_pro](https://www.instagram.com/ks_warrior_pro/)
+
+The display and release name is **KS Lifestead**. The technical plugin ID, Java
+package, command permissions, and data folder remain `Lifestead` /
+`plugins/Lifestead` so existing servers and items keep working.
 
 ## Build and test
 
@@ -165,7 +179,7 @@ cd e2e && npm ci && npm test
 ```
 
 The Maven build runs JUnit tests and writes
-`release/plugin/Lifestead-1.0.0.jar`. The E2E suite starts a real Paper server
+`release/plugin/KS-Lifestead-1.0.0.jar`. The E2E suite starts a real Paper server
 and drives real Mineflayer bots through the gameplay loop.
 
 E2E environment variables:
@@ -176,7 +190,7 @@ E2E environment variables:
 | `E2E_PAPER_LATEST=1` | Use the latest stable Paper build instead of the pinned build. |
 | `E2E_SERVER_JAR` | Use a local Spigot/Purpur/Paper JAR instead of downloading Paper. |
 | `E2E_SERVER_TYPE` | Label for a local server JAR (`paper`, `purpur`, `spigot`). |
-| `E2E_PLUGIN_JAR` | Test a different Lifestead JAR. |
+| `E2E_PLUGIN_JAR` | Test a different KS Lifestead JAR. |
 | `E2E_REQUIRE_REAL_MELEE=1` | Fail the run if a PvP test falls back to the `/damage` helper. |
 
 ## Known limitations

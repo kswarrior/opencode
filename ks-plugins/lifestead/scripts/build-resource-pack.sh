@@ -11,7 +11,7 @@ if [[ -n "$PUBLIC_URL" && "$PUBLIC_URL" != https://* ]]; then
 fi
 STAGING="$ROOT/build/resource-pack"
 OUTPUT="$ROOT/release/resource-pack"
-ZIP="$OUTPUT/Lifestead-ResourcePack-$VERSION.zip"
+ZIP="$OUTPUT/KS-Lifestead-ResourcePack-$VERSION.zip"
 
 rm -rf "$STAGING"
 mkdir -p "$STAGING" "$OUTPUT"
@@ -32,18 +32,22 @@ if [[ -n "$PUBLIC_URL" ]]; then
     RESOURCE_PACK_LINE="$PUBLIC_URL"
     URL_NOTE="This pack was built with the public URL supplied to the build script."
 else
-    RESOURCE_PACK_LINE="https://your-host.example/Lifestead-ResourcePack-$VERSION.zip"
+    RESOURCE_PACK_LINE="https://your-host.example/KS-Lifestead-ResourcePack-$VERSION.zip"
     URL_NOTE="No public URL was supplied. Host the ZIP on a stable public HTTPS URL before using it on a server."
 fi
 
 cat > "$OUTPUT/README.md" <<EOF
-# Lifestead resource pack $VERSION
+# KS Lifestead resource pack $VERSION
+
+Author: KS Warrior
+- Websites: https://ks.42web.io | https://ksx.pages.dev
+- YouTube, Discord, Instagram: ks_warrior_pro
 
 Target: Minecraft Java Edition 1.21.11 (resource pack format 75)
 
 ## Files
 
-- ZIP: \`Lifestead-ResourcePack-$VERSION.zip\`
+- ZIP: \`KS-Lifestead-ResourcePack-$VERSION.zip\`
 - SHA-1: \`$SHA1\`
 
 $URL_NOTE

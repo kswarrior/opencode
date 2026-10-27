@@ -11,7 +11,7 @@ export const SERVER_DIR = process.env.E2E_SERVER_DIR
   : path.join(E2E_DIR, '.server')
 export const PLUGIN_JAR = process.env.E2E_PLUGIN_JAR
   ? path.resolve(process.env.E2E_PLUGIN_JAR)
-  : path.join(PROJECT_DIR, 'release/plugin/Lifestead-1.0.0.jar')
+  : path.join(PROJECT_DIR, 'release/plugin/KS-Lifestead-1.0.0.jar')
 export const SERVER_JAR = process.env.E2E_SERVER_JAR
   ? path.resolve(process.env.E2E_SERVER_JAR)
   : null

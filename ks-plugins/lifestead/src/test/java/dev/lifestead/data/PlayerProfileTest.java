@@ -1,3 +1,9 @@
+/*
+ * KS Lifestead - by KS Warrior
+ * Websites: https://ks.42web.io | https://ksx.pages.dev
+ * YouTube, Discord, Instagram: ks_warrior_pro
+ */
+
 package dev.lifestead.data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

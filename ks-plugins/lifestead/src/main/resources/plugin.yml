@@ -1,10 +1,14 @@
+# KS Lifestead - by KS Warrior
+# Websites: https://ks.42web.io | https://ksx.pages.dev
+# YouTube, Discord, Instagram: ks_warrior_pro
+
 name: Lifestead
 version: '${project.version}'
 main: dev.lifestead.LifesteadPlugin
 api-version: '1.21.11'
-authors: [Lifestead]
-description: Lifesteal SMP hearts, elimination, revival, heart items, and recipes.
-website: https://github.com/anomalyco/opencode/tree/main/ks-plugins/lifestead
+authors: [KS Warrior]
+description: KS Lifestead - Lifesteal SMP hearts, elimination, revival, heart items, and recipes.
+website: https://ks.42web.io
 softdepend: [PlaceholderAPI]
 # Folia is not supported: the plugin uses the Bukkit scheduler.
 

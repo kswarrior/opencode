@@ -9,8 +9,29 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Lifestead</name>
-    <description>Lifesteal SMP hearts, elimination, revival, and heart items.</description>
+    <name>KS Lifestead</name>
+    <description>KS Lifestead - Lifesteal SMP hearts, elimination, revival, and heart items.</description>
+    <url>https://ks.42web.io</url>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>ks_warrior_pro</id>
+            <name>KS Warrior</name>
+            <url>https://ks.42web.io</url>
+            <roles>
+                <role>Author</role>
+            </roles>
+        </developer>
+    </developers>
+    <organization>
+        <name>KS Warrior</name>
+        <url>https://ks.42web.io</url>
+    </organization>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -61,7 +82,7 @@
     </dependencies>
 
     <build>
-        <finalName>Lifestead-${project.version}</finalName>
+        <finalName>KS-Lifestead-${project.version}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -111,7 +132,8 @@
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Implementation-Title>Lifestead</Implementation-Title>
+                                        <Implementation-Title>KS Lifestead</Implementation-Title>
+                                        <Implementation-Vendor>KS Warrior</Implementation-Vendor>
                                         <Implementation-Version>${project.version}</Implementation-Version>
                                     </manifestEntries>
                                 </transformer>
