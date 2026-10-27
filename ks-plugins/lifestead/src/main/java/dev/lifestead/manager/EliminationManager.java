@@ -257,24 +257,102 @@ public final class EliminationManager {
 
     public Location spawnLocation(Player player) {
         Settings settings = plugin.getSettings();
-        World world = null;
+        World world;
         if (settings.reviveSpawnWorld != null && !settings.reviveSpawnWorld.isBlank()) {
             world = Bukkit.getWorld(settings.reviveSpawnWorld);
-        }
-        if (world == null && !Bukkit.getWorlds().isEmpty()) {
-            world = Bukkit.getWorlds().get(0);
-        }
-        if (world == null) {
+            if (world == null) {
+                if (warnedWorlds.add(settings.reviveSpawnWorld.toLowerCase(java.util.Locale.ROOT))) {
+                    plugin.getLogger().warning("revive.spawn-world '" + settings.reviveSpawnWorld
+                            + "' is not loaded; using the player's current world for revival.");
+                }
+                world = player.getWorld();
+            }
+        } else {
             world = player.getWorld();
         }
         if (world == null) {
             return null;
         }
-        if (settings.reviveUseCoordinates) {
-            return new Location(world, settings.reviveX, settings.reviveY, settings.reviveZ,
-                    settings.reviveYaw, settings.revivePitch);
+        Location base = settings.reviveUseCoordinates
+                ? new Location(world, settings.reviveX, settings.reviveY, settings.reviveZ,
+                        settings.reviveYaw, settings.revivePitch)
+                : world.getSpawnLocation();
+        Location safe = safeLocation(world, base.getX(), base.getY(), base.getZ(),
+                settings.reviveYaw, settings.revivePitch);
+        if (safe != null) {
+            return safe;
         }
-        return world.getSpawnLocation();
+        plugin.getLogger().warning("Could not find a safe revive location in world '"
+                + world.getName() + "'; keeping the player at their current position.");
+        return null;
+    }
+
+    private Location safeLocation(World world, double x, double y, double z,
+            float yaw, float pitch) {
+        int minY = world.getMinHeight() + 1;
+        int maxY = world.getMaxHeight() - 2;
+        int centerX = (int) Math.floor(x);
+        int centerZ = (int) Math.floor(z);
+        int startY = (int) Math.max(minY, Math.min(maxY, Math.floor(y)));
+        for (int radius = 0; radius <= 8; radius++) {
+            for (int dx = -radius; dx <= radius; dx++) {
+                for (int dz = -radius; dz <= radius; dz++) {
+                    if (Math.max(Math.abs(dx), Math.abs(dz)) != radius) {
+                        continue;
+                    }
+                    int blockX = centerX + dx;
+                    int blockZ = centerZ + dz;
+                    int[] candidates = radius == 0
+                            ? new int[] {startY, startY + 1, startY - 1, startY + 2}
+                            : new int[] {world.getHighestBlockYAt(blockX, blockZ) + 1};
+                    for (int candidateY : candidates) {
+                        int clampedY = Math.max(minY, Math.min(maxY, candidateY));
+                        if (isSafe(world, blockX, clampedY, blockZ)) {
+                            Location location = new Location(world, blockX + 0.5, clampedY,
+                                    blockZ + 0.5, yaw, pitch);
+                            return insideBorder(location);
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private Location insideBorder(Location location) {
+        World world = location.getWorld();
+        if (world == null) {
+            return null;
+        }
+        var border = world.getWorldBorder();
+        if (border.isInside(location)) {
+            return location;
+        }
+        double x = Math.max(border.getMinX() + 1.0, Math.min(border.getMaxX() - 1.0, location.getX()));
+        double z = Math.max(border.getMinZ() + 1.0, Math.min(border.getMaxZ() - 1.0, location.getZ()));
+        Location clamped = location.clone();
+        clamped.setX(x);
+        clamped.setZ(z);
+        return border.isInside(clamped) ? clamped : null;
+    }
+
+    private boolean isSafe(World world, int x, int y, int z) {
+        if (y <= world.getMinHeight() + 1 || y >= world.getMaxHeight() - 2) {
+            return false;
+        }
+        Block support = world.getBlockAt(x, y - 1, z);
+        Block feet = world.getBlockAt(x, y, z);
+        Block head = world.getBlockAt(x, y + 1, z);
+        if (!support.getType().isSolid() || support.isLiquid()
+                || UNSAFE_BLOCKS.contains(support.getType())) {
+            return false;
+        }
+        if (feet.getType().isSolid() || feet.isLiquid()
+                || UNSAFE_BLOCKS.contains(feet.getType())) {
+            return false;
+        }
+        return !head.getType().isSolid() && !head.isLiquid()
+                && !UNSAFE_BLOCKS.contains(head.getType());
     }
 
     public void ban(PlayerProfile profile) {
