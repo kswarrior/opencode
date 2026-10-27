@@ -23,6 +23,7 @@ import {
   createTestBot,
   disconnect,
   equipItem,
+  equipOffhandItem,
   findLifesteadItem,
   hearts,
   isLifesteadItem,
@@ -33,6 +34,7 @@ import {
   sleep,
   useItemOnBlockAndWaitForMessage,
   useItemOnBlockAndWaitForWindow,
+  useOffhandItem,
   waitForGameMode,
   waitForMessage,
   waitForPlayerDeath,
@@ -894,6 +896,21 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await clearInventory(ALPHA)
   })
 
+  test('custom heart items work from the off hand', async () => {
+    await resetAll()
+    await clearInventory(ALPHA)
+    await setHearts(ALPHA, 10)
+    await giveLifesteadItem(ALPHA, 'heart', 1)
+    const heart = findLifesteadItem(alpha, 'heart')
+    assert.ok(heart, 'Expected a heart item in the inventory')
+    await equipOffhandItem(alpha, heart)
+    const healed = await useOffhandItem(alpha, /gained 1 heart/)
+    assert.match(healed.text, /gained 1 heart/)
+    await sleep(500)
+    assert.equal(await hearts(alpha), 11)
+    assert.equal(countLifesteadItems(alpha, 'heart'), 0)
+  })
+
   test('custom beacon opens the revive GUI and is consumed on revive', async () => {
     await resetAll()
     await setHearts(BETA, 0)
@@ -1185,18 +1202,35 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   })
 
   test('invalid recipe reload keeps the previous recipe set', async () => {
+    await resetAll()
     await patchPluginConfig(fixture, {
+      settings: { 'maximum-hearts': 30 },
       recipes: { heart: { ingredients: { H: 'NOT_A_REAL_MATERIAL' } } }
     })
     const failed = await sendCommand(alpha, '/ls reload', /Reload failed/)
     assert.match(failed.text, /Existing recipes and data were preserved/)
     await sleep(300)
+    const display = await server.commandExpect(
+      'lifestead hearts E2EAlpha',
+      /has \d+ heart\(s\)/
+    )
+    assert.equal(
+      parseDisplayedRange(display).max,
+      20,
+      'Failed reload must not apply new settings'
+    )
     const window = await openWindowWithCommand(alpha, '/ls recipe heart')
     const info = itemLore(window.slots[4])
     assert.ok(info.some((line) => line.includes('Enabled: Yes')))
+    assert.equal(
+      window.slots[11]?.name,
+      'diamond',
+      'Failed reload must keep the previous recipe display'
+    )
     await closeCurrentWindow(alpha)
 
     await patchPluginConfig(fixture, {
+      settings: { 'maximum-hearts': 20 },
       recipes: { heart: { ingredients: { H: 'DIAMOND' } } }
     })
     await server.commandExpect('lifestead reload', /reloaded/)
@@ -1234,6 +1268,8 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   test('PlaceholderAPI exposes every documented placeholder', async () => {
     await resetAll()
     assert.equal(await hearts(alpha), 10)
+    await server.command('papi reload')
+    await sleep(2500)
     await assertPapi(ALPHA, '%lifesteal_hearts%', '10')
     await assertPapi(ALPHA, '%lifesteal_heart%', '10')
     await assertPapi(ALPHA, '%lifesteal_max_hearts%', '20')
