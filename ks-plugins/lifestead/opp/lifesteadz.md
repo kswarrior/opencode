@@ -420,7 +420,7 @@ Source: `resourcepack/`.
 | `listener/CombatListener.java` | Combat-log tracking and penalty. |
 | `listener/ItemListener.java` | Item use, GUI open, placement/crafting/fuel/smelt/anvil/grindstone/dispense protections. |
 | `listener/GuiListener.java` | Revive and recipe GUI click/drag handling. |
-| `listener/PlayerLifecycleListener.java` | Join, quit, respawn, world-change saves and health sync. |
+| `listener/PlayerLifecycleListener.java` | Join/quit saves, respawn and world-change handling, health sync. |
 | `gui/ReviveGui.java` | Paginated eliminated-player GUI. |
 | `gui/RecipeGui.java` | Recipe menu and recipe-detail GUI. |
 | `data/DataStore.java` | Storage contract. |
