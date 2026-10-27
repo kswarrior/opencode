@@ -364,18 +364,8 @@ public final class EliminationManager {
             return;
         }
         String reason = plugin.getMessages().stripColor(plugin.getSettings().banReason);
-        try {
-            org.bukkit.profile.PlayerProfile banProfile =
-                    Bukkit.createPlayerProfile(profile.getUuid(), profile.getName());
-            BanList<org.bukkit.profile.PlayerProfile> banList =
-                    Bukkit.getBanList(BanList.Type.PROFILE);
-            if (!banList.isBanned(banProfile)) {
-                banList.addBan(banProfile, reason, (Date) null, "Lifestead");
-            }
+        if (profileBan(profile, reason)) {
             return;
-        } catch (RuntimeException exception) {
-            plugin.getLogger().warning("Could not apply a profile ban for " + profile.getName()
-                    + "; falling back to a name ban: " + exception.getMessage());
         }
         try {
             @SuppressWarnings("rawtypes")
@@ -389,21 +379,56 @@ public final class EliminationManager {
         }
     }
 
+    private boolean profileBan(PlayerProfile profile, String reason) {
+        Object target = profileTarget(profile);
+        if (target == null) {
+            return false;
+        }
+        try {
+            @SuppressWarnings("rawtypes")
+            BanList banList = Bukkit.getBanList(BanList.Type.PROFILE);
+            if (!banList.isBanned(target)) {
+                banList.addBan(target, reason, (Date) null, "Lifestead");
+            }
+            return true;
+        } catch (RuntimeException exception) {
+            plugin.getLogger().warning("Could not apply a profile ban for " + profile.getName()
+                    + "; falling back to a name ban: " + exception.getMessage());
+            return false;
+        }
+    }
+
+    private Object profileTarget(PlayerProfile profile) {
+        try {
+            java.lang.reflect.Method create = Bukkit.class.getMethod(
+                    "createProfile", java.util.UUID.class, String.class);
+            return create.invoke(null, profile.getUuid(), profile.getName());
+        } catch (ReflectiveOperationException | RuntimeException ignored) {
+            // Spigot exposes only the Bukkit profile type; try that below.
+        }
+        try {
+            return Bukkit.createPlayerProfile(profile.getUuid(), profile.getName());
+        } catch (RuntimeException exception) {
+            return null;
+        }
+    }
+
     public void pardon(PlayerProfile profile) {
         if (profile == null) {
             return;
         }
-        try {
-            org.bukkit.profile.PlayerProfile banProfile =
-                    Bukkit.createPlayerProfile(profile.getUuid(), profile.getName());
-            BanList<org.bukkit.profile.PlayerProfile> profileBans =
-                    Bukkit.getBanList(BanList.Type.PROFILE);
-            if (profileBans.isBanned(banProfile)) {
-                profileBans.pardon(banProfile);
+        Object target = profileTarget(profile);
+        if (target != null) {
+            try {
+                @SuppressWarnings("rawtypes")
+                BanList profileBans = Bukkit.getBanList(BanList.Type.PROFILE);
+                if (profileBans.isBanned(target)) {
+                    profileBans.pardon(target);
+                }
+            } catch (RuntimeException exception) {
+                plugin.getLogger().warning("Could not pardon the profile for "
+                        + profile.getName() + ": " + exception.getMessage());
             }
-        } catch (RuntimeException exception) {
-            plugin.getLogger().warning("Could not pardon the profile for " + profile.getName()
-                    + ": " + exception.getMessage());
         }
         try {
             @SuppressWarnings("rawtypes")

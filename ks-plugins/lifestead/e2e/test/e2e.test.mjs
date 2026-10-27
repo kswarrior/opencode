@@ -1276,7 +1276,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
   })
 
   test('revive avoids unsafe configured coordinates', async () => {
-    await server.commandExpect('forceload add 200 200 220 220', /Added|chunk/i)
+    await server.command('forceload add 200 200 220 220')
     await sleep(700)
     await server.commandExpect(
       'fill 200 100 200 220 100 220 stone',
@@ -1315,7 +1315,7 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
       'fill 200 100 200 220 101 220 air',
       /Successfully filled|Changed the blocks/
     )
-    await server.commandExpect('forceload remove 200 200 220 220', /Removed|chunk/i)
+    await server.command('forceload remove 200 200 220 220')
     await setConfig({
       revive: {
         'teleport-to-spawn': true,

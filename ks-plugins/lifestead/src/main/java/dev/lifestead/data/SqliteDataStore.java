@@ -101,6 +101,7 @@ public final class SqliteDataStore implements DataStore {
             try (Statement statement = connection.createStatement()) {
                 statement.execute(CREATE_TABLE);
             }
+            columns = columns();
             ensureColumns(columns);
             writeUserVersion();
             loadAll();
