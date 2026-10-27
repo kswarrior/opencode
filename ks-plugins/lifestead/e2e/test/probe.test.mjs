@@ -42,7 +42,8 @@ before(async () => {
     pluginJar: PLUGIN_JAR,
     seedProfiles: [
       { uuid: offlineUuid('E2EProbeBan'), name: 'E2EProbeBan', hearts: 0, eliminated: true },
-      { uuid: offlineUuid('E2EProbeSkin'), name: 'E2EProbeSkin', hearts: 0, eliminated: true }
+      { uuid: offlineUuid('E2EProbeSkin'), name: 'E2EProbeSkin', hearts: 0, eliminated: true },
+      { uuid: offlineUuid('E2EProbeZero'), name: 'E2EProbeZero', hearts: -5, eliminated: false }
     ],
     config: {
       items: { heart: { material: 'DIAMOND_SWORD' } },
@@ -95,6 +96,23 @@ describe('Lifestead targeted probes', { concurrency: 1 }, () => {
       settings: { 'maximum-hearts': 20 },
       recipes: { heart: { ingredients: { H: 'NETHER_STAR' } } }
     })
+  })
+
+  test('normalized zero-heart offline profile is still considered alive', async () => {
+    const display = await server.commandExpect(
+      'lifestead hearts E2EProbeZero',
+      /has \d+ heart\(s\)/
+    )
+    console.log(`[probe] zero-heart profile: ${display}`)
+    assert.match(display, /has 0 heart/)
+    const revive = await sendCommand(alpha, '/ls revive E2EProbeZero', /not eliminated/)
+    console.log(`[probe] revive zero-heart: ${revive.text}`)
+    assert.match(revive.text, /not eliminated/)
+    const set = await sendCommand(alpha, '/ls sethearts E2EProbeZero 5', /Set/)
+    console.log(`[probe] sethearts zero-heart: ${set.text}`)
+    assert.match(set.text, /Set/)
+    await server.commandExpect('lifestead sethearts E2EProbeZero 0', /Set/)
+    await sleep(400)
   })
 
   test('BAN mode writes profile bans and revive pardons them', async () => {
