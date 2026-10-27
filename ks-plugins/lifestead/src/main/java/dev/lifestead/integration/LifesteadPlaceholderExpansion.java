@@ -34,19 +34,25 @@ public final class LifesteadPlaceholderExpansion extends PlaceholderExpansion {
         if (player == null) {
             return "";
         }
-        PlayerProfile profile = plugin.getDataStore().getOrCreate(player.getUniqueId(),
-                player.getName() == null ? player.getUniqueId().toString() : player.getName());
+        PlayerProfile profile = plugin.getDataStore().get(player.getUniqueId());
+        boolean eliminated = profile != null && profile.isEliminated();
+        int hearts = profile != null ? profile.getHearts()
+                : plugin.getSettings().startHearts;
+        if (eliminated) {
+            hearts = 0;
+        }
+        int finalHearts = hearts;
         return switch (params.toLowerCase(Locale.ROOT)) {
-            case "hearts", "heart" -> Integer.toString(profile.getHearts());
+            case "hearts", "heart" -> Integer.toString(finalHearts);
             case "max_hearts", "max-hearts", "max" ->
                     Integer.toString(plugin.getSettings().maxHearts);
             case "min_hearts", "min-hearts", "min" ->
                     Integer.toString(plugin.getSettings().minHearts);
-            case "health" -> Integer.toString(profile.getHearts() * 2);
-            case "eliminated" -> Boolean.toString(profile.isEliminated());
-            case "status" -> profile.isEliminated() ? "eliminated" : "alive";
+            case "health" -> Integer.toString(finalHearts * 2);
+            case "eliminated" -> Boolean.toString(eliminated);
+            case "status" -> eliminated ? "eliminated" : "alive";
             case "withdrawable", "withdrawable_hearts" -> Integer.toString(Math.max(0,
-                    profile.getHearts() - plugin.getSettings().minimumWithdrawRemaining()));
+                    finalHearts - plugin.getSettings().minimumWithdrawRemaining()));
             default -> null;
         };
     }

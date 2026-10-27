@@ -27,7 +27,7 @@ public final class YamlDataStore implements DataStore {
     }
 
     @Override
-    public void init() {
+    public synchronized void init() {
         if (!file.exists()) {
             return;
         }
@@ -60,7 +60,7 @@ public final class YamlDataStore implements DataStore {
     }
 
     @Override
-    public PlayerProfile getOrCreate(UUID uuid, String name) {
+    public synchronized PlayerProfile getOrCreate(UUID uuid, String name) {
         PlayerProfile profile = profiles.get(uuid);
         if (profile == null) {
             profile = new PlayerProfile(uuid, name, plugin.getSettings().startHearts, false, System.currentTimeMillis());
@@ -72,12 +72,12 @@ public final class YamlDataStore implements DataStore {
     }
 
     @Override
-    public PlayerProfile get(UUID uuid) {
+    public synchronized PlayerProfile get(UUID uuid) {
         return profiles.get(uuid);
     }
 
     @Override
-    public PlayerProfile getByName(String name) {
+    public synchronized PlayerProfile getByName(String name) {
         String target = name.toLowerCase(Locale.ROOT);
         for (PlayerProfile profile : profiles.values()) {
             if (profile.getName().toLowerCase(Locale.ROOT).equals(target)) {
@@ -88,18 +88,18 @@ public final class YamlDataStore implements DataStore {
     }
 
     @Override
-    public Collection<PlayerProfile> all() {
+    public synchronized Collection<PlayerProfile> all() {
         return new ArrayList<>(profiles.values());
     }
 
     @Override
-    public void save(PlayerProfile profile) {
+    public synchronized void save(PlayerProfile profile) {
         profiles.put(profile.getUuid(), profile);
         saveAll();
     }
 
     @Override
-    public void saveAll() {
+    public synchronized void saveAll() {
         YamlConfiguration data = new YamlConfiguration();
         ConfigurationSection section = data.createSection("players");
         for (PlayerProfile profile : profiles.values()) {
@@ -128,7 +128,7 @@ public final class YamlDataStore implements DataStore {
     }
 
     @Override
-    public void close() {
+    public synchronized void close() {
         saveAll();
     }
 }
