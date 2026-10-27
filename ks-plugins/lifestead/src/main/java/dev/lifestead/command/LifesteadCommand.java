@@ -262,6 +262,11 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         }
         Player target = Bukkit.getPlayer(profile.getUuid());
         if (target != null) {
+            if (amount > ItemManager.MAX_GIVE_HEART_ITEMS) {
+                plugin.getMessages().send(sender, "hearts.give-limit",
+                        "max", Integer.toString(ItemManager.MAX_GIVE_HEART_ITEMS));
+                return;
+            }
             boolean dropped = plugin.getItems().giveHearts(target, amount);
             plugin.getMessages().send(sender, "hearts.given",
                     "player", target.getName(), "amount", Integer.toString(amount));
@@ -270,11 +275,19 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             }
             return;
         }
-        long total = (long) profile.getPendingHeartItems() + amount;
-        profile.setPendingHeartItems((int) Math.min(Integer.MAX_VALUE, total));
+        int before = profile.getPendingHeartItems();
+        long total = (long) before + amount;
+        int after = (int) Math.min(ItemManager.MAX_GIVE_HEART_ITEMS, total);
+        int queued = after - before;
+        if (queued <= 0) {
+            plugin.getMessages().send(sender, "hearts.give-limit",
+                    "max", Integer.toString(ItemManager.MAX_GIVE_HEART_ITEMS));
+            return;
+        }
+        profile.setPendingHeartItems(after);
         plugin.getDataStore().save(profile);
         plugin.getMessages().send(sender, "hearts.given-offline",
-                "player", profile.getName(), "amount", Integer.toString(amount));
+                "player", profile.getName(), "amount", Integer.toString(queued));
     }
 
     private void setHearts(CommandSender sender, String[] args) {

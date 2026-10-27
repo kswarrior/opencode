@@ -18,7 +18,10 @@ import dev.lifestead.manager.RecipeManager;
 import dev.lifestead.manager.SkinService;
 import dev.lifestead.util.Effects;
 import dev.lifestead.util.MessageService;
+import java.io.File;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class LifesteadPlugin extends JavaPlugin {

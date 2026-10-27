@@ -105,24 +105,28 @@ public final class ItemManager {
     }
 
     public boolean consumeBeaconFromMainHand(Player player) {
-        return consumeFromMainHand(player, BEACON);
+        return consumeFromHand(player, BEACON, EquipmentSlot.HAND);
     }
 
     public boolean consumeHeartFromMainHand(Player player) {
-        return consumeFromMainHand(player, HEART);
+        return consumeFromHand(player, HEART, EquipmentSlot.HAND);
     }
 
-    private boolean consumeFromMainHand(Player player, String type) {
-        ItemStack item = player.getInventory().getItemInMainHand();
+    public boolean consumeHeartFromHand(Player player, EquipmentSlot slot) {
+        return consumeFromHand(player, HEART, slot);
+    }
+
+    private boolean consumeFromHand(Player player, String type, EquipmentSlot slot) {
+        ItemStack item = player.getInventory().getItem(slot);
         if (!isType(item, type)) {
             return false;
         }
         int amount = item.getAmount();
         if (amount <= 1) {
-            player.getInventory().setItemInMainHand(null);
+            player.getInventory().setItem(slot, null);
         } else {
             item.setAmount(amount - 1);
-            player.getInventory().setItemInMainHand(item);
+            player.getInventory().setItem(slot, item);
         }
         return true;
     }
@@ -138,7 +142,7 @@ public final class ItemManager {
     }
 
     public boolean giveHearts(Player player, int amount) {
-        int remaining = amount;
+        int remaining = Math.min(Math.max(0, amount), MAX_GIVE_HEART_ITEMS);
         boolean dropped = false;
         while (remaining > 0) {
             int stackSize = Math.min(64, remaining);
@@ -148,20 +152,9 @@ public final class ItemManager {
         return dropped;
     }
 
-    public boolean giveBeacons(Player player, int amount) {
-        int remaining = amount;
-        boolean dropped = false;
-        while (remaining > 0) {
-            int stackSize = Math.min(64, remaining);
-            dropped |= giveOrDrop(player, createBeacon(stackSize));
-            remaining -= stackSize;
-        }
-        return dropped;
-    }
-
     public void deliverPendingHearts(Player player) {
         PlayerProfile profile = plugin.getHeartManager().profile(player);
-        int pending = profile.getPendingHeartItems();
+        int pending = Math.min(profile.getPendingHeartItems(), MAX_GIVE_HEART_ITEMS);
         if (pending <= 0 || profile.isEliminated()) {
             return;
         }
@@ -174,23 +167,24 @@ public final class ItemManager {
         }
     }
 
-    private ItemStack create(String type, String path, Material fallback, int amount) {
-        Material material = material(path, fallback);
+    private ItemStack create(String type, String path, Material fallback, int amount,
+            FileConfiguration config) {
+        Material material = material(path, fallback, config);
         ItemStack item = new ItemStack(material, Math.max(1, Math.min(64, amount)));
         ItemMeta meta = item.getItemMeta();
         if (meta == null) {
             return item;
         }
-        meta.setDisplayName(plugin.getMessages().colorize(plugin.getConfig().getString(path + ".name", type)));
-        List<String> lore = plugin.getConfig().getStringList(path + ".lore");
+        meta.setDisplayName(plugin.getMessages().colorize(config.getString(path + ".name", type)));
+        List<String> lore = config.getStringList(path + ".lore");
         if (!lore.isEmpty()) {
             meta.setLore(lore.stream().map(plugin.getMessages()::colorize).toList());
         }
-        int customModelData = plugin.getConfig().getInt(path + ".custom-model-data", 0);
+        int customModelData = config.getInt(path + ".custom-model-data", 0);
         if (customModelData > 0) {
             meta.setCustomModelData(customModelData);
         }
-        if (plugin.getConfig().getBoolean(path + ".glow", true)) {
+        if (config.getBoolean(path + ".glow", true)) {
             meta.addEnchant(Enchantment.UNBREAKING, 1, true);
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
@@ -199,8 +193,8 @@ public final class ItemManager {
         return item;
     }
 
-    private Material material(String path, Material fallback) {
-        String configured = plugin.getConfig().getString(path + ".material", fallback.name());
+    private Material material(String path, Material fallback, FileConfiguration config) {
+        String configured = config.getString(path + ".material", fallback.name());
         Material material = configured == null ? null : Material.matchMaterial(configured);
         if (material == null || !material.isItem()) {
             if (warnedMaterials.add(path)) {
