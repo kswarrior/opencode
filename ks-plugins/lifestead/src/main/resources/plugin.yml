@@ -56,6 +56,7 @@ permissions:
     description: Grants all Lifestead administration permissions.
     default: op
     children:
+      lifesteal.use: true
       lifesteal.hearts: true
       lifesteal.hearts.others: true
       lifesteal.withdraw: true

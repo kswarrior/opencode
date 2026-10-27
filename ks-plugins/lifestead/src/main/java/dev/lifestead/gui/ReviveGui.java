@@ -106,7 +106,7 @@ public final class ReviveGui implements InventoryHolder {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         ItemMeta meta = item.getItemMeta();
         if (meta instanceof SkullMeta skullMeta) {
-            skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(profile.getUuid()));
+            skullMeta.setOwnerProfile(Bukkit.createPlayerProfile(profile.getUuid(), profile.getName()));
             skullMeta.setDisplayName(plugin.getMessages().colorize("&a" + profile.getName()));
             skullMeta.setLore(plugin.getMessages().getList("gui.revive-head-lore",
                     "player", profile.getName(),
