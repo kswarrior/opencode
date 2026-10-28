@@ -50,13 +50,14 @@ None.
 
 ## Gaps and Test Coverage
 
+- Regression coverage now includes: malformed `messages.yml`/`config.yml`
+  reloads preserve live state, malformed messages recovery at startup,
+  wrong-shaped `playerdata.yml` and `antifarm.yml` roots, invalid player
+  entries, and the failure-path skin-cache bound.
 - Still no automated test for: YAML write-failure retry (fault injection),
   crash-window combat-tag recovery, online-dead revive teleport, concurrent
-  skin callbacks, zero-gain anti-farm recording, each custom-item protection
-  path (smithing, stonecutter, merchant, beacon, composter, item frames), or
-  the failure-path skin-cache bound.
-- BUG-19 and BUG-20 are currently probe-verified, not suite-covered. Add
-  regression tests when they are fixed.
+  skin callbacks, zero-gain anti-farm recording, or each custom-item protection
+  path (smithing, stonecutter, merchant, beacon, composter, item frames).
 - No large-player-count or long-running soak test. YAML writes all profiles on
   each flush; SQLite saves synchronously on the main thread. No production
   scale measurement yet.
