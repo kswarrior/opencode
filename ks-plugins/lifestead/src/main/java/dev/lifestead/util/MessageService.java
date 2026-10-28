@@ -43,6 +43,7 @@ public final class MessageService {
             throw new IllegalStateException("messages.yml is not valid YAML.");
         }
         messages = YamlConfiguration.loadConfiguration(file);
+        messages.setDefaults(bundledMessages());
         loadLanguageOverlay();
         prefix = colorize(messages.getString("prefix", "&8[&cLifestead&8] &r"));
     }
@@ -75,6 +76,20 @@ public final class MessageService {
                     + exception.getMessage() + " Using bundled messages in memory.");
             loadBundled();
         }
+    }
+
+    private YamlConfiguration bundledMessages() {
+        YamlConfiguration bundled = new YamlConfiguration();
+        try (InputStream stream = plugin.getResource("messages.yml")) {
+            if (stream != null) {
+                bundled.loadFromString(
+                        new String(stream.readAllBytes(), StandardCharsets.UTF_8));
+            }
+        } catch (IOException | InvalidConfigurationException exception) {
+            plugin.getLogger().warning("Could not read bundled messages.yml defaults: "
+                    + exception.getMessage());
+        }
+        return bundled;
     }
 
     private void loadLanguageOverlay() {
