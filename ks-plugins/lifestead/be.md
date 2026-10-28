@@ -11,26 +11,26 @@ PlaceholderAPI 2.12.3, YAML and SQLite storage (`online-mode=false`).
 
 ## Verification Status
 
-- Maven build + unit tests: **PASS**. 6 JUnit tests; shaded JAR built with
+- Maven build + unit tests: **PASS**. 7 JUnit tests; shaded JAR built with
   Maven 3.9.15.
 - Resource pack: **PASS**. ZIP and SHA-1 regenerated; the checked-in
   `release/resource-pack/SHA1.txt` matches the ZIP.
-- End-to-end suite: **41/41 PASS**.
+- End-to-end suite: **45/45 PASS**.
   - The PAPI test helper previously matched the first `INFO]:` line that did
     not contain `PlaceholderAPI`, so it could capture a bot command log line
     (`E2EAlpha issued server command: /ls hearts`) instead of the parsed value.
     It now wraps the placeholder in a unique token and matches that token.
-  - The expected invalid-recipe reload error is explicitly whitelisted by the
-    runtime-log gate; no other `[Lifestead] ERROR`/`SEVERE` lines appeared.
-- PvP melee fallbacks in the final run: **2** (1 in the preceding run). This is
-  the E2E harness falling back to `/damage` when a real melee swing does not
-  register; set `E2E_REQUIRE_REAL_MELEE=1` to make any fallback fatal.
+  - Expected corruption, quarantine, and reload-failure errors are explicitly
+    whitelisted by the runtime-log gate; no other `[Lifestead] ERROR`/`SEVERE`
+    lines appeared.
+- PvP melee fallbacks in the final run: **0**. Set
+  `E2E_REQUIRE_REAL_MELEE=1` to make any `/damage` fallback fatal.
 - Not verified: Spigot, Bukkit, Purpur, Folia, MySQL, other Minecraft versions,
   large-player-count load, long-running soak, or real resource-pack acceptance
   by a client.
 
-The 18 items in the previous revision were fixed and have been removed from
-this backlog. Three new items found after that revision remain open below.
+All items from the previous revision were fixed and have been removed from
+this backlog. No open bugs remain.
 
 Severity:
 
