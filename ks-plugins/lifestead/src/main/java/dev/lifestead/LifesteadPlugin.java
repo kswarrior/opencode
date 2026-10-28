@@ -11,6 +11,7 @@ import dev.lifestead.data.DataStore;
 import dev.lifestead.data.DataStoreFactory;
 import dev.lifestead.data.SqliteDataStore;
 import dev.lifestead.integration.LifesteadPlaceholderExpansion;
+import dev.lifestead.integration.WorldGuardHook;
 import dev.lifestead.listener.CombatListener;
 import dev.lifestead.listener.DeathListener;
 import dev.lifestead.listener.GraceListener;
@@ -43,6 +44,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private HeartManager heartManager;
     private HeartDropManager heartDrops;
     private GraceManager grace;
+    private WorldGuardHook worldGuard;
     private EliminationManager eliminations;
     private ItemManager items;
     private RecipeManager recipes;
@@ -74,6 +76,8 @@ public final class LifesteadPlugin extends JavaPlugin {
         heartManager = new HeartManager(this);
         heartDrops = new HeartDropManager(this);
         grace = new GraceManager(this);
+        worldGuard = new WorldGuardHook(this);
+        worldGuard.initialize();
         eliminations = new EliminationManager(this);
         antiFarm = new AntiFarm(this);
         skins = new SkinService(this);
@@ -147,6 +151,7 @@ public final class LifesteadPlugin extends JavaPlugin {
                     + " but the server is using " + activeDatabase
                     + ". Restart the server to switch storage backends.");
         }
+        worldGuard.initialize();
         startTasks();
         heartManager.resyncAll();
         dataStore.saveAll();
@@ -238,6 +243,10 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     public DataStore getDataStore() {
         return dataStore;
+    }
+
+    public WorldGuardHook getWorldGuard() {
+        return worldGuard;
     }
 
     public GraceManager getGrace() {

@@ -78,6 +78,10 @@ public final class DeathListener implements Listener {
         }
         Settings.WorldRules victimRules = settings.rules(victim.getWorld());
         victimProfile.setDeaths(victimProfile.getDeaths() + 1);
+        if (!plugin.getWorldGuard().canLoseHeart(victim)) {
+            plugin.getDataStore().save(victimProfile);
+            return;
+        }
         if (victim.getGameMode() == GameMode.CREATIVE || victim.getGameMode() == GameMode.SPECTATOR) {
             return;
         }
@@ -133,6 +137,9 @@ public final class DeathListener implements Listener {
             return;
         }
 
+        if (!plugin.getWorldGuard().canGainHeart(killer)) {
+            return;
+        }
         PlayerProfile killerProfile = plugin.getHeartManager().profile(killer);
         if (killerProfile.isEliminated()) {
             return;
