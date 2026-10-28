@@ -101,3 +101,132 @@ Build a lightweight Vault-compatible economy plugin for Paper/Spigot/Bukkit serv
 - Interest enabled by default?
 - Allow negative balances?
 - Where to host transaction logs?
+
+## Reference: Features from Popular Economy Plugins
+
+Compiled from EssentialsX, CMI, XConomy, TheNewEconomy, GemsEconomy, CoinsEngine, UltraEconomy, PlayerPoints, PEconomy, EconomyShopGUI, ShopGUIPlus, Jobs Reborn, AuctionHouse, QuickShop, ChestShop, MobHunting, Trade System, AngelChest.
+
+### Core Economy (EssentialsX / XConomy / CMI)
+- `/balance`, `/pay`, `/baltop`, `/eco give|take|set|reset`, `/worth`, `/sell`
+- Per-rank starting balances, min/max balance, decimal places, currency symbol/name
+- Pay tax, pay toggle (accept payments), pay cooldown, min pay amount
+- Worth system: per-item buy/sell prices, `/worth hand/all/blocks`, `/sell hand/all/blocks/gui`
+- Item condensing/extracting (nuggets <-> ingots <-> blocks)
+- Command costs (charge money to run commands)
+- Per-world balances and money transfer between world groups
+- Integer or decimal balances, rounding modes, thousands separators
+- Offline player support, UUID-mode handling (online/offline/semionline, Geyser)
+- Non-player accounts (factions/towns)
+- Username case-insensitivity, cache disable option
+- Transaction records (MySQL), offline-pay transfer tips
+- Import/convert data from other economy plugins
+- Disable essentials economy takeover option
+
+### Multi-Currency (GemsEconomy / CoinsEngine / UltraEconomy / PEconomy / TNE)
+- Multiple currencies (coins, gems, points, exp, item-based, virtual, mixed)
+- Per-currency icon, balance format, HEX/gradient colors
+- Currency creation/edit/delete commands (`/gcurr`)
+- Per-currency permissions to pay (`pay.<currency>`)
+- Currency exchange between currencies with preset or custom rates
+- Per-shop currency selection
+- Default currency selection
+
+### Banks (CMI / UltraEconomy / CMI)
+- Separate bank accounts, deposit/withdraw
+- Bank interest, fees, upgrades
+- Bank item storage and exp storage
+- Bank employees, standing orders, movement history
+- Fees on transactions
+
+### Cheques / Money Notes (CMI / GemsEconomy / TNE / UltraEconomy)
+- Convert money to cheque item, redeem on right-click
+- Write cheques with amount, admin give cheque
+- Money notes export (item-based currency)
+
+### Item Export / Physical Money (UltraEconomy / TNE)
+- Export money as droppable item
+- Physical shop stands
+
+### Shops (EconomyShopGUI / ShopGUIPlus)
+- Category-based GUI shops, buy/sell
+- In-game shop editing (add/edit/delete items and sections)
+- Unlimited pages, premade layouts, marketplace upload/download
+- Dynamic pricing (supply/demand simulation, min/max bounds)
+- Sell multipliers per permission/rank
+- Sell all button, sell GUI (drop to sell)
+- Discounts via permissions
+- Unsafe enchantments, item conditions/requirements
+- Spawner support, external spawner plugins
+- NPC shops, physical shop stands
+- Sell prices based on item data (damage, enchants)
+- Seasonal price modifiers
+- Import prices from essentials worth.yml
+- Bedrock forms support (Geyser)
+- Sounds and effects
+- PlaceholderAPI price/transaction placeholders
+- Transaction export/logs, DiscordSRV live transactions
+- Pre-translated language files (19+)
+- Custom model data support
+
+### Player Shops (QuickShop / ChestShop / Shopkeepers)
+- Chest + sign shop creation
+- Buy/sell modes, unlimited stock
+- Admin shops
+- Shopkeepers (villager/custom entities)
+- Tax on transactions
+
+### Income Generation (Jobs Reborn / MobHunting)
+- Earn money by mining, farming, fishing, brewing, hunting
+- Per-job income tuning, level-up rewards
+- Mob bounty rewards, mob drops as currency
+- Playtime rewards
+
+### Trading (Trade System / UltraEconomy)
+- Scam-proof player-to-player trade GUI (items, currencies, exp)
+- Trade requests/accept
+
+### Auctions (AuctionHouse / AuctionGUIPlus)
+- List items with price and duration
+- Bid/buyout, auction house GUI
+
+### Interest & Taxes (CMI / UltraEconomy)
+- Periodic interest payouts
+- Taxes on balance/transactions
+- Per-world interest rates
+
+### Economy Extras (CMI / UltraEconomy)
+- Money on death (lose money on death)
+- Mob drops currency
+- Flight charges (pay to fly)
+- Auto rank-up based on balance
+- Pay-per-command
+
+### Cross-Server / Sync (XConomy / GemsEconomy / UltraEconomy / TNE)
+- MySQL/SQLite, BungeeCord/Velocity sync
+- Redis channel sync
+- Cross-server balances
+
+### Placeholders (All)
+- Balance, bank, formatted balance, baltop name/money
+- Item worth placeholders
+- Currency-specific placeholders
+
+### API / Developer (All)
+- Vault Economy provider
+- VaultUnlocked, PlayerPoints, CoinsEngine, GemsEconomy, UltraEconomy hooks
+- Event hooks (balance change, payment, interest)
+- Developer API (deposit/withdraw/getBalance)
+
+### Admin & Ops
+- In-game config GUI (UltraEconomy)
+- Data import/export
+- Update checker
+- Transaction export to CSV
+- Hide players from baltop
+- Pay permission management
+- Non-player account whitelist
+
+### Other (AngelChest / MobHunting / Trade System)
+- Death chest money recovery (AngelChest)
+- Mob hunting rewards and achievements
+- Random tasks rewards (PlayerTask)
