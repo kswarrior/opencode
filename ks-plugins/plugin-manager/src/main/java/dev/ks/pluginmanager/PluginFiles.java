@@ -144,7 +144,8 @@ public final class PluginFiles {
             }
         }
         if (!candidates.isEmpty()) {
-            candidates.sort(Comparator.comparing(File::getName));
+            candidates.sort(Comparator.comparingLong(File::lastModified).reversed()
+                    .thenComparing(File::getName));
             return candidates.get(0);
         }
         File codeSource = codeSourceJar(target);

@@ -33,7 +33,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PluginManagerCommand implements CommandExecutor, TabCompleter {
 
-    private static final String PREFIX = "&8[&bKSPluginManager&8]&r ";
     private static final String USAGE_LOAD = "Usage: /pm load <file.jar>";
     private static final String USAGE_UNLOAD = "Usage: /pm unload <plugin>";
     private static final String USAGE_RELOAD = "Usage: /pm reload <plugin>";
@@ -41,7 +40,6 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
     private static final String USAGE_DISABLE = "Usage: /pm disable <plugin>";
     private static final String USAGE_INSTALL = "Usage: /pm install <url> [file.jar]";
     private static final String USAGE_REMOVE = "Usage: /pm remove <plugin|file.jar>";
-    private static final String USAGE_CHECK = "Usage: /pm check [plugin|all]";
     private static final String USAGE_UPDATE = "Usage: /pm update <plugin>";
 
     private final KSPluginManagerPlugin plugin;
@@ -445,7 +443,8 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
             messages.send(sender, "cannot-self", "&cKSPluginManager cannot remove itself.");
             return;
         }
-        if (!PluginFiles.isSafeJarName(baseName) && !safeFolderName(baseName)) {
+        if (!safeFolderName(baseName) || baseName.equalsIgnoreCase(".kspm")
+                || baseName.equalsIgnoreCase(".paper-remapped")) {
             messages.send(sender, "remove-invalid", "&cInvalid plugin name: {name}", "name", name);
             return;
         }
@@ -461,7 +460,7 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         boolean deletedFolder = false;
         File folder = new File(PluginFiles.pluginsDirectory(plugin), baseName);
         if (folder.isDirectory() && PluginFiles.isInside(PluginFiles.pluginsDirectory(plugin), folder)
-                && !folder.equals(plugin.getDataFolder())) {
+                && !sameFile(folder, plugin.getDataFolder())) {
             deletedFolder = deleteTree(folder.toPath());
         }
         if (!deletedJar && !deletedFolder) {

@@ -43,10 +43,9 @@ final class HttpJson {
             }
             throw new IOException("HTTP " + status + " from " + uri);
         }
-        try (InputStream input = response.body();
-             InputStreamReader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
+        try (InputStream input = response.body()) {
+            ByteArrayOutputStream body = new ByteArrayOutputStream();
             byte[] buffer = new byte[8192];
-            StringBuilder body = new StringBuilder();
             int read;
             int total = 0;
             while ((read = input.read(buffer)) != -1) {
@@ -54,10 +53,10 @@ final class HttpJson {
                 if (total > MAX_JSON_BYTES) {
                     throw new IOException("JSON response is too large: " + uri);
                 }
-                body.append(new String(buffer, 0, read, StandardCharsets.UTF_8));
+                body.write(buffer, 0, read);
             }
             try {
-                return JsonParser.parseString(body.toString());
+                return JsonParser.parseString(body.toString(StandardCharsets.UTF_8));
             } catch (JsonParseException exception) {
                 throw new IOException("Invalid JSON from " + uri, exception);
             }
