@@ -18,6 +18,7 @@ import dev.lifestead.listener.ItemListener;
 import dev.lifestead.listener.PlayerLifecycleListener;
 import dev.lifestead.manager.AntiFarm;
 import dev.lifestead.manager.EliminationManager;
+import dev.lifestead.manager.HeartDropManager;
 import dev.lifestead.manager.HeartManager;
 import dev.lifestead.manager.ItemManager;
 import dev.lifestead.manager.RecipeManager;
@@ -38,6 +39,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private MessageService messages;
     private DataStore dataStore;
     private HeartManager heartManager;
+    private HeartDropManager heartDrops;
     private EliminationManager eliminations;
     private ItemManager items;
     private RecipeManager recipes;
@@ -67,6 +69,7 @@ public final class LifesteadPlugin extends JavaPlugin {
 
         items = new ItemManager(this);
         heartManager = new HeartManager(this);
+        heartDrops = new HeartDropManager(this);
         eliminations = new EliminationManager(this);
         antiFarm = new AntiFarm(this);
         skins = new SkinService(this);
@@ -230,6 +233,10 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     public DataStore getDataStore() {
         return dataStore;
+    }
+
+    public HeartDropManager getDrops() {
+        return heartDrops;
     }
 
     public HeartManager getHeartManager() {

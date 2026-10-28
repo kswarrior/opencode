@@ -9,6 +9,7 @@ package dev.lifestead.listener;
 import dev.lifestead.LifesteadPlugin;
 import dev.lifestead.Settings;
 import dev.lifestead.data.PlayerProfile;
+import dev.lifestead.manager.HeartDropManager;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -119,6 +120,9 @@ public final class DeathListener implements Listener {
         }
 
         if (category != Category.PVP || killer == null || killer.equals(victim)) {
+            if (lost > 0 && "ITEM".equals(settings.drops.natural())) {
+                plugin.getDrops().drop(victim, lost, HeartDropManager.NATURAL);
+            }
             return;
         }
         Settings.WorldRules killerRules = settings.rules(killer.getWorld());
@@ -130,14 +134,28 @@ public final class DeathListener implements Listener {
         }
 
         PlayerProfile killerProfile = plugin.getHeartManager().profile(killer);
-        if (killerProfile.isEliminated()
-                || !plugin.getHeartManager().hasSpace(killerProfile, killer.getWorld())) {
+        if (killerProfile.isEliminated()) {
             return;
         }
         if (killerProfile.getGraceUntil() > now && settings.grace.blockGain()) {
             return;
         }
+        if (!plugin.getHeartManager().hasSpace(killerProfile, killer.getWorld())) {
+            if (lost > 0 && !"NONE".equals(settings.drops.maxHearts())) {
+                plugin.getDrops().drop(killer, lost, HeartDropManager.MAX_HEARTS);
+            }
+            return;
+        }
         if (!plugin.getAntiFarm().canReward(killer, victim)) {
+            if (lost > 0 && "ITEM".equals(settings.drops.pvp())) {
+                plugin.getDrops().drop(victim, lost, HeartDropManager.COOLDOWN);
+            }
+            return;
+        }
+        if ("ITEM".equals(settings.drops.pvp())) {
+            if (lost > 0) {
+                plugin.getDrops().drop(victim, lost, HeartDropManager.PVP);
+            }
             return;
         }
 
