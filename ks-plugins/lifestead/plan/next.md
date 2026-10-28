@@ -107,7 +107,7 @@ Goal: close every gap a server owner checks before choosing KS Lifestead over Li
 
 - [ ] Expand PAPI: rank, hearts remaining, revives, grace, combat, deathban, database, online, and withdrawable.
 - [ ] Move all text into external language files with fallback; ship English plus at least one non-English sample.
-- [ ] Add an audit log for kills, revives, admin changes, trades, shop purchases, and bounties, with `/ls audit` and optional webhook delivery.
+- [ ] Add an audit log for kills, revives, admin changes, and storage migrations, with `/ls audit` and optional webhook delivery; extend it to trades, shop purchases, and bounties when those ship.
 - [ ] Add `/ls status` for storage, schema, integrations, and task health.
 - [ ] Add an optional update checker.
 
