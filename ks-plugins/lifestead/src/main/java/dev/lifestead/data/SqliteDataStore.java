@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -38,7 +39,7 @@ public final class SqliteDataStore implements DataStore {
         }
     }
 
-    private static final int SCHEMA_VERSION = 2;
+    private static final int SCHEMA_VERSION = 3;
 
     private static final String CREATE_TABLE = """
             CREATE TABLE IF NOT EXISTS lifestead_players (
@@ -52,15 +53,33 @@ public final class SqliteDataStore implements DataStore {
                 eliminated_at INTEGER NOT NULL DEFAULT 0,
                 pending_heart_items INTEGER NOT NULL DEFAULT 0,
                 pending_revive_teleport INTEGER NOT NULL DEFAULT 0,
-                combat_at INTEGER NOT NULL DEFAULT 0
+                combat_at INTEGER NOT NULL DEFAULT 0,
+                revives INTEGER NOT NULL DEFAULT 0,
+                deaths INTEGER NOT NULL DEFAULT 0,
+                grace_until INTEGER NOT NULL DEFAULT 0,
+                ban_until INTEGER NOT NULL DEFAULT 0,
+                last_gain_at INTEGER NOT NULL DEFAULT 0
+            )
+            """;
+
+    private static final String CREATE_AUDIT_TABLE = """
+            CREATE TABLE IF NOT EXISTS lifestead_audit (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                at INTEGER NOT NULL,
+                actor_uuid TEXT,
+                actor_name TEXT,
+                action TEXT NOT NULL,
+                target_uuid TEXT,
+                target_name TEXT,
+                detail TEXT
             )
             """;
 
     private static final String UPSERT = """
             INSERT INTO lifestead_players (uuid, name, hearts, eliminated, last_seen,
                 kills, last_kill_at, eliminated_at, pending_heart_items, pending_revive_teleport,
-                combat_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                combat_at, revives, deaths, grace_until, ban_until, last_gain_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(uuid) DO UPDATE SET
                 name = excluded.name,
                 hearts = excluded.hearts,
@@ -71,7 +90,17 @@ public final class SqliteDataStore implements DataStore {
                 eliminated_at = excluded.eliminated_at,
                 pending_heart_items = excluded.pending_heart_items,
                 pending_revive_teleport = excluded.pending_revive_teleport,
-                combat_at = excluded.combat_at
+                combat_at = excluded.combat_at,
+                revives = excluded.revives,
+                deaths = excluded.deaths,
+                grace_until = excluded.grace_until,
+                ban_until = excluded.ban_until,
+                last_gain_at = excluded.last_gain_at
+            """;
+
+    private static final String INSERT_AUDIT = """
+            INSERT INTO lifestead_audit (at, actor_uuid, actor_name, action, target_uuid,
+                target_name, detail) VALUES (?, ?, ?, ?, ?, ?, ?)
             """;
 
     private final LifesteadPlugin plugin;
@@ -97,43 +126,44 @@ public final class SqliteDataStore implements DataStore {
                         + "; this Lifestead build supports up to " + SCHEMA_VERSION
                         + ". Back up and migrate the database before starting.");
             }
-            boolean tableExists = tableExists();
+            boolean tableExists = tableExists("lifestead_players");
             Set<String> columns = columns();
             boolean migrationNeeded = tableExists
                     && (version < SCHEMA_VERSION || missingColumns(columns));
             if (migrationNeeded) {
-                backup(version);
+                backup("v" + version + "-" + System.currentTimeMillis());
             }
             try (Statement statement = connection.createStatement()) {
                 statement.execute(CREATE_TABLE);
+                statement.execute(CREATE_AUDIT_TABLE);
             }
             columns = columns();
             ensureColumns(columns);
             writeUserVersion();
             loadAll();
         } catch (SQLException exception) {
-            try {
-                connection.close();
-            } catch (SQLException ignored) {
-                // The original failure is more useful.
-            }
-            connection = null;
-            closed = true;
+            closeConnection();
             if (exception instanceof SchemaException schemaException) {
                 throw schemaException;
             }
             throw new SchemaException("SQLite schema initialization failed: "
                     + exception.getMessage(), exception);
         } catch (Exception exception) {
-            try {
-                connection.close();
-            } catch (SQLException ignored) {
-                // The original failure is more useful.
-            }
-            connection = null;
-            closed = true;
+            closeConnection();
             throw exception;
         }
+    }
+
+    private void closeConnection() {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException ignored) {
+            // The original failure is more useful.
+        }
+        connection = null;
+        closed = true;
     }
 
     private int readUserVersion() throws SQLException {
@@ -149,12 +179,13 @@ public final class SqliteDataStore implements DataStore {
         }
     }
 
-    private boolean tableExists() throws SQLException {
-        try (Statement statement = connection.createStatement();
-                ResultSet result = statement.executeQuery(
-                        "SELECT name FROM sqlite_master WHERE type = 'table'"
-                                + " AND name = 'lifestead_players'")) {
-            return result.next();
+    private boolean tableExists(String table) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(
+                "SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?")) {
+            statement.setString(1, table);
+            try (ResultSet result = statement.executeQuery()) {
+                return result.next();
+            }
         }
     }
 
@@ -175,15 +206,20 @@ public final class SqliteDataStore implements DataStore {
                 || !columns.contains("eliminated_at")
                 || !columns.contains("pending_heart_items")
                 || !columns.contains("pending_revive_teleport")
-                || !columns.contains("combat_at");
+                || !columns.contains("combat_at")
+                || !columns.contains("revives")
+                || !columns.contains("deaths")
+                || !columns.contains("grace_until")
+                || !columns.contains("ban_until")
+                || !columns.contains("last_gain_at");
     }
 
-    private void backup(int version) throws SQLException {
+    private void backup(String reason) throws SQLException {
         if (!file.exists()) {
             return;
         }
         File backup = new File(file.getParentFile(),
-                file.getName() + ".bak-v" + version + "-" + System.currentTimeMillis());
+                file.getName() + ".bak-" + reason);
         try {
             Files.copy(file.toPath(), backup.toPath(), StandardCopyOption.COPY_ATTRIBUTES);
             plugin.getLogger().info("Backed up SQLite data to " + backup.getName()
@@ -201,6 +237,11 @@ public final class SqliteDataStore implements DataStore {
         addColumn(columns, "pending_heart_items", "INTEGER NOT NULL DEFAULT 0");
         addColumn(columns, "pending_revive_teleport", "INTEGER NOT NULL DEFAULT 0");
         addColumn(columns, "combat_at", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "revives", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "deaths", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "grace_until", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "ban_until", "INTEGER NOT NULL DEFAULT 0");
+        addColumn(columns, "last_gain_at", "INTEGER NOT NULL DEFAULT 0");
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("UPDATE lifestead_players SET eliminated_at = last_seen"
                     + " WHERE eliminated <> 0 AND eliminated_at = 0");
@@ -222,7 +263,8 @@ public final class SqliteDataStore implements DataStore {
                 ResultSet result = statement.executeQuery(
                         "SELECT uuid, name, hearts, eliminated, last_seen, kills, last_kill_at,"
                                 + " eliminated_at, pending_heart_items, pending_revive_teleport,"
-                                + " combat_at FROM lifestead_players")) {
+                                + " combat_at, revives, deaths, grace_until, ban_until,"
+                                + " last_gain_at FROM lifestead_players")) {
             while (result.next()) {
                 try {
                     UUID uuid = UUID.fromString(result.getString("uuid"));
@@ -236,7 +278,12 @@ public final class SqliteDataStore implements DataStore {
                             result.getLong("last_kill_at"),
                             result.getLong("eliminated_at"),
                             result.getInt("pending_heart_items"),
-                            result.getLong("combat_at"));
+                            result.getLong("combat_at"),
+                            result.getInt("revives"),
+                            result.getInt("deaths"),
+                            result.getLong("grace_until"),
+                            result.getLong("ban_until"),
+                            result.getLong("last_gain_at"));
                     profile.setPendingReviveTeleport(result.getInt("pending_revive_teleport") != 0);
                     profiles.put(uuid, profile);
                 } catch (IllegalArgumentException exception) {
@@ -247,10 +294,12 @@ public final class SqliteDataStore implements DataStore {
     }
 
     @Override
-    public synchronized PlayerProfile getOrCreate(UUID uuid, String name) {
+    public synchronized PlayerProfile getOrCreate(UUID uuid, String name, int startHearts) {
         PlayerProfile profile = profiles.get(uuid);
         if (profile == null) {
-            profile = new PlayerProfile(uuid, name, plugin.getSettings().startHearts, false, System.currentTimeMillis());
+            int initialHearts = startHearts > 0 ? startHearts : plugin.getSettings().startHearts;
+            profile = new PlayerProfile(uuid, name, initialHearts, false,
+                    System.currentTimeMillis());
             profiles.put(uuid, profile);
         } else {
             profile.setName(name);
@@ -326,6 +375,45 @@ public final class SqliteDataStore implements DataStore {
         }
     }
 
+    @Override
+    public synchronized void replaceAll(Collection<PlayerProfile> replacement) {
+        if (closed || connection == null) {
+            warnClosed();
+            return;
+        }
+        profiles.clear();
+        for (PlayerProfile profile : replacement) {
+            profiles.put(profile.getUuid(), profile.copy());
+        }
+        try {
+            connection.setAutoCommit(false);
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate("DELETE FROM lifestead_players");
+            }
+            try (PreparedStatement statement = connection.prepareStatement(UPSERT)) {
+                for (PlayerProfile profile : profiles.values()) {
+                    bind(statement, profile);
+                    statement.addBatch();
+                }
+                statement.executeBatch();
+            }
+            connection.commit();
+        } catch (SQLException exception) {
+            plugin.getLogger().severe("Could not replace player data: " + exception.getMessage());
+            try {
+                connection.rollback();
+            } catch (SQLException ignored) {
+                // Nothing else can be done here.
+            }
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException ignored) {
+                // Nothing else can be done here.
+            }
+        }
+    }
+
     private void bind(PreparedStatement statement, PlayerProfile profile) throws SQLException {
         statement.setString(1, profile.getUuid().toString());
         statement.setString(2, profile.getName());
@@ -338,6 +426,99 @@ public final class SqliteDataStore implements DataStore {
         statement.setInt(9, profile.getPendingHeartItems());
         statement.setInt(10, profile.isPendingReviveTeleport() ? 1 : 0);
         statement.setLong(11, profile.getCombatAt());
+        statement.setInt(12, profile.getRevives());
+        statement.setInt(13, profile.getDeaths());
+        statement.setLong(14, profile.getGraceUntil());
+        statement.setLong(15, profile.getBanUntil());
+        statement.setLong(16, profile.getLastGainAt());
+    }
+
+    @Override
+    public synchronized void audit(AuditEntry entry) {
+        if (entry == null || closed || connection == null) {
+            return;
+        }
+        try (PreparedStatement statement = connection.prepareStatement(INSERT_AUDIT)) {
+            statement.setLong(1, entry.at());
+            statement.setString(2, entry.actorUuid() == null ? null : entry.actorUuid().toString());
+            statement.setString(3, entry.actorName());
+            statement.setString(4, entry.action());
+            statement.setString(5, entry.targetUuid() == null ? null : entry.targetUuid().toString());
+            statement.setString(6, entry.targetName());
+            statement.setString(7, entry.detail());
+            statement.executeUpdate();
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Could not write an audit entry: " + exception.getMessage());
+        }
+    }
+
+    @Override
+    public synchronized List<AuditEntry> recentAudit(int limit) {
+        List<AuditEntry> entries = new ArrayList<>();
+        if (closed || connection == null) {
+            return entries;
+        }
+        try (PreparedStatement statement = connection.prepareStatement(
+                "SELECT at, actor_uuid, actor_name, action, target_uuid, target_name, detail"
+                        + " FROM lifestead_audit ORDER BY id DESC LIMIT ?")) {
+            statement.setInt(1, Math.max(1, limit));
+            try (ResultSet result = statement.executeQuery()) {
+                while (result.next()) {
+                    entries.add(new AuditEntry(
+                            result.getLong("at"),
+                            parseUuid(result.getString("actor_uuid")),
+                            result.getString("actor_name"),
+                            result.getString("action"),
+                            parseUuid(result.getString("target_uuid")),
+                            result.getString("target_name"),
+                            result.getString("detail")));
+                }
+            }
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Could not read the audit log: " + exception.getMessage());
+        }
+        return entries;
+    }
+
+    private UUID parseUuid(String value) {
+        if (value == null || value.isBlank()) {
+            return null;
+        }
+        try {
+            return UUID.fromString(value);
+        } catch (IllegalArgumentException exception) {
+            return null;
+        }
+    }
+
+    @Override
+    public String backendName() {
+        return "SQLITE";
+    }
+
+    @Override
+    public int schemaVersion() {
+        return SCHEMA_VERSION;
+    }
+
+    @Override
+    public int pendingWrites() {
+        return 0;
+    }
+
+    @Override
+    public boolean isHealthy() {
+        return !closed && connection != null;
+    }
+
+    @Override
+    public synchronized void backup(String reason) throws Exception {
+        if (!file.exists()) {
+            return;
+        }
+        File backup = new File(file.getParentFile(),
+                file.getName() + ".bak-" + reason + "-" + System.currentTimeMillis());
+        Files.copy(file.toPath(), backup.toPath(), StandardCopyOption.COPY_ATTRIBUTES);
     }
 
     private void warnClosed() {
