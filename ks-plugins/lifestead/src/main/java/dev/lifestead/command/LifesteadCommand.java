@@ -7,9 +7,12 @@
 package dev.lifestead.command;
 
 import dev.lifestead.LifesteadPlugin;
+import dev.lifestead.data.DataMigration;
 import dev.lifestead.data.PlayerProfile;
 import dev.lifestead.gui.RecipeGui;
+import dev.lifestead.manager.HeartDropManager;
 import dev.lifestead.manager.ItemManager;
+import dev.lifestead.manager.LeaderboardManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -46,6 +49,11 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             case "sethearts" -> setHearts(sender, args);
             case "eliminate" -> eliminate(sender, args);
             case "reset" -> reset(sender, args);
+            case "top", "leaderboard" -> top(sender, args);
+            case "status" -> status(sender);
+            case "audit" -> audit(sender, args);
+            case "migrate" -> migrate(sender, args);
+            case "deathban" -> deathban(sender, args);
             case "reload" -> reload(sender);
             default -> plugin.getMessages().send(sender, "general.unknown-command");
         }
@@ -96,6 +104,21 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         }
         if (plain.contains("/ls reload")) {
             return "lifesteal.reload";
+        }
+        if (plain.contains("/ls top")) {
+            return "lifesteal.top";
+        }
+        if (plain.contains("/ls status")) {
+            return "lifesteal.status";
+        }
+        if (plain.contains("/ls audit")) {
+            return "lifesteal.audit";
+        }
+        if (plain.contains("/ls migrate")) {
+            return "lifesteal.migrate";
+        }
+        if (plain.contains("/ls deathban")) {
+            return "lifesteal.deathban";
         }
         return null;
     }
@@ -383,6 +406,157 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         plugin.getMessages().send(sender, "elimination.reset", "player", profile.getName());
     }
 
+    private void top(CommandSender sender, String[] args) {
+        if (!permission(sender, "lifesteal.top")) {
+            return;
+        }
+        String type = plugin.getLeaderboard().type(args.length >= 2 ? args[1] : "hearts");
+        int limit = plugin.getSettings().leaderboard.size();
+        plugin.getMessages().sendRaw(sender, "leaderboard.header", "type", type);
+        List<LeaderboardManager.Entry> entries = plugin.getLeaderboard().top(type, limit);
+        if (entries.isEmpty()) {
+            plugin.getMessages().send(sender, "leaderboard.empty");
+            return;
+        }
+        for (int index = 0; index < entries.size(); index++) {
+            LeaderboardManager.Entry entry = entries.get(index);
+            plugin.getMessages().sendRaw(sender, "leaderboard.entry",
+                    "position", Integer.toString(index + 1),
+                    "player", entry.name(),
+                    "value", Integer.toString(entry.value()));
+        }
+    }
+
+    private void status(CommandSender sender) {
+        if (!permission(sender, "lifesteal.status")) {
+            return;
+        }
+        plugin.getMessages().sendRaw(sender, "general.status-header");
+        plugin.getMessages().sendRaw(sender, "general.status-line",
+                "key", "storage", "value", plugin.getDataStore().backendName());
+        plugin.getMessages().sendRaw(sender, "general.status-line",
+                "key", "schema", "value", Integer.toString(plugin.getDataStore().schemaVersion()));
+        plugin.getMessages().sendRaw(sender, "general.status-line",
+                "key", "healthy", "value", Boolean.toString(plugin.getDataStore().isHealthy()));
+        plugin.getMessages().sendRaw(sender, "general.status-line",
+                "key", "players", "value", Integer.toString(plugin.getDataStore().all().size()));
+        plugin.getMessages().sendRaw(sender, "general.status-line",
+                "key", "worldguard", "value", Boolean.toString(
+                        plugin.getServer().getPluginManager().getPlugin("WorldGuard") != null
+                                && plugin.getSettings().worldGuardEnabled));
+        plugin.getMessages().sendRaw(sender, "general.status-line",
+                "key", "drops", "value", plugin.getSettings().drops.pvp() + "/"
+                        + plugin.getSettings().drops.natural() + "/"
+                        + plugin.getSettings().drops.maxHearts());
+        plugin.getMessages().sendRaw(sender, "general.status-line",
+                "key", "combat", "value", Boolean.toString(
+                        plugin.getSettings().combatLogEnabled));
+    }
+
+    private void audit(CommandSender sender, String[] args) {
+        if (!permission(sender, "lifesteal.audit")) {
+            return;
+        }
+        int limit = 10;
+        if (args.length >= 2) {
+            try {
+                limit = Math.max(1, Math.min(100, Integer.parseInt(args[1])));
+            } catch (NumberFormatException exception) {
+                plugin.getMessages().send(sender, "general.invalid-number", "input", args[1]);
+                return;
+            }
+        }
+        List<dev.lifestead.data.AuditEntry> entries = plugin.getDataStore().recentAudit(limit);
+        plugin.getMessages().sendRaw(sender, "general.audit-header");
+        if (entries.isEmpty()) {
+            plugin.getMessages().send(sender, "general.audit-empty");
+            return;
+        }
+        for (dev.lifestead.data.AuditEntry entry : entries) {
+            plugin.getMessages().sendRaw(sender, "general.audit-line",
+                    "action", entry.action(),
+                    "actor", entry.actorName(),
+                    "target", entry.targetName(),
+                    "detail", entry.detail());
+        }
+    }
+
+    private void migrate(CommandSender sender, String[] args) {
+        if (!permission(sender, "lifesteal.migrate")) {
+            return;
+        }
+        if (args.length < 2) {
+            plugin.getMessages().send(sender, "general.usage",
+                    "usage", "/ls migrate <yaml|sqlite|mysql> [confirm]");
+            return;
+        }
+        String target = args[1].toUpperCase(Locale.ROOT);
+        if (args.length < 3 || !args[2].equalsIgnoreCase("confirm")) {
+            plugin.getMessages().send(sender, "general.migrate-confirm",
+                    "target", target,
+                    "count", Integer.toString(plugin.getDataStore().all().size()));
+            return;
+        }
+        try {
+            DataMigration.Result result = DataMigration.migrate(plugin, target);
+            plugin.getConfig().set("database.type", result.target());
+            plugin.saveConfig();
+            plugin.getMessages().send(sender, "general.migrate-complete",
+                    "source", result.source(),
+                    "target", result.target(),
+                    "count", Integer.toString(result.profiles()));
+            plugin.getMessages().send(sender, "general.restart-required");
+        } catch (Exception exception) {
+            plugin.getLogger().severe("Migration failed: " + exception.getMessage());
+            plugin.getMessages().send(sender, "general.migrate-failed",
+                    "error", exception.getMessage());
+        }
+    }
+
+    private void deathban(CommandSender sender, String[] args) {
+        if (!permission(sender, "lifesteal.deathban")) {
+            return;
+        }
+        String action = args.length >= 2 ? args[1].toLowerCase(Locale.ROOT) : "list";
+        if (action.equals("purge")) {
+            int count = 0;
+            long now = System.currentTimeMillis();
+            for (PlayerProfile profile : plugin.getDataStore().all()) {
+                if (!profile.isEliminated() || profile.getBanUntil() <= 0
+                        || profile.getBanUntil() > now) {
+                    continue;
+                }
+                profile.setBanUntil(0L);
+                plugin.getEliminations().revive(profile, sender);
+                count++;
+            }
+            plugin.getDataStore().saveAll();
+            plugin.getMessages().send(sender, "deathban.purged", "count", Integer.toString(count));
+            return;
+        }
+        if (!action.equals("list")) {
+            plugin.getMessages().send(sender, "general.usage",
+                    "usage", "/ls deathban <list|purge>");
+            return;
+        }
+        plugin.getMessages().sendRaw(sender, "deathban.header");
+        long now = System.currentTimeMillis();
+        int count = 0;
+        for (PlayerProfile profile : plugin.getDataStore().all()) {
+            if (!profile.isEliminated()) {
+                continue;
+            }
+            long remaining = Math.max(0L, profile.getBanUntil() - now);
+            plugin.getMessages().sendRaw(sender, "deathban.line",
+                    "player", profile.getName(),
+                    "remaining", Long.toString((remaining + 999L) / 1000L));
+            count++;
+        }
+        if (count == 0) {
+            plugin.getMessages().send(sender, "deathban.empty");
+        }
+    }
+
     private void reload(CommandSender sender) {
         if (!permission(sender, "lifesteal.reload")) {
             return;
@@ -410,6 +584,11 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             addIf(options, sender, "sethearts", "lifesteal.set");
             addIf(options, sender, "eliminate", "lifesteal.eliminate");
             addIf(options, sender, "reset", "lifesteal.reset");
+            addIf(options, sender, "top", "lifesteal.top");
+            addIf(options, sender, "status", "lifesteal.status");
+            addIf(options, sender, "audit", "lifesteal.audit");
+            addIf(options, sender, "migrate", "lifesteal.migrate");
+            addIf(options, sender, "deathban", "lifesteal.deathban");
             addIf(options, sender, "reload", "lifesteal.reload");
             return filter(options, args[0]);
         }
@@ -437,6 +616,12 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
                 }
                 case "recipe" -> sender.hasPermission("lifesteal.recipe")
                         ? filter(List.of("heart", "beacon", "all"), args[1]) : List.of();
+                case "top" -> sender.hasPermission("lifesteal.top")
+                        ? filter(List.of("hearts", "kills", "revives"), args[1]) : List.of();
+                case "migrate" -> sender.hasPermission("lifesteal.migrate")
+                        ? filter(List.of("yaml", "sqlite", "mysql"), args[1]) : List.of();
+                case "deathban" -> sender.hasPermission("lifesteal.deathban")
+                        ? filter(List.of("list", "purge"), args[1]) : List.of();
                 default -> List.of();
             };
         }

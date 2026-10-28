@@ -33,6 +33,7 @@ public final class DataMigration {
         if (sourceType.equals(targetType)) {
             throw new IllegalStateException("The active storage is already " + targetType + ".");
         }
+        source.flush();
         source.backup("before-migration");
         Collection<PlayerProfile> profiles = source.all();
         DataStore target = DataStoreFactory.create(plugin, targetType);
