@@ -125,6 +125,58 @@ public final class EliminationManager {
         }
     }
 
+    public boolean tryRevive(PlayerProfile profile, CommandSender actor, boolean confirmed) {
+        Settings settings = plugin.getSettings();
+        if (!profile.isEliminated()) {
+            return false;
+        }
+        if (settings.reviveConfirm && !confirmed) {
+            plugin.getMessages().send(actor, "elimination.revive-confirm",
+                    "player", profile.getName());
+            return false;
+        }
+        if (settings.maxRevives > 0 && profile.getRevives() >= settings.maxRevives
+                && (actor == null || !actor.hasPermission("lifesteal.revive.unlimited"))) {
+            plugin.getMessages().send(actor, "elimination.revive-limit",
+                    "player", profile.getName(), "max", Integer.toString(settings.maxRevives));
+            return false;
+        }
+        Player payer = actor instanceof Player player ? player : null;
+        if (settings.reviveCostHeartItems > 0 && payer != null
+                && plugin.getItems().countHearts(payer) < settings.reviveCostHeartItems) {
+            plugin.getMessages().send(actor, "elimination.revive-cost-missing",
+                    "amount", Integer.toString(settings.reviveCostHeartItems));
+            return false;
+        }
+        if (settings.reviveCastSeconds > 0) {
+            plugin.getMessages().send(actor, "elimination.revive-casting",
+                    "player", profile.getName(),
+                    "seconds", Integer.toString(settings.reviveCastSeconds));
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                if (!profile.isEliminated()) {
+                    return;
+                }
+                if (settings.reviveCostHeartItems > 0 && payer != null
+                        && plugin.getItems().consumeHearts(payer, settings.reviveCostHeartItems)
+                        < settings.reviveCostHeartItems) {
+                    plugin.getMessages().send(actor, "elimination.revive-cost-missing",
+                            "amount", Integer.toString(settings.reviveCostHeartItems));
+                    return;
+                }
+                revive(profile, actor);
+            }, settings.reviveCastSeconds * 20L);
+            return true;
+        }
+        if (settings.reviveCostHeartItems > 0 && payer != null
+                && plugin.getItems().consumeHearts(payer, settings.reviveCostHeartItems)
+                < settings.reviveCostHeartItems) {
+            plugin.getMessages().send(actor, "elimination.revive-cost-missing",
+                    "amount", Integer.toString(settings.reviveCostHeartItems));
+            return false;
+        }
+        return revive(profile, actor);
+    }
+
     public boolean revive(PlayerProfile profile, CommandSender actor) {
         if (!profile.isEliminated()) {
             return false;
@@ -135,6 +187,7 @@ public final class EliminationManager {
         profile.setEliminatedAt(0L);
         profile.setBanUntil(0L);
         profile.setHearts(settings.reviveHearts);
+        profile.setRevives(profile.getRevives() + 1);
         profile.setLastSeen(System.currentTimeMillis());
         profile.setPendingReviveTeleport(settings.reviveTeleport
                 && (online == null || online.isDead()));

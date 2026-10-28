@@ -245,7 +245,8 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             plugin.getMessages().send(sender, "elimination.not-eliminated", "player", profile.getName());
             return;
         }
-        plugin.getEliminations().revive(profile, sender);
+        boolean confirmed = args.length >= 3 && args[2].equalsIgnoreCase("confirm");
+        plugin.getEliminations().tryRevive(profile, sender, confirmed);
     }
 
     private void giveHeart(CommandSender sender, String[] args) {

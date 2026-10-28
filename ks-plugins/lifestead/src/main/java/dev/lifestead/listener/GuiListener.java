@@ -80,7 +80,7 @@ public final class GuiListener implements Listener {
             plugin.getMessages().send(player, "items.beacon-missing");
             return;
         }
-        if (!plugin.getEliminations().revive(profile, player)) {
+        if (!plugin.getEliminations().tryRevive(profile, player, true)) {
             return;
         }
         if (consume && plugin.getItems().consumeBeaconFromHand(player)) {
