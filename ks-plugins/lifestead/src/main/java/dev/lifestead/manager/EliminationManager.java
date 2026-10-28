@@ -12,6 +12,7 @@ import dev.lifestead.data.PlayerProfile;
 import java.util.Date;
 import java.util.EnumSet;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
@@ -88,6 +89,7 @@ public final class EliminationManager {
             }
             plugin.getEffects().eliminated(online);
         }
+        dispatchCommands(settings.commandsOnElimination, profile);
         if (settings.eliminateAnnounce) {
             plugin.getMessages().broadcast("elimination.eliminated",
                     "victim", profile.getName(),
@@ -232,6 +234,7 @@ public final class EliminationManager {
             plugin.getMessages().send(actor, "elimination.revive-offline", "player", profile.getName());
         }
 
+        dispatchCommands(settings.commandsOnRevive, profile);
         if (settings.eliminateAnnounce) {
             plugin.getMessages().broadcast("elimination.revive-broadcast",
                     "player", profile.getName(), "hearts", Integer.toString(profile.getHearts()));
@@ -352,6 +355,25 @@ public final class EliminationManager {
         plugin.getLogger().warning("Could not find a safe revive location in world '"
                 + world.getName() + "'; keeping the player at their current position.");
         return null;
+    }
+
+    private void dispatchCommands(List<String> commands, PlayerProfile profile) {
+        if (commands == null || commands.isEmpty()) {
+            return;
+        }
+        Player online = Bukkit.getPlayer(profile.getUuid());
+        String world = online == null ? "" : online.getWorld().getName();
+        for (String command : commands) {
+            if (command == null || command.isBlank()) {
+                continue;
+            }
+            String parsed = command
+                    .replace("{player}", profile.getName())
+                    .replace("{uuid}", profile.getUuid().toString())
+                    .replace("{world}", world)
+                    .replace("{hearts}", Integer.toString(profile.getHearts()));
+            plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), parsed);
+        }
     }
 
     private long settingsDeathbanUntil(long now) {

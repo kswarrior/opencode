@@ -155,6 +155,13 @@ public final class DeathListener implements Listener {
             }
             return;
         }
+        if (settings.gainCooldownSeconds > 0
+                && now - killerProfile.getLastGainAt() < settings.gainCooldownSeconds * 1000L) {
+            if (lost > 0 && "ITEM".equals(settings.drops.pvp())) {
+                plugin.getDrops().drop(victim, lost, HeartDropManager.COOLDOWN);
+            }
+            return;
+        }
         if (!plugin.getAntiFarm().canReward(killer, victim)) {
             if (lost > 0 && "ITEM".equals(settings.drops.pvp())) {
                 plugin.getDrops().drop(victim, lost, HeartDropManager.COOLDOWN);
@@ -174,6 +181,12 @@ public final class DeathListener implements Listener {
             return;
         }
         plugin.getAntiFarm().recordReward(killer, victim);
+        killerProfile.setLastGainAt(now);
+        plugin.getDataStore().save(killerProfile);
+        if (victimProfile.isEliminated() && settings.bonusHeartOnElimination > 0) {
+            plugin.getHeartManager().addHearts(killerProfile, settings.bonusHeartOnElimination,
+                    killer.getWorld());
+        }
         plugin.getMessages().send(killer, "hearts.gained",
                 "amount", Integer.toString(gained), "victim", victimProfile.getName());
         plugin.getEffects().steal(killer, victim);
