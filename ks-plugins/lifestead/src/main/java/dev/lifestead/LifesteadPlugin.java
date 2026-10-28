@@ -18,6 +18,7 @@ import dev.lifestead.listener.GraceListener;
 import dev.lifestead.listener.GuiListener;
 import dev.lifestead.listener.ItemListener;
 import dev.lifestead.listener.PlayerLifecycleListener;
+import dev.lifestead.listener.PvpListener;
 import dev.lifestead.manager.AntiFarm;
 import dev.lifestead.manager.EliminationManager;
 import dev.lifestead.manager.GraceManager;
@@ -194,6 +195,7 @@ public final class LifesteadPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CombatListener(this), this);
         getServer().getPluginManager().registerEvents(new ItemListener(this), this);
         getServer().getPluginManager().registerEvents(new GuiListener(this), this);
+        getServer().getPluginManager().registerEvents(new PvpListener(this), this);
     }
 
     private void startTasks() {
