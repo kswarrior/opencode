@@ -1,0 +1,16 @@
+# Spanish (Spain) overlay for KS Lifestead.
+# Missing keys fall back to messages.yml.
+general:
+  no-permission: '&cNo tienes permiso para hacer eso.'
+  player-only: '&cEste comando solo puede usarlo un jugador.'
+  unknown-command: '&cSubcomando desconocido. Usa &f/ls help&c.'
+  player-not-found: '&cNo se encontró al jugador &f{player}&c.'
+  eliminated-action: '&cEstás eliminado. Pide a alguien que te reviva.'
+hearts:
+  display: '&f{player} &7tiene &c{hearts}&7 corazón(es) &8(&7mín &c{min}&8, &7máx &c{max}&8).'
+  lost: '&cHas perdido &c{amount} &ccorazón(es).'
+  gained: '&aHas robado &c{amount} &acorazón(es) a &f{victim}&a.'
+elimination:
+  eliminated-self: '&c¡Has sido eliminado! Tus corazones llegaron a cero.'
+  spectator: '&7Ahora eres espectador. Espera a que alguien te reviva.'
+  revive-self: '&a¡Has sido revivido!'

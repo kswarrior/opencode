@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,6 +43,7 @@ public final class MessageService {
             throw new IllegalStateException("messages.yml is not valid YAML.");
         }
         messages = YamlConfiguration.loadConfiguration(file);
+        loadLanguageOverlay();
         prefix = colorize(messages.getString("prefix", "&8[&cLifestead&8] &r"));
     }
 
@@ -72,6 +74,44 @@ public final class MessageService {
             plugin.getLogger().severe("The restored messages.yml is still malformed: "
                     + exception.getMessage() + " Using bundled messages in memory.");
             loadBundled();
+        }
+    }
+
+    private void loadLanguageOverlay() {
+        String language = plugin.getConfig().getString("language", "en");
+        if (language == null || language.isBlank() || language.equalsIgnoreCase("en")) {
+            return;
+        }
+        if (!language.matches("[A-Za-z0-9_-]+")) {
+            plugin.getLogger().warning("Invalid language '" + language + "'; using English messages.");
+            return;
+        }
+        File overlayFile = new File(new File(plugin.getDataFolder(), "lang"), language + ".yml");
+        YamlConfiguration overlay = null;
+        if (overlayFile.exists() && YamlSafety.isParseable(overlayFile)) {
+            overlay = YamlConfiguration.loadConfiguration(overlayFile);
+        } else {
+            String resource = "lang/" + language + ".yml";
+            try (InputStream stream = plugin.getResource(resource)) {
+                if (stream != null) {
+                    overlay = new YamlConfiguration();
+                    overlay.loadFromString(new String(stream.readAllBytes(), StandardCharsets.UTF_8));
+                }
+            } catch (IOException | InvalidConfigurationException exception) {
+                plugin.getLogger().warning("Could not read " + resource + ": "
+                        + exception.getMessage());
+            }
+        }
+        if (overlay == null) {
+            plugin.getLogger().warning("Language '" + language
+                    + "' was not found; using English messages.");
+            return;
+        }
+        for (String key : overlay.getKeys(true)) {
+            Object value = overlay.get(key);
+            if (!(value instanceof ConfigurationSection)) {
+                messages.set(key, value);
+            }
         }
     }
 
