@@ -168,7 +168,7 @@ public final class DeathListener implements Listener {
             }
             return;
         }
-        if ("ITEM".equals(settings.drops.pvp())) {
+        if ("ITEM".equals(settings.drops.pvp()) || !settings.drops.autoGive()) {
             if (lost > 0) {
                 plugin.getDrops().drop(victim, lost, HeartDropManager.PVP);
             }

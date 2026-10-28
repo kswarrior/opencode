@@ -162,8 +162,8 @@ pvp:
   beds: true
 
 drops:
-  # DIRECT gives the heart item directly to the killer, ITEM drops it in the world,
-  # and NONE preserves the classic direct heart transfer.
+  # DIRECT gives hearts directly to the killer, ITEM drops a heart item in the world,
+  # and NONE loses the heart.
   pvp: NONE
   natural: NONE
   max-hearts: NONE
