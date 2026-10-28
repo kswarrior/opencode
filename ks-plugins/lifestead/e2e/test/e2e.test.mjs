@@ -4,7 +4,7 @@
  * YouTube, Discord, Instagram: ks_warrior_pro
  */
 import assert from 'node:assert/strict'
-import { access, readFile, writeFile } from 'node:fs/promises'
+import { access, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { once } from 'node:events'
 import path from 'node:path'
 import { after, before, describe, test } from 'node:test'
