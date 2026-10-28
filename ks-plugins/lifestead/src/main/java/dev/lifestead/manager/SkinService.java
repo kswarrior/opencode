@@ -73,7 +73,7 @@ public final class SkinService {
             lookup = Bukkit.createPlayerProfile(uuid, name);
         } catch (RuntimeException exception) {
             inFlight.remove(uuid);
-            cache.put(uuid, new Entry(null, System.currentTimeMillis() + FAILURE_TTL_MILLIS));
+            cacheFailure(uuid);
             return;
         }
         try {
@@ -82,21 +82,32 @@ public final class SkinService {
                     .whenComplete((updated, failure) -> {
                         List<BiConsumer<UUID, PlayerProfile>> pending = inFlight.remove(uuid);
                         if (failure != null || updated == null || !updated.isComplete()) {
-                            cache.put(uuid, new Entry(null,
-                                    System.currentTimeMillis() + FAILURE_TTL_MILLIS));
+                            cacheFailure(uuid);
                             return;
                         }
-                        cache.put(uuid, new Entry(updated,
-                                System.currentTimeMillis() + SUCCESS_TTL_MILLIS));
-                        prune();
+                        cacheSuccess(uuid, updated);
                         if (pending != null) {
                             notifyMainThread(uuid, updated, pending);
                         }
                     });
         } catch (RuntimeException exception) {
             inFlight.remove(uuid);
-            cache.put(uuid, new Entry(null, System.currentTimeMillis() + FAILURE_TTL_MILLIS));
+            cacheFailure(uuid);
         }
+    }
+
+    void cacheFailure(UUID uuid) {
+        cache.put(uuid, new Entry(null, System.currentTimeMillis() + FAILURE_TTL_MILLIS));
+        prune();
+    }
+
+    private void cacheSuccess(UUID uuid, PlayerProfile profile) {
+        cache.put(uuid, new Entry(profile, System.currentTimeMillis() + SUCCESS_TTL_MILLIS));
+        prune();
+    }
+
+    int cachedCount() {
+        return cache.size();
     }
 
     private void notifyMainThread(UUID uuid, PlayerProfile profile,
