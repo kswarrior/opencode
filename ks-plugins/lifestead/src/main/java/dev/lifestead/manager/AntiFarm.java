@@ -213,29 +213,87 @@ public final class AntiFarm {
             return;
         }
         YamlConfiguration data = YamlConfiguration.loadConfiguration(file);
+        for (String rootKey : data.getKeys(false)) {
+            if (!rootKey.equals("pairs")) {
+                quarantineCorrupt("has an invalid root key '" + rootKey + "'");
+                return;
+            }
+        }
+        if (data.contains("pairs") && !data.isConfigurationSection("pairs")) {
+            quarantineCorrupt("has an invalid pairs section");
+            return;
+        }
         ConfigurationSection pairs = data.getConfigurationSection("pairs");
         if (pairs == null) {
             return;
         }
+        Map<Pair, Long> loadedLastReward = new HashMap<>();
+        Map<Pair, Deque<Long>> loadedHistory = new HashMap<>();
         for (String key : pairs.getKeys(false)) {
+            ConfigurationSection pairSection = pairs.getConfigurationSection(key);
+            if (pairSection == null) {
+                quarantineCorrupt("has an invalid pair entry '" + key + "'");
+                return;
+            }
             String[] parts = key.split("\\|", 2);
             if (parts.length != 2) {
-                continue;
+                quarantineCorrupt("has an invalid pair key '" + key + "'");
+                return;
             }
+            Pair pair;
             try {
-                Pair pair = new Pair(UUID.fromString(parts[0]), UUID.fromString(parts[1]));
-                long last = pairs.getLong(key + ".last", 0L);
-                if (last > 0) {
-                    lastReward.put(pair, last);
-                }
-                List<Long> rewards = pairs.getLongList(key + ".rewards");
-                if (!rewards.isEmpty()) {
-                    Deque<Long> historyValues = new ArrayDeque<>(rewards);
-                    history.put(pair, historyValues);
-                }
+                pair = new Pair(UUID.fromString(parts[0]), UUID.fromString(parts[1]));
             } catch (IllegalArgumentException exception) {
-                plugin.getLogger().warning("Skipping invalid anti-farm pair: " + key);
+                quarantineCorrupt("has an invalid pair key '" + key + "'");
+                return;
             }
+            Object rawLast = pairSection.get("last");
+            if (rawLast != null && !(rawLast instanceof Number)) {
+                quarantineCorrupt("has an invalid last value for '" + key + "'");
+                return;
+            }
+            long last = pairSection.getLong("last", 0L);
+            if (last > 0) {
+                loadedLastReward.put(pair, last);
+            }
+            List<Long> rewards = new ArrayList<>();
+            if (pairSection.contains("rewards")) {
+                if (!pairSection.isList("rewards")) {
+                    quarantineCorrupt("has an invalid rewards list for '" + key + "'");
+                    return;
+                }
+                List<?> rawRewards = pairSection.getList("rewards");
+                if (rawRewards != null) {
+                    for (Object rawReward : rawRewards) {
+                        if (!(rawReward instanceof Number number)) {
+                            quarantineCorrupt("has an invalid reward for '" + key + "'");
+                            return;
+                        }
+                        rewards.add(number.longValue());
+                    }
+                }
+            }
+            if (!rewards.isEmpty()) {
+                loadedHistory.put(pair, new ArrayDeque<>(rewards));
+            }
+        }
+        lastReward.putAll(loadedLastReward);
+        history.putAll(loadedHistory);
+    }
+
+    private void quarantineCorrupt(String detail) {
+        lastReward.clear();
+        history.clear();
+        try {
+            File quarantined = YamlSafety.quarantine(file);
+            plugin.getLogger().severe("antifarm.yml " + detail + "; moved it to "
+                    + quarantined.getName() + " and started with empty anti-farm data."
+                    + " Repair or restore the quarantined file, then restart.");
+        } catch (IOException exception) {
+            writeBlocked = true;
+            plugin.getLogger().severe("antifarm.yml " + detail + " and could not be"
+                    + " quarantined: " + exception.getMessage()
+                    + ". Refusing to overwrite it; repair the file and restart.");
         }
     }
 }

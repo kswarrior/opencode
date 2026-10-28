@@ -58,7 +58,7 @@ public final class SkinService {
             return;
         }
         if (!Bukkit.getOnlineMode()) {
-            cache.put(uuid, new Entry(null, System.currentTimeMillis() + FAILURE_TTL_MILLIS));
+            cacheFailure(uuid);
             return;
         }
         List<BiConsumer<UUID, PlayerProfile>> callbacks = new CopyOnWriteArrayList<>();

@@ -62,33 +62,63 @@ public final class YamlDataStore implements DataStore {
             return;
         }
         YamlConfiguration data = YamlConfiguration.loadConfiguration(file);
+        for (String rootKey : data.getKeys(false)) {
+            if (!rootKey.equals("players")) {
+                quarantineCorrupt("has an invalid root key '" + rootKey + "'");
+                return;
+            }
+        }
+        if (data.contains("players") && !data.isConfigurationSection("players")) {
+            quarantineCorrupt("has an invalid players section");
+            return;
+        }
         ConfigurationSection section = data.getConfigurationSection("players");
         if (section == null) {
             return;
         }
+        Map<UUID, PlayerProfile> loaded = new LinkedHashMap<>();
         for (String key : section.getKeys(false)) {
+            UUID uuid;
             try {
-                UUID uuid = UUID.fromString(key);
-                ConfigurationSection player = section.getConfigurationSection(key);
-                if (player == null) {
-                    continue;
-                }
-                String name = player.getString("name", uuid.toString());
-                int hearts = player.getInt("hearts", plugin.getSettings().startHearts);
-                boolean eliminated = player.getBoolean("eliminated", false);
-                long lastSeen = player.getLong("last-seen", 0L);
-                int kills = player.getInt("kills", 0);
-                long lastKillAt = player.getLong("last-kill-at", 0L);
-                long eliminatedAt = player.getLong("eliminated-at", eliminated ? lastSeen : 0L);
-                int pendingHeartItems = player.getInt("pending-heart-items", 0);
-                long combatAt = player.getLong("combat-at", 0L);
-                PlayerProfile profile = new PlayerProfile(uuid, name, hearts, eliminated, lastSeen,
-                        kills, lastKillAt, eliminatedAt, pendingHeartItems, combatAt);
-                profile.setPendingReviveTeleport(player.getBoolean("pending-revive-teleport", false));
-                profiles.put(uuid, profile);
+                uuid = UUID.fromString(key);
             } catch (IllegalArgumentException exception) {
-                plugin.getLogger().warning("Skipping invalid player data key: " + key);
+                quarantineCorrupt("has an invalid player key '" + key + "'");
+                return;
             }
+            ConfigurationSection player = section.getConfigurationSection(key);
+            if (player == null) {
+                quarantineCorrupt("has an invalid player entry '" + key + "'");
+                return;
+            }
+            String name = player.getString("name", uuid.toString());
+            int hearts = player.getInt("hearts", plugin.getSettings().startHearts);
+            boolean eliminated = player.getBoolean("eliminated", false);
+            long lastSeen = player.getLong("last-seen", 0L);
+            int kills = player.getInt("kills", 0);
+            long lastKillAt = player.getLong("last-kill-at", 0L);
+            long eliminatedAt = player.getLong("eliminated-at", eliminated ? lastSeen : 0L);
+            int pendingHeartItems = player.getInt("pending-heart-items", 0);
+            long combatAt = player.getLong("combat-at", 0L);
+            PlayerProfile profile = new PlayerProfile(uuid, name, hearts, eliminated, lastSeen,
+                    kills, lastKillAt, eliminatedAt, pendingHeartItems, combatAt);
+            profile.setPendingReviveTeleport(player.getBoolean("pending-revive-teleport", false));
+            loaded.put(uuid, profile);
+        }
+        profiles.putAll(loaded);
+    }
+
+    private void quarantineCorrupt(String detail) {
+        profiles.clear();
+        try {
+            File quarantined = YamlSafety.quarantine(file);
+            plugin.getLogger().severe("playerdata.yml " + detail + "; moved it to "
+                    + quarantined.getName() + " and started with empty player data."
+                    + " Repair or restore the quarantined file, then restart.");
+        } catch (IOException exception) {
+            storageBlocked = true;
+            plugin.getLogger().severe("playerdata.yml " + detail + " and could not be"
+                    + " quarantined: " + exception.getMessage()
+                    + ". Refusing to overwrite it; repair the file and restart.");
         }
     }
 
