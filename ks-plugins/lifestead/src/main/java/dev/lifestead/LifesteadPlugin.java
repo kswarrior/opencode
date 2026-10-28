@@ -51,9 +51,9 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        saveDefaultConfig();
+        loadConfigAtStartup();
         messages = new MessageService(this);
-        messages.reload();
+        messages.reloadAtStartup();
         settings = new Settings(this);
         settings.load();
 
@@ -111,8 +111,15 @@ public final class LifesteadPlugin extends JavaPlugin {
     }
 
     public void reloadAll() {
-        FileConfiguration candidate = YamlConfiguration.loadConfiguration(
-                new File(getDataFolder(), "config.yml"));
+        File configFile = new File(getDataFolder(), "config.yml");
+        if (configFile.exists() && !YamlSafety.isParseable(configFile)) {
+            throw new IllegalStateException("config.yml is not valid YAML.");
+        }
+        File messagesFile = new File(getDataFolder(), "messages.yml");
+        if (messagesFile.exists() && !YamlSafety.isParseable(messagesFile)) {
+            throw new IllegalStateException("messages.yml is not valid YAML.");
+        }
+        FileConfiguration candidate = YamlConfiguration.loadConfiguration(configFile);
         RecipeManager.PreparedRecipes prepared;
         try {
             prepared = recipes.prepare(candidate);
@@ -136,6 +143,24 @@ public final class LifesteadPlugin extends JavaPlugin {
         startTasks();
         heartManager.resyncAll();
         dataStore.saveAll();
+    }
+
+    private void loadConfigAtStartup() {
+        File configFile = new File(getDataFolder(), "config.yml");
+        saveDefaultConfig();
+        if (YamlSafety.isParseable(configFile)) {
+            return;
+        }
+        try {
+            File quarantined = YamlSafety.quarantine(configFile);
+            getLogger().severe("config.yml is malformed; moved it to "
+                    + quarantined.getName() + " and restored the default configuration."
+                    + " Repair or restore the quarantined file, then restart.");
+            saveDefaultConfig();
+        } catch (IOException exception) {
+            getLogger().severe("config.yml is malformed and could not be quarantined: "
+                    + exception.getMessage() + ". Using defaults without overwriting it.");
+        }
     }
 
     private void registerCommand() {
