@@ -1,7 +1,34 @@
 # KS Plugin Manager
-auto-update-check: true
+#
+# auto-update-check only logs available updates to the console. It never
+# installs anything automatically. Use /pm update <plugin> to apply an update.
+auto-update-check: false
 update-interval-hours: 24
+
+# Sources are tried in this order. Supported: modrinth, hangar, spigot.
 sources:
   - modrinth
   - hangar
   - spigot
+
+updates:
+  # Include alpha/beta/snapshot releases when checking for updates.
+  include-prerelease: false
+  # Allow /pm update to install a release that does not list this server
+  # version as supported. A rollback is still attempted if loading fails.
+  allow-incompatible: false
+  # Hard cap for downloaded jars.
+  max-download-size-mb: 100
+  # Optional source/project pins. Without a pin the checker searches all
+  # sources and only accepts an exact plugin-name match.
+  #
+  # projects:
+  #   EssentialsX: modrinth:essentialsx
+  #   ViaVersion: hangar:ViaVersion
+  #   SomePlugin: spigot:12345
+  projects: {}
+
+# Fallback prefix for older installations. The main language file is
+# messages.yml.
+messages:
+  prefix: "&8[&bKSPluginManager&8]&r "
