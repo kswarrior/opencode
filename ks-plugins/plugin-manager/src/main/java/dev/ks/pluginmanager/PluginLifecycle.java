@@ -147,13 +147,17 @@ public final class PluginLifecycle {
             } catch (Throwable ignored) {
             }
             try {
-                manager.unsubscribeFromPermission(name, plugin);
+                if (plugin instanceof org.bukkit.permissions.Permissible permissible) {
+                    manager.unsubscribeFromPermission(name, permissible);
+                }
             } catch (Throwable ignored) {
             }
         }
         try {
-            manager.unsubscribeFromDefaultPerms(true, plugin);
-            manager.unsubscribeFromDefaultPerms(false, plugin);
+            if (plugin instanceof org.bukkit.permissions.Permissible permissible) {
+                manager.unsubscribeFromDefaultPerms(true, permissible);
+                manager.unsubscribeFromDefaultPerms(false, permissible);
+            }
         } catch (Throwable ignored) {
         }
     }
