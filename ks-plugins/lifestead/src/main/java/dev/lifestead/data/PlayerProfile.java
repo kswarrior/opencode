@@ -21,6 +21,11 @@ public final class PlayerProfile {
     private int pendingHeartItems;
     private boolean pendingReviveTeleport;
     private long combatAt;
+    private int revives;
+    private int deaths;
+    private long graceUntil;
+    private long banUntil;
+    private long lastGainAt;
 
     public PlayerProfile(UUID uuid, String name, int hearts, boolean eliminated, long lastSeen) {
         this(uuid, name, hearts, eliminated, lastSeen, 0, 0L, eliminated ? lastSeen : 0L, 0, 0L);
@@ -34,6 +39,13 @@ public final class PlayerProfile {
 
     public PlayerProfile(UUID uuid, String name, int hearts, boolean eliminated, long lastSeen,
             int kills, long lastKillAt, long eliminatedAt, int pendingHeartItems, long combatAt) {
+        this(uuid, name, hearts, eliminated, lastSeen, kills, lastKillAt, eliminatedAt,
+                pendingHeartItems, combatAt, 0, 0, 0L, 0L, 0L);
+    }
+
+    public PlayerProfile(UUID uuid, String name, int hearts, boolean eliminated, long lastSeen,
+            int kills, long lastKillAt, long eliminatedAt, int pendingHeartItems, long combatAt,
+            int revives, int deaths, long graceUntil, long banUntil, long lastGainAt) {
         this.uuid = uuid;
         this.name = name == null ? uuid.toString() : name;
         this.hearts = eliminated ? 0 : Math.max(0, hearts);
@@ -44,6 +56,19 @@ public final class PlayerProfile {
         this.eliminatedAt = Math.max(0L, eliminatedAt);
         this.pendingHeartItems = Math.max(0, pendingHeartItems);
         this.combatAt = Math.max(0L, combatAt);
+        this.revives = Math.max(0, revives);
+        this.deaths = Math.max(0, deaths);
+        this.graceUntil = Math.max(0L, graceUntil);
+        this.banUntil = Math.max(0L, banUntil);
+        this.lastGainAt = Math.max(0L, lastGainAt);
+    }
+
+    public PlayerProfile copy() {
+        PlayerProfile copy = new PlayerProfile(uuid, name, hearts, eliminated, lastSeen,
+                kills, lastKillAt, eliminatedAt, pendingHeartItems, combatAt, revives, deaths,
+                graceUntil, banUntil, lastGainAt);
+        copy.setPendingReviveTeleport(pendingReviveTeleport);
+        return copy;
     }
 
     public UUID getUuid() {
@@ -130,5 +155,45 @@ public final class PlayerProfile {
 
     public void setCombatAt(long combatAt) {
         this.combatAt = Math.max(0L, combatAt);
+    }
+
+    public int getRevives() {
+        return revives;
+    }
+
+    public void setRevives(int revives) {
+        this.revives = Math.max(0, revives);
+    }
+
+    public int getDeaths() {
+        return deaths;
+    }
+
+    public void setDeaths(int deaths) {
+        this.deaths = Math.max(0, deaths);
+    }
+
+    public long getGraceUntil() {
+        return graceUntil;
+    }
+
+    public void setGraceUntil(long graceUntil) {
+        this.graceUntil = Math.max(0L, graceUntil);
+    }
+
+    public long getBanUntil() {
+        return banUntil;
+    }
+
+    public void setBanUntil(long banUntil) {
+        this.banUntil = Math.max(0L, banUntil);
+    }
+
+    public long getLastGainAt() {
+        return lastGainAt;
+    }
+
+    public void setLastGainAt(long lastGainAt) {
+        this.lastGainAt = Math.max(0L, lastGainAt);
     }
 }

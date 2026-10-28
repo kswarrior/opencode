@@ -5,10 +5,24 @@
 # Lifestead configuration
 # Colors use & codes and &#RRGGBB hex codes.
 
+language: en
+
 database:
-  # YAML or SQLITE. SQLite is bundled with the plugin.
+  # YAML, SQLITE, or MYSQL. SQLite and the MariaDB driver are bundled.
   # Switching this value requires a server restart; /ls reload only warns.
   type: YAML
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    database: lifestead
+    username: root
+    password: ''
+    # Leave blank to build a jdbc:mariadb URL from the values above.
+    jdbc-url: ''
+    table-prefix: lifestead_
+    pool-size: 4
+    connection-timeout-ms: 5000
+    use-ssl: false
 
 settings:
   start-hearts: 10
@@ -26,6 +40,23 @@ settings:
   # How often online players have their max-health attribute resynced.
   health-resync-ticks: 40
 
+# Per-world overrides. Unspecified values inherit the global settings above.
+# Set enabled to false to disable Lifestead in a world.
+worlds: {}
+# Example:
+# worlds:
+#   world_nether:
+#     enabled: true
+#     start-hearts: 10
+#     minimum-hearts: 0
+#     maximum-hearts: 20
+#     gain-per-kill: 1
+#     lose-per-death: 1
+#     pvp: true
+#     withdraw: true
+#     revive: true
+#     item-use: true
+
 death-loss:
   pvp: true
   mob: true
@@ -42,6 +73,10 @@ anti-farm:
   max-kills-per-victim: 3
   window-minutes: 60
 
+progression:
+  # Global cooldown between rewarded kills for one player. 0 disables it.
+  gain-cooldown-seconds: 0
+
 combat-log:
   enabled: true
   # Seconds after taking damage during which logging out counts as combat logging.
@@ -49,12 +84,41 @@ combat-log:
   # Hearts lost when a player combat logs. The tag and penalty persist across
   # restarts and crashes; an outstanding penalty is applied when the player joins.
   penalty-hearts: 1
+  bossbar: false
+  actionbar: false
+  block-commands: false
+  blocked-commands:
+    - /home
+    - /spawn
+    - /tpa
+    - /tpaccept
+    - /warp
+  blocked-message: '&cYou cannot use that command while in combat.'
+
+grace:
+  enabled: false
+  duration-seconds: 300
+  on-join: true
+  on-revive: true
+  block-damage: true
+  block-gain: true
+  block-loss: true
 
 elimination:
   # BAN or SPECTATOR.
   mode: BAN
   ban-reason: '&cYou ran out of hearts. You can be revived with a Revive Beacon.'
   announce: true
+  # Extra hearts awarded to the killer when an elimination is caused by PvP.
+  bonus-heart: 0
+  commands: []
+
+deathban:
+  enabled: false
+  # 0 means a permanent ban when enabled; otherwise the ban expires automatically.
+  duration-seconds: 0
+  actionbar: true
+  bossbar: true
 
 revive:
   hearts: 4
@@ -70,6 +134,14 @@ revive:
     z: 0.0
     yaw: 0.0
     pitch: 0.0
+  confirm: false
+  # Heart items consumed from the reviving player. 0 disables the cost.
+  cost-heart-items: 0
+  # Optional ritual delay before an online revive completes.
+  cast-seconds: 0
+  # Maximum revives one player may receive. 0 is unlimited.
+  max-per-player: 0
+  commands: []
 
 effects:
   sounds: true
@@ -83,6 +155,24 @@ effects:
   # Broadcast every successful heart steal to the whole server.
   broadcast-steals: false
 
+pvp:
+  totems: true
+  crystals: true
+  respawn-anchors: true
+  beds: true
+
+drops:
+  # DIRECT gives the heart item directly to the killer, ITEM drops it in the world,
+  # and NONE preserves the classic direct heart transfer.
+  pvp: NONE
+  natural: NONE
+  max-hearts: NONE
+  cooldown-seconds: 0
+  auto-give: true
+  pickup-delay-ticks: 20
+  despawn-seconds: 300
+  invulnerable: true
+
 items:
   heart:
     material: NETHER_STAR
@@ -92,6 +182,11 @@ items:
       - '&8Raises your maximum health.'
     glow: true
     custom-model-data: 1001
+    # Optional namespaced item-model, for example ks:heart.
+    item-model: ''
+    # Empty means all worlds where item use is enabled.
+    worlds: []
+    commands: []
   revive-beacon:
     material: BEACON
     name: '&dRevive Beacon'
@@ -100,6 +195,8 @@ items:
       - '&8Consumed when a player is revived.'
     glow: true
     custom-model-data: 1002
+    item-model: ''
+    worlds: []
     consume-on-revive: true
 
 recipes:
@@ -130,3 +227,38 @@ recipes:
       W: WITHER_SKELETON_SKULL
       A: ENCHANTED_GOLDEN_APPLE
       N: NETHERITE_BLOCK
+
+leaderboard:
+  enabled: true
+  size: 10
+  refresh-seconds: 60
+  hologram:
+    enabled: false
+    world: world
+    x: 0.0
+    y: 64.0
+    z: 0.0
+
+audit:
+  enabled: true
+  max-entries: 5000
+  # Optional HTTPS webhook for audit events. Leave blank to disable delivery.
+  webhook-url: ''
+  webhook-timeout-seconds: 5
+
+worldguard:
+  enabled: true
+
+update-checker:
+  enabled: false
+  # Optional HTTPS URL that returns a version string or JSON object with a "version" field.
+  url: ''
+
+permissions:
+  # Checked in descending order for lifesteal.maxhearts.<n>.
+  max-hearts:
+    - 20
+    - 30
+    - 40
+    - 50
+    - 100
