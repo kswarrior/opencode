@@ -75,6 +75,8 @@ public final class DeathListener implements Listener {
         if (victimProfile.isEliminated()) {
             return;
         }
+        Settings.WorldRules victimRules = settings.rules(victim.getWorld());
+        victimProfile.setDeaths(victimProfile.getDeaths() + 1);
         if (victim.getGameMode() == GameMode.CREATIVE || victim.getGameMode() == GameMode.SPECTATOR) {
             return;
         }
@@ -90,16 +92,23 @@ public final class DeathListener implements Listener {
             killerProfile.setLastKillAt(now);
             plugin.getDataStore().save(killerProfile);
         }
-        if (!isLossEnabled(settings, category)) {
+        if (!isLossEnabled(victimRules, category)) {
+            plugin.getDataStore().save(victimProfile);
+            return;
+        }
+        if (victimProfile.getGraceUntil() > now && settings.grace.blockLoss()) {
+            plugin.getDataStore().save(victimProfile);
             return;
         }
 
         int victimHeartsBefore = victimProfile.getHearts();
-        if (victimHeartsBefore <= settings.minHearts) {
+        if (victimHeartsBefore <= victimRules.minHearts()) {
+            plugin.getDataStore().save(victimProfile);
             return;
         }
 
-        int lost = plugin.getHeartManager().removeHearts(victimProfile, settings.losePerDeath);
+        int lost = plugin.getHeartManager().removeHearts(victimProfile, victimRules.losePerDeath(),
+                victim.getWorld());
         if (lost > 0) {
             plugin.getMessages().send(victim, "hearts.lost", "amount", Integer.toString(lost));
             plugin.getEffects().lostHeart(victim);
@@ -112,7 +121,8 @@ public final class DeathListener implements Listener {
         if (category != Category.PVP || killer == null || killer.equals(victim)) {
             return;
         }
-        if (!settings.deathLossPvp || settings.isWorldDisabled(killer.getWorld())) {
+        Settings.WorldRules killerRules = settings.rules(killer.getWorld());
+        if (!killerRules.pvp() || settings.isWorldDisabled(killer.getWorld())) {
             return;
         }
         if (killer.getGameMode() == GameMode.CREATIVE || killer.getGameMode() == GameMode.SPECTATOR) {
@@ -120,14 +130,19 @@ public final class DeathListener implements Listener {
         }
 
         PlayerProfile killerProfile = plugin.getHeartManager().profile(killer);
-        if (killerProfile.isEliminated() || !plugin.getHeartManager().hasSpace(killerProfile)) {
+        if (killerProfile.isEliminated()
+                || !plugin.getHeartManager().hasSpace(killerProfile, killer.getWorld())) {
+            return;
+        }
+        if (killerProfile.getGraceUntil() > now && settings.grace.blockGain()) {
             return;
         }
         if (!plugin.getAntiFarm().canReward(killer, victim)) {
             return;
         }
 
-        int gained = plugin.getHeartManager().addHearts(killerProfile, settings.gainPerKill);
+        int gained = plugin.getHeartManager().addHearts(killerProfile, killerRules.gainPerKill(),
+                killer.getWorld());
         if (gained <= 0) {
             return;
         }
@@ -199,11 +214,11 @@ public final class DeathListener implements Listener {
         return entity;
     }
 
-    private boolean isLossEnabled(Settings settings, Category category) {
+    private boolean isLossEnabled(Settings.WorldRules rules, Category category) {
         return switch (category) {
-            case PVP -> settings.deathLossPvp;
-            case MOB -> settings.deathLossMob;
-            case ENVIRONMENT -> settings.deathLossEnvironment;
+            case PVP -> rules.pvp();
+            case MOB -> plugin.getSettings().deathLossMob;
+            case ENVIRONMENT -> plugin.getSettings().deathLossEnvironment;
         };
     }
 }

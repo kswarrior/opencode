@@ -9,6 +9,7 @@ package dev.lifestead.manager;
 import dev.lifestead.LifesteadPlugin;
 import dev.lifestead.Settings;
 import dev.lifestead.data.PlayerProfile;
+import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
@@ -43,7 +44,9 @@ public final class HeartManager {
         if (attribute == null) {
             return;
         }
-        double maxHealth = Math.max(2.0, profile.getHearts() * 2.0);
+        Settings.WorldRules rules = plugin.getSettings().rules(player.getWorld());
+        int effectiveHearts = Math.min(profile.getHearts(), rules.maxHearts());
+        double maxHealth = Math.max(2.0, effectiveHearts * 2.0);
         if (Math.abs(attribute.getBaseValue() - maxHealth) > 0.001) {
             attribute.setBaseValue(maxHealth);
         }
@@ -53,8 +56,13 @@ public final class HeartManager {
     }
 
     public int setHearts(PlayerProfile profile, int amount) {
+        return setHearts(profile, amount, null);
+    }
+
+    public int setHearts(PlayerProfile profile, int amount, World world) {
         Settings settings = plugin.getSettings();
-        int clamped = amount <= 0 ? 0 : Settings.clamp(amount, settings.minHearts, settings.maxHearts);
+        Settings.WorldRules rules = settings.rules(world);
+        int clamped = amount <= 0 ? 0 : Settings.clamp(amount, rules.minHearts(), rules.maxHearts());
         if (profile.isEliminated()) {
             clamped = 0;
         }
@@ -68,35 +76,49 @@ public final class HeartManager {
     }
 
     public int addHearts(PlayerProfile profile, int amount) {
+        return addHearts(profile, amount, null);
+    }
+
+    public int addHearts(PlayerProfile profile, int amount, World world) {
         if (amount <= 0 || profile.isEliminated()) {
             return 0;
         }
         int before = profile.getHearts();
-        int target = Math.min(plugin.getSettings().maxHearts, before + amount);
+        int maximum = plugin.getSettings().rules(world).maxHearts();
+        int target = Math.min(maximum, before + amount);
         int added = target - before;
         if (added <= 0) {
             return 0;
         }
-        setHearts(profile, target);
+        setHearts(profile, target, world);
         return added;
     }
 
     public int removeHearts(PlayerProfile profile, int amount) {
+        return removeHearts(profile, amount, null);
+    }
+
+    public int removeHearts(PlayerProfile profile, int amount, World world) {
         if (amount <= 0 || profile.isEliminated()) {
             return 0;
         }
         int before = profile.getHearts();
-        int target = Math.max(plugin.getSettings().minHearts, before - amount);
+        int minimum = plugin.getSettings().rules(world).minHearts();
+        int target = Math.max(minimum, before - amount);
         int removed = before - target;
         if (removed <= 0) {
             return 0;
         }
-        setHearts(profile, target);
+        setHearts(profile, target, world);
         return removed;
     }
 
     public boolean hasSpace(PlayerProfile profile) {
-        return profile.getHearts() < plugin.getSettings().maxHearts;
+        return hasSpace(profile, null);
+    }
+
+    public boolean hasSpace(PlayerProfile profile, World world) {
+        return profile.getHearts() < plugin.getSettings().rules(world).maxHearts();
     }
 
     public boolean normalize(PlayerProfile profile) {
