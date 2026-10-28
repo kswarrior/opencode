@@ -54,12 +54,14 @@ public final class EliminationManager {
         profile.setPendingReviveTeleport(false);
         profile.setLastSeen(now);
         profile.setEliminatedAt(now);
+        long banUntil = settingsDeathbanUntil(now);
+        profile.setBanUntil(banUntil);
         plugin.getDataStore().save(profile);
 
         Player online = Bukkit.getPlayer(profile.getUuid());
         Settings settings = plugin.getSettings();
         if ("BAN".equals(settings.eliminationMode)) {
-            ban(profile);
+            ban(profile, banUntil > 0 ? new Date(banUntil) : null);
             if (online != null) {
                 String reason = plugin.getMessages().colorize(settings.banReason);
                 plugin.getServer().getScheduler().runTask(plugin, () -> {
@@ -96,6 +98,7 @@ public final class EliminationManager {
         boolean wasEliminated = profile.isEliminated();
         profile.setEliminated(false);
         profile.setEliminatedAt(0L);
+        profile.setBanUntil(0L);
         profile.setPendingReviveTeleport(false);
         profile.setPendingHeartItems(0);
         profile.setKills(0);
@@ -130,6 +133,7 @@ public final class EliminationManager {
         Player online = Bukkit.getPlayer(profile.getUuid());
         profile.setEliminated(false);
         profile.setEliminatedAt(0L);
+        profile.setBanUntil(0L);
         profile.setHearts(settings.reviveHearts);
         profile.setLastSeen(System.currentTimeMillis());
         profile.setPendingReviveTeleport(settings.reviveTeleport
@@ -183,12 +187,23 @@ public final class EliminationManager {
             return;
         }
         if (profile.isEliminated()) {
+            if (settings.deathban.enabled() && profile.getBanUntil() > 0
+                    && profile.getBanUntil() <= System.currentTimeMillis()) {
+                profile.setBanUntil(0L);
+                revive(profile, null);
+                return;
+            }
             if ("BAN".equals(settings.eliminationMode)) {
-                ban(profile);
+                ban(profile, profile.getBanUntil() > 0 ? new Date(profile.getBanUntil()) : null);
                 String reason = plugin.getMessages().colorize(settings.banReason);
+                if (settings.deathban.enabled() && profile.getBanUntil() > System.currentTimeMillis()) {
+                    reason = plugin.getMessages().get("deathban.kick",
+                            "time", formatDuration(profile.getBanUntil() - System.currentTimeMillis()));
+                }
+                String finalReason = reason;
                 plugin.getServer().getScheduler().runTask(plugin, () -> {
                     if (player.isOnline()) {
-                        player.kickPlayer(reason);
+                        player.kickPlayer(finalReason);
                     }
                 });
             } else {
@@ -279,6 +294,34 @@ public final class EliminationManager {
         return null;
     }
 
+    private long settingsDeathbanUntil(long now) {
+        Settings settings = plugin.getSettings();
+        if (!settings.deathban.enabled() || settings.deathban.durationSeconds() <= 0) {
+            return 0L;
+        }
+        return now + settings.deathban.durationSeconds() * 1000L;
+    }
+
+    private String formatDuration(long millis) {
+        long seconds = Math.max(1L, (millis + 999L) / 1000L);
+        long days = seconds / 86400L;
+        long hours = (seconds % 86400L) / 3600L;
+        long minutes = (seconds % 3600L) / 60L;
+        long rest = seconds % 60L;
+        StringBuilder builder = new StringBuilder();
+        if (days > 0) {
+            builder.append(days).append("d ");
+        }
+        if (hours > 0) {
+            builder.append(hours).append("h ");
+        }
+        if (minutes > 0) {
+            builder.append(minutes).append("m ");
+        }
+        builder.append(rest).append("s");
+        return builder.toString().trim();
+    }
+
     private Location safeLocation(World world, double x, double y, double z,
             float yaw, float pitch) {
         int minY = world.getMinHeight() + 1;
@@ -359,18 +402,22 @@ public final class EliminationManager {
     }
 
     public void ban(PlayerProfile profile) {
+        ban(profile, null);
+    }
+
+    public void ban(PlayerProfile profile, Date expires) {
         if (profile == null) {
             return;
         }
         String reason = plugin.getMessages().stripColor(plugin.getSettings().banReason);
-        if (profileBan(profile, reason)) {
+        if (profileBan(profile, reason, expires)) {
             return;
         }
         try {
             @SuppressWarnings("rawtypes")
             BanList banList = Bukkit.getBanList(BanList.Type.NAME);
             if (!banList.isBanned(profile.getName())) {
-                banList.addBan(profile.getName(), reason, (Date) null, "Lifestead");
+                banList.addBan(profile.getName(), reason, expires, "Lifestead");
             }
         } catch (RuntimeException exception) {
             plugin.getLogger().warning("Could not ban " + profile.getName() + ": "
@@ -378,7 +425,7 @@ public final class EliminationManager {
         }
     }
 
-    private boolean profileBan(PlayerProfile profile, String reason) {
+    private boolean profileBan(PlayerProfile profile, String reason, Date expires) {
         Object target = profileTarget(profile);
         if (target == null) {
             return false;
@@ -387,7 +434,7 @@ public final class EliminationManager {
             @SuppressWarnings("rawtypes")
             BanList banList = Bukkit.getBanList(BanList.Type.PROFILE);
             if (!banList.isBanned(target)) {
-                banList.addBan(target, reason, (Date) null, "Lifestead");
+                banList.addBan(target, reason, expires, "Lifestead");
             }
             return true;
         } catch (RuntimeException exception) {
@@ -447,8 +494,14 @@ public final class EliminationManager {
             if (!profile.isEliminated()) {
                 continue;
             }
+            if (plugin.getSettings().deathban.enabled() && profile.getBanUntil() > 0
+                    && profile.getBanUntil() <= System.currentTimeMillis()) {
+                profile.setBanUntil(0L);
+                revive(profile, null);
+                continue;
+            }
             if (banMode) {
-                ban(profile);
+                ban(profile, profile.getBanUntil() > 0 ? new Date(profile.getBanUntil()) : null);
                 Player online = Bukkit.getPlayer(profile.getUuid());
                 if (online != null) {
                     String reason = plugin.getMessages().colorize(plugin.getSettings().banReason);
