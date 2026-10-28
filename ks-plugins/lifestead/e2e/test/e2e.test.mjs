@@ -166,11 +166,12 @@ async function setConfig(overrides) {
 }
 
 async function papi(player, text) {
+  const token = `E2EPAPI_${Date.now()}_${Math.floor(Math.random() * 100000)}_`
   const line = await server.commandExpect(
-    `papi parse ${player} ${text}`,
-    (candidate) => /INFO\]:\s/.test(candidate) && !candidate.includes('PlaceholderAPI')
+    `papi parse ${player} ${token}${text}`,
+    (candidate) => candidate.includes(token)
   )
-  return line.split('INFO]: ').pop().trim()
+  return line.slice(line.indexOf(token) + token.length).trim()
 }
 
 async function assertPapi(player, placeholder, expected) {
