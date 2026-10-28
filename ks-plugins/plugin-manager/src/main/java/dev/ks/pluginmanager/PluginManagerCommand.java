@@ -371,10 +371,6 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
                 if (info.name().equalsIgnoreCase(plugin.getName())) {
                     throw new IOException("Refusing to install a second KSPluginManager");
                 }
-                Plugin existing = Bukkit.getPluginManager().getPlugin(info.name());
-                if (existing != null) {
-                    throw new IOException("Plugin " + info.name() + " is already loaded");
-                }
                 Path finalTemporary = temporary;
                 runSync(() -> applyNewInstall(sender, finalTemporary, target, info));
             } catch (Exception exception) {
@@ -516,9 +512,8 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         });
     }
 
-    private List<String> checkPlugin(Plugin target) {
+    private List<String> checkPlugin(Plugin target, String current) {
         List<String> lines = new ArrayList<>();
-        String current = target.getDescription().getVersion();
         UpdateChecker.Result result;
         try {
             result = updateChecker.check(target.getName(), current);
@@ -582,6 +577,7 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
             return;
         }
         String current = target.getDescription().getVersion();
+        boolean allowIncompatible = plugin.getConfig().getBoolean("updates.allow-incompatible", false);
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             try {
                 UpdateChecker.Result result = updateChecker.check(target.getName(), current);
@@ -606,7 +602,7 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
                             "source", info.source(), "page", info.pageUrl() == null ? "-" : info.pageUrl());
                     return;
                 }
-                if (!info.compatible() && !plugin.getConfig().getBoolean("updates.allow-incompatible", false)) {
+                if (!info.compatible() && !allowIncompatible) {
                     busy.set(false);
                     sendLater(sender, "update-incompatible",
                             "&c{plugin} {version} does not advertise support for this server. "
@@ -635,16 +631,24 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
 
     private void applyUpdate(CommandSender sender, Plugin target, File jar, Path temporary,
                              PluginFiles.PluginJar downloaded, UpdateInfo info, String current) {
-        Path backup = null;
+        Path backup;
         try {
             backup = backup(jar.toPath());
+        } catch (Exception exception) {
+            deleteQuietly(temporary);
+            busy.set(false);
+            messages.send(sender, "update-failed", "&cCould not create a backup: {error}",
+                    "error", message(exception));
+            return;
+        }
+        try {
             if (!PluginLifecycle.unload(target)) {
                 throw new IOException("Plugin could not be fully unloaded");
             }
+            deleteRemapped(jar);
             Downloader.move(temporary, jar.toPath());
             Plugin loaded = loadAndEnable(jar, downloaded);
             deleteQuietly(backup);
-            deleteRemapped(jar);
             messages.send(sender, "update-success", "&aUpdated {plugin} {old} -> {new}",
                     "plugin", loaded.getName(), "old", current,
                     "new", loaded.getDescription().getVersion());
