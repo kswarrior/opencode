@@ -33,6 +33,7 @@ deathban:
   kick: '&cYou are deathbanned for another &f{time}&c.'
 
 leaderboard:
+  disabled: '&cThe leaderboard is disabled.'
   header: '&8&m-----&r &cTop {type} &8&m-----'
   entry: '&e{position}. &f{player} &7- &c{value}'
   empty: '&7No leaderboard data yet.'

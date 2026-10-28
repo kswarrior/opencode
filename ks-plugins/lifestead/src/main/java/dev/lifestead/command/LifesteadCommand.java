@@ -414,6 +414,10 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         if (!permission(sender, "lifesteal.top")) {
             return;
         }
+        if (!plugin.getSettings().leaderboard.enabled()) {
+            plugin.getMessages().send(sender, "leaderboard.disabled");
+            return;
+        }
         String type = plugin.getLeaderboard().type(args.length >= 2 ? args[1] : "hearts");
         int limit = plugin.getSettings().leaderboard.size();
         plugin.getMessages().sendRaw(sender, "leaderboard.header", "type", type);
