@@ -39,6 +39,7 @@
         <spigot.api.version>1.21.11-R0.2-SNAPSHOT</spigot.api.version>
         <placeholderapi.version>2.12.3</placeholderapi.version>
         <sqlite.version>3.53.4.0</sqlite.version>
+        <mariadb.version>3.5.6</mariadb.version>
     </properties>
 
     <repositories>
@@ -72,6 +73,11 @@
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>${sqlite.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>${mariadb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -128,6 +134,12 @@
                                     </excludes>
                                 </filter>
                             </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.mariadb.jdbc</pattern>
+                                    <shadedPattern>dev.lifestead.lib.mariadb</shadedPattern>
+                                </relocation>
+                            </relocations>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
