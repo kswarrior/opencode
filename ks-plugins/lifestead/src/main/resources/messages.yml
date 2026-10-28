@@ -5,6 +5,15 @@
 prefix: '&8[&cLifestead&8] &r'
 
 general:
+  status-header: '&8&m-----&r &cLifestead Status &8&m-----'
+  status-line: '&7{key}: &f{value}'
+  audit-header: '&8&m-----&r &cLifestead Audit &8&m-----'
+  audit-empty: '&7No audit entries.'
+  audit-line: '&7{action} &8| &f{actor} &7-> &f{target} &8| &7{detail}'
+  migrate-confirm: '&eThis will copy &f{count} &eprofile(s) to &f{target}&e. Run the command with &fconfirm&e to continue.'
+  migrate-complete: '&aMigrated &f{count} &aprofile(s) from &f{source} &ato &f{target}&a.'
+  migrate-failed: '&cMigration failed: &f{error}'
+  restart-required: '&eRestart the server to start using the new storage backend.'
   no-permission: '&cYou do not have permission to do that.'
   player-only: '&cThat command can only be used by a player.'
   unknown-command: '&cUnknown subcommand. Use &f/ls help&c.'
@@ -15,6 +24,20 @@ general:
   eliminated-action: '&cYou are eliminated. Ask someone to revive you.'
   reload-error: '&cReload failed. Existing recipes and data were preserved. Check the server console.'
   usage: '&cUsage: &f{usage}'
+
+deathban:
+  header: '&8&m-----&r &cDeathbans &8&m-----'
+  line: '&f{player} &7- &c{remaining}s remaining'
+  empty: '&7No deathbanned players.'
+  purged: '&aPurged &f{count} &aexpired deathban(s).'
+  kick: '&cYou are deathbanned for another &f{time}&c.'
+
+leaderboard:
+  header: '&8&m-----&r &cTop {type} &8&m-----'
+  entry: '&e{position}. &f{player} &7- &c{value}'
+  empty: '&7No leaderboard data yet.'
+  hologram-title: '&6&lTop Hearts'
+  hologram-line: '&e{position}. &f{player} &7- &c{value}'
 
 hearts:
   display: '&f{player} &7has &c{hearts}&7 heart(s) &8(&7min &c{min}&8, &7max &c{max}&8).'
@@ -36,6 +59,7 @@ hearts:
   inventory-full: '&eYour inventory was full, so some heart items were dropped at your feet.'
   item-used: '&aYou gained &c1 heart&a.'
   item-max: '&cYou are already at the maximum number of hearts.'
+  dropped: '&7A heart item was dropped (&f{amount}&7).'
 
 items:
   beacon-opened: '&dRevive Beacon opened.'
@@ -57,6 +81,10 @@ elimination:
   eliminate-offline: '&c{player} was eliminated.'
   eliminate-admin: '&cEliminated &f{player}&c.'
   already-eliminated: '&c{player} is already eliminated.'
+  revive-confirm: '&eRun &f/ls revive {player} confirm&e to confirm.'
+  revive-limit: '&c{player} has reached the maximum of &f{max} &crevive(s).'
+  revive-cost-missing: '&cYou need &f{amount} &cheart item(s) to revive this player.'
+  revive-casting: '&eReviving &f{player}&e in &f{seconds}&e second(s).'
   causes:
     pvp: 'PvP'
     mob: 'mob'
@@ -69,6 +97,9 @@ elimination:
 
 combat-log:
   penalty: '&c{player} &7combat logged and lost &c{hearts} &7heart(s).'
+  blocked-command: '&cYou cannot use that command while in combat.'
+  bossbar: '&cCombat: &f{seconds}s'
+  actionbar: '&cCombat: &f{seconds}s'
 
 gui:
   revive-title: '&8Revive Beacon &7- Page {page}/{pages}'
@@ -109,4 +140,9 @@ commands:
     - '&c/ls sethearts <player> <amount> &8- &7Set a heart count.'
     - '&c/ls eliminate <player> &8- &7Eliminate a player.'
     - '&c/ls reset <player|all> &8- &7Reset hearts and elimination.'
+    - '&c/ls top [hearts|kills|revives] &8- &7Show the leaderboard.'
+    - '&c/ls status &8- &7Show storage and integration status.'
+    - '&c/ls audit [limit] &8- &7Show recent audit entries.'
+    - '&c/ls deathban <list|purge> &8- &7Manage deathbans.'
+    - '&c/ls migrate <yaml|sqlite|mysql> &8- &7Copy data to another backend.'
     - '&c/ls reload &8- &7Reload configuration and recipes.'
