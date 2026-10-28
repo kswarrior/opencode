@@ -121,11 +121,12 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             }
             profile = plugin.getHeartManager().profile(player);
         }
+        org.bukkit.World world = sender instanceof Player player ? player.getWorld() : null;
         plugin.getMessages().send(sender, "hearts.display",
                 "player", profile.getName(),
                 "hearts", Integer.toString(profile.getHearts()),
-                "min", Integer.toString(plugin.getSettings().minHearts),
-                "max", Integer.toString(plugin.getSettings().maxHearts));
+                "min", Integer.toString(plugin.getSettings().minHearts(world)),
+                "max", Integer.toString(plugin.getSettings().maxHearts(world)));
     }
 
     private void withdraw(CommandSender sender, String[] args) {
@@ -145,7 +146,7 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             plugin.getMessages().send(sender, "general.eliminated-action");
             return;
         }
-        int guard = plugin.getSettings().minimumWithdrawRemaining();
+        int guard = plugin.getSettings().minimumWithdrawRemaining(player.getWorld());
         int available = profile.getHearts() - guard;
         if (available <= 0) {
             plugin.getMessages().send(sender, "hearts.withdraw-guard", "guard", Integer.toString(guard));
@@ -180,10 +181,11 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
             plugin.getMessages().send(sender, "general.eliminated-action");
             return;
         }
-        int capacity = plugin.getSettings().maxHearts - profile.getHearts();
+        int maximum = plugin.getSettings().maxHearts(player.getWorld());
+        int capacity = maximum - profile.getHearts();
         if (capacity <= 0) {
             plugin.getMessages().send(sender, "hearts.at-max",
-                    "max", Integer.toString(plugin.getSettings().maxHearts));
+                    "max", Integer.toString(maximum));
             return;
         }
         int available = plugin.getItems().countHearts(player);
