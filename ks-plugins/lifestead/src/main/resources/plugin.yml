@@ -9,7 +9,7 @@ api-version: '1.21.11'
 authors: [KS Warrior]
 description: KS Lifestead - Lifesteal SMP hearts, elimination, revival, heart items, and recipes.
 website: https://ks.42web.io
-softdepend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI, WorldGuard]
 # Folia is not supported: the plugin uses the Bukkit scheduler.
 
 commands:
@@ -56,6 +56,30 @@ permissions:
   lifesteal.reload:
     description: Reload the plugin configuration.
     default: op
+  lifesteal.top:
+    description: View leaderboards.
+    default: true
+  lifesteal.status:
+    description: View storage and integration status.
+    default: op
+  lifesteal.audit:
+    description: View the audit log.
+    default: op
+  lifesteal.migrate:
+    description: Migrate data between storage backends.
+    default: op
+  lifesteal.deathban:
+    description: Manage deathbans.
+    default: op
+  lifesteal.revive.unlimited:
+    description: Bypass the maximum revive count.
+    default: op
+  lifesteal.combat.bypass:
+    description: Use blocked commands while in combat.
+    default: op
+  lifesteal.bypass.worldguard:
+    description: Bypass WorldGuard heart-loss checks.
+    default: op
   lifesteal.admin:
     description: Grants all Lifestead administration permissions.
     default: op
@@ -72,3 +96,11 @@ permissions:
       lifesteal.eliminate: true
       lifesteal.reset: true
       lifesteal.reload: true
+      lifesteal.top: true
+      lifesteal.status: true
+      lifesteal.audit: true
+      lifesteal.migrate: true
+      lifesteal.deathban: true
+      lifesteal.revive.unlimited: true
+      lifesteal.combat.bypass: true
+      lifesteal.bypass.worldguard: true

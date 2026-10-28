@@ -8,6 +8,7 @@ package dev.lifestead;
 
 import dev.lifestead.command.LifesteadCommand;
 import dev.lifestead.data.DataStore;
+import dev.lifestead.data.AuditEntry;
 import dev.lifestead.data.DataStoreFactory;
 import dev.lifestead.data.SqliteDataStore;
 import dev.lifestead.integration.LifesteadPlaceholderExpansion;
@@ -261,6 +262,13 @@ public final class LifesteadPlugin extends JavaPlugin {
         } catch (Throwable throwable) {
             getLogger().warning("Could not register PlaceholderAPI expansion: " + throwable.getMessage());
         }
+    }
+
+    public void audit(String action, String actorName, String targetName, String detail) {
+        if (settings == null || !settings.audit.enabled() || dataStore == null) {
+            return;
+        }
+        dataStore.audit(AuditEntry.of(action, actorName, targetName, detail));
     }
 
     public Settings getSettings() {

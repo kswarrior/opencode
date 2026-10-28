@@ -90,7 +90,8 @@ public final class WorldGuardHook {
     }
 
     private boolean test(Player player) {
-        if (!available || player == null) {
+        if (!available || player == null
+                || player.hasPermission("lifesteal.bypass.worldguard")) {
             return true;
         }
         try {
