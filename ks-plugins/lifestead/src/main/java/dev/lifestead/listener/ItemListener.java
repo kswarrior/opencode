@@ -48,6 +48,9 @@ public final class ItemListener implements Listener {
         }
         EquipmentSlot hand = event.getHand();
         Player player = event.getPlayer();
+        if (!plugin.getSettings().rules(player.getWorld()).itemUse()) {
+            return;
+        }
         if (hand == EquipmentSlot.OFF_HAND
                 && plugin.getItems().isCustom(player.getInventory().getItemInMainHand())) {
             return;

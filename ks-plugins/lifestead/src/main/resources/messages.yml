@@ -147,3 +147,7 @@ commands:
     - '&c/ls deathban <list|purge> &8- &7Manage deathbans.'
     - '&c/ls migrate <yaml|sqlite|mysql> &8- &7Copy data to another backend.'
     - '&c/ls reload &8- &7Reload configuration and recipes.'
+
+world:
+  withdraw-disabled: '&cHeart withdrawal is disabled in this world.'
+  revive-disabled: '&cRevival is disabled in this world.'

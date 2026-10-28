@@ -44,8 +44,7 @@ public final class HeartManager {
         if (attribute == null) {
             return;
         }
-        Settings.WorldRules rules = plugin.getSettings().rules(player.getWorld());
-        int effectiveHearts = Math.min(profile.getHearts(), rules.maxHearts());
+        int effectiveHearts = Math.min(profile.getHearts(), maxHearts(profile, player.getWorld()));
         double maxHealth = Math.max(2.0, effectiveHearts * 2.0);
         if (Math.abs(attribute.getBaseValue() - maxHealth) > 0.001) {
             attribute.setBaseValue(maxHealth);
@@ -62,7 +61,8 @@ public final class HeartManager {
     public int setHearts(PlayerProfile profile, int amount, World world) {
         Settings settings = plugin.getSettings();
         Settings.WorldRules rules = settings.rules(world);
-        int clamped = amount <= 0 ? 0 : Settings.clamp(amount, rules.minHearts(), rules.maxHearts());
+        int maximum = maxHearts(profile, world);
+        int clamped = amount <= 0 ? 0 : Settings.clamp(amount, rules.minHearts(), maximum);
         if (profile.isEliminated()) {
             clamped = 0;
         }
@@ -84,7 +84,7 @@ public final class HeartManager {
             return 0;
         }
         int before = profile.getHearts();
-        int maximum = plugin.getSettings().rules(world).maxHearts();
+        int maximum = maxHearts(profile, world);
         int target = Math.min(maximum, before + amount);
         int added = target - before;
         if (added <= 0) {
@@ -118,7 +118,21 @@ public final class HeartManager {
     }
 
     public boolean hasSpace(PlayerProfile profile, World world) {
-        return profile.getHearts() < plugin.getSettings().rules(world).maxHearts();
+        return profile.getHearts() < maxHearts(profile, world);
+    }
+
+    public int maxHearts(PlayerProfile profile, World world) {
+        int maximum = plugin.getSettings().rules(world).maxHearts();
+        Player online = profile == null ? null
+                : plugin.getServer().getPlayer(profile.getUuid());
+        if (online != null) {
+            for (int value : plugin.getSettings().permissionMaxHearts) {
+                if (online.hasPermission("lifesteal.maxhearts." + value)) {
+                    return Math.max(maximum, value);
+                }
+            }
+        }
+        return maximum;
     }
 
     public boolean normalize(PlayerProfile profile) {

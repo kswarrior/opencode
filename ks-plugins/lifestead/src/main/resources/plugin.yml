@@ -80,6 +80,21 @@ permissions:
   lifesteal.bypass.worldguard:
     description: Bypass WorldGuard heart-loss checks.
     default: op
+  lifesteal.maxhearts.20:
+    description: Raise the maximum heart cap to 20.
+    default: false
+  lifesteal.maxhearts.30:
+    description: Raise the maximum heart cap to 30.
+    default: false
+  lifesteal.maxhearts.40:
+    description: Raise the maximum heart cap to 40.
+    default: false
+  lifesteal.maxhearts.50:
+    description: Raise the maximum heart cap to 50.
+    default: false
+  lifesteal.maxhearts.100:
+    description: Raise the maximum heart cap to 100.
+    default: false
   lifesteal.admin:
     description: Grants all Lifestead administration permissions.
     default: op

@@ -164,6 +164,10 @@ public final class LifesteadCommand implements CommandExecutor, TabCompleter {
         if (requested == null) {
             return;
         }
+        if (!plugin.getSettings().rules(player.getWorld()).withdraw()) {
+            plugin.getMessages().send(sender, "world.withdraw-disabled");
+            return;
+        }
         PlayerProfile profile = plugin.getHeartManager().profile(player);
         if (profile.isEliminated()) {
             plugin.getMessages().send(sender, "general.eliminated-action");

@@ -143,6 +143,10 @@ public final class EliminationManager {
             return false;
         }
         Player payer = actor instanceof Player player ? player : null;
+        if (payer != null && !settings.rules(payer.getWorld()).revive()) {
+            plugin.getMessages().send(actor, "world.revive-disabled");
+            return false;
+        }
         if (settings.reviveCostHeartItems > 0 && payer != null
                 && plugin.getItems().countHearts(payer) < settings.reviveCostHeartItems) {
             plugin.getMessages().send(actor, "elimination.revive-cost-missing",
