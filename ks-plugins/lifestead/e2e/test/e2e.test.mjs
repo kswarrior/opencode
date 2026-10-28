@@ -299,7 +299,8 @@ function pluginErrorLines(lines) {
     (line) =>
       isLifesteadErrorLine(line) &&
       !/Reload failed: Recipe configuration is invalid/.test(line) &&
-      !/playerdata\.yml is malformed; moved it to/.test(line)
+      !/Reload failed: (?:messages|config)\.yml is not valid YAML/.test(line) &&
+      !/(?:playerdata|antifarm|messages|config)\.yml .*moved it to/.test(line)
   )
 }
 
