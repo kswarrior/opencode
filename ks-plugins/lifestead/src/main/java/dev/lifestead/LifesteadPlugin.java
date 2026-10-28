@@ -248,7 +248,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     }
 
     private String activeStorageName() {
-        return dataStore instanceof SqliteDataStore ? "SQLITE" : "YAML";
+        return dataStore == null ? "NONE" : dataStore.backendName();
     }
 
     private void registerPlaceholder() {

@@ -114,6 +114,8 @@ public final class DeathListener implements Listener {
 
         int lost = plugin.getHeartManager().removeHearts(victimProfile, victimRules.losePerDeath(),
                 victim.getWorld());
+        plugin.audit("death", victimProfile.getName(),
+                killer == null ? "" : killer.getName(), category.causeKey);
         if (lost > 0) {
             plugin.getMessages().send(victim, "hearts.lost", "amount", Integer.toString(lost));
             plugin.getEffects().lostHeart(victim);

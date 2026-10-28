@@ -83,6 +83,7 @@ public final class ItemListener implements Listener {
         }
         plugin.getItems().consumeHeartFromHand(player, hand);
         plugin.getMessages().send(player, "hearts.item-used");
+        plugin.audit("heart-use", player.getName(), player.getName(), "1");
         plugin.getEffects().healed(player);
     }
 

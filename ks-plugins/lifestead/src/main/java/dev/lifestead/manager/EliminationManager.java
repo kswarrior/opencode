@@ -57,6 +57,7 @@ public final class EliminationManager {
         long banUntil = settingsDeathbanUntil(now);
         profile.setBanUntil(banUntil);
         plugin.getDataStore().save(profile);
+        plugin.audit("eliminate", "system", profile.getName(), causeKey);
 
         Player online = Bukkit.getPlayer(profile.getUuid());
         Settings settings = plugin.getSettings();
@@ -192,6 +193,8 @@ public final class EliminationManager {
         profile.setPendingReviveTeleport(settings.reviveTeleport
                 && (online == null || online.isDead()));
         plugin.getDataStore().save(profile);
+        plugin.audit("revive", actor == null ? "system" : actor.getName(),
+                profile.getName(), Integer.toString(profile.getHearts()));
         pardon(profile);
         plugin.getGrace().startOnRevive(profile);
 
