@@ -119,9 +119,6 @@ public final class ModrinthSource extends AbstractUpdateSource {
         if (best == null) {
             return null;
         }
-        if (best == versions.isEmpty() ? null : best) {
-            compatible = compatible || serverVersionIn(strings(best.get("game_versions")));
-        }
         JsonObject file = primaryFile(best);
         String download = file == null ? null : string(file, "url");
         String fileName = file == null ? null : string(file, "filename");
