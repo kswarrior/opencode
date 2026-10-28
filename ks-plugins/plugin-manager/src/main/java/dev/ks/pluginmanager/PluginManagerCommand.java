@@ -317,6 +317,11 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         }
         try {
             Bukkit.getPluginManager().disablePlugin(target);
+            if (target.isEnabled()) {
+                messages.send(sender, "disable-failed", "&c{plugin} is still enabled; check the console.",
+                        "plugin", target.getName());
+                return;
+            }
             messages.send(sender, "disable-success", "&eDisabled {plugin}", "plugin", target.getName());
         } catch (Exception exception) {
             messages.send(sender, "disable-failed", "&cCould not disable {plugin}: {error}",
@@ -429,11 +434,6 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
             }
             jar = PluginFiles.findJarForPlugin(plugin, target);
             baseName = target.getName();
-            if (!PluginLifecycle.unload(target)) {
-                messages.send(sender, "remove-failed",
-                        "&cCould not fully unload {plugin}; jar was not deleted.", "plugin", target.getName());
-                return;
-            }
         } else {
             jar = PluginFiles.resolveJar(plugin, name);
             baseName = name.toLowerCase(Locale.ROOT).endsWith(".jar")
@@ -446,6 +446,11 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         if (!safeFolderName(baseName) || baseName.equalsIgnoreCase(".kspm")
                 || baseName.equalsIgnoreCase(".paper-remapped")) {
             messages.send(sender, "remove-invalid", "&cInvalid plugin name: {name}", "name", name);
+            return;
+        }
+        if (target != null && !PluginLifecycle.unload(target)) {
+            messages.send(sender, "remove-failed",
+                    "&cCould not fully unload {plugin}; jar was not deleted.", "plugin", target.getName());
             return;
         }
         boolean deletedJar = false;
@@ -491,16 +496,18 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
             messages.send(sender, "busy", "&cAnother plugin operation is already running.");
             return;
         }
+        List<String> names = new ArrayList<>(targets.size());
         List<String> versions = new ArrayList<>(targets.size());
         for (Plugin target : targets) {
+            names.add(target.getName());
             versions.add(target.getDescription().getVersion());
         }
         messages.send(sender, "check-header", "&eChecking {count} plugin(s) for updates...",
                 "count", Integer.toString(targets.size()));
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             List<String> lines = new ArrayList<>();
-            for (int i = 0; i < targets.size(); i++) {
-                lines.addAll(checkPlugin(targets.get(i), versions.get(i)));
+            for (int i = 0; i < names.size(); i++) {
+                lines.addAll(checkPlugin(names.get(i), versions.get(i)));
             }
             runSync(() -> {
                 for (String line : lines) {
@@ -511,18 +518,18 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         });
     }
 
-    private List<String> checkPlugin(Plugin target, String current) {
+    private List<String> checkPlugin(String name, String current) {
         List<String> lines = new ArrayList<>();
         UpdateChecker.Result result;
         try {
-            result = updateChecker.check(target.getName(), current);
+            result = updateChecker.check(name, current);
         } catch (Throwable throwable) {
-            lines.add(ChatColor.RED + target.getName() + ": update check failed (" + message(throwable) + ")");
+            lines.add(ChatColor.RED + name + ": update check failed (" + message(throwable) + ")");
             return lines;
         }
         UpdateInfo info = result.update();
         if (info == null) {
-            lines.add(ChatColor.GRAY + target.getName() + " " + current + ": "
+            lines.add(ChatColor.GRAY + name + " " + current + ": "
                     + ChatColor.YELLOW + "no update source matched");
             for (String error : result.errors()) {
                 lines.add(ChatColor.DARK_GRAY + "  ! " + error);
@@ -530,11 +537,11 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
             return lines;
         }
         if (!VersionComparator.isNewer(info.version(), current)) {
-            lines.add(ChatColor.GREEN + target.getName() + " " + current + " is up to date");
+            lines.add(ChatColor.GREEN + name + " " + current + " is up to date");
             return lines;
         }
         String page = info.pageUrl() == null ? "" : ChatColor.DARK_GRAY + " (" + info.pageUrl() + ")";
-        lines.add(ChatColor.YELLOW + target.getName() + " " + current + " -> "
+        lines.add(ChatColor.YELLOW + name + " " + current + " -> "
                 + ChatColor.AQUA + info.version() + ChatColor.GRAY + " [" + info.source() + "]"
                 + (info.compatible() ? "" : ChatColor.RED + " (not marked compatible)")
                 + page);
@@ -687,20 +694,26 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         if (existing != null) {
             throw new IOException("Plugin " + info.name() + " is already loaded");
         }
-        Plugin loaded;
+        Plugin loaded = null;
         try {
             loaded = manager.loadPlugin(jar);
+            if (loaded == null) {
+                throw new IOException("Server rejected " + jar.getName());
+            }
+            manager.enablePlugin(loaded);
+            if (!loaded.isEnabled()) {
+                throw new IOException(loaded.getName() + " loaded but did not enable");
+            }
+            return loaded;
         } catch (Exception exception) {
+            if (loaded != null) {
+                PluginLifecycle.unload(loaded);
+            }
+            if (exception instanceof IOException ioException) {
+                throw ioException;
+            }
             throw new IOException("loadPlugin failed: " + message(exception), exception);
         }
-        if (loaded == null) {
-            throw new IOException("Server rejected " + jar.getName());
-        }
-        manager.enablePlugin(loaded);
-        if (!loaded.isEnabled()) {
-            throw new IOException(loaded.getName() + " loaded but did not enable");
-        }
-        return loaded;
     }
 
     private List<String> dependents(Plugin target) {
