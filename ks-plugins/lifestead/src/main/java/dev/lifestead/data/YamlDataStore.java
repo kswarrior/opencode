@@ -314,7 +314,7 @@ public final class YamlDataStore implements DataStore {
         }
     }
 
-    private boolean flush() {
+    public boolean flush() {
         if (closed) {
             return true;
         }

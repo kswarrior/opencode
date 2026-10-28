@@ -57,8 +57,9 @@ public interface DataStore extends AutoCloseable {
         return true;
     }
 
-    default void flush() {
+    default boolean flush() {
         saveAll();
+        return true;
     }
 
     default void audit(AuditEntry entry) {

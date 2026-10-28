@@ -131,7 +131,7 @@ public final class SqliteDataStore implements DataStore {
             boolean migrationNeeded = tableExists
                     && (version < SCHEMA_VERSION || missingColumns(columns));
             if (migrationNeeded) {
-                backup("v" + version + "-" + System.currentTimeMillis());
+                backupBeforeMigration("v" + version + "-" + System.currentTimeMillis());
             }
             try (Statement statement = connection.createStatement()) {
                 statement.execute(CREATE_TABLE);
@@ -214,7 +214,7 @@ public final class SqliteDataStore implements DataStore {
                 || !columns.contains("last_gain_at");
     }
 
-    private void backup(String reason) throws SQLException {
+    private void backupBeforeMigration(String reason) throws SQLException {
         if (!file.exists()) {
             return;
         }

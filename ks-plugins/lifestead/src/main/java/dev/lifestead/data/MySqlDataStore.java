@@ -537,8 +537,9 @@ public final class MySqlDataStore implements DataStore {
     }
 
     @Override
-    public void flush() {
+    public boolean flush() {
         saveAll();
+        return isHealthy();
     }
 
     @Override
