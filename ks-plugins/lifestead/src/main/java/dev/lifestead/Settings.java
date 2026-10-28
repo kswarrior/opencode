@@ -6,19 +6,58 @@
 
 package dev.lifestead;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public final class Settings {
 
     public static final int MAX_SUPPORTED_HEARTS = 512;
     public static final int MAX_PARTICLE_COUNT = 200;
+
+    public record WorldRules(boolean enabled, int startHearts, int minHearts, int maxHearts,
+            int gainPerKill, int losePerDeath, boolean pvp, boolean withdraw, boolean revive,
+            boolean itemUse) {
+    }
+
+    public record MySqlSettings(String host, int port, String database, String username,
+            String password, String tablePrefix, int poolSize, int connectionTimeoutMs,
+            String jdbcUrl, boolean useSsl) {
+    }
+
+    public record GraceSettings(boolean enabled, int seconds, boolean onJoin, boolean onRevive,
+            boolean blockDamage, boolean blockGain, boolean blockLoss) {
+    }
+
+    public record DeathbanSettings(boolean enabled, int durationSeconds, boolean actionBar,
+            boolean bossBar) {
+    }
+
+    public record DropSettings(String pvp, String natural, String maxHearts, int cooldownSeconds,
+            boolean autoGive, int pickupDelayTicks, int despawnSeconds, boolean invulnerable) {
+    }
+
+    public record CombatSettings(boolean bossBar, boolean actionBar, boolean blockCommands,
+            List<String> blockedCommands, String blockedMessage) {
+    }
+
+    public record LeaderboardSettings(boolean enabled, int size, int refreshSeconds,
+            boolean hologram, String hologramWorld, double hologramX, double hologramY,
+            double hologramZ) {
+    }
+
+    public record AuditSettings(boolean enabled, int maxEntries, String webhookUrl,
+            int webhookTimeoutSeconds) {
+    }
 
     private final LifesteadPlugin plugin;
 
@@ -47,6 +86,10 @@ public final class Settings {
     public String eliminationMode;
     public String banReason;
     public boolean eliminateAnnounce;
+    public int bonusHeartOnElimination;
+    public List<String> commandsOnElimination;
+    public List<String> commandsOnRevive;
+    public List<String> commandsOnHeartUse;
 
     public int reviveHearts;
     public boolean reviveTeleport;
@@ -57,6 +100,11 @@ public final class Settings {
     public double reviveZ;
     public float reviveYaw;
     public float revivePitch;
+    public boolean reviveConfirm;
+    public int reviveCostHeartItems;
+    public int reviveCastSeconds;
+    public int maxRevives;
+    public int gainCooldownSeconds;
 
     public boolean effectsSounds;
     public boolean effectsParticles;
@@ -68,8 +116,29 @@ public final class Settings {
     public boolean broadcastSteals;
 
     public String databaseType;
+    public MySqlSettings mysql;
+    public String language;
+
+    public GraceSettings grace;
+    public DeathbanSettings deathban;
+    public DropSettings drops;
+    public CombatSettings combat;
+    public LeaderboardSettings leaderboard;
+    public AuditSettings audit;
+
+    public boolean pvpTotems;
+    public boolean pvpCrystals;
+    public boolean pvpRespawnAnchors;
+    public boolean pvpBeds;
+
+    public boolean worldGuardEnabled;
+    public boolean updateCheckerEnabled;
+    public String updateCheckerUrl;
+    public List<Integer> permissionMaxHearts;
 
     private final Set<String> disabledWorlds = new HashSet<>();
+    private final Map<String, WorldRules> worldRules = new HashMap<>();
+    private WorldRules globalRules;
 
     public Settings(LifesteadPlugin plugin) {
         this.plugin = plugin;
@@ -126,6 +195,14 @@ public final class Settings {
                 intValue(config, "combat-log.duration-seconds", 15), 1);
         combatLogPenaltyHearts = atLeast("combat-log.penalty-hearts",
                 intValue(config, "combat-log.penalty-hearts", 1), 0);
+        combat = new CombatSettings(
+                booleanValue(config, "combat-log.bossbar", false),
+                booleanValue(config, "combat-log.actionbar", false),
+                booleanValue(config, "combat-log.block-commands", false),
+                stringList(config, "combat-log.blocked-commands",
+                        List.of("/home", "/spawn", "/tpa", "/tpaccept", "/warp")),
+                config.getString("combat-log.blocked-message",
+                        "&cYou cannot use that command while in combat."));
 
         String mode = config.getString("elimination.mode", "BAN");
         eliminationMode = mode == null ? "BAN" : mode.trim().toUpperCase(Locale.ROOT);
@@ -140,6 +217,11 @@ public final class Settings {
                 ? "&cYou ran out of hearts. You can be revived with a Revive Beacon."
                 : configuredReason;
         eliminateAnnounce = booleanValue(config, "elimination.announce", true);
+        bonusHeartOnElimination = atLeast("elimination.bonus-heart",
+                intValue(config, "elimination.bonus-heart", 0), 0);
+        commandsOnElimination = stringList(config, "elimination.commands", List.of());
+        commandsOnRevive = stringList(config, "revive.commands", List.of());
+        commandsOnHeartUse = stringList(config, "items.heart.commands", List.of());
 
         int reviveMinimum = Math.max(1, minHearts);
         reviveHearts = clamped("revive.hearts",
@@ -152,6 +234,15 @@ public final class Settings {
         reviveZ = finiteDouble(config, "revive.coordinates.z", 0.0);
         reviveYaw = (float) finiteDouble(config, "revive.coordinates.yaw", 0.0);
         revivePitch = (float) finiteDouble(config, "revive.coordinates.pitch", 0.0);
+        reviveConfirm = booleanValue(config, "revive.confirm", false);
+        reviveCostHeartItems = atLeast("revive.cost-heart-items",
+                intValue(config, "revive.cost-heart-items", 0), 0);
+        reviveCastSeconds = atLeast("revive.cast-seconds",
+                intValue(config, "revive.cast-seconds", 0), 0);
+        maxRevives = atLeast("revive.max-per-player",
+                intValue(config, "revive.max-per-player", 0), 0);
+        gainCooldownSeconds = atLeast("progression.gain-cooldown-seconds",
+                intValue(config, "progression.gain-cooldown-seconds", 0), 0);
 
         effectsSounds = booleanValue(config, "effects.sounds", true);
         effectsParticles = booleanValue(config, "effects.particles", true);
@@ -166,11 +257,98 @@ public final class Settings {
         String configuredDatabase = config.getString("database.type", "YAML");
         databaseType = configuredDatabase == null
                 ? "YAML" : configuredDatabase.trim().toUpperCase(Locale.ROOT);
-        if (!databaseType.equals("SQLITE") && !databaseType.equals("YAML")) {
+        if (!databaseType.equals("SQLITE") && !databaseType.equals("YAML")
+                && !databaseType.equals("MYSQL") && !databaseType.equals("MARIADB")) {
             plugin.getLogger().warning("Invalid database.type '" + configuredDatabase
-                    + "'; expected YAML or SQLITE. Using YAML.");
+                    + "'; expected YAML, SQLITE, or MYSQL. Using YAML.");
             databaseType = "YAML";
         }
+        if (databaseType.equals("MARIADB")) {
+            databaseType = "MYSQL";
+        }
+        mysql = new MySqlSettings(
+                config.getString("database.mysql.host", "127.0.0.1"),
+                clamped("database.mysql.port",
+                        intValue(config, "database.mysql.port", 3306), 1, 65535),
+                config.getString("database.mysql.database", "lifestead"),
+                config.getString("database.mysql.username", "root"),
+                config.getString("database.mysql.password", ""),
+                config.getString("database.mysql.table-prefix", "lifestead_"),
+                clamped("database.mysql.pool-size",
+                        intValue(config, "database.mysql.pool-size", 4), 1, 32),
+                atLeast("database.mysql.connection-timeout-ms",
+                        intValue(config, "database.mysql.connection-timeout-ms", 5000), 500),
+                config.getString("database.mysql.jdbc-url", ""),
+                booleanValue(config, "database.mysql.use-ssl", false));
+
+        language = config.getString("language", "en");
+        if (language == null || language.isBlank()) {
+            language = "en";
+        }
+
+        grace = new GraceSettings(
+                booleanValue(config, "grace.enabled", false),
+                atLeast("grace.duration-seconds",
+                        intValue(config, "grace.duration-seconds", 300), 0),
+                booleanValue(config, "grace.on-join", true),
+                booleanValue(config, "grace.on-revive", true),
+                booleanValue(config, "grace.block-damage", true),
+                booleanValue(config, "grace.block-gain", true),
+                booleanValue(config, "grace.block-loss", true));
+
+        deathban = new DeathbanSettings(
+                booleanValue(config, "deathban.enabled", false),
+                atLeast("deathban.duration-seconds",
+                        intValue(config, "deathban.duration-seconds", 0), 0),
+                booleanValue(config, "deathban.actionbar", true),
+                booleanValue(config, "deathban.bossbar", true));
+
+        drops = new DropSettings(
+                dropMode(config, "drops.pvp", "NONE"),
+                dropMode(config, "drops.natural", "NONE"),
+                dropMode(config, "drops.max-hearts", "NONE"),
+                atLeast("drops.cooldown-seconds",
+                        intValue(config, "drops.cooldown-seconds", 0), 0),
+                booleanValue(config, "drops.auto-give", true),
+                clamped("drops.pickup-delay-ticks",
+                        intValue(config, "drops.pickup-delay-ticks", 20), 0, 600),
+                atLeast("drops.despawn-seconds",
+                        intValue(config, "drops.despawn-seconds", 300), 0),
+                booleanValue(config, "drops.invulnerable", true));
+
+        pvpTotems = booleanValue(config, "pvp.totems", true);
+        pvpCrystals = booleanValue(config, "pvp.crystals", true);
+        pvpRespawnAnchors = booleanValue(config, "pvp.respawn-anchors", true);
+        pvpBeds = booleanValue(config, "pvp.beds", true);
+
+        leaderboard = new LeaderboardSettings(
+                booleanValue(config, "leaderboard.enabled", true),
+                clamped("leaderboard.size",
+                        intValue(config, "leaderboard.size", 10), 1, 100),
+                atLeast("leaderboard.refresh-seconds",
+                        intValue(config, "leaderboard.refresh-seconds", 60), 5),
+                booleanValue(config, "leaderboard.hologram.enabled", false),
+                config.getString("leaderboard.hologram.world", "world"),
+                finiteDouble(config, "leaderboard.hologram.x", 0.0),
+                finiteDouble(config, "leaderboard.hologram.y", 64.0),
+                finiteDouble(config, "leaderboard.hologram.z", 0.0));
+
+        audit = new AuditSettings(
+                booleanValue(config, "audit.enabled", true),
+                clamped("audit.max-entries",
+                        intValue(config, "audit.max-entries", 5000), 100, 100000),
+                config.getString("audit.webhook-url", ""),
+                clamped("audit.webhook-timeout-seconds",
+                        intValue(config, "audit.webhook-timeout-seconds", 5), 1, 30));
+
+        worldGuardEnabled = booleanValue(config, "worldguard.enabled", true);
+        updateCheckerEnabled = booleanValue(config, "update-checker.enabled", false);
+        updateCheckerUrl = config.getString("update-checker.url", "");
+        permissionMaxHearts = intList(config, "permissions.max-hearts",
+                List.of(20, 30, 40, 50, 100));
+
+        globalRules = new WorldRules(true, startHearts, minHearts, maxHearts, gainPerKill,
+                losePerDeath, deathLossPvp, true, true, true);
 
         disabledWorlds.clear();
         List<String> worlds = config.getStringList("settings.disabled-worlds");
@@ -179,14 +357,79 @@ public final class Settings {
                 disabledWorlds.add(world.toLowerCase(Locale.ROOT));
             }
         }
+
+        worldRules.clear();
+        ConfigurationSection worldsSection = config.getConfigurationSection("worlds");
+        if (worldsSection != null) {
+            for (String world : worldsSection.getKeys(false)) {
+                ConfigurationSection section = worldsSection.getConfigurationSection(world);
+                if (section == null) {
+                    plugin.getLogger().warning("worlds." + world
+                            + " must be a section; ignoring that world override.");
+                    continue;
+                }
+                worldRules.put(world.toLowerCase(Locale.ROOT), worldRules(world, section));
+            }
+        }
+    }
+
+    private WorldRules worldRules(String world, ConfigurationSection section) {
+        boolean enabled = sectionBoolean(section, "enabled", true);
+        int worldMin = sectionInt(section, "minimum-hearts", minHearts);
+        int worldMax = sectionInt(section, "maximum-hearts", maxHearts);
+        worldMin = Math.max(0, worldMin);
+        worldMax = Math.max(1, Math.min(MAX_SUPPORTED_HEARTS, worldMax));
+        if (worldMin >= worldMax) {
+            plugin.getLogger().warning("worlds." + world
+                    + ".minimum-hearts must be lower than maximum-hearts; using the global range.");
+            worldMin = minHearts;
+            worldMax = maxHearts;
+        }
+        int worldStart = sectionInt(section, "start-hearts", startHearts);
+        worldStart = clamp(worldStart, worldMin, worldMax);
+        return new WorldRules(enabled, worldStart, worldMin, worldMax,
+                Math.max(0, sectionInt(section, "gain-per-kill", gainPerKill)),
+                Math.max(1, sectionInt(section, "lose-per-death", losePerDeath)),
+                sectionBoolean(section, "pvp", deathLossPvp),
+                sectionBoolean(section, "withdraw", true),
+                sectionBoolean(section, "revive", true),
+                sectionBoolean(section, "item-use", true));
+    }
+
+    public WorldRules rules(World world) {
+        if (world == null) {
+            return globalRules;
+        }
+        return worldRules.getOrDefault(world.getName().toLowerCase(Locale.ROOT), globalRules);
     }
 
     public boolean isWorldDisabled(World world) {
-        return world != null && disabledWorlds.contains(world.getName().toLowerCase(Locale.ROOT));
+        if (world == null) {
+            return false;
+        }
+        return disabledWorlds.contains(world.getName().toLowerCase(Locale.ROOT))
+                || !rules(world).enabled();
     }
 
     public int minimumWithdrawRemaining() {
         return Math.max(minHearts, withdrawGuard);
+    }
+
+    public int minimumWithdrawRemaining(World world) {
+        WorldRules rules = rules(world);
+        return Math.max(rules.minHearts(), withdrawGuard);
+    }
+
+    public int maxHearts(World world) {
+        return rules(world).maxHearts();
+    }
+
+    public int minHearts(World world) {
+        return rules(world).minHearts();
+    }
+
+    public int startHearts(World world) {
+        return rules(world).startHearts();
     }
 
     public static int clamp(int value, int min, int max) {
@@ -252,6 +495,44 @@ public final class Settings {
         return value;
     }
 
+    private int sectionInt(ConfigurationSection section, String path, int fallback) {
+        Object raw = section.get(path);
+        if (raw == null) {
+            return fallback;
+        }
+        if (raw instanceof Number number) {
+            return number.intValue();
+        }
+        try {
+            return Integer.parseInt(String.valueOf(raw).trim());
+        } catch (NumberFormatException exception) {
+            plugin.getLogger().warning(section.getCurrentPath() + "." + path
+                    + " is not a number ('" + raw + "'); using " + fallback + ".");
+            return fallback;
+        }
+    }
+
+    private boolean sectionBoolean(ConfigurationSection section, String path, boolean fallback) {
+        Object raw = section.get(path);
+        if (raw == null) {
+            return fallback;
+        }
+        if (raw instanceof Boolean value) {
+            return value;
+        }
+        if (raw instanceof String text) {
+            if (text.equalsIgnoreCase("true")) {
+                return true;
+            }
+            if (text.equalsIgnoreCase("false")) {
+                return false;
+            }
+        }
+        plugin.getLogger().warning(section.getCurrentPath() + "." + path
+                + " is not true/false ('" + raw + "'); using " + fallback + ".");
+        return fallback;
+    }
+
     private int atLeast(String path, int value, int minimum) {
         if (value >= minimum) {
             return value;
@@ -298,5 +579,35 @@ public final class Settings {
                     + "'); the particle will be ignored.");
             return value;
         }
+    }
+
+    private String dropMode(FileConfiguration config, String path, String fallback) {
+        String value = config.getString(path, fallback);
+        String mode = value == null ? fallback : value.trim().toUpperCase(Locale.ROOT);
+        if (!mode.equals("DIRECT") && !mode.equals("ITEM") && !mode.equals("NONE")) {
+            plugin.getLogger().warning(path + " must be DIRECT, ITEM, or NONE; using "
+                    + fallback + ".");
+            return fallback;
+        }
+        return mode;
+    }
+
+    private List<String> stringList(FileConfiguration config, String path, List<String> fallback) {
+        List<String> values = config.getStringList(path);
+        return values.isEmpty() ? new ArrayList<>(fallback) : new ArrayList<>(values);
+    }
+
+    private List<Integer> intList(FileConfiguration config, String path, List<Integer> fallback) {
+        List<Integer> values = new ArrayList<>();
+        for (Object raw : config.getList(path, fallback)) {
+            if (raw instanceof Number number && number.intValue() > 0) {
+                values.add(number.intValue());
+            }
+        }
+        if (values.isEmpty()) {
+            values.addAll(fallback);
+        }
+        values.sort(Integer::compareTo);
+        return values;
     }
 }
