@@ -12,6 +12,7 @@ import dev.lifestead.data.AuditEntry;
 import dev.lifestead.data.DataStoreFactory;
 import dev.lifestead.data.SqliteDataStore;
 import dev.lifestead.integration.LifesteadPlaceholderExpansion;
+import dev.lifestead.integration.UpdateChecker;
 import dev.lifestead.integration.WorldGuardHook;
 import dev.lifestead.listener.CombatListener;
 import dev.lifestead.listener.DeathListener;
@@ -49,6 +50,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private GraceManager grace;
     private WorldGuardHook worldGuard;
     private LeaderboardManager leaderboard;
+    private UpdateChecker updateChecker;
     private EliminationManager eliminations;
     private ItemManager items;
     private RecipeManager recipes;
@@ -62,6 +64,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private int antiFarmTaskId = -1;
     private int combatTaskId = -1;
     private int leaderboardTaskId = -1;
+    private int updateTaskId = -1;
 
     @Override
     public void onEnable() {
@@ -86,6 +89,7 @@ public final class LifesteadPlugin extends JavaPlugin {
         leaderboard = new LeaderboardManager(this);
         worldGuard = new WorldGuardHook(this);
         worldGuard.initialize();
+        updateChecker = new UpdateChecker(this);
         eliminations = new EliminationManager(this);
         antiFarm = new AntiFarm(this);
         skins = new SkinService(this);
@@ -226,6 +230,8 @@ public final class LifesteadPlugin extends JavaPlugin {
         long leaderboardTicks = Math.max(5L, settings.leaderboard.refreshSeconds()) * 20L;
         leaderboardTaskId = getServer().getScheduler().runTaskTimer(this,
                 leaderboard::refresh, leaderboardTicks, leaderboardTicks).getTaskId();
+        updateTaskId = getServer().getScheduler().runTaskTimer(this,
+                updateChecker::check, 20L * 60L * 5L, 20L * 60L * 60L * 6L).getTaskId();
     }
 
     private void stopTasks() {
@@ -244,6 +250,10 @@ public final class LifesteadPlugin extends JavaPlugin {
         if (leaderboardTaskId != -1) {
             getServer().getScheduler().cancelTask(leaderboardTaskId);
             leaderboardTaskId = -1;
+        }
+        if (updateTaskId != -1) {
+            getServer().getScheduler().cancelTask(updateTaskId);
+            updateTaskId = -1;
         }
     }
 
