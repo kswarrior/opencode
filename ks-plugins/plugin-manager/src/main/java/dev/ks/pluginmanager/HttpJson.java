@@ -62,4 +62,17 @@ final class HttpJson {
             }
         }
     }
+
+    public static final class HttpStatusException extends IOException {
+        private final int status;
+
+        public HttpStatusException(int status, URI uri) {
+            super("HTTP " + status + " from " + uri);
+            this.status = status;
+        }
+
+        public int status() {
+            return status;
+        }
+    }
 }

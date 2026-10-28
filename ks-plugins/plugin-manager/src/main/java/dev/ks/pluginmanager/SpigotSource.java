@@ -36,7 +36,15 @@ public final class SpigotSource extends AbstractUpdateSource {
     @Override
     public List<ProjectMatch> search(String query) throws Exception {
         String url = base + "/search/resources/" + encode(query) + "?field=name&limit=10";
-        JsonElement root = getJson(url);
+        JsonElement root;
+        try {
+            root = getJson(url);
+        } catch (HttpJson.HttpStatusException exception) {
+            if (exception.status() == 404) {
+                return List.of();
+            }
+            throw exception;
+        }
         List<ProjectMatch> matches = new ArrayList<>();
         if (!root.isJsonArray()) {
             return matches;
@@ -59,12 +67,13 @@ public final class SpigotSource extends AbstractUpdateSource {
     public ProjectMatch resolve(String project) throws Exception {
         String id = project.trim();
         if (id.startsWith("https://") || id.startsWith("http://")) {
-            int slash = id.lastIndexOf('/');
-            String trimmed = slash >= 0 ? id.substring(0, slash) : id;
-            int dot = trimmed.lastIndexOf('.');
-            if (dot >= 0) {
-                id = trimmed.substring(dot + 1);
+            while (id.endsWith("/")) {
+                id = id.substring(0, id.length() - 1);
             }
+            int slash = id.lastIndexOf('/');
+            String last = slash >= 0 ? id.substring(slash + 1) : id;
+            int dot = last.lastIndexOf('.');
+            id = dot >= 0 ? last.substring(dot + 1) : last;
         }
         if (!id.matches("\\d+")) {
             throw new IllegalArgumentException("Spigot project must be a numeric resource id: " + project);

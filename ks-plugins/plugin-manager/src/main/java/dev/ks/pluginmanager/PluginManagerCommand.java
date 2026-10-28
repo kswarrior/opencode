@@ -482,7 +482,11 @@ public class PluginManagerCommand implements CommandExecutor, TabCompleter {
         String requested = args.length >= 2 ? args[1] : "all";
         List<Plugin> targets = new ArrayList<>();
         if (requested.equalsIgnoreCase("all")) {
-            targets.addAll(Arrays.asList(Bukkit.getPluginManager().getPlugins()));
+            for (Plugin loaded : Bukkit.getPluginManager().getPlugins()) {
+                if (loaded != plugin) {
+                    targets.add(loaded);
+                }
+            }
             targets.sort(Comparator.comparing(Plugin::getName, String.CASE_INSENSITIVE_ORDER));
         } else {
             Plugin target = findPlugin(requested);

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
-import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -84,10 +83,6 @@ public final class PluginFiles {
         }
         int slash = path.lastIndexOf('/');
         String name = slash >= 0 ? path.substring(slash + 1) : path;
-        try {
-            name = URLDecoder.decode(name, StandardCharsets.UTF_8);
-        } catch (IllegalArgumentException ignored) {
-        }
         if (name.isBlank() || !name.toLowerCase(Locale.ROOT).endsWith(".jar")) {
             return "plugin.jar";
         }
@@ -107,7 +102,7 @@ public final class PluginFiles {
             trimmed += ".jar";
         }
         File direct = new File(directory, trimmed);
-        if (direct.isFile()) {
+        if (direct.isFile() && isInside(directory, direct)) {
             return direct;
         }
         File[] files = directory.listFiles();

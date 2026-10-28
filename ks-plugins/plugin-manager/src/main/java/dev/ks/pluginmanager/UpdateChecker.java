@@ -35,14 +35,19 @@ public final class UpdateChecker {
     public UpdateChecker(Map<String, UpdateSource> sources, List<String> order, Map<String, String> mappings) {
         this.sources = new LinkedHashMap<>(sources);
         this.order = new ArrayList<>();
-        for (String id : order) {
-            if (id != null && !id.isBlank() && this.sources.containsKey(id.toLowerCase(Locale.ROOT))) {
-                this.order.add(id.toLowerCase(Locale.ROOT));
+        if (order == null || order.isEmpty()) {
+            this.order.addAll(this.sources.keySet());
+        } else {
+            for (String id : order) {
+                if (id != null && !id.isBlank() && this.sources.containsKey(id.toLowerCase(Locale.ROOT))) {
+                    String normalized = id.toLowerCase(Locale.ROOT);
+                    if (!this.order.contains(normalized)) {
+                        this.order.add(normalized);
+                    }
+                }
             }
-        }
-        for (String id : this.sources.keySet()) {
-            if (!this.order.contains(id)) {
-                this.order.add(id);
+            if (this.order.isEmpty()) {
+                this.order.addAll(this.sources.keySet());
             }
         }
         this.mappings = new LinkedHashMap<>();
