@@ -1276,6 +1276,51 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await closeCurrentWindow(alpha)
   })
 
+  test('malformed messages reload preserves the previous messages', async () => {
+    await patchMessages(fixture, { prefix: '&e[E2E]&r ' })
+    const originalMessages = await readFile(fixture.messagesFile, 'utf8')
+    await server.commandExpect('lifestead reload', /reloaded/)
+    await sleep(300)
+    assert.match((await sendCommand(alpha, '/ls hearts', /\[E2E\]/)).text, /\[E2E\]/)
+
+    await writeFile(
+      fixture.messagesFile,
+      "prefix: '&8[&cLifestead&8] &r'\nbroken: [unterminated\n"
+    )
+    const failed = await sendCommand(alpha, '/ls reload', /Reload failed/)
+    assert.match(failed.text, /Existing recipes and data were preserved/)
+    assert.match((await sendCommand(alpha, '/ls hearts', /\[E2E\]/)).text, /\[E2E\]/)
+
+    await writeFile(fixture.messagesFile, originalMessages)
+    await server.commandExpect('lifestead reload', /reloaded/)
+    await sleep(300)
+    await patchMessages(fixture, { prefix: '&8[&cLifestead&8] &r' })
+    await server.commandExpect('lifestead reload', /reloaded/)
+    await sleep(300)
+  })
+
+  test('malformed config reload preserves recipes and messages', async () => {
+    await patchMessages(fixture, { prefix: '&e[E2E]&r ' })
+    const originalConfig = await readFile(fixture.configFile, 'utf8')
+    await server.commandExpect('lifestead reload', /reloaded/)
+    await sleep(300)
+    assert.match((await sendCommand(alpha, '/ls hearts', /\[E2E\]/)).text, /\[E2E\]/)
+
+    await writeFile(fixture.configFile, 'settings: [unterminated\n')
+    const failed = await sendCommand(alpha, '/ls reload', /Reload failed/)
+    assert.match(failed.text, /Existing recipes and data were preserved/)
+    assert.match((await sendCommand(alpha, '/ls hearts', /\[E2E\]/)).text, /\[E2E\]/)
+    const window = await openWindowWithCommand(alpha, '/ls recipe heart')
+    const info = itemLore(window.slots[4])
+    assert.ok(info.some((line) => line.includes('Enabled: Yes')))
+    await closeCurrentWindow(alpha)
+
+    await writeFile(fixture.configFile, originalConfig)
+    await patchMessages(fixture, { prefix: '&8[&cLifestead&8] &r' })
+    await server.commandExpect('lifestead reload', /reloaded/)
+    await sleep(300)
+  })
+
   test('PlaceholderAPI exposes every documented placeholder', async () => {
     await resetAll()
     assert.equal(await hearts(alpha), 10)
@@ -1409,6 +1454,23 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
     await resetAll()
   })
 
+  test('malformed messages are quarantined at startup and defaults load', async () => {
+    await disconnectBoth()
+    await server.stop()
+    await writeFile(fixture.messagesFile, 'prefix: [unterminated\n')
+    await server.start()
+    assert.ok(
+      server.lines.some((line) =>
+        line.includes('messages.yml is malformed; moved it to')
+      ),
+      'Expected malformed messages to be quarantined'
+    )
+    await connectBoth()
+    const message = await sendCommand(alpha, '/ls hearts', /has \d+ heart\(s\)/)
+    assert.match(message.text, /has \d+ heart\(s\)/)
+    await resetAll()
+  })
+
   test('malformed playerdata is quarantined instead of overwritten', async () => {
     await disconnectBoth()
     await server.stop()
@@ -1421,6 +1483,62 @@ describe('Lifestead Paper + Mineflayer E2E', { concurrency: 1 }, () => {
       'Expected malformed playerdata to be quarantined'
     )
     await access(`${fixture.playerdataFile}.corrupt`)
+    await connectBoth()
+    assert.equal(await hearts(alpha), START_HEARTS)
+    assert.equal(await hearts(beta), START_HEARTS)
+    await resetAll()
+  })
+
+  test('wrong-shaped data files are quarantined instead of overwritten', async () => {
+    await disconnectBoth()
+    await server.stop()
+    const pluginDir = path.dirname(fixture.playerdataFile)
+    for (const name of await readdir(pluginDir)) {
+      if (name.includes('.corrupt')) {
+        await rm(path.join(pluginDir, name), { force: true })
+      }
+    }
+    await writeFile(
+      fixture.playerdataFile,
+      'players:\n  - name: E2ENormHigh\n    hearts: 15\n'
+    )
+    await writeFile(
+      path.join(pluginDir, 'antifarm.yml'),
+      'pairs:\n  - killer: 00000000-0000-0000-0000-000000000001\n'
+    )
+    await server.start()
+    assert.ok(
+      server.lines.some((line) =>
+        line.includes('playerdata.yml has an invalid players section; moved it to')
+      ),
+      'Expected wrong-shaped playerdata to be quarantined'
+    )
+    await server.commandExpect(
+      'lifestead reset all',
+      /Reset hearts and elimination state/
+    )
+    await sleep(300)
+    assert.ok(
+      server.lines.some((line) =>
+        line.includes('antifarm.yml has an invalid pairs section; moved it to')
+      ),
+      'Expected wrong-shaped anti-farm data to be quarantined'
+    )
+    const quarantined = await readFile(`${fixture.playerdataFile}.corrupt`, 'utf8')
+    assert.match(quarantined, /E2ENormHigh/)
+
+    await server.stop()
+    await writeFile(
+      fixture.playerdataFile,
+      'players:\n  00000000-0000-0000-0000-000000000001: broken\n'
+    )
+    await server.start()
+    assert.ok(
+      server.lines.some((line) =>
+        line.includes('playerdata.yml has an invalid player entry')
+      ),
+      'Expected invalid player entries to be quarantined'
+    )
     await connectBoth()
     assert.equal(await hearts(alpha), START_HEARTS)
     assert.equal(await hearts(beta), START_HEARTS)
