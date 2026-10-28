@@ -13,11 +13,13 @@ import dev.lifestead.data.SqliteDataStore;
 import dev.lifestead.integration.LifesteadPlaceholderExpansion;
 import dev.lifestead.listener.CombatListener;
 import dev.lifestead.listener.DeathListener;
+import dev.lifestead.listener.GraceListener;
 import dev.lifestead.listener.GuiListener;
 import dev.lifestead.listener.ItemListener;
 import dev.lifestead.listener.PlayerLifecycleListener;
 import dev.lifestead.manager.AntiFarm;
 import dev.lifestead.manager.EliminationManager;
+import dev.lifestead.manager.GraceManager;
 import dev.lifestead.manager.HeartDropManager;
 import dev.lifestead.manager.HeartManager;
 import dev.lifestead.manager.ItemManager;
@@ -40,6 +42,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private DataStore dataStore;
     private HeartManager heartManager;
     private HeartDropManager heartDrops;
+    private GraceManager grace;
     private EliminationManager eliminations;
     private ItemManager items;
     private RecipeManager recipes;
@@ -70,6 +73,7 @@ public final class LifesteadPlugin extends JavaPlugin {
         items = new ItemManager(this);
         heartManager = new HeartManager(this);
         heartDrops = new HeartDropManager(this);
+        grace = new GraceManager(this);
         eliminations = new EliminationManager(this);
         antiFarm = new AntiFarm(this);
         skins = new SkinService(this);
@@ -179,6 +183,7 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     private void registerListeners() {
         getServer().getPluginManager().registerEvents(new PlayerLifecycleListener(this), this);
+        getServer().getPluginManager().registerEvents(new GraceListener(this), this);
         deathListener = new DeathListener(this);
         getServer().getPluginManager().registerEvents(deathListener, this);
         getServer().getPluginManager().registerEvents(new CombatListener(this), this);
@@ -233,6 +238,10 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     public DataStore getDataStore() {
         return dataStore;
+    }
+
+    public GraceManager getGrace() {
+        return grace;
     }
 
     public HeartDropManager getDrops() {

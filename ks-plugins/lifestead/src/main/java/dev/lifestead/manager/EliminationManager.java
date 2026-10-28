@@ -136,6 +136,7 @@ public final class EliminationManager {
                 && (online == null || online.isDead()));
         plugin.getDataStore().save(profile);
         pardon(profile);
+        plugin.getGrace().startOnRevive(profile);
 
         if (online != null) {
             if (online.getGameMode() == GameMode.SPECTATOR) {
