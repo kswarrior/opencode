@@ -53,9 +53,11 @@ public final class LifesteadPlugin extends JavaPlugin {
     private SkinService skins;
     private Effects effects;
     private DeathListener deathListener;
+    private CombatListener combatListener;
     private LifesteadPlaceholderExpansion placeholderExpansion;
     private int resyncTaskId = -1;
     private int antiFarmTaskId = -1;
+    private int combatTaskId = -1;
 
     @Override
     public void onEnable() {
@@ -106,6 +108,9 @@ public final class LifesteadPlugin extends JavaPlugin {
         }
         if (antiFarm != null) {
             antiFarm.save();
+        }
+        if (combatListener != null) {
+            combatListener.clearAll();
         }
         if (placeholderExpansion != null) {
             try {
@@ -192,7 +197,8 @@ public final class LifesteadPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GraceListener(this), this);
         deathListener = new DeathListener(this);
         getServer().getPluginManager().registerEvents(deathListener, this);
-        getServer().getPluginManager().registerEvents(new CombatListener(this), this);
+        combatListener = new CombatListener(this);
+        getServer().getPluginManager().registerEvents(combatListener, this);
         getServer().getPluginManager().registerEvents(new ItemListener(this), this);
         getServer().getPluginManager().registerEvents(new GuiListener(this), this);
         getServer().getPluginManager().registerEvents(new PvpListener(this), this);
@@ -205,6 +211,8 @@ public final class LifesteadPlugin extends JavaPlugin {
                 () -> heartManager.resyncAll(), resyncTicks, resyncTicks).getTaskId();
         antiFarmTaskId = getServer().getScheduler().runTaskTimer(this,
                 () -> antiFarm.prune(), 20L * 60L * 5L, 20L * 60L * 5L).getTaskId();
+        combatTaskId = getServer().getScheduler().runTaskTimer(this,
+                () -> combatListener.tick(), 20L, 20L).getTaskId();
     }
 
     private void stopTasks() {
@@ -215,6 +223,10 @@ public final class LifesteadPlugin extends JavaPlugin {
         if (antiFarmTaskId != -1) {
             getServer().getScheduler().cancelTask(antiFarmTaskId);
             antiFarmTaskId = -1;
+        }
+        if (combatTaskId != -1) {
+            getServer().getScheduler().cancelTask(combatTaskId);
+            combatTaskId = -1;
         }
     }
 
@@ -293,6 +305,10 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     public DeathListener getDeathListener() {
         return deathListener;
+    }
+
+    public CombatListener getCombatListener() {
+        return combatListener;
     }
 
     public int getResyncTaskId() {
