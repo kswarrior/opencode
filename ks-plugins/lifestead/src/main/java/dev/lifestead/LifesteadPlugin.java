@@ -25,6 +25,7 @@ import dev.lifestead.manager.GraceManager;
 import dev.lifestead.manager.HeartDropManager;
 import dev.lifestead.manager.HeartManager;
 import dev.lifestead.manager.ItemManager;
+import dev.lifestead.manager.LeaderboardManager;
 import dev.lifestead.manager.RecipeManager;
 import dev.lifestead.manager.SkinService;
 import dev.lifestead.util.Effects;
@@ -46,6 +47,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private HeartDropManager heartDrops;
     private GraceManager grace;
     private WorldGuardHook worldGuard;
+    private LeaderboardManager leaderboard;
     private EliminationManager eliminations;
     private ItemManager items;
     private RecipeManager recipes;
@@ -58,6 +60,7 @@ public final class LifesteadPlugin extends JavaPlugin {
     private int resyncTaskId = -1;
     private int antiFarmTaskId = -1;
     private int combatTaskId = -1;
+    private int leaderboardTaskId = -1;
 
     @Override
     public void onEnable() {
@@ -79,6 +82,7 @@ public final class LifesteadPlugin extends JavaPlugin {
         heartManager = new HeartManager(this);
         heartDrops = new HeartDropManager(this);
         grace = new GraceManager(this);
+        leaderboard = new LeaderboardManager(this);
         worldGuard = new WorldGuardHook(this);
         worldGuard.initialize();
         eliminations = new EliminationManager(this);
@@ -111,6 +115,9 @@ public final class LifesteadPlugin extends JavaPlugin {
         }
         if (combatListener != null) {
             combatListener.clearAll();
+        }
+        if (leaderboard != null) {
+            leaderboard.shutdown();
         }
         if (placeholderExpansion != null) {
             try {
@@ -213,6 +220,11 @@ public final class LifesteadPlugin extends JavaPlugin {
                 () -> antiFarm.prune(), 20L * 60L * 5L, 20L * 60L * 5L).getTaskId();
         combatTaskId = getServer().getScheduler().runTaskTimer(this,
                 () -> combatListener.tick(), 20L, 20L).getTaskId();
+        leaderboard.refresh();
+        leaderboard.reloadHologram();
+        long leaderboardTicks = Math.max(5L, settings.leaderboard.refreshSeconds()) * 20L;
+        leaderboardTaskId = getServer().getScheduler().runTaskTimer(this,
+                leaderboard::refresh, leaderboardTicks, leaderboardTicks).getTaskId();
     }
 
     private void stopTasks() {
@@ -227,6 +239,10 @@ public final class LifesteadPlugin extends JavaPlugin {
         if (combatTaskId != -1) {
             getServer().getScheduler().cancelTask(combatTaskId);
             combatTaskId = -1;
+        }
+        if (leaderboardTaskId != -1) {
+            getServer().getScheduler().cancelTask(leaderboardTaskId);
+            leaderboardTaskId = -1;
         }
     }
 
@@ -257,6 +273,10 @@ public final class LifesteadPlugin extends JavaPlugin {
 
     public DataStore getDataStore() {
         return dataStore;
+    }
+
+    public LeaderboardManager getLeaderboard() {
+        return leaderboard;
     }
 
     public WorldGuardHook getWorldGuard() {
