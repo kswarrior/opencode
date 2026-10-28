@@ -8,7 +8,7 @@ commands:
   pm:
     aliases: [kspluginmanager, kspm, plugman]
     description: KS Plugin Manager
-    usage: /pm <list|info|load|unload|reload|update ...>
+    usage: /pm <list|info|load|unload|reload|enable|disable|install|remove|check|update>
     permission: kspluginmanager.use
 permissions:
   kspluginmanager.use:
