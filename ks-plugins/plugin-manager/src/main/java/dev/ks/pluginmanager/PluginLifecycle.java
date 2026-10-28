@@ -1,182 +1,383 @@
 package dev.ks.pluginmanager;
 
 import org.bukkit.Bukkit;
-import org.bukkit.event.HandlerList;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.SimplePluginManager;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
-import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.event.HandlerList;
+import org.bukkit.permissions.Permission;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.PluginManager;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.net.URLClassLoader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.logging.Level;
 
-public class PluginLifecycle {
+/**
+ * Best-effort runtime unload support for Bukkit/Spigot/Paper.
+ *
+ * <p>A JVM cannot truly unload classes, so this class removes every reference
+ * that the server and the plugin manager keep. The approach is intentionally
+ * defensive: every reflection step is isolated so a single server version
+ * difference cannot abort the rest of the cleanup.</p>
+ */
+public final class PluginLifecycle {
 
-    public static void disable(Plugin plugin) {
-        try { Bukkit.getPluginManager().disablePlugin(plugin); } catch (Exception ignored) {}
-        try { HandlerList.unregisterAll(plugin); } catch (Exception ignored) {}
-        try { Bukkit.getScheduler().cancelTasks(plugin); } catch (Exception ignored) {}
+    private PluginLifecycle() {
+    }
+
+    public static boolean disable(Plugin plugin) {
+        if (plugin == null) {
+            return false;
+        }
+        try {
+            if (plugin.isEnabled()) {
+                Bukkit.getPluginManager().disablePlugin(plugin);
+            }
+        } catch (Throwable throwable) {
+            warn("disablePlugin failed for " + plugin.getName(), throwable);
+        }
+        try {
+            HandlerList.unregisterAll(plugin);
+        } catch (Throwable ignored) {
+        }
+        try {
+            Bukkit.getScheduler().cancelTasks(plugin);
+        } catch (Throwable ignored) {
+        }
+        cancelRegionalTasks(plugin);
+        return !plugin.isEnabled();
     }
 
     public static boolean unload(Plugin plugin) {
-        PluginManager pm = Bukkit.getPluginManager();
-        disable(plugin);
-        cleanPaperProviders(plugin);
-        // Try Paper instance manager field
+        if (plugin == null) {
+            return false;
+        }
+        String name = plugin.getName();
+        if (!disable(plugin)) {
+            warn("Refusing to unload " + name + ": the plugin is still enabled.", null);
+            return false;
+        }
         try {
-            for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
-                for (Field f : c.getDeclaredFields()) {
-                    f.setAccessible(true);
-                    String name = f.getName().toLowerCase();
-                    String type = f.getType().getName().toLowerCase();
-                    if (name.contains("manager") || name.contains("instance") || type.contains("manager") || type.contains("instance")) {
-                        Object im = f.get(pm);
-                        if (im != null && im != pm) {
-                            cleanObject(im, plugin);
-                        }
-                    }
-                }
-            }
-        } catch (Exception ignored) {}
-
-        // Clean plugin manager collections
-        cleanObject(pm, plugin);
-        // Paper: clean nested PaperPluginInstanceManager
+            Bukkit.getServicesManager().unregisterAll(plugin);
+        } catch (Throwable ignored) {
+        }
         try {
-            Field ppmField = null;
-            for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
-                try { ppmField = c.getDeclaredField("paperPluginManager"); break; } catch (NoSuchFieldException ignored) {}
-            }
-            if (ppmField != null) {
-                ppmField.setAccessible(true);
-                Object ppm = ppmField.get(pm);
-                if (ppm != null) {
-                    Field imField = ppm.getClass().getDeclaredField("instanceManager");
-                    imField.setAccessible(true);
-                    Object im = imField.get(ppm);
-                    if (im != null) cleanObject(im, plugin);
-                }
-            }
-        } catch (Exception ignored) {}
+            Bukkit.getMessenger().unregisterIncomingPluginChannel(plugin);
+            Bukkit.getMessenger().unregisterOutgoingPluginChannel(plugin);
+        } catch (Throwable ignored) {
+        }
+        removePermissions(plugin);
+        removeCommands(plugin);
+        removeFromPluginManager(plugin);
+        closeClassLoader(plugin);
 
-        // Command map
-        try {
-            Field cmdField = null;
-            for (Class<?> c = pm.getClass(); c != null; c = c.getSuperclass()) {
-                try { cmdField = c.getDeclaredField("commandMap"); break; } catch (NoSuchFieldException ignored) {}
-            }
-            if (cmdField != null) {
-                cmdField.setAccessible(true);
-                Object cm = cmdField.get(pm);
-                if (cm instanceof SimpleCommandMap) {
-                    Field known = SimpleCommandMap.class.getDeclaredField("knownCommands");
-                    known.setAccessible(true);
-                    Object kc = known.get(cm);
-                    if (kc instanceof Map) {
-                        Map<?, ?> map = (Map<?, ?>) kc;
-                        List<Object> toRemove = new ArrayList<>();
-                        for (Map.Entry<?, ?> e : map.entrySet()) {
-                            Object cmd = e.getValue();
-                            if (cmd instanceof PluginCommand) {
-                                if (((PluginCommand) cmd).getPlugin() == plugin) toRemove.add(e.getKey());
-                            }
-                        }
-                        for (Object k : toRemove) ((Map) map).remove(k);
-                    }
-                }
-            }
-        } catch (Exception ignored) {}
-
-        // Close classloader
-        try {
-            ClassLoader cl = plugin.getClass().getClassLoader();
-            if (cl instanceof URLClassLoader) ((URLClassLoader) cl).close();
-        } catch (Exception ignored) {}
-
-        return true;
+        Plugin remaining = Bukkit.getPluginManager().getPlugin(name);
+        boolean removed = remaining == null || remaining == plugin;
+        if (!removed) {
+            warn("Plugin " + name + " is still registered after unload.", null);
+        }
+        return removed && !plugin.isEnabled();
     }
 
-    private static void cleanObject(Object obj, Plugin plugin) {
-        if (obj == null) return;
-        Class<?> c = obj.getClass();
-        for (Class<?> cls = c; cls != null; cls = cls.getSuperclass()) {
-            for (Field f : cls.getDeclaredFields()) {
-                String name = f.getName().toLowerCase();
-                if (!(name.contains("plugin") || name.contains("lookup") || name.contains("command") || name.contains("manager") || name.contains("instance"))) continue;
-                f.setAccessible(true);
-                Object val;
-                try { val = f.get(obj); } catch (Exception e) { continue; }
-                if (val instanceof Collection) {
-                    Collection<?> col = (Collection<?>) val;
-                    // remove plugin instances
-                    List<Object> toRemove = new ArrayList<>();
-                    for (Object o : col) {
-                        if (o == plugin) toRemove.add(o);
-                        else if (o instanceof Plugin && ((Plugin) o).getName().equals(plugin.getName())) toRemove.add(o);
+    private static void cancelRegionalTasks(Plugin plugin) {
+        // Paper/Folia exposes extra schedulers. They are optional and absent on
+        // plain Spigot, so use reflection rather than depending on Paper API.
+        String[][] methods = {
+                {"getGlobalRegionScheduler", "cancelTasks"},
+                {"getAsyncScheduler", "cancelTasks"}
+        };
+        Object server = Bukkit.getServer();
+        for (String[] method : methods) {
+            try {
+                Object scheduler = server.getClass().getMethod(method[0]).invoke(server);
+                if (scheduler != null) {
+                    scheduler.getClass().getMethod(method[1], Plugin.class).invoke(scheduler, plugin);
+                }
+            } catch (Throwable ignored) {
+            }
+        }
+    }
+
+    private static void removePermissions(Plugin plugin) {
+        PluginManager manager = Bukkit.getPluginManager();
+        PluginDescriptionFile description;
+        try {
+            description = plugin.getDescription();
+        } catch (Throwable exception) {
+            return;
+        }
+        for (Permission permission : description.getPermissions()) {
+            String name = permission.getName();
+            boolean shared = false;
+            for (Plugin other : manager.getPlugins()) {
+                if (other == plugin) {
+                    continue;
+                }
+                try {
+                    for (Permission otherPermission : other.getDescription().getPermissions()) {
+                        if (otherPermission.getName().equalsIgnoreCase(name)) {
+                            shared = true;
+                            break;
+                        }
                     }
-                    for (Object o : toRemove) ((Collection) val).remove(o);
-                } else if (val instanceof Map) {
-                    Map<?, ?> m = (Map<?, ?>) val;
-                    List<Object> keys = new ArrayList<>();
-                    for (Map.Entry<?, ?> e : m.entrySet()) {
-                        Object v = e.getValue();
-                        if (v == plugin || (v instanceof Plugin && ((Plugin) v).getName().equals(plugin.getName()))) keys.add(e.getKey());
-                        if (e.getKey() instanceof String && ((String) e.getKey()).equalsIgnoreCase(plugin.getName())) keys.add(e.getKey());
-                    }
-                    for (Object k : keys) ((Map) val).remove(k);
+                } catch (Throwable ignored) {
+                }
+                if (shared) {
+                    break;
+                }
+            }
+            if (shared) {
+                continue;
+            }
+            try {
+                manager.removePermission(name);
+            } catch (Throwable ignored) {
+            }
+            try {
+                manager.unsubscribeFromPermission(name, plugin);
+            } catch (Throwable ignored) {
+            }
+        }
+        try {
+            manager.unsubscribeFromDefaultPerms(true, plugin);
+            manager.unsubscribeFromDefaultPerms(false, plugin);
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static void removeCommands(Plugin plugin) {
+        CommandMap commandMap = commandMap();
+        if (commandMap == null) {
+            return;
+        }
+        Set<String> names = new java.util.LinkedHashSet<>();
+        try {
+            names.addAll(plugin.getDescription().getCommands().keySet());
+        } catch (Throwable ignored) {
+        }
+        for (String name : new ArrayList<>(names)) {
+            Command command = commandMap.getCommand(name);
+            if (command instanceof PluginCommand pluginCommand) {
+                if (pluginCommand.getPlugin() == plugin) {
+                    names.addAll(pluginCommand.getAliases());
+                }
+            }
+        }
+        for (String name : names) {
+            Command command = commandMap.getCommand(name);
+            if (!(command instanceof PluginCommand pluginCommand)) {
+                continue;
+            }
+            if (pluginCommand.getPlugin() != plugin) {
+                continue;
+            }
+            try {
+                command.unregister(commandMap);
+            } catch (Throwable throwable) {
+                warn("Could not unregister command " + name, throwable);
+            }
+        }
+        removeKnownCommands(commandMap, plugin);
+    }
+
+    private static void removeKnownCommands(CommandMap commandMap, Plugin plugin) {
+        try {
+            Field field = findField(commandMap.getClass(), "knownCommands");
+            if (field == null) {
+                return;
+            }
+            field.setAccessible(true);
+            Object value = field.get(commandMap);
+            if (!(value instanceof Map<?, ?> map)) {
+                return;
+            }
+            Iterator<? extends Map.Entry<?, ?>> iterator = map.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<?, ?> entry = iterator.next();
+                Object command = entry.getValue();
+                if (command instanceof PluginCommand pluginCommand && pluginCommand.getPlugin() == plugin) {
+                    iterator.remove();
+                } else if (command == plugin) {
+                    iterator.remove();
+                }
+            }
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static CommandMap commandMap() {
+        try {
+            Field field = findField(Bukkit.getPluginManager().getClass(), "commandMap");
+            if (field != null) {
+                field.setAccessible(true);
+                Object value = field.get(Bukkit.getPluginManager());
+                if (value instanceof CommandMap map) {
+                    return map;
+                }
+            }
+        } catch (Throwable ignored) {
+        }
+        try {
+            Object map = Bukkit.getServer().getClass().getMethod("getCommandMap").invoke(Bukkit.getServer());
+            if (map instanceof CommandMap commandMap) {
+                return commandMap;
+            }
+        } catch (Throwable ignored) {
+        }
+        return null;
+    }
+
+    private static void removeFromPluginManager(Plugin plugin) {
+        cleanManager(Bukkit.getPluginManager(), plugin,
+                Collections.newSetFromMap(new IdentityHashMap<>()), 0);
+    }
+
+    private static void cleanManager(Object manager, Plugin plugin, Set<Object> visited, int depth) {
+        if (manager == null || depth > 4 || !visited.add(manager)) {
+            return;
+        }
+        for (Class<?> type = manager.getClass(); type != null && type != Object.class; type = type.getSuperclass()) {
+            Field[] fields;
+            try {
+                fields = type.getDeclaredFields();
+            } catch (Throwable ignored) {
+                continue;
+            }
+            for (Field field : fields) {
+                if (Modifier.isStatic(field.getModifiers()) || field.isSynthetic()) {
+                    continue;
+                }
+                Object value;
+                try {
+                    field.setAccessible(true);
+                    value = field.get(manager);
+                } catch (Throwable ignored) {
+                    continue;
+                }
+                if (value == null || value == manager) {
+                    continue;
+                }
+                String name = field.getName().toLowerCase(Locale.ROOT);
+                if (value instanceof Collection<?> collection
+                        && (name.contains("plugin") || name.contains("lookup"))) {
+                    removeFromCollection(collection, plugin);
+                } else if (value instanceof Map<?, ?> map
+                        && (name.contains("plugin") || name.contains("lookup"))) {
+                    removeFromMap(map, plugin);
+                } else if (value.getClass().isArray() && name.contains("plugin")
+                        && value.getClass().getComponentType().isAssignableFrom(plugin.getClass())) {
+                    removeFromArray(field, manager, value, plugin);
+                } else if ((name.contains("instancemanager") || name.contains("pluginmanager")
+                        || value.getClass().getName().endsWith("PluginInstanceManager"))
+                        && value != plugin) {
+                    cleanManager(value, plugin, visited, depth + 1);
                 }
             }
         }
     }
 
-    private static void cleanPaperProviders(Plugin plugin) {
+    private static void removeFromCollection(Collection<?> collection, Plugin plugin) {
         try {
-            Class<?> lehCls = Class.forName("io.papermc.paper.plugin.entrypoint.LaunchEntryPointHandler");
-            java.lang.reflect.Field instanceField = lehCls.getField("INSTANCE");
-            Object handler = instanceField.get(null);
-            java.lang.reflect.Field storageField = lehCls.getDeclaredField("storage");
-            storageField.setAccessible(true);
-            Object storageMap = storageField.get(handler);
-            if (!(storageMap instanceof java.util.Map)) return;
-            Class<?> epCls = Class.forName("io.papermc.paper.plugin.entrypoint.Entrypoint");
-            Object pluginEntrypoint = epCls.getField("PLUGIN").get(null);
-            Object providerStorage = ((java.util.Map<?,?>) storageMap).get(pluginEntrypoint);
-            if (providerStorage == null) return;
-            for (Class<?> c = providerStorage.getClass(); c != null; c = c.getSuperclass()) {
-                for (java.lang.reflect.Field f : c.getDeclaredFields()) {
-                    f.setAccessible(true);
-                    Object val = null;
-                    try { val = f.get(providerStorage); } catch (Exception ignored) { continue; }
-                    if (val instanceof java.util.Collection) {
-                        java.util.Collection<?> col = (java.util.Collection<?>) val;
-
-                        java.util.List<Object> toRemove = new java.util.ArrayList<>();
-                        for (Object o : col) {
-                            if (o instanceof org.bukkit.plugin.java.JavaPlugin) {
-                                if (((org.bukkit.plugin.java.JavaPlugin) o).getName().equals(plugin.getName())) toRemove.add(o);
-                            } else {
-                                try {
-                                    Object meta = o.getClass().getMethod("getMeta").invoke(o);
-                                    if (meta != null && meta.getClass().getMethod("getName").invoke(meta).equals(plugin.getName())) toRemove.add(o);
-                                } catch (Exception ignored) {}
-                            }
-                        }
-                        for (Object o : toRemove) ((java.util.Collection) val).remove(o);
-                    }
-                    if (val != null && val.getClass().getName().contains("PluginProvider")) {
-                        try {
-                            Object meta = val.getClass().getMethod("getMeta").invoke(val);
-                            if (meta != null && meta.getClass().getMethod("getName").invoke(meta).equals(plugin.getName())) {
-                                f.set(providerStorage, null);
-                            }
-                        } catch (Exception ignored) {}
-                    }
+            Iterator<?> iterator = collection.iterator();
+            while (iterator.hasNext()) {
+                if (matches(iterator.next(), plugin)) {
+                    iterator.remove();
                 }
             }
-        } catch (Throwable ignored) {}
+        } catch (Throwable ignored) {
+        }
     }
 
+    private static void removeFromMap(Map<?, ?> map, Plugin plugin) {
+        try {
+            Iterator<? extends Map.Entry<?, ?>> iterator = map.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<?, ?> entry = iterator.next();
+                Object value = entry.getValue();
+                Object key = entry.getKey();
+                if (matches(value, plugin)
+                        || (key instanceof String text && text.equalsIgnoreCase(plugin.getName()))) {
+                    iterator.remove();
+                }
+            }
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static void removeFromArray(Field field, Object owner, Object array, Plugin plugin) {
+        try {
+            int length = Array.getLength(array);
+            List<Object> kept = new ArrayList<>(length);
+            for (int i = 0; i < length; i++) {
+                Object value = Array.get(array, i);
+                if (!matches(value, plugin)) {
+                    kept.add(value);
+                }
+            }
+            if (kept.size() == length) {
+                return;
+            }
+            Object replacement = Array.newInstance(array.getClass().getComponentType(), kept.size());
+            for (int i = 0; i < kept.size(); i++) {
+                Array.set(replacement, i, kept.get(i));
+            }
+            field.set(owner, replacement);
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static boolean matches(Object value, Plugin plugin) {
+        if (value == plugin) {
+            return true;
+        }
+        if (value instanceof Plugin other) {
+            return other.getName().equalsIgnoreCase(plugin.getName());
+        }
+        return false;
+    }
+
+    private static void closeClassLoader(Plugin plugin) {
+        try {
+            ClassLoader loader = plugin.getClass().getClassLoader();
+            if (loader instanceof URLClassLoader urlClassLoader
+                    && loader != PluginLifecycle.class.getClassLoader()) {
+                urlClassLoader.close();
+            }
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static Field findField(Class<?> type, String name) {
+        for (Class<?> current = type; current != null && current != Object.class; current = current.getSuperclass()) {
+            try {
+                return current.getDeclaredField(name);
+            } catch (NoSuchFieldException ignored) {
+            }
+        }
+        return null;
+    }
+
+    private static void warn(String message, Throwable throwable) {
+        try {
+            if (throwable == null) {
+                Bukkit.getLogger().warning("[KSPluginManager] " + message);
+            } else {
+                Bukkit.getLogger().log(Level.WARNING, "[KSPluginManager] " + message, throwable);
+            }
+        } catch (Throwable ignored) {
+        }
+    }
 }
