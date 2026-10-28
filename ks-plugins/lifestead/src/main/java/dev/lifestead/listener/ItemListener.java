@@ -9,6 +9,7 @@ package dev.lifestead.listener;
 import dev.lifestead.LifesteadPlugin;
 import dev.lifestead.data.PlayerProfile;
 import dev.lifestead.gui.ReviveGui;
+import dev.lifestead.manager.ItemManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -55,8 +56,17 @@ public final class ItemListener implements Listener {
                 ? event.getItem() : player.getInventory().getItem(hand);
         if (plugin.getItems().isHeart(item)) {
             event.setCancelled(true);
+            if (!plugin.getItems().allowedInWorld(ItemManager.HEART, player.getWorld())) {
+                plugin.getMessages().send(player, "items.world-blocked");
+                return;
+            }
             useHeart(player, hand);
         } else if (plugin.getItems().isBeacon(item)) {
+            if (!plugin.getItems().allowedInWorld(ItemManager.BEACON, player.getWorld())) {
+                plugin.getMessages().send(player, "items.world-blocked");
+                event.setCancelled(true);
+                return;
+            }
             event.setCancelled(true);
             if (plugin.getHearts().profile(player).isEliminated()) {
                 plugin.getMessages().send(player, "general.eliminated-action");
@@ -84,7 +94,23 @@ public final class ItemListener implements Listener {
         plugin.getItems().consumeHeartFromHand(player, hand);
         plugin.getMessages().send(player, "hearts.item-used");
         plugin.audit("heart-use", player.getName(), player.getName(), "1");
+        runHeartCommands(player);
         plugin.getEffects().healed(player);
+    }
+
+    private void runHeartCommands(Player player) {
+        for (String command : plugin.getSettings().commandsOnHeartUse) {
+            if (command == null || command.isBlank()) {
+                continue;
+            }
+            String parsed = command
+                    .replace("{player}", player.getName())
+                    .replace("{uuid}", player.getUniqueId().toString())
+                    .replace("{world}", player.getWorld().getName())
+                    .replace("{hearts}", Integer.toString(
+                            plugin.getHeartManager().hearts(player)));
+            plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), parsed);
+        }
     }
 
     @EventHandler(ignoreCancelled = true)

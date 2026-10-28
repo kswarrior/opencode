@@ -65,6 +65,7 @@ items:
   beacon-opened: '&dRevive Beacon opened.'
   beacon-consumed: '&dThe Revive Beacon was consumed.'
   beacon-missing: '&cYou must be holding a Revive Beacon to revive someone.'
+  world-blocked: '&cThat item cannot be used in this world.'
 
 elimination:
   eliminated: '&c{victim} &7ran out of hearts and was eliminated&8 ({cause})&7.'

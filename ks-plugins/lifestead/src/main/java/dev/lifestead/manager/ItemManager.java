@@ -66,6 +66,23 @@ public final class ItemManager {
         return isHeart(item) || isBeacon(item);
     }
 
+    public boolean allowedInWorld(String type, org.bukkit.World world) {
+        if (world == null) {
+            return true;
+        }
+        String path = HEART.equals(type) ? "items.heart.worlds" : "items.revive-beacon.worlds";
+        List<String> worlds = plugin.getConfig().getStringList(path);
+        if (worlds.isEmpty()) {
+            return true;
+        }
+        for (String allowed : worlds) {
+            if (allowed != null && allowed.equalsIgnoreCase(world.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean isType(ItemStack item, String type) {
         if (item == null || item.getType() == Material.AIR || !item.hasItemMeta()) {
             return false;
@@ -193,6 +210,17 @@ public final class ItemManager {
         if (config.getBoolean(path + ".glow", true)) {
             meta.addEnchant(Enchantment.UNBREAKING, 1, true);
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        }
+        String itemModel = config.getString(path + ".item-model", "");
+        if (itemModel != null && !itemModel.isBlank()) {
+            try {
+                NamespacedKey modelKey = NamespacedKey.fromString(itemModel.trim());
+                if (modelKey != null) {
+                    meta.setItemModel(modelKey);
+                }
+            } catch (RuntimeException exception) {
+                plugin.getLogger().warning("Invalid item-model for " + path + ": " + itemModel);
+            }
         }
         meta.getPersistentDataContainer().set(itemKey, PersistentDataType.STRING, type);
         item.setItemMeta(meta);
