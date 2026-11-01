@@ -23,7 +23,6 @@
     <application
         android:name=".KsApplication"
         android:allowBackup="false"
-        android:debuggable="true"
         android:enableOnBackInvokedCallback="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -84,12 +83,12 @@
         <activity
             android:name=".CustomizeActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".DialogStyleActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".GestureActivity"
