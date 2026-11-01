@@ -83,12 +83,12 @@
         <activity
             android:name=".CustomizeActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
-            android:exported="false" />
+            android:exported="true" />
 
         <activity
             android:name=".DialogStyleActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
-            android:exported="false" />
+            android:exported="true" />
 
         <activity
             android:name=".GestureActivity"
