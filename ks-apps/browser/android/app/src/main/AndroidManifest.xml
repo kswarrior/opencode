@@ -23,6 +23,7 @@
     <application
         android:name=".KsApplication"
         android:allowBackup="false"
+        android:debuggable="true"
         android:enableOnBackInvokedCallback="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
