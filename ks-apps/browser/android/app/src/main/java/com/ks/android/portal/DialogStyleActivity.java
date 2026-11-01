@@ -115,10 +115,12 @@ public class DialogStyleActivity extends Activity {
     }
 
     private void loadValues() {
+        loading = true;
         dimBar.setProgress(DialogStyleStore.getDim(this));
         blurBar.setProgress(DialogStyleStore.getBlur(this));
         sizeBar.setProgress(DialogStyleStore.getSize(this) - SIZE_MIN);
         shapeBar.setProgress(DialogStyleStore.getShape(this));
+        loading = false;
         updatePreview();
     }
 
