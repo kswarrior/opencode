@@ -68,7 +68,9 @@ public class DialogStyleActivity extends Activity {
         SeekBar.OnSeekBarChangeListener listener = new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                saveValues();
+                if (!loading) {
+                    saveValues();
+                }
                 updatePreview();
             }
 
