@@ -174,7 +174,7 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 
 - `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `ksb.howToSaveConfig`, `item.mace.name`.
 - No subpacks ship (`manifest.json` has no `subpacks` key): the gear menu is always on and the InvHUD grid is fixed bottom-right.
-- `textures/terrain_texture.json` (`atlas.terrain`, 1322 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) registers `mace` + the 17 door icons; `texture_list.json`/`textures_list.json` are both rebuilt from disk (1623 entries each, PNG+TGA, no dangling).
+- `textures/terrain_texture.json` (`atlas.terrain`, 1322 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) registers `mace` + the 17 door icons; `texture_list.json`/`textures_list.json` are both rebuilt from disk (1620 entries each, PNG+TGA, no dangling).
 - `textures/`: `blocks/` (1309 PNGs), `ui/` (116 PNGs incl. `bl_bt/black_ovr/blank/null`, `ks_f1f3_hud_btn/hide_bg` + `texture_assets/chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50, `font/` 0–9, `heart.png`).
 
 ### 2.12 Clear Chat Screen (KS Client: `ui/chat_screen.json`, `ui/ui_assets/screens/chat/chat_tweaks.json`)
@@ -268,7 +268,7 @@ ks-client/
 │   ├── textures/ (blocks/items/ui/gui/c_ui/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` + 17 door icons)
-│   │   ├── texture_list.json + textures_list.json (identical, 1623 entries, rebuilt from disk: PNG+TGA, no dangling)
+│   │   ├── texture_list.json + textures_list.json (identical, 1620 entries, rebuilt from disk: PNG+TGA, no dangling)
 │   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (116 PNGs incl. chat art) / c_ui/ (8 files, all wired) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
