@@ -63,6 +63,7 @@
 | 25 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (51 files, `v1.0.0` + `v1.0.3`…`v1.5.0` — no `v1.0.1`/`v1.0.2`/`v1.1.9` mcpack), opencode MCP skills |
 | 26 | HUD Settings Page (start screen, no positions) | KS Client (`ui/ks_hud_config.json`, `$ks_show_hud_config_button`) | Same gear art top-right left of bell opens fullscreen HUD SETTINGS (`ks_menu_bg` dim + `ks_config_bg` 620×360 card): small 20×20 X closes, Save button (session toast), body is a scrolling toggle list — Show Hotbar 1–10, InvHUD, F1, F3, Durability (no X/Y/size, no drag — position editors removed A-Z). Session-local — persist via `_global_variables.json` `$ksb_*` / `$ks_f1_v` / `$ks_f3_v` + repack |
 | 27 | Crosshair Indicator (dynamic) | PandaMine5 Crosshair Indicator v1.1 (rebranded `ks_crosshair_*`) | Default/entity hit-switch (`right_helper_collection` `hit` check) in `hud_screen.json` (`hud.ks_crosshair_panel`, shows in all perspectives — engine 1st-person-only hide applies solely to the overlay screen, which holds no collections); vanilla cursor emptied in `hud_crosshair_overlay.json` (no double-draw); `textures/ui/ks_crosshair_default/entity.png`; master hide `$ks_crosshair_v` |
+| 28 | Villager Trade Unlocker | NeBux Villagers Trade Unlocker v1.1.1 (merged, UI rebrand) | All villager trades visible/selectable at every tier without level-ups (`ui/trade_2_screen.json` vanilla `trade2` override; no textures, no lang keys) |
 
 ---
 
@@ -242,6 +243,19 @@ In-game: hold a damageable item → durability number bottom-left; low durabilit
 
 ---
 
+### 2.17 Villager Trade Unlocker (NeBux, merged UI override)
+
+What it is: villager trade screens show every tier/trade unlocked — no leveling required to view or select them.
+
+How it works:
+- `ui/trade_2_screen.json` (namespace `trade2`, appended in `_ui_defs.json`): overrides the vanilla tier/toggle/lock/arrow controls (`tier_stack_panel`, `trade_toggle`, `lock_image`, `arrow_holder`) so locked tiers render and behave as available.
+- UI-only: no textures, no lang keys, no behavior pack, no manifest change; applies wherever the vanilla trade screen is used.
+- Merged from NeBux Villagers Trade Unlocker v1.1.1 — see `copyright.txt` entry 19. Original header comments stripped; no owner paths/namespaces/vars remain in-pack.
+
+In-game: open any villager (any profession) → all tiers/trades are shown and selectable without trading up first.
+
+---
+
 ## 3. Project Structure
 
 ```
@@ -273,9 +287,9 @@ ks-client/
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 26 entries (…+ chat_tweaks + fps_hud + ks_durability ×4 + ks_hud_config + hud_crosshair_overlay + chat_screen + debug_screen + dev_console_screen + mob_effect_screen + settings_sections/controls_section + ui_common; every UI file is registered)
+│   │   ├── _ui_defs.json            ← load order, 24 entries (…+ chat_tweaks + fps_hud + ks_durability ×2 + ks_hud_config + hud_crosshair_overlay + chat_screen + debug_screen + dev_console_screen + mob_effect_screen + settings_sections/controls_section + ui_common + trade_2_screen; every UI file is registered)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: top-right same-gear button + HUD SETTINGS toggles, no positions), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
-│   │   ├── inventory_screen.json (crafting), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common)
+│   │   ├── inventory_screen.json (crafting), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common), trade_2_screen.json (trade2 — all villager trades unlocked)
 │   │   ├── chat_screen.json (chat) + ui_assets/screens/chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_durability/config+container_data+hud+common)
 │   │   ├── ks_touch/hide_gui.json
@@ -286,7 +300,7 @@ ks-client/
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 Drive SKIP lines and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json` (81 mobs + `player.json`). Every shipped `ui/**/*.json` is registered in `_ui_defs.json` (26 entries) and carries its required `namespace` (vanilla-namespace overrides need it to merge — `chat`/`common`/`debug_screen`/`dev_console`/`controls_section` namespaces and the six missing `_ui_defs` entries were restored in the audit).
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 Drive SKIP lines and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json` (81 mobs + `player.json`). Every shipped `ui/**/*.json` is registered in `_ui_defs.json` (24 entries) and carries its required `namespace` (vanilla-namespace overrides need it to merge — `chat`/`common`/`debug_screen`/`dev_console`/`controls_section` namespaces and the six missing `_ui_defs` entries were restored in the audit).
 
 ---
 
@@ -301,6 +315,7 @@ ks-client/
    - Mobs + players: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
    - Status: top-left readout (client version, position) — own skin, no doll FPS.
+   - Trades: open any villager → all tiers/trades shown and selectable without leveling (UI-only, no new textures).
 4. **Persist config:** edit `ui/_global_variables.json` (§5) → repack → reactivate.
 
 ---
