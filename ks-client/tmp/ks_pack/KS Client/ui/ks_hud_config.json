@@ -306,7 +306,9 @@
           ]
         }
       }
-    ],
+    ]
+  },
+
   "ks_cfg_toggle_stack": {
     "type": "stack_panel",
     "size": [ "100%", "100%c" ],
@@ -326,6 +328,5 @@
       { "ks_cf3@ksb_main.toggle_option": { "$toggle_name": "ksbT_f3show", "$toggle_view_binding_name": "ksbT_f3show_t", "$toggle_text": "Show F3 HUD", "$toggle_default_state": "$ks_f3_v" } },
       { "ks_cd@ksb_main.toggle_option": { "$toggle_name": "ks_dv_t", "$toggle_view_binding_name": "ks_dv_t_t", "$toggle_text": "Show Durability HUD", "$toggle_default_state": "$ks_dv_mainhand" } }
     ]
-  }
   }
 }

@@ -81,7 +81,7 @@ How it works:
 
 In-game: you see a clean black menu, skin preview centered above Play, version bottom-right, bell top-right, KS icon buttons. No extra text. Note: center KS row + brand header/footer + scrims were retired in latest `ks_client_common.json` (comments) — screen stays text-free.
 
-HUD SETTINGS page (`ui/ks_hud_config.json`, namespace `ks_hud_config`, 19th `_ui_defs.json` entry): tap the same-gear button left of the bell → fullscreen page (`ks_menu_bg` dim, `ks_config_bg` 620×360 card, layer 45 above the Menu page). Top-right has a small 20×20 X (`box_exit`, closes via `ks_hud_cfg_open`) and a 90×24 Save button (`ks_config_btn` → green "Saved for this session" toast). Body is a scrolling toggle list (`ks_cfg_list` + `ks_cfg_toggle_stack` reusing `ksb_main.toggle_option`): Show Hotbar 1–10, InvHUD, F1, F3, Durability — no positions, no drag (position editors removed A-Z: draggable canvas deleted, HUD slider X/Y/size panel hidden but alive for bindings). Engine limit: toggles apply this session only — persist via `$ksb_1…$ksb_10` / `$ks_f1_v` / `$ks_f3_v` (§5) + repack.
+HUD SETTINGS page (`ui/ks_hud_config.json`) is no longer wired into the start screen: the gear button left of the bell and its fullscreen overlay were removed. The file stays registered in `_ui_defs.json` with the `ks_cfg_toggle_stack` brace fixed, so it loads cleanly but has no entry point. Toggles remain configurable via `_global_variables.json` (`$ksb_1…$ksb_10` / `$ks_f1_v` / `$ks_f3_v`, §5) + repack.
 
 ### 2.2 Slot Hotbar Buttons + Settings Editor (KS Client: `ui/ks_modules/ksb_hotbar_button/`, `_global_variables.json`)
 
@@ -287,7 +287,7 @@ ks-client/
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
 │   │   ├── _ui_defs.json            ← load order, 24 entries (…+ chat_tweaks + fps_hud + ks_durability ×2 + ks_hud_config + hud_crosshair_overlay + chat_screen + debug_screen + dev_console_screen + mob_effect_screen + settings_sections/controls_section + ui_common + trade_2_screen; every UI file is registered)
-│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: top-right same-gear button + HUD SETTINGS toggles, no positions), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
+│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: retained toggle-page defs, not wired), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common), trade_2_screen.json (trade2 — all villager trades unlocked)
 │   │   ├── chat_screen.json (chat) + ui_assets/screens/chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_durability/config+container_data+hud+common)
@@ -308,7 +308,7 @@ ks-client/
 1. Copy a file from `release/` (e.g. `KS-Client-v1.0.0.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
 3. **Use:**
-   - Start screen → `TAP TO START` / skin preview / bell inbox / same-gear button left of bell (opens HUD SETTINGS: hotbar 1–10 + F1/F3 + InvHUD + durability toggles, Save, small X — no position editing).
+   - Start screen → `TAP TO START` / skin preview with idle bob / bell inbox / KS settings + dressing buttons (HUD SETTINGS gear button removed).
    - HUD: numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); F1 top-middle [-39,0.5] hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 top-middle [38.5,0.5] toggles debug readout left + right (same-to-same Default-mobile context); Show F1/F3 on/off in HUD tab; vanilla paperdoll renderer kept. `ks_hud_keys` remains stubbed empty, `ks_f3_inv_counter_main` 36-probe counter live.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs + players: HP bar + digits above head, always displayed (no toggle, no subpack).
@@ -329,7 +329,6 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors |
 | Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | Show Inv HUD on/off + Compact toggle in HUD tab; grid fixed bottom-right (no corner picker) |
 | F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` left + `ks_f3_right` right debug (same-to-same Default-mobile: version/edition/gamemode incl. Spectator/days/pos/icons/UI/device/graphics/input + pack/inv36/Full-Avail/XP/Nether/world/chunk); bottom-center way back reads short "F1 -" |
-| Start-screen HUD settings button | `$ks_show_hud_config_button true` | Show/hide the same-gear button top-right left of the bell (`start.ks_cfg_slot` ignored when false); the HUD SETTINGS toggle list (no positions) lives in `ui/ks_hud_config.json` |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`) |
 | F3 tools icons | `$ks_recovery_id 45088768`, `$ks_clock_id 22740992`, `$ks_compass_id 22609920` | live `inventory_item_renderer` `#item_id_aux` for F3 recovery/clock/compass row |
