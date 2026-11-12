@@ -1,3 +1,4 @@
+
 name: KS Agent Testing
 
 on:
@@ -64,17 +65,6 @@ jobs:
           chmod +x /tmp/cloudflared
           sudo install /tmp/cloudflared /usr/local/bin/cloudflared
           cloudflared --version
-          nohup cloudflared tunnel run \
-            --token "eyJhIjoiZTJkZjY3MDI5ZWZlZTBmY2JhM2ExMjNjN2VmNTcxNTAiLCJ0IjoiMWY3ZjMzNTItOTYzMS00NzJiLWFlYWYtZmJiOTdlMWQ4M2NjIiwicyI6Ik1XWTNPV1V5WmpFdFpEaGtNeTAwTnpWaExUbGhOamt0TjJVMU16RTFaV0U1TmpFMCJ9" \
-            > /tmp/cloudflared.log 2>&1 &
-          echo $! > /tmp/cloudflared.pid
-          sleep 10
-          if ! kill -0 "$(cat /tmp/cloudflared.pid)" 2>/dev/null; then
-            echo "Cloudflare Tunnel failed to start."
-            cat /tmp/cloudflared.log
-            exit 1
-          fi
-          echo "Cloudflare Tunnel is running."
 
       - name: Start OpenCode Web UI
         run: |
@@ -114,6 +104,67 @@ jobs:
           fi
 
           echo "OpenCode Web UI is running on port 7070."
+
+      - name: Start Cloudflare Quick Tunnel
+        run: |
+          set -e
+          rm -f /tmp/cloudflared.log
+          rm -f /tmp/cloudflared.pid
+
+          echo "Starting free Cloudflare Quick Tunnel..."
+
+          nohup cloudflared tunnel \
+            --url http://127.0.0.1:7070 \
+            --no-autoupdate \
+            > /tmp/cloudflared.log 2>&1 &
+
+          CLOUDFLARED_PID=$!
+          echo "$CLOUDFLARED_PID" > /tmp/cloudflared.pid
+
+          TUNNEL_URL=""
+
+          for i in $(seq 1 60); do
+
+            TUNNEL_URL=$(
+              grep -Eo 'https://[A-Za-z0-9.-]+\.trycloudflare\.com' \
+                /tmp/cloudflared.log |
+              head -n 1 || true
+            )
+
+            if [ -n "$TUNNEL_URL" ]; then
+              break
+            fi
+
+            if ! kill -0 "$CLOUDFLARED_PID" 2>/dev/null; then
+              echo "Cloudflare Tunnel failed to start."
+              cat /tmp/cloudflared.log
+              exit 1
+            fi
+
+            sleep 2
+          done
+
+          if [ -z "$TUNNEL_URL" ]; then
+            echo "Could not obtain Cloudflare Quick Tunnel URL."
+            cat /tmp/cloudflared.log
+            exit 1
+          fi
+
+          echo ""
+          echo "=========================================="
+          echo "OpenCode Public URL:"
+          echo "$TUNNEL_URL"
+          echo "=========================================="
+
+          echo "TUNNEL_URL=$TUNNEL_URL" >> "$GITHUB_ENV"
+
+          {
+            echo "### OpenCode Cloudflare Quick Tunnel"
+            echo ""
+            echo "Public URL: $TUNNEL_URL"
+            echo ""
+            echo "Local Port: 7070"
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Monitor repository
         continue-on-error: true
