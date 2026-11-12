@@ -189,6 +189,11 @@
           "type": "input_panel",
           "prevent_touch_input": true
         }
+      },
+      // Utility HUD V-1.5 touch buttons (fast totem, offhand switch, offhand preview).
+      // Vanilla inv content (hotbar grid, durability, close, help) is NOT pulled in.
+      {
+        "_extra_content@ks_uhud.ks_uhud_inventory_content": {}
       }
     ]
   },
