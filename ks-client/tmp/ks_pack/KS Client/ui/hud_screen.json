@@ -314,19 +314,8 @@
   // KS F1/F3 keys (same-to-same Default-mobile vs NeBux F1 & F3 Button v1.1.3):
   // F1 [-39, 0.5] hides HUD, F3 [38.5, 0.5] toggles ks_f3_panel + ks_f3_right,
   // "F1 -" bar is the way back.
-  // Quick Totem Offhand button by KS Client (insert_front): 30x30 (40 -25%),
-  // raised 30px (new size) above the Offhand default.
   "hud_content": {
     "modifications": [
-      {
-        "array_name": "controls",
-        "operation": "insert_front",
-        "value": [
-          {
-            "totem_pos@hud.totem_btn_pos": {}
-          }
-        ]
-      },
       {
         "array_name": "controls",
         "operation": "insert_front",
@@ -497,93 +486,6 @@
             }
           }
         ]
-      }
-    ]
-  },
-
-  // ---------- Quick Totem Offhand button (KS Client) ----------
-  // Positioned live by the editor totem sliders via the resizer wrapper
-  // ($ksb_totem_x/y are 0-100 slider positions: px offset = value-125 / value-35).
-  // NOTE: htotem_y_slider is the X axis (-125), htotem_x_slider is the Y axis (-35),
-  // matching ksb_main.editor_stack_templete + slot_button_item resizer mapping.
-  // Visibility follows the totem toggle live; size tries the size slider.
-  "totem_btn_pos": {
-    "type": "panel",
-    "size": [1, 1],
-    "anchor_from": "bottom_middle",
-    "anchor_to": "bottom_middle",
-    "visible": "$ksb_totem_v",
-    "layer": 50,
-    "use_anchored_offset": true,
-    "property_bag": {
-      "#anchored_offset_value_x": 1.0,
-      "#anchored_offset_value_y": 1.0
-    },
-    "controls": [
-      {
-        "totem_btn@settings_common.action_button": {
-          "prevent_touch_input": true,
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [0, 0],
-          "size": [30, 30],
-          "visible": "$ksb_totem_v",
-          "layer": 50,
-          "property_bag": {
-            "#size_binding_x": 1.0,
-            "#size_binding_y": 1.0
-          },
-          "$border_visible": false,
-          "$button_text": "",
-          "$pressed_button_name": "button.hotbar_inventory_button",
-          "$default_button_texture|default": "textures/totem/totem_button",
-          "$hover_button_texture|default": "textures/totem/totem_button",
-          "$pressed_button_texture|default": "textures/totem/totem_button",
-          "$locked_button_texture|default": "textures/totem/totem_button",
-          "bindings": [
-            {
-              "binding_type": "view",
-              "source_control_name": "ksbT_totem_t",
-              "source_property_name": "#toggle_state",
-              "target_property_name": "#visible"
-            },
-            {
-              "binding_type": "view",
-              "source_control_name": "htotem_size_slider",
-              "source_property_name": "#slider_val",
-              "target_property_name": "#size_binding_x"
-            },
-            {
-              "binding_type": "view",
-              "source_control_name": "htotem_size_slider",
-              "source_property_name": "#slider_val",
-              "target_property_name": "#size_binding_y"
-            }
-          ]
-        }
-      }
-    ],
-    "bindings": [
-      {
-        "binding_name": "#hud_visible",
-        "binding_type": "global"
-      },
-      {
-        "binding_type": "view",
-        "source_property_name": "#hud_visible",
-        "target_property_name": "#visible"
-      },
-      {
-        "binding_type": "view",
-        "source_control_name": "htotem_y_slider",
-        "source_property_name": "(#slider_val - 125)",
-        "target_property_name": "#anchored_offset_value_x"
-      },
-      {
-        "binding_type": "view",
-        "source_control_name": "htotem_x_slider",
-        "source_property_name": "(#slider_val - 35)",
-        "target_property_name": "#anchored_offset_value_y"
       }
     ]
   },
