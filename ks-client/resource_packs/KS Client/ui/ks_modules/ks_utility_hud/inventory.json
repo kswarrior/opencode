@@ -1,3 +1,6 @@
+//- Created By KS Client
+//- Utility HUD V-1.5 (EchoRif) - Inventory screen touch buttons (fast totem, offhand switch + preview)
+//- KS Client module — do not redistribute as a standalone pack.
 {
   "namespace": "ks_uhud",
   "fast_switch_content@inv_content.component_toggle": {

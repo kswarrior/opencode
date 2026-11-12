@@ -481,6 +481,11 @@
       "#ks_uhud_counters_toggle": true
     },
     "controls": [
+      // Sibling collection probe: sums hotbar stacks into #count_* for the row below.
+      // Must share the wrapper scope for count_unit's source_control_name lookup.
+      {
+        "ks_uhud_slot_count_panel@ks_uhud.ks_uhud_slot_count_panel": {}
+      },
       {
         "counters@ks_uhud.ks_uhud_count_panel": {}
       }

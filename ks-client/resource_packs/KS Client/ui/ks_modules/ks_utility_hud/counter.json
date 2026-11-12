@@ -1,3 +1,6 @@
+//- Created By KS Client
+//- Utility HUD V-1.5 (EchoRif) - Counters row (free slots / gapple / pearls / totems) + hotbar stack probe
+//- KS Client module — do not redistribute as a standalone pack.
 {
   "namespace": "ks_uhud",
   "ks_uhud_slot_template": {
