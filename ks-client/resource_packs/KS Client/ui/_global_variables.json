@@ -127,5 +127,21 @@
 	"$ks_crosshair_v": true,
 	"$ks_crosshair_size": [ 15, 15 ],
 	"$ks_crosshair_alpha": 0.7,
-	"$ks_crosshair_offset": [ 0, 0 ]
+	"$ks_crosshair_offset": [ 0, 0 ],
+
+	// === KS Utility HUD (merged Utility HUD V-1.5 by EchoRif, counters only) ===
+	// Lives in ui/ks_modules/ks_utility_hud/. Durability/crosshair/F-key parts
+	// superseded by KS DV / KS Crosshair / KS F3 and are not included.
+	"$ks_uhud_counters_v": true,
+	"$ks_uhud_totem_v": true,
+	"$ks_uhud_switch_v": true,
+	"$ks_uhud_offhand_v": true,
+	"$ks_uhud_totem_size": [ 40, 40 ],
+	"$ks_uhud_totem_offset": [ 0, "25%" ],
+	"$ks_uhud_totem_alpha": 0.7,
+	"$ks_uhud_gapple_id": 18808832,
+	"$ks_uhud_egapple_id": 18874368,
+	"$ks_uhud_pearl_id": 29753344,
+	"$ks_uhud_totem_id": 39780352,
+	"$ks_uhud_chest_id": 3538946
 }
