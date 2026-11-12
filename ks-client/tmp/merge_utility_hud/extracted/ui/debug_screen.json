@@ -1,0 +1,12 @@
+{
+  "debug_screen": {
+    "button_mappings": [
+      {
+        "mapping_type": "global",
+        "from_button_id": "button.scoreboard",
+        "to_button_id": "button.access",
+        "consume_event": false
+      }
+    ]
+  }
+}

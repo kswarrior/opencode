@@ -1,0 +1,41 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Utility HUD V-1.5",
+    "description": "Made by §3EchoRif§r\n - Read the CurseForge post description for details\n - Version §31.5",
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ],
+    "uuid": "8e998d3c-ac7e-4c0d-a688-a9c102e22897",
+    "version": [
+      1,
+      5,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "8f36132e-699e-43fb-8f9e-b649ede78630",
+      "version": [
+        1,
+        5,
+        0
+      ]
+    }
+  ],
+  "subpacks": [
+    {
+      "folder_name": "nocounter",
+      "name": "§3Without Counters\n§7Choose this if you face lag while joining world§r",
+      "memory_tier": 0
+    },
+    {
+      "folder_name": "default",
+      "name": "§3Default§r",
+      "memory_tier": 1
+    }
+  ]
+}
