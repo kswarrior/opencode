@@ -14,8 +14,34 @@
     "layer": 1,
     "clips_children": true,
     "controls": [
-      { "viewer_panel@start.skin_viewer_panel": { "size": [ "100%", 112 ], "offset": [ 0, 12 ] } }
+      {
+        "viewer_panel@start.skin_viewer_panel": {
+          "size": [ "100%", 112 ],
+          "offset": [ 0, 12 ],
+          "anims": [ "@start.ks_doll_idle_up" ]
+        }
+      }
     ]
+  },
+
+  // Player-doll idle animation: gentle vertical bob (replaces the old
+  // anim button that sat above the dressing room button).
+  "ks_doll_idle_up": {
+    "anim_type": "offset",
+    "easing": "in_out_sine",
+    "duration": 1.6,
+    "from": [ 0, 12 ],
+    "to": [ 0, 7 ],
+    "next": "@start.ks_doll_idle_down"
+  },
+
+  "ks_doll_idle_down": {
+    "anim_type": "offset",
+    "easing": "in_out_sine",
+    "duration": 1.6,
+    "from": [ 0, 7 ],
+    "to": [ 0, 12 ],
+    "next": "@start.ks_doll_idle_up"
   },
 
   // Bottom strip: version ONLY, small, no black background, no Mojang.
@@ -61,43 +87,30 @@
     ]
   },
 
-  // Top-right: HUD-layout button (left) + bell icon (right), no pill/divider/social.
+  // Top-right: bell icon only, no pill/divider/social.
   // FIX (deep root cause): size was ["default","default"] which equals
   // ["100%","100%"] = fullscreen. A fullscreen stack_panel anchored
   // top_right/top_right still lays children from its OWN top-left, which
   // sits at screen left -> bell rendered TOP-LEFT. Explicit size
   // pins it to TOP-RIGHT. Layer 3 keeps it above everything.
-  // Config button opens the ks_hud_config HUD LAYOUT page (draggable large
-  // previews + Save + small X). Bell stays icon-only like dressing room:
+  // HUD settings config button removed from the start screen.
+  // Bell stays icon-only like dressing room:
   // borderless ks_inbox_icon_button (no vanilla button background).
   "friendsdrawer_button_panel": {
     "type": "panel",
-    "size": [ 60, 32 ],
+    "size": [ 28, 32 ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "offset": [ -8, 2 ],
     "layer": 3,
     "controls": [
       {
-        "ks_cfg_slot": {
-          "type": "panel",
-          "size": [ 28, 32 ],
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [ 0, 0 ],
-          "ignored": "(not $ks_show_hud_config_button)",
-          "controls": [
-            { "ks_cfg_btn@ks_hud_config.ks_cfg_btn": {} }
-          ]
-        }
-      },
-      {
         "ks_inbox_slot": {
           "type": "panel",
           "size": [ 28, 32 ],
           "anchor_from": "top_left",
           "anchor_to": "top_left",
-          "offset": [ 32, 0 ],
+          "offset": [ 0, 0 ],
           "controls": [
             { "ks_inbox_icon_button@ks_client.ks_inbox_icon_button": {} }
           ],
@@ -554,13 +567,11 @@
       { "edu_external_link_popup_factory@start.edu_external_link_popup_factory": {} },
       { "ks_top_bar@ks_client.ks_top_bar": {} },
       { "ks_dressing_below_settings@ks_client.ks_dressing_below_settings": {} },
-      { "ks_anim_above_dressing@ks_client.ks_anim_above_dressing": {} },
       { "ks_social_below_settings@ks_client.ks_social_below_settings": {} },
       { "ks_bottom_left_row@ks_client.ks_bottom_left_row": {} },
       { "ks_bottom_right_menu@ks_client.ks_bottom_right_menu": { "ignored": "(not $ks_show_start_menu_button)" } },
       { "ks_bottom_right_play@ks_client.ks_bottom_right_play": {} },
-      { "ks_start_menu_full@ks_client.ks_start_menu_full": {} },
-      { "ks_hud_cfg_full@ks_hud_config.ks_hud_cfg_full": {} }
+      { "ks_start_menu_full@ks_client.ks_start_menu_full": {} }
     ]
   }
 }
