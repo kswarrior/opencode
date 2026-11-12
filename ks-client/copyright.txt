@@ -41,9 +41,10 @@ here. Respect their licenses — get permission before redistributing.
    Author : PandaMine5 — Clean Touch Controls v1.4.1
    Now    : `ui/ks_touch/hide_gui.json` + `textures/ui/ks_touch/`
 
-4. Quick Totem Offhand (one-tap totem to offhand, HUD + inventory)
+4. Quick Totem Offhand (one-tap totem to offhand, HUD + inventory) — REMOVED
    Author : oSkullo — Quick Totem Offhand v1.0.0
-   Now    : `hud.totem_btn` + `master_totem_panel` + `textures/totem/`
+   Now    : no longer in pack (HUD `hud.totem_btn`, `master_totem_panel`,
+            and `textures/totem/` removed); credit kept for history
 
 5. Connected Hotbar (seamless hotbar art) v1.0.1
    Now    : `textures/ui/hotbar_*.png` (no code changes needed)
