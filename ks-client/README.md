@@ -95,7 +95,7 @@ How it works:
 - Inventory row: `Show Inv HUD` toggle (`ksbT_invhud`, default `$ksb_invhud_v true`) + `Compact` toggle (`$ksb_invhud_small`, default false) in the HUD tab; controls bottom-right 9x4 grid (`hud.ks_invhud_pos` fullscreen wrapper + `ks_hud.inventory_hud_panel`, fixed bottom-right via `ks_b6As_defs`).
 - The old HowToSaveConfig copy box is gone with the codes tab — persist by editing `ui/_global_variables.json` directly (see §5) and repacking.
 
-In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the gear → left-side box-card menu (Home/HUD/Display/Info/Advanced/Settings icon tabs on top): HUD toggles totem + InvHUD Show/Compact and moves/resizes slots (see §5). Bottom-right shows 9x4 inventory grid (toggle off to clear). Edit `_global_variables.json` + repack to persist.
+In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the gear → left-side box-card menu (Home/HUD/Display/Info/Advanced/Settings icon tabs on top): HUD toggles InvHUD Show/Compact and moves/resizes slots (see §5). Bottom-right shows 9x4 inventory grid (toggle off to clear). Edit `_global_variables.json` + repack to persist.
 
 ### 2.4 Inventory HUD (Bottom Right)
 
@@ -175,7 +175,7 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 - `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `ksb.howToSaveConfig`, `item.mace.name`.
 - No subpacks ship (`manifest.json` has no `subpacks` key): the gear menu is always on and the InvHUD grid is fixed bottom-right.
 - `textures/terrain_texture.json` (`atlas.terrain`, 1322 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) registers `mace` + the 17 door icons; `texture_list.json`/`textures_list.json` are both rebuilt from disk (1623 entries each, PNG+TGA, no dangling).
-- `textures/`: `blocks/` (1309 PNGs), `ui/` (116 PNGs incl. `bl_bt/black_ovr/blank/null`, `ks_f1f3_hud_btn/hide_bg` + `texture_assets/chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `totem/` (`close_button.png`, `totem_button.png`), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50, `font/` 0–9, `heart.png`).
+- `textures/`: `blocks/` (1309 PNGs), `ui/` (116 PNGs incl. `bl_bt/black_ovr/blank/null`, `ks_f1f3_hud_btn/hide_bg` + `texture_assets/chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50, `font/` 0–9, `heart.png`).
 
 ### 2.13 Clear Chat Screen (KS Client: `ui/chat_screen.json`, `ui/ui_assets/screens/chat/chat_tweaks.json`)
 
@@ -265,17 +265,17 @@ ks-client/
 │   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
 │   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json
 │   ├── render_controllers/health_bar.json
-│   ├── textures/ (blocks/items/ui/gui/c_ui/totem/environment/colormap/misc/health_bar/…)
+│   ├── textures/ (blocks/items/ui/gui/c_ui/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` + 17 door icons)
 │   │   ├── texture_list.json + textures_list.json (identical, 1623 entries, rebuilt from disk: PNG+TGA, no dangling)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (116 PNGs incl. chat art) / c_ui/ (8 files, all wired) / totem/ (2 PNGs) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (116 PNGs incl. chat art) / c_ui/ (8 files, all wired) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
 │   │   ├── _ui_defs.json            ← load order, 26 entries (…+ chat_tweaks + fps_hud + ks_durability ×4 + ks_hud_config + hud_crosshair_overlay + chat_screen + debug_screen + dev_console_screen + mob_effect_screen + settings_sections/controls_section + ui_common; every UI file is registered)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: top-right same-gear button + HUD SETTINGS toggles, no positions), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
-│   │   ├── inventory_screen.json (crafting, totem), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common)
+│   │   ├── inventory_screen.json (crafting), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common)
 │   │   ├── chat_screen.json (chat) + ui_assets/screens/chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_durability/config+container_data+hud+common)
 │   │   ├── ks_touch/hide_gui.json
@@ -295,9 +295,8 @@ ks-client/
 1. Copy a file from `release/` (e.g. `KS-Client-v1.5.0.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
 3. **Use:**
-   - Start screen → `TAP TO START` / skin preview / bell inbox / same-gear button left of bell (opens HUD SETTINGS: hotbar 1–10 + totem + F1/F3 + InvHUD + durability toggles, Save, small X — no position editing).
-   - HUD: totem button (`hud.totem_btn` 30×30) equips totem; numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); F1 top-middle [-39,0.5] hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 top-middle [38.5,0.5] toggles debug readout left + right (same-to-same Default-mobile context); Show F1/F3 on/off in HUD tab; vanilla paperdoll renderer kept. `ks_hud_keys` remains stubbed empty, `ks_f3_inv_counter_main` 36-probe counter live.
-   - Inventory screen: totem icon auto-equips from inventory/hotbar.
+   - Start screen → `TAP TO START` / skin preview / bell inbox / same-gear button left of bell (opens HUD SETTINGS: hotbar 1–10 + F1/F3 + InvHUD + durability toggles, Save, small X — no position editing).
+   - HUD: numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); F1 top-middle [-39,0.5] hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 top-middle [38.5,0.5] toggles debug readout left + right (same-to-same Default-mobile context); Show F1/F3 on/off in HUD tab; vanilla paperdoll renderer kept. `ks_hud_keys` remains stubbed empty, `ks_f3_inv_counter_main` 36-probe counter live.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs + players: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
@@ -314,7 +313,6 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 |-------|------|--------------------|
 | Slot hotbar 1–10 | `$ksb_N_x`, `$ksb_N_y`, `$ksb_N_s`, `$ksb_N_v` | pos/size(32)/visible. 1–3 `(4/14/24,20)`, 4 hidden, 5 hidden, 6–8 `(72/82/92,22)`, 9–10 hidden |
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors |
-| Totem button | `$ksb_totem_x 0`, `$ksb_totem_y 0`, `$ksb_totem_s 30`, `$ksb_totem_v true` | positions/sizes via `_global_variables.json` only (HUD slider X/Y/size panel hidden — show toggle only); px offset = value−125 / value−35 |
 | Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | Show Inv HUD on/off + Compact toggle in HUD tab; grid fixed bottom-right (no corner picker) |
 | F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` left + `ks_f3_right` right debug (same-to-same Default-mobile: version/edition/gamemode incl. Spectator/days/pos/icons/UI/device/graphics/input + pack/inv36/Full-Avail/XP/Nether/world/chunk); bottom-center way back reads short "F1 -" |
 | Start-screen HUD settings button | `$ks_show_hud_config_button true` | Show/hide the same-gear button top-right left of the bell (`start.ks_cfg_slot` ignored when false); the HUD SETTINGS toggle list (no positions) lives in `ui/ks_hud_config.json` |
@@ -345,7 +343,6 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 - **Trapped chest (BlockTrace, selective):** `textures/entity/chest/trapped.png` + `trapped_double.png` (legacy top-level `entity/trapped*.png` copies removed). Normal / double-normal / ender chests NOT taken — left vanilla. No ores taken.
 - **Items (`atlas.items` = mace + 17 door icons):** `mace.png` registered as `mace` (custom icon + `item.mace.name`); 17 door PNGs (`door_acacia`…`door_wood`, `bamboo/cherry/copper/crimson/mangrove/pale_oak/warped/exposed/oxidized/weathered`) registered with explicit atlas entries; bow draw indicators `bow_pulling_0/1/2.png` override vanilla by path (unregistered, listed in both texture lists);
 - **UI:** `hotbar_0-8 + caps + selected`, `ks_*` kit, `c_ui/*` (8 files — close/craft/effect_bg, all wired), `ks_touch/hide_gui`, `ksb_slot_button (+pressed)`, `ksb_numb_1-9`, chat art (`bl_bt/black_ovr/blank/null` + `texture_assets/chat_icons/`), every mob-effect icon, joystick/buttons/D-pad, crosshair indicator `ks_crosshair_default/entity.png` (15×15 default + mob-hit variant, 1st-person only via `hud_crosshair_overlay.json`; dead crosshair copy PNGs removed, no atlas).
-- **Totem (active):** `totem/close_button.png`, `totem_button.png` — wired in `inventory_screen.json` + `hud_screen.json` `hud.totem_btn`.
 - **Hammer (active):** `textures/entity/attachable/mace.png` (held 3D model) + `textures/items/mace.png` (icon).
 - **Environment:** `clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`.
 - **Colormap/misc/gui/controls/health_bar:** grass/leaves/water tints, `misc/vignette.png`, clean `misc/pumpkinblur.png` (1×1, no pumpkin blur, listed in `texture_list.json`), D-pad art, health bar sprites (`bar/` 00–50, `font/` 0–9, `heart.png`).
@@ -379,7 +376,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 2. Only bump `manifest.json` header + modules version (e.g. `[1,1,3]`) + `pack.description` + `README.md` header/§12 if the user explicitly requested a new version — never auto-bump.
 3. Run `python3 tools/check_player_animation_loop.py --iterations 3` and `mct validate`.
 4. Zip `resource_packs/KS Client/*` → rename `.zip` → `.mcpack` → drop into `release/KS-Client-vX.Y.Z.mcpack` (never overwrite `release/` unasked; prefer `/tmp/`).
-5. Test: import on device, activate on top, totem/slot buttons + bottom-right inventory grid (HUD-menu Show on/off), durability bars on damageable items (no toggle), settings gear top-right (slot/totem/InvHUD Show + Compact + Show F1/F3 — no positions), F1/F3 keys + "F1 -" way back, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS stack top-left (version, position), own skin (no player override), fullbright, glass/doors, connected hotbar.
+5. Test: import on device, activate on top, slot buttons + bottom-right inventory grid (HUD-menu Show on/off), durability bars on damageable items (no toggle), settings gear top-right (slot/InvHUD Show + Compact + Show F1/F3 — no positions), F1/F3 keys + "F1 -" way back, `ks_show_hud`, clear chat (background hidden, tab buttons), health bars over mobs (always on), 3D hammer (hold + inventory icon), FPS stack top-left (version, position), own skin (no player override), fullbright, glass/doors, connected hotbar.
 
 Skills available (`.opencode/skills/` + `opencode.json` perms): `create-block`, `create-item`, `create-mob`, `design-model`, `debug-addon`, `creator-tools-cli`.
 
@@ -418,4 +415,4 @@ Current (`manifest.json`): `KS Client v1.5.0`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 116 / gui / c_ui 8 / totem 2 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ksd_*, $text_color), `_ui_defs` 26 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (50 files), `copyright.txt` (+17 incl. ZenXveda durability), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 116 / gui / c_ui 8 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ksd_*, $text_color), `_ui_defs` 26 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (50 files), `copyright.txt` (+17 incl. ZenXveda durability), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
