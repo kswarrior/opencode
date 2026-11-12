@@ -300,7 +300,7 @@
                 "font_size": "small",
                 "font_scale_factor": 0.8,
                 "layer": 1,
-                "text": "Toggles apply this session. Persist via ui/_global_variables.json ($ksb_1..$ksb_10, $ksb_totem_*, $ks_f1_v, $ks_f3_v) + repack. No position editing."
+                "text": "Toggles apply this session. Persist via ui/_global_variables.json ($ksb_1..$ksb_10, $ks_f1_v, $ks_f3_v) + repack. No position editing."
               }
             }
           ]
@@ -321,7 +321,6 @@
       { "ks_c8@ksb_main.toggle_option": { "$toggle_name": "ksbT_8", "$toggle_view_binding_name": "ksbT_8_t", "$toggle_text": "Show Hotbar 8", "$toggle_default_state": "$ksb_8_v" } },
       { "ks_c9@ksb_main.toggle_option": { "$toggle_name": "ksbT_9", "$toggle_view_binding_name": "ksbT_9_t", "$toggle_text": "Show Hotbar 9", "$toggle_default_state": "$ksb_9_v" } },
       { "ks_c10@ksb_main.toggle_option": { "$toggle_name": "ksbT_10", "$toggle_view_binding_name": "ksbT_10_t", "$toggle_text": "Show Inv Btn", "$toggle_default_state": "$ksb_10_v" } },
-      { "ks_ct@ksb_main.toggle_option": { "$toggle_name": "ksbT_totem", "$toggle_view_binding_name": "ksbT_totem_t", "$toggle_text": "Show Totem Btn", "$toggle_default_state": "$ksb_totem_v" } },
       { "ks_ci@ksb_main.toggle_option": { "$toggle_name": "ksbT_invhud", "$toggle_view_binding_name": "ksbT_invhud_t", "$toggle_text": "Show Inv HUD", "$toggle_default_state": "$ksb_invhud_v" } },
       { "ks_cf1@ksb_main.toggle_option": { "$toggle_name": "ksbT_f1", "$toggle_view_binding_name": "ksbT_f1_t", "$toggle_text": "Show F1 HUD", "$toggle_default_state": "$ks_f1_v" } },
       { "ks_cf3@ksb_main.toggle_option": { "$toggle_name": "ksbT_f3show", "$toggle_view_binding_name": "ksbT_f3show_t", "$toggle_text": "Show F3 HUD", "$toggle_default_state": "$ks_f3_v" } },
