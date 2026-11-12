@@ -14,7 +14,7 @@
 
 - **Resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
 - **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.5.0, `min_engine_version [1,21,120]`). Do NOT hardcode a new version — read it from disk.
-- **Does:** mobile PvP UI — start screen, HUD (slot hotbar + inventory HUD + totem/offhand + FPS stack), clear chat, health bars, 3D hammer, touch controls, connected hotbar, clear glass/doors, fullbright fog.
+- **Does:** mobile PvP UI — start screen, HUD (slot hotbar + inventory HUD + FPS stack), clear chat, health bars, 3D hammer, touch controls, connected hotbar, clear glass/doors, fullbright fog.
 - **Docs:** `README.md` §1–§2 = user-facing behavior. Read first.
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP. Skills: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
 
@@ -58,7 +58,7 @@ resource_packs/KS Client/
 ├── models/entity/health_bar.json, attachable/mace.geo.json
 ├── render_controllers/health_bar.json
 ├── textures/ + terrain_texture.json (atlas.terrain) + item_texture.json (atlas.items: mace + 17 door icons)
-│   └── blocks/ items/ ui/ gui/ c_ui/ totem/ health_bar/ environment/ colormap/ misc/ entity/attachable/
+│   └── blocks/ items/ ui/ gui/ c_ui/ health_bar/ environment/ colormap/ misc/ entity/attachable/
 ├── texts/en_US.lang + languages.json
 ├── ui/
 │   ├── _global_variables.json  # ★ ALL user config. Edit this, not hardcoded UI.
@@ -80,7 +80,7 @@ Rule: `_global_variables.json` = config API, `ui/*.json` = implementation. Prefe
 
 | User says | Edit |
 |---|---|
-| move/resize/hide slot / totem / F1 / paperdoll / highlight | ONLY `ui/_global_variables.json` |
+| move/resize/hide slot / F1 / paperdoll / highlight | ONLY `ui/_global_variables.json` |
 | start screen / HUD layout / new button | `start_screen.json` or `hud_screen.json` + `ks_client_common.json`, expose knob in `_global_variables.json` |
 | colors / icons / hotbar / glass | `textures/...png` + register in `terrain_texture.json` / `item_texture.json` |
 | fog brightness / water color | `fogs/ks_fullbright.json` + `biomes_client.json` |
@@ -106,7 +106,7 @@ Safe procedure:
 - `loop:true` for continuous `glide`/`fall`/`trident.sh|rh`; one-shots with `query.all_animations_finished` (e.g. `sleep`) stay non-loop.
 - `scripts.animate` short must exist in `animations` dict; played `controller.*` must be defined in-pack or vanilla-allowlisted; anims inside played controllers must exist.
 - Offsets `[x,y]`, sizes `[w,h]`. Negative x = left. Keep `"25%"` quoted.
-- Item IDs engine-bound (e.g. `$totem_item_id 39780352`). Never renumber.
+- Item IDs engine-bound (e.g. `$ks_recovery_id 45088768`). Never renumber.
 
 ---
 
@@ -142,7 +142,7 @@ Debug:
 1. Read error literally (`file: reason (hint)`; validate CSV filter `Type=error`, ignore `mcp/opencode/tools` noise).
 2. Bisect: `git status` / `git diff --stat` → isolate last UI file. Typical: `_ui_defs` typo, missing `$var`, unregistered texture, renamed control.
 3. Skill (per §1.5, mandatory first step): `getSkill(debug-addon)` for invisible/broken, `item.foo:bar`, log errors; `getSkill(design-model)` for redraw; `getSkill(creator-tools-cli)` for other `mct` cmds. Prefer MCP `validateFile` / `validateContent` when available.
-4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F3, totem equips, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
+4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F3, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
 5. If stuck: stop, paste Gate A + `git diff --stat` + log lines, ask user. No speculative pile-ons.
 
 ---
@@ -187,4 +187,3 @@ Zip must have `manifest.json` at root (not nested `KS Client/`). Test import bef
 - button dead? → `button_mappings from→to` in hud/inventory + `$pressed_button_name` + `#hud_visible`/`#visible`.
 - texture missing? → file under `textures/` AND atlas registration.
 - fog? → `biomes_client.json` id + `remove_all_prior_fog:true` + fog distances.
-- totem? → `master_totem_panel` (`offhand_items`, `#item_id_aux=-1`) + hover contains `Totem`.
