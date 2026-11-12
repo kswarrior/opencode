@@ -300,6 +300,16 @@ here. Respect their licenses — get permission before redistributing.
                 netherite/turtle/elytra, shield, arrow, fireworks, totem,
                 nautilus, map_filled) — no vanilla files copied.
 
+19. Villagers Trade Unlocker — all villager trades visible/selectable at any
+    tier without level-ups (client UI override)
+    Author    : NeBux — Villagers Trade Unlocker v1.1.1
+    Source    : https://edge.mcpedl.com/files/8387/198/Villagers_Trade_Unlocker.mcpack
+    Now       : `ui/trade_2_screen.json` (vanilla `trade2` namespace override:
+                tier/toggle/lock/arrow controls). No textures, no lang keys,
+                no behavior pack, no manifest change; owner header comments
+                stripped, no owner paths/namespaces/vars remain. Pack icon
+                and manifest not copied.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
