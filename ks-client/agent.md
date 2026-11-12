@@ -14,7 +14,7 @@
 
 - **Resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
 - **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.5.0, `min_engine_version [1,21,120]`). Do NOT hardcode a new version — read it from disk.
-- **Does:** mobile PvP UI — start screen, HUD (slot hotbar + inventory HUD + FPS stack), clear chat, health bars, 3D hammer, touch controls, connected hotbar, clear glass/doors, fullbright fog.
+- **Does:** mobile PvP UI — start screen, HUD (slot hotbar + inventory HUD + FPS stack), clear chat, health bars, 3D hammer, touch controls, connected hotbar, clear glass/doors, fullbright fog, villager trade unlocker.
 - **Docs:** `README.md` §1–§2 = user-facing behavior. Read first.
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP. Skills: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
 
@@ -65,7 +65,7 @@ resource_packs/KS Client/
 │   ├── _ui_defs.json           # ★ load order. Append-only, never remove/reorder.
 │   ├── start_screen.json (`start`), hud_screen.json (`hud`), chat_screen.json (`chat`)
 │   ├── fps_hud.json (`ks_fps`), inventory_screen.json (`crafting`), pause_screen.json (`pause`)
-│   ├── ks_client_common.json (`ks_client`); debug_screen (`debug_screen`), dev_console_screen (`dev_console`), mob_effect_screen (`mob_effect`), ui_common (`common`), settings_sections/controls_section (`controls_section`) — every UI file needs its vanilla namespace + a `_ui_defs.json` entry or it never loads
+│   ├── ks_client_common.json (`ks_client`); debug_screen (`debug_screen`), dev_console_screen (`dev_console`), mob_effect_screen (`mob_effect`), ui_common (`common`), settings_sections/controls_section (`controls_section`), trade_2_screen (`trade2` — all villager trades unlocked) — every UI file needs its vanilla namespace + a `_ui_defs.json` entry or it never loads
 │   ├── ks_modules/hud.json, ks_modules/ksb_hotbar_button/{defs,main,settings}.json
 │   ├── ks_touch/hide_gui.json, ui_assets/screens/chat/chat_tweaks.json (`ks_chat_tweaks`)
 │   └── ui_content/inv_content.json
@@ -88,6 +88,7 @@ Rule: `_global_variables.json` = config API, `ui/*.json` = implementation. Prefe
 | animation freeze / detach | run `./tools/` checker first, fix only flagged lines (§5–§6) |
 | new block / item / mob look | FIRST load skill per §1.5 via `getSkill`: `create-block` / `create-item` / `create-mob` / `design-model`, use its MCP tool, then validate |
 | merge another resource pack into KS Client | see §5.7 rebrand-to-KS + `copyright.txt` rule |
+| villager trades locked / unlock all trades | `ui/trade_2_screen.json` (vanilla `trade2` override) + append to `_ui_defs.json` + credit in `copyright.txt` |
 
 Safe procedure:
 1. Read target + `_global_variables.json` + relevant `_ui_defs.json` entry. Never add UI file without registering it. Don't glob the whole pack.
@@ -142,7 +143,7 @@ Debug:
 1. Read error literally (`file: reason (hint)`; validate CSV filter `Type=error`, ignore `mcp/opencode/tools` noise).
 2. Bisect: `git status` / `git diff --stat` → isolate last UI file. Typical: `_ui_defs` typo, missing `$var`, unregistered texture, renamed control.
 3. Skill (per §1.5, mandatory first step): `getSkill(debug-addon)` for invisible/broken, `item.foo:bar`, log errors; `getSkill(design-model)` for redraw; `getSkill(creator-tools-cli)` for other `mct` cmds. Prefer MCP `validateFile` / `validateContent` when available.
-4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F3, slots switch, grid+highlight, durability/crosshair); fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
+4. In-game (report verified): imports clean, activates on TOP (no subpacks); start (skin above Play, version bottom-right, bell top-right); HUD (F1/F3, slots switch, grid+highlight, durability/crosshair); villager trade screen shows/selects all tiers; fullbright + water `#44AFF5`, clear glass/doors, connected hotbar, billboard bars; Content Log 0 errors.
 5. If stuck: stop, paste Gate A + `git diff --stat` + log lines, ask user. No speculative pile-ons.
 
 ---
@@ -187,3 +188,4 @@ Zip must have `manifest.json` at root (not nested `KS Client/`). Test import bef
 - button dead? → `button_mappings from→to` in hud/inventory + `$pressed_button_name` + `#hud_visible`/`#visible`.
 - texture missing? → file under `textures/` AND atlas registration.
 - fog? → `biomes_client.json` id + `remove_all_prior_fog:true` + fog distances.
+- trades locked? → `ui/trade_2_screen.json` (`trade2` override) + `_ui_defs` entry.
