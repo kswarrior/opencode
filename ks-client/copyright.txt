@@ -310,9 +310,28 @@ here. Respect their licenses — get permission before redistributing.
                 stripped, no owner paths/namespaces/vars remain. Pack icon
                 and manifest not copied.
 
+20. Utility HUD V-1.5 — counters row + touch inventory buttons (selective
+    re-add; durability/crosshair/F-key parts remain KS-native)
+    Author    : EchoRif — Utility HUD V-1.5
+    Source    : https://edge.mcpedl.com/files/8316/806/Utility%20HUD%20V-1.5.mcpack
+    Now       : `ui/ks_modules/ks_utility_hud/` (namespace `ks_uhud`,
+                `$ks_uhud_*` vars) — counters row (free slots / gapple /
+                pearls / totems) anchored above the KS Inventory HUD, plus
+                fast-totem button, offhand switch and offhand preview.
+                Textures copied to `textures/ui/ks_uhud/` (totem, totem_
+                pressed, switch_default/hover/pressed/pressed_hover,
+                offhand_slot, alert), lowercased `textures/ui/white` path
+                fixed. Upstream mainhand durability, attack crosshair,
+                armor durability panel, F1/F8 redirects, custom close and
+                help button were NOT merged (KS DV / KS Crosshair / KS F3
+                supersede them); counters visibility moved to the HUD menu
+                Show toggle. Owner header comments stripped, no owner
+                paths/namespaces/vars remain. Pack icon and manifest not
+                copied.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
-- Utility HUD V-1.5 Without Counters — EchoRif (fully purged)
+- Utility HUD V-1.5 Without Counters — EchoRif (fully purged; counters + touch buttons selectively re-added in v1.0.1 as entry 20)
 - F1 & F3 Buttons v1.1.3 — NeBux (fully purged, incl. doll; clean-room re-added in v1.3.8 as entry 15 above)
 - PandaMine5 F1 HUD button (unwired, files rebranded as KS)
