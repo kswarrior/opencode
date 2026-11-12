@@ -80,8 +80,6 @@ for i in range(36):
 for b in count_panel_src["bindings"]:
     nb = dict(b)
     if "source_control_name" in nb:
-        nb["source_control_name"] = nb["source_control_name"].replace("__", "s").replace("s", "s", 1)
-        # "__12__" -> "s12"
         m = re.fullmatch(r"__(\d+)__", b["source_control_name"])
         if m:
             nb["source_control_name"] = "s" + m.group(1)
@@ -196,7 +194,10 @@ def walk(node):
     if isinstance(node, dict):
         new = {}
         for k, v in node.items():
-            new[rename_key(k)] = walk(v)
+            nv = walk(v)
+            if k == "source_control_name" and isinstance(nv, str) and nv in renames:
+                nv = renames[nv]
+            new[rename_key(k)] = nv
         return new
     if isinstance(node, list):
         return [walk(x) for x in node]
@@ -216,7 +217,7 @@ def walk(node):
         s = s.replace("textures/c_ui/alert", "textures/ui/ks_uhud/alert")
         s = s.replace("textures/ui/White", "textures/ui/white")
         for old, new in renames.items():
-            s = s.replace("@inv_content." + old, "@ks_uhud." + new)
+            s = s.replace("inv_content." + old, "ks_uhud." + new)
         return s
     return node
 
