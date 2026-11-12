@@ -98,6 +98,8 @@ def rebrand_count_unit(node):
 
 
 count_unit = rebrand_count_unit(hud_up["count_unit"])
+print("DEBUG count_unit keys:", list(count_unit.keys()))
+print("DEBUG controls keys:", [list(c.keys()) for c in count_unit["controls"]])
 count_unit["rederer@common.item_renderer"]["property_bag"][
     "#item_id_aux"
 ] = "$ks_uhud_item_id_aux"
