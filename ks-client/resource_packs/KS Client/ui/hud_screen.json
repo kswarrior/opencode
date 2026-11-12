@@ -1,7 +1,10 @@
 {
   "namespace": "hud",
 
-  // (Removed per request: Utility HUD V-1.5 fully removed — durability/crosshair/toggles/redirects gone.)
+  // Utility HUD V-1.5 (EchoRif) re-added: counters row (free slots / gapple /
+  // pearls / totems) in ui/ks_modules/ks_utility_hud/. Superseded parts kept
+  // KS-native: durability (KS DV V-2.5), crosshair (PandaMine), F1/F3 keys
+  // (NeBux). Counters toggle lives in the HUD menu tab.
   "hud_screen": {
     "always_accepts_input": true
   },
@@ -294,7 +297,18 @@
           }
         ]
       },
-      // (Removed per request: Utility HUD + KS F3/F8 keys fully removed.)
+      // Utility HUD V-1.5 counters (free slots / gapple / pearls / totems).
+      // Fixed just above the bottom-right KS Inventory HUD grid via ks_uhud_count_panel.
+      // Visibility follows the HUD menu Show toggle live (ks_uhud_counters_t, default $ks_uhud_counters_v true).
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "ks_uhud_counters_pos@hud.ks_uhud_counters_pos": {}
+          }
+        ]
+      },
       // KS FPS counter (Top Left, always on): paper-doll digits overlay.
       {
         "array_name": "controls",
@@ -445,6 +459,46 @@
       {
         "binding_type": "view",
         "source_property_name": "(#hud_visible and #ks_dv_toggle)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  // ---------- KS Utility HUD counters position wrapper (fullscreen neutral) ----------
+  // Fullscreen so the inner counter row lands bottom-right, just above the
+  // KS Inventory HUD grid (offset [-4,-52] in ks_uhud.ks_uhud_count_panel).
+  // Visibility follows the HUD menu Show toggle live (ks_uhud_counters_t, default $ks_uhud_counters_v true).
+  // Same split-toggle pattern as ks_invhud_pos (split toggle copy + local AND).
+  "ks_uhud_counters_pos": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [0, 0],
+    "visible": "$ks_uhud_counters_v",
+    "layer": 44,
+    "property_bag": {
+      "#ks_uhud_counters_toggle": true
+    },
+    "controls": [
+      {
+        "counters@ks_uhud.ks_uhud_count_panel": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "ks_uhud_counters_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_uhud_counters_toggle"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_uhud_counters_toggle)",
         "target_property_name": "#visible"
       }
     ]
