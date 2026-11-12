@@ -13,7 +13,7 @@
 ## 1. What KS Client is
 
 - **Resource pack only** (no behavior pack, no scripts). Path: `resource_packs/KS Client/`.
-- **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.5.0, `min_engine_version [1,21,120]`). Do NOT hardcode a new version — read it from disk.
+- **Identity:** see `manifest.json` header/modules + `README.md` header (currently v1.5.0, `format_version 3`, `min_engine_version "1.21.120"`, SemVer strings). Do NOT hardcode a new version — read it from disk.
 - **Does:** mobile PvP UI — start screen, HUD (slot hotbar + inventory HUD + FPS stack), clear chat, health bars, 3D hammer, touch controls, connected hotbar, clear glass/doors, fullbright fog, villager trade unlocker.
 - **Docs:** `README.md` §1–§2 = user-facing behavior. Read first.
 - **Toolchain:** `@minecraft/creator-tools@0.19.0` via `opencode.json` MCP. Skills: `design-model`, `create-block`, `create-item`, `create-mob`, `debug-addon`, `creator-tools-cli` (see `.opencode/skills/`).
@@ -89,6 +89,7 @@ Rule: `_global_variables.json` = config API, `ui/*.json` = implementation. Prefe
 | new block / item / mob look | FIRST load skill per §1.5 via `getSkill`: `create-block` / `create-item` / `create-mob` / `design-model`, use its MCP tool, then validate |
 | merge another resource pack into KS Client | see §5.7 rebrand-to-KS + `copyright.txt` rule |
 | villager trades locked / unlock all trades | `ui/trade_2_screen.json` (vanilla `trade2` override) + append to `_ui_defs.json` + credit in `copyright.txt` |
+| native pack settings (toggle/slider/dropdown) | `manifest.json` `format_version 3` + `settings` array; read via Molang queries (RP) — UI JSON cannot read pack settings; keep SemVer strings |
 
 Safe procedure:
 1. Read target + `_global_variables.json` + relevant `_ui_defs.json` entry. Never add UI file without registering it. Don't glob the whole pack.
@@ -170,9 +171,9 @@ Debug:
 python3 ./tools/check_player_animation_loop.py --iterations 3 --delay 1
 rm -rf ./tmp/ks_pack && mkdir -p ./tmp/ks_pack
 cp -r "resource_packs/KS Client" ./tmp/ks_pack/
-python3 -c "import json,shutil,os; v='.'.join(map(str,json.load(open('resource_packs/KS Client/manifest.json'))['header']['version'])); b=f'./tmp/KS-Client-v{v}'; shutil.make_archive(b,'zip','./tmp/ks_pack/KS Client'); os.rename(b+'.zip',b+'.mcpack'); print(b+'.mcpack')"
+python3 -c "import json,shutil,os; v=json.load(open('resource_packs/KS Client/manifest.json'))['header']['version']; b=f'./tmp/KS-Client-v{v}'; shutil.make_archive(b,'zip','./tmp/ks_pack/KS Client'); os.rename(b+'.zip',b+'.mcpack'); print(b+'.mcpack')"
 # ALWAYS drop into release/ (project rule): copy, never overwrite; then update README releases counts + verify
-python3 -c "import shutil,json,os; v='.'.join(map(str,json.load(open('resource_packs/KS Client/manifest.json'))['header']['version'])); s=f'./tmp/KS-Client-v{v}.mcpack'; d=f'./release/KS-Client-v{v}.mcpack'; assert not os.path.exists(d), d+' exists - stop and ask'; shutil.copy(s,d); print(d)"
+python3 -c "import shutil,json,os; v=json.load(open('resource_packs/KS Client/manifest.json'))['header']['version']; s=f'./tmp/KS-Client-v{v}.mcpack'; d=f'./release/KS-Client-v{v}.mcpack'; assert not os.path.exists(d), d+' exists - stop and ask'; shutil.copy(s,d); print(d)"
 # update README releases counts (§1 bullet, §1 row 23, §3 tree, §12) in the same diff + verify `git status`
 # report release/ path + validation output
 ```

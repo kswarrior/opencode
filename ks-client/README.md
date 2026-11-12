@@ -269,7 +269,7 @@ ks-client/
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
 ├── release/                         ← shippable .mcpack (51 files: v1.0.0 + v1.0.3…v1.5.0, no v1.0.1/v1.0.2/v1.1.9 mcpack)
 ├── resource_packs/KS Client/
-│   ├── manifest.json                ← name KS Client, v1.5.0, min_engine 1.21.120, no subpacks, authors
+│   ├── manifest.json                ← name KS Client, format 3 (SemVer), v1.5.0, min_engine "1.21.120", no subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright in all 71 biomes (default + 70 per-biome, NoFog-all water colors)
 │   ├── fogs/ks_fullbright.json      ← nofog: air/weather render + water/lava/powder-snow 4000–10000
@@ -350,6 +350,8 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 - InvHUD grid fixed bottom-right (Show Inv HUD on/off + Compact in HUD tab).
 - Durability HUD readout fixed bottom-left + inventory armor panel (Show Durability HUD on/off in HUD tab).
 
+Manifest is `format_version 3` (SemVer version strings) so native pack settings can be added via a `settings` array (`label`/`toggle`/`slider`/`dropdown`). No `settings` entries ship yet — all options remain in the gear menu.
+
 ---
 
 ## 7. Textures Included
@@ -416,7 +418,7 @@ redistributing: some upstream licenses require the creator's permission.
 
 `v1.0.0` → `v1.0.3` → `v1.0.4` → `v1.0.5` → `v1.0.6` → `v1.0.7` → `v1.0.8` → `v1.0.9` → `v1.1.0` → `v1.1.1` → `v1.1.2` → `v1.1.3` → `v1.1.4` → `v1.1.5` → `v1.1.6` → `v1.1.7` → `v1.1.8` → `v1.1.9` → `v1.2.0` → `v1.2.1` → `v1.2.2` → `v1.2.3` → `v1.2.4` → `v1.2.5` → `v1.2.6` → `v1.2.7` → `v1.2.8` → `v1.2.9` → `v1.3.0` → `v1.3.1` → `v1.3.2` → `v1.3.3` → `v1.3.4` → `v1.3.5` → `v1.3.6` → `v1.3.7` (Inventory HUD bottom-right restored) → `v1.3.8` (F1/F3 HUD keys + "F1 -" way back + HUD-menu Show F1/F3) → `v1.3.9` (ZenXveda durability HUD + bow indicators + clean pumpkin + NoFog AllBiomes `all` variant) → `v1.4.0` (version bump — same content as v1.3.9) → `v1.4.1` (F1/F3 same-to-same reference art + position) → `v1.4.2` (InvHUD Show-toggle fix: menu toggles standalone like Menu button) → `v1.4.3` (F3 fix build) → `v1.4.4` (F3 split-toggle wiring + white label fix + crosshair vanilla-path only) → `v1.4.5` (split-toggle default-visible property_bag for F1/F3/InvHUD/dura) → `v1.4.6` (version bump) → `v1.4.7` (version bump) → `v1.4.8` (version bump) → `v1.4.9` (dead-code cleanup: unused hide-GUI touch panel + UI stubs removed) → `v1.4.10` (equipment HUD: armor bars + offhand frame + generic item icons via `player.json` render controllers) → `v1.4.11` (version bump) → `v1.4.12` (v1.4.9 content restored + v1.4.11 F3 debug kept: Spectator gamemode row, mobile RenderDragon detection, XP/world/Nether right-panel only; equipment HUD removed) → **`v1.5.0` (current — version bump; same content as v1.4.12)**
 
-Current (`manifest.json`): `KS Client v1.5.0`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
+Current (`manifest.json`): `KS Client v1.5.0`, `min_engine_version "1.21.120"` (manifest `format_version 3`). See `out/*.report.html` for per-version validation diffs.
 
 ---
 
