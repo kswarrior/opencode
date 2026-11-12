@@ -98,11 +98,6 @@ def rebrand_count_unit(node):
 
 
 count_unit = rebrand_count_unit(hud_up["count_unit"])
-print("DEBUG count_unit keys:", list(count_unit.keys()))
-print("DEBUG controls keys:", [list(c.keys()) for c in count_unit["controls"]])
-count_unit["rederer@common.item_renderer"]["property_bag"][
-    "#item_id_aux"
-] = "$ks_uhud_item_id_aux"
 counter["ks_uhud_count_unit"] = count_unit
 
 count_panel_display = {
@@ -154,14 +149,16 @@ content["controls"] = [
     c
     for c in content["controls"]
     if not any(
-        k in c
-        for k in ("inv_close", "_durability_panel", "_toggles", "f8_function")
+        name in key
+        for key in c
+        for name in ("inv_close", "_durability_panel", "_toggles", "f8_function")
     )
 ]
 # offhand preview: KS global visibility only (no __offhand__ toggle)
 for c in content["controls"]:
-    if "_offhand_preview" in c:
-        c["_offhand_preview@inv_content.offhand_grid"].pop("bindings", None)
+    for ck in c:
+        if "_offhand_preview" in ck:
+            c[ck].pop("bindings", None)
 
 renames = {
     "inventory_content": "ks_uhud_inventory_content",
@@ -187,8 +184,9 @@ renames = {
 def rename_key(k):
     if "@inv_content." in k:
         head, tail = k.split("@inv_content.", 1)
-        tail_new = renames.get(tail, tail)
-        return head + "@ks_uhud." + tail_new
+        if tail in renames:
+            return head + "@ks_uhud." + renames[tail]
+        return k
     return renames.get(k, k)
 
 
