@@ -52,6 +52,13 @@
 	"$ksb_ssci": true,
 	"$ksb_hba": 4,
 	"$ksb_sbi": true,
+	// Engine/debug globals referenced by hud_screen.json + the F3 panel.
+	// Declared here because newer builds no longer inject them (Content Log:
+	// "not found in ancestor tree" / invalid "ignored").
+	"$always_visible_hotbar": false,
+	"$minecraft_game_version": "",
+	"$release": "minecraft/vanilla/release",
+	"$is_berwick": false,
 	"$hud_elipses_enabled": false,
 	"$hud_elipses_sound_volume": 0.0,
 
