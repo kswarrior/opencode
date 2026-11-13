@@ -175,7 +175,7 @@
       0,
       0
     ],
-    "$press|default": "pressed_pc",
+    "$press|default": "default",
     "variables": [
       {
         "requires": "$touch",
@@ -215,20 +215,6 @@
           "type": "image",
           "alpha": "$ks_uhud_totem_alpha",
           "texture": "textures/ui/ks_uhud/totem_pressed"
-        }
-      },
-      {
-        "pressed_pc": {
-          "ignored": "$touch",
-          "type": "input_panel",
-          "button_mappings": [
-            {
-              "from_button_id": "button.hide_gui",
-              "to_button_id": "button.equip_totem",
-              "mapping_type": "global",
-              "scope": "global"
-            }
-          ]
         }
       }
     ],
