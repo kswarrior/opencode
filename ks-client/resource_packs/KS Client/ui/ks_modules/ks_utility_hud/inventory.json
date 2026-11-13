@@ -220,13 +220,6 @@
     ],
     "button_mappings": [
       {
-        "ignored": "$touch",
-        "mapping_type": "global",
-        "from_button_id": "button.slot1",
-        "to_button_id": "button.menu_select",
-        "consume_event": false
-      },
-      {
         "ignored": "(not $touch)",
         "mapping_type": "pressed",
         "from_button_id": "button.menu_select",
@@ -691,6 +684,7 @@
       {
         "action_button": {
           "type": "button",
+          "layer": 2,
           "size": "$ks_uhud_totem_size",
           "anchor_from": "top_left",
           "anchor_to": "top_left",
