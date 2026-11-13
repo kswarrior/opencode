@@ -602,9 +602,6 @@
         "armor_grid@ksui_common.armor_grid": {}
       },
       {
-        "offhand_grid@ksui_common.offhand_grid": {}
-      },
-      {
         "fill@ksui_common.pad_fill_x": {
           "size": [
             "fill",
