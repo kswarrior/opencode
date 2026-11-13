@@ -178,8 +178,8 @@
             {
               "hover": {
                 "type": "image",
-                "$keyboard_text": "§f> Keyboard Shortcuts:\n\n§3Tab §r= Toggle Inventory\n§3Esc §r= Close Inventory\n§3F1 §r+ §3Hotkeys §r= Offhand Swap\n§3F8 §r+ §3Hotkeys §r= Toggle Components\n§31 §r+ §3F1 §r= Fast Totem\n§33 §r+ §3F1 §r= Force Close Screen\n",
-                "$switch_text": "§f> Press on switch button and then on\nan item to switch the item from hotbar\nto offhand or vice versa\n",
+                "$keyboard_text": "§f> Keyboard Shortcuts:\n\n§3Tab §r= Toggle Inventory\n§3Esc §r= Close Inventory\n§3F1 §r+ §3Hotkeys §r= Offhand Swap\n§3F8 §r+ §3Hotkeys §r= Toggle Components\n§31 §r= Fast Totem\n§33 §r+ §3F1 §r= Force Close Screen\n",
+                "$switch_text": "§f> Press on switch button and then on\nan item to switch the item from hotbar\nto offhand or vice versa\n\n§f> Press the totem button to equip a\ntotem from your inventory\n",
                 "$container_text": "\n§f> Close the inventory screen before\nopening other container screens\n(e.g - Chests, Crafting Table etc.)",
                 "controls": [
                   {

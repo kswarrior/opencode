@@ -485,7 +485,7 @@
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "$target_collection": "hotbar_items",
-    "collection_name": "$target_collection",
+    "collection_name": "hotbar_items",
     "controls": [
       {
         "0@ks_uhud.ks_uhud_totem_slot": {
@@ -545,7 +545,7 @@
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "$target_collection": "inventory_items",
-    "collection_name": "$target_collection",
+    "collection_name": "inventory_items",
     "controls": [
       {
         "0@ks_uhud.ks_uhud_totem_slot": {
