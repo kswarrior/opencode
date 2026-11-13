@@ -546,42 +546,113 @@
     ]
   },
 
-  // ---------- KS Durability Viewer hotbar bar (merged DV V-2.5 [RP]) ----------
-  // Vanilla hotbar durability bar replaced by the animated version: steady
-  // above $ks_dv_low_durability_threshold, blinking below (ks_dv_common).
-  "gui_hotbar_grid_item/hotbar_parent": {
-    "modifications": [
+  // ---------- Utility HUD F8 controls (rebranded Utility HUD V-1.5) ----------
+  // Hidden toggles driven by F8 hotkeys. __durability__ controls the mainhand
+  // readout, __counters__ the counters row. No __crosshair__ toggle: KS keeps
+  // its own crosshair and does not port Utility HUD's attack crosshair.
+  "_toggles": {
+    "type": "panel",
+    "size": [0, 0],
+    "controls": [
       {
-        "array_name": "controls",
-        "operation": "replace",
-        "control_name": "item_dura",
-        "value": [
-          {
-            "item_dura@ks_dv_common.animated_durability_bar": {
-              "$durability_bar_required|default": true,
-              "$item_collection_name": "$hotbar_collection_name",
-              "layer": 5
-            }
-          }
-        ]
+        "__durability__@inv_content.component_toggle": {
+          "$activator": "button.toggle_main_durability"
+        }
+      },
+      {
+        "__counters__@inv_content.component_toggle": {
+          "$activator": "button.toggle_counters"
+        }
       }
     ]
   },
-  "gui_hotbar_grid_item_pocket/hotbar_parent": {
-    "modifications": [
+
+  "f8_function": {
+    "type": "button",
+    "size": [0, 0],
+    "layer": 25,
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "pressed_control": "pressed",
+    "controls": [
       {
-        "array_name": "controls",
-        "operation": "replace",
-        "control_name": "item_dura",
-        "value": [
-          {
-            "item_dura@ks_dv_common.animated_durability_bar": {
-              "$durability_bar_required|default": true,
-              "$item_collection_name": "$hotbar_collection_name",
-              "layer": 5
+        "pressed": {
+          "type": "input_panel",
+          "button_mappings": [
+            {
+              "mapping_type": "global",
+              "scope": "global",
+              "from_button_id": "button.slot3",
+              "to_button_id": "button.toggle_main_durability"
+            },
+            {
+              "mapping_type": "global",
+              "scope": "global",
+              "from_button_id": "button.slot4",
+              "to_button_id": "button.toggle_counters"
             }
-          }
-        ]
+          ],
+          "controls": [
+            {
+              "tip_label": {
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [0, 5],
+                "type": "image",
+                "texture": "textures/ui/hud_tip_text_background",
+                "size": ["100%c + 10px", "100%c + 8px"],
+                "alpha": 0.5,
+                "controls": [
+                  {
+                    "tip_label": {
+                      "type": "label",
+                      "text": "Toggle: §31 §r- Armor Durability §32 §r- Offhand\n§33 §r- Mainhand Durability §34 §r- Counters",
+                      "text_alignment": "center",
+                      "shadow": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "button_mappings": [
+      {
+        "mapping_type": "global",
+        "from_button_id": "button.hide_paperdoll",
+        "to_button_id": "button.menu_select"
+      }
+    ]
+  },
+
+  // F1+3 closes the topmost screen (rebranded Utility HUD V-1.5).
+  "force_close_screen": {
+    "type": "button",
+    "size": [0, 0],
+    "layer": 30,
+    "pressed_control": "pressed",
+    "controls": [
+      {
+        "pressed": {
+          "type": "input_panel",
+          "button_mappings": [
+            {
+              "mapping_type": "global",
+              "from_button_id": "button.hide_gui",
+              "to_button_id": "button.menu_exit"
+            }
+          ]
+        }
+      }
+    ],
+    "button_mappings": [
+      {
+        "mapping_type": "global",
+        "from_button_id": "button.slot3",
+        "to_button_id": "button.menu_select",
+        "consume_event": false
       }
     ]
   },
