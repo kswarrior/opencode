@@ -4,7 +4,7 @@
       "resourcePack"
     ],
     "behaviorPackManifestCount": 0,
-    "unknownJsonCount": 1,
+    "unknownJsonCount": 0,
     "entityTypeManifestCount": 0,
     "itemTypeManifestCount": 0,
     "blockTypeManifestCount": 0,
@@ -13,10 +13,10 @@
     "entityTypeResourceCount": 82,
     "behaviorPackAnimationCount": 0,
     "behaviorPackAnimationControllerCount": 0,
-    "overallSize": 4339245,
+    "overallSize": 4339248,
     "fileCounts": 1957,
     "folderCounts": 43,
-    "contentSize": 4339245,
+    "contentSize": 4339248,
     "contentFileCounts": 1957,
     "contentFolderCounts": 43,
     "fileCount": 1957,
@@ -45,7 +45,6 @@
       "Block resource catalog",
       "Entity type visuals/audio",
       "Fog",
-      "General json file",
       "Icon",
       "Item texture",
       "Language catalog",
@@ -112,20 +111,6 @@
         "max": 5,
         "min": 5,
         "average": 5
-      },
-      "generalJsonFile.size": {
-        "instanceCount": 1,
-        "total": 1057,
-        "max": 1057,
-        "min": 1057,
-        "average": 1057
-      },
-      "generalJsonFile.lines": {
-        "instanceCount": 1,
-        "total": 32,
-        "max": 32,
-        "min": 32,
-        "average": 32
       },
       "resourcePackManifest.size": {
         "instanceCount": 1,
@@ -254,18 +239,18 @@
         "average": 5
       },
       "userInterface.size": {
-        "instanceCount": 26,
-        "total": 178816,
+        "instanceCount": 27,
+        "total": 179876,
         "max": 50168,
         "min": 61,
-        "average": 6878
+        "average": 6662
       },
       "userInterface.lines": {
-        "instanceCount": 26,
-        "total": 6048,
+        "instanceCount": 27,
+        "total": 6080,
         "max": 1784,
         "min": 1,
-        "average": 233
+        "average": 225
       },
       "languageCatalog.size": {
         "instanceCount": 1,
@@ -935,19 +920,19 @@
         "average": 65536
       }
     },
-    "errorCount": 1,
+    "errorCount": 0,
     "internalProcessingErrorCount": 0,
     "warningCount": 0,
-    "testSuccessCount": 40,
-    "testFailCount": 1,
+    "testSuccessCount": 41,
+    "testFailCount": 0,
     "testNotApplicableCount": 13,
-    "errorSummary": "ERROR: [UNKJSON101] (/property/bundle_item_counter.json) Unknown JSON file found",
+    "errorSummary": "",
     "internalProcessingErrorSummary": "",
     "warningSummary": "",
-    "testFailSummary": "TESTFAIL: [UNKJSON000] Found 1 error in Unknown JSON check",
-    "infoGenerationTime": 2057,
-    "endToEndGenerationTime": 2589,
-    "reds": 359883,
+    "testFailSummary": "",
+    "infoGenerationTime": 1832,
+    "endToEndGenerationTime": 2349,
+    "reds": 362003,
     "summary": {
       "BASEGAMEVER": {
         "2": {
@@ -1134,10 +1119,6 @@
           "title": "Resource Pack",
           "defaultMessage": "Resource pack manifest found"
         },
-        "206": {
-          "title": "General json file count",
-          "defaultMessage": "General json file item count"
-        },
         "214": {
           "title": "Resource pack manifest count",
           "defaultMessage": "Resource pack manifest item count"
@@ -1275,10 +1256,6 @@
           "title": "File Size/Lines",
           "defaultMessage": "File Line/Size Information completed successfully",
           "testCompleteSuccesses": 1
-        },
-        "106": {
-          "title": "General json file",
-          "defaultMessage": "General json file file lines"
         },
         "114": {
           "title": "Resource pack manifest",
@@ -1633,15 +1610,10 @@
         }
       },
       "UNKJSON": {
-        "0": {
+        "1": {
           "title": "Unknown JSON",
-          "defaultMessage": "Found 1 error in Unknown JSON check",
-          "testCompleteFails": 1
-        },
-        "101": {
-          "title": "Unknown JSON Type",
-          "defaultMessage": "Unknown JSON file found",
-          "errors": 1
+          "defaultMessage": "Unknown JSON completed successfully",
+          "testCompleteSuccesses": 1
         }
       },
       "UNLINK": {
@@ -3320,12 +3292,6 @@
     {
       "iTp": 2,
       "gId": "ITEMS",
-      "gIx": 206,
-      "d": 1
-    },
-    {
-      "iTp": 2,
-      "gId": "ITEMS",
       "gIx": 214,
       "d": 1
     },
@@ -3381,7 +3347,7 @@
       "iTp": 2,
       "gId": "ITEMS",
       "gIx": 236,
-      "d": 26
+      "d": 27
     },
     {
       "iTp": 2,
@@ -3510,27 +3476,6 @@
       "iTp": 1,
       "gId": "LINESIZE",
       "gIx": 1
-    },
-    {
-      "iTp": 7,
-      "gId": "LINESIZE",
-      "gIx": 106,
-      "fs": {
-        "size": {
-          "instanceCount": 1,
-          "total": 1057,
-          "max": 1057,
-          "min": 1057,
-          "average": 1057
-        },
-        "lines": {
-          "instanceCount": 1,
-          "total": 32,
-          "max": 32,
-          "min": 32,
-          "average": 32
-        }
-      }
     },
     {
       "iTp": 7,
@@ -3727,18 +3672,18 @@
       "gIx": 136,
       "fs": {
         "size": {
-          "instanceCount": 26,
-          "total": 178816,
+          "instanceCount": 27,
+          "total": 179876,
           "max": 50168,
           "min": 61,
-          "average": 6878
+          "average": 6662
         },
         "lines": {
-          "instanceCount": 26,
-          "total": 6048,
+          "instanceCount": 27,
+          "total": 6080,
           "max": 1784,
           "min": 1,
-          "average": 233
+          "average": 225
         }
       }
     },
@@ -4049,7 +3994,7 @@
       "iTp": 7,
       "gId": "PACKSIZE",
       "gIx": 101,
-      "d": 4339245
+      "d": 4339248
     },
     {
       "iTp": 7,
@@ -4067,7 +4012,7 @@
       "iTp": 7,
       "gId": "PACKSIZE",
       "gIx": 104,
-      "d": 4339245
+      "d": 4339248
     },
     {
       "iTp": 7,
@@ -5526,15 +5471,9 @@
       "gIx": 1
     },
     {
-      "iTp": 0,
+      "iTp": 1,
       "gId": "UNKJSON",
-      "gIx": 0
-    },
-    {
-      "iTp": 3,
-      "gId": "UNKJSON",
-      "gIx": 101,
-      "p": "/property/bundle_item_counter.json"
+      "gIx": 1
     },
     {
       "iTp": 1,

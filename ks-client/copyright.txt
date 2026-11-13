@@ -386,8 +386,8 @@ here. Respect their licenses — get permission before redistributing.
 23. Bundle Item Counter — bundle contents count replaces the storage bar
     Author    : itzriyo157 — Bundle Item Counter V0-1
     Source    : https://mcpedl.com/bundle-item-counter
-    Now       : `property/bundle_item_counter.json` (root `property/`,
-                registered in `ui/_ui_defs.json`) — label template with
+    Now       : `ui/property/bundle_item_counter.json` (registered in
+                `ui/_ui_defs.json`) — label template with
                 owner namespace `ryBIC:item_counter` renamed to
                 `ks_bundle_counter`; `ui/gameplay_common.json` (namespace
                 `gameplay`), `ui/hud_screen.json` (namespace `hud`),
