@@ -66,6 +66,7 @@
 | 28 | Quick Totem (scanner logic) | oSkullo Quick Totem Offhand v1.0.0 (logic merged, rebranded `ks_uhud`) | Standalone `ks_qt` module/textures were removed; its per-slot scanner logic now powers the Utility HUD draggable fast-totem button — tap the totem button (touch), press `menu_ok`, or press `1` (keyboard) while the inventory is open to auto-place a totem in the offhand. Toggle with `$ks_uhud_totem_v`. |
 | 29 | Transparent Glass UI | Baku — Transparent Glass UI V3 (selective texture merge) | Transparent/low-opacity inventory, crafting, dialog, tab and recipe-book textures so the world shows through open screens; KS connected-hotbar art kept (`hotbar_*`/`selected_hotbar_slot` not overwritten). No UI JSON or manifest changes. |
 | 30 | Side Tooltip Items (Top Left) | itzriyo157 Side Tooltip Items v1.0.0 (top_left variant, rebranded `$ks_tooltip_*`) | Touch item-details tooltip pinned to the top-left corner instead of floating over the touched inventory slot (`common.selected_item_details` anchor override + `ks_sti_alpha` fade, factory re-enabled behind `$ks_tooltip_v`; corner via `$ks_tooltip_anchor`, fade via `$ks_tooltip_alpha_duration`) |
+| 31 | Bundle Item Counter | itzriyo157 Bundle Item Counter V0-1 (rebranded `ks_bundle_counter`) | Bundle contents count drawn on hotbar/container/inventory grid cells; the vanilla bundle storage bar is replaced by text and hidden in container/inventory cells |
 
 ---
 
@@ -284,6 +285,22 @@ In-game: touch/hold an item in the inventory → the item name/details panel app
 
 ---
 
+### 2.20 Bundle Item Counter (itzriyo157, merged + rebranded)
+
+What it is: bundles show their contents count directly on the hotbar, container and inventory grid cells. The vanilla bundle storage bar is replaced by a compact bottom-right text label.
+
+How it works:
+- `property/bundle_item_counter.json` (pack root, registered as `property/bundle_item_counter.json` in `_ui_defs.json`) defines `ks_bundle_counter.bundle_item_counter_text`: a bottom-right label bound to the collection's `#item_storage_visible`, `#item_storage_current_amount` and `#amount_current`, clamped so it never exceeds the stored amount.
+- `ui/gameplay_common.json` (namespace `gameplay`) inserts that label into vanilla `bundle_selected_item_panel` at offset `[2,3]` and hides `bundle_selected_item_panel/storage_bar`.
+- `ui/hud_screen.json` inserts the label at the front of `gui_hotbar_grid_item/hotbar_parent` with `$item_collection_name: "$hotbar_collection_name"`.
+- `ui/ui_common.json` inserts it in `container_item` and hides `container_item/item_cell/storage_bar`; `ui/inventory_screen.json` does the same for `inventory_container_item` (layer 22) and ignores `inventory_container_item/item_cell/storage_bar`.
+- `ui/_global_variables.json` keeps the upstream parity flag `$is_bundle_item_counter_pack_enabled true` (the labels themselves are always inserted).
+- Merged from Bundle Item Counter V0-1 (itzriyo157); owner namespace `ryBIC:item_counter` renamed to `ks_bundle_counter`. Attribution: `copyright.txt` entry 23.
+
+In-game: hold or open a bundle → its item count appears in the slot instead of a storage bar, in the hotbar, containers and player inventory.
+
+---
+
 ## 3. Project Structure
 
 ```
@@ -313,11 +330,12 @@ ks-client/
 │   │   ├── texture_list.json + textures_list.json (identical, 1724 entries, rebuilt from disk: PNG+TGA, no dangling)
 │   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (219 PNGs incl. chat art + 14 ks_uhud + Baku transparent set) / c_ui/ (8 files, all wired) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
 │   ├── texts/en_US.lang + languages.json
+│   ├── property/bundle_item_counter.json ← ks_bundle_counter label template (bundle stack count)
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 24 entries (…+ ks_utility_hud/counter + inventory + ks_hud_config + hud_crosshair_overlay; every UI file is registered)
-│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: retained toggle-page defs, not wired), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
-│   │   ├── inventory_screen.json (crafting), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common — hover durability + side tooltip anchor/fade), trade_2_screen.json (trade2 — all villager trades unlocked)
+│   │   ├── _ui_defs.json            ← load order, 26 entries (…+ gameplay_common + property/bundle_item_counter; every UI file is registered)
+│   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: retained toggle-page defs, not wired), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch + bundle counter hotbar insert), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
+│   │   ├── gameplay_common.json (gameplay — bundle selected-panel counter + storage-bar hide), inventory_screen.json (crafting — Utility HUD flags + bundle counter insert/storage-bar hide), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common — hover durability + side tooltip anchor/fade + bundle counter inserts), trade_2_screen.json (trade2 — all villager trades unlocked)
 │   │   ├── chat_screen.json (chat) + ui_assets/screens/chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_utility_hud/counter+inventory)
 │   │   ├── ks_touch/hide_gui.json
@@ -328,7 +346,7 @@ ks-client/
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 Drive SKIP lines and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json` (81 mobs + `player.json`). Every shipped `ui/**/*.json` is registered in `_ui_defs.json` (27 entries) and carries its required `namespace` (vanilla-namespace overrides need it to merge — `chat`/`common`/`debug_screen`/`dev_console`/`controls_section` namespaces and the six missing `_ui_defs` entries were restored in the audit).
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 Drive SKIP lines and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json` (81 mobs + `player.json`). Every shipped `ui/**/*.json` is registered in `_ui_defs.json` (26 entries) and carries its required `namespace` (vanilla-namespace overrides need it to merge — `chat`/`common`/`debug_screen`/`dev_console`/`controls_section` namespaces and the six missing `_ui_defs` entries were restored in the audit).
 
 ---
 
@@ -344,6 +362,7 @@ ks-client/
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
    - Status: top-left readout (client version, position) — own skin, no doll FPS.
    - Inventory touch tooltip: top-left corner (item name/details), fades after 5 s — no longer covers the touched slot.
+   - Bundles: item count appears on hotbar/container/inventory bundle slots instead of the storage bar.
    - Trades: open any villager → all tiers/trades shown and selectable without leveling (UI-only, no new textures).
 4. **Persist config:** edit `ui/_global_variables.json` (§5) → repack → reactivate.
 
@@ -367,6 +386,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | Utility HUD fast totem | `$ks_uhud_totem_v true`, `$ks_uhud_totem_size [40,40]`, `$ks_uhud_totem_offset [0,"25%"]`, `$ks_uhud_totem_alpha 0.7`, `$ks_uhud_totem_id 39780352` | Draggable inventory totem button on/off, touch size, screen offset, icon opacity, and the totem item ID used by the Quick Totem scanner |
 | Crosshair Indicator | `$ks_crosshair_v true`, `$ks_crosshair_size [15,15]`, `$ks_crosshair_alpha 0.7`, `$ks_crosshair_offset [0,0]` | Dynamic default/entity crosshair in `hud_screen.json` (hit-switch needs that screen's `right_helper_collection`; shows in all perspectives — set `$ks_crosshair_v false` + repack to hide); edit + repack to persist |
 | Side tooltip (touch) | `$ks_tooltip_v true`, `$ks_tooltip_anchor "top_left"`, `$ks_tooltip_alpha_duration 5` | Inventory touch item-details tooltip on/off, screen corner (`top_left` default; also `top_middle/top_right/bottom_left/bottom_middle/bottom_right/left_middle/right_middle`), fade-out seconds |
+| Bundle item counter | `$is_bundle_item_counter_pack_enabled true` | Upstream parity flag (labels always inserted); bundle stack count replaces the storage bar in hotbar/container/inventory slots |
 | Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$text_color [1,1,1]` (editor glyph), `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
 
