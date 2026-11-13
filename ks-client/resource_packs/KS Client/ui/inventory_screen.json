@@ -30,9 +30,19 @@
     "type": "panel",
     "controls": [
       // Utility HUD V-1.5 extras: fast totem, offhand switch/preview, custom
-      // close, armor durability panel and F8 toggles.
+      // close, armor durability panel and F8 toggles. Survival-only: the
+      // fast-totem scanner's per-slot collection bindings and global key
+      // mappings interfere with the creative inventory layout/item picking.
       {
-        "_extra_content@ks_uhud.ks_uhud_inventory_content": {}
+        "_extra_content@ks_uhud.ks_uhud_inventory_content": {
+          "bindings": [
+            {
+              "binding_name": "(not #is_creative_mode)",
+              "binding_name_override": "#visible",
+              "binding_type": "global"
+            }
+          ]
+        }
       },
       {
         "_content@crafting.recipe_inventory_screen_content": {
