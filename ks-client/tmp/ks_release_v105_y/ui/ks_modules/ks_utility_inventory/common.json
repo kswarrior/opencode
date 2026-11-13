@@ -1,0 +1,768 @@
+{
+  "namespace": "ksui_common",
+  "exit_button_overlay": {
+    "type": "button",
+    "layer": -1,
+    "consume_hover_events": false,
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "pressed",
+        "consume_event": false
+      }
+    ]
+  },
+  "saved_state_toggle": {
+    "type": "panel",
+    "$source_toggle_controls": "common_toggles.light_content_toggle",
+    "$toggle_name|default": "unset",
+    "$toggle_view_name|default": "unset_toggle",
+    "$toggle_default_state|default": false,
+    "$tmS": "#toggle_state",
+    "$UxG": "(not #toggle_state)",
+    "$dLu": "common_toggles.toggle_unchecked",
+    "$go2": "common_toggles.toggle_unchecked_hover",
+    "$rJO": "common_toggles.toggle_checked",
+    "$eWq": "common_toggles.toggle_checked_hover",
+    "variables": [
+      {
+        "requires": "$toggle_default_state",
+        "$tmS": "(not #toggle_state)",
+        "$UxG": "#toggle_state",
+        "$dLu": "common_toggles.toggle_checked",
+        "$go2": "common_toggles.toggle_checked_hover",
+        "$rJO": "common_toggles.toggle_unchecked",
+        "$eWq": "common_toggles.toggle_unchecked_hover"
+      }
+    ],
+    "controls": [
+      {
+        "unchecked_state@$source_toggle_controls": {
+          "$unchecked_control": "$rJO",
+          "$checked_control": "$rJO",
+          "$unchecked_hover_control": "$eWq",
+          "$checked_hover_control": "$eWq",
+          "$toggle_view_binding_name": "('n' + $toggle_view_name)",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "$toggle_view_name",
+              "source_property_name": "$tmS",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "checked_state@$source_toggle_controls": {
+          "$unchecked_control": "$dLu",
+          "$checked_control": "$dLu",
+          "$unchecked_hover_control": "$go2",
+          "$checked_hover_control": "$go2",
+          "$toggle_view_binding_name": "('y' + $toggle_view_name)",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "$toggle_view_name",
+              "source_property_name": "$UxG",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "$toggle_view_name": {
+          "type": "panel",
+          "property_bag": {
+            "#data": ""
+          },
+          "$input": "a",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "('y' + $toggle_view_name)",
+              "source_property_name": "($input + #toggle_state - #toggle_state)",
+              "target_property_name": "#data"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "('n' + $toggle_view_name)",
+              "source_property_name": "(#toggle_state - #toggle_state)",
+              "target_property_name": "#data"
+            },
+            {
+              "ignored": "$toggle_default_state",
+              "binding_type": "view",
+              "source_property_name": "(#data = 'a')",
+              "target_property_name": "#toggle_state"
+            },
+            {
+              "ignored": "(not $toggle_default_state)",
+              "binding_type": "view",
+              "source_property_name": "(not (#data = 'a'))",
+              "target_property_name": "#toggle_state"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "slot_input": {
+    "$button_id": "button.container_auto_place",
+    "$source_property|default": "(not (#item_id_aux = -1))",
+    "$property_bag|default": {},
+    "type": "button",
+    "consume_hover_events": false,
+    "property_bag": "$property_bag",
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "$item_collection_name"
+      },
+      {
+        "binding_name": "#item_id_aux",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection_name"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "$source_property",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(':' + (#item_id_aux / 65536) + ':')",
+        "target_property_name": "#item_id_class"
+      }
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$button_id",
+        "mapping_type": "pressed",
+        "consume_event": false,
+        "button_up_right_of_first_refusal": true
+      }
+    ]
+  },
+  "main_toggle@common_toggles.light_content_toggle": {
+    "$button_content": "ksui_common.main_toggle_icon",
+    "size": [
+      20,
+      20
+    ]
+  },
+  "main_toggle_icon_text_color@ksui_common.main_toggle_icon": {
+    "color": "$text_color"
+  },
+  "main_toggle_icon": {
+    "type": "image",
+    "texture": "$icon_texture",
+    "size": "$size",
+    "$size|default": [
+      16,
+      16
+    ],
+    "$hover_text|default": "tempe_goreng",
+    "$hover_test_c|default": "ksui_common.main_tog_hover_text",
+    "controls": [
+      {
+        "hover_trxt@$hover_test_c": {}
+      }
+    ]
+  },
+  "main_tog_hover_text_btton@ksui_common.main_tog_hover_text": {
+    "ignored": "(not $hover_state)"
+  },
+  "main_tog_hover_text": {
+    "ignored": "(not ($toggle_unchecked_hover - $toggle_checked_hover))",
+    "type": "image",
+    "texture": "textures/ui/purpleBorder",
+    "size": [
+      "100%c + 8px",
+      "100%c + 6px"
+    ],
+    "anchor_from": "top_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [
+      0,
+      -6
+    ],
+    "visible": "(not ($hover_text = 'tempe_goreng'))",
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "text": "$hover_text",
+          "size": [
+            "default",
+            "default"
+          ]
+        }
+      }
+    ]
+  },
+  "selected_item_details_factory": {
+    "type": "factory",
+    "control_name": "@ksui_common.selected_item_details"
+  },
+  "selected_item_details@common.selected_item_details": {
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [
+      4,
+      4
+    ]
+  },
+  "output_grid_3x3": {
+    "$item_collection_name": "crafting_output_items",
+    "type": "grid",
+    "grid_dimensions": [
+      1,
+      1
+    ],
+    "collection_name": "$item_collection_name",
+    "size": [
+      18,
+      18
+    ],
+    "controls": [
+      {
+        "work_bench_output@ksui_common.container_item": {
+          "$item_collection_name": "crafting_output_items",
+          "$button_ref": "ksui_common.output_container_slot_button",
+          "$background_images": "crafting.crafting_container_cell_images",
+          "$stack_count_binding_condition": "always",
+          "$item_renderer_binding_condition": "always"
+        }
+      }
+    ]
+  },
+  "crafting_grid_2x2": {
+    "$item_collection_name": "crafting_input_items",
+    "type": "grid",
+    "size": [
+      36,
+      36
+    ],
+    "grid_dimensions": [
+      2,
+      2
+    ],
+    "collection_name": "$item_collection_name",
+    "$8": "ksui_common.crafting_grid_item",
+    "controls": [
+      {
+        "tl@$8": {
+          "grid_position": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "tr@$8": {
+          "grid_position": [
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "bl@$8": {
+          "grid_position": [
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "br@$8": {
+          "grid_position": [
+            1,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  "crafting_grid_item@ksui_common.container_item": {
+    "$button_ref": "crafting.inventory_container_slot_button"
+  },
+  "container_item@common.container_item": {
+    "$highlight_control": "common.empty_panel",
+    "$button_ref|default": "ksui_common.item_button_reff",
+    "$add_control_c|default": "common.empty_panel",
+    "$is_recipe_book_slot|default": false,
+    "controls": [
+      {
+        "item_cell": {
+          "type": "panel",
+          "size": "$cell_image_size",
+          "layer": 0,
+          "controls": [
+            {
+              "$background_image_control_name@$background_images": {
+                "layer": 1
+              }
+            },
+            {
+              "item": {
+                "type": "panel",
+                "size": "$item_renderer_panel_size",
+                "layer": 0,
+                "controls": [
+                  {
+                    "stack_count_label@common.stack_count_label": {
+                      "layer": 27
+                    }
+                  },
+                  {
+                    "$item_renderer@$item_renderer": {
+                      "size": "$item_renderer_size",
+                      "offset": "$item_renderer_offset",
+                      "anchor_to": "center",
+                      "anchor_from": "center",
+                      "layer": 7
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "durability_bar@common.durability_bar": {
+                "layer": 20
+              }
+            },
+            {
+              "storage_bar@common.storage_bar": {
+                "layer": 20
+              }
+            },
+            {
+              "overlay@crafting.container_overlay_images": {
+                "$overlay_image_control_name": "overlay",
+                "ignored": "(not $is_recipe_book_slot)",
+                "layer": 9
+              }
+            }
+          ]
+        }
+      },
+      {
+        "item_cell_overlay_ref@$cell_overlay_ref": {
+          "layer": 3
+        }
+      },
+      {
+        "item_selected_image@common.slot_selected": {
+          "layer": 4
+        }
+      },
+      {
+        "item_button_ref@$button_ref": {
+          "tts_ignore_count": true,
+          "tts_skip_message": true,
+          "tts_inherit_siblings": true,
+          "layer": 5
+        }
+      },
+      {
+        "container_item_lock_overlay@common.container_item_lock_overlay": {
+          "size": "$item_renderer_size",
+          "offset": [
+            1,
+            1
+          ],
+          "anchor_to": "top_left",
+          "anchor_from": "top_left",
+          "layer": 6
+        }
+      },
+      {
+        "item_lock_cell_image@common.item_lock_cell_image": {
+          "layer": 2
+        }
+      },
+      {
+        "bundle_slot_panel@gameplay.bundle_slot_panel": {
+          "layer": 10
+        }
+      },
+      {
+        "additional@$add_control_c": {}
+      }
+    ]
+  },
+  "extra_slot_grid@ksui_common.stack_horizontal": {
+    "$item_collection_name": "crafting_input_items",
+    "$8": "ksui_common.container_item",
+    "$cell_overlay_ref": "ksui_common.extra_slot_overlay",
+    "$add_control_c": "ksui_common.extra_slot_c",
+    "collection_name": "$item_collection_name",
+    "size": [
+      72,
+      18
+    ],
+    "controls": [
+      {
+        "0@$8": {
+          "collection_index": 0
+        }
+      },
+      {
+        "1@$8": {
+          "collection_index": 1
+        }
+      },
+      {
+        "2@$8": {
+          "collection_index": 2
+        }
+      },
+      {
+        "3@$8": {
+          "collection_index": 3
+        }
+      }
+    ]
+  },
+  "extra_slot_c@ksui_common.touch_input": {
+    "layer": 12,
+    "debug": "red",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "crafting_tog",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "extra_slot_overlay@ksui_common.hotbar_overlay": {
+    "texture": "textures/ui/ks_utility_inventory/extra_slot_cell_overlay"
+  },
+  "armor_grid@ksui_common.stack_horizontal": {
+    "$item_collection_name": "armor_items",
+    "$8": "ksui_common.container_item",
+    "collection_name": "$item_collection_name",
+    "size": [
+      72,
+      18
+    ],
+    "controls": [
+      {
+        "head@$8": {
+          "collection_index": 0,
+          "$cell_overlay_ref": "crafting.armor_overlay_helmet"
+        }
+      },
+      {
+        "chest@$8": {
+          "collection_index": 1,
+          "$cell_overlay_ref": "crafting.armor_overlay_chest"
+        }
+      },
+      {
+        "legs@$8": {
+          "collection_index": 2,
+          "$cell_overlay_ref": "crafting.armor_overlay_legs"
+        }
+      },
+      {
+        "feet@$8": {
+          "collection_index": 3,
+          "$cell_overlay_ref": "crafting.armor_image_feet"
+        }
+      }
+    ]
+  },
+  "inventory_grid": {
+    "$item_collection_name": "inventory_items",
+    "type": "grid",
+    "size": [
+      162,
+      54
+    ],
+    "grid_dimensions": [
+      9,
+      3
+    ],
+    "grid_item_template": "ksui_common.container_item",
+    "collection_name": "$item_collection_name"
+  },
+  "hotbar_grid": {
+    "$item_collection_name": "hotbar_items",
+    "$cell_overlay_ref": "ksui_common.hotbar_overlay",
+    "type": "grid",
+    "size": [
+      162,
+      18
+    ],
+    "grid_dimensions": [
+      9,
+      1
+    ],
+    "grid_item_template": "ksui_common.container_item",
+    "collection_name": "$item_collection_name"
+  },
+  "hotbar_overlay": {
+    "type": "image",
+    "texture": "textures/ui/ks_utility_inventory/hotbar_cell_overlay",
+    "bindings": [
+      {
+        "binding_name": "(#item_id_aux = -1)",
+        "binding_name_override": "#visible",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection_name"
+      }
+    ]
+  },
+  "item_button_reff": {
+    "type": "input_panel",
+    "controls": [
+      {
+        "default_mode@ksui_common.button_ref_common": {
+          "$toggle_bind": "default_mode_tog",
+          "$reff_control_name": "ksui_common.default_mode_reff"
+        }
+      },
+      {
+        "auto_place_mode@ksui_common.button_ref_common": {
+          "$toggle_bind": "auto_place_mode_tog",
+          "$button_id": "button.container_auto_place"
+        }
+      },
+      {
+        "drop_mode@ksui_common.button_ref_common": {
+          "$toggle_bind": "drop_mode_tog",
+          "$button_id": "button.drop_all"
+        }
+      },
+      {
+        "destroy_mode@ksui_common.button_ref_common": {
+          "$toggle_bind": "destroy_mode_tog",
+          "$button_id": "button.container_auto_destroy"
+        }
+      }
+    ]
+  },
+  "csbp_templete@common.container_slot_button_prototype": {
+    "layer": 6,
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "mapping_type": "pressed",
+        "to_button_id": "$button_id"
+      },
+      {
+        "from_button_id": "button.menu_select",
+        "mapping_type": "double_pressed",
+        "to_button_id": "$button_id"
+      }
+    ],
+    "controls": []
+  },
+  "default_mode_reff@common.container_slot_button_prototype": {
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.container_take_all_place_all",
+        "mapping_type": "pressed",
+        "button_up_right_of_first_refusal": true
+      },
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.coalesce_stack",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.coalesce_stack",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "to_button_id": "button.shape_drawing",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "button.container_slot_hovered",
+        "mapping_type": "pressed"
+      }
+    ],
+    "controls": []
+  },
+  "creative_no_coalesce_container_slot_button@common.container_slot_button_prototype": {
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.recipe_select",
+        "mapping_type": "pressed",
+        "button_up_right_of_first_refusal": true
+      },
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.container_auto_place",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "to_button_id": "button.shape_drawing",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "button.container_slot_hovered",
+        "mapping_type": "pressed"
+      }
+    ],
+    "controls": []
+  },
+  "output_container_slot_button@common.container_slot_button_prototype": {
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.container_auto_place_one",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "button.shape_drawing",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "button.container_slot_hovered",
+        "mapping_type": "pressed"
+      }
+    ],
+    "controls": []
+  },
+  "button_ref_common": {
+    "$reff_control_name|default": "ksui_common.csbp_templete",
+    "type": "collection_panel",
+    "factory": {
+      "name": "('ref_' + $reff_control_name)",
+      "control_name": "$reff_control_name",
+      "max_children_size": 1
+    },
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$toggle_bind",
+        "source_property_name": "(#toggle_state * 1)",
+        "target_property_name": "#collection_length"
+      }
+    ]
+  },
+  "panel_factory": {
+    "$child_controls|default": "common.empty_panel",
+    "$toggle_binding_name|default": "empty_lmao",
+    "type": "collection_panel",
+    "size": [
+      "100%c",
+      "100%c"
+    ],
+    "factory": {
+      "name": "($toggle_binding_name + '_factory')",
+      "control_name": "$child_controls",
+      "max_children_size": 1
+    },
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$toggle_binding_name",
+        "source_property_name": "(#toggle_state * 1)",
+        "target_property_name": "#collection_length"
+      }
+    ]
+  },
+  "input_factory": {
+    "$child_controls|default": "common.empty_panel",
+    "$slot_amounts|default": 1,
+    "type": "collection_panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "layer": 4,
+    "collection_name": "$item_collection_name",
+    "factory": {
+      "name": "($child_controls + '_f' - '.')",
+      "control_name": "$child_controls"
+    },
+    "property_bag": {
+      "#amount": "$slot_amounts"
+    },
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_property_name": "#amount",
+        "target_property_name": "#collection_length"
+      }
+    ]
+  },
+  "icon_content": {
+    "$size|default": [
+      "100%",
+      "100%"
+    ],
+    "type": "image",
+    "texture": "$icon_texture",
+    "size": "$size"
+  },
+  "touch_input": {
+    "type": "input_panel",
+    "prevent_touch_input": true,
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.container_reset_held",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+  "stack_horizontal": {
+    "type": "stack_panel",
+    "orientation": "horizontal"
+  },
+  "pad_fill_x": {
+    "type": "panel",
+    "size": [
+      "fill",
+      0
+    ]
+  },
+  "pad_fill_y": {
+    "type": "panel",
+    "size": [
+      0,
+      "fill"
+    ]
+  },
+  "pad_1px_y": {
+    "type": "panel",
+    "size": [
+      0,
+      1
+    ]
+  },
+  "pad_2px_y": {
+    "type": "panel",
+    "size": [
+      0,
+      2
+    ]
+  },
+  "pad_4px_y": {
+    "type": "panel",
+    "size": [
+      0,
+      4
+    ]
+  },
+  "pad_2px_x": {
+    "type": "panel",
+    "size": [
+      2,
+      0
+    ]
+  }
+}

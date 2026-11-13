@@ -1,0 +1,26 @@
+{
+  "namespace": "crafting",
+  "inventory_screen_pocket": {
+    "force_render_below": true,
+    "low_frequency_rendering": true,
+    "absorbs_input": "(not $touch and not $is_pregame)",
+    "is_showing_menu": "(not $touch and not $is_pregame)",
+    "variables": [
+      {
+        "requires": "($touch and not $is_pregame)",
+        "$screen_bg_content": "common.empty_panel",
+        "$screen_content": "ksui_main.overlay_screen_content",
+        "$screen_animations": [
+          "@common.screen_exit_animation_push_fade",
+          "@common.screen_exit_animation_pop_fade",
+          "@common.screen_entrance_animation_push_fade",
+          "@common.screen_entrance_animation_pop_fade"
+        ]
+      },
+      {
+        "requires": "(not $touch and not $is_pregame)",
+        "$screen_content": "crafting.recipe_inventory_screen_content_pocket"
+      }
+    ]
+  }
+}
