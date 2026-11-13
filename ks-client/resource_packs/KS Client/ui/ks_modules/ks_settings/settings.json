@@ -18,14 +18,7 @@
         }
       }
     ],
-    "bindings": [
-      {
-        "binding_type": "view",
-        "source_control_name": "slot_hotbar_button_panel",
-        "source_property_name": "#visible",
-        "target_property_name": "#visible"
-      }
-    ]
+    "bindings": []
   },
 
   "gear_icon": {
@@ -89,8 +82,7 @@
     "layer": 590,
     "visible": false,
     "property_bag": {
-      "#ks_settings_toggle": false,
-      "#ks_hud_visible": true
+      "#ks_settings_toggle": false
     },
     "controls": [
       {
@@ -148,13 +140,7 @@
       },
       {
         "binding_type": "view",
-        "source_control_name": "slot_hotbar_button_panel",
-        "source_property_name": "#visible",
-        "target_property_name": "#ks_hud_visible"
-      },
-      {
-        "binding_type": "view",
-        "source_property_name": "(#ks_settings_toggle and #ks_hud_visible)",
+        "source_property_name": "#ks_settings_toggle",
         "target_property_name": "#visible"
       }
     ]
