@@ -50,8 +50,12 @@
 	// Start screen bottom-right Menu button (left of Play). false = removed.
 	"$ks_show_start_menu_button": false,
 	"$ksb_ssci": true,
-	"$ksb_hba": 4,
+	"$ksb_hba": 100,
 	"$ksb_sbi": true,
+	// Quick Totem (one-tap offhand totem + inventory equip panel)
+	"$ks_qt_show": true,
+	"$ks_qt_size": [ 40, 40 ],
+	"$ks_qt_offset": [ -118, -1 ],
 	// Engine/debug globals referenced by hud_screen.json + the F3 panel.
 	// Declared here because newer builds no longer inject them (Content Log:
 	// "not found in ancestor tree" / invalid "ignored").
