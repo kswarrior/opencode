@@ -50,7 +50,7 @@
 	// Start screen bottom-right Menu button (left of Play). false = removed.
 	"$ks_show_start_menu_button": false,
 	"$ksb_ssci": true,
-	"$ksb_hba": 100,
+	"$ksb_hba": 1.0,
 	"$ksb_sbi": true,
 	// Quick Totem (one-tap offhand totem + inventory equip panel)
 	"$ks_qt_show": true,
