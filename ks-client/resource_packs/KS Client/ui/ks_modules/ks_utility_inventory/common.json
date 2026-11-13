@@ -158,7 +158,7 @@
   },
   "main_toggle_icon": {
     "type": "image",
-    "texture": "('textures/ui/ks_utility_inventory/icons/' + $icon_texture)",
+    "texture": "$icon_texture",
     "size": "$size",
     "$size|default": [
       16,

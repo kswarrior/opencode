@@ -145,7 +145,7 @@
                 "$toggle_name": "inventory_toggle",
                 "$toggle_view_binding_name": "inventory_UI_tog",
                 "$toggle_default_state": "$ksui_fb42e3",
-                "$icon_texture": "inventory",
+                "$icon_texture": "textures/ui/ks_utility_inventory/icons/inventory",
                 "offset": [
                   2.5,
                   0

@@ -289,7 +289,7 @@
         "armor_display@ksui_features.option_toggle": {
           "$toggle_name": "armor_display_toggle",
           "$toggle_default_state": "$ksui_e6b647",
-          "$icon_texture": "armor",
+          "$icon_texture": "textures/ui/ks_utility_inventory/icons/armor",
           "$hover_text": "Armor Display"
         }
       },
@@ -300,7 +300,7 @@
         "tools_cycler@ksui_features.option_toggle": {
           "$toggle_name": "tools_cycler_toggle",
           "$toggle_default_state": "$ksui_c54aa6",
-          "$icon_texture": "tools_cycler",
+          "$icon_texture": "textures/ui/ks_utility_inventory/icons/tools_cycler",
           "$hover_text": "Tools Cycler"
         }
       },
@@ -311,7 +311,7 @@
         "slot_cycler@ksui_features.option_toggle": {
           "$toggle_name": "slot_cycler_toggle",
           "$toggle_default_state": "$ksui_db22bc",
-          "$icon_texture": "slot_cycler",
+          "$icon_texture": "textures/ui/ks_utility_inventory/icons/slot_cycler",
           "$hover_text": "Slot Cycler"
         }
       }
@@ -324,7 +324,7 @@
           "$toggle_name": "recipe_book_toggle",
           "$toggle_view_binding_name": "recipe_book_tog",
           "$toggle_default_state": "$ksui_df3dda",
-          "$icon_texture": "recipe",
+          "$icon_texture": "textures/ui/ks_utility_inventory/icons/recipe",
           "$hover_text": "Recipe Book"
         }
       },
@@ -336,7 +336,7 @@
           "$pressed_button_name": "button.menu_exit",
           "$button_content": "ksui_common.main_toggle_icon",
           "$hover_test_c": "ksui_common.main_tog_hover_text_btton",
-          "$icon_texture": "close",
+          "$icon_texture": "textures/ui/ks_utility_inventory/icons/close",
           "$hover_text": "Close Inventory",
           "$size": [
             12,

@@ -843,8 +843,6 @@ UNLINK,205,"Recommendation","","Link to vanilla texture item; avoid if possible"
 UNLINK,205,"Recommendation","","Link to vanilla texture item; avoid if possible","textures/ui/settings_glyph_2x","/ui/ks_modules/ksb_hotbar_button/main.json",
 UNLINK,205,"Recommendation","","Link to vanilla texture item; avoid if possible","textures/ui/arrow_dark_right_stretch","/ui/trade_2_screen.json",
 UNLINK,205,"Recommendation","","Link to vanilla texture item; avoid if possible","textures/ui/lock","/ui/trade_2_screen.json",
-UNLINK,399,"Warning","","Link to texture is not found in this pack","/ui/ks_modules/ks_utility_inventory/common.json to `('textures/ui/ks_utility_inventory/icons/' + $icon_texture)`","/ui/ks_modules/ks_utility_inventory/common.json",
-UNLINK,399,"Warning","","Link to texture is not found in this pack","/ui/ks_modules/ks_utility_inventory/inventory.json to `('textures/ui/ks_utility_inventory/' + $mode_name)`","/ui/ks_modules/ks_utility_inventory/inventory.json",
 VALFILE,2,"Unknown","","No applicable items found for test Valid files (VALFILE)",,"",
 VANPRO,1,"Test success","","Vanilla Protected Assets completed successfully",,"",
 VSCODEFILE,2,"Unknown","","No applicable items found for test VSCode Files (VSCODEFILE)",,"",

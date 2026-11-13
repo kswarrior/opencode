@@ -13,10 +13,10 @@
     "entityTypeResourceCount": 82,
     "behaviorPackAnimationCount": 0,
     "behaviorPackAnimationControllerCount": 0,
-    "overallSize": 4379450,
+    "overallSize": 4379841,
     "fileCounts": 1976,
     "folderCounts": 46,
-    "contentSize": 4379450,
+    "contentSize": 4379841,
     "contentFileCounts": 1976,
     "contentFolderCounts": 46,
     "fileCount": 1976,
@@ -240,14 +240,14 @@
       },
       "userInterface.size": {
         "instanceCount": 32,
-        "total": 216265,
+        "total": 216656,
         "max": 50168,
         "min": 61,
-        "average": 6758
+        "average": 6771
       },
       "userInterface.lines": {
         "instanceCount": 32,
-        "total": 7733,
+        "total": 7737,
         "max": 1784,
         "min": 1,
         "average": 242
@@ -414,16 +414,16 @@
         "count": 1750
       },
       "textures.uniqueTextureHandlesEstimated": {
-        "count": 106
+        "count": 104
       },
       "textures.uniqueTexturePaths": {
-        "count": 112
+        "count": 110
       },
       "textures.uniqueJSONUITextureReferences": {
         "count": 29
       },
       "textures.uniqueJSONUITexturePaths": {
-        "count": 42
+        "count": 40
       },
       "textures.uniqueJSONUITextureVanillaPaths": {
         "count": 22
@@ -922,17 +922,17 @@
     },
     "errorCount": 0,
     "internalProcessingErrorCount": 0,
-    "warningCount": 2,
+    "warningCount": 0,
     "testSuccessCount": 41,
     "testFailCount": 0,
     "testNotApplicableCount": 13,
     "errorSummary": "",
     "internalProcessingErrorSummary": "",
-    "warningSummary": "WARNING: [UNLINK399] (/ui/ks_modules/ks_utility_inventory/common.json) Link to texture is not found in this pack: /ui/ks_modules/ks_utility_inventory/common.json to `('textures/ui/ks_utility_inventory/icons/' + $icon_texture)`\nWARNING: [UNLINK399] (/ui/ks_modules/ks_utility_inventory/inventory.json) Link to texture is not found in this pack: /ui/ks_modules/ks_utility_inventory/inventory.json to `('textures/ui/ks_utility_inventory/' + $mode_name)`",
+    "warningSummary": "",
     "testFailSummary": "",
-    "infoGenerationTime": 2091,
-    "endToEndGenerationTime": 2719,
-    "reds": 434781,
+    "infoGenerationTime": 1896,
+    "endToEndGenerationTime": 2420,
+    "reds": 435563,
     "summary": {
       "BASEGAMEVER": {
         "2": {
@@ -1626,10 +1626,6 @@
           "title": "Vanilla Reference",
           "defaultMessage": "Link to vanilla texture item; avoid if possible",
           "recommendations": 467
-        },
-        "399": {
-          "defaultMessage": "Link to texture is not found in this pack",
-          "warnings": 2
         }
       },
       "VALFILE": {
@@ -3677,14 +3673,14 @@
       "fs": {
         "size": {
           "instanceCount": 32,
-          "total": 216265,
+          "total": 216656,
           "max": 50168,
           "min": 61,
-          "average": 6758
+          "average": 6771
         },
         "lines": {
           "instanceCount": 32,
-          "total": 7733,
+          "total": 7737,
           "max": 1784,
           "min": 1,
           "average": 242
@@ -3998,7 +3994,7 @@
       "iTp": 7,
       "gId": "PACKSIZE",
       "gIx": 101,
-      "d": 4379450
+      "d": 4379841
     },
     {
       "iTp": 7,
@@ -4016,7 +4012,7 @@
       "iTp": 7,
       "gId": "PACKSIZE",
       "gIx": 104,
-      "d": 4379450
+      "d": 4379841
     },
     {
       "iTp": 7,
@@ -4883,16 +4879,16 @@
           "count": 1750
         },
         "uniqueTextureHandlesEstimated": {
-          "count": 106
+          "count": 104
         },
         "uniqueTexturePaths": {
-          "count": 112
+          "count": 110
         },
         "uniqueJSONUITextureReferences": {
           "count": 29
         },
         "uniqueJSONUITexturePaths": {
-          "count": 42
+          "count": 40
         },
         "uniqueJSONUITextureVanillaPaths": {
           "count": 22
@@ -8856,20 +8852,6 @@
       "gIx": 205,
       "p": "/ui/trade_2_screen.json",
       "d": "textures/ui/lock"
-    },
-    {
-      "iTp": 4,
-      "gId": "UNLINK",
-      "gIx": 399,
-      "p": "/ui/ks_modules/ks_utility_inventory/common.json",
-      "d": "/ui/ks_modules/ks_utility_inventory/common.json to `('textures/ui/ks_utility_inventory/icons/' + $icon_texture)`"
-    },
-    {
-      "iTp": 4,
-      "gId": "UNLINK",
-      "gIx": 399,
-      "p": "/ui/ks_modules/ks_utility_inventory/inventory.json",
-      "d": "/ui/ks_modules/ks_utility_inventory/inventory.json to `('textures/ui/ks_utility_inventory/' + $mode_name)`"
     },
     {
       "iTp": 8,
