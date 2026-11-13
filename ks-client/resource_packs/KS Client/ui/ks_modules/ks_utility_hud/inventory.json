@@ -3,7 +3,7 @@
 //- KS Client module — do not redistribute as a standalone pack.
 {
   "namespace": "ks_uhud",
-  "fast_switch_content@inv_content.component_toggle": {
+  "ks_uhud_fast_switch_content@inv_content.component_toggle": {
     "size": [
       0,
       0
@@ -68,7 +68,7 @@
       }
     ]
   },
-  "fast_switch@inv_content.component_toggle": {
+  "ks_uhud_fast_switch@inv_content.component_toggle": {
     "size": [
       21,
       21
@@ -119,7 +119,7 @@
       }
     ]
   },
-  "_hotbar_grid@common.hotbar_grid_template": {
+  "ks_uhud_hotbar_grid@common.hotbar_grid_template": {
     "offset": [
       -10,
       -1.5
