@@ -5,10 +5,11 @@ All upstream code/assets merged into `resource_packs/KS Client/` were
 rebranded to KS Client naming. Original authors and sources are recorded
 here. Respect their licenses — get permission before redistributing.
 
-1. Slot Hotbar Buttons (floating hotbar slot shortcuts 1–10 + editor)
+1. Slot Hotbar Buttons (floating hotbar slot shortcuts 1–10 + Settings menu)
    Author : itzriyo157 — Slot Hotbar Button v1.3.0
    Now    : `ui/ks_modules/ksb_hotbar_button/` (namespace ksb_main/ksb_defs,
-            $ksb_* vars, ksb.howToSaveConfig)
+            $ksb_* vars, ksb.howToSaveConfig; old editor panel replaced by
+            `ui/ks_modules/ks_settings/settings.json`)
 
 2. Inventory HUD Bottom-Right — RESTORED per request (bottom-right grid + Show on/off)
    Author : itzriyo157 — Inventory HUD v1.0.2 Bottom Right
@@ -23,7 +24,8 @@ here. Respect their licenses — get permission before redistributing.
    Restored: 9×4 inventory grid (`ks_hud.inventory_hud_panel` /
             `inv_hud_container_item`), `hud.ks_invhud_pos` fullscreen wrapper
             + `root_panel` hook, Show Inv HUD (`ksbT_invhud`) + Compact
-            (`ksb_invhud_small`) toggles in HUD tab (`settings.json`),
+            (`ksb_invhud_small`) toggles in the Settings menu
+            (`ui/ks_modules/ks_settings/settings.json`),
             `$ksb_invhud_v/small` + `$ks:inventory_*/highlight` globals.
             Unused `$ksb_invhud_x/y/s` position sliders NOT restored
             (fixed bottom-right per request).
@@ -221,8 +223,8 @@ here. Respect their licenses — get permission before redistributing.
              (ks_f1 + ks_f3_t + ks_f3 + ks_f3_r),
              `$ks_f1_v/$ks_f3_v` + `$ks_recovery_id/$ks_clock_id/$ks_compass_id`
              (45088768/22740992/22609920) in `ui/_global_variables.json` +
-             `Show F1/F3 HUD` toggles (`ksbT_f1_t`/`ksbT_f3show_t`) in HUD tab
-             (`ui/ks_modules/ksb_hotbar_button/settings.json`).
+             `Show F1/F3 HUD` toggles (`ksbT_f1_t`/`ksbT_f3show_t`) in the
+             Settings menu (`ui/ks_modules/ks_settings/settings.json`).
 
 16. No Fog All Biomes, `all` (recommended) variant only (no-fog
     air/water/weather/lava/powder-snow + per-biome water colors)
@@ -273,7 +275,7 @@ here. Respect their licenses — get permission before redistributing.
              `$ksd_dura_v/hud/armor/threshold` + `$item_hover_text_color` /
              `$alpha_anim` / `$f_color_format` in `ui/_global_variables.json`,
              `Show Durability HUD` toggle (`ksdT_dura_t`) in HUD tab
-             (`ui/ks_modules/ksb_hotbar_button/settings.json`),
+             (superseded by the Settings menu; history retained),
              4 entries appended in `ui/_ui_defs.json` (append-only).
 
 18. Equipment HUD — armor icons + armor-durability bars + offhand item icon
