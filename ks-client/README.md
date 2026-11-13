@@ -485,7 +485,7 @@ redistributing: some upstream licenses require the creator's permission.
 
 `release/` contains the retained shippable builds (5 files: v1.0.0, v1.0.1, v1.0.2, v1.0.4, v1.0.5):
 
-**`v1.0.5`** (current — Utility Inventory touch overlay merge: custom touch inventory, recipe book/search, crafting panel, tools/slot cyclers, in-inventory settings; KS armor panel wired to Armor Display; 14 textures; `_ui_defs` 31 entries)
+**`v1.0.5`** (current — Utility Inventory touch overlay merge: custom touch inventory, recipe book/search, crafting panel, tools/slot cyclers, in-inventory settings; KS armor panel wired to Armor Display; 14 textures; `_ui_defs` 31 entries; validation 0 errors / 0 warnings)
 
 **`v1.0.4`** (previous — Bundle Item Counter UI merge (rebranded `ks_bundle_counter`, label template under `ui/property/`); 70 biome-schema warnings cleared)
 
