@@ -361,5 +361,26 @@
 
   "items_tab": {
     "variables": []
+  },
+
+  // ---------- Bundle Item Counter (ryBIC, rebranded) ----------
+  // Adds the bundle stack-count label to inventory container cells and hides
+  // the vanilla storage bar.
+  "inventory_container_item": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "item_count_bundle@ks_bundle_counter.bundle_item_counter_text": {
+            "layer": 22
+          }
+        }
+      }
+    ]
+  },
+
+  "inventory_container_item/item_cell/storage_bar": {
+    "ignored": true
   }
 }

@@ -128,5 +128,22 @@
   // corner-pinned tooltip above can spawn; keep it gated by $ks_tooltip_v.
   "selected_item_details_factory": {
     "ignored": "(not $ks_tooltip_v)"
+  },
+
+  // ---------- Bundle Item Counter (ryBIC, rebranded) ----------
+  "container_item": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "item_count_bundle@ks_bundle_counter.bundle_item_counter_text": {}
+        }
+      }
+    ]
+  },
+
+  "container_item/item_cell/storage_bar": {
+    "ignored": true
   }
 }

@@ -152,5 +152,9 @@
 	// right_middle. Fade-out seconds via $ks_tooltip_alpha_duration.
 	"$ks_tooltip_v": true,
 	"$ks_tooltip_anchor": "top_left",
-	"$ks_tooltip_alpha_duration": 5
+	"$ks_tooltip_alpha_duration": 5,
+
+	// === Bundle Item Counter (ryBIC, rebranded) ===
+	// Shows bundle contents count on hotbar/container/inventory grids.
+	"$is_bundle_item_counter_pack_enabled": true
 }

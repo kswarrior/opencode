@@ -716,6 +716,22 @@
         "target_property_name": "#visible"
       }
     ]
+  },
+
+  // ---------- Bundle Item Counter (ryBIC, rebranded) ----------
+  // Adds the bundle stack-count label to vanilla hotbar grid cells.
+  "gui_hotbar_grid_item/hotbar_parent": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "item_count_bundle@ks_bundle_counter.bundle_item_counter_text": {
+            "$item_collection_name": "$hotbar_collection_name"
+          }
+        }
+      }
+    ]
   }
 
   // KS crosshair textures: textures/ui/ks_crosshair_default.png and
