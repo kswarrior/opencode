@@ -135,15 +135,11 @@
 
 	// === KS Utility HUD (merged Utility HUD V-1.5 by EchoRif, full merge) ===
 	// Lives in ui/ks_modules/ks_utility_hud/: counters, mainhand/armor
-	// durability, fast totem, offhand switch/preview, F8 toggles and content
+	// durability, offhand switch/preview, F8 toggles and content
 	// toggle. KS-native: crosshair, F1/F3 keys, inventory HUD, slot buttons.
 	"$ks_uhud_counters_v": true,
-	"$ks_uhud_totem_v": true,
 	"$ks_uhud_switch_v": true,
 	"$ks_uhud_offhand_v": true,
-	"$ks_uhud_totem_size": [ 40, 40 ],
-	"$ks_uhud_totem_offset": [ 0, "25%" ],
-	"$ks_uhud_totem_alpha": 0.7,
 	"$ks_uhud_gapple_id": 18808832,
 	"$ks_uhud_egapple_id": 18874368,
 	"$ks_uhud_pearl_id": 29753344,
