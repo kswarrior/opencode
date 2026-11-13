@@ -1,7 +1,8 @@
 {
   "namespace": "inv_content",
 
-  // (Removed per request: Utility HUD V-1.5 fully removed. Only component_toggle base kept for crafting limiter.)
+  // Utility HUD V-1.5 content lives in ui/ks_modules/ks_utility_hud/.
+  // component_toggle base kept for the crafting limiter, content toggle and F8 toggles.
   "inventory_content": {
     "type": "panel",
     "size": [0, 0],

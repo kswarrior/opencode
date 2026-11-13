@@ -52,6 +52,13 @@
 	"$ksb_ssci": true,
 	"$ksb_hba": 4,
 	"$ksb_sbi": true,
+	// Engine/debug globals referenced by hud_screen.json + the F3 panel.
+	// Declared here because newer builds no longer inject them (Content Log:
+	// "not found in ancestor tree" / invalid "ignored").
+	"$always_visible_hotbar": false,
+	"$minecraft_game_version": "",
+	"$release": "minecraft/vanilla/release",
+	"$is_berwick": false,
 	"$hud_elipses_enabled": false,
 	"$hud_elipses_sound_volume": 0.0,
 
@@ -103,14 +110,14 @@
 	"$ks:inventory_slot_color": [ 0, 0, 0 ],
 	"$ks:inventory_slot_alpha": 0.27,
 
-	// === KS Durability Viewer (merged Durability Viewer V-2.5 [RP] by EchoRif/ya_rifat, rebranded) ===
-	"$ks_dv_mainhand": true,
-	"$ks_dv_mainhand_offset": [ "5px", "5px" ],
-	"$ks_dv_mainhand_anchor_from": "bottom_left",
-	"$ks_dv_mainhand_anchor_to": "bottom_left",
-	"$ks_dv_inventory": true,
-	"$ks_dv_recipe_book": true,
-	"$ks_dv_low_durability_threshold": 20,
+	// === Utility HUD V-1.5 durability (EchoRif, rebranded ks_uhud) ===
+	// Replaces the old KS DV V-2.5 module: mainhand readout bottom-left,
+	// armor durability panel in the inventory, hover durability in ui_common.
+	"$ks_uhud_mainhand_v": true,
+	"$ks_uhud_mainhand_offset": [ "5px", "5px" ],
+	"$ks_uhud_armor_v": true,
+	"$ks_uhud_hover_v": true,
+	"$ks_uhud_hover_recipe_v": true,
 
 	// $effects_per_column kept: used by mob_effect_screen.json effect grid pagination.
 	"$effects_per_column": 10,
@@ -120,5 +127,22 @@
 	"$ks_crosshair_v": true,
 	"$ks_crosshair_size": [ 15, 15 ],
 	"$ks_crosshair_alpha": 0.7,
-	"$ks_crosshair_offset": [ 0, 0 ]
+	"$ks_crosshair_offset": [ 0, 0 ],
+
+	// === KS Utility HUD (merged Utility HUD V-1.5 by EchoRif, full merge) ===
+	// Lives in ui/ks_modules/ks_utility_hud/: counters, mainhand/armor
+	// durability, fast totem, offhand switch/preview, F8 toggles and content
+	// toggle. KS-native: crosshair, F1/F3 keys, inventory HUD, slot buttons.
+	"$ks_uhud_counters_v": true,
+	"$ks_uhud_totem_v": true,
+	"$ks_uhud_switch_v": true,
+	"$ks_uhud_offhand_v": true,
+	"$ks_uhud_totem_size": [ 40, 40 ],
+	"$ks_uhud_totem_offset": [ 0, "25%" ],
+	"$ks_uhud_totem_alpha": 0.7,
+	"$ks_uhud_gapple_id": 18808832,
+	"$ks_uhud_egapple_id": 18874368,
+	"$ks_uhud_pearl_id": 29753344,
+	"$ks_uhud_totem_id": 39780352,
+	"$ks_uhud_chest_id": 3538946
 }

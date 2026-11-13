@@ -11,14 +11,14 @@
               "hover_text@common.hover_text": {
                 "layer": 29,
                 "$hover_text_binding_name|default": "#hover_text",
-                // KS Durability Viewer (merged DV V-2.5 [RP]): hover durability is
-                // config-gated — $ks_dv_inventory for container hover, recipe book
-                // follows $ks_dv_recipe_book.
-                "$conditional_ignore|default": "$ks_dv_inventory",
+                // Utility HUD V-1.5 (EchoRif): hover durability is config-gated —
+                // $ks_uhud_hover_v for container hover, recipe book follows
+                // $ks_uhud_hover_recipe_v.
+                "$conditional_ignore|default": "$ks_uhud_hover_v",
                 "variables": [
                   {
                     "requires": "($item_collection_name = 'recipe_book')",
-                    "$conditional_ignore": "$ks_dv_recipe_book"
+                    "$conditional_ignore": "$ks_uhud_hover_recipe_v"
                   }
                 ],
                 "property_bag": {
@@ -103,33 +103,10 @@
     ]
   },
 
-  // ---------- KS Durability Viewer (merged Durability Viewer V-2.5 [RP]) ----------
-  // selected_item_details_factory stays ignored (upstream DV behavior): the
+  // ---------- Utility HUD V-1.5 (EchoRif) ----------
+  // selected_item_details_factory stays ignored (upstream behavior): the
   // hover_text above already appends Durability: cur/total to the tooltip.
   "selected_item_details_factory": {
     "ignored": true
-  },
-
-  // Upstream DV tweak: hidden focus grabber so controller/gamepad navigation
-  // lands on panels (skipped on touch).
-  "common_panel": {
-    "modifications": [
-      {
-        "array_name": "controls",
-        "operation": "insert_back",
-        "value": [
-          {
-            "focus_grabber": {
-              "ignored": "(not ($touch))",
-              "type": "button",
-              "size": [ 0, 0 ],
-              "focus_enabled": true,
-              "default_focus_precedence": 8,
-              "layer": 16
-            }
-          }
-        ]
-      }
-    ]
   }
 }
