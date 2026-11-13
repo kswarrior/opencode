@@ -1,0 +1,35 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Transparent Glass UI V3 by Baku",
+    "description": "Transparent inventory, crafting and hotbar UI. Official pack icon and creator credit: Baku.",
+    "uuid": "58abd325-450d-562b-bc4d-a3692bca8344",
+    "version": [
+      3,
+      1,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      80
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "2f5f008a-9ad6-526a-8e9e-562940c4ec25",
+      "version": [
+        3,
+        1,
+        0
+      ]
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "Baku"
+    ],
+    "license": "All rights reserved - original UI recolor assets by Baku"
+  }
+}

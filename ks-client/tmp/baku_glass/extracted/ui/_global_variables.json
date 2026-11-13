@@ -1,0 +1,17 @@
+{
+  "$title_text_color": [
+    0.95,
+    0.97,
+    1.0
+  ],
+  "$pocket_title_text_color": [
+    0.95,
+    0.97,
+    1.0
+  ],
+  "$tab_checked_text_color": [
+    0.91,
+    0.94,
+    1.0
+  ]
+}
