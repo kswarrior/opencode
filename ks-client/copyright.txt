@@ -366,6 +366,23 @@ here. Respect their licenses — get permission before redistributing.
                 `.json` nineslice/base_size specs; 90 PNGs added to both
                 texture lists.
 
+22. Side Tooltip Items — touch item-details tooltip pinned to the screen
+    corner (top_left variant merged)
+    Author    : itzriyo157 — Side Tooltip Items v1.0.0
+    Source    : https://edge.mcpedl.com/files/7493/263/Side%20Tooltip%20Items%20v1.0.mcpack?ft=412596d986198a7f4f30354e33b9d449&bd=hi4hzt1jzz
+    Now       : `ui/ui_common.json` (namespace `common`) — rebranded
+                `selected_item_details` anchor override (`$ks_tooltip_anchor`,
+                offset [0,0]), `ks_sti_alpha` fade animation
+                (`$ks_tooltip_alpha_duration`), and
+                `selected_item_details_factory` re-enabled behind
+                `$ks_tooltip_v`; `ui/_global_variables.json` adds
+                `$ks_tooltip_v` / `$ks_tooltip_anchor` /
+                `$ks_tooltip_alpha_duration`. Top-left subpack variant only
+                (no subpacks copied); the `side_slot_item` highlight-slot
+                override was not taken. Owner namespace/vars
+                (`ry_STI:*`, `$ry_STI:anchor`) renamed to KS style; pack
+                icon, manifest, `ui/config` file and owner name not copied.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Durability Viewer V-2.5 [RP] — EchoRif/ya_rifat (merged earlier as KS DV; replaced by the full Utility HUD V-1.5 merge in entry 20)
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)

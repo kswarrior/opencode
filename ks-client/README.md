@@ -2,7 +2,7 @@
 
 > **KS Client v1.0.3 by KS Warrior** (latest codebase; v1.0.2, v1.0.1 and v1.0.0 retained for history)
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
-> Custom start screen, HUD (slot hotbar shortcuts + top-right Settings menu + inventory fast-totem button + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, transparent glass UI, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show/Compact.)
+> Custom start screen, HUD (slot hotbar shortcuts + top-right Settings menu + inventory fast-totem button + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), top-left touch item tooltip (corner-pinned side details), fullbright, clear glass / glass doors, connected hotbar, transparent glass UI, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show/Compact.)
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
@@ -65,6 +65,7 @@
 | 27 | Villager Trade Unlocker | NeBux Villagers Trade Unlocker v1.1.1 (merged, UI rebrand) | All villager trades visible/selectable at every tier without level-ups (`ui/trade_2_screen.json` vanilla `trade2` override; no textures, no lang keys) |
 | 28 | Quick Totem (scanner logic) | oSkullo Quick Totem Offhand v1.0.0 (logic merged, rebranded `ks_uhud`) | Standalone `ks_qt` module/textures were removed; its per-slot scanner logic now powers the Utility HUD draggable fast-totem button — tap the totem button (touch), press `menu_ok`, or press `1` (keyboard) while the inventory is open to auto-place a totem in the offhand. Toggle with `$ks_uhud_totem_v`. |
 | 29 | Transparent Glass UI | Baku — Transparent Glass UI V3 (selective texture merge) | Transparent/low-opacity inventory, crafting, dialog, tab and recipe-book textures so the world shows through open screens; KS connected-hotbar art kept (`hotbar_*`/`selected_hotbar_slot` not overwritten). No UI JSON or manifest changes. |
+| 30 | Side Tooltip Items (Top Left) | itzriyo157 Side Tooltip Items v1.0.0 (top_left variant, rebranded `$ks_tooltip_*`) | Touch item-details tooltip pinned to the top-left corner instead of floating over the touched inventory slot (`common.selected_item_details` anchor override + `ks_sti_alpha` fade, factory re-enabled behind `$ks_tooltip_v`; corner via `$ks_tooltip_anchor`, fade via `$ks_tooltip_alpha_duration`) |
 
 ---
 
@@ -269,6 +270,18 @@ How it works:
 
 In-game: open inventory/crafting/chest/etc. → low-opacity panels and transparent backgrounds let the world show through; the hotbar stays KS connected art.
 
+### 2.19 Side Tooltip Items, Top Left (itzriyo157, merged + rebranded)
+
+What it is: on touch, the item-details tooltip that normally pops up over the touched inventory slot is pinned to the top-left screen corner instead, so it never covers the slots you are tapping.
+
+How it works:
+- `ui/ui_common.json` (namespace `common`) overrides vanilla `selected_item_details` with `anchor_from`/`anchor_to` = `$ks_tooltip_anchor` (default `top_left`) and `offset [0,0]`, plus a `ks_sti_alpha` fade-out animation (`duration` = `$ks_tooltip_alpha_duration`, 5 s) so the panel fades after showing.
+- `selected_item_details_factory` is re-enabled behind `$ks_tooltip_v` (the Utility HUD merge used to ignore it); without the factory the vanilla touch tooltip cannot spawn.
+- Config in `ui/_global_variables.json`: `$ks_tooltip_v true`, `$ks_tooltip_anchor "top_left"`, `$ks_tooltip_alpha_duration 5`. No new UI file, `_ui_defs.json` entry, texture, lang key or subpack.
+- Merged from Side Tooltip Items v1.0.0 — top_left subpack only (the `side_slot_item` highlight-slot variant was not taken); owner namespace/vars renamed to KS style. Attribution: see `copyright.txt` entry 22.
+
+In-game: touch/hold an item in the inventory → the item name/details panel appears at the top-left corner and fades out, instead of covering the slot.
+
 ---
 
 ## 3. Project Structure
@@ -304,7 +317,7 @@ ks-client/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
 │   │   ├── _ui_defs.json            ← load order, 24 entries (…+ ks_utility_hud/counter + inventory + ks_hud_config + hud_crosshair_overlay; every UI file is registered)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: retained toggle-page defs, not wired), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
-│   │   ├── inventory_screen.json (crafting), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common), trade_2_screen.json (trade2 — all villager trades unlocked)
+│   │   ├── inventory_screen.json (crafting), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common — hover durability + side tooltip anchor/fade), trade_2_screen.json (trade2 — all villager trades unlocked)
 │   │   ├── chat_screen.json (chat) + ui_assets/screens/chat/chat_tweaks.json (ks_chat_tweaks)
 │   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_utility_hud/counter+inventory)
 │   │   ├── ks_touch/hide_gui.json
@@ -330,6 +343,7 @@ ks-client/
    - Mobs + players: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
    - Status: top-left readout (client version, position) — own skin, no doll FPS.
+   - Inventory touch tooltip: top-left corner (item name/details), fades after 5 s — no longer covers the touched slot.
    - Trades: open any villager → all tiers/trades shown and selectable without leveling (UI-only, no new textures).
 4. **Persist config:** edit `ui/_global_variables.json` (§5) → repack → reactivate.
 
