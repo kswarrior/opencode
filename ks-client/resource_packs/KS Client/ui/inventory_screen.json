@@ -29,16 +29,78 @@
   "_inventory_screen_content": {
     "type": "panel",
     "controls": [
+      // Utility HUD V-1.5 extras: fast totem, offhand switch/preview, custom
+      // close, armor durability panel and F8 toggles.
+      {
+        "_extra_content@ks_uhud.ks_uhud_inventory_content": {}
+      },
       {
         "_content@crafting.recipe_inventory_screen_content": {
           "type": "input_panel",
-          "prevent_touch_input": true
+          "prevent_touch_input": true,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "__content_toggle__",
+              "resolve_sibling_scope": true,
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
         }
       },
-      // Utility HUD V-1.5 touch buttons (fast totem, offhand switch, offhand preview).
-      // Vanilla inv content (hotbar grid, durability, close, help) is NOT pulled in.
+      // ESC always closes the screen, even in clean (content hidden) mode.
       {
-        "_extra_content@ks_uhud.ks_uhud_inventory_content": {}
+        "esc_redirect": {
+          "type": "input_panel",
+          "size": [0, 0],
+          "layer": 20,
+          "button_mappings": [
+            {
+              "mapping_type": "global",
+              "from_button_id": "button.menu_cancel",
+              "to_button_id": "button.menu_exit"
+            }
+          ]
+        }
+      },
+      // Content toggle: visible on touch (22x22), keyboard activator on PC.
+      // Starts ON so the inventory opens normally; pressing it hides the
+      // vanilla inventory content and reveals the world/HUD cleanly.
+      {
+        "__content_toggle__@ks_uhud.ks_uhud_content_toggle_visuals": {
+          "$size|default": [0, 0],
+          "variables": [
+            {
+              "requires": "$touch",
+              "$size": [22, 22]
+            }
+          ],
+          "size": "$size",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [90, -1.5],
+          "toggle_default_state": true,
+          "$toggle_name": "__content_toggle__",
+          "$activator": "button.scoreboard",
+          "button_mappings": [
+            {
+              "from_button_id": "$activator",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "global"
+            },
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.menu_select",
+              "mapping_type": "focused"
+            }
+          ]
+        }
       }
     ]
   },
@@ -84,10 +146,68 @@
     ]
   },
 
-  // (Fixed per request: custom close override removed — vanilla X restored, always visible.)
-  // (Utility help (?) button removed per request: panel emptied.)
+  // Utility HUD V-1.5 help (?) button with keyboard/mobile tips.
   "toolbar_panel/toolbar_background/toolbar_stack_panel/help_button_panel": {
-    "controls": []
+    "$size|default": [ "100%c", "100%" ],
+    "variables": [
+      {
+        "requires": "$touch",
+        "$size": [ "100%c + 4px", "100%" ]
+      }
+    ],
+    "size": "$size",
+    "controls": [
+      {
+        "help_button": {
+          "layer": 5,
+          "size": [15, 15],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "type": "button",
+          "default_control": "default",
+          "hover_control": "hover",
+          "$default_texture": "textures/ui/ks_uhud/help_default",
+          "$hover_texture": "textures/ui/ks_uhud/help_hover",
+          "controls": [
+            {
+              "default": {
+                "type": "image",
+                "texture": "$default_texture"
+              }
+            },
+            {
+              "hover": {
+                "type": "image",
+                "$keyboard_text": "§f> Keyboard Shortcuts:\n\n§3Tab §r= Toggle Inventory\n§3Esc §r= Close Inventory\n§3F1 §r+ §3Hotkeys §r= Offhand Swap\n§3F8 §r+ §3Hotkeys §r= Toggle Components\n§31 §r+ §3F1 §r= Fast Totem\n§33 §r+ §3F1 §r= Force Close Screen\n",
+                "$switch_text": "§f> Press on switch button and then on\nan item to switch the item from hotbar\nto offhand or vice versa\n",
+                "$container_text": "\n§f> Close the inventory screen before\nopening other container screens\n(e.g - Chests, Crafting Table etc.)",
+                "controls": [
+                  {
+                    "hover_text@common.hover_text": {
+                      "layer": 50,
+                      "ignored": "$touch",
+                      "property_bag": {
+                        "#hover_text": "($keyboard_text + $container_text)"
+                      }
+                    }
+                  },
+                  {
+                    "hover_text_mobile@common.hover_text": {
+                      "layer": 50,
+                      "ignored": "(not $touch)",
+                      "property_bag": {
+                        "#hover_text": "($switch_text + $container_text)"
+                      }
+                    }
+                  }
+                ],
+                "texture": "$hover_texture"
+              }
+            }
+          ]
+        }
+      }
+    ]
   },
 
   "crafting_panel_2x2": {
