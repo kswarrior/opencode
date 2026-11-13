@@ -584,7 +584,24 @@
                   0
                 ],
                 "$button_content": "common.empty_panel",
-                "controls": []
+                "controls": [
+                  {
+                    "crafting_toggle@common_toggles.light_content_toggle": {
+                      "$toggle_name": "crafting_toggle8",
+                      "$toggle_view_binding_name": "crafting_tog",
+                      "$toggle_default_state": "$ksui_4552ca",
+                      "$button_content": "ksui_common.icon_content",
+                      "$icon_texture": "textures/ui/ks_utility_inventory/icons/crafting",
+                      "size": [
+                        18,
+                        18
+                      ]
+                    }
+                  },
+                  {
+                    "padding_0@ksui_common.pad_1px_y": {}
+                  }
+                ]
               }
             }
           ]
