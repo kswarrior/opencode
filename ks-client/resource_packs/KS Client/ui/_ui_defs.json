@@ -25,6 +25,6 @@
     "ui/ks_modules/ks_utility_hud/counter.json",
     "ui/ks_modules/ks_utility_hud/inventory.json",
     "ui/gameplay_common.json",
-    "property/bundle_item_counter.json"
+    "ui/property/bundle_item_counter.json"
   ]
 }
