@@ -61,7 +61,7 @@
     "bindings": [
       {
         "binding_type": "view",
-        "source_control_name": "ks_uhud_fast_switch",
+        "source_control_name": "fast_switch",
         "resolve_sibling_scope": true,
         "source_property_name": "#toggle_state",
         "target_property_name": "#visible"
@@ -416,7 +416,7 @@
                 "bindings": [
                   {
                     "binding_type": "view",
-                    "source_control_name": "ks_uhud_durability_text",
+                    "source_control_name": "durability_text",
                     "resolve_sibling_scope": true,
                     "source_property_name": "(not (#item_durability_current_amount > (#item_durability_total_amount * $limit)))",
                     "target_property_name": "#visible"
