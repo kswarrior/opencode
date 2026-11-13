@@ -2,7 +2,7 @@
 
 > **KS Client v1.0.1 by KS Warrior** (latest codebase; v1.0.0 retained for history)
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
-> Custom start screen, HUD (slot hotbar shortcuts + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show on/off.)
+> Custom start screen, HUD (slot hotbar shortcuts + top-right Settings menu + Quick Totem + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show/Compact.)
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
@@ -37,8 +37,8 @@
 | # | Feature | Source / Version | What it gives you |
 |---|---------|------------------|-------------------|
 | 1 | Premium Start Screen | KS Client custom (`ui/start_screen.json`, `ui/ks_client_common.json`) | Text-free branded menu, paperdoll above Play (gentle idle bob), small version label, icon-only inbox bell, KS settings/dressing buttons |
-| 2 | Slot Hotbar Buttons + Settings Editor | KS Client | 10 floating hotbar slot shortcuts (`$ksb_1` … `$ksb_10`, defaults: slots 4/5/9 hidden, size 32, durability always on) + left-side box-card menu (gear opens 212×230 panel): single HUD icon tab holds slots + InvHUD Show/Compact (Coming Soon placeholder tabs removed) |
-| 3 | Inventory HUD Bottom-Right | KS Client (`ks_modules/hud.json` + `hud.ks_invhud_pos`) | Fixed bottom-right 9x4 inventory grid, Show Inv HUD on/off + Compact toggle in HUD tab; styling via `$ks:inventory_*` globals. |
+| 2 | Slot Hotbar Buttons + Settings Menu | KS Client | 10 floating hotbar slot shortcuts (`$ksb_1` … `$ksb_10`, defaults: slots 4/5/9 hidden, size 32, durability always on) + top-right gear opens a 260×300 scrollable Settings panel: Quick Totem, hotbar show/alpha/position/size, Inventory HUD Show/Compact, F1/F3/mainhand/counters |
+| 3 | Inventory HUD Bottom-Right | KS Client (`ks_modules/hud.json` + `hud.ks_invhud_pos`) | Fixed bottom-right 9x4 inventory grid, Show Inv HUD on/off + working Compact toggle in the Settings menu; styling via `$ks:inventory_*` globals. |
 | 4 | Clean Touch Controls | KS Client (`textures/ui/*`, `textures/gui/controls/`) | Clean joystick/D-pad/buttons art. |
 | 5 | Connected Hotbar | KS Client | Seamless hotbar (`hotbar_0`…`hotbar_8` + `start/end_cap`, `selected_hotbar_slot`) |
 | 6 | Clear & Borderless Glass | KS Client | Borderless `glass.png`, all 16 stained glass, panes, `tinted_glass.png` |
@@ -50,8 +50,8 @@
 | 12 | Debug / Dev Console Tweaks | KS custom + NeBux F1 & F3 v1.1.3 (same-to-same Default-mobile context, KS names) | `debug_screen.json` scoreboard→access remap, `dev_console_screen.json`, pause config removed; HUD F1/F3 keys live top-middle (F1 [-39,0.5], F3 [38.5,0.5]), F3 shows left `ks_f3_panel` (version/edition/gamemode incl. Spectator/days/position/icons/UI/device/graphics/input — XP/world/Nether live right only) + right `ks_f3_right` (pack/version/world/inventory 36-slot + Full/Avail/XP/Nether/OW/chunk), `ks_show_hud` short "F1 -" bar is the way back |
 | 13 | Mob Effect Screen | KS custom | Styled effects (`mob_effect_screen.json` namespace `mob_effect`) |
 | 14 | Texts / Localization | KS custom | `texts/en_US.lang` (`KS Client`, `TAP TO START`, `PREMIUM…`), `languages.json` |
-| 15 | Menu-Driven Options (no subpacks) | KS custom | No subpacks ship — gear menu is always on; InvHUD grid fixed bottom-right with HUD-menu Show on/off. |
-| 16 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1322 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace, `textures/ui/` = 131 PNGs incl. chat art + 14 `ks_uhud` Utility HUD icons), door item icons registered in `atlas.items` (mace + 17 doors), environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (62 files) |
+| 15 | Menu-Driven Options (no subpacks) | KS custom | No subpacks ship — top-right Settings menu is always on; InvHUD grid fixed bottom-right with Settings Show/Compact. |
+| 16 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1322 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace, `textures/ui/` = 133 PNGs incl. chat art + 14 `ks_uhud` Utility HUD icons + 2 `ks_qt` Quick Totem icons), door item icons registered in `atlas.items` (mace + 17 doors), environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (62 files) |
 | 17 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
 | 18 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 81 mobs + players (82 entities), always visible (not only when hurt); merged at top level, no subpack, always on |
 | 19 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
@@ -59,10 +59,11 @@
 | 21 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 22 | Bow Draw Indicators | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Draw-stage bow art (`textures/items/bow_pulling_0/1/2.png`, vanilla-path override, no atlas change), always on |
 | 23 | Clean Pumpkin Blur | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Carved-pumpkin overlay replaced with 1×1 clean `textures/misc/pumpkinblur.png` (no blur), always on |
-| 24 | Utility HUD V-1.5 (Durability + Content Toggle + F8) | EchoRif Utility HUD V-1.5 (full merge, rebranded `ks_uhud`) | Mainhand/armor durability, counters, fast totem, offhand switch/preview, touch content toggle + custom close, help, F8 component toggles, F1+3 force-close. KS keeps its Inventory HUD, slot hotbar buttons, F1/F3 keys and crosshair; the old DV V-2.5 module was replaced |
+| 24 | Utility HUD V-1.5 (Durability + Content Toggle + F8) | EchoRif Utility HUD V-1.5 (full merge, rebranded `ks_uhud`) | Mainhand/armor durability, counters, offhand switch/preview, touch content toggle + custom close, help, F8 component toggles, F1+3 force-close. Fast totem was replaced by Quick Totem. KS keeps its Inventory HUD, slot hotbar buttons, F1/F3 keys and crosshair; the old DV V-2.5 module was replaced |
 | 25 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (2 files, `v1.0.0` + `v1.0.1`), opencode MCP skills |
 | 26 | Crosshair Indicator (dynamic) | PandaMine5 Crosshair Indicator v1.1 (rebranded `ks_crosshair_*`) | Default/entity hit-switch (`right_helper_collection` `hit` check) in `hud_screen.json` (`hud.ks_crosshair_panel`, shows in all perspectives — engine 1st-person-only hide applies solely to the overlay screen, which holds no collections); vanilla cursor emptied in `hud_crosshair_overlay.json` (no double-draw); `textures/ui/ks_crosshair_default/entity.png`; master hide `$ks_crosshair_v` |
 | 27 | Villager Trade Unlocker | NeBux Villagers Trade Unlocker v1.1.1 (merged, UI rebrand) | All villager trades visible/selectable at every tier without level-ups (`ui/trade_2_screen.json` vanilla `trade2` override; no textures, no lang keys) |
+| 28 | Quick Totem | oSkullo Quick Totem Offhand v1.0.0 (rebranded `ks_qt`, restored) | Bottom-middle totem button opens the inventory; the offhand-empty panel auto-equips totems from inventory/hotbar; Show Quick Totem toggle in Settings. Replaces the old Utility HUD fast-totem controls. |
 
 ---
 
@@ -83,23 +84,24 @@ In-game: you see a clean black menu, skin preview centered above Play, version b
 
 HUD SETTINGS page (`ui/ks_hud_config.json`) is no longer wired into the start screen: the gear button left of the bell and its fullscreen overlay were removed. The file stays registered in `_ui_defs.json` with the `ks_cfg_toggle_stack` brace fixed, so it loads cleanly but has no entry point. Toggles remain configurable via `_global_variables.json` (`$ksb_1…$ksb_10` / `$ks_f1_v` / `$ks_f3_v`, §5) + repack.
 
-### 2.2 Slot Hotbar Buttons + Settings Editor (KS Client: `ui/ks_modules/ksb_hotbar_button/`, `_global_variables.json`)
+### 2.2 Slot Hotbar Buttons + Settings Menu (KS Client: `ui/ks_modules/ksb_hotbar_button/`, `ui/ks_modules/ks_settings/`, `_global_variables.json`)
 
-What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap), plus an in-game settings editor (gear button, top-right) for slots (inventory HUD options removed).
+What it is: up to 10 floating buttons that directly select hotbar slots (PvP slot-tap), plus a new top-right Settings button that opens a 260×300 scrollable menu. The old left-side box-card editor and its gear were removed.
 
 How it works:
-- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`). The gear button (`editor_button@ksb_defs.flags`, layer 555) sits top-right (`offset [-20,2]`, shown when `$show_editor_button`); it opens `editor_panel` box card on the LEFT side (`left_middle`, 212×230 at `offset [40,0]`) with a single HUD icon tab top-inside in the `ks_menu_tabs` radio group (Coming Soon tabs Home/Display/Info/Advanced/Settings removed). HUD holds show toggles only (slots + InvHUD + mainhand durability + counters + F1/F3 — position X/Y/size sliders hidden, positions via `_global_variables.json` only). Panel background is vanilla `common.dialog_background_hollow_4`. Close via the gear button. Copy-codes tab removed.
-- Menu tabs: single-tab box card (212×230) — the v1.2.2 3-tab side layout and the 5 Coming Soon tabs are gone; all slot rows unchanged and live under HUD tab.
+- Defs in `ui/ks_modules/ksb_hotbar_button/` (`defs.json`, `main.json`, `settings.json` — all in `_ui_defs.json`) and `ui/ks_modules/ks_settings/settings.json` (namespace `ks_settings`). The top-right gear (`ks_settings.button`, layer 600, 22×22 at `offset [-6,4]`) opens `ks_settings.panel` (`top_right [-6,30]`, 260×300, layer 590) with a close button and a scrolling `common.scrolling_panel`. Close via the X or the gear.
+- Sections: QUICK ACCESS (`Show Quick Totem`), HOTBAR MANAGER (`Show Button Items`, `Show Stack Count`, alpha slider, slots 1–10 show/position/size), INVENTORY HUD (`Show Inv HUD`, `Compact Inventory HUD`), HUD (`Show F1 HUD`, `Show F3 HUD`, `Show Mainhand Durability`, `Show Counters HUD`). Panel background is vanilla `common.dialog_background_hollow_4`; toggles reuse `ksb_main.toggle_option` / `ksb_main.slider_panel` / `ksb_main.editor_stack_templete` so existing bindings stay intact.
+- Hotbar alpha is now live: `h_alpha_slider` drives hidden `ksb_balp` via `#slider_val / 100`; `$ksb_hba` default is `100` (full opacity).
 - Each slot `1…10` has four globals: `$ksb_N_x`, `$ksb_N_y` (position), `$ksb_N_s` (size, default 32), `$ksb_N_v` (visible bool). Defaults in `_global_variables.json`: slots 1–3 top-left (`y 20`, `x 4/14/24`), slot 4 hidden (`34,20,false`), slot 5 hidden (`62,22,false`), slots 6–8 second row (`y 22`, `x 72/82/92`), slot 9 hidden (`92,44,false`), slot 10 hidden (`82,44,false`). `$ksb_ssci true`, `$ksb_hba 4`, `$ksb_sbi true`.
 - Buttons use `textures/ui/ksb_slot_button.png` (+`_pressed`), `ksb_numb_1…9.png`, and map to `button.slotN` → `menu_select` without consuming the event (so game also selects the slot). Durability bars on slot buttons always show for damageable held/worn items (no toggle — the old `Show Durability Item` toggle, `$ksb_sdbi`, and its emitter were removed).
 - Inventory row: `Show Inv HUD` toggle (`ksbT_invhud`, default `$ksb_invhud_v true`) + `Compact` toggle (`$ksb_invhud_small`, default false) in the HUD tab; controls bottom-right 9x4 grid (`hud.ks_invhud_pos` fullscreen wrapper + `ks_hud.inventory_hud_panel`, fixed bottom-right via `ks_b6As_defs`).
 - The old HowToSaveConfig copy box is gone with the codes tab — persist by editing `ui/_global_variables.json` directly (see §5) and repacking.
 
-In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the gear → left-side box-card menu (Home/HUD/Display/Info/Advanced/Settings icon tabs on top): HUD toggles InvHUD Show/Compact and moves/resizes slots (see §5). Bottom-right shows 9x4 inventory grid (toggle off to clear). Edit `_global_variables.json` + repack to persist.
+In-game: tap a numbered floating slot → instantly switches selected hotbar slot. Tap the top-right gear → Settings menu: Quick Totem, hotbar show/alpha/position/size, InvHUD Show/Compact, F1/F3/mainhand/counters. Bottom-right shows the 9x4 inventory grid (toggle off to clear). Edit `_global_variables.json` + repack to persist.
 
 ### 2.3 Inventory HUD (Bottom Right)
 
-What it is: fixed bottom-right 9x4 mini inventory grid (27 slots, skips hotbar), with per-cell selected-slot highlight, durability/storage bars + stack counts. On/off via HUD tab `Show Inv HUD` (`ksbT_invhud_t`, default `$ksb_invhud_v true`); `Compact Inventory HUD` (`$ksb_invhud_small`) shrinks cells 18 to 15. Wiring: `hud.ks_invhud_pos` fullscreen wrapper (layer 44, follows `#hud_visible`) + `root_panel` hook to `ks_hud.inventory_hud_panel` (anchored `$inv_pos` bottom_right). Styling via `$ks:inventory_slot_color/alpha` + `$ks:highlight_*`. No subpacks (corner variants dropped).
+What it is: fixed bottom-right 9x4 mini inventory grid (27 slots, skips hotbar), with per-cell selected-slot highlight, durability/storage bars + stack counts. On/off via Settings → `Show Inv HUD` (`ksbT_invhud_t`, default `$ksb_invhud_v true`); `Compact Inventory HUD` (`ksb_invhud_small`) now swaps `ks_hud.inventory_hud_panel` for `ks_hud.inventory_hud_compact_panel` (cells 18→15, live). Wiring: `hud.ks_invhud_pos` fullscreen wrapper (layer 44, follows `#hud_visible`) + `root_panel` hook (anchored `$inv_pos` bottom_right). Styling via `$ks:inventory_slot_color/alpha` + `$ks:highlight_*`. No subpacks (corner variants dropped).
 
 ### 2.4 Clean Touch Controls (KS Client: `textures/ui/*`, `textures/gui/controls/`)
 
@@ -110,7 +112,7 @@ How it works:
 - `textures/gui/controls/`: D-pad set (`up/down/left/right + diagonals + pressed`), `jump_dpad`, `sneak_dpad`, `large_button`, `dismount`.
 - `hud_screen.json` F1 [-39,0.5] (hide HUD) + F3 [38.5,0.5] (debug toggle instance `ks_f3_t` → left `ks_f3_panel` + right `ks_f3_right`) live top-middle, 20x20, same-to-same Default-mobile vs NeBux v1.1.3 (art via mv, F5/Windows NOT used); F8 paperdoll not ported.
 
-In-game: F1 hides HUD, F3 toggles debug readout left (version/edition/gamemode incl. Spectator/days/position/recovery/clock/compass/UI/device/graphics/input, top-left below status; XP/world/OW-Nether live right only) + right (pack/version/world/inventory 36-slot + Full/Avail/XP/Nether/OW/chunk, top-right; clock is live icon — true Time: HH:MM not exposed to RP UI); bottom-center `ks_show_hud` bar reads short "F1 -" (was "Show HUD" / upstream "CLICK HERE TO SHOW HUD :)") and re-shows HUD via `button.hide_gui_all`. Show F1/F3 on/off in HUD tab.
+In-game: F1 hides HUD, F3 toggles debug readout left (version/edition/gamemode incl. Spectator/days/position/recovery/clock/compass/UI/device/graphics/input, top-left below status; XP/world/OW-Nether live right only) + right (pack/version/world/inventory 36-slot + Full/Avail/XP/Nether/OW/chunk, top-right; clock is live icon — true Time: HH:MM not exposed to RP UI); bottom-center `ks_show_hud` bar reads short "F1 -" (was "Show HUD" / upstream "CLICK HERE TO SHOW HUD :)") and re-shows HUD via `button.hide_gui_all`. Show F1/F3 on/off in the Settings menu.
 
 ### 2.5 Connected Hotbar (`textures/ui/hotbar_*.png`)
 
@@ -173,8 +175,8 @@ Wrapper: `bash tools/recheck_player_animation.sh [iterations] [delay]` (default 
 ### 2.11 Texts and Full Texture Coverage
 
 - `texts/en_US.lang` + `languages.json` (`["en_US"]`): `pack.name/description` + all `ks_client.*` (incl. `start_button/title/premium/online_member`), `ksb.howToSaveConfig`, `item.mace.name`.
-- No subpacks ship (`manifest.json` has no `subpacks` key): the gear menu is always on and the InvHUD grid is fixed bottom-right.
-- `textures/terrain_texture.json` (`atlas.terrain`, 1322 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) registers `mace` + the 17 door icons; `texture_list.json`/`textures_list.json` are both rebuilt from disk (1634 entries each, PNG+TGA, no dangling).
+- No subpacks ship (`manifest.json` has no `subpacks` key): the top-right Settings menu is always on and the InvHUD grid is fixed bottom-right.
+- `textures/terrain_texture.json` (`atlas.terrain`, 1322 entries: acacia → zombie, deepslate variants, copper, cherry, etc., incl. 48 door/trapdoor + glass + `destroy_stage_*`); `item_texture.json` (`atlas.items`) registers `mace` + the 17 door icons; `texture_list.json`/`textures_list.json` are both rebuilt from disk (1636 entries each, PNG+TGA, no dangling).
 - `textures/`: `blocks/` (1309 PNGs), `ui/` (131 PNGs incl. `bl_bt/black_ovr/blank/null`, `ks_f1f3_hud_btn/hide_bg`, `ks_uhud/` ×14 + `texture_assets/chat_icons/` ×5), `c_ui/` (8 files — `close_*`, `craft_*`, `effect_bg` — all wired to mob-effect + inventory screens), `items/` (17 door PNGs + `mace.png`), `entity/attachable/` (`mace.png`), `gui/controls/`, `environment/` (`clouds/sun/end_sky/end_portal_colors/rain/snow/weather/overworld_cubemap/destroy_stage_0-9`), `colormap/`, `misc/` (`vignette.png`), `health_bar/` (`bar/` 00–50, `font/` 0–9, `heart.png`).
 
 ### 2.12 Clear Chat Screen (KS Client: `ui/chat_screen.json`, `ui/ui_assets/screens/chat/chat_tweaks.json`)
@@ -231,14 +233,14 @@ In-game, top-left corner: `KS Client v1.0.1`, `Position: X, Y, Z` (own skin on d
 What it is: Utility HUD V-1.5 (EchoRif) now supplies the durability readout, counters, inventory touch extras and F8 component toggles; bow draw indicators and the clean pumpkin overlay are unchanged.
 
 How it works:
-- `ui/ks_modules/ks_utility_hud/` (namespace `ks_uhud`): `ks_uhud_mainhand_durability` (selected hotbar slot: icon + `cur/total` + low-dura alert), `ks_uhud_durability_unit`, counters row + hotbar stack probe, fast totem, offhand switch/preview, content-toggle visuals, and the inventory content panel (armor durability, custom close, `__durability__`/`__offhand__` toggles).
+- `ui/ks_modules/ks_utility_hud/` (namespace `ks_uhud`): `ks_uhud_mainhand_durability` (selected hotbar slot: icon + `cur/total` + low-dura alert), `ks_uhud_durability_unit`, counters row + hotbar stack probe, offhand switch/preview, content-toggle visuals, and the inventory content panel (armor durability, custom close, `__durability__`/`__offhand__` toggles).
 - `ui/hud_screen.json`: `hud.ks_uhud_mainhand_pos` fullscreen wrapper (bottom-left, `$ks_uhud_mainhand_offset`), `hud.ks_uhud_counters_pos` (above the bottom-right KS Inventory HUD), hidden `_toggles` (`__durability__` / `__counters__`), `f8_function` (F8+3 mainhand, F8+4 counters), `force_close_screen` (F1+3). No attack-crosshair/crosshair toggle — the KS PandaMine crosshair is kept.
 - `ui/inventory_screen.json`: `ks_uhud.ks_uhud_inventory_content` extra content + `__content_toggle__` (22×22 on touch; hides the vanilla inventory cleanly), `inv_close` when hidden, ESC exits, help button, armor panel. Screen flags match upstream so hidden content reveals the world/HUD.
 - Menu: `Show Mainhand Durability` (`ks_uhud_mainhand_t`) and `Show Counters HUD` (`ks_uhud_counters_t`); F8+1 armor durability, F8+2 offhand, F8+3 mainhand, F8+4 counters.
 - Config in `ui/_global_variables.json`: `$ks_uhud_mainhand_v`, `$ks_uhud_mainhand_offset`, `$ks_uhud_armor_v`, `$ks_uhud_hover_v`, `$ks_uhud_hover_recipe_v`, plus counters/totem/switch/offhand vars and item IDs. The old `$ksd_*` / `$ks_dv_*` durability vars are gone.
 - Bow: `textures/items/bow_pulling_0/1/2.png` override vanilla draw stages by path (no atlas change). Pumpkin: `textures/misc/pumpkinblur.png` 1×1 clean override. Both registered in `textures/texture_list.json`.
 
-In-game: hold a damageable hotbar item → mainhand durability bottom-left; open inventory → armor durability panel + Utility HUD touch controls; press the content toggle → clean inventory mode (world visible, custom close or ESC exits); F8 + hotkeys toggles components; gear → HUD tab → mainhand durability / counters on-off.
+In-game: hold a damageable hotbar item → mainhand durability bottom-left; open inventory → armor durability panel + Utility HUD touch controls; press the content toggle → clean inventory mode (world visible, custom close or ESC exits); F8 + hotkeys toggles components; top-right Settings → Show Mainhand Durability / Show Counters HUD.
 
 ---
 
@@ -281,16 +283,16 @@ ks-client/
 │   ├── textures/ (blocks/items/ui/gui/c_ui/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` + 17 door icons)
-│   │   ├── texture_list.json + textures_list.json (identical, 1634 entries, rebuilt from disk: PNG+TGA, no dangling)
+│   │   ├── texture_list.json + textures_list.json (identical, 1636 entries, rebuilt from disk: PNG+TGA, no dangling)
 │   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (131 PNGs incl. chat art + 14 ks_uhud) / c_ui/ (8 files, all wired) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 24 entries (…+ chat_tweaks + fps_hud + ks_utility_hud/counter + inventory + ks_hud_config + hud_crosshair_overlay + chat_screen + debug_screen + dev_console_screen + mob_effect_screen + settings_sections/controls_section + ui_common + trade_2_screen; every UI file is registered)
+│   │   ├── _ui_defs.json            ← load order, 27 entries (…+ ks_utility_hud/counter + inventory + ks_settings/settings + ks_quick_totem/totem_hud + totem_inventory + ks_hud_config + hud_crosshair_overlay; every UI file is registered)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: retained toggle-page defs, not wired), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
 │   │   ├── inventory_screen.json (crafting), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common), trade_2_screen.json (trade2 — all villager trades unlocked)
 │   │   ├── chat_screen.json (chat) + ui_assets/screens/chat/chat_tweaks.json (ks_chat_tweaks)
-│   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_utility_hud/counter+inventory)
+│   │   ├── ks_modules/ (hud.json, ks_b6As_defs, ksb_hotbar_button/defs+main+settings, ks_settings/settings, ks_quick_totem/totem_hud+totem_inventory, ks_utility_hud/counter+inventory)
 │   │   ├── ks_touch/hide_gui.json
 │   │   ├── settings_sections/controls_section.json (controls_section — touch schemes toggle bindings emptied)
 │   │   └── ui_content/inv_content.json (component_toggle base for inventory crafting limiter)
@@ -299,17 +301,17 @@ ks-client/
 └── .vscode/
 ```
 
-> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 Drive SKIP lines and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json` (81 mobs + `player.json`). Every shipped `ui/**/*.json` is registered in `_ui_defs.json` (24 entries) and carries its required `namespace` (vanilla-namespace overrides need it to merge — `chat`/`common`/`debug_screen`/`dev_console`/`controls_section` namespaces and the six missing `_ui_defs` entries were restored in the audit).
+> Note: `animations/Animation/*.json`, `animations/Attack/*.json`, `animation_controllers/*`, `models/entity/Player/*`, `models/entity/Items/shield.both.json` are referenced by `tools/check_player_animation_loop.py` when present (Drive-synced player anims). They are NOT shipped — Gate A reports 8 Drive SKIP lines and passes. Shipped instead: `animations/health_bar.json` (always-display) + `models/entity/health_bar.json` + `render_controllers/health_bar.json` + health hooks in all 82 `entity/*.json` (81 mobs + `player.json`). Every shipped `ui/**/*.json` is registered in `_ui_defs.json` (27 entries) and carries its required `namespace` (vanilla-namespace overrides need it to merge — `chat`/`common`/`debug_screen`/`dev_console`/`controls_section` namespaces and the six missing `_ui_defs` entries were restored in the audit).
 
 ---
 
 ## 4. Installation & Usage In-Game
 
 1. Copy a file from `release/` (e.g. `KS-Client-v1.0.1.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
-2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the gear menu is always on.
+2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the top-right Settings menu is always on.
 3. **Use:**
    - Start screen → `TAP TO START` / skin preview with idle bob / bell inbox / KS settings + dressing buttons (HUD SETTINGS gear button removed).
-   - HUD: numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (HUD-menu Show on/off + Compact); F1 top-middle [-39,0.5] hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 top-middle [38.5,0.5] toggles debug readout left + right (same-to-same Default-mobile context); Show F1/F3 on/off in HUD tab; vanilla paperdoll renderer kept. `ks_hud_keys` remains stubbed empty, `ks_f3_inv_counter_main` 36-probe counter live.
+   - HUD: numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (Settings Show/Compact); top-right gear opens Settings (Quick Totem, hotbar, InvHUD, F1/F3/durability/counters); Quick Totem button sits bottom-middle and opens the inventory equip panel; F1 top-middle [-39,0.5] hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 top-middle [38.5,0.5] toggles debug readout left + right (same-to-same Default-mobile context); vanilla paperdoll renderer kept. `ks_hud_keys` remains stubbed empty, `ks_f3_inv_counter_main` 36-probe counter live.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs + players: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
@@ -327,13 +329,13 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 |-------|------|--------------------|
 | Slot hotbar 1–10 | `$ksb_N_x`, `$ksb_N_y`, `$ksb_N_s`, `$ksb_N_v` | pos/size(32)/visible. 1–3 `(4/14/24,20)`, 4 hidden, 5 hidden, 6–8 `(72/82/92,22)`, 9–10 hidden |
 | Slot hotbar misc | `$ksb_ssci`, `$ksb_hba`, `$ksb_sbi` | `true, 4, true` — single-click/content behaviors |
-| Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | Show Inv HUD on/off + Compact toggle in HUD tab; grid fixed bottom-right (no corner picker) |
-| F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in HUD tab (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` left + `ks_f3_right` right debug (same-to-same Default-mobile: version/edition/gamemode incl. Spectator/days/pos/icons/UI/device/graphics/input + pack/inv36/Full-Avail/XP/Nether/world/chunk); bottom-center way back reads short "F1 -" |
+| Inventory HUD extra | `$ksb_invhud_v true`, `$ksb_invhud_small false` | Show Inv HUD on/off + Compact toggle in Settings; grid fixed bottom-right (no corner picker) |
+| F1/F3 HUD keys | `$ks_f1_v true`, `$ks_f3_v true` | Show F1/F3 on/off in Settings (`ksbT_f1_t`/`ksbT_f3show_t`); F1 top-middle [-39,0.5] hides HUD, F3 top-middle [38.5,0.5] toggles `ks_f3_panel` left + `ks_f3_right` right debug (same-to-same Default-mobile: version/edition/gamemode incl. Spectator/days/pos/icons/UI/device/graphics/input + pack/inv36/Full-Avail/XP/Nether/world/chunk); bottom-center way back reads short "F1 -" |
 | HUD ellipses | `$hud_elipses_enabled`, `$hud_elipses_sound_volume` | `false, 0.0` |
 | F1 (hide_gui) | `$f1_enabled`, `$f1_texture`, `$f1_size`, `$f1_offset` | `true, textures/ui/ks_touch/hide_gui, [18,18], [47.5,1.0]` (used by `ks_touch/hide_gui.json`) |
 | F3 tools icons | `$ks_recovery_id 45088768`, `$ks_clock_id 22740992`, `$ks_compass_id 22609920` | live `inventory_item_renderer` `#item_id_aux` for F3 recovery/clock/compass row |
 | Inventory HUD styling | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | slot bg + selected highlight for bottom-right grid |
-| Utility HUD durability | `$ks_uhud_mainhand_v true`, `$ks_uhud_mainhand_offset [5px,5px]`, `$ks_uhud_armor_v true`, `$ks_uhud_hover_v true`, `$ks_uhud_hover_recipe_v true` | Show Mainhand Durability on/off in HUD tab; bottom-left readout position; inventory armor panel + hover durability gates; F8+1/3 toggle armor/mainhand |
+| Utility HUD durability | `$ks_uhud_mainhand_v true`, `$ks_uhud_mainhand_offset [5px,5px]`, `$ks_uhud_armor_v true`, `$ks_uhud_hover_v true`, `$ks_uhud_hover_recipe_v true` | Show Mainhand Durability on/off in Settings; bottom-left readout position; inventory armor panel + hover durability gates; F8+1/3 toggle armor/mainhand |
 | Crosshair Indicator | `$ks_crosshair_v true`, `$ks_crosshair_size [15,15]`, `$ks_crosshair_alpha 0.7`, `$ks_crosshair_offset [0,0]` | Dynamic default/entity crosshair in `hud_screen.json` (hit-switch needs that screen's `right_helper_collection`; shows in all perspectives — set `$ks_crosshair_v false` + repack to hide); edit + repack to persist |
 | Effect grid | `$effects_per_column 10` | shared with `mob_effect_screen.json` pagination — keep in sync |
 | Button text colors | `$generic_button_text_color [1,1,1]`, `$text_color [1,1,1]` (editor glyph), `$light_button_*`, `$dark_button_*`, `$red_button_*`, `$tab_*`, `$light_glyph_default_color` | full theme palette (see file for all 20+ entries) |
@@ -344,9 +346,9 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 
 No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hide_editor`/`show_editor`/`invhud_*` folders are gone):
 
-- Gear menu is always on (`$show_editor_button: true` in `ksb_hotbar_button/defs.json`).
-- InvHUD grid fixed bottom-right (Show Inv HUD on/off + Compact in HUD tab).
-- Utility HUD durability: mainhand readout fixed bottom-left + inventory armor panel (Show Mainhand Durability on/off in HUD tab); counters row has its own toggle; F8 component toggles.
+- Settings menu is always on (`ks_settings.button` top-right; old `$show_editor_button` gear is no longer instantiated).
+- InvHUD grid fixed bottom-right (Show Inv HUD on/off + Compact in Settings).
+- Utility HUD durability: mainhand readout fixed bottom-left + inventory armor panel (Show Mainhand Durability on/off in Settings); counters row has its own toggle; F8 component toggles.
 
 ---
 
@@ -426,8 +428,8 @@ Current (`manifest.json`): `KS Client v1.0.1`, `min_engine_version [1,21,120]`. 
 - **Resource-pack only** — no behavior pack, no scripts, no cheats-flag. Safe for Realms/servers (server needs not install it; each player installs locally).
 - **Load order:** put KS Client at the **top** of Global Resources / World Resource Packs so its `hud/start/inventory` overrides win.
 - **Conflicts:** any other UI/HUD pack (other custom HUDs, F3 menus, hotbar packs) — pick one. Fullbright conflicts with mood/fog packs.
-- **Performance:** no subpacks to manage (gear menu is always on); fullbright slightly increases GPU load (more visible chunks).
+- **Performance:** no subpacks to manage (Settings menu is always on); fullbright slightly increases GPU load (more visible chunks).
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 131 incl. 14 ks_uhud / gui / c_ui 8 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ks_uhud_*, $text_color), `_ui_defs` 24 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud/trade_2_screen`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (2 files), `copyright.txt` (20 entries incl. Utility HUD V-1.5 + NeBux trade unlocker), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 131 incl. 14 ks_uhud / gui / c_ui 8 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks_qt_*, $ks:*, $ks_uhud_*, $text_color), `_ui_defs` 27 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud/trade_2_screen`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (2 files), `copyright.txt` (20 entries incl. Utility HUD V-1.5 + NeBux trade unlocker), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
