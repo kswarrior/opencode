@@ -1,0 +1,266 @@
+{
+  "namespace": "ksui_main",
+  "overlay_screen_content": {
+    "$is_overlay_mode": true,
+    "type": "panel",
+    "controls": [
+      {
+        "inventory_stack@ksui_common.stack_horizontal": {
+          "size": [
+            "100%c",
+            "100%cm"
+          ],
+          "layer": 24,
+          "use_child_anchors": true,
+          "controls": [
+            {
+              "recipe_book_factory@ksui_common.panel_factory": {
+                "$child_controls": "ksui_inventory.recipe_book",
+                "$toggle_binding_name": "recipe_book_tog"
+              }
+            },
+            {
+              "center_fold_aka_padding@ksui_inventory.center_fold": {}
+            },
+            {
+              "player_inventory@ksui_common.panel_factory": {
+                "$child_controls": "ksui_inventory.player_inventory",
+                "$toggle_binding_name": "inventory_UI_tog"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "settings_panel@ksui_features.settings_panel": {
+          "layer": 24
+        }
+      },
+      {
+        "hotbar_panel@ksui_main.hotbar_panel": {}
+      },
+      {
+        "interactable_area@ksui_main.interactable_area": {}
+      },
+      {
+        "inventory_contents_factory@ksui_common.panel_factory": {
+          "$child_controls": "ksui_main.inventory_contents",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "inventory_UI_tog",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#inventory"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "recipe_book_tog",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#recipe"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#inventory or #recipe) * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "item_trowing_fix@common.root_panel": {
+          "size": [
+            "120%",
+            "120%"
+          ],
+          "layer": 0
+        }
+      },
+      {
+        "armor_durability@ksui_main.armor_durability_panel": {}
+      }
+    ]
+  },
+  "inventory_contents": {
+    "type": "panel",
+    "controls": [
+      {
+        "inventory_take_progress_icon_button@common.inventory_take_progress_icon_button": {}
+      },
+      {
+        "inventory_selected_icon_button@common.inventory_selected_icon_button": {}
+      },
+      {
+        "hold_icon@common.inventory_take_progress_icon_button": {}
+      },
+      {
+        "selected_item_details_factory@ksui_common.selected_item_details_factory": {}
+      },
+      {
+        "item_lock_notification_factory@common.item_lock_notification_factory": {}
+      },
+      {
+        "flying_item_renderer@common.flying_item_renderer": {}
+      }
+    ]
+  },
+  "hotbar_panel@ksui_common.stack_horizontal": {
+    "size": [
+      "100%c",
+      22
+    ],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [
+      0,
+      -2
+    ],
+    "controls": [
+      {
+        "hotbar_padding": {
+          "type": "panel",
+          "size": [
+            180,
+            22
+          ],
+          "controls": [
+            {
+              "slot_cycler_panel@ksui_features.slot_cycler_panel": {}
+            }
+          ]
+        }
+      },
+      {
+        "inventory_btton_panel@ksui_common.touch_input": {
+          "size": [
+            22,
+            22
+          ],
+          "controls": [
+            {
+              "inventory_toggle@ksui_common.main_toggle": {
+                "$toggle_name": "inventory_toggle",
+                "$toggle_view_binding_name": "inventory_UI_tog",
+                "$toggle_default_state": "$ksui_fb42e3",
+                "$icon_texture": "inventory",
+                "offset": [
+                  2.5,
+                  0
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "tools_cycler_holder": {
+          "type": "panel",
+          "size": [
+            4,
+            22
+          ],
+          "controls": [
+            {
+              "tools_cycler_panel@ksui_features.tools_cycler_panel": {
+                "anchor_from": "right_middle",
+                "anchor_to": "left_middle"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "interactable_area": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "hotbar_area@ksui_common.touch_input": {
+          "size": [
+            "100%",
+            24
+          ],
+          "layer": -2,
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "top_gui_buttons_area@ksui_common.touch_input": {
+          "size": [
+            "50%",
+            20
+          ],
+          "layer": -2,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  "armor_durability_panel": {
+    "type": "stack_panel",
+    "size": [
+      "100%cm",
+      "100%c"
+    ],
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "offset": [
+      5,
+      -5
+    ],
+    "ignored": "(not $ks_uhud_armor_v)",
+    "$item_collection_name": "armor_items",
+    "collection_name": "$item_collection_name",
+    "controls": [
+      {
+        "0@ks_uhud.ks_uhud_item_durability": {
+          "collection_index": 0,
+          "$fallback_texture": "textures/ui/empty_armor_slot_helmet"
+        }
+      },
+      {
+        "1@ks_uhud.ks_uhud_item_durability": {
+          "collection_index": 1,
+          "$fallback_texture": "textures/ui/empty_armor_slot_chestplate"
+        }
+      },
+      {
+        "2@ks_uhud.ks_uhud_item_durability": {
+          "collection_index": 2,
+          "$fallback_texture": "textures/ui/empty_armor_slot_leggings"
+        }
+      },
+      {
+        "3@ks_uhud.ks_uhud_item_durability": {
+          "collection_index": 3,
+          "$fallback_texture": "textures/ui/empty_armor_slot_boots"
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "armor_display_tog",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  }
+}

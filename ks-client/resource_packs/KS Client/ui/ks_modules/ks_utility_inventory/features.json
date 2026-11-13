@@ -1,0 +1,382 @@
+{
+  "namespace": "ksui_features",
+  "slot_cycler_panel@ksui_common.stack_horizontal": {
+    "$item_collection_name": "hotbar_items",
+    "size": [
+      "100%c",
+      "100%"
+    ],
+    "collection_name": "$item_collection_name",
+    "property_bag": {
+      "#length": 9
+    },
+    "factory": {
+      "name": "slot_cycler_factory",
+      "control_name": "ksui_features.slot_cycler_item"
+    },
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_property_name": "#length",
+        "target_property_name": "#collection_length"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "slot_cycler_tog",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "slot_cycler_item@common.container_slot_button_prototype": {
+    "size": [
+      20,
+      22
+    ],
+    "layer": 5,
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "none",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "none",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.container_auto_place",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.container_auto_place",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "to_button_id": "button.shape_drawing",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "button.container_slot_hovered",
+        "mapping_type": "pressed"
+      }
+    ],
+    "controls": []
+  },
+  "tools_cycler_panel@ksui_common.stack_horizontal": {
+    "size": [
+      "100%c",
+      22
+    ],
+    "controls": [
+      {
+        "left_border": {
+          "type": "image",
+          "texture": "textures/ui/hotbar_start_cap",
+          "size": [
+            "100%sm",
+            "100%"
+          ],
+          "max_size": [
+            1,
+            "100%"
+          ]
+        }
+      },
+      {
+        "tools_cycler_item_grid@ksui_common.stack_horizontal": {
+          "$item_collection_name": "inventory_items",
+          "$c298": [],
+          "size": [
+            "100%c",
+            22
+          ],
+          "max_size": "$c298",
+          "clips_children": true,
+          "collection_name": "$item_collection_name",
+          "property_bag": {
+            "#length": 27
+          },
+          "factory": {
+            "name": "tools_cycler_items",
+            "control_name": "ksui_features.container_item_tools_cycler"
+          },
+          "variables": [
+            {
+              "requires": "$ksui_93ea24",
+              "$c298": [
+                120,
+                22
+              ]
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_property_name": "#length",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "right_border": {
+          "type": "panel",
+          "size": [
+            "100%sm",
+            "100%"
+          ],
+          "max_size": [
+            1,
+            "100%"
+          ],
+          "controls": [
+            {
+              "image": {
+                "type": "image",
+                "texture": "textures/ui/hotbar_end_cap",
+                "offset": [
+                  "-0.55px",
+                  0
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "tools_cycler_tog",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "container_item_tools_cycler@ksui_common.touch_input": {
+    "size": [
+      20,
+      22
+    ],
+    "$stack_count_required": true,
+    "$durability_bar_required": true,
+    "controls": [
+      {
+        "item_slot": {
+          "type": "image",
+          "texture": "textures/ui/hotbar_2",
+          "controls": [
+            {
+              "item": {
+                "type": "panel",
+                "size": [
+                  18,
+                  18
+                ],
+                "controls": [
+                  {
+                    "item_renderer": {
+                      "type": "custom",
+                      "renderer": "inventory_item_renderer",
+                      "size": [
+                        16,
+                        16
+                      ],
+                      "layer": 2,
+                      "bindings": [
+                        {
+                          "binding_name": "#item_id_aux",
+                          "binding_type": "collection",
+                          "binding_collection_name": "$item_collection_name"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "stack_count@common.stack_count_label": {
+                      "layer": 4
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "durability_bar@common.durability_bar": {
+                "layer": 3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "button_ref@ksui_common.csbp_templete": {
+          "$button_id": "button.container_auto_place",
+          "layer": 5
+        }
+      }
+    ],
+    "property_bag": {
+      "#tools_item_ids": "($ksui_f5891c + $ksui_d82d3e + ':')"
+    },
+    "bindings": [
+      {
+        "binding_name": "#item_durability_total_amount",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection_name"
+      },
+      {
+        "binding_name": "#item_id_aux",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection_name"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(':' + (#item_id_aux / 65536) + ':')",
+        "target_property_name": "#item_id_class"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#tools_item_ids - #item_id_class = #tools_item_ids) and not (#item_durability_total_amount = 0))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "settings_panel@ksui_common.touch_input": {
+    "size": [
+      "100%c",
+      "100%c"
+    ],
+    "anchor_from": "$ksui_f16262",
+    "anchor_to": "$ksui_f16262",
+    "offset": "$ksui_e291fa",
+    "controls": [
+      {
+        "stack@ksui_common.stack_horizontal": {
+          "size": [
+            "100%c",
+            "100%cm"
+          ],
+          "controls": [
+            {
+              "options_stack@ksui_features.options_stack": {}
+            },
+            {
+              "padding@ksui_common.pad_2px_x": {}
+            },
+            {
+              "second_options_stack@ksui_features.second_options_stack": {}
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "inventory_UI_tog",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "options_stack@ksui_features.options_panel": {
+    "$controls": [
+      {
+        "armor_display@ksui_features.option_toggle": {
+          "$toggle_name": "armor_display_toggle",
+          "$toggle_default_state": "$ksui_e6b647",
+          "$icon_texture": "armor",
+          "$hover_text": "Armor Display"
+        }
+      },
+      {
+        "padding_1@ksui_common.pad_2px_x": {}
+      },
+      {
+        "tools_cycler@ksui_features.option_toggle": {
+          "$toggle_name": "tools_cycler_toggle",
+          "$toggle_default_state": "$ksui_c54aa6",
+          "$icon_texture": "tools_cycler",
+          "$hover_text": "Tools Cycler"
+        }
+      },
+      {
+        "padding_2@ksui_common.pad_2px_x": {}
+      },
+      {
+        "slot_cycler@ksui_features.option_toggle": {
+          "$toggle_name": "slot_cycler_toggle",
+          "$toggle_default_state": "$ksui_db22bc",
+          "$icon_texture": "slot_cycler",
+          "$hover_text": "Slot Cycler"
+        }
+      }
+    ]
+  },
+  "second_options_stack@ksui_features.options_panel": {
+    "$controls": [
+      {
+        "recipe_book_toggle@ksui_common.main_toggle": {
+          "$toggle_name": "recipe_book_toggle",
+          "$toggle_view_binding_name": "recipe_book_tog",
+          "$toggle_default_state": "$ksui_df3dda",
+          "$icon_texture": "recipe",
+          "$hover_text": "Recipe Book"
+        }
+      },
+      {
+        "padding@ksui_common.pad_2px_x": {}
+      },
+      {
+        "close_button@common_buttons.light_content_button": {
+          "$pressed_button_name": "button.menu_exit",
+          "$button_content": "ksui_common.main_toggle_icon",
+          "$hover_test_c": "ksui_common.main_tog_hover_text_btton",
+          "$icon_texture": "close",
+          "$hover_text": "Close Inventory",
+          "$size": [
+            12,
+            12
+          ],
+          "size": [
+            20,
+            20
+          ]
+        }
+      }
+    ]
+  },
+  "options_panel@common.dialog_background_opaque": {
+    "size": [
+      "100%c + 8px",
+      "100%c + 8px"
+    ],
+    "controls": [
+      {
+        "stack@ksui_common.stack_horizontal": {
+          "size": [
+            "100%c",
+            "100%cm"
+          ],
+          "controls": "$controls"
+        }
+      }
+    ]
+  },
+  "option_toggle@ksui_common.saved_state_toggle": {
+    "$toggle_view_name": "($toggle_name - 'gle')",
+    "$button_content": "ksui_common.main_toggle_icon",
+    "$size": [
+      14,
+      14
+    ],
+    "size": [
+      20,
+      20
+    ]
+  }
+}
