@@ -310,26 +310,33 @@ here. Respect their licenses — get permission before redistributing.
                 stripped, no owner paths/namespaces/vars remain. Pack icon
                 and manifest not copied.
 
-20. Utility HUD V-1.5 — counters row + touch inventory buttons (selective
-    re-add; durability/crosshair/F-key parts remain KS-native)
+20. Utility HUD V-1.5 — full merge (durability, counters, content toggle,
+    F8 toggles, close/help; rebranded `ks_uhud`)
     Author    : EchoRif — Utility HUD V-1.5
     Source    : https://edge.mcpedl.com/files/8316/806/Utility%20HUD%20V-1.5.mcpack
     Now       : `ui/ks_modules/ks_utility_hud/` (namespace `ks_uhud`,
-                `$ks_uhud_*` vars) — counters row (free slots / gapple /
-                pearls / totems) anchored above the KS Inventory HUD, plus
-                fast-totem button, offhand switch and offhand preview.
-                Textures copied to `textures/ui/ks_uhud/` (totem, totem_
-                pressed, switch_default/hover/pressed/pressed_hover,
-                offhand_slot, alert), lowercased `textures/ui/white` path
-                fixed. Upstream mainhand durability, attack crosshair,
-                armor durability panel, F1/F8 redirects, custom close and
-                help button were NOT merged (KS DV / KS Crosshair / KS F3
-                supersede them); counters visibility moved to the HUD menu
-                Show toggle. Owner header comments stripped, no owner
+                `$ks_uhud_*` vars) — mainhand durability readout, armor
+                durability panel, counters row (free slots / gapple / pearls
+                / totems), fast-totem button, offhand switch/preview,
+                inventory content toggle + custom close, help button, F8
+                component toggles (armor/offhand/mainhand/counters) and
+                F1+3 force-close. `ui/hud_screen.json` wrappers
+                (`ks_uhud_mainhand_pos`, `ks_uhud_counters_pos`, `_toggles`,
+                `f8_function`, `force_close_screen`),
+                `ui/inventory_screen.json` extra content + content toggle +
+                help, `ui/ui_common.json` hover durability gated by
+                `$ks_uhud_hover_*`. Textures copied to
+                `textures/ui/ks_uhud/` (totem, switch, offhand_slot, alert,
+                toggle_checked/unchecked(+hover), help_default/hover),
+                lowercased `textures/ui/white` path fixed. KS keeps its
+                Inventory HUD, slot hotbar buttons, F1/F3 keys and PandaMine
+                crosshair; Utility HUD attack crosshair and f1_redirect are
+                not ported. Owner header comments stripped, no owner
                 paths/namespaces/vars remain. Pack icon and manifest not
                 copied.
 
 Removed again after merge (no longer in pack, kept here for history):
+- Durability Viewer V-2.5 [RP] — EchoRif/ya_rifat (merged earlier as KS DV; replaced by the full Utility HUD V-1.5 merge in entry 20)
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Java Hitbox WHITE BOX-ONLY — Baku v1.9.1 MOBS (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
 - Utility HUD V-1.5 Without Counters — EchoRif (fully purged; counters + touch buttons selectively re-added in v1.0.1 as entry 20)
