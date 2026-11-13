@@ -400,6 +400,25 @@ here. Respect their licenses — get permission before redistributing.
                 required namespaces; pack icon, manifest, owner name and the
                 source's duplicate trailing `{}` blocks were not copied.
 
+24. Utility Inventory — touch inventory overlay (inventory only)
+    Author    : itzriyo157 — Utility Inventory v1.0.2
+    Source    : https://edge.mcpedl.com/files/9044/305/Utility%20Inventory%20v1.0.2.mcpack?ft=412596d986198a7f4f30354e33b9d449&bd=hi4hzt1jzz
+    Now       : `ui/ks_modules/ks_utility_inventory/` — common, features,
+                bindings, inventory and main UI files (registered in
+                `ui/_ui_defs.json`), owner namespaces/vars (`ryUI_*`,
+                `$ryUI_*`, `ryui.*`) renamed to `ksui_*`; touch route added
+                to `ui/inventory_screen.json` and
+                `ui/inventory_screen_pocket.json` via
+                `ksui_main.overlay_screen_content`; 27 textures copied to
+                `textures/ui/ks_utility_inventory/`; `$ksui_*` defaults in
+                `ui/_global_variables.json`. Only the inventory UI was
+                merged: the source armor display, elytra swapper,
+                fast-totem button, offhand slot, quick buttons,
+                equip/unequip helpers, subpacks, HUD screen edits, pack
+                icon, manifest and README were not taken. The overlay's
+                Armor Display toggle is wired to KS Client's existing
+                `ks_uhud.ks_uhud_item_durability` armor panel.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Durability Viewer V-2.5 [RP] — EchoRif/ya_rifat (merged earlier as KS DV; replaced by the full Utility HUD V-1.5 merge in entry 20)
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
