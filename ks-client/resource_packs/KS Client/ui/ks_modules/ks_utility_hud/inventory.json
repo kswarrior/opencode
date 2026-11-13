@@ -699,39 +699,58 @@
     ]
   },
   "ks_uhud_totem_slot": {
-    "type": "input_panel",
-    "prevent_touch_input": true,
-    "consume_hover_events": false,
-    "bindings": [
+    "type": "panel",
+    "size": [ 0, 0 ],
+    "controls": [
       {
-        "binding_type": "collection_details",
-        "binding_collection_name": "$item_collection_name"
-      },
-      {
-        "binding_name": "#item_id_aux",
-        "binding_type": "collection",
-        "binding_collection_name": "$item_collection_name"
-      },
-      {
-        "binding_type": "view",
-        "source_property_name": "(#item_id_aux = $ks_uhud_totem_id)",
-        "target_property_name": "#visible"
-      }
-    ],
-    "button_mappings": [
-      {
-        "ignored": "$touch",
-        "mapping_type": "global",
-        "from_button_id": "button.equip_totem",
-        "to_button_id": "button.container_auto_place",
-        "consume_event": false
-      },
-      {
-        "ignored": "(not $touch)",
-        "mapping_type": "pressed",
-        "from_button_id": "button.menu_select",
-        "to_button_id": "button.container_auto_place",
-        "consume_event": false
+        "action_button": {
+          "type": "button",
+          "size": "$ks_uhud_totem_size",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "consume_hover_events": false,
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "$target_collection"
+            },
+            {
+              "binding_name": "#item_id_aux",
+              "binding_type": "collection",
+              "binding_collection_name": "$target_collection"
+            },
+            {
+              "binding_name": "#hover_text",
+              "binding_type": "collection",
+              "binding_collection_name": "$target_collection"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#item_id_aux = $ks_uhud_totem_id) or (not ((#hover_text - 'Totem') = #hover_text)))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "pressed",
+              "consume_event": false
+            },
+            {
+              "from_button_id": "button.slot1",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "global",
+              "consume_event": false
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.container_auto_place",
+              "mapping_type": "focused",
+              "consume_event": false
+            }
+          ]
+        }
       }
     ]
   },
