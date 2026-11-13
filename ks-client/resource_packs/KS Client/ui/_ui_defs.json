@@ -13,8 +13,6 @@
     "ui/ui_content/inv_content.json",
     "ui/ui_assets/screens/chat/chat_tweaks.json",
     "ui/fps_hud.json",
-    "ui/ks_modules/ks_durability_viewer/hud.json",
-    "ui/ks_modules/ks_durability_viewer/common.json",
     "ui/ks_hud_config.json",
     "ui/hud_crosshair_overlay.json",
     "ui/chat_screen.json",
