@@ -1,6 +1,26 @@
 {
   "namespace": "common",
 
+  // ---------- Side Tooltip Items v1.0.0 (itzriyo157, rebranded) ----------
+  // Touch item-details tooltip pinned to a screen corner instead of floating
+  // over the touched slot. Corner via $ks_tooltip_anchor (top_left default),
+  // fade seconds via $ks_tooltip_alpha_duration, master switch $ks_tooltip_v.
+  "selected_item_details": {
+    "anchor_to": "$ks_tooltip_anchor",
+    "anchor_from": "$ks_tooltip_anchor",
+    "$alpha_anim": "@common.ks_sti_alpha",
+    "offset": [ 0, 0 ]
+  },
+
+  "ks_sti_alpha": {
+    "anim_type": "alpha",
+    "easing": "in_quint",
+    "destroy_at_end": "selected_item_details",
+    "duration": "$ks_tooltip_alpha_duration",
+    "from": 1.0,
+    "to": 0
+  },
+
   "highlight_slot_panel": {
     "type": "panel",
     "controls": [
@@ -104,9 +124,9 @@
   },
 
   // ---------- Utility HUD V-1.5 (EchoRif) ----------
-  // selected_item_details_factory stays ignored (upstream behavior): the
-  // hover_text above already appends Durability: cur/total to the tooltip.
+  // Side Tooltip Items needs the vanilla touch details factory active so the
+  // corner-pinned tooltip above can spawn; keep it gated by $ks_tooltip_v.
   "selected_item_details_factory": {
-    "ignored": true
+    "ignored": "(not $ks_tooltip_v)"
   }
 }

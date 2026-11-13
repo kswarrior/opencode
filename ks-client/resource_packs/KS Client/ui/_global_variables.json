@@ -144,5 +144,13 @@
 	"$ks_uhud_egapple_id": 18874368,
 	"$ks_uhud_pearl_id": 29753344,
 	"$ks_uhud_totem_id": 39780352,
-	"$ks_uhud_chest_id": 3538946
+	"$ks_uhud_chest_id": 3538946,
+
+	// === Side Tooltip Items v1.0.0 (itzriyo157, rebranded) ===
+	// Touch item-details tooltip corner: top_left (default), top_middle,
+	// top_right, bottom_left, bottom_middle, bottom_right, left_middle,
+	// right_middle. Fade-out seconds via $ks_tooltip_alpha_duration.
+	"$ks_tooltip_v": true,
+	"$ks_tooltip_anchor": "top_left",
+	"$ks_tooltip_alpha_duration": 5
 }
