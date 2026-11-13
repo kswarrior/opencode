@@ -2,7 +2,7 @@
 
 > **KS Client v1.0.4 by KS Warrior** (latest codebase; v1.0.2, v1.0.1 and v1.0.0 retained for history)
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
-> Custom start screen, HUD (slot hotbar shortcuts + top-right Settings menu + inventory fast-totem button + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), top-left touch item tooltip (corner-pinned side details), fullbright, clear glass / glass doors, connected hotbar, transparent glass UI, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show/Compact.)
+> Custom start screen, HUD (slot hotbar shortcuts + top-right Settings menu + inventory fast-totem button + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), top-left touch item tooltip (corner-pinned side details), fullbright, clear glass / glass doors, connected hotbar, transparent glass UI, a touch-first Utility Inventory overlay (custom grid/hotbar, recipe book/search, crafting panel, tools/slot cyclers and in-inventory settings), clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show/Compact.)
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
@@ -67,6 +67,7 @@
 | 29 | Transparent Glass UI | Baku — Transparent Glass UI V3 (selective texture merge) | Transparent/low-opacity inventory, crafting, dialog, tab and recipe-book textures so the world shows through open screens; KS connected-hotbar art kept (`hotbar_*`/`selected_hotbar_slot` not overwritten). No UI JSON or manifest changes. |
 | 30 | Side Tooltip Items (Top Left) | itzriyo157 Side Tooltip Items v1.0.0 (top_left variant, rebranded `$ks_tooltip_*`) | Touch item-details tooltip pinned to the top-left corner instead of floating over the touched inventory slot (`common.selected_item_details` anchor override + `ks_sti_alpha` fade, factory re-enabled behind `$ks_tooltip_v`; corner via `$ks_tooltip_anchor`, fade via `$ks_tooltip_alpha_duration`) |
 | 31 | Bundle Item Counter | itzriyo157 Bundle Item Counter V0-1 (rebranded `ks_bundle_counter`) | Bundle contents count drawn on hotbar/container/inventory grid cells; the vanilla bundle storage bar is replaced by text and hidden in container/inventory cells |
+| 32 | Utility Inventory Touch Overlay | itzriyo157 Utility Inventory v1.0.2 (inventory only, rebranded `ksui_*`) | Touch Inventory replacement: custom 9×4 grid + hotbar, recipe book with search/tabs, crafting panel, quick-item modes, tools/slot cyclers, inventory/settings panel. KS armor durability panel is kept and wired to the overlay's Armor Display toggle. Fast-totem, elytra swapper, offhand slot, quick buttons and armor equip/unequip were not merged. Non-touch inventory stays KS/vanilla |
 
 ---
 
@@ -298,6 +299,23 @@ How it works:
 - Merged from Bundle Item Counter V0-1 (itzriyo157); owner namespace `ryBIC:item_counter` renamed to `ks_bundle_counter`. Attribution: `copyright.txt` entry 23.
 
 In-game: hold or open a bundle → its item count appears in the slot instead of a storage bar, in the hotbar, containers and player inventory.
+
+---
+
+### 2.21 Utility Inventory Touch Overlay (itzriyo157, inventory only)
+
+What it is: on touch devices, opening Inventory now shows Utility Inventory's custom inventory instead of the vanilla/Utility HUD inventory. It keeps KS's own HUD and non-touch inventory; only the touch inventory screen is replaced.
+
+How it works:
+- `ui/ks_modules/ks_utility_inventory/`: `common.json`, `features.json`, `bindings.json`, `inventory.json`, `main.json` (all registered in `_ui_defs.json`; namespaces `ksui_common/features/bindings/inventory/main`). `utils.json` was intentionally omitted because it only held armor equip/unequip helpers, which were excluded from the merge.
+- `ui/inventory_screen.json`: `crafting.inventory_screen` gains `variables` — touch (`$touch and not $is_pregame`) sets `$screen_content: "ksui_main.overlay_screen_content"` with the upstream fade animations; keyboard/controller keeps `crafting._inventory_screen_content`. `ui/inventory_screen_pocket.json` applies the same touch override to the pocket screen.
+- Overlay content: `player_inventory` (custom grid + armor slots + hotbar), `recipe_book` (search, filter, tabs), `crafting_panel` (gated by `$ksui_4552ca`), quick-item modes, tools cycler (`$ksui_c54aa6`), slot cycler (`$ksui_db22bc`), and the settings panel (`armor_display`, `tools_cycler`, `slot_cycler`, recipe-book toggle, close).
+- Armor: the overlay's `armor_durability_panel` reuses KS `ks_uhud.ks_uhud_item_durability` and the `armor_items` collection, gated by `$ks_uhud_armor_v`; its `#visible` binding reads the Utility Inventory `armor_display_tog`, so the Armor Display option controls the KS durability panel. Utility Inventory's own armor display is not included.
+- Not merged: elytra swapper, fast-totem button, offhand slot, quick buttons, armor equip/unequip, and the source `default_screen_content` (non-touch). All `ryUI_*` namespaces/vars were renamed to `ksui_*`; textures were copied to `textures/ui/ks_utility_inventory/` (27 files).
+- Config in `ui/_global_variables.json`: `$ksui_*` defaults (armor/tools on, slot cycler/crafting/recipe book off); `$ksui_fb42e3` is set `true` so the inventory and settings panel are shown when the screen opens (upstream default `false`).
+- Merged from Utility Inventory v1.0.2 (itzriyo157); attribution: `copyright.txt` entry 24.
+
+In-game (touch): press Inventory → custom KS overlay with grid/hotbar + recipe book; the gear/inventory toggle opens the options row; Armor Display shows KS's existing armor durability panel; non-touch inventory is unchanged.
 
 ---
 
