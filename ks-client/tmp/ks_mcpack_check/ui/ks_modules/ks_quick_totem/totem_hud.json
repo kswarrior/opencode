@@ -1,0 +1,62 @@
+{
+  "namespace": "hud",
+
+  "hud_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          { "ks_qt_btn_wrap@hud.ks_qt_btn_wrap": {} }
+        ]
+      }
+    ]
+  },
+
+  "ks_qt_btn_wrap": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 0, 0 ],
+    "visible": true,
+    "property_bag": {
+      "#ks_qt_btn_on": true
+    },
+    "controls": [
+      { "ks_qt_totem_btn@hud.ks_qt_totem_btn": {} }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ks_qt_btn_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_qt_btn_on"
+      },
+      {
+        "binding_name": "#hud_visible",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_qt_btn_on)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "ks_qt_totem_btn@settings_common.action_button": {
+    "prevent_touch_input": true,
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": "$ks_qt_offset",
+    "size": "$ks_qt_size",
+    "$border_visible": false,
+    "$button_text": "",
+    "$pressed_button_name": "button.hotbar_inventory_button",
+    "$default_button_texture|default": "textures/ui/ks_qt/totem",
+    "$hover_button_texture|default": "textures/ui/ks_qt/totem",
+    "$pressed_button_texture|default": "textures/ui/ks_qt/totem",
+    "$locked_button_texture|default": "textures/ui/ks_qt/totem"
+  }
+}

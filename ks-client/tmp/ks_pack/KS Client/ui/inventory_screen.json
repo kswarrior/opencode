@@ -29,8 +29,9 @@
   "_inventory_screen_content": {
     "type": "panel",
     "controls": [
-      // Utility HUD V-1.5 extras: fast totem, offhand switch/preview, custom
-      // close, armor durability panel and F8 toggles.
+      // Utility HUD V-1.5 extras: offhand switch/preview, custom
+      // close, armor durability panel and F8 toggles. Quick Totem is added by
+      // ui/ks_modules/ks_quick_totem/totem_inventory.json.
       {
         "_extra_content@ks_uhud.ks_uhud_inventory_content": {}
       },

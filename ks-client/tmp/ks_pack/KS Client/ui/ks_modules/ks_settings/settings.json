@@ -1,0 +1,397 @@
+{
+  "namespace": "ks_settings",
+
+  "button": {
+    "type": "panel",
+    "size": [ 22, 22 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -6, 4 ],
+    "layer": 600,
+    "controls": [
+      {
+        "toggle@common_toggles.dark_content_toggle": {
+          "$toggle_name": "ks_settings_open",
+          "$toggle_view_binding_name": "ks_settings_open_t",
+          "$button_content": "ks_settings.gear_icon",
+          "size": [ 22, 22 ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "slot_hotbar_button_panel",
+        "source_property_name": "#visible",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "gear_icon": {
+    "type": "image",
+    "texture": "textures/ui/gear",
+    "size": [ 18, 18 ],
+    "anchor_from": "center",
+    "anchor_to": "center"
+  },
+
+  "close_icon": {
+    "type": "image",
+    "texture": "textures/c_ui/close_default",
+    "size": [ 12, 12 ],
+    "anchor_from": "center",
+    "anchor_to": "center"
+  },
+
+  "close": {
+    "type": "panel",
+    "size": [ 18, 18 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -5, 5 ],
+    "controls": [
+      {
+        "toggle@common_toggles.dark_content_toggle": {
+          "$toggle_name": "ks_settings_open",
+          "$toggle_view_binding_name": "ks_settings_close_t",
+          "$button_content": "ks_settings.close_icon",
+          "size": [ 18, 18 ]
+        }
+      }
+    ]
+  },
+
+  "section_header": {
+    "type": "label",
+    "text": "$text",
+    "size": [ "100%", 16 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 2, 4 ],
+    "color": [ 0.55, 0.82, 1.0 ],
+    "shadow": true,
+    "font_scale_factor": 0.9
+  },
+
+  "pad": {
+    "type": "panel",
+    "size": [ 0, 6 ]
+  },
+
+  "panel": {
+    "type": "input_panel",
+    "prevent_touch_input": true,
+    "size": [ 260, 300 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -6, 30 ],
+    "layer": 590,
+    "visible": false,
+    "property_bag": {
+      "#ks_settings_toggle": false,
+      "#ks_hud_visible": true
+    },
+    "controls": [
+      {
+        "background@common.dialog_background_hollow_4": {}
+      },
+      {
+        "title": {
+          "type": "label",
+          "text": "KS CLIENT SETTINGS",
+          "size": [ "100% - 40px", 14 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 8, 6 ],
+          "color": [ 1.0, 1.0, 1.0 ],
+          "shadow": true,
+          "font_scale_factor": 1.0
+        }
+      },
+      {
+        "close@ks_settings.close": {}
+      },
+      {
+        "divider": {
+          "type": "image",
+          "texture": "textures/ui/white",
+          "color": [ 1.0, 1.0, 1.0 ],
+          "alpha": 0.25,
+          "size": [ "100% - 12px", 1 ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 26 ]
+        }
+      },
+      {
+        "content@common.scrolling_panel": {
+          "size": [ "100% - 12px", "100% - 34px" ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 30 ],
+          "layer": 2,
+          "$show_background": false,
+          "$scrolling_content": "ks_settings.stack"
+        }
+      },
+      {
+        "ksb_balp@ks_settings.alpha_bridge": {}
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "ks_settings_open_t",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_settings_toggle"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "slot_hotbar_button_panel",
+        "source_property_name": "#visible",
+        "target_property_name": "#ks_hud_visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#ks_settings_toggle and #ks_hud_visible)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "alpha_bridge": {
+    "type": "panel",
+    "size": [ 0, 0 ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "h_alpha_slider",
+        "source_property_name": "(#slider_val / 100)",
+        "target_property_name": "#alpha"
+      }
+    ]
+  },
+
+  "stack": {
+    "type": "stack_panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "hdr_quick@ks_settings.section_header": {
+          "$text": "QUICK ACCESS"
+        }
+      },
+      {
+        "qt_toggle@ksb_main.toggle_option": {
+          "$toggle_name": "ks_qt_btn",
+          "$toggle_view_binding_name": "ks_qt_btn_t",
+          "$toggle_text": "Show Quick Totem",
+          "$toggle_default_state": "$ks_qt_show"
+        }
+      },
+      {
+        "pad_0@ks_settings.pad": {}
+      },
+      {
+        "hdr_hotbar@ks_settings.section_header": {
+          "$text": "HOTBAR MANAGER"
+        }
+      },
+      {
+        "sbi_tog@ksb_main.toggle_option": {
+          "$toggle_name": "show_button_item_ksb",
+          "$toggle_view_binding_name": "ksb_item",
+          "$toggle_text": "Show Button Items",
+          "$toggle_default_state": "$ksb_sbi"
+        }
+      },
+      {
+        "ssc_tog@ksb_main.toggle_option": {
+          "$toggle_name": "show_stack_count_",
+          "$toggle_view_binding_name": "ksb_show_stack",
+          "$toggle_text": "Show Stack Count",
+          "$toggle_default_state": "$ksb_ssci"
+        }
+      },
+      {
+        "alpha_slider@ksb_main.slider_panel": {
+          "$title_text": "Hotbar Button Alpha:",
+          "$slider_name": "h_alpha_slider@common.slider",
+          "$slider_steps": 10,
+          "$slider_value": "$ksb_hba"
+        }
+      },
+      {
+        "slot_1@ksb_main.editor_stack_templete": {
+          "$id": "1",
+          "$x_slider_value": "$ksb_1_x",
+          "$y_slider_value": "$ksb_1_y",
+          "$sizs_value": "$ksb_1_s",
+          "$tggle_state": "$ksb_1_v"
+        }
+      },
+      {
+        "slot_2@ksb_main.editor_stack_templete": {
+          "$id": "2",
+          "$x_slider_value": "$ksb_2_x",
+          "$y_slider_value": "$ksb_2_y",
+          "$sizs_value": "$ksb_2_s",
+          "$tggle_state": "$ksb_2_v"
+        }
+      },
+      {
+        "slot_3@ksb_main.editor_stack_templete": {
+          "$id": "3",
+          "$x_slider_value": "$ksb_3_x",
+          "$y_slider_value": "$ksb_3_y",
+          "$sizs_value": "$ksb_3_s",
+          "$tggle_state": "$ksb_3_v"
+        }
+      },
+      {
+        "slot_4@ksb_main.editor_stack_templete": {
+          "$id": "4",
+          "$x_slider_value": "$ksb_4_x",
+          "$y_slider_value": "$ksb_4_y",
+          "$sizs_value": "$ksb_4_s",
+          "$tggle_state": "$ksb_4_v"
+        }
+      },
+      {
+        "slot_5@ksb_main.editor_stack_templete": {
+          "$id": "5",
+          "$x_slider_value": "$ksb_5_x",
+          "$y_slider_value": "$ksb_5_y",
+          "$sizs_value": "$ksb_5_s",
+          "$tggle_state": "$ksb_5_v"
+        }
+      },
+      {
+        "slot_6@ksb_main.editor_stack_templete": {
+          "$id": "6",
+          "$x_slider_value": "$ksb_6_x",
+          "$y_slider_value": "$ksb_6_y",
+          "$sizs_value": "$ksb_6_s",
+          "$tggle_state": "$ksb_6_v"
+        }
+      },
+      {
+        "slot_7@ksb_main.editor_stack_templete": {
+          "$id": "7",
+          "$x_slider_value": "$ksb_7_x",
+          "$y_slider_value": "$ksb_7_y",
+          "$sizs_value": "$ksb_7_s",
+          "$tggle_state": "$ksb_7_v"
+        }
+      },
+      {
+        "slot_8@ksb_main.editor_stack_templete": {
+          "$id": "8",
+          "$x_slider_value": "$ksb_8_x",
+          "$y_slider_value": "$ksb_8_y",
+          "$sizs_value": "$ksb_8_s",
+          "$tggle_state": "$ksb_8_v"
+        }
+      },
+      {
+        "slot_9@ksb_main.editor_stack_templete": {
+          "$id": "9",
+          "$x_slider_value": "$ksb_9_x",
+          "$y_slider_value": "$ksb_9_y",
+          "$sizs_value": "$ksb_9_s",
+          "$tggle_state": "$ksb_9_v"
+        }
+      },
+      {
+        "slot_10@ksb_main.editor_stack_templete": {
+          "$id": "10",
+          "$x_slider_value": "$ksb_10_x",
+          "$y_slider_value": "$ksb_10_y",
+          "$sizs_value": "$ksb_10_s",
+          "$tggle_state": "$ksb_10_v",
+          "$shslider_text": "Show Inv Bttn",
+          "$yslider_text": "Inv Bttn X Axis:",
+          "$xslider_text": "Inv Bttn Y Axis:",
+          "$sslider_text": "Inv Bttn Size:"
+        }
+      },
+      {
+        "pad_1@ks_settings.pad": {}
+      },
+      {
+        "hdr_inv@ks_settings.section_header": {
+          "$text": "INVENTORY HUD"
+        }
+      },
+      {
+        "invhud_show@ksb_main.toggle_option": {
+          "$toggle_name": "ksbT_invhud",
+          "$toggle_view_binding_name": "ksbT_invhud_t",
+          "$toggle_text": "Show Inv HUD",
+          "$toggle_default_state": "$ksb_invhud_v"
+        }
+      },
+      {
+        "invsmall_tog@ksb_main.toggle_option": {
+          "$toggle_name": "ksb_invhud_small_toggle",
+          "$toggle_view_binding_name": "ksb_invhud_small",
+          "$toggle_text": "Compact Inventory HUD",
+          "$toggle_default_state": "$ksb_invhud_small"
+        }
+      },
+      {
+        "pad_2@ks_settings.pad": {}
+      },
+      {
+        "hdr_hud@ks_settings.section_header": {
+          "$text": "HUD"
+        }
+      },
+      {
+        "f1_show@ksb_main.toggle_option": {
+          "$toggle_name": "ksbT_f1",
+          "$toggle_view_binding_name": "ksbT_f1_t",
+          "$toggle_text": "Show F1 HUD",
+          "$toggle_default_state": "$ks_f1_v"
+        }
+      },
+      {
+        "f3_show@ksb_main.toggle_option": {
+          "$toggle_name": "ksbT_f3show",
+          "$toggle_view_binding_name": "ksbT_f3show_t",
+          "$toggle_text": "Show F3 HUD",
+          "$toggle_default_state": "$ks_f3_v"
+        }
+      },
+      {
+        "mh_dura_show@ksb_main.toggle_option": {
+          "$toggle_name": "ks_uhud_mainhand",
+          "$toggle_view_binding_name": "ks_uhud_mainhand_t",
+          "$toggle_text": "Show Mainhand Durability",
+          "$toggle_default_state": "$ks_uhud_mainhand_v"
+        }
+      },
+      {
+        "uhud_counters@ksb_main.toggle_option": {
+          "$toggle_name": "ks_uhud_counters",
+          "$toggle_view_binding_name": "ks_uhud_counters_t",
+          "$toggle_text": "Show Counters HUD",
+          "$toggle_default_state": "$ks_uhud_counters_v"
+        }
+      },
+      {
+        "footer": {
+          "type": "label",
+          "text": "Changes apply immediately",
+          "size": [ "100%", 14 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 2, 8 ],
+          "color": [ 0.7, 0.7, 0.7 ],
+          "font_scale_factor": 0.8
+        }
+      }
+    ]
+  }
+}
