@@ -1,0 +1,29 @@
+{
+  "namespace": "hud",
+  "hud_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          { "totem_btn@hud.totem_btn": {} }
+        ]
+      }
+    ]
+  },
+
+  "totem_btn@settings_common.action_button": {
+    "prevent_touch_input": true,
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "offset": [ -5, -5 ],
+    "size": [ 40, 40 ],
+    "$border_visible": false,
+    "$button_text": "",
+    "$pressed_button_name": "button.hotbar_inventory_button",
+    "$default_button_texture|default": "textures/totem/totem_button",
+    "$hover_button_texture|default": "textures/totem/totem_button",
+    "$pressed_button_texture|default": "textures/totem/totem_button",
+    "$locked_button_texture|default": "textures/totem/totem_button"
+  }
+}

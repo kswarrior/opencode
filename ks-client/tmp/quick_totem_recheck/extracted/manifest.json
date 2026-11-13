@@ -1,0 +1,44 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Quick Totem \nBy oSkullo 1 \nVerson 1",
+    "description": "able to equip totem very quickly!",
+    "uuid": "6dd77ad4-22c3-4d68-9fed-0c1d571c4e6a",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "789c84a4-78ca-4856-b004-ee6a7c2c1076",
+      "version": [1, 0, 0]
+    }
+  ],
+  "subpacks": [
+    {
+      "folder_name": "OffhandStyle",
+      "name": "Offhand Position (Java-style)",
+      "memory_tier": 1
+    },
+    {
+      "folder_name": "BottomLeft",
+      "name": "Bottom Left",
+      "memory_tier": 1
+    },
+    {
+      "folder_name": "BottomRight",
+      "name": "Bottom Right",
+      "memory_tier": 1
+    },
+    {
+      "folder_name": "TopLeft",
+      "name": "Top Left",
+      "memory_tier": 1
+    },
+    {
+      "folder_name": "TopRight",
+      "name": "Top Right",
+      "memory_tier": 1
+    }
+  ]
+}

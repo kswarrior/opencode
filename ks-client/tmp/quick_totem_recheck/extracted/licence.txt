@@ -1,0 +1,27 @@
+Quick Totem — License
+
+Copyright (c) 2026 oSkullo
+
+This resource pack ("Quick Totem") is the property of the creator (oSkullo)
+and is protected under copyright law.
+
+Permission is granted to:
+- Download and use this pack for personal, non-commercial purposes.
+- Use this pack in videos, streams, or showcases with credit to the
+  original creator (oSkullo).
+
+Permission is NOT granted to:
+- Redistribute, re-upload, or mirror this pack on any other platform
+  or website without explicit written permission from the creator.
+- Claim this pack, or any part of its code/assets, as your own work.
+- Modify and redistribute this pack as a "new" or altered pack without
+  permission.
+- Use this pack or its assets in any commercial product without
+  permission.
+
+All original code and audio/visual assets within this pack were created
+by oSkullo unless otherwise stated. Any third-party assets used are
+credited separately.
+
+For permissions beyond this license, contact oSkullo directly through
+the pack's official CurseForge page or Discord.
