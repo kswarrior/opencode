@@ -404,12 +404,12 @@ here. Respect their licenses — get permission before redistributing.
     Author    : itzriyo157 — Utility Inventory v1.0.2
     Source    : https://edge.mcpedl.com/files/9044/305/Utility%20Inventory%20v1.0.2.mcpack?ft=412596d986198a7f4f30354e33b9d449&bd=hi4hzt1jzz
     Now       : `ui/ks_modules/ks_utility_inventory/` — common, features,
-                bindings, inventory and main UI files (registered in
+                inventory and main UI files (registered in
                 `ui/_ui_defs.json`), owner namespaces/vars (`ryUI_*`,
                 `$ryUI_*`, `ryui.*`) renamed to `ksui_*`; touch route added
                 to `ui/inventory_screen.json` and
                 `ui/inventory_screen_pocket.json` via
-                `ksui_main.overlay_screen_content`; 27 textures copied to
+                `ksui_main.overlay_screen_content`; 14 referenced textures copied to
                 `textures/ui/ks_utility_inventory/`; `$ksui_*` defaults in
                 `ui/_global_variables.json`. Only the inventory UI was
                 merged: the source armor display, elytra swapper,

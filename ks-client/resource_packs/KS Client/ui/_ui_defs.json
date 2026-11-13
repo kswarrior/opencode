@@ -11,7 +11,6 @@
     "ui/inventory_screen_pocket.json",
     "ui/ks_modules/ks_utility_inventory/common.json",
     "ui/ks_modules/ks_utility_inventory/features.json",
-    "ui/ks_modules/ks_utility_inventory/bindings.json",
     "ui/ks_modules/ks_utility_inventory/inventory.json",
     "ui/ks_modules/ks_utility_inventory/main.json",
     "ui/ks_modules/b6As_defs.json",
