@@ -1,6 +1,0 @@
-{
-  "variables": {  
-    "$tooltip_item_alpha_duration": 5
-  },
-  "namespace": "side_tooltip_items_config"
-}
