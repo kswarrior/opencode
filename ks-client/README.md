@@ -297,8 +297,8 @@ ks-client/
 │   ├── textures/ (blocks/items/ui/gui/c_ui/environment/colormap/misc/health_bar/…)
 │   │   ├── terrain_texture.json (atlas.terrain, 1322 entries: +hopper_outside_east/north/south/west)
 │   │   ├── item_texture.json (atlas.items — `mace` + 17 door icons)
-│   │   ├── texture_list.json + textures_list.json (identical, 1636 entries, rebuilt from disk: PNG+TGA, no dangling)
-│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (131 PNGs incl. chat art + 14 ks_uhud) / c_ui/ (8 files, all wired) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
+│   │   ├── texture_list.json + textures_list.json (identical, 1724 entries, rebuilt from disk: PNG+TGA, no dangling)
+│   │   ├── blocks/ (1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace) / items/ (17 door PNGs + mace.png + bow_pulling_0/1/2) / misc/ (vignette + clean pumpkinblur) / ui/ (219 PNGs incl. chat art + 14 ks_uhud + Baku transparent set) / c_ui/ (8 files, all wired) / health_bar/ (62 files) / entity/chest (trapped + trapped_double BlockTrace) + entity/attachable (mace.png)
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
