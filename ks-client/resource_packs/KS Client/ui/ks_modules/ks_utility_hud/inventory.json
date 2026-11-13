@@ -1,5 +1,5 @@
 //- Created By KS Client
-//- Utility HUD V-1.5 (EchoRif) - Inventory screen touch buttons (offhand switch + preview; fast totem replaced by ks_qt)
+//- Utility HUD V-1.5 (EchoRif) - Inventory screen touch buttons (fast totem, offhand switch + preview)
 //- KS Client module — do not redistribute as a standalone pack.
 {
   "namespace": "ks_uhud",
@@ -163,6 +163,90 @@
         "from_button_id": "button.menu_select",
         "to_button_id": "button.container_auto_place",
         "mapping_type": "pressed"
+      }
+    ]
+  },
+  "ks_uhud_fast_totem": {
+    "type": "button",
+    "layer": 40,
+    "draggable": "both",
+    "prevent_touch_input": true,
+    "$size|default": [
+      0,
+      0
+    ],
+    "$press|default": "pressed_pc",
+    "variables": [
+      {
+        "requires": "$touch",
+        "$size": "$ks_uhud_totem_size",
+        "$press": "pressed_touch"
+      }
+    ],
+    "size": "$size",
+    "offset": "$ks_uhud_totem_offset",
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "$press",
+    "controls": [
+      {
+        "inv_slots@ks_uhud.ks_uhud_totem_slots": {}
+      },
+      {
+        "hotbar_slots@ks_uhud.ks_uhud_hotbar_totem_slots": {}
+      },
+      {
+        "default": {
+          "type": "image",
+          "alpha": "$ks_uhud_totem_alpha",
+          "texture": "textures/ui/ks_uhud/totem"
+        }
+      },
+      {
+        "hover": {
+          "type": "image",
+          "alpha": "$ks_uhud_totem_alpha",
+          "texture": "textures/ui/ks_uhud/totem"
+        }
+      },
+      {
+        "pressed_touch": {
+          "ignored": "(not $touch)",
+          "type": "image",
+          "alpha": "$ks_uhud_totem_alpha",
+          "texture": "textures/ui/ks_uhud/totem_pressed"
+        }
+      },
+      {
+        "pressed_pc": {
+          "ignored": "$touch",
+          "type": "input_panel",
+          "button_mappings": [
+            {
+              "from_button_id": "button.hide_gui",
+              "to_button_id": "button.equip_totem",
+              "mapping_type": "global",
+              "scope": "global"
+            }
+          ]
+        }
+      }
+    ],
+    "button_mappings": [
+      {
+        "ignored": "$touch",
+        "mapping_type": "global",
+        "from_button_id": "button.slot1",
+        "to_button_id": "button.menu_select",
+        "consume_event": false
+      },
+      {
+        "ignored": "(not $touch)",
+        "mapping_type": "pressed",
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "consume_event": false,
+        "button_up_right_of_first_refusal": true
       }
     ]
   },
@@ -409,6 +493,242 @@
       }
     ]
   },
+  "ks_uhud_hotbar_totem_slots": {
+    "type": "collection_panel",
+    "$item_collection_name": "hotbar_items",
+    "collection_name": "$item_collection_name",
+    "controls": [
+      {
+        "0@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 0
+        }
+      },
+      {
+        "1@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 1
+        }
+      },
+      {
+        "2@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 2
+        }
+      },
+      {
+        "3@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 3
+        }
+      },
+      {
+        "4@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 4
+        }
+      },
+      {
+        "5@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 5
+        }
+      },
+      {
+        "6@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 6
+        }
+      },
+      {
+        "7@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 7
+        }
+      },
+      {
+        "8@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 8
+        }
+      },
+      {
+        "9@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 9
+        }
+      }
+    ]
+  },
+  "ks_uhud_totem_slots": {
+    "type": "collection_panel",
+    "$item_collection_name": "inventory_items",
+    "collection_name": "$item_collection_name",
+    "controls": [
+      {
+        "0@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 0
+        }
+      },
+      {
+        "1@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 1
+        }
+      },
+      {
+        "2@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 2
+        }
+      },
+      {
+        "3@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 3
+        }
+      },
+      {
+        "4@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 4
+        }
+      },
+      {
+        "5@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 5
+        }
+      },
+      {
+        "6@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 6
+        }
+      },
+      {
+        "7@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 7
+        }
+      },
+      {
+        "8@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 8
+        }
+      },
+      {
+        "9@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 9
+        }
+      },
+      {
+        "10@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 10
+        }
+      },
+      {
+        "11@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 11
+        }
+      },
+      {
+        "12@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 12
+        }
+      },
+      {
+        "13@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 13
+        }
+      },
+      {
+        "14@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 14
+        }
+      },
+      {
+        "15@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 15
+        }
+      },
+      {
+        "16@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 16
+        }
+      },
+      {
+        "17@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 17
+        }
+      },
+      {
+        "18@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 18
+        }
+      },
+      {
+        "19@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 19
+        }
+      },
+      {
+        "20@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 20
+        }
+      },
+      {
+        "21@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 21
+        }
+      },
+      {
+        "22@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 22
+        }
+      },
+      {
+        "23@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 23
+        }
+      },
+      {
+        "24@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 24
+        }
+      },
+      {
+        "25@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 25
+        }
+      },
+      {
+        "26@ks_uhud.ks_uhud_totem_slot": {
+          "collection_index": 26
+        }
+      }
+    ]
+  },
+  "ks_uhud_totem_slot": {
+    "type": "input_panel",
+    "prevent_touch_input": true,
+    "consume_hover_events": false,
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "$item_collection_name"
+      },
+      {
+        "binding_name": "#item_id_aux",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection_name"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#item_id_aux = $ks_uhud_totem_id)",
+        "target_property_name": "#visible"
+      }
+    ],
+    "button_mappings": [
+      {
+        "ignored": "$touch",
+        "mapping_type": "global",
+        "from_button_id": "button.equip_totem",
+        "to_button_id": "button.container_auto_place",
+        "consume_event": false
+      },
+      {
+        "ignored": "(not $touch)",
+        "mapping_type": "pressed",
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.container_auto_place",
+        "consume_event": false
+      }
+    ]
+  },
   "ks_uhud_content_toggle_visuals@inv_content.component_toggle": {
     "controls": [
       {
@@ -526,6 +846,11 @@
   "ks_uhud_inventory_content": {
     "type": "panel",
     "controls": [
+      {
+        "fast_totem@ks_uhud.ks_uhud_fast_totem": {
+          "ignored": "(not $ks_uhud_totem_v)"
+        }
+      },
       {
         "offhand_switch": {
           "type": "collection_panel",

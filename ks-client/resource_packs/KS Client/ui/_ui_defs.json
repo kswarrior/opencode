@@ -23,9 +23,6 @@
     "ui/ui_common.json",
     "ui/trade_2_screen.json",
     "ui/ks_modules/ks_utility_hud/counter.json",
-    "ui/ks_modules/ks_utility_hud/inventory.json",
-    "ui/ks_modules/ks_settings/settings.json",
-    "ui/ks_modules/ks_quick_totem/totem_hud.json",
-    "ui/ks_modules/ks_quick_totem/totem_inventory.json"
+    "ui/ks_modules/ks_utility_hud/inventory.json"
   ]
 }

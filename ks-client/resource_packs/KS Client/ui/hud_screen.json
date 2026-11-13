@@ -376,10 +376,10 @@
             "ksb_buttons@ksb_main.slot_hotbar_button_panel": {}
           },
           {
-            "ks_settings_button@ks_settings.button": {}
+            "ksb_button_editor@ksb_main.editor_button": {}
           },
           {
-            "ks_settings_panel@ks_settings.panel": {}
+            "ksb_editor_panel@ksb_main.editor_panel": {}
           }
         ]
       },
@@ -421,28 +421,7 @@
     },
     "controls": [
       {
-        "ks_inventory_hud@ks_hud.inventory_hud_panel": {
-          "bindings": [
-            {
-              "binding_type": "view",
-              "source_control_name": "ksb_invhud_small",
-              "source_property_name": "(not #toggle_state)",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "ks_inventory_hud_compact@ks_hud.inventory_hud_compact_panel": {
-          "bindings": [
-            {
-              "binding_type": "view",
-              "source_control_name": "ksb_invhud_small",
-              "source_property_name": "#toggle_state",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
+        "ks_inventory_hud@ks_hud.inventory_hud_panel": {}
       }
     ],
     "bindings": [
