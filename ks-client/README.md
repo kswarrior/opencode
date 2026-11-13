@@ -332,7 +332,7 @@ ks-client/
 │   ├── texts/en_US.lang + languages.json
 │   ├── ui/
 │   │   ├── _global_variables.json   ← ALL user config (see §5)
-│   │   ├── _ui_defs.json            ← load order, 26 entries (…+ gameplay_common + property/bundle_item_counter; every UI file is registered)
+│   │   ├── _ui_defs.json            ← load order, 26 entries (…+ gameplay_common + ui/property/bundle_item_counter; every UI file is registered)
 │   │   ├── ks_client_common.json (namespace ks_client), start_screen.json (start), ks_hud_config.json (ks_hud_config: retained toggle-page defs, not wired), hud_screen.json (hud + root_panel fps hook + ks_crosshair_panel hit-switch + bundle counter hotbar insert), hud_crosshair_overlay.json (hud_crosshair: vanilla cursor emptied, no double-draw), pause_screen.json (pause)
 │   │   ├── gameplay_common.json (gameplay — bundle selected-panel counter + storage-bar hide), inventory_screen.json (crafting — Utility HUD flags + bundle counter insert/storage-bar hide), mob_effect_screen.json (mob_effect), fps_hud.json (ks_fps, top-left), debug_screen.json (debug_screen), dev_console_screen.json (dev_console), ui_common.json (common — hover durability + side tooltip anchor/fade + bundle counter inserts), trade_2_screen.json (trade2 — all villager trades unlocked)
 │   │   ├── chat_screen.json (chat) + ui_assets/screens/chat/chat_tweaks.json (ks_chat_tweaks)
