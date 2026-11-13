@@ -1581,6 +1581,8 @@
   "textures/ui/ks_uhud/toggle_unchecked_hover",
   "textures/ui/ks_uhud/totem",
   "textures/ui/ks_uhud/totem_pressed",
+  "textures/ui/ks_qt/close",
+  "textures/ui/ks_qt/totem",
   "textures/ui/ksb_numb_1",
   "textures/ui/ksb_numb_2",
   "textures/ui/ksb_numb_3",

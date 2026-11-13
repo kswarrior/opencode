@@ -41,10 +41,22 @@ here. Respect their licenses — get permission before redistributing.
    Author : PandaMine5 — Clean Touch Controls v1.4.1
    Now    : `ui/ks_touch/hide_gui.json` + `textures/ui/ks_touch/`
 
-4. Quick Totem Offhand (one-tap totem to offhand, HUD + inventory) — REMOVED
+4. Quick Totem Offhand (one-tap totem to offhand, HUD + inventory) — RESTORED
    Author : oSkullo — Quick Totem Offhand v1.0.0
-   Now    : no longer in pack (HUD `hud.totem_btn`, `master_totem_panel`,
-            and `textures/totem/` removed); credit kept for history
+   Source : https://www.mcpedl.com/ (Quick Totem Offhand v1.0.0)
+   Note   : upstream license forbids modification/redistribution without
+            permission; keep this credit and do not ship standalone.
+            Upstream `hud.totem_btn`, `crafting.master_totem_panel` and
+            `textures/totem/` rebranded to `hud.ks_qt_*`,
+            `crafting.ks_qt_*`, `textures/ui/ks_qt/`; no upstream namespace
+            or path remains.
+   Now    : `ui/ks_modules/ks_quick_totem/totem_hud.json` (bottom-middle
+            button `$ks_qt_offset/$ks_qt_size`, Show Quick Totem toggle
+            `ks_qt_btn_t` in the new Settings menu) +
+            `ui/ks_modules/ks_quick_totem/totem_inventory.json`
+            (inventory equip/close panel inserted into
+            `crafting.recipe_inventory_screen_content`); replaces the old
+            Utility HUD `ks_uhud_fast_totem` controls (removed).
 
 5. Connected Hotbar (seamless hotbar art) v1.0.1
    Now    : `textures/ui/hotbar_*.png` (no code changes needed)
@@ -317,8 +329,8 @@ here. Respect their licenses — get permission before redistributing.
     Now       : `ui/ks_modules/ks_utility_hud/` (namespace `ks_uhud`,
                 `$ks_uhud_*` vars) — mainhand durability readout, armor
                 durability panel, counters row (free slots / gapple / pearls
-                / totems), fast-totem button, offhand switch/preview,
-                inventory content toggle + custom close, help button, F8
+                / totems), offhand switch/preview, inventory content
+                toggle + custom close, help button, F8
                 component toggles (armor/offhand/mainhand/counters) and
                 F1+3 force-close. `ui/hud_screen.json` wrappers
                 (`ks_uhud_mainhand_pos`, `ks_uhud_counters_pos`, `_toggles`,
