@@ -301,13 +301,31 @@
       },
       // Utility HUD V-1.5 counters (free slots / gapple / pearls / totems).
       // Fixed just above the bottom-right KS Inventory HUD grid via ks_uhud_count_panel.
-      // Visibility follows the HUD menu Show toggle live (ks_uhud_counters_t, default $ks_uhud_counters_v true).
+      // Visibility follows the HUD menu Show toggle (ks_uhud_counters_t) and
+      // the F8+4 in-game toggle (__counters__).
       {
         "array_name": "controls",
         "operation": "insert_front",
         "value": [
           {
             "ks_uhud_counters_pos@hud.ks_uhud_counters_pos": {}
+          }
+        ]
+      },
+      // Shadow toggles driven by the F8 hotkeys (and mirrored by the HUD menu
+      // toggles). No crosshair toggle: KS keeps its own PandaMine crosshair.
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "_toggles@hud._toggles": {}
+          },
+          {
+            "f8_function@hud.f8_function": {}
+          },
+          {
+            "force_close_screen@hud.force_close_screen": {}
           }
         ]
       },
@@ -425,26 +443,30 @@
     ]
   },
 
-  // ---------- KS Durability Viewer position wrapper (fullscreen neutral) ----------
-  // Fullscreen so the readout lands bottom-left via $ks_dv_mainhand_* globals.
-  // Anchors mirrored from upstream (was bottom_right) so the KS Inventory HUD
-  // grid keeps owning the bottom-right corner.
-  // Visibility follows the HUD menu Show toggle live (ks_dv_t_t, default $ks_dv_mainhand true).
-  // Same split-toggle pattern as ks_invhud_pos (split toggle copy + local AND).
-  "ks_dv_mainhand_pos": {
+  // ---------- Utility HUD mainhand durability wrapper (fullscreen neutral) ----------
+  // Fullscreen so the readout lands bottom-left via $ks_uhud_mainhand_offset.
+  // The KS Inventory HUD grid keeps owning the bottom-right corner.
+  // Visibility follows the HUD menu Show toggle (ks_uhud_mainhand_t) and the
+  // F8+3 in-game toggle (__durability__), plus #hud_visible.
+  "ks_uhud_mainhand_pos": {
     "type": "panel",
     "size": ["100%", "100%"],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "offset": [0, 0],
-    "visible": "$ks_dv_mainhand",
+    "visible": "$ks_uhud_mainhand_v",
     "layer": 46,
     "property_bag": {
-      "#ks_dv_toggle": true
+      "#ks_uhud_mainhand_toggle": true,
+      "#ks_uhud_f8_durability": true
     },
     "controls": [
       {
-        "mainhand_durability@ks_dv_hud.mainhand_durability": {}
+        "mainhand_durability@ks_uhud.ks_uhud_mainhand_durability": {
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "offset": "$ks_uhud_mainhand_offset"
+        }
       }
     ],
     "bindings": [
@@ -454,13 +476,19 @@
       },
       {
         "binding_type": "view",
-        "source_control_name": "ks_dv_t_t",
+        "source_control_name": "ks_uhud_mainhand_t",
         "source_property_name": "#toggle_state",
-        "target_property_name": "#ks_dv_toggle"
+        "target_property_name": "#ks_uhud_mainhand_toggle"
       },
       {
         "binding_type": "view",
-        "source_property_name": "(#hud_visible and #ks_dv_toggle)",
+        "source_control_name": "__durability__",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_uhud_f8_durability"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_uhud_mainhand_toggle and #ks_uhud_f8_durability)",
         "target_property_name": "#visible"
       }
     ]
@@ -469,8 +497,8 @@
   // ---------- KS Utility HUD counters position wrapper (fullscreen neutral) ----------
   // Fullscreen so the inner counter row lands bottom-right, just above the
   // KS Inventory HUD grid (offset [-4,-52] in ks_uhud.ks_uhud_count_panel).
-  // Visibility follows the HUD menu Show toggle live (ks_uhud_counters_t, default $ks_uhud_counters_v true).
-  // Same split-toggle pattern as ks_invhud_pos (split toggle copy + local AND).
+  // Visibility follows the HUD menu Show toggle (ks_uhud_counters_t) and the
+  // F8+4 in-game toggle (__counters__), plus #hud_visible.
   "ks_uhud_counters_pos": {
     "type": "panel",
     "size": ["100%", "100%"],
@@ -480,7 +508,8 @@
     "visible": "$ks_uhud_counters_v",
     "layer": 44,
     "property_bag": {
-      "#ks_uhud_counters_toggle": true
+      "#ks_uhud_counters_toggle": true,
+      "#ks_uhud_f8_counters": true
     },
     "controls": [
       // Sibling collection probe: sums hotbar stacks into #count_* for the row below.
@@ -505,7 +534,13 @@
       },
       {
         "binding_type": "view",
-        "source_property_name": "(#hud_visible and #ks_uhud_counters_toggle)",
+        "source_control_name": "__counters__",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#ks_uhud_f8_counters"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_visible and #ks_uhud_counters_toggle and #ks_uhud_f8_counters)",
         "target_property_name": "#visible"
       }
     ]
