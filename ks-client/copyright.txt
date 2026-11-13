@@ -349,6 +349,23 @@ here. Respect their licenses — get permission before redistributing.
                 paths/namespaces/vars remain. Pack icon and manifest not
                 copied.
 
+21. Transparent Glass UI V3 — transparent inventory/crafting/dialog/tab/recipe-book textures
+    Author    : Baku
+    Source    : https://edge.mcpedl.com/files/9193/345/Baku_Transparent_Glass_UI.mcpack?ft=412596d986198a7f4f30354e33b9d449&bd=hi4hzt1jzz
+    Note      : All rights reserved — original UI recolor assets by Baku.
+                Only the transparent/low-opacity UI textures + their nineslice
+                .json specs were merged by path override; KS connected-hotbar
+                art (hotbar_0..8, hotbar_start/end_cap, selected_hotbar_slot)
+                was kept. Baku's pack icon, manifest, README and
+                ui/_global_variables.json were NOT copied. No UI JSON,
+                manifest or subpack changes.
+    Now       : `textures/ui/` transparent set — screen_background,
+                background_panel, dark_bg, cell_image*, dialog_background_*,
+                panel_outline, player_preview_border, recipe_book_*,
+                Tab* (vanilla uppercase paths), text_label_box + matching
+                `.json` nineslice/base_size specs; 90 PNGs added to both
+                texture lists.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Durability Viewer V-2.5 [RP] — EchoRif/ya_rifat (merged earlier as KS DV; replaced by the full Utility HUD V-1.5 merge in entry 20)
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
