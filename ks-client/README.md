@@ -2,7 +2,7 @@
 
 > **KS Client v1.0.1 by KS Warrior** (latest codebase; v1.0.0 retained for history)
 > A premium, mobile-focused PvP / Utility client resource pack for Minecraft Bedrock (min engine `1.21.120`).
-> Custom start screen, HUD (slot hotbar shortcuts + top-right Settings menu + Quick Totem + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show/Compact.)
+> Custom start screen, HUD (slot hotbar shortcuts + top-right Settings menu + inventory fast-totem button + F1/F3 keys + `ks_show_hud` "F1 -"), clear chat screen, mob + player health bars (always display), 3D hammer, top-left status readout (version + position), fullbright, clear glass / glass doors, connected hotbar, clean touch controls, and configurable UI modules in one pack. (Inventory HUD bottom-right grid + HUD-menu Show/Compact.)
 
 - **Pack:** `resource_packs/KS Client`
 - **Type:** Resource pack (`resources` module)
@@ -312,7 +312,7 @@ ks-client/
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the top-right Settings menu is always on.
 3. **Use:**
    - Start screen → `TAP TO START` / skin preview with idle bob / bell inbox / KS settings + dressing buttons (HUD SETTINGS gear button removed).
-   - HUD: numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (Settings Show/Compact); top-right gear opens Settings (Quick Totem, hotbar, InvHUD, F1/F3/durability/counters); Quick Totem button sits bottom-middle and opens the inventory equip panel; F1 top-middle [-39,0.5] hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 top-middle [38.5,0.5] toggles debug readout left + right (same-to-same Default-mobile context); vanilla paperdoll renderer kept. `ks_hud_keys` remains stubbed empty, `ks_f3_inv_counter_main` 36-probe counter live.
+   - HUD: numbered slot buttons switch hotbar; bottom-right 9x4 inventory grid (Settings Show/Compact); top-right gear opens Settings (Quick Totem, hotbar, InvHUD, F1/F3/durability/counters); draggable fast-totem button in the inventory equips from inventory/hotbar (tap / `menu_ok` / key `1`); F1 top-middle [-39,0.5] hides HUD → bottom-center "F1 -" bar (`ks_show_hud`) re-shows it; F3 top-middle [38.5,0.5] toggles debug readout left + right (same-to-same Default-mobile context); vanilla paperdoll renderer kept. `ks_hud_keys` remains stubbed empty, `ks_f3_inv_counter_main` 36-probe counter live.
    - Chat: background hidden, autocomplete/tab/up/down buttons (always on — no toggle, no subpack).
    - Mobs + players: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
