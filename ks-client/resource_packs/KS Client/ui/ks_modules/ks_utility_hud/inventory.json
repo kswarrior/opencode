@@ -474,7 +474,7 @@
   },
   "ks_uhud_hotbar_totem_slots": {
     "type": "stack_panel",
-    "size": [ 0, 0 ],
+    "size": [ "100%", "100%" ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "$target_collection": "hotbar_items",
@@ -534,7 +534,7 @@
   },
   "ks_uhud_totem_slots": {
     "type": "stack_panel",
-    "size": [ 0, 0 ],
+    "size": [ "100%", "100%" ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "$target_collection": "inventory_items",
@@ -679,7 +679,7 @@
   },
   "ks_uhud_totem_slot": {
     "type": "panel",
-    "size": [ 0, 0 ],
+    "size": [ "100%", 0 ],
     "controls": [
       {
         "action_button": {
