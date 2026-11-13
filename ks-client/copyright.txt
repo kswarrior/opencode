@@ -383,6 +383,23 @@ here. Respect their licenses — get permission before redistributing.
                 (`ry_STI:*`, `$ry_STI:anchor`) renamed to KS style; pack
                 icon, manifest, `ui/config` file and owner name not copied.
 
+23. Bundle Item Counter — bundle contents count replaces the storage bar
+    Author    : itzriyo157 — Bundle Item Counter V0-1
+    Source    : https://mcpedl.com/bundle-item-counter
+    Now       : `property/bundle_item_counter.json` (root `property/`,
+                registered in `ui/_ui_defs.json`) — label template with
+                owner namespace `ryBIC:item_counter` renamed to
+                `ks_bundle_counter`; `ui/gameplay_common.json` (namespace
+                `gameplay`), `ui/hud_screen.json` (namespace `hud`),
+                `ui/ui_common.json` (namespace `common`) and
+                `ui/inventory_screen.json` (namespace `crafting`) insert the
+                label and hide the vanilla bundle storage bars;
+                `ui/_global_variables.json` keeps the upstream parity flag
+                `$is_bundle_item_counter_pack_enabled`. Source override files
+                were re-serialized as valid single-root JSON with their
+                required namespaces; pack icon, manifest, owner name and the
+                source's duplicate trailing `{}` blocks were not copied.
+
 Removed again after merge (no longer in pack, kept here for history):
 - Durability Viewer V-2.5 [RP] — EchoRif/ya_rifat (merged earlier as KS DV; replaced by the full Utility HUD V-1.5 merge in entry 20)
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
