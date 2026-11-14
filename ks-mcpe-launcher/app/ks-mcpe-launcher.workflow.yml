@@ -103,7 +103,7 @@ jobs:
       - name: Upload APK to GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ inputs.release_tag || github.ref_name }}
+          tag_name: ${{ inputs.release_tag || 'ks-mcpe-launcher' }}
           files: |
             /tmp/ks-mcpe-build/dist/*.apk
             /tmp/ks-mcpe-build/dist/*.sha256
