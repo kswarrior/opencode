@@ -2680,6 +2680,10 @@
     .line 18
     invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setContentView(Landroid/view/View;)V
 
+    sget p1, Lorg/levimc/launcher/R$id;->nav_tab_content:I
+
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setActiveNavTab(I)V
+
     .line 19
     .line 20
     .line 21

@@ -1715,6 +1715,10 @@
     .line 6
     invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setContentView(I)V
 
+    sget p1, Lorg/levimc/launcher/R$id;->nav_tab_mods:I
+
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setActiveNavTab(I)V
+
     .line 7
     .line 8
     .line 9
