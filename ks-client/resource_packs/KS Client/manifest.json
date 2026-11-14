@@ -27,19 +27,11 @@
   "settings": [
     {
       "type": "label",
-      "text": "§l§bKS CLIENT §r§7— v1.0.7 PACK SETTINGS"
-    },
-    {
-      "type": "label",
-      "text": "§7Saved per player and applied in-game instantly."
-    },
-    {
-      "type": "label",
-      "text": "§l§a▬▬▬ HEALTH BARS ▬▬▬"
+      "text": "§l§bKS CLIENT §r§7— v1.0.7 PACK SETTINGS §8| §7Saved per player and applied instantly. Hotbar, F1/F3, Inventory HUD, Quick Totem, durability, counters, tooltip and crosshair stay in the KS Settings gear (top-right). Fullbright, clear glass and connected hotbar stay on."
     },
     {
       "type": "dropdown",
-      "text": "Health Bar Display",
+      "text": "§l§a▬ HEALTH BARS ▬ §r§fHealth Bar Display",
       "name": "ks:health_bar_mode",
       "default": "always",
       "options": [
@@ -80,20 +72,16 @@
     },
     {
       "type": "slider",
-      "text": "Health Bar Height Offset",
+      "text": "Health Bar Height (20 = default)",
       "name": "ks:health_bar_y",
-      "min": -20,
-      "max": 20,
+      "min": 1,
+      "max": 40,
       "step": 1,
-      "default": 0
-    },
-    {
-      "type": "label",
-      "text": "§l§d▬▬▬ 3D HAMMER ▬▬▬"
+      "default": 20
     },
     {
       "type": "toggle",
-      "text": "Show 3D Hammer",
+      "text": "§l§d▬ 3D HAMMER ▬ §r§fShow 3D Hammer",
       "name": "ks:hammer",
       "default": true
     },
@@ -105,26 +93,6 @@
       "max": 200,
       "step": 10,
       "default": 100
-    },
-    {
-      "type": "label",
-      "text": "§l§e▬▬▬ HUD & UTILITY ▬▬▬"
-    },
-    {
-      "type": "label",
-      "text": "§7Hotbar, F1/F3, Inventory HUD, Quick Totem, durability,"
-    },
-    {
-      "type": "label",
-      "text": "§7counters, tooltip and crosshair are changed in-game"
-    },
-    {
-      "type": "label",
-      "text": "§7from the KS Settings gear (top-right corner)."
-    },
-    {
-      "type": "label",
-      "text": "§7Fullbright, clear glass and connected hotbar stay on."
     }
   ]
 }

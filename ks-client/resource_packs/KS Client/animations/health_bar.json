@@ -6,7 +6,7 @@
             "bones": {
                 "health_bar": {
                     "rotation": [ "q.camera_rotation(0)", "q.camera_rotation(1) - q.body_y_rotation", 0 ],
-                    "position": [ 0, "v.health_bar_position + query.get_pack_setting('ks:health_bar_y')", 0 ],
+                    "position": [ 0, "v.health_bar_position + (query.get_pack_setting('ks:health_bar_y') - 20)", 0 ],
                     "scale": "q.is_in_ui || q.is_invisible || !q.is_alive || query.is_pack_setting_selected('ks:health_bar_mode','off') || (query.is_pack_setting_selected('ks:health_bar_mode','hurt') && q.health >= q.max_health) ? 0 : (0.020 / v.health_bar_scale) * (math.max(query.get_pack_setting('ks:health_bar_scale'), 1) / 100.0)"
                 },
                 "h1": {

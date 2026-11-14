@@ -328,7 +328,7 @@ What it is: a real options page inside Minecraft's native Pack Settings screen (
 How it works:
 - `manifest.json` uses `format_version: 3`, `min_engine_version: "1.21.130"` and a `settings` array of `label` / `toggle` / `slider` / `dropdown` entries (`ks:` namespace).
 - Resource-pack UI JSON cannot read pack settings; only Molang can. The pack uses `query.get_pack_setting('name')`, `query.is_pack_setting_enabled('name')` and `query.is_pack_setting_selected('name','value')`.
-- Wired settings: health-bar display mode (`ks:health_bar_mode`: always / hurt / off), heart icon (`ks:health_bar_icon`), HP digits (`ks:health_bar_digits`), bar size (`ks:health_bar_scale`, 50–200%), height offset (`ks:health_bar_y`, -20…20); 3D hammer on/off (`ks:hammer`) and hammer size (`ks:hammer_scale`, 50–200%).
+- Wired settings: health-bar display mode (`ks:health_bar_mode`: always / hurt / off), heart icon (`ks:health_bar_icon`), HP digits (`ks:health_bar_digits`), bar size (`ks:health_bar_scale`, 50–200%), bar height (`ks:health_bar_y`, 1–40, 20 = default); 3D hammer on/off (`ks:hammer`) and hammer size (`ks:hammer_scale`, 50–200%).
 - Consumers: `animations/health_bar.json` (root position/scale + `h1-h3` / `fa-fe` child scales) and `animations/mace.animation.json` (bone `mace` scale in first/third-person holds).
 - Hotbar, F1/F3, Inventory HUD, Quick Totem, durability, counters, tooltip and crosshair remain in the KS Settings gear menu (§2.2) because their UI JSON cannot read pack settings.
 - Format/technique demonstrated by OS Client (oSkullo); no OS Client files or assets were copied — see `copyright.txt` entry 25.
