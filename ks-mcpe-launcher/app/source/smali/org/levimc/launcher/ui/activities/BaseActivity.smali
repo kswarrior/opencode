@@ -1926,7 +1926,7 @@
 
     .line 8
     .line 9
-    filled-new-array {v0, v1, v2, v3, v4, v5, v6}, [I
+    filled-new-array/range {v0 .. v6}, [I
 
     .line 10
     .line 11
@@ -3932,7 +3932,7 @@
 
     .line 13
     .line 14
-    filled-new-array {v0, v1, v2, v3, v4, v5, v6}, [I
+    filled-new-array/range {v0 .. v6}, [I
 
     .line 15
     .line 16
