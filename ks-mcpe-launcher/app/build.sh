@@ -155,6 +155,16 @@ manifest = re.sub(
     manifest,
 )
 
+# Signature-level permissions declared by the app (for example the
+# androidx DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION) must move with the
+# application id. Otherwise Android rejects the clone when the original app
+# is installed, because the same permission would be owned by another key.
+manifest = re.sub(
+    r'(<(?:permission|uses-permission)\b[^>]*android:name=")' + re.escape(old_id) + r'(?=[."])',
+    lambda m: m.group(1) + new_id,
+    manifest,
+)
+
 for attr in ("android:taskAffinity", "android:targetPackage"):
     manifest = re.sub(
         r'(' + re.escape(attr) + r'=")' + re.escape(old_id) + r'(")',
@@ -166,6 +176,11 @@ if f'package="{new_id}"' not in manifest:
     sys.exit("manifest package rewrite failed")
 if re.search(r'android:authorities="' + re.escape(old_id) + r'(?=[."])', manifest):
     sys.exit("manifest authority rewrite failed")
+if re.search(
+    r'<(?:permission|uses-permission)\b[^>]*android:name="' + re.escape(old_id) + r'(?=[."])',
+    manifest,
+):
+    sys.exit("manifest permission rewrite failed")
 
 manifest_path.write_text(manifest, encoding="utf-8")
 
