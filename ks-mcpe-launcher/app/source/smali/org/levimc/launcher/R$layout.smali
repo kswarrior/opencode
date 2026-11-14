@@ -51,8 +51,6 @@
 
 .field public static activity_options_editor:I = 0x7f0d002e
 
-.field public static activity_quick_launch:I = 0x7f0d002f
-
 .field public static activity_settings:I = 0x7f0d0030
 
 .field public static activity_splash:I = 0x7f0d0031
@@ -138,8 +136,6 @@
 .field public static item_property_header:I = 0x7f0d0075
 
 .field public static item_quick_action:I = 0x7f0d0076
-
-.field public static item_quick_launch:I = 0x7f0d0077
 
 .field public static item_resource_pack:I = 0x7f0d0078
 

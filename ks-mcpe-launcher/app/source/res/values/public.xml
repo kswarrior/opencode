@@ -5536,7 +5536,6 @@
     <public type="layout" name="activity_msft_login" id="0x7f0d002c" />
     <public type="layout" name="activity_news" id="0x7f0d002d" />
     <public type="layout" name="activity_options_editor" id="0x7f0d002e" />
-    <public type="layout" name="activity_quick_launch" id="0x7f0d002f" />
     <public type="layout" name="activity_settings" id="0x7f0d0030" />
     <public type="layout" name="activity_splash" id="0x7f0d0031" />
     <public type="layout" name="activity_world_editor" id="0x7f0d0032" />
@@ -5608,7 +5607,6 @@
     <public type="layout" name="item_option_property" id="0x7f0d0074" />
     <public type="layout" name="item_property_header" id="0x7f0d0075" />
     <public type="layout" name="item_quick_action" id="0x7f0d0076" />
-    <public type="layout" name="item_quick_launch" id="0x7f0d0077" />
     <public type="layout" name="item_resource_pack" id="0x7f0d0078" />
     <public type="layout" name="item_screenshot" id="0x7f0d0079" />
     <public type="layout" name="item_server" id="0x7f0d007a" />
@@ -6372,7 +6370,6 @@
     <public type="string" name="minecraft_not_installed_title" id="0x7f130271" />
     <public type="string" name="minecraft_playstore_required_message" id="0x7f130272" />
     <public type="string" name="minecraft_playstore_required_title" id="0x7f130273" />
-    <public type="string" name="misc_section_title" id="0x7f130274" />
     <public type="string" name="missing_libs_message" id="0x7f130275" />
     <public type="string" name="missing_libs_title" id="0x7f130276" />
     <public type="string" name="mod_actions_title" id="0x7f130277" />

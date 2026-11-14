@@ -904,8 +904,6 @@
 
 .field public static minecraft_playstore_required_title:I = 0x7f130273
 
-.field public static misc_section_title:I = 0x7f130274
-
 .field public static missing_libs_message:I = 0x7f130275
 
 .field public static missing_libs_title:I = 0x7f130276
