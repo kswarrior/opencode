@@ -2,50 +2,46 @@
 
 This folder builds an installable clone of the upstream LeviLauncher Android
 release. The clone keeps the upstream code and features, but installs under the
-application id `com.ks.mcpe.launcher` with its own launcher label and signing
-key.
-
-## How it works
-
-`build.sh` performs the whole build inside a temporary working directory
-(`/tmp/ks-mcpe-build` by default):
-
-1. Downloads the pinned upstream APK and verifies its SHA-256.
-2. Decodes it with a pinned Apktool release.
-3. Rewrites the application id, provider authorities, signature-level
-   permission names, `BuildConfig.APPLICATION_ID`, and the launcher label.
-   Renaming the permission (e.g. the androidx
-   `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`) is required so the clone can
-   be installed next to the original app instead of failing with
-   `INSTALL_FAILED_DUPLICATE_PERMISSION`.
-4. Patches `lib/arm64-v8a/libgxcore.so` to bypass its native package-name
-   verifier. Upstream gates `JNI_OnLoad` on a 19-character package id plus a
-   hard-coded hash; the clone id is longer, which otherwise makes
-   `System.loadLibrary("gxcore")` fail during Minecraft preparation.
-5. Applies repository overlays from `ks-mcpe-launcher/app/overlays`: the About
-   page credit and the icon-only Settings button in the right side of the
-   header.
-6. Rebuilds, zipaligns, signs, and verifies the APK.
-7. Prints the package id, version, and SHA-256 of the result.
-
-The decoded files and the output APK are never stored in this repository.
+application id `com.ks.mcpe.launcher` with its own launcher label, branding and
+signing key.
 
 ## Repository layout
 
-All clone code and customization sources live in `ks-mcpe-launcher/app`:
+Everything needed to build lives in `ks-mcpe-launcher/app`:
 
-- `build.sh` - download, patch, rebuild, align, sign, and verify.
-- `overlays/` - full-file replacements copied into the decoded APK tree. Add
-  or edit UI files here, not in `/tmp`.
-- `patches/` - helper scripts called by the build (currently the overlay
-  copier).
-- `ks-mcpe-launcher.workflow.yml` - CI build and release workflow.
+- `source/` - the full apktool project decoded from the pinned upstream APK
+  (manifest, `res/`, `smali/`, `lib/`, `assets/`, `apktool.yml`). It contains
+  every file from the launcher, not only the changed ones, and is the single
+  source of truth.
+- `build.sh` - copies the source tree, applies the clone version, rebuilds,
+  aligns, signs and verifies the APK.
 
-`/tmp/ks-mcpe-build` is a disposable build workspace only. It holds downloads,
-the decoded APK, the generated signing key, and `dist/` output. Do not edit
-files there: the next build deletes and re-decodes the APK, then reapplies the
-repository overlays. Anything that must survive a build belongs in
-`ks-mcpe-launcher/app`.
+`/tmp/ks-mcpe-build` is a disposable build workspace only. It holds the apktool
+jar, the copied tree, the generated signing key and `dist/` output. Do not edit
+files there: the next build deletes and recopies the tree. Make changes in
+`app/source` and commit them.
+
+The decoded project has roughly 12,000 files and about 180 MB, so the
+repository is large. Edit files in `app/source` directly; there is no per-file
+overlay patch step.
+
+## Clone changes baked into the source tree
+
+- `AndroidManifest.xml` uses `com.ks.mcpe.launcher`, including provider
+  authorities, signature permissions, task affinity and target package, so the
+  clone can be installed next to the original LeviLauncher instead of failing
+  with `INSTALL_FAILED_DUPLICATE_PERMISSION`.
+- `BuildConfig.APPLICATION_ID` and the `app_name` resource match the clone.
+- The EULA title and message are branded "KS MCPE Launcher".
+- The About page shows a centered "Created by KS Warrior" credit, and the
+  header's Settings tab is an icon-only button at the far right.
+- `lib/arm64-v8a/libgxcore.so` has its native package-name verifier neutralised
+  (`mov w0,#1; ret`). Upstream gates `JNI_OnLoad` on a 19-character package id
+  plus a hard-coded hash, which otherwise makes `System.loadLibrary("gxcore")`
+  fail during Minecraft preparation.
+- `GithubReleaseUpdater.checkUpdate()` and `checkUpdateOnLaunch()` are no-ops
+  and the "Check for updates" button is removed, so the app no longer shows the
+  upstream update dialog or downloads updates.
 
 ## Local build
 
@@ -64,81 +60,36 @@ Useful environment variables:
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `WORKDIR` | `/tmp/ks-mcpe-build` | Downloads, decoded project, keystore, output |
-| `APP_ID` | `com.ks.mcpe.launcher` | Application id of the clone |
-| `APP_LABEL` | `KS MCPE Launcher` | Launcher name (`APP_LABEL=` keeps upstream) |
+| `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace and output |
+| `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
+| `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
 | `APP_VERSION` | `1.0.1` | Clone versionName written to `apktool.yml` |
 | `APP_VERSION_CODE` | `10001` | Clone versionCode written to `apktool.yml` |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output file name prefix |
-| `BASE_APK_URL` | pinned release asset | Upstream APK to clone |
-| `BASE_APK_SHA256` | pinned | Expected SHA-256 of the upstream APK |
-| `BASE_APK_SRC` | unset | Use a local upstream APK instead of downloading |
 | `KEYSTORE` | `$WORKDIR/signing/ks-mcpe.keystore` | Signing keystore |
 | `KEYSTORE_PASSWORD` | generated once | Keystore password |
 | `KEY_ALIAS` | `ksmcpe` | Key alias |
 | `KEY_PASSWORD` | same as keystore | Key password |
 | `CREDENTIALS_FILE` | next to keystore | Stores generated password/alias |
 
+Before building, `build.sh` verifies that the source tree still has the clone
+application id, the branded EULA, disabled update entry points and the patched
+native verifier. It refuses to build if any of those markers is missing.
+
 When no keystore exists, `build.sh` generates one and saves its generated
 credentials next to it so later builds keep the same signature. Back up that
 directory if you want to keep update compatibility.
-
-## GitHub Actions
-
-`ks-mcpe-launcher.workflow.yml` builds the clone and uploads
-`KS-MCPE-Launcher-<version>.apk` plus its `.sha256` file to the
-`ks-mcpe-launcher` release (configurable with the `release_tag` input). The
-`app_version` and `app_version_code` inputs default to `1.0.1` and `10001`.
-
-Install it once as a real workflow (the automation token cannot push files
-under `.github/workflows`, so this copy is staged here):
-
-```bash
-mkdir -p .github/workflows
-cp ks-mcpe-launcher/app/ks-mcpe-launcher.workflow.yml \
-  .github/workflows/ks-mcpe-launcher.yml
-git add .github/workflows/ks-mcpe-launcher.yml
-git commit -m "ci: add KS MCPE Launcher build workflow"
-git push
-```
-
-Then run it with `workflow_dispatch`, or push the `ks-mcpe-launcher` tag.
-
-### Signing in CI
-
-Recommended: create a keystore once and store it as repository secrets so every
-release can update the previous installation.
-
-```bash
-keytool -genkeypair -keystore ks-mcpe.keystore -storetype PKCS12 \
-  -alias ksmcpe -keyalg RSA -keysize 4096 -validity 10950 \
-  -dname "CN=KS MCPE Launcher, OU=KS, O=KS, L=Unknown, ST=Unknown, C=US"
-base64 -w0 ks-mcpe.keystore
-```
-
-Set:
-
-- `KS_MCPE_KEYSTORE_BASE64` – base64 of the keystore
-- `KS_MCPE_KEYSTORE_PASSWORD` – keystore password
-- `KS_MCPE_KEY_ALIAS` – key alias (optional, defaults to `ksmcpe`)
-- `KS_MCPE_KEY_PASSWORD` – key password (optional, defaults to the keystore password)
-
-Without these secrets the workflow generates a keystore on the first run and
-keeps it in the Actions cache for later runs. If that cache is lost, a new key
-is generated and users must uninstall the old clone before installing the new
-build.
 
 ## Release retention
 
 - Older `KS-MCPE-Launcher-*` assets are kept for rollback. Do not delete them
   unless the user explicitly asks.
 - Publishing a version only replaces that version's APK and `.sha256` assets.
-  The workflow's `overwrite_files: true` does not remove other versions.
 
 ## Known limitations
 
-- The in-app update check still queries the upstream LeviLauncher repository.
-  Use this repository's `ks-mcpe-launcher` release for clone updates.
+- In-app self-update is intentionally disabled. Install new builds manually
+  from this repository's `ks-mcpe-launcher` release.
 - Google Play Games, Play billing, and Firebase news notifications are tied to
   the upstream application id/signature and may not work under the clone id.
   Core launcher features (Minecraft versions, mods, worlds, backups, accounts)

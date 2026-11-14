@@ -1,6 +1,6 @@
 ---
 name: ks-mcpe-build
-description: Use when building, rebuilding, repacking, patching, signing, or verifying the KS MCPE Launcher APK (com.ks.mcpe.launcher) from the upstream LeviLauncher release, including manifest package/permission/authority rewrites, resource IDs, zipalign, and apksigner checks. Trigger on ks-mcpe-launcher, app/build.sh, LeviLauncher, com.ks.mcpe.launcher, or APK clone/repack work in this repository.
+description: Use when building, rebuilding, repacking, patching, signing, or verifying the KS MCPE Launcher APK (com.ks.mcpe.launcher) from the checked-in decoded LeviLauncher source tree, including source-tree customizations, zipalign, and apksigner checks. Trigger on ks-mcpe-launcher, app/build.sh, app/source, LeviLauncher, com.ks.mcpe.launcher, or APK clone/repack work in this repository.
 ---
 
 # KS MCPE Launcher build
@@ -20,85 +20,99 @@ commit `380a2b722990d0c018232e4ffb2d302ebc2b81ba`).
 ANDROID_HOME=/usr/local/lib/android/sdk ks-mcpe-launcher/app/build.sh
 ```
 
-All work happens under `WORKDIR` (default `/tmp/ks-mcpe-build`); nothing
-decoded or signed is stored in the repository. The output is
+The build copies the checked-in decoded project in
+`ks-mcpe-launcher/app/source` into `WORKDIR` (default `/tmp/ks-mcpe-build`),
+writes the clone version into `apktool.yml`, verifies the clone customizations,
+rebuilds with the pinned apktool, zipaligns, signs and verifies. The output is
 `/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-<version>.apk` plus a `.sha256` file.
 
-Requirements: Java 21+, Python 3, curl, `unzip`, Android build-tools
-(`zipalign`, `apksigner`, `aapt2`).
+Requirements: Java 21+, Python 3, curl, Android build-tools (`zipalign`,
+`apksigner`, `aapt2`).
 
 ## Workspace layout
 
-- Persistent source: `ks-mcpe-launcher/app` (`build.sh`, `overlays/`,
-  `patches/`, workflow, README).
-- Disposable build workspace: `/tmp/ks-mcpe-build` (downloads, decoded tree,
+- Persistent source: `ks-mcpe-launcher/app/source` - the complete apktool
+  decode of the launcher (manifest, `res/`, `smali/`, `lib/`, `assets/`,
+  `apktool.yml`). It contains every file, not only changed ones, roughly
+  12,000 files / 180 MB, and is the single source of truth.
+- Build script: `ks-mcpe-launcher/app/build.sh`.
+- Disposable build workspace: `/tmp/ks-mcpe-build` (apktool jar, copied tree,
   generated signing key, `dist/`).
-- Never hand-edit `/tmp/ks-mcpe-build/decoded`; the next build deletes and
-  re-decodes it. Put UI/resource replacements in `app/overlays` and build-step
-  logic in `app/patches` or `build.sh`.
-- Overlay files are full-file replacements and use paths relative to the APK
-  root, for example `overlays/res/layout/nav_bar.xml`.
+- Never hand-edit `/tmp/ks-mcpe-build/decoded`; every build deletes it and
+  recopies `app/source`. Make changes in `app/source` and commit them.
+- There is no overlay or per-file patch layer. Full-file replacements and
+  build-time customizations live directly in `app/source` or in `build.sh`.
 - The keystore under `/tmp/ks-mcpe-build/signing` is ephemeral. Back it up or
-  configure the CI signing secrets; a lost key changes the signature.
+  configure CI signing secrets; a lost key changes the signature.
+- Keep the root `.gitignore` exceptions for
+  `ks-mcpe-launcher/app/source/**/{server,target,debug}/`. The decoded Java
+  packages include directories with those names; without the exceptions
+  build-critical smali files are silently omitted from git.
 
-Pinned inputs (do not bump casually):
+Pinned inputs:
 
 | Input | Value |
 | --- | --- |
-| Upstream APK | `https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/LeviLauncher-v1.6.1-release.apk` |
-| Upstream SHA-256 | `2cf34efb13546dc070840aebf3657cdde5c27fb9d9f250e53384995c1a3c02ce` |
+| Source base APK | `https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/LeviLauncher-v1.6.1-release.apk` |
+| Source base SHA-256 | `2cf34efb13546dc070840aebf3657cdde5c27fb9d9f250e53384995c1a3c02ce` |
 | Upstream package | `org.levimc.launcher` |
 | Upstream version | `1.6.1` (`versionCode 58293102`, minSdk 28, target 35) |
 | Apktool | `3.0.3`, SHA-256 `dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423` |
+
+The base APK is only needed when regenerating `app/source`; normal builds read
+the committed tree and never download the upstream APK.
 
 ## Environment variables
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `WORKDIR` | `/tmp/ks-mcpe-build` | Downloads, decoded tree, keystore, output |
-| `APP_ID` | `com.ks.mcpe.launcher` | Application id of the clone |
-| `APP_LABEL` | `KS MCPE Launcher` | Launcher label; empty keeps upstream |
+| `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable workspace and output |
+| `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
+| `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
 | `APP_VERSION` | `1.0.1` | Clone versionName |
 | `APP_VERSION_CODE` | `10001` | Clone versionCode |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
-| `BASE_APK_URL` / `BASE_APK_SHA256` | pinned | Upstream APK and its hash |
-| `BASE_APK_SRC` | unset | Use a local upstream APK file instead of downloading |
 | `KEYSTORE` | `$WORKDIR/signing/ks-mcpe.keystore` | Signing keystore |
 | `CREDENTIALS_FILE` | next to keystore | Generated password/alias storage |
 | `KEY_ALIAS` / `KEY_PASSWORD` / `KEYSTORE_PASSWORD` | generated once | Signing credentials |
 
-## What the patch step does
+## Customizations in the source tree
 
-`build.sh` decodes the APK, then rewrites:
+`app/source` already contains all clone changes:
 
-1. `<manifest package>` from `org.levimc.launcher` to `APP_ID`.
-2. `android:authorities` for every provider, so the clone does not collide
-   with the original app (`fileprovider`, `playgamesinitprovider`,
+1. `<manifest package>` is `com.ks.mcpe.launcher`, and `android:authorities`
+   for every provider use the clone id so the clone does not collide with the
+   original app (`fileprovider`, `playgamesinitprovider`,
    `firebaseinitprovider`, `androidx-startup`).
-3. **Signature-level permission names**: `<permission>` and
-   `<uses-permission>` entries starting with the old id (notably
-   `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`). Android rejects a redeclared
-   signature permission owned by a different certificate with
-   `INSTALL_FAILED_DUPLICATE_PERMISSION` when the original is installed.
-   Smali resolves this permission via `getPackageName()`, so the manifest
-   rename is the correct fix; no smali edit is needed.
-4. `BuildConfig.APPLICATION_ID` in smali.
-5. `app_name` in every `res/values*/strings.xml` when `APP_LABEL` is set.
-6. The native package-name verifier in `lib/arm64-v8a/libgxcore.so`.
-   `JNI_OnLoad` reads `/proc/self/cmdline` and
-   `ApplicationInfo.packageName` and requires the upstream 19-character id
-   plus a hard-coded hash; without this patch `System.loadLibrary("gxcore")`
-   fails with `Failed to load native image preparation`. The build rewrites
-   the verifier at virtual address `0x1990d4` (`cmp x1,#0x13; b.ne fail`) to
-   `mov w0,#1; ret` and refuses to build if the expected bytes are absent.
-7. Repository overlays from `app/overlays` (About page credit and the
-   icon-only Settings button in the right side of the header).
+2. Signature-level permission names (`<permission>` and
+   `<uses-permission>`, notably
+   `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`) use the clone id. Android
+   rejects a redeclared signature permission owned by a different certificate
+   with `INSTALL_FAILED_DUPLICATE_PERMISSION` when the original is installed.
+3. `android:taskAffinity` and `android:targetPackage` use the clone id.
+4. `BuildConfig.APPLICATION_ID` in smali uses the clone id.
+5. `app_name` is `KS MCPE Launcher` in every `res/values*/strings.xml`.
+6. `eula_title` and `eula_message` are branded "KS MCPE Launcher" (translated
+   EULA texts keep their language but use the new brand name).
+7. `res/layout/activity_about.xml` is the centered "Created by KS Warrior"
+   page, and `res/layout/nav_bar.xml` has a text-less, 36dp icon-only Settings
+   button at the far right of the header.
+8. The native package-name verifier in `lib/arm64-v8a/libgxcore.so` is
+   neutralised at virtual address `0x1990d4` (`cmp x1,#0x13; b.ne fail`) to
+   `mov w0,#1; ret`. `JNI_OnLoad` otherwise requires the upstream
+   19-character id plus a hard-coded hash, and `System.loadLibrary("gxcore")`
+   fails with `Failed to load native image preparation`.
+9. The update system is disabled: `GithubReleaseUpdater.checkUpdate()` and
+   `checkUpdateOnLaunch()` are no-op `return-void` methods, the launch-time
+   call is removed from `MainActivity`, and the "Check for updates" button and
+   its listener are removed from the settings screen.
 
-Then it rebuilds with apktool, zipaligns (`-p 4`), signs with v1+v2+v3, and
-verifies package/version with `aapt2`.
+`build.sh` verifies the application id, branded EULA, disabled update entry
+points and native patch before assembling, and refuses to build if a marker is
+missing.
 
 Never rename only the manifest package and leave permissions or authorities
-behind — that produces install failures that only appear when the original
+behind - that produces install failures that only appear when the original
 LeviLauncher is installed.
 
 ## Verify a build
@@ -113,9 +127,9 @@ unzip -lv dist/KS-MCPE-Launcher-1.0.1.apk | grep -E 'resources.arsc|classes.dex'
 
 - `resources.arsc` must be `Stored` and 4-byte aligned (Android 11+ install
   requirement for apps targeting API 30+).
-- The manifest must show the new package, renamed authorities, and renamed
-  permission. Decode a copy with the pinned apktool to inspect it, but do not
-  leave decoded output in the repository.
+- Decode a copy of the APK with the pinned apktool to confirm the EULA strings,
+  the no-op updater methods and the layouts; do not leave decoded output in the
+  repository.
 - Resource IDs must stay identical to upstream (apktool 3 keeps them). Do not
   run `aapt2 optimize` or `--enable-sparse-encoding` on this repack; ID
   renumbering breaks the unmodified smali.
@@ -124,10 +138,11 @@ unzip -lv dist/KS-MCPE-Launcher-1.0.1.apk | grep -E 'resources.arsc|classes.dex'
 
 ## Rules
 
-- Do not commit `WORKDIR`, decoded trees, APKs, keystores, or
-  `credentials.env`. All are generated and belong outside the repo.
-- Do not push `.github/workflows/*` with the automation token; it is rejected
-  without the `workflows` permission. The workflow lives staged at
-  `app/ks-mcpe-launcher.workflow.yml` (see the `ks-mcpe-release` skill).
+- Do not commit `WORKDIR`, built APKs, keystores, or `credentials.env`. All
+  are generated and belong outside the repo.
+- The full decoded project in `app/source` is intentionally committed. Do not
+  replace it with patch/overlay files again.
+- Do not reintroduce `ks-mcpe-launcher.workflow.yml` or a CI workflow for this
+  project; it was removed on request and builds are local.
 - Attribution: keep upstream license/notices inside the APK; the clone is not
   an official LeviLauncher build.
