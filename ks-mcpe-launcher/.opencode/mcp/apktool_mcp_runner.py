@@ -1,28 +1,22 @@
 """Run apktool-mcp-server without polluting the MCP stdio stream.
 
-The upstream server prints an ASCII banner to stdout before starting the
-transport. MCP stdio clients expect newline-delimited JSON-RPC on stdout, so
-redirect that banner to stderr before executing the server script.
+The upstream server prints banners, configuration, and a health-check report
+to stdout before starting the transport. MCP stdio clients expect
+newline-delimited JSON-RPC on stdout, so send every print() to stderr instead.
+The FastMCP transport writes protocol messages through its own streams, not
+through print().
 """
 
 import builtins
 import runpy
 import sys
 
-_BANNER_PREFIXES = (
-    "=",
-    "APKTool MCP Server",
-    "By ZinjaCoder",
-    "To Report Issues",
-)
-
 _real_print = builtins.print
 
 
 def _print(*args, **kwargs):
     if kwargs.get("file", sys.stdout) is sys.stdout:
-        if not args or (isinstance(args[0], str) and args[0].startswith(_BANNER_PREFIXES)):
-            kwargs["file"] = sys.stderr
+        kwargs["file"] = sys.stderr
     _real_print(*args, **kwargs)
 
 
