@@ -330,9 +330,9 @@ ks-client/
 │   ├── check_player_animation_loop.py ← strict-JSON / dotfile / loop / shield-armor-sword / refs / mct loop checker
 │   └── recheck_player_animation.sh    ← bash wrapper (iterations delay)
 ├── out/                             ← mct validate outputs (9 files: `ks client.*` + `ks-clean.*` + `ks-client.*`, each csv/mcr.json/report.html)
-├── release/                         ← shippable .mcpack (5 files: v1.0.0, v1.0.1, v1.0.2, v1.0.4, v1.0.5)
+├── release/                         ← shippable .mcpack (6 files: v1.0.0, v1.0.1, v1.0.2, v1.0.4, v1.0.5, v1.0.6)
 ├── resource_packs/KS Client/
-│   ├── manifest.json                ← name KS Client, v1.0.5, min_engine 1.21.120, no subpacks, authors
+│   ├── manifest.json                ← name KS Client, v1.0.6, min_engine 1.21.120, no subpacks, authors
 │   ├── pack_icon.png
 │   ├── biomes_client.json           ← forces ks:fullbright in all 71 biomes (default + 70 per-biome, NoFog-all water colors)
 │   ├── fogs/ks_fullbright.json      ← nofog: air/weather render + water/lava/powder-snow 4000–10000
@@ -370,7 +370,7 @@ ks-client/
 
 ## 4. Installation & Usage In-Game
 
-1. Copy a file from `release/` (e.g. `KS-Client-v1.0.5.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
+1. Copy a file from `release/` (e.g. `KS-Client-v1.0.6.mcpack`) to your Bedrock device and open it — Minecraft imports “KS Client”.
 2. **Activate:** Settings → Storage / Resource Packs → My Packs → KS Client → Activate (top of list, above other UI packs). No subpacks — the top-right Settings menu is always on.
 3. **Use:**
    - Start screen → `TAP TO START` / skin preview with idle bob / bell inbox / KS settings + dressing buttons (HUD SETTINGS gear button removed).
@@ -483,9 +483,11 @@ redistributing: some upstream licenses require the creator's permission.
 
 ## 12. Version History
 
-`release/` contains the retained shippable builds (5 files: v1.0.0, v1.0.1, v1.0.2, v1.0.4, v1.0.5):
+`release/` contains the retained shippable builds (6 files: v1.0.0, v1.0.1, v1.0.2, v1.0.4, v1.0.5, v1.0.6):
 
-**`v1.0.5`** (current — Utility Inventory touch overlay merge: custom touch inventory, recipe book/search, crafting panel, tools/slot cyclers, in-inventory settings; KS armor panel wired to Armor Display; 14 textures; `_ui_defs` 31 entries; validation 0 errors / 0 warnings)
+**`v1.0.6`** (current — touch overlay fix: restored the draggable Quick Totem button to the Utility Inventory overlay (`ks_uhud_fast_totem` at the overlay root, same `$ks_uhud_totem_v`/size/offset config); validation 0 errors / 0 warnings)
+
+**`v1.0.5`** (previous — Utility Inventory touch overlay merge: custom touch inventory, recipe book/search, crafting panel, tools/slot cyclers, in-inventory settings; KS armor panel wired to Armor Display; 14 textures; `_ui_defs` 31 entries; validation 0 errors / 0 warnings)
 
 **`v1.0.4`** (previous — Bundle Item Counter UI merge (rebranded `ks_bundle_counter`, label template under `ui/property/`); 70 biome-schema warnings cleared)
 
@@ -497,7 +499,7 @@ redistributing: some upstream licenses require the creator's permission.
 
 **`v1.0.0`** (older — fresh baseline from the latest codebase; retained for history)
 
-Current (`manifest.json`): `KS Client v1.0.5`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
+Current (`manifest.json`): `KS Client v1.0.6`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
 
 ---
 
