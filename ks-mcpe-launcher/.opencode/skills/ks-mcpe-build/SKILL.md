@@ -58,6 +58,8 @@ Pinned inputs (do not bump casually):
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Downloads, decoded tree, keystore, output |
 | `APP_ID` | `com.ks.mcpe.launcher` | Application id of the clone |
 | `APP_LABEL` | `KS MCPE Launcher` | Launcher label; empty keeps upstream |
+| `APP_VERSION` | `1.0.1` | Clone versionName |
+| `APP_VERSION_CODE` | `10001` | Clone versionCode |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
 | `BASE_APK_URL` / `BASE_APK_SHA256` | pinned | Upstream APK and its hash |
 | `BASE_APK_SRC` | unset | Use a local upstream APK file instead of downloading |
@@ -89,6 +91,8 @@ Pinned inputs (do not bump casually):
    fails with `Failed to load native image preparation`. The build rewrites
    the verifier at virtual address `0x1990d4` (`cmp x1,#0x13; b.ne fail`) to
    `mov w0,#1; ret` and refuses to build if the expected bytes are absent.
+7. Repository overlays from `app/overlays` (About page credit and the
+   icon-only Settings button in the right side of the header).
 
 Then it rebuilds with apktool, zipaligns (`-p 4`), signs with v1+v2+v3, and
 verifies package/version with `aapt2`.
@@ -101,10 +105,10 @@ LeviLauncher is installed.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.6.1.apk | head -3
-$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.6.1.apk
-$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.6.1.apk
-unzip -lv dist/KS-MCPE-Launcher-1.6.1.apk | grep -E 'resources.arsc|classes.dex'
+$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.1.apk | head -3
+$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.1.apk
+$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.1.apk
+unzip -lv dist/KS-MCPE-Launcher-1.0.1.apk | grep -E 'resources.arsc|classes.dex'
 ```
 
 - `resources.arsc` must be `Stored` and 4-byte aligned (Android 11+ install
