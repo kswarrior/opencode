@@ -123,6 +123,14 @@ whenever signing configuration changes.
 
 - Upload only the current build outputs from `dist/`; never hand-edit the APK.
 - Do not delete older version assets unless the user explicitly requests it.
+- Never re-upload a replacement for an already-published version unless the
+  keystore that signed the existing asset is still available. The keystore is
+  ephemeral under `/tmp`; a rebuild with a new key changes the signature and
+  forces every user of that version to uninstall before updating. If the key is
+  gone, leave the published asset untouched.
+- Verify an existing release asset before rebuilding it: download it, check its
+  SHA-256, signature, version, overlays, and native patch. If it already matches
+  the current sources, no rebuild is needed.
 - The release tag stays `ks-mcpe-launcher`; do not create per-version releases.
 - The release **name** tracks the clone version (`v1.0.1`); the tag stays
   `ks-mcpe-launcher` so the pinned upstream asset URL remains valid.
