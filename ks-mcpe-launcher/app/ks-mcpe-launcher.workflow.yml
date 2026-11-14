@@ -15,12 +15,12 @@ on:
       app_version:
         description: "Clone versionName"
         required: false
-        default: "1.0.0"
+        default: "1.0.1"
         type: string
       app_version_code:
         description: "Clone versionCode"
         required: false
-        default: "10000"
+        default: "10001"
         type: string
   push:
     tags:
@@ -92,8 +92,8 @@ jobs:
           BASE_APK_URL: ${{ inputs.base_apk_url }}
           APP_ID: com.ks.mcpe.launcher
           APP_LABEL: KS MCPE Launcher
-          APP_VERSION: ${{ inputs.app_version || '1.0.0' }}
-          APP_VERSION_CODE: ${{ inputs.app_version_code || '10000' }}
+          APP_VERSION: ${{ inputs.app_version || '1.0.1' }}
+          APP_VERSION_CODE: ${{ inputs.app_version_code || '10001' }}
           KEYSTORE: /home/runner/ks-mcpe-signing/ks-mcpe.keystore
           CREDENTIALS_FILE: /home/runner/ks-mcpe-signing/credentials.env
           KEYSTORE_PASSWORD: ${{ secrets.KS_MCPE_KEYSTORE_PASSWORD }}
@@ -116,7 +116,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.release_tag || 'ks-mcpe-launcher' }}
-          name: v${{ inputs.app_version || '1.0.0' }}
+          name: v${{ inputs.app_version || '1.0.1' }}
           files: |
             /tmp/ks-mcpe-build/dist/*.apk
             /tmp/ks-mcpe-build/dist/*.sha256

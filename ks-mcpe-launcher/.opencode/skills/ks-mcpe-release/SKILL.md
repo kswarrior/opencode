@@ -11,7 +11,7 @@ Builds are published to the `ks-mcpe-launcher` release of
 Asset contract:
 
 - `KS-MCPE-Launcher-<version>.apk` (`<version>` is the clone version, default
-  `1.0.0`, not the upstream LeviLauncher version)
+  `1.0.1`, not the upstream LeviLauncher version)
 - `KS-MCPE-Launcher-<version>.apk.sha256` (output of `sha256sum`, two spaces
   between hash and file name)
 
@@ -52,7 +52,7 @@ done
 
 ```bash
 curl -fsSL -o /tmp/check.apk \
-  "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.0.apk"
+  "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.1.apk"
 sha256sum -c /tmp/check.apk.sha256   # after downloading the .sha256 asset
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
 $BT/aapt2 dump xmltree --file AndroidManifest.xml /tmp/check.apk | grep -E 'package=|DYNAMIC_RECEIVER|authorities' | head
@@ -82,7 +82,7 @@ Triggers: `workflow_dispatch` (optional `base_apk_url`, `release_tag`,
 `app_version`, `app_version_code`) and pushing the `ks-mcpe-launcher` tag. It
 builds with Java 21 and build-tools 35.0.0, uploads an artifact, and replaces
 release assets with `softprops/action-gh-release@v2` (`overwrite_files: true`).
-The clone version defaults to `1.0.0` / versionCode `10000`.
+The clone version defaults to `1.0.1` / versionCode `10001`.
 
 Signing secrets (recommended, keeps updates installable):
 
@@ -101,7 +101,7 @@ whenever signing configuration changes.
 
 - Upload only the current build outputs from `dist/`; never hand-edit the APK.
 - The release tag stays `ks-mcpe-launcher`; do not create per-version releases.
-- The release **name** tracks the clone version (`v1.0.0`); the tag stays
+- The release **name** tracks the clone version (`v1.0.1`); the tag stays
   `ks-mcpe-launcher` so the pinned upstream asset URL remains valid.
 - If the bot token lacks `contents: write`, release uploads fail; do not fall
   back to committing binaries into the repository.

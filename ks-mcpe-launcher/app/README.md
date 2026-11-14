@@ -22,8 +22,10 @@ key.
    verifier. Upstream gates `JNI_OnLoad` on a 19-character package id plus a
    hard-coded hash; the clone id is longer, which otherwise makes
    `System.loadLibrary("gxcore")` fail during Minecraft preparation.
-5. Rebuilds, zipaligns, signs, and verifies the APK.
-6. Prints the package id, version, and SHA-256 of the result.
+5. Replaces the About page with the "Created by KS Warrior" credit and moves
+   the Settings tab to the right side of the header as an icon-only button.
+6. Rebuilds, zipaligns, signs, and verifies the APK.
+7. Prints the package id, version, and SHA-256 of the result.
 
 The decoded files and the output APK are never stored in this repository.
 
@@ -37,7 +39,7 @@ ANDROID_HOME=/path/to/android-sdk ./ks-mcpe-launcher/app/build.sh
 ```
 
 The APK is written to `/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-<version>.apk`.
-The clone version defaults to `1.0.0` (versionCode `10000`), independent of
+The clone version defaults to `1.0.1` (versionCode `10001`), independent of
 the upstream LeviLauncher version.
 
 Useful environment variables:
@@ -47,8 +49,8 @@ Useful environment variables:
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Downloads, decoded project, keystore, output |
 | `APP_ID` | `com.ks.mcpe.launcher` | Application id of the clone |
 | `APP_LABEL` | `KS MCPE Launcher` | Launcher name (`APP_LABEL=` keeps upstream) |
-| `APP_VERSION` | `1.0.0` | Clone versionName written to `apktool.yml` |
-| `APP_VERSION_CODE` | `10000` | Clone versionCode written to `apktool.yml` |
+| `APP_VERSION` | `1.0.1` | Clone versionName written to `apktool.yml` |
+| `APP_VERSION_CODE` | `10001` | Clone versionCode written to `apktool.yml` |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output file name prefix |
 | `BASE_APK_URL` | pinned release asset | Upstream APK to clone |
 | `BASE_APK_SHA256` | pinned | Expected SHA-256 of the upstream APK |
@@ -68,7 +70,7 @@ directory if you want to keep update compatibility.
 `ks-mcpe-launcher.workflow.yml` builds the clone and uploads
 `KS-MCPE-Launcher-<version>.apk` plus its `.sha256` file to the
 `ks-mcpe-launcher` release (configurable with the `release_tag` input). The
-`app_version` and `app_version_code` inputs default to `1.0.0` and `10000`.
+`app_version` and `app_version_code` inputs default to `1.0.1` and `10001`.
 
 Install it once as a real workflow (the automation token cannot push files
 under `.github/workflows`, so this copy is staged here):
