@@ -207,35 +207,11 @@
     return-void
 .end method
 
-.method public static synthetic H(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initMiscellaneousSection$27(Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
 .method public static synthetic I(Landroid/view/View;)V
     .locals 0
 
     .line 1
     invoke-static {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$setupNavBar$32(Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static synthetic J(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initMiscellaneousSection$29(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -296,18 +272,6 @@
 
     .line 1
     invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showAccountSwitchPopup$8(Landroid/widget/PopupWindow;Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static synthetic P(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initMiscellaneousSection$28(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -2491,63 +2455,6 @@
     return-void
 .end method
 
-.method private initMiscellaneousSection()V
-    .locals 3
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 2
-    .line 3
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->miscCurseforgeRow:Landroid/widget/LinearLayout;
-
-    .line 4
-    .line 5
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
-
-    .line 6
-    .line 7
-    const/4 v2, 0x1
-
-    .line 8
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
-    .line 9
-    .line 10
-    .line 11
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 12
-    .line 13
-    .line 14
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 15
-    .line 16
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->miscAccountsRow:Landroid/widget/LinearLayout;
-
-    .line 17
-    .line 18
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
-
-    .line 19
-    .line 20
-    const/4 v2, 0x2
-
-    .line 21
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
-    .line 22
-    .line 23
-    .line 24
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 25
-    .line 26
-    .line 27
-    return-void
-.end method
-
 .method private initModsSection()V
     .locals 8
 
@@ -3475,81 +3382,6 @@
     .line 2
     .line 3
     .line 4
-    return-void
-.end method
-
-.method private synthetic lambda$initMiscellaneousSection$27(Landroid/view/View;)V
-    .locals 1
-
-    .line 1
-    new-instance p1, Landroid/content/Intent;
-
-    .line 2
-    .line 3
-    const-class v0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
-
-    .line 4
-    .line 5
-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    .line 6
-    .line 7
-    .line 8
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 9
-    .line 10
-    .line 11
-    return-void
-.end method
-
-.method private synthetic lambda$initMiscellaneousSection$28(Landroid/view/View;)V
-    .locals 1
-
-    .line 1
-    new-instance p1, Landroid/content/Intent;
-
-    .line 2
-    .line 3
-    const-class v0, Lorg/levimc/launcher/ui/activities/AccountsActivity;
-
-    .line 4
-    .line 5
-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    .line 6
-    .line 7
-    .line 8
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 9
-    .line 10
-    .line 11
-    return-void
-.end method
-
-.method private synthetic lambda$initMiscellaneousSection$29(Landroid/view/View;)V
-    .locals 1
-
-    .line 1
-    new-instance p1, Landroid/content/Intent;
-
-    .line 2
-    .line 3
-    const-class v0, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
-    .line 4
-    .line 5
-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    .line 6
-    .line 7
-    .line 8
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 9
-    .line 10
-    .line 11
     return-void
 .end method
 

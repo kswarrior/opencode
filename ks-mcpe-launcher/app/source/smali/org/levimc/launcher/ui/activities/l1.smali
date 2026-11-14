@@ -217,15 +217,6 @@
 
     .line 84
     :pswitch_c
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 85
-    .line 86
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->H(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 87
-    .line 88
-    .line 89
     return-void
 
     .line 90
