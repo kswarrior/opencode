@@ -309,13 +309,13 @@ What it is: on touch devices, opening Inventory now shows Utility Inventory's cu
 How it works:
 - `ui/ks_modules/ks_utility_inventory/`: `common.json`, `features.json`, `inventory.json`, `main.json` (all registered in `_ui_defs.json`; namespaces `ksui_common/features/inventory/main`). `utils.json` was omitted because it only held armor equip/unequip helpers; `bindings.json` was omitted because its remaining slot lists became unused after the elytra swapper was removed.
 - `ui/inventory_screen.json`: `crafting.inventory_screen` gains `variables` — touch (`$touch and not $is_pregame`) sets `$screen_content: "ksui_main.overlay_screen_content"` with the upstream fade animations; keyboard/controller keeps `crafting._inventory_screen_content`. `ui/inventory_screen_pocket.json` applies the same touch override to the pocket screen.
-- Overlay content: `player_inventory` (custom grid + armor slots + hotbar), `recipe_book` (search, filter, tabs), `crafting_panel` (gated by `$ksui_4552ca`), quick-item modes, tools cycler (`$ksui_c54aa6`), slot cycler (`$ksui_db22bc`), and the settings panel (`armor_display`, `tools_cycler`, `slot_cycler`, recipe-book toggle, close).
+- Overlay content: `player_inventory` (custom grid + armor slots + hotbar), `recipe_book` (search, filter, tabs), `crafting_panel` (gated by `$ksui_4552ca`), quick-item modes, tools cycler (`$ksui_c54aa6`), slot cycler (`$ksui_db22bc`), the KS draggable fast-totem button (same Quick Totem scanner as the non-touch inventory, gated by `$ks_uhud_totem_v`), and the settings panel (`armor_display`, `tools_cycler`, `slot_cycler`, recipe-book toggle, close).
 - Armor: the overlay's `armor_durability_panel` reuses KS `ks_uhud.ks_uhud_item_durability` and the `armor_items` collection, gated by `$ks_uhud_armor_v`; its `#visible` binding reads the Utility Inventory `armor_display_tog`, so the Armor Display option controls the KS durability panel. Utility Inventory's own armor display is not included.
-- Not merged: elytra swapper, fast-totem button, offhand slot, quick buttons, armor equip/unequip, and the source `default_screen_content` (non-touch). All `ryUI_*` namespaces/vars were renamed to `ksui_*`; textures were copied to `textures/ui/ks_utility_inventory/` (14 files actually referenced by the merged UI).
+- Not merged: elytra swapper, offhand slot, quick buttons, armor equip/unequip, and the source `default_screen_content` (non-touch). All `ryUI_*` namespaces/vars were renamed to `ksui_*`; textures were copied to `textures/ui/ks_utility_inventory/` (14 files actually referenced by the merged UI).
 - Config in `ui/_global_variables.json`: `$ksui_*` defaults (armor/tools on, slot cycler/crafting/recipe book off); `$ksui_fb42e3` is set `true` so the inventory and settings panel are shown when the screen opens (upstream default `false`).
 - Merged from Utility Inventory v1.0.2 (itzriyo157); attribution: `copyright.txt` entry 24.
 
-In-game (touch): press Inventory → custom KS overlay with grid/hotbar + recipe book; the gear/inventory toggle opens the options row; Armor Display shows KS's existing armor durability panel; non-touch inventory is unchanged.
+In-game (touch): press Inventory → custom KS overlay with grid/hotbar + recipe book; drag the totem button to move it, then tap it (or press `1`/`menu_ok`) to equip a totem from inventory/hotbar; the gear/inventory toggle opens the options row; Armor Display shows KS's existing armor durability panel; non-touch inventory is unchanged.
 
 ---
 
@@ -379,7 +379,7 @@ ks-client/
    - Mobs + players: HP bar + digits above head, always displayed (no toggle, no subpack).
    - Hammer: hold or open inventory with a mace → 3D hammer model + custom icon/name.
    - Status: top-left readout (client version, position) — own skin, no doll FPS.
-   - Inventory (touch): press Inventory → Utility Inventory overlay (custom 9×4 grid + hotbar, recipe book/search, crafting panel, quick-item modes, tools/slot cyclers, inventory/settings row); Armor Display shows KS's armor durability panel. Keyboard/controller keeps the KS/vanilla inventory.
+   - Inventory (touch): press Inventory → Utility Inventory overlay (custom 9×4 grid + hotbar, recipe book/search, crafting panel, quick-item modes, tools/slot cyclers, inventory/settings row, draggable Quick Totem button); Armor Display shows KS's armor durability panel. Keyboard/controller keeps the KS/vanilla inventory.
    - Inventory touch tooltip: top-left corner (item name/details), fades after 5 s — no longer covers the touched slot.
    - Bundles: item count appears on hotbar/container/inventory bundle slots instead of the storage bar.
    - Trades: open any villager → all tiers/trades shown and selectable without leveling (UI-only, no new textures).
@@ -402,7 +402,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 | F3 tools icons | `$ks_recovery_id 45088768`, `$ks_clock_id 22740992`, `$ks_compass_id 22609920` | live `inventory_item_renderer` `#item_id_aux` for F3 recovery/clock/compass row |
 | Inventory HUD styling | `$ks:inventory_hud_size small`, `$ks:use_highlight_slot true`, `$ks:highlight_slot_color [0,1,0]`, `$ks:highlight_slot_alpha 0.30`, `$ks:inventory_slot_color [0,0,0]`, `$ks:inventory_slot_alpha 0.27` | slot bg + selected highlight for bottom-right grid |
 | Utility HUD durability | `$ks_uhud_mainhand_v true`, `$ks_uhud_mainhand_offset [5px,5px]`, `$ks_uhud_armor_v true`, `$ks_uhud_hover_v true`, `$ks_uhud_hover_recipe_v true` | Show Mainhand Durability on/off in Settings; bottom-left readout position; inventory armor panel + hover durability gates; F8+1/3 toggle armor/mainhand |
-| Utility HUD fast totem | `$ks_uhud_totem_v true`, `$ks_uhud_totem_size [40,40]`, `$ks_uhud_totem_offset [0,"25%"]`, `$ks_uhud_totem_alpha 0.7`, `$ks_uhud_totem_id 39780352` | Draggable inventory totem button on/off, touch size, screen offset, icon opacity, and the totem item ID used by the Quick Totem scanner |
+| Utility HUD fast totem | `$ks_uhud_totem_v true`, `$ks_uhud_totem_size [40,40]`, `$ks_uhud_totem_offset [0,"25%"]`, `$ks_uhud_totem_alpha 0.7`, `$ks_uhud_totem_id 39780352` | Draggable totem button on/off (non-touch inventory extras + touch overlay), touch size, screen offset, icon opacity, and the totem item ID used by the Quick Totem scanner |
 | Crosshair Indicator | `$ks_crosshair_v true`, `$ks_crosshair_size [15,15]`, `$ks_crosshair_alpha 0.7`, `$ks_crosshair_offset [0,0]` | Dynamic default/entity crosshair in `hud_screen.json` (hit-switch needs that screen's `right_helper_collection`; shows in all perspectives — set `$ks_crosshair_v false` + repack to hide); edit + repack to persist |
 | Side tooltip (touch) | `$ks_tooltip_v true`, `$ks_tooltip_anchor "top_left"`, `$ks_tooltip_alpha_duration 5` | Inventory touch item-details tooltip on/off, screen corner (`top_left` default; also `top_middle/top_right/bottom_left/bottom_middle/bottom_right/left_middle/right_middle`), fade-out seconds |
 | Bundle item counter | `$is_bundle_item_counter_pack_enabled true` | Upstream parity flag (labels always inserted); bundle stack count replaces the storage bar in hotbar/container/inventory slots |
@@ -419,7 +419,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 - Settings menu is always on (`ks_settings.button` top-right; old `$show_editor_button` gear is no longer instantiated).
 - InvHUD grid fixed bottom-right (Show Inv HUD on/off + Compact in Settings).
 - Utility HUD durability: mainhand readout fixed bottom-left + inventory armor panel (Show Mainhand Durability on/off in Settings); counters row has its own toggle; F8 component toggles.
-- Utility Inventory touch overlay: options row in the custom inventory (Armor Display (KS panel), Tools Cycler, Slot Cycler, Recipe Book, Close); default state via `$ksui_*` (§5) + repack.
+- Utility Inventory touch overlay: options row in the custom inventory (Armor Display (KS panel), Tools Cycler, Slot Cycler, Recipe Book, Close) + draggable Quick Totem button; default state via `$ksui_*` / `$ks_uhud_totem_*` (§5) + repack.
 
 ---
 
