@@ -1406,29 +1406,17 @@
 
 .field public static new_version_name:I = 0x7f1303b3
 
-.field public static news_empty:I = 0x7f1303b4
 
-.field public static news_enable_notifications:I = 0x7f1303b5
 
-.field public static news_important:I = 0x7f1303b6
 
-.field public static news_notification_channel:I = 0x7f1303b7
 
-.field public static news_notification_channel_description:I = 0x7f1303b8
 
-.field public static news_read_more:I = 0x7f1303b9
 
-.field public static news_refresh:I = 0x7f1303ba
 
-.field public static news_refresh_failed:I = 0x7f1303bb
 
-.field public static news_refreshed:I = 0x7f1303bc
 
-.field public static news_subtitle:I = 0x7f1303bd
 
-.field public static news_title:I = 0x7f1303be
 
-.field public static news_unread_description:I = 0x7f1303bf
 
 .field public static next:I = 0x7f1303c0
 

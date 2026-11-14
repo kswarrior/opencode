@@ -714,11 +714,8 @@
 
 .field public static nav_modules_compact:I = 0x7f0a02bb
 
-.field public static nav_news_badge:I = 0x7f0a02bc
 
-.field public static nav_news_button:I = 0x7f0a02bd
 
-.field public static nav_news_container:I = 0x7f0a02be
 
 .field public static nav_settings:I = 0x7f0a02bf
 
@@ -739,31 +736,18 @@
 
 .field public static nested_scroll_view:I = 0x7f0a02d0
 
-.field public static news_card:I = 0x7f0a02d5
 
-.field public static news_empty:I = 0x7f0a02d6
 
-.field public static news_enable_notifications:I = 0x7f0a02d7
 
-.field public static news_item_action:I = 0x7f0a02d8
 
-.field public static news_item_category:I = 0x7f0a02d9
 
-.field public static news_item_date:I = 0x7f0a02da
 
-.field public static news_item_important:I = 0x7f0a02db
 
-.field public static news_item_summary:I = 0x7f0a02dc
 
-.field public static news_item_title:I = 0x7f0a02dd
 
-.field public static news_item_unread:I = 0x7f0a02de
 
-.field public static news_progress:I = 0x7f0a02df
 
-.field public static news_recycler:I = 0x7f0a02e0
 
-.field public static news_refresh:I = 0x7f0a02e1
 
 .field public static node_container:I = 0x7f0a02e4
 

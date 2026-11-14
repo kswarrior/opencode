@@ -104,11 +104,9 @@
 
 .field public static bg_mod_status_enabled:I = 0x7f0800bc
 
-.field public static bg_news_category:I = 0x7f0800bd
+.field public static bg_changelog_tag:I = 0x7f0800bd
 
-.field public static bg_news_important:I = 0x7f0800be
 
-.field public static bg_news_unread_dot:I = 0x7f0800bf
 
 .field public static bg_notification_progress:I = 0x7f0800c0
 
@@ -274,13 +272,11 @@
 
 .field public static ic_nav_launch:I = 0x7f08014c
 
-.field public static ic_nav_news:I = 0x7f08014d
 
 .field public static ic_nav_settings:I = 0x7f08014e
 
-.field public static ic_news_open:I = 0x7f08014f
 
-.field public static ic_news_refresh:I = 0x7f080150
+.field public static ic_refresh:I = 0x7f080150
 
 .field public static ic_notification_leaf:I = 0x7f080151
 

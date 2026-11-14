@@ -3947,9 +3947,7 @@
     <public type="drawable" name="bg_mod_page_badge" id="0x7f0800ba" />
     <public type="drawable" name="bg_mod_status_disabled" id="0x7f0800bb" />
     <public type="drawable" name="bg_mod_status_enabled" id="0x7f0800bc" />
-    <public type="drawable" name="bg_news_category" id="0x7f0800bd" />
-    <public type="drawable" name="bg_news_important" id="0x7f0800be" />
-    <public type="drawable" name="bg_news_unread_dot" id="0x7f0800bf" />
+    <public type="drawable" name="bg_changelog_tag" id="0x7f0800bd" />
     <public type="drawable" name="bg_notification_progress" id="0x7f0800c0" />
     <public type="drawable" name="bg_orbit_dot" id="0x7f0800c1" />
     <public type="drawable" name="bg_orbit_ring" id="0x7f0800c2" />
@@ -4091,10 +4089,8 @@
     <public type="drawable" name="ic_nav_about" id="0x7f08014a" />
     <public type="drawable" name="ic_nav_instances" id="0x7f08014b" />
     <public type="drawable" name="ic_nav_launch" id="0x7f08014c" />
-    <public type="drawable" name="ic_nav_news" id="0x7f08014d" />
     <public type="drawable" name="ic_nav_settings" id="0x7f08014e" />
-    <public type="drawable" name="ic_news_open" id="0x7f08014f" />
-    <public type="drawable" name="ic_news_refresh" id="0x7f080150" />
+    <public type="drawable" name="ic_refresh" id="0x7f080150" />
     <public type="drawable" name="ic_notification_leaf" id="0x7f080151" />
     <public type="drawable" name="ic_notifications" id="0x7f080152" />
     <public type="drawable" name="ic_patreon" id="0x7f080153" />
@@ -4922,9 +4918,6 @@
     <public type="id" name="nav_logo" id="0x7f0a02b9" />
     <public type="id" name="nav_modules" id="0x7f0a02ba" />
     <public type="id" name="nav_modules_compact" id="0x7f0a02bb" />
-    <public type="id" name="nav_news_badge" id="0x7f0a02bc" />
-    <public type="id" name="nav_news_button" id="0x7f0a02bd" />
-    <public type="id" name="nav_news_container" id="0x7f0a02be" />
     <public type="id" name="nav_settings" id="0x7f0a02bf" />
     <public type="id" name="nav_settings_compact" id="0x7f0a02c0" />
     <public type="id" name="nav_sign_in_button" id="0x7f0a02c1" />
@@ -4948,19 +4941,6 @@
     <public type="id" name="neverCompleteToEnd" id="0x7f0a02d2" />
     <public type="id" name="neverCompleteToStart" id="0x7f0a02d3" />
     <public type="id" name="never_display" id="0x7f0a02d4" />
-    <public type="id" name="news_card" id="0x7f0a02d5" />
-    <public type="id" name="news_empty" id="0x7f0a02d6" />
-    <public type="id" name="news_enable_notifications" id="0x7f0a02d7" />
-    <public type="id" name="news_item_action" id="0x7f0a02d8" />
-    <public type="id" name="news_item_category" id="0x7f0a02d9" />
-    <public type="id" name="news_item_date" id="0x7f0a02da" />
-    <public type="id" name="news_item_important" id="0x7f0a02db" />
-    <public type="id" name="news_item_summary" id="0x7f0a02dc" />
-    <public type="id" name="news_item_title" id="0x7f0a02dd" />
-    <public type="id" name="news_item_unread" id="0x7f0a02de" />
-    <public type="id" name="news_progress" id="0x7f0a02df" />
-    <public type="id" name="news_recycler" id="0x7f0a02e0" />
-    <public type="id" name="news_refresh" id="0x7f0a02e1" />
     <public type="id" name="noScroll" id="0x7f0a02e2" />
     <public type="id" name="noState" id="0x7f0a02e3" />
     <public type="id" name="node_container" id="0x7f0a02e4" />
@@ -5534,7 +5514,6 @@
     <public type="layout" name="activity_mod_detail" id="0x7f0d002a" />
     <public type="layout" name="activity_mods_fullscreen" id="0x7f0d002b" />
     <public type="layout" name="activity_msft_login" id="0x7f0d002c" />
-    <public type="layout" name="activity_news" id="0x7f0d002d" />
     <public type="layout" name="activity_options_editor" id="0x7f0d002e" />
     <public type="layout" name="activity_settings" id="0x7f0d0030" />
     <public type="layout" name="activity_splash" id="0x7f0d0031" />
@@ -5603,7 +5582,6 @@
     <public type="layout" name="item_mod_menu_card" id="0x7f0d0070" />
     <public type="layout" name="item_mod_menu_compact" id="0x7f0d0071" />
     <public type="layout" name="item_msft_account" id="0x7f0d0072" />
-    <public type="layout" name="item_news" id="0x7f0d0073" />
     <public type="layout" name="item_option_property" id="0x7f0d0074" />
     <public type="layout" name="item_property_header" id="0x7f0d0075" />
     <public type="layout" name="item_quick_action" id="0x7f0d0076" />
@@ -6689,18 +6667,6 @@
     <public type="string" name="nav_settings" id="0x7f1303b1" />
     <public type="string" name="new_version_found" id="0x7f1303b2" />
     <public type="string" name="new_version_name" id="0x7f1303b3" />
-    <public type="string" name="news_empty" id="0x7f1303b4" />
-    <public type="string" name="news_enable_notifications" id="0x7f1303b5" />
-    <public type="string" name="news_important" id="0x7f1303b6" />
-    <public type="string" name="news_notification_channel" id="0x7f1303b7" />
-    <public type="string" name="news_notification_channel_description" id="0x7f1303b8" />
-    <public type="string" name="news_read_more" id="0x7f1303b9" />
-    <public type="string" name="news_refresh" id="0x7f1303ba" />
-    <public type="string" name="news_refresh_failed" id="0x7f1303bb" />
-    <public type="string" name="news_refreshed" id="0x7f1303bc" />
-    <public type="string" name="news_subtitle" id="0x7f1303bd" />
-    <public type="string" name="news_title" id="0x7f1303be" />
-    <public type="string" name="news_unread_description" id="0x7f1303bf" />
     <public type="string" name="next" id="0x7f1303c0" />
     <public type="string" name="no_data" id="0x7f1303c1" />
     <public type="string" name="no_editable_properties" id="0x7f1303c2" />

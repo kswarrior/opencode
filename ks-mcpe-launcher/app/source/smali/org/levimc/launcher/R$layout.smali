@@ -47,7 +47,6 @@
 
 .field public static activity_msft_login:I = 0x7f0d002c
 
-.field public static activity_news:I = 0x7f0d002d
 
 .field public static activity_options_editor:I = 0x7f0d002e
 
@@ -129,7 +128,6 @@
 
 .field public static item_msft_account:I = 0x7f0d0072
 
-.field public static item_news:I = 0x7f0d0073
 
 .field public static item_option_property:I = 0x7f0d0074
 
