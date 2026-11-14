@@ -3061,11 +3061,6 @@
     .line 96
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->initContentManagementSection()V
 
-    .line 97
-    .line 98
-    .line 99
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->initMiscellaneousSection()V
-
     .line 100
     .line 101
     .line 102

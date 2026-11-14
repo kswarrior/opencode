@@ -445,97 +445,35 @@
 
     .line 135
     .line 136
-    sget v1, Lorg/levimc/launcher/R$id;->misc_accounts_row:I
+    const/4 v2, 0x0
 
-    .line 137
-    .line 138
-    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
-
-    .line 139
-    .line 140
-    .line 141
-    move-result-object v2
-
-    .line 142
     move-object/from16 v17, v2
 
-    .line 143
-    .line 144
     check-cast v17, Landroid/widget/LinearLayout;
-
-    .line 145
-    .line 146
-    if-eqz v17, :cond_0
 
     .line 147
     .line 148
-    sget v1, Lorg/levimc/launcher/R$id;->misc_card:I
+    const/4 v2, 0x0
 
-    .line 149
-    .line 150
-    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
-
-    .line 151
-    .line 152
-    .line 153
-    move-result-object v2
-
-    .line 154
     move-object/from16 v18, v2
 
-    .line 155
-    .line 156
     check-cast v18, Landroid/widget/LinearLayout;
-
-    .line 157
-    .line 158
-    if-eqz v18, :cond_0
 
     .line 159
     .line 160
-    sget v1, Lorg/levimc/launcher/R$id;->misc_curseforge_row:I
+    const/4 v2, 0x0
 
-    .line 161
-    .line 162
-    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
-
-    .line 163
-    .line 164
-    .line 165
-    move-result-object v2
-
-    .line 166
     move-object/from16 v19, v2
 
-    .line 167
-    .line 168
     check-cast v19, Landroid/widget/LinearLayout;
-
-    .line 169
-    .line 170
-    if-eqz v19, :cond_0
 
     .line 171
     .line 172
-    sget v1, Lorg/levimc/launcher/R$id;->misc_quick_launch_row:I
+    const/4 v2, 0x0
 
-    .line 173
-    .line 174
-    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
-
-    .line 175
-    .line 176
-    .line 177
-    move-result-object v2
-
-    .line 178
     move-object/from16 v20, v2
 
-    .line 179
-    .line 180
     check-cast v20, Landroid/widget/LinearLayout;
-
-    .line 181
     .line 182
     if-eqz v20, :cond_0
 
