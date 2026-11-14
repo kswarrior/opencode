@@ -16,7 +16,8 @@
 			"bones": {
 				"mace": {
 					"rotation": [-556.91022, 93.05506, -683.76297],
-					"position": [0.89651, 35.13007, 4.36956]
+					"position": [0.89651, 35.13007, 4.36956],
+					"scale": "query.is_pack_setting_enabled('ks:hammer') ? (query.get_pack_setting('ks:hammer_scale') / 100.0) : 0.0"
 				}
 			}
 		}
