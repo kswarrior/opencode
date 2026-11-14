@@ -1906,27 +1906,17 @@
     .line 1
     sget v0, Lorg/levimc/launcher/R$id;->nav_tab_launch:I
 
-    .line 2
-    .line 3
     sget v1, Lorg/levimc/launcher/R$id;->nav_tab_instances:I
 
-    .line 4
-    .line 5
-    sget v2, Lorg/levimc/launcher/R$id;->nav_tab_about:I
+    sget v2, Lorg/levimc/launcher/R$id;->nav_tab_settings:I
 
-    .line 6
-    .line 7
-    sget v3, Lorg/levimc/launcher/R$id;->nav_tab_settings:I
+    sget v3, Lorg/levimc/launcher/R$id;->nav_tab_mods:I
 
-    sget v4, Lorg/levimc/launcher/R$id;->nav_tab_mods:I
+    sget v4, Lorg/levimc/launcher/R$id;->nav_tab_content:I
 
-    sget v5, Lorg/levimc/launcher/R$id;->nav_tab_content:I
+    sget v5, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
 
-    sget v6, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
-
-    .line 8
-    .line 9
-    filled-new-array/range {v0 .. v6}, [I
+    filled-new-array/range {v0 .. v5}, [I
 
     .line 10
     .line 11
