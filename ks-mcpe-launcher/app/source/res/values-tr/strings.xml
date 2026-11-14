@@ -856,7 +856,7 @@ Daha Fazla Düğme, bilinçli olarak düğme başına yalnızca bir tuşu destek
     <string name="nav_about">Hakkında</string>
     <string name="nav_import">İçe Aktar</string>
     <string name="nav_instances">Örnekler</string>
-    <string name="nav_launch">Başlat</string>
+    <string name="nav_launch">Ana Sayfa</string>
     <string name="nav_settings">Ayarlar</string>
     <string name="new_version_found">Yeni sürüm bulundu: %1$s</string>
     <string name="new_version_name">Yeni sürüm adı</string>

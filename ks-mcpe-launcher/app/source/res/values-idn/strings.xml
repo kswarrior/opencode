@@ -722,7 +722,7 @@ Lebih Banyak Tombol sengaja hanya mendukung satu tombol keyboard per tombol laya
     <string name="nav_about">Tentang</string>
     <string name="nav_import">Impor</string>
     <string name="nav_instances">Instans</string>
-    <string name="nav_launch">Luncurkan</string>
+    <string name="nav_launch">Beranda</string>
     <string name="nav_settings">Pengaturan</string>
     <string name="new_version_found">Versi baru ditemukan: %1$s</string>
     <string name="new_version_name">Nama versi baru</string>

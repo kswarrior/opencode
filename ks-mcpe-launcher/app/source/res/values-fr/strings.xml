@@ -856,7 +856,7 @@ Plus de boutons ne prend volontairement en charge qu'une seule touche par bouton
     <string name="nav_about">À propos</string>
     <string name="nav_import">Importer</string>
     <string name="nav_instances">Instances</string>
-    <string name="nav_launch">Lancer</string>
+    <string name="nav_launch">Accueil</string>
     <string name="nav_settings">Paramètres</string>
     <string name="new_version_found">Nouvelle version trouvée : %1$s</string>
     <string name="new_version_name">Nouveau nom de version</string>
