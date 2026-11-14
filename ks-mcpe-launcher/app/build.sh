@@ -1,31 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Build a KS-branded clone of the LeviLauncher APK.
+# Build the KS-branded clone of LeviLauncher from the checked-in decoded
+# source tree.
 #
-# The upstream APK is decoded, the application id (and related manifest
-# authorities) are rewritten, the APK is rebuilt, zipaligned and signed.
-# Everything (downloads, decoded files, output) happens under WORKDIR,
-# which defaults to /tmp/ks-mcpe-build.
+# The full apktool project lives in app/source and is the single source of
+# truth: manifest, resources, smali, native libraries and all clone
+# customizations are committed there. Every build copies that tree into
+# WORKDIR (default /tmp/ks-mcpe-build), applies the clone version, rebuilds,
+# zipaligns and signs. WORKDIR is disposable; only dist/ output is kept there.
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-
-UPSTREAM_APP_ID="org.levimc.launcher"
-DEFAULT_BASE_APK_URL="https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/LeviLauncher-v1.6.1-release.apk"
-DEFAULT_BASE_APK_SHA256="2cf34efb13546dc070840aebf3657cdde5c27fb9d9f250e53384995c1a3c02ce"
+SOURCE_DIR="${SOURCE_DIR:-$SCRIPT_DIR/source}"
 
 APKTOOL_VERSION="3.0.3"
 APKTOOL_URL="https://github.com/iBotPeaches/Apktool/releases/download/v${APKTOOL_VERSION}/apktool_${APKTOOL_VERSION}.jar"
 APKTOOL_SHA256="dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423"
 
 APP_ID="${APP_ID:-com.ks.mcpe.launcher}"
-APP_LABEL="${APP_LABEL-KS MCPE Launcher}"
 APP_VERSION="${APP_VERSION:-1.0.1}"
 APP_VERSION_CODE="${APP_VERSION_CODE:-10001}"
 OUTPUT_PREFIX="${OUTPUT_PREFIX:-KS-MCPE-Launcher}"
 WORKDIR="${WORKDIR:-/tmp/ks-mcpe-build}"
-BASE_APK_URL="${BASE_APK_URL:-$DEFAULT_BASE_APK_URL}"
-BASE_APK_SHA256="${BASE_APK_SHA256-$DEFAULT_BASE_APK_SHA256}"
 
 KEYSTORE="${KEYSTORE:-$WORKDIR/signing/ks-mcpe.keystore}"
 CREDENTIALS_FILE="${CREDENTIALS_FILE:-$(dirname "$KEYSTORE")/credentials.env}"
@@ -41,7 +37,6 @@ need java
 need keytool
 need curl
 need python3
-need unzip
 need sha256sum
 
 find_build_tools() {
@@ -72,6 +67,10 @@ AAPT2="${AAPT2:-$(command -v aapt2 || true)}"
 [ -n "$APKSIGNER" ] || die "apksigner not found; install Android build-tools or set ANDROID_HOME"
 [ -n "$AAPT2" ] && [ -x "$AAPT2" ] || die "aapt2 not found; install Android build-tools or set ANDROID_HOME"
 
+[ -d "$SOURCE_DIR" ] || die "source tree not found: $SOURCE_DIR"
+[ -f "$SOURCE_DIR/apktool.yml" ] || die "source tree is missing apktool.yml: $SOURCE_DIR"
+[ -f "$SOURCE_DIR/AndroidManifest.xml" ] || die "source tree is missing AndroidManifest.xml: $SOURCE_DIR"
+
 mkdir -p "$WORKDIR" "$WORKDIR/downloads" "$WORKDIR/signing" "$(dirname "$KEYSTORE")"
 WORKDIR="$(cd "$WORKDIR" && pwd)"
 
@@ -88,7 +87,6 @@ KEY_ALIAS="${KEY_ALIAS:-ksmcpe}"
 [ -n "$KEY_PASSWORD" ] || KEY_PASSWORD="$KEYSTORE_PASSWORD"
 
 APKTOOL_JAR="$WORKDIR/downloads/apktool_${APKTOOL_VERSION}.jar"
-BASE_APK="$WORKDIR/downloads/base.apk"
 DECODED="$WORKDIR/decoded"
 UNSIGNED="$WORKDIR/unsigned.apk"
 ALIGNED="$WORKDIR/aligned.apk"
@@ -108,27 +106,16 @@ download() {
     verify_sha256 "$dest" "$expected"
 }
 
-if [ -n "${BASE_APK_SRC:-}" ]; then
-    [ -f "$BASE_APK_SRC" ] || die "BASE_APK_SRC does not exist: $BASE_APK_SRC"
-    log "using local base APK $BASE_APK_SRC"
-    cp -f "$BASE_APK_SRC" "$BASE_APK"
-    verify_sha256 "$BASE_APK" "$BASE_APK_SHA256"
-elif [ -f "$BASE_APK" ] && [ -n "$BASE_APK_SHA256" ] \
-    && printf '%s  %s\n' "$BASE_APK_SHA256" "$BASE_APK" | sha256sum --check --status; then
-    log "using cached base APK $BASE_APK"
-else
-    download "$BASE_APK_URL" "$BASE_APK" "$BASE_APK_SHA256"
-fi
-
 if [ -f "$APKTOOL_JAR" ]; then
     verify_sha256 "$APKTOOL_JAR" "$APKTOOL_SHA256"
 else
     download "$APKTOOL_URL" "$APKTOOL_JAR" "$APKTOOL_SHA256"
 fi
 
-log "decoding base APK"
+log "copying checked-in source tree"
 rm -rf "$DECODED"
-java -jar "$APKTOOL_JAR" d -f "$BASE_APK" -o "$DECODED" >/dev/null
+mkdir -p "$DECODED"
+cp -a "$SOURCE_DIR/." "$DECODED/"
 
 log "setting clone version to $APP_VERSION ($APP_VERSION_CODE)"
 python3 - "$DECODED/apktool.yml" "$APP_VERSION" "$APP_VERSION_CODE" <<'PY'
@@ -157,109 +144,49 @@ if (code_subs, name_subs) != (1, 1):
 Path(path).write_text(text, encoding="utf-8")
 PY
 
-log "rewriting application id to $APP_ID"
-python3 - "$DECODED" "$UPSTREAM_APP_ID" "$APP_ID" "$APP_LABEL" <<'PY'
-import html
+log "verifying checked-in clone customizations"
+python3 - "$DECODED" "$APP_ID" <<'PY'
 import re
-import sys
-from pathlib import Path
-
-decoded, old_id, new_id, label = sys.argv[1:5]
-root = Path(decoded)
-
-manifest_path = root / "AndroidManifest.xml"
-manifest = manifest_path.read_text(encoding="utf-8")
-
-manifest, package_subs = re.subn(
-    r'(<manifest\b[^>]*\bpackage=")' + re.escape(old_id) + r'(")',
-    lambda m: m.group(1) + new_id + m.group(2),
-    manifest,
-)
-if package_subs != 1:
-    sys.exit(f"unable to rewrite manifest package (replacements: {package_subs})")
-
-manifest = re.sub(
-    r'(android:authorities=")' + re.escape(old_id) + r'(?=[."])',
-    lambda m: m.group(1) + new_id,
-    manifest,
-)
-
-# Signature-level permissions declared by the app (for example the
-# androidx DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION) must move with the
-# application id. Otherwise Android rejects the clone when the original app
-# is installed, because the same permission would be owned by another key.
-manifest = re.sub(
-    r'(<(?:permission|uses-permission)\b[^>]*android:name=")' + re.escape(old_id) + r'(?=[."])',
-    lambda m: m.group(1) + new_id,
-    manifest,
-)
-
-for attr in ("android:taskAffinity", "android:targetPackage"):
-    manifest = re.sub(
-        r'(' + re.escape(attr) + r'=")' + re.escape(old_id) + r'(")',
-        lambda m: m.group(1) + new_id + m.group(2),
-        manifest,
-    )
-
-if f'package="{new_id}"' not in manifest:
-    sys.exit("manifest package rewrite failed")
-if re.search(r'android:authorities="' + re.escape(old_id) + r'(?=[."])', manifest):
-    sys.exit("manifest authority rewrite failed")
-if re.search(
-    r'<(?:permission|uses-permission)\b[^>]*android:name="' + re.escape(old_id) + r'(?=[."])',
-    manifest,
-):
-    sys.exit("manifest permission rewrite failed")
-
-manifest_path.write_text(manifest, encoding="utf-8")
-
-patched_build_config = False
-for candidate in root.glob("smali*/**/BuildConfig.smali"):
-    text = candidate.read_text(encoding="utf-8")
-    needle = f'APPLICATION_ID:Ljava/lang/String; = "{old_id}"'
-    if needle in text:
-        candidate.write_text(text.replace(needle, f'APPLICATION_ID:Ljava/lang/String; = "{new_id}"'), encoding="utf-8")
-        patched_build_config = True
-if not patched_build_config:
-    sys.exit("unable to rewrite BuildConfig.APPLICATION_ID")
-
-if label:
-    escaped = html.escape(label, quote=False)
-    patched_labels = 0
-    for strings in root.glob("res/values*/strings.xml"):
-        text = strings.read_text(encoding="utf-8")
-        text, count = re.subn(
-            r'(<string name="app_name">)[^<]*(</string>)',
-            lambda m: m.group(1) + escaped + m.group(2),
-            text,
-        )
-        if count:
-            strings.write_text(text, encoding="utf-8")
-            patched_labels += count
-    if not patched_labels:
-        sys.exit("unable to rewrite app_name resource")
-
-print(f"patched package={new_id} label={label!r}")
-PY
-
-# libgxcore.so gates JNI_OnLoad on the launcher package name: it reads
-# /proc/self/cmdline and ApplicationInfo.packageName and requires the
-# 19-character upstream id plus a hard-coded hash. The clone id is longer, so
-# System.loadLibrary("gxcore") fails before any Minecraft code runs. Neutralise
-# the verifier (0x1990d4: cmp x1,#0x13; b.ne fail) with `mov w0,#1; ret`.
-log "patching libgxcore.so package-name check"
-python3 - "$DECODED" <<'PY'
 import struct
 import sys
 from pathlib import Path
 
 root = Path(sys.argv[1])
-libs = sorted(root.glob("lib/*/libgxcore.so"))
-if not libs:
-    sys.exit("libgxcore.so not found in decoded APK")
+app_id = sys.argv[2]
+
+manifest = (root / "AndroidManifest.xml").read_text(encoding="utf-8")
+if f'package="{app_id}"' not in manifest:
+    sys.exit("source manifest does not use the clone application id")
+for pattern, label in (
+    (r'android:authorities="org\.levimc\.launcher[."]', "provider authority"),
+    (r'<(?:permission|uses-permission)\b[^>]*android:name="org\.levimc\.launcher[."]', "signature permission"),
+    (r'android:taskAffinity="org\.levimc\.launcher"', "task affinity"),
+    (r'android:targetPackage="org\.levimc\.launcher"', "target package"),
+):
+    if re.search(pattern, manifest):
+        sys.exit(f"source manifest still has the upstream {label}")
+
+build_config = root / "smali/org/levimc/launcher/BuildConfig.smali"
+text = build_config.read_text(encoding="utf-8")
+if f'APPLICATION_ID:Ljava/lang/String; = "{app_id}"' not in text:
+    sys.exit("source BuildConfig.APPLICATION_ID does not use the clone id")
+
+strings = (root / "res/values/strings.xml").read_text(encoding="utf-8")
+if '<string name="app_name">KS MCPE Launcher</string>' not in strings:
+    sys.exit("source app_name is not KS MCPE Launcher")
+if "Welcome to LeviLauncher" in strings:
+    sys.exit("source EULA still mentions LeviLauncher")
+
+updater = (root / "smali/org/levimc/launcher/util/GithubReleaseUpdater.smali").read_text(encoding="utf-8")
+for name in ("checkUpdate", "checkUpdateOnLaunch"):
+    pattern = re.compile(
+        r"\.method public " + name + r"\(\)V\s*\n\s*\.locals 0\s*\n\s*\n\s*return-void\s*\n"
+        r"\.end method"
+    )
+    if not pattern.search(updater):
+        sys.exit(f"source update entry point {name} is not disabled")
 
 PATCH_VADDR = 0x1990D4
-ORIG = bytes.fromhex("3f4c00f121180054")  # cmp x1, #0x13; b.ne 0x1993dc
 PATCH = bytes.fromhex("20008052c0035fd6")  # mov w0, #1; ret
 
 
@@ -281,22 +208,17 @@ def vaddr_to_offset(blob, vaddr):
     sys.exit(f"vaddr {vaddr:#x} not found in a PT_LOAD segment")
 
 
+libs = sorted(root.glob("lib/*/libgxcore.so"))
+if not libs:
+    sys.exit("libgxcore.so not found in the source tree")
 for lib in libs:
-    blob = bytearray(lib.read_bytes())
+    blob = lib.read_bytes()
     offset = vaddr_to_offset(blob, PATCH_VADDR)
-    current = bytes(blob[offset:offset + len(ORIG)])
-    if current == PATCH:
-        print(f"{lib}: already patched")
-        continue
-    if current != ORIG:
-        sys.exit(f"{lib}: unexpected bytes at {PATCH_VADDR:#x}: {current.hex()}")
-    blob[offset:offset + len(PATCH)] = PATCH
-    lib.write_bytes(blob)
-    print(f"{lib}: patched package-name check")
-PY
+    if blob[offset:offset + len(PATCH)] != PATCH:
+        sys.exit(f"{lib}: native package-name check is not patched")
 
-log "applying repository overlays"
-python3 "$SCRIPT_DIR/patches/apply_overlays.py" "$DECODED" "$SCRIPT_DIR/overlays"
+print(f"verified package={app_id}, disabled updater, patched native verifier")
+PY
 
 log "building APK"
 rm -f "$UNSIGNED" "$ALIGNED"
