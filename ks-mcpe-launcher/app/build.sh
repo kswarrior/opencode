@@ -20,6 +20,8 @@ APKTOOL_SHA256="dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423
 
 APP_ID="${APP_ID:-com.ks.mcpe.launcher}"
 APP_LABEL="${APP_LABEL-KS MCPE Launcher}"
+APP_VERSION="${APP_VERSION:-1.0.0}"
+APP_VERSION_CODE="${APP_VERSION_CODE:-10000}"
 OUTPUT_PREFIX="${OUTPUT_PREFIX:-KS-MCPE-Launcher}"
 WORKDIR="${WORKDIR:-/tmp/ks-mcpe-build}"
 BASE_APK_URL="${BASE_APK_URL:-$DEFAULT_BASE_APK_URL}"
@@ -127,6 +129,33 @@ fi
 log "decoding base APK"
 rm -rf "$DECODED"
 java -jar "$APKTOOL_JAR" d -f "$BASE_APK" -o "$DECODED" >/dev/null
+
+log "setting clone version to $APP_VERSION ($APP_VERSION_CODE)"
+python3 - "$DECODED/apktool.yml" "$APP_VERSION" "$APP_VERSION_CODE" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+path, version, code = sys.argv[1:4]
+if not re.fullmatch(r"[0-9A-Za-z._+-]+", version):
+    sys.exit(f"invalid APP_VERSION: {version!r}")
+if not code.isdigit():
+    sys.exit(f"invalid APP_VERSION_CODE: {code!r}")
+
+text = Path(path).read_text(encoding="utf-8")
+text, code_subs = re.subn(
+    r"(?m)^  versionCode: .*$", f"  versionCode: {code}", text, count=1
+)
+text, name_subs = re.subn(
+    r"(?m)^  versionName: .*$", f"  versionName: {version}", text, count=1
+)
+if (code_subs, name_subs) != (1, 1):
+    sys.exit(
+        "unable to rewrite apktool.yml version "
+        f"(versionCode replacements: {code_subs}, versionName: {name_subs})"
+    )
+Path(path).write_text(text, encoding="utf-8")
+PY
 
 log "rewriting application id to $APP_ID"
 python3 - "$DECODED" "$UPSTREAM_APP_ID" "$APP_ID" "$APP_LABEL" <<'PY'
@@ -332,12 +361,14 @@ log "verifying APK"
 BADGING="$("$AAPT2" dump badging "$OUTPUT" 2>/dev/null || true)"
 ACTUAL_PACKAGE="$(printf '%s\n' "$BADGING" | sed -n "s/^package: name='\([^']*\)'.*/\1/p" | head -n 1)"
 ACTUAL_VERSION="$(printf '%s\n' "$BADGING" | sed -n "s/^package:.*versionName='\([^']*\)'.*/\1/p" | head -n 1)"
+ACTUAL_VERSION_CODE="$(printf '%s\n' "$BADGING" | sed -n "s/^package:.*versionCode='\([^']*\)'.*/\1/p" | head -n 1)"
 [ "$ACTUAL_PACKAGE" = "$APP_ID" ] || die "built package is '$ACTUAL_PACKAGE', expected '$APP_ID'"
-[ -n "$ACTUAL_VERSION" ] || die "unable to read built version name"
+[ "$ACTUAL_VERSION" = "$APP_VERSION" ] || die "built version is '$ACTUAL_VERSION', expected '$APP_VERSION'"
+[ "$ACTUAL_VERSION_CODE" = "$APP_VERSION_CODE" ] || die "built versionCode is '$ACTUAL_VERSION_CODE', expected '$APP_VERSION_CODE'"
 
 ( cd "$DIST" && sha256sum "$(basename "$OUTPUT")" > "$(basename "$OUTPUT").sha256" )
 
 log "done: $OUTPUT"
 log "package: $ACTUAL_PACKAGE"
-log "version: $ACTUAL_VERSION"
+log "version: $ACTUAL_VERSION ($ACTUAL_VERSION_CODE)"
 cat "$OUTPUT.sha256"
