@@ -1,29 +1,17 @@
 {
-  "format_version": 2,
+  "format_version": 3,
   "header": {
     "name": "KS Client",
-    "description": "KS Client v1.0.6 by KS Warrior",
+    "description": "KS Client v1.0.7 by KS Warrior",
     "uuid": "3cb32de7-ef64-4969-a447-dadba4bf9a8f",
-    "version": [
-      1,
-      0,
-      6
-    ],
-    "min_engine_version": [
-      1,
-      21,
-      120
-    ]
+    "version": "1.0.7",
+    "min_engine_version": "1.21.130"
   },
   "modules": [
     {
       "type": "resources",
       "uuid": "01ec78ed-44f8-4077-bc80-0904b4a83d51",
-      "version": [
-        1,
-        0,
-        6
-      ]
+      "version": "1.0.7"
     }
   ],
   "metadata": {
@@ -35,5 +23,108 @@
         "0.19.0"
       ]
     }
-  }
+  },
+  "settings": [
+    {
+      "type": "label",
+      "text": "§l§bKS CLIENT §r§7— v1.0.7 PACK SETTINGS"
+    },
+    {
+      "type": "label",
+      "text": "§7Saved per player and applied in-game instantly."
+    },
+    {
+      "type": "label",
+      "text": "§l§a▬▬▬ HEALTH BARS ▬▬▬"
+    },
+    {
+      "type": "dropdown",
+      "text": "Health Bar Display",
+      "name": "ks:health_bar_mode",
+      "default": "always",
+      "options": [
+        {
+          "name": "always",
+          "text": "Always"
+        },
+        {
+          "name": "hurt",
+          "text": "Only When Hurt"
+        },
+        {
+          "name": "off",
+          "text": "Off"
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "text": "Show Heart Icon",
+      "name": "ks:health_bar_icon",
+      "default": true
+    },
+    {
+      "type": "toggle",
+      "text": "Show HP Numbers",
+      "name": "ks:health_bar_digits",
+      "default": true
+    },
+    {
+      "type": "slider",
+      "text": "Health Bar Size (%)",
+      "name": "ks:health_bar_scale",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 100
+    },
+    {
+      "type": "slider",
+      "text": "Health Bar Height Offset",
+      "name": "ks:health_bar_y",
+      "min": -20,
+      "max": 20,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "label",
+      "text": "§l§d▬▬▬ 3D HAMMER ▬▬▬"
+    },
+    {
+      "type": "toggle",
+      "text": "Show 3D Hammer",
+      "name": "ks:hammer",
+      "default": true
+    },
+    {
+      "type": "slider",
+      "text": "Hammer Size (%)",
+      "name": "ks:hammer_scale",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 100
+    },
+    {
+      "type": "label",
+      "text": "§l§e▬▬▬ HUD & UTILITY ▬▬▬"
+    },
+    {
+      "type": "label",
+      "text": "§7Hotbar, F1/F3, Inventory HUD, Quick Totem, durability,"
+    },
+    {
+      "type": "label",
+      "text": "§7counters, tooltip and crosshair are changed in-game"
+    },
+    {
+      "type": "label",
+      "text": "§7from the KS Settings gear (top-right corner)."
+    },
+    {
+      "type": "label",
+      "text": "§7Fullbright, clear glass and connected hotbar stay on."
+    }
+  ]
 }

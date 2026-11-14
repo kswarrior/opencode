@@ -1,0 +1,500 @@
+{
+ "format_version": 3,
+ "header": {
+  "name": "OS CLIENT V1.1",
+  "description": "Mods + Cosmetics + custom UI by @oSkullo\n§7Check settings and get extensions on https://oskullo-yt.github.io/OS-CLIENT/",
+  "uuid": "5b0e6d3a-7c41-4a9e-9f2d-8e1c4a7b3d60",
+  "version": "1.21.32",
+  "min_engine_version": "1.21.130"
+ },
+ "modules": [
+  {
+   "description": "OS client mods + cosmetics resources",
+   "type": "resources",
+   "uuid": "e2a94c17-3d5b-4f80-b6a1-0c7d9e4f5a82",
+   "version": "1.21.32"
+  }
+ ],
+ "settings": [
+  {
+   "type": "label",
+   "text": "§l§c▬▬▬ COMBAT & EFFECTS ▬▬▬"
+  },
+  {
+   "type": "dropdown",
+   "text": "§cHitbox§r §7| Hitbox outline colour.",
+   "name": "oskullo:hitbox",
+   "default": "white",
+   "options": [
+    {
+     "name": "off",
+     "text": "Off"
+    },
+    {
+     "name": "white",
+     "text": "White"
+    },
+    {
+     "name": "red",
+     "text": "Red"
+    },
+    {
+     "name": "green",
+     "text": "Green"
+    },
+    {
+     "name": "blue",
+     "text": "Blue"
+    },
+    {
+     "name": "cyan",
+     "text": "Cyan"
+    },
+    {
+     "name": "yellow",
+     "text": "Yellow"
+    },
+    {
+     "name": "orange",
+     "text": "Orange"
+    },
+    {
+     "name": "purple",
+     "text": "Purple"
+    },
+    {
+     "name": "pink",
+     "text": "Pink"
+    }
+   ]
+  },
+  {
+   "type": "dropdown",
+   "text": "§cHit Particles§r §7| Particle colour when you hit.",
+   "name": "oskullo:hit_particles",
+   "default": "red",
+   "options": [
+    {
+     "name": "off",
+     "text": "Off"
+    },
+    {
+     "name": "white",
+     "text": "White"
+    },
+    {
+     "name": "red",
+     "text": "Red"
+    },
+    {
+     "name": "green",
+     "text": "Green"
+    },
+    {
+     "name": "blue",
+     "text": "Blue"
+    },
+    {
+     "name": "cyan",
+     "text": "Cyan"
+    },
+    {
+     "name": "yellow",
+     "text": "Yellow"
+    },
+    {
+     "name": "orange",
+     "text": "Orange"
+    },
+    {
+     "name": "purple",
+     "text": "Purple"
+    },
+    {
+     "name": "pink",
+     "text": "Pink"
+    },
+    {
+     "name": "rainbow",
+     "text": "Rainbow"
+    }
+   ]
+  },
+  {
+   "type": "dropdown",
+   "text": "§cDamage Indicator§r §7| Floating damage numbers size.",
+   "name": "oskullo:dmg_indicator",
+   "default": "normal",
+   "options": [
+    {
+     "name": "off",
+     "text": "Off"
+    },
+    {
+     "name": "small",
+     "text": "Small"
+    },
+    {
+     "name": "normal",
+     "text": "Normal"
+    },
+    {
+     "name": "large",
+     "text": "Large"
+    },
+    {
+     "name": "huge",
+     "text": "Huge"
+    }
+   ]
+  },
+  {
+   "type": "toggle",
+   "text": "§cHit Arrow§r §7| Points to where a hit knocked you from.",
+   "name": "oskullo:show_hit_arrow",
+   "default": false
+  },
+  {
+   "type": "slider",
+   "text": "§6Background Opacity %§r §7| CPS, FPS and Speedometer. 0 = transparent.",
+   "name": "oskullo:hud_opacity",
+   "min": 0,
+   "max": 100,
+   "step": 5,
+   "default": 50
+  },
+  {
+   "type": "toggle",
+   "text": "§aShow Armor HUD",
+   "name": "oskullo:show_armor",
+   "default": true
+  },
+  {
+   "type": "dropdown",
+   "text": "§aLayout§r §7| Vertical or horizontal, with or without background.",
+   "name": "oskullo:armor_layout",
+   "default": "horiz_bg",
+   "options": [
+    {
+     "name": "vert_bg",
+     "text": "Vertical + Background"
+    },
+    {
+     "name": "vert",
+     "text": "Vertical"
+    },
+    {
+     "name": "horiz_bg",
+     "text": "Horizontal + Background"
+    },
+    {
+     "name": "horiz",
+     "text": "Horizontal"
+    }
+   ]
+  },
+  {
+   "type": "dropdown",
+   "text": "§aDurability Style§r §7| Percent, bar, or real durability (421/422) beside the armor icon.",
+   "name": "oskullo:armor_dur",
+   "default": "percent",
+   "options": [
+    {
+     "name": "percent",
+     "text": "Percent"
+    },
+    {
+     "name": "bar",
+     "text": "Durability Bar"
+    },
+    {
+     "name": "left",
+     "text": "Left Side (421/422)"
+    },
+    {
+     "name": "right",
+     "text": "Right Side (421/422)"
+    },
+    {
+     "name": "off",
+     "text": "Off"
+    }
+   ]
+  },
+  {
+   "type": "dropdown",
+   "text": "§aNumber Color§r §7| Percent numbers: colored by durability or plain white.",
+   "name": "oskullo:armor_numcolor",
+   "default": "colored",
+   "options": [
+    {
+     "name": "colored",
+     "text": "Colored"
+    },
+    {
+     "name": "white",
+     "text": "White"
+    }
+   ]
+  },
+  {
+   "type": "toggle",
+   "text": "§aShow Empty Slots§r §7| Keep the hotbar cell visible when no armor is worn in that slot.",
+   "name": "oskullo:show_empty",
+   "default": true
+  },
+  {
+   "type": "toggle",
+   "text": "§aShow Offhand§r §7| Offhand slot appears while holding a totem or shield.",
+   "name": "oskullo:show_offhand",
+   "default": true
+  },
+  {
+   "type": "dropdown",
+   "text": "§aLow Durability Warning§r §7| Red ! on the armor icon, a top-center card, both, or off.",
+   "name": "oskullo:armor_warn",
+   "default": "icon",
+   "options": [
+    {
+     "name": "icon",
+     "text": "Red ! Icon"
+    },
+    {
+     "name": "card",
+     "text": "Top Card"
+    },
+    {
+     "name": "both",
+     "text": "Both"
+    },
+    {
+     "name": "off",
+     "text": "Off"
+    }
+   ]
+  },
+  {
+   "type": "slider",
+   "text": "§aPosition X§r §7| Left / right.",
+   "name": "oskullo:armor_offx",
+   "min": -400,
+   "max": 400,
+   "step": 1,
+   "default": 0
+  },
+  {
+   "type": "slider",
+   "text": "§aPosition Y§r §7| Up / down.",
+   "name": "oskullo:armor_offy",
+   "min": -150,
+   "max": 150,
+   "step": 1,
+   "default": 0
+  },
+  {
+   "type": "label",
+   "text": "§l§a▬▬▬ PVP UTILITY ▬▬▬"
+  },
+  {
+   "type": "dropdown",
+   "text": "§aPvP Utility§r §7| Armor, held item and health above players' heads.",
+   "name": "oskullo:pvp_util",
+   "default": "off",
+   "options": [
+    {
+     "name": "off",
+     "text": "Off"
+    },
+    {
+     "name": "armor",
+     "text": "Armor"
+    },
+    {
+     "name": "item",
+     "text": "Held Item"
+    },
+    {
+     "name": "hearts",
+     "text": "Health"
+    },
+    {
+     "name": "armor_item",
+     "text": "Armor + Held Item"
+    },
+    {
+     "name": "armor_hearts",
+     "text": "Armor + Health"
+    },
+    {
+     "name": "item_hearts",
+     "text": "Held Item + Health"
+    },
+    {
+     "name": "all",
+     "text": "Armor + Held Item + Health"
+    }
+   ]
+  },
+  {
+   "type": "toggle",
+   "text": "§aElytra Indicator§r §7| Red = standing, green = flying. Shows while wearing elytra.",
+   "name": "oskullo:show_elytra",
+   "default": true
+  },
+  {
+   "type": "slider",
+   "text": "§aElytra Indicator Distance§r §7| Units below the crosshair. Stays exact at any camera angle.",
+   "name": "oskullo:ely_below",
+   "min": 0,
+   "max": 150,
+   "step": 1,
+   "default": 10
+  },
+  {
+   "type": "label",
+   "text": "§l§e▬▬▬ CPS & FPS ▬▬▬"
+  },
+  {
+   "type": "slider",
+   "text": "§eSize %§r §7| Shared by CPS and FPS.",
+   "name": "oskullo:cps_size",
+   "min": 25,
+   "max": 300,
+   "step": 5,
+   "default": 150
+  },
+  {
+   "type": "toggle",
+   "text": "§eShow CPS Counter",
+   "name": "oskullo:show_cps",
+   "default": true
+  },
+  {
+   "type": "slider",
+   "text": "§eCPS Position X§r §7| Left / right.",
+   "name": "oskullo:cps_offx",
+   "min": -400,
+   "max": 400,
+   "step": 1,
+   "default": 320
+  },
+  {
+   "type": "slider",
+   "text": "§eCPS Position Y§r §7| Up / down.",
+   "name": "oskullo:cps_offy",
+   "min": -150,
+   "max": 150,
+   "step": 1,
+   "default": 50
+  },
+  {
+   "type": "toggle",
+   "text": "§eShow FPS Counter",
+   "name": "oskullo:show_fps",
+   "default": true
+  },
+  {
+   "type": "slider",
+   "text": "§eFPS Position X§r §7| Left / right.",
+   "name": "oskullo:fps_offx",
+   "min": -400,
+   "max": 400,
+   "step": 1,
+   "default": 320
+  },
+  {
+   "type": "slider",
+   "text": "§eFPS Position Y§r §7| Up / down.",
+   "name": "oskullo:fps_offy",
+   "min": -150,
+   "max": 150,
+   "step": 1,
+   "default": 20
+  },
+  {
+   "type": "label",
+   "text": "§l§b▬▬▬ KEYSTROKES ▬▬▬"
+  },
+  {
+   "type": "toggle",
+   "text": "§bShow Keystrokes§r §7| Jump, Sneak, LMB and RMB.",
+   "name": "oskullo:show_keys",
+   "default": true
+  },
+  {
+   "type": "slider",
+   "text": "§bPosition X§r §7| Left / right.",
+   "name": "oskullo:keys_offx",
+   "min": -400,
+   "max": 400,
+   "step": 1,
+   "default": 300
+  },
+  {
+   "type": "slider",
+   "text": "§bPosition Y§r §7| Up / down.",
+   "name": "oskullo:keys_offy",
+   "min": -150,
+   "max": 150,
+   "step": 1,
+   "default": 100
+  },
+  {
+   "type": "slider",
+   "text": "§bSize %",
+   "name": "oskullo:keys_size",
+   "min": 25,
+   "max": 300,
+   "step": 5,
+   "default": 80
+  },
+  {
+   "type": "slider",
+   "text": "§bBackground Opacity %§r §7| 0 = transparent.",
+   "name": "oskullo:keys_opacity",
+   "min": 0,
+   "max": 100,
+   "step": 5,
+   "default": 50
+  },
+  {
+   "type": "toggle",
+   "text": "§9Show Speedometer§r §7| Blocks per second.",
+   "name": "oskullo:show_speed",
+   "default": true
+  },
+  {
+   "type": "slider",
+   "text": "§9Position X§r §7| Left / right.",
+   "name": "oskullo:speed_offx",
+   "min": -400,
+   "max": 400,
+   "step": 1,
+   "default": 5
+  },
+  {
+   "type": "slider",
+   "text": "§9Position Y§r §7| Up / down.",
+   "name": "oskullo:speed_offy",
+   "min": -150,
+   "max": 150,
+   "step": 1,
+   "default": 100
+  },
+  {
+   "type": "slider",
+   "text": "§9Size %",
+   "name": "oskullo:speed_size",
+   "min": 25,
+   "max": 300,
+   "step": 5,
+   "default": 60
+  }
+ ],
+ "metadata": {
+  "authors": [
+   "oSkullo"
+  ],
+  "license": "© All rights reserved to oSkullo. All content and assets are the original property of oSkullo. Unauthorized copying, redistribution, modification, or reuse without prior permission is strictly prohibited. Violations may result in a copyright takedown request. For personal use."
+ }
+}

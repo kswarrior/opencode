@@ -6,8 +6,32 @@
             "bones": {
                 "health_bar": {
                     "rotation": [ "q.camera_rotation(0)", "q.camera_rotation(1) - q.body_y_rotation", 0 ],
-                    "position": [ 0, "v.health_bar_position", 0 ],
-                    "scale": "q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : 0.020 / v.health_bar_scale"
+                    "position": [ 0, "v.health_bar_position + query.get_pack_setting('ks:health_bar_y')", 0 ],
+                    "scale": "q.is_in_ui || q.is_invisible || !q.is_alive || query.is_pack_setting_selected('ks:health_bar_mode','off') || (query.is_pack_setting_selected('ks:health_bar_mode','hurt') && q.health >= q.max_health) ? 0 : (0.020 / v.health_bar_scale) * (math.max(query.get_pack_setting('ks:health_bar_scale'), 1) / 100.0)"
+                },
+                "h1": {
+                    "scale": "query.is_pack_setting_enabled('ks:health_bar_icon') ? 1 : 0"
+                },
+                "h2": {
+                    "scale": "query.is_pack_setting_enabled('ks:health_bar_icon') ? 1 : 0"
+                },
+                "h3": {
+                    "scale": "query.is_pack_setting_enabled('ks:health_bar_icon') ? 1 : 0"
+                },
+                "fa": {
+                    "scale": "query.is_pack_setting_enabled('ks:health_bar_digits') ? 1 : 0"
+                },
+                "fb": {
+                    "scale": "query.is_pack_setting_enabled('ks:health_bar_digits') ? 1 : 0"
+                },
+                "fc": {
+                    "scale": "query.is_pack_setting_enabled('ks:health_bar_digits') ? 1 : 0"
+                },
+                "fd": {
+                    "scale": "query.is_pack_setting_enabled('ks:health_bar_digits') ? 1 : 0"
+                },
+                "fe": {
+                    "scale": "query.is_pack_setting_enabled('ks:health_bar_digits') ? 1 : 0"
                 }
             }
         }

@@ -1,0 +1,938 @@
+// © All rights reserved to oSkullo.
+//
+// All content and assets are the original property of oSkullo. Unauthorized
+// copying, redistribution, modification, or reuse without prior permission is
+// strictly prohibited. Violations may result in a copyright takedown request.
+{
+ "format_version": "1.8.0",
+ "animations": {
+  "animation.os.vertical": {
+   "loop": true,
+   "bones": {
+    "os_root_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.0 + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "32.7834 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.5161 + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "33.8409 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_barroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-15.4839 + query.get_pack_setting('oskullo:armor_offx') * 0.96774",
+      "27.8762 + query.get_pack_setting('oskullo:armor_offy') * 0.96774",
+      0
+     ]
+    },
+    "os_barfg_helmet": {
+     "scale": [
+      "variable.ts = variable.os_av0; variable.t = variable.ts==0?55:(variable.ts==1?165:(variable.ts==2?165:(variable.ts==3?363:(variable.ts==4?77:(variable.ts==5?121:(variable.ts==6?275:(variable.ts==7?407:(variable.ts==8?121:(238))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad0)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return variable.frac;",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_barbg_helmet": {
+     "scale": [
+      "variable.ts = variable.os_av0; variable.t = variable.ts==0?55:(variable.ts==1?165:(variable.ts==2?165:(variable.ts==3?363:(variable.ts==4?77:(variable.ts==5?121:(variable.ts==6?275:(variable.ts==7?407:(variable.ts==8?121:(238))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad0)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return math.max(0.001, 1 - variable.frac);",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_numroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-14.5578 + query.get_pack_setting('oskullo:armor_offx') * 0.95161",
+      "27.4116 + query.get_pack_setting('oskullo:armor_offy') * 0.95161",
+      0
+     ],
+     "scale": [
+      0.7794,
+      0.7794,
+      1
+     ]
+    },
+    "os_root_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.0 + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "10.9278 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.5161 + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "11.2803 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_barroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-15.4839 + query.get_pack_setting('oskullo:armor_offx') * 0.96774",
+      "6.7256 + query.get_pack_setting('oskullo:armor_offy') * 0.96774",
+      0
+     ]
+    },
+    "os_barfg_chestplate": {
+     "scale": [
+      "variable.ts = variable.os_av1; variable.t = variable.ts==0?80:(variable.ts==1?240:(variable.ts==2?240:(variable.ts==3?528:(variable.ts==4?112:(variable.ts==5?432:(variable.ts==6?432:(variable.ts==7?592:(variable.ts==8?176:(240))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad1)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return variable.frac;",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_barbg_chestplate": {
+     "scale": [
+      "variable.ts = variable.os_av1; variable.t = variable.ts==0?80:(variable.ts==1?240:(variable.ts==2?240:(variable.ts==3?528:(variable.ts==4?112:(variable.ts==5?432:(variable.ts==6?432:(variable.ts==7?592:(variable.ts==8?176:(240))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad1)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return math.max(0.001, 1 - variable.frac);",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_numroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-14.5578 + query.get_pack_setting('oskullo:armor_offx') * 0.95161",
+      "6.6135 + query.get_pack_setting('oskullo:armor_offy') * 0.95161",
+      0
+     ],
+     "scale": [
+      0.7794,
+      0.7794,
+      1
+     ]
+    },
+    "os_root_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.0 + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "-10.9278 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.5161 + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "-11.2803 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_barroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-15.4839 + query.get_pack_setting('oskullo:armor_offx') * 0.96774",
+      "-14.425 + query.get_pack_setting('oskullo:armor_offy') * 0.96774",
+      0
+     ]
+    },
+    "os_barfg_leggings": {
+     "scale": [
+      "variable.ts = variable.os_av2; variable.t = variable.ts==0?75:(variable.ts==1?225:(variable.ts==2?225:(variable.ts==3?495:(variable.ts==4?105:(variable.ts==5?165:(variable.ts==6?0:(variable.ts==7?555:(variable.ts==8?165:(225))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad2)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return variable.frac;",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_barbg_leggings": {
+     "scale": [
+      "variable.ts = variable.os_av2; variable.t = variable.ts==0?75:(variable.ts==1?225:(variable.ts==2?225:(variable.ts==3?495:(variable.ts==4?105:(variable.ts==5?165:(variable.ts==6?0:(variable.ts==7?555:(variable.ts==8?165:(225))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad2)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return math.max(0.001, 1 - variable.frac);",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_numroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-14.5578 + query.get_pack_setting('oskullo:armor_offx') * 0.95161",
+      "-14.1846 + query.get_pack_setting('oskullo:armor_offy') * 0.95161",
+      0
+     ],
+     "scale": [
+      0.7794,
+      0.7794,
+      1
+     ]
+    },
+    "os_root_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.0 + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "-32.7834 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.5161 + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "-33.8409 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_barroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-15.4839 + query.get_pack_setting('oskullo:armor_offx') * 0.96774",
+      "-35.5756 + query.get_pack_setting('oskullo:armor_offy') * 0.96774",
+      0
+     ]
+    },
+    "os_barfg_boots": {
+     "scale": [
+      "variable.ts = variable.os_av3; variable.t = variable.ts==0?65:(variable.ts==1?195:(variable.ts==2?195:(variable.ts==3?429:(variable.ts==4?91:(variable.ts==5?143:(variable.ts==6?0:(variable.ts==7?481:(variable.ts==8?143:(195))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad3)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return variable.frac;",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_barbg_boots": {
+     "scale": [
+      "variable.ts = variable.os_av3; variable.t = variable.ts==0?65:(variable.ts==1?195:(variable.ts==2?195:(variable.ts==3?429:(variable.ts==4?91:(variable.ts==5?143:(variable.ts==6?0:(variable.ts==7?481:(variable.ts==8?143:(195))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad3)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return math.max(0.001, 1 - variable.frac);",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_numroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-14.5578 + query.get_pack_setting('oskullo:armor_offx') * 0.95161",
+      "-34.9826 + query.get_pack_setting('oskullo:armor_offy') * 0.95161",
+      0
+     ],
+     "scale": [
+      0.7794,
+      0.7794,
+      1
+     ]
+    },
+    "os_dtroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -46.1594 : 16.2239) + query.get_pack_setting('oskullo:armor_offx') * 0.9355",
+      "30.6683 + query.get_pack_setting('oskullo:armor_offy') * 0.9355",
+      0
+     ]
+    },
+    "os_dtroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -46.1594 : 16.2239) + query.get_pack_setting('oskullo:armor_offx') * 0.9355",
+      "10.2228 + query.get_pack_setting('oskullo:armor_offy') * 0.9355",
+      0
+     ]
+    },
+    "os_dtroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -46.1594 : 16.2239) + query.get_pack_setting('oskullo:armor_offx') * 0.9355",
+      "-10.2228 + query.get_pack_setting('oskullo:armor_offy') * 0.9355",
+      0
+     ]
+    },
+    "os_dtroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -46.1594 : 16.2239) + query.get_pack_setting('oskullo:armor_offx') * 0.9355",
+      "-30.6683 + query.get_pack_setting('oskullo:armor_offy') * 0.9355",
+      0
+     ]
+    },
+    "os_root_offhand": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.0 + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "-54.639 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_offhand": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-16.5161 + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "-56.4015 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_warnroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "((-16.0) + 6.0 + query.get_pack_setting('oskullo:armor_offx')) * 0.91935",
+      "((32.7834) + 6.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.91935",
+      0
+     ]
+    },
+    "os_warnroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "((-16.0) + 6.0 + query.get_pack_setting('oskullo:armor_offx')) * 0.91935",
+      "((10.9278) + 6.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.91935",
+      0
+     ]
+    },
+    "os_warnroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "((-16.0) + 6.0 + query.get_pack_setting('oskullo:armor_offx')) * 0.91935",
+      "((-10.9278) + 6.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.91935",
+      0
+     ]
+    },
+    "os_warnroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "((-16.0) + 6.0 + query.get_pack_setting('oskullo:armor_offx')) * 0.91935",
+      "((-32.7834) + 6.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.91935",
+      0
+     ]
+    },
+    "os_cntroot_offhand": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "((-16.0) + 19.0 - (variable.os_tc < 10 ? 5.6 : 0.0) + query.get_pack_setting('oskullo:armor_offx')) * 0.93548",
+      "((-54.639) + 0.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.93548",
+      0
+     ]
+    },
+    "os_cardroot": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      0,
+      146.4,
+      0
+     ]
+    },
+    "os_cardicon": {
+     "scale": [
+      "math.clamp((variable.os_clk - variable.os_ct) / 0.15, 0.01, 1)",
+      "math.clamp((variable.os_clk - variable.os_ct) / 0.15, 0.01, 1)",
+      1
+     ]
+    }
+   }
+  },
+  "animation.os.horizontal": {
+   "loop": true,
+   "bones": {
+    "os_root_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -80.368 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? -124.032 : -35.99)) + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "14.1 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -82.9607 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? -128.0333 : -37.151)) + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "14.5548 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_barroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-34.829 + query.get_pack_setting('oskullo:armor_offx') * 0.96774",
+      "9.7954 + query.get_pack_setting('oskullo:armor_offy') * 0.96774",
+      0
+     ]
+    },
+    "os_barfg_helmet": {
+     "scale": [
+      "variable.ts = variable.os_av0; variable.t = variable.ts==0?55:(variable.ts==1?165:(variable.ts==2?165:(variable.ts==3?363:(variable.ts==4?77:(variable.ts==5?121:(variable.ts==6?275:(variable.ts==7?407:(variable.ts==8?121:(238))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad0)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return variable.frac;",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_barbg_helmet": {
+     "scale": [
+      "variable.ts = variable.os_av0; variable.t = variable.ts==0?55:(variable.ts==1?165:(variable.ts==2?165:(variable.ts==3?363:(variable.ts==4?77:(variable.ts==5?121:(variable.ts==6?275:(variable.ts==7?407:(variable.ts==8?121:(238))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad0)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return math.max(0.001, 1 - variable.frac);",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_numroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-33.6776 + query.get_pack_setting('oskullo:armor_offx') * 0.95161",
+      "31.4984 + query.get_pack_setting('oskullo:armor_offy') * 0.95161",
+      0
+     ],
+     "scale": [
+      0.7794,
+      0.7794,
+      1
+     ]
+    },
+    "os_root_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -14.368 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? -58.032 : -14.14)) + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "14.1 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -14.8315 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? -59.9041 : -14.5961)) + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "14.5548 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_barroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-13.6839 + query.get_pack_setting('oskullo:armor_offx') * 0.96774",
+      "9.7954 + query.get_pack_setting('oskullo:armor_offy') * 0.96774",
+      0
+     ]
+    },
+    "os_barfg_chestplate": {
+     "scale": [
+      "variable.ts = variable.os_av1; variable.t = variable.ts==0?80:(variable.ts==1?240:(variable.ts==2?240:(variable.ts==3?528:(variable.ts==4?112:(variable.ts==5?432:(variable.ts==6?432:(variable.ts==7?592:(variable.ts==8?176:(240))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad1)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return variable.frac;",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_barbg_chestplate": {
+     "scale": [
+      "variable.ts = variable.os_av1; variable.t = variable.ts==0?80:(variable.ts==1?240:(variable.ts==2?240:(variable.ts==3?528:(variable.ts==4?112:(variable.ts==5?432:(variable.ts==6?432:(variable.ts==7?592:(variable.ts==8?176:(240))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad1)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return math.max(0.001, 1 - variable.frac);",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_numroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "-12.8848 + query.get_pack_setting('oskullo:armor_offx') * 0.95161",
+      "31.4984 + query.get_pack_setting('oskullo:armor_offy') * 0.95161",
+      0
+     ],
+     "scale": [
+      0.7794,
+      0.7794,
+      1
+     ]
+    },
+    "os_root_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? 51.632 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 7.968 : 7.71)) + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "14.1 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? 53.2976 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 8.225 : 7.9587)) + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "14.5548 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_barroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "7.4613 + query.get_pack_setting('oskullo:armor_offx') * 0.96774",
+      "9.7954 + query.get_pack_setting('oskullo:armor_offy') * 0.96774",
+      0
+     ]
+    },
+    "os_barfg_leggings": {
+     "scale": [
+      "variable.ts = variable.os_av2; variable.t = variable.ts==0?75:(variable.ts==1?225:(variable.ts==2?225:(variable.ts==3?495:(variable.ts==4?105:(variable.ts==5?165:(variable.ts==6?0:(variable.ts==7?555:(variable.ts==8?165:(225))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad2)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return variable.frac;",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_barbg_leggings": {
+     "scale": [
+      "variable.ts = variable.os_av2; variable.t = variable.ts==0?75:(variable.ts==1?225:(variable.ts==2?225:(variable.ts==3?495:(variable.ts==4?105:(variable.ts==5?165:(variable.ts==6?0:(variable.ts==7?555:(variable.ts==8?165:(225))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad2)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return math.max(0.001, 1 - variable.frac);",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_numroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "7.9079 + query.get_pack_setting('oskullo:armor_offx') * 0.95161",
+      "31.4984 + query.get_pack_setting('oskullo:armor_offy') * 0.95161",
+      0
+     ],
+     "scale": [
+      0.7794,
+      0.7794,
+      1
+     ]
+    },
+    "os_root_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? 117.632 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 73.968 : 29.56)) + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "14.1 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? 121.4268 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 76.3542 : 30.5135)) + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "14.5548 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_barroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "28.6065 + query.get_pack_setting('oskullo:armor_offx') * 0.96774",
+      "9.7954 + query.get_pack_setting('oskullo:armor_offy') * 0.96774",
+      0
+     ]
+    },
+    "os_barfg_boots": {
+     "scale": [
+      "variable.ts = variable.os_av3; variable.t = variable.ts==0?65:(variable.ts==1?195:(variable.ts==2?195:(variable.ts==3?429:(variable.ts==4?91:(variable.ts==5?143:(variable.ts==6?0:(variable.ts==7?481:(variable.ts==8?143:(195))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad3)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return variable.frac;",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_barbg_boots": {
+     "scale": [
+      "variable.ts = variable.os_av3; variable.t = variable.ts==0?65:(variable.ts==1?195:(variable.ts==2?195:(variable.ts==3?429:(variable.ts==4?91:(variable.ts==5?143:(variable.ts==6?0:(variable.ts==7?481:(variable.ts==8?143:(195))))))))); variable.rem = math.max(0, variable.t - (variable.os_ad3)); variable.frac = variable.t > 0 ? math.clamp(variable.rem / variable.t, 0, 1) : 1; return math.max(0.001, 1 - variable.frac);",
+      "1",
+      "1"
+     ],
+     "position": [
+      0,
+      10.1903,
+      0
+     ]
+    },
+    "os_numroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "28.7006 + query.get_pack_setting('oskullo:armor_offx') * 0.95161",
+      "31.4984 + query.get_pack_setting('oskullo:armor_offy') * 0.95161",
+      0
+     ],
+     "scale": [
+      0.7794,
+      0.7794,
+      1
+     ]
+    },
+    "os_dtroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -106.3738 : -84.8424) + query.get_pack_setting('oskullo:armor_offx') * 0.9355",
+      "13.1905 + query.get_pack_setting('oskullo:armor_offy') * 0.9355",
+      0
+     ]
+    },
+    "os_dtroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? -44.6308 : -23.0994) + query.get_pack_setting('oskullo:armor_offx') * 0.9355",
+      "13.1905 + query.get_pack_setting('oskullo:armor_offy') * 0.9355",
+      0
+     ]
+    },
+    "os_dtroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? 17.1122 : 38.6436) + query.get_pack_setting('oskullo:armor_offx') * 0.9355",
+      "13.1905 + query.get_pack_setting('oskullo:armor_offy') * 0.9355",
+      0
+     ]
+    },
+    "os_dtroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? 78.8552 : 100.3866) + query.get_pack_setting('oskullo:armor_offx') * 0.9355",
+      "13.1905 + query.get_pack_setting('oskullo:armor_offy') * 0.9355",
+      0
+     ]
+    },
+    "os_root_offhand": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? 139.48 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 139.968 : 51.41)) + query.get_pack_setting('oskullo:armor_offx') * 1.0",
+      "14.1 + query.get_pack_setting('oskullo:armor_offy') * 1.0",
+      0
+     ]
+    },
+    "os_bgroot_offhand": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(query.is_pack_setting_selected('oskullo:armor_dur','left') ? 143.986 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 144.485 : 53.067)) + query.get_pack_setting('oskullo:armor_offx') * 1.03226",
+      "14.5548 + query.get_pack_setting('oskullo:armor_offy') * 1.03226",
+      0
+     ]
+    },
+    "os_warnroot_helmet": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(((query.is_pack_setting_selected('oskullo:armor_dur','left') ? -80.368 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? -124.032 : -35.99))) + 6.0 + query.get_pack_setting('oskullo:armor_offx')) * 0.91935",
+      "((14.1) + 6.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.91935",
+      0
+     ]
+    },
+    "os_warnroot_chestplate": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(((query.is_pack_setting_selected('oskullo:armor_dur','left') ? -14.368 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? -58.032 : -14.14))) + 6.0 + query.get_pack_setting('oskullo:armor_offx')) * 0.91935",
+      "((14.1) + 6.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.91935",
+      0
+     ]
+    },
+    "os_warnroot_leggings": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(((query.is_pack_setting_selected('oskullo:armor_dur','left') ? 51.632 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 7.968 : 7.71))) + 6.0 + query.get_pack_setting('oskullo:armor_offx')) * 0.91935",
+      "((14.1) + 6.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.91935",
+      0
+     ]
+    },
+    "os_warnroot_boots": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(((query.is_pack_setting_selected('oskullo:armor_dur','left') ? 117.632 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 73.968 : 29.56))) + 6.0 + query.get_pack_setting('oskullo:armor_offx')) * 0.91935",
+      "((14.1) + 6.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.91935",
+      0
+     ]
+    },
+    "os_cntroot_offhand": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      "(((query.is_pack_setting_selected('oskullo:armor_dur','left') ? 139.48 : (query.is_pack_setting_selected('oskullo:armor_dur','right') ? 139.968 : 51.41))) + 19.0 - (variable.os_tc < 10 ? 5.6 : 0.0) + query.get_pack_setting('oskullo:armor_offx')) * 0.93548",
+      "((14.1) + 0.0 + query.get_pack_setting('oskullo:armor_offy')) * 0.93548",
+      0
+     ]
+    },
+    "os_cardroot": {
+     "rotation": [
+      "-query.camera_rotation(0)",
+      0,
+      0
+     ],
+     "position": [
+      0,
+      146.4,
+      0
+     ]
+    },
+    "os_cardicon": {
+     "scale": [
+      "math.clamp((variable.os_clk - variable.os_ct) / 0.15, 0.01, 1)",
+      "math.clamp((variable.os_clk - variable.os_ct) / 0.15, 0.01, 1)",
+      1
+     ]
+    }
+   }
+  }
+ }
+}
