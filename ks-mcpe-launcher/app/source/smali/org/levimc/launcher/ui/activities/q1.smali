@@ -136,6 +136,5 @@
     .packed-switch 0x0
         :pswitch_2
         :pswitch_1
-        :pswitch_0
     .end packed-switch
 .end method
