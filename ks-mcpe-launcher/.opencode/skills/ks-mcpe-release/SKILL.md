@@ -93,8 +93,15 @@ locally with `ks-mcpe-launcher/app/build.sh` from the checked-in
 `app/source` tree. If CI is ever requested again, the signing key must be
 provided as secrets first, because rebuilds with a new key break updates.
 
-The app's in-built self-update is intentionally disabled in the source tree,
-so users update only by installing new release assets manually.
+The app's in-built update check is removed: the settings button and launch-time
+call are gone and the updater entry points are inert no-ops, so the app cannot
+query upstream releases. Users update only by installing new release assets
+manually.
+
+Version 1.0.2 was published with a new signing key (cert SHA-256
+`880b6928242e641ac60333127dbab2200ed5a2625743ef63981e6414ad8d27bd`). The 1.0.1
+assets remain signed by the lost key, so 1.0.1 users must uninstall before
+installing 1.0.2.
 
 ## Rules
 
