@@ -156,7 +156,6 @@ if re.search(r'android:authorities="' + re.escape(old_id) + r'(?=[."])', manifes
 
 manifest_path.write_text(manifest, encoding="utf-8")
 
-build_config = next(root.glob("smali*/**/BuildConfig.smali"), None)
 patched_build_config = False
 for candidate in root.glob("smali*/**/BuildConfig.smali"):
     text = candidate.read_text(encoding="utf-8")
