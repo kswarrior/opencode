@@ -71,12 +71,13 @@ done
 ## Verify after upload
 
 ```bash
-curl -fsSL -o /tmp/check.apk \
-  "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.1.apk"
-sha256sum -c /tmp/check.apk.sha256   # after downloading the .sha256 asset
+cd /tmp/opencode
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.1.apk"
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.1.apk.sha256"
+sha256sum -c KS-MCPE-Launcher-1.0.1.apk.sha256
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump xmltree --file AndroidManifest.xml /tmp/check.apk | grep -E 'package=|DYNAMIC_RECEIVER|authorities' | head
-$BT/apksigner verify --print-certs /tmp/check.apk
+$BT/aapt2 dump xmltree --file AndroidManifest.xml KS-MCPE-Launcher-1.0.1.apk | grep -E 'package=|DYNAMIC_RECEIVER|authorities' | head
+$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.1.apk
 ```
 
 Confirm the uploaded manifest has `com.ks.mcpe.launcher`, renamed provider
