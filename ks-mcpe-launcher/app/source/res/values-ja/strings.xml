@@ -55,7 +55,7 @@
     <string name="adding_server">サーバーを追加中…</string>
     <string name="allow_unknown_sources">続行する前に、提供元不明のアプリのインストールを許可してください</string>
     <string name="already_latest_version">既に最新バージョンです (%1$s)</string>
-    <string name="app_name">LeviLauncher</string>
+    <string name="app_name">KS MCPE Launcher</string>
     <string name="apply">適用</string>
     <string name="autosprint_keybind_label">オートスプリントのキーバインド:</string>
     <string name="autosprint_keybind_press">任意のキーを押してください…</string>
@@ -252,7 +252,7 @@ minecraft://?showStoreOffer=UUID"</string>
     <string name="error_versions">エラーバージョン</string>
     <string name="eula_agree">同意する</string>
     <string name="eula_exit">拒否する</string>
-    <string name="eula_message"><b>LeviLauncher へようこそ</b>"
+    <string name="eula_message"><b>KS MCPE Launcher へようこそ</b>"
 
 このソフトウェアを使用することにより、以下に同意したとみなされます：
 
@@ -263,7 +263,7 @@ minecraft://?showStoreOffer=UUID"</string>
 • Mojang / Microsoft とは提携していません
 
 継続使用は同意を構成します"</string>
-    <string name="eula_title">LeviLauncher 使用許諾契約</string>
+    <string name="eula_title">KS MCPE Launcher 使用許諾契約</string>
     <string name="execute">実行</string>
     <string name="exit">終了</string>
     <string name="expand_button_title">詳細設定</string>

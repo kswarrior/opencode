@@ -55,7 +55,7 @@
     <string name="adding_server">Adicionando servidor…</string>
     <string name="allow_unknown_sources">Por favor, permita a instalação de fontes desconhecidas antes de continuar.</string>
     <string name="already_latest_version">Já é a versão mais recente (%1$s)</string>
-    <string name="app_name">LeviLauncher</string>
+    <string name="app_name">KS MCPE Launcher</string>
     <string name="apply">Aplicar</string>
     <string name="autosprint_keybind_label">Tecla de Auto Sprint:</string>
     <string name="autosprint_keybind_press">Pressione qualquer tecla…</string>
@@ -225,7 +225,7 @@ minecraft://?showStoreOffer=UUID"</string>
     <string name="error_versions">Versões com Erro</string>
     <string name="eula_agree">Aceitar</string>
     <string name="eula_exit">Recusar</string>
-    <string name="eula_message"><b>Bem-vindo ao LeviLauncher</b>"
+    <string name="eula_message"><b>Bem-vindo ao KS MCPE Launcher</b>"
 
 Ao usar este software, você concorda que:
 
@@ -236,7 +236,7 @@ Ao usar este software, você concorda que:
 • Não afiliado à Mojang/Microsoft
 
 O uso contínuo constitui concordância"</string>
-    <string name="eula_title">Contrato de Licença LeviLauncher</string>
+    <string name="eula_title">Contrato de Licença KS MCPE Launcher</string>
     <string name="execute">Executar</string>
     <string name="exit">Sair</string>
     <string name="expand_button_title">Avançado</string>

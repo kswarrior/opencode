@@ -55,7 +55,7 @@
     <string name="adding_server">Đang thêm máy chủ…</string>
     <string name="allow_unknown_sources">Vui lòng cho phép cài đặt từ nguồn không xác định trước khi tiếp tục.</string>
     <string name="already_latest_version">Đang ở phiên bản mới nhất (%1$s)</string>
-    <string name="app_name">LeviLauncher</string>
+    <string name="app_name">KS MCPE Launcher</string>
     <string name="apply">Áp dụng</string>
     <string name="autosprint_keybind_label">Phím tắt tự động chạy nhanh:</string>
     <string name="autosprint_keybind_press">Nhấn bất kỳ phím nào…</string>
@@ -252,7 +252,7 @@ minecraft://?showStoreOffer=UUID"</string>
     <string name="error_versions">Phiên bản lỗi</string>
     <string name="eula_agree">Đồng ý</string>
     <string name="eula_exit">Từ chối</string>
-    <string name="eula_message"><b>Chào mừng bạn đến với LeviLauncher</b>"
+    <string name="eula_message"><b>Chào mừng bạn đến với KS MCPE Launcher</b>"
 
 Bằng cách sử dụng phần mềm này, bạn đồng ý với các điều khoản sau:
 
@@ -263,7 +263,7 @@ Bằng cách sử dụng phần mềm này, bạn đồng ý với các điều 
 • Không liên kết với Mojang/Microsoft
 
 Việc tiếp tục sử dụng đồng nghĩa với việc bạn đồng ý"</string>
-    <string name="eula_title">Thỏa thuận cấp phép LeviLauncher</string>
+    <string name="eula_title">Thỏa thuận cấp phép KS MCPE Launcher</string>
     <string name="execute">Thực thi</string>
     <string name="exit">Thoát</string>
     <string name="expand_button_title">Nâng cao</string>

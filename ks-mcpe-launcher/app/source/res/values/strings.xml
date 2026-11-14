@@ -103,7 +103,7 @@
     <string name="allow_unknown_sources">Please allow installation from unknown sources before proceeding</string>
     <string name="already_latest_version">Already latest version (%1$s)</string>
     <string name="androidx_startup">androidx.startup</string>
-    <string name="app_name">LeviLauncher</string>
+    <string name="app_name">KS MCPE Launcher</string>
     <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="appcenter_android_id">c35d56a4-fe9c-4490-9d16-600825114d4b</string>
     <string name="apply">Apply</string>
@@ -322,7 +322,7 @@ minecraft://?showStoreOffer=UUID"</string>
     <string name="error_versions">Error Versions</string>
     <string name="eula_agree">Accept</string>
     <string name="eula_exit">Decline</string>
-    <string name="eula_message"><b>Welcome to LeviLauncher</b>"
+    <string name="eula_message"><b>Welcome to KS MCPE Launcher</b>"
 
 By using this software you agree to:
 
@@ -333,7 +333,7 @@ By using this software you agree to:
 • Not affiliated with Mojang/Microsoft
 
 Continued use constitutes agreement"</string>
-    <string name="eula_title">LeviLauncher License Agreement</string>
+    <string name="eula_title">KS MCPE Launcher License Agreement</string>
     <string name="execute">Execute</string>
     <string name="exit">Exit</string>
     <string name="expand_button_title">Advanced</string>

@@ -55,7 +55,7 @@
     <string name="adding_server">Menambahkan server…</string>
     <string name="allow_unknown_sources">Harap izinkan instalasi dari sumber yang tidak dikenal sebelum melanjutkan.</string>
     <string name="already_latest_version">Sudah versi terbaru (%1$s)</string>
-    <string name="app_name">LeviLauncher</string>
+    <string name="app_name">KS MCPE Launcher</string>
     <string name="apply">Terapkan</string>
     <string name="autosprint_keybind_label">Tombol Auto Sprint:</string>
     <string name="autosprint_keybind_press">Tekan tombol apa saja…</string>
@@ -252,7 +252,7 @@ minecraft://?showStoreOffer=UUID"</string>
     <string name="error_versions">Versi Yang Rusak</string>
     <string name="eula_agree">Terima</string>
     <string name="eula_exit">Tolak</string>
-    <string name="eula_message"><b>Selamat datang di LeviLauncher</b>"
+    <string name="eula_message"><b>Selamat datang di KS MCPE Launcher</b>"
 
 By using this software you agree to:
 
@@ -263,7 +263,7 @@ By using this software you agree to:
 • Not affiliated with Mojang/Microsoft
 
 Continued use constitutes agreement"</string>
-    <string name="eula_title">LeviLauncher License Agreement</string>
+    <string name="eula_title">KS MCPE Launcher License Agreement</string>
     <string name="execute">Jalankan</string>
     <string name="exit">Keluar</string>
     <string name="expand_button_title">Lanjutan</string>

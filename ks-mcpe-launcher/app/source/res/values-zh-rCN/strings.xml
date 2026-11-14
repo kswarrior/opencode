@@ -55,7 +55,7 @@
     <string name="adding_server">正在添加服务器…</string>
     <string name="allow_unknown_sources">请允许安装未知来源应用再操作</string>
     <string name="already_latest_version">已是最新版本 (%1$s)</string>
-    <string name="app_name">LeviLauncher</string>
+    <string name="app_name">KS MCPE Launcher</string>
     <string name="apply">应用</string>
     <string name="autosprint_keybind_label">自动疾跑按键绑定：</string>
     <string name="autosprint_keybind_press">请按任意键…</string>
@@ -252,7 +252,7 @@ minecraft://?showStoreOffer=UUID"</string>
     <string name="error_versions">错误版本</string>
     <string name="eula_agree">接受</string>
     <string name="eula_exit">拒绝</string>
-    <string name="eula_message"><b>欢迎使用 LeviLauncher</b>"
+    <string name="eula_message"><b>欢迎使用 KS MCPE Launcher</b>"
 
 使用本软件即表示您同意：
 
@@ -263,7 +263,7 @@ minecraft://?showStoreOffer=UUID"</string>
 • 与 Mojang/Microsoft 无关联
 
 继续使用视为接受条款"</string>
-    <string name="eula_title">LeviLauncher 用户协议</string>
+    <string name="eula_title">KS MCPE Launcher 用户协议</string>
     <string name="execute">执行</string>
     <string name="exit">退出</string>
     <string name="expand_button_title">高级</string>

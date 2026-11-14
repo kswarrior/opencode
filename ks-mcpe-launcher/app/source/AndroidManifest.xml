@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" package="org.levimc.launcher" platformBuildVersionCode="36" platformBuildVersionName="16">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" package="com.ks.mcpe.launcher" platformBuildVersionCode="36" platformBuildVersionName="16">
     <uses-feature android:glEsVersion="0x20000" android:required="true"/>
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     <uses-feature android:name="android.hardware.microphone" android:required="false"/>
@@ -48,8 +48,8 @@
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION"/>
     <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID"/>
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
-    <permission android:name="org.levimc.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
-    <uses-permission android:name="org.levimc.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <permission android:name="com.ks.mcpe.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.ks.mcpe.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
     <application android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="org.levimc.launcher.core.minecraft.LauncherApplication" android:networkSecurityConfig="@xml/network_security_config" android:supportsRtl="true" android:theme="@style/Base.Theme.FullScreen">
         <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\486187589451"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="true" android:name="org.levimc.launcher.ui.activities.SplashActivity" android:screenOrientation="sensorLandscape">
@@ -264,7 +264,7 @@
         </activity>
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|uiMode|screenSize" android:exported="false" android:hardwareAccelerated="false" android:launchMode="singleTask" android:name="com.microsoft.xal.browser.WebKitWebViewController" android:theme="@style/WebViewTheme"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:launchMode="singleTask" android:name="org.levimc.launcher.ui.activities.CrashActivity" android:process=":crash" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
-        <provider android:authorities="org.levimc.launcher.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+        <provider android:authorities="com.ks.mcpe.launcher.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths"/>
         </provider>
         <meta-data android:name="appcenter_android_trial_id" android:value="@string/appcenter_android_id"/>
@@ -277,7 +277,7 @@
             </intent-filter>
         </service>
         <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
-        <provider android:authorities="org.levimc.launcher.playgamesinitprovider" android:exported="false" android:initOrder="99" android:name="com.google.android.gms.games.provider.PlayGamesInitProvider"/>
+        <provider android:authorities="com.ks.mcpe.launcher.playgamesinitprovider" android:exported="false" android:initOrder="99" android:name="com.google.android.gms.games.provider.PlayGamesInitProvider"/>
         <activity android:exported="false" android:name="com.google.android.gms.games.internal.v2.resolution.GamesResolutionActivity" android:theme="@style/Theme.Games.Transparent"/>
         <activity android:exported="true" android:name="com.google.android.gms.games.internal.v2.appshortcuts.PlayGamesAppShortcutsActivity" android:theme="@style/Theme.Games.Transparent"/>
         <meta-data android:name="com.google.android.gms.games.version" android:value="@string/play_games_sdk_version"/>
@@ -310,12 +310,12 @@
             </intent-filter>
         </service>
         <service android:enabled="false" android:exported="false" android:name="com.google.firebase.sessions.SessionLifecycleService"/>
-        <provider android:authorities="org.levimc.launcher.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <provider android:authorities="com.ks.mcpe.launcher.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
         <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
         <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
         <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
         <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <provider android:authorities="org.levimc.launcher.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+        <provider android:authorities="com.ks.mcpe.launcher.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
             <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
             <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
             <meta-data android:name="okhttp3.internal.platform.PlatformInitializer" android:value="androidx.startup"/>
