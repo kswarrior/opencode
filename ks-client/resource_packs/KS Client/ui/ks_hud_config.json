@@ -323,10 +323,11 @@
       { "ks_c8@ksb_main.toggle_option": { "$toggle_name": "ksbT_8", "$toggle_view_binding_name": "ksbT_8_t", "$toggle_text": "Show Hotbar 8", "$toggle_default_state": "$ksb_8_v" } },
       { "ks_c9@ksb_main.toggle_option": { "$toggle_name": "ksbT_9", "$toggle_view_binding_name": "ksbT_9_t", "$toggle_text": "Show Hotbar 9", "$toggle_default_state": "$ksb_9_v" } },
       { "ks_c10@ksb_main.toggle_option": { "$toggle_name": "ksbT_10", "$toggle_view_binding_name": "ksbT_10_t", "$toggle_text": "Show Inv Btn", "$toggle_default_state": "$ksb_10_v" } },
-      { "ks_ci@ksb_main.toggle_option": { "$toggle_name": "ksbT_invhud", "$toggle_view_binding_name": "ksbT_invhud_t", "$toggle_text": "Show Inv HUD", "$toggle_default_state": "$ksb_invhud_v" } },
-      { "ks_cf1@ksb_main.toggle_option": { "$toggle_name": "ksbT_f1", "$toggle_view_binding_name": "ksbT_f1_t", "$toggle_text": "Show F1 HUD", "$toggle_default_state": "$ks_f1_v" } },
-      { "ks_cf3@ksb_main.toggle_option": { "$toggle_name": "ksbT_f3show", "$toggle_view_binding_name": "ksbT_f3show_t", "$toggle_text": "Show F3 HUD", "$toggle_default_state": "$ks_f3_v" } },
-      { "ks_cmh@ksb_main.toggle_option": { "$toggle_name": "ks_uhud_mainhand", "$toggle_view_binding_name": "ks_uhud_mainhand_t", "$toggle_text": "Show Mainhand Durability", "$toggle_default_state": "$ks_uhud_mainhand_v" } }
+      { "ks_ci@ksb_main.toggle_option": { "$toggle_name": "ksbT_invhud", "$toggle_view_binding_name": "ksbT_invhud_t", "$toggle_text": "Show Inv HUD", "$toggle_default_state": "$ksb_invhud_v", "$toggle_binding_type": "global" } },
+      { "ks_cf1@ksb_main.toggle_option": { "$toggle_name": "ksbT_f1", "$toggle_view_binding_name": "ksbT_f1_t", "$toggle_text": "Show F1 HUD", "$toggle_default_state": "$ks_f1_v", "$toggle_binding_type": "global" } },
+      { "ks_cf3@ksb_main.toggle_option": { "$toggle_name": "ksbT_f3show", "$toggle_view_binding_name": "ksbT_f3show_t", "$toggle_text": "Show F3 HUD", "$toggle_default_state": "$ks_f3_v", "$toggle_binding_type": "global" } },
+      { "ks_cmh@ksb_main.toggle_option": { "$toggle_name": "ks_uhud_mainhand", "$toggle_view_binding_name": "ks_uhud_mainhand_t", "$toggle_text": "Show Mainhand Durability", "$toggle_default_state": "$ks_uhud_mainhand_v", "$toggle_binding_type": "global" } },
+      { "ks_cqt@ksb_main.toggle_option": { "$toggle_name": "ks_uhud_quick_totem", "$toggle_view_binding_name": "ks_uhud_totem_t", "$toggle_text": "Show Quick Totem", "$toggle_default_state": "$ks_uhud_totem_v", "$toggle_binding_type": "global" } }
     ]
   }
 }

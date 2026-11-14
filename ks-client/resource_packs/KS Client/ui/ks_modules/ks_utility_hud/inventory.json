@@ -852,8 +852,27 @@
     "type": "panel",
     "controls": [
       {
+        "_quick_totem_toggle@common_toggles.light_content_toggle": {
+          "$toggle_name": "ks_uhud_quick_totem",
+          "$toggle_view_binding_name": "ks_uhud_totem_t",
+          "$toggle_default_state": "$ks_uhud_totem_v",
+          "$toggle_binding_type": "global",
+          "size": [
+            0,
+            0
+          ]
+        }
+      },
+      {
         "fast_totem@ks_uhud.ks_uhud_fast_totem": {
-          "ignored": "(not $ks_uhud_totem_v)"
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "ks_uhud_totem_t",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
         }
       },
       {
