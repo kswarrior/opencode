@@ -65,6 +65,8 @@ setup() {
     fi
 }
 
+mkdir -p "$CACHE" "$BIN"
+
 if command -v flock >/dev/null 2>&1; then
     exec 9>"$CACHE/.setup.lock"
     flock 9
