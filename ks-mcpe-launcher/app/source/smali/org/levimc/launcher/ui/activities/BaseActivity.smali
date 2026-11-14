@@ -1181,21 +1181,8 @@
 .end method
 
 .method private synthetic lambda$setupBaseNavBar$13(Landroid/view/View;)V
-    .locals 1
+    .locals 0
 
-    instance-of p1, p0, Lorg/levimc/launcher/ui/activities/MiscellaneousActivity;
-
-    if-nez p1, :cond_0
-
-    new-instance p1, Landroid/content/Intent;
-
-    const-class v0, Lorg/levimc/launcher/ui/activities/MiscellaneousActivity;
-
-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    :cond_0
     return-void
 .end method
 

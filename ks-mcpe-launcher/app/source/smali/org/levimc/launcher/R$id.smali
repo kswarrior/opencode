@@ -739,8 +739,6 @@
 
 .field public static nav_tab_launch:I = 0x7f0a02c4
 
-.field public static nav_tab_misc:I = 0x7f0a0497
-
 .field public static nav_tab_mods:I = 0x7f0a0498
 
 .field public static nav_tab_settings:I = 0x7f0a02c5

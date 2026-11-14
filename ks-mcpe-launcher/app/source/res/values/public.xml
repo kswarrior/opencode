@@ -4934,7 +4934,6 @@
     <public type="id" name="nav_tab_content" id="0x7f0a0496" />
     <public type="id" name="nav_tab_instances" id="0x7f0a02c3" />
     <public type="id" name="nav_tab_launch" id="0x7f0a02c4" />
-    <public type="id" name="nav_tab_misc" id="0x7f0a0497" />
     <public type="id" name="nav_tab_mods" id="0x7f0a0498" />
     <public type="id" name="nav_tab_settings" id="0x7f0a02c5" />
     <public type="id" name="navigation_bar_item_active_indicator_view" id="0x7f0a02c6" />
