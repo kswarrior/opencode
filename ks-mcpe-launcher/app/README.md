@@ -53,11 +53,23 @@ directory if you want to keep update compatibility.
 
 ## GitHub Actions
 
-`.github/workflows/ks-mcpe-launcher.yml` builds the clone and uploads
+`ks-mcpe-launcher.workflow.yml` builds the clone and uploads
 `KS-MCPE-Launcher-<version>.apk` plus its `.sha256` file to the
 `ks-mcpe-launcher` release (configurable with the `release_tag` input).
 
-Run it with `workflow_dispatch`, or push a tag matching `ks-mcpe-launcher*`.
+Install it once as a real workflow (the automation token cannot push files
+under `.github/workflows`, so this copy is staged here):
+
+```bash
+mkdir -p .github/workflows
+cp ks-mcpe-launcher/app/ks-mcpe-launcher.workflow.yml \
+  .github/workflows/ks-mcpe-launcher.yml
+git add .github/workflows/ks-mcpe-launcher.yml
+git commit -m "ci: add KS MCPE Launcher build workflow"
+git push
+```
+
+Then run it with `workflow_dispatch`, or push the `ks-mcpe-launcher` tag.
 
 ### Signing in CI
 
