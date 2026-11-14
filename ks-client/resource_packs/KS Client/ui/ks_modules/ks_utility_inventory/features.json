@@ -247,60 +247,28 @@
   },
   "settings_panel@ksui_common.touch_input": {
     "size": [
-      94,
-      72
+      "100%c",
+      "100%c"
     ],
-    "anchor_from": "bottom_middle",
-    "anchor_to": "top_middle",
-    "offset": [
-      0,
-      -4
-    ],
-    "layer": 40,
+    "anchor_from": "$ksui_f16262",
+    "anchor_to": "$ksui_f16262",
+    "offset": "$ksui_e291fa",
     "controls": [
       {
-        "dim": {
-          "type": "image",
-          "texture": "textures/ui/Black",
-          "alpha": 0.55,
-          "size": [
-            "100%",
-            "100%"
-          ]
-        }
-      },
-      {
-        "background@common.dialog_background_opaque": {
-          "size": [
-            "100%",
-            "100%"
-          ]
-        }
-      },
-      {
-        "rows": {
-          "type": "stack_panel",
+        "stack@ksui_common.stack_horizontal": {
           "size": [
             "100%c",
             "100%cm"
           ],
-          "anchor_from": "center",
-          "anchor_to": "center",
           "controls": [
             {
-              "row_1@ksui_features.settings_row_1": {}
+              "options_stack@ksui_features.options_stack": {}
             },
             {
-              "padding_1@ksui_common.pad_2px_y": {}
+              "padding@ksui_common.pad_2px_x": {}
             },
             {
-              "row_2@ksui_features.settings_row_2": {}
-            },
-            {
-              "padding_2@ksui_common.pad_2px_y": {}
-            },
-            {
-              "row_3@ksui_features.settings_row_3": {}
+              "second_options_stack@ksui_features.second_options_stack": {}
             }
           ]
         }
@@ -309,34 +277,14 @@
     "bindings": [
       {
         "binding_type": "view",
-        "source_control_name": "settings_tog",
+        "source_control_name": "inventory_UI_tog",
         "source_property_name": "#toggle_state",
         "target_property_name": "#visible"
       }
     ]
   },
-  "settings_row": {
-    "type": "stack_panel",
-    "orientation": "horizontal",
-    "size": [
-      "100%c",
-      "100%cm"
-    ]
-  },
-  "settings_row_1@ksui_features.settings_row": {
-    "controls": [
-      {
-        "crafting_toggle@ksui_common.main_toggle": {
-          "$toggle_name": "crafting_toggle8",
-          "$toggle_view_binding_name": "crafting_tog",
-          "$toggle_default_state": "$ksui_4552ca",
-          "$icon_texture": "textures/ui/ks_utility_inventory/icons/crafting",
-          "$hover_text": "Crafting"
-        }
-      },
-      {
-        "padding_1@ksui_common.pad_2px_x": {}
-      },
+  "options_stack@ksui_features.options_panel": {
+    "$controls": [
       {
         "armor_display@ksui_features.option_toggle": {
           "$toggle_name": "armor_display_toggle",
@@ -346,7 +294,7 @@
         }
       },
       {
-        "padding_2@ksui_common.pad_2px_x": {}
+        "padding_1@ksui_common.pad_2px_x": {}
       },
       {
         "tools_cycler@ksui_features.option_toggle": {
@@ -357,7 +305,7 @@
         }
       },
       {
-        "padding_3@ksui_common.pad_2px_x": {}
+        "padding_2@ksui_common.pad_2px_x": {}
       },
       {
         "slot_cycler@ksui_features.option_toggle": {
@@ -369,8 +317,8 @@
       }
     ]
   },
-  "settings_row_2@ksui_features.settings_row": {
-    "controls": [
+  "second_options_stack@ksui_features.options_panel": {
+    "$controls": [
       {
         "recipe_book_toggle@ksui_common.main_toggle": {
           "$toggle_name": "recipe_book_toggle",
@@ -381,86 +329,7 @@
         }
       },
       {
-        "padding_1@ksui_common.pad_2px_x": {}
-      },
-      {
-        "inventory_hud_toggle@ksui_common.main_toggle": {
-          "$toggle_name": "ksbT_invhud",
-          "$toggle_view_binding_name": "inv_hud_tog",
-          "$toggle_default_state": "$ksb_invhud_v",
-          "$toggle_binding_type": "global",
-          "$icon_texture": "textures/ui/ks_utility_inventory/icons/inventory",
-          "$hover_text": "Inventory HUD"
-        }
-      },
-      {
-        "padding_2@ksui_common.pad_2px_x": {}
-      },
-      {
-        "quick_totem_toggle@ksui_common.main_toggle": {
-          "$toggle_name": "ks_uhud_quick_totem",
-          "$toggle_view_binding_name": "quick_totem_tog",
-          "$toggle_default_state": "$ks_uhud_totem_v",
-          "$toggle_binding_type": "global",
-          "$icon_texture": "textures/ui/ks_uhud/totem",
-          "$hover_text": "Quick Totem"
-        }
-      },
-      {
-        "padding_3@ksui_common.pad_2px_x": {}
-      },
-      {
-        "mainhand_toggle@ksui_common.main_toggle": {
-          "$toggle_name": "ks_uhud_mainhand",
-          "$toggle_view_binding_name": "inv_mainhand_tog",
-          "$toggle_default_state": "$ks_uhud_mainhand_v",
-          "$toggle_binding_type": "global",
-          "$icon_texture": "textures/ui/ks_utility_inventory/icons/mainhand",
-          "$hover_text": "Mainhand Durability"
-        }
-      }
-    ]
-  },
-  "settings_row_3@ksui_features.settings_row": {
-    "controls": [
-      {
-        "counters_toggle@ksui_common.main_toggle": {
-          "$toggle_name": "ks_uhud_counters",
-          "$toggle_view_binding_name": "inv_counters_tog",
-          "$toggle_default_state": "$ks_uhud_counters_v",
-          "$toggle_binding_type": "global",
-          "$icon_texture": "textures/ui/ks_utility_inventory/icons/counters",
-          "$hover_text": "Counters HUD"
-        }
-      },
-      {
-        "padding_1@ksui_common.pad_2px_x": {}
-      },
-      {
-        "f1_toggle@ksui_common.main_toggle": {
-          "$toggle_name": "ksbT_f1",
-          "$toggle_view_binding_name": "inv_f1_tog",
-          "$toggle_default_state": "$ks_f1_v",
-          "$toggle_binding_type": "global",
-          "$icon_texture": "textures/ui/ks_utility_inventory/icons/f1",
-          "$hover_text": "F1 HUD"
-        }
-      },
-      {
-        "padding_2@ksui_common.pad_2px_x": {}
-      },
-      {
-        "f3_toggle@ksui_common.main_toggle": {
-          "$toggle_name": "ksbT_f3show",
-          "$toggle_view_binding_name": "inv_f3_tog",
-          "$toggle_default_state": "$ks_f3_v",
-          "$toggle_binding_type": "global",
-          "$icon_texture": "textures/ui/ks_utility_inventory/icons/f3",
-          "$hover_text": "F3 HUD"
-        }
-      },
-      {
-        "padding_3@ksui_common.pad_2px_x": {}
+        "padding@ksui_common.pad_2px_x": {}
       },
       {
         "close_button@common_buttons.light_content_button": {
@@ -477,6 +346,23 @@
             20,
             20
           ]
+        }
+      }
+    ]
+  },
+  "options_panel@common.dialog_background_opaque": {
+    "size": [
+      "100%c + 8px",
+      "100%c + 8px"
+    ],
+    "controls": [
+      {
+        "stack@ksui_common.stack_horizontal": {
+          "size": [
+            "100%c",
+            "100%cm"
+          ],
+          "controls": "$controls"
         }
       }
     ]

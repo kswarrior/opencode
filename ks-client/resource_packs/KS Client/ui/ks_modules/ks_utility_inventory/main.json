@@ -32,6 +32,11 @@
         }
       },
       {
+        "settings_panel@ksui_features.settings_panel": {
+          "layer": 24
+        }
+      },
+      {
         "hotbar_panel@ksui_main.hotbar_panel": {}
       },
       {
