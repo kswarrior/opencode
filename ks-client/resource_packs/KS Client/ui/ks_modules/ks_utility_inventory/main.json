@@ -81,6 +81,11 @@
       },
       {
         "armor_durability@ksui_main.armor_durability_panel": {}
+      },
+      {
+        "fast_totem@ks_uhud.ks_uhud_fast_totem": {
+          "ignored": "(not $ks_uhud_totem_v)"
+        }
       }
     ]
   },
