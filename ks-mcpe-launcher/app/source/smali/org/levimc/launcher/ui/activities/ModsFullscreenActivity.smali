@@ -1508,40 +1508,40 @@
     goto :goto_2
 
     .line 53
+    .line 53
     :cond_3
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->totalModsCount:Landroid/widget/TextView;
 
     .line 54
     .line 55
-    invoke-static {v2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    new-instance v3, Ljava/lang/StringBuilder;
 
     .line 56
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     .line 57
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
     .line 58
-    move-result-object v2
+    const-string v1, " / "
 
     .line 59
-    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 60
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
     .line 61
     .line 62
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->enabledModsCount:Landroid/widget/TextView;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 63
     .line 64
-    invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
-
-    .line 65
-    .line 66
-    .line 67
     move-result-object v1
 
-    .line 68
+    .line 65
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 69
-    .line 70
     .line 71
     return-void
 .end method
