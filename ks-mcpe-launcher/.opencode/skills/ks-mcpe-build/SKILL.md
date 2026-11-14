@@ -69,8 +69,8 @@ the committed tree and never download the upstream APK.
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable workspace and output |
 | `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
 | `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.4` | Clone versionName (also written to `BuildConfig`) |
-| `APP_VERSION_CODE` | `10004` | Clone versionCode (also written to `BuildConfig`) |
+| `APP_VERSION` | `1.0.5` | Clone versionName (also written to `BuildConfig`) |
+| `APP_VERSION_CODE` | `10005` | Clone versionCode (also written to `BuildConfig`) |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
 | `KEYSTORE` | `$WORKDIR/signing/ks-mcpe.keystore` | Signing keystore |
 | `CREDENTIALS_FILE` | next to keystore | Generated password/alias storage |
@@ -111,15 +111,19 @@ the committed tree and never download the upstream APK.
     push code (`LauncherNewsMessagingService`, `NewsNotificationHelper`) are
     deleted, and their manifest providers, activities, services, queries,
     permissions, and metadata are removed.
-11. The shared header is taller and carries Home, Mods, Management,
-    Miscellaneous and Instances tabs, with Settings as an icon-only button on
-    the right and only "KS" as the brand. The About tab and About page are
-    removed. The old Mods/Content/Miscellaneous cards are hidden on the Home
-    page, the Mods and Management tabs open `ModsFullscreenActivity` and
-    `ContentManagementActivity`, and the new `MiscellaneousActivity` hosts the
-    CurseForge, Microsoft Accounts and Quick Launch rows. `BaseActivity`
-    registers all six header tabs; add any future tab to both
-    `setupBaseNavBar()` and `setActiveNavTab()`.
+11. The shared header is taller and carries Home, Mods, Management and
+    Instances tabs, with Settings as an icon-only button on the right and only
+    "KS" as the brand. The About tab and About page are removed. The old
+    Mods/Content cards are hidden on the Home page, and the Mods and Management
+    tabs open `ModsFullscreenActivity` and `ContentManagementActivity`. The
+    Miscellaneous tab/page and Quick Launch were removed; CurseForge is a
+    button in Content Management beside Import, and Microsoft Accounts is
+    reachable from the header. `BaseActivity` registers five header tabs; add
+    any future tab to both `setupBaseNavBar()` and `setActiveNavTab()`.
+12. The Mods page places External Mods, Mod Menu and Add Mod on the title row
+    and shows enabled/total as an `N / M` badge in place of the old stat
+    blocks. The Settings page removes its subtitle and puts the Basic,
+    Personalization, Updates and About tabs on the title row.
 
 `build.sh` rewrites the clone version into `apktool.yml` and
 `BuildConfig.smali` before building, then verifies the application id, branded
@@ -135,10 +139,10 @@ LeviLauncher is installed.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.4.apk | head -3
-$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.4.apk
-$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.4.apk
-unzip -lv dist/KS-MCPE-Launcher-1.0.4.apk | grep -E 'resources.arsc|classes.dex'
+$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.5.apk | head -3
+$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.5.apk
+$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.5.apk
+unzip -lv dist/KS-MCPE-Launcher-1.0.5.apk | grep -E 'resources.arsc|classes.dex'
 ```
 
 - `resources.arsc` must be `Stored` and 4-byte aligned (Android 11+ install
