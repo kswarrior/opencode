@@ -2545,31 +2545,6 @@
     .line 25
     .line 26
     .line 27
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 28
-    .line 29
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->miscQuickLaunchRow:Landroid/widget/LinearLayout;
-
-    .line 30
-    .line 31
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
-
-    .line 32
-    .line 33
-    const/4 v2, 0x3
-
-    .line 34
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
-    .line 35
-    .line 36
-    .line 37
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 38
-    .line 39
-    .line 40
     return-void
 .end method
 
