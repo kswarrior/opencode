@@ -23,7 +23,6 @@
                             </LinearLayout>
                             <Spinner android:id="@id/language_spinner" android:background="@drawable/bg_spinner_outline" android:layout_width="wrap_content" android:layout_height="36.0dp" android:minWidth="120.0dp" />
                         </LinearLayout>
-                        <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" android:layout_marginTop="14.0dp" android:layout_marginBottom="14.0dp" android:alpha="0.3" />
                         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                             <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/show_logcat_overlay" android:layout_weight="1.0" android:fontFamily="@font/misans" />
                             <com.google.android.material.switchmaterial.SwitchMaterial android:id="@id/switch_logcat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:thumbTint="@color/primary" android:trackTint="#555555" />
@@ -115,7 +114,6 @@
                     <LinearLayout android:orientation="vertical" android:background="@drawable/card_background" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
                         <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:id="@id/version_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/misans" />
                         <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" android:layout_marginTop="14.0dp" android:layout_marginBottom="14.0dp" android:alpha="0.3" />
-                        <Button android:textSize="13.0sp" android:textColor="@color/on_primary" android:id="@id/btn_check_update" android:layout_width="wrap_content" android:layout_height="40.0dp" android:text="@string/check_update" android:textAllCaps="false" android:fontFamily="@font/misans" android:backgroundTint="@color/primary" android:paddingHorizontal="20.0dp" />
                         <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" android:layout_marginTop="14.0dp" android:layout_marginBottom="14.0dp" android:alpha="0.3" />
                         <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/preloader_sigs_title" android:fontFamily="@font/misans" />
                         <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:id="@id/preloader_sigs_last_update" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:fontFamily="@font/misans" />
