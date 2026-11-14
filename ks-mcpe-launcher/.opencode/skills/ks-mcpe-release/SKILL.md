@@ -10,7 +10,8 @@ Builds are published to the `ks-mcpe-launcher` release of
 
 Asset contract:
 
-- `KS-MCPE-Launcher-<version>.apk`
+- `KS-MCPE-Launcher-<version>.apk` (`<version>` is the clone version, default
+  `1.0.0`, not the upstream LeviLauncher version)
 - `KS-MCPE-Launcher-<version>.apk.sha256` (output of `sha256sum`, two spaces
   between hash and file name)
 

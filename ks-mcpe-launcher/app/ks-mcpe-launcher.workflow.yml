@@ -12,6 +12,16 @@ on:
         required: true
         default: ks-mcpe-launcher
         type: string
+      app_version:
+        description: "Clone versionName"
+        required: false
+        default: "1.0.0"
+        type: string
+      app_version_code:
+        description: "Clone versionCode"
+        required: false
+        default: "10000"
+        type: string
   push:
     tags:
       - "ks-mcpe-launcher"
@@ -82,6 +92,8 @@ jobs:
           BASE_APK_URL: ${{ inputs.base_apk_url }}
           APP_ID: com.ks.mcpe.launcher
           APP_LABEL: KS MCPE Launcher
+          APP_VERSION: ${{ inputs.app_version || '1.0.0' }}
+          APP_VERSION_CODE: ${{ inputs.app_version_code || '10000' }}
           KEYSTORE: /home/runner/ks-mcpe-signing/ks-mcpe.keystore
           CREDENTIALS_FILE: /home/runner/ks-mcpe-signing/credentials.env
           KEYSTORE_PASSWORD: ${{ secrets.KS_MCPE_KEYSTORE_PASSWORD }}

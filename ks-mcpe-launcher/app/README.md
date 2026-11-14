@@ -37,6 +37,8 @@ ANDROID_HOME=/path/to/android-sdk ./ks-mcpe-launcher/app/build.sh
 ```
 
 The APK is written to `/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-<version>.apk`.
+The clone version defaults to `1.0.0` (versionCode `10000`), independent of
+the upstream LeviLauncher version.
 
 Useful environment variables:
 
@@ -45,6 +47,8 @@ Useful environment variables:
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Downloads, decoded project, keystore, output |
 | `APP_ID` | `com.ks.mcpe.launcher` | Application id of the clone |
 | `APP_LABEL` | `KS MCPE Launcher` | Launcher name (`APP_LABEL=` keeps upstream) |
+| `APP_VERSION` | `1.0.0` | Clone versionName written to `apktool.yml` |
+| `APP_VERSION_CODE` | `10000` | Clone versionCode written to `apktool.yml` |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output file name prefix |
 | `BASE_APK_URL` | pinned release asset | Upstream APK to clone |
 | `BASE_APK_SHA256` | pinned | Expected SHA-256 of the upstream APK |
@@ -63,7 +67,8 @@ directory if you want to keep update compatibility.
 
 `ks-mcpe-launcher.workflow.yml` builds the clone and uploads
 `KS-MCPE-Launcher-<version>.apk` plus its `.sha256` file to the
-`ks-mcpe-launcher` release (configurable with the `release_tag` input).
+`ks-mcpe-launcher` release (configurable with the `release_tag` input). The
+`app_version` and `app_version_code` inputs default to `1.0.0` and `10000`.
 
 Install it once as a real workflow (the automation token cannot push files
 under `.github/workflows`, so this copy is staged here):
