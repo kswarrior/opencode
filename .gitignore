@@ -27,3 +27,8 @@ debug/
 # node
 node_modules/
 **/node_modules/
+
+# Decoded APK source contains package dirs named server/target/debug
+!ks-mcpe-launcher/app/source/**/server/
+!ks-mcpe-launcher/app/source/**/target/
+!ks-mcpe-launcher/app/source/**/debug/
