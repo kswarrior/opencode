@@ -85,39 +85,16 @@ authorities, and the renamed signature permission. File size can match the
 previous asset after small manifest edits because of zip alignment; compare
 SHA-256, not size.
 
-## GitHub Actions workflow
+## CI workflow
 
-The workflow is staged at `ks-mcpe-launcher/app/ks-mcpe-launcher.workflow.yml`
-because the automation token cannot push files under `.github/workflows/`. A
-human must install it once:
+The staged `ks-mcpe-launcher.workflow.yml` was removed on request. Do not
+recreate it or add a GitHub Actions workflow for this project; builds are run
+locally with `ks-mcpe-launcher/app/build.sh` from the checked-in
+`app/source` tree. If CI is ever requested again, the signing key must be
+provided as secrets first, because rebuilds with a new key break updates.
 
-```bash
-mkdir -p .github/workflows
-cp ks-mcpe-launcher/app/ks-mcpe-launcher.workflow.yml .github/workflows/ks-mcpe-launcher.yml
-git add .github/workflows/ks-mcpe-launcher.yml
-git commit -m "ci: add KS MCPE Launcher build workflow"
-git push
-```
-
-Triggers: `workflow_dispatch` (optional `base_apk_url`, `release_tag`,
-`app_version`, `app_version_code`) and pushing the `ks-mcpe-launcher` tag. It
-builds with Java 21 and build-tools 35.0.0, uploads an artifact, and replaces
-release assets with `softprops/action-gh-release@v2` (`overwrite_files: true`).
-`overwrite_files` only replaces assets with the same name; older versions are
-kept. The clone version defaults to `1.0.1` / versionCode `10001`.
-
-Signing secrets (recommended, keeps updates installable):
-
-- `KS_MCPE_KEYSTORE_BASE64`
-- `KS_MCPE_KEYSTORE_PASSWORD`
-- `KS_MCPE_KEY_ALIAS` (optional, default `ksmcpe`)
-- `KS_MCPE_KEY_PASSWORD` (optional, defaults to keystore password)
-
-Without secrets the workflow generates a key and caches it under
-`/home/runner/ks-mcpe-signing` with cache key `ks-mcpe-signing-v1`. If that
-cache is evicted a new key is generated and users must uninstall the previous
-clone before installing the new APK. Document the keystore backup requirement
-whenever signing configuration changes.
+The app's in-built self-update is intentionally disabled in the source tree,
+so users update only by installing new release assets manually.
 
 ## Rules
 
@@ -129,8 +106,8 @@ whenever signing configuration changes.
   forces every user of that version to uninstall before updating. If the key is
   gone, leave the published asset untouched.
 - Verify an existing release asset before rebuilding it: download it, check its
-  SHA-256, signature, version, overlays, and native patch. If it already matches
-  the current sources, no rebuild is needed.
+  SHA-256, signature, version, EULA branding, disabled updater and native
+  patch. If it already matches the current sources, no rebuild is needed.
 - The release tag stays `ks-mcpe-launcher`; do not create per-version releases.
 - The release **name** tracks the clone version (`v1.0.1`); the tag stays
   `ks-mcpe-launcher` so the pinned upstream asset URL remains valid.
