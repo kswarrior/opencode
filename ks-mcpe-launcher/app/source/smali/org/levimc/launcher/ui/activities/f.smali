@@ -150,6 +150,27 @@
     .line 53
     return-void
 
+    :pswitch_7
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/f;->d:Lorg/levimc/launcher/ui/activities/BaseActivity;
+
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->w(Lorg/levimc/launcher/ui/activities/BaseActivity;Landroid/view/View;)V
+
+    return-void
+
+    :pswitch_8
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/f;->d:Lorg/levimc/launcher/ui/activities/BaseActivity;
+
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->x(Lorg/levimc/launcher/ui/activities/BaseActivity;Landroid/view/View;)V
+
+    return-void
+
+    :pswitch_9
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/f;->d:Lorg/levimc/launcher/ui/activities/BaseActivity;
+
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->y(Lorg/levimc/launcher/ui/activities/BaseActivity;Landroid/view/View;)V
+
+    return-void
+
     .line 54
     nop
 
@@ -163,5 +184,8 @@
         :pswitch_2
         :pswitch_1
         :pswitch_0
+        :pswitch_7
+        :pswitch_8
+        :pswitch_9
     .end packed-switch
 .end method
