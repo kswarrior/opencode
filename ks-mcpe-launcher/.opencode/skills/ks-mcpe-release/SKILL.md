@@ -52,7 +52,7 @@ done
 
 ```bash
 curl -fsSL -o /tmp/check.apk \
-  "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.6.1.apk"
+  "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.0.apk"
 sha256sum -c /tmp/check.apk.sha256   # after downloading the .sha256 asset
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
 $BT/aapt2 dump xmltree --file AndroidManifest.xml /tmp/check.apk | grep -E 'package=|DYNAMIC_RECEIVER|authorities' | head
@@ -78,10 +78,11 @@ git commit -m "ci: add KS MCPE Launcher build workflow"
 git push
 ```
 
-Triggers: `workflow_dispatch` (optional `base_apk_url`, `release_tag`) and
-pushing the `ks-mcpe-launcher` tag. It builds with Java 21 and build-tools
-35.0.0, uploads an artifact, and replaces release assets with
-`softprops/action-gh-release@v2` (`overwrite_files: true`).
+Triggers: `workflow_dispatch` (optional `base_apk_url`, `release_tag`,
+`app_version`, `app_version_code`) and pushing the `ks-mcpe-launcher` tag. It
+builds with Java 21 and build-tools 35.0.0, uploads an artifact, and replaces
+release assets with `softprops/action-gh-release@v2` (`overwrite_files: true`).
+The clone version defaults to `1.0.0` / versionCode `10000`.
 
 Signing secrets (recommended, keeps updates installable):
 
