@@ -6075,39 +6075,7 @@
     .line 47
     .line 48
     :catch_0
-    sget v0, Lorg/levimc/launcher/R$id;->btn_check_update:I
 
-    .line 49
-    .line 50
-    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
-
-    .line 51
-    .line 52
-    .line 53
-    move-result-object v0
-
-    .line 54
-    check-cast v0, Landroid/widget/Button;
-
-    .line 55
-    .line 56
-    new-instance v1, Lorg/levimc/launcher/ui/activities/p2;
-
-    .line 57
-    .line 58
-    const/16 v2, 0x8
-
-    .line 59
-    .line 60
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/p2;-><init>(Lorg/levimc/launcher/ui/activities/SettingsActivity;I)V
-
-    .line 61
-    .line 62
-    .line 63
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 64
-    .line 65
     .line 66
     sget v0, Lorg/levimc/launcher/R$id;->preloader_sigs_last_update:I
 

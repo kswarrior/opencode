@@ -8857,36 +8857,6 @@
     .line 33
     move-result p1
 
-    .line 34
-    if-nez p1, :cond_0
-
-    .line 35
-    .line 36
-    new-instance p1, Lorg/levimc/launcher/util/GithubReleaseUpdater;
-
-    .line 37
-    .line 38
-    const-string v0, "LeviLaunchroid"
-
-    .line 39
-    .line 40
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->permissionResultLauncher:Landroidx/activity/result/ActivityResultLauncher;
-
-    .line 41
-    .line 42
-    const-string v2, "LiteLDev"
-
-    .line 43
-    .line 44
-    invoke-direct {p1, p0, v2, v0, v1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;-><init>(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Landroidx/activity/result/ActivityResultLauncher;)V
-
-    .line 45
-    .line 46
-    .line 47
-    invoke-virtual {p1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->checkUpdateOnLaunch()V
-
-    .line 48
-    .line 49
     .line 50
     :cond_0
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->showEulaIfNeeded()V
