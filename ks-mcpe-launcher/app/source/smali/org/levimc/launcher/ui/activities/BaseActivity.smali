@@ -1861,9 +1861,15 @@
     .line 7
     sget v3, Lorg/levimc/launcher/R$id;->nav_tab_settings:I
 
+    sget v4, Lorg/levimc/launcher/R$id;->nav_tab_mods:I
+
+    sget v5, Lorg/levimc/launcher/R$id;->nav_tab_content:I
+
+    sget v6, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
+
     .line 8
     .line 9
-    filled-new-array {v0, v1, v2, v3}, [I
+    filled-new-array {v0, v1, v2, v3, v4, v5, v6}, [I
 
     .line 10
     .line 11
@@ -1892,9 +1898,9 @@
 
     .line 23
     :goto_0
-    const/4 v4, 0x4
+    const/4 v4, 0x7
 
-    .line 24
+    .line 23
     if-ge v3, v4, :cond_1
 
     .line 25
@@ -3795,9 +3801,15 @@
     .line 12
     sget v3, Lorg/levimc/launcher/R$id;->nav_tab_settings:I
 
+    sget v4, Lorg/levimc/launcher/R$id;->nav_tab_mods:I
+
+    sget v5, Lorg/levimc/launcher/R$id;->nav_tab_content:I
+
+    sget v6, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
+
     .line 13
     .line 14
-    filled-new-array {v0, v1, v2, v3}, [I
+    filled-new-array {v0, v1, v2, v3, v4, v5, v6}, [I
 
     .line 15
     .line 16
@@ -3829,9 +3841,9 @@
 
     .line 29
     :goto_0
-    const/4 v4, 0x4
+    const/4 v4, 0x7
 
-    .line 30
+    .line 29
     if-ge v3, v4, :cond_4
 
     .line 31
