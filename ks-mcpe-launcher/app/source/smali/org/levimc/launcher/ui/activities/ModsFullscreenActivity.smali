@@ -4,8 +4,6 @@
 
 
 # instance fields
-.field private enabledModsCount:Landroid/widget/TextView;
-
 .field private fileHandler:Lorg/levimc/launcher/core/mods/FileHandler;
 
 .field private inbuiltModManager:Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;
@@ -1301,27 +1299,6 @@
     .line 116
     iput-object v0, p0, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->totalModsCount:Landroid/widget/TextView;
 
-    .line 117
-    .line 118
-    sget v0, Lorg/levimc/launcher/R$id;->enabled_mods_count:I
-
-    .line 119
-    .line 120
-    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
-
-    .line 121
-    .line 122
-    .line 123
-    move-result-object v0
-
-    .line 124
-    check-cast v0, Landroid/widget/TextView;
-
-    .line 125
-    .line 126
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->enabledModsCount:Landroid/widget/TextView;
-
-    .line 127
     .line 128
     new-instance v0, Lorg/levimc/launcher/util/PersonalizationManager;
 
