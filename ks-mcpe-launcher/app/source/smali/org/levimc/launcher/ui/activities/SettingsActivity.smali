@@ -3049,30 +3049,18 @@
     :cond_9
     sget v0, Lorg/levimc/launcher/R$id;->nav_tab_launch:I
 
-    .line 412
     .line 413
     sget v2, Lorg/levimc/launcher/R$id;->nav_tab_instances:I
 
-    .line 414
-    .line 415
-    sget v3, Lorg/levimc/launcher/R$id;->nav_tab_about:I
-
-    .line 416
     .line 417
     sget v4, Lorg/levimc/launcher/R$id;->nav_tab_settings:I
 
-    .line 418
-    .line 419
-    filled-new-array {v0, v2, v3, v4}, [I
+    filled-new-array {v0, v2, v4}, [I
 
-    .line 420
-    .line 421
-    .line 422
     move-result-object v0
 
-    .line 423
     :goto_0
-    const/4 v2, 0x4
+    const/4 v2, 0x3
 
     .line 424
     if-ge v8, v2, :cond_b
