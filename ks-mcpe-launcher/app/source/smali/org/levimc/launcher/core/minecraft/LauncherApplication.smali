@@ -201,7 +201,6 @@
 
     .line 42
     :cond_0
-    invoke-static {p0}, Lorg/levimc/launcher/core/news/NewsNotificationHelper;->initialize(Landroid/content/Context;)V
 
     .line 43
     .line 44
