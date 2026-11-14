@@ -39,9 +39,10 @@ overlay patch step.
   (`mov w0,#1; ret`). Upstream gates `JNI_OnLoad` on a 19-character package id
   plus a hard-coded hash, which otherwise makes `System.loadLibrary("gxcore")`
   fail during Minecraft preparation.
-- `GithubReleaseUpdater.checkUpdate()` and `checkUpdateOnLaunch()` are no-ops
-  and the "Check for updates" button is removed, so the app no longer shows the
-  upstream update dialog or downloads updates.
+- The in-app update check is removed: `MainActivity` no longer calls it, the
+  settings button and listener are gone, and
+  `GithubReleaseUpdater.checkUpdate()` / `checkUpdateOnLaunch()` are inert
+  no-ops, so the app cannot query upstream releases or download updates.
 - Google Play Games, Play billing, and the Firebase news push service
   (`LauncherNewsMessagingService` / `NewsNotificationHelper`) are removed from
   the source tree and manifest. The in-app news feed still loads, but it no
@@ -94,6 +95,9 @@ directory if you want to keep update compatibility.
 
 - In-app self-update is intentionally disabled. Install new builds manually
   from this repository's `ks-mcpe-launcher` release.
+- Version 1.0.2 uses a new signing key, so uninstall 1.0.1 before installing
+  1.0.2. Back up `WORKDIR/signing/ks-mcpe.keystore` to keep future updates
+  installable in place.
 - Core launcher features (Minecraft versions, mods, worlds, backups, accounts)
   are not affected by the removed Play Games, Play billing, and news push
   components.
