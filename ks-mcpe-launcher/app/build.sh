@@ -26,7 +26,8 @@ BASE_APK_URL="${BASE_APK_URL:-$DEFAULT_BASE_APK_URL}"
 BASE_APK_SHA256="${BASE_APK_SHA256-$DEFAULT_BASE_APK_SHA256}"
 
 KEYSTORE="${KEYSTORE:-$WORKDIR/signing/ks-mcpe.keystore}"
-KEY_ALIAS="${KEY_ALIAS:-ksmcpe}"
+CREDENTIALS_FILE="${CREDENTIALS_FILE:-$(dirname "$KEYSTORE")/credentials.env}"
+KEY_ALIAS="${KEY_ALIAS:-}"
 KEYSTORE_PASSWORD="${KEYSTORE_PASSWORD:-}"
 KEY_PASSWORD="${KEY_PASSWORD:-${KEYSTORE_PASSWORD:-}}"
 
@@ -69,8 +70,20 @@ AAPT2="${AAPT2:-$(command -v aapt2 || true)}"
 [ -n "$APKSIGNER" ] || die "apksigner not found; install Android build-tools or set ANDROID_HOME"
 [ -n "$AAPT2" ] && [ -x "$AAPT2" ] || die "aapt2 not found; install Android build-tools or set ANDROID_HOME"
 
-mkdir -p "$WORKDIR" "$WORKDIR/downloads" "$WORKDIR/signing"
+mkdir -p "$WORKDIR" "$WORKDIR/downloads" "$WORKDIR/signing" "$(dirname "$KEYSTORE")"
 WORKDIR="$(cd "$WORKDIR" && pwd)"
+
+read_credential() {
+    sed -n "s/^$1=//p" "$CREDENTIALS_FILE" 2>/dev/null | head -n 1
+}
+
+if [ -f "$CREDENTIALS_FILE" ]; then
+    [ -n "$KEYSTORE_PASSWORD" ] || KEYSTORE_PASSWORD="$(read_credential KEYSTORE_PASSWORD)"
+    [ -n "$KEY_PASSWORD" ] || KEY_PASSWORD="$(read_credential KEY_PASSWORD)"
+    [ -n "$KEY_ALIAS" ] || KEY_ALIAS="$(read_credential KEY_ALIAS)"
+fi
+KEY_ALIAS="${KEY_ALIAS:-ksmcpe}"
+[ -n "$KEY_PASSWORD" ] || KEY_PASSWORD="$KEYSTORE_PASSWORD"
 
 APKTOOL_JAR="$WORKDIR/downloads/apktool_${APKTOOL_VERSION}.jar"
 BASE_APK="$WORKDIR/downloads/base.apk"
