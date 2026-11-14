@@ -18,8 +18,12 @@ key.
    `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`) is required so the clone can
    be installed next to the original app instead of failing with
    `INSTALL_FAILED_DUPLICATE_PERMISSION`.
-4. Rebuilds, zipaligns, signs, and verifies the APK.
-5. Prints the package id, version, and SHA-256 of the result.
+4. Patches `lib/arm64-v8a/libgxcore.so` to bypass its native package-name
+   verifier. Upstream gates `JNI_OnLoad` on a 19-character package id plus a
+   hard-coded hash; the clone id is longer, which otherwise makes
+   `System.loadLibrary("gxcore")` fail during Minecraft preparation.
+5. Rebuilds, zipaligns, signs, and verifies the APK.
+6. Prints the package id, version, and SHA-256 of the result.
 
 The decoded files and the output APK are never stored in this repository.
 

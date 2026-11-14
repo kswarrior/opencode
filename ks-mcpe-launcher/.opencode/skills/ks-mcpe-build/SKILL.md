@@ -68,6 +68,13 @@ Pinned inputs (do not bump casually):
    rename is the correct fix; no smali edit is needed.
 4. `BuildConfig.APPLICATION_ID` in smali.
 5. `app_name` in every `res/values*/strings.xml` when `APP_LABEL` is set.
+6. The native package-name verifier in `lib/arm64-v8a/libgxcore.so`.
+   `JNI_OnLoad` reads `/proc/self/cmdline` and
+   `ApplicationInfo.packageName` and requires the upstream 19-character id
+   plus a hard-coded hash; without this patch `System.loadLibrary("gxcore")`
+   fails with `Failed to load native image preparation`. The build rewrites
+   the verifier at virtual address `0x1990d4` (`cmp x1,#0x13; b.ne fail`) to
+   `mov w0,#1; ret` and refuses to build if the expected bytes are absent.
 
 Then it rebuilds with apktool, zipaligns (`-p 4`), signs with v1+v2+v3, and
 verifies package/version with `aapt2`.
