@@ -267,7 +267,7 @@ ACTUAL_VERSION="$(printf '%s\n' "$BADGING" | sed -n "s/^package:.*versionName='\
 [ "$ACTUAL_PACKAGE" = "$APP_ID" ] || die "built package is '$ACTUAL_PACKAGE', expected '$APP_ID'"
 [ -n "$ACTUAL_VERSION" ] || die "unable to read built version name"
 
-sha256sum "$OUTPUT" > "$OUTPUT.sha256"
+( cd "$DIST" && sha256sum "$(basename "$OUTPUT")" > "$(basename "$OUTPUT").sha256" )
 
 log "done: $OUTPUT"
 log "package: $ACTUAL_PACKAGE"
