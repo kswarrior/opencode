@@ -529,7 +529,7 @@
         "background@common.dialog_background_opaque": {}
       },
       {
-        "utils_button_panel@ksui_inventory.utils_button_panel": {}
+        "settings_panel@ksui_features.settings_panel": {}
       },
       {
         "crafting_panel@ksui_inventory.crafting_panel": {
@@ -551,64 +551,6 @@
       }
     ]
   },
-  "utils_button_panel@ksui_common.touch_input": {
-    "size": [
-      "100%c",
-      "100%c"
-    ],
-    "anchor_from": "bottom_right",
-    "anchor_to": "bottom_left",
-    "offset": [
-      -4,
-      0
-    ],
-    "controls": [
-      {
-        "background": {
-          "type": "image",
-          "texture": "textures/ui/TabRightBackBottomMost",
-          "size": [
-            "100%c + 9px",
-            "100%c + 8px"
-          ],
-          "controls": [
-            {
-              "stack": {
-                "type": "stack_panel",
-                "size": [
-                  "100%cm",
-                  "100%c"
-                ],
-                "offset": [
-                  "0.5px",
-                  0
-                ],
-                "$button_content": "common.empty_panel",
-                "controls": [
-                  {
-                    "crafting_toggle@common_toggles.light_content_toggle": {
-                      "$toggle_name": "crafting_toggle8",
-                      "$toggle_view_binding_name": "crafting_tog",
-                      "$toggle_default_state": "$ksui_4552ca",
-                      "$button_content": "ksui_common.icon_content",
-                      "$icon_texture": "textures/ui/ks_utility_inventory/icons/crafting",
-                      "size": [
-                        18,
-                        18
-                      ]
-                    }
-                  },
-                  {
-                    "padding_0@ksui_common.pad_1px_y": {}
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    ]
-  },
   "top_panel@ksui_common.stack_horizontal": {
     "size": [
       "100%",
@@ -626,7 +568,31 @@
           ],
           "controls": [
             {
-              "inventory_text@ksui_inventory.inventory_text": {}
+              "quick_totem@ks_uhud.ks_uhud_fast_totem": {
+                "$ks_uhud_totem_size": [
+                  18,
+                  18
+                ],
+                "$ks_uhud_totem_offset": [
+                  0,
+                  0
+                ],
+                "draggable": false,
+                "anchor_from": "right_middle",
+                "anchor_to": "right_middle",
+                "offset": [
+                  0,
+                  0
+                ],
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "quick_totem_tog",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
             }
           ]
         }
@@ -643,16 +609,15 @@
         "extra_slot_grid@ksui_common.extra_slot_grid": {}
       },
       {
-        "ea835b2d-2da@common_toggles.light_content_toggle": {
-          "$toggle_name": "0a36-5def5af",
-          "$toggle_view_binding_name": "ed29ef-a7607",
+        "settings_toggle@common_toggles.light_content_toggle": {
+          "$toggle_name": "inventory_settings_toggle",
+          "$toggle_view_binding_name": "settings_tog",
           "$button_content": "ksui_common.icon_content",
           "$icon_texture": "textures/ui/ks_utility_inventory/icons/gear",
           "size": [
             18,
             18
-          ],
-          "enabled": false
+          ]
         }
       },
       {
@@ -719,26 +684,5 @@
     "type": "image",
     "texture": "$icon_texture",
     "color": "$text_color"
-  },
-  "inventory_text": {
-    "type": "image",
-    "texture": "textures/ui/Black",
-    "size": [
-      "100% - 4px",
-      "100% - 2px"
-    ],
-    "controls": [
-      {
-        "text": {
-          "type": "label",
-          "text": "Inventory",
-          "font_scale_factor": 1.25,
-          "size": [
-            "default",
-            "default"
-          ]
-        }
-      }
-    ]
   }
 }
