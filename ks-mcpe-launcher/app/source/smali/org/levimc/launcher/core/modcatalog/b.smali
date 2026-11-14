@@ -42,17 +42,13 @@
     .line 4
     .line 5
     .line 6
-    check-cast p1, Lorg/levimc/launcher/core/news/NewsItem;
+    const/4 p1, 0x0
 
     .line 7
     .line 8
-    invoke-static {p1}, Lorg/levimc/launcher/core/news/NewsRepository;->a(Lorg/levimc/launcher/core/news/NewsItem;)Z
-
     .line 9
     .line 10
     .line 11
-    move-result p1
-
     .line 12
     return p1
 

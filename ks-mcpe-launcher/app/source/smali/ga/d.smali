@@ -749,21 +749,11 @@
 
     .line 345
     :pswitch_11
-    check-cast p1, Lorg/levimc/launcher/core/news/NewsItem;
+    const/4 p1, 0x0
 
-    .line 346
-    .line 347
-    invoke-static {p1}, Lorg/levimc/launcher/core/news/NewsRepository;->b(Lorg/levimc/launcher/core/news/NewsItem;)Ljava/lang/String;
-
-    .line 348
-    .line 349
     .line 350
-    move-result-object p1
-
-    .line 351
     return-object p1
 
-    .line 352
     :pswitch_12
     check-cast p1, Ljava/io/File;
 

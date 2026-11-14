@@ -50,23 +50,6 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/b;->d:Lorg/levimc/launcher/ui/activities/BaseActivity;
-
-    .line 7
-    .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/activities/NewsActivity;
-
-    .line 9
-    .line 10
-    check-cast p1, Ljava/lang/Boolean;
-
-    .line 11
-    .line 12
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/NewsActivity;->w(Lorg/levimc/launcher/ui/activities/NewsActivity;Ljava/lang/Boolean;)V
-
-    .line 13
-    .line 14
-    .line 15
     return-void
 
     .line 16

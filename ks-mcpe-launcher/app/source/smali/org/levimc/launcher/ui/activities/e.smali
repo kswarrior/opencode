@@ -308,30 +308,8 @@
 
     .line 138
     :pswitch_a
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/e;->d:Ljava/lang/Object;
-
-    .line 139
-    .line 140
-    check-cast v0, Lorg/levimc/launcher/core/news/NewsItem;
-
-    .line 141
-    .line 142
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/e;->h:Ljava/lang/Object;
-
-    .line 143
-    .line 144
-    check-cast v1, Lorg/levimc/launcher/ui/activities/NewsAdapter$Holder;
-
-    .line 145
-    .line 146
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/NewsAdapter;->a(Lorg/levimc/launcher/core/news/NewsItem;Lorg/levimc/launcher/ui/activities/NewsAdapter$Holder;Landroid/view/View;)V
-
-    .line 147
-    .line 148
-    .line 149
     return-void
 
-    .line 150
     :pswitch_b
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/e;->d:Ljava/lang/Object;
 

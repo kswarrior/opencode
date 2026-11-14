@@ -343,38 +343,8 @@
 
     .line 139
     :pswitch_5
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
-
-    .line 140
-    .line 141
-    check-cast v0, Lorg/levimc/launcher/core/news/NewsRepository$Callback;
-
-    .line 142
-    .line 143
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
-
-    .line 144
-    .line 145
-    check-cast v1, Lorg/levimc/launcher/core/news/NewsFeed;
-
-    .line 146
-    .line 147
-    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
-
-    .line 148
-    .line 149
-    check-cast v2, Ljava/lang/Throwable;
-
-    .line 150
-    .line 151
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/news/NewsRepository;->e(Lorg/levimc/launcher/core/news/NewsRepository$Callback;Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
-
-    .line 152
-    .line 153
-    .line 154
     return-void
 
-    .line 155
     :pswitch_6
     iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
 

@@ -133,14 +133,8 @@
 
     .line 47
     :pswitch_1
-    invoke-static {v2}, Lorg/levimc/launcher/core/news/NewsRepository;->c(Landroid/content/Context;)V
-
-    .line 48
-    .line 49
-    .line 50
     return-void
 
-    .line 51
     :pswitch_2
     invoke-static {v2}, Landroidx/appcompat/app/AppCompatDelegate;->I(Landroid/content/Context;)V
 
