@@ -15,38 +15,55 @@ Asset contract:
 - `KS-MCPE-Launcher-<version>.apk.sha256` (output of `sha256sum`, two spaces
   between hash and file name)
 
-## Replace an asset via the API
+## Upload a build via the API
 
 Authenticate with `GH_TOKEN`, or derive the Actions bot token locally from
 `git config --get http.https://github.com/.extraheader` (base64
 `x-access-token:<token>`). Never print the token, never write it to a file in
 the repository.
 
+Only replace the two assets for the version being published. Keep older
+versions; do not bulk-delete `KS-MCPE-Launcher-*` assets.
+
 ```bash
 TAG=ks-mcpe-launcher
 REPO=kswarrior/opencode
+VERSION=1.0.1
 REL_ID=$(curl -fsS -H "Authorization: token $GH_TOKEN" \
   "https://api.github.com/repos/$REPO/releases/tags/$TAG" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')
 
-# Delete assets you are replacing (idempotent before re-upload).
-curl -fsS -H "Authorization: token $GH_TOKEN" \
-  "https://api.github.com/repos/$REPO/releases/$REL_ID/assets?per_page=100" \
-  | python3 -c 'import json,sys
+# Delete only this version's assets before re-upload (if they exist).
+for name in "KS-MCPE-Launcher-$VERSION.apk" "KS-MCPE-Launcher-$VERSION.apk.sha256"; do
+  asset_id=$(curl -fsS -H "Authorization: token $GH_TOKEN" \
+    "https://api.github.com/repos/$REPO/releases/$REL_ID/assets?per_page=100" \
+    | python3 -c 'import json,sys
+name = sys.argv[1]
 for a in json.load(sys.stdin):
-    if a["name"].startswith("KS-MCPE-Launcher-"):
-        print(a["id"])' \
-  | while read -r id; do
-      curl -fsS -X DELETE -H "Authorization: token $GH_TOKEN" \
-        "https://api.github.com/repos/$REPO/releases/assets/$id"
-    done
+    if a["name"] == name:
+        print(a["id"])
+        break' "$name")
+  if [ -n "$asset_id" ]; then
+    curl -fsS -X DELETE -H "Authorization: token $GH_TOKEN" \
+      "https://api.github.com/repos/$REPO/releases/assets/$asset_id"
+  fi
+done
 
-# Upload APK and hash (Content-Type: application/octet-stream).
-for f in /tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-*.apk*; do
+# Upload only the current version (Content-Type: application/octet-stream).
+for f in "/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-$VERSION.apk" \
+         "/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-$VERSION.apk.sha256"; do
   curl -fsS -X POST -H "Authorization: token $GH_TOKEN" \
     -H "Content-Type: application/octet-stream" --data-binary @"$f" \
     "https://uploads.github.com/repos/$REPO/releases/$REL_ID/assets?name=$(basename "$f")"
 done
 ```
+
+## Retention
+
+- Keep older `KS-MCPE-Launcher-*` assets for rollback.
+- Never delete a version unless the user explicitly asks. Do not bulk-delete
+  matching assets when publishing a new build.
+- Replacing the current version's two assets is fine; deleting other versions
+  is not.
 
 ## Verify after upload
 
