@@ -53,8 +53,8 @@
 | 15 | Menu-Driven Options (no subpacks) | KS custom | No subpacks ship — top-right Settings menu is always on; InvHUD grid fixed bottom-right with Settings Show/Compact. |
 | 16 | Full Vanilla Texture Override | vanilla-resampled | `atlas.terrain` = 1322 entries in `terrain_texture.json` (`textures/blocks/` = 1309 PNGs + hopper_outside/ 4 + hopper_top/ 12 BlockTrace, `textures/ui/` = 233 PNGs incl. chat art + 14 `ks_uhud` Utility HUD icons + 14 `ks_utility_inventory` assets + Baku transparent set), door item icons registered in `atlas.items` (mace + 17 doors), environment (clouds/sun/moon/rain/snow/end sky + `overworld_cubemap/`, `destroy_stage_0-9`), colormap, misc, `health_bar/` (62 files) |
 | 17 | Clear Chat Screen | KS Client | Transparent chat: hidden background, overlay text shade, autocomplete/tab buttons (`ui/chat_screen.json` vanilla override + `ks_chat_tweaks`, always on) |
-| 18 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 81 mobs + players (82 entities), always visible (not only when hurt); merged at top level, no subpack, always on |
-| 19 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, always on) |
+| 18 | Health Bar (Always Display) | KS Client | Billboard bars + numeric HP over all 81 mobs + players (82 entities), always visible by default; Pack Settings can switch to only-when-hurt/off, hide heart/HP digits, resize and move it; merged at top level, no subpack |
+| 19 | 3D Hammer | KS Client | Getting Over It style 3D hammer (hold + inventory model, `attachables/mace.attachable.json`, `atlas.items` entry, default on; Pack Settings can hide/resize it) |
 | 20 | Status Readout (Top Left) | KS Client | Stacked readout — client version + position — top-left corner, always on (`ui/fps_hud.json` + `root_panel` hook, no subpack; `entity/player.json` carries health-bar only, no FPS digits) |
 | 21 | BlockTrace Selective (trapped + hopper) | FrostAlpha BlockTrace | Trapped chest only (`entity/chest/trapped` + `trapped_double`, + legacy `entity/trapped*`); directional hopper (`hopper_outside` left/right + powered, `hopper_top` down/up/north/south/west/east + powered via `blocks.json` + `terrain_texture.json`). Normal / double-normal / ender / ores NOT taken — vanilla kept |
 | 22 | Bow Draw Indicators | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Draw-stage bow art (`textures/items/bow_pulling_0/1/2.png`, vanilla-path override, no atlas change), always on |
@@ -356,7 +356,7 @@ ks-client/
 │   ├── fogs/ks_fullbright.json      ← nofog: air/weather render + water/lava/powder-snow 4000–10000
 │   ├── blocks.json                  ← hopper face mapping only (BlockTrace directional hopper)
 │   ├── entity/ (82 json: 81 mobs + player.json) ← KS health-bar hooks on mobs + players (player.json is vanilla 1.21.120 baseline + health-bar, no FPS)
-│   ├── animations/health_bar.json (always-display) + mace.animation.json (hammer hold poses)
+│   ├── animations/health_bar.json (billboard + pack-setting queries) + mace.animation.json (hammer hold poses + settings scale)
 │   ├── attachables/mace.attachable.json (`minecraft:mace` → `geometry.mace`)
 │   ├── models/entity/health_bar.json + models/entity/attachable/mace.geo.json
 │   ├── render_controllers/health_bar.json
@@ -435,6 +435,7 @@ All user-facing toggles live here. Edit values, repack, reactivate.
 No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hide_editor`/`show_editor`/`invhud_*` folders are gone):
 
 - Settings menu is always on (`ks_settings.button` top-right; old `$show_editor_button` gear is no longer instantiated).
+- Native Pack Settings (manifest v3 gear on the pack entry): health-bar mode/icon/digits/size/height + 3D hammer on/off/size, saved per player by the game (no repack; applies live).
 - InvHUD grid fixed bottom-right (Show Inv HUD on/off + Compact in Settings).
 - Utility HUD durability: mainhand readout fixed bottom-left + inventory armor panel (Show Mainhand Durability on/off in Settings); counters row has its own toggle; F8 component toggles.
 - Utility Inventory touch overlay: options row in the custom inventory (Armor Display (KS panel), Tools Cycler, Slot Cycler, Recipe Book, Close) + draggable Quick Totem button; default state via `$ksui_*` / `$ks_uhud_totem_*` (§5) + repack.
@@ -456,7 +457,7 @@ No subpacks ship (`manifest.json` has no `subpacks` key — removed; the old `hi
 ## 8. Entities, Animations, Fog, Render Controllers
 
 - `entity/`: 82 client entities (81 mobs `allay` → `zombie_villager` + `player.json`), all with KS health-bar hooks (see §2.13). `player.json` is vanilla 1.21.120 baseline + health-bar (no FPS). Vanilla animation/controller/geometry/texture refs resolve engine-side.
-- `animations/health_bar.json` (always-display billboard logic) + `animations/mace.animation.json` (hammer hold poses), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
+- `animations/health_bar.json` (billboard logic + `ks:health_bar_*` pack-setting queries) + `animations/mace.animation.json` (hammer hold poses + `ks:hammer`/`ks:hammer_scale`), `models/entity/health_bar.json` (`geometry.health_bar`) + `models/entity/attachable/mace.geo.json` (`geometry.mace`), `render_controllers/health_bar.json` (`controller.render.health_bar.*`), `attachables/mace.attachable.json` (`minecraft:mace`): draw/attach paths. `manifest.json` is format v3 with the `settings` array consumed by these Molang queries. `animation_controllers/`, `models/entity/Player|Items`, Drive `animations/Animation|Attack` are NOT shipped (validated by `tools/` when synced externally).
 - `fogs/ks_fullbright.json` + `biomes_client.json`: global nofog fullbright — 71 biomes forced `ks:fullbright` (NoFog-all water colors), air/weather render infinite, water/lava/powder-snow `4000–10000` (see §2.8, `copyright.txt` entry 16).
 
 ---
@@ -501,9 +502,11 @@ redistributing: some upstream licenses require the creator's permission.
 
 ## 12. Version History
 
-`release/` contains the retained shippable builds (6 files: v1.0.0, v1.0.1, v1.0.2, v1.0.4, v1.0.5, v1.0.6):
+`release/` contains the retained shippable builds (7 files: v1.0.0, v1.0.1, v1.0.2, v1.0.4, v1.0.5, v1.0.6, v1.0.7):
 
-**`v1.0.6`** (current — touch overlay fix: restored the draggable Quick Totem button to the Utility Inventory overlay (`ks_uhud_fast_totem` at the overlay root, same `$ks_uhud_totem_v`/size/offset config); validation 0 errors / 0 warnings)
+**`v1.0.7`** (current — native in-game Pack Settings via manifest v3 (`settings`: health bar mode/icon/digits/size/height + 3D hammer on/off/size); min engine raised to 1.21.130; health-bar/mace Molang wiring; validation 0 errors / 0 warnings)
+
+**`v1.0.6`** (previous — touch overlay fix: restored the draggable Quick Totem button to the Utility Inventory overlay (`ks_uhud_fast_totem` at the overlay root, same `$ks_uhud_totem_v`/size/offset config); validation 0 errors / 0 warnings)
 
 **`v1.0.5`** (previous — Utility Inventory touch overlay merge: custom touch inventory, recipe book/search, crafting panel, tools/slot cyclers, in-inventory settings; KS armor panel wired to Armor Display; 14 textures; `_ui_defs` 31 entries; validation 0 errors / 0 warnings)
 
@@ -517,13 +520,13 @@ redistributing: some upstream licenses require the creator's permission.
 
 **`v1.0.0`** (older — fresh baseline from the latest codebase; retained for history)
 
-Current (`manifest.json`): `KS Client v1.0.7`, `min_engine_version [1,21,120]`. See `out/*.report.html` for per-version validation diffs.
+Current (`manifest.json`): `KS Client v1.0.7`, format v3, `min_engine_version "1.21.130"`. See `out/*.report.html` for per-version validation diffs.
 
 ---
 
 ## 13. Requirements & Compatibility
 
-- **Minecraft Bedrock 1.21.120+** (min engine). Mobile-first (touch), works on console/PC.
+- **Minecraft Bedrock 1.21.130+** (min engine; native pack settings require 1.21.130). Mobile-first (touch), works on console/PC.
 - **Resource-pack only** — no behavior pack, no scripts, no cheats-flag. Safe for Realms/servers (server needs not install it; each player installs locally).
 - **Load order:** put KS Client at the **top** of Global Resources / World Resource Packs so its `hud/start/inventory` overrides win.
 - **Conflicts:** any other UI/HUD pack (other custom HUDs, F3 menus, hotbar packs) — pick one. Fullbright conflicts with mood/fog packs.
@@ -531,4 +534,4 @@ Current (`manifest.json`): `KS Client v1.0.7`, `min_engine_version [1,21,120]`. 
 
 ---
 
-*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 233 incl. 14 ks_uhud + 14 ks_utility_inventory / gui / c_ui 8 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ks_uhud_*, $ks_tooltip_*, $is_bundle_item_counter_pack_enabled, $text_color), `_ui_defs` 31 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud/trade_2_screen`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `gameplay_common` (gameplay), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `ui/property/bundle_item_counter.json`, `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (6 files), `copyright.txt` (24 entries incl. Utility HUD V-1.5 + Baku glass + Side Tooltip Items + Bundle Item Counter + Utility Inventory), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
+*Generated by exploring the whole KS Client: `manifest.json` (authors: KS Warrior; format v3 `settings` for health bar + hammer), `biomes_client.json`, `fogs/`, `blocks.json` (hopper only, BlockTrace directional), `entity/` (81 mobs + player.json with health hooks), `animations/` (health_bar + mace, both pack-setting driven), `attachables/mace`, `models/` (health_bar + mace) + `render_controllers/` (health_bar), `textures/` (blocks 1309 + hopper_outside/ 4 + hopper_top/ 12 BlockTrace / items 21 incl. mace + bow_pulling / ui 233 incl. 14 ks_uhud + 14 ks_utility_inventory / gui / c_ui 8 / health_bar 62 / entity/chest trapped + trapped_double BlockTrace + entity-attachable mace / environment / colormap / misc incl. clean pumpkinblur; terrain 1322 entries, items atlas = mace + 17 door icons), `ui/` (`_global_variables` ($ksb_*, $ks:*, $ks_uhud_*, $ks_tooltip_*, $is_bundle_item_counter_pack_enabled, $text_color), `_ui_defs` 31 entries, `hud/start/inventory/pause/debug/dev_console/chat_screen/mob_effect/fps_hud/trade_2_screen`, `ks_modules`, `ks_touch`, `settings_sections/controls_section`, `ui_common` (common), `gameplay_common` (gameplay), `ui_content/inv_content.json`, `ui_assets/screens/chat` chat tweaks), `ui/property/bundle_item_counter.json`, `texts/` (+ `item.mace.name`), no `subpacks/`, `tools/` (py+sh), `out/` (9 files), `release/` (7 files), `copyright.txt` (25 entries incl. Utility HUD V-1.5 + Baku glass + Side Tooltip Items + Bundle Item Counter + Utility Inventory + OS Client settings pattern), `opencode.json`, `package.json`, `agent.md` §3D (README-in-sync rule).*
