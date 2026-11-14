@@ -18,8 +18,8 @@ APKTOOL_URL="https://github.com/iBotPeaches/Apktool/releases/download/v${APKTOOL
 APKTOOL_SHA256="dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423"
 
 APP_ID="${APP_ID:-com.ks.mcpe.launcher}"
-APP_VERSION="${APP_VERSION:-1.0.4}"
-APP_VERSION_CODE="${APP_VERSION_CODE:-10004}"
+APP_VERSION="${APP_VERSION:-1.0.5}"
+APP_VERSION_CODE="${APP_VERSION_CODE:-10005}"
 OUTPUT_PREFIX="${OUTPUT_PREFIX:-KS-MCPE-Launcher}"
 WORKDIR="${WORKDIR:-/tmp/ks-mcpe-build}"
 
