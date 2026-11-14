@@ -159,35 +159,6 @@
 
     .line 54
     :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l;->d:Ljava/lang/Object;
-
-    .line 55
-    .line 56
-    check-cast v0, Lorg/levimc/launcher/ui/activities/AboutActivity;
-
-    .line 57
-    .line 58
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/l;->h:Ljava/lang/Object;
-
-    .line 59
-    .line 60
-    check-cast v1, Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
-    .line 61
-    .line 62
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/l;->q:Ljava/lang/Object;
-
-    .line 63
-    .line 64
-    check-cast v2, Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
-    .line 65
-    .line 66
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/ui/activities/AboutActivity;->y(Lorg/levimc/launcher/ui/activities/AboutActivity;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
-
-    .line 67
-    .line 68
-    .line 69
     return-void
 
     .line 70

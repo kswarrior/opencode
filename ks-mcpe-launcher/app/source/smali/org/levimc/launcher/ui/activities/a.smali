@@ -71,36 +71,10 @@
 
     .line 14
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a;->d:Landroid/graphics/Bitmap;
-
-    .line 15
-    .line 16
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/a;->h:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
-    .line 17
-    .line 18
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/AboutActivity;->w(Landroid/graphics/Bitmap;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
-
-    .line 19
-    .line 20
-    .line 21
     return-void
 
     .line 22
     :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a;->d:Landroid/graphics/Bitmap;
-
-    .line 23
-    .line 24
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/a;->h:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
-    .line 25
-    .line 26
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/AboutActivity;->x(Landroid/graphics/Bitmap;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
-
-    .line 27
-    .line 28
-    .line 29
     return-void
 
     .line 30

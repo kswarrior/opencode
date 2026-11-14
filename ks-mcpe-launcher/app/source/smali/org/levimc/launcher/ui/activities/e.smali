@@ -279,27 +279,6 @@
 
     .line 114
     :pswitch_8
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/e;->d:Ljava/lang/Object;
-
-    .line 115
-    .line 116
-    check-cast v0, Lorg/levimc/launcher/ui/activities/AboutActivity;
-
-    .line 117
-    .line 118
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/e;->h:Ljava/lang/Object;
-
-    .line 119
-    .line 120
-    check-cast v1, Ljava/lang/String;
-
-    .line 121
-    .line 122
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/AboutActivity;->A(Lorg/levimc/launcher/ui/activities/AboutActivity;Ljava/lang/String;Landroid/view/View;)V
-
-    .line 123
-    .line 124
-    .line 125
     return-void
 
     .line 126

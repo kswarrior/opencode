@@ -87,11 +87,6 @@
 
     .line 26
     :pswitch_4
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/AboutActivity;->z(Landroid/view/View;)V
-
-    .line 27
-    .line 28
-    .line 29
     return-void
 
     .line 30
