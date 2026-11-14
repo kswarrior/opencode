@@ -14,7 +14,7 @@ on:
         type: string
   push:
     tags:
-      - "ks-mcpe-launcher*"
+      - "ks-mcpe-launcher"
 
 permissions:
   contents: write
