@@ -40,6 +40,8 @@
 
 .field public static activity_minecraft_loading:I = 0x7f0d0028
 
+.field public static activity_miscellaneous:I = 0x7f0d00f3
+
 .field public static activity_mod_config:I = 0x7f0d0029
 
 .field public static activity_mod_detail:I = 0x7f0d002a

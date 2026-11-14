@@ -1002,7 +1002,7 @@ More Buttons intentionally supports only one key per button and does not provide
     <string name="nav_about">About</string>
     <string name="nav_import">Import</string>
     <string name="nav_instances">Instances</string>
-    <string name="nav_launch">Launch</string>
+    <string name="nav_launch">Home page</string>
     <string name="nav_rail_collapsed_a11y_label">Collapsed</string>
     <string name="nav_rail_expanded_a11y_label">Expanded</string>
     <string name="nav_settings">Settings</string>
