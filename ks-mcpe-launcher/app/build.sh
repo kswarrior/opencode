@@ -207,9 +207,11 @@ log "zipaligning"
 
 if [ ! -f "$KEYSTORE" ]; then
     log "generating signing key $KEYSTORE"
+    GENERATED_PASSWORD=0
     if [ -z "$KEYSTORE_PASSWORD" ]; then
         KEYSTORE_PASSWORD="$(head -c 32 /dev/urandom | od -An -tx1 | tr -d ' \n')"
         KEY_PASSWORD="$KEYSTORE_PASSWORD"
+        GENERATED_PASSWORD=1
     fi
     keytool -genkeypair \
         -keystore "$KEYSTORE" \
@@ -223,6 +225,11 @@ if [ ! -f "$KEYSTORE" ]; then
         -dname "CN=KS MCPE Launcher, OU=KS, O=KS, L=Unknown, ST=Unknown, C=US" \
         >/dev/null 2>&1
     chmod 600 "$KEYSTORE"
+    if [ "$GENERATED_PASSWORD" = "1" ]; then
+        printf 'KEYSTORE_PASSWORD=%s\nKEY_ALIAS=%s\nKEY_PASSWORD=%s\n' \
+            "$KEYSTORE_PASSWORD" "$KEY_ALIAS" "$KEY_PASSWORD" > "$CREDENTIALS_FILE"
+        chmod 600 "$CREDENTIALS_FILE"
+    fi
 fi
 
 [ -n "$KEYSTORE_PASSWORD" ] || die "KEYSTORE_PASSWORD is required for $KEYSTORE"
