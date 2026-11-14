@@ -105,47 +105,6 @@
     .line 25
     return-void
 
-    .line 26
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l4;->d:Ljava/lang/Object;
-
-    .line 27
-    .line 28
-    check-cast v0, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
-    .line 29
-    .line 30
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/l4;->h:Ljava/lang/Object;
-
-    .line 31
-    .line 32
-    check-cast v1, Landroid/widget/EditText;
-
-    .line 33
-    .line 34
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/l4;->q:Landroid/view/KeyEvent$Callback;
-
-    .line 35
-    .line 36
-    check-cast v2, Landroid/widget/EditText;
-
-    .line 37
-    .line 38
-    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/l4;->w:Ljava/lang/Object;
-
-    .line 39
-    .line 40
-    check-cast v3, Landroid/widget/EditText;
-
-    .line 41
-    .line 42
-    invoke-static {v0, v1, v2, v3, p1}, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;->A(Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/view/View;)V
-
-    .line 43
-    .line 44
-    .line 45
-    return-void
-
     .line 46
     :pswitch_1
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l4;->d:Ljava/lang/Object;
@@ -236,6 +195,5 @@
     .packed-switch 0x0
         :pswitch_2
         :pswitch_1
-        :pswitch_0
     .end packed-switch
 .end method

@@ -129,27 +129,6 @@
 
     .line 42
     :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/b;->d:Ljava/lang/Object;
-
-    .line 43
-    .line 44
-    check-cast v0, Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$ViewHolder;
-
-    .line 45
-    .line 46
-    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/b;->h:Ljava/lang/Object;
-
-    .line 47
-    .line 48
-    check-cast v1, Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$QuickLaunchItem;
-
-    .line 49
-    .line 50
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$ViewHolder;->a(Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$ViewHolder;Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$QuickLaunchItem;Landroid/view/View;)V
-
-    .line 51
-    .line 52
-    .line 53
     return-void
 
     .line 54
