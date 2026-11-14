@@ -12,8 +12,12 @@ key.
 
 1. Downloads the pinned upstream APK and verifies its SHA-256.
 2. Decodes it with a pinned Apktool release.
-3. Rewrites the application id, provider authorities,
-   `BuildConfig.APPLICATION_ID`, and the launcher label.
+3. Rewrites the application id, provider authorities, signature-level
+   permission names, `BuildConfig.APPLICATION_ID`, and the launcher label.
+   Renaming the permission (e.g. the androidx
+   `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`) is required so the clone can
+   be installed next to the original app instead of failing with
+   `INSTALL_FAILED_DUPLICATE_PERMISSION`.
 4. Rebuilds, zipaligns, signs, and verifies the APK.
 5. Prints the package id, version, and SHA-256 of the result.
 
