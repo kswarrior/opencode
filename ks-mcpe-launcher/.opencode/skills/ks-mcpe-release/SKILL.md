@@ -15,6 +15,9 @@ Asset contract:
 - `KS-MCPE-Launcher-<version>.apk.sha256` (output of `sha256sum`, two spaces
   between hash and file name)
 
+Older versioned assets stay in the release for rollback unless the user
+explicitly asks to remove them.
+
 ## Upload a build via the API
 
 Authenticate with `GH_TOKEN`, or derive the Actions bot token locally from
@@ -99,7 +102,8 @@ Triggers: `workflow_dispatch` (optional `base_apk_url`, `release_tag`,
 `app_version`, `app_version_code`) and pushing the `ks-mcpe-launcher` tag. It
 builds with Java 21 and build-tools 35.0.0, uploads an artifact, and replaces
 release assets with `softprops/action-gh-release@v2` (`overwrite_files: true`).
-The clone version defaults to `1.0.1` / versionCode `10001`.
+`overwrite_files` only replaces assets with the same name; older versions are
+kept. The clone version defaults to `1.0.1` / versionCode `10001`.
 
 Signing secrets (recommended, keeps updates installable):
 
@@ -117,6 +121,7 @@ whenever signing configuration changes.
 ## Rules
 
 - Upload only the current build outputs from `dist/`; never hand-edit the APK.
+- Do not delete older version assets unless the user explicitly requests it.
 - The release tag stays `ks-mcpe-launcher`; do not create per-version releases.
 - The release **name** tracks the clone version (`v1.0.1`); the tag stays
   `ks-mcpe-launcher` so the pinned upstream asset URL remains valid.
