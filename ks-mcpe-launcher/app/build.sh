@@ -23,7 +23,7 @@ APP_VERSION_CODE="${APP_VERSION_CODE:-10005}"
 OUTPUT_PREFIX="${OUTPUT_PREFIX:-KS-MCPE-Launcher}"
 WORKDIR="${WORKDIR:-/tmp/ks-mcpe-build}"
 
-KEYSTORE="${KEYSTORE:-$WORKDIR/signing/ks-mcpe.keystore}"
+KEYSTORE="${KEYSTORE:-${XDG_DATA_HOME:-$HOME/.local/share}/ks-mcpe-signing/ks-mcpe.keystore}"
 CREDENTIALS_FILE="${CREDENTIALS_FILE:-$(dirname "$KEYSTORE")/credentials.env}"
 KEY_ALIAS="${KEY_ALIAS:-}"
 KEYSTORE_PASSWORD="${KEYSTORE_PASSWORD:-}"
