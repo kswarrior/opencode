@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/background" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:padding="5.0dp" android:layout_width="36.0dp" android:layout_height="36.0dp" android:src="@drawable/ic_world" android:tint="@color/primary" android:contentDescription="@string/custom_flat_world" android:layout_marginEnd="12.0dp" />
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/custom_flat_world" android:fontFamily="@font/misans" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:text="@string/custom_flat_world_subtitle" android:fontFamily="@font/misans" />
+            </LinearLayout>
+            <FrameLayout android:layout_width="184.0dp" android:layout_height="44.0dp">
+                <com.google.android.material.button.MaterialButton android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/on_primary" android:ellipsize="end" android:gravity="center" android:id="@id/create_world_button" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/create_world" android:maxLines="1" android:textAllCaps="false" android:fontFamily="@font/misans" android:paddingHorizontal="16.0dp" app:backgroundTint="@color/primary" app:cornerRadius="10.0dp" app:icon="@drawable/ic_check" app:iconGravity="textStart" app:iconPadding="8.0dp" app:iconTint="@color/on_primary" />
+                <ProgressBar android:layout_gravity="center" android:id="@id/loading_progress" android:visibility="gone" android:layout_width="24.0dp" android:layout_height="24.0dp" />
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="14.0dp" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/bg_rounded_card" android:padding="16.0dp" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="0.36" android:layout_marginEnd="7.0dp" android:elevation="2.0dp">
+                <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/world_settings" android:fontFamily="@font/misans" />
+                <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dp" android:text="@string/world_settings_hint" android:fontFamily="@font/misans" />
+                <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dp" android:text="@string/world_name" android:fontFamily="@font/misans" />
+                <EditText android:textSize="13.0sp" android:textColor="@color/on_surface" android:textColorHint="@color/text_secondary" android:id="@id/world_name_edit" android:background="@drawable/bg_edit_text" android:layout_width="match_parent" android:layout_height="44.0dp" android:layout_marginTop="6.0dp" android:hint="@string/enter_world_name" android:maxLines="1" android:inputType="text" android:fontFamily="@font/misans" android:paddingHorizontal="12.0dp" />
+                <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/biome" android:fontFamily="@font/misans" />
+                <Spinner android:id="@id/biome_spinner" android:background="@drawable/bg_edit_text" android:layout_width="match_parent" android:layout_height="44.0dp" android:layout_marginTop="6.0dp" android:popupBackground="@color/surface" android:spinnerMode="dropdown" />
+                <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:text="@string/game_mode" android:fontFamily="@font/misans" />
+                <Spinner android:id="@id/game_mode_spinner" android:background="@drawable/bg_edit_text" android:layout_width="match_parent" android:layout_height="44.0dp" android:layout_marginTop="6.0dp" android:popupBackground="@color/surface" android:spinnerMode="dropdown" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:background="@drawable/bg_rounded_card" android:padding="14.0dp" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="0.64" android:layout_marginStart="7.0dp" android:elevation="2.0dp">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/layers_title" android:fontFamily="@font/misans" />
+                        <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/layers_summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dp" android:fontFamily="@font/misans" />
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/on_primary" android:id="@id/add_layer_button" android:layout_width="wrap_content" android:layout_height="40.0dp" android:minWidth="0.0dp" android:text="@string/add_layer_compact" android:textAllCaps="false" android:fontFamily="@font/misans" app:backgroundTint="@color/primary" app:cornerRadius="9.0dp" app:icon="@drawable/ic_add" app:iconGravity="textStart" app:iconSize="18.0dp" app:iconTint="@color/on_primary" />
+                </LinearLayout>
+                <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" android:layout_marginTop="12.0dp" />
+                <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="8.0dp" android:layout_weight="1.0">
+                    <androidx.recyclerview.widget.RecyclerView android:id="@id/layers_recycler_view" android:paddingBottom="4.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" />
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/empty_layers_state" android:padding="24.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:padding="6.0dp" android:layout_width="42.0dp" android:layout_height="42.0dp" android:src="@drawable/ic_minecraft_cube" android:tint="@color/text_secondary" android:contentDescription="@string/no_layers_title" android:alpha="0.55" />
+                        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:text="@string/no_layers_title" android:fontFamily="@font/misans" />
+                        <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dp" android:text="@string/no_layers_hint" android:fontFamily="@font/misans" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

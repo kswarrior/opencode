@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d परत • नीचे → ऊपर</item>
+        <item quantity="other">%1$d परतें • नीचे → ऊपर</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d विकल्प</item>
+        <item quantity="other">%d विकल्प</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d संपादन योग्य कॉन्फ़िग</item>
+        <item quantity="other">%d संपादन योग्य कॉन्फ़िग</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d आइटम</item>
+        <item quantity="other">%d आइटम</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d नई सूचनाएं</item>
+        <item quantity="other">%d नई सूचनाएं</item>
+    </plurals>
+</resources>

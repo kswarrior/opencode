@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:padding="2.0dp" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="?colorOnSurfaceVariant" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dp" android:text="@string/rename_version_message" />
+    <EditText android:textSize="16.0sp" android:textColor="?colorOnSurface" android:textColorHint="?colorOnSurfaceVariant" android:id="@id/edit_version_name" android:background="@drawable/bg_edit_text" android:padding="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/new_version_name" android:singleLine="true" android:inputType="text" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff5252" android:id="@id/text_version_error" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:text="@string/name_invalid" />
+</LinearLayout>

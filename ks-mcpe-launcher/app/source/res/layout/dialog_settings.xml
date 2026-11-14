@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@drawable/bg_rounded_card" android:padding="24.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:minWidth="480.0dp" android:minHeight="320.0dp">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_settings" />
+            <LinearLayout android:orientation="vertical" android:paddingLeft="12.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="20.0sp" android:textStyle="bold" android:id="@id/settings_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/settings_title" />
+                <TextView android:textSize="14.0sp" android:textColor="#888888" android:id="@id/settings_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/settings_desc" />
+            </LinearLayout>
+        </LinearLayout>
+        <Space android:layout_width="match_parent" android:layout_height="12.0dp" />
+        <LinearLayout android:orientation="vertical" android:id="@id/settings_items" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <Space android:layout_width="match_parent" android:layout_height="16.0dp" />
+        <View android:background="#22ffffff" android:layout_width="match_parent" android:layout_height="1.0dp" />
+        <LinearLayout android:orientation="vertical" android:paddingTop="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/about_title" />
+            <TextView android:textSize="13.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/copyright" />
+            <TextView android:textSize="13.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/font_license" />
+            <TextView android:textSize="13.0sp" android:autoLink="web" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/about_footer_github" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

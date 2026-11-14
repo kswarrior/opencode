@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="10.0dp" android:paddingBottom="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="14.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:enabled="false" android:textSize="12.0sp" android:textColor="@color/primary" android:id="@id/btn_prev_page" android:background="@drawable/bg_mod_menu_toggle" android:layout_width="0.0dp" android:layout_height="36.0dp" android:minWidth="0.0dp" android:minHeight="0.0dp" android:text="@string/previous" android:layout_weight="1.0" android:textAllCaps="false" android:fontFamily="@font/misans" android:paddingHorizontal="3.0dp" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:id="@id/tv_page_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pagination_page_one" android:fontFamily="@font/misans" android:layout_marginHorizontal="12.0dp" />
+    <Button android:enabled="false" android:textSize="12.0sp" android:textColor="@color/primary" android:id="@id/btn_next_page" android:background="@drawable/bg_mod_menu_toggle" android:layout_width="0.0dp" android:layout_height="36.0dp" android:minWidth="0.0dp" android:minHeight="0.0dp" android:text="@string/next" android:layout_weight="1.0" android:textAllCaps="false" android:fontFamily="@font/misans" android:paddingHorizontal="3.0dp" />
+</LinearLayout>

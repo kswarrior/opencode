@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:paddingTop="15.0dp" android:paddingBottom="18.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="20.0dp" android:paddingEnd="20.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="@color/primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/news_title" android:fontFamily="@font/misans" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dp" android:text="@string/news_subtitle" android:fontFamily="@font/misans" />
+        </LinearLayout>
+        <Button android:textSize="11.0sp" android:textColor="@color/primary" android:id="@id/news_enable_notifications" android:layout_width="wrap_content" android:layout_height="36.0dp" android:minWidth="0.0dp" android:minHeight="0.0dp" android:text="@string/news_enable_notifications" android:insetTop="0.0dp" android:insetBottom="0.0dp" android:textAllCaps="false" android:fontFamily="@font/misans" android:layout_marginEnd="8.0dp" android:paddingHorizontal="12.0dp" style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        <ImageButton android:id="@id/news_refresh" android:background="?selectableItemBackgroundBorderless" android:padding="8.0dp" android:layout_width="36.0dp" android:layout_height="36.0dp" android:src="@drawable/ic_news_refresh" android:tint="@color/text_secondary" android:contentDescription="@string/news_refresh" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="14.0dp" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/news_recycler" android:paddingBottom="8.0dp" android:scrollbars="none" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/news_progress" android:layout_width="36.0dp" android:layout_height="36.0dp" android:indeterminateTint="@color/primary" style="?android:progressBarStyle" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/text_secondary" android:gravity="center" android:layout_gravity="center" android:id="@id/news_empty" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/news_empty" android:drawableTop="@drawable/ic_nav_news" android:drawablePadding="10.0dp" android:fontFamily="@font/misans" />
+    </FrameLayout>
+</LinearLayout>

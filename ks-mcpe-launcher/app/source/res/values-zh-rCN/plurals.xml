@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d 层 • 底部 → 顶部</item>
+        <item quantity="other">%1$d 层 • 底部 → 顶部</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d 个选项</item>
+        <item quantity="other">%d 个选项</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d 个可编辑配置</item>
+        <item quantity="other">%d 个可编辑配置</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d 项</item>
+        <item quantity="other">%d 项</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d 条新通知</item>
+        <item quantity="other">%d 条新通知</item>
+    </plurals>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_rounded_card" android:padding="24.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxHeight="500.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="18.0sp" android:textStyle="bold" android:id="@id/tv_title" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    <ScrollView android:id="@id/message_scroll_view" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="12.0dp" android:fillViewport="true" android:layout_weight="1.0">
+        <TextView android:textSize="16.0sp" android:id="@id/tv_message" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="40.0dp" />
+    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/items_recycler_view" android:visibility="gone" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="12.0dp" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:id="@id/custom_view_container" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp" />
+    <LinearLayout android:gravity="end" android:orientation="horizontal" android:id="@id/btn_container" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dp">
+        <Button android:textSize="14.0sp" android:textColor="?colorOnSurfaceVariant" android:ellipsize="end" android:id="@id/btn_negative" android:layout_width="0.0dp" android:layout_height="wrap_content" android:minHeight="48.0dp" android:maxLines="1" android:layout_weight="1.0" android:paddingStart="12.0dp" android:paddingEnd="12.0dp" style="@style/Widget.MaterialComponents.Button.TextButton" />
+        <View android:id="@id/btn_spacing_neg_neu" android:layout_width="8.0dp" android:layout_height="0.0dp" />
+        <Button android:textSize="14.0sp" android:textColor="?colorOnSurfaceVariant" android:ellipsize="end" android:id="@id/btn_neutral" android:visibility="gone" android:layout_width="0.0dp" android:layout_height="wrap_content" android:minHeight="48.0dp" android:maxLines="1" android:layout_weight="1.0" android:paddingStart="12.0dp" android:paddingEnd="12.0dp" style="@style/Widget.MaterialComponents.Button.TextButton" />
+        <View android:id="@id/btn_spacing_neu_pos" android:layout_width="8.0dp" android:layout_height="0.0dp" />
+        <Button android:textSize="14.0sp" android:textColor="?colorOnPrimary" android:ellipsize="end" android:id="@id/btn_positive" android:layout_width="0.0dp" android:layout_height="wrap_content" android:minHeight="48.0dp" android:maxLines="1" android:layout_weight="1.0" android:paddingStart="12.0dp" android:paddingEnd="12.0dp" android:backgroundTint="?colorPrimary" />
+    </LinearLayout>
+</LinearLayout>

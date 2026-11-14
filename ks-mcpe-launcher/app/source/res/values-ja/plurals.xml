@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$dレイヤー • 下 → 上</item>
+        <item quantity="other">%1$dレイヤー • 下 → 上</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d 個の選択肢</item>
+        <item quantity="other">%d 個の選択肢</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d 個の編集可能な設定</item>
+        <item quantity="other">%d 個の編集可能な設定</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d 個の項目</item>
+        <item quantity="other">%d 個の項目</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d 件の新しい通知</item>
+        <item quantity="other">%d 件の新しい通知</item>
+    </plurals>
+</resources>

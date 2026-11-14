@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d lớp • dưới → trên</item>
+        <item quantity="other">%1$d lớp • dưới → trên</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d lựa chọn</item>
+        <item quantity="other">%d các lựa chọn</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d cấu hình có thể chỉnh sửa</item>
+        <item quantity="other">%d các cấu hình có thể chỉnh sửa</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d thông báo mới</item>
+        <item quantity="other">%d thông báo mới</item>
+    </plurals>
+</resources>

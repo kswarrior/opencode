@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/background" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingTop="15.0dp" android:paddingBottom="24.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="20.0dp" android:paddingEnd="20.0dp">
+        <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="@color/primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/full_mods_title" android:fontFamily="@font/misans" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:padding="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dp">
+            <LinearLayout android:orientation="horizontal" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="18.0dp">
+                    <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/total_mods" android:fontFamily="@font/misans" />
+                    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/accent_text" android:id="@id/total_mods_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:text="0" android:fontFamily="@font/misans" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="18.0dp" android:paddingEnd="18.0dp">
+                    <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/enabled_mods" android:fontFamily="@font/misans" />
+                    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/accent_text" android:id="@id/enabled_mods_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:text="0" android:fontFamily="@font/misans" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/on_tertiary" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/external_mods_button" android:layout_width="wrap_content" android:layout_height="40.0dp" android:minWidth="128.0dp" android:minHeight="0.0dp" android:text="@string/external_mods" android:textAllCaps="false" android:fontFamily="@font/misans" android:layout_marginStart="10.0dp" android:backgroundTint="@color/tertiary" android:paddingHorizontal="12.0dp" />
+            <Button android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/on_secondary" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/mod_menu_button" android:layout_width="wrap_content" android:layout_height="40.0dp" android:minWidth="110.0dp" android:minHeight="0.0dp" android:text="@string/mod_menu" android:textAllCaps="false" android:fontFamily="@font/misans" android:layout_marginStart="10.0dp" android:backgroundTint="@color/secondary" android:paddingHorizontal="12.0dp" />
+            <Button android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/on_primary" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/add_mod_fullscreen_button" android:layout_width="wrap_content" android:layout_height="40.0dp" android:minWidth="100.0dp" android:minHeight="0.0dp" android:text="@string/add_mod" android:textAllCaps="false" android:fontFamily="@font/misans" android:layout_marginStart="10.0dp" android:backgroundTint="@color/primary" android:paddingHorizontal="12.0dp" />
+        </LinearLayout>
+        <androidx.core.widget.NestedScrollView android:id="@id/nested_scroll_view" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="12.0dp" android:fillViewport="true" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:padding="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/mods_recycler_fullscreen" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:nestedScrollingEnabled="false" android:paddingHorizontal="8.0dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</FrameLayout>

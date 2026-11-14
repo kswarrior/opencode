@@ -1,0 +1,1317 @@
+.class public final Lkd/e;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# instance fields
+.field public a:I
+
+.field public final b:Ljava/lang/Object;
+
+.field public final c:Ljava/lang/Object;
+
+.field public final d:Ljava/io/Serializable;
+
+.field public final e:Ljava/lang/Object;
+
+.field public f:Ljava/lang/Object;
+
+.field public final g:Ljava/lang/Object;
+
+.field public final h:Ljava/lang/Object;
+
+.field public final i:Ljava/lang/Object;
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lv6/x;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    iput-object p1, p0, Lkd/e;->b:Ljava/lang/Object;
+
+    .line 3
+    iput-object p2, p0, Lkd/e;->c:Ljava/lang/Object;
+
+    .line 4
+    iput-object p3, p0, Lkd/e;->d:Ljava/io/Serializable;
+
+    .line 5
+    iput-object p4, p0, Lkd/e;->e:Ljava/lang/Object;
+
+    .line 6
+    iput-object p5, p0, Lkd/e;->f:Ljava/lang/Object;
+
+    .line 7
+    iput-object p6, p0, Lkd/e;->g:Ljava/lang/Object;
+
+    .line 8
+    iput-object p7, p0, Lkd/e;->h:Ljava/lang/Object;
+
+    .line 9
+    iput-object p8, p0, Lkd/e;->i:Ljava/lang/Object;
+
+    .line 10
+    iput p9, p0, Lkd/e;->a:I
+
+    return-void
+.end method
+
+.method public constructor <init>(Lpd/c;Lqc/k;Lorg/apache/http/params/HttpParams;)V
+    .locals 2
+
+    .line 11
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 12
+    const-string v0, "HTTP parameters"
+
+    invoke-static {p3, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 13
+    iput-object p1, p0, Lkd/e;->b:Ljava/lang/Object;
+
+    .line 14
+    const-string p1, "http.connection.max-header-count"
+
+    const/4 v0, -0x1
+
+    invoke-interface {p3, v0, p1}, Lorg/apache/http/params/HttpParams;->c(ILjava/lang/String;)I
+
+    move-result p1
+
+    const-string v1, "http.connection.max-line-length"
+
+    invoke-interface {p3, v0, v1}, Lorg/apache/http/params/HttpParams;->c(ILjava/lang/String;)I
+
+    move-result p3
+
+    .line 15
+    new-instance v0, Lyc/a;
+
+    invoke-direct {v0, p3, p1}, Lyc/a;-><init>(II)V
+
+    .line 16
+    iput-object v0, p0, Lkd/e;->c:Ljava/lang/Object;
+
+    .line 17
+    sget-object p1, Lorg/apache/http/message/i;->b:Lorg/apache/http/message/i;
+
+    iput-object p1, p0, Lkd/e;->e:Ljava/lang/Object;
+
+    .line 18
+    new-instance p1, Ljava/util/ArrayList;
+
+    invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object p1, p0, Lkd/e;->d:Ljava/io/Serializable;
+
+    const/4 p1, 0x0
+
+    .line 19
+    iput p1, p0, Lkd/e;->a:I
+
+    .line 20
+    const-class p1, Lkd/e;
+
+    invoke-static {p1}, Lorg/apache/commons/logging/LogFactory;->getLog(Ljava/lang/Class;)Lorg/apache/commons/logging/Log;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lkd/e;->g:Ljava/lang/Object;
+
+    .line 21
+    const-string p1, "Response factory"
+
+    invoke-static {p2, p1}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 22
+    iput-object p2, p0, Lkd/e;->h:Ljava/lang/Object;
+
+    .line 23
+    new-instance p1, Lsd/b;
+
+    const/16 p2, 0x80
+
+    invoke-direct {p1, p2}, Lsd/b;-><init>(I)V
+
+    iput-object p1, p0, Lkd/e;->i:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public static b(Lpd/c;IILorg/apache/http/message/p;Ljava/util/List;)[Lorg/apache/http/Header;
+    .locals 8
+
+    .line 1
+    const-string v0, "Session input buffer"
+
+    .line 2
+    .line 3
+    invoke-static {p0, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    const-string v0, "Line parser"
+
+    .line 7
+    .line 8
+    invoke-static {p3, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 9
+    .line 10
+    .line 11
+    const-string p3, "Header line list"
+
+    .line 12
+    .line 13
+    invoke-static {p4, p3}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 14
+    .line 15
+    .line 16
+    const/4 p3, 0x0
+
+    .line 17
+    move-object v0, p3
+
+    .line 18
+    move-object v1, v0
+
+    .line 19
+    :cond_0
+    :goto_0
+    const/4 v2, 0x0
+
+    .line 20
+    if-nez v0, :cond_1
+
+    .line 21
+    .line 22
+    new-instance v0, Lsd/b;
+
+    .line 23
+    .line 24
+    const/16 v3, 0x40
+
+    .line 25
+    .line 26
+    invoke-direct {v0, v3}, Lsd/b;-><init>(I)V
+
+    .line 27
+    .line 28
+    .line 29
+    goto :goto_1
+
+    .line 30
+    :cond_1
+    iput v2, v0, Lsd/b;->d:I
+
+    .line 31
+    .line 32
+    :goto_1
+    invoke-interface {p0, v0}, Lpd/c;->e(Lsd/b;)I
+
+    .line 33
+    .line 34
+    .line 35
+    move-result v3
+
+    .line 36
+    const/4 v4, -0x1
+
+    .line 37
+    if-eq v3, v4, :cond_a
+
+    .line 38
+    .line 39
+    iget v3, v0, Lsd/b;->d:I
+
+    .line 40
+    .line 41
+    const/4 v4, 0x1
+
+    .line 42
+    if-ge v3, v4, :cond_2
+
+    .line 43
+    .line 44
+    goto :goto_6
+
+    .line 45
+    :cond_2
+    iget-object v3, v0, Lsd/b;->c:[C
+
+    .line 46
+    .line 47
+    aget-char v3, v3, v2
+
+    .line 48
+    .line 49
+    const/16 v5, 0x9
+
+    .line 50
+    .line 51
+    const/16 v6, 0x20
+
+    .line 52
+    .line 53
+    if-eq v3, v6, :cond_3
+
+    .line 54
+    .line 55
+    if-ne v3, v5, :cond_8
+
+    .line 56
+    .line 57
+    :cond_3
+    if-eqz v1, :cond_8
+
+    .line 58
+    .line 59
+    :goto_2
+    iget v3, v0, Lsd/b;->d:I
+
+    .line 60
+    .line 61
+    if-ge v2, v3, :cond_5
+
+    .line 62
+    .line 63
+    iget-object v7, v0, Lsd/b;->c:[C
+
+    .line 64
+    .line 65
+    aget-char v7, v7, v2
+
+    .line 66
+    .line 67
+    if-eq v7, v6, :cond_4
+
+    .line 68
+    .line 69
+    if-eq v7, v5, :cond_4
+
+    .line 70
+    .line 71
+    goto :goto_3
+
+    .line 72
+    :cond_4
+    add-int/lit8 v2, v2, 0x1
+
+    .line 73
+    .line 74
+    goto :goto_2
+
+    .line 75
+    :cond_5
+    :goto_3
+    if-lez p2, :cond_7
+
+    .line 76
+    .line 77
+    iget v5, v1, Lsd/b;->d:I
+
+    .line 78
+    .line 79
+    add-int/2addr v5, v4
+
+    .line 80
+    add-int/2addr v5, v3
+
+    .line 81
+    sub-int/2addr v5, v2
+
+    .line 82
+    if-gt v5, p2, :cond_6
+
+    .line 83
+    .line 84
+    goto :goto_4
+
+    .line 85
+    :cond_6
+    new-instance p0, Lqc/o;
+
+    .line 86
+    .line 87
+    const-string p1, "Maximum line length limit exceeded"
+
+    .line 88
+    .line 89
+    invoke-direct {p0, p1}, Lqc/o;-><init>(Ljava/lang/String;)V
+
+    .line 90
+    .line 91
+    .line 92
+    throw p0
+
+    .line 93
+    :cond_7
+    :goto_4
+    invoke-virtual {v1, v6}, Lsd/b;->a(C)V
+
+    .line 94
+    .line 95
+    .line 96
+    iget v3, v0, Lsd/b;->d:I
+
+    .line 97
+    .line 98
+    sub-int/2addr v3, v2
+
+    .line 99
+    iget-object v4, v0, Lsd/b;->c:[C
+
+    .line 100
+    .line 101
+    invoke-virtual {v1, v4, v2, v3}, Lsd/b;->d([CII)V
+
+    .line 102
+    .line 103
+    .line 104
+    goto :goto_5
+
+    .line 105
+    :cond_8
+    invoke-interface {p4, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 106
+    .line 107
+    .line 108
+    move-object v1, v0
+
+    .line 109
+    move-object v0, p3
+
+    .line 110
+    :goto_5
+    if-lez p1, :cond_0
+
+    .line 111
+    .line 112
+    invoke-interface {p4}, Ljava/util/List;->size()I
+
+    .line 113
+    .line 114
+    .line 115
+    move-result v2
+
+    .line 116
+    if-ge v2, p1, :cond_9
+
+    .line 117
+    .line 118
+    goto :goto_0
+
+    .line 119
+    :cond_9
+    new-instance p0, Lqc/o;
+
+    .line 120
+    .line 121
+    const-string p1, "Maximum header count exceeded"
+
+    .line 122
+    .line 123
+    invoke-direct {p0, p1}, Lqc/o;-><init>(Ljava/lang/String;)V
+
+    .line 124
+    .line 125
+    .line 126
+    throw p0
+
+    .line 127
+    :cond_a
+    :goto_6
+    invoke-interface {p4}, Ljava/util/List;->size()I
+
+    .line 128
+    .line 129
+    .line 130
+    move-result p0
+
+    .line 131
+    new-array p0, p0, [Lorg/apache/http/Header;
+
+    .line 132
+    .line 133
+    :goto_7
+    invoke-interface {p4}, Ljava/util/List;->size()I
+
+    .line 134
+    .line 135
+    .line 136
+    move-result p1
+
+    .line 137
+    if-ge v2, p1, :cond_b
+
+    .line 138
+    .line 139
+    invoke-interface {p4, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    .line 140
+    .line 141
+    .line 142
+    move-result-object p1
+
+    .line 143
+    check-cast p1, Lsd/b;
+
+    .line 144
+    .line 145
+    :try_start_0
+    new-instance p2, Lorg/apache/http/message/o;
+
+    .line 146
+    .line 147
+    invoke-direct {p2, p1}, Lorg/apache/http/message/o;-><init>(Lsd/b;)V
+
+    .line 148
+    .line 149
+    .line 150
+    aput-object p2, p0, v2
+    :try_end_0
+    .catch Lqc/r; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 151
+    .line 152
+    add-int/lit8 v2, v2, 0x1
+
+    .line 153
+    .line 154
+    goto :goto_7
+
+    .line 155
+    :catch_0
+    move-exception p0
+
+    .line 156
+    new-instance p1, Lqc/s;
+
+    .line 157
+    .line 158
+    invoke-virtual {p0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 159
+    .line 160
+    .line 161
+    move-result-object p0
+
+    .line 162
+    invoke-direct {p1, p0}, Lqc/e;-><init>(Ljava/lang/String;)V
+
+    .line 163
+    .line 164
+    .line 165
+    throw p1
+
+    .line 166
+    :cond_b
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public a(Lpd/c;)Lorg/apache/http/message/g;
+    .locals 17
+
+    .line 1
+    move-object/from16 v0, p0
+
+    .line 2
+    .line 3
+    iget-object v1, v0, Lkd/e;->g:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    check-cast v1, Lorg/apache/commons/logging/Log;
+
+    .line 6
+    .line 7
+    iget-object v2, v0, Lkd/e;->e:Ljava/lang/Object;
+
+    .line 8
+    .line 9
+    check-cast v2, Lorg/apache/http/message/p;
+
+    .line 10
+    .line 11
+    iget-object v3, v0, Lkd/e;->i:Ljava/lang/Object;
+
+    .line 12
+    .line 13
+    check-cast v3, Lsd/b;
+
+    .line 14
+    .line 15
+    const/4 v4, 0x0
+
+    .line 16
+    move v5, v4
+
+    .line 17
+    :goto_0
+    iput v4, v3, Lsd/b;->d:I
+
+    .line 18
+    .line 19
+    move-object/from16 v6, p1
+
+    .line 20
+    .line 21
+    invoke-interface {v6, v3}, Lpd/c;->e(Lsd/b;)I
+
+    .line 22
+    .line 23
+    .line 24
+    move-result v7
+
+    .line 25
+    const/4 v8, -0x1
+
+    .line 26
+    if-ne v7, v8, :cond_1
+
+    .line 27
+    .line 28
+    if-eqz v5, :cond_0
+
+    .line 29
+    .line 30
+    goto :goto_1
+
+    .line 31
+    :cond_0
+    new-instance v1, Lqc/q;
+
+    .line 32
+    .line 33
+    const-string v2, "The target server failed to respond"
+
+    .line 34
+    .line 35
+    invoke-static {v2}, Lqc/e;->a(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 36
+    .line 37
+    .line 38
+    move-result-object v2
+
+    .line 39
+    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 40
+    .line 41
+    .line 42
+    throw v1
+
+    .line 43
+    :cond_1
+    :goto_1
+    new-instance v9, Lcom/google/android/gms/internal/measurement/xg;
+
+    .line 44
+    .line 45
+    iget v10, v3, Lsd/b;->d:I
+
+    .line 46
+    .line 47
+    invoke-direct {v9, v4, v10}, Lcom/google/android/gms/internal/measurement/xg;-><init>(II)V
+
+    .line 48
+    .line 49
+    .line 50
+    iget v10, v9, Lcom/google/android/gms/internal/measurement/xg;->c:I
+
+    .line 51
+    .line 52
+    move-object v11, v2
+
+    .line 53
+    check-cast v11, Lorg/apache/http/message/i;
+
+    .line 54
+    .line 55
+    invoke-virtual {v11}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 56
+    .line 57
+    .line 58
+    iget v12, v9, Lcom/google/android/gms/internal/measurement/xg;->d:I
+
+    .line 59
+    .line 60
+    iget-object v13, v11, Lorg/apache/http/message/i;->a:Lorg/apache/http/ProtocolVersion;
+
+    .line 61
+    .line 62
+    iget-object v13, v13, Lorg/apache/http/ProtocolVersion;->c:Ljava/lang/String;
+
+    .line 63
+    .line 64
+    invoke-virtual {v13}, Ljava/lang/String;->length()I
+
+    .line 65
+    .line 66
+    .line 67
+    move-result v14
+
+    .line 68
+    iget v15, v3, Lsd/b;->d:I
+
+    .line 69
+    .line 70
+    add-int/lit8 v4, v14, 0x4
+
+    .line 71
+    .line 72
+    if-ge v15, v4, :cond_3
+
+    .line 73
+    .line 74
+    :goto_2
+    move-object/from16 v16, v2
+
+    .line 75
+    .line 76
+    :cond_2
+    const/4 v8, 0x0
+
+    .line 77
+    goto :goto_7
+
+    .line 78
+    :cond_3
+    if-gez v12, :cond_4
+
+    .line 79
+    .line 80
+    add-int/lit8 v15, v15, -0x4
+
+    .line 81
+    .line 82
+    sub-int v12, v15, v14
+
+    .line 83
+    .line 84
+    goto :goto_4
+
+    .line 85
+    :cond_4
+    if-nez v12, :cond_5
+
+    .line 86
+    .line 87
+    :goto_3
+    iget v4, v3, Lsd/b;->d:I
+
+    .line 88
+    .line 89
+    if-ge v12, v4, :cond_5
+
+    .line 90
+    .line 91
+    iget-object v4, v3, Lsd/b;->c:[C
+
+    .line 92
+    .line 93
+    aget-char v4, v4, v12
+
+    .line 94
+    .line 95
+    invoke-static {v4}, Lrd/b;->a(C)Z
+
+    .line 96
+    .line 97
+    .line 98
+    move-result v4
+
+    .line 99
+    if-eqz v4, :cond_5
+
+    .line 100
+    .line 101
+    add-int/lit8 v12, v12, 0x1
+
+    .line 102
+    .line 103
+    goto :goto_3
+
+    .line 104
+    :cond_5
+    :goto_4
+    add-int v4, v12, v14
+
+    .line 105
+    .line 106
+    add-int/lit8 v15, v4, 0x4
+
+    .line 107
+    .line 108
+    iget v8, v3, Lsd/b;->d:I
+
+    .line 109
+    .line 110
+    if-le v15, v8, :cond_6
+
+    .line 111
+    .line 112
+    goto :goto_2
+
+    .line 113
+    :cond_6
+    const/4 v8, 0x0
+
+    .line 114
+    const/4 v15, 0x1
+
+    .line 115
+    :goto_5
+    if-eqz v15, :cond_8
+
+    .line 116
+    .line 117
+    if-ge v8, v14, :cond_8
+
+    .line 118
+    .line 119
+    add-int v15, v12, v8
+
+    .line 120
+    .line 121
+    move-object/from16 v16, v2
+
+    .line 122
+    .line 123
+    iget-object v2, v3, Lsd/b;->c:[C
+
+    .line 124
+    .line 125
+    aget-char v2, v2, v15
+
+    .line 126
+    .line 127
+    invoke-virtual {v13, v8}, Ljava/lang/String;->charAt(I)C
+
+    .line 128
+    .line 129
+    .line 130
+    move-result v15
+
+    .line 131
+    if-ne v2, v15, :cond_7
+
+    .line 132
+    .line 133
+    const/4 v15, 0x1
+
+    .line 134
+    goto :goto_6
+
+    .line 135
+    :cond_7
+    const/4 v15, 0x0
+
+    .line 136
+    :goto_6
+    add-int/lit8 v8, v8, 0x1
+
+    .line 137
+    .line 138
+    move-object/from16 v2, v16
+
+    .line 139
+    .line 140
+    goto :goto_5
+
+    .line 141
+    :cond_8
+    move-object/from16 v16, v2
+
+    .line 142
+    .line 143
+    if-eqz v15, :cond_9
+
+    .line 144
+    .line 145
+    iget-object v2, v3, Lsd/b;->c:[C
+
+    .line 146
+    .line 147
+    aget-char v2, v2, v4
+
+    .line 148
+    .line 149
+    const/16 v4, 0x2f
+
+    .line 150
+    .line 151
+    if-ne v2, v4, :cond_2
+
+    .line 152
+    .line 153
+    const/4 v8, 0x1
+
+    .line 154
+    goto :goto_7
+
+    .line 155
+    :cond_9
+    move v8, v15
+
+    .line 156
+    :goto_7
+    if-eqz v8, :cond_f
+
+    .line 157
+    .line 158
+    iget v1, v9, Lcom/google/android/gms/internal/measurement/xg;->d:I
+
+    .line 159
+    .line 160
+    :try_start_0
+    invoke-virtual {v11, v3, v9}, Lorg/apache/http/message/i;->a(Lsd/b;Lcom/google/android/gms/internal/measurement/xg;)Lorg/apache/http/ProtocolVersion;
+
+    .line 161
+    .line 162
+    .line 163
+    move-result-object v2
+
+    .line 164
+    iget v4, v9, Lcom/google/android/gms/internal/measurement/xg;->d:I
+
+    .line 165
+    .line 166
+    :goto_8
+    if-ge v4, v10, :cond_a
+
+    .line 167
+    .line 168
+    iget-object v5, v3, Lsd/b;->c:[C
+
+    .line 169
+    .line 170
+    aget-char v5, v5, v4
+
+    .line 171
+    .line 172
+    invoke-static {v5}, Lrd/b;->a(C)Z
+
+    .line 173
+    .line 174
+    .line 175
+    move-result v5
+
+    .line 176
+    if-eqz v5, :cond_a
+
+    .line 177
+    .line 178
+    add-int/lit8 v4, v4, 0x1
+
+    .line 179
+    .line 180
+    goto :goto_8
+
+    .line 181
+    :cond_a
+    invoke-virtual {v9, v4}, Lcom/google/android/gms/internal/measurement/xg;->b(I)V
+
+    .line 182
+    .line 183
+    .line 184
+    iget v4, v9, Lcom/google/android/gms/internal/measurement/xg;->d:I
+
+    .line 185
+    .line 186
+    const/16 v5, 0x20
+
+    .line 187
+    .line 188
+    invoke-virtual {v3, v5, v4, v10}, Lsd/b;->g(III)I
+
+    .line 189
+    .line 190
+    .line 191
+    move-result v5
+
+    .line 192
+    if-gez v5, :cond_b
+
+    .line 193
+    .line 194
+    move v5, v10
+
+    .line 195
+    :cond_b
+    invoke-virtual {v3, v4, v5}, Lsd/b;->i(II)Ljava/lang/String;
+
+    .line 196
+    .line 197
+    .line 198
+    move-result-object v4
+
+    .line 199
+    const/4 v6, 0x0
+
+    .line 200
+    :goto_9
+    invoke-virtual {v4}, Ljava/lang/String;->length()I
+
+    .line 201
+    .line 202
+    .line 203
+    move-result v7
+    :try_end_0
+    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_0 .. :try_end_0} :catch_1
+
+    .line 204
+    const-string v8, "Status line contains invalid status code: "
+
+    .line 205
+    .line 206
+    if-ge v6, v7, :cond_d
+
+    .line 207
+    .line 208
+    :try_start_1
+    invoke-virtual {v4, v6}, Ljava/lang/String;->charAt(I)C
+
+    .line 209
+    .line 210
+    .line 211
+    move-result v7
+
+    .line 212
+    invoke-static {v7}, Ljava/lang/Character;->isDigit(C)Z
+
+    .line 213
+    .line 214
+    .line 215
+    move-result v7
+
+    .line 216
+    if-eqz v7, :cond_c
+
+    .line 217
+    .line 218
+    add-int/lit8 v6, v6, 0x1
+
+    .line 219
+    .line 220
+    goto :goto_9
+
+    .line 221
+    :cond_c
+    new-instance v2, Lqc/r;
+
+    .line 222
+    .line 223
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    .line 224
+    .line 225
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 226
+    .line 227
+    .line 228
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 229
+    .line 230
+    .line 231
+    invoke-virtual {v3, v1, v10}, Lsd/b;->h(II)Ljava/lang/String;
+
+    .line 232
+    .line 233
+    .line 234
+    move-result-object v5
+
+    .line 235
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 236
+    .line 237
+    .line 238
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 239
+    .line 240
+    .line 241
+    move-result-object v4
+
+    .line 242
+    invoke-direct {v2, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    .line 243
+    .line 244
+    .line 245
+    throw v2
+    :try_end_1
+    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_1 .. :try_end_1} :catch_1
+
+    .line 246
+    :cond_d
+    :try_start_2
+    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    .line 247
+    .line 248
+    .line 249
+    move-result v4
+    :try_end_2
+    .catch Ljava/lang/NumberFormatException; {:try_start_2 .. :try_end_2} :catch_0
+    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_2 .. :try_end_2} :catch_1
+
+    .line 250
+    if-ge v5, v10, :cond_e
+
+    .line 251
+    .line 252
+    :try_start_3
+    invoke-virtual {v3, v5, v10}, Lsd/b;->i(II)Ljava/lang/String;
+
+    .line 253
+    .line 254
+    .line 255
+    move-result-object v5
+
+    .line 256
+    goto :goto_a
+
+    .line 257
+    :cond_e
+    const-string v5, ""
+
+    .line 258
+    .line 259
+    :goto_a
+    new-instance v6, Lorg/apache/http/message/m;
+
+    .line 260
+    .line 261
+    invoke-direct {v6, v2, v4, v5}, Lorg/apache/http/message/m;-><init>(Lorg/apache/http/ProtocolVersion;ILjava/lang/String;)V
+    :try_end_3
+    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_3 .. :try_end_3} :catch_1
+
+    .line 262
+    .line 263
+    .line 264
+    iget-object v1, v0, Lkd/e;->h:Ljava/lang/Object;
+
+    .line 265
+    .line 266
+    check-cast v1, Lqc/k;
+
+    .line 267
+    .line 268
+    check-cast v1, Lhd/a;
+
+    .line 269
+    .line 270
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 271
+    .line 272
+    .line 273
+    new-instance v2, Lorg/apache/http/message/g;
+
+    .line 274
+    .line 275
+    iget-object v1, v1, Lhd/a;->a:Lhd/b;
+
+    .line 276
+    .line 277
+    invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+
+    .line 278
+    .line 279
+    .line 280
+    move-result-object v3
+
+    .line 281
+    invoke-direct {v2, v6, v1, v3}, Lorg/apache/http/message/g;-><init>(Lorg/apache/http/message/m;Lqc/t;Ljava/util/Locale;)V
+
+    .line 282
+    .line 283
+    .line 284
+    return-object v2
+
+    .line 285
+    :catch_0
+    :try_start_4
+    new-instance v2, Lqc/r;
+
+    .line 286
+    .line 287
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    .line 288
+    .line 289
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 290
+    .line 291
+    .line 292
+    invoke-virtual {v4, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 293
+    .line 294
+    .line 295
+    invoke-virtual {v3, v1, v10}, Lsd/b;->h(II)Ljava/lang/String;
+
+    .line 296
+    .line 297
+    .line 298
+    move-result-object v5
+
+    .line 299
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 300
+    .line 301
+    .line 302
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 303
+    .line 304
+    .line 305
+    move-result-object v4
+
+    .line 306
+    invoke-direct {v2, v4}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    .line 307
+    .line 308
+    .line 309
+    throw v2
+    :try_end_4
+    .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_4 .. :try_end_4} :catch_1
+
+    .line 310
+    :catch_1
+    new-instance v2, Lqc/r;
+
+    .line 311
+    .line 312
+    invoke-virtual {v3, v1, v10}, Lsd/b;->h(II)Ljava/lang/String;
+
+    .line 313
+    .line 314
+    .line 315
+    move-result-object v1
+
+    .line 316
+    const-string v3, "Invalid status line: "
+
+    .line 317
+    .line 318
+    invoke-virtual {v3, v1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 319
+    .line 320
+    .line 321
+    move-result-object v1
+
+    .line 322
+    invoke-direct {v2, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    .line 323
+    .line 324
+    .line 325
+    throw v2
+
+    .line 326
+    :cond_f
+    const/4 v2, -0x1
+
+    .line 327
+    if-eq v7, v2, :cond_11
+
+    .line 328
+    .line 329
+    invoke-interface {v1}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
+
+    .line 330
+    .line 331
+    .line 332
+    move-result v2
+
+    .line 333
+    if-eqz v2, :cond_10
+
+    .line 334
+    .line 335
+    invoke-virtual {v3}, Lsd/b;->toString()Ljava/lang/String;
+
+    .line 336
+    .line 337
+    .line 338
+    move-result-object v2
+
+    .line 339
+    const-string v4, "Garbage in response: "
+
+    .line 340
+    .line 341
+    invoke-virtual {v4, v2}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 342
+    .line 343
+    .line 344
+    move-result-object v2
+
+    .line 345
+    invoke-interface {v1, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
+
+    .line 346
+    .line 347
+    .line 348
+    :cond_10
+    add-int/lit8 v5, v5, 0x1
+
+    .line 349
+    .line 350
+    move-object/from16 v2, v16
+
+    .line 351
+    .line 352
+    const/4 v4, 0x0
+
+    .line 353
+    goto/16 :goto_0
+
+    .line 354
+    .line 355
+    :cond_11
+    new-instance v1, Lqc/s;
+
+    .line 356
+    .line 357
+    const-string v2, "The server failed to respond with a valid HTTP response"
+
+    .line 358
+    .line 359
+    invoke-static {v2}, Lqc/e;->a(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 360
+    .line 361
+    .line 362
+    move-result-object v2
+
+    .line 363
+    invoke-direct {v1, v2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+
+    .line 364
+    .line 365
+    .line 366
+    throw v1
+.end method

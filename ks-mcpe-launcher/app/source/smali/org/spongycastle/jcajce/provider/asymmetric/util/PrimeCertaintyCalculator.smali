@@ -1,0 +1,55 @@
+.class public Lorg/spongycastle/jcajce/provider/asymmetric/util/PrimeCertaintyCalculator;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# direct methods
+.method private constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static getDefaultCertainty(I)I
+    .locals 1
+
+    .line 1
+    const/16 v0, 0x400
+
+    .line 2
+    .line 3
+    if-gt p0, v0, :cond_0
+
+    .line 4
+    .line 5
+    const/16 p0, 0x50
+
+    .line 6
+    .line 7
+    return p0
+
+    .line 8
+    :cond_0
+    add-int/lit8 p0, p0, -0x1
+
+    .line 9
+    .line 10
+    div-int/2addr p0, v0
+
+    .line 11
+    mul-int/lit8 p0, p0, 0x10
+
+    .line 12
+    .line 13
+    add-int/lit8 p0, p0, 0x60
+
+    .line 14
+    .line 15
+    return p0
+.end method

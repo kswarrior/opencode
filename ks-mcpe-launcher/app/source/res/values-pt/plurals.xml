@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d camada • baixo → cima</item>
+        <item quantity="other">%1$d camadas • baixo → cima</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d opção</item>
+        <item quantity="other">%d opções</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d configuração editável</item>
+        <item quantity="other">%d configurações editáveis</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d itens</item>
+    </plurals>
+</resources>

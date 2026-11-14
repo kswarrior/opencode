@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d capa • abajo → arriba</item>
+        <item quantity="other">%1$d capas • abajo → arriba</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d opción</item>
+        <item quantity="other">%d opciones</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d configuración editable</item>
+        <item quantity="other">%d configuraciones editables</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d elemento</item>
+        <item quantity="other">%d elementos</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d notificación nueva</item>
+        <item quantity="other">%d notificaciones nuevas</item>
+    </plurals>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="launcher_tips">
+        <item>Pengaturan memungkinkan Anda menyesuaikan tema, warna, latar belakang, dan opsi tampilan lain agar sesuai dengan setup Anda.</item>
+        <item>LeviLauncher bersifat open source. Gunakan GitHub issues untuk melaporkan masalah launcher atau menyarankan perbaikan.</item>
+        <item>Gunakan dropdown versi untuk mengganti instans saat ini dengan cepat.</item>
+        <item>Apakah ada yang benar-benar membaca ini?</item>
+        <item>Anda dapat menyeret mod untuk mengubah prioritas pemuatannya.</item>
+        <item>Coba Isolasi Versi!</item>
+        <item>Gunakan Peluncuran Cepat untuk langsung terhubung ke server tanpa membuka game terlebih dahulu.</item>
+        <item>Anda dapat mengimpor file .mcworld, .mcpack, dan .mcaddon dari halaman Manajemen Konten.</item>
+        <item>Kelola beberapa akun Xbox di dalam launcher dan beralih antar akun dengan mudah.</item>
+        <item>CurseForge memungkinkan Anda menjelajahi dan mengunduh konten komunitas secara langsung.</item>
+        <item>Muat modul SO native eksternal untuk memperluas atau meningkatkan fitur dan performa Minecraft.</item>
+    </string-array>
+</resources>

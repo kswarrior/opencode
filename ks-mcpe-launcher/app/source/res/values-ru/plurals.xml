@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d слой • снизу → вверх</item>
+        <item quantity="few">%1$d слоя • снизу → вверх</item>
+        <item quantity="many">%1$d слоёв • снизу → вверх</item>
+        <item quantity="other">%1$d слоя • снизу → вверх</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d вариант</item>
+        <item quantity="few">%d варианта</item>
+        <item quantity="many">%d вариантов</item>
+        <item quantity="other">%d варианта</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d редактируемая конфигурация</item>
+        <item quantity="few">%d редактируемые конфигурации</item>
+        <item quantity="many">%d редактируемых конфигураций</item>
+        <item quantity="other">%d редактируемой конфигурации</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d элемент</item>
+        <item quantity="few">%d элемента</item>
+        <item quantity="many">%d элементов</item>
+        <item quantity="other">%d элемента</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d новое уведомление</item>
+        <item quantity="few">%d новых уведомления</item>
+        <item quantity="many">%d новых уведомлений</item>
+        <item quantity="other">%d нового уведомления</item>
+    </plurals>
+</resources>
