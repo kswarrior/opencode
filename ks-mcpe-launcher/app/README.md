@@ -57,7 +57,7 @@ ANDROID_HOME=/path/to/android-sdk ./ks-mcpe-launcher/app/build.sh
 ```
 
 The APK is written to `/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-<version>.apk`.
-The clone version defaults to `1.0.1` (versionCode `10001`), independent of
+The clone version defaults to `1.0.2` (versionCode `10002`), independent of
 the upstream LeviLauncher version.
 
 Useful environment variables:
@@ -67,8 +67,8 @@ Useful environment variables:
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace and output |
 | `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
 | `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.1` | Clone versionName written to `apktool.yml` |
-| `APP_VERSION_CODE` | `10001` | Clone versionCode written to `apktool.yml` |
+| `APP_VERSION` | `1.0.2` | Clone versionName written to `apktool.yml` |
+| `APP_VERSION_CODE` | `10002` | Clone versionCode written to `apktool.yml` |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output file name prefix |
 | `KEYSTORE` | `$WORKDIR/signing/ks-mcpe.keystore` | Signing keystore |
 | `KEYSTORE_PASSWORD` | generated once | Keystore password |

@@ -69,8 +69,8 @@ the committed tree and never download the upstream APK.
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable workspace and output |
 | `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
 | `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.1` | Clone versionName |
-| `APP_VERSION_CODE` | `10001` | Clone versionCode |
+| `APP_VERSION` | `1.0.2` | Clone versionName |
+| `APP_VERSION_CODE` | `10002` | Clone versionCode |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
 | `KEYSTORE` | `$WORKDIR/signing/ks-mcpe.keystore` | Signing keystore |
 | `CREDENTIALS_FILE` | next to keystore | Generated password/alias storage |
@@ -124,10 +124,10 @@ LeviLauncher is installed.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.1.apk | head -3
-$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.1.apk
-$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.1.apk
-unzip -lv dist/KS-MCPE-Launcher-1.0.1.apk | grep -E 'resources.arsc|classes.dex'
+$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.2.apk | head -3
+$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.2.apk
+$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.2.apk
+unzip -lv dist/KS-MCPE-Launcher-1.0.2.apk | grep -E 'resources.arsc|classes.dex'
 ```
 
 - `resources.arsc` must be `Stored` and 4-byte aligned (Android 11+ install

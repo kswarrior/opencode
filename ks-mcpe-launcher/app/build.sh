@@ -18,8 +18,8 @@ APKTOOL_URL="https://github.com/iBotPeaches/Apktool/releases/download/v${APKTOOL
 APKTOOL_SHA256="dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423"
 
 APP_ID="${APP_ID:-com.ks.mcpe.launcher}"
-APP_VERSION="${APP_VERSION:-1.0.1}"
-APP_VERSION_CODE="${APP_VERSION_CODE:-10001}"
+APP_VERSION="${APP_VERSION:-1.0.2}"
+APP_VERSION_CODE="${APP_VERSION_CODE:-10002}"
 OUTPUT_PREFIX="${OUTPUT_PREFIX:-KS-MCPE-Launcher}"
 WORKDIR="${WORKDIR:-/tmp/ks-mcpe-build}"
 
@@ -209,11 +209,16 @@ for needle, label in (
     if needle in manifest:
         sys.exit(f"source manifest still declares {label}")
 
-news_service_refs = list(root.glob("smali/**/*.smali"))
-for path in news_service_refs:
+smali_files = list(root.glob("smali/**/*.smali"))
+for path in smali_files:
     text = path.read_text(encoding="utf-8", errors="ignore")
     if "NewsNotificationHelper" in text or "LauncherNewsMessagingService" in text:
         sys.exit(f"source still references removed news push code: {path}")
+    if not path.name.startswith("GithubReleaseUpdater") and (
+        "GithubReleaseUpdater;->checkUpdate" in text
+        or "GithubReleaseUpdater;->checkUpdateOnLaunch" in text
+    ):
+        sys.exit(f"source still invokes the updater: {path}")
 
 PATCH_VADDR = 0x1990D4
 PATCH = bytes.fromhex("20008052c0035fd6")  # mov w0, #1; ret
