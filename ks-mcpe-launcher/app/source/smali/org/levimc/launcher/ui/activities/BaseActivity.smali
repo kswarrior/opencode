@@ -24,10 +24,6 @@
 
 .field private navBarInjected:Z
 
-.field private final newsReceiver:Landroid/content/BroadcastReceiver;
-
-.field private newsReceiverRegistered:Z
-
 
 # direct methods
 .method public constructor <init>()V
@@ -86,17 +82,6 @@
 
     .line 26
     .line 27
-    new-instance v0, Lorg/levimc/launcher/ui/activities/BaseActivity$1;
-
-    .line 28
-    .line 29
-    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/activities/BaseActivity$1;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;)V
-
-    .line 30
-    .line 31
-    .line 32
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;->newsReceiver:Landroid/content/BroadcastReceiver;
-
     .line 33
     .line 34
     return-void
@@ -135,159 +120,6 @@
     .line 13
     .line 14
     .line 15
-    return-void
-.end method
-
-.method private applyNewsBadge(Lorg/levimc/launcher/core/news/NewsFeed;)V
-    .locals 3
-
-    .line 1
-    invoke-virtual {p0}, Landroid/app/Activity;->isFinishing()Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    if-nez v0, :cond_4
-
-    .line 6
-    .line 7
-    invoke-virtual {p0}, Landroid/app/Activity;->isDestroyed()Z
-
-    .line 8
-    .line 9
-    .line 10
-    move-result v0
-
-    .line 11
-    if-eqz v0, :cond_0
-
-    .line 12
-    .line 13
-    goto :goto_2
-
-    .line 14
-    :cond_0
-    invoke-static {p0, p1}, Lorg/levimc/launcher/core/news/NewsState;->getUnreadCount(Landroid/content/Context;Lorg/levimc/launcher/core/news/NewsFeed;)I
-
-    .line 15
-    .line 16
-    .line 17
-    move-result p1
-
-    .line 18
-    sget v0, Lorg/levimc/launcher/R$id;->nav_news_badge:I
-
-    .line 19
-    .line 20
-    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
-
-    .line 21
-    .line 22
-    .line 23
-    move-result-object v0
-
-    .line 24
-    sget v1, Lorg/levimc/launcher/R$id;->nav_news_container:I
-
-    .line 25
-    .line 26
-    invoke-virtual {p0, v1}, Lg/g;->findViewById(I)Landroid/view/View;
-
-    .line 27
-    .line 28
-    .line 29
-    move-result-object v1
-
-    .line 30
-    if-eqz v0, :cond_2
-
-    .line 31
-    .line 32
-    if-lez p1, :cond_1
-
-    .line 33
-    .line 34
-    const/4 v2, 0x0
-
-    .line 35
-    goto :goto_0
-
-    .line 36
-    :cond_1
-    const/16 v2, 0x8
-
-    .line 37
-    .line 38
-    :goto_0
-    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
-
-    .line 39
-    .line 40
-    .line 41
-    :cond_2
-    if-eqz v1, :cond_4
-
-    .line 42
-    .line 43
-    if-lez p1, :cond_3
-
-    .line 44
-    .line 45
-    sget v0, Lorg/levimc/launcher/R$string;->news_unread_description:I
-
-    .line 46
-    .line 47
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    .line 48
-    .line 49
-    .line 50
-    move-result-object p1
-
-    .line 51
-    filled-new-array {p1}, [Ljava/lang/Object;
-
-    .line 52
-    .line 53
-    .line 54
-    move-result-object p1
-
-    .line 55
-    invoke-virtual {p0, v0, p1}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
-    .line 56
-    .line 57
-    .line 58
-    move-result-object p1
-
-    .line 59
-    goto :goto_1
-
-    .line 60
-    :cond_3
-    sget p1, Lorg/levimc/launcher/R$string;->news_title:I
-
-    .line 61
-    .line 62
-    invoke-virtual {p0, p1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    .line 63
-    .line 64
-    .line 65
-    move-result-object p1
-
-    .line 66
-    :goto_1
-    invoke-virtual {v1, p1}, Landroid/view/View;->setContentDescription(Ljava/lang/CharSequence;)V
-
-    .line 67
-    .line 68
-    .line 69
-    :cond_4
-    :goto_2
     return-void
 .end method
 
@@ -780,18 +612,6 @@
     return-void
 .end method
 
-.method public static synthetic l(Lorg/levimc/launcher/ui/activities/BaseActivity;Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/BaseActivity;->lambda$refreshNewsBadge$12(Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
 .method private static synthetic lambda$loadNavXboxAvatar$13(Ljava/lang/String;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;Landroid/graphics/Bitmap;Landroid/widget/ProgressBar;)V
     .locals 1
 
@@ -1084,30 +904,6 @@
     return-void
 .end method
 
-.method private synthetic lambda$refreshNewsBadge$11(Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->applyNewsBadge(Lorg/levimc/launcher/core/news/NewsFeed;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method private synthetic lambda$refreshNewsBadge$12(Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->applyNewsBadge(Lorg/levimc/launcher/core/news/NewsFeed;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
 .method private synthetic lambda$setupBaseNavBar$10(Landroid/view/View;)V
     .locals 1
 
@@ -1264,40 +1060,6 @@
     .line 9
     .line 10
     .line 11
-    return-void
-.end method
-
-.method private synthetic lambda$setupBaseNavBar$6(Landroid/view/View;)V
-    .locals 1
-
-    .line 1
-    instance-of p1, p0, Lorg/levimc/launcher/ui/activities/NewsActivity;
-
-    .line 2
-    .line 3
-    if-nez p1, :cond_0
-
-    .line 4
-    .line 5
-    new-instance p1, Landroid/content/Intent;
-
-    .line 6
-    .line 7
-    const-class v0, Lorg/levimc/launcher/ui/activities/NewsActivity;
-
-    .line 8
-    .line 9
-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    .line 10
-    .line 11
-    .line 12
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 13
-    .line 14
-    .line 15
-    :cond_0
     return-void
 .end method
 
@@ -1682,18 +1444,6 @@
     return-void
 .end method
 
-.method public static synthetic o(Lorg/levimc/launcher/ui/activities/BaseActivity;Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/BaseActivity;->lambda$refreshNewsBadge$11(Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
 .method public static synthetic p(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/String;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;Landroid/widget/ProgressBar;)V
     .locals 0
 
@@ -1773,59 +1523,6 @@
     .line 2
     .line 3
     .line 4
-    return-void
-.end method
-
-.method private refreshNewsBadge()V
-    .locals 2
-
-    .line 1
-    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;->navBarInjected:Z
-
-    .line 2
-    .line 3
-    if-nez v0, :cond_0
-
-    .line 4
-    .line 5
-    return-void
-
-    .line 6
-    :cond_0
-    new-instance v0, Lorg/levimc/launcher/ui/activities/i;
-
-    .line 7
-    .line 8
-    const/4 v1, 0x0
-
-    .line 9
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/i;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
-
-    .line 10
-    .line 11
-    .line 12
-    invoke-static {p0, v0}, Lorg/levimc/launcher/core/news/NewsRepository;->loadCached(Landroid/content/Context;Lorg/levimc/launcher/core/news/NewsRepository$Callback;)V
-
-    .line 13
-    .line 14
-    .line 15
-    new-instance v0, Lorg/levimc/launcher/ui/activities/i;
-
-    .line 16
-    .line 17
-    const/4 v1, 0x1
-
-    .line 18
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/i;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
-
-    .line 19
-    .line 20
-    .line 21
-    invoke-static {p0, v0}, Lorg/levimc/launcher/core/news/NewsRepository;->refreshIfStale(Landroid/content/Context;Lorg/levimc/launcher/core/news/NewsRepository$Callback;)V
-
-    .line 22
-    .line 23
-    .line 24
     return-void
 .end method
 
@@ -2278,45 +1975,6 @@
     .line 216
     .line 217
     :cond_8
-    sget v0, Lorg/levimc/launcher/R$id;->nav_news_container:I
-
-    .line 218
-    .line 219
-    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
-
-    .line 220
-    .line 221
-    .line 222
-    move-result-object v0
-
-    .line 223
-    if-eqz v0, :cond_9
-
-    .line 224
-    .line 225
-    new-instance v1, Lorg/levimc/launcher/ui/activities/f;
-
-    .line 226
-    .line 227
-    const/4 v2, 0x0
-
-    .line 228
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/f;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
-
-    .line 229
-    .line 230
-    .line 231
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 232
-    .line 233
-    .line 234
-    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
-
-    .line 235
-    .line 236
-    .line 237
-    :cond_9
     sget v0, Lorg/levimc/launcher/R$id;->nav_tab_launch:I
 
     .line 238
@@ -2431,7 +2089,6 @@
     .line 298
     .line 299
     .line 300
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->refreshNewsBadge()V
 
     .line 301
     .line 302
@@ -2479,35 +2136,11 @@
     return p1
 .end method
 
-.method public static synthetic t(Lorg/levimc/launcher/ui/activities/BaseActivity;Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->lambda$setupBaseNavBar$6(Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
 .method public static synthetic u(Lorg/levimc/launcher/ui/activities/BaseActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
     invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->lambda$setupBaseNavBar$3(Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic v(Lorg/levimc/launcher/ui/activities/BaseActivity;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->refreshNewsBadge()V
 
     .line 2
     .line 3
@@ -3317,13 +2950,6 @@
     return-void
 .end method
 
-.method public onNewsChanged()V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
 .method public onPause()V
     .locals 0
 
@@ -3449,7 +3075,6 @@
     .line 53
     .line 54
     .line 55
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->refreshNewsBadge()V
 
     .line 56
     .line 57
@@ -3476,55 +3101,12 @@
 .end method
 
 .method public onStart()V
-    .locals 3
+    .locals 0
 
     .line 1
     invoke-super {p0}, Lg/g;->onStart()V
 
     .line 2
-    .line 3
-    .line 4
-    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;->newsReceiverRegistered:Z
-
-    .line 5
-    .line 6
-    if-nez v0, :cond_0
-
-    .line 7
-    .line 8
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;->newsReceiver:Landroid/content/BroadcastReceiver;
-
-    .line 9
-    .line 10
-    new-instance v1, Landroid/content/IntentFilter;
-
-    .line 11
-    .line 12
-    const-string v2, "org.levimc.launcher.action.NEWS_CHANGED"
-
-    .line 13
-    .line 14
-    invoke-direct {v1, v2}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
-
-    .line 15
-    .line 16
-    .line 17
-    const/4 v2, 0x4
-
-    .line 18
-    invoke-static {p0, v0, v1, v2}, Lg0/b;->d(Landroid/content/Context;Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;I)V
-
-    .line 19
-    .line 20
-    .line 21
-    const/4 v0, 0x1
-
-    .line 22
-    iput-boolean v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;->newsReceiverRegistered:Z
-
-    .line 23
-    .line 24
-    :cond_0
     return-void
 .end method
 
@@ -3534,34 +3116,6 @@
     .line 1
     invoke-static {p0}, Lorg/levimc/launcher/util/LauncherBackgroundController;->stopped(Landroid/app/Activity;)V
 
-    .line 2
-    .line 3
-    .line 4
-    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;->newsReceiverRegistered:Z
-
-    .line 5
-    .line 6
-    if-eqz v0, :cond_0
-
-    .line 7
-    .line 8
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;->newsReceiver:Landroid/content/BroadcastReceiver;
-
-    .line 9
-    .line 10
-    invoke-virtual {p0, v0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
-
-    .line 11
-    .line 12
-    .line 13
-    const/4 v0, 0x0
-
-    .line 14
-    iput-boolean v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;->newsReceiverRegistered:Z
-
-    .line 15
-    .line 16
-    :cond_0
     invoke-super {p0}, Lg/g;->onStop()V
 
     .line 17
