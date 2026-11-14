@@ -1558,61 +1558,7 @@
 
 .field public static quick_actions_title:I = 0x7f13042f
 
-.field public static quick_launch:I = 0x7f130430
-
 .field public static quick_launch_add_server:I = 0x7f130431
-
-.field public static quick_launch_add_server_desc:I = 0x7f130432
-
-.field public static quick_launch_command:I = 0x7f130433
-
-.field public static quick_launch_command_desc:I = 0x7f130434
-
-.field public static quick_launch_connect_server:I = 0x7f130435
-
-.field public static quick_launch_connect_server_desc:I = 0x7f130436
-
-.field public static quick_launch_custom_uri:I = 0x7f130437
-
-.field public static quick_launch_custom_uri_desc:I = 0x7f130438
-
-.field public static quick_launch_how_to_play:I = 0x7f130439
-
-.field public static quick_launch_how_to_play_desc:I = 0x7f13043a
-
-.field public static quick_launch_load_world:I = 0x7f13043b
-
-.field public static quick_launch_load_world_desc:I = 0x7f13043c
-
-.field public static quick_launch_marketplace_pass:I = 0x7f13043d
-
-.field public static quick_launch_marketplace_pass_desc:I = 0x7f13043e
-
-.field public static quick_launch_menu_subtitle:I = 0x7f13043f
-
-.field public static quick_launch_minecoins:I = 0x7f130440
-
-.field public static quick_launch_minecoins_desc:I = 0x7f130441
-
-.field public static quick_launch_profile:I = 0x7f130442
-
-.field public static quick_launch_profile_desc:I = 0x7f130443
-
-.field public static quick_launch_realm_invite:I = 0x7f130444
-
-.field public static quick_launch_realm_invite_desc:I = 0x7f130445
-
-.field public static quick_launch_servers_tab:I = 0x7f130446
-
-.field public static quick_launch_servers_tab_desc:I = 0x7f130447
-
-.field public static quick_launch_store_home:I = 0x7f130448
-
-.field public static quick_launch_store_home_desc:I = 0x7f130449
-
-.field public static quick_launch_subtitle:I = 0x7f13044a
-
-.field public static quick_launch_title:I = 0x7f13044b
 
 .field public static realm_invite_code_hint:I = 0x7f13044c
 
