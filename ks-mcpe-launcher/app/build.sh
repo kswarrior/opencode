@@ -18,8 +18,8 @@ APKTOOL_URL="https://github.com/iBotPeaches/Apktool/releases/download/v${APKTOOL
 APKTOOL_SHA256="dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423"
 
 APP_ID="${APP_ID:-com.ks.mcpe.launcher}"
-APP_VERSION="${APP_VERSION:-1.0.2}"
-APP_VERSION_CODE="${APP_VERSION_CODE:-10002}"
+APP_VERSION="${APP_VERSION:-1.0.3}"
+APP_VERSION_CODE="${APP_VERSION_CODE:-10003}"
 OUTPUT_PREFIX="${OUTPUT_PREFIX:-KS-MCPE-Launcher}"
 WORKDIR="${WORKDIR:-/tmp/ks-mcpe-build}"
 
@@ -142,6 +142,27 @@ if (code_subs, name_subs) != (1, 1):
         f"(versionCode replacements: {code_subs}, versionName: {name_subs})"
     )
 Path(path).write_text(text, encoding="utf-8")
+
+build_config = Path(path).parent / "smali/org/levimc/launcher/BuildConfig.smali"
+text = build_config.read_text(encoding="utf-8")
+text, code_subs = re.subn(
+    r"(?m)^\.field public static final VERSION_CODE:I = .*$",
+    f".field public static final VERSION_CODE:I = 0x{int(code):x}",
+    text,
+    count=1,
+)
+text, name_subs = re.subn(
+    r'(?m)^\.field public static final VERSION_NAME:Ljava/lang/String; = ".*"$',
+    f'.field public static final VERSION_NAME:Ljava/lang/String; = "{version}"',
+    text,
+    count=1,
+)
+if (code_subs, name_subs) != (1, 1):
+    sys.exit(
+        "unable to rewrite BuildConfig version "
+        f"(versionCode replacements: {code_subs}, versionName: {name_subs})"
+    )
+build_config.write_text(text, encoding="utf-8")
 PY
 
 log "verifying checked-in clone customizations"
