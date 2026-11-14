@@ -295,6 +295,58 @@ for lib in libs:
     print(f"{lib}: patched package-name check")
 PY
 
+log "patching about page and header settings button"
+python3 - "$DECODED" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+root = Path(sys.argv[1])
+
+about = root / "res/layout/activity_about.xml"
+about.write_text(
+    """<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:padding="24.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Created by KS Warrior" android:fontFamily="@font/misans" />
+</LinearLayout>
+""",
+    encoding="utf-8",
+)
+
+nav = root / "res/layout/nav_bar.xml"
+text = nav.read_text(encoding="utf-8")
+text, removed = re.subn(
+    r'\s*<TextView[^>]*android:id="@id/nav_tab_settings"[^>]*/>', "", text
+)
+if removed != 1:
+    sys.exit(f"unable to remove header settings text view (matches: {removed})")
+
+settings_button = (
+    '<TextView android:gravity="center" android:id="@id/nav_tab_settings" '
+    'android:background="?selectableItemBackgroundBorderless" android:focusable="true" '
+    'android:clickable="true" android:layout_width="36.0dp" android:layout_height="36.0dp" '
+    'android:drawableStart="@drawable/ic_nav_settings" '
+    'android:contentDescription="@string/nav_settings" '
+    'android:layout_marginStart="7.0dp" android:paddingStart="6.0dp" '
+    'android:paddingEnd="6.0dp" android:paddingTop="0.0dp" '
+    'android:paddingBottom="0.0dp" />'
+)
+anchor = text.find('android:id="@id/nav_account_avatar_container"')
+if anchor < 0:
+    sys.exit("nav_account_avatar_container not found in nav_bar.xml")
+frame_end = text.find("</FrameLayout>", anchor)
+if frame_end < 0:
+    sys.exit("avatar FrameLayout end not found in nav_bar.xml")
+close = text.find("</LinearLayout>", frame_end)
+if close < 0:
+    sys.exit("right-side nav container end not found in nav_bar.xml")
+text = text[:close] + "    " + settings_button + "\n        " + text[close:]
+nav.write_text(text, encoding="utf-8")
+print("activity_about.xml: replaced with KS Warrior credit")
+print("nav_bar.xml: settings moved to right-side icon button")
+PY
+
 log "building APK"
 rm -f "$UNSIGNED" "$ALIGNED"
 java -jar "$APKTOOL_JAR" b "$DECODED" -o "$UNSIGNED" >/dev/null
