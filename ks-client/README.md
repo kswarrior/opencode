@@ -60,7 +60,7 @@
 | 22 | Bow Draw Indicators | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Draw-stage bow art (`textures/items/bow_pulling_0/1/2.png`, vanilla-path override, no atlas change), always on |
 | 23 | Clean Pumpkin Blur | ZenXveda Ultimate PvP Pro v1.8.9 (selective) | Carved-pumpkin overlay replaced with 1×1 clean `textures/misc/pumpkinblur.png` (no blur), always on |
 | 24 | Utility HUD V-1.5 (Durability + Content Toggle + F8) | EchoRif Utility HUD V-1.5 (full merge, rebranded `ks_uhud`) | Mainhand/armor durability, counters, offhand switch/preview, touch content toggle + custom close, help, F8 component toggles, F1+3 force-close. Draggable fast-totem button in the inventory equips a totem from inventory/hotbar (tap, `menu_ok`, or key `1`) using Quick Totem scanner logic. KS keeps its Inventory HUD, slot hotbar buttons, F1/F3 keys and crosshair; the old DV V-2.5 module was replaced. Non-touch inventory keeps the extras; touch opens the Utility Inventory overlay (§2.21), which now carries the same draggable fast-totem button |
-| 25 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (6 files, `v1.0.0` + `v1.0.1` + `v1.0.2` + `v1.0.4` + `v1.0.5` + `v1.0.6`), opencode MCP skills |
+| 25 | Validation + Release Pipeline | creator-tools 0.19.0 | `mct validate` CSV/JSON/HTML in `out/` (9 files: `ks client.*`, `ks-clean.*`, `ks-client.*`), versioned `.mcpack` in `release/` (7 files, `v1.0.0` + `v1.0.1` + `v1.0.2` + `v1.0.4` + `v1.0.5` + `v1.0.6` + `v1.0.7`), opencode MCP skills |
 | 26 | Crosshair Indicator (dynamic) | PandaMine5 Crosshair Indicator v1.1 (rebranded `ks_crosshair_*`) | Default/entity hit-switch (`right_helper_collection` `hit` check) in `hud_screen.json` (`hud.ks_crosshair_panel`, shows in all perspectives — engine 1st-person-only hide applies solely to the overlay screen, which holds no collections); vanilla cursor emptied in `hud_crosshair_overlay.json` (no double-draw); `textures/ui/ks_crosshair_default/entity.png`; master hide `$ks_crosshair_v` |
 | 27 | Villager Trade Unlocker | NeBux Villagers Trade Unlocker v1.1.1 (merged, UI rebrand) | All villager trades visible/selectable at every tier without level-ups (`ui/trade_2_screen.json` vanilla `trade2` override; no textures, no lang keys) |
 | 28 | Quick Totem (scanner logic) | oSkullo Quick Totem Offhand v1.0.0 (logic merged, rebranded `ks_uhud`) | Standalone `ks_qt` module/textures were removed; its per-slot scanner logic now powers the Utility HUD draggable fast-totem button — tap the totem button (touch, non-touch inventory), press `menu_ok`, or press `1` (keyboard) while the inventory is open to auto-place a totem in the offhand. Touch devices open the Utility Inventory overlay (§2.21), which now carries the same draggable button. Toggle with `$ks_uhud_totem_v`. |
@@ -68,6 +68,7 @@
 | 30 | Side Tooltip Items (Top Left) | itzriyo157 Side Tooltip Items v1.0.0 (top_left variant, rebranded `$ks_tooltip_*`) | Touch item-details tooltip pinned to the top-left corner instead of floating over the touched inventory slot (`common.selected_item_details` anchor override + `ks_sti_alpha` fade, factory re-enabled behind `$ks_tooltip_v`; corner via `$ks_tooltip_anchor`, fade via `$ks_tooltip_alpha_duration`) |
 | 31 | Bundle Item Counter | itzriyo157 Bundle Item Counter V0-1 (rebranded `ks_bundle_counter`) | Bundle contents count drawn on hotbar/container/inventory grid cells; the vanilla bundle storage bar is replaced by text and hidden in container/inventory cells |
 | 32 | Utility Inventory Touch Overlay | itzriyo157 Utility Inventory v1.0.2 (inventory only, rebranded `ksui_*`) | Touch Inventory replacement: custom 9×4 grid + hotbar, recipe book with search/tabs, crafting panel, quick-item modes, tools/slot cyclers, inventory/settings panel. KS armor durability panel is kept and wired to the overlay's Armor Display toggle; the KS draggable fast-totem button is inserted into the overlay root (`$ks_uhud_totem_v`). Elytra swapper, offhand slot, quick buttons and armor equip/unequip were not merged. Non-touch inventory stays KS/vanilla |
+| 33 | In-Game Pack Settings (manifest v3) | OS Client settings pattern (oSkullo, technique reference only) | Minecraft's native pack settings screen (no UI JSON needed): health-bar display mode (Always / Only When Hurt / Off), heart icon on/off, HP digits on/off, bar size slider, height-offset slider, 3D hammer on/off and hammer size slider. Read live via `query.get_pack_setting` / `query.is_pack_setting_enabled` / `query.is_pack_setting_selected` in `animations/health_bar.json` + `animations/mace.animation.json` |
 
 ---
 
@@ -195,27 +196,28 @@ How it works:
 
 In-game: chat background invisible, messages readable over gameplay, tab/shift-tab/up/down shortcut buttons.
 
-### 2.13 Health Bar (Always Display, KS Client: `animations/`, `models/`, `render_controllers/`, `entity/`, `textures/health_bar/`)
+### 2.13 Health Bar (KS Client: `animations/`, `models/`, `render_controllers/`, `entity/`, `textures/health_bar/`)
 
-What it is: billboard HP bar + heart + numeric digits over every mob and player, always visible (always-display variant merged directly; no toggle, no subpack).
+What it is: billboard HP bar + heart + numeric digits over every mob and player. Defaults to always visible; the native Pack Settings screen (§2.22) can switch it to only-when-hurt or off, hide the heart icon or HP digits, resize the bar and shift its height.
 
-How it works (all merged at top level — no subpack, always on):
-- `animations/health_bar.json` (always-display variant): `animation.health_bar` billboards via camera rotation; scale `q.is_in_ui || q.is_invisible || !q.is_alive ? 0 : ...` (always visible, even at full HP).
+How it works (all merged at top level — no subpack):
+- `animations/health_bar.json`: `animation.health_bar` billboards via camera rotation; root scale hides the bar in UI/dead/invisible states and reads `ks:health_bar_mode`, `ks:health_bar_scale` and `ks:health_bar_y`; child bones `h1-h3` read `ks:health_bar_icon`, `fa-fe` read `ks:health_bar_digits`.
 - `models/entity/health_bar.json` (`geometry.health_bar`) + `render_controllers/health_bar.json` (`controller.render.health_bar.bar/heart/digit1-3`, `entity_emissive_alpha` material).
 - `entity/*.json` (81 mob files + `player.json` = 82 entities): each adds `health_bar` material/texture/geometry slots, `v.health_bar_position/scale` in `pre_animation`, `health_bar` in `animate` + `animations` dict, and the 5 health render controllers. `player.json` is rebuilt on the vanilla 1.21.120 baseline (full spear / riding / persona anims, `helmet_layer_visible = !query.has_head_gear`, `riding_y_offset`, no FPS counter) so own skins, capes, and spear attack anims keep working. Vanilla animation/controller/geometry/texture refs (e.g. `animation.creeper.legs`, `geometry.creeper.v1.8`) resolve engine-side.
 - `textures/health_bar/`: `bar/` 00–50, `font/` 0–9, `heart.png` (entity textures, direct paths — no `terrain_texture.json`/`item_texture.json` registration needed).
-- No `_global_variables.json` additions; no `_ui_defs.json` additions (entity/animation/model/controller files load by path); `manifest.json` untouched (no version/UUID/subpack changes).
+- No `_global_variables.json` additions; no `_ui_defs.json` additions (entity/animation/model/controller files load by path). `manifest.json` is now format v3 with the `settings` array that creates the in-game Pack Settings screen (§2.22).
 
-In-game: look at any mob or player → bar + HP digits above head, always on. Gate A passes (8 SKIP lines: 8 absent Drive anims, `player.json` refs resolve); no new checker problems.
+In-game: look at any mob or player → bar + HP digits above head; defaults match the old always-on behavior. Gate A passes (8 SKIP lines: 8 absent Drive anims, `player.json` refs resolve); no new checker problems.
 
 ### 2.14 3D Hammer (KS Client: `attachables/`, `animations/`, `models/`, `textures/`)
 
-What it is: Getting Over It style 3D hammer for the mace slot — hold pose + inventory icon (direct merge, always on, no subpack).
+What it is: Getting Over It style 3D hammer for the mace slot — hold pose + inventory icon (default on; Pack Settings §2.22 can hide it or resize it).
 
 How it works:
 - `attachables/mace.attachable.json` (`minecraft:mace`): `entity_alphatest` (+ glint) materials, `geometry.mace`, `animation.mace.first/third_person_hold` wired by `c.is_first_person`, `controller.render.item_default`.
-- `animations/mace.animation.json` (looping hold poses), `models/entity/attachable/mace.geo.json` (`geometry.mace`, 64×64), `textures/entity/attachable/mace.png` (held model), `textures/items/mace.png` (inventory icon, registered as `mace` in `item_texture.json` `atlas.items`), `item.mace.name` in `texts/en_US.lang`.
-- No `_global_variables.json` / `_ui_defs.json` / `manifest.json` changes (attachable + atlas entry load by path/ID).
+- `animations/mace.animation.json` (looping hold poses): both hold animations scale bone `mace` from `ks:hammer` (`query.is_pack_setting_enabled`) and `ks:hammer_scale` (`query.get_pack_setting`); a disabled hammer scales to 0.
+- `models/entity/attachable/mace.geo.json` (`geometry.mace`, 64×64), `textures/entity/attachable/mace.png` (held model), `textures/items/mace.png` (inventory icon, registered as `mace` in `item_texture.json` `atlas.items`), `item.mace.name` in `texts/en_US.lang`.
+- No `_global_variables.json` / `_ui_defs.json` changes (attachable + atlas entry load by path/ID). `manifest.json` v3 settings drive the toggle/scale.
 
 In-game: hold or view a mace → 3D hammer model; inventory shows the custom icon + name.
 
