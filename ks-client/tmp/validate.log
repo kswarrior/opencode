@@ -1154,3 +1154,53 @@
 [2026-11-14T03:02:42.416Z] [MESSAGE ] Unexpected file type found in zip file: desktop.ini
 [2026-11-14T03:02:42.418Z] [MESSAGE ] Unexpected file type found in zip file: desktop.ini
 [2026-11-14T03:02:42.419Z] [MESSAGE ] Unexpected file type found in zip file: desktop.ini
+[2026-11-14T03:08:36.062Z] [DEBUG   ] Could not parse content '{
+    "format_version": 1,
+    "header": {
+        "uuid": "e7a72345-ca06-472a-ae4a-4593ca18d37e",
+        "name": "Offhand Slots!!",
+        "description": ""See whats in your offhand slot" By §bChainsketch",
+        "version": [
+            1,
+            0,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "description": "V1",
+            "type": "resources",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "uuid": "7e18589d-db58-455c-81d4-9a9a62be0464"
+        }
+    ]
+}': SyntaxError: Expected ',' or '}' after property value in JSON at position 159 (line 6 column 26) ks-client
+[2026-11-14T03:08:36.092Z] [DEBUG   ] Could not parse content '{
+    "format_version": 1,
+    "header": {
+        "uuid": "e7a72345-ca06-472a-ae4a-4593ca18d37e",
+        "name": "Offhand Slots!!",
+        "description": ""See whats in your offhand slot" By §bChainsketch",
+        "version": [
+            1,
+            0,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "description": "V1",
+            "type": "resources",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "uuid": "7e18589d-db58-455c-81d4-9a9a62be0464"
+        }
+    ]
+}': SyntaxError: Expected ',' or '}' after property value in JSON at position 159 (line 6 column 26) ks-client
