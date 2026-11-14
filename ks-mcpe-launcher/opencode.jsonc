@@ -1,0 +1,64 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Android device/emulator automation: install the built APK, launch it,
+  // read logcat and crash reports, and inspect the UI. Requires adb on PATH
+  // and a running emulator or a USB device.
+  "mcp": {
+    "mobile-mcp": {
+      "type": "local",
+      "command": ["npx", "-y", "@mobilenext/mobile-mcp@latest"],
+      "environment": {
+        "MOBILEMCP_DISABLE_TELEMETRY": "1"
+      },
+      "timeout": 60000,
+      "enabled": true
+    },
+
+    // Live apktool workspace: decode the APK, read/modify the manifest,
+    // smali and resources, and rebuild. The launcher script sets up a pinned
+    // checkout, Python venv, and apktool jar in ~/.cache/ks-mcpe-mcp on first
+    // use. Works with the same project files as app/build.sh.
+    "apktool": {
+      "type": "local",
+      "command": [
+        "bash",
+        "-c",
+        "exec \"$(git rev-parse --show-toplevel)/ks-mcpe-launcher/.opencode/mcp/apktool-mcp-server.sh\""
+      ],
+      "timeout": 180000,
+      "enabled": true
+    },
+
+    // Official GitHub MCP server (release assets, workflow runs, issues).
+    // Disabled by default: export GITHUB_TOKEN with repo scope, then set
+    // enabled to true here. Without a token the remote server rejects requests.
+    "github": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_TOKEN}"
+      },
+      "enabled": false
+    }
+  },
+
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
+
+  "references": {
+    "levilauncher-source": {
+      "repository": "LiteLDev/LeviLauncher-Android",
+      "description": "Upstream LeviLauncher for Android source (Apache-2.0). Use when a question is about how the repacked APK behaves internally."
+    }
+  },
+
+  "permission": {
+    "skill": {
+      "ks-mcpe-build": "allow",
+      "ks-mcpe-release": "allow",
+      "apk-install-verify": "allow"
+    }
+  }
+}
