@@ -2273,7 +2273,7 @@
 
     .line 206
     .line 207
-    const/4 v2, 0x7
+    const/16 v2, 0xa
 
     .line 208
     invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/f;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
@@ -2365,7 +2365,7 @@
 
     new-instance v1, Lorg/levimc/launcher/ui/activities/f;
 
-    const/16 v2, 0x8
+    const/16 v2, 0x7
 
     invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/f;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
 
@@ -2379,7 +2379,7 @@
 
     new-instance v1, Lorg/levimc/launcher/ui/activities/f;
 
-    const/16 v2, 0x9
+    const/16 v2, 0x8
 
     invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/f;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
 
@@ -2393,7 +2393,7 @@
 
     new-instance v1, Lorg/levimc/launcher/ui/activities/f;
 
-    const/16 v2, 0xa
+    const/16 v2, 0x9
 
     invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/f;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
 
