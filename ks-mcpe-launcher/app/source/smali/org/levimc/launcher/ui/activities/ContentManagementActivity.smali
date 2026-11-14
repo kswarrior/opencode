@@ -2250,6 +2250,21 @@
     .line 25
     .line 26
     .line 27
+    sget v0, Lorg/levimc/launcher/R$id;->misc_curseforge_row:I
+
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    new-instance v1, Lorg/levimc/launcher/ui/activities/ContentManagementActivity$4;
+
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/activities/ContentManagementActivity$4;-><init>(Lorg/levimc/launcher/ui/activities/ContentManagementActivity;)V
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 28
+    .line 29
+    .line 30
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/ContentManagementActivity;->setupStorageSpinner()V
 
     .line 28
