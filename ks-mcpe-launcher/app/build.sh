@@ -213,6 +213,59 @@ if label:
 print(f"patched package={new_id} label={label!r}")
 PY
 
+# libgxcore.so gates JNI_OnLoad on the launcher package name: it reads
+# /proc/self/cmdline and ApplicationInfo.packageName and requires the
+# 19-character upstream id plus a hard-coded hash. The clone id is longer, so
+# System.loadLibrary("gxcore") fails before any Minecraft code runs. Neutralise
+# the verifier (0x1990d4: cmp x1,#0x13; b.ne fail) with `mov w0,#1; ret`.
+log "patching libgxcore.so package-name check"
+python3 - "$DECODED" <<'PY'
+import struct
+import sys
+from pathlib import Path
+
+root = Path(sys.argv[1])
+libs = sorted(root.glob("lib/*/libgxcore.so"))
+if not libs:
+    sys.exit("libgxcore.so not found in decoded APK")
+
+PATCH_VADDR = 0x1990D4
+ORIG = bytes.fromhex("3f4c00f121180054")  # cmp x1, #0x13; b.ne 0x1993dc
+PATCH = bytes.fromhex("20008052c0035fd6")  # mov w0, #1; ret
+
+
+def vaddr_to_offset(blob, vaddr):
+    if blob[:4] != b"\x7fELF" or blob[4] != 2 or blob[5] != 1:
+        sys.exit("libgxcore.so is not a little-endian 64-bit ELF")
+    phoff = struct.unpack_from("<Q", blob, 0x20)[0]
+    phentsize = struct.unpack_from("<H", blob, 0x36)[0]
+    phnum = struct.unpack_from("<H", blob, 0x38)[0]
+    for index in range(phnum):
+        base = phoff + index * phentsize
+        if struct.unpack_from("<I", blob, base)[0] != 1:
+            continue
+        offset = struct.unpack_from("<Q", blob, base + 0x08)[0]
+        vstart = struct.unpack_from("<Q", blob, base + 0x10)[0]
+        filesz = struct.unpack_from("<Q", blob, base + 0x20)[0]
+        if vstart <= vaddr < vstart + filesz:
+            return offset + vaddr - vstart
+    sys.exit(f"vaddr {vaddr:#x} not found in a PT_LOAD segment")
+
+
+for lib in libs:
+    blob = bytearray(lib.read_bytes())
+    offset = vaddr_to_offset(blob, PATCH_VADDR)
+    current = bytes(blob[offset:offset + len(ORIG)])
+    if current == PATCH:
+        print(f"{lib}: already patched")
+        continue
+    if current != ORIG:
+        sys.exit(f"{lib}: unexpected bytes at {PATCH_VADDR:#x}: {current.hex()}")
+    blob[offset:offset + len(PATCH)] = PATCH
+    lib.write_bytes(blob)
+    print(f"{lib}: patched package-name check")
+PY
+
 log "building APK"
 rm -f "$UNSIGNED" "$ALIGNED"
 java -jar "$APKTOOL_JAR" b "$DECODED" -o "$UNSIGNED" >/dev/null
