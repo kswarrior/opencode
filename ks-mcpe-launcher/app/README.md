@@ -22,12 +22,30 @@ key.
    verifier. Upstream gates `JNI_OnLoad` on a 19-character package id plus a
    hard-coded hash; the clone id is longer, which otherwise makes
    `System.loadLibrary("gxcore")` fail during Minecraft preparation.
-5. Replaces the About page with the "Created by KS Warrior" credit and moves
-   the Settings tab to the right side of the header as an icon-only button.
+5. Applies repository overlays from `ks-mcpe-launcher/app/overlays`: the About
+   page credit and the icon-only Settings button in the right side of the
+   header.
 6. Rebuilds, zipaligns, signs, and verifies the APK.
 7. Prints the package id, version, and SHA-256 of the result.
 
 The decoded files and the output APK are never stored in this repository.
+
+## Repository layout
+
+All clone code and customization sources live in `ks-mcpe-launcher/app`:
+
+- `build.sh` - download, patch, rebuild, align, sign, and verify.
+- `overlays/` - full-file replacements copied into the decoded APK tree. Add
+  or edit UI files here, not in `/tmp`.
+- `patches/` - helper scripts called by the build (currently the overlay
+  copier).
+- `ks-mcpe-launcher.workflow.yml` - CI build and release workflow.
+
+`/tmp/ks-mcpe-build` is a disposable build workspace only. It holds downloads,
+the decoded APK, the generated signing key, and `dist/` output. Do not edit
+files there: the next build deletes and re-decodes the APK, then reapplies the
+repository overlays. Anything that must survive a build belongs in
+`ks-mcpe-launcher/app`.
 
 ## Local build
 
