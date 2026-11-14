@@ -732,7 +732,6 @@
 
 .field public static nav_sign_in_button:I = 0x7f0a02c1
 
-.field public static nav_tab_about:I = 0x7f0a02c2
 
 .field public static nav_tab_content:I = 0x7f0a0496
 

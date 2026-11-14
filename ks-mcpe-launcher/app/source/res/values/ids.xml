@@ -706,7 +706,6 @@
     <id name="nav_settings" />
     <id name="nav_settings_compact" />
     <id name="nav_sign_in_button" />
-    <id name="nav_tab_about" />
     <id name="nav_tab_instances" />
     <id name="nav_tab_launch" />
     <id name="nav_tab_settings" />

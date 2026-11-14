@@ -14,7 +14,6 @@
 
 
 # static fields
-.field public static activity_about:I = 0x7f0d001c
 
 .field public static activity_accounts:I = 0x7f0d001d
 

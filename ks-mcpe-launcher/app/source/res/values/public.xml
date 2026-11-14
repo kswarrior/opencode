@@ -4931,7 +4931,6 @@
     <public type="id" name="nav_settings" id="0x7f0a02bf" />
     <public type="id" name="nav_settings_compact" id="0x7f0a02c0" />
     <public type="id" name="nav_sign_in_button" id="0x7f0a02c1" />
-    <public type="id" name="nav_tab_about" id="0x7f0a02c2" />
     <public type="id" name="nav_tab_content" id="0x7f0a0496" />
     <public type="id" name="nav_tab_instances" id="0x7f0a02c3" />
     <public type="id" name="nav_tab_launch" id="0x7f0a02c4" />
@@ -5523,7 +5522,6 @@
     <public type="layout" name="abc_search_view" id="0x7f0d0019" />
     <public type="layout" name="abc_select_dialog_material" id="0x7f0d001a" />
     <public type="layout" name="abc_tooltip" id="0x7f0d001b" />
-    <public type="layout" name="activity_about" id="0x7f0d001c" />
     <public type="layout" name="activity_accounts" id="0x7f0d001d" />
     <public type="layout" name="activity_content_details" id="0x7f0d001e" />
     <public type="layout" name="activity_content_list" id="0x7f0d001f" />
