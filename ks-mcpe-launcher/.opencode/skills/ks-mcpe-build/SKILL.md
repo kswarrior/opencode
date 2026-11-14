@@ -69,8 +69,8 @@ the committed tree and never download the upstream APK.
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable workspace and output |
 | `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
 | `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.3` | Clone versionName (also written to `BuildConfig`) |
-| `APP_VERSION_CODE` | `10003` | Clone versionCode (also written to `BuildConfig`) |
+| `APP_VERSION` | `1.0.4` | Clone versionName (also written to `BuildConfig`) |
+| `APP_VERSION_CODE` | `10004` | Clone versionCode (also written to `BuildConfig`) |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
 | `KEYSTORE` | `$WORKDIR/signing/ks-mcpe.keystore` | Signing keystore |
 | `CREDENTIALS_FILE` | next to keystore | Generated password/alias storage |
@@ -111,12 +111,14 @@ the committed tree and never download the upstream APK.
     push code (`LauncherNewsMessagingService`, `NewsNotificationHelper`) are
     deleted, and their manifest providers, activities, services, queries,
     permissions, and metadata are removed.
-11. The shared header is taller and carries Home, Mods, Content and
-    Miscellaneous tabs. The old Mods/Content/Miscellaneous cards are hidden on
-    the Home page, the Mods and Content tabs open `ModsFullscreenActivity` and
+11. The shared header is taller and carries Home, Mods, Management,
+    Miscellaneous and Instances tabs, with Settings as an icon-only button on
+    the right and only "KS" as the brand. The About tab and About page are
+    removed. The old Mods/Content/Miscellaneous cards are hidden on the Home
+    page, the Mods and Management tabs open `ModsFullscreenActivity` and
     `ContentManagementActivity`, and the new `MiscellaneousActivity` hosts the
     CurseForge, Microsoft Accounts and Quick Launch rows. `BaseActivity`
-    registers all seven header tabs; add any future tab to both
+    registers all six header tabs; add any future tab to both
     `setupBaseNavBar()` and `setActiveNavTab()`.
 
 `build.sh` rewrites the clone version into `apktool.yml` and
@@ -133,10 +135,10 @@ LeviLauncher is installed.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.3.apk | head -3
-$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.3.apk
-$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.3.apk
-unzip -lv dist/KS-MCPE-Launcher-1.0.3.apk | grep -E 'resources.arsc|classes.dex'
+$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.4.apk | head -3
+$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.4.apk
+$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.4.apk
+unzip -lv dist/KS-MCPE-Launcher-1.0.4.apk | grep -E 'resources.arsc|classes.dex'
 ```
 
 - `resources.arsc` must be `Stored` and 4-byte aligned (Android 11+ install

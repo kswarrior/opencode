@@ -11,7 +11,7 @@ Builds are published to the `ks-mcpe-launcher` release of
 Asset contract:
 
 - `KS-MCPE-Launcher-<version>.apk` (`<version>` is the clone version, default
-  `1.0.3`, not the upstream LeviLauncher version)
+  `1.0.4`, not the upstream LeviLauncher version)
 - `KS-MCPE-Launcher-<version>.apk.sha256` (output of `sha256sum`, two spaces
   between hash and file name)
 
@@ -31,7 +31,7 @@ versions; do not bulk-delete `KS-MCPE-Launcher-*` assets.
 ```bash
 TAG=ks-mcpe-launcher
 REPO=kswarrior/opencode
-VERSION=1.0.3
+VERSION=1.0.4
 REL_ID=$(curl -fsS -H "Authorization: token $GH_TOKEN" \
   "https://api.github.com/repos/$REPO/releases/tags/$TAG" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')
 
@@ -72,12 +72,12 @@ done
 
 ```bash
 cd /tmp/opencode
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.3.apk"
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.3.apk.sha256"
-sha256sum -c KS-MCPE-Launcher-1.0.3.apk.sha256
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.4.apk"
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.4.apk.sha256"
+sha256sum -c KS-MCPE-Launcher-1.0.4.apk.sha256
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump xmltree --file AndroidManifest.xml KS-MCPE-Launcher-1.0.3.apk | grep -E 'package=|DYNAMIC_RECEIVER|authorities' | head
-$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.3.apk
+$BT/aapt2 dump xmltree --file AndroidManifest.xml KS-MCPE-Launcher-1.0.4.apk | grep -E 'package=|DYNAMIC_RECEIVER|authorities' | head
+$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.4.apk
 ```
 
 Confirm the uploaded manifest has `com.ks.mcpe.launcher`, renamed provider
@@ -100,11 +100,11 @@ manually.
 
 Version 1.0.2 was published with a signing key (cert SHA-256
 `880b6928242e641ac60333127dbab2200ed5a2625743ef63981e6414ad8d27bd`) that was
-not preserved outside the ephemeral build workspace. Version 1.0.3 is therefore
-signed with a new key (cert SHA-256
+not preserved outside the ephemeral build workspace. Version 1.0.3 and later
+are therefore signed with a new key (cert SHA-256
 `062cfc33f62e3e838555acfb2d80d1fe546cdae61ac44332b2212260b781ff48`), so 1.0.2
-users must uninstall before installing 1.0.3. The 1.0.2 assets remain published
-for rollback.
+users must uninstall before installing 1.0.3 or newer. The 1.0.2 assets remain
+published for rollback.
 
 ## Rules
 
@@ -119,7 +119,7 @@ for rollback.
   SHA-256, signature, version, EULA branding, disabled updater and native
   patch. If it already matches the current sources, no rebuild is needed.
 - The release tag stays `ks-mcpe-launcher`; do not create per-version releases.
-- The release **name** tracks the clone version (`v1.0.3`); the tag stays
+- The release **name** tracks the clone version (`v1.0.4`); the tag stays
   `ks-mcpe-launcher` so the pinned upstream asset URL remains valid.
 - If the bot token lacks `contents: write`, release uploads fail; do not fall
   back to committing binaries into the repository.
