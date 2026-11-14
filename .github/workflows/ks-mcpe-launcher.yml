@@ -1,0 +1,113 @@
+name: KS MCPE Launcher
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_apk_url:
+        description: "Upstream LeviLauncher APK URL (empty = pinned default)"
+        required: false
+        type: string
+      release_tag:
+        description: "Release tag that receives the built APK"
+        required: true
+        default: ks-mcpe-launcher
+        type: string
+  push:
+    tags:
+      - "ks-mcpe-launcher*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ks-mcpe-launcher-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Accept Android SDK licenses
+        run: yes | sdkmanager --licenses >/dev/null
+
+      - name: Install Android build tools
+        run: sdkmanager "build-tools;35.0.0"
+
+      - name: Detect signing secret
+        id: signing_secret
+        env:
+          KEYSTORE_B64: ${{ secrets.KS_MCPE_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "${KEYSTORE_B64:-}" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Restore generated signing key
+        if: steps.signing_secret.outputs.available != 'true'
+        uses: actions/cache@v4
+        with:
+          path: /home/runner/ks-mcpe-signing
+          key: ks-mcpe-signing-v1
+
+      - name: Prepare signing key
+        if: steps.signing_secret.outputs.available == 'true'
+        env:
+          KEYSTORE_B64: ${{ secrets.KS_MCPE_KEYSTORE_BASE64 }}
+        run: |
+          set -euo pipefail
+          signing_dir="/home/runner/ks-mcpe-signing"
+          mkdir -p "$signing_dir"
+          printf '%s' "$KEYSTORE_B64" | base64 --decode > "$signing_dir/ks-mcpe.keystore"
+          chmod 600 "$signing_dir/ks-mcpe.keystore"
+
+      - name: Build clone APK
+        env:
+          WORKDIR: /tmp/ks-mcpe-build
+          BASE_APK_URL: ${{ inputs.base_apk_url }}
+          APP_ID: com.ks.mcpe.launcher
+          APP_LABEL: KS MCPE Launcher
+          KEYSTORE: /home/runner/ks-mcpe-signing/ks-mcpe.keystore
+          CREDENTIALS_FILE: /home/runner/ks-mcpe-signing/credentials.env
+          KEYSTORE_PASSWORD: ${{ secrets.KS_MCPE_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KS_MCPE_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KS_MCPE_KEY_PASSWORD }}
+        run: |
+          chmod +x ks-mcpe-launcher/app/build.sh
+          ks-mcpe-launcher/app/build.sh
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: KS-MCPE-Launcher-apk
+          path: |
+            /tmp/ks-mcpe-build/dist/*.apk
+            /tmp/ks-mcpe-build/dist/*.sha256
+          if-no-files-found: error
+
+      - name: Upload APK to GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.release_tag || github.ref_name }}
+          files: |
+            /tmp/ks-mcpe-build/dist/*.apk
+            /tmp/ks-mcpe-build/dist/*.sha256
+          overwrite_files: true
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
