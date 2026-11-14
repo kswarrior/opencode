@@ -536,13 +536,7 @@
 
 .field public static minimize_bubble:I = 0x7f0a0241
 
-.field public static misc_accounts_row:I = 0x7f0a0242
-
-.field public static misc_card:I = 0x7f0a0243
-
 .field public static misc_curseforge_row:I = 0x7f0a0244
-
-.field public static misc_quick_launch_row:I = 0x7f0a0245
 
 .field public static mod_author:I = 0x7f0a0246
 
