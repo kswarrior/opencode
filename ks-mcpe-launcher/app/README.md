@@ -128,6 +128,13 @@ keeps it in the Actions cache for later runs. If that cache is lost, a new key
 is generated and users must uninstall the old clone before installing the new
 build.
 
+## Release retention
+
+- Older `KS-MCPE-Launcher-*` assets are kept for rollback. Do not delete them
+  unless the user explicitly asks.
+- Publishing a version only replaces that version's APK and `.sha256` assets.
+  The workflow's `overwrite_files: true` does not remove other versions.
+
 ## Known limitations
 
 - The in-app update check still queries the upstream LeviLauncher repository.

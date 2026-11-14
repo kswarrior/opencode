@@ -27,6 +27,20 @@ decoded or signed is stored in the repository. The output is
 Requirements: Java 21+, Python 3, curl, `unzip`, Android build-tools
 (`zipalign`, `apksigner`, `aapt2`).
 
+## Workspace layout
+
+- Persistent source: `ks-mcpe-launcher/app` (`build.sh`, `overlays/`,
+  `patches/`, workflow, README).
+- Disposable build workspace: `/tmp/ks-mcpe-build` (downloads, decoded tree,
+  generated signing key, `dist/`).
+- Never hand-edit `/tmp/ks-mcpe-build/decoded`; the next build deletes and
+  re-decodes it. Put UI/resource replacements in `app/overlays` and build-step
+  logic in `app/patches` or `build.sh`.
+- Overlay files are full-file replacements and use paths relative to the APK
+  root, for example `overlays/res/layout/nav_bar.xml`.
+- The keystore under `/tmp/ks-mcpe-build/signing` is ephemeral. Back it up or
+  configure the CI signing secrets; a lost key changes the signature.
+
 Pinned inputs (do not bump casually):
 
 | Input | Value |
