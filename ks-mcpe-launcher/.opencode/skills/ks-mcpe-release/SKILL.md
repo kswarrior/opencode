@@ -11,7 +11,7 @@ Builds are published to the `ks-mcpe-launcher` release of
 Asset contract:
 
 - `KS-MCPE-Launcher-<version>.apk` (`<version>` is the clone version, default
-  `1.0.2`, not the upstream LeviLauncher version)
+  `1.0.3`, not the upstream LeviLauncher version)
 - `KS-MCPE-Launcher-<version>.apk.sha256` (output of `sha256sum`, two spaces
   between hash and file name)
 
@@ -31,7 +31,7 @@ versions; do not bulk-delete `KS-MCPE-Launcher-*` assets.
 ```bash
 TAG=ks-mcpe-launcher
 REPO=kswarrior/opencode
-VERSION=1.0.2
+VERSION=1.0.3
 REL_ID=$(curl -fsS -H "Authorization: token $GH_TOKEN" \
   "https://api.github.com/repos/$REPO/releases/tags/$TAG" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')
 
