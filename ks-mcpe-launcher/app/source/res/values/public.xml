@@ -6813,34 +6813,7 @@
     <public type="string" name="property_name_placeholder" id="0x7f13042d" />
     <public type="string" name="property_type_int" id="0x7f13042e" />
     <public type="string" name="quick_actions_title" id="0x7f13042f" />
-    <public type="string" name="quick_launch" id="0x7f130430" />
     <public type="string" name="quick_launch_add_server" id="0x7f130431" />
-    <public type="string" name="quick_launch_add_server_desc" id="0x7f130432" />
-    <public type="string" name="quick_launch_command" id="0x7f130433" />
-    <public type="string" name="quick_launch_command_desc" id="0x7f130434" />
-    <public type="string" name="quick_launch_connect_server" id="0x7f130435" />
-    <public type="string" name="quick_launch_connect_server_desc" id="0x7f130436" />
-    <public type="string" name="quick_launch_custom_uri" id="0x7f130437" />
-    <public type="string" name="quick_launch_custom_uri_desc" id="0x7f130438" />
-    <public type="string" name="quick_launch_how_to_play" id="0x7f130439" />
-    <public type="string" name="quick_launch_how_to_play_desc" id="0x7f13043a" />
-    <public type="string" name="quick_launch_load_world" id="0x7f13043b" />
-    <public type="string" name="quick_launch_load_world_desc" id="0x7f13043c" />
-    <public type="string" name="quick_launch_marketplace_pass" id="0x7f13043d" />
-    <public type="string" name="quick_launch_marketplace_pass_desc" id="0x7f13043e" />
-    <public type="string" name="quick_launch_menu_subtitle" id="0x7f13043f" />
-    <public type="string" name="quick_launch_minecoins" id="0x7f130440" />
-    <public type="string" name="quick_launch_minecoins_desc" id="0x7f130441" />
-    <public type="string" name="quick_launch_profile" id="0x7f130442" />
-    <public type="string" name="quick_launch_profile_desc" id="0x7f130443" />
-    <public type="string" name="quick_launch_realm_invite" id="0x7f130444" />
-    <public type="string" name="quick_launch_realm_invite_desc" id="0x7f130445" />
-    <public type="string" name="quick_launch_servers_tab" id="0x7f130446" />
-    <public type="string" name="quick_launch_servers_tab_desc" id="0x7f130447" />
-    <public type="string" name="quick_launch_store_home" id="0x7f130448" />
-    <public type="string" name="quick_launch_store_home_desc" id="0x7f130449" />
-    <public type="string" name="quick_launch_subtitle" id="0x7f13044a" />
-    <public type="string" name="quick_launch_title" id="0x7f13044b" />
     <public type="string" name="realm_invite_code_hint" id="0x7f13044c" />
     <public type="string" name="remove" id="0x7f13044d" />
     <public type="string" name="rename" id="0x7f13044e" />
