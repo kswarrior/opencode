@@ -106,10 +106,15 @@ the committed tree and never download the upstream APK.
    `checkUpdateOnLaunch()` are no-op `return-void` methods, the launch-time
    call is removed from `MainActivity`, and the "Check for updates" button and
    its listener are removed from the settings screen.
+10. Play Games (`smali/com/google/android/gms/games`, `.../internal/games_v2`),
+    Play billing (`smali/com/android/billingclient`), and the Firebase news
+    push code (`LauncherNewsMessagingService`, `NewsNotificationHelper`) are
+    deleted, and their manifest providers, activities, services, queries,
+    permissions, and metadata are removed.
 
 `build.sh` verifies the application id, branded EULA, disabled update entry
-points and native patch before assembling, and refuses to build if a marker is
-missing.
+points, the removal of Play Games/billing/news push, and the native patch
+before assembling, and refuses to build if a marker is missing.
 
 Never rename only the manifest package and leave permissions or authorities
 behind - that produces install failures that only appear when the original

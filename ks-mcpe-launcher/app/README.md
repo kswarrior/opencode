@@ -42,6 +42,10 @@ overlay patch step.
 - `GithubReleaseUpdater.checkUpdate()` and `checkUpdateOnLaunch()` are no-ops
   and the "Check for updates" button is removed, so the app no longer shows the
   upstream update dialog or downloads updates.
+- Google Play Games, Play billing, and the Firebase news push service
+  (`LauncherNewsMessagingService` / `NewsNotificationHelper`) are removed from
+  the source tree and manifest. The in-app news feed still loads, but it no
+  longer subscribes to push topics or posts notifications.
 
 ## Local build
 
@@ -90,10 +94,9 @@ directory if you want to keep update compatibility.
 
 - In-app self-update is intentionally disabled. Install new builds manually
   from this repository's `ks-mcpe-launcher` release.
-- Google Play Games, Play billing, and Firebase news notifications are tied to
-  the upstream application id/signature and may not work under the clone id.
-  Core launcher features (Minecraft versions, mods, worlds, backups, accounts)
-  are not affected.
+- Core launcher features (Minecraft versions, mods, worlds, backups, accounts)
+  are not affected by the removed Play Games, Play billing, and news push
+  components.
 
 ## Attribution and licensing
 
