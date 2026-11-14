@@ -186,6 +186,35 @@ for name in ("checkUpdate", "checkUpdateOnLaunch"):
     if not pattern.search(updater):
         sys.exit(f"source update entry point {name} is not disabled")
 
+settings = (root / "smali/org/levimc/launcher/ui/activities/SettingsActivity.smali").read_text(encoding="utf-8")
+if "GithubReleaseUpdater" in settings:
+    sys.exit("source settings still instantiate the upstream updater")
+
+for rel in (
+    "smali/com/google/android/gms/games",
+    "smali/com/google/android/gms/internal/games_v2",
+    "smali/com/android/billingclient",
+    "smali/org/levimc/launcher/core/news/LauncherNewsMessagingService.smali",
+    "smali/org/levimc/launcher/core/news/NewsNotificationHelper.smali",
+):
+    if (root / rel).exists():
+        sys.exit(f"source still contains removed component: {rel}")
+
+for needle, label in (
+    ("playgamesinitprovider", "Play Games provider"),
+    ("billingclient.version", "Play billing metadata"),
+    ("LauncherNewsMessagingService", "news push service"),
+    ("com.android.vending.BILLING", "billing permission"),
+):
+    if needle in manifest:
+        sys.exit(f"source manifest still declares {label}")
+
+news_service_refs = list(root.glob("smali/**/*.smali"))
+for path in news_service_refs:
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    if "NewsNotificationHelper" in text or "LauncherNewsMessagingService" in text:
+        sys.exit(f"source still references removed news push code: {path}")
+
 PATCH_VADDR = 0x1990D4
 PATCH = bytes.fromhex("20008052c0035fd6")  # mov w0, #1; ret
 
@@ -217,7 +246,7 @@ for lib in libs:
     if blob[offset:offset + len(PATCH)] != PATCH:
         sys.exit(f"{lib}: native package-name check is not patched")
 
-print(f"verified package={app_id}, disabled updater, patched native verifier")
+print(f"verified package={app_id}, disabled updater, removed play games/billing/news push, patched native verifier")
 PY
 
 log "building APK"
