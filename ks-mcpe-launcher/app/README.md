@@ -95,6 +95,15 @@ keeps it in the Actions cache for later runs. If that cache is lost, a new key
 is generated and users must uninstall the old clone before installing the new
 build.
 
+## Known limitations
+
+- The in-app update check still queries the upstream LeviLauncher repository.
+  Use this repository's `ks-mcpe-launcher` release for clone updates.
+- Google Play Games, Play billing, and Firebase news notifications are tied to
+  the upstream application id/signature and may not work under the clone id.
+  Core launcher features (Minecraft versions, mods, worlds, backups, accounts)
+  are not affected.
+
 ## Attribution and licensing
 
 The clone is based on
