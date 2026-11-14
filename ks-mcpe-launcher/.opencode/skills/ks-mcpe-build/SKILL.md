@@ -42,8 +42,9 @@ Requirements: Java 21+, Python 3, curl, Android build-tools (`zipalign`,
   recopies `app/source`. Make changes in `app/source` and commit them.
 - There is no overlay or per-file patch layer. Full-file replacements and
   build-time customizations live directly in `app/source` or in `build.sh`.
-- The keystore under `/tmp/ks-mcpe-build/signing` is ephemeral. Back it up or
-  configure CI signing secrets; a lost key changes the signature.
+- The default keystore lives under `~/.local/share/ks-mcpe-signing`; it is not
+  disposable. Back it up or configure CI signing secrets; a lost key changes
+  the signature and breaks in-place updates.
 - Keep the root `.gitignore` exceptions for
   `ks-mcpe-launcher/app/source/**/{server,target,debug}/`. The decoded Java
   packages include directories with those names; without the exceptions
@@ -72,7 +73,7 @@ the committed tree and never download the upstream APK.
 | `APP_VERSION` | `1.0.5` | Clone versionName (also written to `BuildConfig`) |
 | `APP_VERSION_CODE` | `10005` | Clone versionCode (also written to `BuildConfig`) |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
-| `KEYSTORE` | `$WORKDIR/signing/ks-mcpe.keystore` | Signing keystore |
+| `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing keystore |
 | `CREDENTIALS_FILE` | next to keystore | Generated password/alias storage |
 | `KEY_ALIAS` / `KEY_PASSWORD` / `KEYSTORE_PASSWORD` | generated once | Signing credentials |
 
