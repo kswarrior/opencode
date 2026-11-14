@@ -170,9 +170,9 @@ Debug:
 python3 ./tools/check_player_animation_loop.py --iterations 3 --delay 1
 rm -rf ./tmp/ks_pack && mkdir -p ./tmp/ks_pack
 cp -r "resource_packs/KS Client" ./tmp/ks_pack/
-python3 -c "import json,shutil,os; v='.'.join(map(str,json.load(open('resource_packs/KS Client/manifest.json'))['header']['version'])); b=f'./tmp/KS-Client-v{v}'; shutil.make_archive(b,'zip','./tmp/ks_pack/KS Client'); os.rename(b+'.zip',b+'.mcpack'); print(b+'.mcpack')"
+python3 -c "import json,shutil,os; v=json.load(open('resource_packs/KS Client/manifest.json'))['header']['version']; b=f'./tmp/KS-Client-v{v}'; shutil.make_archive(b,'zip','./tmp/ks_pack/KS Client'); os.rename(b+'.zip',b+'.mcpack'); print(b+'.mcpack')"
 # ALWAYS drop into release/ (project rule): copy, never overwrite; then update README releases counts + verify
-python3 -c "import shutil,json,os; v='.'.join(map(str,json.load(open('resource_packs/KS Client/manifest.json'))['header']['version'])); s=f'./tmp/KS-Client-v{v}.mcpack'; d=f'./release/KS-Client-v{v}.mcpack'; assert not os.path.exists(d), d+' exists - stop and ask'; shutil.copy(s,d); print(d)"
+python3 -c "import shutil,json,os; v=json.load(open('resource_packs/KS Client/manifest.json'))['header']['version']; s=f'./tmp/KS-Client-v{v}.mcpack'; d=f'./release/KS-Client-v{v}.mcpack'; assert not os.path.exists(d), d+' exists - stop and ask'; shutil.copy(s,d); print(d)"
 # update README releases counts (§1 bullet, §1 row 23, §3 tree, §12) in the same diff + verify `git status`
 # report release/ path + validation output
 ```
