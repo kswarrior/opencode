@@ -68,7 +68,7 @@ device.
 ```bash
 ADB=$SDK/platform-tools/adb
 $ADB install -r /tmp/opencode/apk/LeviLauncher-v1.6.1-release.apk   # original
-$ADB install -r /tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-1.0.3.apk # clone
+$ADB install -r /tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-1.0.4.apk # clone
 $ADB shell pm list packages | grep -E 'levimc|ks.mcpe'              # expect both
 ```
 
