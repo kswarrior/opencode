@@ -101,5 +101,7 @@ whenever signing configuration changes.
 
 - Upload only the current build outputs from `dist/`; never hand-edit the APK.
 - The release tag stays `ks-mcpe-launcher`; do not create per-version releases.
+- The release **name** tracks the clone version (`v1.0.0`); the tag stays
+  `ks-mcpe-launcher` so the pinned upstream asset URL remains valid.
 - If the bot token lacks `contents: write`, release uploads fail; do not fall
   back to committing binaries into the repository.
