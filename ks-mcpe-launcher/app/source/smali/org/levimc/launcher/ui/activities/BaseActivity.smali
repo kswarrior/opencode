@@ -391,18 +391,6 @@
     return-void
 .end method
 
-.method public static synthetic h(Lorg/levimc/launcher/ui/activities/BaseActivity;Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->lambda$setupBaseNavBar$9(Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
 .method private handleNavAccountLoginResult(ILandroid/content/Intent;)V
     .locals 1
 
@@ -1403,40 +1391,6 @@
     return-void
 .end method
 
-.method private synthetic lambda$setupBaseNavBar$9(Landroid/view/View;)V
-    .locals 1
-
-    .line 1
-    instance-of p1, p0, Lorg/levimc/launcher/ui/activities/AboutActivity;
-
-    .line 2
-    .line 3
-    if-nez p1, :cond_0
-
-    .line 4
-    .line 5
-    new-instance p1, Landroid/content/Intent;
-
-    .line 6
-    .line 7
-    const-class v0, Lorg/levimc/launcher/ui/activities/AboutActivity;
-
-    .line 8
-    .line 9
-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    .line 10
-    .line 11
-    .line 12
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 13
-    .line 14
-    .line 15
-    :cond_0
-    return-void
-.end method
-
 .method private static synthetic lambda$wrapWithNavBar$2(Landroid/view/View;)V
     .locals 1
 
@@ -1945,7 +1899,7 @@
 
     .line 23
     :goto_0
-    const/4 v4, 0x7
+    const/4 v4, 0x6
 
     .line 23
     if-ge v3, v4, :cond_1
@@ -2475,38 +2429,6 @@
     .line 264
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 265
-    .line 266
-    .line 267
-    sget v0, Lorg/levimc/launcher/R$id;->nav_tab_about:I
-
-    .line 268
-    .line 269
-    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
-
-    .line 270
-    .line 271
-    .line 272
-    move-result-object v0
-
-    .line 273
-    new-instance v1, Lorg/levimc/launcher/ui/activities/f;
-
-    .line 274
-    .line 275
-    const/4 v2, 0x3
-
-    .line 276
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/f;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
-
-    .line 277
-    .line 278
-    .line 279
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 280
-    .line 281
-    .line 282
     sget v0, Lorg/levimc/launcher/R$id;->nav_tab_settings:I
 
     .line 283
@@ -3902,27 +3824,17 @@
     :cond_0
     sget v0, Lorg/levimc/launcher/R$id;->nav_tab_launch:I
 
-    .line 7
-    .line 8
     sget v1, Lorg/levimc/launcher/R$id;->nav_tab_instances:I
 
-    .line 9
-    .line 10
-    sget v2, Lorg/levimc/launcher/R$id;->nav_tab_about:I
+    sget v2, Lorg/levimc/launcher/R$id;->nav_tab_settings:I
 
-    .line 11
-    .line 12
-    sget v3, Lorg/levimc/launcher/R$id;->nav_tab_settings:I
+    sget v3, Lorg/levimc/launcher/R$id;->nav_tab_mods:I
 
-    sget v4, Lorg/levimc/launcher/R$id;->nav_tab_mods:I
+    sget v4, Lorg/levimc/launcher/R$id;->nav_tab_content:I
 
-    sget v5, Lorg/levimc/launcher/R$id;->nav_tab_content:I
+    sget v5, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
 
-    sget v6, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
-
-    .line 13
-    .line 14
-    filled-new-array/range {v0 .. v6}, [I
+    filled-new-array/range {v0 .. v5}, [I
 
     .line 15
     .line 16
@@ -3954,7 +3866,7 @@
 
     .line 29
     :goto_0
-    const/4 v4, 0x7
+    const/4 v4, 0x6
 
     .line 29
     if-ge v3, v4, :cond_4
