@@ -189,7 +189,10 @@ log "building APK"
 rm -f "$UNSIGNED" "$ALIGNED"
 JAVA_BUILD_ARGS=(b "$DECODED" -o "$UNSIGNED")
 if [ -n "$AAPT2" ]; then
-    JAVA_BUILD_ARGS+=(--aapt "$AAPT2")
+    AAPT2_LOCAL="$WORKDIR/downloads/aapt2"
+    cp -f "$AAPT2" "$AAPT2_LOCAL"
+    chmod +x "$AAPT2_LOCAL"
+    JAVA_BUILD_ARGS+=(--aapt "$AAPT2_LOCAL")
 fi
 java -jar "$APKTOOL_JAR" "${JAVA_BUILD_ARGS[@]}" >/dev/null
 
