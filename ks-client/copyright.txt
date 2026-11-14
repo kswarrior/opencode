@@ -419,6 +419,24 @@ here. Respect their licenses — get permission before redistributing.
                 Armor Display toggle is wired to KS Client's existing
                 `ks_uhud.ks_uhud_item_durability` armor panel.
 
+25. In-Game Pack Settings (manifest v3 format + Molang pack-setting query pattern)
+    Author    : oSkullo — OS Client V1.5 (reference only; zero files taken)
+    Source    : https://oskullo-yt.github.io/OS-CLIENT/ (pack downloaded and
+                staged in ./tmp/os_client_ref/ purely for format inspection)
+    Note      : No OS Client code, UI, textures, namespaces, file paths or
+                assets were copied. KS settings names/labels/values and the
+                health-bar/hammer wiring are original. The manifest
+                `format_version: 3` + `settings` array and the
+                `query.get_pack_setting` / `query.is_pack_setting_enabled` /
+                `query.is_pack_setting_selected` queries are engine features
+                documented by Microsoft; OS Client was studied only as a
+                working example of the layout. Upstream is (C) oSkullo, all
+                rights reserved — this entry is attribution for the
+                technique reference only.
+    Now       : `manifest.json` (`format_version` 3 + `settings`:
+                ks:health_bar_mode/icon/digits/scale/y, ks:hammer/scale),
+                `animations/health_bar.json`, `animations/mace.animation.json`
+
 Removed again after merge (no longer in pack, kept here for history):
 - Durability Viewer V-2.5 [RP] — EchoRif/ya_rifat (merged earlier as KS DV; replaced by the full Utility HUD V-1.5 merge in entry 20)
 - Recolourful Containers BE 1.4 LIGHT — Vi_Tul + Ashura (added in v1.3.x, removed by v1.3.4 restore to v1.2.9 contents)
