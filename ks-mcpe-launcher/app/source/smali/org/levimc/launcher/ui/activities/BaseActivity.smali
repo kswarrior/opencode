@@ -1868,9 +1868,7 @@
 
     sget v4, Lorg/levimc/launcher/R$id;->nav_tab_content:I
 
-    sget v5, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
-
-    filled-new-array/range {v0 .. v5}, [I
+    filled-new-array/range {v0 .. v4}, [I
 
     .line 10
     .line 11
@@ -1899,7 +1897,7 @@
 
     .line 23
     :goto_0
-    const/4 v4, 0x6
+    const/4 v4, 0x5
 
     .line 23
     if-ge v3, v4, :cond_1
@@ -2386,23 +2384,6 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    sget v0, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
-
-    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    new-instance v1, Lorg/levimc/launcher/ui/activities/f;
-
-    const/16 v2, 0x9
-
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/f;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
-
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 250
-    .line 251
-    .line 252
     sget v0, Lorg/levimc/launcher/R$id;->nav_tab_instances:I
 
     .line 253
@@ -3832,9 +3813,7 @@
 
     sget v4, Lorg/levimc/launcher/R$id;->nav_tab_content:I
 
-    sget v5, Lorg/levimc/launcher/R$id;->nav_tab_misc:I
-
-    filled-new-array/range {v0 .. v5}, [I
+    filled-new-array/range {v0 .. v4}, [I
 
     .line 15
     .line 16
@@ -3866,7 +3845,7 @@
 
     .line 29
     :goto_0
-    const/4 v4, 0x6
+    const/4 v4, 0x5
 
     .line 29
     if-ge v3, v4, :cond_4
