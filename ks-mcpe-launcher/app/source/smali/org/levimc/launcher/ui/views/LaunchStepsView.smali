@@ -697,9 +697,7 @@
 
     const/4 v5, -0x1
 
-    if-nez v4, :check_progress
-
-    goto :loop_init
+    if-eqz v4, :loop_init
 
     :check_progress
     const/16 v3, 0x64
