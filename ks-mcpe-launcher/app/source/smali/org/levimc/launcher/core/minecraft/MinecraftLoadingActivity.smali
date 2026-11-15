@@ -3017,7 +3017,23 @@
     move-result p1
 
     .line 20
+    iput p1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->lastProgress:I
+
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->renderSteps(I)V
+
     invoke-direct {p0, p1}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->animateProgressTo(I)V
+
+    const/16 v0, 0x64
+
+    if-lt p1, v0, :no_dots_stop
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->dotsDrawable:Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;
+
+    if-eqz v0, :no_dots_stop
+
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->stop()V
+
+    :no_dots_stop
 
     .line 21
     .line 22
