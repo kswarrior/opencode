@@ -229,9 +229,17 @@
     return-void
 
     .line 90
-    nop
+    :pswitch_d
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/r;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->ksOnSettingsTabClicked(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Landroid/view/View;)V
+
+    return-void
 
     .line 91
+    nop
+
+    .line 92
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_c
@@ -247,5 +255,6 @@
         :pswitch_2
         :pswitch_1
         :pswitch_0
+        :pswitch_d
     .end packed-switch
 .end method
