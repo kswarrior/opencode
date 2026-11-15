@@ -901,6 +901,180 @@
     return-void
 .end method
 
+.method private applyTwoPanelLayout(Z)V
+    .locals 4
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navHudEditor:Landroid/widget/TextView;
+
+    if-eqz v0, :cond_0
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->getAccentColor()I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextColor(I)V
+
+    const/high16 v1, 0x3f800000    # 1.0f
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setAlpha(F)V
+
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navModules:Landroid/widget/TextView;
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->compactNavModules:Landroid/widget/ImageButton;
+
+    const/4 v2, 0x1
+
+    invoke-direct {p0, v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->updateNavigationItem(Landroid/widget/TextView;Landroid/widget/ImageButton;Z)V
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navSettings:Landroid/widget/TextView;
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->compactNavSettings:Landroid/widget/ImageButton;
+
+    invoke-direct {p0, v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->updateNavigationItem(Landroid/widget/TextView;Landroid/widget/ImageButton;Z)V
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->compactNavHudEditor:Landroid/widget/ImageButton;
+
+    if-eqz v0, :cond_1
+
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    :cond_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->modsRecycler:Landroidx/recyclerview/widget/RecyclerView;
+
+    if-eqz v0, :cond_2
+
+    if-eqz p1, :cond_3
+
+    const/4 v1, 0x6
+
+    goto :goto_0
+
+    :cond_3
+    const/16 v1, 0xe
+
+    :goto_0
+    invoke-direct {p0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->dp(I)I
+
+    move-result v1
+
+    invoke-virtual {v0, v1, v1, v1, v1}, Landroid/view/View;->setPadding(IIII)V
+
+    :cond_2
+    return-void
+.end method
+
+.method private applyTheme()V
+    .locals 8
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->activity:Landroid/app/Activity;
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    new-instance v1, Lorg/levimc/launcher/util/PersonalizationManager;
+
+    invoke-direct {v1, v0}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->overlayView:Landroid/view/View;
+
+    if-eqz v2, :cond_1
+
+    invoke-virtual {v1, v2, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->applyAccentToView(Landroid/view/View;Landroid/content/Context;)V
+
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->getAccentColor()I
+
+    move-result v2
+
+    if-nez v2, :cond_2
+
+    const v2, -0xd95966
+
+    :cond_2
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navHudEditor:Landroid/widget/TextView;
+
+    if-eqz v3, :cond_3
+
+    new-instance v4, Landroid/graphics/drawable/GradientDrawable;
+
+    invoke-direct {v4}, Landroid/graphics/drawable/GradientDrawable;-><init>()V
+
+    const/16 v5, 0x18
+
+    invoke-direct {p0, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->dp(I)I
+
+    move-result v5
+
+    int-to-float v5, v5
+
+    invoke-virtual {v4, v5}, Landroid/graphics/drawable/GradientDrawable;->setCornerRadius(F)V
+
+    const v5, 0xffffff
+
+    and-int/2addr v5, v2
+
+    const v6, 0x33000000
+
+    or-int/2addr v5, v6
+
+    invoke-virtual {v4, v5}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
+
+    const/4 v5, 0x1
+
+    invoke-direct {p0, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->dp(I)I
+
+    move-result v5
+
+    invoke-virtual {v4, v5, v2}, Landroid/graphics/drawable/GradientDrawable;->setStroke(II)V
+
+    invoke-virtual {v3, v4}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    invoke-virtual {v3, v2}, Landroid/widget/TextView;->setTextColor(I)V
+
+    const/high16 v5, 0x3f800000    # 1.0f
+
+    invoke-virtual {v3, v5}, Landroid/view/View;->setAlpha(F)V
+
+    invoke-static {v2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setCompoundDrawableTintList(Landroid/content/res/ColorStateList;)V
+
+    :cond_3
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->overlayView:Landroid/view/View;
+
+    if-eqz v3, :cond_4
+
+    sget v4, Lorg/levimc/launcher/R$id;->btn_hud_save:I
+
+    invoke-virtual {v3, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v3
+
+    if-eqz v3, :cond_4
+
+    check-cast v3, Landroid/widget/ImageView;
+
+    invoke-static {v2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
+
+    :cond_4
+    return-void
+.end method
+
 .method private applyCompactModeLayout(Z)V
     .locals 8
 
@@ -7907,6 +8081,8 @@
     .line 960
     .line 961
     invoke-direct {p0, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applyTwoPanelLayout(Z)V
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applyTheme()V
 
     .line 962
     .line 963
