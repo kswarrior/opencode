@@ -213,6 +213,22 @@ auth_session_text = auth_session.group(0)
 if "const/4 v1, 0x1" not in auth_session_text or "UseInProcBrowser:Z" in auth_session_text:
     sys.exit("source XAL auth session can still delegate to an external browser")
 
+for rel, default_reg, old_invoke in (
+    (
+        "smali/com/microsoft/xal/androidjava/Storage.smali",
+        "v4",
+        "invoke-virtual {v3, v2, v1}, Lorg/json/JSONObject;->optBoolean",
+    ),
+    (
+        "smali/com/microsoft/xal/crypto/Ecdsa.smali",
+        "v3",
+        "invoke-virtual {v2, v1, v0}, Lorg/json/JSONObject;->optBoolean",
+    ),
+):
+    text = (root / rel).read_text(encoding="utf-8")
+    if old_invoke in text or f"const/4 {default_reg}, 0x1" not in text:
+        sys.exit(f"{rel}: managed login storage default is not enabled")
+
 updater = (root / "smali/org/levimc/launcher/util/GithubReleaseUpdater.smali").read_text(encoding="utf-8")
 for name in ("checkUpdate", "checkUpdateOnLaunch"):
     pattern = re.compile(
