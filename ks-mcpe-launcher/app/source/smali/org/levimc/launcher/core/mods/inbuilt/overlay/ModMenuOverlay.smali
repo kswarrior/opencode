@@ -9222,7 +9222,7 @@
 
     .line 19
     .line 20
-    const/4 v2, 0x0
+    const/4 v2, 0x1
 
     .line 21
     invoke-direct {p0, v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->updateNavigationItem(Landroid/widget/TextView;Landroid/widget/ImageButton;Z)V
@@ -9278,19 +9278,8 @@
     .line 48
     .line 49
     :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->settingsContainer:Landroid/view/View;
-
-    .line 50
-    .line 51
     const/16 v1, 0x8
 
-    .line 52
-    .line 53
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
-
-    .line 54
-    .line 55
-    .line 56
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->overlayView:Landroid/view/View;
 
     .line 57
