@@ -2339,7 +2339,21 @@
 
     invoke-virtual {p1, p3, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    const v3, -0xb51f60
+    const-string v0, "personalization_prefs"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v0, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v0
+
+    const-string v3, "accent_color"
+
+    const v5, -0xd95966
+
+    invoke-interface {v0, v3, v5}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result v3
 
     move-object v0, p0
 
