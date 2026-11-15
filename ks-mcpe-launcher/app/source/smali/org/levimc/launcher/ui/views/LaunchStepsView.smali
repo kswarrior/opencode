@@ -233,7 +233,7 @@
 
     const/16 v0, 0x64
 
-    if-gt p1, v0, :check_low
+    if-le p1, v0, :check_low
 
     const/16 p1, 0x64
 
