@@ -3607,13 +3607,15 @@
     .line 143
     invoke-virtual {p1, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
+    const-string v2, "findViewById(...)"
+
     sget p1, Lorg/levimc/launcher/R$id;->minecraftLaunchLogTitle:I
 
     invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
 
     move-result-object p1
 
-    invoke-static {p1, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     check-cast p1, Landroid/widget/TextView;
 
@@ -3631,7 +3633,7 @@
 
     move-result-object p1
 
-    invoke-static {p1, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     check-cast p1, Landroid/widget/ScrollView;
 
@@ -3643,7 +3645,7 @@
 
     move-result-object p1
 
-    invoke-static {p1, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     check-cast p1, Lorg/levimc/launcher/ui/views/LaunchStepsView;
 
@@ -3655,7 +3657,7 @@
 
     move-result-object p1
 
-    invoke-static {p1, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     check-cast p1, Landroid/widget/TextView;
 
