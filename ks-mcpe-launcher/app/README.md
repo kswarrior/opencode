@@ -35,7 +35,9 @@ overlay patch step.
 - The EULA title and message are branded "KS MCPE Launcher".
 - The shared header shows only "KS" as its brand and exposes Home, Mods,
   Management and Instances tabs. Settings is an icon-only button at the far
-  right. The About tab and About page are removed.
+  right. The separate upstream About page is removed; Settings -> About now
+  shows the KS MCPE Launcher brand line, a feature overview and the community
+  links.
 - The old Mods, Content Management and Miscellaneous cards are gone from the
   Home page. The Mods and Management tabs open their full pages; CurseForge is
   a button in Content Management beside Import, and the Instances header hosts
@@ -45,6 +47,12 @@ overlay patch step.
 - The Mods page keeps the total/enabled counts as an `enabled / total` badge
   beside the title and places External Mods, Mod Menu and Add Mod on the title
   row. The Settings tabs sit on the title row and the subtitle is removed.
+- Launcher News is removed completely: the activity, feed, adapters, layouts,
+  drawables, strings, header icon and badge are gone. The independent
+  changelog dialog remains.
+- The bundled wallpaper is copied from `assets/default_background.jpg` on
+  first launch and becomes the default background with 1px blur and 100%
+  brightness. Clearing a custom image restores the bundled background.
 - `lib/arm64-v8a/libgxcore.so` has its native package-name verifier neutralised
   (`mov w0,#1; ret`). Upstream gates `JNI_OnLoad` on a 19-character package id
   plus a hard-coded hash, which otherwise makes `System.loadLibrary("gxcore")`
@@ -53,10 +61,9 @@ overlay patch step.
   settings button and listener are gone, and
   `GithubReleaseUpdater.checkUpdate()` / `checkUpdateOnLaunch()` are inert
   no-ops, so the app cannot query upstream releases or download updates.
-- Google Play Games, Play billing, and the Firebase news push service
-  (`LauncherNewsMessagingService` / `NewsNotificationHelper`) are removed from
-  the source tree and manifest. The in-app news feed still loads, but it no
-  longer subscribes to push topics or posts notifications.
+- Google Play Games, Play billing, Launcher News and the Firebase news push
+  service (`LauncherNewsMessagingService` / `NewsNotificationHelper`) are
+  removed from the source tree and manifest.
 
 ## Local build
 
@@ -68,7 +75,7 @@ ANDROID_HOME=/path/to/android-sdk ./ks-mcpe-launcher/app/build.sh
 ```
 
 The APK is written to `/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-<version>.apk`.
-The clone version defaults to `1.0.5` (versionCode `10005`), independent of
+The clone version defaults to `1.0.6` (versionCode `10006`), independent of
 the upstream LeviLauncher version. `build.sh` writes the version into both
 `apktool.yml` and `BuildConfig.smali` so the manifest and in-app version stay
 in sync.
@@ -80,10 +87,10 @@ Useful environment variables:
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace and output |
 | `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
 | `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.5` | Clone versionName written to `apktool.yml` and `BuildConfig` |
-| `APP_VERSION_CODE` | `10005` | Clone versionCode written to `apktool.yml` and `BuildConfig` |
+| `APP_VERSION` | `1.0.6` | Clone versionName written to `apktool.yml` and `BuildConfig` |
+| `APP_VERSION_CODE` | `10006` | Clone versionCode written to `apktool.yml` and `BuildConfig` |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output file name prefix |
-| `KEYSTORE` | `$WORKDIR/signing/ks-mcpe.keystore` | Signing keystore |
+| `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing keystore |
 | `KEYSTORE_PASSWORD` | generated once | Keystore password |
 | `KEY_ALIAS` | `ksmcpe` | Key alias |
 | `KEY_PASSWORD` | same as keystore | Key password |
@@ -107,10 +114,10 @@ directory if you want to keep update compatibility.
 
 - In-app self-update is intentionally disabled. Install new builds manually
   from this repository's `ks-mcpe-launcher` release.
-- Version 1.0.2 uses a signing key that was not preserved, so 1.0.3 and later
-  use a newer key; uninstall 1.0.2 before installing 1.0.3 or newer. The key
-  used for 1.0.3 and 1.0.4 was also lost, so 1.0.5 uses a new key: uninstall
-  1.0.3 or 1.0.4 before installing 1.0.5. Back up
+- Version 1.0.2 uses a signing key that was not preserved, and the key used
+  for 1.0.3 and 1.0.4 was also lost. Uninstall 1.0.2 through 1.0.4 before
+  installing a newer build. Version 1.0.6 reuses the 1.0.5 key, so 1.0.5 can
+  update in place. Back up
   `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` to keep future updates
   installable in place.
 - Core launcher features (Minecraft versions, mods, worlds, backups, accounts)
