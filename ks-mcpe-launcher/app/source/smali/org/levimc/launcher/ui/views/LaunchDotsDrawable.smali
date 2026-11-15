@@ -65,13 +65,21 @@
 
     invoke-virtual {p0, v0}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->setColor(I)V
 
-    const/4 v0, 0x0
+    const/4 v0, 0x2
 
-    const v2, 0x40c90fdb    # 6.2831855f
+    new-array v0, v0, [F
 
-    filled-new-array {v0, v2}, [F
+    const/4 v2, 0x0
 
-    move-result-object v0
+    const/4 v3, 0x0
+
+    aput v3, v0, v2
+
+    const v3, 0x40c90fdb    # 6.2831855f
+
+    const/4 v2, 0x1
+
+    aput v3, v0, v2
 
     invoke-static {v0}, Landroid/animation/ValueAnimator;->ofFloat([F)Landroid/animation/ValueAnimator;
 
