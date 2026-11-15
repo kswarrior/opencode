@@ -5568,7 +5568,7 @@
     .line 35
     .line 36
     .line 37
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applyCompactModeLayout(Z)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applyTwoPanelLayout(Z)V
 
     .line 38
     .line 39
@@ -7906,7 +7906,7 @@
 
     .line 960
     .line 961
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applyCompactModeLayout(Z)V
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applyTwoPanelLayout(Z)V
 
     .line 962
     .line 963
@@ -8176,14 +8176,6 @@
     invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
 
     .line 51
-    .line 52
-    .line 53
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->settingsContainer:Landroid/view/View;
-
-    .line 54
-    .line 55
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
-
     .line 56
     .line 57
     .line 58
