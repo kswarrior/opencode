@@ -2991,6 +2991,89 @@
     return-void
 .end method
 
+.method private final renderSteps(I)V
+    .locals 2
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->stepsView:Lorg/levimc/launcher/ui/views/LaunchStepsView;
+
+    if-eqz v0, :done
+
+    invoke-virtual {v0, p1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->setProgress(I)V
+
+    iget-boolean v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->launchFailed:Z
+
+    invoke-virtual {v0, v1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->setFailed(Z)V
+
+    :done
+    return-void
+.end method
+
+.method public final toggleLog()V
+    .locals 3
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logScroll:Landroid/widget/ScrollView;
+
+    if-eqz v0, :log_null
+
+    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
+
+    move-result v1
+
+    if-eqz v1, :show_log
+
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->stepsScroll:Landroid/widget/ScrollView;
+
+    if-eqz v2, :no_steps
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v2, v1}, Landroid/view/View;->setVisibility(I)V
+
+    :no_steps
+    iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logTitleView:Landroid/widget/TextView;
+
+    if-eqz v2, :no_title
+
+    const-string v1, "View Log"
+
+    invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :no_title
+    return-void
+
+    :show_log
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->stepsScroll:Landroid/widget/ScrollView;
+
+    if-eqz v2, :no_steps2
+
+    const/16 v1, 0x8
+
+    invoke-virtual {v2, v1}, Landroid/view/View;->setVisibility(I)V
+
+    :no_steps2
+    iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logTitleView:Landroid/widget/TextView;
+
+    if-eqz v2, :no_title2
+
+    const-string v1, "Hide Log"
+
+    invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :no_title2
+    invoke-static {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->appendLog$lambda$0(Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;)V
+
+    :log_null
+    return-void
+.end method
+
 .method private final updateProgress(ILjava/lang/String;Ljava/lang/String;)V
     .locals 1
 
@@ -3688,6 +3771,13 @@
     .line 7
     .line 8
     :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->dotsDrawable:Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;
+
+    if-eqz v0, :no_dots
+
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->stop()V
+
+    :no_dots
     iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->executor:Ljava/util/concurrent/ExecutorService;
 
     .line 9
