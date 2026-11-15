@@ -67,6 +67,8 @@
     const-string v2, "launcherManagedMcLoginEnabled"
 
     .line 23
+    const/4 v1, 0x1
+
     .line 24
     invoke-virtual {v3, v2, v1}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
 
@@ -83,7 +85,7 @@
     .line 29
     :catchall_0
     :cond_0
-    move v2, v1
+    const/4 v2, 0x1
 
     .line 30
     :goto_0

@@ -616,7 +616,7 @@
     move-result-object v0
 
     .line 5
-    iget-boolean v1, p1, Lcom/microsoft/xal/browser/BrowserLaunchActivity$BrowserLaunchParameters;->UseInProcBrowser:Z
+    const/4 v1, 0x1
 
     .line 6
     .line 7
