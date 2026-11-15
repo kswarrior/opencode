@@ -1022,13 +1022,13 @@
 
     and-int/2addr v5, v2
 
-    const v6, 0x33000000
+    const v6, 0x40000000
 
     or-int/2addr v5, v6
 
     invoke-virtual {v4, v5}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
 
-    const/4 v5, 0x1
+    const/4 v5, 0x2
 
     invoke-direct {p0, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->dp(I)I
 
@@ -1036,7 +1036,25 @@
 
     invoke-virtual {v4, v5, v2}, Landroid/graphics/drawable/GradientDrawable;->setStroke(II)V
 
-    invoke-virtual {v3, v4}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+    const v5, 0xffffff
+
+    and-int/2addr v5, v2
+
+    const v6, 0x33000000
+
+    or-int/2addr v5, v6
+
+    invoke-static {v5}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    new-instance v6, Landroid/graphics/drawable/RippleDrawable;
+
+    const/4 v7, 0x0
+
+    invoke-direct {v6, v5, v4, v7}, Landroid/graphics/drawable/RippleDrawable;-><init>(Landroid/content/res/ColorStateList;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+
+    invoke-virtual {v3, v6}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
     invoke-virtual {v3, v2}, Landroid/widget/TextView;->setTextColor(I)V
 
@@ -1072,6 +1090,67 @@
     invoke-virtual {v3, v4}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
 
     :cond_4
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->overlayView:Landroid/view/View;
+
+    if-eqz v3, :cond_5
+
+    sget v4, Lorg/levimc/launcher/R$id;->btn_close_menu:I
+
+    invoke-virtual {v3, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v3
+
+    if-eqz v3, :cond_5
+
+    check-cast v3, Landroid/widget/ImageButton;
+
+    new-instance v4, Landroid/graphics/drawable/GradientDrawable;
+
+    invoke-direct {v4}, Landroid/graphics/drawable/GradientDrawable;-><init>()V
+
+    const/4 v5, 0x1
+
+    invoke-virtual {v4, v5}, Landroid/graphics/drawable/GradientDrawable;->setShape(I)V
+
+    const v5, 0xffffff
+
+    and-int/2addr v5, v2
+
+    const v6, 0x33000000
+
+    or-int/2addr v5, v6
+
+    invoke-virtual {v4, v5}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
+
+    const/4 v5, 0x1
+
+    invoke-direct {p0, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->dp(I)I
+
+    move-result v5
+
+    invoke-virtual {v4, v5, v2}, Landroid/graphics/drawable/GradientDrawable;->setStroke(II)V
+
+    const v5, 0x33ffffff
+
+    invoke-static {v5}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    new-instance v6, Landroid/graphics/drawable/RippleDrawable;
+
+    const/4 v7, 0x0
+
+    invoke-direct {v6, v5, v4, v7}, Landroid/graphics/drawable/RippleDrawable;-><init>(Landroid/content/res/ColorStateList;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+
+    invoke-virtual {v3, v6}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    invoke-static {v2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
+
+    :cond_5
     return-void
 .end method
 
