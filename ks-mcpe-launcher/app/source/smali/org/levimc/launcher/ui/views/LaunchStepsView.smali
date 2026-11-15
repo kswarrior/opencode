@@ -532,7 +532,7 @@
 .end method
 
 .method protected final onDraw(Landroid/graphics/Canvas;)V
-    .locals 16
+    .locals 14
 
     invoke-virtual {p0}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->getPaddingLeft()I
     move-result v0
@@ -632,15 +632,15 @@
     invoke-direct {p0, v10}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->colorForState(I)I
     move-result v10
 
-    iget-object v14, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circlePaint:Landroid/graphics/Paint;
+    iget-object v11, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circlePaint:Landroid/graphics/Paint;
 
-    invoke-virtual {v14, v10}, Landroid/graphics/Paint;->setColor(I)V
+    invoke-virtual {v11, v10}, Landroid/graphics/Paint;->setColor(I)V
 
     iget v12, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circleRadius:F
 
     add-float v13, v3, v12
 
-    invoke-virtual {p1, v13, v9, v12, v14}, Landroid/graphics/Canvas;->drawCircle(FFFLandroid/graphics/Paint;)V
+    invoke-virtual {p1, v13, v9, v12, v11}, Landroid/graphics/Canvas;->drawCircle(FFFLandroid/graphics/Paint;)V
 
     iget v12, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circleRadius:F
 
@@ -660,59 +660,111 @@
 
     move-result v13
 
-    iget-object v14, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->textPaint:Landroid/graphics/Paint;
+    iget-object v11, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->textPaint:Landroid/graphics/Paint;
 
-    invoke-virtual {v14}, Landroid/graphics/Paint;->descent()F
+    invoke-virtual {v11}, Landroid/graphics/Paint;->descent()F
 
-    move-result v14
+    move-result v11
 
-    add-float/2addr v13, v14
+    add-float/2addr v13, v11
 
-    const/high16 v14, 0x40000000    # 2.0f
+    const/high16 v11, 0x40000000    # 2.0f
 
-    div-float/2addr v13, v14
+    div-float/2addr v13, v11
 
     sub-float v13, v9, v13
 
-    iget-object v14, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->textPaint:Landroid/graphics/Paint;
+    iget-object v11, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->textPaint:Landroid/graphics/Paint;
 
-    invoke-virtual {p1, v6, v12, v13, v14}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    invoke-virtual {p1, v6, v12, v13, v11}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
 
-    iget-object v14, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->states:[I
+    iget-object v11, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->states:[I
 
-    aget v14, v14, v2
+    aget v11, v11, v2
 
-    const/4 v15, 0x2
+    const/4 v10, 0x2
 
-    if-ne v14, v15, :cond_2
+    if-ne v11, v10, :cond_2
 
     add-float v6, v12, v7
 
-    iget v14, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkGap:F
+    iget v10, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkGap:F
 
-    add-float/2addr v6, v14
+    add-float/2addr v6, v10
 
-    iget v14, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkSize:F
+    iget v10, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkSize:F
 
-    const v15, 0x3eb33333    # 0.35f
+    const v11, 0x3eb33333    # 0.35f
 
-    mul-float/2addr v14, v15
+    mul-float/2addr v10, v11
 
-    add-float v13, v6, v14
+    add-float v11, v6, v10
 
-    add-float v12, v9, v14
+    add-float v12, v9, v10
 
-    iget-object v11, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkPaint:Landroid/graphics/Paint;
+    move v10, v9
 
-    invoke-virtual {p1, v6, v9, v13, v12, v11}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
+    move v9, v6
 
-    iget v15, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkSize:F
+    iget v6, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkSize:F
 
-    add-float/2addr v15, v6
+    add-float/2addr v6, v9
 
-    sub-float v10, v9, v14
+    iget v7, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkSize:F
 
-    invoke-virtual {p1, v13, v12, v15, v10, v11}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
+    const v13, 0x3eb33333    # 0.35f
+
+    mul-float/2addr v7, v13
+
+    sub-float v7, v10, v7
+
+    iget-object v13, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkPaint:Landroid/graphics/Paint;
+
+    move-object v8, p1
+
+    invoke-virtual/range {v8 .. v13}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
+
+    move v9, v11
+
+    move v10, v12
+
+    move v11, v6
+
+    move v12, v7
+
+    invoke-virtual/range {v8 .. v13}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
+
+    aget-object v6, v0, v2
+
+    iget-object v7, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->textPaint:Landroid/graphics/Paint;
+
+    invoke-virtual {v7, v6}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+
+    move-result v7
+
+    iget v8, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circleRadius:F
+
+    const/high16 v9, 0x40000000    # 2.0f
+
+    mul-float/2addr v8, v9
+
+    add-float/2addr v8, v7
+
+    iget v9, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circleGap:F
+
+    add-float/2addr v8, v9
+
+    iget v9, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkGap:F
+
+    add-float/2addr v8, v9
+
+    iget v9, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkSize:F
+
+    add-float/2addr v8, v9
+
+    iget v9, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->itemGap:F
+
+    add-float/2addr v8, v9
 
     :cond_2
     add-float/2addr v3, v8
