@@ -3819,12 +3819,15 @@
 
     move-result v3
 
+    if-lez v3, :cond_left_anim
+
     int-to-float v3, v3
 
     neg-float v3, v3
 
     invoke-virtual {v1, v3}, Landroid/view/View;->setTranslationX(F)V
 
+    :cond_left_anim
     invoke-virtual {v1}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
     move-result-object v4
