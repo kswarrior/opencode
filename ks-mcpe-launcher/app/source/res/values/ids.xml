@@ -216,6 +216,7 @@
     <id name="callMeasure" />
     <id name="cancel_button" />
     <id name="card_display_name" />
+    <id name="card_management_icon" />
     <id name="card_settings_icon" />
     <id name="card_type_tag" />
     <id name="card_version_code" />

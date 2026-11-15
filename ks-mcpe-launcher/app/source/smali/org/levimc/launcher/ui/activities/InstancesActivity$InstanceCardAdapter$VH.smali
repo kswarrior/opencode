@@ -17,6 +17,8 @@
 # instance fields
 .field displayName:Landroid/widget/TextView;
 
+.field managementIcon:Landroid/widget/ImageView;
+
 .field settingsIcon:Landroid/widget/ImageView;
 
 .field typeTag:Landroid/widget/TextView;
@@ -94,6 +96,17 @@
 
     .line 33
     .line 34
+    sget v0, Lorg/levimc/launcher/R$id;->card_management_icon:I
+
+    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/ImageView;
+
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter$VH;->managementIcon:Landroid/widget/ImageView;
+
+    .line 35
     sget v0, Lorg/levimc/launcher/R$id;->card_settings_icon:I
 
     .line 35

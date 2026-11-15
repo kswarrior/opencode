@@ -4437,6 +4437,7 @@
     <public type="id" name="callMeasure" id="0x7f0a00d5" />
     <public type="id" name="cancel_button" id="0x7f0a00d6" />
     <public type="id" name="card_display_name" id="0x7f0a00d7" />
+    <public type="id" name="card_management_icon" id="0x7f0a0497" />
     <public type="id" name="card_settings_icon" id="0x7f0a00d8" />
     <public type="id" name="card_type_tag" id="0x7f0a00d9" />
     <public type="id" name="card_version_code" id="0x7f0a00da" />

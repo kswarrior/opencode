@@ -202,6 +202,8 @@
 
 .field public static card_display_name:I = 0x7f0a00d7
 
+.field public static card_management_icon:I = 0x7f0a0497
+
 .field public static card_settings_icon:I = 0x7f0a00d8
 
 .field public static card_type_tag:I = 0x7f0a00d9
