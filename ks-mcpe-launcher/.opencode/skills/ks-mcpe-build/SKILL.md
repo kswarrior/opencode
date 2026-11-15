@@ -45,7 +45,7 @@ Requirements: Java 21+, Python 3, curl, Android build-tools (`zipalign`,
 - The default keystore lives under `~/.local/share/ks-mcpe-signing`; it is not
   disposable, but a fresh CI runner does not preserve it. Back it up or
   configure CI signing secrets; a lost key changes the signature and breaks
-  in-place updates. Version 1.0.6 was signed with a new key for this reason.
+  in-place updates. Version 1.0.6 was signed with a new key for this reason; 1.0.7 reuses it.
 - Keep the root `.gitignore` exceptions for
   `ks-mcpe-launcher/app/source/**/{server,target,debug}/`. The decoded Java
   packages include directories with those names; without the exceptions
@@ -71,8 +71,8 @@ the committed tree and never download the upstream APK.
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable workspace and output |
 | `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
 | `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.6` | Clone versionName (also written to `BuildConfig`) |
-| `APP_VERSION_CODE` | `10006` | Clone versionCode (also written to `BuildConfig`) |
+| `APP_VERSION` | `1.0.7` | Clone versionName (also written to `BuildConfig`) |
+| `APP_VERSION_CODE` | `10007` | Clone versionCode (also written to `BuildConfig`) |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
 | `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing keystore |
 | `CREDENTIALS_FILE` | next to keystore | Generated password/alias storage |
@@ -149,10 +149,10 @@ LeviLauncher is installed.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.6.apk | head -3
-$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.6.apk
-$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.6.apk
-unzip -lv dist/KS-MCPE-Launcher-1.0.6.apk | grep -E 'resources.arsc|classes.dex'
+$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.7.apk | head -3
+$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.7.apk
+$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.7.apk
+unzip -lv dist/KS-MCPE-Launcher-1.0.7.apk | grep -E 'resources.arsc|classes.dex'
 ```
 
 - `resources.arsc` must be `Stored` and 4-byte aligned (Android 11+ install

@@ -75,7 +75,7 @@ ANDROID_HOME=/path/to/android-sdk ./ks-mcpe-launcher/app/build.sh
 ```
 
 The APK is written to `/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-<version>.apk`.
-The clone version defaults to `1.0.6` (versionCode `10006`), independent of
+The clone version defaults to `1.0.7` (versionCode `10007`), independent of
 the upstream LeviLauncher version. `build.sh` writes the version into both
 `apktool.yml` and `BuildConfig.smali` so the manifest and in-app version stay
 in sync.
@@ -87,8 +87,8 @@ Useful environment variables:
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace and output |
 | `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
 | `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.6` | Clone versionName written to `apktool.yml` and `BuildConfig` |
-| `APP_VERSION_CODE` | `10006` | Clone versionCode written to `apktool.yml` and `BuildConfig` |
+| `APP_VERSION` | `1.0.7` | Clone versionName written to `apktool.yml` and `BuildConfig` |
+| `APP_VERSION_CODE` | `10007` | Clone versionCode written to `apktool.yml` and `BuildConfig` |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output file name prefix |
 | `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing keystore |
 | `KEYSTORE_PASSWORD` | generated once | Keystore password |
@@ -116,9 +116,10 @@ directory if you want to keep update compatibility.
   from this repository's `ks-mcpe-launcher` release.
 - The signing keys for 1.0.2, 1.0.3 and 1.0.4 were not preserved. The 1.0.5
   key was also lost when the ephemeral build environment was reset, so 1.0.6
-  is signed with a new key (cert SHA-256
-  `8944ee96bbc98a044f870af21aad4de70a9b0e5de17c71826aa9384d09d1f63e`). Users
-  of 1.0.2 through 1.0.5 must uninstall before installing 1.0.6. Back up
+  was signed with a new key (cert SHA-256
+  `8944ee96bbc98a044f870af21aad4de70a9b0e5de17c71826aa9384d09d1f63e`). 1.0.7
+  reuses that key, so 1.0.6 users can update in place; users of 1.0.2 through
+  1.0.5 must uninstall first. Back up
   `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` to keep future updates
   installable in place.
 - Core launcher features (Minecraft versions, mods, worlds, backups, accounts)
