@@ -474,8 +474,6 @@
     move-object/from16 v20, v2
 
     check-cast v20, Landroid/widget/LinearLayout;
-    .line 182
-    if-eqz v20, :cond_0
 
     .line 183
     .line 184
