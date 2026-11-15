@@ -29,6 +29,20 @@
 # instance fields
 .field private currentProgress:I
 
+.field private accentColor:I
+
+.field private dotsDrawable:Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;
+
+.field private lastProgress:I
+
+.field private launchFailed:Z
+
+.field private onBackgroundColor:I
+
+.field private secondaryColor:I
+
+.field private titleView:Landroid/widget/TextView;
+
 .field private detailView:Landroid/widget/TextView;
 
 .field private enteringGame:Z

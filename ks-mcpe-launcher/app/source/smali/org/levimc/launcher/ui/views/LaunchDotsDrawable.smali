@@ -1,6 +1,9 @@
 .class public final Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;
 .super Landroid/graphics/drawable/Drawable;
 
+# interfaces
+.implements Landroid/animation/ValueAnimator$AnimatorUpdateListener;
+
 
 # instance fields
 .field private animator:Landroid/animation/ValueAnimator;
@@ -90,11 +93,7 @@
 
     invoke-virtual {v0, v2}, Landroid/animation/ValueAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
 
-    new-instance v2, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable$1;
-
-    invoke-direct {v2, p0}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable$1;-><init>(Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;)V
-
-    invoke-virtual {v0, v2}, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
+    invoke-virtual {v0, p0}, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
 
     iput-object v0, p0, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->animator:Landroid/animation/ValueAnimator;
 
@@ -278,6 +277,24 @@
     invoke-virtual {v0}, Landroid/animation/ValueAnimator;->cancel()V
 
     :cond_0
+    return-void
+.end method
+
+.method public onAnimationUpdate(Landroid/animation/ValueAnimator;)V
+    .locals 1
+
+    invoke-virtual {p1}, Landroid/animation/ValueAnimator;->getAnimatedValue()Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Ljava/lang/Float;
+
+    invoke-virtual {p1}, Ljava/lang/Float;->floatValue()F
+
+    move-result p1
+
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->setPhase(F)V
+
     return-void
 .end method
 
