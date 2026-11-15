@@ -6,7 +6,7 @@
         <TextView android:textSize="10.0sp" android:textStyle="bold" android:textColor="@color/primary" android:gravity="center" android:id="@id/card_type_tag" android:background="@drawable/bg_release_tag" android:layout_width="wrap_content" android:layout_height="22.0dp" android:fontFamily="@font/misans" android:paddingHorizontal="10.0dp" />
         <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8.0dp">
             <ImageView android:id="@id/card_settings_icon" android:layout_width="24.0dp" android:layout_height="24.0dp" android:src="@drawable/ic_settings" android:scaleType="centerInside" app:tint="@color/text_secondary" />
-            <ImageView android:id="@id/card_management_icon" android:layout_width="24.0dp" android:layout_height="24.0dp" android:src="@drawable/ic_content" android:scaleType="centerInside" android:layout_marginTop="6.0dp" app:tint="@color/text_secondary" />
+            <ImageView android:id="@id/card_management_icon" android:layout_width="24.0dp" android:layout_height="24.0dp" android:src="@drawable/ic_content" android:scaleType="centerInside" android:contentDescription="@string/content_management" android:layout_marginTop="6.0dp" app:tint="@color/text_secondary" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp">

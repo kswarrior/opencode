@@ -117,15 +117,17 @@ the committed tree and never download the upstream APK.
     `NewsNotificationHelper`) are deleted, and their manifest providers,
     activities, services, queries, permissions, and metadata are removed.
     `ChangelogManager` is independent of the News feed and stays.
-11. The shared header is taller and carries Home, Mods, Management and
-    Instances tabs, with Settings as an icon-only button on the right and only
-    "KS" as the brand. The header News icon and badge are gone. The old
-    Mods/Content cards are hidden on the Home page, and the Mods and Management
-    tabs open `ModsFullscreenActivity` and `ContentManagementActivity`. The
+11. The shared header is taller, with only "KS" as the brand, Mods and Settings
+    as icon-only buttons on the right, and the Home and Management tabs hidden.
+    The header News icon and badge are gone. The old Mods/Content cards are
+    hidden on the Home page. Management opens from the cube icon on each
+    instance card (below its settings icon), scoped to that instance, and Mods
+    opens `ModsFullscreenActivity`. The
     Miscellaneous tab/page and Quick Launch were removed; CurseForge is a
     button in Content Management beside Import, and Microsoft Accounts is
-    reachable from the header. `BaseActivity` registers five header tabs; add
-    any future tab to both `setupBaseNavBar()` and `setActiveNavTab()`.
+    reachable from the header. `BaseActivity` registers five header tabs (keep
+    their views in `nav_bar.xml`, because listener wiring has no null checks);
+    add any future tab to both `setupBaseNavBar()` and `setActiveNavTab()`.
 12. The Mods page places External Mods, Mod Menu and Add Mod on the title row
     and shows enabled/total as an `N / M` badge in place of the old stat
     blocks. The Settings page removes its subtitle and puts the Basic,
