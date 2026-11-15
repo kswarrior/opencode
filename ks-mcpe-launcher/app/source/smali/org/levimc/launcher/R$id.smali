@@ -966,6 +966,8 @@
 
 .field public static skin_packs_button:I = 0x7f0a03c7
 
+.field public static skin_viewer:I = 0x7f0a0499
+
 .field public static sort_button:I = 0x7f0a03d0
 
 .field public static sort_label:I = 0x7f0a03d1

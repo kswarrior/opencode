@@ -78,6 +78,10 @@
 
 .field private skinPacksCountText:Landroid/widget/TextView;
 
+.field private skinRenderer:Lcom/mio/skin/SkinRenderer;
+
+.field private skinViewer:Lcom/mio/skin/SkinViewer;
+
 .field private versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
 
 .field private viewModel:Lorg/levimc/launcher/ui/views/MainViewModel;
@@ -8597,6 +8601,46 @@
 
 
 # virtual methods
+.method private setupSkinViewer()V
+    .locals 4
+
+    sget v0, Lorg/levimc/launcher/R$id;->skin_viewer:I
+
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/mio/skin/SkinViewer;
+
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->skinViewer:Lcom/mio/skin/SkinViewer;
+
+    new-instance v1, Lcom/mio/skin/SkinRenderer;
+
+    invoke-direct {v1, p0}, Lcom/mio/skin/SkinRenderer;-><init>(Landroid/content/Context;)V
+
+    iput-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->skinRenderer:Lcom/mio/skin/SkinRenderer;
+
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v2
+
+    iget v2, v2, Landroid/util/DisplayMetrics;->density:F
+
+    invoke-virtual {v0, v1, v2}, Lcom/mio/skin/SkinViewer;->setRenderer(Lcom/mio/skin/SkinRenderer;F)V
+
+    new-instance v2, Lcom/mio/skin/IdleAnimation;
+
+    invoke-direct {v2}, Lcom/mio/skin/IdleAnimation;-><init>()V
+
+    invoke-virtual {v1, v2}, Lcom/mio/skin/SkinRenderer;->playAnimation(Lcom/mio/skin/PlayerAnimation;)V
+
+    return-void
+.end method
+
 .method public onCreate(Landroid/os/Bundle;)V
     .locals 3
 
@@ -8637,6 +8681,8 @@
     invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setContentView(Landroid/view/View;)V
 
     .line 19
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setupSkinViewer()V
+
     .line 20
     .line 21
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->closeLauncherRestartAfterFirstDraw()V
@@ -8775,7 +8821,14 @@
     invoke-super {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->onResume()V
 
     .line 2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->skinViewer:Lcom/mio/skin/SkinViewer;
+
+    if-eqz v0, :cond_skin_resume
+
+    invoke-virtual {v0}, Lcom/mio/skin/SkinViewer;->onResume()V
+
     .line 3
+    :cond_skin_resume
     .line 4
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshAccountHeaderUI()V
 
@@ -8856,6 +8909,21 @@
     .line 43
     .line 44
     :cond_2
+    return-void
+.end method
+
+.method public onPause()V
+    .locals 1
+
+    invoke-super {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->onPause()V
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->skinViewer:Lcom/mio/skin/SkinViewer;
+
+    if-eqz v0, :cond_skin_pause
+
+    invoke-virtual {v0}, Lcom/mio/skin/SkinViewer;->onPause()V
+
+    :cond_skin_pause
     return-void
 .end method
 
