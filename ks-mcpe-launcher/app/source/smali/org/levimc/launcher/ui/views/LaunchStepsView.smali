@@ -261,15 +261,15 @@
 
     const/4 v0, 0x1
 
-    if-ne p1, v0, :running
+    if-eq p1, v0, :running
 
     const/4 v0, 0x2
 
-    if-ne p1, v0, :done
+    if-eq p1, v0, :done
 
     const/4 v0, 0x3
 
-    if-ne p1, v0, :failed
+    if-eq p1, v0, :failed
 
     iget p1, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->pendingColor:I
 
@@ -704,7 +704,7 @@
     :check_progress
     const/16 v3, 0x64
 
-    if-lt v2, v3, :all_done
+    if-ge v2, v3, :all_done
 
     if-gtz v2, :return
 
@@ -736,7 +736,7 @@
 
     iget v0, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->progress:I
 
-    if-le v0, v3, :mark_done
+    if-gt v0, v3, :mark_done
 
     if-ltz v5, :next
 
