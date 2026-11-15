@@ -1576,6 +1576,14 @@
     .line 61
     .line 62
     invoke-static {p0}, Lorg/levimc/launcher/core/auth/storage/XalExporter;->exportActiveAccountOrThrow(Landroid/content/Context;)V
+
+    invoke-static {}, Lorg/levimc/launcher/settings/FeatureSettings;->getInstance()Lorg/levimc/launcher/settings/FeatureSettings;
+
+    move-result-object v2
+
+    const/4 v3, 0x1
+
+    invoke-virtual {v2, v3}, Lorg/levimc/launcher/settings/FeatureSettings;->setLauncherManagedMcLoginEnabled(Z)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
