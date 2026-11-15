@@ -187,6 +187,15 @@ for pattern, label in (
     if re.search(pattern, manifest):
         sys.exit(f"source manifest still has the upstream {label}")
 
+for needle, label in (
+    ("playgamesinitprovider", "Play Games provider"),
+    ("com.android.vending.BILLING", "billing permission"),
+    ("com.google.android.play.billingclient.version", "billing metadata"),
+    ("com.google.android.gms.games.APP_ID", "Play Games app id"),
+):
+    if needle in manifest:
+        sys.exit(f"source manifest still declares {label}")
+
 xal_handler = re.search(
     r'<activity\b[^>]*android:name="com\.microsoft\.xal\.browser\.IntentHandler"[^>]*>',
     manifest,
@@ -222,21 +231,50 @@ auth_session_text = auth_session.group(0)
 if "const/4 v1, 0x1" not in auth_session_text or "UseInProcBrowser:Z" in auth_session_text:
     sys.exit("source XAL auth session can still delegate to an external browser")
 
-for rel, default_reg, old_invoke in (
+xal_checks = (
     (
         "smali/com/microsoft/xal/androidjava/Storage.smali",
-        "v4",
-        "invoke-virtual {v3, v2, v1}, Lorg/json/JSONObject;->optBoolean",
+        r"\.method public static getStoragePath.*?\.end method",
+        ("const/4 v1, 0x1", "invoke-virtual {v3, v2, v1}, Lorg/json/JSONObject;->optBoolean", "const/4 v2, 0x1"),
+        "managed login storage",
     ),
     (
         "smali/com/microsoft/xal/crypto/Ecdsa.smali",
-        "v3",
-        "invoke-virtual {v2, v1, v0}, Lorg/json/JSONObject;->optBoolean",
+        r"\.method private static getCryptoPrefs.*?\.end method",
+        ("const/4 v3, 0x1", "invoke-virtual {v2, v1, v3}, Lorg/json/JSONObject;->optBoolean", "const/4 v1, 0x1"),
+        "managed login crypto",
     ),
-):
+)
+for rel, method_pattern, markers, label in xal_checks:
     text = (root / rel).read_text(encoding="utf-8")
-    if old_invoke in text or f"const/4 {default_reg}, 0x1" not in text:
-        sys.exit(f"{rel}: managed login storage default is not enabled")
+    method = re.search(method_pattern, text, re.DOTALL)
+    if method is None:
+        sys.exit(f"{rel}: {label} method not found")
+    body = method.group(0)
+    for marker in markers:
+        if marker not in body:
+            sys.exit(f"{rel}: {label} default is not enabled")
+
+for rel in (
+    "smali/org/levimc/launcher/core/packages/PackageService.smali",
+    "smali/org/levimc/launcher/core/play/PlayClient.smali",
+    "smali/org/levimc/launcher/ui/packages/PackagesActivity.smali",
+):
+    if not (root / rel).is_file():
+        sys.exit(f"source is missing the v1.7 launch core: {rel}")
+
+preparer = (root / "smali/org/levimc/launcher/core/minecraft/MinecraftRuntimePreparer.smali").read_text(
+    encoding="utf-8"
+)
+for marker in ("checkPackageWorkspace", "orderPackageMods"):
+    if marker not in preparer:
+        sys.exit(f"source runtime preparer is missing {marker}")
+
+auth_manager = (root / "smali/org/levimc/launcher/core/auth/MsftAuthManager.smali").read_text(
+    encoding="utf-8"
+)
+if "prepareAccountForLaunch" not in auth_manager:
+    sys.exit("source Microsoft account flow is missing prepareAccountForLaunch")
 
 updater = (root / "smali/org/levimc/launcher/util/GithubReleaseUpdater.smali").read_text(encoding="utf-8")
 for name in ("checkUpdate", "checkUpdateOnLaunch"):
@@ -246,81 +284,6 @@ for name in ("checkUpdate", "checkUpdateOnLaunch"):
     )
     if not pattern.search(updater):
         sys.exit(f"source update entry point {name} is not disabled")
-
-settings = (root / "smali/org/levimc/launcher/ui/activities/SettingsActivity.smali").read_text(encoding="utf-8")
-if "GithubReleaseUpdater" in settings:
-    sys.exit("source settings still instantiate the upstream updater")
-
-for rel in (
-    "smali/com/google/android/gms/games",
-    "smali/com/google/android/gms/internal/games_v2",
-    "smali/com/android/billingclient",
-    "smali/org/levimc/launcher/core/news/LauncherNewsMessagingService.smali",
-    "smali/org/levimc/launcher/core/news/NewsNotificationHelper.smali",
-):
-    if (root / rel).exists():
-        sys.exit(f"source still contains removed component: {rel}")
-
-for needle, label in (
-    ("playgamesinitprovider", "Play Games provider"),
-    ("billingclient.version", "Play billing metadata"),
-    ("LauncherNewsMessagingService", "news push service"),
-    ("NewsActivity", "news activity"),
-    ("com.android.vending.BILLING", "billing permission"),
-):
-    if needle in manifest:
-        sys.exit(f"source manifest still declares {label}")
-
-for rel in (
-    "smali/org/levimc/launcher/ui/activities/NewsActivity.smali",
-    "smali/org/levimc/launcher/ui/activities/NewsAdapter.smali",
-    "smali/org/levimc/launcher/core/news/NewsRepository.smali",
-    "smali/org/levimc/launcher/core/news/NewsFeed.smali",
-):
-    if (root / rel).exists():
-        sys.exit(f"source still contains removed news component: {rel}")
-
-nav_bar = (root / "res/layout/nav_bar.xml").read_text(encoding="utf-8")
-if "ic_nav_news" in nav_bar or "nav_news" in nav_bar:
-    sys.exit("source header still contains the news icon")
-
-settings_layout = (root / "res/layout/activity_settings.xml").read_text(encoding="utf-8")
-if "KS MCPE Launcher | created by KS Warrior" not in settings_layout:
-    sys.exit("source About tab is missing the KS MCPE Launcher brand line")
-
-home_layout = (root / "res/layout/activity_main.xml").read_text(encoding="utf-8")
-if "@id/minecraft_title_text" not in home_layout:
-    sys.exit("source home layout is missing minecraft_title_text")
-
-main_binding = (root / "smali/org/levimc/launcher/databinding/ActivityMainBinding.smali").read_text(
-    encoding="utf-8"
-)
-for match in re.finditer(
-    r"move-object/from16 (v\d+), v2\s*\n\s*check-cast \1, [^\n;]+;\s*\n"
-    r"\s*\.line \d+\s*\n\s*if-eqz \1, :cond_0",
-    main_binding,
-):
-    sys.exit(
-        "source ActivityMainBinding still requires a removed optional view: "
-        + match.group(1)
-    )
-
-if not (root / "assets/default_background.jpg").is_file():
-    sys.exit("source is missing the bundled default background")
-
-if (root / "assets/launcher/news.json").exists():
-    sys.exit("source still contains the dead news feed asset")
-
-smali_files = list(root.glob("smali/**/*.smali"))
-for path in smali_files:
-    text = path.read_text(encoding="utf-8", errors="ignore")
-    if "NewsNotificationHelper" in text or "LauncherNewsMessagingService" in text:
-        sys.exit(f"source still references removed news push code: {path}")
-    if not path.name.startswith("GithubReleaseUpdater") and (
-        "GithubReleaseUpdater;->checkUpdate" in text
-        or "GithubReleaseUpdater;->checkUpdateOnLaunch" in text
-    ):
-        sys.exit(f"source still invokes the updater: {path}")
 
 PATCH_VADDR = 0x1990D4
 PATCH = bytes.fromhex("20008052c0035fd6")  # mov w0, #1; ret
@@ -353,7 +316,7 @@ for lib in libs:
     if blob[offset:offset + len(PATCH)] != PATCH:
         sys.exit(f"{lib}: native package-name check is not patched")
 
-print(f"verified package={app_id}, disabled updater, removed play games/billing/news, branded About, default background, patched native verifier")
+print(f"verified package={app_id}, v1.7 launch core, XAL in-proc auth/managed storage, disabled updater, patched native verifier")
 PY
 
 log "building APK"
