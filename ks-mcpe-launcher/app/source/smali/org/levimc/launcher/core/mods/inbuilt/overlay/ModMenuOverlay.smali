@@ -10232,7 +10232,17 @@
 
     .line 33
     .line 34
-    const p2, 0x334ae0a0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->getAccentColor()I
+
+    move-result p2
+
+    const v0, 0xffffff
+
+    and-int/2addr p2, v0
+
+    const v0, 0x33000000
+
+    or-int/2addr p2, v0
 
     .line 35
     .line 36
