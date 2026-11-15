@@ -43,8 +43,9 @@ Requirements: Java 21+, Python 3, curl, Android build-tools (`zipalign`,
 - There is no overlay or per-file patch layer. Full-file replacements and
   build-time customizations live directly in `app/source` or in `build.sh`.
 - The default keystore lives under `~/.local/share/ks-mcpe-signing`; it is not
-  disposable. Back it up or configure CI signing secrets; a lost key changes
-  the signature and breaks in-place updates.
+  disposable, but a fresh CI runner does not preserve it. Back it up or
+  configure CI signing secrets; a lost key changes the signature and breaks
+  in-place updates. Version 1.0.6 was signed with a new key for this reason.
 - Keep the root `.gitignore` exceptions for
   `ks-mcpe-launcher/app/source/**/{server,target,debug}/`. The decoded Java
   packages include directories with those names; without the exceptions

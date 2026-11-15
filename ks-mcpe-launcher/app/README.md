@@ -114,10 +114,11 @@ directory if you want to keep update compatibility.
 
 - In-app self-update is intentionally disabled. Install new builds manually
   from this repository's `ks-mcpe-launcher` release.
-- Version 1.0.2 uses a signing key that was not preserved, and the key used
-  for 1.0.3 and 1.0.4 was also lost. Uninstall 1.0.2 through 1.0.4 before
-  installing a newer build. Version 1.0.6 reuses the 1.0.5 key, so 1.0.5 can
-  update in place. Back up
+- The signing keys for 1.0.2, 1.0.3 and 1.0.4 were not preserved. The 1.0.5
+  key was also lost when the ephemeral build environment was reset, so 1.0.6
+  is signed with a new key (cert SHA-256
+  `8944ee96bbc98a044f870af21aad4de70a9b0e5de17c71826aa9384d09d1f63e`). Users
+  of 1.0.2 through 1.0.5 must uninstall before installing 1.0.6. Back up
   `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` to keep future updates
   installable in place.
 - Core launcher features (Minecraft versions, mods, worlds, backups, accounts)

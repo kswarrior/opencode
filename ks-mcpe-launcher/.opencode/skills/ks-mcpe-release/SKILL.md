@@ -103,12 +103,16 @@ Version 1.0.2 was published with a signing key (cert SHA-256
 not preserved outside the ephemeral build workspace. Versions 1.0.3 and 1.0.4
 used cert SHA-256
 `062cfc33f62e3e838555acfb2d80d1fe546cdae61ac44332b2212260b781ff48`, but that
-private key was also lost, so 1.0.5 introduced a new key (cert SHA-256
-`e5a6a0bd1b1b27ea5f5cc857fe8bcaca790653873f3dcf2699ab89736d820bd7`), reused by
-1.0.6. Users of 1.0.2 through 1.0.4 must uninstall before installing 1.0.5 or
-newer; 1.0.5 upgrades to 1.0.6 in place. Older assets remain published for
-rollback. The build defaults the keystore to
-`~/.local/share/ks-mcpe-signing/ks-mcpe.keystore`; back that up.
+private key was also lost, so 1.0.5 used cert SHA-256
+`e5a6a0bd1b1b27ea5f5cc857fe8bcaca790653873f3dcf2699ab89736d820bd7`. That
+keystore was not preserved when the ephemeral CI home was reset either, so
+1.0.6 uses a new key (cert SHA-256
+`8944ee96bbc98a044f870af21aad4de70a9b0e5de17c71826aa9384d09d1f63e`). Users of
+1.0.2 through 1.0.5 must uninstall before installing 1.0.6. Older assets
+remain published for rollback. The build defaults the keystore to
+`~/.local/share/ks-mcpe-signing/ks-mcpe.keystore`, but that directory does not
+survive a CI runner reset; export or back it up externally if in-place updates
+matter.
 
 ## Rules
 
