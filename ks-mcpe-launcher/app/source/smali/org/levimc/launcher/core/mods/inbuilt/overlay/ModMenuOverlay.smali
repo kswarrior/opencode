@@ -7652,6 +7652,8 @@
     .line 527
     .line 528
     :cond_7
+    if-eqz v0, :cond_close
+
     new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/r;
 
     .line 529
@@ -7665,6 +7667,8 @@
     .line 533
     .line 534
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    :cond_close
 
     .line 535
     .line 536
