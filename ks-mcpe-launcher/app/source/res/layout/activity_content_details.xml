@@ -2,6 +2,9 @@
 <androidx.core.widget.NestedScrollView android:background="@color/background" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout android:orientation="vertical" android:paddingTop="6.0dp" android:paddingBottom="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingHorizontal="12.0dp" android:paddingTop="6.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <include layout="@layout/view_back_button" android:layout_width="28.0dp" android:layout_height="28.0dp" />
+        </LinearLayout>
         <LinearLayout android:orientation="vertical" android:background="@drawable/bg_cf_item" android:padding="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="12.0dp">
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
                 <ImageView android:id="@id/detail_icon" android:background="@drawable/bg_cf_icon" android:layout_width="58.0dp" android:layout_height="58.0dp" android:src="@drawable/ic_minecraft_cube" android:scaleType="centerCrop" android:layout_marginEnd="11.0dp" android:clipToOutline="true" />
