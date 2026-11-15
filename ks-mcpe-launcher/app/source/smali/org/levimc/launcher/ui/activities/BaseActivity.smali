@@ -3419,6 +3419,10 @@
     :cond_1
     if-ne v4, p1, :cond_3
 
+    const/4 v6, 0x1
+
+    invoke-virtual {v5, v6}, Landroid/view/View;->setSelected(Z)V
+
     .line 44
     .line 45
     if-eqz v1, :cond_2
@@ -3486,6 +3490,10 @@
 
     .line 75
     :cond_3
+    const/4 v6, 0x0
+
+    invoke-virtual {v5, v6}, Landroid/view/View;->setSelected(Z)V
+
     invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
     .line 76
