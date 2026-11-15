@@ -117,17 +117,24 @@ the committed tree and never download the upstream APK.
     `NewsNotificationHelper`) are deleted, and their manifest providers,
     activities, services, queries, permissions, and metadata are removed.
     `ChangelogManager` is independent of the News feed and stays.
-11. The shared header is taller, with only "KS" as the brand, Mods and Settings
-    as icon-only buttons on the right, and the Home and Management tabs hidden.
-    The header News icon and badge are gone. The old Mods/Content cards are
-    hidden on the Home page. Management opens from the cube icon on each
-    instance card (below its settings icon), scoped to that instance, and Mods
-    opens `ModsFullscreenActivity`. The
+11. The shared header is removed: `BaseActivity.wrapWithNavBar()` still
+    inflates `nav_bar.xml` but hides it (`nav_bar_root` GONE) and adds it after
+    the content page so page-local duplicate ids win `findViewById`. Keep the
+    nav views in `nav_bar.xml`, because listener wiring has no null checks.
+    The Home page has its own row with the KS logo/brand, Sign In/avatar, Mods
+    and Settings. Every content page includes `nav_back_button` (from
+    `res/layout/view_back_button.xml`) left of its title; Accounts pins that
+    row above its two-pane content so it also shows in the disabled state.
+    Management opens from the cube icon on each instance card (below its
+    settings icon), scoped to that instance, and Mods opens
+    `ModsFullscreenActivity`. The header News icon and badge are gone. The old
+    Mods/Content cards are hidden on the Home page. The
     Miscellaneous tab/page and Quick Launch were removed; CurseForge is a
     button in Content Management beside Import, and Microsoft Accounts is
-    reachable from the header. `BaseActivity` registers five header tabs (keep
-    their views in `nav_bar.xml`, because listener wiring has no null checks);
-    add any future tab to both `setupBaseNavBar()` and `setActiveNavTab()`.
+    reachable from the Home avatar/Sign In. `BaseActivity` registers five
+    header tabs (keep their views in `nav_bar.xml`, because listener wiring has
+    no null checks); add any future tab to both `setupBaseNavBar()` and
+    `setActiveNavTab()`.
 12. The Mods page places External Mods, Mod Menu and Add Mod on the title row
     and shows enabled/total as an `N / M` badge in place of the old stat
     blocks. The Settings page removes its subtitle and puts the Basic,
