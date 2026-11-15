@@ -3251,7 +3251,7 @@
 .end method
 
 .method public onCreate(Landroid/os/Bundle;)V
-    .locals 2
+    .locals 4
 
     .line 1
     invoke-static {}, Lorg/levimc/launcher/util/LauncherBackgroundController;->suspendForMinecraft()V
@@ -3523,6 +3523,76 @@
     .line 142
     .line 143
     invoke-virtual {p1, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    sget p1, Lorg/levimc/launcher/R$id;->minecraftLaunchLogTitle:I
+
+    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object p1
+
+    invoke-static {p1, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    check-cast p1, Landroid/widget/TextView;
+
+    iput-object p1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logTitleView:Landroid/widget/TextView;
+
+    new-instance v1, Lorg/levimc/launcher/core/minecraft/LaunchLogToggle;
+
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/core/minecraft/LaunchLogToggle;-><init>(Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;)V
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    sget p1, Lorg/levimc/launcher/R$id;->minecraftLaunchStepsScroll:I
+
+    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object p1
+
+    invoke-static {p1, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    check-cast p1, Landroid/widget/ScrollView;
+
+    iput-object p1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->stepsScroll:Landroid/widget/ScrollView;
+
+    sget p1, Lorg/levimc/launcher/R$id;->minecraftLaunchSteps:I
+
+    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object p1
+
+    invoke-static {p1, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    check-cast p1, Lorg/levimc/launcher/ui/views/LaunchStepsView;
+
+    iput-object p1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->stepsView:Lorg/levimc/launcher/ui/views/LaunchStepsView;
+
+    sget p1, Lorg/levimc/launcher/R$id;->minecraftLaunchTitle:I
+
+    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object p1
+
+    invoke-static {p1, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    check-cast p1, Landroid/widget/TextView;
+
+    iput-object p1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->titleView:Landroid/widget/TextView;
+
+    const-string v1, "Launching"
+
+    invoke-virtual {p1, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    new-instance v1, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;
+
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;-><init>(Landroid/content/Context;)V
+
+    iput-object v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->dotsDrawable:Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p1, v2, v2, v1, v2}, Landroid/widget/TextView;->setCompoundDrawablesRelativeWithIntrinsicBounds(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+
+    invoke-virtual {v1}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->start()V
 
     .line 144
     .line 145
