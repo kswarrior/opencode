@@ -832,7 +832,19 @@
 
     invoke-virtual {p1, v2}, Landroid/view/View;->setAlpha(F)V
 
-    const v2, 0x461c4000    # 10000.0f
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->activity:Landroid/app/Activity;
+
+    invoke-virtual {v2}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v2
+
+    iget v2, v2, Landroid/util/DisplayMetrics;->widthPixels:I
+
+    int-to-float v2, v2
 
     if-eqz v0, :cond_0
 
@@ -3761,10 +3773,13 @@
 
     move-result v3
 
+    if-lez v3, :cond_right_anim
+
     int-to-float v3, v3
 
     invoke-virtual {v0, v3}, Landroid/view/View;->setTranslationX(F)V
 
+    :cond_right_anim
     invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
     move-result-object v4
