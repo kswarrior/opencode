@@ -7480,24 +7480,6 @@
     .line 609
     .line 610
     .line 611
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navSettings:Landroid/widget/TextView;
-
-    .line 612
-    .line 613
-    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/r;
-
-    .line 614
-    .line 615
-    const/16 v2, 0xb
-
-    .line 616
-    .line 617
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/r;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;I)V
-
-    .line 618
-    .line 619
-    .line 620
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 621
     .line 622
@@ -8155,6 +8137,8 @@
     .line 957
     .line 958
     .line 959
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->setupSettingsTabs()V
+
     iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->compactMode:Z
 
     .line 960
