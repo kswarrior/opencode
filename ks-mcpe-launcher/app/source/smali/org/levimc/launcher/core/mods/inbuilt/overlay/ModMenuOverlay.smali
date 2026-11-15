@@ -2807,14 +2807,33 @@
 .end method
 
 .method private getAccentColor()I
-    .locals 1
+    .locals 3
 
-    .line 1
-    const v0, -0xb51f60
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->activity:Landroid/app/Activity;
 
-    .line 2
-    .line 3
-    .line 4
+    if-nez v0, :cond_0
+
+    const v0, -0xd95966
+
+    return v0
+
+    :cond_0
+    const-string v1, "personalization_prefs"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v0
+
+    const-string v1, "accent_color"
+
+    const v2, -0xd95966
+
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result v0
+
     return v0
 .end method
 
@@ -10652,6 +10671,13 @@
 .method private updateNavigationItem(Landroid/widget/TextView;Landroid/widget/ImageButton;Z)V
     .locals 6
 
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navHudEditor:Landroid/widget/TextView;
+
+    if-eq p1, v0, :cond_hud
+
+    const/4 p3, 0x1
+
+    :cond_hud
     .line 1
     if-eqz p3, :cond_0
 
