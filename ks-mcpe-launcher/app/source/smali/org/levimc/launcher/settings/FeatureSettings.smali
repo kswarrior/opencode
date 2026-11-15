@@ -16,6 +16,8 @@
 
 .field private static appContext:Landroid/content/Context;
 
+.field private static final KEY_MANAGED_LOGIN_MIGRATED:Ljava/lang/String; = "managed_login_migrated"
+
 
 # instance fields
 .field private crashUploadEnabled:Ljava/lang/Boolean;
@@ -46,10 +48,14 @@
 
     .line 6
     .line 7
+    const/4 v0, 0x1
+
     iput-boolean v0, p0, Lorg/levimc/launcher/settings/FeatureSettings;->launcherManagedMcLoginEnabled:Z
 
     .line 8
     .line 9
+    const/4 v0, 0x0
+
     iput-boolean v0, p0, Lorg/levimc/launcher/settings/FeatureSettings;->logcatOverlayEnabled:Z
 
     .line 10
