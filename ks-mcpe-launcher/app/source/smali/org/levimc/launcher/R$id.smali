@@ -714,8 +714,9 @@
 
 .field public static nav_modules_compact:I = 0x7f0a02bb
 
+.field public static discover_source_button:I = 0x7f0a02bc
 
-
+.field public static discover_category_button:I = 0x7f0a02bd
 
 .field public static nav_settings:I = 0x7f0a02bf
 
