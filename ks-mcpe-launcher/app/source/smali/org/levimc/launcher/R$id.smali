@@ -532,6 +532,10 @@
 
 .field public static minecraftLaunchTitle:I = 0x7f0a023e
 
+.field public static minecraftLaunchSteps:I = 0x7f0a0242
+
+.field public static minecraftLaunchStepsScroll:I = 0x7f0a0243
+
 .field public static minecraft_title_text:I = 0x7f0a023f
 
 .field public static minimize_bubble:I = 0x7f0a0241

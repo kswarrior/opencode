@@ -3013,64 +3013,64 @@
 
     iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logScroll:Landroid/widget/ScrollView;
 
-    if-eqz v0, :log_null
+    if-eqz v0, :return
 
     invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
 
     move-result v1
 
-    if-eqz v1, :show_log
+    if-nez v1, :hide
 
-    const/16 v1, 0x8
-
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
-
-    iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->stepsScroll:Landroid/widget/ScrollView;
-
-    if-eqz v2, :no_steps
-
-    const/4 v1, 0x0
-
-    invoke-virtual {v2, v1}, Landroid/view/View;->setVisibility(I)V
-
-    :no_steps
-    iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logTitleView:Landroid/widget/TextView;
-
-    if-eqz v2, :no_title
-
-    const-string v1, "View Log"
-
-    invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    :no_title
-    return-void
-
-    :show_log
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
 
     iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->stepsScroll:Landroid/widget/ScrollView;
 
-    if-eqz v2, :no_steps2
+    if-eqz v2, :show_no_steps
 
     const/16 v1, 0x8
 
     invoke-virtual {v2, v1}, Landroid/view/View;->setVisibility(I)V
 
-    :no_steps2
+    :show_no_steps
     iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logTitleView:Landroid/widget/TextView;
 
-    if-eqz v2, :no_title2
+    if-eqz v2, :show_no_title
 
     const-string v1, "Hide Log"
 
     invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    :no_title2
+    :show_no_title
     invoke-static {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->appendLog$lambda$0(Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;)V
 
-    :log_null
+    return-void
+
+    :hide
+    const/16 v1, 0x8
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->stepsScroll:Landroid/widget/ScrollView;
+
+    if-eqz v2, :hide_no_steps
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v2, v1}, Landroid/view/View;->setVisibility(I)V
+
+    :hide_no_steps
+    iget-object v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logTitleView:Landroid/widget/TextView;
+
+    if-eqz v2, :hide_no_title
+
+    const-string v1, "View Log"
+
+    invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :hide_no_title
+    :return
     return-void
 .end method
 
