@@ -2056,8 +2056,6 @@
 
     if-eqz v1, :dots_ok
 
-    invoke-virtual {v1}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->stop()V
-
     :dots_ok
     iget v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->lastProgress:I
 
