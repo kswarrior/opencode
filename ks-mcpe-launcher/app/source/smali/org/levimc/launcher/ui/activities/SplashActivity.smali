@@ -3153,6 +3153,8 @@
     move-result-object p1
 
     .line 136
+    const/4 v1, 0x0
+
     new-instance v0, Lorg/levimc/launcher/ui/activities/u2;
 
     .line 137
