@@ -696,101 +696,7 @@
 
     .line 89
     :cond_2
-    iget-object p1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logView:Landroid/widget/TextView;
-
-    .line 90
-    .line 91
-    if-eqz p1, :cond_4
-
-    .line 92
-    .line 93
-    iget-object v4, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->visibleLogMessages:Ljava/util/ArrayDeque;
-
-    .line 94
-    .line 95
-    const/4 v8, 0x0
-
-    .line 96
-    const/16 v9, 0x3a
-
-    .line 97
-    .line 98
-    const-string v5, "\n"
-
-    .line 99
-    .line 100
-    const/4 v6, 0x0
-
-    .line 101
-    const-string v7, "\n"
-
-    .line 102
-    .line 103
-    invoke-static/range {v4 .. v9}, Lr8/j;->K(Ljava/lang/Iterable;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Le9/k;I)Ljava/lang/String;
-
-    .line 104
-    .line 105
-    .line 106
-    move-result-object v0
-
-    .line 107
-    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 108
-    .line 109
-    .line 110
-    iget-object p1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logScroll:Landroid/widget/ScrollView;
-
-    .line 111
-    .line 112
-    if-eqz p1, :cond_3
-
-    .line 113
-    .line 114
-    new-instance v0, Lorg/levimc/launcher/core/minecraft/f;
-
-    .line 115
-    .line 116
-    const/4 v1, 0x3
-
-    .line 117
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/core/minecraft/f;-><init>(Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;I)V
-
-    .line 118
-    .line 119
-    .line 120
-    invoke-virtual {p1, v0}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
-
-    .line 121
-    .line 122
-    .line 123
     return-void
-
-    .line 124
-    :cond_3
-    const-string p1, "logScroll"
-
-    .line 125
-    .line 126
-    invoke-static {p1}, Lf9/i;->i(Ljava/lang/String;)V
-
-    .line 127
-    .line 128
-    .line 129
-    throw v3
-
-    .line 130
-    :cond_4
-    const-string p1, "logView"
-
-    .line 131
-    .line 132
-    invoke-static {p1}, Lf9/i;->i(Ljava/lang/String;)V
-
-    .line 133
-    .line 134
-    .line 135
-    throw v3
 
     .line 136
     :cond_5
@@ -1003,6 +909,18 @@
     move-result v2
 
     .line 34
+    iput v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->accentColor:I
+
+    iput v2, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->secondaryColor:I
+
+    sget v3, Lorg/levimc/launcher/R$color;->on_background:I
+
+    invoke-virtual {p0, v3}, Landroid/content/Context;->getColor(I)I
+
+    move-result v3
+
+    iput v3, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->onBackgroundColor:I
+
     iget-object v3, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->progressBar:Landroid/widget/ProgressBar;
 
     .line 35
