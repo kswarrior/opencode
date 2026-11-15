@@ -8858,119 +8858,76 @@
 .end method
 
 .method public setTextMinecraftVersion()V
-    .locals 3
+    .locals 5
 
-    .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
-    .line 2
-    .line 3
-    if-nez v0, :cond_0
+    if-nez v0, :cond_binding
 
-    .line 4
-    .line 5
     return-void
 
-    .line 6
-    :cond_0
+    :cond_binding
     iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
 
-    .line 7
-    .line 8
-    if-nez v1, :cond_1
+    const/4 v2, 0x0
 
-    .line 9
-    .line 10
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->textMinecraftVersion:Landroid/widget/TextView;
+    const/4 v3, 0x0
 
-    .line 11
-    .line 12
-    sget v1, Lorg/levimc/launcher/R$string;->not_found_version:I
+    if-nez v1, :cond_manager
 
-    .line 13
-    .line 14
-    invoke-virtual {p0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    sget v4, Lorg/levimc/launcher/R$string;->not_found_version:I
 
-    .line 15
-    .line 16
-    .line 17
-    move-result-object v1
+    invoke-virtual {p0, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
-    .line 18
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    move-result-object v2
 
-    .line 19
-    .line 20
-    .line 21
-    return-void
+    goto :goto_set_text
 
-    .line 22
-    :cond_1
+    :cond_manager
     invoke-virtual {v1}, Lorg/levimc/launcher/core/versions/VersionManager;->getSelectedVersion()Lorg/levimc/launcher/core/versions/GameVersion;
 
-    .line 23
-    .line 24
-    .line 25
-    move-result-object v0
+    move-result-object v1
 
-    .line 26
-    if-eqz v0, :cond_2
+    if-eqz v1, :cond_name_empty
 
-    .line 27
-    .line 28
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceDisplayName(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceDisplayName(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
 
-    .line 29
-    .line 30
-    .line 31
-    move-result-object v0
+    move-result-object v2
 
-    .line 32
-    goto :goto_0
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceVersionText(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
 
-    .line 33
-    :cond_2
-    const/4 v0, 0x0
+    move-result-object v3
 
-    .line 34
-    :goto_0
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    :cond_name_empty
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .line 35
-    .line 36
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivityMainBinding;->textMinecraftVersion:Landroid/widget/TextView;
+    move-result v4
 
-    .line 37
-    .line 38
-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    if-eqz v4, :cond_set_text
 
-    .line 39
-    .line 40
-    .line 41
-    move-result v2
+    sget v4, Lorg/levimc/launcher/R$string;->not_found_version:I
 
-    .line 42
-    if-eqz v2, :cond_3
+    invoke-virtual {p0, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
-    .line 43
-    .line 44
-    sget v0, Lorg/levimc/launcher/R$string;->not_found_version:I
+    move-result-object v2
 
-    .line 45
-    .line 46
-    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    :cond_set_text
+    iget-object v4, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->textMinecraftVersion:Landroid/widget/TextView;
 
-    .line 47
-    .line 48
-    .line 49
-    move-result-object v0
+    invoke-virtual {v4, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 50
-    :cond_3
-    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    sget v4, Lorg/levimc/launcher/R$id;->text_instance_version:I
 
-    .line 51
-    .line 52
-    .line 53
+    invoke-virtual {p0, v4}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/widget/TextView;
+
+    if-eqz v4, :cond_done
+
+    invoke-virtual {v4, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_done
     return-void
 .end method
