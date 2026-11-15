@@ -42,281 +42,11 @@
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
-    .locals 7
+    .locals 0
 
     invoke-direct {p0, p1}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-    move-result-object v0
-
-    iget v1, v0, Landroid/util/DisplayMetrics;->density:F
-
-    iget v2, v0, Landroid/util/DisplayMetrics;->scaledDensity:F
-
-    const/high16 v3, 0x42080000    # 34.0f
-
-    mul-float/2addr v3, v1
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->rowHeight:F
-
-    const/high16 v3, 0x40a00000    # 5.0f
-
-    mul-float/2addr v3, v1
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circleRadius:F
-
-    const/high16 v3, 0x41000000    # 8.0f
-
-    mul-float/2addr v3, v1
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circleGap:F
-
-    const/high16 v3, 0x41800000    # 16.0f
-
-    mul-float/2addr v3, v1
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->itemGap:F
-
-    const/high16 v3, 0x41200000    # 10.0f
-
-    mul-float/2addr v3, v1
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkSize:F
-
-    const/high16 v3, 0x40800000    # 4.0f
-
-    mul-float/2addr v3, v1
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkGap:F
-
-    const v3, -0x616162
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->pendingColor:I
-
-    const v3, -0x3ef9
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->runningColor:I
-
-    const v3, -0xb350b0
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->doneColor:I
-
-    const v3, -0xbbcca
-
-    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->failedColor:I
-
-    new-instance v3, Landroid/graphics/Paint;
-
-    const/4 v4, 0x1
-
-    invoke-direct {v3, v4}, Landroid/graphics/Paint;-><init>(I)V
-
-    const/high16 v5, 0x41400000    # 12.0f
-
-    mul-float/2addr v5, v2
-
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setTextSize(F)V
-
-    sget v5, Lorg/levimc/launcher/R$color;->on_background:I
-
-    invoke-virtual {p1, v5}, Landroid/content/Context;->getColor(I)I
-
-    move-result v5
-
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setColor(I)V
-
-    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->textPaint:Landroid/graphics/Paint;
-
-    new-instance v3, Landroid/graphics/Paint;
-
-    invoke-direct {v3, v4}, Landroid/graphics/Paint;-><init>(I)V
-
-    sget-object v5, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
-
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
-
-    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circlePaint:Landroid/graphics/Paint;
-
-    new-instance v3, Landroid/graphics/Paint;
-
-    invoke-direct {v3, v4}, Landroid/graphics/Paint;-><init>(I)V
-
-    sget-object v5, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
-
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
-
-    const/high16 v5, 0x40000000    # 2.0f
-
-    mul-float/2addr v5, v1
-
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    sget-object v5, Landroid/graphics/Paint$Cap;->ROUND:Landroid/graphics/Paint$Cap;
-
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStrokeCap(Landroid/graphics/Paint$Cap;)V
-
-    sget-object v5, Landroid/graphics/Paint$Join;->ROUND:Landroid/graphics/Paint$Join;
-
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStrokeJoin(Landroid/graphics/Paint$Join;)V
-
-    iget v5, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->doneColor:I
-
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setColor(I)V
-
-    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkPaint:Landroid/graphics/Paint;
-
-    const/16 v3, 0xb
-
-    new-array v3, v3, [Ljava/lang/String;
-
-    const/4 v4, 0x0
-
-    const-string v5, "Checking version"
-
-    aput-object v5, v3, v4
-
-    const/4 v4, 0x1
-
-    const-string v5, "Preparing account"
-
-    aput-object v5, v3, v4
-
-    const/4 v4, 0x2
-
-    const-string v5, "Preparing files"
-
-    aput-object v5, v3, v4
-
-    const/4 v4, 0x3
-
-    const-string v5, "Preparing launch"
-
-    aput-object v5, v3, v4
-
-    const/4 v4, 0x4
-
-    const-string v5, "Checking mods"
-
-    aput-object v5, v3, v4
-
-    const/4 v4, 0x5
-
-    const-string v5, "Loading libraries"
-
-    aput-object v5, v3, v4
-
-    const/4 v4, 0x6
-
-    const-string v5, "Preparing loader"
-
-    aput-object v5, v3, v4
-
-    const/4 v4, 0x7
-
-    const-string v5, "Loading Minecraft"
-
-    aput-object v5, v3, v4
-
-    const/16 v4, 0x8
-
-    const-string v5, "Loading mods"
-
-    aput-object v5, v3, v4
-
-    const/16 v4, 0x9
-
-    const-string v5, "Mods ready"
-
-    aput-object v5, v3, v4
-
-    const/16 v4, 0xa
-
-    const-string v5, "Entering game"
-
-    aput-object v5, v3, v4
-
-    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->names:[Ljava/lang/String;
-
-    const/16 v3, 0xb
-
-    new-array v3, v3, [I
-
-    const/4 v4, 0x0
-
-    const/4 v5, 0x4
-
-    aput v5, v3, v4
-
-    const/4 v4, 0x1
-
-    const/16 v5, 0x8
-
-    aput v5, v3, v4
-
-    const/4 v4, 0x2
-
-    const/16 v5, 0xc
-
-    aput v5, v3, v4
-
-    const/4 v4, 0x3
-
-    const/16 v5, 0x1a
-
-    aput v5, v3, v4
-
-    const/4 v4, 0x4
-
-    const/16 v5, 0x22
-
-    aput v5, v3, v4
-
-    const/4 v4, 0x5
-
-    const/16 v5, 0x26
-
-    aput v5, v3, v4
-
-    const/4 v4, 0x6
-
-    const/16 v5, 0x28
-
-    aput v5, v3, v4
-
-    const/4 v4, 0x7
-
-    const/16 v5, 0x38
-
-    aput v5, v3, v4
-
-    const/16 v4, 0x8
-
-    const/16 v5, 0x4e
-
-    aput v5, v3, v4
-
-    const/16 v4, 0x9
-
-    const/16 v5, 0x60
-
-    aput v5, v3, v4
-
-    const/16 v4, 0xa
-
-    const/16 v5, 0x64
-
-    aput v5, v3, v4
-
-    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->thresholds:[I
-
-    const/16 v3, 0xb
-
-    new-array v3, v3, [I
-
-    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->states:[I
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->init(Landroid/content/Context;)V
 
     return-void
 .end method
@@ -324,7 +54,9 @@
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 0
 
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;-><init>(Landroid/content/Context;)V
+    invoke-direct {p0, p1, p2}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->init(Landroid/content/Context;)V
 
     return-void
 .end method
@@ -332,11 +64,154 @@
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
     .locals 0
 
-    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/views/LaunchStepsView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    invoke-direct {p0, p1, p2, p3}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->init(Landroid/content/Context;)V
 
     return-void
 .end method
 
+.method private final init(Landroid/content/Context;)V
+    .locals 7
+
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    move-result-object v0
+    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    move-result-object v0
+    iget v1, v0, Landroid/util/DisplayMetrics;->density:F
+    iget v2, v0, Landroid/util/DisplayMetrics;->scaledDensity:F
+    const/high16 v3, 0x42080000    # 34.0f
+    mul-float/2addr v3, v1
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->rowHeight:F
+    const/high16 v3, 0x40a00000    # 5.0f
+    mul-float/2addr v3, v1
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circleRadius:F
+    const/high16 v3, 0x41000000    # 8.0f
+    mul-float/2addr v3, v1
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circleGap:F
+    const/high16 v3, 0x41800000    # 16.0f
+    mul-float/2addr v3, v1
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->itemGap:F
+    const/high16 v3, 0x41200000    # 10.0f
+    mul-float/2addr v3, v1
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkSize:F
+    const/high16 v3, 0x40800000    # 4.0f
+    mul-float/2addr v3, v1
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkGap:F
+    const v3, -0x616162
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->pendingColor:I
+    const v3, -0x3ef9
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->runningColor:I
+    const v3, -0xb350b0
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->doneColor:I
+    const v3, -0xbbcca
+    iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->failedColor:I
+    new-instance v3, Landroid/graphics/Paint;
+    const/4 v4, 0x1
+    invoke-direct {v3, v4}, Landroid/graphics/Paint;-><init>(I)V
+    const/high16 v5, 0x41400000    # 12.0f
+    mul-float/2addr v5, v2
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setTextSize(F)V
+    sget v5, Lorg/levimc/launcher/R$color;->on_background:I
+    invoke-virtual {p1, v5}, Landroid/content/Context;->getColor(I)I
+    move-result v5
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setColor(I)V
+    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->textPaint:Landroid/graphics/Paint;
+    new-instance v3, Landroid/graphics/Paint;
+    invoke-direct {v3, v4}, Landroid/graphics/Paint;-><init>(I)V
+    sget-object v5, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->circlePaint:Landroid/graphics/Paint;
+    new-instance v3, Landroid/graphics/Paint;
+    invoke-direct {v3, v4}, Landroid/graphics/Paint;-><init>(I)V
+    sget-object v5, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+    const/high16 v5, 0x40000000    # 2.0f
+    mul-float/2addr v5, v1
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStrokeWidth(F)V
+    sget-object v5, Landroid/graphics/Paint$Cap;->ROUND:Landroid/graphics/Paint$Cap;
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStrokeCap(Landroid/graphics/Paint$Cap;)V
+    sget-object v5, Landroid/graphics/Paint$Join;->ROUND:Landroid/graphics/Paint$Join;
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setStrokeJoin(Landroid/graphics/Paint$Join;)V
+    iget v5, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->doneColor:I
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setColor(I)V
+    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->checkPaint:Landroid/graphics/Paint;
+    const/16 v3, 0xb
+    new-array v3, v3, [Ljava/lang/String;
+    const/4 v4, 0x0
+    const-string v5, "Checking version"
+    aput-object v5, v3, v4
+    const/4 v4, 0x1
+    const-string v5, "Preparing account"
+    aput-object v5, v3, v4
+    const/4 v4, 0x2
+    const-string v5, "Preparing files"
+    aput-object v5, v3, v4
+    const/4 v4, 0x3
+    const-string v5, "Preparing launch"
+    aput-object v5, v3, v4
+    const/4 v4, 0x4
+    const-string v5, "Checking mods"
+    aput-object v5, v3, v4
+    const/4 v4, 0x5
+    const-string v5, "Loading libraries"
+    aput-object v5, v3, v4
+    const/4 v4, 0x6
+    const-string v5, "Preparing loader"
+    aput-object v5, v3, v4
+    const/4 v4, 0x7
+    const-string v5, "Loading Minecraft"
+    aput-object v5, v3, v4
+    const/16 v4, 0x8
+    const-string v5, "Loading mods"
+    aput-object v5, v3, v4
+    const/16 v4, 0x9
+    const-string v5, "Mods ready"
+    aput-object v5, v3, v4
+    const/16 v4, 0xa
+    const-string v5, "Entering game"
+    aput-object v5, v3, v4
+    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->names:[Ljava/lang/String;
+    const/16 v3, 0xb
+    new-array v3, v3, [I
+    const/4 v4, 0x0
+    const/4 v5, 0x4
+    aput v5, v3, v4
+    const/4 v4, 0x1
+    const/16 v5, 0x8
+    aput v5, v3, v4
+    const/4 v4, 0x2
+    const/16 v5, 0xc
+    aput v5, v3, v4
+    const/4 v4, 0x3
+    const/16 v5, 0x1a
+    aput v5, v3, v4
+    const/4 v4, 0x4
+    const/16 v5, 0x22
+    aput v5, v3, v4
+    const/4 v4, 0x5
+    const/16 v5, 0x26
+    aput v5, v3, v4
+    const/4 v4, 0x6
+    const/16 v5, 0x28
+    aput v5, v3, v4
+    const/4 v4, 0x7
+    const/16 v5, 0x38
+    aput v5, v3, v4
+    const/16 v4, 0x8
+    const/16 v5, 0x4e
+    aput v5, v3, v4
+    const/16 v4, 0x9
+    const/16 v5, 0x60
+    aput v5, v3, v4
+    const/16 v4, 0xa
+    const/16 v5, 0x64
+    aput v5, v3, v4
+    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->thresholds:[I
+    const/16 v3, 0xb
+    new-array v3, v3, [I
+    iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->states:[I
+.end method
 
 # virtual methods
 .method public final setFailed(Z)V
