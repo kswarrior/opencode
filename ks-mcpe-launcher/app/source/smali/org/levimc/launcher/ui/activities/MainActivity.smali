@@ -3374,14 +3374,16 @@
 .end method
 
 .method private synthetic lambda$initListeners$21(Landroid/view/View;)V
-    .locals 0
+    .locals 1
 
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->showVersionSelectDialog()V
+    new-instance p1, Landroid/content/Intent;
 
-    .line 2
-    .line 3
-    .line 4
+    const-class v0, Lorg/levimc/launcher/ui/activities/InstancesActivity;
+
+    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
+
     return-void
 .end method
 
@@ -7744,7 +7746,7 @@
     .line 42
     .line 43
     .line 44
-    invoke-static {p0, v0}, Lorg/levimc/launcher/core/news/ChangelogManager;->showIfNeeded(Landroid/app/Activity;Ljava/lang/Runnable;)V
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/activities/m1;->run()V
 
     .line 45
     .line 46
