@@ -938,70 +938,32 @@
     .locals 10
 
     .line 1
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->currentSource:I
+
+    const/4 v1, 0x1
+
+    if-ne v0, v1, :cond_cf
+
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->loadMcpedlUrl()V
+
+    return-void
+
+    :cond_cf
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->searchBox:Landroid/widget/EditText;
 
-    .line 2
-    .line 3
     invoke-static {v0}, Ln5/h;->a(Landroid/widget/EditText;)Ljava/lang/String;
 
-    .line 4
-    .line 5
-    .line 6
     move-result-object v2
 
-    .line 7
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->categoryGroup:Landroid/widget/RadioGroup;
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->selectedCategoryIndex:I
 
-    .line 8
-    .line 9
-    invoke-virtual {v0}, Landroid/widget/RadioGroup;->getCheckedRadioButtonId()I
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->categories:Ljava/util/List;
 
-    .line 10
-    .line 11
-    .line 12
-    move-result v0
+    invoke-interface {v1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    .line 13
-    const/4 v1, -0x1
-
-    .line 14
-    if-eq v0, v1, :cond_0
-
-    .line 15
-    .line 16
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->categoryGroup:Landroid/widget/RadioGroup;
-
-    .line 17
-    .line 18
-    invoke-virtual {v1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    .line 19
-    .line 20
-    .line 21
     move-result-object v0
 
-    .line 22
-    if-eqz v0, :cond_0
-
-    .line 23
-    .line 24
-    invoke-virtual {v0}, Landroid/view/View;->getTag()Ljava/lang/Object;
-
-    .line 25
-    .line 26
-    .line 27
-    move-result-object v0
-
-    .line 28
     check-cast v0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity$Category;
-
-    .line 29
-    .line 30
-    goto :goto_0
-
-    .line 31
-    :cond_0
-    const/4 v0, 0x0
 
     .line 32
     :goto_0
