@@ -8131,7 +8131,7 @@
 
     .line 27
     .line 28
-    const/4 v2, 0x0
+    const/4 v2, 0x1
 
     .line 29
     invoke-direct {p0, v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->updateNavigationItem(Landroid/widget/TextView;Landroid/widget/ImageButton;Z)V
@@ -9633,6 +9633,12 @@
     .line 131
     .line 132
     :cond_6
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->showModulesSection()V
+
+    sget-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$MenuSection;->SETTINGS:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$MenuSection;
+
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->activeSection:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$MenuSection;
+
     return-void
 .end method
 
