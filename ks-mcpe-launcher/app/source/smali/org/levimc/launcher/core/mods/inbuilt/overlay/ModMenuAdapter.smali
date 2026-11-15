@@ -635,7 +635,25 @@
 
     .line 11
     .line 12
-    const v1, -0xb51f60
+    invoke-virtual {v0}, Landroid/widget/TextView;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    const-string v2, "personalization_prefs"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v1, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v1
+
+    const-string v2, "accent_color"
+
+    const v3, -0xd95966
+
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result v1
 
     .line 13
     .line 14
@@ -1573,7 +1591,25 @@
     .line 53
     .line 54
     .line 55
-    const p1, -0xb51f60
+    invoke-virtual {p2}, Landroid/widget/TextView;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    const-string v2, "personalization_prefs"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v1, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v1
+
+    const-string v2, "accent_color"
+
+    const v3, -0xd95966
+
+    invoke-interface {v1, v2, v3}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result p1
 
     .line 56
     .line 57
