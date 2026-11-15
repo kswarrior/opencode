@@ -70,8 +70,8 @@ the committed tree and never download the upstream APK.
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable workspace and output |
 | `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
 | `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.5` | Clone versionName (also written to `BuildConfig`) |
-| `APP_VERSION_CODE` | `10005` | Clone versionCode (also written to `BuildConfig`) |
+| `APP_VERSION` | `1.0.6` | Clone versionName (also written to `BuildConfig`) |
+| `APP_VERSION_CODE` | `10006` | Clone versionCode (also written to `BuildConfig`) |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
 | `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing keystore |
 | `CREDENTIALS_FILE` | next to keystore | Generated password/alias storage |
@@ -95,9 +95,11 @@ the committed tree and never download the upstream APK.
 5. `app_name` is `KS MCPE Launcher` in every `res/values*/strings.xml`.
 6. `eula_title` and `eula_message` are branded "KS MCPE Launcher" (translated
    EULA texts keep their language but use the new brand name).
-7. `res/layout/activity_about.xml` is the centered "Created by KS Warrior"
-   page, and `res/layout/nav_bar.xml` has a text-less, 36dp icon-only Settings
-   button at the far right of the header.
+7. `res/layout/nav_bar.xml` has a text-less, 36dp icon-only Settings button at
+   the far right of the header. The separate upstream About page is gone;
+   `res/layout/activity_settings.xml` renders a branded About tab with
+   `KS MCPE Launcher | created by KS Warrior`, a feature overview and the
+   GitHub/Discord links.
 8. The native package-name verifier in `lib/arm64-v8a/libgxcore.so` is
    neutralised at virtual address `0x1990d4` (`cmp x1,#0x13; b.ne fail`) to
    `mov w0,#1; ret`. `JNI_OnLoad` otherwise requires the upstream
@@ -108,13 +110,15 @@ the committed tree and never download the upstream APK.
    call is removed from `MainActivity`, and the "Check for updates" button and
    its listener are removed from the settings screen.
 10. Play Games (`smali/com/google/android/gms/games`, `.../internal/games_v2`),
-    Play billing (`smali/com/android/billingclient`), and the Firebase news
-    push code (`LauncherNewsMessagingService`, `NewsNotificationHelper`) are
-    deleted, and their manifest providers, activities, services, queries,
-    permissions, and metadata are removed.
+    Play billing (`smali/com/android/billingclient`), Launcher News
+    (`NewsActivity`, adapters, feed classes and resources), and the Firebase
+    news push code (`LauncherNewsMessagingService`,
+    `NewsNotificationHelper`) are deleted, and their manifest providers,
+    activities, services, queries, permissions, and metadata are removed.
+    `ChangelogManager` is independent of the News feed and stays.
 11. The shared header is taller and carries Home, Mods, Management and
     Instances tabs, with Settings as an icon-only button on the right and only
-    "KS" as the brand. The About tab and About page are removed. The old
+    "KS" as the brand. The header News icon and badge are gone. The old
     Mods/Content cards are hidden on the Home page, and the Mods and Management
     tabs open `ModsFullscreenActivity` and `ContentManagementActivity`. The
     Miscellaneous tab/page and Quick Launch were removed; CurseForge is a
@@ -125,6 +129,10 @@ the committed tree and never download the upstream APK.
     and shows enabled/total as an `N / M` badge in place of the old stat
     blocks. The Settings page removes its subtitle and puts the Basic,
     Personalization, Updates and About tabs on the title row.
+13. `assets/default_background.jpg` is seeded into `filesDir` on first launch;
+    it is the default background with 1px blur and 100% brightness. Clearing a
+    custom image restores it. `PersonalizationManager` keeps the
+    `bg_image_path`/`bg_image_blur`/`bg_image_brightness` preference keys.
 
 `build.sh` rewrites the clone version into `apktool.yml` and
 `BuildConfig.smali` before building, then verifies the application id, branded
@@ -140,10 +148,10 @@ LeviLauncher is installed.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.5.apk | head -3
-$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.5.apk
-$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.5.apk
-unzip -lv dist/KS-MCPE-Launcher-1.0.5.apk | grep -E 'resources.arsc|classes.dex'
+$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.6.apk | head -3
+$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.6.apk
+$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.6.apk
+unzip -lv dist/KS-MCPE-Launcher-1.0.6.apk | grep -E 'resources.arsc|classes.dex'
 ```
 
 - `resources.arsc` must be `Stored` and 4-byte aligned (Android 11+ install

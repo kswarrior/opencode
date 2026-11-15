@@ -225,10 +225,31 @@ for needle, label in (
     ("playgamesinitprovider", "Play Games provider"),
     ("billingclient.version", "Play billing metadata"),
     ("LauncherNewsMessagingService", "news push service"),
+    ("NewsActivity", "news activity"),
     ("com.android.vending.BILLING", "billing permission"),
 ):
     if needle in manifest:
         sys.exit(f"source manifest still declares {label}")
+
+for rel in (
+    "smali/org/levimc/launcher/ui/activities/NewsActivity.smali",
+    "smali/org/levimc/launcher/ui/activities/NewsAdapter.smali",
+    "smali/org/levimc/launcher/core/news/NewsRepository.smali",
+    "smali/org/levimc/launcher/core/news/NewsFeed.smali",
+):
+    if (root / rel).exists():
+        sys.exit(f"source still contains removed news component: {rel}")
+
+nav_bar = (root / "res/layout/nav_bar.xml").read_text(encoding="utf-8")
+if "ic_nav_news" in nav_bar or "nav_news" in nav_bar:
+    sys.exit("source header still contains the news icon")
+
+settings_layout = (root / "res/layout/activity_settings.xml").read_text(encoding="utf-8")
+if "KS MCPE Launcher | created by KS Warrior" not in settings_layout:
+    sys.exit("source About tab is missing the KS MCPE Launcher brand line")
+
+if not (root / "assets/default_background.jpg").is_file():
+    sys.exit("source is missing the bundled default background")
 
 smali_files = list(root.glob("smali/**/*.smali"))
 for path in smali_files:
@@ -272,7 +293,7 @@ for lib in libs:
     if blob[offset:offset + len(PATCH)] != PATCH:
         sys.exit(f"{lib}: native package-name check is not patched")
 
-print(f"verified package={app_id}, disabled updater, removed play games/billing/news push, patched native verifier")
+print(f"verified package={app_id}, disabled updater, removed play games/billing/news, branded About, default background, patched native verifier")
 PY
 
 log "building APK"
