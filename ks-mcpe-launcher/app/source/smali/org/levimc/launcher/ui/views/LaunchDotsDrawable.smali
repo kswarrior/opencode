@@ -289,7 +289,7 @@
 .end method
 
 .method public onAnimationUpdate(Landroid/animation/ValueAnimator;)V
-    .locals 1
+    .locals 2
 
     invoke-virtual {p1}, Landroid/animation/ValueAnimator;->getAnimatedValue()Ljava/lang/Object;
 
@@ -303,6 +303,17 @@
 
     invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->setPhase(F)V
 
+    invoke-virtual {p0}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->getCallback()Landroid/graphics/drawable/Drawable$Callback;
+
+    move-result-object v0
+
+    if-eqz v0, :skip_invalidate
+
+    check-cast v0, Landroid/view/View;
+
+    invoke-virtual {v0}, Landroid/view/View;->invalidate()V
+
+    :skip_invalidate
     return-void
 .end method
 
