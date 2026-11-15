@@ -198,6 +198,21 @@ if '<string name="app_name">KS MCPE Launcher</string>' not in strings:
 if "Welcome to LeviLauncher" in strings:
     sys.exit("source EULA still mentions LeviLauncher")
 
+auth_browser = (root / "smali/com/microsoft/xal/browser/BrowserLaunchActivity.smali").read_text(
+    encoding="utf-8"
+)
+auth_session = re.search(
+    r"\.method private startAuthSession\(Lcom/microsoft/xal/browser/"
+    r"BrowserLaunchActivity\$BrowserLaunchParameters;\)V.*?\.end method",
+    auth_browser,
+    re.DOTALL,
+)
+if auth_session is None:
+    sys.exit("source XAL browser activity is missing startAuthSession")
+auth_session_text = auth_session.group(0)
+if "const/4 v1, 0x1" not in auth_session_text or "UseInProcBrowser:Z" in auth_session_text:
+    sys.exit("source XAL auth session can still delegate to an external browser")
+
 updater = (root / "smali/org/levimc/launcher/util/GithubReleaseUpdater.smali").read_text(encoding="utf-8")
 for name in ("checkUpdate", "checkUpdateOnLaunch"):
     pattern = re.compile(
