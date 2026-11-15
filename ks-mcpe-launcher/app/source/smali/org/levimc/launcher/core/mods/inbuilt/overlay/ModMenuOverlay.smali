@@ -3705,163 +3705,148 @@
 .end method
 
 .method private synthetic lambda$animateMenuEnter$0(Landroid/view/View;)V
-    .locals 2
+    .locals 7
 
-    .line 1
-    invoke-virtual {p1}, Landroid/view/View;->getWidth()I
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->getModMenuRightPanel()Landroid/view/View;
 
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    int-to-float v0, v0
-
-    .line 6
-    const/high16 v1, 0x40000000    # 2.0f
-
-    .line 7
-    .line 8
-    div-float/2addr v0, v1
-
-    .line 9
-    invoke-virtual {p1, v0}, Landroid/view/View;->setPivotX(F)V
-
-    .line 10
-    .line 11
-    .line 12
-    invoke-virtual {p1}, Landroid/view/View;->getHeight()I
-
-    .line 13
-    .line 14
-    .line 15
-    move-result v0
-
-    .line 16
-    int-to-float v0, v0
-
-    .line 17
-    div-float/2addr v0, v1
-
-    .line 18
-    invoke-virtual {p1, v0}, Landroid/view/View;->setPivotY(F)V
-
-    .line 19
-    .line 20
-    .line 21
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->activity:Landroid/app/Activity;
-
-    .line 22
-    .line 23
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;->getInstance(Landroid/content/Context;)Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;
-
-    .line 24
-    .line 25
-    .line 26
     move-result-object v0
 
-    .line 27
-    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;->getModMenuOpacity()I
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->modMenuSidebar:Landroid/view/View;
 
-    .line 28
-    .line 29
-    .line 30
-    move-result v0
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->activity:Landroid/app/Activity;
 
-    .line 31
-    int-to-float v0, v0
+    invoke-static {v3}, Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;->getInstance(Landroid/content/Context;)Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;
 
-    .line 32
-    const/high16 v1, 0x42c80000    # 100.0f
+    move-result-object v3
 
-    .line 33
-    .line 34
-    div-float/2addr v0, v1
+    invoke-virtual {v3}, Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;->getModMenuOpacity()I
 
-    .line 35
+    move-result v3
+
+    int-to-float v2, v3
+
+    const/high16 v3, 0x42c80000    # 100.0f
+
+    div-float/2addr v2, v3
+
     invoke-virtual {p1}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
-    .line 36
-    .line 37
-    .line 38
-    move-result-object p1
+    move-result-object v3
 
-    .line 39
-    invoke-virtual {p1, v0}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {v3, v2}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 40
-    .line 41
-    .line 42
-    move-result-object p1
+    move-result-object v3
 
-    .line 43
-    const/high16 v0, 0x3f800000    # 1.0f
+    const-wide/16 v4, 0xdc
 
-    .line 44
-    .line 45
-    invoke-virtual {p1, v0}, Landroid/view/ViewPropertyAnimator;->scaleX(F)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {v3, v4, v5}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
 
-    .line 46
-    .line 47
-    .line 48
-    move-result-object p1
+    move-result-object v3
 
-    .line 49
-    invoke-virtual {p1, v0}, Landroid/view/ViewPropertyAnimator;->scaleY(F)Landroid/view/ViewPropertyAnimator;
+    new-instance v4, Landroid/view/animation/DecelerateInterpolator;
 
-    .line 50
-    .line 51
-    .line 52
-    move-result-object p1
+    const/high16 v5, 0x3fc00000    # 1.5f
 
-    .line 53
-    const-wide/16 v0, 0xdc
+    invoke-direct {v4, v5}, Landroid/view/animation/DecelerateInterpolator;-><init>(F)V
 
-    .line 54
-    .line 55
-    invoke-virtual {p1, v0, v1}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {v3, v4}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
 
-    .line 56
-    .line 57
-    .line 58
-    move-result-object p1
+    move-result-object v3
 
-    .line 59
-    new-instance v0, Landroid/view/animation/DecelerateInterpolator;
+    invoke-virtual {v3}, Landroid/view/ViewPropertyAnimator;->withLayer()Landroid/view/ViewPropertyAnimator;
 
-    .line 60
-    .line 61
-    const/high16 v1, 0x3fc00000    # 1.5f
+    move-result-object v3
 
-    .line 62
-    .line 63
-    invoke-direct {v0, v1}, Landroid/view/animation/DecelerateInterpolator;-><init>(F)V
+    invoke-virtual {v3}, Landroid/view/ViewPropertyAnimator;->start()V
 
-    .line 64
-    .line 65
-    .line 66
-    invoke-virtual {p1, v0}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+    if-eqz v0, :cond_right_done
 
-    .line 67
-    .line 68
-    .line 69
-    move-result-object p1
+    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
-    .line 70
-    invoke-virtual {p1}, Landroid/view/ViewPropertyAnimator;->withLayer()Landroid/view/ViewPropertyAnimator;
+    move-result v3
 
-    .line 71
-    .line 72
-    .line 73
-    move-result-object p1
+    int-to-float v3, v3
 
-    .line 74
-    invoke-virtual {p1}, Landroid/view/ViewPropertyAnimator;->start()V
+    invoke-virtual {v0, v3}, Landroid/view/View;->setTranslationX(F)V
 
-    .line 75
-    .line 76
-    .line 77
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    const/4 v5, 0x0
+
+    invoke-virtual {v4, v5}, Landroid/view/ViewPropertyAnimator;->translationX(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    const-wide/16 v5, 0xdc
+
+    invoke-virtual {v4, v5, v6}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    new-instance v5, Landroid/view/animation/DecelerateInterpolator;
+
+    const/high16 v6, 0x3fc00000    # 1.5f
+
+    invoke-direct {v5, v6}, Landroid/view/animation/DecelerateInterpolator;-><init>(F)V
+
+    invoke-virtual {v4, v5}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/view/ViewPropertyAnimator;->withLayer()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    :cond_right_done
+    if-eqz v1, :cond_left_done
+
+    invoke-virtual {v1}, Landroid/view/View;->getWidth()I
+
+    move-result v3
+
+    int-to-float v3, v3
+
+    neg-float v3, v3
+
+    invoke-virtual {v1, v3}, Landroid/view/View;->setTranslationX(F)V
+
+    invoke-virtual {v1}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    const/4 v5, 0x0
+
+    invoke-virtual {v4, v5}, Landroid/view/ViewPropertyAnimator;->translationX(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    const-wide/16 v5, 0xdc
+
+    invoke-virtual {v4, v5, v6}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    new-instance v5, Landroid/view/animation/DecelerateInterpolator;
+
+    const/high16 v6, 0x3fc00000    # 1.5f
+
+    invoke-direct {v5, v6}, Landroid/view/animation/DecelerateInterpolator;-><init>(F)V
+
+    invoke-virtual {v4, v5}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/view/ViewPropertyAnimator;->withLayer()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    :cond_left_done
     return-void
 .end method
 
@@ -6183,23 +6168,10 @@
     .line 8
     if-eqz v0, :cond_1
 
-    .line 9
-    .line 10
-    if-eqz p1, :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->getModsSpanCount()I
 
-    .line 11
-    .line 12
-    const/4 v1, 0x1
+    move-result v1
 
-    .line 13
-    goto :goto_0
-
-    .line 14
-    :cond_0
-    const/4 v1, 0x4
-
-    .line 15
-    :goto_0
     invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/GridLayoutManager;->t1(I)V
 
     .line 16
@@ -6710,6 +6682,8 @@
 
     .line 9
     iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->menuContainer:Landroid/view/View;
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->setupMenuCenterGap()V
 
     .line 10
     .line 11
@@ -8457,28 +8431,12 @@
 
     .line 903
     .line 904
-    iget-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->compactMode:Z
-
-    .line 905
-    .line 906
     const/4 v2, 0x1
 
-    .line 907
-    if-eqz v1, :cond_f
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->getModsSpanCount()I
 
-    .line 908
-    .line 909
-    move v1, v2
+    move-result v1
 
-    .line 910
-    goto :goto_0
-
-    .line 911
-    :cond_f
-    const/4 v1, 0x4
-
-    .line 912
-    :goto_0
     invoke-direct {v0, v1}, Landroidx/recyclerview/widget/GridLayoutManager;-><init>(I)V
 
     .line 913
