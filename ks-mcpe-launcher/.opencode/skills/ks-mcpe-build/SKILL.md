@@ -121,8 +121,10 @@ the committed tree and never download the upstream APK.
     inflates `nav_bar.xml` but hides it (`nav_bar_root` GONE) and adds it after
     the content page so page-local duplicate ids win `findViewById`. Keep the
     nav views in `nav_bar.xml`, because listener wiring has no null checks.
-    The Home page has its own row with the KS logo/brand, Sign In/avatar, Mods
-    and Settings. Every content page includes `nav_back_button` (from
+    The Home page has its own top row with the KS logo, the
+    "KS MCPE Launcher" brand, Sign In/avatar and Settings, plus a Mods pill
+    (plugin icon + "Mods" label) at the bottom-left. Every content page
+    includes `nav_back_button` (from
     `res/layout/view_back_button.xml`) left of its title; Accounts pins that
     row above its two-pane content so it also shows in the disabled state.
     Management opens from the cube icon on each instance card (below its
