@@ -669,7 +669,7 @@ Failed:
     <string name="minecraft_loading_return">Back to Launcher</string>
     <string name="minecraft_loading_status_preparing">Preparing game</string>
     <string name="minecraft_loading_subtitle">Preparing game files and enabled mods</string>
-    <string name="minecraft_loading_title">Starting Minecraft</string>
+    <string name="minecraft_loading_title">Launching</string>
     <string name="minecraft_not_installed_message">Minecraft isn’t installed on your device. Please install it from the Google Play Store to use this launcher.</string>
     <string name="minecraft_not_installed_title">Minecraft Not Installed</string>
     <string name="minecraft_playstore_required_message">This launcher works only with the official Minecraft app from the Google Play Store. Please install the Play Store version to continue.</string>
