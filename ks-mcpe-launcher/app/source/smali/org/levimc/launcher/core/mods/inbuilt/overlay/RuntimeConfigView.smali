@@ -1984,7 +1984,9 @@
     .line 11
     .line 12
     .line 13
-    const v1, -0xb51f60
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->getAccentColor()I
+
+    move-result v1
 
     .line 14
     .line 15
@@ -11715,11 +11717,44 @@
     return-void
 .end method
 
+.method private getAccentColor()I
+    .locals 3
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->context:Landroid/content/Context;
+
+    if-nez v0, :cond_0
+
+    const v0, -0xd95966
+
+    return v0
+
+    :cond_0
+    const-string v1, "personalization_prefs"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object v0
+
+    const-string v1, "accent_color"
+
+    const v2, -0xd95966
+
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result v0
+
+    return v0
+.end method
+
 .method private tintSeek(Landroid/widget/SeekBar;)V
     .locals 2
 
     .line 1
-    const v0, -0xb51f60
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->getAccentColor()I
+
+    move-result v0
 
     .line 2
     .line 3
