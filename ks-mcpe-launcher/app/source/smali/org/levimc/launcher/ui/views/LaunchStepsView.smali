@@ -755,8 +755,11 @@
     goto :loop
 
     :after_loop
-    if-ltz v5, :return
+    if-ltz v5, :set_state
 
+    goto :return
+
+    :set_state
     iget-object v0, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->states:[I
 
     iget-boolean v1, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->failed:Z
