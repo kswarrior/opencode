@@ -3011,6 +3011,10 @@
 .method public final toggleLog()V
     .locals 3
 
+    const-string v0, "KSTOGGLE"
+    const-string v1, "toggle"
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
     iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logScroll:Landroid/widget/ScrollView;
 
     if-eqz v0, :return
