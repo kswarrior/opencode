@@ -3027,9 +3027,11 @@
 
     if-eqz v0, :done
 
+    const/16 p1, 0x26
+
     invoke-virtual {v0, p1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->setProgress(I)V
 
-    iget-boolean v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->launchFailed:Z
+    const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->setFailed(Z)V
 
