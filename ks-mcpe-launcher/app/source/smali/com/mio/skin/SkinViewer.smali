@@ -1247,6 +1247,7 @@
 
     invoke-virtual {v2}, Lcom/mio/skin/SkinRenderer;->squashTap()V
 
+    :cond_5
     .line 145
     :cond_6
     :goto_1
