@@ -10961,6 +10961,10 @@
     .line 54
     if-eqz v4, :cond_2
 
+    iget-object v5, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navHudEditor:Landroid/widget/TextView;
+
+    if-eq p1, v5, :cond_2
+
     .line 55
     .line 56
     iget v3, v3, Landroid/util/TypedValue;->resourceId:I
