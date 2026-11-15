@@ -94,7 +94,7 @@
     <string name="adding_server">सर्वर जोड़ा जा रहा है…</string>
     <string name="allow_unknown_sources">कृपया आगे बढ़ने से पहले अज्ञात स्रोतों से इंस्टॉलेशन की अनुमति दें</string>
     <string name="already_latest_version">पहले से ही नवीनतम संस्करण (%1$s)</string>
-    <string name="app_name">LeviLauncher</string>
+    <string name="app_name">KS MCPE Launcher</string>
     <string name="apply">लागू करें</string>
     <string name="autosprint_keybind_label">ऑटो स्प्रिंट कीबाइंड:</string>
     <string name="autosprint_keybind_press">कोई भी कुंजी दबाएं…</string>
@@ -379,7 +379,7 @@ minecraft://?showStoreOffer=UUID"</string>
     <string name="error_versions">त्रुटि वाले संस्करण</string>
     <string name="eula_agree">स्वीकार करें</string>
     <string name="eula_exit">अस्वीकार करें</string>
-    <string name="eula_message"><b>LeviLauncher में आपका स्वागत है</b>"
+    <string name="eula_message"><b>KS MCPE Launcher में आपका स्वागत है</b>"
 
 इस सॉफ़्टवेयर का उपयोग करके आप सहमत हैं:
 
@@ -390,7 +390,7 @@ minecraft://?showStoreOffer=UUID"</string>
 • Mojang/Microsoft से संबद्ध नहीं है
 
 निरंतर उपयोग समझौते का गठन करता है"</string>
-    <string name="eula_title">LeviLauncher लाइसेंस समझौता</string>
+    <string name="eula_title">KS MCPE Launcher लाइसेंस समझौता</string>
     <string name="execute">निष्पादित करें</string>
     <string name="exit">बाहर निकलें</string>
     <string name="expand_button_title">बेहतर सेटिंग</string>

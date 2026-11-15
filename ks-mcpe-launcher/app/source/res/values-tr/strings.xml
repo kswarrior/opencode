@@ -94,7 +94,7 @@ Son güncelleme: %2$s"</string>
     <string name="adding_server">Sunucu ekleniyor…</string>
     <string name="allow_unknown_sources">Devam etmeden önce lütfen bilinmeyen kaynaklardan yüklemeye izin verin</string>
     <string name="already_latest_version">Zaten en son sürüm (%1$s)</string>
-    <string name="app_name">LeviLauncher</string>
+    <string name="app_name">KS MCPE Launcher</string>
     <string name="apply">Uygula</string>
     <string name="autosprint_keybind_label">Otomatik Koş Tuşu:</string>
     <string name="autosprint_keybind_press">Herhangi bir tuşa basın…</string>
@@ -379,7 +379,7 @@ minecraft://?showStoreOffer=UUID"</string>
     <string name="error_versions">Hatalı Sürümler</string>
     <string name="eula_agree">Kabul Et</string>
     <string name="eula_exit">Reddet</string>
-    <string name="eula_message"><b>"LeviLauncher'a Hoş Geldiniz"</b>"
+    <string name="eula_message"><b>"KS MCPE Launcher'a Hoş Geldiniz"</b>"
 
 Bu yazılımı kullanarak aşağıdakileri kabul etmiş olursunuz:
 
@@ -390,7 +390,7 @@ Bu yazılımı kullanarak aşağıdakileri kabul etmiş olursunuz:
 • Mojang/Microsoft ile bağlantılı değildir
 
 Kullanmaya devam etmek kabul anlamına gelir"</string>
-    <string name="eula_title">LeviLauncher lisans sözleşmesi</string>
+    <string name="eula_title">KS MCPE Launcher lisans sözleşmesi</string>
     <string name="execute">Çalıştır</string>
     <string name="exit">Çıkış</string>
     <string name="expand_button_title">Gelişmiş</string>
