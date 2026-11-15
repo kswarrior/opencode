@@ -7789,6 +7789,8 @@
     :cond_9
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navModules:Landroid/widget/TextView;
 
+    if-eqz v0, :cond_nav_modules
+
     .line 600
     .line 601
     new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/r;
@@ -7805,6 +7807,8 @@
     .line 607
     .line 608
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    :cond_nav_modules
 
     .line 609
     .line 610
