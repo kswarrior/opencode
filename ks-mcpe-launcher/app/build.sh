@@ -329,7 +329,7 @@ for lib in libs:
     if blob[offset:offset + len(PATCH)] != PATCH:
         sys.exit(f"{lib}: native package-name check is not patched")
 
-print(f"verified package={app_id}, v1.7 launch core, XAL in-proc auth/managed storage, disabled updater, patched native verifier")
+print(f"verified package={app_id}, v1.7 launch core, XAL in-proc auth/managed storage, disabled updater, patched native verifier, bypassed Play Store gate")
 PY
 
 log "building APK"
