@@ -67,6 +67,12 @@
 
 .field private volatile returningToLauncher:Z
 
+.field private logTitleView:Landroid/widget/TextView;
+
+.field private stepsScroll:Landroid/widget/ScrollView;
+
+.field private stepsView:Lorg/levimc/launcher/ui/views/LaunchStepsView;
+
 .field private statusView:Landroid/widget/TextView;
 
 .field private final timeFormat:Ljava/text/SimpleDateFormat;
