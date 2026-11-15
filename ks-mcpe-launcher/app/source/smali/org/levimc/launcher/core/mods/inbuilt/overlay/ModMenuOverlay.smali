@@ -1141,6 +1141,8 @@
     :cond_a
     if-eqz v3, :cond_b
 
+    check-cast v3, Landroid/widget/TextView;
+
     const/4 v5, 0x0
 
     if-nez p1, :cond_xx
@@ -1152,6 +1154,8 @@
 
     :cond_b
     if-eqz v4, :cond_c
+
+    check-cast v4, Landroid/widget/TextView;
 
     invoke-direct {p0, v4, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applySettingsTabStyle(Landroid/widget/TextView;Z)V
 
