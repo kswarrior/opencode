@@ -1362,6 +1362,15 @@
     .line 161
     invoke-direct {v1, p0, v0, p1, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;I)V
 
+    .line 167
+    .line 168
+    .line 169
+    iget-object v4, p1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;->statusText:Landroid/widget/TextView;
+
+    .line 170
+    .line 171
+    invoke-virtual {v4, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 177
     .line 178
     .line 179
