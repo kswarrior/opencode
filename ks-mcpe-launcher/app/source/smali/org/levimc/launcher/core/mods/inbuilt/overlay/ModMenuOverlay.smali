@@ -10477,14 +10477,6 @@
     .line 21
     if-eqz v0, :cond_1
 
-    .line 22
-    .line 23
-    iget-boolean v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->compactMode:Z
-
-    .line 24
-    .line 25
-    if-nez v4, :cond_1
-
     .line 26
     .line 27
     move v4, v1
