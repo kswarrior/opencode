@@ -109,6 +109,8 @@ directory if you want to keep update compatibility.
 - Older `KS-MCPE-Launcher-*` assets are kept for rollback. Do not delete them
   unless the user explicitly asks.
 - Publishing a version only replaces that version's APK and `.sha256` assets.
+- 1.0.7 fixes the 1.0.6 startup crash caused by a stale `ActivityMainBinding`
+  check for the removed Miscellaneous card. Use 1.0.7 instead of 1.0.6.
 
 ## Known limitations
 
