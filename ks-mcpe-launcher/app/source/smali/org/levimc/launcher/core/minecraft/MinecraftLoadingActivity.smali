@@ -2004,17 +2004,29 @@
     .line 36
     invoke-static {p1, v1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 37
-    .line 38
-    .line 39
-    const/16 v1, 0x64
-
-    .line 40
-    .line 41
     const/4 v2, 0x0
 
-    .line 42
-    invoke-direct {p0, v1, p1, v2}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->updateProgress(ILjava/lang/String;Ljava/lang/String;)V
+    iget-object v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->statusView:Landroid/widget/TextView;
+
+    if-eqz v1, :status_ok
+
+    invoke-virtual {v1, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :status_ok
+    const/4 v1, 0x1
+
+    iput-boolean v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->launchFailed:Z
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->dotsDrawable:Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;
+
+    if-eqz v1, :dots_ok
+
+    invoke-virtual {v1}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->stop()V
+
+    :dots_ok
+    iget v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->lastProgress:I
+
+    invoke-direct {p0, v1}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->renderSteps(I)V
 
     .line 43
     .line 44
