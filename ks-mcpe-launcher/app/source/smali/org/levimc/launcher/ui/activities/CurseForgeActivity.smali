@@ -1949,6 +1949,15 @@
     .line 10
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacksAndMessages(Ljava/lang/Object;)V
 
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->webView:Landroid/webkit/WebView;
+
+    if-eqz v0, :cond_web_done
+
+    invoke-virtual {v0}, Landroid/webkit/WebView;->stopLoading()V
+
+    invoke-virtual {v0}, Landroid/webkit/WebView;->destroy()V
+
+    :cond_web_done
     .line 11
     .line 12
     .line 13
