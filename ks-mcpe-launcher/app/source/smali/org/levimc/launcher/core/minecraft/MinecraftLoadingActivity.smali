@@ -702,6 +702,35 @@
 
     .line 89
     :cond_2
+    iget-object p1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->logView:Landroid/widget/TextView;
+
+    if-eqz p1, :no_log_view
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->visibleLogMessages:Ljava/util/ArrayDeque;
+
+    const-string v1, "\n"
+
+    invoke-static {v1, v0}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+
+    move-result-object v0
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v0, "\n"
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :no_log_view
     return-void
 
     .line 136
