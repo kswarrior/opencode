@@ -718,6 +718,8 @@
 
 .field public static discover_category_button:I = 0x7f0a02bd
 
+.field public static text_instance_version:I = 0x7f0a02be
+
 .field public static nav_settings:I = 0x7f0a02bf
 
 .field public static nav_settings_compact:I = 0x7f0a02c0

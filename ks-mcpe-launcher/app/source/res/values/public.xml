@@ -4920,6 +4920,7 @@
     <public type="id" name="nav_modules_compact" id="0x7f0a02bb" />
     <public type="id" name="discover_source_button" id="0x7f0a02bc" />
     <public type="id" name="discover_category_button" id="0x7f0a02bd" />
+    <public type="id" name="text_instance_version" id="0x7f0a02be" />
     <public type="id" name="nav_settings" id="0x7f0a02bf" />
     <public type="id" name="nav_settings_compact" id="0x7f0a02c0" />
     <public type="id" name="nav_sign_in_button" id="0x7f0a02c1" />
