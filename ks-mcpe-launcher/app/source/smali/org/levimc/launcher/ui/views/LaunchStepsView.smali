@@ -820,8 +820,11 @@
 
     const/4 v5, -0x1
 
-    if-eqz v4, :loop_init
+    if-nez v4, :check_progress
 
+    goto :loop_init
+
+    :check_progress
     const/16 v3, 0x64
 
     if-lt v2, v3, :all_done
