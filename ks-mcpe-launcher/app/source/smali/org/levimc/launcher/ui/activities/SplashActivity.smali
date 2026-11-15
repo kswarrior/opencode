@@ -22,6 +22,12 @@
 
 .field private progressAnimator:Landroid/animation/ObjectAnimator;
 
+.field private rightProgressAnimator:Landroid/animation/ObjectAnimator;
+
+.field private titleText:Ljava/lang/String;
+
+.field private typewriterAnimator:Landroid/animation/ValueAnimator;
+
 
 # direct methods
 .method public constructor <init>()V
