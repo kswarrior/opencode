@@ -2627,6 +2627,13 @@
 .method private playCompletionAnimation()V
     .locals 6
 
+    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->navigated:Z
+
+    if-eqz v0, :cond_start
+
+    return-void
+
+    :cond_start
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->navigated:Z
@@ -3164,10 +3171,14 @@
 .end method
 
 .method public onDestroy()V
-    .locals 0
+    .locals 1
 
     .line 1
     invoke-super {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->onDestroy()V
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->navigated:Z
 
     .line 2
     .line 3
