@@ -3778,7 +3778,7 @@
 
     move-result p1
 
-    if-gez p1, :do_start
+    if-ltz p1, :do_start
 
     invoke-direct {p0, p1}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->renderSteps(I)V
 
