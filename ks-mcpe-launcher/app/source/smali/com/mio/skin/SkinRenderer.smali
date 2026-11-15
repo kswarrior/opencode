@@ -1175,15 +1175,19 @@
     .locals 2
 
     .line 374
-    invoke-static {}, Lcom/tungsten/fclcore/task/Schedulers;->androidUIThread()Ljava/util/concurrent/Executor;
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
 
     move-result-object v0
 
-    new-instance v1, Lcom/mio/skin/SkinRenderer$0;
+    new-instance v1, Landroid/os/Handler;
 
-    invoke-direct {v1, p1, p0, p2, p3}, Lcom/mio/skin/SkinRenderer$0;-><init>(Landroid/graphics/Bitmap;Lcom/mio/skin/SkinRenderer;Landroid/graphics/Bitmap;Ljava/lang/Boolean;)V
+    invoke-direct {v1, v0}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+    new-instance v0, Lcom/mio/skin/SkinRenderer$0;
+
+    invoke-direct {v0, p1, p0, p2, p3}, Lcom/mio/skin/SkinRenderer$0;-><init>(Landroid/graphics/Bitmap;Lcom/mio/skin/SkinRenderer;Landroid/graphics/Bitmap;Ljava/lang/Boolean;)V
+
+    invoke-virtual {v1, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
     return-void
 .end method
