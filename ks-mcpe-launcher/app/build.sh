@@ -187,6 +187,15 @@ for pattern, label in (
     if re.search(pattern, manifest):
         sys.exit(f"source manifest still has the upstream {label}")
 
+xal_handler = re.search(
+    r'<activity\b[^>]*android:name="com\.microsoft\.xal\.browser\.IntentHandler"[^>]*>',
+    manifest,
+)
+if xal_handler is None:
+    sys.exit("source manifest is missing the XAL intent handler")
+if 'android:exported="false"' not in xal_handler.group(0):
+    sys.exit("source XAL intent handler is still exported")
+
 build_config = root / "smali/org/levimc/launcher/BuildConfig.smali"
 text = build_config.read_text(encoding="utf-8")
 if f'APPLICATION_ID:Ljava/lang/String; = "{app_id}"' not in text:
