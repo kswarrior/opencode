@@ -18,7 +18,7 @@
 
 .field public static final IS_BETA:Z = false
 
-.field public static final SKIP_PLAY_STORE_CHECK:Z = false
+.field public static final SKIP_PLAY_STORE_CHECK:Z = true
 
 .field public static final VERSION_CODE:I = 0x384b5ee
 

@@ -209,6 +209,19 @@ build_config = root / "smali/org/levimc/launcher/BuildConfig.smali"
 text = build_config.read_text(encoding="utf-8")
 if f'APPLICATION_ID:Ljava/lang/String; = "{app_id}"' not in text:
     sys.exit("source BuildConfig.APPLICATION_ID does not use the clone id")
+if "SKIP_PLAY_STORE_CHECK:Z = true" not in text:
+    sys.exit("source BuildConfig does not skip the Play Store check")
+
+play_store = (root / "smali/org/levimc/launcher/util/PlayStoreValidator.smali").read_text(
+    encoding="utf-8"
+)
+play_store_method = re.search(
+    r"\.method public static isMinecraftFromPlayStore\(Landroid/content/Context;\)Z.*?\.end method",
+    play_store,
+    re.DOTALL,
+)
+if play_store_method is None or "const/4 p0, 0x1" not in play_store_method.group(0):
+    sys.exit("source Play Store gate is not bypassed")
 
 strings = (root / "res/values/strings.xml").read_text(encoding="utf-8")
 if '<string name="app_name">KS MCPE Launcher</string>' not in strings:
