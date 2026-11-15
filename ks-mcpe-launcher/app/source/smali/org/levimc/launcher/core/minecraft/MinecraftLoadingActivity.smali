@@ -3009,7 +3009,7 @@
 .end method
 
 .method public final toggleLog()V
-    .locals 3
+    .locals 5
 
     const-string v0, "KSTOGGLE"
     const-string v1, "toggle"
@@ -3022,6 +3022,11 @@
     invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
 
     move-result v1
+
+    const-string v3, "KSTOGGLE"
+    invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    move-result-object v4
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     if-nez v1, :hide
 
