@@ -1049,7 +1049,7 @@
     :cond_search
     new-instance v0, Ljava/lang/StringBuilder;
 
-    const-string v2, "https://mcpedl.com/search/?q="
+    const-string v2, "https://mcpedl.com/page/1/?s="
 
     invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
