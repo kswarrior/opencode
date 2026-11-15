@@ -805,7 +805,7 @@
 
     iget v0, v0, Landroid/content/res/Configuration;->screenWidthDp:I
 
-    const/16 v1, 0x3e8
+    const/16 v1, 0x4b0
 
     const/4 v2, 0x2
 
