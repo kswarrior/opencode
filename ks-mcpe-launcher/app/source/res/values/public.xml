@@ -4796,6 +4796,8 @@
     <public type="id" name="minecraftLaunchStatus" id="0x7f0a023c" />
     <public type="id" name="minecraftLaunchSubtitle" id="0x7f0a023d" />
     <public type="id" name="minecraftLaunchTitle" id="0x7f0a023e" />
+    <public type="id" name="minecraftLaunchSteps" id="0x7f0a0242" />
+    <public type="id" name="minecraftLaunchStepsScroll" id="0x7f0a0243" />
     <public type="id" name="minecraft_title_text" id="0x7f0a023f" />
     <public type="id" name="mini" id="0x7f0a0240" />
     <public type="id" name="minimize_bubble" id="0x7f0a0241" />

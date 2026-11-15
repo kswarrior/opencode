@@ -573,6 +573,8 @@
     <id name="minecraftLaunchProgress" />
     <id name="minecraftLaunchReturn" />
     <id name="minecraftLaunchStatus" />
+    <id name="minecraftLaunchSteps" />
+    <id name="minecraftLaunchStepsScroll" />
     <id name="minecraftLaunchSubtitle" />
     <id name="minecraftLaunchTitle" />
     <id name="minecraft_title_text" />

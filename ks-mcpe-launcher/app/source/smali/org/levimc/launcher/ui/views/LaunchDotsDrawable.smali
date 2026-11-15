@@ -45,13 +45,13 @@
 
     iget v0, v0, Landroid/util/DisplayMetrics;->density:F
 
-    const/high16 v2, 0x40200000    # 2.5f
+    const/high16 v2, 0x40400000    # 3.0f
 
     mul-float v3, v0, v2
 
     iput v3, p0, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->radius:F
 
-    const/high16 v2, 0x40600000    # 3.5f
+    const/high16 v2, 0x40800000    # 4.0f
 
     mul-float/2addr v2, v0
 
