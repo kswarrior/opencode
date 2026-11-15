@@ -2173,7 +2173,7 @@
 .end method
 
 .method private wrapWithNavBar(Landroid/view/View;)V
-    .locals 6
+    .locals 7
 
     .line 1
     invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->shouldSkipNavBar()Z
@@ -2256,10 +2256,12 @@
     .line 40
     .line 41
     .line 42
-    move-result-object v2
+    move-result-object v6
 
     .line 43
-    invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+    const/16 v2, 0x8
+
+    invoke-virtual {v6, v2}, Landroid/view/View;->setVisibility(I)V
 
     .line 44
     .line 45
@@ -2283,6 +2285,8 @@
     .line 55
     .line 56
     invoke-virtual {v0, p1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    invoke-virtual {v0, v6}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
     .line 57
     .line 58
